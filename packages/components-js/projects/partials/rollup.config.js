@@ -1,6 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const outputDir = 'dist';
@@ -12,7 +11,7 @@ const input = 'src/index.ts';
 // of react/jsx-runtime with a try/catch to avoid errors in projects that don't have it as a dependency
 // and therefore won't use the jsx format option.
 
-const modifyFinalOutput = () => ({
+const modifyFinalOutputCjs = () => ({
   name: 'modify-final-output',
   generateBundle: (_, bundle) => {
     // Match the top level require of react/jsx-runtime and save assigned var name as regex group
@@ -35,30 +34,79 @@ try {
   },
 });
 
+const modifyFinalOutputEsm = () => ({
+  name: 'modify-final-output',
+  generateBundle: (_, bundle) => {
+    // Match the top level require of react/jsx-runtime and save assigned var name as regex group
+    const replacementRegex = /import \{ jsxs, Fragment, jsx } from 'react\/jsx-runtime';/;
+    for (const [fileName, file] of Object.entries(bundle)) {
+      if (file.type === 'chunk' && file.code) {
+        if (!file.code.match(replacementRegex)) {
+          throw new Error(`Partial build failed! Could not replace react/jsx-runtime require with try/catch block`);
+        }
+        // Wrap import of react/jsx-runtime in try/catch to avoid errors when not included as dependency. Function is necessary to avoid issues with topLevelAwait
+        file.code = file.code.replace(
+          replacementRegex,
+          (_, $1) => `let jsxs;
+let Fragment;
+let jsx;
+async function maybeImportJSXRuntime() {
+  try {
+    ({ jsxs, Fragment, jsx } = await import('react/jsx-runtime'));
+  } catch (error) {}
+}
+
+maybeImportJSXRuntime();`
+        );
+      }
+    }
+  },
+});
+
 export default [
+  // Default JS Build - CJS
   {
     input,
     output: {
-      file: `${outputDir}/index.cjs`,
+      dir: `${outputDir}/cjs`,
       format: 'cjs',
+      entryFileNames: '[name].cjs',
+    },
+    plugins: [commonjs(), typescript(), modifyFinalOutputCjs()],
+  },
+  // Default JS Build - ESM
+  {
+    input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
     },
     plugins: [
-      commonjs(),
-      typescript({ declaration: true, declarationDir: outputDir, rootDir: 'src' }),
+      typescript({
+        declaration: true,
+        declarationDir: `${outputDir}/esm`,
+        exclude: '**.spec.ts',
+        rootDir: 'src',
+      }),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
-          main: 'index.cjs',
-          types: 'index.d.ts',
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
+          exports: {
+            // Default export (JS)
+            '.': {
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+          },
         },
       }),
-      modifyFinalOutput(),
-      copy({
-        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
-        targets: [{ src: `${outputDir}/index.cjs`, dest: outputDir, rename: () => 'index.js' }],
-        hook: 'writeBundle',
-      }),
+      modifyFinalOutputEsm(),
     ],
   },
 ];

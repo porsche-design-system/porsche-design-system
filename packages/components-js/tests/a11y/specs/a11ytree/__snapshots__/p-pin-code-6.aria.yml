@@ -1,0 +1,20 @@
+- text: Slotted label. And some slotted and deeply nested bold,
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text. Slotted description. And some slotted and deeply nested bold,
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text.
+- textbox "1-4"
+- textbox "2-4"
+- textbox "3-4"
+- textbox "4-4"
+- alert:
+  - text: Slotted error message. And some slotted and deeply nested bold,
+  - strong: strong
+  - text: ","
+  - emphasis: emphasized
+  - text: and italic text.
+- status

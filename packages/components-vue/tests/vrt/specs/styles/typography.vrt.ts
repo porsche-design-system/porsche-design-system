@@ -1,9 +1,5 @@
 import { expect, test } from '@playwright/test';
-import {
-  viewportWidth3XL,
-  viewportWidthXXL,
-  viewportWidths,
-} from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidth3XL, viewportWidths, viewportWidthXXL } from '@porsche-design-system/shared/testing';
 
 const style = 'styles-typography';
 

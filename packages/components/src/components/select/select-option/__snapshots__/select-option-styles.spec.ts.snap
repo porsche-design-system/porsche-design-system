@@ -2,7 +2,8 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -33,24 +34,6 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: rgba(148, 149, 152, .18);
-}
 .option--highlighted {
   background: #404044;
 }
@@ -66,19 +49,13 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 }
 .icon {
   margin-inline-start: auto;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #FBFCFF;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -109,24 +86,6 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: rgba(148, 149, 152, .18);
-}
 .option--highlighted {
   background: #D8D8DB;
 }
@@ -142,12 +101,5 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 .icon {
   margin-inline-start: auto;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-"
+}"
 `;

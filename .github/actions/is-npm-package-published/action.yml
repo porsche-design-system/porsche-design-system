@@ -1,0 +1,32 @@
+name: 'Is npm package published'
+description: 'Checks if a specific npm package version is already published on npmjs.org.'
+
+inputs:
+  package-name:
+    description: 'The name of the npm package (e.g., @porsche-design-system/components-js).'
+    required: true
+  package-version:
+    description: 'The specific version of the package (e.g., 3.0.0).'
+    required: true
+
+outputs:
+  is-published:
+    description: '`true` if the version is published, `false` otherwise.'
+    value: ${{ steps.check.outputs.published }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Check NPM Registry'
+      id: check
+      run: |
+        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/${{ inputs.package-name }}/${{ inputs.package-version }}")"
+
+        if [[ ${http_status_code} == 200 ]]; then
+          echo "Package version is published."
+          echo "published=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "Package version is NOT published."
+          echo "published=false" >> "$GITHUB_OUTPUT"
+        fi
+      shell: bash

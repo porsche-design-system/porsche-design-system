@@ -4,9 +4,9 @@ import {
   viewportWidth3XL,
   viewportWidth4XL,
   viewportWidthM,
-  viewportWidthXXL,
   viewportWidths,
-} from '@porsche-design-system/shared/testing/playwright.vrt';
+  viewportWidthXXL,
+} from '@porsche-design-system/shared/testing';
 import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 const urls = {
@@ -32,7 +32,7 @@ for (const [name, url] of Object.entries(urls)) {
             const video = document.querySelector('video');
             if (video) {
               (video as HTMLElement).style.height = '600px';
-              // biome-ignore lint/style/noNonNullAssertion: <explanation>
+              // biome-ignore lint/style/noNonNullAssertion: ok
               video.parentElement!.style.height = '600px';
             }
           });
@@ -73,7 +73,7 @@ for (const [name, url] of Object.entries(urls)) {
             const video = document.querySelector('video');
             if (video) {
               (video as HTMLElement).style.height = '600px';
-              // biome-ignore lint/style/noNonNullAssertion: <explanation>
+              // biome-ignore lint/style/noNonNullAssertion: ok
               video.parentElement!.style.height = '600px';
             }
           });

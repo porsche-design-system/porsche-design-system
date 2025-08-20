@@ -1,0 +1,545 @@
+name: 'Test'
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: true
+        type: string
+
+jobs:
+  assets:
+    name: 'Assets'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:assets:assets
+      - name: 'Fallbacks Unit'
+        run: yarn test:unit:assets:fallbacks
+      - name: 'Flags Unit'
+        run: yarn test:unit:assets:flags
+      - name: 'Icons Unit'
+        run: yarn test:unit:assets:icons
+      - name: 'Font Face Unit'
+        run: yarn test:unit:assets:font-face
+      - name: 'Fallbacks VRT'
+        run: yarn test:vrt:assets:fallbacks
+      - name: 'Fallbacks VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-fallbacks-vrt
+          path: ./packages/assets/projects/fallbacks/tests/vrt/results
+  tokens:
+    name: 'Tokens'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:tokens
+  styles:
+    name: 'Styles'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Tailwind CSS Unit'
+        run: yarn test:unit:styles:tailwindcss
+  components-unit:
+    name: 'Components Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:components
+  components-js-unit:
+    name: 'Components JS Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Components Manager Core'
+        run: yarn test:unit:components-js:components-manager-core
+      - name: 'Components Manager CLI'
+        run: yarn test:unit:components-js:components-manager-cli
+      - name: 'Components Wrapper'
+        run: yarn test:unit:components-js:components-wrapper
+      - name: 'JSDom Polyfill'
+        run: yarn test:unit:components-js:jsdom-polyfill
+      - name: 'Partials'
+        run: yarn test:unit:components-js:partials
+      - name: 'Unit Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-js-unit
+          path: ./packages/components-js/tests/unit/results
+  components-js-a11y:
+    name: 'Components JS A11y'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'A11y'
+        run: yarn test:a11y:components-js
+  components-js-e2e-chrome:
+    name: 'Components JS E2E (Chrome)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-e2e-firefox:
+    name: 'Components JS E2E (Firefox)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-e2e-safari:
+    name: 'Components JS E2E (Safari)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-vrt-chrome:
+    name: 'Components JS VRT (Chrome)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'VRT'
+        run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-js-vrt-chrome-${{ matrix.shardIndex }}
+          path: ./packages/components-js/tests/vrt/results
+  components-js-vrt-safari:
+    name: 'Components JS VRT (Safari)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'VRT'
+        run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-js-vrt-playwright-safari-${{ matrix.shardIndex }}
+          path: ./packages/components-js/tests/vrt/results
+  components-angular:
+    name: 'Components Angular'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit (Jest)'
+        run: yarn test:unit:components-angular:jest
+      - name: 'Unit (Karma)'
+        run: yarn test:unit:components-angular:karma-ci
+      - name: 'E2E'
+        run: yarn test:e2e:components-angular
+      - name: 'VRT'
+        run: yarn test:vrt:components-angular
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-angular-vrt-regression
+          path: ./packages/components-angular/tests/vrt/results
+  components-react:
+    name: 'Components React'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:components-react:react-wrapper
+      - name: 'E2E'
+        run: yarn test:e2e:components-react
+      - name: 'VRT'
+        run: yarn test:vrt:components-react
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-react-vrt-regression
+          path: ./packages/components-react/tests/vrt/results
+  components-react-remix:
+    name: 'Components React/Remix'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-react/remix
+      - name: 'VRT'
+        run: yarn test:vrt:components-react/remix
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-react-remix-vrt
+          path: ./packages/components-react/projects/remix/tests/vrt/results
+  components-react-react-router:
+    name: 'Components React/React Router'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'VRT'
+        run: yarn test:vrt:components-react/react-router
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-react-react-router-vrt
+          path: ./packages/components-react/projects/react-router/tests/vrt/results
+  components-react-nextjs:
+    name: 'Components React/NextJS'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-react/nextjs
+      - name: 'VRT'
+        run: yarn test:vrt:components-react/nextjs
+      - name: 'Unit Test react-ssr-wrapper'
+        run: yarn test:unit:components-react:react-ssr-wrapper
+      - name: 'VRT Regression components-react/nextjs'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-react-nextjs-vrt
+          path: ./packages/components-react/projects/nextjs/tests/vrt/results
+  components-vue:
+    name: 'Components Vue'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:components-vue
+      - name: 'E2E'
+        run: yarn test:e2e:components-vue
+      - name: 'VRT'
+        run: yarn test:vrt:components-vue
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-vue-vrt
+          path: ./packages/components-vue/tests/vrt/results
+  component-meta:
+    name: 'Component Meta'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:component-meta
+  shared:
+    name: 'Shared'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:shared
+  storefront-unit:
+    name: 'Storefront Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:storefront
+  storefront-e2e:
+    name: 'Storefront E2E'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-e2e-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/e2e/results
+  storefront-sitemap:
+    name: 'Storefront Sitemap'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:storefront:sitemap
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-e2e-sitemap
+          path: ./packages/storefront/tests/e2e/results
+  storefront-a11y:
+    name: 'Storefront A11y'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4, 5, 6 ]
+        shardTotal: [ 6 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'A11y'
+        run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'A11y Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-a11y-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/a11y/results
+  storefront-vrt:
+    name: 'Storefront VRT'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'VRT'
+        run: yarn test:vrt:storefront
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-vrt
+          path: ./packages/storefront/tests/vrt/results
+  utilities:
+    name: 'Utilities'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:utilities

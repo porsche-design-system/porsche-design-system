@@ -1,0 +1,184 @@
+name: 'Deploy'
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: true
+        type: string
+    secrets:
+      linode-aws-access-key-id:
+        description: 'AWS Access Key ID for Linode / Akamai CDN.'
+        required: true
+      linode-aws-secret-access-key:
+        description: 'AWS Secret Access Key for Linode / Akamai CDN.'
+        required: true
+      gh-deploy-key-storefront:
+        description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
+        required: true
+      algolia-app-id:
+        description: 'Algolia App ID (Storefront).'
+        required: true
+      algolia-api-key:
+        description: 'Algolia API Key (Storefront).'
+        required: true
+
+jobs:
+  akamai-cdn-assets:
+    name: 'Akamai CDN (Assets)'
+    runs-on: ubuntu-latest
+    # container:
+    #   image: ${{ inputs.image }}
+    #   options: --user root
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+        with:
+          node_modules: 'false'
+          rclone: 'true'
+      - name: 'Setup Node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Rclone (Components)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/components/'
+          target: 'components/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Crest)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/crest/'
+          target: 'crest/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Fallbacks)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/fallbacks/'
+          target: 'fallbacks/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Flags)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/flags/'
+          target: 'flags/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Fonts)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/fonts/'
+          target: 'fonts/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Icons)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/icons/'
+          target: 'icons/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Marque)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/marque/'
+          target: 'marque/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Meta Icons)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/meta-icons/'
+          target: 'meta-icons/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Model Signatures)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/model-signatures/'
+          target: 'model-signatures/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Styles)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/styles/'
+          target: 'styles/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+  akamai-cdn-assets-smoke:
+    name: 'Akamai CDN (Assets) Smoke'
+    needs:
+     - akamai-cdn-assets
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Components JS'
+        run: yarn test:smoke:components-js
+      - name: 'Components Angular'
+        run: yarn test:smoke:components-angular
+      - name: 'Components React'
+        run: yarn test:smoke:components-react
+      - name: 'Components Vue'
+        run: yarn test:smoke:components-vue
+  github-pages-storefront:
+    name: 'GitHub Pages (Storefront)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Checkout (GH Pages)'
+        uses: actions/checkout@v4
+        with:
+          repository: 'porsche-design-system/porsche-design-system-storefront'
+          ssh-key: ${{ secrets.gh-deploy-key-storefront }}
+          ref: 'main'
+          path: 'gh-pages'
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Deploy (GH Pages)'
+        uses: ./.github/actions/gh-pages
+        with:
+          source: ./packages/storefront/dist
+          target: ${{ github.ref_name == 'main' && 'nightly' || github.ref_name }}
+          algolia: ${{ (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && 'true' || 'false' }}
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}

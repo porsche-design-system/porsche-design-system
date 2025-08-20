@@ -1,0 +1,20 @@
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<p-popover description="Some description">
+  <p-button-pure slot="button" hide-label="true" aria="{'aria-expanded': 'true'}" icon="information"
+    >More information</p-button-pure
+  >
+</p-popover>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-popover').querySelector('p-button-pure').click();
+  });
+</script>

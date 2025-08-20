@@ -42,7 +42,7 @@ const propTypes: PropTypes<typeof TabsBar> = {
   weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   gradientColorScheme: AllowedTypes.oneOf<TabsBarGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<TabsBarGradientColor>(GRADIENT_COLORS),
+  gradientColor: AllowedTypes.oneOf<TabsBarGradientColor>([undefined, ...GRADIENT_COLORS]),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -68,12 +68,14 @@ export class TabsBar {
   @Prop() public theme?: Theme = 'light';
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
+   * @deprecated since v3.0.0, will be removed with next major release.
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabsBarGradientColorScheme;
 
-  /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: TabsBarGradientColor = 'background-base';
+  /**
+   * @deprecated since v3.29.0, will be removed with next major release.
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColor?: TabsBarGradientColor;
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
@@ -146,7 +148,12 @@ export class TabsBar {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
+    warnIfDeprecatedPropIsUsed<typeof TabsBar>(
+      this,
+      'gradientColor',
+      'Prop can be omitted, gradient handling is managed internally.'
+    );
     const deprecationMap: DeprecationMapType = {
       semibold: 'semi-bold',
     };

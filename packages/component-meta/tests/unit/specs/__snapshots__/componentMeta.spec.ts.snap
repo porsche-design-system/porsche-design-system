@@ -323,6 +323,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -781,6 +783,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -1261,6 +1265,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -2054,6 +2060,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-checkbox-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-checkbox\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2062,6 +2069,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -2621,7 +2629,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-fieldset": {
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -2635,6 +2643,15 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "role": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "'radiogroup'",
+      },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -2697,7 +2714,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-fieldset-wrapper": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.",
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use \`p-fieldset\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2770,6 +2787,158 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-flag": {
+    "hasAriaProp": true,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "A map of ARIA attributes to enhance the flag's accessibility. For example, use \`{ 'aria-label': 'German flag' }\` to provide a descriptive label for screen readers.",
+        "isAria": true,
+        "type": "FlagAriaAttribute",
+      },
+      "name": {
+        "allowedValues": [
+          "ae",
+          "am",
+          "ar",
+          "at",
+          "au",
+          "az",
+          "ba",
+          "be",
+          "bg",
+          "bh",
+          "bn",
+          "bo",
+          "br",
+          "by",
+          "ca",
+          "ch",
+          "cl",
+          "cn",
+          "co",
+          "cr",
+          "cw",
+          "cy",
+          "cz",
+          "de",
+          "dk",
+          "do",
+          "dz",
+          "ec",
+          "ee",
+          "eg",
+          "es",
+          "fi",
+          "fr",
+          "gb",
+          "ge",
+          "gh",
+          "gr",
+          "gt",
+          "hk",
+          "hn",
+          "hr",
+          "ht",
+          "hu",
+          "id",
+          "ie",
+          "il",
+          "in",
+          "is",
+          "it",
+          "jm",
+          "jo",
+          "jp",
+          "ke",
+          "kh",
+          "kr",
+          "kw",
+          "kz",
+          "lb",
+          "lk",
+          "lt",
+          "lu",
+          "lv",
+          "ma",
+          "md",
+          "mk",
+          "mn",
+          "mo",
+          "mq",
+          "mt",
+          "mu",
+          "mx",
+          "my",
+          "ng",
+          "nl",
+          "no",
+          "nz",
+          "om",
+          "pa",
+          "pe",
+          "pf",
+          "ph",
+          "pk",
+          "pl",
+          "pr",
+          "pt",
+          "py",
+          "qa",
+          "ro",
+          "rs",
+          "ru",
+          "sa",
+          "se",
+          "sg",
+          "si",
+          "sk",
+          "sv",
+          "th",
+          "tn",
+          "tr",
+          "tt",
+          "ua",
+          "us",
+          "uy",
+          "uz",
+          "ve",
+          "vn",
+          "za",
+        ],
+        "defaultValue": "de",
+        "description": "Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use \`us\` for the United States, \`de\` for Germany, \`gb\` for Great Britain.",
+        "type": "FlagName",
+      },
+      "size": {
+        "allowedValues": [
+          "xx-small",
+          "x-small",
+          "small",
+          "medium",
+          "large",
+          "x-large",
+          "inherit",
+        ],
+        "defaultValue": "small",
+        "description": "The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are \`small\`, \`medium\`, \`large\`, etc.",
+        "type": "FlagSize",
       },
     },
     "styling": "jss",
@@ -2979,6 +3148,12 @@ exports[`should match snapshot 1`] = `
       "--p-flyout-width": {
         "defaultValue": "auto",
         "description": "Width of the flyout.",
+      },
+      "--ref-p-flyout-pt": {
+        "description": "Exposes the internally used padding-top of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Flyout.",
+      },
+      "--ref-p-flyout-px": {
+        "description": "Exposes the internally used padding-inline of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Flyout.",
       },
     },
     "eventsMeta": {
@@ -3465,6 +3640,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -3808,6 +3985,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -4164,6 +4343,400 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-input-date": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputDateBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputDateChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputDateInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputDateState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the granularity of the date input. This value is given in days. The default is 1 (one day).",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-email": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the email input has lost focus.",
+        "type": "InputEmailBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the email input loses focus after its value was changed.",
+        "type": "InputEmailChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputEmailInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indicator": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the email icon.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
+      },
+      "multiple": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.",
+        "type": "boolean",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "pattern": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.",
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputEmailState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default email address (or comma-separated list of addresses) for the input.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
   "p-input-number": {
     "cssVariablesMeta": {
       "--ref-p-input-slotted-margin": {
@@ -4205,19 +4778,15 @@ exports[`should match snapshot 1`] = `
     ],
     "propsMeta": {
       "autoComplete": {
-        "allowedValues": [
-          "off",
-          "on",
-          "",
-        ],
-        "defaultValue": "",
-        "description": "Specifies whether the input can be autofilled by the browser",
-        "type": "InputNumberAutoComplete",
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').",
+        "type": "string",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
         "type": "boolean",
       },
       "controls": {
@@ -4229,19 +4798,19 @@ exports[`should match snapshot 1`] = `
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the input.",
         "type": "string",
       },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the number input as disabled.",
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
         "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The id of a form element the number input should be associated with.",
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
         "propOptions": {
           "reflect": true,
         },
@@ -4250,15 +4819,22 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
+        "description": "Controls the visibility of the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
       },
       "max": {
         "allowedValues": "number",
@@ -4269,7 +4845,7 @@ exports[`should match snapshot 1`] = `
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The message styled depending on validation state.",
+        "description": "Dynamic feedback text for validation or status.",
         "type": "string",
       },
       "min": {
@@ -4281,7 +4857,7 @@ exports[`should match snapshot 1`] = `
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The name of the number input.",
+        "description": "The name of the input field, used when submitting the form data.",
         "isRequired": true,
         "propOptions": {
           "reflect": true,
@@ -4291,19 +4867,19 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The placeholder text.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Specifies whether the number input should be read-only.",
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
         "type": "boolean",
       },
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the number input as required.",
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
         "type": "boolean",
       },
       "state": {
@@ -4313,7 +4889,7 @@ exports[`should match snapshot 1`] = `
           "success",
         ],
         "defaultValue": "none",
-        "description": "The validation state.",
+        "description": "Indicates the validation or overall status of the input component.",
         "type": "InputNumberState",
       },
       "step": {
@@ -4329,7 +4905,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
+        "description": "Controls the visual appearance of the component.",
         "type": "Theme",
       },
       "value": {
@@ -4402,39 +4978,33 @@ exports[`should match snapshot 1`] = `
     ],
     "propsMeta": {
       "autoComplete": {
-        "allowedValues": [
-          "off",
-          "on",
-          "",
-          "current-password",
-          "new-password",
-        ],
-        "defaultValue": "",
-        "description": "Specifies whether the input can be autofilled by the browser",
-        "type": "InputPasswordAutoComplete",
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').",
+        "type": "string",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
         "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the input.",
         "type": "string",
       },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the password input as disabled.",
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
         "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The id of a form element the password input should be associated with.",
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
         "propOptions": {
           "reflect": true,
         },
@@ -4443,38 +5013,45 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
+        "description": "Controls the visibility of the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
       },
       "maxLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The max length of the password input.",
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
         "type": "number",
       },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The message styled depending on validation state.",
+        "description": "Dynamic feedback text for validation or status.",
         "type": "string",
       },
       "minLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The min length of the password input.",
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
         "type": "number",
       },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The name of the password input.",
+        "description": "The name of the input field, used when submitting the form data.",
         "isRequired": true,
         "propOptions": {
           "reflect": true,
@@ -4484,19 +5061,19 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The placeholder text.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Specifies whether the password input should be read-only.",
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
         "type": "boolean",
       },
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the password input as required.",
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
         "type": "boolean",
       },
       "state": {
@@ -4506,7 +5083,7 @@ exports[`should match snapshot 1`] = `
           "success",
         ],
         "defaultValue": "none",
-        "description": "The validation state.",
+        "description": "Indicates the validation or overall status of the input component.",
         "type": "InputPasswordState",
       },
       "theme": {
@@ -4516,7 +5093,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
+        "description": "Controls the visual appearance of the component.",
         "type": "Theme",
       },
       "toggle": {
@@ -4529,6 +5106,980 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": "",
         "description": "The password input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-search": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the search input has lost focus.",
+        "type": "InputSearchBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the search input loses focus after its value was changed.",
+        "type": "InputSearchChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputSearchInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
+        "type": "string",
+      },
+      "clear": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show clear input value button",
+        "type": "boolean",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indicator": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show search indicator icon",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputSearchState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The search input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. search button).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. icon).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-tel": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the tel input has lost focus.",
+        "type": "InputTelBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the tel input loses focus after its value was changed.",
+        "type": "InputTelChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputTelInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indicator": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the phone icon.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "pattern": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.",
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputTelState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The tel input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-text": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the text input has lost focus.",
+        "type": "InputTextBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the text input loses focus after its value was changed.",
+        "type": "InputTextChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputTextInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "counter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide the character counter.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "spellCheck": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Indicate whether to enable spell-checking.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputTextState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The text input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-time": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputTimeBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputTimeChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputTimeInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputTimeState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 60,
+        "description": "efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-url": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the url input has lost focus.",
+        "type": "InputUrlBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the url input loses focus after its value was changed.",
+        "type": "InputUrlChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputUrlInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indicator": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the url icon.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "pattern": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.",
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputUrlState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The url input value.",
         "propOptions": {
           "mutable": true,
         },
@@ -4615,6 +6166,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -5022,6 +6575,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -5428,6 +6983,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6503,10 +8060,17 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-icon",
       "p-button-pure",
+      "p-icon",
+      "p-input-search",
     ],
     "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -7036,6 +8600,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the popover content.",
       },
+      "button": {
+        "description": "Slot for custom button.",
+      },
     },
     "styling": "jss",
   },
@@ -7156,11 +8723,13 @@ exports[`should match snapshot 1`] = `
       },
       "gradientColor": {
         "allowedValues": [
+          null,
           "background-base",
           "background-surface",
         ],
-        "defaultValue": "background-base",
-        "description": "Adapts the background gradient color of prev and next button.",
+        "defaultValue": null,
+        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
+        "isDeprecated": true,
         "type": "ScrollerGradientColor",
       },
       "gradientColorScheme": {
@@ -7170,7 +8739,7 @@ exports[`should match snapshot 1`] = `
           "surface",
         ],
         "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`gradientColor\` instead. Adapts the background gradient color of prev and next button.",
+        "description": "@deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
         "isDeprecated": true,
         "type": "ScrollerGradientColorScheme",
       },
@@ -7404,6 +8973,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -7737,6 +9308,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "nestedComponents": [
       "p-icon",
+      "p-input-search",
     ],
     "propsMeta": {
       "compact": {
@@ -7769,6 +9341,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "SelectDropdownDirection",
+      },
+      "filter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Shows an input in the dropdown allowing options to be filtered.",
+        "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
@@ -7900,6 +9478,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-select\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7908,6 +9487,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -8717,11 +10297,13 @@ exports[`should match snapshot 1`] = `
       },
       "gradientColor": {
         "allowedValues": [
+          null,
           "background-base",
           "background-surface",
         ],
-        "defaultValue": "background-base",
-        "description": "Adapts the background gradient color of prev and next button.",
+        "defaultValue": null,
+        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
+        "isDeprecated": true,
         "type": "TabsGradientColor",
       },
       "gradientColorScheme": {
@@ -8820,11 +10402,13 @@ exports[`should match snapshot 1`] = `
       },
       "gradientColor": {
         "allowedValues": [
+          null,
           "background-base",
           "background-surface",
         ],
-        "defaultValue": "background-base",
-        "description": "Adapts the background gradient color of prev and next button.",
+        "defaultValue": null,
+        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
+        "isDeprecated": true,
         "type": "TabsBarGradientColor",
       },
       "gradientColorScheme": {
@@ -8834,7 +10418,7 @@ exports[`should match snapshot 1`] = `
           "surface",
         ],
         "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`gradientColor\` instead. Adapts the background gradient color of prev and next button.",
+        "description": "@deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
         "isDeprecated": true,
         "type": "TabsBarGradientColorScheme",
       },
@@ -8970,6 +10554,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -9459,6 +11045,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text-field-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: \`p-input-date\`, \`p-input-email\`, \`p-input-number\`, \`p-input-password\`, \`p-input-search\`, \`p-input-tel\`, \`p-input-text\`, \`p-input-time\` or \`p-input-url\`.",
     "eventsMeta": {
       "action": {
         "description": "Emitted when the action button is clicked.",
@@ -9473,6 +11060,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -9723,31 +11311,33 @@ exports[`should match snapshot 1`] = `
     ],
     "propsMeta": {
       "autoComplete": {
-        "allowedValues": [
-          "off",
-          "on",
-          "",
-        ],
-        "defaultValue": "",
-        "description": "Specifies whether the input can be autofilled by the browser",
-        "type": "TextareaAutoComplete",
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
+        "type": "string",
+      },
+      "counter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide the character counter.",
+        "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the textarea.",
         "type": "string",
       },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the textarea as disabled.",
+        "description": "A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.",
         "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The id of a form element the textarea should be associated with.",
+        "description": "Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).",
         "propOptions": {
           "reflect": true,
         },
@@ -9756,38 +11346,38 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Controls the visibility of the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "maxLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The max length of the textarea.",
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the textarea.",
         "type": "number",
       },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The message styled depending on validation state.",
+        "description": "Dynamic feedback text for validation or status.",
         "type": "string",
       },
       "minLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The min length of the textarea.",
+        "description": "A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.",
         "type": "number",
       },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The name of the textarea.",
+        "description": "The name of the textarea, used when submitting the form data.",
         "isRequired": true,
         "propOptions": {
           "reflect": true,
@@ -9797,19 +11387,19 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The placeholder text.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.",
         "type": "string",
       },
       "readOnly": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Specifies whether the textarea should be read-only.",
+        "description": "A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.",
         "type": "boolean",
       },
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the textarea as required.",
+        "description": "A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.",
         "type": "boolean",
       },
       "resize": {
@@ -9828,19 +11418,13 @@ exports[`should match snapshot 1`] = `
       "rows": {
         "allowedValues": "number",
         "defaultValue": 7,
-        "description": "The amount of rows of the textarea.",
+        "description": "The number of rows of the textarea.",
         "type": "number",
-      },
-      "showCounter": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide max character count.",
-        "type": "boolean",
       },
       "spellCheck": {
         "allowedValues": "boolean",
         "defaultValue": null,
-        "description": "Specifies whether the input should have its spelling and grammar checked",
+        "description": "Specifies whether the textarea should have its spelling and grammar checked",
         "type": "boolean",
       },
       "state": {
@@ -9850,7 +11434,7 @@ exports[`should match snapshot 1`] = `
           "success",
         ],
         "defaultValue": "none",
-        "description": "The validation state.",
+        "description": "Indicates the validation or overall status of the textarea component.",
         "type": "TextareaState",
       },
       "theme": {
@@ -9860,7 +11444,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
+        "description": "Controls the visual appearance of the component.",
         "type": "Theme",
       },
       "value": {
@@ -9879,7 +11463,7 @@ exports[`should match snapshot 1`] = `
           "off",
         ],
         "defaultValue": "soft",
-        "description": "Handles wrapping behaviour of elements.",
+        "description": "Handles wrapping behavior of elements.",
         "type": "TextareaWrap",
       },
     },
@@ -9897,6 +11481,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-textarea\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9905,6 +11490,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [

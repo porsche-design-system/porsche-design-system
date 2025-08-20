@@ -1,11 +1,9 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   FORM_STATES,
   THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -119,7 +117,6 @@ export class PinCode {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
@@ -201,6 +198,7 @@ export class PinCode {
           isLoading={this.loading}
           isDisabled={this.disabled}
         />
+        {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
           {Array.from(new Array(this.length), (_, index) => (
             <input

@@ -1,7 +1,7 @@
-import type { Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { type Locator, expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import type { Page } from 'playwright';
 import {
   buildDefaultComponentMarkup,
   setContentWithDesignSystem,
@@ -14,8 +14,20 @@ const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => getComp
 for (const tagName of tagNamesWithLoadingProp) {
   test.describe(tagName, () => {
     const getLoadingStatus = async (page: Page): Promise<Locator> => {
-      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter((tagNameWithLoadingProp) =>
-        getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp)
+      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter(
+        (tagNameWithLoadingProp) =>
+          getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp) &&
+          ![
+            'p-input-search',
+            'p-input-number',
+            'p-input-date',
+            'p-input-time',
+            'p-input-text',
+            'p-input-email',
+            'p-input-tel',
+            'p-input-url',
+            'p-input-password',
+          ].includes(tagName)
       );
 
       return page.locator(
@@ -26,7 +38,15 @@ for (const tagName of tagNamesWithLoadingProp) {
     };
 
     const getLoadingMessage = async (page: Page): Promise<string> => {
-      return (await getLoadingStatus(page)).evaluate((el) => el.textContent);
+      const locators = await page.locator(`${tagName} .loading`).all();
+
+      // Some components (e.g. <p-input-date>) have multiple `.loading` elements.
+      // Return only the first one with visible (non-empty) text.
+      for (const locator of locators) {
+        const text = await locator.textContent();
+        if (text?.trim()) return text.trim();
+      }
+      return '';
     };
 
     test.describe('for loading="true"', () => {
@@ -35,7 +55,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading message initially', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        expect(await getLoadingMessage(page)).toBe('Loading');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading');
       });
 
       test('should render loading finished message when loading is set to false', async ({ page }) => {
@@ -45,7 +65,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
-        expect(await getLoadingMessage(page)).toBe('Loading finished');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading finished');
       });
     });
 
@@ -55,7 +75,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render no loading message initially', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        expect(await getLoadingMessage(page)).toBe('');
+        await expect.poll(() => getLoadingMessage(page)).toBe('');
       });
 
       test('should render loading message when loading is set to true', async ({ page }) => {
@@ -65,7 +85,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', true);
         await waitForStencilLifecycle(page);
 
-        expect(await getLoadingMessage(page)).toBe('Loading');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading');
       });
 
       test('should render loading finished message when loading is set to true, then to false', async ({ page }) => {
@@ -78,7 +98,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
-        expect(await getLoadingMessage(page)).toBe('Loading finished');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading finished');
       });
     });
   });

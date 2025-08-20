@@ -1,23 +1,24 @@
 <div class="playground light" title="should render with label">
-  <p-textarea name="Some Name" label="Label"></p-textarea>
+  <p-textarea name="some-name" label="Label"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
-  <p-textarea name="Some Name" label="Label with placeholder" placeholder="Some placeholder"></p-textarea>
+  <p-textarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with label, description and placeholder">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Label with description and placeholder"
     description="Some description"
     placeholder="Some placeholder"
+    class="a11ytree-snapshot-test"
   ></p-textarea>
 </div>
 
 <div class="playground light" title="should render without label and without description">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Label"
     description="Some description"
     hide-label="true"
@@ -27,7 +28,7 @@
 
 <div class="playground light" title="should render with responsive label and description">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Label"
     description="Some description"
     hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
@@ -37,66 +38,91 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-textarea name="Some Name" label="Required" required="true"></p-textarea>
+  <p-textarea name="some-name" label="Required" required="true" class="a11ytree-snapshot-test"></p-textarea>
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Required and insanely super long label across multiple lines"
     required="true"
   ></p-textarea>
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-textarea name="Some Name" label="Disabled" description="Some description" disabled="true"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Disabled"
+    description="Some description"
+    disabled="true"
+    class="a11ytree-snapshot-test"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with placeholder in disabled state">
-  <p-textarea name="Some Name" label="Disabled placeholder" disabled="true" placeholder="Some placeholder"></p-textarea>
+  <p-textarea name="some-name" label="Disabled placeholder" disabled="true" placeholder="Some placeholder"></p-textarea>
 </div>
 
 <div class="playground light" title="should render in readonly state">
-  <p-textarea name="Some Name" label="Readonly" value="Some value" read-only="true"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Readonly"
+    value="Some value"
+    read-only="true"
+    class="a11ytree-snapshot-test"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-textarea name="Some Name" label="Counter" max-length="200" value="Some value"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Counter"
+    max-length="200"
+    counter="true"
+    value="Some value"
+    class="a11ytree-snapshot-test"
+  ></p-textarea>
 </div>
 
-<div class="playground light" title="should render without counter">
-  <p-textarea name="Some Name" label="showCounter=false" show-counter="false" max-length="200" value="Some value">
-  </p-textarea>
+<div class="playground light" title="should render with counter and without max-length">
+  <p-textarea
+    name="some-name"
+    label="Type counter=true & max-length=false"
+    counter="true"
+    value="Some Value"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with error state and error message">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Error with message"
     state="error"
     message="Error message"
     value="Some value"
+    class="a11ytree-snapshot-test"
   ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with error state and no error message">
-  <p-textarea name="Some Name" label="Error without message" state="error" value="Some value"></p-textarea>
+  <p-textarea name="some-name" label="Error without message" state="error" value="Some value"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with success state and success message">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Success with message"
     state="success"
     message="Success message"
     value="Some value"
+    class="a11ytree-snapshot-test"
   ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
-  <p-textarea name="Some Name" label="Success without message" state="success" value="Some value"></p-textarea>
+  <p-textarea name="some-name" label="Success without message" state="success" value="Some value"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with default state and no message">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Default without message"
     state="none"
     message="this message should be hidden"
@@ -105,23 +131,23 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-textarea name="Some Name" state="error" aria-labelledby="slotted-label-1" value="Some value">
-    <span slot="label" id="slotted-label-1">
+  <p-textarea name="some-name" state="error" value="Some value" class="a11ytree-snapshot-test">
+    <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted description. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <span slot="message">
       <span>
-        Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted error message. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
   </p-textarea>
@@ -131,23 +157,23 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-textarea name="Some Name" state="success" aria-labelledby="slotted-label-2" value="Some value">
-    <span slot="label" id="slotted-label-2">
+  <p-textarea name="some-name" state="success" value="Some value" class="a11ytree-snapshot-test">
+    <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted description. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <span slot="message">
       <span>
-        Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted success message. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
   </p-textarea>
@@ -155,7 +181,7 @@
 
 <div class="playground light" title="should render with multiline label, description, message and text">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
     description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
     state="error"
@@ -168,7 +194,7 @@
 
 <div class="playground light" title="should render with label and multiline text">
   <p-textarea
-    name="Some Name"
+    name="some-name"
     label="Multiline text"
     value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,"
   >
@@ -177,10 +203,17 @@
 
 <div class="playground light" title="should render with min-width when viewport is too small">
   <div style="width: 0">
-    <p-textarea name="Some Name" label="X" value="M"></p-textarea>
+    <p-textarea name="some-name" label="X" value="M"></p-textarea>
   </div>
 </div>
 
 <div class="playground light" title="should render with counter readonly">
-  <p-textarea name="Some Name" label="Counter" max-length="200" value="Some value" read-only="true"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Counter"
+    max-length="200"
+    value="Some value"
+    read-only="true"
+    counter="true"
+  ></p-textarea>
 </div>

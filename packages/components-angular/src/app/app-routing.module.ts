@@ -226,6 +226,56 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputNumberExampleControlledComponent,
   },
   {
+    name: 'Input Date Example',
+    path: 'input-date-example',
+    component: fromExamples.InputDateExampleComponent,
+  },
+  {
+    name: 'Input Date Example Controlled',
+    path: 'input-date-controlled-example',
+    component: fromExamples.InputDateExampleControlledComponent,
+  },
+  {
+    name: 'Input Time Example',
+    path: 'input-time-example',
+    component: fromExamples.InputTimeExampleComponent,
+  },
+  {
+    name: 'Input Time Example Controlled',
+    path: 'input-time-controlled-example',
+    component: fromExamples.InputTimeExampleControlledComponent,
+  },
+  {
+    name: 'Input Text Example',
+    path: 'input-text-example',
+    component: fromExamples.InputTextExampleComponent,
+  },
+  {
+    name: 'Input Text Example Controlled',
+    path: 'input-text-controlled-example',
+    component: fromExamples.InputTextExampleControlledComponent,
+  },
+  {
+    name: 'Input Tel Example',
+    path: 'input-tel-example',
+    component: fromExamples.InputTelExampleComponent,
+  },
+  {
+    name: 'Input Tel Example Controlled',
+    path: 'input-tel-controlled-example',
+    component: fromExamples.InputTelExampleControlledComponent,
+  },
+  {
+    name: 'Input Email Example',
+    path: 'input-email-example',
+    component: fromExamples.InputEmailExampleComponent,
+  },
+  {
+    name: 'Input Email Example Controlled',
+    path: 'input-email-controlled-example',
+    component: fromExamples.InputEmailExampleControlledComponent,
+  },
+  {
     name: 'Link Tile Example Hyphens',
     path: 'link-tile-example-hyphens',
     component: fromExamples.LinkTileExampleHyphensComponent,

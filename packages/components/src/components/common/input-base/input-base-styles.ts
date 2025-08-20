@@ -22,6 +22,7 @@ import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 
 export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
@@ -40,6 +41,7 @@ export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
+  loading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
@@ -103,6 +105,14 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
         width: '100%',
         minWidth: '2rem',
+        ...(disabled && {
+          color: disabledColor,
+          WebkitTextFillColor: disabledColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+            WebkitTextFillColor: disabledColorDark,
+          }),
+        }),
         ...additionalInputJssStyle,
       },
     },
@@ -121,26 +131,23 @@ export const getFunctionalComponentInputBaseStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
       }),
-      '&:has(input:focus:not([readonly]))': {
-        borderColor: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: primaryColorDark,
-        }),
-      },
       ...(!disabled &&
-        !readOnly &&
-        hoverMediaQuery({
-          '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
-        })),
+        !readOnly && {
+          '&:has(input:focus)': {
+            borderColor: primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: primaryColorDark,
+            }),
+          },
+          ...hoverMediaQuery({
+            '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
+          }),
+        }),
       ...(disabled && {
         cursor: 'not-allowed',
-        color: disabledColor,
         borderColor: disabledColor,
-        WebkitTextFillColor: disabledColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: disabledColorDark,
           borderColor: disabledColorDark,
-          WebkitTextFillColor: disabledColorDark,
         }),
       }),
       ...(readOnly && {
@@ -153,6 +160,13 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       }),
     },
+    ...(loading && {
+      spinner: {
+        font: textSmallStyle.font,
+        width: fontLineHeight,
+        height: fontLineHeight,
+      },
+    }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
       disabled,
@@ -166,5 +180,7 @@ export const getFunctionalComponentInputBaseStyles = (
     ),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   };
 };

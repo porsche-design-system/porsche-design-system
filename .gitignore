@@ -16,6 +16,7 @@ tmp/
 www/
 build/
 .next/
+.react-router/
 out/
 reports/
 generated/
@@ -71,7 +72,6 @@ packages/components/src/styles-entry.ts
 packages/components/src/test-utils/tag-names-constructor-map.ts
 
 # Components JS
-packages/components-js/public/assets/icons.js
 packages/components-js/public/assets/imask.min.js
 packages/components-js/public/assets/styles.css
 packages/components-js/public/assets/table-data*
@@ -106,6 +106,7 @@ packages/components-react/projects/remix/app/routes/modal-prefixed.tsx
 packages/components-react/projects/remix/app/routes/overview.tsx
 packages/components-react/projects/remix/app/routes/toast-basic.tsx
 packages/components-react/projects/remix/app/routes/toast-prefixed.tsx
+packages/components-react/projects/remix/styles/getSharedStyles.tsx
 
 packages/components-react/projects/nextjs/app/*/
 packages/components-react/projects/nextjs/styles/getSharedStyles.tsx

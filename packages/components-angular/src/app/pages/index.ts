@@ -86,11 +86,13 @@ import { DrilldownScrolledComponent } from './generated/drilldown-scrolled.compo
 import { DrilldownSlottedButtonHeaderComponent } from './generated/drilldown-slotted-button-header.component';
 import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
+import { FlagComponent } from './generated/flag.component';
 import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
-import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
+import { FlyoutCssVariables_1Component } from './generated/flyout-css-variables-1.component';
+import { FlyoutCssVariables_2Component } from './generated/flyout-css-variables-2.component';
 import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
 import { FlyoutFixedFooterHeaderComponent } from './generated/flyout-fixed-footer-header.component';
 import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/flyout-fixed-footer-header-scrollable-content.component';
@@ -125,8 +127,15 @@ import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
 import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
+import { InputDateComponent } from './generated/input-date.component';
+import { InputEmailComponent } from './generated/input-email.component';
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
+import { InputSearchComponent } from './generated/input-search.component';
+import { InputTelComponent } from './generated/input-tel.component';
+import { InputTextComponent } from './generated/input-text.component';
+import { InputTimeComponent } from './generated/input-time.component';
+import { InputUrlComponent } from './generated/input-url.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
@@ -154,22 +163,30 @@ import { ModalWithoutDismissButtonComponent } from './generated/modal-without-di
 import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.component';
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
+import { MultiSelectCompactComponent } from './generated/multi-select-compact.component';
 import { MultiSelectOpenedBottomComponent } from './generated/multi-select-opened-bottom.component';
+import { MultiSelectOpenedFilterNoResultsComponent } from './generated/multi-select-opened-filter-no-results.component';
+import { MultiSelectOpenedFilterNoResultsCompactComponent } from './generated/multi-select-opened-filter-no-results-compact.component';
 import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
 import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
 import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
 import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
 import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/multi-select-opened-with-disabled-highlighted-selected.component';
-import { MultiSelectOpenedWithFilterButNoResultsComponent } from './generated/multi-select-opened-with-filter-but-no-results.component';
 import { MultiSelectOpenedWithMultipleSelectedOptionsComponent } from './generated/multi-select-opened-with-multiple-selected-options.component';
 import { MultiSelectOpenedWithOptgroupsComponent } from './generated/multi-select-opened-with-optgroups.component';
 import { MultiSelectOpenedWithOptgroupsDisabledComponent } from './generated/multi-select-opened-with-optgroups-disabled.component';
+import { MultiSelectScaling_0Component } from './generated/multi-select-scaling-0.component';
+import { MultiSelectScaling_0_5Component } from './generated/multi-select-scaling-0-5.component';
+import { MultiSelectScaling_0_8Component } from './generated/multi-select-scaling-0-8.component';
+import { MultiSelectScaling_1Component } from './generated/multi-select-scaling-1.component';
+import { MultiSelectScaling_2Component } from './generated/multi-select-scaling-2.component';
 import { OverviewComponent } from './generated/overview.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
 import { PopoverBasicComponent } from './generated/popover-basic.component';
+import { PopoverBasicSlottedComponent } from './generated/popover-basic-slotted.component';
 import { PopoverBottomComponent } from './generated/popover-bottom.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
@@ -182,6 +199,9 @@ import { SegmentedControlComponent } from './generated/segmented-control.compone
 import { SelectComponent } from './generated/select.component';
 import { SelectCompactComponent } from './generated/select-compact.component';
 import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedFilterComponent } from './generated/select-opened-filter.component';
+import { SelectOpenedFilterNoResultsComponent } from './generated/select-opened-filter-no-results.component';
+import { SelectOpenedFilterNoResultsCompactComponent } from './generated/select-opened-filter-no-results-compact.component';
 import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
 import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
@@ -291,11 +311,13 @@ export const generatedPages = [
   DrilldownSlottedButtonHeaderComponent,
   FieldsetComponent,
   FieldsetWrapperComponent,
+  FlagComponent,
   FlexComponent,
   Flyout_1Component,
   Flyout_2Component,
   FlyoutBasicComponent,
-  FlyoutCssVariablesComponent,
+  FlyoutCssVariables_1Component,
+  FlyoutCssVariables_2Component,
   FlyoutFixedFooterComponent,
   FlyoutFixedFooterHeaderComponent,
   FlyoutFixedFooterHeaderScrollableContentComponent,
@@ -330,8 +352,15 @@ export const generatedPages = [
   HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
+  InputDateComponent,
+  InputEmailComponent,
   InputNumberComponent,
   InputPasswordComponent,
+  InputSearchComponent,
+  InputTelComponent,
+  InputTextComponent,
+  InputTimeComponent,
+  InputUrlComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -359,22 +388,30 @@ export const generatedPages = [
   ModalWithoutHeadingComponent,
   ModelSignatureComponent,
   MultiSelectComponent,
+  MultiSelectCompactComponent,
   MultiSelectOpenedBottomComponent,
+  MultiSelectOpenedFilterNoResultsComponent,
+  MultiSelectOpenedFilterNoResultsCompactComponent,
   MultiSelectOpenedMaxHeightComponent,
   MultiSelectOpenedMinHeightComponent,
   MultiSelectOpenedScrollContextComponent,
   MultiSelectOpenedTopComponent,
   MultiSelectOpenedWithAndWithoutOptgroupsComponent,
   MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
-  MultiSelectOpenedWithFilterButNoResultsComponent,
   MultiSelectOpenedWithMultipleSelectedOptionsComponent,
   MultiSelectOpenedWithOptgroupsComponent,
   MultiSelectOpenedWithOptgroupsDisabledComponent,
+  MultiSelectScaling_0Component,
+  MultiSelectScaling_0_5Component,
+  MultiSelectScaling_0_8Component,
+  MultiSelectScaling_1Component,
+  MultiSelectScaling_2Component,
   OverviewComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
   PopoverBasicComponent,
+  PopoverBasicSlottedComponent,
   PopoverBottomComponent,
   PopoverEdgeCaseComponent,
   PopoverLeftComponent,
@@ -387,6 +424,9 @@ export const generatedPages = [
   SelectComponent,
   SelectCompactComponent,
   SelectOpenedBottomComponent,
+  SelectOpenedFilterComponent,
+  SelectOpenedFilterNoResultsComponent,
+  SelectOpenedFilterNoResultsCompactComponent,
   SelectOpenedMaxHeightComponent,
   SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
@@ -713,6 +753,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FieldsetWrapperComponent,
   },
   {
+    name: 'Flag',
+    path: 'flag',
+    component: FlagComponent,
+  },
+  {
     name: 'Flex',
     path: 'flex',
     component: FlexComponent,
@@ -733,9 +778,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutBasicComponent,
   },
   {
-    name: 'Flyout Css Variables',
-    path: 'flyout-css-variables',
-    component: FlyoutCssVariablesComponent,
+    name: 'Flyout Css Variables 1',
+    path: 'flyout-css-variables-1',
+    component: FlyoutCssVariables_1Component,
+  },
+  {
+    name: 'Flyout Css Variables 2',
+    path: 'flyout-css-variables-2',
+    component: FlyoutCssVariables_2Component,
   },
   {
     name: 'Flyout Fixed Footer',
@@ -908,6 +958,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InlineNotificationComponent,
   },
   {
+    name: 'Input Date',
+    path: 'input-date',
+    component: InputDateComponent,
+  },
+  {
+    name: 'Input Email',
+    path: 'input-email',
+    component: InputEmailComponent,
+  },
+  {
     name: 'Input Number',
     path: 'input-number',
     component: InputNumberComponent,
@@ -916,6 +976,31 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Password',
     path: 'input-password',
     component: InputPasswordComponent,
+  },
+  {
+    name: 'Input Search',
+    path: 'input-search',
+    component: InputSearchComponent,
+  },
+  {
+    name: 'Input Tel',
+    path: 'input-tel',
+    component: InputTelComponent,
+  },
+  {
+    name: 'Input Text',
+    path: 'input-text',
+    component: InputTextComponent,
+  },
+  {
+    name: 'Input Time',
+    path: 'input-time',
+    component: InputTimeComponent,
+  },
+  {
+    name: 'Input Url',
+    path: 'input-url',
+    component: InputUrlComponent,
   },
   {
     name: 'Link',
@@ -1053,9 +1138,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectComponent,
   },
   {
+    name: 'Multi Select Compact',
+    path: 'multi-select-compact',
+    component: MultiSelectCompactComponent,
+  },
+  {
     name: 'Multi Select Opened Bottom',
     path: 'multi-select-opened-bottom',
     component: MultiSelectOpenedBottomComponent,
+  },
+  {
+    name: 'Multi Select Opened Filter No Results',
+    path: 'multi-select-opened-filter-no-results',
+    component: MultiSelectOpenedFilterNoResultsComponent,
+  },
+  {
+    name: 'Multi Select Opened Filter No Results Compact',
+    path: 'multi-select-opened-filter-no-results-compact',
+    component: MultiSelectOpenedFilterNoResultsCompactComponent,
   },
   {
     name: 'Multi Select Opened Max Height',
@@ -1088,11 +1188,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
   },
   {
-    name: 'Multi Select Opened With Filter But No Results',
-    path: 'multi-select-opened-with-filter-but-no-results',
-    component: MultiSelectOpenedWithFilterButNoResultsComponent,
-  },
-  {
     name: 'Multi Select Opened With Multiple Selected Options',
     path: 'multi-select-opened-with-multiple-selected-options',
     component: MultiSelectOpenedWithMultipleSelectedOptionsComponent,
@@ -1106,6 +1201,31 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: 'multi-select-opened-with-optgroups-disabled',
     component: MultiSelectOpenedWithOptgroupsDisabledComponent,
+  },
+  {
+    name: 'Multi Select Scaling 0',
+    path: 'multi-select-scaling-0',
+    component: MultiSelectScaling_0Component,
+  },
+  {
+    name: 'Multi Select Scaling 0 5',
+    path: 'multi-select-scaling-0-5',
+    component: MultiSelectScaling_0_5Component,
+  },
+  {
+    name: 'Multi Select Scaling 0 8',
+    path: 'multi-select-scaling-0-8',
+    component: MultiSelectScaling_0_8Component,
+  },
+  {
+    name: 'Multi Select Scaling 1',
+    path: 'multi-select-scaling-1',
+    component: MultiSelectScaling_1Component,
+  },
+  {
+    name: 'Multi Select Scaling 2',
+    path: 'multi-select-scaling-2',
+    component: MultiSelectScaling_2Component,
   },
   {
     name: 'Pagination',
@@ -1126,6 +1246,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover Basic',
     path: 'popover-basic',
     component: PopoverBasicComponent,
+  },
+  {
+    name: 'Popover Basic Slotted',
+    path: 'popover-basic-slotted',
+    component: PopoverBasicSlottedComponent,
   },
   {
     name: 'Popover Bottom',
@@ -1186,6 +1311,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Bottom',
     path: 'select-opened-bottom',
     component: SelectOpenedBottomComponent,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: 'select-opened-filter',
+    component: SelectOpenedFilterComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: 'select-opened-filter-no-results',
+    component: SelectOpenedFilterNoResultsComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results Compact',
+    path: 'select-opened-filter-no-results-compact',
+    component: SelectOpenedFilterNoResultsCompactComponent,
   },
   {
     name: 'Select Opened Max Height',

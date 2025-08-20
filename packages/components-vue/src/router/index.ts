@@ -198,6 +198,76 @@ export const routes: RouteType[] = [
     component: fromExamples.InputNumberExampleControlled,
   },
   {
+    path: '/input-date-example',
+    name: 'Input Date Example',
+    component: fromExamples.InputDateExample,
+  },
+  {
+    path: '/input-date-example-controlled',
+    name: 'Input Date Example Controlled',
+    component: fromExamples.InputDateExampleControlled,
+  },
+  {
+    path: '/input-time-example',
+    name: 'Input Time Example',
+    component: fromExamples.InputTimeExample,
+  },
+  {
+    path: '/input-time-example-controlled',
+    name: 'Input Time Example Controlled',
+    component: fromExamples.InputTimeExampleControlled,
+  },
+  {
+    path: '/input-text-example',
+    name: 'Input Text Example',
+    component: fromExamples.InputTextExample,
+  },
+  {
+    path: '/input-text-example-controlled',
+    name: 'Input Text Example Controlled',
+    component: fromExamples.InputTextExampleControlled,
+  },
+  {
+    path: '/input-email-example',
+    name: 'Input Email Example',
+    component: fromExamples.InputEmailExample,
+  },
+  {
+    path: '/input-email-example-controlled',
+    name: 'Input Email Example Controlled',
+    component: fromExamples.InputEmailExampleControlled,
+  },
+  {
+    path: '/input-tel-example',
+    name: 'Input Tel Example',
+    component: fromExamples.InputTelExample,
+  },
+  {
+    path: '/input-tel-example-controlled',
+    name: 'Input Tel Example Controlled',
+    component: fromExamples.InputTelExampleControlled,
+  },
+  {
+    path: '/input-url-example',
+    name: 'Input Url Example',
+    component: fromExamples.InputUrlExample,
+  },
+  {
+    path: '/input-url-example-controlled',
+    name: 'Input Url Example Controlled',
+    component: fromExamples.InputUrlExampleControlled,
+  },
+  {
+    path: '/input-search-example',
+    name: 'Input Search Example',
+    component: fromExamples.InputSearchExample,
+  },
+  {
+    path: '/input-search-example-controlled',
+    name: 'Input Search Example Controlled',
+    component: fromExamples.InputSearchExampleControlled,
+  },
+  {
     path: '/link-tile-example-hyphens',
     name: 'Link Tile Example Hyphens',
     component: fromExamples.LinkTileExampleHyphens,

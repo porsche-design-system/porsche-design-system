@@ -1,0 +1,29 @@
+name: 'Is Storefront version published'
+description: 'Checks if a specific Storefront version is already published on GH Pages.'
+
+inputs:
+  version:
+    description: 'The specific version of the Storefront (e.g., 3.0.0).'
+    required: true
+
+outputs:
+  is-published:
+    description: '`true` if the version is published, `false` otherwise.'
+    value: ${{ steps.check.outputs.published }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Check GH Pages'
+      id: check
+      run: |
+        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://designsystem.porsche.com/v${{ inputs.package-version }}/")"
+
+        if [[ ${http_status_code} == 200 ]]; then
+          echo "Storefront version is published."
+          echo "published=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "Storefront version is NOT published."
+          echo "published=false" >> "$GITHUB_OUTPUT"
+        fi
+      shell: bash

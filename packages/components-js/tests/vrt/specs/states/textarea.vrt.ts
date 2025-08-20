@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { type Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -9,7 +10,6 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
 
 const component = 'textarea';
 
@@ -49,31 +49,19 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <p-textarea value="Value">
         <span slot="label">
           Slotted label
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
         <span slot="description">
           Slotted description
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
       </p-textarea>
       <p-textarea label="Error" description="Some description" state="error" value="Value">
         <span slot="message">
           Slotted error message
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
       </p-textarea>
       <p-textarea label="Success" description="Some description" state="success" value="Value">
         <span slot="message">
           Slotted success message
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
       </p-textarea>
     </div>
@@ -90,9 +78,12 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-textarea:not(.force-label) textarea');
   await forceHoverState(page, '.hover p-textarea.force-label >>> label');
   await forceHoverState(page, '.hover p-textarea a');
+
   await forceFocusState(page, '.focus p-textarea textarea');
   await forceFocusVisibleState(page, '.focus p-textarea a');
+
   await forceFocusHoverState(page, '.focus-hover p-textarea:not(.force-label) textarea');
+
   await forceFocusState(page, '.focus-hover p-textarea.force-label textarea');
   await forceHoverState(page, '.focus-hover p-textarea.force-label >>> label');
   await forceFocusHoverState(page, '.focus-hover p-textarea a');

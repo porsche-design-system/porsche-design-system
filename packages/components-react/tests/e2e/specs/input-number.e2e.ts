@@ -1,4 +1,4 @@
-import { Page, expect, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -19,26 +19,26 @@ test.describe('form', () => {
     const name = 'name';
     const newValue = '10';
     const host = getHost(page);
-    const inputPassword = getInputNumber(page);
+    const inputNumber = getInputNumber(page);
     const form = getForm(page);
 
     await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputPassword.fill(newValue);
-    await inputPassword.press('Tab');
+    await inputNumber.fill(newValue);
+    await inputNumber.press('Tab');
 
     await expect(host).toHaveJSProperty('value', newValue);
-    await expect(inputPassword).toHaveValue(newValue);
+    await expect(inputNumber).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputPassword).toHaveValue('');
+    await expect(inputNumber).toHaveValue('');
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe(null);
   });
 
@@ -52,11 +52,11 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('value', testValue);
 
     await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
 
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-name')).toBe(testValue);
   });
 
@@ -78,6 +78,4 @@ test.describe('form', () => {
 
     await expect(input).toHaveValue(value);
   });
-
-
 });

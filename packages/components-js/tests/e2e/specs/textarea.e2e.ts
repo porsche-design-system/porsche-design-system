@@ -59,9 +59,9 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
 };
 
 test.describe('value', () => {
-  test('should have value as slotted content when set initially', async ({ page }) => {
+  test('should sync value with input value', async ({ page }) => {
     const testValue = 'hello \n\n 123\n';
-    await initTextarea(page, { props: { name: 'Some name', value: testValue } });
+    await initTextarea(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);
     const textarea = getTextarea(page);
 
@@ -105,17 +105,8 @@ test.describe('value', () => {
 });
 
 test.describe('counter', () => {
-  test('should display correct counter initially', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', maxLength: 160, value: 'hallo' } });
-    const counter = getCounter(page);
-    const counterAria = getCounterAria(page);
-
-    await expect(counter).toHaveText('5/160');
-    await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
-  });
-
   test('should display correct counter when typing', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
     const counter = getCounter(page);
     const host = getTextarea(page);
 
@@ -134,7 +125,7 @@ test.describe('counter', () => {
   });
 
   test('should display correct counter when value is set programmatically', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
     const counter = getCounter(page);
     const host = getHost(page);
 
@@ -143,14 +134,8 @@ test.describe('counter', () => {
     await expect(counter).toHaveText('5/160');
   });
 
-  test('should not render counter when showCounter is set to false', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', value: 'hello', maxLength: 160, showCounter: false } });
-    const host = getHost(page);
-
-    await expect(getCounter(page)).toHaveCount(0);
-
-    await setProperty(host, 'showCounter', true);
-
+  test('should render counter when set to true', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'some-name', value: 'hello', maxLength: 160, counter: true } });
     const counter = getCounter(page);
     const counterAria = getCounterAria(page);
     await expect(counter).toHaveCount(1);
@@ -159,7 +144,7 @@ test.describe('counter', () => {
   });
 
   test('should render aria-live for counter correctly when typing', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
     const counterAria = getCounterAria(page);
     const host = getTextarea(page);
     await expect(counterAria).toHaveText('You have 160 out of 160 characters left');
@@ -170,7 +155,7 @@ test.describe('counter', () => {
   });
 
   test('should render aria-live for counter correctly when value is set programmatically', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
     const counterAria = getCounterAria(page);
     const host = getHost(page);
     await expect(counterAria).toHaveText('You have 160 out of 160 characters left');
@@ -392,7 +377,7 @@ test.describe('form', () => {
 
 test.describe('focus state', () => {
   test('should focus textarea when label is clicked', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initTextarea(page, { props: { name: 'some-name', label: 'Some label' } });
     const label = getLabel(page);
     const textarea = getTextarea(page);
 
@@ -406,7 +391,7 @@ test.describe('focus state', () => {
 
   skipInBrowsers(['webkit'], () => {
     test('should focus textarea when counter text is clicked', async ({ page }) => {
-      await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+      await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
       const counter = getCounter(page);
       const textarea = getTextarea(page);
 
@@ -486,7 +471,7 @@ test.describe('hover state', () => {
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on textarea when label is hovered', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initTextarea(page, { props: { name: 'some-name', label: 'Some label' } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
     const textarea = getTextarea(page);
@@ -504,7 +489,7 @@ test.describe('hover state', () => {
   });
 
   test('should show hover state on textarea when counter is hovered', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const counter = getCounter(page);
     const textarea = getTextarea(page);
@@ -524,7 +509,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initTextarea(page, {
-      props: { name: 'Some name', state: 'error' },
+      props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -540,7 +525,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initTextarea(page, {
-      props: { name: 'Some name', state: 'error' },
+      props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,

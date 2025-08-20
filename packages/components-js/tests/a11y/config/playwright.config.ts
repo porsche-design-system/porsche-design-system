@@ -1,8 +1,13 @@
-import { config } from '@porsche-design-system/shared/testing/playwright.a11y';
 import { defineConfig, devices } from '@playwright/test';
+import { playwrightConfigA11y } from '@porsche-design-system/shared/testing';
 
 export default defineConfig({
-  ...config,
+  ...playwrightConfigA11y,
+  expect: {
+    toMatchAriaSnapshot: {
+      pathTemplate: '{testDir}/a11ytree/__snapshots__/{arg}{ext}',
+    },
+  },
   projects: [
     {
       name: 'chrome',

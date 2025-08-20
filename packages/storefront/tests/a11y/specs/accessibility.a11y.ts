@@ -2,20 +2,9 @@ import console from 'node:console'; // workaround for nicer logs
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { Locator, Page } from '@playwright/test';
-import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes } from '@porsche-design-system/shared/testing';
+import { getInternalUrls } from '../../e2e/helpers/sitemap';
 import { expect, test } from '../helpers/axe-helper';
-
-const getInternalUrls = (): string[] => {
-  const sitemapPath = path.resolve(__dirname, '../../e2e/fixtures/sitemap.json');
-  const sitemap: string[] = JSON.parse(fs.readFileSync(sitemapPath, 'utf8'));
-
-  return (
-    sitemap
-      .filter((link) => link.startsWith('/'))
-      // drop "base" links that are redirected to first tab
-      .filter((link, _, array) => !array.some((x) => x.startsWith(`${link}/`)))
-  );
-};
 
 // style overrides for css variables
 const styleOverrides = fs.readFileSync(
@@ -98,13 +87,12 @@ test.describe('storefront pages', () => {
 
         console.log(accessibilityScanResults.violations);
 
-        // Filter out violations for embedded stackblitz iframe
+        // Filter out violations for p-scroller inside p-table.
+        // This is a known issue with p-scroller in chrome when there is a scroll area but the component does not add tabindex=0.
         const filteredViolations = accessibilityScanResults.violations
           .map((violation) => ({
             ...violation,
-            nodes: violation.nodes.filter((node) =>
-              node.target.every((selector) => !selector.includes('#stackblitz-demo'))
-            ),
+            nodes: violation.nodes.filter((node) => node.target.every((selector) => !selector.includes('p-scroller'))),
           }))
           .filter((violation) => violation.nodes.length > 0);
 

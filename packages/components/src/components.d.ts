@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
@@ -24,6 +24,7 @@ import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
@@ -33,8 +34,15 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
-import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
+import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
+import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+import { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+import { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
+import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
+import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -68,12 +76,12 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
@@ -92,6 +100,7 @@ export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
@@ -101,8 +110,15 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
-export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
+export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
+export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+export { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+export { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
+export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
+export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -136,7 +152,7 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -571,6 +587,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-checkbox` instead.
+     */
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -753,6 +772,10 @@ export namespace Components {
     }
     interface PFieldset {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaRole<'radiogroup'>;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -778,7 +801,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     /**
-     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     * @deprecated since v3.0.0, will be removed with next major release. Please use `p-fieldset` instead.
      */
     interface PFieldsetWrapper {
         /**
@@ -805,6 +828,20 @@ export namespace Components {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlag {
+        /**
+          * A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
+        /**
+          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
+         */
+        "name"?: FlagName;
+        /**
+          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+         */
+        "size"?: FlagSize;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
@@ -1052,13 +1089,173 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PInputDate {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputDateState;
+        /**
+          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+         */
+        "value"?: string;
+    }
+    interface PInputEmail {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the email icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputEmailState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default email address (or comma-separated list of addresses) for the input.
+         */
+        "value"?: string;
+    }
     interface PInputNumber {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
          */
-        "autoComplete"?: InputNumberAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1066,31 +1263,35 @@ export namespace Components {
          */
         "controls"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the number input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the number input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The max value of the number input.
          */
         "max"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
@@ -1098,23 +1299,23 @@ export namespace Components {
          */
         "min"?: number;
         /**
-          * The name of the number input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the number input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the number input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputNumberState;
         /**
@@ -1122,7 +1323,7 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -1132,67 +1333,71 @@ export namespace Components {
     }
     interface PInputPassword {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
          */
-        "autoComplete"?: InputPasswordAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the password input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the password input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The max length of the password input.
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the password input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the password input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the password input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the password input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputPasswordState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -1201,6 +1406,400 @@ export namespace Components {
         "toggle"?: boolean;
         /**
           * The password input value.
+         */
+        "value"?: string;
+    }
+    interface PInputSearch {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+         */
+        "autoComplete"?: string;
+        /**
+          * Show clear input value button
+         */
+        "clear"?: boolean;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show search indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputSearchState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputTel {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the phone icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputTelState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The tel input value.
+         */
+        "value"?: string;
+    }
+    interface PInputText {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputTextState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The text input value.
+         */
+        "value"?: string;
+    }
+    interface PInputTime {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputTimeState;
+        /**
+          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+         */
+        "value"?: string;
+    }
+    interface PInputUrl {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the url icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputUrlState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The url input value.
          */
         "value"?: string;
     }
@@ -1594,6 +2193,10 @@ export namespace Components {
      */
     interface PMultiSelect {
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -1827,11 +2430,11 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
@@ -1931,6 +2534,10 @@ export namespace Components {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
+          * Shows an input in the dropdown allowing options to be filtered.
+         */
+        "filter"?: boolean;
+        /**
           * The id of a form element the select should be associated with.
          */
         "form"?: string;
@@ -1977,6 +2584,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-select` instead.
+     */
     interface PSelectWrapper {
         /**
           * The description text.
@@ -2180,7 +2790,7 @@ export namespace Components {
          */
         "activeTabIndex"?: number;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -2209,11 +2819,11 @@ export namespace Components {
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
@@ -2305,6 +2915,9 @@ export namespace Components {
          */
         "weight"?: TextWeight;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: `p-input-date`, `p-input-email`, `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time` or `p-input-url`.
+     */
     interface PTextFieldWrapper {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
@@ -2385,55 +2998,59 @@ export namespace Components {
     }
     interface PTextarea {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
-        "autoComplete"?: TextareaAutoComplete;
+        "autoComplete"?: string;
         /**
-          * The description text.
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the textarea.
          */
         "description"?: string;
         /**
-          * Marks the textarea as disabled.
+          * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the textarea should be associated with.
+          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The max length of the textarea.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the textarea.
+          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea.
+          * The name of the textarea, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the textarea should be read-only.
+          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the textarea as required.
+          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -2441,23 +3058,19 @@ export namespace Components {
          */
         "resize"?: TextareaResize;
         /**
-          * The amount of rows of the textarea.
+          * The number of rows of the textarea.
          */
         "rows"?: number;
         /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
-        /**
-          * Specifies whether the input should have its spelling and grammar checked
+          * Specifies whether the textarea should have its spelling and grammar checked
          */
         "spellCheck"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the textarea component.
          */
         "state"?: TextareaState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -2465,10 +3078,13 @@ export namespace Components {
          */
         "value"?: string;
         /**
-          * Handles wrapping behaviour of elements.
+          * Handles wrapping behavior of elements.
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-textarea` instead.
+     */
     interface PTextareaWrapper {
         /**
           * The description text.
@@ -2579,6 +3195,14 @@ export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
 }
+export interface PInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputDateElement;
+}
+export interface PInputEmailCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputEmailElement;
+}
 export interface PInputNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputNumberElement;
@@ -2586,6 +3210,26 @@ export interface PInputNumberCustomEvent<T> extends CustomEvent<T> {
 export interface PInputPasswordCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputPasswordElement;
+}
+export interface PInputSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputSearchElement;
+}
+export interface PInputTelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputTelElement;
+}
+export interface PInputTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputTextElement;
+}
+export interface PInputTimeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputTimeElement;
+}
+export interface PInputUrlCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputUrlElement;
 }
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2777,6 +3421,9 @@ declare global {
         prototype: HTMLPCheckboxElement;
         new (): HTMLPCheckboxElement;
     };
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-checkbox` instead.
+     */
     interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {
     }
     var HTMLPCheckboxWrapperElement: {
@@ -2858,13 +3505,19 @@ declare global {
         new (): HTMLPFieldsetElement;
     };
     /**
-     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     * @deprecated since v3.0.0, will be removed with next major release. Please use `p-fieldset` instead.
      */
     interface HTMLPFieldsetWrapperElement extends Components.PFieldsetWrapper, HTMLStencilElement {
     }
     var HTMLPFieldsetWrapperElement: {
         prototype: HTMLPFieldsetWrapperElement;
         new (): HTMLPFieldsetWrapperElement;
+    };
+    interface HTMLPFlagElement extends Components.PFlag, HTMLStencilElement {
+    }
+    var HTMLPFlagElement: {
+        prototype: HTMLPFlagElement;
+        new (): HTMLPFlagElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
@@ -2963,6 +3616,44 @@ declare global {
         prototype: HTMLPInlineNotificationElement;
         new (): HTMLPInlineNotificationElement;
     };
+    interface HTMLPInputDateElementEventMap {
+        "change": InputDateChangeEventDetail;
+        "blur": InputDateBlurEventDetail;
+        "input": InputDateInputEventDetail;
+    }
+    interface HTMLPInputDateElement extends Components.PInputDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputDateElementEventMap>(type: K, listener: (this: HTMLPInputDateElement, ev: PInputDateCustomEvent<HTMLPInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputDateElementEventMap>(type: K, listener: (this: HTMLPInputDateElement, ev: PInputDateCustomEvent<HTMLPInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputDateElement: {
+        prototype: HTMLPInputDateElement;
+        new (): HTMLPInputDateElement;
+    };
+    interface HTMLPInputEmailElementEventMap {
+        "change": InputEmailChangeEventDetail;
+        "blur": InputEmailBlurEventDetail;
+        "input": InputEmailInputEventDetail;
+    }
+    interface HTMLPInputEmailElement extends Components.PInputEmail, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputEmailElementEventMap>(type: K, listener: (this: HTMLPInputEmailElement, ev: PInputEmailCustomEvent<HTMLPInputEmailElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputEmailElementEventMap>(type: K, listener: (this: HTMLPInputEmailElement, ev: PInputEmailCustomEvent<HTMLPInputEmailElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputEmailElement: {
+        prototype: HTMLPInputEmailElement;
+        new (): HTMLPInputEmailElement;
+    };
     interface HTMLPInputNumberElementEventMap {
         "change": InputNumberChangeEventDetail;
         "blur": InputNumberBlurEventDetail;
@@ -3000,6 +3691,101 @@ declare global {
     var HTMLPInputPasswordElement: {
         prototype: HTMLPInputPasswordElement;
         new (): HTMLPInputPasswordElement;
+    };
+    interface HTMLPInputSearchElementEventMap {
+        "change": InputSearchChangeEventDetail;
+        "blur": InputSearchBlurEventDetail;
+        "input": InputSearchInputEventDetail;
+    }
+    interface HTMLPInputSearchElement extends Components.PInputSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputSearchElementEventMap>(type: K, listener: (this: HTMLPInputSearchElement, ev: PInputSearchCustomEvent<HTMLPInputSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputSearchElementEventMap>(type: K, listener: (this: HTMLPInputSearchElement, ev: PInputSearchCustomEvent<HTMLPInputSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputSearchElement: {
+        prototype: HTMLPInputSearchElement;
+        new (): HTMLPInputSearchElement;
+    };
+    interface HTMLPInputTelElementEventMap {
+        "change": InputTelChangeEventDetail;
+        "blur": InputTelBlurEventDetail;
+        "input": InputTelInputEventDetail;
+    }
+    interface HTMLPInputTelElement extends Components.PInputTel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputTelElementEventMap>(type: K, listener: (this: HTMLPInputTelElement, ev: PInputTelCustomEvent<HTMLPInputTelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputTelElementEventMap>(type: K, listener: (this: HTMLPInputTelElement, ev: PInputTelCustomEvent<HTMLPInputTelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputTelElement: {
+        prototype: HTMLPInputTelElement;
+        new (): HTMLPInputTelElement;
+    };
+    interface HTMLPInputTextElementEventMap {
+        "change": InputTextChangeEventDetail;
+        "blur": InputTextBlurEventDetail;
+        "input": InputTextInputEventDetail;
+    }
+    interface HTMLPInputTextElement extends Components.PInputText, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputTextElementEventMap>(type: K, listener: (this: HTMLPInputTextElement, ev: PInputTextCustomEvent<HTMLPInputTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputTextElementEventMap>(type: K, listener: (this: HTMLPInputTextElement, ev: PInputTextCustomEvent<HTMLPInputTextElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputTextElement: {
+        prototype: HTMLPInputTextElement;
+        new (): HTMLPInputTextElement;
+    };
+    interface HTMLPInputTimeElementEventMap {
+        "change": InputTimeChangeEventDetail;
+        "blur": InputTimeBlurEventDetail;
+        "input": InputTimeInputEventDetail;
+    }
+    interface HTMLPInputTimeElement extends Components.PInputTime, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputTimeElementEventMap>(type: K, listener: (this: HTMLPInputTimeElement, ev: PInputTimeCustomEvent<HTMLPInputTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputTimeElementEventMap>(type: K, listener: (this: HTMLPInputTimeElement, ev: PInputTimeCustomEvent<HTMLPInputTimeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputTimeElement: {
+        prototype: HTMLPInputTimeElement;
+        new (): HTMLPInputTimeElement;
+    };
+    interface HTMLPInputUrlElementEventMap {
+        "change": InputUrlChangeEventDetail;
+        "blur": InputUrlBlurEventDetail;
+        "input": InputUrlInputEventDetail;
+    }
+    interface HTMLPInputUrlElement extends Components.PInputUrl, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputUrlElementEventMap>(type: K, listener: (this: HTMLPInputUrlElement, ev: PInputUrlCustomEvent<HTMLPInputUrlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputUrlElementEventMap>(type: K, listener: (this: HTMLPInputUrlElement, ev: PInputUrlCustomEvent<HTMLPInputUrlElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputUrlElement: {
+        prototype: HTMLPInputUrlElement;
+        new (): HTMLPInputUrlElement;
     };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
@@ -3237,6 +4023,9 @@ declare global {
         prototype: HTMLPSelectOptionElement;
         new (): HTMLPSelectOptionElement;
     };
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-select` instead.
+     */
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -3445,6 +4234,9 @@ declare global {
     interface HTMLPTextFieldWrapperElementEventMap {
         "action": void;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: `p-input-date`, `p-input-email`, `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time` or `p-input-url`.
+     */
     interface HTMLPTextFieldWrapperElement extends Components.PTextFieldWrapper, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTextFieldWrapperElementEventMap>(type: K, listener: (this: HTMLPTextFieldWrapperElement, ev: PTextFieldWrapperCustomEvent<HTMLPTextFieldWrapperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3490,6 +4282,9 @@ declare global {
         prototype: HTMLPTextareaElement;
         new (): HTMLPTextareaElement;
     };
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-textarea` instead.
+     */
     interface HTMLPTextareaWrapperElement extends Components.PTextareaWrapper, HTMLStencilElement {
     }
     var HTMLPTextareaWrapperElement: {
@@ -3545,6 +4340,7 @@ declare global {
         "p-drilldown-link": HTMLPDrilldownLinkElement;
         "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
+        "p-flag": HTMLPFlagElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-flyout": HTMLPFlyoutElement;
@@ -3554,8 +4350,15 @@ declare global {
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
         "p-inline-notification": HTMLPInlineNotificationElement;
+        "p-input-date": HTMLPInputDateElement;
+        "p-input-email": HTMLPInputEmailElement;
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
+        "p-input-search": HTMLPInputSearchElement;
+        "p-input-tel": HTMLPInputTelElement;
+        "p-input-text": HTMLPInputTextElement;
+        "p-input-time": HTMLPInputTimeElement;
+        "p-input-url": HTMLPInputUrlElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -4073,6 +4876,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-checkbox` instead.
+     */
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -4263,6 +5069,10 @@ declare namespace LocalJSX {
     }
     interface PFieldset {
         /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaRole<'radiogroup'>;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -4288,7 +5098,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     /**
-     * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+     * @deprecated since v3.0.0, will be removed with next major release. Please use `p-fieldset` instead.
      */
     interface PFieldsetWrapper {
         /**
@@ -4315,6 +5125,20 @@ declare namespace LocalJSX {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlag {
+        /**
+          * A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
+        /**
+          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
+         */
+        "name"?: FlagName;
+        /**
+          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+         */
+        "size"?: FlagSize;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
@@ -4582,13 +5406,197 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PInputDate {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number input has lost focus.
+         */
+        "onBlur"?: (event: PInputDateCustomEvent<InputDateBlurEventDetail>) => void;
+        /**
+          * Emitted when the number input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputDateCustomEvent<InputDateChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputDateCustomEvent<InputDateInputEventDetail>) => void;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputDateState;
+        /**
+          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+         */
+        "value"?: string;
+    }
+    interface PInputEmail {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the email icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+         */
+        "multiple"?: boolean;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the email input has lost focus.
+         */
+        "onBlur"?: (event: PInputEmailCustomEvent<InputEmailBlurEventDetail>) => void;
+        /**
+          * Emitted when the email input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputEmailCustomEvent<InputEmailChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputEmailCustomEvent<InputEmailInputEventDetail>) => void;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputEmailState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default email address (or comma-separated list of addresses) for the input.
+         */
+        "value"?: string;
+    }
     interface PInputNumber {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
          */
-        "autoComplete"?: InputNumberAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4596,31 +5604,35 @@ declare namespace LocalJSX {
          */
         "controls"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the number input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the number input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The max value of the number input.
          */
         "max"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
@@ -4628,7 +5640,7 @@ declare namespace LocalJSX {
          */
         "min"?: number;
         /**
-          * The name of the number input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -4644,19 +5656,19 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the number input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the number input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputNumberState;
         /**
@@ -4664,7 +5676,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -4674,47 +5686,51 @@ declare namespace LocalJSX {
     }
     interface PInputPassword {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
          */
-        "autoComplete"?: InputPasswordAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the password input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the password input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The max length of the password input.
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the password input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the password input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -4730,23 +5746,23 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the password input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the password input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputPasswordState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -4755,6 +5771,460 @@ declare namespace LocalJSX {
         "toggle"?: boolean;
         /**
           * The password input value.
+         */
+        "value"?: string;
+    }
+    interface PInputSearch {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+         */
+        "autoComplete"?: string;
+        /**
+          * Show clear input value button
+         */
+        "clear"?: boolean;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show search indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the search input has lost focus.
+         */
+        "onBlur"?: (event: PInputSearchCustomEvent<InputSearchBlurEventDetail>) => void;
+        /**
+          * Emitted when the search input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputSearchCustomEvent<InputSearchChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputSearchState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputTel {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the phone icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the tel input has lost focus.
+         */
+        "onBlur"?: (event: PInputTelCustomEvent<InputTelBlurEventDetail>) => void;
+        /**
+          * Emitted when the tel input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputTelCustomEvent<InputTelChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputTelCustomEvent<InputTelInputEventDetail>) => void;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputTelState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The tel input value.
+         */
+        "value"?: string;
+    }
+    interface PInputText {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the text input has lost focus.
+         */
+        "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
+        /**
+          * Emitted when the text input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputTextState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The text input value.
+         */
+        "value"?: string;
+    }
+    interface PInputTime {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number input has lost focus.
+         */
+        "onBlur"?: (event: PInputTimeCustomEvent<InputTimeBlurEventDetail>) => void;
+        /**
+          * Emitted when the number input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputTimeCustomEvent<InputTimeChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputTimeCustomEvent<InputTimeInputEventDetail>) => void;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputTimeState;
+        /**
+          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+         */
+        "value"?: string;
+    }
+    interface PInputUrl {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the url icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the url input has lost focus.
+         */
+        "onBlur"?: (event: PInputUrlCustomEvent<InputUrlBlurEventDetail>) => void;
+        /**
+          * Emitted when the url input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputUrlCustomEvent<InputUrlChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputUrlCustomEvent<InputUrlInputEventDetail>) => void;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputUrlState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The url input value.
          */
         "value"?: string;
     }
@@ -5168,6 +6638,10 @@ declare namespace LocalJSX {
      */
     interface PMultiSelect {
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -5417,11 +6891,11 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
@@ -5529,6 +7003,10 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
+          * Shows an input in the dropdown allowing options to be filtered.
+         */
+        "filter"?: boolean;
+        /**
           * The id of a form element the select should be associated with.
          */
         "form"?: string;
@@ -5579,6 +7057,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-select` instead.
+     */
     interface PSelectWrapper {
         /**
           * The description text.
@@ -5818,7 +7299,7 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -5855,11 +7336,11 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
@@ -5959,6 +7440,9 @@ declare namespace LocalJSX {
          */
         "weight"?: TextWeight;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: `p-input-date`, `p-input-email`, `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time` or `p-input-url`.
+     */
     interface PTextFieldWrapper {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
@@ -6043,43 +7527,47 @@ declare namespace LocalJSX {
     }
     interface PTextarea {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
-        "autoComplete"?: TextareaAutoComplete;
+        "autoComplete"?: string;
         /**
-          * The description text.
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the textarea.
          */
         "description"?: string;
         /**
-          * Marks the textarea as disabled.
+          * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the textarea should be associated with.
+          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The max length of the textarea.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the textarea.
+          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea.
+          * The name of the textarea, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -6095,15 +7583,15 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the textarea should be read-only.
+          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the textarea as required.
+          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -6111,23 +7599,19 @@ declare namespace LocalJSX {
          */
         "resize"?: TextareaResize;
         /**
-          * The amount of rows of the textarea.
+          * The number of rows of the textarea.
          */
         "rows"?: number;
         /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
-        /**
-          * Specifies whether the input should have its spelling and grammar checked
+          * Specifies whether the textarea should have its spelling and grammar checked
          */
         "spellCheck"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the textarea component.
          */
         "state"?: TextareaState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -6135,10 +7619,13 @@ declare namespace LocalJSX {
          */
         "value"?: string;
         /**
-          * Handles wrapping behaviour of elements.
+          * Handles wrapping behavior of elements.
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use `p-textarea` instead.
+     */
     interface PTextareaWrapper {
         /**
           * The description text.
@@ -6239,6 +7726,7 @@ declare namespace LocalJSX {
         "p-drilldown-link": PDrilldownLink;
         "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
+        "p-flag": PFlag;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-flyout": PFlyout;
@@ -6248,8 +7736,15 @@ declare namespace LocalJSX {
         "p-headline": PHeadline;
         "p-icon": PIcon;
         "p-inline-notification": PInlineNotification;
+        "p-input-date": PInputDate;
+        "p-input-email": PInputEmail;
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
+        "p-input-search": PInputSearch;
+        "p-input-tel": PInputTel;
+        "p-input-text": PInputText;
+        "p-input-time": PInputTime;
+        "p-input-url": PInputUrl;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -6326,6 +7821,9 @@ declare module "@stencil/core" {
              */
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox": LocalJSX.PCheckbox & JSXBase.HTMLAttributes<HTMLPCheckboxElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use `p-checkbox` instead.
+             */
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -6350,9 +7848,10 @@ declare module "@stencil/core" {
             "p-drilldown-link": LocalJSX.PDrilldownLink & JSXBase.HTMLAttributes<HTMLPDrilldownLinkElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
             /**
-             * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+             * @deprecated since v3.0.0, will be removed with next major release. Please use `p-fieldset` instead.
              */
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
+            "p-flag": LocalJSX.PFlag & JSXBase.HTMLAttributes<HTMLPFlagElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
              */
@@ -6380,8 +7879,15 @@ declare module "@stencil/core" {
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
+            "p-input-date": LocalJSX.PInputDate & JSXBase.HTMLAttributes<HTMLPInputDateElement>;
+            "p-input-email": LocalJSX.PInputEmail & JSXBase.HTMLAttributes<HTMLPInputEmailElement>;
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
+            "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
+            "p-input-tel": LocalJSX.PInputTel & JSXBase.HTMLAttributes<HTMLPInputTelElement>;
+            "p-input-text": LocalJSX.PInputText & JSXBase.HTMLAttributes<HTMLPInputTextElement>;
+            "p-input-time": LocalJSX.PInputTime & JSXBase.HTMLAttributes<HTMLPInputTimeElement>;
+            "p-input-url": LocalJSX.PInputUrl & JSXBase.HTMLAttributes<HTMLPInputUrlElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**
@@ -6431,6 +7937,9 @@ declare module "@stencil/core" {
              */
             "p-select": LocalJSX.PSelect & JSXBase.HTMLAttributes<HTMLPSelectElement>;
             "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use `p-select` instead.
+             */
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             /**
@@ -6463,10 +7972,16 @@ declare module "@stencil/core" {
             "p-tag": LocalJSX.PTag & JSXBase.HTMLAttributes<HTMLPTagElement>;
             "p-tag-dismissible": LocalJSX.PTagDismissible & JSXBase.HTMLAttributes<HTMLPTagDismissibleElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: `p-input-date`, `p-input-email`, `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time` or `p-input-url`.
+             */
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea": LocalJSX.PTextarea & JSXBase.HTMLAttributes<HTMLPTextareaElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use `p-textarea` instead.
+             */
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;

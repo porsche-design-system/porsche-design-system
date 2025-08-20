@@ -39,7 +39,7 @@
 </div>
 
 <div class="playground light" title="should render with label and description">
-  <p-select name="options" value="a" label="Some Label" description="Some description">
+  <p-select name="options" value="a" label="Some Label" description="Some description" class="a11ytree-snapshot-test">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
@@ -61,7 +61,7 @@
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-select name="options" value="a" label="Some Label disabled" disabled="true">
+  <p-select name="options" value="a" label="Some Label disabled" disabled="true" class="a11ytree-snapshot-test">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
@@ -69,7 +69,7 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-select name="options" value="a" label="Some label required" required="true">
+  <p-select name="options" value="a" label="Some label required" required="true" class="a11ytree-snapshot-test">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
@@ -87,7 +87,14 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-select name="options" value="a" label="Error state" state="error" message="Some error message.">
+  <p-select
+    name="options"
+    value="a"
+    label="Error state"
+    state="error"
+    message="Some error message."
+    class="a11ytree-snapshot-test"
+  >
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
@@ -103,7 +110,14 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-select name="options" value="a" label="Success state" state="success" message="Some success message.">
+  <p-select
+    name="options"
+    value="a"
+    label="Success state"
+    state="success"
+    message="Some success message."
+    class="a11ytree-snapshot-test"
+  >
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
@@ -136,14 +150,14 @@
   <p-select name="options" value="a" state="error">
     <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted description. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <p-select-option value="a">Option A</p-select-option>
@@ -151,8 +165,8 @@
     <p-select-option value="c">Option C</p-select-option>
     <span slot="message">
       <span>
-        Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted error message. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
   </p-select>
@@ -165,14 +179,14 @@
   <p-select name="options" value="a" state="success">
     <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted description. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <p-select-option value="a">Option A</p-select-option>
@@ -180,8 +194,8 @@
     <p-select-option value="c">Option C</p-select-option>
     <span slot="message">
       <span>
-        Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted success message. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
   </p-select>
@@ -212,7 +226,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render opened with direction bottom">
+<div class="playground light a11ytree-snapshot-test" title="should render opened with direction bottom">
   <iframe
     src="/select-opened-bottom?iframe=true"
     loading="eager"
@@ -240,7 +254,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with optgroups">
+<div class="playground light a11ytree-snapshot-test" title="should render opened and with optgroups">
   <iframe
     src="/select-opened-with-optgroups?iframe=true"
     loading="eager"
@@ -264,7 +278,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with slotted images">
+<div class="playground light a11ytree-snapshot-test" title="should render opened and with slotted images">
   <iframe
     src="/select-opened-with-slotted-images?iframe=true"
     loading="eager"
@@ -364,4 +378,24 @@
     loading="eager"
     title="should render opened with min-height option list"
   ></iframe>
+</div>
+
+<div class="playground light a11ytree-snapshot-test" title="should render opened with filter and no results">
+  <iframe
+    src="/select-opened-filter-no-results?iframe=true"
+    loading="eager"
+    title="should render opened with filter and no results"
+  ></iframe>
+</div>
+
+<div class="playground light" title="should render opened with filter and no results in compact mode">
+  <iframe
+    src="/select-opened-filter-no-results-compact?iframe=true"
+    loading="eager"
+    title="should render opened with filter and no results in compact mode"
+  ></iframe>
+</div>
+
+<div class="playground light a11ytree-snapshot-test" title="should render opened with filter">
+  <iframe src="/select-opened-filter?iframe=true" loading="eager" title="should render opened with filter"></iframe>
 </div>

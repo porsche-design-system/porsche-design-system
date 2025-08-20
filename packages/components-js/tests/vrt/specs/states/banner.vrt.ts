@@ -1,5 +1,6 @@
 import { expect, Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusVisibleState,
@@ -8,7 +9,6 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { Theme } from '@porsche-design-system/styles';
 
 const component = 'banner';
 

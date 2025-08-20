@@ -1,6 +1,6 @@
+import { camelCase } from 'change-case';
 import fs from 'fs';
 import path from 'path';
-import { camelCase } from 'change-case';
 import type { TagName } from '../src';
 import type { Framework, FrameworkMarkup } from '../src/models';
 
@@ -334,6 +334,167 @@ const codeExamples: CodeSample[] = [
           angular: '/input-number-example-controlled.component.ts',
           react: '/InputNumberExampleControlled.tsx',
           vue: '/InputNumberExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-date',
+    examples: [
+      {
+        name: 'InputDateExample',
+        paths: {
+          'vanilla-js': '/input-date-example.html',
+          angular: '/input-date-example.component.ts',
+          react: '/InputDateExample.tsx',
+          vue: '/InputDateExample.vue',
+        },
+      },
+      {
+        name: 'InputDateExampleControlled',
+        paths: {
+          'vanilla-js': '/input-date-example-controlled.html',
+          angular: '/input-date-example-controlled.component.ts',
+          react: '/InputDateExampleControlled.tsx',
+          vue: '/InputDateExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-time',
+    examples: [
+      {
+        name: 'InputTimeExample',
+        paths: {
+          'vanilla-js': '/input-time-example.html',
+          angular: '/input-time-example.component.ts',
+          react: '/InputTimeExample.tsx',
+          vue: '/InputTimeExample.vue',
+        },
+      },
+      {
+        name: 'InputTimeExampleControlled',
+        paths: {
+          'vanilla-js': '/input-time-example-controlled.html',
+          angular: '/input-time-example-controlled.component.ts',
+          react: '/InputTimeExampleControlled.tsx',
+          vue: '/InputTimeExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-text',
+    examples: [
+      {
+        name: 'InputTextExample',
+        paths: {
+          'vanilla-js': '/input-text-example.html',
+          angular: '/input-text-example.component.ts',
+          react: '/InputTextExample.tsx',
+          vue: '/InputTextExample.vue',
+        },
+      },
+      {
+        name: 'InputTextExampleControlled',
+        paths: {
+          'vanilla-js': '/input-text-example-controlled.html',
+          angular: '/input-text-example-controlled.component.ts',
+          react: '/InputTextExampleControlled.tsx',
+          vue: '/InputTextExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-email',
+    examples: [
+      {
+        name: 'InputEmailExample',
+        paths: {
+          'vanilla-js': '/input-email-example.html',
+          angular: '/input-email-example.component.ts',
+          react: '/InputEmailExample.tsx',
+          vue: '/InputEmailExample.vue',
+        },
+      },
+      {
+        name: 'InputEmailExampleControlled',
+        paths: {
+          'vanilla-js': '/input-email-example-controlled.html',
+          angular: '/input-email-example-controlled.component.ts',
+          react: '/InputEmailExampleControlled.tsx',
+          vue: '/InputEmailExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-tel',
+    examples: [
+      {
+        name: 'InputTelExample',
+        paths: {
+          'vanilla-js': '/input-tel-example.html',
+          angular: '/input-tel-example.component.ts',
+          react: '/InputTelExample.tsx',
+          vue: '/InputTelExample.vue',
+        },
+      },
+      {
+        name: 'InputTelExampleControlled',
+        paths: {
+          'vanilla-js': '/input-tel-example-controlled.html',
+          angular: '/input-tel-example-controlled.component.ts',
+          react: '/InputTelExampleControlled.tsx',
+          vue: '/InputTelExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-url',
+    examples: [
+      {
+        name: 'InputUrlExample',
+        paths: {
+          'vanilla-js': '/input-url-example.html',
+          angular: '/input-url-example.component.ts',
+          react: '/InputUrlExample.tsx',
+          vue: '/InputUrlExample.vue',
+        },
+      },
+      {
+        name: 'InputUrlExampleControlled',
+        paths: {
+          'vanilla-js': '/input-url-example-controlled.html',
+          angular: '/input-url-example-controlled.component.ts',
+          react: '/InputUrlExampleControlled.tsx',
+          vue: '/InputUrlExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-search',
+    examples: [
+      {
+        name: 'InputSearchExample',
+        paths: {
+          'vanilla-js': '/input-search-example.html',
+          angular: '/input-search-example.component.ts',
+          react: '/InputSearchExample.tsx',
+          vue: '/InputSearchExample.vue',
+        },
+      },
+      {
+        name: 'InputSearchExampleControlled',
+        paths: {
+          'vanilla-js': '/input-search-example-controlled.html',
+          angular: '/input-search-example-controlled.component.ts',
+          react: '/InputSearchExampleControlled.tsx',
+          vue: '/InputSearchExampleControlled.vue',
         },
       },
     ],

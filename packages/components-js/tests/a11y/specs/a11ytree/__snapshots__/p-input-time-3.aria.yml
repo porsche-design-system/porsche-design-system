@@ -1,0 +1,6 @@
+- text: Required
+- textbox "Required"
+- button "Open time picker"
+- status
+- alert
+- status

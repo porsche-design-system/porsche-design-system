@@ -11,28 +11,28 @@
     "prebuild-app": "yarn prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,nextjs' 'serve-cdn' 'serve-dummyassets' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'next start'",
+    "build": "yarn build-app",
     "build-app": "next build",
-    "lint": "next lint",
     "test": "yarn test:e2e && yarn test:vrt",
-    "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./.next"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "next": "^15.1.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "15.1.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "globby-legacy": "npm:globby@^11.0.4"
   },
   "peerDependencies": {
-    "ag-grid-enterprise": ">= 33.0.0 <34.0.0",
-    "ag-grid-react": ">= 33.0.0 <34.0.0",
+    "ag-grid-enterprise": ">= 33.0.0 <35.0.0",
+    "ag-grid-react": ">= 33.0.0 <35.0.0",
     "concurrently": "*",
     "tsx": "*",
     "typescript": "*"

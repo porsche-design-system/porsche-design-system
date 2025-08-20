@@ -1,0 +1,8 @@
+- group "Some label":
+  - radio "Some label"
+  - alert
+  - status
+  - radio "Some label"
+  - alert
+  - status
+  - alert: Some error message

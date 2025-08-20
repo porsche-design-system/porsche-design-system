@@ -1,77 +1,173 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PTag } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'Vanilla JS: Getting started - Porsche Design System',
-  description: 'Start developing in Vanilla JS with the Porsche Design System.'
-}
+  description: 'Start developing in Vanilla JS with the Porsche Design System.',
+};
 
 # Vanilla Js
 
-<TableOfContents headings={['Quick start','Integration','When are Porsche Design System components initialized?','How do Porsche Design System components work in detail?','Sample integration']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
-To build your own (non framework specific) application with **Native Web Components** of the Porsche Design System,
-follow these steps:
+To build a Vanilla JS application using the Porsche Design System, follow these steps. This guide is based on the
+following dependencies:
 
-- Follow the instructions at [Introduction](/developing/introduction) to get the required npm package
-- Install the Porsche Design System
+<div className="flex flex-wrap gap-static-sm my-fluid-sm">
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">vite@7</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-js@3</PTag>
+</div>
 
 ```bash
-# install with npm:
-npm install @porsche-design-system/components-js
-
-# install with yarn:
-yarn add @porsche-design-system/components-js
+# Create a new application by executing:
+npm create vite@latest my-app -- --template vanilla-ts
 ```
+
+You're all set! Start building your own application now.
 
 ## Integration
 
-After adding the `@porsche-design-system/components-js` package to your project, the following page setup is recommended
-(assuming a web server is running).
+### Step 1
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Porsche Design System</title>
-    <script src="PATH/TO/PACKAGE/@porsche-design-system/components-js/index.js"></script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      porscheDesignSystem.load();
-    </script>
-    <p-heading>Welcome to Vanilla JS</p-heading>
-  </body>
-</html>
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-js
 ```
 
-<Notification heading="Attention" headingTag="h3" state="warning">
-  Now, when you look at the result in your browser you should see an error message like
-  "The Porsche Design System is used without using the `getInitialStyles()` partial."
-  To fix this, you have to apply the [getInitialStyles() partial](/partials/initial-styles) which is mandatory since v3.7.0.
-</Notification>
+### Step 2
 
-## When are Porsche Design System components initialized?
+Create a `vite.config.ts` file in your project directory and integrate the Porsche Design System Loader.
 
-See [componentsReady()](/developing/components-ready) for further information.
+```tsx
+// vite.config.ts
 
-## How do Porsche Design System components work in detail?
+import { defineConfig } from 'vite';
+import { getLoaderScript } from '@porsche-design-system/components-js/partials';
 
-See [Initialization](/must-know/initialization/introduction) for further information.
+const transformIndexHtmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html: string) {
+      const bodyPartials = [getLoaderScript()].join('');
 
-## Sample integration
+      return html.replace(/<\/body>/, `${bodyPartials}$&`);
+    },
+  };
+};
 
-We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.
-You can find the repository of the Vanilla-JS example project here:
-[Sample integration Vanilla-JS](https://github.com/porsche-design-system/sample-integration-vanillajs)
+export default defineConfig({
+  plugins: [transformIndexHtmlPlugin()],
+});
+```
 
-### Get the project up and running
+### Step 3 (recommended)
 
-- Clone the repository by executing
-`git clone https://github.com/porsche-design-system/sample-integration-vanillajs.git`
-- Follow the installation guidelines in the `README.md` file
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
+```tsx
+// vite.config.ts
+
+import { defineConfig } from 'vite';
+import {
+  getLoaderScript,
+  getComponentChunkLinks,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-js/partials';
+
+const transformIndexHtmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html: string) {
+      const headPartials = [
+        // injects stylesheet which defines visibility of pre-hydrated PDS components
+        getInitialStyles(),
+        // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
+        getFontFaceStyles(),
+        // preloads Porsche Next font (=> minimize FOUT)
+        getFontLinks(),
+        // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
+        getComponentChunkLinks(),
+        // preloads Porsche icons (=> minimize FOUC)
+        getIconLinks(),
+        // injects favicon, apple touch icons, android touch icons, etc.
+        getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+      ].join('');
+
+      const bodyPartials = [getLoaderScript()].join('');
+
+      return html.replace(/<\/head>/, `${headPartials}$&`).replace(/<\/body>/, `${bodyPartials}$&`);
+    },
+  };
+};
+
+export default defineConfig({
+  plugins: [transformIndexHtmlPlugin()],
+});
+```
+
+### Step 4 (recommended)
+
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles.
+
+Install Tailwind CSS within your project directory.
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Configure the Vite Tailwind CSS plugin.
+
+```tsx
+// vite.config.ts
+
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+
+const transformIndexHtmlPlugin = () => { … }
+
+export default defineConfig({
+  plugins: [transformIndexHtmlPlugin(), tailwindcss()],
+});
+```
+
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+
+```css
+/* src/style.css */
+
+@import 'tailwindcss';
+@import '@porsche-design-system/components-js/tailwindcss';
+```
+
+### Step 5
+
+Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
+`npm run dev` and verify that the component and styles display correctly.
+
+```ts
+// src/main.ts
+
+import './style.css';
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+  <div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+    <p-wordmark></p-wordmark>
+    <h1 class="prose-display-md">Porsche Design System</h1>
+  </div>
+  <div class="…">…</div>
+`;
+```

@@ -10,7 +10,7 @@ import {
   type TableHeadCellSort,
   type Theme,
 } from '@porsche-design-system/components-react/ssr';
-import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared/esm/data';
+import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared';
 import Image from 'next/image';
 
 // NOTE: this component is duplicated and adjusted from react

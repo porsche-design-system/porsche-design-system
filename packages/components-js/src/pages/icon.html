@@ -70,21 +70,15 @@
   <p-icon
     source="http://localhost:3002/icon-custom-kaixin.svg"
     aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"
+    class="a11ytree-snapshot-test"
   ></p-icon>
 </div>
 
 <div class="playground light overview" title="should render all available icons and apply coloring programmatically">
   <script>
-    // load icons.js via ajax which is part of icons package and parse ICON_NAMES array from it to render all icons
-    fetch('assets/icons.js')
-      .then((res) => res.text())
-      .then((content) => {
-        const [, str] = /var ICON_NAMES = (.*);/.exec(content);
-        const ICON_NAMES = eval(str);
-        const markup = ICON_NAMES.map(
-          (x) => `<p-icon name="${x}" size="inherit" color="inherit" aria="{ 'aria-label': '${x}' }"></p-icon>`
-        ).join('');
-        document.querySelector('.overview').innerHTML = markup;
-      });
+    const markup = ICON_NAMES.map(
+      (name) => `<p-icon name="${name}" size="inherit" color="inherit" aria="{ 'aria-label': '${name}' }"></p-icon>`
+    ).join('');
+    document.querySelector('.overview').innerHTML = markup;
   </script>
 </div>

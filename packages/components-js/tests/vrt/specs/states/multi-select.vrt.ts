@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { type Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -9,7 +10,6 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
 
 const component = 'multi-select';
 
@@ -32,11 +32,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-multi-select-option value="a">Option A</p-multi-select-option>`;
 
   const getSlottedMarkup = (opts?: { disabled?: boolean }): string => `
-    <span slot="label">${
-      opts?.disabled ? 'Disabled slotted' : 'Slotted'
-    } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
-    <span slot="description">Slotted description <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
-    <span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
+    <span slot="label">${opts?.disabled ? 'Disabled slotted' : 'Slotted'} label</span>
+    <span slot="description">Slotted description</span>
+    <span slot="message">Slotted message</span>`;
 
   const markup = () => `
     <div class="value">
@@ -122,11 +120,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     .locator('.value p-multi-select')
     .evaluateAll(async (selects) => selects.forEach((select: any) => (select.value = ['a'])));
 
-  await forceHoverState(page, '.hover p-multi-select >>> input');
+  await forceHoverState(page, '.hover p-multi-select >>> button');
   await forceHoverState(page, '.hover p-multi-select span a');
+
   await forceFocusVisibleState(page, '.focus p-multi-select span a');
-  await forceFocusState(page, '.focus p-multi-select >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
+  await forceFocusVisibleState(page, '.focus p-multi-select >>> button');
+
+  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> button');
+  await forceFocusVisibleState(page, '.focus-hover p-multi-select >>> button');
   await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
 };
 

@@ -1,12 +1,13 @@
-import { convertToReact } from '@porsche-design-system/shared/utils/convertToReact';
+import { convertToReact } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
-import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
+import { byAlphabet, comment, iconsRegEx, flagsRegEx, templateRegEx } from './generateVRTPages';
 
 export type ReactCharacteristics = {
   usesSetAllReady: boolean;
   usesComponentsReady: boolean;
   usesToast: boolean;
   isIconPage: boolean;
+  isFlagPage: boolean;
   usesQuerySelector: boolean;
   usesPrefixing: boolean;
 };
@@ -20,12 +21,12 @@ export const convertToReactVRTPage = (
   toastText: string,
   characteristics: ReactCharacteristics
 ): { fileName: string; fileContent: string } => {
-  const { usesSetAllReady, usesComponentsReady, usesToast, isIconPage, usesQuerySelector, usesPrefixing } =
+  const { usesSetAllReady, usesComponentsReady, usesToast, isIconPage, isFlagPage, usesQuerySelector, usesPrefixing } =
     characteristics;
 
   // imports
   const reactImports = [
-    ...((usesSetAllReady || usesQuerySelector) && !isIconPage && !usesToast ? ['useEffect'] : []),
+    ...((usesSetAllReady || usesQuerySelector) && !isIconPage && !isFlagPage && !usesToast ? ['useEffect'] : []),
     ...(usesSetAllReady ? ['useState'] : []),
   ]
     .sort(byAlphabet)
@@ -45,6 +46,7 @@ export const convertToReactVRTPage = (
     pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-react';`,
     reactImports && `import { ${reactImports} } from 'react';`,
     isIconPage && `import { ICON_NAMES } from '@porsche-design-system/icons';`,
+    isFlagPage && `import { FLAG_NAMES } from '@porsche-design-system/flags';`,
     (usesSetAllReady || usesComponentsReady) && `import { pollComponentsReady } from '../../pollComponentsReady';`,
     usesToast && `import { Toast } from '../../components';`,
   ]
@@ -72,6 +74,10 @@ useEffect(() => {
   } else if (usesToast) {
     fileContent = fileContent.replace(/<[a-z-]*p-toast/, `$& text="${toastText.slice(1, -1)}"`);
   } else if (!isIconPage && usesQuerySelector) {
+    useStateOrEffect = `useEffect(() => {
+  ${script}
+}, []);`;
+  } else if (!isFlagPage && usesQuerySelector) {
     useStateOrEffect = `useEffect(() => {
   ${script}
 }, []);`;
@@ -109,6 +115,18 @@ useEffect(() => {
       `$1
   {ICON_NAMES.map((x) => (
     <PIcon key={x} name={x as any} size="inherit" color="inherit" aria-label={\`\${x} icon\`} />
+  ))}
+$2`
+    );
+  }
+
+  // flags
+  if (isFlagPage) {
+    fileContent = fileContent.replace(
+      flagsRegEx,
+      `$1
+  {FLAG_NAMES.map((x) => (
+    <PFlag key={x} name={x as any} size="inherit" aria-label={\`\${x} flag\`} />
   ))}
 $2`
     );

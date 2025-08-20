@@ -1,4 +1,4 @@
-name: Code Scanning
+name: 'Code Scanning'
 
 on:
   push:
@@ -11,14 +11,17 @@ on:
 
 jobs:
   build:
-    name: CodeQL Code Scanning
+    name: 'CodeQL'
     runs-on: ubuntu-latest
+    # container:
+    #   image: mcr.microsoft.com/playwright:v1.54.0-jammy
+    #   options: --user 1001
     steps:
-      - name: Checkout Source
+      - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: Initialize CodeQL Scanning
-        uses: github/codeql-action/init@v2
+      - name: 'Initialize'
+        uses: github/codeql-action/init@v3
         with:
           languages: javascript
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+      - name: 'Analyze'
+        uses: github/codeql-action/analyze@v3

@@ -220,6 +220,10 @@ const generatedRoutes = {
     "path": "/fieldset-wrapper",
     "name": "FieldsetWrapper"
   },
+  "flag": {
+    "path": "/flag",
+    "name": "Flag"
+  },
   "flex": {
     "path": "/flex",
     "name": "Flex"
@@ -236,9 +240,13 @@ const generatedRoutes = {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
   },
-  "flyoutCssVariables": {
-    "path": "/flyout-css-variables",
-    "name": "FlyoutCssVariables"
+  "flyoutCssVariables_1": {
+    "path": "/flyout-css-variables-1",
+    "name": "FlyoutCssVariables_1"
+  },
+  "flyoutCssVariables_2": {
+    "path": "/flyout-css-variables-2",
+    "name": "FlyoutCssVariables_2"
   },
   "flyoutFixedFooter": {
     "path": "/flyout-fixed-footer",
@@ -376,6 +384,14 @@ const generatedRoutes = {
     "path": "/inline-notification",
     "name": "InlineNotification"
   },
+  "inputDate": {
+    "path": "/input-date",
+    "name": "InputDate"
+  },
+  "inputEmail": {
+    "path": "/input-email",
+    "name": "InputEmail"
+  },
   "inputNumber": {
     "path": "/input-number",
     "name": "InputNumber"
@@ -383,6 +399,26 @@ const generatedRoutes = {
   "inputPassword": {
     "path": "/input-password",
     "name": "InputPassword"
+  },
+  "inputSearch": {
+    "path": "/input-search",
+    "name": "InputSearch"
+  },
+  "inputTel": {
+    "path": "/input-tel",
+    "name": "InputTel"
+  },
+  "inputText": {
+    "path": "/input-text",
+    "name": "InputText"
+  },
+  "inputTime": {
+    "path": "/input-time",
+    "name": "InputTime"
+  },
+  "inputUrl": {
+    "path": "/input-url",
+    "name": "InputUrl"
   },
   "link": {
     "path": "/link",
@@ -492,9 +528,21 @@ const generatedRoutes = {
     "path": "/multi-select",
     "name": "MultiSelect"
   },
+  "multiSelectCompact": {
+    "path": "/multi-select-compact",
+    "name": "MultiSelectCompact"
+  },
   "multiSelectOpenedBottom": {
     "path": "/multi-select-opened-bottom",
     "name": "MultiSelectOpenedBottom"
+  },
+  "multiSelectOpenedFilterNoResults": {
+    "path": "/multi-select-opened-filter-no-results",
+    "name": "MultiSelectOpenedFilterNoResults"
+  },
+  "multiSelectOpenedFilterNoResultsCompact": {
+    "path": "/multi-select-opened-filter-no-results-compact",
+    "name": "MultiSelectOpenedFilterNoResultsCompact"
   },
   "multiSelectOpenedMaxHeight": {
     "path": "/multi-select-opened-max-height",
@@ -520,10 +568,6 @@ const generatedRoutes = {
     "path": "/multi-select-opened-with-disabled-highlighted-selected",
     "name": "MultiSelectOpenedWithDisabledHighlightedSelected"
   },
-  "multiSelectOpenedWithFilterButNoResults": {
-    "path": "/multi-select-opened-with-filter-but-no-results",
-    "name": "MultiSelectOpenedWithFilterButNoResults"
-  },
   "multiSelectOpenedWithMultipleSelectedOptions": {
     "path": "/multi-select-opened-with-multiple-selected-options",
     "name": "MultiSelectOpenedWithMultipleSelectedOptions"
@@ -535,6 +579,26 @@ const generatedRoutes = {
   "multiSelectOpenedWithOptgroupsDisabled": {
     "path": "/multi-select-opened-with-optgroups-disabled",
     "name": "MultiSelectOpenedWithOptgroupsDisabled"
+  },
+  "multiSelectScaling_0": {
+    "path": "/multi-select-scaling-0",
+    "name": "MultiSelectScaling_0"
+  },
+  "multiSelectScaling_0_5": {
+    "path": "/multi-select-scaling-0-5",
+    "name": "MultiSelectScaling_0_5"
+  },
+  "multiSelectScaling_0_8": {
+    "path": "/multi-select-scaling-0-8",
+    "name": "MultiSelectScaling_0_8"
+  },
+  "multiSelectScaling_1": {
+    "path": "/multi-select-scaling-1",
+    "name": "MultiSelectScaling_1"
+  },
+  "multiSelectScaling_2": {
+    "path": "/multi-select-scaling-2",
+    "name": "MultiSelectScaling_2"
   },
   "overview": {
     "path": "/overview",
@@ -555,6 +619,10 @@ const generatedRoutes = {
   "popoverBasic": {
     "path": "/popover-basic",
     "name": "PopoverBasic"
+  },
+  "popoverBasicSlotted": {
+    "path": "/popover-basic-slotted",
+    "name": "PopoverBasicSlotted"
   },
   "popoverBottom": {
     "path": "/popover-bottom",
@@ -603,6 +671,18 @@ const generatedRoutes = {
   "selectOpenedBottom": {
     "path": "/select-opened-bottom",
     "name": "SelectOpenedBottom"
+  },
+  "selectOpenedFilter": {
+    "path": "/select-opened-filter",
+    "name": "SelectOpenedFilter"
+  },
+  "selectOpenedFilterNoResults": {
+    "path": "/select-opened-filter-no-results",
+    "name": "SelectOpenedFilterNoResults"
+  },
+  "selectOpenedFilterNoResultsCompact": {
+    "path": "/select-opened-filter-no-results-compact",
+    "name": "SelectOpenedFilterNoResultsCompact"
   },
   "selectOpenedMaxHeight": {
     "path": "/select-opened-max-height",

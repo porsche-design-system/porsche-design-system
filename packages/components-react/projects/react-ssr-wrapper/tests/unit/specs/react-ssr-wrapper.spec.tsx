@@ -1,4 +1,4 @@
-import { type SlotMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta, type SlotMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { render } from '@testing-library/react';
 import { kebabCase, pascalCase } from 'change-case';
@@ -58,18 +58,11 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     }
   };
 
-  // dangerouslySetInnerHTML would obviously be easier than converting to jsx
-  // but this does not work since our wrappers internally set children on the server side.
+  // dangerouslySetInnerHTML would be easier than converting to jsx,
+  // but this has not worked since our wrappers internally set children on the server side.
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both
-  // and this is not allowed and throws an exception
+  // and these are not allowed and throw an exception
   let props: any = hasSlot ? { children: renderChildren() } : null;
-
-  if (tagName === 'p-textarea' || tagName === 'p-input-password' || tagName === 'p-input-number') {
-    props = {
-      ...props,
-      readOnly: true,
-    };
-  }
 
   if (tagName === 'p-checkbox') {
     props = {

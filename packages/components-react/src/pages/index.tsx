@@ -67,11 +67,13 @@ import { DrilldownScrolledPage } from './generated/DrilldownScrolled';
 import { DrilldownSlottedButtonHeaderPage } from './generated/DrilldownSlottedButtonHeader';
 import { FieldsetPage } from './generated/Fieldset';
 import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
+import { FlagPage } from './generated/Flag';
 import { FlexPage } from './generated/Flex';
 import { Flyout_1Page } from './generated/Flyout_1';
 import { Flyout_2Page } from './generated/Flyout_2';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
-import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
+import { FlyoutCssVariables_1Page } from './generated/FlyoutCssVariables_1';
+import { FlyoutCssVariables_2Page } from './generated/FlyoutCssVariables_2';
 import { FlyoutFixedFooterPage } from './generated/FlyoutFixedFooter';
 import { FlyoutFixedFooterHeaderPage } from './generated/FlyoutFixedFooterHeader';
 import { FlyoutFixedFooterHeaderScrollableContentPage } from './generated/FlyoutFixedFooterHeaderScrollableContent';
@@ -106,8 +108,15 @@ import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
 import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
+import { InputDatePage } from './generated/InputDate';
+import { InputEmailPage } from './generated/InputEmail';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
+import { InputSearchPage } from './generated/InputSearch';
+import { InputTelPage } from './generated/InputTel';
+import { InputTextPage } from './generated/InputText';
+import { InputTimePage } from './generated/InputTime';
+import { InputUrlPage } from './generated/InputUrl';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -135,21 +144,29 @@ import { ModalWithoutDismissButtonPage } from './generated/ModalWithoutDismissBu
 import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
+import { MultiSelectCompactPage } from './generated/MultiSelectCompact';
 import { MultiSelectOpenedBottomPage } from './generated/MultiSelectOpenedBottom';
+import { MultiSelectOpenedFilterNoResultsPage } from './generated/MultiSelectOpenedFilterNoResults';
+import { MultiSelectOpenedFilterNoResultsCompactPage } from './generated/MultiSelectOpenedFilterNoResultsCompact';
 import { MultiSelectOpenedMaxHeightPage } from './generated/MultiSelectOpenedMaxHeight';
 import { MultiSelectOpenedMinHeightPage } from './generated/MultiSelectOpenedMinHeight';
 import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
 import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
 import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generated/MultiSelectOpenedWithDisabledHighlightedSelected';
-import { MultiSelectOpenedWithFilterButNoResultsPage } from './generated/MultiSelectOpenedWithFilterButNoResults';
 import { MultiSelectOpenedWithMultipleSelectedOptionsPage } from './generated/MultiSelectOpenedWithMultipleSelectedOptions';
 import { MultiSelectOpenedWithOptgroupsPage } from './generated/MultiSelectOpenedWithOptgroups';
 import { MultiSelectOpenedWithOptgroupsDisabledPage } from './generated/MultiSelectOpenedWithOptgroupsDisabled';
+import { MultiSelectScaling_0Page } from './generated/MultiSelectScaling_0';
+import { MultiSelectScaling_0_5Page } from './generated/MultiSelectScaling_0_5';
+import { MultiSelectScaling_0_8Page } from './generated/MultiSelectScaling_0_8';
+import { MultiSelectScaling_1Page } from './generated/MultiSelectScaling_1';
+import { MultiSelectScaling_2Page } from './generated/MultiSelectScaling_2';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
 import { PopoverBasicPage } from './generated/PopoverBasic';
+import { PopoverBasicSlottedPage } from './generated/PopoverBasicSlotted';
 import { PopoverBottomPage } from './generated/PopoverBottom';
 import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
 import { PopoverLeftPage } from './generated/PopoverLeft';
@@ -162,6 +179,9 @@ import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectCompactPage } from './generated/SelectCompact';
 import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
+import { SelectOpenedFilterPage } from './generated/SelectOpenedFilter';
+import { SelectOpenedFilterNoResultsPage } from './generated/SelectOpenedFilterNoResults';
+import { SelectOpenedFilterNoResultsCompactPage } from './generated/SelectOpenedFilterNoResultsCompact';
 import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
 import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
 import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
@@ -487,6 +507,11 @@ export const generatedRoutes: RouteType[] = [
     element: <FieldsetWrapperPage />,
   },
   {
+    name: 'Flag',
+    path: '/flag',
+    element: <FlagPage />,
+  },
+  {
     name: 'Flex',
     path: '/flex',
     element: <FlexPage />,
@@ -507,9 +532,14 @@ export const generatedRoutes: RouteType[] = [
     element: <FlyoutBasicPage />,
   },
   {
-    name: 'Flyout Css Variables',
-    path: '/flyout-css-variables',
-    element: <FlyoutCssVariablesPage />,
+    name: 'Flyout Css Variables 1',
+    path: '/flyout-css-variables-1',
+    element: <FlyoutCssVariables_1Page />,
+  },
+  {
+    name: 'Flyout Css Variables 2',
+    path: '/flyout-css-variables-2',
+    element: <FlyoutCssVariables_2Page />,
   },
   {
     name: 'Flyout Fixed Footer',
@@ -682,6 +712,16 @@ export const generatedRoutes: RouteType[] = [
     element: <InlineNotificationPage />,
   },
   {
+    name: 'Input Date',
+    path: '/input-date',
+    element: <InputDatePage />,
+  },
+  {
+    name: 'Input Email',
+    path: '/input-email',
+    element: <InputEmailPage />,
+  },
+  {
     name: 'Input Number',
     path: '/input-number',
     element: <InputNumberPage />,
@@ -690,6 +730,31 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Password',
     path: '/input-password',
     element: <InputPasswordPage />,
+  },
+  {
+    name: 'Input Search',
+    path: '/input-search',
+    element: <InputSearchPage />,
+  },
+  {
+    name: 'Input Tel',
+    path: '/input-tel',
+    element: <InputTelPage />,
+  },
+  {
+    name: 'Input Text',
+    path: '/input-text',
+    element: <InputTextPage />,
+  },
+  {
+    name: 'Input Time',
+    path: '/input-time',
+    element: <InputTimePage />,
+  },
+  {
+    name: 'Input Url',
+    path: '/input-url',
+    element: <InputUrlPage />,
   },
   {
     name: 'Link',
@@ -827,9 +892,24 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectPage />,
   },
   {
+    name: 'Multi Select Compact',
+    path: '/multi-select-compact',
+    element: <MultiSelectCompactPage />,
+  },
+  {
     name: 'Multi Select Opened Bottom',
     path: '/multi-select-opened-bottom',
     element: <MultiSelectOpenedBottomPage />,
+  },
+  {
+    name: 'Multi Select Opened Filter No Results',
+    path: '/multi-select-opened-filter-no-results',
+    element: <MultiSelectOpenedFilterNoResultsPage />,
+  },
+  {
+    name: 'Multi Select Opened Filter No Results Compact',
+    path: '/multi-select-opened-filter-no-results-compact',
+    element: <MultiSelectOpenedFilterNoResultsCompactPage />,
   },
   {
     name: 'Multi Select Opened Max Height',
@@ -862,11 +942,6 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectOpenedWithDisabledHighlightedSelectedPage />,
   },
   {
-    name: 'Multi Select Opened With Filter But No Results',
-    path: '/multi-select-opened-with-filter-but-no-results',
-    element: <MultiSelectOpenedWithFilterButNoResultsPage />,
-  },
-  {
     name: 'Multi Select Opened With Multiple Selected Options',
     path: '/multi-select-opened-with-multiple-selected-options',
     element: <MultiSelectOpenedWithMultipleSelectedOptionsPage />,
@@ -880,6 +955,31 @@ export const generatedRoutes: RouteType[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: '/multi-select-opened-with-optgroups-disabled',
     element: <MultiSelectOpenedWithOptgroupsDisabledPage />,
+  },
+  {
+    name: 'Multi Select Scaling 0',
+    path: '/multi-select-scaling-0',
+    element: <MultiSelectScaling_0Page />,
+  },
+  {
+    name: 'Multi Select Scaling 0 5',
+    path: '/multi-select-scaling-0-5',
+    element: <MultiSelectScaling_0_5Page />,
+  },
+  {
+    name: 'Multi Select Scaling 0 8',
+    path: '/multi-select-scaling-0-8',
+    element: <MultiSelectScaling_0_8Page />,
+  },
+  {
+    name: 'Multi Select Scaling 1',
+    path: '/multi-select-scaling-1',
+    element: <MultiSelectScaling_1Page />,
+  },
+  {
+    name: 'Multi Select Scaling 2',
+    path: '/multi-select-scaling-2',
+    element: <MultiSelectScaling_2Page />,
   },
   {
     name: 'Pagination',
@@ -900,6 +1000,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Popover Basic',
     path: '/popover-basic',
     element: <PopoverBasicPage />,
+  },
+  {
+    name: 'Popover Basic Slotted',
+    path: '/popover-basic-slotted',
+    element: <PopoverBasicSlottedPage />,
   },
   {
     name: 'Popover Bottom',
@@ -960,6 +1065,21 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Bottom',
     path: '/select-opened-bottom',
     element: <SelectOpenedBottomPage />,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: '/select-opened-filter',
+    element: <SelectOpenedFilterPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: '/select-opened-filter-no-results',
+    element: <SelectOpenedFilterNoResultsPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results Compact',
+    path: '/select-opened-filter-no-results-compact',
+    element: <SelectOpenedFilterNoResultsCompactPage />,
   },
   {
     name: 'Select Opened Max Height',

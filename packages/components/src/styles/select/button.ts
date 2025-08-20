@@ -14,7 +14,6 @@ export const getButtonJssStyle = (
   isOpen: boolean,
   isDisabled: boolean,
   state: FormState,
-  hasSlottedImage: boolean,
   cssVarScaling: string,
   theme: Theme
 ): JssStyle => {
@@ -22,9 +21,8 @@ export const getButtonJssStyle = (
   const cssVarTextColor = `--p-${componentName}-text-color`;
   const cssVarBorderColor = `--p-${componentName}-border-color`;
 
-  const { backgroundColor, primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
   const {
-    backgroundColor: backgroundColorDark,
     primaryColor: primaryColorDark,
     disabledColor: disabledColorDark,
     contrastMediumColor: contrastMediumColorDark,
@@ -37,8 +35,7 @@ export const getButtonJssStyle = (
 
   return {
     all: 'unset',
-    display: 'grid',
-    gridTemplateColumns: `${hasSlottedImage ? 'auto ' : ''}minmax(0, 1fr) auto`,
+    display: 'flex',
     alignItems: 'center',
     gap: `max(4px, ${cssVarScaling} * 12px)`,
     padding: `max(2px, ${cssVarScaling} * ${formElementPaddingVertical}) max(4px, ${cssVarScaling} * ${formElementPaddingHorizontal})`,
@@ -49,7 +46,7 @@ export const getButtonJssStyle = (
     cursor: 'pointer',
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     color: `var(${cssVarTextColor}, ${primaryColor})`,
-    background: `var(${cssVarBackgroundColor}, ${backgroundColor})`,
+    backgroundColor: `var(${cssVarBackgroundColor}, transparent)`,
     border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrastMediumColor})`,
     borderRadius: borderRadiusSmall,
     ...(isDisabled && {
@@ -59,7 +56,7 @@ export const getButtonJssStyle = (
     }),
     ...prefersColorSchemeDarkMediaQuery(theme, {
       color: `var(${cssVarTextColor}, ${primaryColorDark})`,
-      background: `var(${cssVarBackgroundColor}, ${backgroundColorDark})`,
+      backgroundColor: `var(${cssVarBackgroundColor}, transparent)`,
       border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark})`,
       ...(isDisabled && {
         color: disabledColorDark,

@@ -1,0 +1,7 @@
+- text: Readonly Some description
+- spinbutton "Readonly"
+- button "Decrement value by 1" [disabled]
+- status
+- button "Increment value by 1" [disabled]
+- status
+- alert

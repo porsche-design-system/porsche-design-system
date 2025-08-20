@@ -1,6 +1,6 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import type { TagName } from '@porsche-design-system/shared';
-import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing';
 import type { Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
@@ -38,6 +38,15 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-pin-code': '', // readonly is not supported
     'p-textarea': '',
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
+    'p-input-date': '',
+    'p-input-email': '',
+    'p-input-number': '',
+    'p-input-password': '',
+    'p-input-search': '',
+    'p-input-tel': '',
+    'p-input-text': '',
+    'p-input-time': '',
+    'p-input-url': '',
   };
 
   const markup = () =>
@@ -50,12 +59,46 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
           tag === 'p-multi-select' ||
           tag === 'p-textarea' ||
           tag === 'p-checkbox' ||
+          tag === 'p-input-date' ||
+          tag === 'p-input-time' ||
+          tag === 'p-input-email' ||
+          tag === 'p-input-number' ||
+          tag === 'p-input-password' ||
+          tag === 'p-input-search' ||
+          tag === 'p-input-tel' ||
+          tag === 'p-input-text' ||
+          tag === 'p-input-url' ||
           tag === 'p-select'
             ? ' disabled="true"'
             : '';
 
-        const readOnlyAttribute = tag === 'p-textarea' ? ' read-only="true"' : '';
-        const valueAttribute = tag === 'p-textarea' ? ' value="Some value"' : '';
+        const readOnlyAttribute =
+          tag === 'p-textarea' ||
+          tag === 'p-input-date' ||
+          tag === 'p-input-time' ||
+          tag === 'p-input-email' ||
+          tag === 'p-input-number' ||
+          tag === 'p-input-password' ||
+          tag === 'p-input-search' ||
+          tag === 'p-input-tel' ||
+          tag === 'p-input-text' ||
+          tag === 'p-input-url'
+            ? ' read-only="true"'
+            : '';
+
+        const valueAttribute =
+          tag === 'p-textarea' ||
+          tag === 'p-input-date' ||
+          tag === 'p-input-time' ||
+          tag === 'p-input-email' ||
+          tag === 'p-input-number' ||
+          tag === 'p-input-password' ||
+          tag === 'p-input-search' ||
+          tag === 'p-input-tel' ||
+          tag === 'p-input-text' ||
+          tag === 'p-input-url'
+            ? ' value="Some value"'
+            : '';
 
         return `
 <div>
@@ -94,9 +137,11 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover p-checkbox >>> input');
   await forceHoverState(page, '.hover select');
+
   await forceHoverState(page, '.hover textarea');
+
   await forceHoverState(page, '.hover p-select >>> button');
-  await forceHoverState(page, '.hover p-multi-select >>> input');
+  await forceHoverState(page, '.hover p-multi-select >>> button');
   await forceHoverState(page, `.hover p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusState(page, '.focus input[type="text"]');
   await forceFocusVisibleState(page, '.focus input[type="checkbox"]');
@@ -104,8 +149,9 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
   await forceFocusVisibleState(page, '.focus p-select >>> button');
+  await forceFocusVisibleState(page, '.focus p-multi-select >>> button');
   await forceFocusVisibleState(page, '.focus p-checkbox >>> input');
-  await forceFocusState(page, '.focus p-multi-select >>> input');
+  await forceFocusState(page, '.focus p-multi-select >>> button');
   await forceFocusState(page, `.focus p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
@@ -113,8 +159,58 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusHoverState(page, '.focus-hover p-select >>> button');
   await forceFocusHoverState(page, '.focus-hover p-checkbox >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-select >>> button');
-  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> button');
   await forceFocusHoverState(page, `.focus-hover p-pin-code >>> #${valueOfForAttribute}`);
+
+  await forceHoverState(page, '.hover p-textarea >>> textarea');
+  await forceFocusState(page, '.focus p-textarea >>> textarea');
+  await forceFocusVisibleState(page, '.focus-hover p-textarea >>> textarea');
+  await forceFocusHoverState(page, '.focus-hover p-textarea >>> textarea');
+
+  await forceHoverState(page, '.hover p-input-date >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-date >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-date >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-date >>> input');
+
+  await forceHoverState(page, '.hover p-input-time >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-time >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-time >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-time >>> input');
+
+  await forceHoverState(page, '.hover p-input-email >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-email >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-email >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-email >>> input');
+
+  await forceHoverState(page, '.hover p-input-number >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-number >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-number >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-number >>> input');
+
+  await forceHoverState(page, '.hover p-input-password >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-password >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-password >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-password >>> input');
+
+  await forceHoverState(page, '.hover p-input-search >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-search >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-search >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-search >>> input');
+
+  await forceHoverState(page, '.hover p-input-tel >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-tel >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-tel >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-tel >>> input');
+
+  await forceHoverState(page, '.hover p-input-text >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-text >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-text >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-text >>> input');
+
+  await forceHoverState(page, '.hover p-input-url >>> .wrapper');
+  await forceFocusState(page, '.focus p-input-url >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-url >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-url >>> input');
 };
 
 // executed in Chrome only

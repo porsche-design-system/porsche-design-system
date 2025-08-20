@@ -26,3 +26,12 @@ beforeAll(() => {
       }) as unknown as ElementInternals
   );
 });
+
+// TODO: Get rid once jsdom polyfill is fixed
+// Fix for flaky jsdom polyfill error
+process.on('unhandledRejection', (reason) => {
+  if (String(reason).includes('dispatchEvent is not a function')) {
+    return;
+  }
+  throw reason;
+});

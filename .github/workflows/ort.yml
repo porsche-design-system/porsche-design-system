@@ -1,28 +1,28 @@
+name: 'OSS Review Toolkit'
+
 on:
   schedule:
     - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
   workflow_dispatch: # enables manual run, - before manual run is triggered ensure step "Send ORT Analyzer Result to OSO" is disabled / commented out
 
-name: 'OSS Review Toolkit'
 env:
   OSO_PROJECT_NAME: porsche_design_system
   OSO_AWS_ECR_REGISTRY: 936427553375.dkr.ecr.eu-central-1.amazonaws.com
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-6
+
 jobs:
   ort:
     name: 'ORT'
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.54.0-jammy
+      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Production Builds'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build-prod
+        run: yarn build-prod
       - name: "Login to AWS ECR"
         uses: docker/login-action@v3
         with:

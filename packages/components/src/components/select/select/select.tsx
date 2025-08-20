@@ -1,66 +1,63 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import {
-  type SelectDropdownDirection,
-  type SelectOptgroup,
-  type SelectOption,
-  type SelectState,
-  type SelectUpdateEventDetail,
-  getSelectedOptionString,
-  setSelectedOption,
-  syncSelectChildrenProps,
-  updateSelectOptions,
-} from './select-utils';
-
 import {
   AttachInternals,
   Component,
   Element,
   Event,
   type EventEmitter,
+  forceUpdate,
+  h,
   type JSX,
   Listen,
   Prop,
   State,
   Watch,
-  forceUpdate,
-  h,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
-  THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
-  getActionFromKeyboardEvent,
+  FORM_STATES,
   getComboboxAriaAttributes,
   getHasNativePopoverSupport,
-  getHighlightedSelectOption,
-  getHighlightedSelectOptionIndex,
-  getListAriaAttributes,
   getMatchingSelectOptionIndex,
+  getNextOptionToHighlight,
   getPrefixedTagNames,
+  getSelectActionFromKeyboardEvent,
+  getSelectedOption,
   getShadowRootHTMLElement,
-  getUpdatedIndex,
-  getUsableSelectOptions,
   hasMessage,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
+  isUsableOption,
   optionListUpdatePosition,
-  setNextSelectOptionHighlighted,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
+  setHighlightedSelectOption,
+  THEMES,
   throwIfElementIsNotOfKind,
+  updateFilterResults,
+  updateHighlightedOption,
   validateProps,
-  getSelectedSelectOptionIndex,
-  getSelectedSelectOption,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
-import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { NoResultsOption } from '../../common/no-results-option/no-results-option';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
+import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
+import {
+  getSelectedOptionString,
+  type SelectDropdownDirection,
+  type SelectOptgroup,
+  type SelectOption,
+  type SelectState,
+  type SelectUpdateEventDetail,
+  setSelectedOption,
+  syncSelectChildrenProps,
+  updateSelectOptions,
+} from './select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -74,6 +71,7 @@ const propTypes: PropTypes<typeof Select> = {
   required: AllowedTypes.boolean,
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -126,6 +124,9 @@ export class Select {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
+  /** Shows an input in the dropdown allowing options to be filtered. */
+  @Prop() public filter?: boolean = false;
+
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
@@ -139,12 +140,16 @@ export class Select {
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
+  @State() private hasFilterResults = true;
 
   @AttachInternals() private internals: ElementInternals;
 
   private defaultValue: string;
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
+  private inputSearchElement: HTMLPInputSearchElement;
+  private inputSearchInputElement: HTMLInputElement;
+  private listboxElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -153,6 +158,8 @@ export class Select {
   private slottedImagePath: string = '';
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private cleanUpAutoUpdate: () => void;
+
+  private currentlyHighlightedOption: SelectOption | null = null;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -185,6 +192,7 @@ export class Select {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
       }
+      this.highlightSelectedOption();
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
@@ -194,11 +202,18 @@ export class Select {
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
       }
+      if (this.currentlyHighlightedOption) {
+        setHighlightedSelectOption(this.currentlyHighlightedOption, false);
+        this.currentlyHighlightedOption = null;
+      }
+      // Reset filter on close
+      if (this.filter) {
+        this.resetFilter();
+      }
     }
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
@@ -220,6 +235,14 @@ export class Select {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    if (this.filter) {
+      this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+      // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
+      if (this.inputSearchInputElement) {
+        // @ts-expect-error typings missing
+        this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+      }
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -249,18 +272,16 @@ export class Select {
       this.hideLabel,
       this.state,
       this.compact,
-      this.theme,
-      !!this.slottedImagePath
+      this.theme
     );
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const buttonId = 'value';
+    const buttonId = 'button';
     const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
-    const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
       <div class="root">
@@ -284,7 +305,7 @@ export class Select {
           ref={(el) => (this.buttonElement = el)}
         >
           {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
-          <span>{selectedOption}</span>
+          <span>{getSelectedOptionString(this.selectOptions)}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
@@ -297,15 +318,55 @@ export class Select {
           id={popoverId}
           popover="manual"
           tabIndex={-1}
-          {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+          onToggle={() => this.onToggle()}
+          role="dialog"
+          aria-label={this.label}
+          aria-hidden={this.isOpen ? null : 'true'}
           ref={(el) => (this.popoverElement = el)}
         >
-          <slot />
+          {this.filter && (
+            <PrefixedTagNames.pInputSearch
+              class="filter"
+              name="filter"
+              label="Filter options"
+              hideLabel={true}
+              autoComplete="off"
+              clear={true}
+              indicator={true}
+              compact={true}
+              theme={this.theme}
+              onInput={this.onFilterInput}
+              onKeyDown={this.onComboKeyDown}
+              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
+            />
+          )}
+          <div
+            class="options"
+            role="listbox"
+            aria-label={this.label}
+            onPointerMove={this.onPointerMove}
+            ref={(el) => (this.listboxElement = el)}
+          >
+            {this.filter && !this.hasFilterResults && <NoResultsOption />}
+            <slot />
+          </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
     );
   }
+
+  private onPointerMove = (e: MouseEvent): void => {
+    const hoveredOption = e.target as SelectOption;
+    if (
+      hoveredOption &&
+      isElementOfKind(hoveredOption, 'p-select-option') &&
+      !hoveredOption.disabled &&
+      hoveredOption !== this.currentlyHighlightedOption
+    ) {
+      this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
+    }
+  };
 
   private onSlotchange = (): void => {
     this.updateOptions();
@@ -315,7 +376,7 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  private onComboClick = (): void => {
+  private onComboClick = (_: MouseEvent): void => {
     this.updateMenuState(!this.isOpen);
   };
 
@@ -325,15 +386,31 @@ export class Select {
     }
   };
 
-  private onComboKeyDown = (event: KeyboardEvent): void => {
-    const { key } = event;
+  private resetFilter = (): void => {
+    this.inputSearchElement.value = '';
+    this.hasFilterResults = true;
+    for (const option of this.selectOptions) {
+      option.style.display = 'block';
+    }
+    for (const optgroup of this.selectOptgroups) {
+      optgroup.style.display = 'block';
+    }
+  };
 
-    const action = getActionFromKeyboardEvent(event, this.isOpen);
+  private onComboKeyDown = (event: KeyboardEvent): void => {
+    const { key, code } = event;
+
+    // When pressing space in filter input, we want to allow typing space
+    if (this.filter && (key === ' ' || code === 'Space')) {
+      return;
+    }
+
+    const action = getSelectActionFromKeyboardEvent(event, this.isOpen);
 
     switch (action) {
       case 'Last':
+      // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
       case 'First':
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
       // intentional fallthrough
       case 'Next':
@@ -341,40 +418,52 @@ export class Select {
       case 'PageUp':
       case 'PageDown': {
         event.preventDefault();
-        const highlightedOptionIndex = getUpdatedIndex(
-          getHighlightedSelectOptionIndex(this.selectOptions),
-          getUsableSelectOptions(this.selectOptions).length - 1,
-          action
+        this.currentlyHighlightedOption = updateHighlightedOption(
+          this.currentlyHighlightedOption,
+          getNextOptionToHighlight(this.selectOptions, this.currentlyHighlightedOption, action)
         );
-        setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        this.buttonElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.selectOptions);
+        (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
+          this.currentlyHighlightedOption;
         break;
       }
+      // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
       case 'CloseSelect': {
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
-        this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
+        this.updateSelectedOption(this.currentlyHighlightedOption);
       }
       // intentional fallthrough
       case 'Close': {
         event.preventDefault();
         this.updateMenuState(false);
+        if (this.filter) {
+          this.buttonElement.focus();
+        }
         break;
       }
       case 'Type':
-        this.onComboType(key);
+        // Filter uses onInput
+        if (!this.filter) {
+          this.onComboType(key);
+        }
         break;
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
-        if (selectedIndex >= 0) {
-          setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, selectedIndex);
-          // @ts-ignore - HTMLCombobox type is missing
-          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
-        }
         break;
+      }
+    }
+  };
+
+  private highlightSelectedOption = (): void => {
+    // Moves highlight to the selected option if available
+    if (!this.currentlyHighlightedOption) {
+      const selectedOption = getSelectedOption(this.selectOptions);
+      if (selectedOption && isUsableOption(selectedOption)) {
+        this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
+        // @ts-ignore - HTMLCombobox type is missing
+        (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
+          this.currentlyHighlightedOption;
       }
     }
   };
@@ -383,9 +472,9 @@ export class Select {
     this.updateMenuState(true);
 
     this.updateSearchString(letter);
-    const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
-    if (matchingIndex !== -1) {
-      setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, matchingIndex);
+    const matchingOption = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
+    if (matchingOption) {
+      this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, matchingOption);
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
@@ -461,5 +550,26 @@ export class Select {
         ?.querySelector('img')
         ?.getAttribute('src') ?? ''
     );
+  };
+
+  private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
+      this.selectOptions,
+      this.selectOptgroups,
+      (e.detail.target as HTMLInputElement).value
+    );
+    resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
+    this.hasFilterResults = hasFilterResults;
+  };
+
+  private onToggle = (): void => {
+    if (this.isOpen && this.filter) {
+      // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.inputSearchElement.focus();
+        });
+      });
+    }
   };
 }

@@ -1,4 +1,3 @@
-import type { StoryState } from '@/models/story';
 import {
   PAccordion,
   type PAccordionProps,
@@ -38,6 +37,8 @@ import {
   type PFieldsetProps,
   PFieldsetWrapper,
   type PFieldsetWrapperProps,
+  PFlag,
+  type PFlagProps,
   PFlex,
   PFlexItem,
   type PFlexItemProps,
@@ -56,10 +57,24 @@ import {
   type PIconProps,
   PInlineNotification,
   type PInlineNotificationProps,
-  PInputPassword,
-  type PInputPasswordProps,
+  PInputEmail,
+  type PInputEmailProps,
   PInputNumber,
   type PInputNumberProps,
+  PInputDate,
+  type PInputDateProps,
+  PInputTime,
+  type PInputTimeProps,
+  PInputPassword,
+  type PInputPasswordProps,
+  PInputSearch,
+  type PInputSearchProps,
+  PInputTel,
+  type PInputTelProps,
+  PInputText,
+  type PInputTextProps,
+  PInputUrl,
+  type PInputUrlProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -139,6 +154,10 @@ import {
   type PTagDismissibleProps,
   type PTagProps,
   PText,
+  PTextarea,
+  type PTextareaProps,
+  PTextareaWrapper,
+  type PTextareaWrapperProps,
   PTextFieldWrapper,
   type PTextFieldWrapperProps,
   PTextList,
@@ -146,10 +165,6 @@ import {
   type PTextListItemProps,
   type PTextListProps,
   type PTextProps,
-  PTextarea,
-  type PTextareaProps,
-  PTextareaWrapper,
-  type PTextareaWrapperProps,
   PToast,
   type PToastProps,
   PWordmark,
@@ -157,6 +172,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React, { type ReactNode } from 'react';
+import type { StoryState } from '@/models/story';
 
 type SafePropTypeMapping = {
   [K in Exclude<TagName, 'p-toast-item' | 'p-select-wrapper-dropdown'>]: K extends keyof PropTypeMapping
@@ -262,6 +278,7 @@ export type PropTypeMapping = {
   'p-divider': PDividerProps;
   'p-fieldset': PFieldsetProps;
   'p-fieldset-wrapper': PFieldsetWrapperProps;
+  'p-flag': PFlagProps;
   'p-flex': PFlexProps;
   'p-flex-item': PFlexItemProps;
   'p-flyout': PFlyoutProps;
@@ -276,6 +293,13 @@ export type PropTypeMapping = {
   'p-inline-notification': PInlineNotificationProps;
   'p-input-password': PInputPasswordProps;
   'p-input-number': PInputNumberProps;
+  'p-input-date': PInputDateProps;
+  'p-input-time': PInputTimeProps;
+  'p-input-search': PInputSearchProps;
+  'p-input-text': PInputTextProps;
+  'p-input-email': PInputEmailProps;
+  'p-input-tel': PInputTelProps;
+  'p-input-url': PInputUrlProps;
   'p-link': PLinkProps;
   'p-link-pure': PLinkPureProps;
   'p-link-social': PLinkSocialProps;
@@ -342,6 +366,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-divider': PDivider,
   'p-fieldset': PFieldset,
   'p-fieldset-wrapper': PFieldsetWrapper,
+  'p-flag': PFlag,
   'p-flex': PFlex,
   'p-flex-item': PFlexItem,
   'p-flyout': PFlyout,
@@ -356,6 +381,13 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-inline-notification': PInlineNotification,
   'p-input-password': PInputPassword,
   'p-input-number': PInputNumber,
+  'p-input-date': PInputDate,
+  'p-input-time': PInputTime,
+  'p-input-search': PInputSearch,
+  'p-input-text': PInputText,
+  'p-input-email': PInputEmail,
+  'p-input-tel': PInputTel,
+  'p-input-url': PInputUrl,
   'p-link': PLink,
   'p-link-pure': PLinkPure,
   'p-link-social': PLinkSocial,

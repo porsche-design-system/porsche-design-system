@@ -1,0 +1,7 @@
+- img /\d+/
+- img "Some alt text"
+- heading "Some heading" [level=2]
+- paragraph: Some description
+- group:
+  - link "Some label"
+  - link "Some label"

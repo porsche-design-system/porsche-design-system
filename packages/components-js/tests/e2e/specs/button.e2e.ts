@@ -1,6 +1,6 @@
-import { Locator, type Page, expect, test } from '@playwright/test';
+import { type Locator, type Page, expect, test } from '@playwright/test';
 import {
-  ClickableTests,
+  type ClickableTests,
   addEventListener,
   getActiveElementId,
   getEventSummary,
@@ -103,7 +103,7 @@ test.describe('form', () => {
     await host.click();
 
     await waitForImproveButtonHandlingForCustomElement(page);
-    expect((await getEventSummary(form, 'submit')).counter).toBe(2);
+    await expect.poll(() => getEventSummary(form, 'submit').then((e) => e.counter)).toBe(2);
   });
 
   test('Should include name and associated value in FormData on click, if the submit button is outside the form', async ({

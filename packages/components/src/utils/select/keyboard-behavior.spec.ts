@@ -1,17 +1,28 @@
-import * as stencilUtils from '@stencil/core';
+import { MultiSelectOption } from '../../components/multi-select/multi-select-option/multi-select-option';
 import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
-  type Option,
   filterSelectOptions,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
+  getNextOptionToHighlight,
   getUpdatedIndex,
   getUsableSelectOptions,
+  type Option,
   setHighlightedSelectOption,
-  setMatchingSelectOptionHighlighted,
-  setNextSelectOptionHighlighted,
+  updateHighlightedOption,
 } from './keyboard-behavior';
+
+const initOption = (): MultiSelectOption => {
+  const component = new MultiSelectOption();
+  component.host = document.createElement('p-multi-select-option');
+  component.host.attachShadow({ mode: 'open' });
+
+  const optionDiv = document.createElement('div');
+  optionDiv.className = 'option';
+  component.host.shadowRoot.appendChild(optionDiv);
+  return component;
+};
 
 type GenerateOptionsParams = {
   amount?: number;
@@ -37,27 +48,43 @@ const generateOptions = (
     selectedIndices: [],
   }
 ): Option[] => {
-  return Array.from(
-    new Array(amount),
-    (_, idx) =>
-      ({
-        value: values?.[idx] ? values[idx] : `Value ${idx}`,
-        textContent: textContents?.[idx] ? textContents[idx] : `Option ${idx}`,
-        selected: selectedIndices.includes(idx),
-        highlighted: highlightedIndex === idx,
-        disabled: disabledIndex === idx,
-        hidden: hiddenIndex === idx,
-      }) as unknown as Option
-  );
+  return Array.from({ length: amount }, (_, idx) => {
+    const component = initOption();
+    const host = component.host as Option & { value: string };
+
+    host.value = values?.[idx] ?? `Value ${idx}`;
+    host.textContent = textContents?.[idx] ?? `Option ${idx}`;
+    host.selected = selectedIndices.includes(idx);
+    host.highlighted = highlightedIndex === idx;
+    host.disabled = disabledIndex === idx;
+    host.hidden = hiddenIndex === idx;
+    host.style.display = 'block';
+    host.scrollIntoView = jest.fn();
+
+    return host;
+  });
 };
 
-// handleDropdownScroll is not tested on purpose
-// describe('handleDropdownScroll()', () => {});
+beforeEach(() => {
+  jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
+    // @ts-ignore
+    cb(); // immediately call the provided callback
+    return 0;
+  });
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
+});
 
 // getActionFromKey is not tested on purpose
 // describe('getActionFromKey()', () => {});
 
 describe('getUpdatedIndex()', () => {
+  it('should return -1 if maxIndex is -1', () => {
+    const index = getUpdatedIndex(1, -1, 'First');
+    expect(index).toBe(-1);
+  });
   it('should return 0 if action is First', () => {
     const index = getUpdatedIndex(1, 10, 'First');
     expect(index).toBe(0);
@@ -96,53 +123,90 @@ describe('getUpdatedIndex()', () => {
   });
 });
 
-describe('setNextSelectOptionHighlighted()', () => {
-  it('should call correct functions to set the next option highlighted', () => {
+describe('getNextOptionToHighlight()', () => {
+  it('should return null when getUpdatedIndex returns -1', () => {
     const options = generateOptions();
-    const listElement = document.createElement('ul');
+    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
+    const getUpdatedIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getUpdatedIndex');
+    getUsableSelectOptionsSpy.mockReturnValueOnce(options);
+    getUpdatedIndexSpy.mockReturnValueOnce(-1);
 
-    const getHighlightedSelectOptionIndexSpy = jest
-      .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
-      .mockReturnValueOnce(-1);
-    const getUsableSelectOptionsSpy = jest
-      .spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions')
-      .mockReturnValueOnce(options);
-    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
-    const handleSelectDropdownScroll = jest.spyOn(keyboardBehaviorUtils, 'handleSelectDropdownScroll');
+    const nextOption = getNextOptionToHighlight(options, null, 'CloseSelect');
 
-    options.forEach((option) => {
-      expect(option.highlighted).toBeFalsy();
-    });
-
-    setNextSelectOptionHighlighted(listElement, options, 1);
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
     expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
-    expect(handleSelectDropdownScroll).toHaveBeenCalledWith(listElement, options[1]);
+    expect(nextOption).toBeNull();
   });
-  it('should call setHighlightedSelectOption() twice when highlighted option exists', () => {
-    const options = generateOptions();
-    const listElement = document.createElement('ul');
+  it('should call getUpdatedIndex with correct parameters and return option', () => {
+    const options = generateOptions({ highlightedIndex: 0 });
+    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
+    const getUpdatedIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getUpdatedIndex');
+    getUsableSelectOptionsSpy.mockReturnValueOnce(options);
+    getUpdatedIndexSpy.mockReturnValueOnce(1);
 
-    const getHighlightedSelectOptionIndexSpy = jest
-      .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
-      .mockReturnValueOnce(2);
-    const getUsableSelectOptionsSpy = jest
-      .spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions')
-      .mockReturnValueOnce(options);
-    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
-    const handleSelectDropdownScroll = jest.spyOn(keyboardBehaviorUtils, 'handleSelectDropdownScroll');
+    const nextOption = getNextOptionToHighlight(options, options[0], 'Next');
 
-    options.forEach((option) => {
-      expect(option.highlighted).toBeFalsy();
-    });
-
-    setNextSelectOptionHighlighted(listElement, options, 1);
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
     expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
+    expect(getUpdatedIndexSpy).toHaveBeenCalledWith(0, 2, 'Next');
+    expect(nextOption).toEqual(options[1]);
+  });
+});
+
+describe('updateHighlightedOption()', () => {
+  it('should return currently highlighted option and return if new option is equal to current', () => {
+    const options = generateOptions({ highlightedIndex: 0 });
+    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+
+    const currentlyhighlightedOption = updateHighlightedOption(options[0], options[0]);
+
+    expect(setHighlightedSelectOptionSpy).not.toHaveBeenCalled();
+    expect(currentlyhighlightedOption).toEqual(options[0]);
+
+    expect(options[0].highlighted).toBe(true);
+    expect(options[1].highlighted).toBe(false);
+    expect(options[2].highlighted).toBe(false);
+  });
+
+  it('should set highlight to new option when only new option is provided', () => {
+    const options = generateOptions();
+    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    const scrollIntoViewSpy = jest.spyOn(options[1], 'scrollIntoView');
+
+    const currentlyhighlightedOption = updateHighlightedOption(null, options[1]);
+
     expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
-    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[2], false);
-    expect(handleSelectDropdownScroll).toHaveBeenCalledWith(listElement, options[1]);
+    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledTimes(1);
+    expect(currentlyhighlightedOption).toEqual(options[1]);
+    expect(options[0].highlighted).toBe(false);
+    expect(options[1].highlighted).toBe(true);
+    expect(options[2].highlighted).toBe(false);
+
+    expect(scrollIntoViewSpy).toHaveBeenCalledWith({ block: 'nearest' });
+  });
+
+  it('should remove highlight from old and set highlight to new option when two options are provided', () => {
+    const options = generateOptions({ highlightedIndex: 1 });
+    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    const scrollIntoViewSpy = jest.spyOn(options[1], 'scrollIntoView');
+
+    const currentlyhighlightedOption = updateHighlightedOption(options[0], options[1]);
+
+    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[0], false);
+    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
+    expect(currentlyhighlightedOption).toEqual(options[1]);
+    expect(scrollIntoViewSpy).toHaveBeenCalledWith({ block: 'nearest' });
+  });
+
+  it('should not call scrollIntoView if scrollIntoView parameter is false', () => {
+    const options = generateOptions({ highlightedIndex: 1 });
+    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    options[1].scrollIntoView = jest.fn();
+
+    const currentlyhighlightedOption = updateHighlightedOption(options[0], options[1], false);
+
+    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[0], false);
+    expect(setHighlightedSelectOptionSpy).toHaveBeenCalledWith(options[1], true);
+    expect(currentlyhighlightedOption).toEqual(options[1]);
+    expect(options[1].scrollIntoView).not.toHaveBeenCalledWith({ block: 'nearest' });
   });
 });
 
@@ -177,7 +241,7 @@ describe('filterSelectOptions()', () => {
 });
 
 describe('getMatchingSelectOptionIndex()', () => {
-  it('should return correct matching index', () => {
+  it('should return correct matching option', () => {
     const options = generateOptions({ textContents: ['a', 'b', 'c'] });
     const getHighlightedSelectOptionIndexSpy = jest
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
@@ -185,13 +249,13 @@ describe('getMatchingSelectOptionIndex()', () => {
     const filterSelectOptionsSpy = jest
       .spyOn(keyboardBehaviorUtils, 'filterSelectOptions')
       .mockReturnValueOnce(options);
-    const matchingOptionIndex = getMatchingSelectOptionIndex(options, 'a');
+    const matchingOption = getMatchingSelectOptionIndex(options, 'a');
     expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
     expect(filterSelectOptionsSpy).toHaveBeenCalledWith(options, 'a');
-    expect(matchingOptionIndex).toBe(0);
+    expect(matchingOption).toBe(options[0]);
   });
 
-  it('should return correct matching index when same key pressed multiple times', () => {
+  it('should return correct matching option when same key pressed multiple times', () => {
     const options = generateOptions({ textContents: ['a', 'a', 'c'] });
     const getHighlightedSelectOptionIndexSpy = jest
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
@@ -201,58 +265,38 @@ describe('getMatchingSelectOptionIndex()', () => {
       .spyOn(keyboardBehaviorUtils, 'filterSelectOptions')
       .mockReturnValueOnce(options);
 
-    const matchingOptionIndex = getMatchingSelectOptionIndex(options, 'a');
+    const matchingOption = getMatchingSelectOptionIndex(options, 'a');
     expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
     expect(filterSelectOptionsSpy).toHaveBeenCalledTimes(1);
-    expect(matchingOptionIndex).toBe(0);
+    expect(matchingOption).toBe(options[0]);
 
-    const matchingOptionIndex2 = getMatchingSelectOptionIndex(options, 'aa');
+    const matchingOption2 = getMatchingSelectOptionIndex(options, 'aa');
     expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
     expect(filterSelectOptionsSpy).toHaveBeenCalledTimes(3);
-    expect(matchingOptionIndex2).toBe(1);
+    expect(matchingOption2).toBe(options[1]);
   });
 });
 
-describe('setMatchingSelectOptionHighlighted()', () => {
-  it('should call setNextSelectOptionHighlighted() when matching index found', () => {
-    const options = generateOptions();
-    const listElement = document.createElement('ul');
-    const getMatchingSelectOptionIndexSpy = jest
-      .spyOn(keyboardBehaviorUtils, 'getMatchingSelectOptionIndex')
-      .mockReturnValueOnce(2);
-    const setNextSelectOptionHighlightedSpy = jest.spyOn(keyboardBehaviorUtils, 'setNextSelectOptionHighlighted');
-    setMatchingSelectOptionHighlighted(listElement, options, 'a');
-    expect(getMatchingSelectOptionIndexSpy).toHaveBeenCalledWith(options, 'a');
-    expect(setNextSelectOptionHighlightedSpy).toHaveBeenCalledWith(listElement, options, 2);
-  });
-
-  it('should not call setNextSelectOptionHighlighted() when matching index not found', () => {
-    const options = generateOptions();
-    const listElement = document.createElement('ul');
-    const getMatchingSelectOptionIndexSpy = jest
-      .spyOn(keyboardBehaviorUtils, 'getMatchingSelectOptionIndex')
-      .mockReturnValueOnce(-1);
-    const setNextSelectOptionHighlightedSpy = jest.spyOn(keyboardBehaviorUtils, 'setNextSelectOptionHighlighted');
-    setMatchingSelectOptionHighlighted(listElement, options, 'a');
-    expect(getMatchingSelectOptionIndexSpy).toHaveBeenCalledWith(options, 'a');
-    expect(setNextSelectOptionHighlightedSpy).not.toHaveBeenCalled();
-  });
-});
 describe('setHighlightedSelectOption()', () => {
-  it('should set option highlighted=true and call forceUpdate', () => {
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
-    const option = { highlighted: false } as Option;
-    setHighlightedSelectOption(option, true);
-    expect(forceUpdateSpy).toHaveBeenCalledTimes(1);
-    expect(option.highlighted).toBe(true);
+  it('should set option highlighted=true and toggle className', () => {
+    const component = initOption();
+
+    setHighlightedSelectOption(component.host as Option, true);
+    expect(component.host.highlighted).toBe(true);
+    const option = component.host.shadowRoot.querySelector('.option');
+    expect(option.classList.contains('option')).toBe(true);
+    expect(option.classList.contains('option--highlighted')).toBe(true);
   });
 
-  it('should set option highlighted=false and call forceUpdate', () => {
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
-    const option = { highlighted: true } as Option;
-    setHighlightedSelectOption(option, false);
-    expect(forceUpdateSpy).toHaveBeenCalledTimes(1);
-    expect(option.highlighted).toBe(false);
+  it('should set option highlighted=false and toggle className', () => {
+    const component = initOption();
+    component.host.highlighted = true;
+
+    setHighlightedSelectOption(component.host as Option, false);
+    expect(component.host.highlighted).toBe(false);
+    const option = component.host.shadowRoot.querySelector('.option');
+    expect(option.classList.contains('option')).toBe(true);
+    expect(option.classList.contains('option--highlighted')).toBe(false);
   });
 });
 describe('getHighlightedSelectOptionIndex()', () => {

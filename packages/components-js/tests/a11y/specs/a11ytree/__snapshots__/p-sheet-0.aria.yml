@@ -1,0 +1,4 @@
+- dialog "Some Heading":
+  - button "Dismiss sheet"
+  - status
+  - text: Some Content

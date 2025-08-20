@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
 ":host {
   display: block;
   height: inherit !important;
@@ -23,6 +23,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
+  mask: linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -71,7 +72,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
@@ -88,7 +88,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
@@ -111,7 +110,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 2`] = `
 ":host {
   display: block;
   height: inherit !important;
@@ -134,6 +133,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
+  mask: linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -182,7 +182,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
@@ -199,7 +198,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
@@ -207,7 +205,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 .action-button {
   --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -223,7 +220,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top, hasScrollbar: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
 ":host {
   display: block;
   height: inherit !important;
@@ -246,433 +243,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
-}
-.scroll-wrapper {
-  position: relative;
-  display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
-}
-.scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.trigger {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: inherit;
-}
-.action-prev .action-button {
-  margin-left: 8px;
-}
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: inherit;
-}
-.action-next .action-button {
-  margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
-@media(hover:hover) {
-  .action-prev .action-button {
-    visibility: inherit;
-  }
-  .action-next .action-button {
-    visibility: inherit;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: dark 1`] = `
-":host {
-  display: block;
-  height: inherit !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-}
-.scroll-wrapper {
-  position: relative;
-  display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
-}
-.scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.trigger {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
-  visibility: hidden;
-}
-.action-prev .action-button {
-  margin-left: 8px;
-}
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
-  visibility: inherit;
-}
-.action-next .action-button {
-  margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
-@media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
-  }
-  .action-next .action-button {
-    visibility: inherit;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
-":host {
-  display: block;
-  height: inherit !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-}
-.scroll-wrapper {
-  position: relative;
-  display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
-}
-.scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.trigger {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: inherit;
-}
-.action-prev .action-button {
-  margin-left: 8px;
-}
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: hidden;
-}
-.action-next .action-button {
-  margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
-@media(hover:hover) {
-  .action-prev .action-button {
-    visibility: inherit;
-  }
-  .action-next .action-button {
-    visibility: hidden;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColor: background-base, isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
-":host {
-  display: block;
-  height: inherit !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
-}
-.scroll-wrapper {
-  position: relative;
-  display: inline-flex;
-  min-height: 28px;
-  min-width: 100%;
-  vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
-}
-.scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.trigger {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  visibility: hidden;
-}
-.trigger:first-of-type {
-  left: 0;
-}
-.trigger:last-of-type {
-  right: 0;
-}
-.action-prev {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  left: -1px;
-  justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: hidden;
-}
-.action-prev .action-button {
-  margin-left: 8px;
-}
-.action-next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  direction: ltr;
-  width: calc(calc(6px + 2.125ex) + 24px);
-  padding: 4px 0;
-  display: flex;
-  align-items: flex-start;
-  right: -1px;
-  justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
-  visibility: hidden;
-}
-.action-next .action-button {
-  margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-.icon:dir(rtl) {
-  transform: scaleX(-1);
-}
-@media(hover:hover) {
-  .action-prev .action-button {
-    visibility: hidden;
-  }
-  .action-next .action-button {
-    visibility: hidden;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
-":host {
-  display: block;
-  height: inherit !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  position: relative;
-  display: grid;
-  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
-  height: inherit;
-}
-.scroll-area {
-  grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
-  overflow: auto hidden;
+  mask: linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -721,7 +292,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
@@ -738,7 +308,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
@@ -746,6 +315,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 .action-button {
   --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -761,7 +331,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 2`] = `
 ":host {
   display: block;
   height: inherit !important;
@@ -784,6 +354,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   grid-area: 1 / 1 / 1 / -1;
   padding: 4px;
   overflow: auto hidden;
+  mask: linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -832,7 +403,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
@@ -849,7 +419,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
@@ -868,6 +437,428 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   }
   .action-next .action-button {
     visibility: inherit;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top, hasScrollbar: true and theme: light 1`] = `
+":host {
+  display: block;
+  height: inherit !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 4px;
+  overflow: auto hidden;
+  mask: linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-flex;
+  min-height: 28px;
+  min-width: 100%;
+  vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.trigger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  left: -1px;
+  justify-content: flex-start;
+  visibility: inherit;
+}
+.action-prev .action-button {
+  margin-left: 8px;
+}
+.action-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  right: -1px;
+  justify-content: flex-end;
+  visibility: inherit;
+}
+.action-next .action-button {
+  margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: inherit;
+  }
+  .action-next .action-button {
+    visibility: inherit;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: dark 1`] = `
+":host {
+  display: block;
+  height: inherit !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 4px;
+  overflow: auto hidden;
+  mask: linear-gradient(90deg,#000 calc(100% - 40px), #0000 calc(100% - 8px)) alpha;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-flex;
+  min-height: 28px;
+  min-width: 100%;
+  vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.trigger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  left: -1px;
+  justify-content: flex-start;
+  visibility: hidden;
+}
+.action-prev .action-button {
+  margin-left: 8px;
+}
+.action-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  right: -1px;
+  justify-content: flex-end;
+  visibility: inherit;
+}
+.action-next .action-button {
+  margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: inherit;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
+":host {
+  display: block;
+  height: inherit !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 4px;
+  overflow: auto hidden;
+  mask: linear-gradient(90deg,#0000 8px,#000 40px) alpha;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-flex;
+  min-height: 28px;
+  min-width: 100%;
+  vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.trigger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  left: -1px;
+  justify-content: flex-start;
+  visibility: inherit;
+}
+.action-prev .action-button {
+  margin-left: 8px;
+}
+.action-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  right: -1px;
+  justify-content: flex-end;
+  visibility: hidden;
+}
+.action-next .action-button {
+  margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: inherit;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
+":host {
+  display: block;
+  height: inherit !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
+  margin: 0 -4px;
+  height: inherit;
+}
+.scroll-area {
+  grid-area: 1 / 1 / 1 / -1;
+  padding: 4px;
+  overflow: auto hidden;
+}
+.scroll-wrapper {
+  position: relative;
+  display: inline-flex;
+  min-height: 28px;
+  min-width: 100%;
+  vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.trigger {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  visibility: hidden;
+}
+.trigger:first-of-type {
+  left: 0;
+}
+.trigger:last-of-type {
+  right: 0;
+}
+.action-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  left: -1px;
+  justify-content: flex-start;
+  visibility: hidden;
+}
+.action-prev .action-button {
+  margin-left: 8px;
+}
+.action-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  direction: ltr;
+  width: calc(calc(6px + 2.125ex) + 24px);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  right: -1px;
+  justify-content: flex-end;
+  visibility: hidden;
+}
+.action-next .action-button {
+  margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+.icon:dir(rtl) {
+  transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
   }
 }
 "

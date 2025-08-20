@@ -1,25 +1,31 @@
 <div class="root">
-  <label class="label" id="label" for="filter"> </label>
-  <div class="wrapper">
-    <input
-      id="filter"
-      role="combobox"
-      autocomplete="off"
-      aria-labelledby="label"
-      aria-describedby="description message"
-      aria-haspopup="listbox"
-      aria-expanded="false"
-      aria-controls="list"
-      aria-autocomplete="list"
-    />
+  <label class="label" id="label" for="button"> </label>
+  <button
+    type="button"
+    role="combobox"
+    id="button"
+    aria-labelledby="label"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-required="false"
+    aria-controls="list"
+  >
+    <span> </span>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+  </button>
+  <div
+    id="list"
+    popover="manual"
+    tabindex="-1"
+    role="dialog"
+    aria-label=""
+    aria-hidden="true"
+  >
+    <p-input-search class="filter hydrated" name="filter"> </p-input-search>
     <div
-      id="list"
-      popover="manual"
-      tabindex="-1"
+      class="options"
       role="listbox"
       aria-label=""
-      aria-hidden="true"
       aria-multiselectable="true"
     >
       <slot> </slot>

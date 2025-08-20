@@ -8,6 +8,7 @@ const cdnPathPackageMap = {
   ...(!isComponentsOnly && {
     crest: '@porsche-design-system/crest',
     fallbacks: '@porsche-design-system/fallbacks',
+    flags: '@porsche-design-system/flags',
     fonts: '@porsche-design-system/fonts',
     icons: '@porsche-design-system/icons',
     marque: '@porsche-design-system/marque',

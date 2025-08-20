@@ -1,5 +1,5 @@
 import { autoUpdate } from '@floating-ui/dom';
-import { Component, Element, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { Theme } from '../../../types';
 import {
   attachComponentCss,
@@ -17,6 +17,7 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
+import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import type {
   DropdownDirectionInternal,
   SelectWrapperDropdownDirection,
@@ -25,7 +26,6 @@ import type {
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 import {
   type DropdownInteractionType,
-  type OptionMap,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
@@ -35,6 +35,7 @@ import {
   getSelectedOptionMap,
   handleScroll,
   hasFilterResults,
+  type OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,
@@ -179,6 +180,7 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputOrButtonElement = el)}
             />,
+            /* biome-ignore lint/a11y/noStaticElementInteractions: ok */
             <span
               part={part}
               key="span"
@@ -222,10 +224,7 @@ export class SelectWrapperDropdown {
             ref={(el) => (this.popoverElement = el)}
           >
             {this.filter && !hasFilterResults(this.optionMaps) ? (
-              <div class="option" aria-live="polite" role="option">
-                <span aria-hidden="true">---</span>
-                <span class="option__sr">No results found</span>
-              </div>
+              <NoResultsOption />
             ) : (
               this.optionMaps.map((option, index) => {
                 const {

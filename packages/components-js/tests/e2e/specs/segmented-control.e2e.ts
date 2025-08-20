@@ -143,7 +143,12 @@ test.describe('width calculation', () => {
     await setProperty(secondItemHost, 'icon', undefined);
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
+    await expect
+      .poll(async () => {
+        const el = getFirstItemHost(page);
+        return await el.evaluate((el: HTMLElement) => el.offsetWidth);
+      })
+      .toBeLessThan(initialItemWidth);
   });
 });
 

@@ -1,0 +1,37 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Flag: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Flag component',
+};
+
+# Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support','Tests']} />
+
+## Accessibility support
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                                         |
+| ------------ | ----------------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
+
+## Tests
+
+### Automated
+
+| Technology                                                         | Support |
+| ------------------------------------------------------------------ | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)                                    | ✅      |
+| Text-Zoom (200%)                                                   | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |

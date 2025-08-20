@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { breakpoint } from '@porsche-design-system/styles';
 import { kebabCase, pascalCase } from 'change-case';
+import * as fs from 'fs';
 import { globbySync } from 'globby';
+import * as path from 'path';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
@@ -67,6 +67,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
+        .replace(/\s+onWheel={.*?}/g, '') // onWheel props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
@@ -89,7 +90,8 @@ const generateDSRComponents = (): void => {
                 group.endsWith('loading-message') ||
                 group.endsWith('input-base') ||
                 group.endsWith('required') ||
-                group.endsWith('label')
+                group.endsWith('label') ||
+                group.endsWith('no-results-option')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
@@ -222,11 +224,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(InputBase: FC<InputBaseProps> = \({)/, '$1 children, ')
             .replace(/(host={)host(})/g, '$1null$2')
             .replace(/onBlur=\{onBlur}/g, '')
+            .replace(/value={/, 'defaultValue={')
             .replace(/maxlength/, 'maxLength')
             .replace(/minlength/, 'minLength')
-            .replace(/readonly/, 'readOnly')
+            .replace(/spellcheck/, 'spellCheck')
+            .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
@@ -420,13 +424,17 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent
           .replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2')
-          .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme');
+          .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme')
+          .replace(/(deprecationMap\[this\.props\.gradientColor)/, '$1 as ScrollerGradientColor');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
-        newFileContent = newFileContent.replace(
-          /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-        );
+        newFileContent = newFileContent
+          .replace(
+            /getPopoverCss\(.+?\)/,
+            `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+          )
+          .replace(/this\.props\.(hasSlottedButton)/g, '$1')
+          .replace(/hasSlottedButton =/g, 'const $&');
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over
@@ -546,19 +554,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          // remove aria functions
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([\s\S]+?\)}\s*/, '')
-          .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
-          // replace wrapper className
-          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
-          // remove color prop
-          .replace(/\s*color=\{this\.props\.disabled \? 'state-disabled' : 'primary'}\s*/, '')
-          // remove placeholder
-          .replace(/\s*placeholder=\{.+/, '')
-          // replace toggle icon className
-          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
+          .replace(
+            /getSelectedOptionValues\(this\.props\.multiSelectOptions\);/,
+            'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
+          )
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false')
+          .replace(
+            /getSelectedOptionsString\(this\.props\.multiSelectOptions\)/,
+            'getSelectedOptionsString(otherChildren)'
+          )
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
@@ -582,12 +586,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         );
       } else if (tagName === 'p-select') {
         newFileContent = newFileContent
-          // replace wrapper className
-          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
-          // replace toggle icon className
-          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
-          .replace(/tabindex="-1"/, '')
-          // replace getSelectedOptionString
           .replace(
             /getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)/g,
             'getSelectedOptionString(otherChildren)'
@@ -723,6 +721,7 @@ $&`
       } else if (tagName === 'p-textarea') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
+          .replace(/value={/, 'defaultValue={')
           .replace(/maxlength/, 'maxLength')
           .replace(/minlength/, 'minLength')
           .replace(/readonly/, 'readOnly')
@@ -755,7 +754,16 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-input-number') {
+      } else if (
+        tagName === 'p-input-number' ||
+        tagName === 'p-input-date' ||
+        tagName === 'p-input-time' ||
+        tagName === 'p-input-search' ||
+        tagName === 'p-input-text' ||
+        tagName === 'p-input-email' ||
+        tagName === 'p-input-tel' ||
+        tagName === 'p-input-url'
+      ) {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
           .replace(

@@ -14,13 +14,121 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.29.0] - 2025-08-20
+
+## [3.29.0-rc.5] - 2025-08-19
+
+### Changed
+
+- `Checkbox`, `Multi Select`, `Select`, `Pin Code`, `Textarea`: removed slotted anchor styles
+  ([#3981](https://github.com/porsche-design-system/porsche-design-system/pull/3981))
+
+### Fixed
+
+- `Popover`: support for custom slotted button & improvements
+  ([#3976](https://github.com/porsche-design-system/porsche-design-system/pull/3976))
+
+## [3.29.0-rc.4] - 2025-08-15
+
+### Added
+
+- `Flag`: ([#3964](https://github.com/porsche-design-system/porsche-design-system/pull/3964))
+- `Input Url`: ([#3949](https://github.com/porsche-design-system/porsche-design-system/pull/3949))
+- `Multi Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
+- `Fieldset`: ARIA role `radiogroup` is now supported via `aria` prop. Internal ARIA attributes for `aria-invalid` and
+  `aria-required`. ([#3957](https://github.com/porsche-design-system/porsche-design-system/pull/3957))
+- `Input Date`, `Input Time`: ([#3954](https://github.com/porsche-design-system/porsche-design-system/pull/3954))
+
+### Changed
+
+- `Multi Select`, `Select`: `background` is now transparent to be aligned with other form fields
+  ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
+- `Multi Select`, `Select`: improved a11y and highlight of options
+  ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
+- `Multi Select`: aligned filter and keyboard behavior with `Select`
+  ([#3943](https://github.com/porsche-design-system/porsche-design-system/pull/3943))
+- `Scroller`: Deprecation of prop `gradientColor` because gradient is now managed internally and adapts to all themes
+  and background colors automatically.
+  ([#3962](https://github.com/porsche-design-system/porsche-design-system/pull/3962))
+
+## [3.29.0-rc.3] - 2025-07-29
+
+### Fixed
+
+- Partials: `topLevelAwait` issue in ESM build
+  ([#3947](https://github.com/porsche-design-system/porsche-design-system/pull/3947))
+
+## [3.29.0-rc.2] - 2025-07-28
+
+### Changed
+
+- Partials: provide CJS & ESM build ([#3945](https://github.com/porsche-design-system/porsche-design-system/pull/3945))
+
+## [3.29.0-rc.1] - 2025-07-15
+
+### Added
+
+- `Popover`: support for custom slotted button
+  ([#3861](https://github.com/porsche-design-system/porsche-design-system/pull/3861))
+- `Icon`: `ai-spark` and `ai-spark-filled`
+  ([#3916](https://github.com/porsche-design-system/porsche-design-system/pull/3916))
+- `Input Text`: `counter` prop functions independently of `max-length`, allowing character count display even when no
+  limit is set ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
+- `Input Email`: ([#3927](https://github.com/porsche-design-system/porsche-design-system/pull/3927))
+- `Input Tel`: ([#3928](https://github.com/porsche-design-system/porsche-design-system/pull/3928))
+
+### Changed
+
+- `Input Search`: `indicator` prop now defaults to `false`
+  ([#3917](https://github.com/porsche-design-system/porsche-design-system/pull/3917))
+- Angular: updated peer dependency to `>=20.0.0 <21.0.0`
+- **Breaking Change** `Textarea`:
+  - Renamed the `showCounter` prop to `counter`.
+  - Changed default behavior: the `counter` is now disabled by default (`false` instead of `true`).
+
+  ```diff
+  - <p-textarea name="some-name" showCounter="false"></p-textarea>
+  + <p-textarea name="some-name"></p-textarea>
+  ```
+
+  To enable the counter explicitly:
+
+  ```diff
+  - <p-textarea name="some-name"></p-textarea>
+  + <p-textarea name="some-name" counter="true"></p-textarea>
+  ```
+
+  ⚠️ This is a breaking change — you must update all instances using `showCounter`.
+  ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
+
+### Fixed
+
+- `Carousel`: component does not work correctly if an invalid `lang` value is provided
+  ([#3924](https://github.com/porsche-design-system/porsche-design-system/pull/3924))
+- Vue: fixed initial render for `dark` and `auto` themes in `PorscheDesignSystemProvider`
+  ([#3898](https://github.com/porsche-design-system/porsche-design-system/pull/3898))
+
+## [3.29.0-rc.0] - 2025-06-27
+
+### Added
+
+- `Input Search`: ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
+- `Input Number`, `Input Password`: added loading state
+  ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
+- `Input Text`: ([#3897](https://github.com/porsche-design-system/porsche-design-system/pull/3897))
+- `Select`: `filter` prop to enable an input in the dropdown to filter options
+  ([#3893](https://github.com/porsche-design-system/porsche-design-system/pull/3893))
+- `Flyout`: expose `--ref-p-flyout-pt` and `--ref-p-flyout-px` read only CSS variable
+  ([#3902](https://github.com/porsche-design-system/porsche-design-system/pull/3902))
+
 ## [3.28.0] - 2025-06-02
 
-#### Added
+### Added
 
 - `Input Number`: ([#3855](https://github.com/porsche-design-system/porsche-design-system/pull/3855))
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper`: update of scroll position if dropdown is navigated with keyboard
   ([#3858](https://github.com/porsche-design-system/porsche-design-system/pull/3858))

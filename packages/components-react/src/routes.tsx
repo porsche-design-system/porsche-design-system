@@ -222,6 +222,76 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputNumberControlledExamplePage />,
   },
   {
+    name: 'Input Date Example',
+    path: '/input-date-example',
+    element: <fromExamples.InputDateExamplePage />,
+  },
+  {
+    name: 'Input Date Example Controlled',
+    path: '/input-date-example-controlled',
+    element: <fromExamples.InputDateControlledExamplePage />,
+  },
+  {
+    name: 'Input Time Example',
+    path: '/input-time-example',
+    element: <fromExamples.InputTimeExamplePage />,
+  },
+  {
+    name: 'Input Time Example Controlled',
+    path: '/input-time-example-controlled',
+    element: <fromExamples.InputTimeControlledExamplePage />,
+  },
+  {
+    name: 'Input Text Example',
+    path: '/input-text-example',
+    element: <fromExamples.InputTextExamplePage />,
+  },
+  {
+    name: 'Input Text Example Controlled',
+    path: '/input-text-example-controlled',
+    element: <fromExamples.InputTextControlledExamplePage />,
+  },
+  {
+    name: 'Input Email Example',
+    path: '/input-email-example',
+    element: <fromExamples.InputEmailExamplePage />,
+  },
+  {
+    name: 'Input Email Example Controlled',
+    path: '/input-email-example-controlled',
+    element: <fromExamples.InputEmailControlledExamplePage />,
+  },
+  {
+    name: 'Input Tel Example',
+    path: '/input-tel-example',
+    element: <fromExamples.InputTelExamplePage />,
+  },
+  {
+    name: 'Input Tel Example Controlled',
+    path: '/input-tel-example-controlled',
+    element: <fromExamples.InputTelControlledExamplePage />,
+  },
+  {
+    name: 'Input Url Example',
+    path: '/input-url-example',
+    element: <fromExamples.InputUrlExamplePage />,
+  },
+  {
+    name: 'Input Url Example Controlled',
+    path: '/input-url-example-controlled',
+    element: <fromExamples.InputUrlControlledExamplePage />,
+  },
+  {
+    name: 'Input Search Example',
+    path: '/input-search-example',
+    element: <fromExamples.InputSearchExamplePage />,
+  },
+  {
+    name: 'Input Search Example Controlled',
+    path: '/input-search-example-controlled',
+    element: <fromExamples.InputSearchControlledExamplePage />,
+  },
+  {
     name: 'Link Tile Example Hyphens',
     path: '/link-tile-example-hyphens',
     element: <fromExamples.LinkTileExampleHyphensPage />,

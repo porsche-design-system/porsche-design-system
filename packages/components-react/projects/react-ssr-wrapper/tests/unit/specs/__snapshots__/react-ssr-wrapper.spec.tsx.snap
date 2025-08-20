@@ -2417,6 +2417,8 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2424,58 +2426,47 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
-  input {
-    grid-area: 1/1/1/-1;
-    flex: 1;
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    margin: 0;
-    padding: 8px 16px;
-    padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
-    box-sizing: border-box;
-    outline: 0;
-    -webkit-appearance: none;
-    appearance: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    text-overflow: ellipsis;
+    cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    color: #FBFCFF;
-    background: #0E0E12;
-    border: 2px solid #88898C;
+    color: var(--p-multi-select-text-color, #FBFCFF);
+    background-color: var(--p-multi-select-background-color, transparent);
+    border: 2px solid var(--p-multi-select-border-color, #88898C);
     border-radius: 4px;
   }
-  input:disabled {
-    cursor: not-allowed;
+  button::-moz-focus-inner {
+    border: 0;
   }
-  input:focus {
-    border-color: #FBFCFF;
+  button:focus {
+    outline: 0;
   }
-  input:not(:focus)::placeholder {
-    color: #FBFCFF;
-    opacity: 1;
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
   }
-  input:not(:focus)::-webkit-input-placeholder {
-    color: #FBFCFF;
-    opacity: 1;
-  }
-  input:not(:focus)::-moz-placeholder {
-    color: #FBFCFF;
-    opacity: 1;
-  }
-  input:not(:focus):-moz-placeholder {
-    color: #FBFCFF;
-    opacity: 1;
+  button span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   [popover] {
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2491,54 +2482,68 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     display: none;
   }
 @media(hover:hover) {
-    input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
-      border-color: #FBFCFF;
+    button:hover, label:hover~button {
+      border-color: var(--p-multi-select-border-color, #FBFCFF);
     }
 }
 
   .root {
     display: grid;
-    gap: 4px;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
-  .wrapper {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    background: #212225;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .icon {
-    grid-area: 1/3;
-    place-self: center;
-    padding: 4px;
+    margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
     transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .icon--rotate {
-    transform: rotate3d(0,0,1,180deg);
-  }
-  .button {
-    grid-area: 1/2;
-    place-self: center;
-    padding: 4px;
+    filter: var(--p-multi-select-icon-filter);
   }
   .no-results {
-    padding: 8px 12px;
-    box-sizing: border-box;
-    color: #AFB0B3;
+    display: flex;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
     cursor: not-allowed;
+    color: #7E7F82;
   }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -2597,17 +2602,20 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     >
       <label
         class="label"
-        for="filter"
+        for="button"
         id="label"
       />
-      <div
-        class="wrapper"
+      <button
+        aria-controls="list"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="label"
+        aria-required="false"
+        id="button"
+        role="combobox"
+        type="button"
       >
-        <input
-          autocomplete="off"
-          id="filter"
-          role="combobox"
-        />
+        <span />
         <p-icon
           aria-hidden="true"
           class="icon"
@@ -2655,19 +2663,408 @@ img {
             />
           </template>
         </p-icon>
+      </button>
+      <div
+        aria-hidden="true"
+        aria-label=""
+        id="list"
+        popover="manual"
+        role="dialog"
+        tabindex="-1"
+      >
+        <p-input-search
+          class="filter"
+          data-ssr=""
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
+  color: #FBFCFF;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #88898C;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #FBFCFF;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #FBFCFF;
+  }
+  .label:hover~.wrapper {
+    border-color: #FBFCFF;
+  }
+}
+
+            </style>
+            <div
+              class="root"
+            >
+              <label
+                class="label"
+                for="input-search"
+                id="label"
+              >
+                Filter options
+              </label>
+              <div
+                class="wrapper"
+              >
+                <slot
+                  name="start"
+                />
+                <p-icon
+                  aria-hidden="true"
+                  data-ssr=""
+                >
+                  <template
+                    shadowroot="open"
+                    shadowrootmode="open"
+                  >
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(52%) sepia(6%) saturate(135%) hue-rotate(187deg) brightness(94%) contrast(89%));
+  -webkit-animation: rerender-dark-state-disabled 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-dark-state-disabled {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                    </style>
+                    <img
+                      alt=""
+                      height="24"
+                      loading="lazy"
+                      src="http://localhost:3001/icons/search.3f0f1ce.svg"
+                      width="24"
+                    />
+                  </template>
+                </p-icon>
+                <input
+                  aria-describedby="description message"
+                  autocomplete="off"
+                  id="input-search"
+                  name="filter"
+                  placeholder=""
+                  type="search"
+                  value=""
+                />
+                <p-button-pure
+                  class="button"
+                  data-ssr=""
+                  hidden=""
+                  tabindex="-1"
+                >
+                  <template
+                    shadowroot="open"
+                    shadowrootdelegatesfocus="true"
+                    shadowrootmode="open"
+                  >
+                    <style>
+                      :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #FBFCFF;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+                    </style>
+                    <button
+                      class="root"
+                      type="button"
+                    >
+                      <p-icon
+                        aria-hidden="true"
+                        class="icon"
+                        data-ssr=""
+                      >
+                        <template
+                          shadowroot="open"
+                          shadowrootmode="open"
+                        >
+                          <style>
+                            :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
+  -webkit-animation: rerender-dark-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-dark-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                          </style>
+                          <img
+                            alt=""
+                            height="24"
+                            loading="lazy"
+                            src="http://localhost:3001/icons/close.eec3c5d.svg"
+                            width="24"
+                          />
+                        </template>
+                      </p-icon>
+                      <span
+                        class="label"
+                      >
+                        <slot />
+                      </span>
+                    </button>
+                    <span
+                      class="loading"
+                      id="loading"
+                      role="status"
+                    />
+                  </template>
+                  Clear field
+                </p-button-pure>
+                <slot
+                  name="end"
+                />
+              </div>
+              <span
+                class="message"
+                id="message"
+                role="alert"
+              />
+              <span
+                class="loading"
+                id="loading"
+                role="status"
+              />
+            </div>
+          </template>
+        </p-input-search>
         <div
-          id="list"
-          popover="manual"
-          tabindex="-1"
+          aria-label=""
+          aria-multiselectable="true"
+          class="options"
+          role="listbox"
         >
           <div
+            aria-live="polite"
             class="no-results"
             role="option"
           >
             <span
               aria-hidden="true"
             >
-              ---
+              –
             </span>
             <span
               class="sr-only"
@@ -2695,20 +3092,21 @@ img {
       <style>
         :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2720,23 +3118,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -2750,6 +3131,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -2777,22 +3165,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
         class="option"
       >
         <span
-          aria-hidden="true"
-          class="checkbox"
-        />
+          class="checkbox-wrapper"
+        >
+          <span
+            aria-hidden="true"
+            class="checkbox"
+          />
+        </span>
         <slot
           slot="label"
         />
@@ -2810,20 +3195,21 @@ slot {
       <style>
         :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2835,23 +3221,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -2865,6 +3234,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -2892,22 +3268,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
         class="option"
       >
         <span
-          aria-hidden="true"
-          class="checkbox"
-        />
+          class="checkbox-wrapper"
+        >
+          <span
+            aria-hidden="true"
+            class="checkbox"
+          />
+        </span>
         <slot
           slot="label"
         />
@@ -2925,20 +3298,21 @@ slot {
       <style>
         :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -2950,23 +3324,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -2980,6 +3337,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -3007,22 +3371,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
         class="option"
       >
         <span
-          aria-hidden="true"
-          class="checkbox"
-        />
+          class="checkbox-wrapper"
+        >
+          <span
+            aria-hidden="true"
+            class="checkbox"
+          />
+        </span>
         <slot
           slot="label"
         />
@@ -3040,20 +3401,21 @@ slot {
       <style>
         :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3065,23 +3427,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -3095,6 +3440,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -3122,22 +3474,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
         class="option"
       >
         <span
-          aria-hidden="true"
-          class="checkbox"
-        />
+          class="checkbox-wrapper"
+        >
+          <span
+            aria-hidden="true"
+            class="checkbox"
+          />
+        </span>
         <slot
           slot="label"
         />
@@ -3155,20 +3504,21 @@ slot {
       <style>
         :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3180,23 +3530,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -3210,6 +3543,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -3237,22 +3577,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
         class="option"
       >
         <span
-          aria-hidden="true"
-          class="checkbox"
-        />
+          class="checkbox-wrapper"
+        >
+          <span
+            aria-hidden="true"
+            class="checkbox"
+          />
+        </span>
         <slot
           slot="label"
         />
@@ -3270,20 +3607,21 @@ slot {
       <style>
         :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3295,23 +3633,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -3325,6 +3646,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -3352,22 +3680,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
         class="option"
       >
         <span
-          aria-hidden="true"
-          class="checkbox"
-        />
+          class="checkbox-wrapper"
+        >
+          <span
+            aria-hidden="true"
+            class="checkbox"
+          />
+        </span>
         <slot
           slot="label"
         />
@@ -4485,22 +4810,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=status] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -4513,6 +4822,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--hidden {
     display: none;
+  }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
   }
   .option--indent {
     padding-left: 28px;
@@ -4532,6 +4844,49 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .optgroup--disabled {
     color: #949598;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4936,7 +5291,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -4953,7 +5307,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -5753,7 +6106,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -5770,7 +6122,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -6406,7 +6757,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -6423,7 +6773,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -9920,6 +10269,8 @@ svg {
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
+  --ref-p-flyout-pt: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --ref-p-flyout-px: clamp(32px, 2.75vw + 23px, 76px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9986,10 +10337,9 @@ dialog::backdrop {
 }
 .flyout {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -12298,6 +12648,45 @@ fieldset {
 </p-fieldset-wrapper>
 `;
 
+exports[`should render dsr component for PFlag 1`] = `
+<p-flag
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 1px;
+  box-sizing: border-box;
+  pointer-events: none;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+    </style>
+    <img
+      alt=""
+      height="24"
+      loading="lazy"
+      src="http://localhost:3001/flags/de.b575e11.svg"
+      width="24"
+    />
+  </template>
+</p-flag>
+`;
+
 exports[`should render dsr component for PFlex 1`] = `
 <p-flex
   data-ssr=""
@@ -12369,6 +12758,8 @@ exports[`should render dsr component for PFlyout 1`] = `
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
+  --ref-p-flyout-pt: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --ref-p-flyout-px: clamp(32px, 2.75vw + 23px, 76px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12435,10 +12826,9 @@ dialog::backdrop {
 }
 .flyout {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -13135,6 +13525,330 @@ img {
 </p-inline-notification>
 `;
 
+exports[`should render dsr component for PInputDate 1`] = `
+<p-input-date
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-date"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-date"
+          step="1"
+          type="date"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-date>
+`;
+
+exports[`should render dsr component for PInputEmail 1`] = `
+<p-input-email
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-email"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-email"
+          placeholder=""
+          type="email"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-email>
+`;
+
 exports[`should render dsr component for PInputNumber 1`] = `
 <p-input-number
   data-ssr=""
@@ -13184,11 +13898,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  cursor: text;
-  border-color: #D8D8DB;
-  background: #D8D8DB;
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -13232,6 +13943,25 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
     </style>
     <div
       class="root"
@@ -13249,10 +13979,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
         />
         <input
           aria-describedby="description message"
-          autocomplete=""
           id="input-number"
           placeholder=""
-          readonly=""
           step="1"
           type="number"
           value=""
@@ -13265,6 +13993,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
         class="message"
         id="message"
         role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
       />
     </div>
   </template>
@@ -13319,11 +14052,8 @@ input[type="text"] {
   align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  cursor: text;
-  border-color: #D8D8DB;
-  background: #D8D8DB;
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -13367,6 +14097,25 @@ input[type="text"] {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
     </style>
     <div
       class="root"
@@ -13384,10 +14133,8 @@ input[type="text"] {
         />
         <input
           aria-describedby="description message"
-          autocomplete=""
           id="input-password"
           placeholder=""
-          readonly=""
           type="password"
           value=""
         />
@@ -13400,10 +14147,823 @@ input[type="text"] {
         id="message"
         role="alert"
       />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
     </div>
   </template>
   Some child
 </p-input-password>
+`;
+
+exports[`should render dsr component for PInputSearch 1`] = `
+<p-input-search
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-search"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-search"
+          placeholder=""
+          type="search"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-search>
+`;
+
+exports[`should render dsr component for PInputTel 1`] = `
+<p-input-tel
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-tel"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-tel"
+          placeholder=""
+          type="tel"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-tel>
+`;
+
+exports[`should render dsr component for PInputText 1`] = `
+<p-input-text
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-text"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-text"
+          placeholder=""
+          type="text"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-text>
+`;
+
+exports[`should render dsr component for PInputTime 1`] = `
+<p-input-time
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-time"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-time"
+          step="60"
+          type="time"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-time>
+`;
+
+exports[`should render dsr component for PInputUrl 1`] = `
+<p-input-url
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-url"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-url"
+          placeholder=""
+          type="url"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-url>
 `;
 
 exports[`should render dsr component for PLink 1`] = `
@@ -14983,10 +16543,9 @@ dialog::backdrop {
 }
 .modal {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -15270,6 +16829,8 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -15277,58 +16838,47 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
-  input {
-    grid-area: 1/1/1/-1;
-    flex: 1;
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    margin: 0;
-    padding: 8px 16px;
-    padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
-    box-sizing: border-box;
-    outline: 0;
-    -webkit-appearance: none;
-    appearance: none;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    text-overflow: ellipsis;
+    cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    color: #010205;
-    background: #FFF;
-    border: 2px solid #6B6D70;
+    color: var(--p-multi-select-text-color, #010205);
+    background-color: var(--p-multi-select-background-color, transparent);
+    border: 2px solid var(--p-multi-select-border-color, #6B6D70);
     border-radius: 4px;
   }
-  input:disabled {
-    cursor: not-allowed;
+  button::-moz-focus-inner {
+    border: 0;
   }
-  input:focus {
-    border-color: #010205;
+  button:focus {
+    outline: 0;
   }
-  input:not(:focus)::placeholder {
-    color: #010205;
-    opacity: 1;
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
   }
-  input:not(:focus)::-webkit-input-placeholder {
-    color: #010205;
-    opacity: 1;
-  }
-  input:not(:focus)::-moz-placeholder {
-    color: #010205;
-    opacity: 1;
-  }
-  input:not(:focus):-moz-placeholder {
-    color: #010205;
-    opacity: 1;
+  button span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   [popover] {
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -15344,54 +16894,68 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     display: none;
   }
 @media(hover:hover) {
-    input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
-      border-color: #010205;
+    button:hover, label:hover~button {
+      border-color: var(--p-multi-select-border-color, #010205);
     }
 }
 
   .root {
     display: grid;
-    gap: 4px;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
-  .wrapper {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .icon {
-    grid-area: 1/3;
-    place-self: center;
-    padding: 4px;
+    margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
     transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .icon--rotate {
-    transform: rotate3d(0,0,1,180deg);
-  }
-  .button {
-    grid-area: 1/2;
-    place-self: center;
-    padding: 4px;
+    filter: var(--p-multi-select-icon-filter);
   }
   .no-results {
-    padding: 8px 12px;
-    box-sizing: border-box;
-    color: #535457;
+    display: flex;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
     cursor: not-allowed;
+    color: #949598;
   }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -15450,17 +17014,20 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     >
       <label
         class="label"
-        for="filter"
+        for="button"
         id="label"
       />
-      <div
-        class="wrapper"
+      <button
+        aria-controls="list"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-labelledby="label"
+        aria-required="false"
+        id="button"
+        role="combobox"
+        type="button"
       >
-        <input
-          autocomplete="off"
-          id="filter"
-          role="combobox"
-        />
+        <span />
         <p-icon
           aria-hidden="true"
           class="icon"
@@ -15508,19 +17075,408 @@ img {
             />
           </template>
         </p-icon>
+      </button>
+      <div
+        aria-hidden="true"
+        aria-label=""
+        id="list"
+        popover="manual"
+        role="dialog"
+        tabindex="-1"
+      >
+        <p-input-search
+          class="filter"
+          data-ssr=""
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+            </style>
+            <div
+              class="root"
+            >
+              <label
+                class="label"
+                for="input-search"
+                id="label"
+              >
+                Filter options
+              </label>
+              <div
+                class="wrapper"
+              >
+                <slot
+                  name="start"
+                />
+                <p-icon
+                  aria-hidden="true"
+                  data-ssr=""
+                >
+                  <template
+                    shadowroot="open"
+                    shadowrootmode="open"
+                  >
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));
+  -webkit-animation: rerender-light-state-disabled 1ms;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+@keyframes rerender-light-state-disabled {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                    </style>
+                    <img
+                      alt=""
+                      height="24"
+                      loading="lazy"
+                      src="http://localhost:3001/icons/search.3f0f1ce.svg"
+                      width="24"
+                    />
+                  </template>
+                </p-icon>
+                <input
+                  aria-describedby="description message"
+                  autocomplete="off"
+                  id="input-search"
+                  name="filter"
+                  placeholder=""
+                  type="search"
+                  value=""
+                />
+                <p-button-pure
+                  class="button"
+                  data-ssr=""
+                  hidden=""
+                  tabindex="-1"
+                >
+                  <template
+                    shadowroot="open"
+                    shadowrootdelegatesfocus="true"
+                    shadowrootmode="open"
+                  >
+                    <style>
+                      :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+                    </style>
+                    <button
+                      class="root"
+                      type="button"
+                    >
+                      <p-icon
+                        aria-hidden="true"
+                        class="icon"
+                        data-ssr=""
+                      >
+                        <template
+                          shadowroot="open"
+                          shadowrootmode="open"
+                        >
+                          <style>
+                            :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                          </style>
+                          <img
+                            alt=""
+                            height="24"
+                            loading="lazy"
+                            src="http://localhost:3001/icons/close.eec3c5d.svg"
+                            width="24"
+                          />
+                        </template>
+                      </p-icon>
+                      <span
+                        class="label"
+                      >
+                        <slot />
+                      </span>
+                    </button>
+                    <span
+                      class="loading"
+                      id="loading"
+                      role="status"
+                    />
+                  </template>
+                  Clear field
+                </p-button-pure>
+                <slot
+                  name="end"
+                />
+              </div>
+              <span
+                class="message"
+                id="message"
+                role="alert"
+              />
+              <span
+                class="loading"
+                id="loading"
+                role="status"
+              />
+            </div>
+          </template>
+        </p-input-search>
         <div
-          id="list"
-          popover="manual"
-          tabindex="-1"
+          aria-label=""
+          aria-multiselectable="true"
+          class="options"
+          role="listbox"
         >
           <div
+            aria-live="polite"
             class="no-results"
             role="option"
           >
             <span
               aria-hidden="true"
             >
-              ---
+              –
             </span>
             <span
               class="sr-only"
@@ -15553,20 +17509,21 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
     <style>
       :host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
+  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
-  gap: max(4px, 1 * 12px);
-  padding-block: max(2px, 1 * 8px);
-  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-option-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -15578,23 +17535,6 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -15608,6 +17548,13 @@ slot {
 }
 .option--hidden {
   display: none;
+}
+.checkbox-wrapper {
+  font-family: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font-size: 1rem;
+  height: calc(6px + 2.125ex);
+  display: flex;
+  align-items: center;
 }
 .checkbox {
   flex-shrink: 0;
@@ -15635,22 +17582,19 @@ slot {
   position: absolute;
   inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
       class="option"
     >
       <span
-        aria-hidden="true"
-        class="checkbox"
-      />
+        class="checkbox-wrapper"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+      </span>
       <slot
         slot="label"
       />
@@ -16176,6 +18120,9 @@ exports[`should render dsr component for PPopover 1`] = `
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="button"] {
+    display: block;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -16209,6 +18156,7 @@ exports[`should render dsr component for PPopover 1`] = `
     position: absolute;
     pointer-events: none;
     filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
+    backdrop-filter: drop-shadow(0 0 transparent);
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
   }
   [popover]:not(:popover-open) {
@@ -16562,7 +18510,6 @@ exports[`should render dsr component for PScroller 1`] = `
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -16579,7 +18526,6 @@ exports[`should render dsr component for PScroller 1`] = `
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -17091,21 +19037,18 @@ exports[`should render dsr component for PSelect 1`] = `
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -17116,7 +19059,7 @@ exports[`should render dsr component for PSelect 1`] = `
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
   }
@@ -17137,6 +19080,7 @@ exports[`should render dsr component for PSelect 1`] = `
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -17174,12 +19118,58 @@ exports[`should render dsr component for PSelect 1`] = `
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
   }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  }
   .icon {
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
     transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     filter: var(--p-select-icon-filter);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -17238,7 +19228,7 @@ exports[`should render dsr component for PSelect 1`] = `
     >
       <label
         class="label"
-        for="value"
+        for="button"
         id="label"
       />
       <button
@@ -17247,7 +19237,7 @@ exports[`should render dsr component for PSelect 1`] = `
         aria-haspopup="listbox"
         aria-labelledby="label"
         aria-required="false"
-        id="value"
+        id="button"
         role="combobox"
         type="button"
       >
@@ -17305,10 +19295,16 @@ img {
         aria-label=""
         id="list"
         popover="manual"
-        role="listbox"
+        role="dialog"
         tabindex="-1"
       >
-        <slot />
+        <div
+          aria-label=""
+          class="options"
+          role="listbox"
+        >
+          <slot />
+        </div>
       </div>
       <span
         class="message"
@@ -17331,7 +19327,8 @@ exports[`should render dsr component for PSelectOption 1`] = `
   >
     <style>
       :host {
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -17362,24 +19359,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: rgba(148, 149, 152, .18);
-}
 .option--highlighted {
   background: #D8D8DB;
 }
@@ -17396,13 +19375,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
 .icon {
   margin-inline-start: auto;
 }
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -17703,22 +19675,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=status] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -17731,6 +19687,9 @@ button:focus-visible {
   }
   .option--hidden {
     display: none;
+  }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
   }
   .option--indent {
     padding-left: 28px;
@@ -17750,6 +19709,49 @@ button:focus-visible {
   }
   .optgroup--disabled {
     color: #949598;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -17846,10 +19848,9 @@ dialog::backdrop {
 }
 .sheet {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -18262,7 +20263,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -18279,7 +20279,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -19032,7 +21031,6 @@ exports[`should render dsr component for PTable 1`] = `
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -19049,7 +21047,6 @@ exports[`should render dsr component for PTable 1`] = `
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -19843,7 +21840,6 @@ exports[`should render dsr component for PTabs 1`] = `
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -19860,7 +21856,6 @@ exports[`should render dsr component for PTabs 1`] = `
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -20476,7 +22471,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -20493,7 +22487,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -21548,10 +23541,8 @@ textarea[readonly] {
       >
         <textarea
           aria-describedby="description message"
-          autocomplete=""
           id="textarea"
           placeholder=""
-          readonly=""
           rows="7"
           wrap="soft"
         />

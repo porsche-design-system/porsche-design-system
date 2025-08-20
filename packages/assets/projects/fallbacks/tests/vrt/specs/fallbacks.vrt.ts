@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidths } from '@porsche-design-system/shared/testing';
 
 (['cookies', 'browser-support'] as const).forEach((fallback) => {
   test.describe(fallback, async () => {

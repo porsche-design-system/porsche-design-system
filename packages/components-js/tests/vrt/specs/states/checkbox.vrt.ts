@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { type Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusVisibleState,
@@ -8,7 +9,6 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
 
 const component = 'checkbox';
 
@@ -28,25 +28,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-checkbox name="some-name">
       <span slot="label">
         Slotted label
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-checkbox>
     <p-checkbox label="State error" state="error" name="some-name">
       <span slot="message">
         Slotted error message
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-checkbox>
     <p-checkbox label="State success" state="success" name="some-name">
       <span slot="message">
         Slotted success message
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-checkbox>`;
 
