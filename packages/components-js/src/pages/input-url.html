@@ -25,7 +25,13 @@
 </div>
 
 <div class="playground light" title="should render with label, default value and indicator">
-  <p-input-url name="some-name" label="Label" value="https://designsystem.porsche.com/" indicator="true" max-length="20"></p-input-url>
+  <p-input-url
+    name="some-name"
+    label="Label"
+    value="https://designsystem.porsche.com/"
+    indicator="true"
+    max-length="20"
+  ></p-input-url>
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
@@ -80,7 +86,14 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-url name="some-name" label="Required" required="true" indicator="true" max-length="20" class="a11ytree-snapshot-test"></p-input-url>
+  <p-input-url
+    name="some-name"
+    label="Required"
+    required="true"
+    indicator="true"
+    max-length="20"
+    class="a11ytree-snapshot-test"
+  ></p-input-url>
   <p-input-url
     name="some-name"
     label="Required and insanely super long label across multiple lines"
@@ -185,19 +198,19 @@
   <p-input-url name="some-name" state="error" placeholder="https://porsche.com/" indicator="true" max-length="20">
     <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a class="text-contrast-high" href="#">anchor</a>,
+        Slotted description. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <span slot="message">
       <span>
-        Slotted error message. And some slotted and deeply nested <a class="text-error" href="#">anchor</a>,
+        Slotted error message. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
@@ -211,19 +224,19 @@
   <p-input-url name="some-name" state="success" placeholder="https://porsche.com/" indicator="true" max-length="20">
     <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a class="text-contrast-high" href="#">anchor</a>,
+        Slotted description. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <span slot="message">
       <span>
-        Slotted success message. And some slotted and deeply nested <a class="text-success" href="#">anchor</a>,
+        Slotted success message. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
@@ -319,13 +332,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-input-url
-    class="scaling-0-5"
-    label="Some label"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
+  <p-input-url class="scaling-0-5" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
   <p-input-url
     class="scaling-0-5"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
@@ -338,13 +345,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-input-url
-    class="scaling-0-8"
-    label="Some label"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-url>
+  <p-input-url class="scaling-0-8" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-url>
   <p-input-url
     class="scaling-0-8"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
@@ -383,7 +384,13 @@
 </div>
 
 <div class="playground light" title="should render with slot start">
-  <p-input-url name="some-name" label="Label" value="https://designsystem.porsche.com/" indicator="true" max-length="20">
+  <p-input-url
+    name="some-name"
+    label="Label"
+    value="https://designsystem.porsche.com/"
+    indicator="true"
+    max-length="20"
+  >
     <p-text slot="start" color="contrast-medium" aria-hidden="true">Tel</p-text>
   </p-input-url>
 </div>
@@ -395,7 +402,14 @@
 </div>
 
 <div class="playground light" title="should render with slot end, controls and loading indicator">
-  <p-input-url name="some-name" label="Label" value="https://designsystem.porsche.com/" indicator="true" max-length="20" loading="true">
+  <p-input-url
+    name="some-name"
+    label="Label"
+    value="https://designsystem.porsche.com/"
+    indicator="true"
+    max-length="20"
+    loading="true"
+  >
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-url>
 </div>

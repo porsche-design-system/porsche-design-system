@@ -1,11 +1,9 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   FORM_STATES,
   THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -119,7 +117,6 @@ export class PinCode {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
