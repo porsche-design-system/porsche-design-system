@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.29.0-rc.5] - 2025-08-19
+
 ### Changed
 
 - `Checkbox`, `Multi Select`, `Select`, `Pin Code`, `Textarea`: removed slotted anchor styles
