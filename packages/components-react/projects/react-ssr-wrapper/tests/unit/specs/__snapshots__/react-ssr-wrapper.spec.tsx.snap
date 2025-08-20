@@ -18120,6 +18120,9 @@ exports[`should render dsr component for PPopover 1`] = `
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="button"] {
+    display: block;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -18205,7 +18208,6 @@ exports[`should render dsr component for PPopover 1`] = `
   }
     </style>
     <button
-      aria-expanded="false"
       type="button"
     >
       <p-icon

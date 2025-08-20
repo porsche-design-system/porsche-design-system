@@ -22,7 +22,7 @@ function removeDuplicates(array: string[] = []) {
 }
 
 function isInternalUrl(url = '') {
-  return url.startsWith('/');
+  return url.startsWith('/') && !url.startsWith('/mailto:');
 }
 
 export const getSitemap = (): string[] => {

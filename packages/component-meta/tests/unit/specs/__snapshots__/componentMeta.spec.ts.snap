@@ -2063,6 +2063,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-checkbox-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-checkbox\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2071,6 +2072,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -2717,7 +2719,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-fieldset-wrapper": {
-    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.",
+    "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use \`p-fieldset\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8552,15 +8554,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
-    "eventsMeta": {
-      "dismiss": {
-        "description": "Emitted when the component requests to be dismissed.",
-        "type": "void",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
-    "hasEvent": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -8597,15 +8593,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "bottom",
         "description": "Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.",
         "type": "PopoverDirection",
-      },
-      "open": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "If true, the popover is open.",
-        "propOptions": {
-          "mutable": true,
-        },
-        "type": "boolean",
       },
       "theme": {
         "allowedValues": [
@@ -9500,6 +9487,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-select\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9508,6 +9496,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": true,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -11065,6 +11054,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text-field-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: \`p-input-date\`, \`p-input-email\`, \`p-input-number\`, \`p-input-password\`, \`p-input-search\`, \`p-input-tel\`, \`p-input-text\`, \`p-input-time\` or \`p-input-url\`.",
     "eventsMeta": {
       "action": {
         "description": "Emitted when the action button is clicked.",
@@ -11079,6 +11069,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -11499,6 +11490,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea-wrapper": {
+    "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-textarea\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -11507,6 +11499,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
