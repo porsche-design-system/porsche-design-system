@@ -13,11 +13,9 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getComboboxAriaAttributes,
@@ -219,7 +217,6 @@ export class MultiSelect {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
   }
 

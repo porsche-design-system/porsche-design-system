@@ -1,6 +1,4 @@
 import { Textarea } from './textarea';
-import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
-import { getSlottedAnchorStyles } from '../../styles';
 import { expect } from '@jest/globals';
 
 jest.mock('../../utils/dom');
@@ -32,18 +30,6 @@ const initComponent = (): Textarea => {
   return component;
 };
 
-describe('connectedCallback', () => {
-  it('should call applyConstructableStylesheetStyles() with correct parameters', () => {
-    const applyConstructableStylesheetStylesSpy = jest.spyOn(
-      applyConstructableStylesheetStylesUtils,
-      'applyConstructableStylesheetStyles'
-    );
-    const component = initComponent();
-
-    component.connectedCallback();
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
-  });
-});
 describe('formResetCallback', () => {
   const component = initComponent();
   const defaultValue = 'default-value';
@@ -132,5 +118,4 @@ describe('componentDidRender', () => {
       component['textAreaElement']
     );
   });
-
 });
