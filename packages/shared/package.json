@@ -12,12 +12,12 @@
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run build:bundle",
-    "build:generateTagNames": "tsx scripts/generateTagNames.ts",
-    "build:generateCodeExamples": "tsx scripts/generateCodeExamples.ts",
-    "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
-    "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
+    "build:generateChunkNames": "tsc --noEmit && node scripts/generateTagNamesWithChunk.ts",
+    "build:generatePartialNames": "tsc --noEmit && node scripts/generatePartialNames.ts",
+    "build:generateTagNames": "tsc --noEmit && node scripts/generateTagNames.ts",
+    "build:generateCodeExamples": "tsc --noEmit && node scripts/generateCodeExamples.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
-    "clearGitHubActionLogs": "tsx scripts/clearGitHubActionLogs.ts",
+    "clearGitHubActionLogs": "node scripts/clearGitHubActionLogs.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
