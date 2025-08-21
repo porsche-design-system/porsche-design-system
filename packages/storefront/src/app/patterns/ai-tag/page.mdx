@@ -1,0 +1,32 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PLinkPure } from '@porsche-design-system/components-react/ssr';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Patterns: AI-Tag - Porsche Design System',
+  description: 'Learn how to design user-centric header for Porsche web applications.',
+};
+
+# Header
+
+<TableOfContents headings={['Variant 1']} />
+
+The **AI-Tag pattern** is designed to enhance user experience by providing a clear visual cue for users by indicating
+the presence of **"AI-generated"** or **"AI-modified"** contents within the application.
+
+## Variant 1
+
+<div className="flex flex-wrap gap-static-md">
+  <PLinkPure icon="external">
+    <Link href="https://github.com/porsche-design-system/examples/tree/main/patterns/src/ai-tag/1">Source Code</Link>
+  </PLinkPure>
+  <PLinkPure icon="external">
+    <Link href="https://porsche-design-system.github.io/examples/patterns/ai-tag/1">View Fullscreen</Link>
+  </PLinkPure>
+</div>
+
+<iframe
+  className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
+  title="Header Variant 1"
+  src="https://porsche-design-system.github.io/examples/patterns/ai-tag/1"
+/>
