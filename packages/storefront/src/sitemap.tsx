@@ -332,6 +332,28 @@ export const sitemap: Routes = {
           },
         },
       },
+      astro: {
+        name: 'Astro',
+        path: '/developing/astro',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/astro/getting-started',
+            type: 'TAB',
+          },
+          demo: {
+            name: 'Demo',
+            path: '/developing/astro/demo',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/astro/faq',
+            type: 'TAB',
+          },
+        },
+      },
       'components-ready': {
         name: 'Components Ready',
         path: '/developing/components-ready',
