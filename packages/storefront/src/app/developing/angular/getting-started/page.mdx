@@ -8,7 +8,7 @@ export const metadata = {
 
 # Angular
 
-<TableOfContents headings={['Quick start','Integration']} />
+<TableOfContents headings={['Quick start', 'Integration']} />
 
 ## Quick start
 
@@ -70,15 +70,16 @@ export class App {
 
 ### Step 3 (recommended)
 
-Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
-minimize FOUC/FOUT.
+To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
+Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
+section of your HTML.
 
 Install
 [@angular-builders/custom-webpack](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform)
 within your project directory.
 
 ```bash
-yarn add --dev @angular-builders/custom-webpack
+npm install @angular-builders/custom-webpack --save-dev
 ```
 
 Configure the `angular.json`.
@@ -131,8 +132,11 @@ module.exports = (_, html) => {
 
 ### Step 4 (recommended)
 
-Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
-styling consistency with Porsche's design principles.
+Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
+[Tailwind CSS Theme](/tailwindcss/introduction) allows you to leverage a utility-first CSS framework while maintaining
+seamless styling consistency with Porsche's design principles. This integration enables you to use the provided
+[Patterns](/patterns) and [Templates](/templates), all written in Tailwind CSS, to build your application quickly and
+efficiently.
 
 Install Tailwind CSS within your project directory.
 

@@ -160,33 +160,6 @@ export const sitemap: Routes = {
         path: '/developing/introduction',
         type: 'PAGE',
       },
-      'vanilla-js': {
-        name: 'Vanilla JS',
-        path: '/developing/vanilla-js',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/vanilla-js/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/vanilla-js/demo',
-            type: 'TAB',
-          },
-          advanced: {
-            name: 'Advanced',
-            path: '/developing/vanilla-js/advanced',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/vanilla-js/faq',
-            type: 'TAB',
-          },
-        },
-      },
       angular: {
         name: 'Angular',
         path: '/developing/angular',
@@ -215,6 +188,55 @@ export const sitemap: Routes = {
           faq: {
             name: 'FAQ',
             path: '/developing/angular/faq',
+            type: 'TAB',
+          },
+        },
+      },
+      astro: {
+        name: 'Astro',
+        path: '/developing/astro',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/astro/getting-started',
+            type: 'TAB',
+          },
+          demo: {
+            name: 'Demo',
+            path: '/developing/astro/demo',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/astro/faq',
+            type: 'TAB',
+          },
+        },
+      },
+      'next-js': {
+        name: 'Next.js',
+        path: '/developing/next-js',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/next-js/getting-started',
+            type: 'TAB',
+          },
+          demo: {
+            name: 'Demo',
+            path: '/developing/next-js/demo',
+            type: 'TAB',
+          },
+          testing: {
+            name: 'Testing',
+            path: '/developing/next-js/testing',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/next-js/faq',
             type: 'TAB',
           },
         },
@@ -251,33 +273,6 @@ export const sitemap: Routes = {
           },
         },
       },
-      'next-js': {
-        name: 'Next.js',
-        path: '/developing/next-js',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/next-js/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/next-js/demo',
-            type: 'TAB',
-          },
-          testing: {
-            name: 'Testing',
-            path: '/developing/next-js/testing',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/next-js/faq',
-            type: 'TAB',
-          },
-        },
-      },
       'react-router': {
         name: 'React Router',
         path: '/developing/react-router',
@@ -305,6 +300,33 @@ export const sitemap: Routes = {
         path: '/developing/remix',
         type: 'PAGE',
       },
+      'vanilla-js': {
+        name: 'Vanilla JS',
+        path: '/developing/vanilla-js',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/vanilla-js/getting-started',
+            type: 'TAB',
+          },
+          demo: {
+            name: 'Demo',
+            path: '/developing/vanilla-js/demo',
+            type: 'TAB',
+          },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/vanilla-js/advanced',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/vanilla-js/faq',
+            type: 'TAB',
+          },
+        },
+      },
       vue: {
         name: 'Vue',
         path: '/developing/vue',
@@ -328,28 +350,6 @@ export const sitemap: Routes = {
           faq: {
             name: 'FAQ',
             path: '/developing/vue/faq',
-            type: 'TAB',
-          },
-        },
-      },
-      astro: {
-        name: 'Astro',
-        path: '/developing/astro',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/astro/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/astro/demo',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/astro/faq',
             type: 'TAB',
           },
         },
