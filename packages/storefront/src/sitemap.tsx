@@ -241,28 +241,6 @@ export const sitemap: Routes = {
           },
         },
       },
-      'react-router': {
-        name: 'React Router',
-        path: '/developing/react-router',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/react-router/getting-started',
-            type: 'TAB',
-          },
-          demo: {
-            name: 'Demo',
-            path: '/developing/react-router/demo',
-            type: 'TAB',
-          },
-          faq: {
-            name: 'FAQ',
-            path: '/developing/react-router/faq',
-            type: 'TAB',
-          },
-        },
-      },
       react: {
         name: 'React',
         path: '/developing/react',
@@ -291,6 +269,28 @@ export const sitemap: Routes = {
           faq: {
             name: 'FAQ',
             path: '/developing/react/faq',
+            type: 'TAB',
+          },
+        },
+      },
+      'react-router': {
+        name: 'React Router',
+        path: '/developing/react-router',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/react-router/getting-started',
+            type: 'TAB',
+          },
+          demo: {
+            name: 'Demo',
+            path: '/developing/react-router/demo',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/react-router/faq',
             type: 'TAB',
           },
         },
