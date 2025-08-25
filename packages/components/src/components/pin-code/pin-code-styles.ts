@@ -10,12 +10,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  fontLineHeight,
-  getMediaQueryMax,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
+import { fontLineHeight, spacingStaticSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
@@ -41,18 +36,8 @@ export const getComponentCss = (
     'input[readonly]',
     removeSlottedSelector(
       getSlottedTextFieldTextareaSelectStyles('input', state, isLoading, theme, {
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
-        // padding: `${formElementPaddingVertical} ${spacingStaticXSmall}`,
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start
         textAlign: 'center',
-        ...(length > 4 && {
-          [getMediaQueryMax('xs')]: {
-            // TODO: instead of having dedicated css rules depending on length we should try to implement a fluid one fits all solution
-            maxWidth: 'auto',
-            background: 'red',
-            // width: `calc((276px - (${spacingStaticSmall} * ${length - 1})) / ${length})`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
-          },
-        }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. isLoading
         ...(isLoading && {
           opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
