@@ -19,21 +19,24 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Production Builds'
-        run: yarn build-prod
+      # - name: 'Install'
+      #   uses: ./.github/actions/install
+      # - name: 'Production Builds'
+      #   run: yarn build-prod
       - name: "Login to AWS ECR"
         uses: docker/login-action@v3
         with:
           registry: ${{ env.OSO_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
-      - name: "Run ORT"
+      - name: "Analyze"
         run: |
           docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest analyze -i /project -o /project/ort
-          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
         shell: bash
+      # - name: "Report"
+      #   run: |
+      #     docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
+      #   shell: bash
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v4
         with:
