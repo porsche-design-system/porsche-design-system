@@ -3,6 +3,7 @@
 exports[`LINK_ARIA_ATTRIBUTES should match snapshot 1`] = `
 [
   "aria-label",
+  "aria-description",
   "aria-current",
   "aria-haspopup",
 ]

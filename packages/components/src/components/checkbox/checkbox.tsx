@@ -10,13 +10,11 @@ import {
   Watch,
   h,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   FORM_STATES,
   THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -145,7 +143,6 @@ export class Checkbox {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

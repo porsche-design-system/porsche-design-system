@@ -1,0 +1,215 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PTag } from '@porsche-design-system/components-react/ssr';
+
+export const metadata = {
+  title: 'Astro: Getting started - Porsche Design System',
+  description: 'Start developing in Astro with the Porsche Design System.',
+};
+
+# Astro
+
+<TableOfContents headings={['Quick start', 'Integration', 'Astro + Vue (optional)']} />
+
+## Quick start
+
+To build an [Astro](https://astro.build) application using the Porsche Design System, follow these steps. This guide is
+based on the following dependencies:
+
+<div className="flex flex-wrap gap-static-sm my-fluid-sm">
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">astro@5</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">vue@3</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-js@3</PTag>
+</div>
+
+```bash
+# Create a new application by executing:
+npm create astro@latest
+
+# Follow the installation wizard to set everything up:
+✔ Where should we create your new project?: "./my-app"
+✔ How would you like to start your new project?: "A basic, helpful starter project"
+✔ Install dependencies?: "Yes"
+✔ Initialize a new git repository?: "Yes"
+```
+
+You're all set! Start building your own application now.
+
+## Integration
+
+### Step 1
+
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-js
+```
+
+### Step 2
+
+Integrate the Porsche Design System Loader into the `<body>` section of your HTML.
+
+```diff
+// src/layouts/Layout.astro
+
+---
++ import { getLoaderScript } from '@porsche-design-system/components-js/partials';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <slot />
++   <Fragment set:html={getLoaderScript()} />
+  </body>
+</html>
+```
+
+### Step 3 (recommended)
+
+To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
+Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
+section of your HTML.
+
+```diff
+// src/layouts/Layout.astro
+
+---
++ import { getComponentChunkLinks, getFontFaceStyles, getFontLinks, getIconLinks, getInitialStyles, getLoaderScript, getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
+---
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <!-- injects stylesheet which defines visibility of pre-hydrated PDS components -->
++   <Fragment set:html={getInitialStyles()} />
+    <!-- injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) -->
++   <Fragment set:html={getFontFaceStyles()} />
+    <!-- preloads Porsche Next font (=> minimize FOUT) -->
++   <Fragment set:html={getFontLinks()} />
+    <!-- preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) -->
++   <Fragment set:html={getComponentChunkLinks()} />
+    <!-- preloads Porsche icons (=> minimize FOUC) -->
++   <Fragment set:html={getIconLinks()} />
+    <!-- injects favicon, apple touch icons, android touch icons, etc. -->
++   <Fragment set:html={getMetaTagsAndIconLinks({ appTitle: 'Porsche' })} />
+  </head>
+  <body>
+    <slot />
+    <Fragment set:html={getLoaderScript()} />
+  </body>
+</html>
+```
+
+### Step 4
+
+Add a Porsche Design System component (e.g. `<p-wordmark></p-wordmark>`). Then, run `npm run dev` and verify that the
+component display correctly.
+
+```diff
+// src/components/Welcome.astro
+
+---
+import astroLogo from '../assets/astro.svg';
+import background from '../assets/background.svg';
+---
++ <p-wordmark></p-wordmark>
+<div id="container">…</div>
+```
+
+## Astro + Vue (optional)
+
+To add [Vue](https://docs.astro.build/de/guides/integrations-guide/vue) to your Astro project, install the official
+integration and configure your project. You should have already completed the steps in the [Quick Start](#quick-start)
+and [Integration](#integration) sections.
+
+```bash
+# Install the official Astro integration for Vue:
+npx astro add vue
+
+# Follow the installation wizard to set everything up:
+✔ Astro will make the following changes to your config file: "Yes"
+✔ Astro will make the following changes to your tsconfig.json: "Yes"
+```
+
+### Step 1
+
+Configuring `astro.config.mjs` to support Porsche Design System components in Vue requires adding a specific
+configuration to your Vue integration.
+
+```diff
+// astro.config.mjs
+
+import vue from '@astrojs/vue';
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  integrations: [
++   vue({
++     template: {
++       compilerOptions: {
++         isCustomElement: (tag) => tag.startsWith('p-'),
++       },
++     },
++   }),
+  ],
+});
+```
+
+### Step 2
+
+Create a new Vue component file, for example, `Welcome.vue` with a Porsche Design System component (e.g.
+`<p-wordmark></p-wordmark>`).
+
+```vue
+// src/components/Welcome.vue
+
+<template>
+  <div class="welcome">
+    <p-text>Astro + Vue</p-text>
+    <p-wordmark />
+  </div>
+</template>
+
+<style scoped>
+  .welcome {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-block: 16px;
+  }
+</style>
+```
+
+### Step 3
+
+Next, include this new Vue component in one of your Astro pages (e.g. `src/pages/index.astro`). Then, run `npm run dev`
+and verify that the component display correctly.
+
+```diff
+// src/pages/index.astro
+
+---
+import Welcome from '../components/Welcome.astro';
++ import WelcomeVue from '../components/Welcome.vue';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
++ <WelcomeVue />
+  <Welcome />
+</Layout>
+```

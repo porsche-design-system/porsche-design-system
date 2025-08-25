@@ -14,6 +14,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
+  `aria` prop to provide additional context for screen readers.
+  ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))
+
+## [3.29.0] - 2025-08-20
+
+## [3.29.0-rc.5] - 2025-08-19
+
+### Changed
+
+- `Checkbox`, `Multi Select`, `Select`, `Pin Code`, `Textarea`: removed slotted anchor styles
+  ([#3981](https://github.com/porsche-design-system/porsche-design-system/pull/3981))
+
 ### Fixed
 
 - `Popover`: support for custom slotted button & improvements

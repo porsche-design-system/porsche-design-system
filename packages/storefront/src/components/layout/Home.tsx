@@ -1,9 +1,9 @@
 'use client';
 
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PDisplay, PHeading, PLinkPure, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import AppearAnimation from './appearAnimation';
 
 type HomeProps = {
@@ -77,7 +77,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <Link href="https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">
             Figma
           </Link>
-          {''} and UX Pin libraries, as well as public accessible {''}
+          {''} library, as well as public accessible {''}
           <Link href="https://npmjs.com/org/porsche-design-system">npm releases</Link> for Vanilla JS, {''}
           <Link href="https://angular.io">Angular</Link>, <a href="https://react.dev">React</a>, {''}
           <Link href="https://nextjs.org">Next.js</Link>, <a href="https://remix.run">Remix</a> and {''}

@@ -35,7 +35,7 @@
     "clean:stackblitz:build": "npm run clean:build --workspace=@porsche-design-system/stackblitz"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.29.0-rc.4",
+    "@porsche-design-system/components-react": "3.29.0",
     "@porsche-design-system/fallbacks": "0.0.0",
     "react-syntax-highlighter": "^15.6.1",
     "next": "15.4.2",

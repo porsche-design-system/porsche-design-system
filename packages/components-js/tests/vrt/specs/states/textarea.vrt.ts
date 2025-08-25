@@ -49,31 +49,19 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <p-textarea value="Value">
         <span slot="label">
           Slotted label
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
         <span slot="description">
           Slotted description
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
       </p-textarea>
       <p-textarea label="Error" description="Some description" state="error" value="Value">
         <span slot="message">
           Slotted error message
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
       </p-textarea>
       <p-textarea label="Success" description="Some description" state="success" value="Value">
         <span slot="message">
           Slotted success message
-          <span>
-            and some slotted, deeply nested <a href="#">anchor</a>.
-          </span>
         </span>
       </p-textarea>
     </div>
