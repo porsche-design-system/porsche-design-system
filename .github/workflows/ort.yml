@@ -33,20 +33,20 @@ jobs:
         run: |
           docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest analyze -i /project -o /project/ort
         shell: bash
-      # - name: "Report"
-      #   run: |
-      #     docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
-      #   shell: bash
+      - name: "Report"
+        run: |
+          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
+        shell: bash
       - name: 'Store ORT Analysis'
         uses: actions/upload-artifact@v4
         with:
           name: ort-analysis
           path: ./ort
-      - name: "Send ORT Analyzer Result to OSO"
-        run: |
-          zip -j analyzer-result.zip ort/analyzer-result.yml
-          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@scanning-environment.opensourceofficeprod.aws.platform.porsche.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=${{ env.OSO_PROJECT_NAME }} --fail
-        shell: bash
-        env:
-          OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
-          OSO_JENKINS_TOKEN: ${{ secrets.OSO_JENKINS_TOKEN }}
+      # - name: "Send ORT Analyzer Result to OSO"
+      #   run: |
+      #     zip -j analyzer-result.zip ort/analyzer-result.yml
+      #     curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@scanning-environment.opensourceofficeprod.aws.platform.porsche.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=${{ env.OSO_PROJECT_NAME }} --fail
+      #   shell: bash
+      #   env:
+      #     OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
+      #     OSO_JENKINS_TOKEN: ${{ secrets.OSO_JENKINS_TOKEN }}
