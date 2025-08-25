@@ -275,6 +275,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -741,6 +742,7 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -1185,6 +1187,7 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -2213,6 +2216,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -2578,6 +2582,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -6123,6 +6128,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -6538,6 +6544,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -7328,6 +7335,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -7743,6 +7751,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -11678,6 +11687,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
