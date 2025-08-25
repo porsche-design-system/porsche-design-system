@@ -3725,13 +3725,13 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 }
 input {
   display: block;
-  width: 100%;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: border-box;
+  box-sizing: inherit;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -3739,10 +3739,8 @@ input {
   text-indent: 0;
   color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 8px 4px;
   text-align: center;
-  max-width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  min-width: calc(1rem + 2px*2 + 8px*2);
+  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
 }
 input:nth-of-type(1) {
   grid-area: 1/1;
@@ -3782,13 +3780,13 @@ input:disabled {
 
 .root {
   display: grid;
-  gap: 4px;
+  gap: 8px;
 }
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(auto, 1fr));
   justify-self: flex-start;
-  gap: 8px;
+  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -17916,13 +17914,13 @@ exports[`should render dsr component for PPinCode 1`] = `
 }
 input {
   display: block;
-  width: 100%;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: border-box;
+  box-sizing: inherit;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -17930,10 +17928,8 @@ input {
   text-indent: 0;
   color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 8px 4px;
   text-align: center;
-  max-width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  min-width: calc(1rem + 2px*2 + 8px*2);
+  padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
 }
 input:nth-of-type(1) {
   grid-area: 1/1;
@@ -17973,13 +17969,13 @@ input:disabled {
 
 .root {
   display: grid;
-  gap: 4px;
+  gap: 8px;
 }
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(auto, 1fr));
   justify-self: flex-start;
-  gap: 8px;
+  gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
