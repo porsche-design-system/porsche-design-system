@@ -1,14 +1,14 @@
-import type { Config } from '@stencil/core';
 import * as path from 'node:path';
-import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
+import replace from '@rollup/plugin-replace';
+import type { Config } from '@stencil/core';
 import { version } from './package.json';
 
 /**
  * TODO: Remove this workaround
  * This is a temporary workaround to stop stencil from
  * messing up our dependencies by running an `npm` command.
- * Since we're heavily relying on yarn workspaces running
+ * Since we're heavily relying on npm workspaces running
  * `npm` is leading to conflicts.
  * By adding a npm script to the PATH that does nothing
  * we can ensure, that our dependencies stay untouched.

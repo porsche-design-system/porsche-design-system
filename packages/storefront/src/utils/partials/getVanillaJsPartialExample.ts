@@ -1,6 +1,6 @@
+import { constantCase } from 'change-case';
 import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
 import { formatPartialParams } from '@/utils/partials/formatPartialParams';
-import { constantCase } from 'change-case';
 
 export const getVanillaJsPartialExample = (name: Partials, location: PartialLocation, partialCalls: PartialCall[]) => {
   const partialImportPath = '@porsche-design-system/components-js/partials';
@@ -28,7 +28,7 @@ export const getVanillaJsPartialExample = (name: Partials, location: PartialLoca
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
-  "prestart": "yarn replace",
+  "prestart": "npm run replace",
   ${jsPartials}
 }`;
 };

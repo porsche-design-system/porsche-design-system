@@ -3,7 +3,7 @@
 exports[`should return correct partial markup for getVanillaJsPartialExample 1`] = `
 "<!-- prerequisite -->
 <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
-yarn add --dev @angular-builders/custom-webpack
+npm install @angular-builders/custom-webpack -D
 
 <!-- angular.json -->
 ...

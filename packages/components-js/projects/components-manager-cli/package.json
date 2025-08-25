@@ -7,10 +7,10 @@
     "cm": "./dist/bin/cm.js"
   },
   "scripts": {
-    "build": "yarn clean:build && yarn build:cli && yarn build:lib",
+    "build": "npm run clean:build && npm run build:cli && npm run build:lib",
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/cm.js",
     "build:lib": "tsc --build tsconfig.library-entry.json",
-    "test": "yarn test:unit",
+    "test": "npm run test:unit",
     "test:unit": "jest",
     "clean:build": "rm -rf ./dist"
   },

@@ -19,11 +19,13 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:icons && yarn build:lib",
+    "build": "npm run clean:build && npm run build:icons && npm run build:lib",
     "build:icons": "tsx scripts/build.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",

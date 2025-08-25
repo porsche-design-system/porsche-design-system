@@ -6,21 +6,21 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestartAndBuild": "yarn clean:build && tsx scripts/prepareSharedStyles.ts",
-    "prestart": "yarn prestartAndBuild",
-    "prebuild-app": "yarn prestartAndBuild",
+    "prestartAndBuild": "npm run clean:build && tsx scripts/prepareSharedStyles.ts",
+    "prestart": "npm run prestartAndBuild",
+    "prebuild-app": "npm run prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,nextjs' 'serve-cdn' 'serve-dummyassets' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'next start'",
-    "build": "yarn build-app",
+    "build": "npm run build-app",
     "build-app": "next build",
-    "test": "yarn test:e2e && yarn test:vrt",
+    "test": "npm run test:e2e && npm run test:vrt",
     "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./.next"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "next": "15.1.3",
+    "next": "^15.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

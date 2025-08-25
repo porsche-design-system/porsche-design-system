@@ -10,9 +10,9 @@
   "sideEffects": false,
   "scripts": {
     "prebuild:generateThemesObject": "tsx scripts/generateThemesObject.ts",
-    "build": "yarn clean:build && yarn prebuild:generateThemesObject && yarn build:bundle",
+    "build": "npm run clean:build && npm run prebuild:generateThemesObject && npm run build:bundle",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
-    "test": "yarn build && yarn test:unit",
+    "test": "npm run build && npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },

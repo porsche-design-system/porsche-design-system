@@ -16,7 +16,7 @@ export const readSetup = (dir: string) => {
       if (
         entry.name === './node_modules' ||
         entry.name === 'node_modules' ||
-        entry.name === 'yarn.lock' ||
+        entry.name === 'package-lock.json' ||
         entry.name === '.angular'
       ) {
         continue;

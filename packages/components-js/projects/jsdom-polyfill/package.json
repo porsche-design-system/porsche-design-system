@@ -7,7 +7,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs && mv ../../dist/components-wrapper/testing/testing.d.ts ../../dist/components-wrapper/testing/index.d.ts",
-    "test": "yarn test:unit",
+    "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },

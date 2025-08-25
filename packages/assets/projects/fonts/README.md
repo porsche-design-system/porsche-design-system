@@ -4,10 +4,10 @@ Copies font files, creates a manifest and private npm package (esm,cjs + types).
 
 ## Build
 
-- `yarn build`
-  - `yarn build:fonts` (copies font files and creates a manifest)
-  - `yarn build:lib` (bundles library)
+- `npm run build`
+  - `npm run build:fonts` (copies font files and creates a manifest)
+  - `npm run build:lib` (bundles library)
 
 ## Clean
 
-- `yarn clean:build` (removes all auto generated files created by `yarn build`)
+- `npm run clean:build` (removes all auto generated files created by `npm run build`)

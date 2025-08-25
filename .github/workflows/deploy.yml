@@ -145,13 +145,13 @@ jobs:
         with:
           artifact: 'build-production'
       - name: 'Components JS'
-        run: yarn test:smoke:components-js
+        run: npm run test:smoke:components-js
       - name: 'Components Angular'
-        run: yarn test:smoke:components-angular
+        run: npm run test:smoke:components-angular
       - name: 'Components React'
-        run: yarn test:smoke:components-react
+        run: npm run test:smoke:components-react
       - name: 'Components Vue'
-        run: yarn test:smoke:components-vue
+        run: npm run test:smoke:components-vue
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
     runs-on: ubuntu-latest

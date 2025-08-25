@@ -9,14 +9,14 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "yarn clean:build && yarn build:tailwindcss && yarn build:app",
+    "build": "npm run clean:build && npm run build:tailwindcss && npm run build:app",
     "build:app": "vite build",
-    "build:tailwindcss": "yarn --cwd projects/tailwindcss build",
-    "test:unit": "yarn test:unit:tailwindcss",
-    "test:unit:tailwindcss": "yarn --cwd projects/tailwindcss test:unit",
-    "clean:build": "yarn clean:build:app && yarn clean:build:tailwindcss",
+    "build:tailwindcss": "npm run build --workspace=@porsche-design-system/tailwindcss",
+    "test:unit": "npm run test:unit:tailwindcss",
+    "test:unit:tailwindcss": "npm run test:unit --workspace=@porsche-design-system/tailwindcss",
+    "clean:build": "npm run clean:build:app && npm run clean:build:tailwindcss",
     "clean:build:app": "rm -rf ./dist",
-    "clean:build:tailwindcss": "yarn --cwd projects/tailwindcss clean:build"
+    "clean:build:tailwindcss": "npm run clean:build --workspace=@porsche-design-system/tailwindcss"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"

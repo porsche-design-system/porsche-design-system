@@ -3,7 +3,7 @@
 exports[`should return correct partial markup for getVanillaJsPartialExample 1`] = `
 "<!-- prerequisite -->
 <!-- docs: https://github.com/vbenjs/vite-plugin-html -->
-yarn add --dev vite-plugin-html
+npm install vite-plugin-html -D
 
 <!-- index.html -->
 <head>

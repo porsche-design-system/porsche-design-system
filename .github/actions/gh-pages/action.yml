@@ -35,6 +35,6 @@ runs:
     - name: 'Algolia'
       if: inputs.algolia == 'true'
       run: |
-        result=$(P_CURRENT_BRANCH=${{ inputs.target }} yarn updateAlgolia)
+        result=$(P_CURRENT_BRANCH=${{ inputs.target }} npm run updateAlgolia)
         echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
       shell: bash

@@ -21,7 +21,7 @@ jobs:
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Lint'
-        run: yarn lint
+        run: npm run lint
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
@@ -34,29 +34,29 @@ jobs:
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Shared'
-        run: yarn build:shared
+        run: npm run build:shared
       - name: 'Assets'
-        run: yarn build:assets
+        run: npm run build:assets
       - name: 'Tokens'
-        run: yarn build:tokens
+        run: npm run build:tokens
       - name: 'Styles'
-        run: yarn build:styles
+        run: npm run build:styles
       - name: 'Utilities'
-        run: yarn build:utilities
+        run: npm run build:utilities
       - name: 'Component Meta'
-        run: yarn build:component-meta
+        run: npm run build:component-meta
       - name: 'Components'
-        run: yarn build:components
+        run: npm run build:components
       - name: 'Components JS'
-        run: yarn build:components-js
+        run: npm run build:components-js
       - name: 'Components Angular'
-        run: yarn build:components-angular
+        run: npm run build:components-angular
       - name: 'Components React'
-        run: yarn build:components-react
+        run: npm run build:components-react
       - name: 'Components Vue'
-        run: yarn build:components-vue
+        run: npm run build:components-vue
       - name: 'Storefront'
-        run: yarn build:storefront
+        run: npm run build:storefront
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v4
         with:
@@ -124,29 +124,29 @@ jobs:
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Shared'
-        run: yarn build:shared
+        run: npm run build:shared
       - name: 'Assets'
-        run: yarn build:assets
+        run: npm run build:assets
       - name: 'Tokens'
-        run: yarn build:tokens
+        run: npm run build:tokens
       - name: 'Styles'
-        run: yarn build:styles
+        run: npm run build:styles
       - name: 'Utilities'
-        run: yarn build:utilities
+        run: npm run build:utilities
       - name: 'Component Meta'
-        run: yarn build:component-meta
+        run: npm run build:component-meta
       - name: 'Components'
-        run: yarn build:components-prod
+        run: npm run build:components-prod
       - name: 'Components JS'
-        run: yarn build:components-js-prod
+        run: npm run build:components-js-prod
       - name: 'Components Angular'
-        run: yarn build:components-angular
+        run: npm run build:components-angular
       - name: 'Components React'
-        run: yarn build:components-react
+        run: npm run build:components-react
       - name: 'Components Vue'
-        run: yarn build:components-vue
+        run: npm run build:components-vue
       - name: 'Storefront'
-        run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
+        run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" npm run build:storefront
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v4
         with:

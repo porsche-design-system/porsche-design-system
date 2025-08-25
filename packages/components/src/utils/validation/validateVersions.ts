@@ -15,7 +15,7 @@ export const VERSION_VALIDATION_TIMEOUT = 3000;
  * More information about other implementations can be found in the PR: https://github.com/porsche-design-system/porsche-design-system/pull/2867
  */
 export const validateVersions = (): void => {
-  // skip for yarn start
+  // skip for npm run start
   if (process.env.NODE_ENV !== 'development') {
     // Uses a timeout to increase the chances that all used versions are loaded and initialized
     setTimeout(() => {

@@ -15,7 +15,7 @@ version can be released.
 2. Run `git pull origin {main- or v-branch}`
 3. Create a new branch e.g. `git checkout -b release/components-v3.0.0-rc.0`
 4. Make sure all relevant changes for the new release to be documented in `./packages/components/CHANGELOG.md`
-5. Run `yarn prepare-release ${TARGET_VERSION}` (e.g. `yarn prepare-release 3.0.0-rc.0`)
+5. Run `npm run prepare-release ${TARGET_VERSION}` (e.g. `npm run prepare-release 3.0.0-rc.0`)
 
 ### Publish
 
@@ -37,9 +37,9 @@ version can be released.
 
 1. Open `package.json` and change `@porsche-design-system/components-(js/angular/react/vue)` version to the newly
    published RC.
-2. Run `yarn`
-3. Run `yarn build`
-4. Run `yarn start` and check if everything works.
+2. Run `npm install`
+3. Run `npm run build`
+4. Run `npm run start` and check if everything works.
 
 ## Stable Release
 
@@ -51,7 +51,7 @@ release can be published.
 1. Switch to **project root directory**
 2. Run `git pull origin {main- or v-branch}`
 3. Create a new branch e.g. `git checkout -b release/components-v3.0.0`
-4. Run `yarn prepare-release ${TARGET_VERSION}` (e.g. `yarn prepare-release 3.0.0`)
+4. Run `npm run prepare-release ${TARGET_VERSION}` (e.g. `npm run prepare-release 3.0.0`)
 
 ### Publish
 
