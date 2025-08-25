@@ -77,7 +77,7 @@ export const inputTelSlotStories: SlotStories<'p-input-tel'> = {
 
 export const inputTelStory: Story<'p-input-tel'> = {
   state: {
-    properties: { label: 'Some label', name: 'some-name' },
+    properties: { label: 'Some label', name: 'some-name', indicator: true },
   },
   generator: ({ properties, slots } = {}) => [
     {

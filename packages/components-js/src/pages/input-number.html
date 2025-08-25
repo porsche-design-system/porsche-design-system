@@ -44,11 +44,7 @@
 </div>
 
 <div class="playground light" title="should render with loading indicator">
-  <p-input-number
-    name="some-name"
-    label="Some label"
-    loading="true"
-  ></p-input-number>
+  <p-input-number name="some-name" label="Some label" loading="true"></p-input-number>
 </div>
 
 <div class="playground light" title="should render without label and without description">
@@ -75,7 +71,13 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-number name="some-name" label="Required" required="true" controls="true" class="a11ytree-snapshot-test"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Required"
+    required="true"
+    controls="true"
+    class="a11ytree-snapshot-test"
+  ></p-input-number>
   <p-input-number
     name="some-name"
     label="Required and insanely super long label across multiple lines"
@@ -166,19 +168,19 @@
   <p-input-number name="some-name" state="error" placeholder="Some placeholder" controls="true">
     <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a class="text-contrast-high" href="#">anchor</a>,
+        Slotted description. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <span slot="message">
       <span>
-        Slotted error message. And some slotted and deeply nested <a class="text-error" href="#">anchor</a>,
+        Slotted error message. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
@@ -192,19 +194,19 @@
   <p-input-number name="some-name" state="success" placeholder="Some placeholder" controls="true">
     <span slot="label">
       <span>
-        Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
+        <i>italic</i> text.
       </span>
     </span>
     <span slot="description">
       <span>
-        Slotted description. And some slotted and deeply nested <a class="text-contrast-high" href="#">anchor</a>,
+        Slotted description. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <span slot="message">
       <span>
-        Slotted success message. And some slotted and deeply nested <a class="text-success" href="#">anchor</a>,
+        Slotted success message. And some slotted and deeply nested
         <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
@@ -260,12 +262,7 @@
     <p-button-pure slot="start" hide-label="true" icon="information" class="input-button">Some label</p-button-pure>
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-number>
-  <p-input-number
-    label="Some label"
-    compact="true"
-    name="some-name"
-    loading="true"
-  ></p-input-number>
+  <p-input-number label="Some label" compact="true" name="some-name" loading="true"></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0">
@@ -277,12 +274,7 @@
     name="some-name"
     controls="true"
   ></p-input-number>
-  <p-input-number
-    class="scaling-0"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-number>
+  <p-input-number class="scaling-0" label="Some label" name="some-name" loading="true"></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.5">
@@ -294,12 +286,7 @@
     name="some-name"
     controls="true"
   ></p-input-number>
-  <p-input-number
-    class="scaling-0-5"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-number>
+  <p-input-number class="scaling-0-5" label="Some label" name="some-name" loading="true"></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.8">
@@ -311,12 +298,7 @@
     name="some-name"
     controls="true"
   ></p-input-number>
-  <p-input-number
-    class="scaling-0-8"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-number>
+  <p-input-number class="scaling-0-8" label="Some label" name="some-name" loading="true"></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 1">
@@ -328,12 +310,7 @@
     name="some-name"
     controls="true"
   ></p-input-number>
-  <p-input-number
-    class="scaling-1"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-number>
+  <p-input-number class="scaling-1" label="Some label" name="some-name" loading="true"></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 2">
@@ -345,12 +322,7 @@
     name="some-name"
     controls="true"
   ></p-input-number>
-  <p-input-number
-    class="scaling-2"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-number>
+  <p-input-number class="scaling-2" label="Some label" name="some-name" loading="true"></p-input-number>
 </div>
 
 <div class="playground light" title="should render with slot start">

@@ -8,7 +8,7 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support','Development considerations','Tests']} />
+<TableOfContents headings={['Accessibility support','Limitations','Tests']} />
 
 ## Accessibility support
 
@@ -33,34 +33,13 @@ export const metadata = {
 | ------------------------- | ------------------------------------------------------- |
 | `aria-expanded="BOOLEAN"` | Indicates that the popover element is displayed/hidden. |
 
-## Development considerations
+## Limitations
 
 ### Custom slotted button
 
-If `p-popover` is used with a custom slotted button, the following considerations must be taken into account:
-
-1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
-2. The `focus` must be set to the slotted button element when the popover is closed and the `dismissed`event is fired.
-
-#### Example:
-
-```html
-<p-popover>
-  <p-button-pure hide-label="true" slot="button" aria="{'aria-expanded': 'false'}">More information</p-button-pure>
-  Some additional content with some <a href="#">link</a>.
-</p-popover>
-
-<p-popover>
-  <p-tag slot="button">
-    <button type="button" aria-expanded="false">More information</button>
-  </p-tag>
-  Some additional content with some <a href="#">link</a>.
-</p-popover>
-
-<script>
-  document.querySelector('p-popover').addEventListener('dismiss', () => document.querySelector('button').focus());
-</script>
-```
+The `p-popover` component does not support the `aria-expanded` attribute when used with a custom slotted button. This is
+due to the fact that the component does not expose its `open` state to the public, which is necessary for managing the
+relationship between the button and the internal state of the popover.
 
 ## Tests
 

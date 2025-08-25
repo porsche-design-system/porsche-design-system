@@ -10,17 +10,8 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  FORM_STATES,
-  hasPropValueChanged,
-  THEMES,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, THEMES, validateProps } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId } from '../common/label/label-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
@@ -155,10 +146,6 @@ export class Textarea {
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
-  }
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {

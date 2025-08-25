@@ -32,11 +32,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-multi-select-option value="a">Option A</p-multi-select-option>`;
 
   const getSlottedMarkup = (opts?: { disabled?: boolean }): string => `
-    <span slot="label">${
-      opts?.disabled ? 'Disabled slotted' : 'Slotted'
-    } label <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
-    <span slot="description">Slotted description <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>
-    <span slot="message">Slotted message <span>and some slotted, deeply nested <a href="#">anchor</a>.</span></span>`;
+    <span slot="label">${opts?.disabled ? 'Disabled slotted' : 'Slotted'} label</span>
+    <span slot="description">Slotted description</span>
+    <span slot="message">Slotted message</span>`;
 
   const markup = () => `
     <div class="value">
