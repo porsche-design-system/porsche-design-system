@@ -40,7 +40,6 @@ services:
       - components-react-react-ssr-wrapper-node-modules:/opt/repository/packages/components-react/projects/react-ssr-wrapper/node_modules
       - components-react-remix-node-modules:/opt/repository/packages/components-react/projects/remix/node_modules
       - components-react-react-router-node-modules:/opt/repository/packages/components-react/projects/react-router/node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/repository/packages/components-react/projects/uxpin-wrapper/node_modules
       - components-vue-node-modules:/opt/repository/packages/components-vue/node_modules
       - shared-node-modules:/opt/repository/packages/shared/node_modules
       - storefront-node-modules:/opt/repository/packages/storefront/node_modules
@@ -79,7 +78,6 @@ services:
       - components-react-react-ssr-wrapper-node-modules:/opt/repository-volumes/components-react-react-ssr-wrapper-node_modules
       - components-react-remix-node-modules:/opt/repository-volumes/components-react-remix-node_modules
       - components-react-react-router-node-modules:/opt/repository-volumes/components-react-react-router-node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/repository-volumes/components-react-uxpin-wrapper-node_modules
       - components-vue-node-modules:/opt/repository-volumes/components-vue-node_modules
       - shared-node-modules:/opt/repository-volumes/shared-node_modules
       - storefront-node-modules:/opt/repository-volumes/storefront-node_modules
@@ -118,7 +116,6 @@ volumes:
   components-react-react-ssr-wrapper-node-modules:
   components-react-remix-node-modules:
   components-react-react-router-node-modules:
-  components-react-uxpin-wrapper-node-modules:
   components-vue-node-modules:
   shared-node-modules:
   storefront-node-modules:
