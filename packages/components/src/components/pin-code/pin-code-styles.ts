@@ -10,7 +10,12 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { fontLineHeight, spacingStaticSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
+import {
+  borderWidthBase,
+  fontLineHeight,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
@@ -31,6 +36,8 @@ export const getComponentCss = (
   const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
   const gap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+  // Min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
+  const minWidth = `max(1rem, calc(${dimension} - ${borderWidthBase}*2 - ${paddingBlock}*2))`;
 
   const inputStyles = removeStyles(
     'input[readonly]',
@@ -43,20 +50,10 @@ export const getComponentCss = (
           opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
           cursor: 'not-allowed',
         }),
-        // since @playwright/test@1.40.1 this does not work anymore in Webkit browser engine for unknown reasons
-        /* ...Object.fromEntries(
-          Array.from(Array(length)).map((_, i) => {
-            return [`&:nth-of-type(${i + 1})`, { gridArea: `1/${i + 1}` }];
-          })
-        ),*/
-        '&:nth-of-type(1)': { gridArea: '1/1' },
-        '&:nth-of-type(2)': { gridArea: '1/2' },
-        '&:nth-of-type(3)': { gridArea: '1/3' },
-        '&:nth-of-type(4)': { gridArea: '1/4' },
-        '&:nth-of-type(5)': { gridArea: '1/5' },
-        '&:nth-of-type(6)': { gridArea: '1/6' },
         height: dimension,
-        width: dimension,
+        minWidth,
+        maxWidth: dimension,
+        width: 'inherit',
         padding: paddingBlock,
         boxSizing: 'inherit',
       })
@@ -78,18 +75,21 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gap: spacingStaticSmall,
+      gap: spacingStaticXSmall,
     },
     wrapper: {
+      position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `repeat(${length}, minmax(auto, 1fr))`,
+      gridTemplateColumns: `repeat(${length}, 1fr)`,
       justifySelf: 'flex-start',
       gap,
     },
     ...(isLoading && {
       spinner: {
-        gridArea: '1/1/1/-1',
-        placeSelf: 'center',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
         width: dimension,
         height: dimension,
         pointerEvents: 'none',
