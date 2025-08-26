@@ -55,7 +55,7 @@ export const getComponentCss = (
         maxWidth: dimension,
         width: 'inherit',
         padding: paddingBlock,
-        // boxSizing: 'inherit',
+        boxSizing: 'inherit',
       })
     )
   );
