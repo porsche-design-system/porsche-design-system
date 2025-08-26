@@ -3725,7 +3725,7 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 }
 input {
   display: block;
-  width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  width: inherit;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
@@ -3740,25 +3740,9 @@ input {
   color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   text-align: center;
+  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
+  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-input:nth-of-type(1) {
-  grid-area: 1/1;
-}
-input:nth-of-type(2) {
-  grid-area: 1/2;
-}
-input:nth-of-type(3) {
-  grid-area: 1/3;
-}
-input:nth-of-type(4) {
-  grid-area: 1/4;
-}
-input:nth-of-type(5) {
-  grid-area: 1/5;
-}
-input:nth-of-type(6) {
-  grid-area: 1/6;
 }
 :not(input[type="password"]) {
   text-overflow: ellipsis;
@@ -3780,11 +3764,12 @@ input:disabled {
 
 .root {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 .wrapper {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(auto, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
   gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
 }
@@ -17914,7 +17899,7 @@ exports[`should render dsr component for PPinCode 1`] = `
 }
 input {
   display: block;
-  width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  width: inherit;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
@@ -17929,25 +17914,9 @@ input {
   color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   text-align: center;
+  min-width: max(1rem, calc(max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px)) - 2px*2 - max(2px, 8px * var(--p-internal-pin-code-scaling, 1))*2));
+  max-width: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding: max(2px, 8px * var(--p-internal-pin-code-scaling, 1));
-}
-input:nth-of-type(1) {
-  grid-area: 1/1;
-}
-input:nth-of-type(2) {
-  grid-area: 1/2;
-}
-input:nth-of-type(3) {
-  grid-area: 1/3;
-}
-input:nth-of-type(4) {
-  grid-area: 1/4;
-}
-input:nth-of-type(5) {
-  grid-area: 1/5;
-}
-input:nth-of-type(6) {
-  grid-area: 1/6;
 }
 :not(input[type="password"]) {
   text-overflow: ellipsis;
@@ -17969,11 +17938,12 @@ input:disabled {
 
 .root {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 .wrapper {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(auto, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   justify-self: flex-start;
   gap: max(4px, var(--p-internal-pin-code-scaling, 1) * 8px);
 }
