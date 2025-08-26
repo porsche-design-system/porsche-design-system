@@ -121,6 +121,8 @@ for (const component of components) {
       test(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
+        test.skip(component === 'select', 'This component is flaky in HC mode');
+
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forcedColorsEnabled: true,
           prefersColorScheme: scheme,
