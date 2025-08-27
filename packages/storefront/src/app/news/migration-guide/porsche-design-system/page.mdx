@@ -312,6 +312,16 @@ adjustable by prop `width`.
 + <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEvent>) => {}} />
 ```
 
+### Checkbox:
+
+- Event `update` is deprecated, use new event `change`.
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <PCheckbox onUpdate={(e: CustomEvent<CheckboxUpdateEventDetail>) => {}} />
++ <PCheckbox onChange={(e: CustomEvent<CheckboxChangeEventDetail>) => {}} />
+```
+
 ### Content Wrapper (deprecated):
 
 - Prop `theme` and `background-color` are deprecated, has no effect anymore.
