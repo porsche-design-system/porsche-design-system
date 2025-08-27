@@ -796,7 +796,7 @@ test.describe('Event', () => {
       expect((await getEventSummary(host, 'update')).details).toEqual([{ checked: true, name: 'some-name', value }]);
 
       expect((await getEventSummary(host, 'change')).counter).toBe(1);
-      expect((await getEventSummary(host, 'change')).details).toEqual([{ checked: true, name: 'some-name', value }]);
+      expect((await getEventSummary(host, 'change')).details).toEqual([{ isTrusted: true }]);
     });
     test('should trigger a blur event when the checkbox loses focus', async ({ page }) => {
       await initCheckbox(page);
