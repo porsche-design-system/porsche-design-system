@@ -1,6 +1,6 @@
 'use client';
 
-import type {SlotStories, Story} from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 
 export const inputPasswordSlotStories: SlotStories<'p-input-password'> = {
   start: {
@@ -59,10 +59,11 @@ export const inputPasswordStory: Story<'p-input-password'> = {
   state: {
     properties: { label: 'Some label', name: 'some-name', toggle: true },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-input-password',
       properties,
+      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
     },
   ],
 };
@@ -113,4 +114,3 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
     },
   ],
 };
-
