@@ -7194,10 +7194,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jasmine@^5.1.8":
-  version "5.1.8"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-5.1.8.tgz#b20f78ca416d7a2a8e726f8321e0b2827a78ceaa"
-  integrity sha512-u7/CnvRdh6AaaIzYjCgUuVbREFgulhX05Qtf6ZtW+aOcjCKKVvKgpkPYJBFTZSHtFBYimzU4zP0V2vrEsq9Wcg==
+"@types/jasmine@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-5.1.9.tgz#9f00abff2a17687e675ce6669e7b53c9e7d145f0"
+  integrity sha512-8t4HtkW4wxiPVedMpeZ63n3vlWxEIquo/zc1Tm8ElU+SqVV7+D3Na2PWaJUp179AzTragMWVwkMv7mvty0NfyQ==
 
 "@types/jest-expect-message@^1.1.0":
   version "1.1.0"
