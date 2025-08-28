@@ -1928,7 +1928,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the checkbox loses focus after its value was changed.",
+        "description": "Emitted when checkbox checked property is changed.",
         "type": "CheckboxChangeEventDetail",
         "typeDetail": "Event",
       },

@@ -4857,7 +4857,7 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PCheckboxCustomEvent<CheckboxBlurEventDetail>) => void;
         /**
-          * Emitted when the checkbox loses focus after its value was changed.
+          * Emitted when checkbox checked property is changed.
          */
         "onChange"?: (event: PCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
         /**
