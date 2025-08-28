@@ -19,9 +19,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
   `aria` prop to provide additional context for screen readers.
   ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))
-
-### Changed
-
 - `Checkbox`: `update` event is deprecated. Use `change` event instead.
   ([#4010](https://github.com/porsche-design-system/porsche-design-system/pull/4010))
 
