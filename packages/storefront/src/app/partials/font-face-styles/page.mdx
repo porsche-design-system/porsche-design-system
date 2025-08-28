@@ -1,14 +1,14 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { PartialDocs } from "@/components/partials/PartialDocs";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PartialDocs } from '@/components/partials/PartialDocs';
 
 export const metadata = {
   title: 'Partials: Font Face Styles - Porsche Design System',
   description: 'Learn how to integrate the Porsche Design System font face styles into your app.',
-}
+};
 
 # Font Face Styles
 
-<TableOfContents headings={['Supported options','Examples']} />
+<TableOfContents headings={['Supported options', 'Examples']} />
 
 **Function name:** `getFontFaceStyles()`
 
@@ -26,9 +26,9 @@ An in-depth optimization guide can be found at
 
 ## Supported options
 
-| Option   | Description                                                                                                                                                                                                                                                                 | Type    | Default |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------- |
-| `cdn`    | Decides from which CDN the resources are loaded.                                                                                                                                                                                                                            | `'auto' \| 'cn'`   | `'auto'`  |
+| Option   | Description                                                                                                                                                                                                                                                           | Type                          | Default  |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | -------- |
+| `cdn`    | Decides from which CDN the resources are loaded.                                                                                                                                                                                                                      | `'auto' \| 'cn'`              | `'auto'` |
 | `format` | Defines the output format of the partial. By default, it returns a html string. For `jsx` it return a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](/must-know/security/content-security-policy/). | `'html' \| 'jsx' \| 'sha256'` | `'html'` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project
@@ -36,20 +36,23 @@ included.
 
 ## Examples
 
-Project integration differs based on the project setup.
-The following showcases the most common ways.
+Project integration differs based on the project setup. The following showcases the most common ways.
 
-<PartialDocs name="getFontFaceStyles" location="head" partialCalls={[
-  {
-    params: [],
-  },
-  {
-    comment: 'Alternative: Force using China CDN',
-    params: [
-      {
-        key: 'cdn',
-        value: 'cn',
-      }
-    ]
-  }
-]} />
+<PartialDocs
+  name="getFontFaceStyles"
+  location="head"
+  partialCalls={[
+    {
+      params: [],
+    },
+    {
+      comment: 'Alternative: Force using China CDN',
+      params: [
+        {
+          key: 'cdn',
+          value: 'cn',
+        },
+      ],
+    },
+  ]}
+/>

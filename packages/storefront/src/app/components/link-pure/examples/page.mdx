@@ -1,22 +1,29 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
 import {
   linkPureCustomPadding,
   linkPureStory,
   linkPureStoryFrameworkRouting,
-  linkPureStoryIcon
-} from "@/app/components/link-pure/link-pure.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+  linkPureStoryIcon,
+} from '@/app/components/link-pure/link-pure.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
   title: 'Link Pure - Porsche Design System',
-  description: "Discover detailed examples and insights of the Link Pure component."
-}
+  description: 'Discover detailed examples and insights of the Link Pure component.',
+};
 
 # Link Pure <ComponentStatus tagName="p-link-pure"></ComponentStatus>
 
-<TableOfContents headings={['Link with specific icon','Framework routing (anchor nesting)','Examples how to use with Framework specific router and \'active state\' support','Link Pure with custom clickable/focusable area']} />
+<TableOfContents
+  headings={[
+    'Link with specific icon',
+    'Framework routing (anchor nesting)',
+    "Examples how to use with Framework specific router and 'active state' support",
+    'Link Pure with custom clickable/focusable area',
+  ]}
+/>
 
 ## Link with specific icon
 

@@ -1,23 +1,31 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Notification } from "@/components/common/Notification";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {carouselStoryFlexibleWidths, carouselStoryIntl} from "@/app/components/carousel/carousel.stories";
-import {ComponentExample} from "@/components/playground/ComponentExample";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/common/Notification';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { carouselStoryFlexibleWidths, carouselStoryIntl } from '@/app/components/carousel/carousel.stories';
+import { ComponentExample } from '@/components/playground/ComponentExample';
 import {
   carouselExampleDynamicSlides,
   carouselExampleFocusOnCenterSlide,
-  carouselExampleJumpToSlide
-} from "@porsche-design-system/shared/examples";
+  carouselExampleJumpToSlide,
+} from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Carousel - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Carousel component.'
-}
+  description: 'Discover detailed examples and insights of the Carousel component.',
+};
 
 # Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
 
-<TableOfContents headings={['Slides with flexible widths','Jump to slide (activeSlideIndex)','Add/remove slides','Centered Slide and Gradient Customization','Internationalization (i18n)']} />
+<TableOfContents
+  headings={[
+    'Slides with flexible widths',
+    'Jump to slide (activeSlideIndex)',
+    'Add/remove slides',
+    'Centered Slide and Gradient Customization',
+    'Internationalization (i18n)',
+  ]}
+/>
 
 ## Slides with flexible widths
 
@@ -53,8 +61,8 @@ ensuring a consistent and visually polished design.
 
 ## Internationalization (i18n)
 
-Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property.
-It has the following defaults:
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property. It has
+the following defaults:
 
 ```ts
 type CarouselInternationalization = {

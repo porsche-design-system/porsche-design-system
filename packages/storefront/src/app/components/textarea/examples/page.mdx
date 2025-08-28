@@ -1,19 +1,19 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import {textareaStory, textareaStorySlots} from "@/app/components/textarea/textarea.stories";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {textareaExample, textareaExampleControlled} from "@porsche-design-system/shared/examples";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
+import { textareaStory, textareaStorySlots } from '@/app/components/textarea/textarea.stories';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { textareaExample, textareaExampleControlled } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
   title: 'Textarea - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Textarea component.'
-}
+  description: 'Discover detailed examples and insights of the Textarea component.',
+};
 
 # Textarea <ComponentStatus tagName="p-textarea"></ComponentStatus>
 
-<TableOfContents headings={['Form','Controlled','Slots']} />
+<TableOfContents headings={['Form', 'Controlled', 'Slots']} />
 
 ## Form
 
@@ -39,4 +39,3 @@ can be used. Make sure **not** to define the corresponding property on the host 
 allowed.
 
 <ComponentStory story={textareaStorySlots} />
-

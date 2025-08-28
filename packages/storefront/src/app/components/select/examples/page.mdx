@@ -1,25 +1,34 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import {selectStory, selectStoryOptgroups, selectStorySlottedImages} from "@/app/components/select/select.stories";
-import {ComponentExample} from "@/components/playground/ComponentExample";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
+import { selectStory, selectStoryOptgroups, selectStorySlottedImages } from '@/app/components/select/select.stories';
+import { ComponentExample } from '@/components/playground/ComponentExample';
 import {
   selectExample,
   selectExampleControlled,
   selectExampleDynamic,
-  selectExampleRequired
-} from "@porsche-design-system/shared/examples";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {Notification} from "@/components/common/Notification";
+  selectExampleRequired,
+} from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Select - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Select component.'
-}
+  description: 'Discover detailed examples and insights of the Select component.',
+};
 
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
-<TableOfContents headings={['Basic example without preselection','Slotted images','Form','Controlled','Set Value','With optgroups']} />
+<TableOfContents
+  headings={[
+    'Basic example without preselection',
+    'Slotted images',
+    'Form',
+    'Controlled',
+    'Set Value',
+    'With optgroups',
+  ]}
+/>
 
 ## Basic example without preselection
 
@@ -49,9 +58,10 @@ establishes the link between the component and the form, enabling the selected v
 when it's submitted.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
-  <code>p-select</code> does not use a native select internally. As a result, it lacks access to native <code>ValidityState</code>
-  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
-  and error display will need to be implemented separately if required.
+  <code>p-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
+  <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
 </Notification>
 
 <ComponentExample codeSample={selectExample} />
