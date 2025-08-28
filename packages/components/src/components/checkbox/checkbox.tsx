@@ -115,7 +115,7 @@ export class Checkbox {
    */
   @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
 
-  /** Emitted when the checkbox loses focus after its value was changed. */
+  /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
 
   /** Emitted when the checkbox has lost focus. */
