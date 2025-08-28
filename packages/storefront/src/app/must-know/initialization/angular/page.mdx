@@ -75,7 +75,7 @@ from the perspective of network requests and how to improve them if necessary.
 
 By default, the network traffic looks something like this.
 
-![Loading Behavior Angular 01](/assets/loading-behavior-angular-01.jpg)
+![Loading Behavior Angular 01](assets/loading-behavior-angular-01.jpg)
 
 - starts with the `index.html`
 - then continues with the `runtime.js`, `polyfills.js` and `main.js` bundle of the Angular app
@@ -88,7 +88,7 @@ By default, the network traffic looks something like this.
 By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
 asset.
 
-![Loading Behavior Angular 02](/assets/loading-behavior-angular-02.jpg)
+![Loading Behavior Angular 02](assets/loading-behavior-angular-02.jpg)
 
 As we can see, this happens in parallel with the Angular bundles.
 
@@ -97,7 +97,7 @@ As we can see, this happens in parallel with the Angular bundles.
 By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
-![Loading Behavior Angular 03](/assets/loading-behavior-angular-03.jpg)
+![Loading Behavior Angular 03](assets/loading-behavior-angular-03.jpg)
 
 As a result, both font files are additionally loaded in parallel, while earlier this happened not only in sequence but
 even last and only when a style is present on the page that uses the `font-family` and that particular `font-weight`
@@ -108,7 +108,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
 partial. Without any configuration it simply preloads the **core chunk**.
 
-![Loading Behavior Angular 04](/assets/loading-behavior-angular-04.jpg)
+![Loading Behavior Angular 04](assets/loading-behavior-angular-04.jpg)
 
 Again, with this improvement, the asset is now being loaded in parallel, too.
 
@@ -118,7 +118,7 @@ For the next step, we also want to preload the **component chunk** by using the 
 getComponentChunkLinks({ components: ['button'] });
 ```
 
-![Loading Behavior Angular 05](/assets/loading-behavior-angular-05.jpg)
+![Loading Behavior Angular 05](assets/loading-behavior-angular-05.jpg)
 
 Now, everything is preloaded in parallel.
 
