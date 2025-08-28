@@ -1,27 +1,31 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {stylesThemeExample} from "@porsche-design-system/shared/examples";
-import {themeLightBackgroundBase} from "@porsche-design-system/components-react/styles";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { stylesThemeExample } from '@porsche-design-system/shared/examples';
+import { themeLightBackgroundBase } from '@porsche-design-system/components-react/styles';
 
 export const metadata = {
   title: 'Styles: Theme - Porsche Design System',
   description: 'Theme styles of the Porsche Design System.',
-}
+};
 
 # Theme
 
-<TableOfContents headings={['Example','Usage','Styles']} />
+<TableOfContents headings={['Example', 'Usage', 'Styles']} />
 
 ## Example
 
-<ComponentExample codeSample={stylesThemeExample} disableOpenInStackblitz={true} fixedBackgroundColor={themeLightBackgroundBase} />
+<ComponentExample
+  codeSample={stylesThemeExample}
+  disableOpenInStackblitz={true}
+  fixedBackgroundColor={themeLightBackgroundBase}
+/>
 
 ## Usage
 
 ### Do:
 
 - Always choose the Light Theme as the first choice for designing Porsche applications. Stick to the limited color set
-provided.
+  provided.
 - Use accessibility-safe colors, i.e., neutral contrast high and neutral contrast medium, to guarantee optimal contrast.
 - Play with darker/lighter grey shades to make an element stand out from the background or to set emphasis on it.
 - Mix color themes within the application on rarely. Ensure a sufficient contrast ratio.
@@ -135,23 +139,13 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angu
 - `$pds-theme-dark-state-focus`
 - `$pds-theme-dark-state-disabled`
 
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getStylesThemeCodeSamples } from '@porsche-design-system/shared';
-  import { adjustSelectedFramework } from '@/utils';
-  import ExampleStylesTheme from '@/pages/patterns/styles/example-theme.vue';
+{/\* <script lang="ts"> import Vue from 'vue'; import Component from 'vue-class-component'; import {
+getStylesThemeCodeSamples } from '@porsche-design-system/shared'; import { adjustSelectedFramework } from '@/utils';
+import ExampleStylesTheme from '@/pages/patterns/styles/example-theme.vue';
 
-  @Component({
-  components: {
-  ExampleStylesTheme
-},
-})
-  export default class Code extends Vue {
-  codeExample = getStylesThemeCodeSamples();
+@Component({ components: { ExampleStylesTheme }, }) export default class Code extends Vue { codeExample =
+getStylesThemeCodeSamples();
 
-  public mounted(): void {
-  adjustSelectedFramework(this.codeExample);
-}
-}
+public mounted(): void { adjustSelectedFramework(this.codeExample); } }
+
 </script> */}

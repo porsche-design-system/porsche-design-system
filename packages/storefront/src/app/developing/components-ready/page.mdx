@@ -1,14 +1,22 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Components Ready - Porsche Design System',
-  description: 'Find out when Porsche Design Systems components are fully initialized with `componentsReady()`.'
-}
+  description: 'Find out when Porsche Design Systems components are fully initialized with `componentsReady()`.',
+};
 
 # Components Ready
 
-<TableOfContents headings={['Basic Example','Advanced Example','Testing','Component Readiness Explained','Basic Example (When Defined)']} />
+<TableOfContents
+  headings={[
+    'Basic Example',
+    'Advanced Example',
+    'Testing',
+    'Component Readiness Explained',
+    'Basic Example (When Defined)',
+  ]}
+/>
 
 Since the components are loaded lazily, it might be hard to tell when they are ready if you rely on them
 programmatically. To solve that we provide the `componentsReady` function which returns a promise that resolves as soon
@@ -26,14 +34,16 @@ The `componentsReady` function is provided as part of the following components p
 - `@porsche-design-system/components-vue`
 
 <Notification heading="Attention" state="warning">
-  Before proceeding, consider using the `whenDefined` function from the [CustomElementRegistry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) API.
-  If you're unsure, review our [comparison](/developing/components-ready#component-readiness-explained) and [example usage](/developing/components-ready#basic-example-when-defined) for guidance.
+  Before proceeding, consider using the `whenDefined` function from the
+  [CustomElementRegistry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry) API. If you're unsure,
+  review our [comparison](/developing/components-ready#component-readiness-explained) and [example
+  usage](/developing/components-ready#basic-example-when-defined) for guidance.
 </Notification>
 
 ## Basic Example
 
-`componentsReady` is quite flexible. You can call it wherever and as often as you like.
-By default, it uses the current document's `body` element to look for any web component of the Porsche Design System.
+`componentsReady` is quite flexible. You can call it wherever and as often as you like. By default, it uses the current
+document's `body` element to look for any web component of the Porsche Design System.
 
 ```ts
 import { componentsReady } from '@porsche-design-system/components-{js|angular|react|vue}';
@@ -49,9 +59,9 @@ const doSomeStuff = async () => {
 
 ## Advanced Example
 
-In case you want to limit the search radius of `componentsReady` you can pass any `HTMLElement` as a parameter.
-This is useful when you want to show a loading indicator for only a part of your application's interface, e.g. the
-sidebar and only care about components inside.
+In case you want to limit the search radius of `componentsReady` you can pass any `HTMLElement` as a parameter. This is
+useful when you want to show a loading indicator for only a part of your application's interface, e.g. the sidebar and
+only care about components inside.
 
 You can also specify the [`readyState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState) that the
 document or component should reach before the promise resolves. The default `readyState` is set to `complete`, but you
@@ -83,7 +93,8 @@ Other Angular setups can be found further down.
 <Notification heading="Important note" heading-tag="h3" state="warning">
   All test environments that don't use a real browser typically run in **jsdom** which requires our `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill` subpackage in order to have real working Porsche Design System components.
 
-  Without it, you are just rendering "dead" component markup without any functionality.
+Without it, you are just rendering "dead" component markup without any functionality.
+
 </Notification>
 
 {/* <Playground :frameworkMarkup="codeSampleDefault" :showCodeEditor="false"></Playground> */}
@@ -103,13 +114,13 @@ Setup: `jest`, `jsdom` with `@testing-library/angular`
 ## Component Readiness Explained
 
 - **[`componentOnReady`](https://stenciljs.com/docs/api#componentonready) (Stencil):** Resolves when a single Stencil
-component and its internal DOM are fully initialized. Ideal for ensuring readiness before operations.
+  component and its internal DOM are fully initialized. Ideal for ensuring readiness before operations.
 
 - **[`componentsReady`](/developing/components-ready#basic-example) (PDS):** A Porsche Design System (PDS) utility that
-wraps `componentOnReady`, resolving when all currently used PDS components are fully loaded and operational.
+  wraps `componentOnReady`, resolving when all currently used PDS components are fully loaded and operational.
 
 - **[`whenDefined`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined) (Web API):**
-Resolves when a custom element is registered in the browser, ensuring availability but not readiness.
+  Resolves when a custom element is registered in the browser, ensuring availability but not readiness.
 
 ## Basic Example (When Defined)
 
@@ -148,15 +159,11 @@ const doSomeStuff = async () => {
 };
 ```
 
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { getComponentsReadyCodeSamples } from '@porsche-design-system/shared';
+{/\* <script lang="ts"> import Vue from 'vue'; import Component from 'vue-class-component'; import {
+getComponentsReadyCodeSamples } from '@porsche-design-system/shared';
 
-  @Component
-  export default class Code extends Vue {
-  codeSampleDefault = getComponentsReadyCodeSamples('default');
-  codeSampleAngularTestBed = getComponentsReadyCodeSamples('testbed');
-  codeSampleAngularTestingLibrary = getComponentsReadyCodeSamples('testing-library');
-}
+@Component export default class Code extends Vue { codeSampleDefault = getComponentsReadyCodeSamples('default');
+codeSampleAngularTestBed = getComponentsReadyCodeSamples('testbed'); codeSampleAngularTestingLibrary =
+getComponentsReadyCodeSamples('testing-library'); }
+
 </script> */}
