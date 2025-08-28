@@ -3,13 +3,13 @@ import type { AriaAttributes } from '../../../types';
 export const getFilterInputAriaAttributes = (
   isOpen: boolean,
   isRequired: boolean,
-  labelId: string,
+  label: string,
   descriptionId: string,
   dropdownId: string,
   activeDescendantId?: number
 ): AriaAttributes => {
   return {
-    ...getSelectDropdownButtonAriaAttributes(isOpen, labelId, descriptionId, dropdownId, activeDescendantId),
+    ...getSelectDropdownButtonAriaAttributes(isOpen, label, descriptionId, dropdownId, activeDescendantId),
     'aria-autocomplete': 'list',
     ...(isRequired && {
       'aria-required': 'true',
@@ -19,13 +19,13 @@ export const getFilterInputAriaAttributes = (
 
 export const getSelectDropdownButtonAriaAttributes = (
   isOpen: boolean,
-  labelId: string,
+  label: string,
   descriptionId: string,
   dropdownId: string,
   activeDescendantId?: number
 ): AriaAttributes => {
   return {
-    'aria-labelledby': labelId || null,
+    'aria-label': label || null,
     'aria-describedby': descriptionId || null,
     'aria-haspopup': 'listbox',
     'aria-expanded': isOpen ? 'true' : 'false',
