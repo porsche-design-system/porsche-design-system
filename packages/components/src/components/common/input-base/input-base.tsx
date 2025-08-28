@@ -40,6 +40,7 @@ type InputBaseProps = {
   type: string;
   value?: string;
   step?: number;
+  dir?: 'rtl' | 'ltr';
   spellCheck?: boolean;
   onWheel?: (e: InputBaseWheelEventDetail) => void;
   onInput?: (e: InputBaseInputEventDetail) => void;
@@ -72,6 +73,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   min,
   value,
   step,
+  dir,
   spellCheck,
   autoComplete,
   pattern,
@@ -123,6 +125,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           max={max}
           min={min}
           step={step}
+          dir={dir}
           value={value}
           readonly={readOnly}
           autocomplete={autoComplete}
