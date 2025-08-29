@@ -4,29 +4,34 @@ import {
   Element,
   Event,
   type EventEmitter,
+  h,
   type JSX,
   Listen,
   Prop,
   Watch,
-  h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId } from '../common/label/label-utils';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { StateMessage, messageId } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
-import type { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from './checkbox-utils';
+import type {
+  CheckboxBlurEventDetail,
+  CheckboxChangeEventDetail,
+  CheckboxState,
+  CheckboxUpdateEventDetail,
+} from './checkbox-utils';
 
 const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
@@ -92,20 +97,26 @@ export class Checkbox {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it's recommended to show the label. */
+  /** Show or hide label. For better accessibility, it's recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** @experimental Disables the checkbox and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when checkbox checked property is changed. */
+  /**
+   * Emitted when checkbox checked property is changed.
+   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
+   */
   @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
+
+  /** Emitted when checkbox checked property is changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
 
   /** Emitted when the checkbox has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<CheckboxBlurEventDetail>;
@@ -253,9 +264,13 @@ export class Checkbox {
   };
 
   private onChange = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     const checked = (e.target as HTMLInputElement).checked;
     this.checked = checked;
     this.internals?.setFormValue(checked ? this.value : undefined);
+    this.change.emit(e);
+
     this.update.emit({
       value: this.value,
       name: this.name,

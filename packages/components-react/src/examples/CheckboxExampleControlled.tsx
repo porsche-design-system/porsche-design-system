@@ -1,11 +1,12 @@
-import { type CheckboxUpdateEventDetail, PCheckbox, PText } from '@porsche-design-system/components-react';
-import { useState } from 'react';
+import { type CheckboxChangeEventDetail, PCheckbox, PText } from '@porsche-design-system/components-react';
+import { FormEvent, useState } from 'react';
 
 export const CheckboxExampleControlledPage = (): JSX.Element => {
   const [state, setState] = useState({
     'some-name': true,
   });
-  const onUpdate = ({ detail: { name, checked } }: CustomEvent<CheckboxUpdateEventDetail>) => {
+  const onChange = (event: CustomEvent<CheckboxChangeEventDetail> | FormEvent<{}>) => {
+    const { name, checked } = event.target as HTMLInputElement;
     setState((prev) => ({
       ...prev,
       [name]: checked,
@@ -18,7 +19,7 @@ export const CheckboxExampleControlledPage = (): JSX.Element => {
         name="some-name"
         checked={state['some-name']}
         value="some-value"
-        onUpdate={(e) => onUpdate(e)}
+        onChange={(e) => onChange(e)}
       />
       <PText>some-name: {state['some-name'].toString()}</PText>
     </>

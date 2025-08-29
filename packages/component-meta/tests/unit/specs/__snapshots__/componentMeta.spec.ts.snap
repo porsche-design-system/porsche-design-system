@@ -1927,8 +1927,12 @@ exports[`should match snapshot 1`] = `
         "type": "CheckboxBlurEventDetail",
         "typeDetail": "Event",
       },
-      "update": {
+      "change": {
         "description": "Emitted when checkbox checked property is changed.",
+        "type": "CheckboxChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "update": {
         "type": "CheckboxUpdateEventDetail",
         "typeDetail": "{ name: string; value?: string; checked: boolean }",
       },
@@ -1960,7 +1964,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays as a compact version.",
         "type": "boolean",
       },
       "disabled": {
@@ -1981,7 +1985,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
+        "description": "Show or hide label. For better accessibility, it's recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
