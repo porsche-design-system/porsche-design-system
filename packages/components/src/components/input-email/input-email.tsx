@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  h,
+  type JSX,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -17,6 +28,7 @@ import type {
   InputEmailInputEventDetail,
   InputEmailState,
 } from './input-email-utils';
+import { getDirection } from '../../utils/dom/getDirection';
 
 const propTypes: PropTypes<typeof InputEmail> = {
   label: AllowedTypes.string,
@@ -133,9 +145,12 @@ export class InputEmail {
 
   @AttachInternals() private internals: ElementInternals;
 
+  @State() private direction: 'ltr' | 'rtl' = 'ltr';
+
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
+  private observer: MutationObserver;
 
   @Watch('value')
   public onValueChange(newValue: string): void {
@@ -144,6 +159,20 @@ export class InputEmail {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
+
+    const target = this.host.closest('[dir]') ?? document.documentElement;
+    this.updateDirection(target);
+
+    this.observer = new MutationObserver(() => this.updateDirection(target));
+    this.observer.observe(target, { attributes: true, attributeFilter: ['dir'] });
+  }
+
+  public disconnectedCallback(): void {
+    this.observer?.disconnect();
+  }
+
+  private updateDirection(target: HTMLElement | Element): void {
+    this.direction = getDirection(this.host, target);
   }
 
   public componentWillLoad(): void {
@@ -227,7 +256,9 @@ export class InputEmail {
         multiple={this.multiple}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" theme={this.theme} />,
+          [this.direction === 'rtl' ? 'end' : 'start']: (
+            <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" theme={this.theme} />
+          ),
         })}
       />
     );

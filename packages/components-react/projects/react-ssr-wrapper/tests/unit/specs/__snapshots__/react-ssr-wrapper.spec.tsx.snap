@@ -13721,6 +13721,9 @@ input {
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+input:dir(rtl):not(:placeholder-shown) {
+  text-align: end;
+}
 .root {
   display: grid;
   gap: 4px;
@@ -14348,6 +14351,9 @@ input {
 }
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+input:dir(rtl):not(:placeholder-shown) {
+  text-align: end;
 }
 .root {
   display: grid;

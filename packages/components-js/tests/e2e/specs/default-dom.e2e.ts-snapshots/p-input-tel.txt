@@ -8,6 +8,7 @@
       name="value"
       type="tel"
       placeholder=""
+      dir="ltr"
     />
     <slot name="end"> </slot>
   </div>

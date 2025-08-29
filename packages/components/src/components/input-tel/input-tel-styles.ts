@@ -28,6 +28,9 @@ export const getComponentCss = (
       '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
         WebkitAppearance: 'none',
       },
+      '&:dir(rtl):not(:placeholder-shown)': {
+        textAlign: 'end',
+      },
     }),
     'sr-only': getHiddenTextJssStyle(),
   });
