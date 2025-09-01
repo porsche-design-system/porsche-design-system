@@ -11,7 +11,7 @@ import type { FormState } from '../../utils/form/form-state';
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
 export type TextFieldWrapperUnitPosition = (typeof UNIT_POSITIONS)[number];
 
-export type TextFieldWrapperActionIcon = Extract<IconName, 'locate'>;
+export type TextFieldWrapperActionIcon = IconName;
 export type TextFieldWrapperState = FormState;
 
 export const hasCounterAndIsTypeText = (el: HTMLInputElement | undefined): boolean =>

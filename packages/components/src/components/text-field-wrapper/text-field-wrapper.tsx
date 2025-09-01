@@ -63,7 +63,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCharacterCount: AllowedTypes.boolean,
   showCounter: AllowedTypes.boolean,
-  actionIcon: AllowedTypes.oneOf<TextFieldWrapperActionIcon>([undefined, 'locate']),
+  actionIcon: AllowedTypes.string,
   actionLoading: AllowedTypes.boolean,
   submitButton: AllowedTypes.boolean,
   showPasswordToggle: AllowedTypes.boolean,
@@ -335,7 +335,7 @@ export class TextFieldWrapper {
                   {...buttonProps}
                   key="btn-action"
                   type="button"
-                  icon="locate"
+                  icon={this.actionIcon || "locate"}
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
                   onClick={this.actionLoading ? null : this.action.emit}
