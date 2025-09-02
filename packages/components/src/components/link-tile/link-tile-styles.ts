@@ -49,7 +49,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
+        display: 'flex',
         alignItems: 'stretch',
         // Safari workaround to scale the tile properly
         '@supports (-webkit-hyphens: auto)': {
