@@ -50,7 +50,7 @@ export const getColors = (
   };
 };
 
-export const getItemPadding = (compact: boolean, hasIconAndSlottedContent: boolean): string => {
+export const getItemPadding = (hasIconAndSlottedContent: boolean, compact: boolean): string => {
   const scalingVar = getScalingVar(compact);
   const block = `calc(13px * ${scalingVar})`;
   const inline = `max(4px, calc(${ITEM_PADDING} * ${scalingVar}))`;
@@ -66,7 +66,6 @@ export const getComponentCss = (
   hasSlottedContent: boolean,
   theme: Theme
 ): string => {
-  const hasIconAndSlottedContent = hasIcon && hasSlottedContent;
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
   const {
     buttonColor: buttonColorDark,
@@ -91,7 +90,7 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: getItemPadding(compact, hasIconAndSlottedContent),
+        padding: getItemPadding(hasIcon && hasSlottedContent, compact),
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,

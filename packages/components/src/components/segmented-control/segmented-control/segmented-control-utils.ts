@@ -57,8 +57,7 @@ export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => 
 
     const hasIcon = !!item.icon || !!item.iconSource;
     const hasSlottedContent = !!host.innerHTML;
-    const hasIconAndSlottedContent = hasIcon && hasSlottedContent;
-    tempDiv.style.padding = getItemPadding(compact, hasIconAndSlottedContent);
+    tempDiv.style.padding = getItemPadding(hasIcon && hasSlottedContent, compact);
 
     if (hasIcon) {
       tempDiv.prepend(tempIcon);
