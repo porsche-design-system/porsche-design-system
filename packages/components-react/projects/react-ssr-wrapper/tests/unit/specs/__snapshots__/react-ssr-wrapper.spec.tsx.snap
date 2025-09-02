@@ -685,7 +685,8 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -730,10 +731,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 600;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -793,6 +799,12 @@ h1,h2,h3,h4,h5,h6 {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 
@@ -1083,7 +1095,8 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -1128,10 +1141,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 600;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -1191,6 +1209,12 @@ h1,h2,h3,h4,h5,h6 {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 
@@ -1523,7 +1547,8 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -1568,10 +1593,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 600;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -1631,6 +1661,12 @@ h1,h2,h3,h4,h5,h6 {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 
@@ -1963,7 +1999,8 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -2008,10 +2045,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 600;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -2071,6 +2113,12 @@ h1,h2,h3,h4,h5,h6 {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 
@@ -9331,7 +9379,8 @@ exports[`should render dsr component for PButtonTile 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -9377,11 +9426,16 @@ p {
   font-weight: 600;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 4/3;
   cursor: pointer;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -9427,6 +9481,12 @@ p {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 
@@ -15677,7 +15737,8 @@ exports[`should render dsr component for PLinkTileModelSignature 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -15722,10 +15783,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 600;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -15785,6 +15851,12 @@ h1,h2,h3,h4,h5,h6 {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 
