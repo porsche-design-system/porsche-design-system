@@ -54,12 +54,9 @@ export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => 
 
   const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
+    tempDiv.style.padding = getItemPadding(false /* Uses the largest possible padding of the item */, compact);
 
-    const hasIcon = !!item.icon || !!item.iconSource;
-    const hasSlottedContent = !!host.innerHTML;
-    tempDiv.style.padding = getItemPadding(hasIcon && hasSlottedContent, compact);
-
-    if (hasIcon) {
+    if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);
     }
     if (item.label) {
