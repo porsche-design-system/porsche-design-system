@@ -5,6 +5,16 @@ import {
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
 
+describe('LINK_TILE_MODEL_SIGNATURE_MODELS', () => {
+  it('should contain all elements of MODEL_SIGNATURE_MODELS', () => {
+    expect(LINK_TILE_MODEL_SIGNATURE_MODELS).toEqual(MODEL_SIGNATURE_MODELS);
+  });
+
+  it('should not be a reference of MODEL_SIGNATURE_MODELS', () => {
+    expect(LINK_TILE_MODEL_SIGNATURE_MODELS).not.toBe(MODEL_SIGNATURE_MODELS);
+  });
+});
+
 describe('setRequiredPropsOfSlottedLinks()', () => {
   it('should set correct theme and variant on passed links', () => {
     const primaryLink: HTMLPLinkElement = document.createElement('p-link');
