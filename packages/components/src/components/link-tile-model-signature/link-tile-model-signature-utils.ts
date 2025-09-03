@@ -12,7 +12,7 @@ export const LINK_TILE_MODEL_SIGNATURE_MODELS = [
   'cayman',
   'gt3-rs',
   'gt3',
-  'gts'
+  'gts',
   'macan',
   'panamera',
   'taycan',
