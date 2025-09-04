@@ -23,6 +23,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
 
+### Fixed
+
+- `Link Tile`, `Button Tile`, `Link Tile Model Signature`: fix overflowing content
+  ([#4018](https://github.com/porsche-design-system/porsche-design-system/pull/4018))
+
 ## [3.29.0] - 2025-08-20
 
 ## [3.29.0-rc.5] - 2025-08-19

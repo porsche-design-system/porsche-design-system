@@ -1,19 +1,19 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {Notification} from "@/components/common/Notification";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {buttonTileStoryGrid} from "@/app/components/button-tile/button-tile.stories";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {buttonTileExampleHyphens} from "@porsche-design-system/shared/examples";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/common/Notification';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { buttonTileStoryGrid } from '@/app/components/button-tile/button-tile.stories';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { buttonTileExampleHyphens } from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Button Tile - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Button Tile component.'
-}
+  description: 'Discover detailed examples and insights of the Button Tile component.',
+};
 
 # Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
 
-<TableOfContents headings={['UI behaviour','Hyphens']} />
+<TableOfContents headings={['UI behaviour', 'Hyphens']} />
 
 ## UI behaviour
 
@@ -22,10 +22,6 @@ first row in example).
 
 Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
 CSS Grid context (see second row in example).
-
-<Notification heading="Browser Support Limitation" heading-tag="h3" state="warning">
-  Currently, Safari is only able to align the height per CSS Grid row as long as the content does not overflow.
-</Notification>
 
 <ComponentStory story={buttonTileStoryGrid} />
 
