@@ -191,8 +191,8 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 7780,
-    "gzipSize": 3422
+    "size": 7801,
+    "gzipSize": 3432
   },
   {
     "chunkShortName": "link-tile-product",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 87211,
-    "gzipSize": 27788
+    "size": 87225,
+    "gzipSize": 27787
   },
   {
     "chunkShortName": "marque",
@@ -236,8 +236,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 13171,
-    "gzipSize": 5153
+    "size": 12994,
+    "gzipSize": 5132
   },
   {
     "chunkShortName": "popover",
