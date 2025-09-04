@@ -16,12 +16,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Model Signature`: `gt3`, `gt3-rs` and `gts`
 - `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
   `aria` prop to provide additional context for screen readers.
   ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))
 
 ### Fixed
 
+- `Link Tile`, `Button Tile`, `Link Tile Model Signature`: fix overflowing content
+  ([#4018](https://github.com/porsche-design-system/porsche-design-system/pull/4018))
 - `Select Wrapper`: fix axe-core violation when both `filter` and `description` prop are used
   ([#4011](https://github.com/porsche-design-system/porsche-design-system/pull/4011))
 
