@@ -3725,13 +3725,13 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -17899,13 +17899,13 @@ exports[`should render dsr component for PPinCode 1`] = `
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;

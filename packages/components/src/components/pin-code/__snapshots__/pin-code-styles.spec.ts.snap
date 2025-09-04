@@ -13,13 +13,13 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #197E10;
   border-radius: 4px;
   background: transparent;
@@ -193,13 +193,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -307,13 +307,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -421,13 +421,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -535,13 +535,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -649,13 +649,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -763,13 +763,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -877,13 +877,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -996,13 +996,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -1109,13 +1109,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -1222,13 +1222,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -1335,13 +1335,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -1448,13 +1448,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -1561,13 +1561,13 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
   border-radius: 4px;
   background: transparent;
@@ -1674,13 +1674,13 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 input {
   display: block;
-  width: inherit;
+  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-pin-code-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   margin: 0;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
-  box-sizing: inherit;
+  box-sizing: content-box;
   border: 2px solid #FC4040;
   border-radius: 4px;
   background: transparent;
