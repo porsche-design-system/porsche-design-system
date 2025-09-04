@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 15292,
-    "gzipSize": 6235
+    "size": 15566,
+    "gzipSize": 6342
   },
   {
     "chunkShortName": "inline-notification",
@@ -191,8 +191,8 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 7780,
-    "gzipSize": 3422
+    "size": 7801,
+    "gzipSize": 3432
   },
   {
     "chunkShortName": "link-tile-product",
