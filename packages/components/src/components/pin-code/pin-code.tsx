@@ -44,6 +44,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   value: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -99,6 +100,9 @@ export class PinCode {
 
   /** Sets the initial value of the Pin Code. */
   @Prop({ mutable: true }) public value?: string = '';
+
+  /** A boolean value that, if present, renders the pin-code as a compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -177,6 +181,7 @@ export class PinCode {
       this.disabled,
       this.loading,
       this.length,
+      this.compact,
       this.theme
     );
 
