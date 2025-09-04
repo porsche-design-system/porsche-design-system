@@ -6,8 +6,8 @@
   const debugElement = document.querySelector('p-text');
   const checkbox = document.querySelector('p-checkbox');
 
-  checkbox.addEventListener('update', (e) => {
-    setDebugText(e.detail.checked);
+  checkbox.addEventListener('change', (e) => {
+    setDebugText(e.target.checked);
   });
 
   function setDebugText(value) {
