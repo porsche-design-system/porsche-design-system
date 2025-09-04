@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))
 - `Pin Code`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4001](https://github.com/porsche-design-system/porsche-design-system/pull/4001))
+- `Checkbox`: `update` event is deprecated. Use `change` event instead.
+  ([#4010](https://github.com/porsche-design-system/porsche-design-system/pull/4010))
 - `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
 
