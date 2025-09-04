@@ -1,15 +1,25 @@
-import { Notification } from "@/components/common/Notification";
-import { PButton } from "@porsche-design-system/components-react/ssr";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { PButton } from '@porsche-design-system/components-react/ssr';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Initialization: Vanilla JS - Porsche Design System',
   description: 'Learn how to initialize and setup the Porsche Design System in your app with Vanilla JS.',
-}
+};
 
 # Initialization
 
-<TableOfContents headings={['Setup','Preparation','Connect Lifecycle','Change Lifecycle','Disconnect Lifecycle','Reconnect Lifecycle','Optimization']} />
+<TableOfContents
+  headings={[
+    'Setup',
+    'Preparation',
+    'Connect Lifecycle',
+    'Change Lifecycle',
+    'Disconnect Lifecycle',
+    'Reconnect Lifecycle',
+    'Optimization',
+  ]}
+/>
 
 First we need to understand how a web component works, before we can look into how to optimize its bootstrapping
 behavior.
@@ -33,9 +43,9 @@ network tab of Chrome Developer Tools by its name containing the version number,
 Once the **core chunk** is loaded and executed the following things happen:
 
 - `customElements.define()` is called for every component to register the custom html element in the browser (this is
-how [prefixing](/developing/vanilla-js/advanced) for micro frontend architectures is even possible)
+  how [prefixing](/developing/vanilla-js/advanced) for micro frontend architectures is even possible)
 - if any of the registered component tags is already in or is later added to the DOM, its corresponding **component
-chunk** is loaded from the CDN on demand
+  chunk** is loaded from the CDN on demand
 - a checklist is maintained that tracks which **component chunks** are loaded already
 
 Now the Porsche Design System is active and ready to go.
@@ -52,8 +62,7 @@ For now, this is just a "dead" html tag without any appearance or functionality.
 via CSS by the mandatory [getInitialStyles()](/partials/initial-styles) partial which outputs something like
 
 ```html
-p-button { visibility: hidden; }
-.hydrated { visibility: inherit; }
+p-button { visibility: hidden; } .hydrated { visibility: inherit; }
 ```
 
 The **core chunk** detects the newly added tag and knows from its checklist that this component was not used and loaded
@@ -67,9 +76,10 @@ Initialization of a component tag means that under the hood, an instance of the 
 JavaScript space.
 
 <Notification heading="Important" headingTag="h3" state="warning">
-  It is important to understand, that for each component tag in the DOM, there is a component class instance in the JavaScript space.
-  The component tag acts as an interface, similar to an API, where you set attributes/properties or children as inputs.
-  If these change, the class instance detects these and renders the result into the component tag's Shadow DOM as an output.
+  It is important to understand, that for each component tag in the DOM, there is a component class instance in the
+  JavaScript space. The component tag acts as an interface, similar to an API, where you set attributes/properties or
+  children as inputs. If these change, the class instance detects these and renders the result into the component tag's
+  Shadow DOM as an output.
 </Notification>
 
 Once the class instance is constructed by executing its `constructor()` the following lifecycle methods are executed in
@@ -191,15 +201,16 @@ For the next step, we also want to preload the **component chunk** by using the 
 getComponentChunkLinks({ components: ['button'] });
 ```
 
-![Loading Behavior Vanilla Js 05](/assets/loading-behavior-vanilla-js-05.jpg)
+![Loading Behavior Vanilla Js 05](assets/loading-behavior-vanilla-js-05.jpg)
 
 Now, everything is preloaded in parallel.
 
 <Notification heading="Hint" headingTag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.
 
-  Instead, the most performant but also more complicated approach would be to only preload the component chunks
-  (and fonts) that are located **above the fold** which means visible on page load without scrolling.
+Instead, the most performant but also more complicated approach would be to only preload the component chunks (and
+fonts) that are located **above the fold** which means visible on page load without scrolling.
+
 </Notification>
 
 ### Early initialization
@@ -216,8 +227,7 @@ necessary http communication, like request and response headers. Also [component
 isn't part of `getLoaderScript()`.
 
 <Notification heading="Hint" headingTag="h4" state="warning">
-  This works and helps especially in a plain HTML and Vanilla Js setup since the `index.js` is otherwise
-  bundled by the JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined
-  in the `script` tag.
+  This works and helps especially in a plain HTML and Vanilla Js setup since the `index.js` is otherwise bundled by the
+  JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined in the `script`
+  tag.
 </Notification>
-
