@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { PCheckbox, PText, type CheckboxUpdateEventDetail } from '@porsche-design-system/components-vue';
-import { ref } from 'vue';
+  import { type CheckboxChangeEventDetail, PCheckbox, PText } from '@porsche-design-system/components-vue';
+  import { ref } from 'vue';
 
-const state = ref<{ [key: string]: boolean }>({
-  'some-name': true,
-});
+  const state = ref<{ [key: string]: boolean }>({
+    'some-name': true,
+  });
 
-const onUpdate = (e: CheckboxUpdateEventDetail) => {
-  state.value[e.name] = e.checked;
-};
+  const onChange = (e: CheckboxChangeEventDetail) => {
+    const { name, checked } = e.target as HTMLInputElement;
+    state.value[name] = checked;
+  };
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const onUpdate = (e: CheckboxUpdateEventDetail) => {
     :label="'Some Label'"
     :checked="state['some-name']"
     :value="'some-value'"
-    @update="onUpdate"
+    @change="onChange"
   />
   <PText>some-name: {{ state['some-name'] }}</PText>
 </template>

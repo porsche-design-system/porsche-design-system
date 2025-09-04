@@ -23,6 +23,7 @@ const initComponent = (): Checkbox => {
   mockEmit = jest.fn();
 
   component.update = { emit: mockEmit } as any;
+  component.change = { emit: mockEmit } as any;
   component.blur = { emit: mockEmit } as any;
   return component;
 };
@@ -178,7 +179,7 @@ describe('onBlur', () => {
 });
 
 describe('onChange', () => {
-  it('should call setFormValue() and emit update event', () => {
+  it('should call setFormValue() and emit change event', () => {
     const value = 'test-value';
     const name = 'test-name';
     const checked = true;
