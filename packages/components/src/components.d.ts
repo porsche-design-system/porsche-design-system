@@ -2467,6 +2467,10 @@ export namespace Components {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * A boolean value that, if present, renders the segmented-control as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -6927,6 +6931,10 @@ declare namespace LocalJSX {
           * Sets the amount of columns.
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
+        /**
+          * A boolean value that, if present, renders the segmented-control as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * Disables the segmented-control.
          */

@@ -85,6 +85,7 @@ export class SegmentedControlItem {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.host.compact,
       isDisabled,
       this.host.selected,
       hasIcon,

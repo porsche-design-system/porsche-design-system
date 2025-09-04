@@ -4380,7 +4380,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px 17px;
+  padding: calc(13px * var(--p-internal-segmented-control-scaling, 1)) max(4px, calc(17px * var(--p-internal-segmented-control-scaling, 1)));
   margin: 0;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
@@ -4443,7 +4443,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px 17px;
+  padding: calc(13px * var(--p-internal-segmented-control-scaling, 1)) max(4px, calc(17px * var(--p-internal-segmented-control-scaling, 1)));
   margin: 0;
   border: 2px solid #404044;
   border-radius: 4px;
@@ -18968,7 +18968,7 @@ button {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 13px 17px;
+  padding: calc(13px * var(--p-internal-segmented-control-scaling, 1)) max(4px, calc(17px * var(--p-internal-segmented-control-scaling, 1)));
   margin: 0;
   border: 2px solid #D8D8DB;
   border-radius: 4px;
