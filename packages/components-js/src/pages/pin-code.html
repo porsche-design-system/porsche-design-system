@@ -143,6 +143,17 @@
   <p-pin-code label="Length=6" length="6"></p-pin-code>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render in compact mode">
+  <p-pin-code compact="true" label="Some label" name="some-name"></p-pin-code>
+  <p-pin-code
+    compact="true"
+    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
+    style="width: 15rem"
+    name="some-name"
+  ></p-pin-code>
+  <p-pin-code compact="true" label="Some label" name="some-name" loading="true"></p-pin-code>
+</div>
+
 <div class="playground light auto-layout-inline" title="should render with scaling 0">
   <p-pin-code class="scaling-0" label="Some label" name="some-name"></p-pin-code>
   <p-pin-code
