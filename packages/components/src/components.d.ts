@@ -2320,6 +2320,10 @@ export namespace Components {
      */
     interface PPinCode {
         /**
+          * A boolean value that, if present, renders the pin-code as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -6782,6 +6786,10 @@ declare namespace LocalJSX {
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
      */
     interface PPinCode {
+        /**
+          * A boolean value that, if present, renders the pin-code as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * The description text.
          */
