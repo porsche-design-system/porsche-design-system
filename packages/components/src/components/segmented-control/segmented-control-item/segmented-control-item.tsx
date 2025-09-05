@@ -1,4 +1,4 @@
-import { Component, Element, Host, type JSX, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
@@ -12,12 +12,12 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import {
+  getIconColor,
+  getSegmentedControlItemAriaAttributes,
   SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
   type SegmentedControlItemAriaAttribute,
   type SegmentedControlItemIcon,
   type SegmentedControlItemInternalHTMLProps,
-  getIconColor,
-  getSegmentedControlItemAriaAttributes,
 } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
@@ -88,6 +88,7 @@ export class SegmentedControlItem {
       this.host.compact,
       isDisabled,
       this.host.selected,
+      this.host.state,
       hasIcon,
       hasSlottedContent,
       this.host.theme || 'light' // default as fallback
@@ -96,7 +97,16 @@ export class SegmentedControlItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host onClick={!isDisabled && this.onClick}>
-        <button type="button" {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}>
+        <button
+          type="button"
+          {...getSegmentedControlItemAriaAttributes(
+            this.host.selected,
+            this.disabled,
+            this.host.state,
+            this.host.message,
+            this.aria
+          )}
+        >
           {this.label && <span>{this.label}</span>}
           {hasIcon && (
             <PrefixedTagNames.pIcon

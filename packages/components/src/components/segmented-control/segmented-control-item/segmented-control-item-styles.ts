@@ -10,8 +10,10 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode } from '../../../utils';
+import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
 export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
 export const getScalingVar = (compact: boolean) =>
@@ -26,6 +28,7 @@ export const ICON_MARGIN = '.25rem';
 export const getColors = (
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   theme: Theme
 ): {
   buttonColor: string;
@@ -36,6 +39,8 @@ export const getColors = (
   const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
@@ -44,9 +49,13 @@ export const getColors = (
         ? disabledColor
         : isHighContrastMode
           ? highlightColor
-          : primaryColor
-      : contrastLowColor,
-    hoverBorderColor: primaryColor,
+          : state === 'success'
+            ? formStateColor
+            : primaryColor
+      : state === 'error'
+        ? formStateColor
+        : contrastLowColor,
+    hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
   };
 };
 
@@ -62,17 +71,18 @@ export const getComponentCss = (
   compact: boolean,
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   hasIcon: boolean,
   hasSlottedContent: boolean,
   theme: Theme
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
+  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, state, theme);
   const {
     buttonColor: buttonColorDark,
     labelColor: labelColorDark,
     borderColor: borderColorDark,
     hoverBorderColor: hoverBorderColorDark,
-  } = getColors(isDisabled, isSelected, 'dark');
+  } = getColors(isDisabled, isSelected, state, 'dark');
 
   return getCss({
     '@global': {

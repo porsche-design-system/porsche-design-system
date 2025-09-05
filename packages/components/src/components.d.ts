@@ -59,7 +59,7 @@ import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } fr
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlState, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -135,7 +135,7 @@ export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } fr
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlState, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
@@ -2479,9 +2479,17 @@ export namespace Components {
          */
         "form"?: string;
         /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
           * The name of the segmented-control.
          */
         "name"?: string;
+        /**
+          * Indicates the validation or overall status of the component.
+         */
+        "state"?: SegmentedControlState;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
@@ -6944,6 +6952,10 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
           * The name of the segmented-control.
          */
         "name"?: string;
@@ -6955,6 +6967,10 @@ declare namespace LocalJSX {
           * Emitted when selected element changes.
          */
         "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
+        /**
+          * Indicates the validation or overall status of the component.
+         */
+        "state"?: SegmentedControlState;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
