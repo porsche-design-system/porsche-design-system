@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Icon`: `ai-3d-object`, `ai-code`, `ai-edit`, `ai-image`, `ai-scale`, `ai-sound`, `ai-text`, `ai-video`
 - `Model Signature`: `gt3`, `gt3-rs` and `gts`
 - `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
   `aria` prop to provide additional context for screen readers.
