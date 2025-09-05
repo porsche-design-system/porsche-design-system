@@ -289,7 +289,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props,\s*this\.props\.compact\)/, '$1(100') // segmented-control
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
@@ -506,6 +505,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
+          .replace(/getItemMaxWidth\(this\.props,\s*this\.props\.compact\)/, '100')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-segmented-control-item') {
