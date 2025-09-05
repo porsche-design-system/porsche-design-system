@@ -70,6 +70,8 @@ describe('render', () => {
       component.host,
       component.value,
       component.disabled,
+      component.state,
+      component.message,
       component.compact,
       component.theme
     );
