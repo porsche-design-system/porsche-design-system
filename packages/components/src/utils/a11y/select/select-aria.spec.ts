@@ -7,8 +7,8 @@ import {
 
 describe('getSelectDropdownButtonAriaAttributes()', () => {
   it.each<Parameters<typeof getSelectDropdownButtonAriaAttributes>>([
-    [true, 'label-id', 'description-id', 'dropdown-id', 0],
-    [false, 'label-id', 'description-id', 'dropdown-id', 1],
+    [true, 'label', 'description-id', 'dropdown-id', 0],
+    [false, 'label', 'description-id', 'dropdown-id', 1],
   ])(
     'should return correct aria attributes for isOpen: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
     (isOpen, labelId, descriptionId, dropdownId, activeDescendantId) => {
@@ -21,9 +21,9 @@ describe('getSelectDropdownButtonAriaAttributes()', () => {
 
 describe('getFilterInputAriaAttributes()', () => {
   it.each<Parameters<typeof getFilterInputAriaAttributes>>([
-    [true, true, 'label-id', 'description-id', 'dropdown-id', 0],
-    [false, false, 'label-id', 'description-id', 'dropdown-id', 0],
-    [false, false, 'label-id', 'description-id', 'dropdown-id', 1],
+    [true, true, 'label', 'description-id', 'dropdown-id', 0],
+    [false, false, 'label', 'description-id', 'dropdown-id', 0],
+    [false, false, 'label', 'description-id', 'dropdown-id', 1],
   ])(
     'should return correct aria attributes for isOpen: %o, isRequired: %o, labelId: %o, descriptionId: %o, dropdownId: %o and activeDescendantId: %o',
     (isOpen, isRequired, labelId, descriptionId, dropdownId, activeDescendantId) => {
