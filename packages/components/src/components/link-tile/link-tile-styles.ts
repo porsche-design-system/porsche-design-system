@@ -168,7 +168,7 @@ export const getComponentCss = (
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
-              alignItems: `${isTopAligned ? 'start' : 'end'}`,
+              alignItems: 'center',
               flexDirection: 'row',
             }
           : {
