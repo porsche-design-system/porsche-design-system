@@ -7478,6 +7478,9 @@ exports[`should match snapshot 1`] = `
       "header": {
         "description": "Renders a header section above the content area.",
       },
+      "footer-text": {
+        "description": "Renders footer text below the description.",
+      },
     },
     "styling": "jss",
   },
