@@ -42,6 +42,7 @@ export const getComponentCss = (
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
+  hasFooterText: boolean,
   isDisabled?: boolean
 ): string => {
   const isTopAligned = align === 'top';
@@ -71,6 +72,9 @@ export const getComponentCss = (
         },
         '&[name="header"]': {
           gridArea: `${isTopAligned ? 4 : 2}/2`,
+          zIndex: 3,
+        },
+        '&[name="footer-text"]': {
           zIndex: 3,
         },
       },
@@ -164,7 +168,7 @@ export const getComponentCss = (
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
-              alignItems: 'center',
+              alignItems: `${isTopAligned ? 'start' : 'end'}`,
               flexDirection: 'row',
             }
           : {
@@ -184,6 +188,13 @@ export const getComponentCss = (
       zIndex: 5,
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'none' : 'inline-block',
+      })),
+    },
+    'footer-content': {
+      display: 'flex',
+      flexDirection: 'column',
+      ...buildResponsiveStyles(hasFooterText, (footerValue: boolean) => ({
+        gap: footerValue ? spacingStaticMedium : 0,
       })),
     },
   });
