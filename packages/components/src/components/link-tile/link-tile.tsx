@@ -167,7 +167,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <div class="footer-content">
             <p>{this.description}</p>
-            {this.hasFooterText && <slot name="footer-text" onSlotchange={() => this.handleSlotChange()} />}
+            {this.hasFooterText ? <slot name="footer-text" onSlotchange={() => this.handleSlotChange()} /> : null}
           </div>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
