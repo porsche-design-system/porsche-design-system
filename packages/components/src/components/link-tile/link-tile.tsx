@@ -1,14 +1,14 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, State } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  type ITileProps,
-  LINK_ARIA_ATTRIBUTES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  type ITileProps,
+  LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
@@ -45,6 +45,9 @@ const propTypes: PropTypes<typeof LinkTile> = {
 })
 export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
+
+  /** Keep track if footer-text slot has been passed in. */
+  @State() private hasFooterText = false;
 
   /** Font size of the description. */
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'medium';
@@ -94,11 +97,16 @@ export class LinkTile implements ITileProps {
 
   public componentWillLoad(): void {
     preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
+    this.handleSlotChange();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
+
+  private handleSlotChange = (): void => {
+    this.hasFooterText = this.host.querySelector('[slot="footer-text"]') !== null;
+  };
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
@@ -111,7 +119,8 @@ export class LinkTile implements ITileProps {
       this.background,
       this.align,
       this.compact,
-      this.gradient
+      this.gradient,
+      this.hasFooterText
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -156,7 +165,10 @@ export class LinkTile implements ITileProps {
           <slot onSlotchange={() => preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host)} />
         </div>
         <div class="footer">
-          <p>{this.description}</p>
+          <div class="footer-content">
+            <p>{this.description}</p>
+            {this.hasFooterText ? <slot name="footer-text" onSlotchange={() => this.handleSlotChange()} /> : null}
+          </div>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>
