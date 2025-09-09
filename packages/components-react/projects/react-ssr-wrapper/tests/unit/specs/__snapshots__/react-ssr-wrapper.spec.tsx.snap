@@ -15488,6 +15488,9 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
+slot[name="footer-text"] {
+  z-index: 3;
+}
 ::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
@@ -15557,6 +15560,11 @@ p {
   z-index: 5;
   display: inline-block;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 @media (forced-colors: active) {
   .root::after {
     background: rgba(0,0,0,0.7);
@@ -15595,7 +15603,14 @@ p {
       <div
         class="footer"
       >
-        <p />
+        <div
+          class="footer-content"
+        >
+          <slot
+            name="footer-text"
+          />
+          <p />
+        </div>
         <p-link
           class="link-or-button"
           data-ssr=""
