@@ -1,0 +1,5 @@
+- text: Some Header
+- img "Some alt text"
+- paragraph: Some description
+- link "Some Label"
+- paragraph: Some footer text
