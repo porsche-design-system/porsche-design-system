@@ -157,6 +157,8 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
+    const footerTextSlot: JSX.Element = <slot name="footer-text" onSlotchange={() => this.handleSlotChange()} />;
+
     return (
       <div class="root">
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
@@ -167,7 +169,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <div class="footer-content">
             <p>{this.description}</p>
-            {this.hasFooterText && <slot name="footer-text" onSlotchange={() => this.handleSlotChange()} />}
+            {this.hasFooterText && footerTextSlot}
           </div>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
