@@ -15606,9 +15606,6 @@ p {
         <div
           class="footer-content"
         >
-          <slot
-            name="footer-text"
-          />
           <p />
         </div>
         <p-link
