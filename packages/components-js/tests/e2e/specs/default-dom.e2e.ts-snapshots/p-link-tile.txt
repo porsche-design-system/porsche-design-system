@@ -5,7 +5,9 @@
     <slot> </slot>
   </div>
   <div class="footer">
-    <p>value</p>
+    <div class="footer-content">
+      <p>value</p>
+    </div>
     <p-link class="link-or-button hydrated"> value</p-link>
   </div>
 </div>
