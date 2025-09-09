@@ -47,9 +47,6 @@ const propTypes: PropTypes<typeof LinkTile> = {
 export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
-  /** Keep track if footer-text slot has been passed in. */
-  @State() private hasFooterText = false;
-
   /** Font size of the description. */
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'medium';
 
@@ -91,6 +88,8 @@ export class LinkTile implements ITileProps {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+
+  @State() private hasFooterText = false;
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
