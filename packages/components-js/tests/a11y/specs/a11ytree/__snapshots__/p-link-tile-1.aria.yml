@@ -1,5 +1,5 @@
 - text: Some Header
 - img "Some alt text"
 - paragraph: Some description
+- text: Some footer text
 - link "Some Label"
-- paragraph: Some footer text
