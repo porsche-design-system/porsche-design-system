@@ -1,14 +1,15 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Performance: CDN - Porsche Design System',
-  description: 'Learn how the Porsche Design System uses a CDN to deliver its assets and how to configure it for maximum performance.',
-}
+  description:
+    'Learn how the Porsche Design System uses a CDN to deliver its assets and how to configure it for maximum performance.',
+};
 
 # Performance
 
-<TableOfContents headings={['Architecture','Explanation','China CDN']} />
+<TableOfContents headings={['Architecture', 'Explanation', 'China CDN']} />
 
 The Porsche Design System **components**, **marque**, **icons**, **fonts** and **styles** are delivered by CDN
 (cdn.ui.porsche.com). This way all digital Porsche products share and use the cached and versioned assets independently.
@@ -51,15 +52,16 @@ initializing the Porsche Design System.
 <Notification heading="Attention" headingTag="h3" state="warning">
   Usually the integrating team that is responsible for the application is in charge of configuring which cdn to use.
 
-  This means that widget teams shouldn't set it and might even override it.
+This means that widget teams shouldn't set it and might even override it.
+
 </Notification>
 
 Possible values that can be assigned:
 
 - `auto` (default - using RoW CDN and redirects to Chinese CDN automatically when necessary)
 - `cn` (forces using Chinese CDN directly) This gives the possibility for the consuming application to have either **two
-dedicated builds** for their application, one for China and one for RoW (rest of world) or following the **build once,
-deploy many principle**, it can be configured at start-up time.
+  dedicated builds** for their application, one for China and one for RoW (rest of world) or following the **build once,
+  deploy many principle**, it can be configured at start-up time.
 
 Since handling the global configuration variable `PORSCHE_DESIGN_SYSTEM_CDN` isn't very nice and won't work in a SSR
 context, the `porscheDesignSystem.load()` function accepts a `cdn: 'auto' | 'cn'` option which will then set the
@@ -77,16 +79,16 @@ The same can be achieved in all supported frameworks via the respective module o
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Porsche Design System</title>
-  <script type="text/javascript" src="path-to-porsche-design-system.js"></script>
-</head>
-<body>
-<script>
-  porscheDesignSystem.load({ cdn: 'cn' });
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Porsche Design System</title>
+    <script type="text/javascript" src="path-to-porsche-design-system.js"></script>
+  </head>
+  <body>
+    <script>
+      porscheDesignSystem.load({ cdn: 'cn' });
+    </script>
+  </body>
 </html>
 ```
 
@@ -99,10 +101,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 import { AppComponent } from './app.component';
 
 @NgModule({
-declarations: [],
+  declarations: [],
   imports: [BrowserModule, PorscheDesignSystemModule.load({ cdn: 'cn' })],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-bootstrap: [AppComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -149,6 +151,7 @@ an option `{ cdn: 'auto' | 'cn' }` to force preloading assets from Chinese CDN d
 
 ```html
 <head>
-  <%= require('@porsche-design-system/components-{js|angular|react|vue}/partials').getFontFaceStylesheet({ cdn: 'cn' }) %>
+  <%= require('@porsche-design-system/components-{js|angular|react|vue}/partials').getFontFaceStylesheet({ cdn: 'cn' })
+  %>
 </head>
 ```

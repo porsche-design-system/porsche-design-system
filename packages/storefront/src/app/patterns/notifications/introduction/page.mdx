@@ -1,15 +1,15 @@
-import { PLink } from "@porsche-design-system/components-react/ssr";
-import { TableOfContents } from "@/components/common/TableOfContents";
-import Link from "next/link";
+import { PLink } from '@porsche-design-system/components-react/ssr';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Notifications - Porsche Design System',
-  description: 'Learn more about the different notification components in the Porsche Design System.'
-}
+  description: 'Learn more about the different notification components in the Porsche Design System.',
+};
 
 # Notifications
 
-<TableOfContents headings={['When to use','Types/Behavior','Layer order','References']} />
+<TableOfContents headings={['When to use', 'Types/Behavior', 'Layer order', 'References']} />
 
 Notifications are an important method of communicating with users and providing feedback.
 
@@ -22,7 +22,9 @@ using your product. Ensure your **notifications are relevant, timely, and inform
 
 In order to find the right notification type for your use case, we have defined some decision-making rules for you:
 
-<PLink><Link href="/patterns/notifications/decision-tree/">Go to the Decision Tree</Link></PLink>
+<PLink>
+  <Link href="/patterns/notifications/decision-tree/">Go to the Decision Tree</Link>
+</PLink>
 
 ---
 
@@ -38,26 +40,26 @@ In order to find the right notification type for your use case, we have defined 
 
 ## Layer order
 
-**Important:** All elements are rendered on the browsers `#top-layer` so a manual ordering of z-index will
-have no effect, instead the browser renders the element on top of everything which was triggered to be shown last, [meet the top layer: a solution to z-index:10000](https://developer.chrome.com/blog/what-is-the-top-layer).
+**Important:** All elements are rendered on the browsers `#top-layer` so a manual ordering of z-index will have no
+effect, instead the browser renders the element on top of everything which was triggered to be shown last,
+[meet the top layer: a solution to z-index:10000](https://developer.chrome.com/blog/what-is-the-top-layer).
 
-| Component                                                                                                                         | Order                         |
-| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| Toast                                                                                                                             | `#top-layer`  |
-| Modal                                                                                                                             | `#top-layer`  |
-| Flyout                                                                                                                            | `#top-layer` |
-| Popover                                                                                                                           | `#top-layer` |
-| Banner                                                                                                                            | `#top-layer` |
+| Component | Order        |
+| --------- | ------------ |
+| Toast     | `#top-layer` |
+| Modal     | `#top-layer` |
+| Flyout    | `#top-layer` |
+| Popover   | `#top-layer` |
+| Banner    | `#top-layer` |
 
 ## References
 
 - Kim Flaherty,
-[Indicators, Validations, and Notifications](https://nngroup.com/articles/indicators-validations-notifications)s
-(Nielsen Norman Group, 2015)
+  [Indicators, Validations, and Notifications](https://nngroup.com/articles/indicators-validations-notifications)s
+  (Nielsen Norman Group, 2015)
 - Aurora Harley, [Visibility of System Status](https://nngroup.com/articles/visibility-system-status) (Nielsen Norman
-Group, 2018)
+  Group, 2018)
 - Jakob Nielsen,
-[10 Usability Heuristics for User Interface Design](https://nngroup.com/articles/ten-usability-heuristics) (Nielsen
-Norman Group, 1994)
+  [10 Usability Heuristics for User Interface Design](https://nngroup.com/articles/ten-usability-heuristics) (Nielsen
+  Norman Group, 1994)
 - [Web Content Accessibility Guidelines](https://w3.org/WAI/standards-guidelines/wcag)
-
