@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for aspectRatio: "1:1", size: "inherit", weight: "regular", background: light, align: bottom, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "1:1", size: "inherit", weight: "regular", background: light, align: bottom, isCompact: false, hasGradient: true and hasFooterText: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -23,6 +23,9 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
+  z-index: 3;
+}
+slot[name="footer-text"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -85,6 +88,11 @@ p {
   z-index: 5;
   display: inline-block;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
@@ -99,7 +107,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "3:4", size: "default", weight: "semi-bold", background: dark, align: top, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "3:4", size: "default", weight: "semi-bold", background: dark, align: top, isCompact: false, hasGradient: true and hasFooterText: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -122,6 +130,9 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
+  z-index: 3;
+}
+slot[name="footer-text"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -193,6 +204,11 @@ p {
   z-index: 5;
   display: inline-block;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 @media (forced-colors: active) {
   .root::after {
     background: rgba(0,0,0,0.7);
@@ -213,7 +229,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: true and hasFooterText: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -236,6 +252,9 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
+  z-index: 3;
+}
+slot[name="footer-text"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -307,6 +326,11 @@ p {
   z-index: 5;
   display: inline-block;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 @media (forced-colors: active) {
   .root::after {
     background: rgba(0,0,0,0.7);
@@ -327,7 +351,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "9:16", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false and hasGradient: false 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "9:16", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: false and hasFooterText: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -350,6 +374,9 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
+  z-index: 3;
+}
+slot[name="footer-text"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -412,6 +439,11 @@ p {
   z-index: 5;
   display: inline-block;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
@@ -426,7 +458,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "16:9", size: "inherit", weight: "regular", background: light, align: top, isCompact: true and hasGradient: false 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: "16:9", size: "inherit", weight: "regular", background: light, align: top, isCompact: true, hasGradient: false and hasFooterText: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -449,6 +481,9 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
+  z-index: 3;
+}
+slot[name="footer-text"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -511,6 +546,11 @@ p {
   z-index: 5;
   display: none;
 }
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
@@ -525,7 +565,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: light, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false} and hasGradient: true 1`] = `
+exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: light, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, hasGradient: true and hasFooterText: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -548,6 +588,9 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
+  z-index: 3;
+}
+slot[name="footer-text"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -644,6 +687,11 @@ p {
   min-height: 54px;
   z-index: 5;
   display: none;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 @media(min-width:480px) {
   .root {
