@@ -42,10 +42,12 @@ that offers more detailed information, such as "Details of product XYZ."
 ### Readable text
 
 In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though the
-component provides a scalable background gradient to reduce the risk of low contrasts between foreground text and
+component provides a **scalable background gradient** to reduce the risk of low contrasts between foreground text and
 background image, there still can occur issues with color contrast ratios, especially if different aspect ratios for
 multiple viewport sizes are used. So, always **check readability** and play around with the size and weight properties
 to achieve the best results.
+
+### Video background
 
 In case a video background is used, the component checks whether **reduced motion** is enabled in the operating system
 settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,

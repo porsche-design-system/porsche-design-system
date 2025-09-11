@@ -748,6 +748,7 @@ exports[`should call validateProps() with correct parameters via render for p-pa
 
 exports[`should call validateProps() with correct parameters via render for p-pin-code: propTypes with ValidatorFunctions 1`] = `
 {
+  "compact": "boolean",
   "description": "string",
   "disabled": "boolean",
   "form": "string",

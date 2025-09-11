@@ -14,7 +14,7 @@ import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPu
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
+import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -90,7 +90,7 @@ export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPu
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
+export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -535,7 +535,7 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -547,7 +547,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
+          * Show or hide label. For better accessibility, it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2320,6 +2320,10 @@ export namespace Components {
      */
     interface PPinCode {
         /**
+          * A boolean value that, if present, renders the pin-code as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -3417,6 +3421,7 @@ declare global {
     };
     interface HTMLPCheckboxElementEventMap {
         "update": CheckboxUpdateEventDetail;
+        "change": CheckboxChangeEventDetail;
         "blur": CheckboxBlurEventDetail;
     }
     interface HTMLPCheckboxElement extends Components.PCheckbox, HTMLStencilElement {
@@ -4828,7 +4833,7 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4840,7 +4845,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it's recommended to show the label.
+          * Show or hide label. For better accessibility, it's recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4869,6 +4874,11 @@ declare namespace LocalJSX {
         "onBlur"?: (event: PCheckboxCustomEvent<CheckboxBlurEventDetail>) => void;
         /**
           * Emitted when checkbox checked property is changed.
+         */
+        "onChange"?: (event: PCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
+        /**
+          * Emitted when checkbox checked property is changed.
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
          */
         "onUpdate"?: (event: PCheckboxCustomEvent<CheckboxUpdateEventDetail>) => void;
         /**
@@ -6788,6 +6798,10 @@ declare namespace LocalJSX {
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
      */
     interface PPinCode {
+        /**
+          * A boolean value that, if present, renders the pin-code as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * The description text.
          */
