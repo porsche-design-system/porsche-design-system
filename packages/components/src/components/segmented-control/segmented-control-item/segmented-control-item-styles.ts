@@ -10,8 +10,14 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode } from '../../../utils';
+import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
+
+export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
+export const getScalingVar = (compact: boolean) =>
+  `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
@@ -22,6 +28,7 @@ export const ICON_MARGIN = '.25rem';
 export const getColors = (
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   theme: Theme
 ): {
   buttonColor: string;
@@ -32,6 +39,8 @@ export const getColors = (
   const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
@@ -40,29 +49,40 @@ export const getColors = (
         ? disabledColor
         : isHighContrastMode
           ? highlightColor
-          : primaryColor
-      : contrastLowColor,
-    hoverBorderColor: primaryColor,
+          : state === 'success'
+            ? formStateColor
+            : primaryColor
+      : state === 'error'
+        ? formStateColor
+        : contrastLowColor,
+    hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
   };
 };
 
-export const getItemPadding = (hasIconAndSlottedContent: boolean): string =>
-  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`;
+export const getItemPadding = (hasIconAndSlottedContent: boolean, compact: boolean): string => {
+  const scalingVar = getScalingVar(compact);
+  const block = `calc(13px * ${scalingVar})`;
+  const inline = `max(4px, calc(${ITEM_PADDING} * ${scalingVar}))`;
+
+  return hasIconAndSlottedContent ? `${block} ${inline} ${block} ${block}` : `${block} ${inline}`;
+};
 
 export const getComponentCss = (
+  compact: boolean,
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   hasIcon: boolean,
   hasSlottedContent: boolean,
   theme: Theme
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
+  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, state, theme);
   const {
     buttonColor: buttonColorDark,
     labelColor: labelColorDark,
     borderColor: borderColorDark,
     hoverBorderColor: hoverBorderColorDark,
-  } = getColors(isDisabled, isSelected, 'dark');
+  } = getColors(isDisabled, isSelected, state, 'dark');
 
   return getCss({
     '@global': {
@@ -80,7 +100,7 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         width: '100%',
-        padding: getItemPadding(hasIcon && hasSlottedContent),
+        padding: getItemPadding(hasIcon && hasSlottedContent, compact),
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,
