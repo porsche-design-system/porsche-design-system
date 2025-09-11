@@ -1,14 +1,15 @@
 'use client';
 
-import { SearchInput } from '@/components/search/SearchInput';
-import { SearchResults } from '@/components/search/SearchResults';
-import { algoliaClient } from '@/lib/algolia/client';
-import { getBasePath } from '@/utils/getBasePath';
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
+import { algoliasearch } from 'algoliasearch';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
 import { InstantSearch } from 'react-instantsearch';
+import { SearchInput } from '@/components/search/SearchInput';
+import { SearchResults } from '@/components/search/SearchResults';
+import { typesenseClient } from '@/lib/typesense/client';
+import { getBasePath } from '@/utils/getBasePath';
 
 export type AlgoliaRecord = {
   objectID: string;
@@ -43,7 +44,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
   }, [isSearchOpen]);
 
   const searchClient = {
-    ...algoliaClient,
+    ...typesenseClient,
     search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
       if (requests.every(({ params }) => !params.query)) {
         return Promise.resolve({
@@ -61,17 +62,17 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
         });
       }
 
-      return algoliaClient.search(requests);
+      return typesenseClient.search(requests as any);
     },
   };
 
-  const getAlgoliaIndexName = () => {
-    const path = getBasePath();
-    // For issue branches or local dev use nightly index
-    if (!path || path.includes('/issue/')) return 'nightly';
-    // For v3, use v3 index
-    return path;
-  };
+  // const getAlgoliaIndexName = () => {
+  //   const path = getBasePath();
+  //   // For issue branches or local dev use nightly index
+  //   if (!path || path.includes('/issue/')) return 'nightly';
+  //   // For v3, use v3 index
+  //   return path;
+  // };
 
   return (
     <PModal
@@ -86,7 +87,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
         } as React.CSSProperties
       }
     >
-      <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
+      <InstantSearch searchClient={searchClient} indexName="sites" routing={true}>
         <div className="stretch-to-full-modal-width h-[80vh] p-fluid-lg">
           <div className="flex flex-col gap-fluid-sm h-full">
             <PHeading size="medium" tag="h2">
