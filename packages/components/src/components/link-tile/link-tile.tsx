@@ -38,7 +38,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
 /**
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
- * @slot {"name": "footer-text", "description": "Renders footer text below the description." }
+ * @slot {"name": "footer", "description": "Renders footer text below the description." }
  */
 @Component({
   tag: 'p-link-tile',
@@ -105,7 +105,7 @@ export class LinkTile implements ITileProps {
   }
 
   private handleSlotChange = (): void => {
-    this.hasFooterText = this.host.querySelector('[slot="footer-text"]') !== null;
+    this.hasFooterText = this.host.querySelector('[slot="footer"]') !== null;
   };
 
   public render(): JSX.Element {
@@ -157,7 +157,7 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
-    const footerTextSlot: JSX.Element = <slot name="footer-text" onSlotchange={() => this.handleSlotChange()} />;
+    const footerTextSlot: JSX.Element = <slot name="footer" onSlotchange={() => this.handleSlotChange()} />;
 
     return (
       <div class="root">

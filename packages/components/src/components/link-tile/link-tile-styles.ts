@@ -74,7 +74,7 @@ export const getComponentCss = (
           gridArea: `${isTopAligned ? 4 : 2}/2`,
           zIndex: 3,
         },
-        '&[name="footer-text"]': {
+        '&[name="footer"]': {
           zIndex: 3,
         },
       },

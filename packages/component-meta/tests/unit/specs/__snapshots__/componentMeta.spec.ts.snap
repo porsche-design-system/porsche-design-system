@@ -7539,7 +7539,7 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
-      "footer-text": {
+      "footer": {
         "description": "Renders footer text below the description.",
       },
       "header": {

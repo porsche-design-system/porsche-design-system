@@ -25,7 +25,7 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-slot[name="footer-text"] {
+slot[name="footer"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -132,7 +132,7 @@ slot[name="header"] {
   grid-area: 4/2;
   z-index: 3;
 }
-slot[name="footer-text"] {
+slot[name="footer"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -254,7 +254,7 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-slot[name="footer-text"] {
+slot[name="footer"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -376,7 +376,7 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-slot[name="footer-text"] {
+slot[name="footer"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -483,7 +483,7 @@ slot[name="header"] {
   grid-area: 4/2;
   z-index: 3;
 }
-slot[name="footer-text"] {
+slot[name="footer"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -590,7 +590,7 @@ slot[name="header"] {
   grid-area: 4/2;
   z-index: 3;
 }
-slot[name="footer-text"] {
+slot[name="footer"] {
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
