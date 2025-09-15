@@ -528,13 +528,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // part prop is not typed in JSX, although it's valid HTML attribute
           .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
           // Remove markup after button
-          .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
+          .replace(/\{\[\n\s*this\.props\.description && \([\s\S]+?]}/, '')
           // Change isOpen, optionMaps, searchString to not be a prop
           .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
           // fix warning about read-only field
           .replace(/value={/, 'defaultValue={')
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
-          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
+          .replace(/\{\.\.\.getFilterInputAriaAttributes([\s\S]*?)\)}/, '')
+          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes([\s\S]*?)\)}/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           .replace(/(required={).*(})/, '$1false$2')

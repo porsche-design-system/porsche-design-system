@@ -148,7 +148,6 @@ export class SelectWrapperDropdown {
     // TODO: part won't be needed as soon as button/input of select-wrapper-dropdown is part of shadow dom of select-wrapper itself
     const part = 'select-wrapper-dropdown';
     const popoverId = 'list';
-    const labelId = 'label';
     const inputId = 'filter';
     const descriptionId = this.description && 'description';
     const buttonId = 'value';
@@ -170,7 +169,7 @@ export class SelectWrapperDropdown {
               {...getFilterInputAriaAttributes(
                 this.isOpen,
                 this.required,
-                labelId,
+                `${getSelectedOptionMap(this.optionMaps)?.value}, ${this.label}`,
                 descriptionId,
                 popoverId,
                 getHighlightedOptionMapIndex(this.optionMaps)
@@ -196,7 +195,7 @@ export class SelectWrapperDropdown {
             disabled={this.disabled}
             {...getSelectDropdownButtonAriaAttributes(
               this.isOpen,
-              labelId,
+              `${getSelectedOptionMap(this.optionMaps)?.value}, ${this.label}`,
               descriptionId,
               popoverId,
               getHighlightedOptionMapIndex(this.optionMaps)
@@ -207,13 +206,10 @@ export class SelectWrapperDropdown {
           />
         )}
         {[
-          <div class="sr-text" id={labelId}>
-            {getSelectedOptionMap(this.optionMaps)?.value}, {this.label}
-            {!!this.message && `. ${this.message}`}
-          </div>,
           this.description && (
             <div class="sr-text" id={descriptionId}>
               {this.description}
+              {!!this.message && `. ${this.message}`}
             </div>
           ),
           <div
