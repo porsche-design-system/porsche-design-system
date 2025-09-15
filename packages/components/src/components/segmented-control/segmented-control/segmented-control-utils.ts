@@ -5,7 +5,7 @@ import { hasDocument } from '../../../utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
   BUTTON_FONT,
-  getItemPadding,
+  getScalableItemStyles,
   ICON_MARGIN,
   ICON_SIZE,
   LABEL_FONT,
@@ -54,7 +54,14 @@ export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => 
 
   const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
-    tempDiv.style.padding = getItemPadding(false /* Uses the largest possible padding of the item */, compact);
+    tempDiv.style.minWidth = getScalableItemStyles(
+      false /* Uses the largest possible padding of the item */,
+      compact
+    ).dimension;
+    tempDiv.style.padding = getScalableItemStyles(
+      false /* Uses the largest possible padding of the item */,
+      compact
+    ).padding;
 
     if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);

@@ -158,7 +158,13 @@ export class SegmentedControl {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
-    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host, this.compact), this.columns);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      getItemMaxWidth(this.host, this.compact),
+      this.columns,
+      this.compact
+    );
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact, this.theme);
 
     return (
