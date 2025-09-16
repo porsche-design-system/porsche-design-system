@@ -1,9 +1,45 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
-import type { AlgoliaRecord } from '@/components/search/Search';
-import { algoliasearch } from 'algoliasearch';
+import fs from 'node:fs';
+import path from 'node:path';
 import * as cheerio from 'cheerio';
-import { type Route, type Routes, sitemap } from '../src/sitemap';
+import { createHash } from 'crypto';
+import type { CollectionCreateSchema } from 'typesense/lib/Typesense/Collections';
+import Typesense from 'typesense/src/Typesense';
+import { type TypesenseRecord, TypesenseResult } from '@/components/search/Search';
+import { TYPESENSE_SEARCH_ONLY_KEY } from '@/lib/typesense/client';
+import { type Route, type Routes, sitemap } from '@/sitemap';
+
+export const TYPESENSE_INDEX_NAME = process.env.P_CURRENT_BRANCH?.replace('/', '_') || 'localhost';
+
+const urlToId = (url: string): string => {
+  return createHash('sha256').update(url).digest('hex');
+};
+
+const typesense = new Typesense.Client({
+  nodes: [
+    {
+      host: 'localhost',
+      port: 8108,
+      protocol: 'http',
+    },
+  ],
+  apiKey: TYPESENSE_SEARCH_ONLY_KEY,
+  numRetries: 3,
+  connectionTimeoutSeconds: 1000,
+  logLevel: 'debug',
+});
+
+const schema: CollectionCreateSchema = {
+  name: TYPESENSE_INDEX_NAME,
+  fields: [
+    { name: 'id', type: 'string' },
+    { name: 'name', type: 'string' },
+    { name: 'content', type: 'string' },
+    { name: 'category', type: 'string' },
+    { name: 'page', type: 'string' },
+    { name: '.*', type: 'auto' },
+    { name: 'url', type: 'string' },
+  ],
+};
 
 const extractContentAndSections = (
   route: Route
@@ -71,8 +107,8 @@ const extractName = (node: React.ReactNode): string => {
   return '';
 };
 
-const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
-  const records: AlgoliaRecord[] = [];
+const generateTypesenseRecords = (sitemap: Routes): TypesenseRecord[] => {
+  const records: TypesenseRecord[] = [];
 
   for (const category of Object.values(sitemap)) {
     for (const page of Object.values(category.subPaths ?? {})) {
@@ -81,7 +117,7 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
         for (const tab of Object.values(page.subPaths)) {
           const { content, sections } = extractContentAndSections(tab);
           records.push({
-            objectID: tab.path,
+            id: urlToId(tab.path),
             name: extractName(tab.name),
             content: content,
             category: extractName(category.name),
@@ -91,7 +127,7 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
           });
           for (const section of sections) {
             records.push({
-              objectID: `${tab.path}#${section.id}`,
+              id: urlToId(`${tab.path}#${section.id}`),
               name: section.name,
               content: section.content,
               category: extractName(category.name),
@@ -107,7 +143,7 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
       else {
         const { content, sections } = extractContentAndSections(page);
         records.push({
-          objectID: page.path,
+          id: urlToId(page.path),
           name: extractName(page.name),
           content: content,
           category: extractName(category.name),
@@ -116,7 +152,7 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
         });
         for (const section of sections) {
           records.push({
-            objectID: `${page.path}#${section.id}`,
+            id: urlToId(`${page.path}#${section.id}`),
             name: section.name,
             content: section.content,
             category: extractName(category.name),
@@ -129,72 +165,33 @@ const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
     }
   }
 
-  // Uncomment this for easier debugging
-  // fs.writeFileSync(path.resolve(__dirname, 'indexed.json'), JSON.stringify(records, null, 2), {
+  // fs.writeFileSync(path.resolve(__dirname, 'indexed-typesense.json'), JSON.stringify(records, null, 2), {
   //   encoding: 'utf8',
   // });
 
   return records;
 };
 
-const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = [
-  'name',
-  'category',
-  'page',
-  'tab',
-  'section',
-  'content',
-];
+const uploadAndOverrideTypesenseIndex = async () => {
+  const records = generateTypesenseRecords(sitemap).filter((record) => record.url !== '/news/changelog');
 
-/**
- * 'category' gives nice overview over different categories together with distinct: 5 and hitsPerPage: 5
- * 'page' gives nice overview over different components but the hits for components are too big set distinct: true and
- *  hitsPerPage: 20 there
- **/
-const attributeForDistinct: keyof AlgoliaRecord = 'page';
-
-const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(section)', 'desc(content)'];
-export const ALGOLIA_INDEX_NAME = process.env.P_CURRENT_BRANCH?.replace('/', '_') || 'localhost';
-const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
-  const client = algoliasearch(process.env.ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
-  // const index = client.index.initIndex(ALGOLIA_INDEX_NAME);
-  client
-    .setSettings({
-      indexName: ALGOLIA_INDEX_NAME,
-      indexSettings: {
-        searchableAttributes,
-        distinct: true,
-        attributeForDistinct,
-        hitsPerPage: 20,
-        customRanking,
-      },
-    })
-    .then(() => {
-      console.log('Algolia - Successfully set settings.');
-    })
-    .catch((error) => {
-      console.log('Algolia - Saving settings failed:', error);
-    });
-  client
-    .saveObjects({ indexName: ALGOLIA_INDEX_NAME, objects: records })
-    .then(() => {
-      console.log('Algolia - Successfully updated index:', ALGOLIA_INDEX_NAME);
-    })
-    .catch((error) => {
-      console.log('Algolia - Saving objects failed:', error);
-    });
-};
-
-const updateAlgoliaIndex = () => {
-  // Filter changelog since it's too big, the sections of the changelog page will still be included in the index
-  const records = generateAlgoliaRecords(sitemap).filter((record) => record.objectID !== '/news/changelog');
-
-  //Uncomment this for easier debugging
   // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
   //   encoding: 'utf8',
   // });
 
-  uploadAndOverrideRecords(records);
+  try {
+    await typesense.collections().create(schema);
+  } catch (error) {
+    console.error(error);
+  }
+
+  try {
+    const results = await typesense.collections(TYPESENSE_INDEX_NAME).documents().import(records, { action: 'update' });
+    const failedItems = results.filter((item) => !item.success);
+    console.log(failedItems);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-updateAlgoliaIndex();
+uploadAndOverrideTypesenseIndex();

@@ -1,4 +1,13 @@
 services:
+  typesense:
+    image: typesense/typesense:29.0
+    restart: on-failure
+    ports:
+      - "8108:8108"
+    volumes:
+      - ./typesense-data:/data
+    command: '--data-dir /data --api-key=xyz --enable-cors'
+
   design-system:
     image: mcr.microsoft.com/playwright:v1.54.0-jammy
     working_dir: /opt/repository
@@ -126,3 +135,4 @@ volumes:
   utilities-node-modules:
   utilities-ag-grid-node-modules:
   utilities-utilities-node-modules:
+  typesense-data:

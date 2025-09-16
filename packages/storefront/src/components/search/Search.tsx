@@ -1,17 +1,17 @@
 'use client';
 
-import { SearchInput } from '@/components/search/SearchInput';
-import { SearchResults } from '@/components/search/SearchResults';
-import { algoliaClient } from '@/lib/algolia/client';
-import { getBasePath } from '@/utils/getBasePath';
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
-import { InstantSearch } from 'react-instantsearch';
+import { Configure, InstantSearch } from 'react-instantsearch';
+import { SearchInput } from '@/components/search/SearchInput';
+import { SearchResults } from '@/components/search/SearchResults';
+import { typesenseClient } from '@/lib/typesense/client';
+import { getBasePath } from '@/utils/getBasePath';
 
-export type AlgoliaRecord = {
-  objectID: string;
+export type TypesenseRecord = {
+  id: string;
   name: string;
   content: string;
   category: string;
@@ -21,9 +21,9 @@ export type AlgoliaRecord = {
   url: string;
 };
 
-export type AlgoliaResult = {
+export type TypesenseResult = {
   category: string;
-  hits: AlgoliaRecord[];
+  hits: TypesenseRecord[];
 };
 
 type SearchProps = {
@@ -43,7 +43,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
   }, [isSearchOpen]);
 
   const searchClient = {
-    ...algoliaClient,
+    ...typesenseClient,
     search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
       if (requests.every(({ params }) => !params.query)) {
         return Promise.resolve({
@@ -61,15 +61,16 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
         });
       }
 
-      return algoliaClient.search(requests);
+      return typesenseClient.search(requests as any);
     },
   };
 
-  const getAlgoliaIndexName = () => {
+  const getTypesenseIndex = () => {
     const path = getBasePath();
     // For issue branches or local dev use nightly index
     if (!path || path.includes('/issue/')) return 'nightly';
     // For v3, use v3 index
+
     return path;
   };
 
@@ -86,9 +87,10 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
         } as React.CSSProperties
       }
     >
-      <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
+      <InstantSearch searchClient={searchClient} indexName="localhost" routing={true}>
         <div className="stretch-to-full-modal-width h-[80vh] p-fluid-lg">
           <div className="flex flex-col gap-fluid-sm h-full">
+            <Configure hitsPerPage={30} />
             <PHeading size="medium" tag="h2">
               Search
             </PHeading>

@@ -13,7 +13,7 @@
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "build:copyLicense": "cp ../../LICENSE.md ./src/app/license/license.mdx",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws -p 8080 -d ./dist'",
-    "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
+    "updateTypesense": "tsx --tsconfig tsconfig.json scripts/updateTypesenseIndex.tsx",
     "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "NEXT_PUBLIC_PDS_ENV=development yarn build && vitest --config tests/unit/config/vitest.config.ts",
@@ -37,6 +37,7 @@
   "dependencies": {
     "@porsche-design-system/components-react": "3.30.0-rc.0",
     "@porsche-design-system/fallbacks": "0.0.0",
+    "@babel/runtime": "7.28.4",
     "react-syntax-highlighter": "^15.6.6",
     "next": "15.4.2",
     "algoliasearch": "^5.34.0",
@@ -44,7 +45,9 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-instantsearch": "^7.16.2",
-    "react-instantsearch-nextjs": "^1.0.1"
+    "react-instantsearch-nextjs": "^1.0.1",
+    "typesense-ts": "^0.2.3",
+    "typesense-instantsearch-adapter": "2.9.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
