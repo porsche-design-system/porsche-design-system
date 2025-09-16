@@ -46,7 +46,7 @@
     "react-dom": "^19.1.1",
     "react-instantsearch": "^7.16.2",
     "react-instantsearch-nextjs": "^1.0.1",
-    "typesense": "2.1.0",
+    "typesense-ts": "^0.2.3",
     "typesense-instantsearch-adapter": "2.9.0"
   },
   "devDependencies": {

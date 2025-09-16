@@ -23842,7 +23842,12 @@ typesense-instantsearch-adapter@2.9.0:
   dependencies:
     typesense "^2.1.0-1"
 
-typesense@2.1.0, typesense@^2.1.0-1:
+typesense-ts@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/typesense-ts/-/typesense-ts-0.2.3.tgz#4183b96a23a73689801316d9dbda75d69570ca4f"
+  integrity sha512-BvSa3rmzpykLJxZcWg1+AatYc9ql1+SweRnJJNsRfwuNYl/6LfQOHkvfoW1K8pijrvDCSknkZ/4ISZfg8Bf12Q==
+
+typesense@^2.1.0-1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/typesense/-/typesense-2.1.0.tgz#1172adbbcb42cb3888043c66465afe882c35587e"
   integrity sha512-a/IRTL+dRXlpRDU4UodyGj8hl5xBz3nKihVRd/KfSFAfFPGcpdX6lxIgwdXy3O6VLNNiEsN8YwIsPHQPVT0vNw==
