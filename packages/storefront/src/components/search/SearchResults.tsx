@@ -7,7 +7,6 @@ import type { TypesenseRecord, TypesenseResult } from '@/components/search/Searc
 import { SearchRecommendations } from './SearchRecommendations';
 
 const transformItems = (items: TypesenseRecord[]) => {
-  console.table(items);
   return items.reduce((results, current) => {
     const categoryIndex = results.findIndex((result) => result.category === current.category);
     if (categoryIndex >= 0) {
@@ -25,7 +24,6 @@ export const SearchResults = ({
   ...props
 }: UseHitsProps<AlgoliaHit<TypesenseRecord>> & { onResultClick: () => void }) => {
   const { items } = useHits<TypesenseRecord>({ ...props, transformItems } as any);
-  console.table(items);
   return (
     <div className="h-full overflow-auto flex flex-col gap-fluid-sm">
       {(items as unknown as TypesenseResult[]).map(({ category, hits }) => (
