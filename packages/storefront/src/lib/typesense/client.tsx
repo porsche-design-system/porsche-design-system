@@ -13,7 +13,7 @@ const typesenseInstantSearchAdapter = new TypesenseInstantSearchAdapter({
     ],
   },
   additionalSearchParameters: {
-    query_by: 'content',
+    query_by: 'name,category,page,tab,section,content',
   },
 });
 
