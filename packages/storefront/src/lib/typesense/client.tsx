@@ -1,9 +1,9 @@
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter';
 
-export const TYPESENSE__SEARCH_ONLY_KEY = 'xyz';
+export const TYPESENSE_SEARCH_ONLY_KEY = 'xyz';
 const typesenseInstantSearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: TYPESENSE__SEARCH_ONLY_KEY,
+    apiKey: TYPESENSE_SEARCH_ONLY_KEY,
     nodes: [
       {
         host: 'localhost',
