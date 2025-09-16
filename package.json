@@ -187,7 +187,7 @@
     "test:smoke:components-angular": "yarn --cwd ./packages/components-angular test:smoke",
     "test:smoke:components-react": "yarn --cwd ./packages/components-react test:smoke",
     "test:smoke:components-vue": "yarn --cwd ./packages/components-vue test:smoke",
-    "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
+    "updateTypesense": "yarn --cwd ./packages/storefront updateTypesense",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "clean:build": "yarn clean:assets:build && yarn clean:component-meta:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:components-vue:build && yarn clean:shared:build && yarn clean:storefront:build && yarn clean:utilities:build",

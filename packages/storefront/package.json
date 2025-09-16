@@ -13,7 +13,7 @@
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "build:copyLicense": "cp ../../LICENSE.md ./src/app/license/license.mdx",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws -p 8080 -d ./dist'",
-    "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
+    "updateTypesense": "tsx --tsconfig tsconfig.json scripts/updateTypesenseIndex.tsx",
     "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "NEXT_PUBLIC_PDS_ENV=development yarn build && vitest --config tests/unit/config/vitest.config.ts",
