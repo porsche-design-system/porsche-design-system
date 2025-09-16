@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
@@ -6,6 +6,7 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
+  hasNamedSlot,
   hasPropValueChanged,
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
@@ -89,26 +90,20 @@ export class LinkTile implements ITileProps {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
-  @State() private hasFooterText = false;
-
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
   public componentWillLoad(): void {
     preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
-    this.handleSlotChange();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  private handleSlotChange = (): void => {
-    this.hasFooterText = this.host.querySelector('[slot="footer"]') !== null;
-  };
-
   public render(): JSX.Element {
+    const hasFooterText: boolean = hasNamedSlot(this.host, 'footer');
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -120,7 +115,7 @@ export class LinkTile implements ITileProps {
       this.align,
       this.compact,
       this.gradient,
-      this.hasFooterText
+      hasFooterText
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -157,8 +152,6 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
-    const footerTextSlot: JSX.Element = <slot name="footer" onSlotchange={() => this.handleSlotChange()} />;
-
     return (
       <div class="root">
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
@@ -169,7 +162,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <div class="footer-content">
             <p>{this.description}</p>
-            {this.hasFooterText && footerTextSlot}
+            <slot name="footer" />
           </div>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
