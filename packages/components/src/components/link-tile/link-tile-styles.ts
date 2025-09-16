@@ -193,9 +193,6 @@ export const getComponentCss = (
     'footer-content': {
       display: 'flex',
       flexDirection: 'column',
-      ...buildResponsiveStyles(hasFooterText, (footerValue: boolean) => ({
-        gap: footerValue ? spacingStaticMedium : 0,
-      })),
     },
   });
 };
