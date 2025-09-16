@@ -1,12 +1,13 @@
-import type { AlgoliaRecord, AlgoliaResult } from '@/components/search/Search';
 import { PHeading } from '@porsche-design-system/components-react/ssr';
 import type { Hit as AlgoliaHit } from 'instantsearch.js/es/types/results';
 import Link from 'next/link';
 import React from 'react';
 import { type UseHitsProps, useHits } from 'react-instantsearch';
+import type { TypesenseRecord, TypesenseResult } from '@/components/search/Search';
 import { SearchRecommendations } from './SearchRecommendations';
 
-const transformItems = (items: AlgoliaRecord[]) => {
+const transformItems = (items: TypesenseRecord[]) => {
+  console.table(items);
   return items.reduce((results, current) => {
     const categoryIndex = results.findIndex((result) => result.category === current.category);
     if (categoryIndex >= 0) {
@@ -16,18 +17,18 @@ const transformItems = (items: AlgoliaRecord[]) => {
       results.push({ category: current.category, hits: [current] });
     }
     return results;
-  }, [] as AlgoliaResult[]);
+  }, [] as TypesenseResult[]);
 };
 
 export const SearchResults = ({
   onResultClick,
   ...props
-}: UseHitsProps<AlgoliaHit<AlgoliaRecord>> & { onResultClick: () => void }) => {
-  const { items } = useHits<AlgoliaRecord>({ ...props, transformItems } as any);
-
+}: UseHitsProps<AlgoliaHit<TypesenseRecord>> & { onResultClick: () => void }) => {
+  const { items } = useHits<TypesenseRecord>({ ...props, transformItems } as any);
+  console.table(items);
   return (
     <div className="h-full overflow-auto flex flex-col gap-fluid-sm">
-      {(items as unknown as AlgoliaResult[]).map(({ category, hits }) => (
+      {(items as unknown as TypesenseResult[]).map(({ category, hits }) => (
         <section key={category}>
           <PHeading size="small" tag="h2" className="mb-fluid-xs">
             {category}
