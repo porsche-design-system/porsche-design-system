@@ -4375,16 +4375,40 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
     <style>
       :host {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: 6px !important;
+  gap: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 6px;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
     </style>
     <slot />
+    <span
+      class="message"
+      id="message"
+      role="alert"
+    />
   </template>
   <p-segmented-control-item
     backgroundcolor="background-surface"
@@ -18978,16 +19002,40 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
     <style>
       :host {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: 6px !important;
+  gap: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 6px;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
     </style>
     <slot />
+    <span
+      class="message"
+      id="message"
+      role="alert"
+    />
   </template>
   Some child
 </p-segmented-control>
