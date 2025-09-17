@@ -8915,6 +8915,9 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "propsMeta": {
       "backgroundColor": {
         "allowedValues": [
@@ -8961,6 +8964,12 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "SegmentedControlColumns",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
+        "type": "boolean",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -8979,6 +8988,12 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -8987,6 +9002,16 @@ exports[`should match snapshot 1`] = `
           "reflect": true,
         },
         "type": "string",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the component.",
+        "type": "SegmentedControlState",
       },
       "theme": {
         "allowedValues": [
@@ -9015,6 +9040,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the \`p-segmented-control-item\` tags.",
       },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
     },
     "styling": "jss",
   },
@@ -9026,7 +9054,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "internalProps": {
+      "compact": null,
       "selected": null,
+      "state": null,
       "theme": "light",
     },
     "isChunked": false,

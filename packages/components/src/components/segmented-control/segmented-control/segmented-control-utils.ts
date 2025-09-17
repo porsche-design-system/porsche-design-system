@@ -2,12 +2,13 @@ import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
 import { forceUpdate } from '@stencil/core';
 import type { Theme } from '../../../types';
 import { hasDocument } from '../../../utils';
+import type { FormState } from '../../../utils/form/form-state';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
   BUTTON_FONT,
+  getItemPadding,
   ICON_MARGIN,
   ICON_SIZE,
-  ITEM_PADDING,
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
@@ -22,6 +23,8 @@ export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
 
+export type SegmentedControlState = FormState;
+
 // Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
 const tempFont = 'Porsche Next, sans-serif';
 
@@ -31,7 +34,6 @@ export const tempDiv = hasDocument ? document.createElement('div') : undefined;
 if (tempDiv) {
   tempDiv.style.position = 'absolute';
   tempDiv.style.visibility = 'hidden';
-  tempDiv.style.padding = `0 ${ITEM_PADDING}`; // Uses the largest possible padding of the item
   tempDiv.style.border = `${borderWidthBase} solid`;
   tempDiv.style.boxSizing = 'border-box';
   tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
@@ -49,12 +51,13 @@ if (tempIcon) {
   tempIcon.style.marginRight = ICON_MARGIN;
 }
 
-export const getItemMaxWidth = (host: HTMLElement): number => {
+export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => {
   tempDiv.innerHTML = '';
   host.shadowRoot.append(tempDiv);
 
   const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
+    tempDiv.style.padding = getItemPadding(false /* Uses the largest possible padding of the item */, compact);
 
     if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);
@@ -78,11 +81,17 @@ export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
   value: string | number,
   disabled: boolean,
+  state: SegmentedControlState,
+  message: string,
+  compact: boolean,
   theme: Theme
 ): void => {
   for (const item of Array.from(host.children)) {
     (item as Item).selected = (item as Item).value === value;
     (item as Item).theme = theme;
+    (item as Item).state = state;
+    (item as Item).message = message;
+    (item as Item).compact = compact;
     (item as Item).disabledParent = disabled;
     forceUpdate(item);
   }

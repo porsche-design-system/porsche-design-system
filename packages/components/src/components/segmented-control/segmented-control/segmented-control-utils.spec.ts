@@ -1,3 +1,7 @@
+import * as stencilCore from '@stencil/core';
+import type { Theme } from '../../../types';
+import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 import {
   getItemMaxWidth,
   syncSegmentedControlItemsProps,
@@ -5,10 +9,6 @@ import {
   tempIcon,
   tempLabel,
 } from './segmented-control-utils';
-import type { Theme } from '../../../types';
-import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
-import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
-import * as stencilCore from '@stencil/core';
 
 describe('getItemMaxWidth()', () => {
   const host = document.createElement('p-segmented-control');
@@ -38,7 +38,7 @@ describe('getItemMaxWidth()', () => {
       return cssStyleDeclaration;
     });
 
-    expect(getItemMaxWidth(host)).toBe(17);
+    expect(getItemMaxWidth(host, false)).toBe(17);
   });
 
   it('should append temporary div', () => {
@@ -46,7 +46,7 @@ describe('getItemMaxWidth()', () => {
     jest.spyOn(tempDiv, 'remove').mockImplementationOnce(() => {});
     expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
 
-    getItemMaxWidth(host);
+    getItemMaxWidth(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempDiv);
     expect(Array.from(host.shadowRoot.children)).toContain(tempDiv);
@@ -54,7 +54,7 @@ describe('getItemMaxWidth()', () => {
 
   it('should remove temporary div', () => {
     const spy = jest.spyOn(tempDiv, 'remove');
-    getItemMaxWidth(host);
+    getItemMaxWidth(host, false);
 
     expect(spy).toHaveBeenCalledWith();
     expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
@@ -68,7 +68,7 @@ describe('getItemMaxWidth()', () => {
     host.append(child);
     expect(Array.from(tempDiv.children)).not.toContain(tempIcon);
 
-    getItemMaxWidth(host);
+    getItemMaxWidth(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempIcon);
     expect(Array.from(tempDiv.children)).toContain(tempIcon);
@@ -82,7 +82,7 @@ describe('getItemMaxWidth()', () => {
     host.append(child);
     expect(Array.from(tempDiv.children)).not.toContain(tempIcon);
 
-    getItemMaxWidth(host);
+    getItemMaxWidth(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempIcon);
     expect(Array.from(tempDiv.children)).toContain(tempIcon);
@@ -96,7 +96,7 @@ describe('getItemMaxWidth()', () => {
     host.append(child);
     expect(Array.from(tempDiv.children)).not.toContain(tempLabel);
 
-    getItemMaxWidth(host);
+    getItemMaxWidth(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempLabel);
     expect(Array.from(tempDiv.children)).toContain(tempLabel);
@@ -129,6 +129,9 @@ describe('syncSegmentedControlItemsProps()', () => {
 
   const value = 'a';
   const disabled = true;
+  const state = 'none';
+  const message = 'Some message';
+  const compact = true;
   const theme: Theme = 'light';
 
   it('should set selected and theme property on every item', () => {
@@ -137,23 +140,31 @@ describe('syncSegmentedControlItemsProps()', () => {
 
     expect(child1.selected).toBeUndefined();
     expect(child1.theme).toBeUndefined();
+    expect(child1.state).toBeUndefined();
+    expect(child1.message).toBeUndefined();
 
     expect(child2.selected).toBeUndefined();
     expect(child2.theme).toBeUndefined();
+    expect(child2.state).toBeUndefined();
+    expect(child2.message).toBeUndefined();
 
-    syncSegmentedControlItemsProps(host, value, disabled, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact, theme);
 
     expect(child1.selected).toBe(true);
     expect(child1.theme).toBe(theme);
+    expect(child1.state).toBe('none');
+    expect(child1.message).toBe('Some message');
 
     expect(child2.selected).toBe(false);
     expect(child2.theme).toBe(theme);
+    expect(child2.state).toBe('none');
+    expect(child2.message).toBe('Some message');
   });
 
   it('should call forceUpdate() on every item', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
-    syncSegmentedControlItemsProps(host, value, disabled, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact, theme);
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
