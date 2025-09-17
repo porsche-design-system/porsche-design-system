@@ -103,7 +103,7 @@ export class LinkTile implements ITileProps {
   }
 
   public render(): JSX.Element {
-    const hasFooterText: boolean = hasNamedSlot(this.host, 'footer');
+    const hasFooterSlot: boolean = hasNamedSlot(this.host, 'footer');
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -114,8 +114,7 @@ export class LinkTile implements ITileProps {
       this.background,
       this.align,
       this.compact,
-      this.gradient,
-      hasFooterText
+      this.gradient
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -152,6 +151,8 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
+    const footerSlot: JSX.Element = <slot name="footer" />;
+
     return (
       <div class="root">
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
@@ -162,7 +163,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <div class="footer-content">
             <p>{this.description}</p>
-            <slot name="footer" />
+            {hasFooterSlot && footerSlot}
           </div>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
