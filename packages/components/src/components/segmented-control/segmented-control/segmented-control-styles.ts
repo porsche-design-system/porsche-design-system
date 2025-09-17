@@ -1,5 +1,10 @@
 import { spacingStaticXSmall } from '@porsche-design-system/styles';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -24,6 +29,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       'slot:not([name])': {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
