@@ -76,8 +76,10 @@ p {
   display: flex;
   gap: 16px;
   justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+}
+.footer, .footer:has(slot[name="footer"]) {
+  align-items: flex-start;
 }
 .link-or-button-pure {
   z-index: 5;
@@ -191,8 +193,10 @@ p {
   display: flex;
   gap: 16px;
   justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+}
+.footer, .footer:has(slot[name="footer"]) {
+  align-items: flex-start;
 }
 .link-or-button-pure {
   z-index: 5;
@@ -312,8 +316,10 @@ p {
   display: flex;
   gap: 16px;
   justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+}
+.footer, .footer:has(slot[name="footer"]) {
+  align-items: flex-start;
 }
 .link-or-button-pure {
   z-index: 5;
@@ -424,8 +430,10 @@ p {
   display: flex;
   gap: 16px;
   justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+}
+.footer, .footer:has(slot[name="footer"]) {
+  align-items: flex-start;
 }
 .link-or-button-pure {
   z-index: 5;
@@ -698,8 +706,10 @@ p {
     aspect-ratio: 4/3;
   }
   .footer {
-    align-items: flex-start;
     flex-direction: column;
+  }
+  .footer, .footer:has(slot[name="footer"]) {
+    align-items: flex-start;
   }
   .link-or-button-pure {
     display: none;
@@ -733,8 +743,10 @@ p {
     aspect-ratio: 16/9;
   }
   .footer {
-    align-items: flex-start;
     flex-direction: column;
+  }
+  .footer, .footer:has(slot[name="footer"]) {
+    align-items: flex-start;
   }
   .link-or-button-pure {
     display: none;
@@ -768,8 +780,10 @@ p {
     aspect-ratio: 1/1;
   }
   .footer {
-    align-items: flex-start;
     flex-direction: column;
+  }
+  .footer, .footer:has(slot[name="footer"]) {
+    align-items: flex-start;
   }
   .link-or-button-pure {
     display: none;
