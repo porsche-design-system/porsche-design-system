@@ -174,7 +174,9 @@ export const getComponentCss = (
               },
             }
           : {
-              alignItems: 'flex-start',
+              '&, &:has(slot[name="footer"])': {
+                alignItems: 'flex-start',
+              },
               flexDirection: 'column',
             }
       ),
