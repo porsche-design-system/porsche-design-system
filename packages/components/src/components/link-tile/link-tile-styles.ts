@@ -42,7 +42,6 @@ export const getComponentCss = (
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
-  hasFooterText: boolean,
   isDisabled?: boolean
 ): string => {
   const isTopAligned = align === 'top';
@@ -168,8 +167,11 @@ export const getComponentCss = (
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
-              alignItems: hasFooterText ? (isTopAligned ? 'flex-start' : 'flex-end') : 'center',
+              alignItems: 'center',
               flexDirection: 'row',
+              '&:has(slot[name="footer"])': {
+                alignItems: isTopAligned ? 'flex-start' : 'flex-end',
+              },
             }
           : {
               alignItems: 'flex-start',
