@@ -161,10 +161,8 @@ export class LinkTile implements ITileProps {
           <slot onSlotchange={() => preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host)} />
         </div>
         <div class="footer">
-          <div class="footer-content">
-            <p>{this.description}</p>
-            {hasFooterSlot && footerSlot}
-          </div>
+          <p>{this.description}</p>
+          {hasFooterSlot && footerSlot}
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>

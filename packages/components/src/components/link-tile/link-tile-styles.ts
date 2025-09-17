@@ -75,6 +75,7 @@ export const getComponentCss = (
         },
         '&[name="footer"]': {
           zIndex: 3,
+          gridRow: 2,
         },
       },
       '::slotted(:is(img,picture,video))': addImportantToEachRule({
@@ -161,42 +162,35 @@ export const getComponentCss = (
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
-      display: 'flex',
-      gap: spacingStaticMedium,
-      justifyContent: 'space-between',
+      display: 'grid',
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
-              alignItems: 'center',
-              flexDirection: 'row',
-              '&:has(slot[name="footer"])': {
-                alignItems: isTopAligned ? 'flex-start' : 'flex-end',
-              },
+              gridTemplateColumns: 'auto auto',
             }
           : {
-              '&, &:has(slot[name="footer"])': {
-                alignItems: 'flex-start',
-              },
-              flexDirection: 'column',
+              gridTemplateRows: 'auto auto',
             }
       ),
     },
     'link-or-button-pure': {
       zIndex: 5,
+      alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
+        gridRow: isTopAligned ? 1 : 2,
+        gridColumn: 2,
       })),
     },
     'link-or-button': {
       minHeight: '54px', // prevent content shift
       zIndex: 5,
+      alignSelf: 'center',
+      justifySelf: 'start',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+        marginTop: spacingStaticMedium,
         display: compactValue ? 'none' : 'inline-block',
       })),
-    },
-    'footer-content': {
-      display: 'flex',
-      flexDirection: 'column',
     },
   });
 };
