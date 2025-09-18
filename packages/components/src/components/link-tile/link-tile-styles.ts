@@ -74,7 +74,6 @@ export const getComponentCss = (
           zIndex: 3,
         },
         '&[name="footer"]': {
-          zIndex: 3,
           gridRow: 2,
         },
       },
@@ -162,33 +161,35 @@ export const getComponentCss = (
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
-      display: 'grid',
+      zIndex: 3,
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
-              gridTemplateColumns: 'auto auto',
+              display: 'grid',
+              columnGap: spacingStaticMedium,
+              '&:has(slot[name="footer"]) .link-or-button-pure': {
+                gridRow: isTopAligned ? 1 : 2,
+              },
             }
           : {
-              gridTemplateRows: 'auto auto',
+              display: 'block',
+              zIndex: 3,
             }
       ),
     },
     'link-or-button-pure': {
       zIndex: 5,
+      gridColumn: 2,
       alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
-        gridRow: isTopAligned ? 1 : 2,
-        gridColumn: 2,
       })),
     },
     'link-or-button': {
       minHeight: '54px', // prevent content shift
       zIndex: 5,
-      alignSelf: 'center',
-      justifySelf: 'start',
+      marginTop: spacingStaticMedium,
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
-        marginTop: spacingStaticMedium,
         display: compactValue ? 'none' : 'inline-block',
       })),
     },
