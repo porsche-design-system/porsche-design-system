@@ -26,7 +26,7 @@ slot[name="header"] {
   z-index: 3;
 }
 slot[name="footer"] {
-  z-index: 3;
+  grid-row: 2;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -73,26 +73,20 @@ p {
 }
 .footer {
   grid-area: 4/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.footer, .footer:has(slot[name="footer"]) {
-  align-items: flex-start;
+  display: block;
+  z-index: 3;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
 }
 @media(hover:hover) {
   .root:hover slot:not([name]) {
@@ -134,7 +128,7 @@ slot[name="header"] {
   z-index: 3;
 }
 slot[name="footer"] {
-  z-index: 3;
+  grid-row: 2;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -190,26 +184,20 @@ p {
 }
 .footer {
   grid-area: 2/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.footer, .footer:has(slot[name="footer"]) {
-  align-items: flex-start;
+  display: block;
+  z-index: 3;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
 }
 @media (forced-colors: active) {
   .root::after {
@@ -257,7 +245,7 @@ slot[name="header"] {
   z-index: 3;
 }
 slot[name="footer"] {
-  z-index: 3;
+  grid-row: 2;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -313,26 +301,20 @@ p {
 }
 .footer {
   grid-area: 4/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.footer, .footer:has(slot[name="footer"]) {
-  align-items: flex-start;
+  display: block;
+  z-index: 3;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
 }
 @media (forced-colors: active) {
   .root::after {
@@ -380,7 +362,7 @@ slot[name="header"] {
   z-index: 3;
 }
 slot[name="footer"] {
-  z-index: 3;
+  grid-row: 2;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -427,26 +409,20 @@ p {
 }
 .footer {
   grid-area: 4/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.footer, .footer:has(slot[name="footer"]) {
-  align-items: flex-start;
+  display: block;
+  z-index: 3;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
 }
 @media(hover:hover) {
   .root:hover slot:not([name]) {
@@ -488,7 +464,7 @@ slot[name="header"] {
   z-index: 3;
 }
 slot[name="footer"] {
-  z-index: 3;
+  grid-row: 2;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -535,27 +511,23 @@ p {
 }
 .footer {
   grid-area: 2/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  display: grid;
+  column-gap: 16px;
 }
-.footer:has(slot[name="footer"]) {
-  align-items: flex-start;
+.footer:has(slot[name="footer"]) .link-or-button-pure {
+  grid-row: 1;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: inline-block;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: none;
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
 }
 @media(hover:hover) {
   .root:hover slot:not([name]) {
@@ -597,7 +569,7 @@ slot[name="header"] {
   z-index: 3;
 }
 slot[name="footer"] {
-  z-index: 3;
+  grid-row: 2;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -679,37 +651,31 @@ p {
 }
 .footer {
   grid-area: 2/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  display: grid;
+  column-gap: 16px;
 }
-.footer:has(slot[name="footer"]) {
-  align-items: flex-start;
+.footer:has(slot[name="footer"]) .link-or-button-pure {
+  grid-row: 1;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: inline-block;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: none;
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
 }
 @media(min-width:480px) {
   .root {
     aspect-ratio: 4/3;
   }
   .footer {
-    flex-direction: column;
-  }
-  .footer, .footer:has(slot[name="footer"]) {
-    align-items: flex-start;
+    display: block;
+    z-index: 3;
   }
   .link-or-button-pure {
     display: none;
@@ -724,11 +690,11 @@ p {
     aspect-ratio: 3/4;
   }
   .footer {
-    align-items: center;
-    flex-direction: row;
+    display: grid;
+    column-gap: 16px;
   }
-  .footer:has(slot[name="footer"]) {
-    align-items: flex-start;
+  .footer:has(slot[name="footer"]) .link-or-button-pure {
+    grid-row: 1;
   }
   .link-or-button-pure {
     display: inline-block;
@@ -743,10 +709,8 @@ p {
     aspect-ratio: 16/9;
   }
   .footer {
-    flex-direction: column;
-  }
-  .footer, .footer:has(slot[name="footer"]) {
-    align-items: flex-start;
+    display: block;
+    z-index: 3;
   }
   .link-or-button-pure {
     display: none;
@@ -761,11 +725,11 @@ p {
     aspect-ratio: 9/16;
   }
   .footer {
-    align-items: center;
-    flex-direction: row;
+    display: grid;
+    column-gap: 16px;
   }
-  .footer:has(slot[name="footer"]) {
-    align-items: flex-start;
+  .footer:has(slot[name="footer"]) .link-or-button-pure {
+    grid-row: 1;
   }
   .link-or-button-pure {
     display: inline-block;
@@ -780,10 +744,8 @@ p {
     aspect-ratio: 1/1;
   }
   .footer {
-    flex-direction: column;
-  }
-  .footer, .footer:has(slot[name="footer"]) {
-    align-items: flex-start;
+    display: block;
+    z-index: 3;
   }
   .link-or-button-pure {
     display: none;
