@@ -161,7 +161,6 @@ export const getComponentCss = (
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
-      zIndex: 3,
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
