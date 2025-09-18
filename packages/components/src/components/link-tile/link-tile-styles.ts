@@ -173,8 +173,9 @@ export const getComponentCss = (
               },
             }
           : {
-              display: 'block',
-              zIndex: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'start',
             }
       ),
     },
