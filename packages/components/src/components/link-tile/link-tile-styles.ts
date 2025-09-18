@@ -75,6 +75,7 @@ export const getComponentCss = (
         },
         '&[name="footer"]': {
           gridRow: 2,
+          zIndex: 3,
         },
       },
       '::slotted(:is(img,picture,video))': addImportantToEachRule({
@@ -165,14 +166,16 @@ export const getComponentCss = (
         compactValue
           ? {
               display: 'grid',
+              gridTemplateColumns: '1fr auto',
               columnGap: spacingStaticMedium,
               '&:has(slot[name="footer"]) .link-or-button-pure': {
                 gridRow: isTopAligned ? 1 : 2,
               },
             }
           : {
-              display: 'block',
-              zIndex: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'start',
             }
       ),
     },
