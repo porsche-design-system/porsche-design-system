@@ -1,4 +1,3 @@
-- text: Some Header
 - img "Some alt text"
 - paragraph: Compact
 - paragraph: Some footer text
