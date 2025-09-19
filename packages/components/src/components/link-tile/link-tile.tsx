@@ -1,14 +1,15 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  type ITileProps,
-  LINK_ARIA_ATTRIBUTES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
+  hasNamedSlot,
   hasPropValueChanged,
+  type ITileProps,
+  LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
@@ -38,6 +39,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
 /**
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ * @slot {"name": "footer", "description": "Renders footer text below the description." }
  */
 @Component({
   tag: 'p-link-tile',
@@ -101,6 +103,7 @@ export class LinkTile implements ITileProps {
   }
 
   public render(): JSX.Element {
+    const hasFooterSlot: boolean = hasNamedSlot(this.host, 'footer');
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -148,6 +151,8 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
+    const footerSlot: JSX.Element = <slot name="footer" />;
+
     return (
       <div class="root">
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
@@ -157,6 +162,7 @@ export class LinkTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
+          {hasFooterSlot && footerSlot}
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>
