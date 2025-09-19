@@ -49,6 +49,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
 /**
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ * @slot {"name": "footer", "description": "Renders footer text below the description." }
  */
 @Component({
   tag: 'p-button-tile',
