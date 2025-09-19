@@ -1,4 +1,4 @@
-import { Component, Element, type JSX, Listen, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type {
   BreakpointCustomizable,
@@ -9,16 +9,17 @@ import type {
 } from '../../types';
 import {
   AllowedTypes,
-  BUTTON_ARIA_ATTRIBUTES,
-  BUTTON_TYPES,
-  type ITileProps,
-  TILE_WEIGHTS,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  BUTTON_ARIA_ATTRIBUTES,
+  BUTTON_TYPES,
   getPrefixedTagNames,
+  hasNamedSlot,
   hasPropValueChanged,
+  type ITileProps,
   isDisabledOrLoading,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
@@ -121,6 +122,7 @@ export class ButtonTile implements ITileProps {
   }
 
   public render(): JSX.Element {
+    const hasFooterSlot: boolean = hasNamedSlot(this.host, 'footer');
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -166,6 +168,8 @@ export class ButtonTile implements ITileProps {
       </PrefixedTagNames.pButtonPure>
     );
 
+    const footerSlot: JSX.Element = <slot name="footer" />;
+
     return (
       <div class="root">
         <slot name="header" />
@@ -174,6 +178,7 @@ export class ButtonTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
+          {hasFooterSlot && footerSlot}
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>
       </div>
