@@ -9385,6 +9385,10 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
+slot[name="footer"] {
+  grid-row: 2;
+  z-index: 3;
+}
 ::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
@@ -9441,18 +9445,19 @@ p {
 .footer {
   grid-area: 4/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
 }
 @media (forced-colors: active) {
