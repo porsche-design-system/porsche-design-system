@@ -42,6 +42,7 @@ export const getComponentCss = (
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
+  hasFooterSlot: boolean,
   isDisabled?: boolean
 ): string => {
   const isTopAligned = align === 'top';
@@ -73,10 +74,12 @@ export const getComponentCss = (
           gridArea: `${isTopAligned ? 4 : 2}/2`,
           zIndex: 3,
         },
-        '&[name="footer"]': {
-          gridRow: 2,
-          zIndex: 3,
-        },
+        '&[name="footer"]': hasFooterSlot
+          ? {
+            gridRow: 2,
+            zIndex: 3,
+          }
+          : { display: "none" },
       },
       '::slotted(:is(img,picture,video))': addImportantToEachRule({
         display: 'block',
@@ -168,9 +171,11 @@ export const getComponentCss = (
               display: 'grid',
               gridTemplateColumns: '1fr auto',
               columnGap: spacingStaticMedium,
-              '&:has(slot[name="footer"]) .link-or-button-pure': {
-                gridRow: isTopAligned ? 1 : 2,
-              },
+              ...(hasFooterSlot && {
+                '.link-or-button-pure': {
+                  gridRow: isTopAligned ? 1 : 2,
+                },
+            }),
             }
           : {
               display: 'flex',
@@ -182,6 +187,7 @@ export const getComponentCss = (
     'link-or-button-pure': {
       zIndex: 5,
       gridColumn: 2,
+      gridRow: hasFooterSlot ? 2 : 1,
       alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
