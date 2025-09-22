@@ -84,11 +84,11 @@ export const buttonTileStoryFooterSlot: Story<'p-button-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
           ],
         },
         {
@@ -97,11 +97,11 @@ export const buttonTileStoryFooterSlot: Story<'p-button-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
           ],
         },
       ],
