@@ -479,54 +479,65 @@
   </p-button-tile>
 </div>
 
-<div class="playground light auto-layout-inline" style="font-size: 24px" title="should render different sizes with footer">
-  <p-button-tile label="Some label" description="medium" size="medium">
+<div class="playground light auto-layout-inline" title="should render with long text in footer">
+  <p-link-tile href="#" label="Some label" description="Some description" size="medium">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
       height="50"
       alt="Some alt text"
     />
-    <p-text slot="footer">Some footer text</p-text>
-  </p-button-tile>
-  <p-button-tile label="Some label" description="default" size="medium">
+    <p-text slot="footer">Some very long footer text that should overflow into the next row to demonstrate how the tile handles long content in the footer.</p-text>
+  </p-link-tile>
+  <p-link-tile href="#" label="Some label" description="Some description" size="medium" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
       height="50"
       alt="Some alt text"
     />
-    <p-text slot="footer">Some footer text</p-text>
-  </p-button-tile>
-  <p-button-tile label="Some label" description="large" size="large">
+    <p-text slot="footer">Some very long footer text that should overflow into the next row to demonstrate how the tile handles long content in the footer.</p-text>
+  </p-link-tile>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render with long text in footer">
+  <p-link-tile href="#" label="Some label" description="Some description" size="medium">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
       height="50"
       alt="Some alt text"
     />
-    <p-text slot="footer">Some footer text</p-text>
-  </p-button-tile>
-  <p-button-tile label="Some label" description="inherit" size="inherit">
+    <p-text slot="footer">Some very long footer text that should overflow into the next row to demonstrate how the tile handles long content in the footer.</p-text>
+  </p-link-tile>
+  <p-link-tile href="#" label="Some label" description="Some description" size="medium" compact="true">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
       height="50"
       alt="Some alt text"
     />
-    <p-text slot="footer">Some footer text</p-text>
-  </p-button-tile>
-  <p-button-tile
-    label="Some label"
-    description="Size responsive"
-    size="{ base: 'medium', xs: 'inherit', s: 'medium', m: 'inherit', l: 'medium', xl: 'inherit' }"
-  >
+    <p-text slot="footer">Some very long footer text that should overflow into the next row to demonstrate how the tile handles long content in the footer.</p-text>
+  </p-link-tile>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render with long text in footer with align top">
+  <p-link-tile href="#" label="Some label" description="Some description" size="medium" align="top">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
       height="50"
       alt="Some alt text"
     />
-    <p-text slot="footer">Some footer text</p-text>
-  </p-button-tile>
+    <p-text slot="footer">Some very long footer text that should overflow into the next row to demonstrate how the tile handles long content in the footer.</p-text>
+  </p-link-tile>
+  <p-link-tile href="#" label="Some label" description="Some description" size="medium" compact="true" align="top">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+    <p-text slot="footer">Some very long footer text that should overflow into the next row to demonstrate how the tile handles long content in the footer.</p-text>
+  </p-link-tile>
 </div>
