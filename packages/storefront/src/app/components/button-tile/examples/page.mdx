@@ -13,7 +13,7 @@ export const metadata = {
 
 # Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
 
-<TableOfContents headings={['UI behaviour', 'Hyphens']} />
+<TableOfContents headings={['UI behaviour', 'Hyphens', 'Footer slot']} />
 
 ## UI behaviour
 
@@ -37,6 +37,10 @@ language.
 ## Footer slot
 
 You can also use a `footer` slot to display additional text below the description, providing more flexibility for custom
-content.
+content. The footer slot is intended for **non-interactive content only**, meaning it should not contain links, buttons,
+or other interactive elements. It is designed to handle plain text, making it ideal for supplementary or secondary
+information.
+
+We recommend using short and concise text to avoid visual clutter.
 
 <ComponentStory story={buttonTileStoryFooterSlot} />
