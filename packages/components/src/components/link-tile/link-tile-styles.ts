@@ -34,6 +34,19 @@ import {
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import type { LinkTileWeight } from './link-tile-utils';
 
+/** Attribute indicating the footer slot has content. */
+export const FOOTER_SLOT_CONTENT_ATTR = 'footer-slot-has-content';
+
+const footerSlotStyles = (isTopAligned: boolean, attr: string) => ({
+  // footer slot empty
+  [`&(:not([${attr}])) slot[name="footer"]`]: { display: 'none' },
+  [`&(:not([${attr}])) .link-or-button-pure`]: { gridRow: 1 },
+
+  // footer slot filled
+  [`&([${attr}]) slot[name="footer"]`]: { gridRow: 2, zIndex: 3 },
+  [`&([${attr}]) .link-or-button-pure`]: { gridRow: isTopAligned ? 1 : 2 },
+});
+
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   size: BreakpointCustomizable<TileSize>,
@@ -42,7 +55,6 @@ export const getComponentCss = (
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
-  hasFooterSlot: boolean,
   isDisabled?: boolean
 ): string => {
   const isTopAligned = align === 'top';
@@ -61,6 +73,7 @@ export const getComponentCss = (
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
+        ...footerSlotStyles(isTopAligned, FOOTER_SLOT_CONTENT_ATTR), // host attribute indicates if the footer slot has content, allowing conditional styling
       },
       ...preventFoucOfNestedElementsStyles,
       slot: {
@@ -74,12 +87,6 @@ export const getComponentCss = (
           gridArea: `${isTopAligned ? 4 : 2}/2`,
           zIndex: 3,
         },
-        '&[name="footer"]': hasFooterSlot
-          ? {
-            gridRow: 2,
-            zIndex: 3,
-          }
-          : { display: "none" },
       },
       '::slotted(:is(img,picture,video))': addImportantToEachRule({
         display: 'block',
@@ -171,11 +178,6 @@ export const getComponentCss = (
               display: 'grid',
               gridTemplateColumns: '1fr auto',
               columnGap: spacingStaticMedium,
-              ...(hasFooterSlot && {
-                '.link-or-button-pure': {
-                  gridRow: isTopAligned ? 1 : 2,
-                },
-            }),
             }
           : {
               display: 'flex',
@@ -187,7 +189,6 @@ export const getComponentCss = (
     'link-or-button-pure': {
       zIndex: 5,
       gridColumn: 2,
-      gridRow: hasFooterSlot ? 2 : 1,
       alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
