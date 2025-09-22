@@ -1,4 +1,4 @@
-import {Component, Element, h, type JSX, Prop, State} from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
@@ -6,14 +6,13 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
-  hasNamedSlot,
   hasPropValueChanged,
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
-import { getComponentCss } from './link-tile-styles';
+import { FOOTER_SLOT_CONTENT_ATTR, getComponentCss } from './link-tile-styles';
 import {
   LINK_TILE_WEIGHTS,
   type LinkTileAlign,
@@ -39,7 +38,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
 /**
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
- * @slot {"name": "footer", "description": "Renders footer text below the description." }
+ * @slot {"name": "footer", "description": "Renders a footer section below the description." }
  */
 @Component({
   tag: 'p-link-tile',
@@ -90,20 +89,15 @@ export class LinkTile implements ITileProps {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
-  @State() private hasFooterSlot: boolean = false;
-
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
   public componentWillLoad(): void {
     preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
-    this.updateSlotObserver();
   }
 
-  public componentDidUpdate(): void {
-    this.updateSlotObserver();
-  }
+  public componentDidUpdate(): void {}
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -120,11 +114,8 @@ export class LinkTile implements ITileProps {
       this.background,
       this.align,
       this.compact,
-      this.gradient,
-      this.hasFooterSlot
+      this.gradient
     );
-
-    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -160,8 +151,6 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
-    const footerSlot: JSX.Element = <slot name="footer" onSlotchange={this.updateSlotObserver} />;
-
     return (
       <div class="root">
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
@@ -171,14 +160,16 @@ export class LinkTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
-          {footerSlot}
+          <slot name="footer" onSlotchange={this.handleFooterSlotChange} />
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>
     );
   }
 
-  private updateSlotObserver = (): void => {
-    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
-  }
+  private handleFooterSlotChange = (event: Event) => {
+    const slot = event.target as HTMLSlotElement;
+    const hasContent = slot.assignedElements({ flatten: true }).length > 0;
+    this.host.toggleAttribute(FOOTER_SLOT_CONTENT_ATTR, hasContent);
+  };
 }
