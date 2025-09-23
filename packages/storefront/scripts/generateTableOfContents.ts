@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { globby } from 'globby';
+import * as prettier from 'prettier';
 
 const tableOfContentsRegex = /<TableOfContents[^>]*>/;
 
@@ -24,7 +25,7 @@ const extractHeadings = (content: string): string[] => {
   return headings;
 };
 
-const processFile = (filePath: string): void => {
+const processFile = async (filePath: string): Promise<void> => {
   const content = fs.readFileSync(filePath, 'utf-8');
 
   if (tableOfContentsRegex.test(content)) {
@@ -34,7 +35,12 @@ const processFile = (filePath: string): void => {
         tableOfContentsRegex,
         `<TableOfContents headings={${JSON.stringify(headings).replace(/'/g, "\\'").replace(/"/g, "'")}} />`
       );
-      fs.writeFileSync(filePath, updatedContent, 'utf-8');
+      const prettierConfig = await prettier.resolveConfig(process.cwd());
+      const formattedContent = await prettier.format(updatedContent, {
+        parser: 'mdx',
+        ...prettierConfig,
+      });
+      fs.writeFileSync(filePath, formattedContent, 'utf-8');
       console.log(`Updated TableOfContents in: ${filePath}`);
     }
   }
@@ -48,7 +54,7 @@ const processAppDirectory = async (appDirectory: string): Promise<void> => {
         console.log(`Skipping file: ${file}`);
         continue;
       }
-      processFile(file);
+      await processFile(file);
     }
   } catch (error) {
     console.error('Error processing files:', error);

@@ -1,24 +1,24 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {checkboxExample, checkboxExampleControlled} from "@porsche-design-system/shared/examples";
-import {checkboxStoryIndeterminate, checkboxStorySlots} from "@/app/components/checkbox/checkbox.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { checkboxExample, checkboxExampleControlled } from '@porsche-design-system/shared/examples';
+import { checkboxStoryIndeterminate, checkboxStorySlots } from '@/app/components/checkbox/checkbox.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
   title: 'Checkbox - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Checkbox component.'
-}
+  description: 'Discover detailed examples and insights of the Checkbox component.',
+};
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents headings={['Indeterminate','Form','Controlled','Slots']} />
+<TableOfContents headings={['Indeterminate', 'Form', 'Controlled', 'Slots']} />
 
 ## Indeterminate
 
-Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.
-This is especially useful for a checkbox that is used to set the state of a group of checkboxes at once. However, this
-group might have a mixed state. In this case we recommend to use `checked=false` and `indeterminate=true`.
+Mask the visual appearance of a checkbox which has a state in-between checked and unchecked. This is especially useful
+for a checkbox that is used to set the state of a group of checkboxes at once. However, this group might have a mixed
+state. In this case we recommend to use `checked=false` and `indeterminate=true`.
 
 **Note: The `indeterminate` attribute only affects how the checkbox is shown. The current value is hidden from the user,
 but the checkbox still keeps it's `checked` state. You can find more details in
@@ -50,4 +50,3 @@ can be used. Make sure **not** to define the corresponding property on the host 
 allowed.
 
 <ComponentStory story={checkboxStorySlots} />
-
