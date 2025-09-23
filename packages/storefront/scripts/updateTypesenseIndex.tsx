@@ -176,9 +176,9 @@ const generateTypesenseRecords = (sitemap: Routes): TypesenseRecord[] => {
 const uploadAndOverrideTypesenseIndex = async () => {
   const records = generateTypesenseRecords(sitemap).filter((record) => record.url !== '/news/changelog');
 
-  fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
-    encoding: 'utf8',
-  });
+  // fs.writeFileSync(path.resolve(__dirname, 'typesenseRecords.json'), JSON.stringify(records, null, 2), {
+  //   encoding: 'utf8',
+  // });
 
   try {
     await typesense.collections().create(schema);
