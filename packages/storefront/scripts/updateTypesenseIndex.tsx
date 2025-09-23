@@ -36,7 +36,8 @@ const schema: CollectionCreateSchema = {
     { name: 'content', type: 'string' },
     { name: 'category', type: 'string' },
     { name: 'page', type: 'string' },
-    { name: '.*', type: 'auto' },
+    { name: 'tab', type: 'string', optional: true },
+    { name: 'section', type: 'string', optional: true },
     { name: 'url', type: 'string' },
   ],
 };
@@ -175,9 +176,9 @@ const generateTypesenseRecords = (sitemap: Routes): TypesenseRecord[] => {
 const uploadAndOverrideTypesenseIndex = async () => {
   const records = generateTypesenseRecords(sitemap).filter((record) => record.url !== '/news/changelog');
 
-  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
-  //   encoding: 'utf8',
-  // });
+  fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
+    encoding: 'utf8',
+  });
 
   try {
     await typesense.collections().create(schema);
@@ -186,7 +187,7 @@ const uploadAndOverrideTypesenseIndex = async () => {
   }
 
   try {
-    const results = await typesense.collections(TYPESENSE_INDEX_NAME).documents().import(records, { action: 'update' });
+    const results = await typesense.collections(TYPESENSE_INDEX_NAME).documents().import(records, { action: 'upsert' });
     const failedItems = results.filter((item) => !item.success);
     console.log(failedItems);
   } catch (error) {
