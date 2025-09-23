@@ -1,5 +1,5 @@
-import { ALGOLIA_APP_ID } from '@/lib/algolia/client';
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
+import { TYPESENSE_SEARCH_ONLY_KEY } from '@/lib/typesense/client';
 import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
 
 test.beforeEach(async ({ page }) => {
@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => (window as any).componentsReady());
 
   await page.route('**/*', async (route) => {
-    if (route.request().url().includes(ALGOLIA_APP_ID)) {
+    if (route.request().url().includes(TYPESENSE_SEARCH_ONLY_KEY)) {
       await route.fulfill({
         status: 200,
         contentType: 'application/json; charset=UTF-8',
