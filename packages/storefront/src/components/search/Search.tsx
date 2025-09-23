@@ -90,7 +90,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
       <InstantSearch searchClient={searchClient} indexName="localhost" routing={true}>
         <div className="stretch-to-full-modal-width h-[80vh] p-fluid-lg">
           <div className="flex flex-col gap-fluid-sm h-full">
-            <Configure hitsPerPage={30} />
+            <Configure hitsPerPage={50} />
             <PHeading size="medium" tag="h2">
               Search
             </PHeading>
