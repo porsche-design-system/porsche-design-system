@@ -74,12 +74,10 @@ export const getComponentCss = (
           gridArea: `${isTopAligned ? 4 : 2}/2`,
           zIndex: 3,
         },
-        '&[name="footer"]': hasFooterSlot
-          ? {
-            gridRow: 2,
-            zIndex: 3,
-          }
-          : { display: "none" },
+        '&[name="footer"]': {
+          gridRow: 2,
+          zIndex: 3,
+        },
       },
       '::slotted(:is(img,picture,video))': addImportantToEachRule({
         display: 'block',
@@ -171,11 +169,6 @@ export const getComponentCss = (
               display: 'grid',
               gridTemplateColumns: '1fr auto',
               columnGap: spacingStaticMedium,
-              ...(hasFooterSlot && {
-                '.link-or-button-pure': {
-                  gridRow: isTopAligned ? 1 : 2,
-                },
-            }),
             }
           : {
               display: 'flex',
@@ -187,7 +180,7 @@ export const getComponentCss = (
     'link-or-button-pure': {
       zIndex: 5,
       gridColumn: 2,
-      gridRow: hasFooterSlot ? 2 : 1,
+      gridRow: hasFooterSlot && !isTopAligned ? 2 : 1,
       alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
