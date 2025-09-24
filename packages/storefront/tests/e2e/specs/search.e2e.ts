@@ -1,18 +1,18 @@
-import { ALGOLIA_APP_ID } from '@/lib/algolia/client';
-import { type Page, expect, test } from '@playwright/test';
-import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
+import { expect, type Page, test } from '@playwright/test';
+import { TYPESENSE_SEARCH_ONLY_KEY } from '@/lib/typesense/client';
+import { TYPESENSE_RESPONSE_MOCK } from '../helpers/typesense-response-mock';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => (window as any).componentsReady());
 
   await page.route('**/*', async (route) => {
-    if (route.request().url().includes(ALGOLIA_APP_ID)) {
+    if (route.request().url().includes(TYPESENSE_SEARCH_ONLY_KEY)) {
       await route.fulfill({
         status: 200,
         contentType: 'application/json; charset=UTF-8',
         headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify(ALGOLIA_RESPONSE_MOCK),
+        body: JSON.stringify(TYPESENSE_RESPONSE_MOCK),
       });
     } else {
       await route.continue();
@@ -22,13 +22,13 @@ test.beforeEach(async ({ page }) => {
 
 const searchTerm = 'button';
 
-const sendAlgoliaRequest = async (page: Page) =>
+const sendTypesenseRequest = async (page: Page) =>
   Promise.all([getSearchInput(page).fill(searchTerm), page.waitForResponse((response) => response.status() === 200)]);
 
 const getOpenSearchButton = (page: Page) => page.getByRole('button', { name: 'Search' });
 const getSearchModal = (page: Page) => page.getByRole('dialog', { name: 'Search' });
 const getSearchInput = (page: Page) => page.getByPlaceholder('What are you looking for?');
-const getAlgoliaHits = (page: Page) => page.locator('.hit');
+const getTypesenseHits = (page: Page) => page.locator('.hit');
 
 const openSearchModal = async (page: Page) => {
   const button = getOpenSearchButton(page);
@@ -53,18 +53,18 @@ test.describe('search', () => {
 
   test('should not display hits initially', async ({ page }) => {
     await openSearchModal(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(0);
+    await expect(getTypesenseHits(page)).toHaveCount(0);
   });
 
-  test('should display 3 hits after typing "button"', async ({ page }) => {
+  test('should display 5 hits after typing "button"', async ({ page }) => {
     await openSearchModal(page);
-    await sendAlgoliaRequest(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await sendTypesenseRequest(page);
+    await expect(getTypesenseHits(page)).toHaveCount(5);
   });
 
   test('should hide hits after clicking on a result', async ({ page }) => {
     await openSearchModal(page);
-    await sendAlgoliaRequest(page);
+    await sendTypesenseRequest(page);
     const modal = getSearchModal(page);
 
     await page.locator('.hit').first().click();
@@ -73,26 +73,26 @@ test.describe('search', () => {
 
   test('should keep hits after navigation and reopening of search modal', async ({ page }) => {
     await openSearchModal(page);
-    await sendAlgoliaRequest(page);
+    await sendTypesenseRequest(page);
     const modal = getSearchModal(page);
 
-    await sendAlgoliaRequest(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await sendTypesenseRequest(page);
+    await expect(getTypesenseHits(page)).toHaveCount(5);
     await page.locator('.hit').first().click();
     await expect(modal).toBeHidden();
 
     await openSearchModal(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await expect(getTypesenseHits(page)).toHaveCount(5);
   });
 
   test('should hide hits after clearing the search', async ({ page }) => {
     await openSearchModal(page);
-    await sendAlgoliaRequest(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await sendTypesenseRequest(page);
+    await expect(getTypesenseHits(page)).toHaveCount(5);
 
     const input = getSearchInput(page);
     await input.fill('');
 
-    await expect(getAlgoliaHits(page)).toHaveCount(0);
+    await expect(getTypesenseHits(page)).toHaveCount(0);
   });
 });
