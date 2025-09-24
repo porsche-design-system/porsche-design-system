@@ -24,9 +24,7 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
       - name: 'Install'
-        run: |
-          yarn install --frozen-lockfile
-        shell: bash
+        uses: ./.github/actions/install
       - name: 'Production Builds'
         run: yarn build-prod
       - name: 'Clean'
