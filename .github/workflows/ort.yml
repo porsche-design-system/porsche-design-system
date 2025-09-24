@@ -34,6 +34,8 @@ jobs:
           du -sh ./
           rm -rf ./packages/storefront/.next/
           du -sh ./
+          find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;
+          du -sh ./
         shell: bash
       - name: "Login"
         uses: docker/login-action@v3
