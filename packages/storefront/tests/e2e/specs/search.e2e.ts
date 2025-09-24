@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import { TYPESENSE_SEARCH_ONLY_KEY } from '@/lib/typesense/client';
-import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
+import { TYPESENSE_RESPONSE_MOCK } from '../helpers/typesense-response-mock';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
         status: 200,
         contentType: 'application/json; charset=UTF-8',
         headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify(ALGOLIA_RESPONSE_MOCK),
+        body: JSON.stringify(TYPESENSE_RESPONSE_MOCK),
       });
     } else {
       await route.continue();
