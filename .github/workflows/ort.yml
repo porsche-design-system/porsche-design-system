@@ -31,7 +31,11 @@ jobs:
         run: yarn build-prod
       - name: 'Clean'
         run: |
+          du -sh ./
           find . -type f -name "*.png" -delete
+          du -sh ./
+          rm -rf ./packages/storefront/.next/
+          du -sh ./
         shell: bash
       - name: "Login"
         uses: docker/login-action@v3
