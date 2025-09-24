@@ -1,13 +1,9 @@
 analyzer:
-  skip_excluded: true
   enabled_package_managers:
-    - NPM
+    - "Yarn"
+  skip_excluded: true
 excludes:
-  paths:
-    - pattern: "packages/shared/**"
-      reason: "OTHER"
-      comment: "The path only contains tools and dependencies used as devDependencies in other packages which is not included in any distributed artifacts."
   scopes:
     - pattern: "devDependencies"
       reason: "DEV_DEPENDENCY_OF"
-      comment: "Packages for development only."
+      comment: "These are packages used for the development, testing and build process and are not required at runtime."
