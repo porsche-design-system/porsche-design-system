@@ -27,8 +27,8 @@ jobs:
         run: |
           yarn install --frozen-lockfile
         shell: bash
-      # - name: 'Production Builds'
-      #   run: yarn build-prod
+      - name: 'Production Builds'
+        run: yarn build-prod
       - name: 'Clean'
         run: |
           find . -type f -name "*.png" -delete
