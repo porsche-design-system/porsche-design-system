@@ -1,6 +1,6 @@
 analyzer:
   enabled_package_managers:
-    - "Yarn"
+    - "NPM"
   skip_excluded: true
 excludes:
   scopes:
