@@ -35,12 +35,9 @@ export const metadata: Metadata = {
 const getCSPMetaTag = (): ReactNode => {
   const cdnUrl = isDevEnvironment ? 'http://localhost:3000 http://localhost:3001' : 'https://cdn.ui.porsche.com';
 
-  const connectUrls = [
-    'https://*.algolia.net',
-    'https://*.algolianet.com',
-    'http://localhost:8108',
-    'https://registry.npmjs.org/@porsche-design-system/components-js',
-  ].join(' ');
+  const connectUrls = ['http://localhost:8108', 'https://registry.npmjs.org/@porsche-design-system/components-js'].join(
+    ' '
+  );
 
   return (
     <meta
