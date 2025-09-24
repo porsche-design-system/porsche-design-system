@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "3.29.0",
+  "version": "3.30.0-rc.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -39,7 +39,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.2",
+    "@floating-ui/dom": "^1.7.4",
     "@porsche-design-system/crest": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
@@ -50,7 +50,7 @@
     "@stencil/core": "~4.23.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
+    "@types/react": "^19.1.12",
     "change-case": "^5.4.4",
     "change-case-legacy": "npm:change-case@^4.1.2",
     "construct-style-sheets-polyfill": "^3.1.0",

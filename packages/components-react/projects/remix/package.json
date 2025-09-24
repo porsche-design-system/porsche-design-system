@@ -21,20 +21,20 @@
     "patchRemixRunProcessBrowserGlobalIdentifier": "tsx ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.29.0",
+    "@porsche-design-system/components-react": "3.30.0-rc.0",
     "@remix-run/node": "^2.16.8",
     "@remix-run/react": "^2.16.8",
     "@remix-run/serve": "^2.16.8",
     "@remix-run/server-runtime": "^2.16.8",
-    "isbot": "^5.1.28",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "isbot": "^5.1.30",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@remix-run/dev": "^2.16.8",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "binode": "^1.0.5",
     "cross-env": "^7.0.3"
   },

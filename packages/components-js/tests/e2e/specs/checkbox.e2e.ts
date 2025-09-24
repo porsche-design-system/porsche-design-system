@@ -159,6 +159,7 @@ test('should not toggle checkbox on click in loading state', async ({ page }) =>
   const host = getHost(page);
   const input = getInput(page);
   await addEventListener(host, 'update');
+  await addEventListener(host, 'change');
 
   await expect(host).toHaveJSProperty('checked', false);
   await input.click({ force: true });
@@ -167,6 +168,7 @@ test('should not toggle checkbox on click in loading state', async ({ page }) =>
   await performBoundaryClicks(host, page);
 
   expect((await getEventSummary(host, 'update')).counter).toBe(0);
+  expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
   await setProperty(host, 'loading', false);
   await waitForStencilLifecycle(page);
@@ -175,6 +177,7 @@ test('should not toggle checkbox on click in loading state', async ({ page }) =>
   await expect(host).toHaveJSProperty('checked', true);
 
   expect((await getEventSummary(host, 'update')).counter).toBe(1);
+  expect((await getEventSummary(host, 'change')).counter).toBe(1);
 });
 
 test('should not toggle checkbox on click in disabled state', async ({ page }) => {
@@ -182,6 +185,7 @@ test('should not toggle checkbox on click in disabled state', async ({ page }) =
   const host = getHost(page);
   const input = getInput(page);
   await addEventListener(host, 'update');
+  await addEventListener(host, 'change');
 
   await expect(host).toHaveJSProperty('checked', false);
   await input.click({ force: true });
@@ -190,6 +194,7 @@ test('should not toggle checkbox on click in disabled state', async ({ page }) =
   await performBoundaryClicks(host, page);
 
   expect((await getEventSummary(host, 'update')).counter).toBe(0);
+  expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
   await setProperty(host, 'disabled', false);
   await waitForStencilLifecycle(page);
@@ -198,6 +203,7 @@ test('should not toggle checkbox on click in disabled state', async ({ page }) =
   await expect(host).toHaveJSProperty('checked', true);
 
   expect((await getEventSummary(host, 'update')).counter).toBe(1);
+  expect((await getEventSummary(host, 'change')).counter).toBe(1);
 });
 
 test.describe('focus', () => {
@@ -233,19 +239,19 @@ test.describe('focus', () => {
     await initCheckbox(page, { loading: true });
     const host = getHost(page);
     const input = getInput(page);
-    await addEventListener(input, 'change');
+    await addEventListener(host, 'change');
 
     await input.focus();
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
 
     await page.keyboard.press('Space');
-    expect((await getEventSummary(input, 'change')).counter).toBe(0);
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
     await setProperty(host, 'loading', false);
     await waitForStencilLifecycle(page);
 
     await page.keyboard.press('Space');
-    expect((await getEventSummary(input, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
   });
 
   skipInBrowsers(['firefox', 'webkit'], () => {
@@ -779,13 +785,18 @@ test.describe('Event', () => {
       const input = getInput(page);
 
       await addEventListener(host, 'update');
+      await addEventListener(host, 'change');
       expect((await getEventSummary(host, 'update')).counter).toBe(0);
+      expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
       await input.click();
       await waitForStencilLifecycle(page);
 
       expect((await getEventSummary(host, 'update')).counter).toBe(1);
       expect((await getEventSummary(host, 'update')).details).toEqual([{ checked: true, name: 'some-name', value }]);
+
+      expect((await getEventSummary(host, 'change')).counter).toBe(1);
+      expect((await getEventSummary(host, 'change')).details).toEqual([{ isTrusted: true }]);
     });
     test('should trigger a blur event when the checkbox loses focus', async ({ page }) => {
       await initCheckbox(page);

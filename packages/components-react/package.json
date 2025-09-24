@@ -28,12 +28,12 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.29.0",
+    "@porsche-design-system/components-react": "3.30.0-rc.0",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.7.0",
     "styled-components": "^6.1.19",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
@@ -41,8 +41,8 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "ag-grid-community": "34.0.2",
     "ag-grid-enterprise": "34.0.2",
     "ag-grid-react": "34.0.2",

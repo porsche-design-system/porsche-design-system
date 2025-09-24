@@ -35,16 +35,16 @@
     "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.29.0",
+    "@porsche-design-system/components-react": "3.30.0-rc.0",
     "@porsche-design-system/fallbacks": "0.0.0",
-    "react-syntax-highlighter": "^15.6.1",
+    "react-syntax-highlighter": "^15.6.6",
     "next": "15.4.2",
     "algoliasearch": "^5.34.0",
     "@algolia/cache-in-memory": "^4.25.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-instantsearch": "^7.16.1",
-    "react-instantsearch-nextjs": "^1.0.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-instantsearch": "^7.16.2",
+    "react-instantsearch-nextjs": "^1.0.1"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
@@ -55,8 +55,8 @@
     "@types/mdx": "^2.0.13",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@types/node": "^24.0.15",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "autoprefixer": "^10.4.21",
     "remark-gfm": "^4.0.1",
     "cheerio": "^1.1.2"

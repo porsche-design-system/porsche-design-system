@@ -1,14 +1,3 @@
-import { buildResponsiveStyles, getCss, type TileAspectRatio, type TileWeight } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  forcedColorsMediaQuery,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusLarge,
   gradientToTopStyle,
@@ -19,13 +8,24 @@ import {
   textLargeStyle,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  forcedColorsMediaQuery,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
+import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
+import { buildResponsiveStyles, getCss, type TileAspectRatio, type TileWeight } from '../../utils';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import type {
   LinkTileModelSignatureLinkDirection,
   LinkTileModelSignatureWeight,
 } from './link-tile-model-signature-utils';
-import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
@@ -36,7 +36,12 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'block', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
+        display: 'flex',
+        alignItems: 'stretch',
+        // Safari workaround to scale the tile properly
+        '@supports (-webkit-hyphens: auto)': {
+          alignItems: 'baseline',
+        },
         hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
         ...addImportantToEachRule({
           ...colorSchemeStyles,
@@ -96,7 +101,10 @@ export const getComponentCss = (
         aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
       })),
       width: '100%', // necessary in case tile content overflows in grid or flex context
-      height: '100%', // necessary in case tile content overflows in grid or flex context
+      // Safari workaround to scale the tile properly
+      '@supports (-webkit-hyphens: auto)': {
+        height: '100%',
+      },
       display: 'grid',
       gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
       '&::after': {
