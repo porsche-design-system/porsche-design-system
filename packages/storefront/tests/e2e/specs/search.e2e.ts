@@ -56,10 +56,10 @@ test.describe('search', () => {
     await expect(getAlgoliaHits(page)).toHaveCount(0);
   });
 
-  test('should display 3 hits after typing "button"', async ({ page }) => {
+  test('should display 5 hits after typing "button"', async ({ page }) => {
     await openSearchModal(page);
     await sendAlgoliaRequest(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await expect(getAlgoliaHits(page)).toHaveCount(5);
   });
 
   test('should hide hits after clicking on a result', async ({ page }) => {
@@ -77,18 +77,18 @@ test.describe('search', () => {
     const modal = getSearchModal(page);
 
     await sendAlgoliaRequest(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await expect(getAlgoliaHits(page)).toHaveCount(5);
     await page.locator('.hit').first().click();
     await expect(modal).toBeHidden();
 
     await openSearchModal(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await expect(getAlgoliaHits(page)).toHaveCount(5);
   });
 
   test('should hide hits after clearing the search', async ({ page }) => {
     await openSearchModal(page);
     await sendAlgoliaRequest(page);
-    await expect(getAlgoliaHits(page)).toHaveCount(7);
+    await expect(getAlgoliaHits(page)).toHaveCount(5);
 
     const input = getSearchInput(page);
     await input.fill('');
