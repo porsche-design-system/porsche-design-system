@@ -9388,6 +9388,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -9451,6 +9452,7 @@ p {
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: none;
 }
@@ -9494,6 +9496,9 @@ p {
         class="footer"
       >
         <p />
+        <slot
+          name="footer"
+        />
         <p-button
           class="link-or-button"
           data-ssr=""
@@ -15496,6 +15501,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -15558,6 +15564,7 @@ p {
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: none;
 }
@@ -15606,6 +15613,9 @@ p {
         class="footer"
       >
         <p />
+        <slot
+          name="footer"
+        />
         <p-link
           class="link-or-button"
           data-ssr=""
