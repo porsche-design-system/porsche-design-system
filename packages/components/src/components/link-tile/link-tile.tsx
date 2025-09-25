@@ -120,8 +120,6 @@ export class LinkTile implements ITileProps {
       this.hasFooterSlot
     );
 
-    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const linkProps = {
