@@ -76,6 +76,7 @@ export const getComponentCss = (
         '&[name="footer"]': {
           gridRow: 2,
           zIndex: 3,
+          maxWidth: '34.375rem',
         },
       },
       '::slotted(:is(img,picture,video))': addImportantToEachRule({
