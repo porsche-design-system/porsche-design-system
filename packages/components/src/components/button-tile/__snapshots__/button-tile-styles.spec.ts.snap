@@ -28,6 +28,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -91,6 +92,7 @@ p {
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: none;
 }
@@ -148,6 +150,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -202,6 +205,7 @@ p {
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: none;
 }
@@ -253,6 +257,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -304,12 +309,10 @@ p {
   grid-template-columns: 1fr auto;
   column-gap: 16px;
 }
-.footer:has(slot[name="footer"]) .link-or-button-pure {
-  grid-row: 1;
-}
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: inline-block;
 }
@@ -319,6 +322,12 @@ p {
   margin-top: 16px;
   display: none;
 }
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
 @supports (-webkit-hyphens: auto) {
   .root {
     height: 100%;
@@ -355,6 +364,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -441,12 +451,10 @@ p {
   grid-template-columns: 1fr auto;
   column-gap: 16px;
 }
-.footer:has(slot[name="footer"]) .link-or-button-pure {
-  grid-row: 1;
-}
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: inline-block;
 }
@@ -482,9 +490,6 @@ p {
     grid-template-columns: 1fr auto;
     column-gap: 16px;
   }
-  .footer:has(slot[name="footer"]) .link-or-button-pure {
-    grid-row: 1;
-  }
   .link-or-button-pure {
     display: inline-block;
   }
@@ -518,9 +523,6 @@ p {
     display: grid;
     grid-template-columns: 1fr auto;
     column-gap: 16px;
-  }
-  .footer:has(slot[name="footer"]) .link-or-button-pure {
-    grid-row: 1;
   }
   .link-or-button-pure {
     display: inline-block;
@@ -589,6 +591,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -643,6 +646,7 @@ p {
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 2;
   align-self: center;
   display: none;
 }
@@ -652,6 +656,12 @@ p {
   margin-top: 16px;
   display: inline-block;
 }
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
 @supports (-webkit-hyphens: auto) {
   .root {
     height: 100%;
@@ -688,6 +698,7 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
+  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -751,6 +762,7 @@ p {
 .link-or-button-pure {
   z-index: 5;
   grid-column: 2;
+  grid-row: 1;
   align-self: center;
   display: none;
 }
