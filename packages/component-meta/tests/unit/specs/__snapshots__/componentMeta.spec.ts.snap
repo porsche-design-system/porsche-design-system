@@ -1628,7 +1628,7 @@ exports[`should match snapshot 1`] = `
         "description": "Default slot for the img or picture tag.",
       },
       "footer": {
-        "description": "Renders footer text below the description.",
+        "description": "Renders a footer section below the description.",
       },
       "header": {
         "description": "Renders a header section above the content area.",
@@ -7543,7 +7543,7 @@ exports[`should match snapshot 1`] = `
         "description": "Default slot for the img or picture tag.",
       },
       "footer": {
-        "description": "Renders footer text below the description.",
+        "description": "Renders a footer section below the description.",
       },
       "header": {
         "description": "Renders a header section above the content area.",
