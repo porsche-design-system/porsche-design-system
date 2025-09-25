@@ -42,6 +42,7 @@ export const getComponentCss = (
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
+  hasFooterSlot: boolean,
   isDisabled?: boolean
 ): string => {
   const isTopAligned = align === 'top';
@@ -170,9 +171,6 @@ export const getComponentCss = (
               display: 'grid',
               gridTemplateColumns: '1fr auto',
               columnGap: spacingStaticMedium,
-              '&:has(slot[name="footer"]) .link-or-button-pure': {
-                gridRow: isTopAligned ? 1 : 2,
-              },
             }
           : {
               display: 'flex',
@@ -184,6 +182,7 @@ export const getComponentCss = (
     'link-or-button-pure': {
       zIndex: 5,
       gridColumn: 2,
+      gridRow: hasFooterSlot && !isTopAligned ? 2 : 1,
       alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',

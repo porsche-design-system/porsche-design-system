@@ -138,11 +138,9 @@ export class ButtonTile implements ITileProps {
       this.align,
       this.compact,
       this.gradient,
-      this.disabled,
-      this.hasFooterSlot
+      this.hasFooterSlot,
+      this.disabled
     );
-
-    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
