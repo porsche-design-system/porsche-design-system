@@ -101,10 +101,6 @@ export class LinkTile implements ITileProps {
     this.updateSlotObserver();
   }
 
-  public componentDidUpdate(): void {
-    this.updateSlotObserver();
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -160,8 +156,6 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLinkPure>
     );
 
-    const footerSlot: JSX.Element = <slot name="footer" onSlotchange={this.updateSlotObserver} />;
-
     return (
       <div class="root">
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
@@ -171,7 +165,7 @@ export class LinkTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
-          {footerSlot}
+          <slot name="footer" onSlotchange={this.updateSlotObserver} />
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop, State } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type {
   BreakpointCustomizable,
@@ -103,6 +103,8 @@ export class ButtonTile implements ITileProps {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
 
+  @State() private hasFooterSlot: boolean = false;
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
@@ -116,6 +118,7 @@ export class ButtonTile implements ITileProps {
 
   public componentWillLoad(): void {
     preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
+    this.updateSlotObserver();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -123,7 +126,6 @@ export class ButtonTile implements ITileProps {
   }
 
   public render(): JSX.Element {
-    const hasFooterSlot: boolean = hasNamedSlot(this.host, 'footer');
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -136,8 +138,11 @@ export class ButtonTile implements ITileProps {
       this.align,
       this.compact,
       this.gradient,
-      this.disabled
+      this.disabled,
+      this.hasFooterSlot
     );
+
+    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -169,8 +174,6 @@ export class ButtonTile implements ITileProps {
       </PrefixedTagNames.pButtonPure>
     );
 
-    const footerSlot: JSX.Element = <slot name="footer" />;
-
     return (
       <div class="root">
         <slot name="header" />
@@ -179,10 +182,14 @@ export class ButtonTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
-          {hasFooterSlot && footerSlot}
+          <slot name="footer" onSlotchange={this.updateSlotObserver} />
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>
       </div>
     );
   }
+
+  private updateSlotObserver = (): void => {
+    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
+  };
 }
