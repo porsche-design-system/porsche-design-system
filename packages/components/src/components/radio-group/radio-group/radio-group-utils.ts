@@ -33,8 +33,7 @@ export const updateRadioGroupOptions = (options: RadioGroupOption[], value: stri
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
     } else {
-      // TODO: Add select node
-      consoleWarn('The provided value is not included in the options of the p-select:', value);
+      consoleWarn('The provided value is not included in the options of the radio group:', value);
     }
   }
 };
@@ -45,25 +44,46 @@ export const setSelectedRadioGroupOption = (options: RadioGroupOption[], selecte
   forceUpdate(selectedOption);
 };
 
-export const syncRadioGroupChildrenProps = (children: RadioGroupOption[], theme: Theme): void => {
-  for (const child of children.filter((child) => child.theme !== theme)) {
-    child.theme = theme;
-    forceUpdate(child);
-  }
-};
-
-export const updateOptionsDisabled = (
-  host: HTMLElement,
+export const syncRadioGroupChildrenProps = (
+  children: RadioGroupOption[],
+  theme: Theme,
   disabled: boolean,
   loading: boolean,
   state: RadioGroupState,
   name: string
 ): void => {
-  for (const child of Array.from(host.children)) {
-    (child as RadioGroupOption).disabledParent = disabled;
-    (child as RadioGroupOption).name = name;
-    (child as RadioGroupOption).loadingParent = loading;
-    (child as RadioGroupOption).state = state;
+  for (const child of children) {
+    child.theme = theme;
+    child.disabledParent = disabled;
+    child.name = name;
+    child.loadingParent = loading;
+    child.state = state;
     forceUpdate(child);
   }
 };
+
+/** Get the index of the currently active/focused option */
+export function getActiveOptionIndex<T extends HTMLElement>(options: T[]): number {
+  return options.findIndex((opt) => opt === document.activeElement || opt.contains(document.activeElement));
+}
+
+/**
+ * Find the next enabled option index in the group.
+ * Wraps around and skips disabled/loading options.
+ */
+export function findNextEnabledIndex<T extends { disabled?: boolean; loading?: boolean }>(
+  options: T[],
+  startIndex: number,
+  step: number
+): number {
+  const len = options.length;
+  let i = startIndex;
+
+  for (let tries = 0; tries < len; tries++) {
+    i = (i + step + len) % len; // wrap around
+    const option = options[i];
+    if (!option.disabled && !option.loading) return i;
+  }
+
+  return startIndex; // no enabled option found
+}

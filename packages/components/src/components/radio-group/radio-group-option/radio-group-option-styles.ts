@@ -72,14 +72,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
 
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
-  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
-  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
+  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the radio button full size.
+  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
   const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
   const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
 
-  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
+  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
 
   return getCss({
     '@global': {
@@ -114,15 +114,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           borderColor: uncheckedColorDark,
         }),
         '&::before': {
-          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
-          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
+          // Ensures the touch target is at least '24px', even if the radio button is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the radio button itself.
           content: '""',
           position: 'absolute',
           inset,
         },
       },
       'input:checked': {
-        // background-image is merged in later
         borderColor: checkedColor,
         backgroundColor: checkedColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -134,7 +133,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
         }),
-        // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+        // This is a workaround for Blink-based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
         ...(isHighContrastMode &&
           getSchemedHighContrastMediaQuery(
             {
@@ -197,12 +196,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       alignItems: 'center',
       alignSelf: 'flex-start', // in case label becomes multiline
       ...(isDisabledOrLoading(disabled, loading) && {
-        // TODO: maybe .wrapper should handle it for all form components while pointer-events: none is set to input
         cursor: 'not-allowed',
       }),
     },
     ...(loading && {
-      // TODO: extract for checkbox-wrapper and radio-button-wrapper (not gridArea and placeSelf)
       spinner: {
         position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
         gridArea: '1/1',

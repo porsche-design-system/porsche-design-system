@@ -29,19 +29,19 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
 
-  /** The option value. */
+  /** The value for the input. */
   @Prop() public value?: string;
 
-  /** The option label. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string;
 
-  /** Disables the option. */
+  /** A boolean value that, if present, makes the radio group option unusable and unclickable. */
   @Prop() public disabled?: boolean = false;
 
-  /** Loading. */
+  /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Emitted when the text input has lost focus. */
+  /** Emitted when the radio input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<RadioGroupBlurEventDetail>;
 
   private inputElement!: HTMLInputElement;
@@ -99,7 +99,6 @@ export class RadioGroupOption {
   }
 
   private onChange = (e: RadioGroupChangeEventDetail): void => {
-    console.log('onChange', e);
     e.stopImmediatePropagation();
     this.host.dispatchEvent(
       new CustomEvent('internalRadioGroupOptionChange', {
@@ -110,13 +109,11 @@ export class RadioGroupOption {
   };
 
   private onBlur = (e: RadioGroupBlurEventDetail): void => {
-    console.log('onBlur', e);
     e.stopImmediatePropagation();
     this.blur.emit(e);
   };
 
   private onHostClick = (): void => {
-    console.log('onHostClick');
     this.inputElement.focus();
     this.inputElement.click();
   };

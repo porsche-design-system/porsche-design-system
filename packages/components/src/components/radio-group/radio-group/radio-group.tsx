@@ -26,22 +26,21 @@ import type { ButtonGroupDirection } from '../../button-group/button-group-utils
 import { Label } from '../../common/label/label';
 import { LoadingMessage } from '../../common/loading-message/loading-message';
 import { StateMessage } from '../../common/state-message/state-message';
-import { updateSelectOptions } from '../../select/select/select-utils';
 import { getComponentCss } from './radio-group-styles';
 import {
+  findNextEnabledIndex,
+  getActiveOptionIndex,
   type RadioGroupChangeEventDetail,
   type RadioGroupOption,
   type RadioGroupState,
   setSelectedRadioGroupOption,
   syncRadioGroupChildrenProps,
-  updateOptionsDisabled,
   updateRadioGroupOptions,
 } from './radio-group-utils';
 
 const propTypes: PropTypes<typeof RadioGroup> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
   required: AllowedTypes.boolean,
@@ -59,7 +58,7 @@ const propTypes: PropTypes<typeof RadioGroup> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "", "description": "Default slot for the `p-radio-group-option` tags." }
+ * @slot {"name": "", "description": "Default slot for the p-radio-group-option tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  */
 @Component({
@@ -73,39 +72,36 @@ export class RadioGroup {
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the input. */
+  /** Supplementary text providing more context or explanation for the radio group. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the input field as a compact version. */
+  /** A boolean value that, if present, renders the radio group as compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints. */
+  /** Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints. */
   @Prop() public direction?: BreakpointCustomizable<GroupDirection> = 'column';
 
-  /** The name of the input field, used when submitting the form data. */
+  /** The name of the group of radio buttons, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The text input value. */
-  @Prop({ mutable: true, reflect: true }) public value?: string = '';
+  /** The default value for the radio-group. */
+  @Prop({ mutable: true }) public value?: string = '';
 
-  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
+  /** Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty. */
-  @Prop() public placeholder?: string = '';
-
-  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
+  /** A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
-  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
+  /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** Indicates the validation or overall status of the input component. */
+  /** Indicates the validation or overall status of the radio group component. */
   @Prop() public state?: RadioGroupState = 'none';
 
   /** Dynamic feedback text for validation or status. */
@@ -117,7 +113,7 @@ export class RadioGroup {
   /** Controls the visual appearance of the component. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when the text input loses focus after its value was changed. */
+  /** Emitted when a radio-group-option loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<RadioGroupChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -131,7 +127,15 @@ export class RadioGroup {
   @Listen('internalRadioGroupOptionChange')
   public updateOptionHandler(e: Event & { target: RadioGroupOption; detail: RadioGroupChangeEventDetail }): void {
     e.stopPropagation();
-    this.updateSelectedOption(e.target, e.detail);
+    const selectedOption = e.target;
+    const originalEvent = e.detail;
+    // option can be undefined when no option is highlighted and keyboard action calls this
+    if (selectedOption) {
+      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+      setSelectedRadioGroupOption(this.radioGroupOptions, selectedOption);
+      this.value = selectedOption.value;
+      this.change.emit(originalEvent);
+    }
   }
 
   @Watch('value')
@@ -197,8 +201,7 @@ export class RadioGroup {
       this.direction,
       this.theme
     );
-    syncRadioGroupChildrenProps(this.radioGroupOptions, this.theme);
-    updateOptionsDisabled(this.host, this.disabled, this.loading, this.state, this.name);
+    syncRadioGroupChildrenProps(this.radioGroupOptions, this.theme, this.disabled, this.loading, this.state, this.name);
 
     const id = 'radio-group';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -226,74 +229,41 @@ export class RadioGroup {
     );
   }
 
+  private focusOption(index: number): void {
+    const option = this.radioGroupOptions[index];
+    if (option && !option.disabled) {
+      /*
+      Fix for when multiple keys (e.g., ArrowUp + ArrowDown) are pressed simultaneously,
+      the focus could land on the wrong (non-selected) option. Deferring the click
+      with requestAnimationFrame ensures previous blur/focus events are processed first.
+      */
+      requestAnimationFrame(() => option.click());
+    }
+  }
+
   private onKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
-
     if (!this.radioGroupOptions.length) return;
 
-    // const currentIndex = this.radioGroupOptions.findIndex((opt) => opt.value === this.value);
-    const currentIndex = this.radioGroupOptions.findIndex(
-      (opt) => opt === document.activeElement || opt.contains(document.activeElement)
-    );
+    const currentIndex = getActiveOptionIndex(this.radioGroupOptions);
     let nextIndex = currentIndex;
-
-    const len = this.radioGroupOptions.length;
-
-    const move = (step: number): void => {
-      let i = currentIndex;
-      for (let tries = 0; tries < len; tries++) {
-        i = (i + step + len) % len; // wrap around
-        if (!this.radioGroupOptions[i].disabled && !this.radioGroupOptions[i].loading) {
-          nextIndex = i;
-          return;
-        }
-      }
-      nextIndex = currentIndex;
-    };
-
-    let navigationKey = false;
 
     switch (key) {
       case 'ArrowRight':
       case 'ArrowDown':
         event.preventDefault();
-        move(+1);
-        navigationKey = true;
+        nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, +1);
         break;
       case 'ArrowLeft':
       case 'ArrowUp':
         event.preventDefault();
-        move(-1);
-        navigationKey = true;
+        nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, -1);
         break;
+      default:
+        return; // not a navigation key
     }
 
-    if (navigationKey) {
-      const nextOption = this.radioGroupOptions[nextIndex];
-      if (nextOption && !nextOption.disabled) {
-        /*
-        Fix for when multiple keys (e.g., ArrowUp + ArrowDown) are pressed simultaneously,
-        the focus could land on the wrong (non-selected) option. Deferring the click
-        with requestAnimationFrame ensures previous blur/focus events are processed first.
-        */
-        requestAnimationFrame(() => {
-          nextOption.click();
-        });
-      }
-    }
-  };
-
-  private updateSelectedOption = (
-    selectedOption: RadioGroupOption,
-    originalEvent: RadioGroupChangeEventDetail
-  ): void => {
-    // option can be undefined when no option is highlighted and keyboard action calls this
-    if (selectedOption) {
-      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-      setSelectedRadioGroupOption(this.radioGroupOptions, selectedOption);
-      this.value = selectedOption.value;
-      this.change.emit(originalEvent);
-    }
+    this.focusOption(nextIndex);
   };
 
   private updateOptions = (): void => {
@@ -309,6 +279,6 @@ export class RadioGroup {
 
   private onSlotChange = (): void => {
     this.updateOptions();
-    updateSelectOptions(this.radioGroupOptions, this.value);
+    updateRadioGroupOptions(this.radioGroupOptions, this.value);
   };
 }
