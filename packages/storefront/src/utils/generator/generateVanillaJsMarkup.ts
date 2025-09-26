@@ -1,3 +1,5 @@
+import { camelCase, kebabCase } from 'change-case';
+import type { CSSProperties } from 'react';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import type {
@@ -6,8 +8,6 @@ import type {
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
-import { camelCase, kebabCase } from 'change-case';
-import type { CSSProperties } from 'react';
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
@@ -27,7 +27,7 @@ export const getVanillaJsCode = (
 <head>
 ${metaTags}
 </head>
-<body class="bg-base">
+<body class="bg-canvas">
 
 ${markup ?? ''}
 <script>

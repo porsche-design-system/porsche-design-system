@@ -28,9 +28,9 @@ exports[`should contain correct value for colorActiveDark 1`] = `"rgba(126,127,1
 
 exports[`should contain correct value for colorActiveLight 1`] = `"rgba(148,149,152,.2)"`;
 
-exports[`should contain correct value for colorBaseDark 1`] = `"#0E0E12"`;
+exports[`should contain correct value for colorCanvasDark 1`] = `"#0E0E12"`;
 
-exports[`should contain correct value for colorBaseLight 1`] = `"#FFF"`;
+exports[`should contain correct value for colorCanvasLight 1`] = `"#FFF"`;
 
 exports[`should contain correct value for colorContrastHighDark 1`] = `"#AFB0B3"`;
 

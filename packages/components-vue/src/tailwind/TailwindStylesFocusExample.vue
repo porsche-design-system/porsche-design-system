@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-center items-start gap-fluid-md p-fluid-md bg-base-light text-primary-light">
+  <div class="flex flex-wrap justify-center items-start gap-fluid-md p-fluid-md bg-canvas-light text-primary-light">
     <h3 class="prose-heading-md text-center w-full m-0">Focus Light (only visible by keyboard navigation)</h3>
     <button class="focus-visible:outline outline-state-focus outline-offset-2 rounded-sm prose-text-sm">Some Button</button>
     <a class="focus-visible:outline outline-state-focus outline-offset-2 rounded-sm prose-text-sm text-inherit" href="#">Some Anchor</a>
@@ -8,7 +8,7 @@
       industry.
     </p>
   </div>
-  <div class="flex flex-wrap justify-center items-start gap-fluid-md p-fluid-md bg-base-dark text-primary-dark">
+  <div class="flex flex-wrap justify-center items-start gap-fluid-md p-fluid-md bg-canvas-dark text-primary-dark">
     <h3 class="prose-heading-md text-primary-dark text-center w-full m-0">Focus Dark (only visible by keyboard navigation)</h3>
     <button class="focus-visible:outline outline-state-focus outline-offset-2 rounded-sm prose-text-sm text-primary-dark">Some Button</button>
     <a class="focus-visible:outline outline-state-focus outline-offset-2 rounded-sm prose-text-sm text-primary-dark text-inherit" href="#">Some Anchor</a>
