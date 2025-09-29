@@ -110,6 +110,17 @@ exports[`should have only high contrast styles for p-popover 1`] = `
 ]
 `;
 
+exports[`should have only high contrast styles for p-radio-group-option 1`] = `
+[
+  {
+    "input:checked": {
+      "background-color": "CanvasText",
+      "border-color": "CanvasText",
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-select 1`] = `
 [
   {
