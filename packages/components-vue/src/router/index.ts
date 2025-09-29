@@ -343,6 +343,16 @@ export const routes: RouteType[] = [
     component: fromExamples.SegmentedControlExampleControlled,
   },
   {
+    path: '/radio-group-example',
+    name: 'Radio Group Example',
+    component: fromExamples.RadioGroupExample,
+  },
+  {
+    path: '/radio-group-example-controlled',
+    name: 'Radio Group Example Controlled',
+    component: fromExamples.RadioGroupExampleControlled,
+  },
+  {
     path: '/select-example',
     name: 'Select Example',
     component: fromExamples.SelectExample,

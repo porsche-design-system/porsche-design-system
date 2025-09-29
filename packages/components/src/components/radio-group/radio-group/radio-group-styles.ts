@@ -5,10 +5,13 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
 import {
+  addImportantToEachRule,
   getHiddenTextJssStyle,
   getThemedColors,
+  hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { type GroupDirection, getGroupDirectionJssStyles } from '../../../styles/group-direction-styles';
@@ -51,14 +54,20 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+        }),
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
       },
+      ...preventFoucOfNestedElementsStyles,
     },
     root: {
       display: 'grid',
       justifySelf: 'flex-start',
+      rowGap: spacingStaticXSmall,
     },
     wrapper: {
+      alignItems: 'start',
       position: 'relative',
       display: 'flex',
       ...buildResponsiveStyles(direction, getGroupDirectionJssStyles),

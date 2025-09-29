@@ -2,12 +2,13 @@ import { forceUpdate } from '@stencil/core';
 import { consoleWarn, type Theme } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { RadioGroupOptionInternalHTMLProps } from '../radio-group-option/radio-group-option-utils';
+import type { GroupDirection } from '../../../styles/group-direction-styles';
 export type RadioGroupState = FormState;
 
+export type RadioGroupDirection = GroupDirection;
 export type RadioGroupOption = HTMLPRadioGroupOptionElement & RadioGroupOptionInternalHTMLProps;
 
 export type RadioGroupChangeEventDetail = Event;
-export type RadioGroupBlurEventDetail = Event;
 
 export const resetSelectedRadioGroupOption = (options: RadioGroupOption[]): void => {
   const currentSelectedOption = options.find((option) => option.selected);

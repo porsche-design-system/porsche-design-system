@@ -68,6 +68,8 @@ import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-exa
 import { TextareaExampleControlledComponent } from './textarea-example-controlled.component';
 import { TextareaExampleComponent } from './textarea-example.component';
 import { ToastExampleComponent } from './toast-example.component';
+import { RadioGroupExampleComponent } from './radio-group-example.component';
+import { RadioGroupExampleControlledComponent } from './radio-group-example-controlled.component';
 
 export const examples = [
   AccordionExampleComponent,
@@ -126,6 +128,8 @@ export const examples = [
   SegmentedControlExampleComponent,
   SelectExampleComponent,
   SelectExampleControlledComponent,
+  RadioGroupExampleComponent,
+  RadioGroupExampleControlledComponent,
   SelectExampleDynamicComponent,
   SelectExampleRequiredComponent,
   StepperHorizontalExampleComponent,
@@ -198,6 +202,8 @@ export * from './segmented-control-example-controlled.component';
 export * from './segmented-control-example.component';
 export * from './select-example.component';
 export * from './select-example-controlled.component';
+export * from './radio-group-example.component';
+export * from './radio-group-example-controlled.component';
 export * from './select-example-dynamic.component';
 export * from './select-example-required.component';
 export * from './stepper-horizontal-example.component';

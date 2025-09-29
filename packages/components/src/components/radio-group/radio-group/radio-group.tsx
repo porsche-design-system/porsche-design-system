@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import { GROUP_DIRECTIONS, type GroupDirection } from '../../../styles/group-direction-styles';
+import { GROUP_DIRECTIONS } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
@@ -22,7 +22,6 @@ import {
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { ButtonGroupDirection } from '../../button-group/button-group-utils';
 import { Label } from '../../common/label/label';
 import { LoadingMessage } from '../../common/loading-message/loading-message';
 import { StateMessage } from '../../common/state-message/state-message';
@@ -31,6 +30,7 @@ import {
   findNextEnabledIndex,
   getActiveOptionIndex,
   type RadioGroupChangeEventDetail,
+  type RadioGroupDirection,
   type RadioGroupOption,
   type RadioGroupState,
   setSelectedRadioGroupOption,
@@ -45,7 +45,7 @@ const propTypes: PropTypes<typeof RadioGroup> = {
   value: AllowedTypes.string,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
-  direction: AllowedTypes.breakpoint<ButtonGroupDirection>(GROUP_DIRECTIONS),
+  direction: AllowedTypes.breakpoint<RadioGroupDirection>(GROUP_DIRECTIONS),
   disabled: AllowedTypes.boolean,
   form: AllowedTypes.string,
   state: AllowedTypes.oneOf<RadioGroupState>(FORM_STATES),
@@ -75,11 +75,11 @@ export class RadioGroup {
   /** Supplementary text providing more context or explanation for the radio group. */
   @Prop() public description?: string = '';
 
-  /** A boolean value that, if present, renders the radio group as compact version. */
+  /** A boolean value that, if present, renders the radio group as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints. */
-  @Prop() public direction?: BreakpointCustomizable<GroupDirection> = 'column';
+  @Prop() public direction?: BreakpointCustomizable<RadioGroupDirection> = 'column';
 
   /** The name of the group of radio buttons, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;

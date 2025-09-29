@@ -7,11 +7,13 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
 import {
+  addImportantToEachRule,
   getHighContrastColors,
   getInvertedThemedColors,
   getSchemedHighContrastMediaQuery,
   getThemedColors,
   getTransition,
+  hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
@@ -84,6 +86,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   return getCss({
     '@global': {
       ':host': {
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+        }),
         display: 'block',
       },
       input: {

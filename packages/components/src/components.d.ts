@@ -58,6 +58,8 @@ import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, Paginat
 import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
+import { RadioGroupOptionBlurEventDetail } from "./components/radio-group/radio-group-option/radio-group-option-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
@@ -134,6 +136,8 @@ export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, Paginat
 export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
+export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
+export { RadioGroupOptionBlurEventDetail } from "./components/radio-group/radio-group-option/radio-group-option-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
@@ -2424,6 +2428,82 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PRadioGroup {
+        /**
+          * A boolean value that, if present, renders the radio group as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the radio group.
+         */
+        "description"?: string;
+        /**
+          * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: BreakpointCustomizable<RadioGroupDirection>;
+        /**
+          * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * The name of the group of radio buttons, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the radio group component.
+         */
+        "state"?: RadioGroupState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default value for the radio-group.
+         */
+        "value"?: string;
+    }
+    interface PRadioGroupOption {
+        /**
+          * A boolean value that, if present, makes the radio group option unusable and unclickable.
+         */
+        "disabled"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The value for the input.
+         */
+        "value"?: string;
+    }
     interface PScroller {
         /**
           * Sets the vertical position of scroll indicator.
@@ -3255,6 +3335,14 @@ export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPinCodeElement;
 }
+export interface PRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPRadioGroupElement;
+}
+export interface PRadioGroupOptionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPRadioGroupOptionElement;
+}
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPSegmentedControlElement;
@@ -3969,6 +4057,40 @@ declare global {
         prototype: HTMLPRadioButtonWrapperElement;
         new (): HTMLPRadioButtonWrapperElement;
     };
+    interface HTMLPRadioGroupElementEventMap {
+        "change": RadioGroupChangeEventDetail;
+    }
+    interface HTMLPRadioGroupElement extends Components.PRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPRadioGroupElementEventMap>(type: K, listener: (this: HTMLPRadioGroupElement, ev: PRadioGroupCustomEvent<HTMLPRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPRadioGroupElementEventMap>(type: K, listener: (this: HTMLPRadioGroupElement, ev: PRadioGroupCustomEvent<HTMLPRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPRadioGroupElement: {
+        prototype: HTMLPRadioGroupElement;
+        new (): HTMLPRadioGroupElement;
+    };
+    interface HTMLPRadioGroupOptionElementEventMap {
+        "blur": RadioGroupOptionBlurEventDetail;
+    }
+    interface HTMLPRadioGroupOptionElement extends Components.PRadioGroupOption, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPRadioGroupOptionElementEventMap>(type: K, listener: (this: HTMLPRadioGroupOptionElement, ev: PRadioGroupOptionCustomEvent<HTMLPRadioGroupOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPRadioGroupOptionElementEventMap>(type: K, listener: (this: HTMLPRadioGroupOptionElement, ev: PRadioGroupOptionCustomEvent<HTMLPRadioGroupOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPRadioGroupOptionElement: {
+        prototype: HTMLPRadioGroupOptionElement;
+        new (): HTMLPRadioGroupOptionElement;
+    };
     interface HTMLPScrollerElement extends Components.PScroller, HTMLStencilElement {
     }
     var HTMLPScrollerElement: {
@@ -4380,6 +4502,8 @@ declare global {
         "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
         "p-radio-button-wrapper": HTMLPRadioButtonWrapperElement;
+        "p-radio-group": HTMLPRadioGroupElement;
+        "p-radio-group-option": HTMLPRadioGroupOptionElement;
         "p-scroller": HTMLPScrollerElement;
         "p-segmented-control": HTMLPSegmentedControlElement;
         "p-segmented-control-item": HTMLPSegmentedControlItemElement;
@@ -6895,6 +7019,90 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PRadioGroup {
+        /**
+          * A boolean value that, if present, renders the radio group as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the radio group.
+         */
+        "description"?: string;
+        /**
+          * Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.
+         */
+        "direction"?: BreakpointCustomizable<RadioGroupDirection>;
+        /**
+          * A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * The name of the group of radio buttons, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when a radio-group-option loses focus after its value was changed.
+         */
+        "onChange"?: (event: PRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the radio group component.
+         */
+        "state"?: RadioGroupState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default value for the radio-group.
+         */
+        "value"?: string;
+    }
+    interface PRadioGroupOption {
+        /**
+          * A boolean value that, if present, makes the radio group option unusable and unclickable.
+         */
+        "disabled"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when the radio input has lost focus.
+         */
+        "onBlur"?: (event: PRadioGroupOptionCustomEvent<RadioGroupOptionBlurEventDetail>) => void;
+        /**
+          * The value for the input.
+         */
+        "value"?: string;
+    }
     interface PScroller {
         /**
           * Sets the vertical position of scroll indicator.
@@ -7775,6 +7983,8 @@ declare namespace LocalJSX {
         "p-pin-code": PPinCode;
         "p-popover": PPopover;
         "p-radio-button-wrapper": PRadioButtonWrapper;
+        "p-radio-group": PRadioGroup;
+        "p-radio-group-option": PRadioGroupOption;
         "p-scroller": PScroller;
         "p-segmented-control": PSegmentedControl;
         "p-segmented-control-item": PSegmentedControlItem;
@@ -7940,6 +8150,8 @@ declare module "@stencil/core" {
             "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
+            "p-radio-group": LocalJSX.PRadioGroup & JSXBase.HTMLAttributes<HTMLPRadioGroupElement>;
+            "p-radio-group-option": LocalJSX.PRadioGroupOption & JSXBase.HTMLAttributes<HTMLPRadioGroupOptionElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             /**
              * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }

@@ -11,9 +11,9 @@ import { Label } from '../../common/label/label';
 import { descriptionId } from '../../common/label/label-utils';
 import { loadingId } from '../../common/loading-message/loading-message';
 import { messageId } from '../../common/state-message/state-message';
-import type { RadioGroupBlurEventDetail, RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
+import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
-import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
+import type { RadioGroupOptionBlurEventDetail, RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
 
 const propTypes: PropTypes<typeof RadioGroupOption> = {
   value: AllowedTypes.string,
@@ -42,7 +42,7 @@ export class RadioGroupOption {
   @Prop() public loading?: boolean = false;
 
   /** Emitted when the radio input has lost focus. */
-  @Event({ bubbles: false }) public blur: EventEmitter<RadioGroupBlurEventDetail>;
+  @Event({ bubbles: false }) public blur: EventEmitter<RadioGroupOptionBlurEventDetail>;
 
   private inputElement!: HTMLInputElement;
 
@@ -108,7 +108,7 @@ export class RadioGroupOption {
     );
   };
 
-  private onBlur = (e: RadioGroupBlurEventDetail): void => {
+  private onBlur = (e: RadioGroupOptionBlurEventDetail): void => {
     e.stopImmediatePropagation();
     this.blur.emit(e);
   };
