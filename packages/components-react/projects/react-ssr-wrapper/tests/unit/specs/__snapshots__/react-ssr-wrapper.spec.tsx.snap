@@ -18694,6 +18694,9 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   display: grid;
   grid-area: 1/1;
   min-width: 24px;
@@ -18701,6 +18704,7 @@ input:focus-visible {
   justify-content: center;
   align-items: center;
   align-self: flex-start;
+  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

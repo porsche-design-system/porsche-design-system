@@ -5,6 +5,7 @@ import {
   fontSizeTextSmall,
   spacingStaticSmall,
   spacingStaticXSmall,
+  textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
@@ -83,6 +84,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
 
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
+  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the radio-group, whichever is larger.
 
   return getCss({
     '@global': {
@@ -193,6 +195,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       rowGap: spacingStaticXSmall,
     },
     wrapper: {
+      ...textSmallStyle,
       display: 'grid',
       gridArea: '1/1',
       minWidth: minimumTouchTargetSize,
@@ -203,6 +206,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       ...(isDisabledOrLoading(disabled, loading) && {
         cursor: 'not-allowed',
       }),
+      height,
     },
     ...(loading && {
       spinner: {
