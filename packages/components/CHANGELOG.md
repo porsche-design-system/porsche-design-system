@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
+
+### Changed
+
+- `Radio Button Wrapper`: component is deprecated. Use `Radio Group` instead.
+  ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
+
 ## [3.30.0-rc.0] - 2025-09-10
 
 ### Added
