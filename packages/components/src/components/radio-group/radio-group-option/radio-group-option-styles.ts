@@ -8,6 +8,7 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHighContrastColors,
   getInvertedThemedColors,
   getSchemedHighContrastMediaQuery,
@@ -87,6 +88,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     '@global': {
       ':host': {
         ...addImportantToEachRule({
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         display: 'block',
@@ -129,13 +131,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       'input:checked': {
         borderColor: checkedColor,
         backgroundColor: checkedColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: checkedColorDark,
-          backgroundColor: checkedColorDark,
-        }),
         backgroundSize: dimension,
         backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
         ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: checkedColorDark,
+          backgroundColor: checkedColorDark,
           backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
         }),
         // This is a workaround for Blink-based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
@@ -167,7 +167,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
             }),
           },
           'label:hover~.wrapper input': supportsChromiumMediaQuery({
-            transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
+            transition: 'unset', // Fixes a chrome bug where transition properties are stuck on hover
           }),
         })),
       ...(!disabled && {

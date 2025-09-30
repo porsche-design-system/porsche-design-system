@@ -2402,6 +2402,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+     */
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -4051,6 +4054,9 @@ declare global {
         prototype: HTMLPPopoverElement;
         new (): HTMLPPopoverElement;
     };
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+     */
     interface HTMLPRadioButtonWrapperElement extends Components.PRadioButtonWrapper, HTMLStencilElement {
     }
     var HTMLPRadioButtonWrapperElement: {
@@ -6993,6 +6999,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+     */
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -8149,6 +8158,9 @@ declare module "@stencil/core" {
              */
             "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
+            /**
+             * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
+             */
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-radio-group": LocalJSX.PRadioGroup & JSXBase.HTMLAttributes<HTMLPRadioGroupElement>;
             "p-radio-group-option": LocalJSX.PRadioGroupOption & JSXBase.HTMLAttributes<HTMLPRadioGroupOptionElement>;

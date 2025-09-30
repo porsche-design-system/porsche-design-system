@@ -6,6 +6,7 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  colorSchemeStyles,
   getHiddenTextJssStyle,
   getThemedColors,
   hostHiddenStyles,
@@ -55,6 +56,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
+          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
@@ -94,7 +96,7 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           '&:hover~.wrapper': hoverStyles,
         }),
-        cursor: 'inherit', // label is not clickable
+        cursor: 'inherit', // the label is not clickable
       }
     ),
     // .message
