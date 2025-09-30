@@ -8696,6 +8696,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-button-wrapper": {
+    "deprecationMessage": "since v3.30.0, will be removed with next major release. Please use \`p-radio-group\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8704,6 +8705,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [

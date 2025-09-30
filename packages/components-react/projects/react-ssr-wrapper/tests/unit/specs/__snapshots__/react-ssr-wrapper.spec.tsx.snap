@@ -18492,6 +18492,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   >
     <style>
       :host {
+  color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
 }
 :host([hidden]) {
@@ -18622,6 +18623,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
   >
     <style>
       :host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {

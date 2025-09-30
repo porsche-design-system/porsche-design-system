@@ -2,6 +2,7 @@
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: false, state: error, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -116,6 +117,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: false, state: error, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -230,6 +232,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: false, state: none, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -344,6 +347,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: false, state: none, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -458,6 +462,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: false, state: success, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -572,6 +577,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: false, state: success, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -686,6 +692,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: true, state: error, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -793,6 +800,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: true, state: error, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -900,6 +908,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: true, state: none, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1007,6 +1016,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: true, state: none, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1114,6 +1124,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: true, state: success, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1221,6 +1232,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: false, loading: true, state: success, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1328,6 +1340,7 @@ input:focus-visible {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: false, state: error, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1416,6 +1429,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: false, state: error, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1504,6 +1518,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: false, state: none, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1592,6 +1607,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: false, state: none, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1680,6 +1696,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: false, state: success, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1768,6 +1785,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: false, state: success, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1856,6 +1874,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: true, state: error, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -1953,6 +1972,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: true, state: error, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2050,6 +2070,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: true, state: none, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2147,6 +2168,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: true, state: none, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2244,6 +2266,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: true, state: success, theme: dark 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
@@ -2341,6 +2364,7 @@ input:checked {
 
 exports[`getComponentCss() should return correct css for disabled: true, loading: true, state: success, theme: light 1`] = `
 ":host {
+  color-scheme: light dark !important;
   display: block;
 }
 :host([hidden]) {
