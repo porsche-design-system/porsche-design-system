@@ -1,7 +1,16 @@
 'use client';
 
-import type { Story } from '@/models/story';
-import type { ElementConfig } from '@/utils/generator/generator';
+import type { SlotStories, Story } from '@/models/story';
+import { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+
+const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
+  { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
+  { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
+  { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
+  { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
+  { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
+  { tag: 'p-radio-group-option', properties: { value: 'f', label: 'Option F' } },
+];
 
 export const radioGroupStory: Story<'p-radio-group'> = {
   state: {
@@ -15,14 +24,7 @@ export const radioGroupStory: Story<'p-radio-group'> = {
     {
       tag: 'p-radio-group',
       properties,
-      children: [
-        { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
-        { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
-        { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
-        { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
-        { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
-        { tag: 'p-radio-group-option', properties: { value: 'f', label: 'Option F' } },
-      ],
+      children: radioGroupOptions,
     },
   ],
 };
@@ -60,12 +62,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             '.',
           ],
         },
-        { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
-        { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
-        { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
-        { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
-        { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
-        { tag: 'p-radio-group-option', properties: { value: 'f', label: 'Option F' } },
+        ...radioGroupOptions,
       ],
     },
   ],

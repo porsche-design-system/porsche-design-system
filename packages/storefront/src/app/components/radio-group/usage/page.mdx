@@ -1,14 +1,15 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Radio Group - Porsche Design System',
-  description: 'Learn how to properly use the Radio Group component with best practices and guidelines for effective design and user experience.'
-}
+  description:
+    'Learn how to properly use the Radio Group component with best practices and guidelines for effective design and user experience.',
+};
 
 # Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Usage','Related Components']} />
 
 ## Usage
 
@@ -17,24 +18,25 @@ component in various situations.
 
 ### Do:
 
-- Keep the label visible for better accessibility whenever possible.
-- Provide a descriptive label text for screen readers when using the component without a label.
-- Use to trigger an action based on the selected option choose and search one option from a list of items to navigate
-the user to a new position and recommend a default option for most users.
-- Use without label only if the context clearly describes what the component is to be used for and no further
-explanation is required.
-- Provide a description text displayed openly and directly outside the form field when helpful for the user to get
-further information on the input.
-- Use the custom filter for a large number of select options (e.g. country/state select).
-- Use without preselection (mandatory field) if you don't know or need to make sure the user makes a conscious choice.
-- Use preselection (mandatory field) if you have a reason to believe one of the options is most likely or you know the
-default or current option.
-- Use preselection (optional field) to make it possible to go back to an empty default.
-- Use common sort order for menu items (frequency of use, alpha or numeric).
+- Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
+  Use
+- [Checkbox](/components/checkbox) instead if there is only one option.
+- Use when the user should see all available options.
+- Consider using the [Segmented Control](/components/segmented-control) for 5 options or fewer.
+- Keep the label text short and descriptive (one or two words).
+- Select one option by default in a group of radio buttons, except for cases where a pre-selection can lead to wrong
+  assumptions.
+- Align radio buttons with more than 2 items vertically left-aligned.
 
 ### Don't:
 
-- Don't use select boxes for data that is highly familiar such as the day month or year.
-- Don't set the default to 'please select' if there's an empty field.
-- Don't use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
-maximum of 7 elements in the field of view without having to scroll.
+- Don't use a radio Button for a large number of items (≥ 7), use the [Select](/components/select) or
+  [Segmented Control](/components/segmented-control) component instead.
+
+---
+
+## Related Components
+
+- [Checkbox](/components/checkbox)
+- [Segmented Control](/components/segmented-control)
+- [Select](/components/select)

@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Radio Button Wrapper - Porsche Design System',
@@ -10,6 +11,11 @@ export const metadata = {
 
 <TableOfContents headings={['Usage','Related Components']} />
 
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use
+  <a href="components/radio-group/">p-radio-group</a> instead.
+</Notification>
+
 ## Usage
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
@@ -19,7 +25,7 @@ component in various situations.
 
 - Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
 Use
-- [Checkbox](/components/checkbox-wrapper) instead if there is only one option.
+- [Checkbox](/components/checkbox) instead if there is only one option.
 - Use when the user should see all available options.
 - Consider using the [Segmented Control](/components/segmented-control) for 5 options or fewer.
 - Keep the label text short and descriptive (one or two words).
@@ -29,13 +35,13 @@ assumptions.
 
 ### Don't:
 
-- Don't use a radio Button for a large number of items (≥ 7), use the [Select](/components/select-wrapper) or
+- Don't use a radio Button for a large number of items (≥ 7), use the [Select](/components/select) or
 [Segmented Control](/components/segmented-control) component instead.
 
 ---
 
 ## Related Components
 
-- [Checkbox](/components/checkbox-wrapper)
+- [Checkbox](/components/checkbox)
 - [Segmented Control](/components/segmented-control)
-- [Select](/components/select-wrapper)
+- [Select](/components/select)

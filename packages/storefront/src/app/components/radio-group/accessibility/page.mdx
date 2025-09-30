@@ -14,37 +14,22 @@ export const metadata = {
 
 ### Keyboard
 
-#### Combobox
-
-| Key / state                     | Function                                                                                                                                 |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `Down Arrow` `Up Arrow` `Space` | - Opens the listbox if it's not already displayed without moving focus or changing selection.<br /> - DOM focus remains on the combobox. |
-| `Space`                         | Closes the listbox if it's dispalyed.                                                                                                    |
-
-#### Listbox
-
-| Key / state             | Function                                        |
-| ----------------------- | ----------------------------------------------- |
-| `Down Arrow` `Up Arrow` | Moves visual focus to the next/previous option. |
-| `Home` `End`            | Moves visual focus to the first/last option.    |
-| `ESC`                   | Closes listbox                                  |
-| `Enter`, `Space`        | Radio Groups an option                               |
+| Key / state                                          | Function                                                            |
+| ---------------------------------------------------- | ------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`                                   | Moves focus to the next (or previous) focusable element.            |
+| `Arrow left`, `Arrow right`, `Down Arrow` `Up Arrow` | Activates and moves focus to the next/prev radio button in a group. |
 
 ### ARIA enhancements
 
 #### Internal **ARIA** that is managed by the component:
 
-| ARIA                            | Usage                                                                                        |
-| ------------------------------- | -------------------------------------------------------------------------------------------- |
-| `aria-labelledby="IDREF"`       | References the accessible name of the combobox.                                              |
-| `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
-| `aria-label="STRING"`           | References the accessible name of the listbox.                                               |
-| `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
-| `aria-expanded="BOOLEAN"`       | Indicates that the listbox element is displayed/hidden.                                      |
-| `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
-| `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
-| `aria-haspopup="listbox"`       | Indicates that the combobox will open a listbox.                                             |
-| `aria-required="true"`          | Indicates if the element is required.                                                        |
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | Defines the accessible name and status messages.                                                      |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-required="true"`          | Indicates if the element is required.                                                                 |
 
 ## Development considerations
 
