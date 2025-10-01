@@ -31,8 +31,8 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-checkbox': '',
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
-    'p-select': '<p-select-option>Some value</p-select-option>', // readonly is not supported
     'p-radio-group': '<p-radio-group-option label="Some value"></p-radio-group-option>', // readonly is not supported
+    'p-select': '<p-select-option>Some value</p-select-option>', // readonly is not supported
     'p-select-wrapper': '<select><option>Some value</option></select>', // readonly is not supported
     'p-multi-select': '<p-multi-select-option>Some value</p-multi-select-option>', // readonly is not supported
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
@@ -215,7 +215,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusVisibleState(page, '.focus-hover p-input-url >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-url >>> input');
 
-  await forceHoverState(page, '.hover p-radio-group p-radio-group-option:first-of-type >>> .wrapper');
+  await forceHoverState(page, '.hover p-radio-group p-radio-group-option:first-of-type >>> input');
   await forceFocusState(page, '.focus p-radio-group p-radio-group-option:first-of-type >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-radio-group-option:first-of-type >>> input');
   await forceFocusHoverState(page, '.focus-hover p-radio-group-option:first-of-type >>> input');

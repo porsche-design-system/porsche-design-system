@@ -99,17 +99,20 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   await forceHoverState(
     page,
-    '.hover p-radio-group:not(.force-label) p-radio-group-option:first-of-type >>> input[type="radio"]'
+    '.hover p-radio-group:not(.force-label) p-radio-group-option:first-of-type >>> .wrapper input[type="radio"]'
   );
   await forceHoverState(page, '.hover p-radio-group.force-label p-radio-group-option:first-of-type >>> label');
-  await forceFocusVisibleState(page, '.focus p-radio-group p-radio-group-option:first-of-type >>> input[type="radio"]');
+  await forceFocusVisibleState(
+    page,
+    '.focus p-radio-group p-radio-group-option:first-of-type >>> .wrapper input[type="radio"]'
+  );
   await forceFocusHoverState(
     page,
-    '.focus-hover p-radio-group:not(.force-label) p-radio-group-option:first-of-type >>> input[type="radio"]'
+    '.focus-hover p-radio-group:not(.force-label) p-radio-group-option:first-of-type >>> .wrapper input[type="radio"]'
   );
   await forceFocusVisibleState(
     page,
-    '.focus-hover p-radio-group.force-label p-radio-group-option:first-of-type >>> input[type="radio"]'
+    '.focus-hover p-radio-group.force-label p-radio-group-option:first-of-type >>> .wrapper input[type="radio"]'
   );
   await forceHoverState(page, '.focus-hover p-radio-group.force-label p-radio-group-option:first-of-type >>> label');
 };
