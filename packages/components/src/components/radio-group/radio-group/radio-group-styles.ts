@@ -4,6 +4,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -15,9 +16,9 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { type GroupDirection, getGroupDirectionJssStyles } from '../../../styles/group-direction-styles';
+import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { buildResponsiveStyles, getCss } from '../../../utils';
+import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
@@ -25,6 +26,21 @@ import { getFunctionalComponentStateMessageStyles } from '../../common/state-mes
 import { cssVarInternalRadioGroupOptionScaling } from '../radio-group-option/radio-group-option-styles';
 
 export const cssVarInternalRadioGroupScaling = '--p-internal-radio-group-scaling';
+
+const groupRadioGroupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
+  column: {
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch',
+  },
+  row: {
+    flexFlow: 'row wrap',
+    alignItems: 'start',
+  },
+};
+
+const getRadioGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDirection): JssStyle => {
+  return groupRadioGroupDirectionJssStyles[direction];
+};
 
 export const getComponentCss = (
   disabled: boolean,
@@ -72,7 +88,7 @@ export const getComponentCss = (
       alignItems: 'start',
       position: 'relative',
       display: 'flex',
-      ...buildResponsiveStyles(direction, getGroupDirectionJssStyles),
+      ...buildResponsiveStyles(direction, getRadioGroupDirectionJssStyles),
       columnGap,
       rowGap,
     },
