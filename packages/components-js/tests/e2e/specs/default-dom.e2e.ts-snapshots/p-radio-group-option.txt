@@ -1,0 +1,12 @@
+<div class="root">
+  <label class="label" id="label" for="radio-group-option"> </label>
+  <div class="wrapper">
+    <input
+      tabindex="-1"
+      id="radio-group-option"
+      type="radio"
+      aria-describedby="description message"
+    />
+  </div>
+  <span id="loading" class="loading" role="status"> </span>
+</div>

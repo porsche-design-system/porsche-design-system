@@ -27,6 +27,7 @@ import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQ
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
 export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-option-scaling';
@@ -232,5 +233,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         paddingInlineStart,
       }
     ),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   });
 };

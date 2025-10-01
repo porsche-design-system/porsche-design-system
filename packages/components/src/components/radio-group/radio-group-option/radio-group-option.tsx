@@ -9,7 +9,7 @@ import {
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { descriptionId } from '../../common/label/label-utils';
-import { loadingId } from '../../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
 import { messageId } from '../../common/state-message/state-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
@@ -44,17 +44,30 @@ export class RadioGroupOption {
   /** Emitted when the radio input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<RadioGroupOptionBlurEventDetail>;
 
+  private initialLoading: boolean = false;
   private inputElement!: HTMLInputElement;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-radio-group']);
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillLoad(): void {
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { theme = 'light', selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
-    const isLoading = (this.loading && !isSelected) || this.host.loadingParent; // spinner is only displayed when radio is not checked already
+    const isOptionLoading = this.loading && !isSelected;
+    const isLoading = isOptionLoading || this.host.loadingParent;
 
     attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state, theme);
 
@@ -62,7 +75,7 @@ export class RadioGroupOption {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!isDisabled && !isLoading && !this.host.loadingParent && this.onHostClick}>
+      <Host onClick={!isDisabled && !isLoading && this.onHostClick}>
         {/* wrapped in host for programmatic selection via radio-group-option */}
         <div class="root">
           <Label
@@ -90,10 +103,14 @@ export class RadioGroupOption {
               aria-disabled={isDisabled || isLoading ? 'true' : null}
               ref={(el) => (this.inputElement = el)}
             />
-            {this.loading && !isSelected && !this.host.loadingParent && (
+            {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
+            {isOptionLoading && !this.host.loadingParent && (
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />
             )}
           </div>
+          {!this.host.loadingParent && (
+            <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
+          )}
         </div>
       </Host>
     );
