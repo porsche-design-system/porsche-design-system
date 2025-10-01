@@ -5,7 +5,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-radio-group-example',
   template: `
     <form (submit)="onSubmit($event)">
-      <p-radio-group name="options" label="Some Label">
+      <p-radio-group name="options" label="Some Label" value="a">
         <p-radio-group-option label="Option A" value="a"></p-radio-group-option>
         <p-radio-group-option label="Option B" value="b"></p-radio-group-option>
         <p-radio-group-option label="Option C" value="c"></p-radio-group-option>

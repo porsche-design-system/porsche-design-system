@@ -25,7 +25,13 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with label and description">
-  <p-radio-group label="Some label" description="Some description" name="some-name" value="b" class="a11ytree-snapshot-test">
+  <p-radio-group
+    label="Some label"
+    description="Some description"
+    name="some-name"
+    value="b"
+    class="a11ytree-snapshot-test"
+  >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
@@ -235,8 +241,7 @@
   <p-radio-group label="Some label" name="some-name" state="error" value="b">
     <span slot="label" id="slotted-label-2">
       <span>
-        Slotted label. And <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
@@ -244,8 +249,7 @@
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
     <span slot="message">
       <span>
-        Slotted error message. And <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted error message. And <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
   </p-radio-group>
@@ -265,8 +269,7 @@
   <p-radio-group label="Some label" name="some-name" state="success" value="b">
     <span slot="label" id="slotted-label-4">
       <span>
-        Slotted label. And <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
+        Slotted label. And <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
@@ -274,8 +277,7 @@
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
     <span slot="message">
       <span>
-        Slotted success message. And <b>bold</b>,
-        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+        Slotted success message. And <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
   </p-radio-group>
@@ -347,8 +349,8 @@
   <p-radio-group label="Some label" description="Some description" name="some-name" compact="true" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -366,8 +368,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -385,8 +387,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -399,8 +401,8 @@
   <p-radio-group class="scaling-0" label="Some label" description="Some description" name="some-name" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -418,8 +420,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -437,8 +439,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -451,8 +453,8 @@
   <p-radio-group class="scaling-0-5" label="Some label" description="Some description" name="some-name" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -470,8 +472,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -489,8 +491,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -503,8 +505,8 @@
   <p-radio-group class="scaling-0-8" label="Some label" description="Some description" name="some-name" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -522,8 +524,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -541,8 +543,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -555,8 +557,8 @@
   <p-radio-group class="scaling-1" label="Some label" description="Some description" name="some-name" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -574,8 +576,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -593,8 +595,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -607,8 +609,8 @@
   <p-radio-group class="scaling-2" label="Some label" description="Some description" name="some-name" value="b">
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -626,8 +628,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
@@ -645,8 +647,8 @@
   >
     <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
-    <p-radio-group-option label="Some label C" value="c" disabled></p-radio-group-option>
-    <p-radio-group-option label="Some label D" value="d" loading></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c" disabled="true"></p-radio-group-option>
+    <p-radio-group-option label="Some label D" value="d" loading="true"></p-radio-group-option>
     <p-radio-group-option
       label="Lorem ipsum dolor sit amet, consetetur sadipscing"
       value="e"
