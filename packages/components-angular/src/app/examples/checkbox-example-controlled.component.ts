@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { type CheckboxChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-checkbox-example-controlled',
@@ -9,7 +9,7 @@ import { type CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@pors
       label="Some Label"
       value="some-value"
       [checked]="state['some-name']"
-      (update)="onUpdate($event)"
+      (change)="onChange($event)"
     />
     <p-text>some-name: {{ state['some-name'] }}</p-text>
   `,
@@ -22,7 +22,8 @@ export class CheckboxExampleControlledComponent {
     'some-name': true,
   };
 
-  onUpdate({ detail: { name, checked } }: CustomEvent<CheckboxUpdateEventDetail>) {
+  onChange(event: CustomEvent<CheckboxChangeEventDetail>) {
+    const { name, checked } = event.target as HTMLInputElement;
     this.state[name] = checked;
   }
 }
