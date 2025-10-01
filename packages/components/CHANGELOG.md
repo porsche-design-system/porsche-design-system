@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+
 ## [3.30.0-rc.0] - 2025-09-10
 
 ### Added

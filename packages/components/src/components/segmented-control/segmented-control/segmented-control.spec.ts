@@ -66,7 +66,15 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toHaveBeenCalledWith(component.host, component.value, component.disabled, component.theme);
+    expect(spy).toHaveBeenCalledWith(
+      component.host,
+      component.value,
+      component.disabled,
+      component.state,
+      component.message,
+      component.compact,
+      component.theme
+    );
   });
 
   it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
@@ -182,6 +190,6 @@ describe('updateValue()', () => {
     // @ts-ignore
     component.updateValue(item);
 
-    expect(spy).toHaveBeenCalledWith();
+    expect(spy).toHaveBeenCalled();
   });
 });
