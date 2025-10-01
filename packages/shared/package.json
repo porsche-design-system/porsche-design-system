@@ -16,7 +16,7 @@
     "build:generateCodeExamples": "tsx scripts/generateCodeExamples.ts",
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
-    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
+    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js && chmod +x bin/prepareVRTSnapshots.js",
     "clearGitHubActionLogs": "tsx scripts/clearGitHubActionLogs.ts",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
@@ -60,7 +60,8 @@
     "react": "*"
   },
   "bin": {
-    "serve-dummyassets": "./bin/serve-dummyassets.js"
+    "serve-dummyassets": "./bin/serve-dummyassets.js",
+    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
   },
   "volta": {
     "extends": "../../package.json"
