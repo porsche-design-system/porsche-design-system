@@ -6,7 +6,7 @@ import path from 'path';
 type ModeType = 'prepare' | 'update';
 
 function getFlagValue(flag: string): string | undefined {
-  const idx = process.argv.indexOf(flag);
+  const idx = process.argv.lastIndexOf(flag);
   return idx !== -1 && process.argv[idx + 1] ? process.argv[idx + 1] : undefined;
 }
 
