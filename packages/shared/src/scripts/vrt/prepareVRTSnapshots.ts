@@ -100,7 +100,7 @@ async function main() {
 
   try {
     await fs.access(source);
-    await fs.access(exportDir);
+    await fs.mkdir(exportDir, { recursive: true });
 
     switch (mode) {
       case 'prepare':
