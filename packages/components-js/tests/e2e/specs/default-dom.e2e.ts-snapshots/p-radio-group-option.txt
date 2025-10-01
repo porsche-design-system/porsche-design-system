@@ -1,5 +1,5 @@
 <div class="root">
-  <label class="label" id="label" for="radio-group-option"> </label>
+  <label class="label" id="label" for="radio-group-option"> Some label</label>
   <div class="wrapper">
     <input
       tabindex="-1"
