@@ -96,7 +96,11 @@ ngOnInit() {
   fileContent = fileContent.replace(templateRegEx, template);
 
   // prefixing
-  fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
+  // skip p-radio-group-option because our regex mistakenly treats the "p-option" part as an additional prefix
+  // This would incorrectly transform "<p-radio-group-option", breaking the tag, so we leave it unchanged
+  fileContent = fileContent.replace(/<([\w-]+(p-[\w-]+))/g, (match, tagName) =>
+    tagName.startsWith('p-radio-group-option') ? `<${tagName}` : match + ' ' + tagName
+  );
 
   // icons
   if (isIconPage) {
