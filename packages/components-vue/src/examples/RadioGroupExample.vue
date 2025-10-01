@@ -11,7 +11,7 @@
 
 <template>
   <form @submit.prevent="onSubmit">
-    <PRadioGroup :name="'options'" :label="'Some Label'" value="'a'">
+    <PRadioGroup :name="'options'" :label="'Some Label'" value="a">
       <PRadioGroupOption label="Option A" :value="'a'"></PRadioGroupOption>
       <PRadioGroupOption label="Option B" :value="'b'"></PRadioGroupOption>
       <PRadioGroupOption label="Option C" :value="'c'"></PRadioGroupOption>
