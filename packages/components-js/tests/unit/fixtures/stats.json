@@ -251,13 +251,13 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 13901,
-    "gzipSize": 5418
+    "size": 13959,
+    "gzipSize": 5417
   },
   {
     "chunkShortName": "radio-group-option",
-    "size": 9587,
-    "gzipSize": 4051
+    "size": 9645,
+    "gzipSize": 4074
   },
   {
     "chunkShortName": "scroller",
