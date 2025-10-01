@@ -81,6 +81,7 @@ export class RadioGroupOption {
               name={name}
               checked={isSelected}
               disabled={isDisabled || isLoading}
+              value={this.value}
               onClick={(e) => e.stopImmediatePropagation()}
               onChange={this.onChange}
               onBlur={this.onBlur}
