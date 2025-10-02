@@ -216,7 +216,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusHoverState(page, '.focus-hover p-input-url >>> input');
 
   await forceHoverState(page, '.hover p-radio-group p-radio-group-option:first-of-type >>> input');
-  await forceFocusState(page, '.focus p-radio-group p-radio-group-option:first-of-type >>> input');
+  await forceFocusVisibleState(page, '.focus p-radio-group p-radio-group-option:first-of-type >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-radio-group-option:first-of-type >>> input');
   await forceFocusHoverState(page, '.focus-hover p-radio-group-option:first-of-type >>> input');
 };
