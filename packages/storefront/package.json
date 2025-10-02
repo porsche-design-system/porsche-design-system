@@ -45,7 +45,7 @@
     "@algolia/cache-in-memory": "^4.25.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-instantsearch": "^7.16.3",
+    "react-instantsearch": "^7.16.2",
     "react-instantsearch-nextjs": "^1.0.1"
   },
   "devDependencies": {
