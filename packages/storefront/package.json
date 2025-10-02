@@ -46,7 +46,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-instantsearch": "^7.16.3",
-    "react-instantsearch-nextjs": "^1.0.1"
+    "react-instantsearch-nextjs": "^1.0.2"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
