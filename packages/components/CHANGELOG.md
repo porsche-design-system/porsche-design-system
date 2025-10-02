@@ -14,11 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Link Tile`, `Button Tile`: added `footer` slot
+
 ## [3.30.0-rc.0] - 2025-09-10
 
 ### Added
 
-- `Link Tile`, `Button Tile`: added `footer` slot
 - `Icon`: `ai-3d-object`, `ai-code`, `ai-edit`, `ai-image`, `ai-scale`, `ai-sound`, `ai-text`, `ai-video`
 - `Model Signature`: `gt3`, `gt3-rs` and `gts`
 - `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
