@@ -1,19 +1,19 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {Notification} from "@/components/common/Notification";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {pinCodeExample, pinCodeExampleControlled} from "@porsche-design-system/shared/examples";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {pinCodeStory} from "@/app/components/pin-code/pin-code.stories";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Notification } from '@/components/common/Notification';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { pinCodeExample, pinCodeExampleControlled } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { pinCodeStory } from '@/app/components/pin-code/pin-code.stories';
 
 export const metadata = {
   title: 'Pin Code - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Pin Code component.'
-}
+  description: 'Discover detailed examples and insights of the Pin Code component.',
+};
 
 # Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
 
-<TableOfContents headings={['Form','Controlled','Copy+Paste and autocomplete']} />
+<TableOfContents headings={['Form', 'Controlled', 'Copy+Paste and autocomplete']} />
 
 ## Form
 
@@ -25,9 +25,10 @@ To ensure proper submission of the form, it's required to provide an individual 
 component, enabling the `p-pin-code`'s value to be included in the form's data when it is submitted.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
-  <code>p-pin-code</code> does not use a native input internally. As a result, it lacks access to native <code>ValidityState</code>
-  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
-  and error display will need to be implemented separately if required.
+  <code>p-pin-code</code> does not use a native input internally. As a result, it lacks access to native{' '}
+  <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
 </Notification>
 
 <ComponentExample codeSample={pinCodeExample} />
@@ -55,5 +56,3 @@ The `p-pin-code` component performs basic validation of the pasted value:
 Try copy+paste `1234` into any of the inputs in the example below.
 
 <ComponentStory story={pinCodeStory} />
-
-

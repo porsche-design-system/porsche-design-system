@@ -1,7 +1,7 @@
+import type { InputSearchInputEventDetail } from '@porsche-design-system/components-react';
 import { PInputSearch } from '@porsche-design-system/components-react/ssr';
 import { forwardRef, useState } from 'react';
 import { type UseSearchBoxProps, useInstantSearch, useSearchBox } from 'react-instantsearch';
-import { InputSearchInputEventDetail } from '@porsche-design-system/components-react';
 
 export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((props, ref) => {
   const { query, refine } = useSearchBox({ ...props, queryHook });
@@ -39,7 +39,7 @@ export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((prop
   );
 });
 
-const timeout = 200;
+const timeout = 400;
 let timerId: NodeJS.Timeout | undefined;
 
 function queryHook(query: string, search: (query: string) => void) {
