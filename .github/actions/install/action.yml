@@ -13,13 +13,13 @@ inputs:
 runs:
   using: 'composite'
   steps:
-#    - name: 'Cache node_modules'
-#      if: inputs.node_modules == 'true'
-#      uses: actions/cache@v4
-#      id: cache-node_modules
-#      with:
-#        path: '**/node_modules'
-#        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+    - name: 'Cache node_modules'
+      if: inputs.node_modules == 'true'
+      uses: actions/cache@v4
+      id: cache-node_modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
     - name: 'Install node_modules'
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
       run: yarn install --frozen-lockfile
