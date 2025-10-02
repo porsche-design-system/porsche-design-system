@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
+
 ## [3.30.0-rc.0] - 2025-09-10
 
 ### Added
@@ -30,7 +34,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
-- `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
 - `Link Tile`, `Button Tile`, `Link Tile Model Signature`: fix overflowing content
   ([#4018](https://github.com/porsche-design-system/porsche-design-system/pull/4018))
 - `Select Wrapper`: fix axe-core violation when both `filter` and `description` prop are used
