@@ -536,7 +536,7 @@ export class MultiSelect {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
+      value: this.currentValue,
       name: this.name,
     });
     this.update.emit({
