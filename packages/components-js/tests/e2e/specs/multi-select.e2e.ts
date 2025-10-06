@@ -133,7 +133,7 @@ test.describe('Change Event', () => {
   test('should emit change event with correct details when option is selected by click', async ({ page }) => {
     await initMultiSelect(page, { props: { name: 'options' } });
     const host = getHost(page);
-    await addEventListener(host, 'update');
+    await addEventListener(host, 'change');
 
     const buttonElement = getButton(page);
     await buttonElement.click();
