@@ -20,7 +20,7 @@
     "@porsche-design-system/components-react": "3.30.0-rc.0",
     "@react-router/node": "^7.7.0",
     "@react-router/serve": "^7.7.0",
-    "isbot": "^5.1.30",
+    "isbot": "^5.1.31",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router": "^7.7.0"
