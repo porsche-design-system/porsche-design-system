@@ -15,9 +15,9 @@ export const getSlottedSelectOptionStyles = (tagName: TagName): Styles => {
       [`${tagName} select > option`]: addImportantToEachRule({
         color: primaryColor,
         backgroundColor,
-        '&[disabled]': {
-          color: disabledColor,
-        },
+      }),
+      [`${tagName} select > option[disabled]`]: addImportantToEachRule({
+        color: disabledColor,
       }),
     },
   };
