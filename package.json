@@ -62,7 +62,7 @@
     "preinstall:components-angular": "TARGET=./packages/components-angular/dist/angular-wrapper && mkdir -p $TARGET && cp ./packages/components-angular/projects/angular-wrapper/package.json $TARGET",
     "preinstall:components-react": "TARGET=./packages/components-react/dist/react-wrapper && mkdir -p $TARGET && cp ./packages/components-react/projects/react-wrapper/package.json $TARGET && mkdir -p $TARGET/bin && touch $TARGET/bin/patchRemixRunProcessBrowserGlobalIdentifier.js",
     "preinstall:components-vue": "TARGET=./packages/components-vue/dist/vue-wrapper && mkdir -p $TARGET && cp ./packages/components-vue/projects/vue-wrapper/package.json $TARGET",
-    "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s^shared^@porsche-design-system/shared^\" ./packages/shared/package.json > $TARGET/package.json && mkdir -p ./packages/shared/bin && touch ./packages/shared/bin/serve-dummyassets.js",
+    "preinstall:shared": "TARGET=./packages/shared/dist && mkdir -p $TARGET && sed -E -e \"s^shared^@porsche-design-system/shared^\" ./packages/shared/package.json > $TARGET/package.json && mkdir -p ./packages/shared/bin && touch ./packages/shared/bin/serve-dummyassets.js && touch ./packages/shared/bin/prepareVRTSnapshots.js",
     "start:assets:fallbacks": "yarn --cwd ./packages/assets/project/fallbacks start",
     "start:components": "yarn --cwd ./packages/components start",
     "start:components-js": "yarn --cwd ./packages/components-js start",
