@@ -307,6 +307,78 @@ test('should render', async ({ page }) => {
   expect(await getDropdownDisplay(page)).toBe('flex');
 });
 
+test.describe('Change Event', () => {
+  test('should emit change event with correct details when option is selected by click', async ({ page }) => {
+    await initSelect(page);
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+    const option = getSelectOption(page, 1);
+    await option.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+      {
+        value: 'a',
+        name: 'options',
+      },
+    ]);
+    expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+      {
+        nodeName: 'P-SELECT',
+        nodeValue: null,
+        nodeType: 1,
+        tagName: 'P-SELECT',
+        className: 'hydrated',
+        id: '',
+      },
+    ]);
+  });
+
+  skipInBrowsers(['webkit'], () => {
+    test('should emit change event with correct details when option is selected by keyboard', async ({ page }) => {
+      await initSelect(page);
+      const host = getHost(page);
+      await addEventListener(host, 'change');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+      expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+        {
+          value: 'a',
+          name: 'options',
+        },
+      ]);
+      expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+        {
+          nodeName: 'P-SELECT',
+          nodeValue: null,
+          nodeType: 1,
+          tagName: 'P-SELECT',
+          className: 'hydrated',
+          id: '',
+        },
+      ]);
+    });
+  });
+});
+
 // TODO: Should the update event be emitted when slot changes? e.g. option with current set value is added
 test.describe('Update Event', () => {
   test('should emit update event with correct details when option is selected by click', async ({ page }) => {

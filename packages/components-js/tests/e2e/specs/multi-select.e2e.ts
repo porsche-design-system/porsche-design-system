@@ -129,6 +129,113 @@ test('should render', async ({ page }) => {
   expect(await getDropdownDisplay(page)).toBe('flex');
 });
 
+test.describe('Change Event', () => {
+  test('should emit change event with correct details when option is selected by click', async ({ page }) => {
+    await initMultiSelect(page, { props: { name: 'options' } });
+    const host = getHost(page);
+    await addEventListener(host, 'update');
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+    const option = getMultiSelectOption(page, 1);
+    await option.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+      {
+        value: ['a'],
+        name: 'options',
+      },
+    ]);
+    expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+      {
+        nodeName: 'P-MULTI-SELECT',
+        nodeValue: null,
+        nodeType: 1,
+        tagName: 'P-MULTI-SELECT',
+        className: 'hydrated',
+        id: '',
+      },
+    ]);
+  });
+
+  skipInBrowsers(['webkit'], () => {
+    test('should emit change event with correct details when option is selected by keyboard', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options' } });
+      const host = getHost(page);
+      const dropdown = getDropdown(page);
+      await addEventListener(host, 'change');
+
+      await page.keyboard.press('Tab');
+      await expect(host).toBeFocused();
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+      await expect(dropdown).toBeVisible();
+
+      expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+      expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+        {
+          value: ['a'],
+          name: 'options',
+        },
+      ]);
+      expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+        {
+          nodeName: 'P-MULTI-SELECT',
+          nodeValue: null,
+          nodeType: 1,
+          tagName: 'P-MULTI-SELECT',
+          className: 'hydrated',
+          id: '',
+        },
+      ]);
+    });
+
+    test('should emit change event with correct details when reset button is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options' } });
+      await setValue(page, ['a', 'b']);
+      await waitForStencilLifecycle(page);
+
+      const host = getHost(page);
+      await addEventListener(host, 'change');
+
+      expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+      const resetButton = getResetButton(page);
+      await resetButton.click();
+
+      expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+      expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+        {
+          value: [],
+          name: 'options',
+        },
+      ]);
+      expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+        {
+          nodeName: 'P-MULTI-SELECT',
+          nodeValue: null,
+          nodeType: 1,
+          tagName: 'P-MULTI-SELECT',
+          className: 'hydrated',
+          id: '',
+        },
+      ]);
+    });
+  });
+});
+
 test.describe('Update Event', () => {
   test('should emit update event with correct details when option is selected by click', async ({ page }) => {
     await initMultiSelect(page, { props: { name: 'options' } });
