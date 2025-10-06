@@ -31,6 +31,8 @@
     "test:a11y:5/6": "yarn test:a11y --shard=5/6",
     "test:a11y:6/6": "yarn test:a11y --shard=6/6",
     "test:vrt": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts",
+    "test:vrt:prepare-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/results --mode prepare",
+    "test:vrt:update-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/specs/__screenshots__ --mode update",
     "clean:build": "rm -rf ./dist && rm -rf ./.next && yarn clean:stackblitz:build",
     "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
