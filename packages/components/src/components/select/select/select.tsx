@@ -137,6 +137,11 @@ export class Select {
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Emitted when the selection is changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<SelectUpdateEventDetail>;
+
+  /**
+   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
+   */
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
@@ -537,6 +542,10 @@ export class Select {
   };
 
   private emitUpdateEvent = (): void => {
+    this.change.emit({
+      value: this.value,
+      name: this.name,
+    });
     this.update.emit({
       value: this.value,
       name: this.name,

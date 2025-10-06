@@ -3885,6 +3885,7 @@ declare global {
         new (): HTMLPModelSignatureElement;
     };
     interface HTMLPMultiSelectElementEventMap {
+        "change": MultiSelectUpdateEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
     /**
@@ -4003,6 +4004,7 @@ declare global {
         new (): HTMLPSegmentedControlItemElement;
     };
     interface HTMLPSelectElementEventMap {
+        "change": SelectUpdateEventDetail;
         "update": SelectUpdateEventDetail;
     }
     /**
@@ -6686,6 +6688,10 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selection is changed.
          */
+        "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
+         */
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
@@ -7042,6 +7048,10 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
         /**
