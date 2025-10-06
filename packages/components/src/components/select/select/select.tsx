@@ -49,6 +49,7 @@ import type { InputSearchInputEventDetail } from '../../input-search/input-searc
 import { getComponentCss } from './select-styles';
 import {
   getSelectedOptionString,
+  type SelectChangeEventDetail,
   type SelectDropdownDirection,
   type SelectOptgroup,
   type SelectOption,
@@ -137,7 +138,7 @@ export class Select {
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Emitted when the selection is changed. */
-  @Event({ bubbles: true }) public change: EventEmitter<SelectUpdateEventDetail>;
+  @Event({ bubbles: true }) public change: EventEmitter<SelectChangeEventDetail>;
 
   /**
    * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.

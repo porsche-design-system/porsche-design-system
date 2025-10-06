@@ -53,7 +53,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -61,7 +61,7 @@ import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -129,7 +129,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -137,7 +137,7 @@ export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -3885,7 +3885,7 @@ declare global {
         new (): HTMLPModelSignatureElement;
     };
     interface HTMLPMultiSelectElementEventMap {
-        "change": MultiSelectUpdateEventDetail;
+        "change": MultiSelectChangeEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
     /**
@@ -4004,7 +4004,7 @@ declare global {
         new (): HTMLPSegmentedControlItemElement;
     };
     interface HTMLPSelectElementEventMap {
-        "change": SelectUpdateEventDetail;
+        "change": SelectChangeEventDetail;
         "update": SelectUpdateEventDetail;
     }
     /**
@@ -6688,7 +6688,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selection is changed.
          */
-        "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
+        "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
         /**
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
@@ -7049,7 +7049,7 @@ declare namespace LocalJSX {
         /**
           * Emitted when the selection is changed.
          */
-        "onChange"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
+        "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
         /**
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */

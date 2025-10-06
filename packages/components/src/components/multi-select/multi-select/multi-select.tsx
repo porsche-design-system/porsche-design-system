@@ -49,6 +49,7 @@ import { getComponentCss } from './multi-select-styles';
 import {
   getSelectedOptionsString,
   getSelectedOptionValues,
+  type MultiSelectChangeEventDetail,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
   type MultiSelectOption,
@@ -134,7 +135,7 @@ export class MultiSelect {
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Emitted when the selection is changed. */
-  @Event({ bubbles: true }) public change: EventEmitter<MultiSelectUpdateEventDetail>;
+  @Event({ bubbles: true }) public change: EventEmitter<MultiSelectChangeEventDetail>;
 
   /**
    * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
