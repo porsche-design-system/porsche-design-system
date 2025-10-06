@@ -27,8 +27,8 @@
     "@remix-run/serve": "^2.16.8",
     "@remix-run/server-runtime": "^2.16.8",
     "isbot": "^5.1.31",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
