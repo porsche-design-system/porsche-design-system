@@ -1,34 +1,34 @@
 'use client';
 
-import type {SlotStories, Story} from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 import type { ElementConfig } from '@/utils/generator/generator';
 
 export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
   header: {
     basic: {
-      name: "Basic header",
+      name: 'Basic header',
       generator: () => [
         {
           tag: 'p-tag',
           properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
           children: ['Some tag'],
-        }
-      ]
-    }
+        },
+      ],
+    },
   },
   footer: {
     basic: {
-      name: "Basic footer",
+      name: 'Basic footer',
       generator: () => [
         {
           tag: 'p-text',
           properties: { slot: 'footer', theme: 'dark' },
           children: ['Some footer text'],
-        }
-      ]
-    }
-  }
-}
+        },
+      ],
+    },
+  },
+};
 
 export const linkTileStory: Story<'p-link-tile'> = {
   state: {
@@ -36,7 +36,7 @@ export const linkTileStory: Story<'p-link-tile'> = {
     slots: {
       header: linkTileSlotStory.header.basic,
       footer: linkTileSlotStory.footer.basic,
-    }
+    },
   },
   generator: ({ properties, slots } = {}) => [
     {
