@@ -9388,7 +9388,6 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
-  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
@@ -15501,7 +15500,6 @@ slot[name="header"] {
 slot[name="footer"] {
   grid-row: 2;
   z-index: 3;
-  max-width: 34.375rem;
 }
 ::slotted(:is(img,picture,video)) {
   display: block !important;
