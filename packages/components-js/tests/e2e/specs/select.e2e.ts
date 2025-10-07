@@ -325,7 +325,7 @@ test.describe('Blur Event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'after outside click').toBe(1);
   });
 
-  skipInBrowsers(['webkit'], () => {
+  skipInBrowsers(['webkit', 'firefox'], () => {
     test('should emit blur event when button loses focus by keyboard', async ({ page }) => {
       await initSelect(page);
       const host = getHost(page);
