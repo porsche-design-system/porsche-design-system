@@ -57,8 +57,8 @@
     "@types/mdx": "^2.0.13",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@types/node": "^24.0.15",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "autoprefixer": "^10.4.21",
     "remark-gfm": "^4.0.1",
     "cheerio": "^1.1.2"
