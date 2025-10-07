@@ -137,6 +137,9 @@ export class Select {
   /** The id of a form element the select should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
+  /** Emitted when the select has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<void>;
+
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<SelectChangeEventDetail>;
 
@@ -308,6 +311,7 @@ export class Select {
           disabled={this.disabled}
           onClick={this.onComboClick}
           onKeyDown={this.onComboKeyDown}
+          onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
           {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
@@ -325,6 +329,7 @@ export class Select {
           popover="manual"
           tabIndex={-1}
           onToggle={() => this.onToggle()}
+          onBlur={(e: any) => e.stopPropagation()}
           role="dialog"
           aria-label={this.label}
           aria-hidden={this.isOpen ? null : 'true'}
@@ -343,6 +348,8 @@ export class Select {
               theme={this.theme}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
+              onBlur={(e: any) => e.stopPropagation()}
+              onChange={(e: any) => e.stopPropagation()}
               ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
             />
           )}
@@ -389,6 +396,7 @@ export class Select {
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
       this.isOpen = false;
+      this.blur.emit();
     }
   };
 
@@ -563,6 +571,7 @@ export class Select {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    e.stopPropagation();
     const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.selectOptions,
       this.selectOptgroups,
@@ -580,6 +589,14 @@ export class Select {
           this.inputSearchElement.focus();
         });
       });
+    }
+  };
+
+  private onComboBlur = (e: FocusEvent): void => {
+    e.stopPropagation();
+    // Don't emit blur when opening the dropdown
+    if (!this.isOpen) {
+      this.blur.emit();
     }
   };
 }

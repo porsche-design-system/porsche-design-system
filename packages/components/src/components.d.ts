@@ -3885,6 +3885,7 @@ declare global {
         new (): HTMLPModelSignatureElement;
     };
     interface HTMLPMultiSelectElementEventMap {
+        "blur": void;
         "change": MultiSelectChangeEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
@@ -4004,6 +4005,7 @@ declare global {
         new (): HTMLPSegmentedControlItemElement;
     };
     interface HTMLPSelectElementEventMap {
+        "blur": void;
         "change": SelectChangeEventDetail;
         "update": SelectUpdateEventDetail;
     }
@@ -6686,6 +6688,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the multi-select has lost focus.
+         */
+        "onBlur"?: (event: PMultiSelectCustomEvent<void>) => void;
+        /**
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
@@ -7046,6 +7052,10 @@ declare namespace LocalJSX {
           * The name of the control.
          */
         "name"?: string;
+        /**
+          * Emitted when the select has lost focus.
+         */
+        "onBlur"?: (event: PSelectCustomEvent<void>) => void;
         /**
           * Emitted when the selection is changed.
          */
