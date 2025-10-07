@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-vue": "3.30.0-rc.0",
-    "vue": "^3.5.20",
+    "vue": "^3.5.22",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.1"
   },
