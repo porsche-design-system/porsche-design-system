@@ -8126,6 +8126,10 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the multi-select has lost focus.",
+        "type": "void",
+      },
       "change": {
         "description": "Emitted when the selection is changed.",
         "type": "MultiSelectChangeEventDetail",
@@ -9393,6 +9397,10 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the select has lost focus.",
+        "type": "void",
+      },
       "change": {
         "description": "Emitted when the selection is changed.",
         "type": "SelectChangeEventDetail",
