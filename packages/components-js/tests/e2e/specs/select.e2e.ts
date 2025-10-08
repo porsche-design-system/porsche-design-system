@@ -307,6 +307,166 @@ test('should render', async ({ page }) => {
   expect(await getDropdownDisplay(page)).toBe('flex');
 });
 
+test.describe('Blur Event', () => {
+  test('should emit blur event when button loses focus by outside click', async ({ page }) => {
+    await initSelect(page);
+    const host = getHost(page);
+    const dropdown = getDropdown(page);
+    await addEventListener(host, 'blur');
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'before outside click').toBe(0);
+
+    await page.mouse.click(0, 0);
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after outside click').toBe(1);
+  });
+
+  skipInBrowsers(['webkit', 'firefox'], () => {
+    test('should emit blur event when button loses focus by keyboard', async ({ page }) => {
+      await initSelect(page);
+      const host = getHost(page);
+      const button = getButton(page);
+      const dropdown = getDropdown(page);
+      await addEventListener(host, 'blur');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await expect(dropdown).toBeVisible();
+
+      expect((await getEventSummary(host, 'blur')).counter, 'before focus next element by keyboard').toBe(0);
+
+      await page.keyboard.press('Tab');
+      await expect(dropdown).toBeHidden();
+      await expect(button).toBeFocused();
+      await page.keyboard.press('Tab');
+
+      expect((await getEventSummary(host, 'blur')).counter, 'after focus next element by keyboard').toBe(1);
+    });
+  });
+
+  test('should not emit blur event when filter input loses focus', async ({ page }) => {
+    await initSelect(page, { props: { name: 'options', filter: true } });
+    const host = getHost(page);
+    const dropdown = getDropdown(page);
+    const filterInput = getFilterInput(page);
+    await addEventListener(host, 'blur');
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+    await expect(filterInput).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'before outside click').toBe(0);
+
+    await filterInput.fill('no options found');
+    const noResults = page.getByRole('option', { name: 'No results found' });
+    await expect(noResults).toBeVisible();
+    await noResults.click();
+    await expect(filterInput).not.toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after outside click').toBe(0);
+  });
+});
+
+test.describe('Change Event', () => {
+  test('should emit change event with correct details when option is selected by click', async ({ page }) => {
+    await initSelect(page);
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+    const option = getSelectOption(page, 1);
+    await option.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+      {
+        value: 'a',
+        name: 'options',
+      },
+    ]);
+    expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+      {
+        nodeName: 'P-SELECT',
+        nodeValue: null,
+        nodeType: 1,
+        tagName: 'P-SELECT',
+        className: 'hydrated',
+        id: '',
+      },
+    ]);
+  });
+
+  skipInBrowsers(['webkit'], () => {
+    test('should emit change event with correct details when option is selected by keyboard', async ({ page }) => {
+      await initSelect(page);
+      const host = getHost(page);
+      await addEventListener(host, 'change');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'change')).counter, 'before option select').toBe(0);
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
+      expect((await getEventSummary(host, 'change')).details, 'after option select').toEqual([
+        {
+          value: 'a',
+          name: 'options',
+        },
+      ]);
+      expect((await getEventSummary(host, 'change')).targets, 'after option select').toEqual([
+        {
+          nodeName: 'P-SELECT',
+          nodeValue: null,
+          nodeType: 1,
+          tagName: 'P-SELECT',
+          className: 'hydrated',
+          id: '',
+        },
+      ]);
+    });
+  });
+
+  test('should not emit change event when filter input is changed', async ({ page }) => {
+    await initSelect(page, { props: { name: 'options', filter: true } });
+    const host = getHost(page);
+    const dropdown = getDropdown(page);
+    const filterInput = getFilterInput(page);
+    await addEventListener(host, 'change');
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+    await expect(filterInput).toBeFocused();
+
+    expect((await getEventSummary(host, 'change')).counter, 'before input change').toBe(0);
+
+    await filterInput.fill('no options found');
+    const noResults = page.getByRole('option', { name: 'No results found' });
+    await expect(noResults).toBeVisible();
+    await noResults.click();
+    await expect(filterInput).not.toBeFocused();
+
+    expect((await getEventSummary(host, 'change')).counter, 'after outside click').toBe(0);
+  });
+});
+
 // TODO: Should the update event be emitted when slot changes? e.g. option with current set value is added
 test.describe('Update Event', () => {
   test('should emit update event with correct details when option is selected by click', async ({ page }) => {

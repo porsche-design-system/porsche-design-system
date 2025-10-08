@@ -14,8 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Select`, `Multi Select`: `update` event is deprecated. Use `change` event instead.
+  ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
+
 ### Fixed
 
+- `Select Wrapper`: disabled options in native dropdown not displayed correctly
+  ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
 
 ## [3.30.0-rc.0] - 2025-09-10

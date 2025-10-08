@@ -13,7 +13,7 @@
   const debugElement = document.querySelector('p-text');
   const multiSelect = document.querySelector('p-multi-select');
 
-  multiSelect.addEventListener('update', (e) => {
+  multiSelect.addEventListener('change', (e) => {
     e.target.value = e.detail.value;
     setDebugText(e.detail.value);
   });
