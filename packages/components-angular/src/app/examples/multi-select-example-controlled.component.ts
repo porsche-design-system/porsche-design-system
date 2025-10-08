@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-controlled',
   template: `
-    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="onUpdate($event)">
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (change)="onChange($event)">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
       <p-multi-select-option value="b">Option B</p-multi-select-option>
       <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -25,7 +25,7 @@ export class MultiSelectExampleControlledComponent {
     return `Selected values: ${this.selectedValues.join(', ') || 'none'}`;
   }
 
-  onUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
+  onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
     this.selectedValues = e.detail.value;
   }
 }

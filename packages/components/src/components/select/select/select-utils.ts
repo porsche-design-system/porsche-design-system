@@ -1,5 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import { type SelectComponentsDropdownDirection, type Theme, consoleWarn } from '../../../utils';
+import { consoleWarn, type SelectComponentsDropdownDirection, type Theme } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
@@ -9,10 +9,13 @@ export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLPr
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
+/** @deprecated */
 export type SelectUpdateEventDetail = {
   name: string;
   value: string;
 };
+
+export type SelectChangeEventDetail = SelectUpdateEventDetail;
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
