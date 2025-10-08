@@ -122,6 +122,7 @@ export class RadioGroup {
   private defaultValue: string;
 
   private radioGroupOptions: RadioGroupOption[] = [];
+  private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
   @Listen('internalRadioGroupOptionChange')
   public updateOptionHandler(e: Event & { target: RadioGroupOption; detail: RadioGroupChangeEventDetail }): void {
@@ -129,6 +130,7 @@ export class RadioGroup {
     const selectedOption = e.target;
     const originalEvent = e.detail;
 
+    this.preventOptionUpdate = true; // Avoid unnecessary updating of options in the value watcher
     setSelectedRadioGroupOption(this.radioGroupOptions, selectedOption);
     this.value = selectedOption.value;
     this.change.emit(originalEvent);
@@ -137,6 +139,13 @@ export class RadioGroup {
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
+
+    if (this.radioGroupOptions.length > 0) {
+      if (!this.preventOptionUpdate) {
+        updateRadioGroupOptions(this.radioGroupOptions, this.value);
+      }
+      this.preventOptionUpdate = false;
+    }
   }
 
   public connectedCallback(): void {
