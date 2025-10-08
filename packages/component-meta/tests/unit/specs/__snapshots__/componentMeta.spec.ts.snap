@@ -8792,7 +8792,7 @@ exports[`should match snapshot 1`] = `
   "p-radio-group": {
     "eventsMeta": {
       "change": {
-        "description": "Emitted when a radio-group-option loses focus after its value was changed.",
+        "description": "Emitted when the selected option is changed.",
         "type": "RadioGroupChangeEventDetail",
         "typeDetail": "Event",
       },
