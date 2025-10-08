@@ -12,7 +12,7 @@
     "@porsche-design-system/components-js": "3.29.0"
   },
   "devDependencies": {
-    "vite": "^6.3.5",
+    "vite": "^7.1.9",
     "postcss": "^8",
     "tailwindcss": "^4.1.12",
     "@tailwindcss/postcss": "^4.1.14"
