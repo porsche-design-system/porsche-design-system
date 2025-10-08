@@ -1,8 +1,8 @@
-import {forceUpdate} from '@stencil/core';
-import {consoleWarn, type SelectComponentsDropdownDirection, type Theme} from '../../../utils';
-import type {FormState} from '../../../utils/form/form-state';
-import type {OptgroupInternalHTMLProps} from '../../optgroup/optgroup-utils';
-import type {MultiSelectOptionInternalHTMLProps} from '../multi-select-option/multi-select-option-utils';
+import { forceUpdate } from '@stencil/core';
+import { consoleWarn, type SelectComponentsDropdownDirection, type Theme } from '../../../utils';
+import type { FormState } from '../../../utils/form/form-state';
+import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
+import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -14,7 +14,9 @@ export type MultiSelectUpdateEvent = {
   name: string;
   value: string[];
 };
+/** @deprecated */
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
+export type MultiSelectChangeEventDetail = MultiSelectUpdateEventDetail;
 
 // TODO: share between select & multi-select
 export const syncMultiSelectChildrenProps = (

@@ -4,7 +4,7 @@ import {
   PSelect,
   PSelectOption,
   PTextFieldWrapper,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -21,7 +21,7 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onUpdate = (e: SelectUpdateEventDetail) => {
+const onChange = (e: SelectChangeEventDetail) => {
   selectedValue.value = e.value;
   inputValue.value = e.value;
 };
@@ -45,7 +45,7 @@ const onRemoveOption = () => {
     <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
     <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
 
-    <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @update="onUpdate">
+    <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @change="onChange">
       <PSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`"> Option {{ idx }} </PSelectOption>
     </PSelect>
 

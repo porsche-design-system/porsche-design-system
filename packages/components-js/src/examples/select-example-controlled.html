@@ -13,7 +13,7 @@
   const debugElement = document.querySelector('p-text');
   const select = document.querySelector('p-select');
 
-  select.addEventListener('update', (e) => {
+  select.addEventListener('change', (e) => {
     e.target.value = e.detail.value;
     setDebugText(e.detail.value);
   });

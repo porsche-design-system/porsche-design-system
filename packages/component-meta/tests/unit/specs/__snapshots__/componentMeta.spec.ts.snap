@@ -8126,8 +8126,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "update": {
+      "blur": {
+        "description": "Emitted when the multi-select has lost focus.",
+        "type": "void",
+      },
+      "change": {
         "description": "Emitted when the selection is changed.",
+        "type": "MultiSelectChangeEventDetail",
+        "typeDetail": "{ name: string; value: string[] }",
+      },
+      "update": {
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
+        "isDeprecated": true,
         "type": "MultiSelectUpdateEventDetail",
         "typeDetail": "{ name: string; value: string[] }",
       },
@@ -9590,8 +9600,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "update": {
+      "blur": {
+        "description": "Emitted when the select has lost focus.",
+        "type": "void",
+      },
+      "change": {
         "description": "Emitted when the selection is changed.",
+        "type": "SelectChangeEventDetail",
+        "typeDetail": "{ name: string; value: string }",
+      },
+      "update": {
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
+        "isDeprecated": true,
         "type": "SelectUpdateEventDetail",
         "typeDetail": "{ name: string; value: string }",
       },
