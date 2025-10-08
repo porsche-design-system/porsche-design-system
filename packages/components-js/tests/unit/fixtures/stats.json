@@ -202,7 +202,7 @@
   {
     "chunkShortName": "main",
     "size": 87947,
-    "gzipSize": 27936
+    "gzipSize": 27935
   },
   {
     "chunkShortName": "marque",
@@ -251,8 +251,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 13765,
-    "gzipSize": 5403
+    "size": 13947,
+    "gzipSize": 5437
   },
   {
     "chunkShortName": "radio-group-option",
