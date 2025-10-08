@@ -113,7 +113,7 @@ export class RadioGroup {
   /** Controls the visual appearance of the component. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when a radio-group-option loses focus after its value was changed. */
+  /** Emitted when the selected option is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<RadioGroupChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -122,32 +122,21 @@ export class RadioGroup {
   private defaultValue: string;
 
   private radioGroupOptions: RadioGroupOption[] = [];
-  private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
   @Listen('internalRadioGroupOptionChange')
   public updateOptionHandler(e: Event & { target: RadioGroupOption; detail: RadioGroupChangeEventDetail }): void {
     e.stopPropagation();
     const selectedOption = e.target;
     const originalEvent = e.detail;
-    // option can be undefined when no option is highlighted and keyboard action calls this
-    if (selectedOption) {
-      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-      setSelectedRadioGroupOption(this.radioGroupOptions, selectedOption);
-      this.value = selectedOption.value;
-      this.change.emit(originalEvent);
-    }
+
+    setSelectedRadioGroupOption(this.radioGroupOptions, selectedOption);
+    this.value = selectedOption.value;
+    this.change.emit(originalEvent);
   }
 
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
-
-    if (this.radioGroupOptions.length > 0) {
-      if (!this.preventOptionUpdate) {
-        updateRadioGroupOptions(this.radioGroupOptions, this.value);
-      }
-      this.preventOptionUpdate = false;
-    }
   }
 
   public connectedCallback(): void {

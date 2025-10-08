@@ -20,22 +20,12 @@ export const resetSelectedRadioGroupOption = (options: RadioGroupOption[]): void
 
 export const updateRadioGroupOptions = (options: RadioGroupOption[], value: string): void => {
   resetSelectedRadioGroupOption(options);
-  if (value === undefined) {
-    // Option without value for empty selection
-    const optionToSelect = options.find((option) => option.value === undefined);
-    if (optionToSelect) {
-      optionToSelect.selected = true;
-      forceUpdate(optionToSelect);
-    }
+  const optionToSelect = options.find((option) => option.value === value);
+  if (optionToSelect) {
+    optionToSelect.selected = true;
+    forceUpdate(optionToSelect);
   } else {
-    // TODO: Do we want to cover multiple options with the same value?
-    const optionToSelect = options.find((option) => option.value === value);
-    if (optionToSelect) {
-      optionToSelect.selected = true;
-      forceUpdate(optionToSelect);
-    } else {
-      consoleWarn('The provided value is not included in the options of the radio group:', value);
-    }
+    consoleWarn('The provided value is not included in the options of the radio group:', value);
   }
 };
 
