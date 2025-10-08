@@ -8490,8 +8490,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the pin-code has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the input is changed.",
+        "type": "PinCodeChangeEventDetail",
+        "typeDetail": "{ value: string; isComplete: boolean }",
+      },
       "update": {
-        "description": "Emitted when selected element changes.",
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the input is changed.",
+        "isDeprecated": true,
         "type": "PinCodeUpdateEventDetail",
         "typeDetail": "{ value: string; isComplete: boolean }",
       },
@@ -8900,6 +8910,15 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the segmented-control has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the selection is changed.",
+        "type": "SegmentedControlChangeEventDetail",
+        "typeDetail": "{ value: string | number }",
+      },
       "segmentedControlChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
         "isDeprecated": true,
@@ -8907,7 +8926,8 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ value: string | number }",
       },
       "update": {
-        "description": "Emitted when selected element changes.",
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when selected element changes.",
+        "isDeprecated": true,
         "type": "SegmentedControlUpdateEventDetail",
         "typeDetail": "{ value: string | number }",
       },
