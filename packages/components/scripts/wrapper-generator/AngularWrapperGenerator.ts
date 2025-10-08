@@ -1,6 +1,7 @@
-import * as path from 'path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'change-case';
+import * as path from 'path';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
@@ -31,7 +32,15 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
-    return [importsFromAngular, importsFromUtils, importsFromTypes, importsFromComponentsWrapperModule]
+    //const importsFromAngularForms = `import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';`;
+
+    return [
+      importsFromAngular,
+      importsFromUtils,
+      importsFromTypes,
+      importsFromComponentsWrapperModule,
+      //importsFromAngularForms,
+    ]
       .filter(Boolean)
       .join('\n');
   }
@@ -50,12 +59,33 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const inputs = inputProps.length ? `[${inputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
     const outputs = outputProps.length ? `[${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
 
+    const componentName = this.generateComponentName(component);
+    //const meta = getComponentMeta(component);
+
     const componentOpts = [
       `selector: '${component},[${component}]'`,
       `template: '<ng-content />'`,
       ...(inputs ? [`inputs: ${inputs}`] : []),
       ...(outputs ? [`outputs: ${outputs}`] : []),
       `standalone: false`,
+      // TODO: Add ControlValueAccessor interface
+      // ...(meta.hasElementInternals
+      //   ? [
+      //       `providers: [
+      //   {
+      //     provide: NG_VALUE_ACCESSOR,
+      //     useExisting: forwardRef(() => ${componentName}),
+      //     multi: true,
+      //   },
+      // ]`,
+      //       `host: {
+      //   '[value]': 'value',
+      //   '[disabled]': 'disabled',
+      //   '(change)': '_onChange($event.detail.value)',
+      //   '(blur)': '_onTouched()'
+      // }`,
+      //     ]
+      //   : []),
     ]
       .filter(Boolean)
       .join(',\n  ');
@@ -76,10 +106,29 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const baseClass = hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent';
 
+    // _onChange: (value: any) => void = () => {};
+    // _onTouched: () => void = () => {};
+    //
+    // writeValue(value: any): void {
+    //   this.value = value;
+    // }
+    //
+    // registerOnChange(fn: any): void {
+    //   this._onChange = fn;
+    // }
+    //
+    // registerOnTouched(fn: any): void {
+    //   this._onTouched = fn;
+    // }
+    //
+    // setDisabledState(isDisabled: boolean): void {
+    //   this.disabled = isDisabled;
+    // }
+
     return `${this.inputParser.getDeprecationMessage(component)}@Component({
   ${componentOpts}
 })
-export class ${this.generateComponentName(component)}${genericType} extends ${baseClass} {
+export class ${componentName}${genericType} extends ${baseClass} {
   ${classMembers}
 }`;
   }

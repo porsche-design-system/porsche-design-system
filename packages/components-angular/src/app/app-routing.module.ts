@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { type Route, RouterModule } from '@angular/router';
 import * as fromExamples from './examples';
+import { SelectExampleFormComponent } from './examples/select-example-form.component';
 import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
@@ -344,6 +345,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Select Example Dynamic',
     path: 'select-example-dynamic',
     component: fromExamples.SelectExampleDynamicComponent,
+  },
+  {
+    name: 'Select Example Form',
+    path: 'select-example-form',
+    component: fromExamples.SelectExampleFormComponent,
   },
   {
     name: 'Select Example Required',
