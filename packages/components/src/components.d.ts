@@ -7082,7 +7082,7 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when a radio-group-option loses focus after its value was changed.
+          * Emitted when the selected option is changed.
          */
         "onChange"?: (event: PRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
         /**
