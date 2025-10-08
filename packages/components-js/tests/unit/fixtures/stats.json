@@ -202,7 +202,7 @@
   {
     "chunkShortName": "main",
     "size": 87579,
-    "gzipSize": 27931
+    "gzipSize": 27930
   },
   {
     "chunkShortName": "marque",
@@ -221,8 +221,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 47827,
-    "gzipSize": 17084
+    "size": 48224,
+    "gzipSize": 17174
   },
   {
     "chunkShortName": "optgroup",
@@ -261,13 +261,13 @@
   },
   {
     "chunkShortName": "select",
-    "size": 46069,
-    "gzipSize": 16364
+    "size": 46416,
+    "gzipSize": 16450
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 45566,
-    "gzipSize": 16263
+    "size": 45636,
+    "gzipSize": 16277
   },
   {
     "chunkShortName": "sheet",
