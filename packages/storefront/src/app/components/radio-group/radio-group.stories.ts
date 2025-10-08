@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotStories, Story } from '@/models/story';
+import type { Story } from '@/models/story';
 import { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
@@ -33,7 +33,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
   generator: () => [
     {
       tag: 'p-radio-group',
-      properties: { state: 'error' },
+      properties: { state: 'error', value: 'a' },
       children: [
         {
           tag: 'span',
