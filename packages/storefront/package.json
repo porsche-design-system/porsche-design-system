@@ -41,7 +41,7 @@
     "@porsche-design-system/fallbacks": "0.0.0",
     "react-syntax-highlighter": "^15.6.6",
     "next": "15.4.2",
-    "algoliasearch": "^5.34.0",
+    "algoliasearch": "^5.40.0",
     "@algolia/cache-in-memory": "^4.25.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
