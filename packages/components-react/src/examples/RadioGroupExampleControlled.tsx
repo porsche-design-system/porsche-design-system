@@ -11,7 +11,7 @@ export const RadioGroupExampleControlledPage = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('a');
 
   const onChange = (e: CustomEvent<RadioGroupChangeEventDetail> | FormEvent<{}>) => {
-    const input = e.target as HTMLInputElement;
+    const input = e.target as HTMLElement & { value: string };
     setSelectedValue(input.value);
   };
 

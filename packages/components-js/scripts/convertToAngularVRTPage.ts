@@ -95,8 +95,8 @@ ngOnInit() {
     .replace(/<\/template>/g, '</div>'); // replace closing tag
   fileContent = fileContent.replace(templateRegEx, template);
 
-  // prefixing, but skip p-radio-group-option
-  fileContent = fileContent.replace(/<((?!p-radio-group-option)[\w-]+(p-[\w-]+))/g, '<$1 $2');
+  // prefixing
+  fileContent = fileContent.replace(/(<[\w-]+-(p-[\w-]+))/g, '$1 $2');
 
   // icons
   if (isIconPage) {

@@ -10,7 +10,7 @@
   const selectedValue = ref<string>('a');
 
   const onChange = (e: RadioGroupChangeEventDetail) => {
-    const input = e.target as HTMLInputElement;
+    const input = e.target as HTMLElement & { value: string };
     selectedValue.value = input.value;
   };
 
