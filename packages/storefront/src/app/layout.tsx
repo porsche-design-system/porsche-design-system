@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
+import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
+import Script from 'next/script';
+import type { ReactNode } from 'react';
 import { Canvas } from '@/components/layout/Canvas';
 import { Providers } from '@/components/providers/Providers';
 import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
 import { HeaderPartials } from '@/partials/HeaderPartials';
 import { getBasePath } from '@/utils/getBasePath';
 import { isDevEnvironment } from '@/utils/isDev';
-import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
-import Script from 'next/script';
-import type { ReactNode } from 'react';
 
 const title = 'Porsche Design System';
 
@@ -35,11 +35,9 @@ export const metadata: Metadata = {
 const getCSPMetaTag = (): ReactNode => {
   const cdnUrl = isDevEnvironment ? 'http://localhost:3000 http://localhost:3001' : 'https://cdn.ui.porsche.com';
 
-  const connectUrls = [
-    'https://*.algolia.net',
-    'https://*.algolianet.com',
-    'https://registry.npmjs.org/@porsche-design-system/components-js',
-  ].join(' ');
+  const connectUrls = ['http://localhost:8108', 'https://registry.npmjs.org/@porsche-design-system/components-js'].join(
+    ' '
+  );
 
   return (
     <meta
