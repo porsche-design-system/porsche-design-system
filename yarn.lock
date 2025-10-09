@@ -5851,10 +5851,10 @@
   resolved "https://registry.yarnpkg.com/@publint/pack/-/pack-0.1.2.tgz#1b9a9567423262093e4a73e77697b65bf622f8c9"
   integrity sha512-S+9ANAvUmjutrshV4jZjaiG8XQyuJIZ8a4utWmN/vW1sgQ9IfBnPndwkmQYw53QmouOIytT874u65HEmu6H5jw==
 
-"@react-router/dev@^7.9.3":
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/@react-router/dev/-/dev-7.9.3.tgz#e3cd92599080f1ff2ffa647415f02cb36f49c41c"
-  integrity sha512-oPaO+OpvCo/rNTJrRipHSp31/K4It19PE5A24x21FlYlemPTe3fbGX/kyC2+8au/abXbvzNHfRbuIBD/rfojmA==
+"@react-router/dev@^7.9.4":
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@react-router/dev/-/dev-7.9.4.tgz#68f21fd8952967a1545dfc8c1c7515a191635831"
+  integrity sha512-bLs6DjKMJExT7Y57EBx25hkeGGUla3pURxvOn15IN8Mmaw2+euDtBUX9+OFrAPsAzD1xIj6+2HNLXlFH/LB86Q==
   dependencies:
     "@babel/core" "^7.27.7"
     "@babel/generator" "^7.27.5"
@@ -5864,7 +5864,7 @@
     "@babel/traverse" "^7.27.7"
     "@babel/types" "^7.27.7"
     "@npmcli/package-json" "^4.0.1"
-    "@react-router/node" "7.9.3"
+    "@react-router/node" "7.9.4"
     "@remix-run/node-fetch-server" "^0.9.0"
     arg "^5.0.1"
     babel-dead-code-elimination "^1.0.6"
@@ -5881,7 +5881,7 @@
     react-refresh "^0.14.0"
     semver "^7.3.7"
     tinyglobby "^0.2.14"
-    valibot "^0.41.0"
+    valibot "^1.1.0"
     vite-node "^3.2.2"
 
 "@react-router/express@7.9.3":
@@ -5895,6 +5895,13 @@
   version "7.9.3"
   resolved "https://registry.yarnpkg.com/@react-router/node/-/node-7.9.3.tgz#30a4e7b03724d8a24bcb834ad30f89aff4c1c047"
   integrity sha512-+OvWxPPUgouOshw85QlG0J6yFJM0GMCCpXqPj38IcveeFLlP7ppOAEkOi7RBFrDvg7vSUtCEBDnsbuDCvxUPJg==
+  dependencies:
+    "@mjackson/node-fetch-server" "^0.2.0"
+
+"@react-router/node@7.9.4":
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@react-router/node/-/node-7.9.4.tgz#6c1a566c8e808b52cc96ad053767984e01419994"
+  integrity sha512-sdeDNRaqAB71BR2hPlhcQbPbrXh8uGJUjLVc+NpRiPsQbv6B8UvIucN4IX9YGVJkw3UxVQBn2vPSwxACAck32Q==
   dependencies:
     "@mjackson/node-fetch-server" "^0.2.0"
 
@@ -21156,12 +21163,12 @@ react-router-dom@6.30.0:
     "@remix-run/router" "1.23.0"
     react-router "6.30.0"
 
-react-router-dom@^7.9.3:
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.9.3.tgz#67ab1655f67b9b6108fe20ed3d4881b53dccf87a"
-  integrity sha512-1QSbA0TGGFKTAc/aWjpfW/zoEukYfU4dc1dLkT/vvf54JoGMkW+fNA+3oyo2gWVW1GM7BxjJVHz5GnPJv40rvg==
+react-router-dom@^7.9.4:
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.9.4.tgz#37d35b4b7f730b37434f2b7e95121ef557a6b538"
+  integrity sha512-f30P6bIkmYvnHHa5Gcu65deIXoA2+r3Eb6PJIAddvsT9aGlchMatJ51GgpU470aSqRRbFX22T70yQNUGuW3DfA==
   dependencies:
-    react-router "7.9.3"
+    react-router "7.9.4"
 
 react-router@6.30.0:
   version "6.30.0"
@@ -21170,10 +21177,10 @@ react-router@6.30.0:
   dependencies:
     "@remix-run/router" "1.23.0"
 
-react-router@7.9.3, react-router@^7.9.3:
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.9.3.tgz#f2d5ff6181851de3df3acb4e7364fce0dee5fba2"
-  integrity sha512-4o2iWCFIwhI/eYAIL43+cjORXYn/aRQPgtFRRZb3VzoyQ5Uej0Bmqj7437L97N9NJW4wnicSwLOLS+yCXfAPgg==
+react-router@7.9.4, react-router@^7.9.4:
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.9.4.tgz#2c4249e5d0a6bb8b8f6bf0ede8f5077e4ff8024f"
+  integrity sha512-SD3G8HKviFHg9xj7dNODUKDFgpG4xqD5nhyd0mYoB5iISepuZAvzSr8ywxgxKJ52yRzf/HWtVHc9AWwoTbljvA==
   dependencies:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
@@ -24550,6 +24557,11 @@ valibot@^0.41.0:
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/valibot/-/valibot-0.41.0.tgz#5c2efd49c078e455f7862379365f6036f3cd9f96"
   integrity sha512-igDBb8CTYr8YTQlOKgaN9nSS0Be7z+WRuaeYqGf3Cjz3aKmSnqEmYnkfVjzIuumGqfHpa3fLIvMEAfhrpqN8ng==
+
+valibot@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/valibot/-/valibot-1.1.0.tgz#873bb1af9e1577391690307bfe0520bd1360ec2d"
+  integrity sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==
 
 validate-npm-package-license@^3.0.1, validate-npm-package-license@^3.0.4:
   version "3.0.4"
