@@ -263,7 +263,8 @@
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.11",
     "**/vite/rollup": "^4.52.4",
     "**/workbox-build/rollup": "^4.52.4",
-    "**/@types/node": "24.7.0"
+    "**/@types/node": "24.7.0",
+    "**/ts-jest": "29.4.4"
   },
   "volta": {
     "node": "22.12.0",
