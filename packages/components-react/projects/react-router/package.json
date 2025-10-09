@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.30.0-rc.0",
-    "@react-router/node": "^7.9.3",
-    "@react-router/serve": "^7.9.3",
+    "@react-router/node": "^7.9.4",
+    "@react-router/serve": "^7.9.4",
     "isbot": "^5.1.31",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

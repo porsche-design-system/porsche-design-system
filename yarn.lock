@@ -5884,35 +5884,28 @@
     valibot "^1.1.0"
     vite-node "^3.2.2"
 
-"@react-router/express@7.9.3":
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/@react-router/express/-/express-7.9.3.tgz#1f32d29a45a4f0194d29481d447a31c6afef03de"
-  integrity sha512-XNVj/8AfecE1n61bXD41LqpXAixyWBpmBWkrzVA2iG+SrQOb+J6TjqZYEmZmoqJHuHmkOjt6/Iz1f81p93peGQ==
+"@react-router/express@7.9.4":
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@react-router/express/-/express-7.9.4.tgz#00535976d47b35c5daf64ce321c415bc2b866527"
+  integrity sha512-qba2YnZXWz8kyXNxXKDa0qS88ct4MwJKMwINmto/LPb08W/YdgRUBSZIw7QnOdN7aFkvWTRGXKBTCcle8WDnRA==
   dependencies:
-    "@react-router/node" "7.9.3"
+    "@react-router/node" "7.9.4"
 
-"@react-router/node@7.9.3", "@react-router/node@^7.9.3":
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/@react-router/node/-/node-7.9.3.tgz#30a4e7b03724d8a24bcb834ad30f89aff4c1c047"
-  integrity sha512-+OvWxPPUgouOshw85QlG0J6yFJM0GMCCpXqPj38IcveeFLlP7ppOAEkOi7RBFrDvg7vSUtCEBDnsbuDCvxUPJg==
-  dependencies:
-    "@mjackson/node-fetch-server" "^0.2.0"
-
-"@react-router/node@7.9.4":
+"@react-router/node@7.9.4", "@react-router/node@^7.9.4":
   version "7.9.4"
   resolved "https://registry.yarnpkg.com/@react-router/node/-/node-7.9.4.tgz#6c1a566c8e808b52cc96ad053767984e01419994"
   integrity sha512-sdeDNRaqAB71BR2hPlhcQbPbrXh8uGJUjLVc+NpRiPsQbv6B8UvIucN4IX9YGVJkw3UxVQBn2vPSwxACAck32Q==
   dependencies:
     "@mjackson/node-fetch-server" "^0.2.0"
 
-"@react-router/serve@^7.9.3":
-  version "7.9.3"
-  resolved "https://registry.yarnpkg.com/@react-router/serve/-/serve-7.9.3.tgz#fb083ca5577bf064a9efbb03dda740823dca3a68"
-  integrity sha512-wtiDLo4sY3ouADXPm1xa4eg79zRXP517E0QcuBKPfoKh/40IcANTqN11VeEKNA9QgNxLeCm4CSY3dPbqePuwkA==
+"@react-router/serve@^7.9.4":
+  version "7.9.4"
+  resolved "https://registry.yarnpkg.com/@react-router/serve/-/serve-7.9.4.tgz#767a3935fd609144247a3324d430f5d466ee3440"
+  integrity sha512-zXub2L4qwtGd8+pdXi1QheI8PHPxSwi5EF0D1924fji8yN1R8csP/2cr055/xFOEtbkbJSZyVRrJ44fFnBxKCw==
   dependencies:
     "@mjackson/node-fetch-server" "^0.2.0"
-    "@react-router/express" "7.9.3"
-    "@react-router/node" "7.9.3"
+    "@react-router/express" "7.9.4"
+    "@react-router/node" "7.9.4"
     compression "^1.7.4"
     express "^4.19.2"
     get-port "5.1.1"
