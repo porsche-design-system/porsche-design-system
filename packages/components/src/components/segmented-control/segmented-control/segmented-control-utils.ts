@@ -5,9 +5,9 @@ import { hasDocument } from '../../../utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
   BUTTON_FONT,
+  getScalableItemStyles,
   ICON_MARGIN,
   ICON_SIZE,
-  ITEM_PADDING,
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
@@ -33,7 +33,6 @@ export const tempDiv = hasDocument ? document.createElement('div') : undefined;
 if (tempDiv) {
   tempDiv.style.position = 'absolute';
   tempDiv.style.visibility = 'hidden';
-  tempDiv.style.padding = `0 ${ITEM_PADDING}`; // Uses the largest possible padding of the item
   tempDiv.style.border = `${borderWidthBase} solid`;
   tempDiv.style.boxSizing = 'border-box';
   tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
@@ -51,12 +50,20 @@ if (tempIcon) {
   tempIcon.style.marginRight = ICON_MARGIN;
 }
 
-export const getItemMaxWidth = (host: HTMLElement): number => {
+export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => {
   tempDiv.innerHTML = '';
   host.shadowRoot.append(tempDiv);
 
   const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
+    tempDiv.style.minWidth = getScalableItemStyles(
+      false /* Uses the largest possible padding of the item */,
+      compact
+    ).dimension;
+    tempDiv.style.padding = getScalableItemStyles(
+      false /* Uses the largest possible padding of the item */,
+      compact
+    ).padding;
 
     if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);
@@ -80,11 +87,13 @@ export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
   value: string | number,
   disabled: boolean,
+  compact: boolean,
   theme: Theme
 ): void => {
   for (const item of Array.from(host.children)) {
     (item as Item).selected = (item as Item).value === value;
     (item as Item).theme = theme;
+    (item as Item).compact = compact;
     (item as Item).disabledParent = disabled;
     forceUpdate(item);
   }
