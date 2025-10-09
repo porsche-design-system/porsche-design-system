@@ -1,6 +1,6 @@
 services:
   design-system:
-    image: mcr.microsoft.com/playwright:v1.56.0-jammy
+    image: mcr.microsoft.com/playwright:v1.54.0-jammy
     working_dir: /opt/repository
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -51,7 +51,7 @@ services:
       - utilities-ag-grid-node-modules:/opt/repository/packages/utilities/projects/ag-grid/node_modules
       - utilities-utilities-node-modules:/opt/repository/packages/utilities/projects/utilities/node_modules
   change-volume-owner:
-    image: mcr.microsoft.com/playwright:v1.56.0-jammy
+    image: mcr.microsoft.com/playwright:v1.54.0-jammy
     volumes:
       - home:/opt/repository-volumes/home
       - monorepo-node-modules:/opt/repository-volumes/root-node_modules
