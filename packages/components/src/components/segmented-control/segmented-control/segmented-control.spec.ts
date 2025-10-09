@@ -94,6 +94,7 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should stop event propagation', () => {
     const component = initComponent();
 
+    component.change = { emit: jest.fn() };
     component.update = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
 
@@ -104,6 +105,7 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should call updateValue when not disabled', () => {
     const component = initComponent();
 
+    component.change = { emit: jest.fn() };
     component.update = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
     component.disabled = false;
@@ -152,6 +154,7 @@ describe('componentDidLoad', () => {
 describe('updateValue()', () => {
   const component = initComponent();
   const emitSpy = jest.fn();
+  component.change = { emit: jest.fn() };
   component.update = { emit: emitSpy };
   component.segmentedControlChange = { emit: emitSpy };
 
