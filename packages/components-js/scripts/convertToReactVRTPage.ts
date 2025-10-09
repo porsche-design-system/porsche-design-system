@@ -32,7 +32,7 @@ export const convertToReactVRTPage = (
     .sort(byAlphabet)
     .join(', ');
 
-  const componentImports = Array.from(fileContent.matchAll(/<(?:[a-z-]*)(p-[\w-]+)/g))
+  const componentImports = Array.from(fileContent.matchAll(/<\s*(?:[\w-]+-)?(p-[\w-]+)/g))
     .map(([, tagName]) => tagName)
     .filter((tagName, index, arr) => arr.findIndex((t) => t === tagName) === index)
     .map((tagName) => pascalCase(tagName));

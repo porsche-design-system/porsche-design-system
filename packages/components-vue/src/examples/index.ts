@@ -52,6 +52,8 @@ export { default as SegmentedControlExample } from './SegmentedControlExample.vu
 export { default as SegmentedControlExampleControlled } from './SegmentedControlExampleControlled.vue';
 export { default as SelectExample } from './SelectExample.vue';
 export { default as SelectExampleControlled } from './SelectExampleControlled.vue';
+export { default as RadioGroupExample } from './RadioGroupExample.vue';
+export { default as RadioGroupExampleControlled } from './RadioGroupExampleControlled.vue';
 export { default as SelectExampleDynamic } from './SelectExampleDynamic.vue';
 export { default as SelectExampleRequired } from './SelectExampleRequired.vue';
 export { default as SheetExample } from './SheetExample.vue';
