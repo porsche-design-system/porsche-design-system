@@ -53,15 +53,15 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
-import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
+import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -129,15 +129,15 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
-export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
+export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -3885,6 +3885,8 @@ declare global {
         new (): HTMLPModelSignatureElement;
     };
     interface HTMLPMultiSelectElementEventMap {
+        "blur": void;
+        "change": MultiSelectChangeEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
     /**
@@ -3938,6 +3940,8 @@ declare global {
         new (): HTMLPPaginationElement;
     };
     interface HTMLPPinCodeElementEventMap {
+        "blur": void;
+        "change": PinCodeChangeEventDetail;
         "update": PinCodeUpdateEventDetail;
     }
     /**
@@ -3977,6 +3981,8 @@ declare global {
     };
     interface HTMLPSegmentedControlElementEventMap {
         "segmentedControlChange": SegmentedControlUpdateEventDetail;
+        "blur": void;
+        "change": SegmentedControlChangeEventDetail;
         "update": SegmentedControlUpdateEventDetail;
     }
     /**
@@ -4003,6 +4009,8 @@ declare global {
         new (): HTMLPSegmentedControlItemElement;
     };
     interface HTMLPSelectElementEventMap {
+        "blur": void;
+        "change": SelectChangeEventDetail;
         "update": SelectUpdateEventDetail;
     }
     /**
@@ -6684,7 +6692,15 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the multi-select has lost focus.
+         */
+        "onBlur"?: (event: PMultiSelectCustomEvent<void>) => void;
+        /**
           * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
         /**
@@ -6827,7 +6843,15 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when selected element changes.
+          * Emitted when the pin-code has lost focus.
+         */
+        "onBlur"?: (event: PPinCodeCustomEvent<void>) => void;
+        /**
+          * Emitted when the input is changed.
+         */
+        "onChange"?: (event: PPinCodeCustomEvent<PinCodeChangeEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
          */
         "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEventDetail>) => void;
         /**
@@ -6954,11 +6978,19 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the segmented-control has lost focus.
+         */
+        "onBlur"?: (event: PSegmentedControlCustomEvent<void>) => void;
+        /**
+          * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEventDetail>) => void;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
         "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
         /**
-          * Emitted when selected element changes.
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
          */
         "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
         /**
@@ -7041,7 +7073,15 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the select has lost focus.
+         */
+        "onBlur"?: (event: PSelectCustomEvent<void>) => void;
+        /**
           * Emitted when the selection is changed.
+         */
+        "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
         /**
