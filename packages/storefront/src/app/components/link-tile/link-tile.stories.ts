@@ -1,23 +1,51 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 import type { ElementConfig } from '@/utils/generator/generator';
+
+export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
+  header: {
+    basic: {
+      name: 'Basic header',
+      generator: () => [
+        {
+          tag: 'p-tag',
+          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+          children: ['Some tag'],
+        },
+      ],
+    },
+  },
+  footer: {
+    basic: {
+      name: 'Basic footer',
+      generator: () => [
+        {
+          tag: 'p-text',
+          properties: { slot: 'footer', theme: 'dark' },
+          children: ['Some footer text'],
+        },
+      ],
+    },
+  },
+};
 
 export const linkTileStory: Story<'p-link-tile'> = {
   state: {
     properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+    slots: {
+      header: linkTileSlotStory.header.basic,
+      footer: linkTileSlotStory.footer.basic,
+    },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-link-tile',
       properties,
       children: [
-        {
-          tag: 'p-tag',
-          properties: { slot: 'header', color: 'background-frosted', compact: true },
-          children: ['Some tag'],
-        },
+        ...(slots?.header?.generator() ?? []),
         { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        ...(slots?.footer?.generator() ?? []),
       ],
     },
   ],
@@ -119,6 +147,48 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
             },
           ],
         })) as ElementConfig<'p-link-tile'>[]),
+      ],
+    },
+  ],
+};
+
+export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
+  state: {
+    properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'div',
+      properties: {
+        className: 'grid grid-cols-2 gap-static-md',
+      },
+      children: [
+        {
+          tag: 'p-link-tile',
+          properties,
+          children: [
+            {
+              tag: 'p-tag',
+              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              children: ['Some tag'],
+            },
+            { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+          ],
+        },
+        {
+          tag: 'p-link-tile',
+          properties: { ...properties, compact: true },
+          children: [
+            {
+              tag: 'p-tag',
+              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              children: ['Some tag'],
+            },
+            { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+          ],
+        },
       ],
     },
   ],

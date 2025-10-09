@@ -1,11 +1,12 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from "@/components/playground/Configurator";
-import { buttonTileStory } from "@/app/components/button-tile/button-tile.stories";
+import { Configurator } from '@/components/playground/Configurator';
+import { buttonTileSlotStory, buttonTileStory } from '@/app/components/button-tile/button-tile.stories';
 
 export const metadata = {
   title: 'Button Tile - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Button Tile component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Button Tile component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
 
@@ -22,4 +23,4 @@ a more detailed description of the button and its action.
 
 The `label` property is used to describe the button.
 
-<Configurator tagName="p-button-tile" story={buttonTileStory} />
+<Configurator tagName="p-button-tile" story={buttonTileStory} slotStories={buttonTileSlotStory} />
