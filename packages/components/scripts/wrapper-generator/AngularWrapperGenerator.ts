@@ -1,5 +1,6 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { metadata } from '@porsche-design-system/storefront/src/app/layout';
 import { camelCase, pascalCase } from 'change-case';
 import * as path from 'path';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
@@ -17,11 +18,16 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return `${component.replace('p-', '')}.wrapper.ts`;
   }
 
-  public generateImports(_: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
+  public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
     const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
+    const hasControlValueAccessor = getComponentMeta(component).hasElementInternals;
 
-    const angularImports = ['Component', ...(hasEventProps ? ['EventEmitter'] : [])].sort();
+    const angularImports = [
+      'Component',
+      ...(hasEventProps ? ['EventEmitter'] : []),
+      ...(hasControlValueAccessor ? ['forwardRef'] : []),
+    ].sort();
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
     const importsFromComponentsWrapperModule = '';
@@ -32,14 +38,16 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
 
-    //const importsFromAngularForms = `import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';`;
+    const importsFromAngularForms = hasControlValueAccessor
+      ? `import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';`
+      : '';
 
     return [
       importsFromAngular,
       importsFromUtils,
       importsFromTypes,
       importsFromComponentsWrapperModule,
-      //importsFromAngularForms,
+      importsFromAngularForms,
     ]
       .filter(Boolean)
       .join('\n');
@@ -60,7 +68,8 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const outputs = outputProps.length ? `[${outputProps.map(({ key }) => `'${key}'`).join(', ')}]` : '';
 
     const componentName = this.generateComponentName(component);
-    //const meta = getComponentMeta(component);
+    const meta = getComponentMeta(component);
+    const hasInputEvent = !!Object.keys(meta.eventsMeta ?? {}).find((e) => e === 'input');
 
     const componentOpts = [
       `selector: '${component},[${component}]'`,
@@ -68,24 +77,23 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...(inputs ? [`inputs: ${inputs}`] : []),
       ...(outputs ? [`outputs: ${outputs}`] : []),
       `standalone: false`,
-      // TODO: Add ControlValueAccessor interface
-      // ...(meta.hasElementInternals
-      //   ? [
-      //       `providers: [
-      //   {
-      //     provide: NG_VALUE_ACCESSOR,
-      //     useExisting: forwardRef(() => ${componentName}),
-      //     multi: true,
-      //   },
-      // ]`,
-      //       `host: {
-      //   '[value]': 'value',
-      //   '[disabled]': 'disabled',
-      //   '(change)': '_onChange($event.detail.value)',
-      //   '(blur)': '_onTouched()'
-      // }`,
-      //     ]
-      //   : []),
+      ...(meta.hasElementInternals
+        ? [
+            `providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ${componentName}),
+      multi: true,
+    },
+  ]`,
+            `host: {
+    '[value]': 'value',
+    '[disabled]': 'disabled',
+    '(${hasInputEvent ? 'input' : 'change'})': '_onChange($event.detail.value)',
+    '(blur)': '_onTouched()'
+  }`,
+          ]
+        : []),
     ]
       .filter(Boolean)
       .join(',\n  ');
@@ -106,30 +114,35 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const baseClass = hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent';
 
-    // _onChange: (value: any) => void = () => {};
-    // _onTouched: () => void = () => {};
-    //
-    // writeValue(value: any): void {
-    //   this.value = value;
-    // }
-    //
-    // registerOnChange(fn: any): void {
-    //   this._onChange = fn;
-    // }
-    //
-    // registerOnTouched(fn: any): void {
-    //   this._onTouched = fn;
-    // }
-    //
-    // setDisabledState(isDisabled: boolean): void {
-    //   this.disabled = isDisabled;
-    // }
+    const controlValueAccessor = meta.hasElementInternals ? ' implements ControlValueAccessor' : '';
+    const controlValueAccessorImpl = meta.hasElementInternals
+      ? `
+  _onChange: (value: any) => void = () => {};
+  _onTouched: () => void = () => {};
+
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }`
+      : '';
 
     return `${this.inputParser.getDeprecationMessage(component)}@Component({
   ${componentOpts}
 })
-export class ${componentName}${genericType} extends ${baseClass} {
+export class ${componentName}${genericType} extends ${baseClass}${controlValueAccessor} {
   ${classMembers}
+  ${controlValueAccessorImpl}
 }`;
   }
 
