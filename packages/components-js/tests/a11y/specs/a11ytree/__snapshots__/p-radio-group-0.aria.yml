@@ -1,0 +1,10 @@
+- text: Some label
+- radiogroup:
+  - text: Some label A
+  - radio "Some label A"
+  - text: Some label B
+  - radio "Some label B" [checked]
+  - text: Some label C
+  - radio "Some label C"
+- alert
+- status

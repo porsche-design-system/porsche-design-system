@@ -331,6 +331,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SegmentedControlExampleControlledComponent,
   },
   {
+    name: 'Radio Group Example',
+    path: 'radio-group-example',
+    component: fromExamples.RadioGroupExampleComponent,
+  },
+  {
+    name: 'Radio Group Example Controlled',
+    path: 'radio-group-example-controlled',
+    component: fromExamples.RadioGroupExampleControlledComponent,
+  },
+  {
     name: 'Select Example',
     path: 'select-example',
     component: fromExamples.SelectExampleComponent,

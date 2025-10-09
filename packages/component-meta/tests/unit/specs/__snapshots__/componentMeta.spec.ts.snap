@@ -8716,6 +8716,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-button-wrapper": {
+    "deprecationMessage": "since v3.30.0, will be removed with next major release. Please use \`p-radio-group\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8724,6 +8725,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -8795,6 +8797,207 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
     },
+    "styling": "jss",
+  },
+  "p-radio-group": {
+    "eventsMeta": {
+      "change": {
+        "description": "Emitted when the selected option is changed.",
+        "type": "RadioGroupChangeEventDetail",
+        "typeDetail": "Event",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-spinner",
+      "p-icon",
+    ],
+    "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the radio group as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the radio group.",
+        "type": "string",
+      },
+      "direction": {
+        "allowedValues": [
+          "row",
+          "column",
+        ],
+        "defaultValue": "column",
+        "description": "Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.",
+        "isBreakpointCustomizable": true,
+        "type": "RadioGroupDirection",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the group of radio buttons, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the radio group component.",
+        "type": "RadioGroupState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default value for the radio-group.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the p-radio-group-option tags.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-radio-group-option": {
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the radio input has lost focus.",
+        "type": "RadioGroupOptionBlurEventDetail",
+        "typeDetail": "Event",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-spinner",
+    ],
+    "propsMeta": {
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the radio group option unusable and unclickable.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The value for the input.",
+        "type": "string",
+      },
+    },
+    "requiredParent": [
+      "p-radio-group",
+    ],
     "styling": "jss",
   },
   "p-scroller": {

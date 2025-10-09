@@ -107,6 +107,10 @@ import {
   type PPopoverProps,
   PRadioButtonWrapper,
   type PRadioButtonWrapperProps,
+  PRadioGroup,
+  type PRadioGroupProps,
+  PRadioGroupOption,
+  type PRadioGroupOptionProps,
   PScroller,
   type PScrollerProps,
   PSegmentedControl,
@@ -316,6 +320,8 @@ export type PropTypeMapping = {
   'p-pin-code': PPinCodeProps;
   'p-popover': PPopoverProps;
   'p-radio-button-wrapper': PRadioButtonWrapperProps;
+  'p-radio-group': PRadioGroupProps;
+  'p-radio-group-option': PRadioGroupOptionProps;
   'p-scroller': PScrollerProps;
   'p-segmented-control': PSegmentedControlProps;
   'p-segmented-control-item': PSegmentedControlItemProps;
@@ -404,6 +410,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-pin-code': PPinCode,
   'p-popover': PPopover,
   'p-radio-button-wrapper': PRadioButtonWrapper,
+  'p-radio-group': PRadioGroup,
+  'p-radio-group-option': PRadioGroupOption,
   'p-scroller': PScroller,
   'p-segmented-control': PSegmentedControl,
   'p-segmented-control-item': PSegmentedControlItem,
