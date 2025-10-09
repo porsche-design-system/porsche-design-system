@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 87265,
-    "gzipSize": 27810
+    "size": 87300,
+    "gzipSize": 27828
   },
   {
     "chunkShortName": "marque",
@@ -236,8 +236,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 13002,
-    "gzipSize": 5121
+    "size": 13248,
+    "gzipSize": 5200
   },
   {
     "chunkShortName": "popover",
@@ -256,8 +256,8 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 9010,
-    "gzipSize": 3596
+    "size": 9454,
+    "gzipSize": 3697
   },
   {
     "chunkShortName": "select",
