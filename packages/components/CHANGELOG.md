@@ -16,14 +16,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Select`, `Multi Select`: `update` event is deprecated. Use `change` event instead.
-  ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
+- `Pin Code`, `Segmented Control`:
+  - `update` event is deprecated. Use `change` event instead.
+  - `blur` event ([#4050](https://github.com/porsche-design-system/porsche-design-system/pull/4050))
+- `Select`, `Multi Select`:
+  - `update` event is deprecated. Use `change` event instead.
+  - `blur` event ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
 
 ### Changed
 
 - `Radio Button Wrapper`: component is deprecated. Use `Radio Group` instead.
   ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
+
 
 ### Fixed
 
