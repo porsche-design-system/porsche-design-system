@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Astro: Getting started - Porsche Design System',
@@ -20,6 +21,8 @@ based on the following dependencies:
   <PTag compact={true} color="notification-info-soft">astro@5</PTag>
   {/* prettier-ignore */}
   <PTag compact={true} color="notification-info-soft">vue@3</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
   {/* prettier-ignore */}
   <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-js@3</PTag>
 </div>
@@ -113,10 +116,71 @@ section of your HTML.
 </html>
 ```
 
-### Step 4
+### Step 4 (recommended)
 
-Add a Porsche Design System component (e.g. `<p-wordmark></p-wordmark>`). Then, run `npm run dev` and verify that the
-component display correctly.
+Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
+[Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
+**seamless styling consistency** with Porsche's design principles.
+
+<Notification heading="The Key Advantage: Universal Code Sharing" headingTag="h4" state="info">
+Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly framework-agnostic**.
+
+Since Tailwind generates atomic **utility classes**, the patterns and components you build are easily portable. You can
+**copy and paste** the same styling code between projects, teams, and different technology stacks (React, Angular, Vue,
+plain HTML, etc.), ensuring **100% visual uniformity** across the organization.
+
+You can now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
+Tailwind CSS, to build applications quickly and efficiently.
+
+</Notification>
+
+Install Tailwind CSS within your project directory.
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Configure the Vite plugin.
+
+```diff
+// astro.config.mjs
+
+// @ts-check
+import { defineConfig } from "astro/config";
++ import tailwindcss from "@tailwindcss/vite";
+
+// https://astro.build/config
+export default defineConfig({
++ vite: {
++   // @ts-expect-error: The types are currently mismatched due to conflicting Vite versions (Astro and the Tailwind CSS Vite plugin are using different versions of Vite)
++   plugins: [tailwindcss()],
++ },
+});
+```
+
+Create `global.css` file, import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+
+```diff
+/* src/styles/global.css */
+
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-js/tailwindcss';
+```
+
+Start using Tailwind CSS in your project.
+
+```diff
+// src/pages/index.astro
+
+---
++ import '../styles/global.css';
+---
+```
+
+### Step 5
+
+Add a Porsche Design System component (e.g. `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
+`npm run dev` and verify that the component and styles display correctly.
 
 ```diff
 // src/components/Welcome.astro
@@ -125,7 +189,10 @@ component display correctly.
 import astroLogo from '../assets/astro.svg';
 import background from '../assets/background.svg';
 ---
-+ <p-wordmark></p-wordmark>
++ <div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
++   <p-wordmark></p-wordmark>
++   <h1 class="prose-display-md">Porsche Design System</h1>
++ </div>
 <div id="container">…</div>
 ```
 
@@ -154,9 +221,10 @@ configuration to your Vue integration.
 
 import vue from '@astrojs/vue';
 import { defineConfig } from 'astro/config';
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  integrations: [
++ integrations: [
 +   vue({
 +     template: {
 +       compilerOptions: {
@@ -164,40 +232,35 @@ export default defineConfig({
 +       },
 +     },
 +   }),
-  ],
++ ],
+  vite: {
+    // @ts-expect-error: The types are currently mismatched due to conflicting Vite versions (Astro and the Tailwind CSS Vite plugin are using different versions of Vite)
+    plugins: [tailwindcss()],
+  },
 });
 ```
 
 ### Step 2
 
 Create a new Vue component file, for example, `Welcome.vue` with a Porsche Design System component (e.g.
-`<p-wordmark></p-wordmark>`).
+`<p-wordmark></p-wordmark>`) and some Tailwind CSS styles.
 
 ```vue
 // src/components/Welcome.vue
 
 <template>
-  <div class="welcome">
-    <p-text>Astro + Vue</p-text>
-    <p-wordmark />
+  <div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+    <p-wordmark></p-wordmark>
+    <h1 class="prose-display-md">Porsche Design System</h1>
+    <p class="prose-text-sm">Astro + Vue</p>
   </div>
 </template>
-
-<style scoped>
-  .welcome {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-    margin-block: 16px;
-  }
-</style>
 ```
 
 ### Step 3
 
 Next, include this new Vue component in one of your Astro pages (e.g. `src/pages/index.astro`). Then, run `npm run dev`
-and verify that the component display correctly.
+and verify that the component and styles display correctly.
 
 ```diff
 // src/pages/index.astro
