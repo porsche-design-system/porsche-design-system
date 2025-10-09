@@ -31,6 +31,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-checkbox': '',
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
+    'p-radio-group': '<p-radio-group-option label="Some value"></p-radio-group-option>', // readonly is not supported
     'p-select': '<p-select-option>Some value</p-select-option>', // readonly is not supported
     'p-select-wrapper': '<select><option>Some value</option></select>', // readonly is not supported
     'p-multi-select': '<p-multi-select-option>Some value</p-multi-select-option>', // readonly is not supported
@@ -68,6 +69,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
           tag === 'p-input-tel' ||
           tag === 'p-input-text' ||
           tag === 'p-input-url' ||
+          tag === 'p-radio-group' ||
           tag === 'p-select'
             ? ' disabled="true"'
             : '';
@@ -96,6 +98,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
           tag === 'p-input-search' ||
           tag === 'p-input-tel' ||
           tag === 'p-input-text' ||
+          tag === 'p-radio-group' ||
           tag === 'p-input-url'
             ? ' value="Some value"'
             : '';
@@ -211,6 +214,11 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusState(page, '.focus p-input-url >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-url >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-url >>> input');
+
+  await forceHoverState(page, '.hover p-radio-group p-radio-group-option:first-of-type >>> input');
+  await forceFocusVisibleState(page, '.focus p-radio-group p-radio-group-option:first-of-type >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-radio-group-option:first-of-type >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-radio-group-option:first-of-type >>> input');
 };
 
 // executed in Chrome only

@@ -1,5 +1,5 @@
 <div class="root">
-  <label class="label" id="label" for="textarea"> </label>
+  <label class="label" id="label" for="textarea"> Some label</label>
   <div class="wrapper">
     <textarea
       aria-describedby="description message"

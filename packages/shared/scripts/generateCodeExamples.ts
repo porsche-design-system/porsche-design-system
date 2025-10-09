@@ -583,6 +583,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-radio-group',
+    examples: [
+      {
+        name: 'RadioGroupExample',
+        paths: {
+          'vanilla-js': '/radio-group-example.html',
+          angular: '/radio-group-example.component.ts',
+          react: '/RadioGroupExample.tsx',
+          vue: '/RadioGroupExample.vue',
+        },
+      },
+      {
+        name: 'RadioGroupExampleControlled',
+        paths: {
+          'vanilla-js': '/radio-group-example-controlled.html',
+          angular: '/radio-group-example-controlled.component.ts',
+          react: '/RadioGroupExampleControlled.tsx',
+          vue: '/RadioGroupExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-scroller',
     examples: [
       {

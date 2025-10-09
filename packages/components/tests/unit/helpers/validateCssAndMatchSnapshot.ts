@@ -12,10 +12,6 @@ export const validateCssAndMatchSnapshot = (css: string) => {
 
   expect(css).not.toMatch('. {'); // Invalid css which was produced before
 
-  console.log('componentNameMETA__', {
-    componentName,
-    componentMeta,
-  });
   validateVisibilityStyle(cssObject);
   validateSlottedStyles(cssObject, componentTagName);
   validateHoverMediaQuery(cssObject);

@@ -1,71 +1,73 @@
 <script lang="ts" setup>
-import {
-  PAccordion,
-  PButton,
-  PButtonGroup,
-  PButtonPure,
-  PButtonTile,
-  PCarousel,
-  PCheckboxWrapper,
-  PContentWrapper,
-  PCrest,
-  PDisplay,
-  PDivider,
-  PFieldset,
-  PFieldsetWrapper,
-  PFlag,
-  PFlex,
-  PFlexItem,
-  PGrid,
-  PGridItem,
-  PHeading,
-  PHeadline,
-  PIcon,
-  PInlineNotification,
-  PLink,
-  PLinkPure,
-  PLinkSocial,
-  PLinkTile,
-  PLinkTileModelSignature,
-  PLinkTileProduct,
-  PMarque,
-  PModelSignature,
-  PMultiSelect,
-  PMultiSelectOption,
-  PorscheDesignSystemProvider,
-  PPagination,
-  PPinCode,
-  PPopover,
-  PRadioButtonWrapper,
-  PScroller,
-  PSegmentedControl,
-  PSegmentedControlItem,
-  PSelect,
-  PSelectOption,
-  PSelectWrapper,
-  PSpinner,
-  PStepperHorizontal,
-  PStepperHorizontalItem,
-  PSwitch,
-  PTable,
-  PTableBody,
-  PTableCell,
-  PTableHead,
-  PTableHeadCell,
-  PTableHeadRow,
-  PTableRow,
-  PTabs,
-  PTabsBar,
-  PTabsItem,
-  PTag,
-  PTagDismissible,
-  PText,
-  PTextareaWrapper,
-  PTextFieldWrapper,
-  PTextList,
-  PTextListItem,
-  PWordmark,
-} from '@porsche-design-system/components-vue';
+  import {
+    PAccordion,
+    PButton,
+    PButtonGroup,
+    PButtonPure,
+    PButtonTile,
+    PCarousel,
+    PCheckboxWrapper,
+    PContentWrapper,
+    PCrest,
+    PDisplay,
+    PDivider,
+    PFieldset,
+    PFieldsetWrapper,
+    PFlag,
+    PFlex,
+    PFlexItem,
+    PGrid,
+    PGridItem,
+    PHeading,
+    PHeadline,
+    PIcon,
+    PInlineNotification,
+    PLink,
+    PLinkPure,
+    PLinkSocial,
+    PLinkTile,
+    PLinkTileModelSignature,
+    PLinkTileProduct,
+    PMarque,
+    PModelSignature,
+    PMultiSelect,
+    PMultiSelectOption,
+    PorscheDesignSystemProvider,
+    PPagination,
+    PPinCode,
+    PPopover,
+    PRadioButtonWrapper,
+    PRadioGroup,
+    PRadioGroupOption,
+    PScroller,
+    PSegmentedControl,
+    PSegmentedControlItem,
+    PSelect,
+    PSelectOption,
+    PSelectWrapper,
+    PSpinner,
+    PStepperHorizontal,
+    PStepperHorizontalItem,
+    PSwitch,
+    PTable,
+    PTableBody,
+    PTableCell,
+    PTableHead,
+    PTableHeadCell,
+    PTableHeadRow,
+    PTableRow,
+    PTabs,
+    PTabsBar,
+    PTabsItem,
+    PTag,
+    PTagDismissible,
+    PText,
+    PTextareaWrapper,
+    PTextFieldWrapper,
+    PTextList,
+    PTextListItem,
+    PWordmark,
+  } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -144,6 +146,14 @@ import {
         <PRadioButtonWrapper :label="'Some label'">
           <input type="radio" />
         </PRadioButtonWrapper>
+      </div>
+
+      <div class="playground light" title="should render default radio-group">
+        <PRadioGroup :name="'some-name'" :label="'Some label'" value="a">
+          <PRadioGroupOption label="Some label A" :value="'a'"></PRadioGroupOption>
+          <PRadioGroupOption label="Some label B" :value="'b'"></PRadioGroupOption>
+          <PRadioGroupOption label="Some label C" :value="'c'"></PRadioGroupOption>
+        </PRadioGroup>
       </div>
 
       <div class="playground light" title="should render default select">
@@ -491,6 +501,14 @@ import {
           <PRadioButtonWrapper :label="'Some label'">
             <input type="radio" />
           </PRadioButtonWrapper>
+        </div>
+
+        <div class="playground light" title="should render default radio-group with custom prefix">
+          <PRadioGroup :name="'some-name'" :label="'Some label'" value="a">
+            <PRadioGroupOption label="Some label A" :value="'a'"></PRadioGroupOption>
+            <PRadioGroupOption label="Some label B" :value="'b'"></PRadioGroupOption>
+            <PRadioGroupOption label="Some label C" :value="'c'"></PRadioGroupOption>
+          </PRadioGroup>
         </div>
 
         <div class="playground light" title="should render default select with custom prefix">
