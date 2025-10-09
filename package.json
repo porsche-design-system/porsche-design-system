@@ -239,7 +239,7 @@
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.89.2",
+    "sass": "^1.93.2",
     "semver": "^7.7.3",
     "svgo": "^4.0.0",
     "postcss": "^8.5.6",
