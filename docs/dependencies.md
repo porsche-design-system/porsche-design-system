@@ -37,9 +37,9 @@ reflected in the configuration file under `.github/dependabot.yml` and must be k
 
 |         | Monorepo | Sample Integrations   |
 | ------- | -------- | --------------------- |
-| Angular | 20.1.2   | 19.0.5                |
-| React   | 19.1.0   | 19.0.0                |
-| Next.js | 15.1.3   | 15.1.4 (React 19.0.0) |
+| Angular | 20.3.5   | 20.0.5                |
+| React   | 19.2.0   | 19.2.0                |
+| Next.js | 15.4.0   | 15.4.0 (React 19.0.0) |
 
 ---
 
@@ -81,3 +81,15 @@ there's no stable way of using it with Node or TS-Node.
 
 Currently fixed to `0.15.1` since it's causing the `packages/components-js/tests/smoke/unit/specs/package.smoke.ts` test
 to hang in the pipeline.
+
+## Nextjs
+
+Currently fixed to `15.4.0` since it causes issues with build process. Error:
+
+```
+TypeError: Cannot read properties of undefined (reading 'props')
+    at l.render (.next/server/chunks/9863.js:10:1822) {
+  digest: '1042952660'
+}
+Export encountered an error on /link-tile-model-signature/page: /link-tile-model-signature, exiting the build.
+```
