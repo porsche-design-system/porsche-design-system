@@ -1,7 +1,7 @@
-import { isDevEnvironment } from '@/utils/isDev';
 import { getFontFaceStyles, getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
 import { getComponentChunkLinks, getIconLinks } from '@porsche-design-system/partials/src';
 import { prefetchDNS, preload } from 'react-dom';
+import { isDevEnvironment } from '@/utils/isDev';
 
 export const HeaderPartials = (): JSX.Element => {
   const getHref = (href: string) => {
@@ -10,17 +10,22 @@ export const HeaderPartials = (): JSX.Element => {
       : href;
   };
   /* preloads Porsche Next font (=> minimize FOUT) */
-  getFontLinks({ format: 'js', weights: ['regular', 'semi-bold', 'bold'] }).forEach(({ href, options }) =>
-    preload(getHref(href), options)
-  );
+  getFontLinks({ format: 'js', weights: ['regular', 'semi-bold', 'bold'] }).forEach(({ href, options }) => {
+    preload(getHref(href), options);
+  });
+
   /* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */
   getComponentChunkLinks({
     components: ['accordion', 'button', 'canvas', 'icon', 'select'],
     format: 'js',
-  }).forEach(({ href, options }) => preload(getHref(href), options));
+  }).forEach(({ href, options }) => {
+    preload(getHref(href), options);
+  });
   /* preloads Porsche icons (=> minimize FOUC) */
-  getIconLinks({ format: 'js', icons: ['search', 'configurate', 'sidebar', 'external'] }).forEach(({ href }) =>
-    prefetchDNS(getHref(href))
+  getIconLinks({ format: 'js', icons: ['search', 'configurate', 'sidebar', 'external'] }).forEach(
+    ({ href }: { href: string }) => {
+      prefetchDNS(getHref(href));
+    }
   );
 
   return isDevEnvironment ? (

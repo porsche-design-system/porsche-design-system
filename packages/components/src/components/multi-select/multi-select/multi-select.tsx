@@ -459,7 +459,7 @@ export class MultiSelect {
           this.currentlyHighlightedOption,
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
-        // @ts-ignore - HTMLCombobox type is missing
+        // @ts-expect-error - HTMLCombobox type is missing
         this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
         break;
       }
@@ -489,7 +489,7 @@ export class MultiSelect {
       const selectedOption = getLastSelectedOption(this.multiSelectOptions);
       if (selectedOption && isUsableOption(selectedOption)) {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
-        // @ts-ignore - HTMLCombobox type is missing
+        // @ts-expect-error - HTMLCombobox type is missing
         this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
       }
     }

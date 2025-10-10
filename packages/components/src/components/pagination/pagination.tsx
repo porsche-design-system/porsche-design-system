@@ -1,25 +1,25 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseJSONAttribute,
+  THEMES,
   unobserveBreakpointChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import { getComponentCss } from './pagination-styles';
 import {
+  createPaginationItems,
+  getCurrentActivePage,
+  getTotalPages,
   ItemType,
   type PaginationInternationalization,
   type PaginationMaxNumberOfPageLinks,
   type PaginationUpdateEventDetail,
-  createPaginationItems,
-  getCurrentActivePage,
-  getTotalPages,
 } from './pagination-utils';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
@@ -230,6 +230,8 @@ export class Pagination {
                     </span>
                   </li>
                 );
+              default:
+                return null;
             }
           })}
         </ul>

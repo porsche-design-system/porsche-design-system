@@ -16,7 +16,7 @@ const generatedRoutes: RouteType[] = Object.keys(fromPages).map<RouteType>((page
     path: '/' + kebabCase(name),
     name: name,
     component: (fromPages as Record<string, RouteComponent>)[page],
-  };
+  } as RouteType;
 });
 
 export const routes: RouteType[] = [

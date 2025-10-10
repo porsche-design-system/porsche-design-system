@@ -14,7 +14,7 @@ export const tabsBarStory: Story<'p-tabs-bar'> = {
       tag: 'p-tabs-bar',
       properties: properties,
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onUpdate: {
           target: 'p-tabs-bar',
           prop: 'activeTabIndex',
@@ -65,7 +65,7 @@ export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
       tag: 'p-tabs-bar',
       properties: properties,
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onUpdate: {
           target: 'p-tabs-bar',
           prop: 'activeTabIndex',

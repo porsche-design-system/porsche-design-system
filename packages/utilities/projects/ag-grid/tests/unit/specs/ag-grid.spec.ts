@@ -1,4 +1,4 @@
-import { Part, _asThemeImpl } from 'ag-grid-community';
+import { _asThemeImpl, Part } from 'ag-grid-community';
 import { pdsTheme } from '../../../src';
 import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../../../src/parts';
 
@@ -12,7 +12,7 @@ describe('pdsTheme', () => {
   });
 
   it('should match the snapshot for CSS Chunk', () => {
-    const cssChunk = theme._getPerGridCss('some-class-name');
+    const cssChunk = theme._getPerInstanceCss('some-class-name');
     expect(cssChunk).toMatchSnapshot();
   });
 

@@ -44,7 +44,7 @@ let originalMatchMedia: typeof window.matchMedia;
 beforeAll(() => {
   originalMatchMedia = window.matchMedia;
   // global window matchMedia mock does not work here
-  // @ts-ignore
+  // @ts-expect-error
   window.matchMedia = (query) => ({
     matches: false,
     media: query,

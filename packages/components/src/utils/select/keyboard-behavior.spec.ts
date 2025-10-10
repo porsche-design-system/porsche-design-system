@@ -67,7 +67,7 @@ const generateOptions = (
 
 beforeEach(() => {
   jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
-    // @ts-ignore
+    // @ts-expect-error
     cb(); // immediately call the provided callback
     return 0;
   });

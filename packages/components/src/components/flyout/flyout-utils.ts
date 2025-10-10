@@ -36,7 +36,6 @@ export const addStickyTopCssVarStyleSheet = (host: HTMLElement): void => {
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
     // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
     /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
-    // @ts-ignore
     host.shadowRoot.adoptedStyleSheets.push(stickyTopCssVarStyleSheetMap.get(host));
     updateStickyTopCssVarStyleSheet(host, 0);
   }

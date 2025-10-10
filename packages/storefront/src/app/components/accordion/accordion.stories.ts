@@ -54,7 +54,7 @@ export const accordionStory: Story<'p-accordion'> = {
         )
       ),
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onUpdate: {
           target: 'p-accordion',
           prop: 'open',
@@ -82,7 +82,7 @@ export const accordionStoryExpandedClickArea: Story<'p-accordion'> = {
       tag: 'p-accordion',
       properties,
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onUpdate: {
           target: 'p-accordion',
           prop: 'open',
@@ -109,7 +109,7 @@ export const accordionStoryStickyHeadline: Story<'p-accordion'> = {
       tag: 'p-accordion',
       properties,
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onUpdate: {
           target: 'p-accordion',
           prop: 'open',
