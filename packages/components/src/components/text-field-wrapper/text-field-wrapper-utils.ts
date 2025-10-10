@@ -1,11 +1,6 @@
-import type { IconName } from '../../types';
-import {
-  getHasConstructableStylesheetSupport,
-  hasCounter,
-  hasShowPickerSupport,
-  throwException,
-} from '../../utils';
 import { borderWidthBase } from '@porsche-design-system/styles';
+import type { IconName } from '../../types';
+import { getHasConstructableStylesheetSupport, hasCounter, hasShowPickerSupport, throwException } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
@@ -71,7 +66,6 @@ export const addCounterCharacterLengthCssVarStyleSheet = (host: HTMLElement): vo
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
     // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
     /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
-    // @ts-expect-error
     host.shadowRoot.adoptedStyleSheets.push(counterCharacterLengthCssVarStyleSheetMap.get(host));
     updateCounterCharacterLengthCssVarStyleSheet(host, 0);
   }

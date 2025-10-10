@@ -69,7 +69,6 @@ describe('componentDidLoad', () => {
     expect(component['inputSearchInputElement']).toBe(
       component['inputSearchElement'].shadowRoot.querySelector('input')
     );
-    // @ts-expect-error typings missing
     expect(component['inputSearchInputElement'].ariaControlsElements).toEqual([listbox]);
   });
 });
