@@ -26,7 +26,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const angularImports = [
       'Component',
       ...(hasEventProps ? ['EventEmitter'] : []),
-      ...(hasControlValueAccessor ? ['forwardRef'] : []),
+      ...(hasControlValueAccessor ? ['forwardRef', 'ChangeDetectorRef', 'ElementRef', 'Renderer2'] : []),
     ].sort();
     const importsFromAngular = `import { ${angularImports.join(', ')} } from '@angular/core';`;
 
@@ -69,6 +69,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentName = this.generateComponentName(component);
     const meta = getComponentMeta(component);
+    const hasControlValueAccessor = meta.hasElementInternals && component !== 'p-button' && component !== 'p-button-pure';
     const hasInputEvent = !!Object.keys(meta.eventsMeta ?? {}).find((e) => e === 'input');
 
     const componentOpts = [
@@ -77,7 +78,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       ...(inputs ? [`inputs: ${inputs}`] : []),
       ...(outputs ? [`outputs: ${outputs}`] : []),
       `standalone: false`,
-      ...(meta.hasElementInternals
+      ...(hasControlValueAccessor
         ? [
             `providers: [
     {
@@ -87,9 +88,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     },
   ]`,
             `host: {
-    '[value]': 'value',
-    '[disabled]': 'disabled',
-    '(${hasInputEvent ? 'input' : 'change'})': '_onChange($event.detail.value)',
+    '(${hasInputEvent ? 'input' : 'change'})': '_onChange($event.target.value)',
     '(blur)': '_onTouched()'
   }`,
           ]
@@ -114,14 +113,21 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const baseClass = hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent';
 
-    const controlValueAccessor = meta.hasElementInternals ? ' implements ControlValueAccessor' : '';
-    const controlValueAccessorImpl = meta.hasElementInternals
-      ? `
+    const controlValueAccessor = hasControlValueAccessor ? ' implements ControlValueAccessor' : '';
+    const controlValueAccessorImpl = hasControlValueAccessor
+      ? `constructor(
+    private _renderer: Renderer2,
+    private _elementRef: ElementRef,
+    private _cdr: ChangeDetectorRef
+  ) {
+    super(_cdr, _elementRef);
+  }
+
   _onChange: (value: any) => void = () => {};
   _onTouched: () => void = () => {};
 
   writeValue(value: any): void {
-    this.value = value;
+    this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
   }
 
   registerOnChange(fn: any): void {
@@ -133,7 +139,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
   }`
       : '';
 
