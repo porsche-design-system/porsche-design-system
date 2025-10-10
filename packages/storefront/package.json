@@ -40,7 +40,7 @@
     "@porsche-design-system/components-react": "3.30.0-rc.0",
     "@porsche-design-system/fallbacks": "0.0.0",
     "react-syntax-highlighter": "^15.6.6",
-    "next": "15.4.2",
+    "next": "15.5.4",
     "algoliasearch": "^5.40.0",
     "@algolia/cache-in-memory": "^4.25.2",
     "react": "^19.2.0",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
-    "@next/mdx": "^15.4.2",
+    "@next/mdx": "^15.5.4",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@types/mdx": "^2.0.13",
