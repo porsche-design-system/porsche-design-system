@@ -246,7 +246,7 @@
     "tailwindcss": "^4.1.14",
     "@tailwindcss/postcss": "^4.1.14",
     "@tailwindcss/vite": "^4.1.14",
-    "ts-jest": "^29.4.4",
+    "ts-jest": "^29.4.5",
     "tsup": "^8.5.0",
     "tsx": "^4.20.6",
     "typescript": "~5.9.3",
@@ -264,7 +264,7 @@
     "**/vite/rollup": "^4.52.4",
     "**/workbox-build/rollup": "^4.52.4",
     "**/@types/node": "24.7.2",
-    "**/ts-jest": "29.4.4"
+    "**/ts-jest": "29.4.5"
   },
   "volta": {
     "node": "22.12.0",
