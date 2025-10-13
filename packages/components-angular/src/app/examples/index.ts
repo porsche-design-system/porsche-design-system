@@ -14,6 +14,7 @@ import { CarouselExampleFocusOnCenterSlideComponent } from './carousel-example-f
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { CheckboxExampleComponent } from './checkbox-example.component';
 import { CheckboxExampleControlledComponent } from './checkbox-example-controlled.component';
+import { CheckboxExampleFormComponent } from './checkbox-example-form.component';
 import { DrilldownExampleComponent } from './drilldown-example.component';
 import { DrilldownExampleActiveIdentifierComponent } from './drilldown-example-active-identifier.component';
 import { DrilldownExampleCustomContentComponent } from './drilldown-example-custom-content.component';
@@ -24,22 +25,31 @@ import { InlineNotificationExampleActionButtonComponent } from './inline-notific
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { InputDateExampleComponent } from './input-date-example.component';
 import { InputDateExampleControlledComponent } from './input-date-example-controlled.component';
+import { InputDateExampleFormComponent } from './input-date-example-form.component';
 import { InputEmailExampleComponent } from './input-email-example.component';
 import { InputEmailExampleControlledComponent } from './input-email-example-controlled.component';
+import { InputEmailExampleFormComponent } from './input-email-example-form.component';
 import { InputNumberExampleComponent } from './input-number-example.component';
 import { InputNumberExampleControlledComponent } from './input-number-example-controlled.component';
+import { InputNumberExampleFormComponent } from './input-number-example-form.component';
 import { InputPasswordExampleComponent } from './input-password-example.component';
 import { InputPasswordExampleControlledComponent } from './input-password-example-controlled.component';
+import { InputPasswordExampleFormComponent } from './input-password-example-form.component';
 import { InputSearchExampleComponent } from './input-search-example.component';
 import { InputSearchExampleControlledComponent } from './input-search-example-controlled.component';
+import { InputSearchExampleFormComponent } from './input-search-example-form.component';
 import { InputTelExampleComponent } from './input-tel-example.component';
 import { InputTelExampleControlledComponent } from './input-tel-example-controlled.component';
+import { InputTelExampleFormComponent } from './input-tel-example-form.component';
 import { InputTextExampleComponent } from './input-text-example.component';
 import { InputTextExampleControlledComponent } from './input-text-example-controlled.component';
+import { InputTextExampleFormComponent } from './input-text-example-form.component';
 import { InputTimeExampleComponent } from './input-time-example.component';
 import { InputTimeExampleControlledComponent } from './input-time-example-controlled.component';
+import { InputTimeExampleFormComponent } from './input-time-example-form.component';
 import { InputUrlExampleComponent } from './input-url-example.component';
 import { InputUrlExampleControlledComponent } from './input-url-example-controlled.component';
+import { InputUrlExampleFormComponent } from './input-url-example-form.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
@@ -91,6 +101,7 @@ export const examples = [
   CarouselExampleJumpToSlideComponent,
   CheckboxExampleControlledComponent,
   CheckboxExampleComponent,
+  CheckboxExampleFormComponent,
   FlyoutExampleComponent,
   FlyoutExampleFormComponent,
   DrilldownExampleComponent,
@@ -105,18 +116,25 @@ export const examples = [
   InputNumberExampleComponent,
   InputDateExampleControlledComponent,
   InputDateExampleComponent,
+  InputDateExampleFormComponent,
   InputTimeExampleControlledComponent,
   InputTimeExampleComponent,
+  InputTimeExampleFormComponent,
   InputTextExampleControlledComponent,
   InputTextExampleComponent,
+  InputTextExampleFormComponent,
   InputEmailExampleControlledComponent,
   InputEmailExampleComponent,
+  InputEmailExampleFormComponent,
   InputTelExampleControlledComponent,
   InputTelExampleComponent,
+  InputTelExampleFormComponent,
   InputUrlExampleControlledComponent,
   InputUrlExampleComponent,
+  InputUrlExampleFormComponent,
   InputSearchExampleControlledComponent,
   InputSearchExampleComponent,
+  InputSearchExampleFormComponent,
   LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
@@ -166,6 +184,7 @@ export * from './carousel-example-focus-on-center-slide.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './checkbox-example.component';
 export * from './checkbox-example-controlled.component';
+export * from './checkbox-example-form.component';
 export * from './drilldown-example.component';
 export * from './drilldown-example-active-identifier.component';
 export * from './drilldown-example-custom-content.component';
@@ -176,22 +195,31 @@ export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './input-date-example.component';
 export * from './input-date-example-controlled.component';
+export * from './input-date-example-form.component';
 export * from './input-email-example.component';
 export * from './input-email-example-controlled.component';
+export * from './input-email-example-form.component';
 export * from './input-number-example.component';
 export * from './input-number-example-controlled.component';
+export * from './input-number-example-form.component';
 export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
+export * from './input-password-example-form.component';
 export * from './input-search-example.component';
 export * from './input-search-example-controlled.component';
+export * from './input-search-example-form.component';
 export * from './input-tel-example.component';
 export * from './input-tel-example-controlled.component';
+export * from './input-tel-example-form.component';
 export * from './input-text-example.component';
 export * from './input-text-example-controlled.component';
+export * from './input-text-example-form.component';
 export * from './input-time-example.component';
 export * from './input-time-example-controlled.component';
+export * from './input-time-example-form.component';
 export * from './input-url-example.component';
 export * from './input-url-example-controlled.component';
+export * from './input-url-example-form.component';
 export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
