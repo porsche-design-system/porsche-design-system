@@ -5725,10 +5725,10 @@
   dependencies:
     "@octokit/openapi-types" "^26.0.0"
 
-"@oddbird/popover-polyfill@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@oddbird/popover-polyfill/-/popover-polyfill-0.4.3.tgz#310d61c8fc7ee12d8dba05cdfa8bd7e5d5a281a3"
-  integrity sha512-kBS0ZAwH8kZqFl0mV89KPK4cLYl2ZoKSfYngK4dz1eLAhKzTK0yu4LrvLdMeM7JhjWK6GxBtiY+cl1s6vR2pUg==
+"@oddbird/popover-polyfill@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@oddbird/popover-polyfill/-/popover-polyfill-0.6.1.tgz#dc2d49dd79cc74420eece5b97ccef6ba3f9d42a9"
+  integrity sha512-Papau51NPG+NajXvoEHCNT1CBJv4WIyvIGfH5gpJPLL8MZJt/4giC0jJ/mNZRtJmdzRuXWpUFB6QxkJa1RvMAQ==
 
 "@one-ini/wasm@0.1.1":
   version "0.1.1"
