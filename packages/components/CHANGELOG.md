@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+- Removed `Checkbox Wrapper`, `Content Wrapper`, `Fieldset Wrapper`, `Flex`, `Grid`, `Headline`, `Link Social`,
+  `Marque`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
+
 ### Added
 
 - `Pin Code`, `Segmented Control`:
@@ -28,7 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Radio Button Wrapper`: component is deprecated. Use `Radio Group` instead.
   ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
-
 
 ### Fixed
 
