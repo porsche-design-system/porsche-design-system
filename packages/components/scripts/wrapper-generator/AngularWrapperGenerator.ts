@@ -21,7 +21,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
     const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
-    const hasControlValueAccessor = getComponentMeta(component).hasElementInternals;
+    const hasControlValueAccessor = this.hasControlValueAccessor(component);
 
     const angularImports = [
       'Component',
@@ -69,7 +69,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentName = this.generateComponentName(component);
     const meta = getComponentMeta(component);
-    const hasControlValueAccessor = meta.hasElementInternals && component !== 'p-button' && component !== 'p-button-pure';
+    const hasControlValueAccessor = this.hasControlValueAccessor(component);
     const hasInputEvent = !!Object.keys(meta.eventsMeta ?? {}).find((e) => e === 'input');
 
     const componentOpts = [
@@ -88,7 +88,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     },
   ]`,
             `host: {
-    '(${hasInputEvent ? 'input' : 'change'})': '_onChange($event.target.value)',
+    '(${hasInputEvent ? 'input' : 'change'})': '_onChange($event.target.${component === 'p-checkbox' ? 'checked' : 'value'})',
     '(blur)': '_onTouched()'
   }`,
           ]
@@ -127,7 +127,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   _onTouched: () => void = () => {};
 
   writeValue(value: any): void {
-    this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
+    this._renderer.setProperty(this._elementRef.nativeElement, '${component === 'p-checkbox' ? 'checked' : 'value'}', value);
   }
 
   registerOnChange(fn: any): void {
@@ -169,5 +169,10 @@ export class ${componentName}${genericType} extends ${baseClass}${controlValueAc
 
   private generateComponentName(component: TagName): string {
     return pascalCase(component);
+  }
+
+  private hasControlValueAccessor(component: TagName): boolean {
+    const meta = getComponentMeta(component);
+    return meta.hasElementInternals && component !== 'p-button' && component !== 'p-button-pure';
   }
 }
