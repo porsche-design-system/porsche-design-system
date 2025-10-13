@@ -307,6 +307,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.MultiSelectExampleDynamicComponent,
   },
   {
+    name: 'Multi-Select Example Form',
+    path: 'multi-select-example-form',
+    component: fromExamples.MultiSelectExampleFormComponent,
+  },
+  {
     name: 'Pin Code Example',
     path: 'pin-code-example',
     component: fromExamples.PinCodeExampleComponent,
@@ -315,6 +320,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Pin Code Example Controlled',
     path: 'pin-code-example-controlled',
     component: fromExamples.PinCodeExampleControlledComponent,
+  },
+  {
+    name: 'Pin Code Example Form',
+    path: 'pin-code-example-form',
+    component: fromExamples.PinCodeExampleFormComponent,
   },
   {
     name: 'Scroller Example',
@@ -330,6 +340,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Segmented Control Example Controlled',
     path: 'segmented-control-example-controlled',
     component: fromExamples.SegmentedControlExampleControlledComponent,
+  },
+  {
+    name: 'Segmented Control Example Form',
+    path: 'segmented-control-example-form',
+    component: fromExamples.SegmentedControlExampleFormComponent,
   },
   {
     name: 'Select Example',

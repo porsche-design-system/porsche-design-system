@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-select-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-select formControlName="mySelect">
+      <p-select formControlName="mySelect" [label]="'Some Label'" [required]="true">
         <p-select-option value="a">Option A</p-select-option>
         <p-select-option value="b">Option B</p-select-option>
         <p-select-option value="c">Option C</p-select-option>
@@ -61,11 +61,7 @@ export class SelectExampleFormComponent {
 
   toggleDisabled(): void {
     const control = this.form.get('mySelect')!;
-    if (control.disabled) {
-      control.enable();
-    } else {
-      control.disable();
-    }
+    control.disabled ? control.enable() : control.disable();
   }
 
   onSubmit(): void {
