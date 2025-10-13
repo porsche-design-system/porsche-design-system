@@ -47,11 +47,11 @@ jobs:
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
       - name: "Analyze"
         run: |
-          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest analyze -i /project -o /project/ort
+          docker run --user root -v "$PWD":/project -v "$PWD/tmp":/tmp ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest analyze -i /project -o /project/ort
         shell: bash
       - name: "Report"
         run: |
-          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
+          docker run --user root -v "$PWD":/project -v "$PWD/tmp":/tmp ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
         shell: bash
       - name: 'Upload'
         uses: actions/upload-artifact@v4
