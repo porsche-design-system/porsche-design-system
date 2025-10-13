@@ -14,8 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-- Removed `Checkbox Wrapper`, `Content Wrapper`, `Fieldset Wrapper`, `Flex`, `Grid`, `Headline`, `Link Social`,
-  `Marque`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
+- Removed `Checkbox Wrapper`, `Content Wrapper`, `Link Tile Model Signature`, `Fieldset Wrapper`, `Flex`, `Grid`,
+  `Headline`, `Link Social`, `Marque`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
 
 ### Added
 
