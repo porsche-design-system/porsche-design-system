@@ -81,6 +81,7 @@ import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component
 import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { TextareaExampleComponent } from './textarea-example.component';
 import { TextareaExampleControlledComponent } from './textarea-example-controlled.component';
+import { TextareaExampleFormComponent } from './textarea-example-form.component';
 import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
@@ -164,6 +165,7 @@ export const examples = [
   TabsBarExampleBasicComponent,
   TextareaExampleComponent,
   TextareaExampleControlledComponent,
+  TextareaExampleFormComponent,
   TextFieldWrapperExampleSearchComponent,
   ToastExampleComponent,
 ];
@@ -251,4 +253,5 @@ export * from './tabs-bar-example-basic.component';
 export * from './text-field-wrapper-example-search.component';
 export * from './textarea-example.component';
 export * from './textarea-example-controlled.component';
+export * from './textarea-example-form.component';
 export * from './toast-example.component';

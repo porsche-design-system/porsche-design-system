@@ -453,8 +453,13 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Textarea Example Controlled',
-    path: 'textarea-controlled-example',
+    path: 'textarea-example-controlled',
     component: fromExamples.TextareaExampleControlledComponent,
+  },
+  {
+    name: 'Textarea Example Form',
+    path: 'textarea-example-form',
+    component: fromExamples.TextareaExampleFormComponent,
   },
   {
     name: 'Checkbox Example',
