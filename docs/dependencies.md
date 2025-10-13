@@ -77,11 +77,6 @@ there's no stable way of using it with Node or TS-Node.
 
 ---
 
-## @arethetypeswrong/core
-
-Currently fixed to `0.15.1` since it's causing the `packages/components-js/tests/smoke/unit/specs/package.smoke.ts` test
-to hang in the pipeline.
-
 ## Nextjs
 
 Currently fixed to `15.4.0` since it causes issues with build process. Error:
