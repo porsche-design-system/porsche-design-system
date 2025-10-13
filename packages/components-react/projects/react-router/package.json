@@ -31,7 +31,7 @@
     "@tailwindcss/vite": "^4.1.14",
     "@types/node": "^24.7.2",
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
+    "@types/react-dom": "^19.2.2",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^5.1.4"
   },

@@ -42,7 +42,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.1",
+    "@types/react-dom": "^19.2.2",
     "ag-grid-community": "34.2.0",
     "ag-grid-enterprise": "34.2.0",
     "ag-grid-react": "34.2.0",
