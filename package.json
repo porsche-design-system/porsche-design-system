@@ -221,7 +221,7 @@
     "@types/jest": "^29.5.14",
     "@types/jest-expect-message": "^1.1.0",
     "@types/madge": "^5.0.3",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.7.2",
     "@vitest/ui": "^3.2.4",
     "concurrently": "^9.2.1",
     "globby": "^14.0.2",
@@ -263,7 +263,7 @@
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.11",
     "**/vite/rollup": "^4.52.4",
     "**/workbox-build/rollup": "^4.52.4",
-    "**/@types/node": "24.7.0",
+    "**/@types/node": "24.7.2",
     "**/ts-jest": "29.4.4"
   },
   "volta": {
