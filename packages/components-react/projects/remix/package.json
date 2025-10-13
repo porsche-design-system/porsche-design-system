@@ -36,7 +36,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "binode": "^1.0.5",
-    "cross-env": "^7.0.3"
+    "cross-env": "^10.1.0"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 33.0.0 <35.0.0",
