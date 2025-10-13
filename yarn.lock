@@ -502,15 +502,16 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@arethetypeswrong/core@0.17.3":
-  version "0.17.3"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.17.3.tgz#ddcf903660f971e4b9948c6691f9b2f04919f5f0"
-  integrity sha512-2TB7O5JmC7UX7QHRGGftxRVQjV4Ce6oOIDGIDDERyT9dQ8lK/tRGfFubzO80rWeXm/gSrA8jirlXSWSE1i5ynQ==
+"@arethetypeswrong/core@0.18.2":
+  version "0.18.2"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.18.2.tgz#9be36d92ff5e65aae7a7683e7947cbeb41aa8e05"
+  integrity sha512-GiwTmBFOU1/+UVNqqCGzFJYfBXEytUkiI+iRZ6Qx7KmUVtLm00sYySkfe203C9QtPG11yOz1ZaMek8dT/xnlgg==
   dependencies:
     "@andrewbranch/untar.js" "^1.0.3"
+    "@loaderkit/resolve" "^1.0.2"
     cjs-module-lexer "^1.2.3"
     fflate "^0.8.2"
-    lru-cache "^10.4.3"
+    lru-cache "^11.0.1"
     semver "^7.5.4"
     typescript "5.6.1-rc"
     validate-npm-package-name "^5.0.0"
@@ -2946,6 +2947,11 @@
   resolved "https://registry.yarnpkg.com/@biomejs/cli-win32-x64/-/cli-win32-x64-2.2.5.tgz#f0f3a85c5fb7954661fe454ef2df998205df1570"
   integrity sha512-F/jhuXCssPFAuciMhHKk00xnCAxJRS/pUzVfXYmOMUp//XW7mO6QeCjsjvnm8L4AO/dG2VOB0O+fJPiJ2uXtIw==
 
+"@braidai/lang@^1.0.0":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@braidai/lang/-/lang-1.1.2.tgz#65bc2bc1db6d00e153b95ac7006f4573e289e9be"
+  integrity sha512-qBcknbBufNHlui137Hft8xauQMTZDKdophmLFv05r2eNmdIv/MlPuP4TdUknHG68UdWLgVZwgxVe735HzJNIwA==
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -5039,6 +5045,13 @@
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-3.4.2.tgz#99caf114bb74d39c9e1baca99b907353ad8bf461"
   integrity sha512-IY+r3bxKW6Q6sIPiMC0L533DEfRJSXibjSI3Ft/w9Q8KQBNqEIvUFXt+09wV8S5BRk0a8uSF19YWxuRwEfI90g==
+
+"@loaderkit/resolve@^1.0.2":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@loaderkit/resolve/-/resolve-1.0.4.tgz#5ba1c2f4cc879d3fb2f066b71b8dc41a88bfb8e9"
+  integrity sha512-rJzYKVcV4dxJv+vW6jlvagF8zvGxHJ2+HTr1e2qOejfmGhAApgJHl8Aog4mMszxceTRiKTTbnpgmTO1bEZHV/A==
+  dependencies:
+    "@braidai/lang" "^1.0.0"
 
 "@mdx-js/loader@^3.1.1":
   version "3.1.1"
@@ -17107,7 +17120,7 @@ lru-cache@^10.4.3:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
   integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
 
-lru-cache@^11.1.0:
+lru-cache@^11.0.1, lru-cache@^11.1.0:
   version "11.2.2"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.2.2.tgz#40fd37edffcfae4b2940379c0722dc6eeaa75f24"
   integrity sha512-F9ODfyqML2coTIsQpSkRHnLSZMtkU8Q+mSfcaIyKwy58u+8k5nvAYeiNhsyMARvzNcXJ9QfWVrcPsC9e9rAxtg==

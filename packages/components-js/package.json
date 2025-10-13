@@ -92,7 +92,7 @@
     "imask": "^7.6.1"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "0.17.3",
+    "@arethetypeswrong/core": "0.18.2",
     "@porsche-design-system/shared": "0.0.0",
     "ag-grid-community": "34.2.0",
     "ag-grid-enterprise": "34.2.0",
