@@ -252,6 +252,21 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputDateExampleFormComponent,
   },
   {
+    name: 'Input Search Example',
+    path: 'input-search-example',
+    component: fromExamples.InputSearchExampleComponent,
+  },
+  {
+    name: 'Input Search Example Controlled',
+    path: 'input-search-example-controlled',
+    component: fromExamples.InputSearchExampleControlledComponent,
+  },
+  {
+    name: 'Input Search Example Form',
+    path: 'input-search-example-form',
+    component: fromExamples.InputSearchExampleFormComponent,
+  },
+  {
     name: 'Input Time Example',
     path: 'input-time-example',
     component: fromExamples.InputTimeExampleComponent,
@@ -295,6 +310,21 @@ export const routes: ExtendedRoute[] = [
     name: 'Input Tel Example Form',
     path: 'input-tel-example-form',
     component: fromExamples.InputTelExampleFormComponent,
+  },
+  {
+    name: 'Input Url Example',
+    path: 'input-url-example',
+    component: fromExamples.InputUrlExampleComponent,
+  },
+  {
+    name: 'Input Url Example Controlled',
+    path: 'input-url-example-controlled',
+    component: fromExamples.InputUrlExampleControlledComponent,
+  },
+  {
+    name: 'Input Url Example Form',
+    path: 'input-url-example-form',
+    component: fromExamples.InputUrlExampleFormComponent,
   },
   {
     name: 'Input Email Example',

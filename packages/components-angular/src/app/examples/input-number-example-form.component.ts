@@ -35,8 +35,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputNumberExampleFormComponent {
   form = new FormGroup({
-    myInputNumber: new FormControl<number | undefined>(
-      { value: undefined, disabled: false },
+    myInputNumber: new FormControl<string>(
+      "",
       { validators: Validators.required, nonNullable: true }
     ),
   });
@@ -44,11 +44,11 @@ export class InputNumberExampleFormComponent {
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myInputNumber.setValue(123456);
+    this.form.controls.myInputNumber.setValue("123456");
   }
 
   resetValue(): void {
-    this.form.controls.myInputNumber.reset({ value: undefined, disabled: false });
+    this.form.controls.myInputNumber.reset("");
   }
 
   toggleDisabled(): void {

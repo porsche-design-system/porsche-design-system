@@ -1,26 +1,23 @@
 import { expect, Page, test } from '@playwright/test';
 
-const getHost = (page: Page) => page.locator('p-select');
-const getCombobox = (page: Page) => page.locator('p-select [role="combobox"]');
-const getDialog = (page: Page) => page.locator('p-select [role="dialog"]');
-const getOptions = (page: Page) => page.locator('p-select-option');
+const getHost = (page: Page) => page.locator('p-pin-code');
+const getInputs = (page: Page) => page.locator('p-pin-code input');
 
 const setValue = async (page) => {
   const host = getHost(page);
-  const combobox = getCombobox(page);
-  const dialog = getDialog(page);
-  const options = getOptions(page);
+  const inputs = getInputs(page);
 
-  await combobox.click();
-  await expect(dialog).toBeVisible();
-  await options.nth(0).click();
+  await inputs.nth(0).fill("1");
+  await inputs.nth(1).fill("2");
+  await inputs.nth(2).fill("3");
+  await inputs.nth(3).fill("4");
 
-  await expect(host).toHaveJSProperty('value', 'a');
+  await expect(host).toHaveJSProperty('value', '1234');
 };
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/select-example-form');
+    await page.goto('/pin-code-example-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
@@ -29,7 +26,7 @@ test.describe('Angular forms integration', () => {
     await expect(page.locator('[data-field="value"]')).toHaveText('');
     await expect(page.locator('[data-field="valid"]')).toHaveText('false');
 
-    await expect(host).toHaveJSProperty('value', undefined);
+    await expect(host).toHaveJSProperty('value', '');
   });
 
   test('setting value manually updates form state correctly', async ({ page }) => {
@@ -38,7 +35,7 @@ test.describe('Angular forms integration', () => {
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('true');
     await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
-    await expect(page.locator('[data-field="value"]')).toHaveText('a');
+    await expect(page.locator('[data-field="value"]')).toHaveText('1234');
     await expect(page.locator('[data-field="valid"]')).toHaveText('true');
 
     await page.locator('[data-field="touched"]').click();
@@ -51,12 +48,12 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Set Value' }).click();
 
-    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(host).toHaveJSProperty('value', '1234');
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
     await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
-    await expect(page.locator('[data-field="value"]')).toHaveText('a');
+    await expect(page.locator('[data-field="value"]')).toHaveText('1234');
     await expect(page.locator('[data-field="valid"]')).toHaveText('true');
   });
 
@@ -66,7 +63,7 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Reset', exact: true }).click();
 
-    await expect(host).toHaveJSProperty('value', undefined);
+    await expect(host).toHaveJSProperty('value', '');
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
@@ -95,6 +92,6 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Submit' }).click();
 
-    await expect(page.locator('[data-field="submitted"]')).toHaveText('{"mySelect":"a"}');
+    await expect(page.locator('[data-field="submitted"]')).toHaveText('{"myPinCode":"1234"}');
   });
 });

@@ -35,7 +35,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class CheckboxExampleFormComponent {
   form = new FormGroup({
-    myCheckbox: new FormControl<boolean>(false, { validators: Validators.required, nonNullable: true }),
+    myCheckbox: new FormControl<boolean>(false, { validators: Validators.requiredTrue }),
   });
 
   submittedValue: any = undefined;

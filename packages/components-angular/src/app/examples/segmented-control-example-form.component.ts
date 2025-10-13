@@ -42,7 +42,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SegmentedControlExampleFormComponent {
   form = new FormGroup({
-    mySegmentedControl: new FormControl<string | number | undefined>({ value: undefined, disabled: false }),
+    mySegmentedControl: new FormControl<string | number | undefined>(
+      { value: undefined, disabled: false },
+      { validators: Validators.required, nonNullable: true }
+    ),
   });
 
   submittedValue: any = undefined;
