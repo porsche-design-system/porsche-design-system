@@ -5,6 +5,364 @@ exports[`style package content > should match content 1`] = `
   "pdsTheme": _ThemeImpl {
     "parts": [
       PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": undefined,
+        "modeParams": {
+          "$default": {
+            "advancedFilterBuilderButtonBarBorder": true,
+            "advancedFilterBuilderColumnPillColor": "#a6e194",
+            "advancedFilterBuilderIndentSize": {
+              "calc": "spacing * 2 + iconSize",
+            },
+            "advancedFilterBuilderJoinPillColor": "#f08e8d",
+            "advancedFilterBuilderOptionPillColor": "#f3c08b",
+            "advancedFilterBuilderValuePillColor": "#85c0e4",
+            "cellEditingBorder": {
+              "color": {
+                "ref": "accentColor",
+              },
+            },
+            "cellEditingShadow": {
+              "ref": "cardShadow",
+            },
+            "cellFontFamily": {
+              "ref": "fontFamily",
+            },
+            "cellHorizontalPadding": {
+              "calc": "spacing * 2 * cellHorizontalPaddingScale",
+            },
+            "cellHorizontalPaddingScale": 1,
+            "cellTextColor": {
+              "ref": "textColor",
+            },
+            "cellWidgetSpacing": {
+              "calc": "spacing * 1.5",
+            },
+            "chartMenuLabelColor": {
+              "mix": 0.8,
+              "ref": "foregroundColor",
+            },
+            "chartMenuPanelWidth": 260,
+            "columnBorder": {
+              "color": "transparent",
+              "style": "solid",
+              "width": 1,
+            },
+            "columnDropCellBackgroundColor": {
+              "mix": 0.07,
+              "ref": "foregroundColor",
+            },
+            "columnDropCellBorder": {
+              "color": {
+                "mix": 0.13,
+                "ref": "foregroundColor",
+              },
+            },
+            "columnDropCellDragHandleColor": {
+              "ref": "textColor",
+            },
+            "columnDropCellTextColor": {
+              "ref": "textColor",
+            },
+            "columnHoverColor": {
+              "mix": 0.05,
+              "ref": "accentColor",
+            },
+            "columnSelectIndentSize": {
+              "ref": "iconSize",
+            },
+            "dataFontSize": {
+              "ref": "fontSize",
+            },
+            "dialogBorder": {
+              "color": {
+                "mix": 0.2,
+                "ref": "foregroundColor",
+              },
+            },
+            "dialogShadow": {
+              "ref": "popupShadow",
+            },
+            "dragHandleColor": {
+              "mix": 0.7,
+              "ref": "foregroundColor",
+            },
+            "filterPanelApplyButtonBackgroundColor": {
+              "ref": "accentColor",
+            },
+            "filterPanelApplyButtonColor": {
+              "ref": "backgroundColor",
+            },
+            "filterPanelCardSubtleColor": {
+              "mix": 0.7,
+              "ref": "textColor",
+            },
+            "filterPanelCardSubtleHoverColor": {
+              "ref": "textColor",
+            },
+            "filterToolPanelGroupIndent": {
+              "ref": "spacing",
+            },
+            "findActiveMatchBackgroundColor": "#ffa500",
+            "findActiveMatchColor": {
+              "ref": "foregroundColor",
+            },
+            "findMatchBackgroundColor": "#ffff00",
+            "findMatchColor": {
+              "ref": "foregroundColor",
+            },
+            "footerRowBorder": {
+              "ref": "rowBorder",
+            },
+            "fullRowEditInvalidBackgroundColor": {
+              "mix": 0.25,
+              "onto": "backgroundColor",
+              "ref": "invalidColor",
+            },
+            "headerBackgroundColor": {
+              "ref": "chromeBackgroundColor",
+            },
+            "headerCellBackgroundTransitionDuration": "0.2s",
+            "headerCellHoverBackgroundColor": "transparent",
+            "headerCellMovingBackgroundColor": {
+              "ref": "headerCellHoverBackgroundColor",
+            },
+            "headerColumnBorder": false,
+            "headerColumnBorderHeight": "100%",
+            "headerColumnResizeHandleColor": {
+              "ref": "borderColor",
+            },
+            "headerColumnResizeHandleHeight": "30%",
+            "headerColumnResizeHandleWidth": 2,
+            "headerFontFamily": {
+              "ref": "fontFamily",
+            },
+            "headerFontSize": {
+              "ref": "fontSize",
+            },
+            "headerFontWeight": 500,
+            "headerHeight": {
+              "calc": "max(iconSize, dataFontSize) + spacing * 4 * headerVerticalPaddingScale",
+            },
+            "headerRowBorder": true,
+            "headerTextColor": {
+              "ref": "textColor",
+            },
+            "headerVerticalPaddingScale": 1,
+            "iconButtonActiveBackgroundColor": {
+              "mix": 0.28,
+              "ref": "accentColor",
+            },
+            "iconButtonActiveColor": {
+              "ref": "accentColor",
+            },
+            "iconButtonActiveIndicatorColor": {
+              "ref": "accentColor",
+            },
+            "iconButtonBackgroundColor": "transparent",
+            "iconButtonBackgroundSpread": 4,
+            "iconButtonBorderRadius": 1,
+            "iconButtonColor": {
+              "ref": "iconColor",
+            },
+            "iconButtonHoverBackgroundColor": {
+              "mix": 0.1,
+              "ref": "foregroundColor",
+            },
+            "iconButtonHoverColor": {
+              "ref": "iconButtonColor",
+            },
+            "menuBackgroundColor": {
+              "mix": 0.03,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "menuBorder": {
+              "color": {
+                "mix": 0.2,
+                "ref": "foregroundColor",
+              },
+            },
+            "menuSeparatorColor": {
+              "ref": "borderColor",
+            },
+            "menuShadow": {
+              "ref": "popupShadow",
+            },
+            "menuTextColor": {
+              "mix": 0.95,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "modalOverlayBackgroundColor": {
+              "mix": 0.66,
+              "ref": "backgroundColor",
+            },
+            "oddRowBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "paginationPanelHeight": {
+              "calc": "max(rowHeight, 22px)",
+              "ref": "rowHeight",
+            },
+            "panelBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "panelTitleBarBackgroundColor": {
+              "ref": "headerBackgroundColor",
+            },
+            "panelTitleBarBorder": true,
+            "panelTitleBarFontWeight": {
+              "ref": "headerFontWeight",
+            },
+            "panelTitleBarIconColor": {
+              "ref": "headerTextColor",
+            },
+            "panelTitleBarTextColor": {
+              "ref": "headerTextColor",
+            },
+            "pinnedColumnBorder": true,
+            "pinnedRowBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "pinnedRowBorder": true,
+            "pinnedRowFontWeight": 600,
+            "pinnedRowTextColor": {
+              "ref": "textColor",
+            },
+            "pinnedSourceRowBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "pinnedSourceRowFontWeight": 600,
+            "pinnedSourceRowTextColor": {
+              "ref": "textColor",
+            },
+            "rangeHeaderHighlightColor": {
+              "mix": 0.08,
+              "onto": "headerBackgroundColor",
+              "ref": "foregroundColor",
+            },
+            "rangeSelectionBackgroundColor": {
+              "mix": 0.2,
+              "ref": "accentColor",
+            },
+            "rangeSelectionBorderColor": {
+              "ref": "accentColor",
+            },
+            "rangeSelectionBorderStyle": "solid",
+            "rangeSelectionChartBackgroundColor": "#0058FF1A",
+            "rangeSelectionChartCategoryBackgroundColor": "#00FF841A",
+            "rangeSelectionHighlightColor": {
+              "mix": 0.5,
+              "ref": "accentColor",
+            },
+            "rowBorder": true,
+            "rowGroupIndentSize": {
+              "calc": "cellWidgetSpacing + iconSize",
+            },
+            "rowHeight": {
+              "calc": "max(iconSize, dataFontSize) + spacing * 3.25 * rowVerticalPaddingScale",
+            },
+            "rowHoverColor": {
+              "mix": 0.08,
+              "ref": "accentColor",
+            },
+            "rowLoadingSkeletonEffectColor": {
+              "mix": 0.15,
+              "ref": "foregroundColor",
+            },
+            "rowNumbersSelectedColor": {
+              "mix": 0.5,
+              "ref": "accentColor",
+            },
+            "rowVerticalPaddingScale": 1,
+            "selectCellBackgroundColor": {
+              "mix": 0.07,
+              "ref": "foregroundColor",
+            },
+            "selectCellBorder": {
+              "color": {
+                "mix": 0.13,
+                "ref": "foregroundColor",
+              },
+            },
+            "selectedRowBackgroundColor": {
+              "mix": 0.12,
+              "ref": "accentColor",
+            },
+            "setFilterIndentSize": {
+              "ref": "iconSize",
+            },
+            "sideBarBackgroundColor": {
+              "ref": "chromeBackgroundColor",
+            },
+            "sideBarPanelWidth": 250,
+            "sideButtonBackgroundColor": "transparent",
+            "sideButtonBarBackgroundColor": {
+              "ref": "sideBarBackgroundColor",
+            },
+            "sideButtonBarTopPadding": 0,
+            "sideButtonBorder": "solid 1px transparent",
+            "sideButtonHoverBackgroundColor": {
+              "ref": "sideButtonBackgroundColor",
+            },
+            "sideButtonHoverTextColor": {
+              "ref": "sideButtonTextColor",
+            },
+            "sideButtonLeftPadding": {
+              "ref": "spacing",
+            },
+            "sideButtonRightPadding": {
+              "ref": "spacing",
+            },
+            "sideButtonSelectedBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "sideButtonSelectedBorder": true,
+            "sideButtonSelectedTextColor": {
+              "ref": "sideButtonTextColor",
+            },
+            "sideButtonSelectedUnderlineColor": "transparent",
+            "sideButtonSelectedUnderlineTransitionDuration": 0,
+            "sideButtonSelectedUnderlineWidth": 2,
+            "sideButtonTextColor": {
+              "ref": "textColor",
+            },
+            "sideButtonVerticalPadding": {
+              "calc": "spacing * 3",
+            },
+            "sidePanelBorder": true,
+            "statusBarLabelColor": {
+              "ref": "foregroundColor",
+            },
+            "statusBarLabelFontWeight": 500,
+            "statusBarValueColor": {
+              "ref": "foregroundColor",
+            },
+            "statusBarValueFontWeight": 500,
+            "toolPanelSeparatorBorder": true,
+            "valueChangeDeltaDownColor": "#e53935",
+            "valueChangeDeltaUpColor": "#43a047",
+            "valueChangeValueHighlightBackgroundColor": "#16a08580",
+            "widgetContainerHorizontalPadding": {
+              "calc": "spacing * 1.5",
+            },
+            "widgetContainerVerticalPadding": {
+              "calc": "spacing * 1.5",
+            },
+            "widgetHorizontalSpacing": {
+              "calc": "spacing * 1.5",
+            },
+            "widgetVerticalSpacing": {
+              "ref": "spacing",
+            },
+            "wrapperBorder": true,
+            "wrapperBorderRadius": 8,
+          },
+        },
+      },
+      PartImpl {
         "css": ":where(.ag-button){background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0;text-indent:inherit;text-shadow:inherit;text-transform:inherit;word-spacing:inherit;&:disabled{cursor:default}&:focus-visible{box-shadow:var(--ag-focus-shadow);outline:none}}.ag-standard-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--ag-button-background-color);border:var(--ag-button-border);border-radius:var(--ag-button-border-radius);color:var(--ag-button-text-color);cursor:pointer;font-weight:var(--ag-button-font-weight);padding:var(--ag-button-vertical-padding) var(--ag-button-horizontal-padding);&:hover{background-color:var(--ag-button-hover-background-color);border:var(--ag-button-hover-border);color:var(--ag-button-hover-text-color)}&:active{background-color:var(--ag-button-active-background-color);border:var(--ag-button-active-border);color:var(--ag-button-active-text-color)}&:disabled{background-color:var(--ag-button-disabled-background-color);border:var(--ag-button-disabled-border);color:var(--ag-button-disabled-text-color)}}",
         "cssImports": undefined,
         "feature": "buttonStyle",
@@ -357,6 +715,11 @@ exports[`style package content > should match content 1`] = `
         "feature": "inputStyle",
         "modeParams": {
           "$default": {
+            "colorPickerColorBorderRadius": 4,
+            "colorPickerThumbBorderWidth": 3,
+            "colorPickerThumbSize": 18,
+            "colorPickerTrackBorderRadius": 12,
+            "colorPickerTrackSize": 12,
             "inputBackgroundColor": {
               "ref": "backgroundColor",
             },
@@ -824,6 +1187,11 @@ exports[`style package content > should match content 1`] = `
         },
       },
     ],
+    "themeLogger": {
+      "error": [Function],
+      "preInitErr": [Function],
+      "warn": [Function],
+    },
   },
 }
 `;
