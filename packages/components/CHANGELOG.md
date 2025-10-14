@@ -32,6 +32,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Divider`:
   - prop `orientation` (use `direction` instead)
   - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
+- `Icon`:
+  - prop: `lazy`
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)

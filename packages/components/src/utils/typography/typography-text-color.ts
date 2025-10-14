@@ -19,6 +19,5 @@ export const TYPOGRAPHY_TEXT_COLORS = [
   'notification-error',
   'notification-info',
   'inherit',
-  ...TYPOGRAPHY_TEXT_COLORS_DEPRECATED,
 ] as const;
 export type TypographyTextColor = (typeof TYPOGRAPHY_TEXT_COLORS)[number];
