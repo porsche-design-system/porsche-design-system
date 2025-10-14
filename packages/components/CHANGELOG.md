@@ -77,6 +77,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Switch`:
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
   - event `switchChange` (use `update` instead)
+- `Table`:
+  - event `sortingChange` (use `update` instead)
 - `Tabs`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
