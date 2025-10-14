@@ -63,6 +63,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `backgroundColor` (has no effect anyway)
   - event `segmentedControlChange` (use `change` instead)
   - event `update` (use `change` instead)
+- `Tabs`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - event `tabChange` (use `update` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
