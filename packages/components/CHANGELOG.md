@@ -43,6 +43,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Link Pure`:
   - prop `weight` (can't be configured anymore)
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Modal`:
+  - prop `disableCloseButton` (use `dismissButton` instead)
+  - prop `heading` (use `slot="header"` instead)
+  - slot `heading` (use `slot="header"` instead)
+  - event `close` (use `dismiss` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
