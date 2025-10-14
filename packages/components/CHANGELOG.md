@@ -55,6 +55,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `allyLabelNext` (use `intl.next` instead)
   - prop `maxNumberOfPageLinks` (has no effect anyway)
   - event `pageChange` (use `update` instead)
+- `Scroller`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
