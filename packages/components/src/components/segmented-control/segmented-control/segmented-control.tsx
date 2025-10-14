@@ -22,26 +22,18 @@ import {
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
   getItemMaxWidth,
-  SEGMENTED_CONTROL_BACKGROUND_COLORS,
   SEGMENTED_CONTROL_COLUMNS,
-  type SegmentedControlBackgroundColor,
   type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
-  type SegmentedControlUpdateEventDetail,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
-  backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>([
-    undefined,
-    ...SEGMENTED_CONTROL_BACKGROUND_COLORS,
-  ]),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
@@ -63,11 +55,6 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release.
-   * Background color variations */
-  @Prop() public backgroundColor?: SegmentedControlBackgroundColor;
-
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -86,21 +73,11 @@ export class SegmentedControl {
   /** Disables the segmented-control. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when selected element changes. */
-  @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlUpdateEventDetail>;
-
   /** Emitted when the segmented-control has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<SegmentedControlChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -167,7 +144,6 @@ export class SegmentedControl {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host), this.columns);
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.theme);
@@ -182,8 +158,6 @@ export class SegmentedControl {
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
     this.value = item.value; // causes rerender
     this.change.emit({ value: this.value });
-    this.update.emit({ value: this.value });
-    this.segmentedControlChange.emit({ value: this.value });
     item.focus();
   };
 }

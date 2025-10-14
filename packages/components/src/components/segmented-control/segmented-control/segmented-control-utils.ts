@@ -12,14 +12,7 @@ import {
 } from '../segmented-control-item/segmented-control-item-styles';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 
-export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const; // 'background-color' prop is deprecated
-export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROUND_COLORS)[number]; // 'background-color' prop is deprecated
-
-/** @deprecated */
-export type SegmentedControlUpdateEvent = { value: string | number };
-/** @deprecated */
-export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
-export type SegmentedControlChangeEventDetail = SegmentedControlUpdateEventDetail;
+export type SegmentedControlChangeEventDetail = { value: string | number };
 
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
