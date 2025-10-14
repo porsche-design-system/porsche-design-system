@@ -81,6 +81,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `gradientColor` (has no effect anyway)
   - value `semibold` of prop `weight` (use `semi-bold` instead)
   - event `tabChange` (use `update` instead)
+- `Tag`:
+  - value
+    `background-default | neutral-contrast-high | notification-neutral | notification-warning | notification-error | notification-success`
+    of prop `color` (use
+    `background-base | primary | notification-info-soft | notification-warning-soft | notification-error-soft | notification-success-soft`
+    instead)
 - `Text`
   - value `left | right` of prop `align` (use `start | end` instead)
   - value
