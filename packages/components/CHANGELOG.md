@@ -99,6 +99,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `listType` (use `type` instead)
   - prop `orderType` (use `type` instead)
   - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
+- `Toast`:
+  - value `neutral` of prop `state` (use `info` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)

@@ -1,6 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import { type ToastState, type ToastStateDeprecated, TOAST_STATES } from '../toast/toast-utils';
-import type { IconColor } from '../../icon/icon-utils';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
@@ -10,10 +8,11 @@ import {
   THEMES,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../../utils';
-import { getComponentCss } from './toast-item-styles';
+import type { IconColor } from '../../icon/icon-utils';
 import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
+import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
+import { getComponentCss } from './toast-item-styles';
 
 const propTypes: PropTypes<typeof ToastItem> = {
   text: AllowedTypes.string,
@@ -53,9 +52,6 @@ export class ToastItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof ToastItem, ToastStateDeprecated, ToastState>(this, 'state', {
-      neutral: 'info',
-    });
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
