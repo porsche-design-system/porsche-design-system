@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
 {
@@ -18,12 +18,7 @@ exports[`getButtonAttributes() should return correct aria attributes for isDisab
 }
 `;
 
-exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {
-  'aria-label': 'Some more detailed label',
-  'aria-expanded': true,
-  'aria-haspopup': true,
-  'aria-pressed': true
-} 1`] = `
+exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {\\n  'aria-label': 'Some more detailed label',\\n  'aria-expanded': true,\\n  'aria-haspopup': true,\\n  'aria-pressed': true\\n} 1`] = `
 {
   "aria-disabled": "true",
   "aria-expanded": "true",

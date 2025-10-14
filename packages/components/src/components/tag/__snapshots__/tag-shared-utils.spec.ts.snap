@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getThemedBackgroundColor() should return correct backgroundColor for color: background-base, theme: dark 1`] = `"#0E0E12"`;
 

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {

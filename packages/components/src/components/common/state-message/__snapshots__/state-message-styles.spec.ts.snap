@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
 ".message {

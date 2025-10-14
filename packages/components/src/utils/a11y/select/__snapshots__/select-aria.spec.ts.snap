@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getFilterInputAriaAttributes() should return correct aria attributes for isOpen: false, isRequired: false, labelId: 'label', descriptionId: 'description-id', dropdownId: 'dropdown-id' and activeDescendantId: 0 1`] = `
 {

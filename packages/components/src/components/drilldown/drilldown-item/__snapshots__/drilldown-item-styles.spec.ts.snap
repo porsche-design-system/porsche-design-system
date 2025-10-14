@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getComponentCss() should return correct css for isPrimary: false, isSecondary: false, isCascade: false and theme: dark 1`] = `
 "@keyframes slide-up-mobile {

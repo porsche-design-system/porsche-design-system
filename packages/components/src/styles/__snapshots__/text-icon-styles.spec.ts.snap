@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getThemedTextColor() should return correct css for theme: dark and textColor: contrast-high 1`] = `"#AFB0B3"`;
 

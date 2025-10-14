@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {

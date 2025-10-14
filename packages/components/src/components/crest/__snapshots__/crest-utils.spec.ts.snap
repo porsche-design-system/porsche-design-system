@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`buildCrestImgSrc() should return correct url 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png"`;
 

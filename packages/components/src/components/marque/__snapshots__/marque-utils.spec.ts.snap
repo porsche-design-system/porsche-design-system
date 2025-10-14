@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`buildImgSrc() should return correct url 1`] = `"https://cdn.ui.porsche.com/porsche-design-system/marque/porsche-marque.medium.089d6dd@2x.png"`;
 

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getComponentCss() should return correct css for name: 360, source: , color: contrast-high, size: small and theme: dark 1`] = `
 ":host {

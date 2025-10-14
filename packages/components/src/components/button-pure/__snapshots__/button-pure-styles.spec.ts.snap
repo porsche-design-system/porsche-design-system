@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"underline":true,"theme":"light"} 1`] = `
 ":host {

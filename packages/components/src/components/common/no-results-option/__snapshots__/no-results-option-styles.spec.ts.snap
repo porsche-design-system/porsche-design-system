@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: dark 1`] = `
 ".no-results {

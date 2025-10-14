@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`formatArrayOutput() should return formatted string for array 1`] = `"['value1', 'value2', true, 1, undefined]"`;
 

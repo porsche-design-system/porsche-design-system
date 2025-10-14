@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {

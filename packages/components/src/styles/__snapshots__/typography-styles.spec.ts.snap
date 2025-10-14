@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getTypographyRootJssStyle() should return correct css for baseTextStyle: { font: 'some font styles' }, responsiveStyle: { fontSize: 'some breakpoint customizable font styles' }, align: left, color: primary, ellipsis: false and theme: light 1`] = `
 {
