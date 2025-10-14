@@ -1,8 +1,7 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, forceUpdate, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -14,14 +13,15 @@ import {
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
+  THEMES,
   unobserveChildren,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { getComponentCss } from './flyout-styles';
 import {
+  addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_FOOTER_BEHAVIOR,
   FLYOUT_POSITIONS,
@@ -30,12 +30,8 @@ import {
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
   type FlyoutPosition,
-  type FlyoutPositionDeprecated,
-  addStickyTopCssVarStyleSheet,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
-
-type PositionDeprecationMapType = Record<FlyoutPositionDeprecated, Exclude<FlyoutPosition, FlyoutPositionDeprecated>>;
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -139,16 +135,6 @@ export class Flyout {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const positionDeprecationMap: PositionDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Flyout, FlyoutPositionDeprecated, FlyoutPosition>(
-      this,
-      'position',
-      positionDeprecationMap
-    );
-
     this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
@@ -157,10 +143,7 @@ export class Flyout {
       this.host,
       getComponentCss,
       this.open,
-      (positionDeprecationMap[this.position as keyof PositionDeprecationMapType] || this.position) as Exclude<
-        FlyoutPosition,
-        FlyoutPositionDeprecated
-      >,
+      this.position,
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,

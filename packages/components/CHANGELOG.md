@@ -39,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
 - `Display`:
   - value `left | right` of prop `align` (use `start | end` instead)
+- `Flyout`:
+  - value `left | right` of prop `position` (use `start | end` instead)
 - `Heading`:
   - value `left | right` of prop `align` (use `start | end` instead)
 - `Icon`:
