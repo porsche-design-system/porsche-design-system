@@ -1,29 +1,26 @@
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { PropTypes, Theme } from '../../types';
-import type { IconColor } from '../icon/icon-utils';
-import {
-  type InlineNotificationState,
-  type InlineNotificationStateDeprecated,
-  type InlineNotificationActionIcon,
-  type InlineNotificationHeadingTag,
-  getContentAriaAttributes,
-  getInlineNotificationIconName,
-  INLINE_NOTIFICATION_STATES,
-} from './inline-notification-utils';
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
-  hasHeading,
   HEADING_TAGS,
+  hasHeading,
   THEMES,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
+import type { IconColor } from '../icon/icon-utils';
 import { getComponentCss } from './inline-notification-styles';
-import { getSlottedAnchorStyles } from '../../styles';
+import {
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+  INLINE_NOTIFICATION_STATES,
+  type InlineNotificationActionIcon,
+  type InlineNotificationHeadingTag,
+  type InlineNotificationState,
+} from './inline-notification-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
@@ -31,7 +28,6 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
   dismissButton: AllowedTypes.boolean,
-  persistent: AllowedTypes.boolean,
   actionLabel: AllowedTypes.string,
   actionLoading: AllowedTypes.boolean,
   actionIcon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
@@ -64,11 +60,6 @@ export class InlineNotification {
   /** If false, the inline-notification will not have a dismiss button. */
   @Prop() public dismissButton?: boolean = true;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead.
-   * Defines if the inline-notification can be closed/removed by the user. */
-  @Prop() public persistent?: boolean;
-
   /** Action label of the inline-notification. */
   @Prop() public actionLabel?: string;
 
@@ -87,25 +78,13 @@ export class InlineNotification {
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
-  private get hasDismissButton(): boolean {
-    return this.persistent ? false : this.dismissButton;
-  }
-
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<
-      typeof InlineNotification,
-      InlineNotificationStateDeprecated,
-      InlineNotificationState
-    >(this, 'state', {
-      neutral: 'info',
-    });
-    warnIfDeprecatedPropIsUsed<typeof InlineNotification>(this, 'persistent', 'Please use dismissButton prop instead.');
-    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.hasDismissButton, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.dismissButton, this.theme);
 
     const bannerId = 'banner';
     const labelId = 'label';
@@ -146,7 +125,7 @@ export class InlineNotification {
             {this.actionLabel}
           </PrefixedTagNames.pButtonPure>
         )}
-        {this.hasDismissButton && (
+        {this.dismissButton && (
           <PrefixedTagNames.pButton
             class="close"
             type="button"
