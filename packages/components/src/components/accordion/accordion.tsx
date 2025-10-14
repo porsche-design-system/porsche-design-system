@@ -1,23 +1,21 @@
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  HEADING_TAGS,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
+  HEADING_TAGS,
   hasPropValueChanged,
+  THEMES,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import { getComponentCss } from './accordion-styles';
 import {
   ACCORDION_SIZES,
   type AccordionHeadingTag,
   type AccordionSize,
-  type AccordionTag,
   type AccordionUpdateEventDetail,
 } from './accordion-utils';
 
@@ -26,7 +24,6 @@ const propTypes: PropTypes<typeof Accordion> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
-  tag: AllowedTypes.oneOf<AccordionTag>([undefined, ...HEADING_TAGS]),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   sticky: AllowedTypes.boolean,
@@ -57,11 +54,6 @@ export class Accordion {
   /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public headingTag?: AccordionHeadingTag = 'h2';
 
-  /**
-   * @deprecated, will be removed with next major release, use `heading-tag` instead.
-   * Sets a heading tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: AccordionTag;
-
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
 
@@ -72,11 +64,6 @@ export class Accordion {
    * @experimental Sticks the Accordion heading at the top, fixed while scrolling
    */
   @Prop() public sticky?: boolean;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when accordion state is changed. */
-  @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionUpdateEventDetail>;
 
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
@@ -91,14 +78,13 @@ export class Accordion {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Accordion>(this, 'tag', 'Please use heading-tag prop instead.');
     attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme, this.sticky);
 
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const Heading = this.tag || this.headingTag;
+    const Heading = this.headingTag;
 
     return (
       <Host>
@@ -133,6 +119,5 @@ export class Accordion {
 
   private onButtonClick = (): void => {
     this.update.emit({ open: !this.open });
-    this.accordionChange.emit({ open: !this.open });
   };
 }
