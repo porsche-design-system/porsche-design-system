@@ -25,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `width`
   - value `neutral` of prop `state` (use `info` instead)
 - `Button Pure`:
-  - prop `weight`
+  - prop `weight` (can't be configured anymore)
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
 - `Checkbox`:
   - event `update` (use `change` instead)
@@ -40,6 +40,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Inline Notification`:
   - prop `persistent` (use `dismissButton` instead)
   - value `neutral` of prop `state` (use `info` instead)
+- `Link Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
