@@ -1,28 +1,19 @@
-import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
-import {
-  type HeadingAlign,
-  type HeadingAlignDeprecated,
-  type HeadingColor,
-  getHeadingTagType,
-  HEADING_COLORS,
-} from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  hasPropValueChanged,
   HEADING_SIZES,
   HEADING_TAGS,
+  hasPropValueChanged,
   THEMES,
   TYPOGRAPHY_ALIGNS,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './heading-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type AlignDeprecationMapType = Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>>;
+import { getHeadingTagType, HEADING_COLORS, type HeadingAlign, type HeadingColor } from './heading-utils';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
@@ -71,29 +62,7 @@ export class Heading {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Heading, HeadingAlignDeprecated, HeadingAlign>(
-      this,
-      'align',
-      alignDeprecationMap
-    );
-
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        HeadingAlign,
-        HeadingAlignDeprecated
-      >,
-      this.color,
-      this.ellipsis,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
 
     const TagType = getHeadingTagType(this.host, this.size, this.tag);
 
