@@ -91,7 +91,7 @@ describe('usePorscheDesignSystemPlugin()', () => {
 
     expect(() => {
       usePorscheDesignSystemPlugin();
-    }).toThrowError(
+    }).toThrow(
       '[Porsche Design System Vue] No plugin was provided. Make sure to create one via `createPorscheDesignSystem()`.'
     );
   });

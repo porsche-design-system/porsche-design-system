@@ -78,12 +78,12 @@ describe('updateDrilldownItemState()', () => {
   it('should set secondary prop of item with activeIdentifier to value=true and call functions', () => {
     updateDrilldownItemState(child, true);
     expect(child.secondary).toBe(true);
-    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', true);
+    expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledWith(host, 'primary', true);
   });
   it('should set secondary prop of item with activeIdentifier to value=false and call functions', () => {
     updateDrilldownItemState(child, false);
     expect(child.secondary).toBe(false);
-    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', false);
+    expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledWith(host, 'primary', false);
   });
 });
 
@@ -110,10 +110,10 @@ describe('traverseTreeAndUpdateState()', () => {
   it('should traverse up the tree and set states to value', () => {
     traverseTreeAndUpdateState(grandChild, 'primary', true);
     expect(grandChild.primary).toBe(true);
-    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(child, 'cascade', true);
+    expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledWith(child, 'cascade', true);
 
     expect(child.cascade).toBe(true);
     expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledTimes(3);
-    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'cascade', true);
+    expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledWith(host, 'cascade', true);
   });
 });

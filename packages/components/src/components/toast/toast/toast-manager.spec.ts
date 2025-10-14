@@ -1,5 +1,5 @@
-import { type ToastManager, ToastManagerClass } from './toast-manager';
 import * as stencilCore from '@stencil/core';
+import { type ToastManager, ToastManagerClass } from './toast-manager';
 
 let toastManager: ToastManager;
 const dismissCallbackFunction = jest.fn();
@@ -122,7 +122,7 @@ describe('dismissToastItem()', () => {
   });
 
   it('should not have error when called without message', () => {
-    expect(() => toastManager.dismissToastItem()).not.toThrowError();
+    expect(() => toastManager.dismissToastItem()).not.toThrow();
   });
 });
 

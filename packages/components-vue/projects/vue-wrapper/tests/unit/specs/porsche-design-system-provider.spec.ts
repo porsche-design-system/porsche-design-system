@@ -1,10 +1,10 @@
 import * as fromComponentsJs from '@porsche-design-system/components-js';
+import { load } from '@porsche-design-system/components-js';
 import { render } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { defineComponent, h, inject, nextTick, type Ref } from 'vue';
 import { PButton, PorscheDesignSystemProvider, type Theme, themeInjectionKey } from '../../../src/public-api';
-import { mount } from '@vue/test-utils';
-import { load } from '@porsche-design-system/components-js';
 
 vi.mock('@porsche-design-system/components-js', () => ({
   load: vi.fn(),
@@ -46,7 +46,7 @@ describe('PorscheDesignSystemProvider', () => {
   test('should throw error if PorscheDesignSystemProvider is missing ', () => {
     vi.spyOn(global.console, 'warn').mockImplementation(() => {}); // suppress vue warning
 
-    expect(() => render(PButton)).toThrowError(
+    expect(() => render(PButton)).toThrow(
       'It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.'
     );
   });

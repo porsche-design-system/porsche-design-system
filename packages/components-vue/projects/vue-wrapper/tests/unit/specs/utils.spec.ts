@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import * as Vue from 'vue';
 import type { Ref } from 'vue';
+import * as Vue from 'vue';
 import type { ToastMessage } from '../../../src/lib/types';
 import * as utils from '../../../src/utils';
 
@@ -22,7 +22,7 @@ describe('getPrefixedTagName()', () => {
   test('should throw error if inject returns undefined', () => {
     vi.mocked(Vue.inject).mockReturnValueOnce(undefined);
 
-    expect(() => utils.usePrefix('p-text')).toThrowError();
+    expect(() => utils.usePrefix('p-text')).toThrow();
   });
 
   test('should return passed parameter if inject() returns ""', () => {
