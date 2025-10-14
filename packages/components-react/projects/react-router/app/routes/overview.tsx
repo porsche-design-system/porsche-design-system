@@ -1,5 +1,5 @@
 /* Auto Generated File */
-import { PAccordion, PButton, PButtonGroup, PButtonPure, PButtonTile, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlag, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PLinkTileModelSignature, PLinkTileProduct, PMarque, PModelSignature, PMultiSelect, PMultiSelectOption, PorscheDesignSystemProvider, PPagination, PPinCode, PPopover, PRadioButtonWrapper, PScroller, PSegmentedControl, PSegmentedControlItem, PSelect, PSelectOption, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
+import { PAccordion, PButton, PButtonGroup, PButtonPure, PButtonTile, PCarousel, PCheckboxWrapper, PContentWrapper, PCrest, PDisplay, PDivider, PFieldset, PFieldsetWrapper, PFlag, PFlex, PFlexItem, PGrid, PGridItem, PHeading, PHeadline, PIcon, PInlineNotification, PLink, PLinkPure, PLinkSocial, PLinkTile, PLinkTileModelSignature, PLinkTileProduct, PMarque, PModelSignature, PMultiSelect, PMultiSelectOption, PorscheDesignSystemProvider, PPagination, PPinCode, PPopover, PRadioButtonWrapper, PRadioGroup, PRadioGroupOption, PScroller, PSegmentedControl, PSegmentedControlItem, PSelect, PSelectOption, PSelectWrapper, PSpinner, PStepperHorizontal, PStepperHorizontalItem, PSwitch, PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow, PTabs, PTabsBar, PTabsItem, PTag, PTagDismissible, PText, PTextareaWrapper, PTextFieldWrapper, PTextList, PTextListItem, PWordmark } from '@porsche-design-system/components-react/ssr';
 
 const OverviewPage = (): JSX.Element => {
   const style = `
@@ -132,6 +132,14 @@ const OverviewPage = (): JSX.Element => {
           <PRadioButtonWrapper label="Some label">
             <input type="radio" />
           </PRadioButtonWrapper>
+        </div>
+
+        <div className="playground light" title="should render default radio-group">
+          <PRadioGroup label="Some label" name="some-name" value="a">
+            <PRadioGroupOption label="Some label A" value="a" />
+            <PRadioGroupOption label="Some label B" value="b" />
+            <PRadioGroupOption label="Some label C" value="c" />
+          </PRadioGroup>
         </div>
 
         <div className="playground light" title="should render default select">
@@ -480,6 +488,14 @@ const OverviewPage = (): JSX.Element => {
             <PRadioButtonWrapper label="Some label">
               <input type="radio" />
             </PRadioButtonWrapper>
+          </div>
+
+          <div className="playground light" title="should render default radio-group with custom prefix">
+            <PRadioGroup label="Some label" name="some-name" value="a">
+              <PRadioGroupOption label="Some label A" value="a" />
+              <PRadioGroupOption label="Some label B" value="b" />
+              <PRadioGroupOption label="Some label C" value="c" />
+            </PRadioGroup>
           </div>
 
           <div className="playground light" title="should render default select with custom prefix">

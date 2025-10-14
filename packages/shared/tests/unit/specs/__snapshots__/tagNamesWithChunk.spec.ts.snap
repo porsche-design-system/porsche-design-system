@@ -51,6 +51,8 @@ exports[`should match snapshot 1`] = `
   "p-pin-code",
   "p-popover",
   "p-radio-button-wrapper",
+  "p-radio-group",
+  "p-radio-group-option",
   "p-scroller",
   "p-segmented-control",
   "p-select",

@@ -351,24 +351,31 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     requiredParent,
     propsMeta, // new format
     slotsMeta,
+    hasSlot,
   } = getComponentMeta(tagName);
 
   const buildChildMarkup = (
     requiredChild: string,
-    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[]
-  ): string => {
+    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[],
+    hasDefaultSlot: boolean
+  ): string | undefined => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
-    } else if (requiredNamedSlots && requiredNamedSlots.length > 0) {
+    }
+
+    if (requiredNamedSlots && requiredNamedSlots.length > 0) {
       return requiredNamedSlots
         .map(
           ({ slotName, tagName }) =>
             `<${tagName} slot="${slotName}"${tagName.includes('link') ? ' href="#"' : ''}>Some label</${tagName}>`
         )
         .join('\n');
-    } else {
+    }
+
+    if (hasDefaultSlot) {
       return 'Some child';
     }
+    return undefined;
   };
 
   const buildParentMarkup = (markup: string, requiredParent: TagName | TagName[]): string => {
@@ -399,10 +406,9 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
       .filter(([, value]) => value.isRequired)
       .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
-  const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
-    requiredChild,
-    requiredNamedSlots
-  )}</${tagName}>`;
+  const childMarkup = buildChildMarkup(requiredChild, requiredNamedSlots, hasSlot && '' in slotsMeta);
+  const label = childMarkup === undefined && propsMeta['label'] ? 'label="Some label"' : '';
+  const componentMarkup = `<${tagName}${attributes} ${label}>${childMarkup ?? ''}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);
 };

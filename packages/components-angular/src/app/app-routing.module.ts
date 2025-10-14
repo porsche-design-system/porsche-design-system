@@ -392,6 +392,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.PinCodeExampleFormComponent,
   },
   {
+    name: 'Radio Group Example',
+    path: 'radio-group-example',
+    component: fromExamples.RadioGroupExampleComponent,
+  },
+  {
+    name: 'Radio Group Example Controlled',
+    path: 'radio-group-example-controlled',
+    component: fromExamples.RadioGroupExampleControlledComponent,
+  },
+  {
     name: 'Scroller Example',
     path: 'scroller-example',
     component: fromExamples.ScrollerExampleComponent,
