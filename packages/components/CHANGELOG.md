@@ -66,6 +66,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `allyLabelNext` (use `intl.next` instead)
   - prop `maxNumberOfPageLinks` (has no effect anyway)
   - event `pageChange` (use `update` instead)
+- `Pin Code`:
+  - event `update` (use `change` instead)
 - `Scroller`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
