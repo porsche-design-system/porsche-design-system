@@ -17,6 +17,7 @@ import {
 import { RadioGroupOption } from '@porsche-design-system/components/src/components/radio-group/radio-group/radio-group-utils';
 
 const getHost = (page: Page) => page.locator('p-radio-group');
+const getFirstOptionHost = (page: Page) => page.locator('p-radio-group-option').first();
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getRadioGroupValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
 const getRadioGroupOption = (page: Page, n: number) =>
@@ -160,6 +161,79 @@ test.describe('Change Event', () => {
 
       expect((await getEventSummary(host, 'change')).counter, 'after option select').toBe(1);
       expect((await getEventSummary(host, 'change')).details).toEqual([{ isTrusted: true }]);
+    });
+  });
+});
+
+test.describe('Blur Event', () => {
+  test('should emit blur event when focus of an option is lost by mouse click', async ({ page }) => {
+    await initRadioGroup(page, { options: { markupAfter: '<button id="test-button">Some button</button>' } });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const option = getFirstOptionHost(page);
+    const button = page.locator('#test-button');
+
+    await option.click();
+    await expect(option).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'before item lost focus').toBe(0);
+
+    await button.click();
+    await expect(button).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after input lost focus').toBe(1);
+  });
+
+  test('should not emit blur event when focus is moved to next item by click', async ({ page }) => {
+    await initRadioGroup(page, { options: { markupAfter: '<button id="test-button">Some button</button>' } });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const options = getRadioGroupOptions(page);
+    const button = page.locator('#test-button');
+
+    await options.nth(0).click();
+    await expect(options.nth(0)).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st item got focus').toBe(0);
+
+    await options.nth(1).click();
+    await expect(options.nth(1)).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item got focus').toBe(0);
+
+    await button.click();
+    await expect(button).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
+  });
+
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
+      await initRadioGroup(page, {
+        props: { value: 'a', name: 'options', label: 'Some Label' },
+        options: { markupAfter: '<button id="test-button">Some button</button>' },
+      });
+      const host = getHost(page);
+      await addEventListener(host, 'blur');
+      const options = getRadioGroupOptions(page);
+      const button = page.locator('#test-button');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(0)).toBeFocused();
+
+      expect((await getEventSummary(host, 'blur')).counter, 'after 1st item got focus').toBe(0);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+      await expect(options.nth(1)).toBeFocused();
+
+      expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item got focus').toBe(0);
+
+      await page.keyboard.press('Tab');
+      await expect(button).toBeFocused();
+      expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
     });
   });
 });
