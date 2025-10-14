@@ -15,5 +15,3 @@ export type RadioGroupOptionInternalHTMLProps = {
   /** The state of the parent radio-group. **/
   state?: RadioGroupState;
 };
-
-export type RadioGroupOptionBlurEventDetail = Event;

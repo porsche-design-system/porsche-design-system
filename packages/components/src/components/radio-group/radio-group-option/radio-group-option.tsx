@@ -1,9 +1,10 @@
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isElementOfKind,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -13,7 +14,7 @@ import { LoadingMessage, loadingId } from '../../common/loading-message/loading-
 import { messageId } from '../../common/state-message/state-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
-import type { RadioGroupOptionBlurEventDetail, RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
+import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
 
 const propTypes: PropTypes<typeof RadioGroupOption> = {
   value: AllowedTypes.string,
@@ -40,9 +41,6 @@ export class RadioGroupOption {
 
   /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
-
-  /** Emitted when the radio input has lost focus. */
-  @Event({ bubbles: false }) public blur: EventEmitter<RadioGroupOptionBlurEventDetail>;
 
   private initialLoading: boolean = false;
   private inputElement!: HTMLInputElement;
@@ -75,7 +73,7 @@ export class RadioGroupOption {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!isDisabled && !isLoading && this.onHostClick}>
+      <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
         {/* wrapped in host for programmatic selection via radio-group-option */}
         <div class="root">
           <Label
@@ -126,9 +124,15 @@ export class RadioGroupOption {
     );
   };
 
-  private onBlur = (e: RadioGroupOptionBlurEventDetail): void => {
-    e.stopImmediatePropagation();
-    this.blur.emit(e);
+  private onBlur = (e: FocusEvent): void => {
+    e.stopPropagation();
+    if (!e.relatedTarget || !isElementOfKind(e.relatedTarget as HTMLElement, 'p-radio-group-option')) {
+      this.host.dispatchEvent(
+        new CustomEvent('internalRadioGroupOptionBlur', {
+          bubbles: true,
+        })
+      );
+    }
   };
 
   private onHostClick = (): void => {
