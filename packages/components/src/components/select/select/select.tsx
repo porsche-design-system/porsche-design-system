@@ -54,7 +54,6 @@ import {
   type SelectOptgroup,
   type SelectOption,
   type SelectState,
-  type SelectUpdateEventDetail,
   setSelectedOption,
   syncSelectChildrenProps,
   updateSelectOptions,
@@ -142,11 +141,6 @@ export class Select {
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<SelectChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
@@ -552,10 +546,6 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
-      name: this.name,
-    });
-    this.update.emit({
       value: this.value,
       name: this.name,
     });

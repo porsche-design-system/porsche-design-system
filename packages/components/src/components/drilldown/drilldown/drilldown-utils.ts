@@ -8,12 +8,9 @@ export type DrilldownAriaAttribute = (typeof DRILLDOWN_ARIA_ATTRIBUTES)[number];
 
 export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 
-export type DrilldownUpdate = {
+export type DrilldownUpdateEventDetail = {
   activeIdentifier: string | undefined;
 };
-/** @deprecated */
-export type DrilldownUpdateEvent = DrilldownUpdate;
-export type DrilldownUpdateEventDetail = DrilldownUpdateEvent; // to have consistent event types
 
 export type Item = HTMLPDrilldownItemElement & DrilldownItemInternalHTMLProps;
 
