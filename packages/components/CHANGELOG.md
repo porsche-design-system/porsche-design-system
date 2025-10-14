@@ -81,6 +81,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `gradientColor` (has no effect anyway)
   - value `semibold` of prop `weight` (use `semi-bold` instead)
   - event `tabChange` (use `update` instead)
+- `Text`
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
 - `Text List`
   - prop `listType` (use `type` instead)
   - prop `orderType` (use `type` instead)
