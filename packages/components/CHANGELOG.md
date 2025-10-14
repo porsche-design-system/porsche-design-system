@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Accordion`:
   - `tag`, `accordionChange`
-  - Slotted anchor styling
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Banner`:
   - `slot="title"` (use `slot="heading"` instead)
   - prop `persistent` (use `dismissButton` instead)
@@ -72,6 +72,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `gradientColor` (has no effect anyway)
   - value `semibold` of prop `weight` (use `semi-bold` instead)
   - event `tabChange` (use `update` instead)
+- `Text List`
+  - prop `listType` (use `type` instead)
+  - prop `orderType` (use `type` instead)
+  - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
