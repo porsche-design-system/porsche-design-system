@@ -37,6 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Divider`:
   - prop `orientation` (use `direction` instead)
   - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
+- `Display`:
+  - value `left | right` of prop `align` (use `start | end` instead)
 - `Icon`:
   - prop: `lazy`
   - value

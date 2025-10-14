@@ -1,16 +1,6 @@
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import {
-  type DisplayAlign,
-  type DisplayAlignDeprecated,
-  type DisplayColor,
-  type DisplaySize,
-  type DisplayTag,
-  DISPLAY_COLORS,
-  DISPLAY_SIZES,
-  DISPLAY_TAGS,
-  getDisplayTagType,
-} from './display-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
@@ -19,12 +9,18 @@ import {
   THEMES,
   TYPOGRAPHY_ALIGNS,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './display-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type AlignDeprecationMapType = Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>>;
+import {
+  DISPLAY_COLORS,
+  DISPLAY_SIZES,
+  DISPLAY_TAGS,
+  type DisplayAlign,
+  type DisplayColor,
+  type DisplaySize,
+  type DisplayTag,
+  getDisplayTagType,
+} from './display-utils';
 
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
@@ -73,29 +69,7 @@ export class Display {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Display, DisplayAlignDeprecated, DisplayAlign>(
-      this,
-      'align',
-      alignDeprecationMap
-    );
-
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        DisplayAlign,
-        DisplayAlignDeprecated
-      >,
-      this.color,
-      this.ellipsis,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
 
     const TagType = getDisplayTagType(this.host, this.size, this.tag);
 
