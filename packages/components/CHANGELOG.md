@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-### Removed
+### Removed (deprecated in v3 already)
 
 - `Accordion`:
   - `tag`, `accordionChange`
@@ -27,8 +27,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button Pure`:
   - prop `weight`
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
-- `Checkbox Wrapper`, `Content Wrapper`, `Link Tile Model Signature`, `Fieldset Wrapper`, `Flex`, `Grid`, `Headline`,
-  `Link Social`, `Marque`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
+- `Checkbox`:
+  - event `update` (use `change` instead)
+- Components:
+  - `Checkbox Wrapper` (use `Checkbox` instead)
+  - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
+  - `Link Tile Model Signature`
+  - `Fieldset Wrapper` (use `Fieldset` instead)
+  - `Flex` (use CSS Flex instead, Tailwind CSS is recommended)
+  - `Grid` (use CSS Grid instead, Tailwind CSS is recommended)
+  - `Headline` (use `Heading` instead)
+  - `Link Social`
+  - `Marque` (use `Wordmark` (recommended) or `Crest` instead)
+  - `Select Wrapper` (use `Select` instead)
+  - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
+  - `Textarea Wrapper` (use `Textarea` instead)
 
 ### Added
 
