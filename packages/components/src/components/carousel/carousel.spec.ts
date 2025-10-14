@@ -193,18 +193,6 @@ describe('componentDidLoad', () => {
 });
 
 describe('render', () => {
-  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
-    const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
-    const component = new Carousel();
-    component.host = document.createElement('p-carousel');
-    component.wrapContent = true;
-    component.host.attachShadow({ mode: 'open' });
-
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component, 'wrapContent');
-  });
-
   it('should call hasHeading() with correct parameters', () => {
     const spy = jest.spyOn(hasHeading, 'hasHeading');
     const component = new Carousel();

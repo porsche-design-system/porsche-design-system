@@ -27,6 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button Pure`:
   - prop `weight` (can't be configured anymore)
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Carousel`:
+  - prop `wrapContent` (has no effect anyway)
+  - prop `disablePagination` (use `pagination` instead)
+  - value `left` of prop `alignHeader` (use `start` instead)
+  - event `carouselChange` use `update` instead
 - `Checkbox`:
   - event `update` (use `change` instead)
 - `Divider`:
