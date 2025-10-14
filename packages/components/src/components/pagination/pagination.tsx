@@ -1,25 +1,23 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseJSONAttribute,
+  THEMES,
   unobserveBreakpointChange,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import { getComponentCss } from './pagination-styles';
 import {
-  ItemType,
-  type PaginationInternationalization,
-  type PaginationMaxNumberOfPageLinks,
-  type PaginationUpdateEventDetail,
   createPaginationItems,
   getCurrentActivePage,
   getTotalPages,
+  ItemType,
+  type PaginationInternationalization,
+  type PaginationUpdateEventDetail,
 } from './pagination-utils';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
@@ -27,10 +25,6 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   itemsPerPage: AllowedTypes.number,
   activePage: AllowedTypes.number,
   showLastPage: AllowedTypes.boolean,
-  allyLabel: AllowedTypes.string,
-  allyLabelPrev: AllowedTypes.string,
-  allyLabelPage: AllowedTypes.string,
-  allyLabelNext: AllowedTypes.string,
   intl: AllowedTypes.shape<Required<PaginationInternationalization>>({
     root: AllowedTypes.string,
     prev: AllowedTypes.string,
@@ -59,34 +53,8 @@ export class Pagination {
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
-  /**
-   * Has no effect anymore
-   * @deprecated since v3.10.0, will be removed with next major release
-   */
-  @Prop() public maxNumberOfPageLinks?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
-
   /** Show or hide the button to jump to the last page. */
   @Prop() public showLastPage?: boolean = true;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `intl.root` instead.
-   * Aria label what the pagination is used for. */
-  @Prop() public allyLabel?: string;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `intl.prev` instead.
-   * Aria label for previous page icon. */
-  @Prop() public allyLabelPrev?: string;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `intl.page` instead.
-   * Aria label for page navigation. */
-  @Prop() public allyLabelPage?: string;
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `intl.next` instead.
-   * Aria label for next page icon. */
-  @Prop() public allyLabelNext?: string;
 
   /** Override the default wordings that are used for aria-labels on the next/prev and page buttons. */
   @Prop() public intl?: PaginationInternationalization = {
@@ -98,11 +66,6 @@ export class Pagination {
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when the page changes. */
-  @Event({ bubbles: false }) public pageChange: EventEmitter<PaginationUpdateEventDetail>;
 
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEventDetail>;
@@ -117,23 +80,6 @@ export class Pagination {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'maxNumberOfPageLinks');
-    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'allyLabel', 'Please use intl prop with intl.root instead.');
-    warnIfDeprecatedPropIsUsed<typeof Pagination>(
-      this,
-      'allyLabelNext',
-      'Please use intl prop with intl.next instead.'
-    );
-    warnIfDeprecatedPropIsUsed<typeof Pagination>(
-      this,
-      'allyLabelPrev',
-      'Please use intl prop with intl.prev instead.'
-    );
-    warnIfDeprecatedPropIsUsed<typeof Pagination>(
-      this,
-      'allyLabelPage',
-      'Please use intl prop with intl.page instead.'
-    );
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage, this.theme);
@@ -147,7 +93,7 @@ export class Pagination {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <nav aria-label={this.allyLabel || parsedIntl.root}>
+      <nav aria-label={parsedIntl.root}>
         <ul>
           {paginationItems.map((pageModel, index) => {
             const {
@@ -176,11 +122,7 @@ export class Pagination {
                 return (
                   <li key="prev" class="prev">
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
-                    <span
-                      {...spanProps}
-                      aria-label={this.allyLabelPrev || parsedIntl.prev}
-                      aria-disabled={isActive ? null : 'true'}
-                    >
+                    <span {...spanProps} aria-label={parsedIntl.prev} aria-disabled={isActive ? null : 'true'}>
                       <PrefixedTagNames.pIcon {...iconProps} name="arrow-left" />
                     </span>
                   </li>
@@ -209,7 +151,7 @@ export class Pagination {
                     <span
                       {...spanProps}
                       tabIndex={0}
-                      aria-label={`${this.allyLabelPage || parsedIntl.page} ${value}`}
+                      aria-label={`${parsedIntl.page} ${value}`}
                       aria-current={isActive ? 'page' : null}
                     >
                       {value}
@@ -221,11 +163,7 @@ export class Pagination {
                 return (
                   <li key="next" class="next">
                     {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
-                    <span
-                      {...spanProps}
-                      aria-label={this.allyLabelNext || parsedIntl.next}
-                      aria-disabled={isActive ? null : 'true'}
-                    >
+                    <span {...spanProps} aria-label={parsedIntl.next} aria-disabled={isActive ? null : 'true'}>
                       <PrefixedTagNames.pIcon {...iconProps} name="arrow-right" />
                     </span>
                   </li>
@@ -249,7 +187,6 @@ export class Pagination {
   private onClick(page: number): void {
     if (page !== this.activePage) {
       this.update.emit({ page, previousPage: this.activePage });
-      this.pageChange.emit({ page, previousPage: this.activePage });
       this.activePage = page; // TODO: should become a controlled component
     }
   }

@@ -48,6 +48,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `heading` (use `slot="header"` instead)
   - slot `heading` (use `slot="header"` instead)
   - event `close` (use `dismiss` instead)
+- `Pagination`:
+  - prop `allyLabel` (use `intl.root` instead)
+  - prop `allyLabelPrev` (use `intl.prev` instead)
+  - prop `allyLabelPage` (use `intl.page` instead)
+  - prop `allyLabelNext` (use `intl.next` instead)
+  - prop `maxNumberOfPageLinks` (has no effect anyway)
+  - event `pageChange` (use `update` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
