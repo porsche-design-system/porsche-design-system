@@ -11,6 +11,11 @@ type LabelProps = {
   description?: string;
   isLoading?: boolean;
   isDisabled?: boolean;
+  /**
+   * If true, clicking the label will not bubble to the host element,
+   * preventing duplicate handling on host click listeners.
+   */
+  stopClickPropagation?: boolean;
 };
 
 export const Label: FunctionalComponent<LabelProps> = ({
@@ -21,10 +26,23 @@ export const Label: FunctionalComponent<LabelProps> = ({
   isRequired,
   isLoading,
   isDisabled,
+  stopClickPropagation,
 }) => {
+  const handleClick = (e: MouseEvent) => {
+    if (stopClickPropagation) {
+      e.stopPropagation();
+    }
+  };
+
   return (
     <Fragment>
-      <label class="label" id={labelId} aria-disabled={isLoading || isDisabled ? 'true' : null} htmlFor={htmlFor}>
+      <label
+        class="label"
+        id={labelId}
+        aria-disabled={isLoading || isDisabled ? 'true' : null}
+        htmlFor={htmlFor}
+        onClick={handleClick}
+      >
         {hasLabel(host, label) && (
           <Fragment>
             {label || <slot name="label" />}

@@ -652,6 +652,10 @@ const generatedRoutes = {
     "path": "/radio-button-wrapper",
     "name": "RadioButtonWrapper"
   },
+  "radioGroup": {
+    "path": "/radio-group",
+    "name": "RadioGroup"
+  },
   "scroller": {
     "path": "/scroller",
     "name": "Scroller"

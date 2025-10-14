@@ -1,5 +1,5 @@
 <div class="root">
-  <label class="label" id="label" for="input-search"> </label>
+  <label class="label" id="label" for="input-search"> Some label</label>
   <div class="wrapper">
     <slot name="start"> </slot>
     <input

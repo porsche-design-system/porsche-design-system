@@ -1,5 +1,5 @@
 <div class="root">
-  <label class="label" id="label" for="current-input"> </label>
+  <label class="label" id="label" for="current-input"> Some label</label>
   <div class="wrapper">
     <input
       id="current-input"

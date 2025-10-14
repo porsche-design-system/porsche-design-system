@@ -1,25 +1,26 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
 import {
   textareaWrapperStory,
-  textareaWrapperStoryCounter, textareaWrapperStorySlots
-} from "@/app/components/textarea-wrapper/textarea-wrapper.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+  textareaWrapperStoryCounter,
+  textareaWrapperStorySlots,
+} from '@/app/components/textarea-wrapper/textarea-wrapper.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
   title: 'Textarea Wrapper - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Textarea Wrapper component.'
-}
+  description: 'Discover detailed examples and insights of the Textarea Wrapper component.',
+};
 
 # Textarea Wrapper <ComponentStatus tagName="p-textarea-wrapper"></ComponentStatus>
 
-<TableOfContents headings={['Counter','Slots']} />
+<TableOfContents headings={['Counter', 'Slots']} />
 
 ## Counter
 
-If the `maxlength` attribute is present on the `textarea` element, a counter will be displayed in the corner.
-To hide it you can set `showCounter` to `false`.
+If the `maxlength` attribute is present on the `textarea` element, a counter will be displayed in the corner. To hide it
+you can set `showCounter` to `false`.
 
 <ComponentStory story={textareaWrapperStoryCounter} />
 
@@ -32,4 +33,3 @@ can be used. Make sure **not** to define the corresponding property on the host 
 allowed.
 
 <ComponentStory story={textareaWrapperStorySlots} />
-

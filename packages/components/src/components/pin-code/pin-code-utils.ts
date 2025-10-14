@@ -1,6 +1,6 @@
-import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
 import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -10,7 +10,9 @@ export type PinCodeLength = (typeof PIN_CODE_LENGTHS)[number];
 
 /** @deprecated */
 export type PinCodeUpdateEvent = { value: string; isComplete: boolean };
+/** @deprecated */
 export type PinCodeUpdateEventDetail = PinCodeUpdateEvent;
+export type PinCodeChangeEventDetail = PinCodeUpdateEventDetail;
 
 export type PinCodeState = FormState;
 

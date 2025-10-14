@@ -1,5 +1,5 @@
-import * as pinCodeUtils from './pin-code-utils';
 import { PinCode } from './pin-code';
+import * as pinCodeUtils from './pin-code-utils';
 
 class MockElementInternals {
   setValidity = jest.fn();
@@ -98,12 +98,13 @@ describe('formStateRestoreCallback', () => {
 });
 
 describe('updateValue()', () => {
-  it('should call update.emit() with correct parameters and call setFormValue()', () => {
+  it('should call change.emit() with correct parameters and call setFormValue()', () => {
     const component = initComponent();
     const newValue = '1234';
     const emitSpy = jest.fn();
     const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
 
+    component.change = { emit: emitSpy };
     component.update = { emit: emitSpy };
 
     // @ts-ignore

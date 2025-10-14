@@ -194,6 +194,7 @@ import { PopoverRightComponent } from './generated/popover-right.component';
 import { PopoverScrolledComponent } from './generated/popover-scrolled.component';
 import { PopoverTopComponent } from './generated/popover-top.component';
 import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.component';
+import { RadioGroupComponent } from './generated/radio-group.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
 import { SelectComponent } from './generated/select.component';
@@ -419,6 +420,7 @@ export const generatedPages = [
   PopoverScrolledComponent,
   PopoverTopComponent,
   RadioButtonWrapperComponent,
+  RadioGroupComponent,
   ScrollerComponent,
   SegmentedControlComponent,
   SelectComponent,
@@ -1286,6 +1288,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Radio Button Wrapper',
     path: 'radio-button-wrapper',
     component: RadioButtonWrapperComponent,
+  },
+  {
+    name: 'Radio Group',
+    path: 'radio-group',
+    component: RadioGroupComponent,
   },
   {
     name: 'Scroller',

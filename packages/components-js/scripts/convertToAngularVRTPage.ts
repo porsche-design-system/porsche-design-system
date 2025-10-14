@@ -96,7 +96,7 @@ ngOnInit() {
   fileContent = fileContent.replace(templateRegEx, template);
 
   // prefixing
-  fileContent = fileContent.replace(/(<[\w-]+(p-[\w-]+))/g, '$1 $2');
+  fileContent = fileContent.replace(/(<[\w-]+-(p-[\w-]+))/g, '$1 $2');
 
   // icons
   if (isIconPage) {
