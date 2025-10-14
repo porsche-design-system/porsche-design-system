@@ -16,8 +16,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Removed
 
+- `Banner`:
+  - `slot="title"` (use `slot="heading"` instead)
+  - prop `persistent` (use `dismissButton` instead)
+  - prop `width`
+  - value `neutral` of prop `state` (use `info` instead)
 - `Accordion`:
   - `tag`, `accordionChange`
+  - Slotted anchor styling
 - `Checkbox Wrapper`, `Content Wrapper`, `Link Tile Model Signature`, `Fieldset Wrapper`, `Flex`, `Grid`, `Headline`,
   `Link Social`, `Marque`, `Select Wrapper`, `Text Field Wrapper` and `Textarea Wrapper`
 
