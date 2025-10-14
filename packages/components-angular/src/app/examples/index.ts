@@ -85,6 +85,7 @@ import { TextareaExampleFormComponent } from './textarea-example-form.component'
 import { ToastExampleComponent } from './toast-example.component';
 import { RadioGroupExampleComponent } from './radio-group-example.component';
 import { RadioGroupExampleControlledComponent } from './radio-group-example-controlled.component';
+import { RadioGroupExampleFormComponent } from './radio-group-example-form.component';
 
 export const examples = [
   AccordionExampleComponent,
@@ -156,6 +157,7 @@ export const examples = [
   SelectExampleControlledComponent,
   RadioGroupExampleComponent,
   RadioGroupExampleControlledComponent,
+  RadioGroupExampleFormComponent,
   SelectExampleDynamicComponent,
   SelectExampleFormComponent,
   SelectExampleRequiredComponent,
@@ -244,6 +246,7 @@ export * from './select-example.component';
 export * from './select-example-controlled.component';
 export * from './radio-group-example.component';
 export * from './radio-group-example-controlled.component';
+export * from './radio-group-example-form.component';
 export * from './select-example-dynamic.component';
 export * from './select-example-form.component';
 export * from './select-example-required.component';

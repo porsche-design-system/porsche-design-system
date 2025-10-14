@@ -402,6 +402,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.RadioGroupExampleControlledComponent,
   },
   {
+    name: 'Radio Group Example Form',
+    path: 'radio-group-example-form',
+    component: fromExamples.RadioGroupExampleFormComponent,
+  },
+  {
     name: 'Scroller Example',
     path: 'scroller-example',
     component: fromExamples.ScrollerExampleComponent,
