@@ -29,6 +29,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
 - `Checkbox`:
   - event `update` (use `change` instead)
+- `Divider`:
+  - prop `orientation` (use `direction` instead)
+  - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
 - Components:
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)

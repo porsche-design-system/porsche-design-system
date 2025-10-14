@@ -1,6 +1,3 @@
-import type { DividerColor, DividerDirection, DividerColorDeprecated } from './divider-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -9,9 +6,12 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import type { DividerColor, DividerDirection } from './divider-utils';
 
 export const getComponentCss = (
-  color: Exclude<DividerColor, DividerColorDeprecated>,
+  color: DividerColor,
   orientation: BreakpointCustomizable<DividerDirection>,
   theme: Theme
 ): string => {
@@ -21,12 +21,12 @@ export const getComponentCss = (
     contrastMediumColor: contrastMediumColorDark,
     contrastHighColor: contrastHighColorDark,
   } = getThemedColors('dark');
-  const colorMap: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
+  const colorMap: Record<DividerColor, string> = {
     'contrast-low': contrastLowColor,
     'contrast-medium': contrastMediumColor,
     'contrast-high': contrastHighColor,
   };
-  const colorMapDark: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
+  const colorMapDark: Record<DividerColor, string> = {
     'contrast-low': contrastLowColorDark,
     'contrast-medium': contrastMediumColorDark,
     'contrast-high': contrastHighColorDark,
