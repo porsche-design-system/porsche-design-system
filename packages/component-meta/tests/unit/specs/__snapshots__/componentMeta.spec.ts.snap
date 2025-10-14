@@ -3228,6 +3228,15 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "FlyoutAriaAttribute",
       },
+      "backdrop": {
+        "allowedValues": [
+          "blur",
+          "shading",
+        ],
+        "defaultValue": "blur",
+        "description": "Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).",
+        "type": "FlyoutBackdrop",
+      },
       "disableBackdropClick": {
         "allowedValues": "boolean",
         "defaultValue": false,
