@@ -1,3 +1,4 @@
+import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,17 +11,12 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss, isHighContrastMode } from '../../utils';
-import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
-import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
-import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import type { Theme } from '../../types';
+import { getCss, isHighContrastMode } from '../../utils';
+import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
+import type { TagDismissibleColor } from './tag-dismissible-utils';
 
-export const getComponentCss = (
-  color: Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
-  hasLabel: boolean,
-  theme: Theme
-): string => {
+export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
   const themedColorsDark = getThemedColors('dark');
   const { primaryColor, hoverColor, contrastHighColor } = themedColors;

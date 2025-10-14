@@ -87,6 +87,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     of prop `color` (use
     `background-base | primary | notification-info-soft | notification-warning-soft | notification-error-soft | notification-success-soft`
     instead)
+- `Tag Dismissible`:
+  - value `background-default` of prop `color` (use `background-base` instead)
 - `Text`
   - value `left | right` of prop `align` (use `start | end` instead)
   - value
