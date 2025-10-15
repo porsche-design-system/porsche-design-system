@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  isElementOfKind,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -93,7 +92,10 @@ export class RadioGroupOption {
               checked={isSelected}
               disabled={isDisabled || isLoading}
               value={this.value}
-              onClick={(e) => e.stopImmediatePropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+              }}
               onChange={this.onChange}
               onBlur={this.onBlur}
               aria-describedby={isLoading ? loadingId : `${descriptionId} ${messageId}`}
@@ -115,6 +117,7 @@ export class RadioGroupOption {
   }
 
   private onChange = (e: RadioGroupChangeEventDetail): void => {
+    e.stopPropagation();
     e.stopImmediatePropagation();
     this.host.dispatchEvent(
       new CustomEvent('internalRadioGroupOptionChange', {
@@ -126,13 +129,12 @@ export class RadioGroupOption {
 
   private onBlur = (e: FocusEvent): void => {
     e.stopPropagation();
-    if (!e.relatedTarget || !isElementOfKind(e.relatedTarget as HTMLElement, 'p-radio-group-option')) {
-      this.host.dispatchEvent(
-        new CustomEvent('internalRadioGroupOptionBlur', {
-          bubbles: true,
-        })
-      );
-    }
+    e.stopImmediatePropagation();
+    this.host.dispatchEvent(
+      new CustomEvent('internalRadioGroupOptionBlur', {
+        bubbles: true,
+      })
+    );
   };
 
   private onHostClick = (): void => {

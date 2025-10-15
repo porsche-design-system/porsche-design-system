@@ -142,6 +142,7 @@ export class RadioGroup {
   @Listen('internalRadioGroupOptionBlur')
   public emitBlurEvent(e: CustomEvent): void {
     e.stopPropagation();
+    e.stopImmediatePropagation();
     this.blur.emit();
   }
 
