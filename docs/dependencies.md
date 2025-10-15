@@ -76,19 +76,3 @@ there's no stable way of using it with Node or TS-Node.
 - `change-case`
 
 ---
-
-## @types/scheduler
-
-Is currently fixed to "0.16.8" because of typing error:
-
-```
-../../node_modules/@types/react/index.d.ts:9:53 - error TS2307: Cannot find module 'scheduler/tracing' or its corresponding type declarations.
-9 import { Interaction as SchedulerInteraction } from "scheduler/tracing";
-```
-
----
-
-## @arethetypeswrong/core
-
-Currently fixed to `0.15.1` since it's causing the `packages/components-js/tests/smoke/unit/specs/package.smoke.ts` test
-to hang in the pipeline.
