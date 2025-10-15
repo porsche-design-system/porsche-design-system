@@ -17,7 +17,7 @@ const generateSharedCode = (): string => {
   return `import type { Cdn, Format, FormatWithCSP, FormatWithJS } from '../shared';
 import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
-const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
+const getCdnBaseUrl = (cdn: Cdn): string => './assets';
 
 const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
   Object.entries(props)
