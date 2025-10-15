@@ -6,7 +6,6 @@ import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-u
 import * as hasDescription from '../../utils/form/hasDescription';
 import * as hasHeading from '../../utils/form/hasHeading';
 import * as jsonUtils from '../../utils/json';
-import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as validatePropsUtils from '../../utils/validation/validateProps';
 import { Carousel } from './carousel';
 import * as carouselUtils from './carousel-utils';
@@ -215,20 +214,6 @@ describe('render', () => {
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
-  it('should call parseJSON() with correct parameter and set this.parsedDisablePagination', () => {
-    jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
-    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
-    const component = new Carousel();
-    component.host = document.createElement('p-carousel');
-    component.host.attachShadow({ mode: 'open' });
-    component.disablePagination = true;
-
-    component.render();
-    expect(spy).toHaveBeenCalledWith(true);
-
-    expect((component as any).parsedDisablePagination).toBe(false);
-  });
-
   it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
     jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
@@ -429,12 +414,10 @@ describe('registerSplideHandlers()', () => {
     const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation();
     const changeEmitSpy = jest.fn();
-    const carouselChangeEmitSpy = jest.fn();
     const component = new Carousel();
     component['amountOfPages'] = 2; // hasNavigation = true
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['update'] = { emit: changeEmitSpy };
-    component['carouselChange'] = { emit: carouselChangeEmitSpy };
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('move', 1, 0);
@@ -445,7 +428,6 @@ describe('registerSplideHandlers()', () => {
     );
     expect(updatePaginationSpy).toHaveBeenCalledWith(component['paginationEl'], 2, 1);
     expect(changeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
-    expect(carouselChangeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
   });
 
   it('should call this.splide.mount()', () => {
