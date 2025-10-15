@@ -10,7 +10,7 @@ beforeEach(() => {
 describe('if global styles are missing', () => {
   describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
     beforeEach(() => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = 'production';
     });
 
@@ -46,7 +46,7 @@ describe('if global styles are missing', () => {
 
   describe('for ROLLUP_REPLACE_IS_STAGING="staging"', () => {
     beforeEach(() => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = 'staging';
     });
 
@@ -66,7 +66,7 @@ describe('if global styles are there (link)', () => {
 
   describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
     beforeEach(() => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = 'production';
     });
 
@@ -82,7 +82,7 @@ describe('if global styles are there (link)', () => {
 
   describe('for ROLLUP_REPLACE_IS_STAGING="staging"', () => {
     beforeEach(() => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = 'staging';
     });
 
@@ -102,7 +102,7 @@ describe('if global styles are there (inline style)', () => {
 
   describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
     beforeEach(() => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = 'production';
     });
 
@@ -118,7 +118,7 @@ describe('if global styles are there (inline style)', () => {
 
   describe('for ROLLUP_REPLACE_IS_STAGING="staging"', () => {
     beforeEach(() => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = 'staging';
     });
 
