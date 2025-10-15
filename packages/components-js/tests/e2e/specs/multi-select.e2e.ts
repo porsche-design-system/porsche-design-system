@@ -147,27 +147,25 @@ test.describe('Blur Event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'after outside click').toBe(1);
   });
 
-  skipInBrowsers(['webkit', 'firefox'], () => {
-    test('should emit blur event when button loses focus by keyboard', async ({ page }) => {
-      await initMultiSelect(page);
-      const host = getHost(page);
-      const button = getButton(page);
-      const dropdown = getDropdown(page);
-      await addEventListener(host, 'blur');
+  test('should emit blur event when button loses focus by keyboard', async ({ page }) => {
+    await initMultiSelect(page);
+    const host = getHost(page);
+    const button = getButton(page);
+    const dropdown = getDropdown(page);
+    await addEventListener(host, 'blur');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await expect(dropdown).toBeVisible();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await expect(dropdown).toBeVisible();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'before focus next element by keyboard').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'before focus next element by keyboard').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(dropdown).toBeHidden();
-      await expect(button).toBeFocused();
-      await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await expect(dropdown).toBeHidden();
+    await expect(button).toBeFocused();
+    await page.keyboard.press('Tab');
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after focus next element by keyboard').toBe(1);
-    });
+    expect((await getEventSummary(host, 'blur')).counter, 'after focus next element by keyboard').toBe(1);
   });
 
   test('should not emit blur event when filter input loses focus', async ({ page }) => {
