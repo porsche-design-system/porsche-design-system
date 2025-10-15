@@ -54,11 +54,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Link Pure`:
   - prop `weight` (can't be configured anymore)
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
+  - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` (use `1/1 | 4/3 | 3/4 | 16/9 | 9/16` instead)
+- `Link Tile`, `Button Tile`:
+  - Value `default` of prop `size` (use `medium` instead)
+  - Value `semibold` of prop `weight` (use `semi-bold` instead)
 - `Modal`:
   - prop `disableCloseButton` (use `dismissButton` instead)
   - prop `heading` (use `slot="header"` instead)
   - slot `heading` (use `slot="header"` instead)
   - event `close` (use `dismiss` instead)
+- `Multi Select`:
+  - event `update` (use `change` instead)
 - `Pagination`:
   - prop `allyLabel` (use `intl.root` instead)
   - prop `allyLabelPrev` (use `intl.prev` instead)
@@ -78,6 +85,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - event `update` (use `change` instead)
 - `Select`:
   - event `update` (use `change` instead)
+- `Stepper Horizontal`:
+  - event `stepChange` (use `update` instead)
 - `Switch`:
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
   - event `switchChange` (use `update` instead)
