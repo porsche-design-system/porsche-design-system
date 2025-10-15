@@ -1,12 +1,15 @@
 import { forceUpdate } from '@stencil/core';
 import type { Theme } from '../../../types';
-import type { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from '../../tabs-bar/tabs-bar-utils';
 import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
 
-export type TabsSize = TabsBarSize;
-export type TabsWeight = TabsBarWeight;
+// TODO: following types should be re-exported from tabs-bar but causes component-meta generator to fail currently
+export const TABS_SIZES = ['small', 'medium'] as const;
+export type TabsSize = (typeof TABS_SIZES)[number];
 
-export type TabsUpdateEventDetail = TabsBarUpdateEventDetail;
+export const TABS_WEIGHTS = ['regular', 'semi-bold'] as const;
+export type TabsWeight = (typeof TABS_WEIGHTS)[number];
+
+export type TabsUpdateEventDetail = { activeTabIndex: number };
 
 export const syncTabsItemsProps = (items: HTMLPTabsItemElement[], theme: Theme): void => {
   for (const item of items) {

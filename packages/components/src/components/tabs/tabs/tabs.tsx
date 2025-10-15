@@ -15,13 +15,19 @@ import {
   throwIfChildrenAreNotOfKind,
   validateProps,
 } from '../../../utils';
-import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, type TabsBarUpdateEventDetail } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
-import { syncTabsItemsProps, type TabsSize, type TabsUpdateEventDetail, type TabsWeight } from './tabs-utils';
+import {
+  syncTabsItemsProps,
+  TABS_SIZES,
+  TABS_WEIGHTS,
+  type TabsSize,
+  type TabsUpdateEventDetail,
+  type TabsWeight,
+} from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
-  size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
-  weight: AllowedTypes.oneOf<TabsWeight>(TABS_BAR_WEIGHTS),
+  size: AllowedTypes.breakpoint<TabsSize>(TABS_SIZES),
+  weight: AllowedTypes.oneOf<TabsWeight>(TABS_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeTabIndex: AllowedTypes.number,
 };
@@ -133,7 +139,7 @@ export class Tabs {
     });
   };
 
-  private onTabsBarUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>): void => {
+  private onTabsBarUpdate = (e: CustomEvent<TabsUpdateEventDetail>): void => {
     e.stopPropagation(); // prevent double event emission because of identical name
     this.activeTabIndex = e.detail.activeTabIndex;
   };

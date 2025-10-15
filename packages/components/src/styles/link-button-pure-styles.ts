@@ -1,6 +1,13 @@
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  frostedGlassStyle,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import { type GetJssStyleFunction, buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
+import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -12,13 +19,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -149,8 +149,7 @@ export const getLinkButtonPureStyles = (
             { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
             buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-              // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-              order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+              order: alignLabelValue === 'start' ? -1 : 0,
             }))
           ),
         }

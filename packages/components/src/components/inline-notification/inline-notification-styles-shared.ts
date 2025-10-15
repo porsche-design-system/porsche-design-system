@@ -1,6 +1,3 @@
-import type { JssStyle } from 'jss';
-import type { Theme } from '../../types';
-import type { InlineNotificationState } from './inline-notification-utils';
 import {
   borderRadiusSmall,
   getMediaQueryMax,
@@ -9,8 +6,11 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import type { Theme } from '../../types';
 import { isHighContrastMode } from '../../utils';
+import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
@@ -18,7 +18,6 @@ const mediaQueryMaxS = getMediaQueryMax('s');
 const getBackgroundColor = (state: InlineNotificationState, theme: Theme): string => {
   const { infoSoftColor, successSoftColor, errorSoftColor, warningSoftColor } = getThemedColors(theme);
   const colorMap: Record<InlineNotificationState, string> = {
-    neutral: infoSoftColor, // deprecated
     info: infoSoftColor,
     warning: warningSoftColor,
     success: successSoftColor,

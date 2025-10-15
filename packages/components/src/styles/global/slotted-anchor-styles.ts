@@ -7,20 +7,14 @@ export const tagNamesWithSlottedAnchorArray: TagName[] = [
   'p-accordion',
   'p-banner',
   'p-carousel',
-  'p-checkbox-wrapper',
   'p-display',
   'p-heading',
-  'p-headline',
   'p-inline-notification',
-  'p-radio-button-wrapper',
-  'p-select-wrapper',
   'p-switch',
   'p-table',
   'p-tabs',
   'p-text',
-  'p-text-field-wrapper',
   'p-text-list',
-  'p-textarea-wrapper',
 ];
 
 export const getSlottedAnchorStyles = (tagName: TagName): Styles => ({

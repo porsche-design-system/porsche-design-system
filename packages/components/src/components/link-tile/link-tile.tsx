@@ -1,20 +1,20 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
-  type ITileProps,
-  LINK_ARIA_ATTRIBUTES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  type ITileProps,
+  LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import {
-  LINK_TILE_WEIGHTS,
   type LinkTileAlign,
   type LinkTileAriaAttribute,
   type LinkTileAspectRatio,
@@ -27,7 +27,7 @@ import {
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
-  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(TILE_WEIGHTS),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,

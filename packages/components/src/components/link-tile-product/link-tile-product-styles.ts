@@ -1,16 +1,3 @@
-import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusLarge,
   borderRadiusMedium,
@@ -23,9 +10,22 @@ import {
   textXSmallStyle,
   textXXSmallStyle,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
-import type { JssStyle } from 'jss';
 
 const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
@@ -119,7 +119,7 @@ export const getComponentCss = (
       color: primaryColor,
       backgroundColor: backgroundSurfaceColor,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
-        aspectRatio: ratio.replace(':', '/'),
+        aspectRatio: ratio,
       })),
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,

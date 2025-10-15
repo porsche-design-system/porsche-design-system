@@ -1,9 +1,9 @@
-import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
-import { getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
 import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
 
@@ -18,7 +18,7 @@ const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: 
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
-    [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
+    [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
       textColor: isHighContrastMode ? disabledColor : contrastHighColor,
@@ -37,7 +37,7 @@ const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: 
     },
   };
 
-  return colors[variant === 'tertiary' ? 'secondary' : variant];
+  return colors[variant];
 };
 
 export const getComponentCss = (

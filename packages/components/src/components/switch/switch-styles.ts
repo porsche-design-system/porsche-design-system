@@ -8,7 +8,6 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
-  SCALING_BASE_VALUE,
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
@@ -20,6 +19,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
+  SCALING_BASE_VALUE,
 } from '../../styles';
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
@@ -201,8 +201,7 @@ export const getComponentCss = (
         }),
         ...mergeDeep(
           buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-            // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-            order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+            order: alignLabelValue === 'start' ? -1 : 0,
           })),
           buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
             getHiddenTextJssStyle(isHidden, {

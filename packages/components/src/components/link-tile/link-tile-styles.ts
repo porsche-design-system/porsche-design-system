@@ -95,10 +95,10 @@ export const getComponentCss = (
         hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (sizeValue: TileSize) => ({
-            fontSize: getFontSizeText(sizeValue === 'default' ? 'medium' : sizeValue), // mapping of the deprecated size 'default'
+            fontSize: getFontSizeText(sizeValue),
           })),
           buildResponsiveStyles(weight, (weightValue: TileWeight | LinkTileWeight) => ({
-            fontWeight: getFontWeight(weightValue === 'semibold' ? 'semi-bold' : weightValue), // mapping of the deprecated weight 'semibold'
+            fontWeight: getFontWeight(weightValue),
           })),
           buildResponsiveStyles(background, (backgroundValue: Theme) => ({
             color: getThemedColors(backgroundValue).primaryColor,

@@ -16,7 +16,7 @@ import {
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
-import { type Theme, getCss } from '../../utils';
+import { getCss, type Theme } from '../../utils';
 import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
 /**
@@ -44,7 +44,7 @@ export const getComponentCss = (
   footerBehavior: FlyoutFooterBehavior,
   theme: Theme
 ): string => {
-  const isPositionStart = position === 'start' || position === 'left';
+  const isPositionStart = position === 'start';
   const isFooterFixed = footerBehavior === 'fixed';
 
   return getCss({

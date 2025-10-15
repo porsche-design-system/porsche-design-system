@@ -1,6 +1,13 @@
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  frostedGlassStyle,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, darken, hasVisibleIcon, isHighContrastMode, lighten } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
+import { buildResponsiveStyles, darken, hasVisibleIcon, isHighContrastMode, lighten } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -15,13 +22,6 @@ import {
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from './';
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  frostedGlassStyle,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
 
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
@@ -40,7 +40,7 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
-    [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
+    [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
       textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
@@ -65,7 +65,7 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
     },
   };
 
-  return colors[variant === 'tertiary' ? 'secondary' : variant];
+  return colors[variant];
 };
 
 export const getLinkButtonStyles = (
