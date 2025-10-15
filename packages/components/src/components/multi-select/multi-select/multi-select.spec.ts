@@ -69,7 +69,6 @@ describe('componentDidLoad', () => {
     expect(component['inputSearchInputElement']).toBe(
       component['inputSearchElement'].shadowRoot.querySelector('input')
     );
-    // @ts-expect-error typings missing
     expect(component['inputSearchInputElement'].ariaControlsElements).toEqual([listbox]);
   });
 });
@@ -101,7 +100,9 @@ describe('formResetCallback', () => {
   const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
   component.formResetCallback();
   const formData = new FormData();
-  defaultValue.forEach((val) => formData.append(component.name, val));
+  defaultValue.forEach((val) => {
+    formData.append(component.name, val);
+  });
   expect(setFormValueSpy).toHaveBeenCalledWith(formData);
   expect(component.value).toBe(defaultValue);
 });
@@ -113,7 +114,9 @@ describe('setFormValue', () => {
   component.name = 'some-name';
   component.setFormValue(value);
   const formData = new FormData();
-  value.forEach((val) => formData.append(component.name, val));
+  value.forEach((val) => {
+    formData.append(component.name, val);
+  });
   expect(setFormValueSpy).toHaveBeenCalledWith(formData);
 });
 

@@ -33,10 +33,10 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
 
   const highContrastColors = getHighContrastColors();
   const cssObject = getComponentCssObject(spy);
-  const filteredCSS = [];
+  const filteredCSS: any[] = [];
 
   function findAllMatchingChildValues(obj: object, val: string): object {
-    const matchingValues: object = {};
+    const matchingValues: Record<string, any> = {};
     for (const [parentKey, value] of Object.entries(obj)) {
       if (typeof value === 'object') {
         const matches = Object.entries(value).filter(([, childValue]) => childValue === val);
@@ -60,7 +60,6 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
     if (Object.keys(res).length > 0) {
       filteredCSS.push(res);
     }
-    return null;
   });
   filteredCSS.length > 0 && expect(filteredCSS).toMatchSnapshot();
 });

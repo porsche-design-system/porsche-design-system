@@ -82,7 +82,7 @@ describe('validateGetFontFaceStylesUsage()', () => {
   ])(
     'should call document.head.querySelector() with correct parameters for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
@@ -112,7 +112,7 @@ describe('validateGetFontFaceStylesUsage()', () => {
   ])(
     'should call document.head.querySelector() with correct parameters for ROLLUP_REPLACE_IS_STAGING: "%s" and process.env.NODE_ENV: "%s"',
     (rollupReplaceIsStaging, nodeEnv) => {
-      // @ts-ignore
+      // @ts-expect-error
       ROLLUP_REPLACE_IS_STAGING = rollupReplaceIsStaging;
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {
-  type StepperHorizontalItemState,
-  type StepperHorizontalUpdateEventDetail,
   PButton,
   PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
+  type StepperHorizontalItemState,
+  type StepperHorizontalUpdateEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -42,11 +42,11 @@ const onNextPrevStep = (direction: 'next' | 'prev'): void => {
   const activeStepIndex = getActiveStepIndex(newState);
 
   if (direction === 'next') {
-    newState[activeStepIndex].state = 'complete';
-    newState[activeStepIndex + 1].state = 'current';
+    newState[activeStepIndex]!.state = 'complete';
+    newState[activeStepIndex + 1]!.state = 'current';
   } else {
-    delete newState[activeStepIndex].state;
-    newState[activeStepIndex - 1].state = 'current';
+    delete newState[activeStepIndex]!.state;
+    newState[activeStepIndex - 1]!.state = 'current';
   }
 
   steps.value = newState;
@@ -58,9 +58,9 @@ const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
   const newState = [...steps.value];
   for (let i = activeStepIndex + 1; i < newState.length; i++) {
     // reset step state when going back via stepper horizontal item click
-    delete newState[i].state;
+    delete newState[i]!.state;
   }
-  newState[activeStepIndex].state = 'current';
+  newState[activeStepIndex]!.state = 'current';
   steps.value = newState;
 };
 </script>

@@ -107,7 +107,7 @@ describe('updateValue()', () => {
     component.change = { emit: emitSpy };
     component.update = { emit: emitSpy };
 
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(newValue);
 
     expect(emitSpy).toHaveBeenCalledWith({ value: newValue, isComplete: true });
