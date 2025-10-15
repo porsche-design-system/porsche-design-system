@@ -109,7 +109,7 @@ describe('updateSegmentedControlItemHandler', () => {
     component.update = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
     component.disabled = false;
-    // @ts-ignore
+    // @ts-expect-error
     const updateValueSpy = jest.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
@@ -120,7 +120,7 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should not call updateValue when disabled', () => {
     const component = initComponent();
     component.disabled = true;
-    // @ts-ignore
+    // @ts-expect-error
     const updateValueSpy = jest.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
@@ -167,14 +167,14 @@ describe('updateValue()', () => {
 
   it('should set this.value', () => {
     expect(component.value).toBeUndefined();
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(item);
 
     expect(component.value).toBe(item.value);
   });
 
   it('should call segmentedControlChange.emit()', () => {
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(item);
 
     expect(emitSpy).toHaveBeenCalledWith({ value: item.value });
@@ -182,7 +182,7 @@ describe('updateValue()', () => {
 
   it('should call focus() on item', () => {
     const spy = jest.spyOn(item, 'focus');
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(item);
 
     expect(spy).toHaveBeenCalledWith();
