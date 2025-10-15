@@ -1,4 +1,3 @@
-import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
 import * as throwIfInvalidLinkUsageUtils from '../../utils/validation/throwIfInvalidLinkUsage';
 import { LinkPure } from './link-pure';
 
