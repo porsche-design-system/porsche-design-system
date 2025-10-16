@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import {radioGroupStory} from '@/app/components/radio-group/radio-group.stories';
+import { radioGroupStory } from '@/app/components/radio-group/radio-group.stories';
 import { Notification } from '@/components/common/Notification';
 import Link from 'next/link';
 
@@ -22,6 +22,12 @@ be used [within a form](/components/radio-group/examples#form) or in a
   <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</Link> API, which has
   limited browser support. For broader browser compatibility, consider using a
   <Link href="/components/radio-group/examples#controlled">controlled</Link> approach instead.
+</Notification>
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  The <code>blur</code> event is emitted whenever the focused <code>p-radio-group-option</code> changes — not only when
+  the entire <code>p-radio-group</code> loses focus. This means that switching between options within the same group
+  will also trigger a <code>blur</code> event for the previously focused option.
 </Notification>
 
 Options are slotted using the `p-radio-group-option` component. Each option needs to have an assigned value, which can
