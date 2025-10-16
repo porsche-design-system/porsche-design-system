@@ -25,7 +25,9 @@ describe('observeBreakpointChange()', () => {
     observeBreakpointChange(node, callback);
 
     expect(spies.length).toBe(7);
-    spies.forEach((spy) => expect(spy).toHaveBeenCalledWith('change', handleBreakpointChange));
+    spies.forEach((spy) => {
+      expect(spy).toHaveBeenCalledWith('change', handleBreakpointChange);
+    });
   });
 
   it('should add callback and key to breakpointChangeCallbackMap', () => {
@@ -71,6 +73,8 @@ describe('unobserveBreakpointChange()', () => {
 
     unobserveBreakpointChange(node);
 
-    spies.forEach((spy) => expect(spy).toHaveBeenCalledWith('change', handleBreakpointChange));
+    spies.forEach((spy) => {
+      expect(spy).toHaveBeenCalledWith('change', handleBreakpointChange);
+    });
   });
 });

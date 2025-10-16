@@ -126,6 +126,14 @@
     </p-radio-button-wrapper>
   </div>
 
+  <div class="playground light" title="should render default radio-group">
+    <p-radio-group label="Some label" name="some-name" value="a">
+      <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
+      <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
+      <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
+    </p-radio-group>
+  </div>
+
   <div class="playground light" title="should render default select">
     <p-select label="Some label" name="options">
       <p-select-option value="a">Option A</p-select-option>
@@ -471,6 +479,14 @@
     <my-prefix-p-radio-button-wrapper label="Some label">
       <input type="radio" />
     </my-prefix-p-radio-button-wrapper>
+  </div>
+
+  <div class="playground light" title="should render default radio-group with custom prefix">
+    <my-prefix-p-radio-group label="Some label" name="some-name" value="a">
+      <my-prefix-p-radio-group-option label="Some label A" value="a"></my-prefix-p-radio-group-option>
+      <my-prefix-p-radio-group-option label="Some label B" value="b"></my-prefix-p-radio-group-option>
+      <my-prefix-p-radio-group-option label="Some label C" value="c"></my-prefix-p-radio-group-option>
+    </my-prefix-p-radio-group>
   </div>
 
   <div class="playground light" title="should render default select with custom prefix">

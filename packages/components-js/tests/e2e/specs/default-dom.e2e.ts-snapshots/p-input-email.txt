@@ -1,5 +1,5 @@
 <div class="root">
-  <label class="label" id="label" for="input-email"> </label>
+  <label class="label" id="label" for="input-email"> Some label</label>
   <div class="wrapper">
     <slot name="start"> </slot>
     <input

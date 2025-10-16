@@ -6,7 +6,7 @@ exports[`tailwind package content > should match content 1`] = `
 @theme {
   /* Color */
   --color-primary: #010205;
-  --color-base: #FFF;
+  --color-canvas: #FFF;
   --color-surface: #EEEFF2;
   --color-shading: rgba(1,2,5,.67);
   --color-frosted: hsl(240 4% 85%/35%);
@@ -28,7 +28,7 @@ exports[`tailwind package content > should match content 1`] = `
   --color-skeleton: #f7f7f7;
 
   --color-primary-light: #010205;
-  --color-base-light: #FFF;
+  --color-canvas-light: #FFF;
   --color-surface-light: #EEEFF2;
   --color-shading-light: rgba(1,2,5,.67);
   --color-frosted-light: hsl(240 4% 85%/35%);
@@ -50,7 +50,7 @@ exports[`tailwind package content > should match content 1`] = `
   --color-skeleton-light: #f7f7f7;
 
   --color-primary-dark: #FBFCFF;
-  --color-base-dark: #0E0E12;
+  --color-canvas-dark: #0E0E12;
   --color-surface-dark: #212225;
   --color-shading-dark: rgba(38,38,41,.67);
   --color-frosted-dark: hsl(240 3% 26%/35%);
@@ -170,7 +170,7 @@ exports[`tailwind package content > should match content 1`] = `
 @layer theme {
   .light {
     --color-primary: #010205;
-    --color-base: #FFF;
+    --color-canvas: #FFF;
     --color-surface: #EEEFF2;
     --color-shading: rgba(1,2,5,.67);
     --color-frosted: hsl(240 4% 85%/35%);
@@ -194,7 +194,7 @@ exports[`tailwind package content > should match content 1`] = `
 
   .dark {
     --color-primary: #FBFCFF;
-    --color-base: #0E0E12;
+    --color-canvas: #0E0E12;
     --color-surface: #212225;
     --color-shading: rgba(38,38,41,.67);
     --color-frosted: hsl(240 3% 26%/35%);
@@ -219,7 +219,7 @@ exports[`tailwind package content > should match content 1`] = `
   .auto {
     @media (prefers-color-scheme: dark) {
       --color-primary: #FBFCFF;
-      --color-base: #0E0E12;
+      --color-canvas: #0E0E12;
       --color-surface: #212225;
       --color-shading: rgba(38,38,41,.67);
       --color-frosted: hsl(240 3% 26%/35%);

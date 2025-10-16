@@ -16,7 +16,7 @@ const generatedRoutes: RouteType[] = Object.keys(fromPages).map<RouteType>((page
     path: '/' + kebabCase(name),
     name: name,
     component: (fromPages as Record<string, RouteComponent>)[page],
-  };
+  } as RouteType;
 });
 
 export const routes: RouteType[] = [
@@ -341,6 +341,16 @@ export const routes: RouteType[] = [
     path: '/segmented-control-example-controlled',
     name: 'Segmented Control Example Controlled',
     component: fromExamples.SegmentedControlExampleControlled,
+  },
+  {
+    path: '/radio-group-example',
+    name: 'Radio Group Example',
+    component: fromExamples.RadioGroupExample,
+  },
+  {
+    path: '/radio-group-example-controlled',
+    name: 'Radio Group Example Controlled',
+    component: fromExamples.RadioGroupExampleControlled,
   },
   {
     path: '/select-example',

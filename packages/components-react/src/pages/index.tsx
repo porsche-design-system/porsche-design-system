@@ -174,6 +174,7 @@ import { PopoverRightPage } from './generated/PopoverRight';
 import { PopoverScrolledPage } from './generated/PopoverScrolled';
 import { PopoverTopPage } from './generated/PopoverTop';
 import { RadioButtonWrapperPage } from './generated/RadioButtonWrapper';
+import { RadioGroupPage } from './generated/RadioGroup';
 import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
@@ -1040,6 +1041,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Radio Button Wrapper',
     path: '/radio-button-wrapper',
     element: <RadioButtonWrapperPage />,
+  },
+  {
+    name: 'Radio Group',
+    path: '/radio-group',
+    element: <RadioGroupPage />,
   },
   {
     name: 'Scroller',

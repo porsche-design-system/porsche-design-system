@@ -100,6 +100,7 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should stop event propagation', () => {
     const component = initComponent();
 
+    component.change = { emit: jest.fn() };
     component.update = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
 
@@ -110,10 +111,11 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should call updateValue when not disabled', () => {
     const component = initComponent();
 
+    component.change = { emit: jest.fn() };
     component.update = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
     component.disabled = false;
-    // @ts-ignore
+    // @ts-expect-error
     const updateValueSpy = jest.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
@@ -124,7 +126,7 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should not call updateValue when disabled', () => {
     const component = initComponent();
     component.disabled = true;
-    // @ts-ignore
+    // @ts-expect-error
     const updateValueSpy = jest.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
@@ -158,6 +160,7 @@ describe('componentDidLoad', () => {
 describe('updateValue()', () => {
   const component = initComponent();
   const emitSpy = jest.fn();
+  component.change = { emit: jest.fn() };
   component.update = { emit: emitSpy };
   component.segmentedControlChange = { emit: emitSpy };
 
@@ -170,14 +173,14 @@ describe('updateValue()', () => {
 
   it('should set this.value', () => {
     expect(component.value).toBeUndefined();
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(item);
 
     expect(component.value).toBe(item.value);
   });
 
   it('should call segmentedControlChange.emit()', () => {
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(item);
 
     expect(emitSpy).toHaveBeenCalledWith({ value: item.value });
@@ -185,7 +188,7 @@ describe('updateValue()', () => {
 
   it('should call focus() on item', () => {
     const spy = jest.spyOn(item, 'focus');
-    // @ts-ignore
+    // @ts-expect-error
     component.updateValue(item);
 
     expect(spy).toHaveBeenCalled();

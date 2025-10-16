@@ -123,4 +123,12 @@ export default [
     },
     plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
   },
+  {
+    input: 'src/scripts/vrt/prepareVRTSnapshots.ts',
+    output: {
+      dir: 'bin',
+      format: 'cjs',
+    },
+    plugins: [shebang(), resolve(), json(), commonjs(), typescript({ strict: false, rootDir: 'src' })],
+  },
 ];

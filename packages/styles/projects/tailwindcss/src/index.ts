@@ -1,47 +1,59 @@
 import {
-  colorBaseLight,
-  colorPrimaryLight,
-  colorActiveLight,
-  colorContrastHighLight,
-  colorContrastLowLight,
-  colorContrastMediumLight,
-  colorDisabledLight,
-  colorErrorLight,
-  colorErrorSoftLight,
-  colorFocusLight,
-  colorFrostedLight,
-  colorHoverLight,
-  colorInfoLight,
-  colorInfoSoftLight,
-  colorShadingLight,
-  colorSuccessLight,
-  colorSuccessSoftLight,
-  colorSurfaceLight,
-  colorWarningLight,
-  colorWarningSoftLight,
+  blurFrosted,
+  borderRadiusLg,
+  borderRadiusMd,
+  borderRadiusSm,
+  borderWidthRegular,
+  borderWidthThin,
+  breakpoint2Xl,
+  breakpointLg,
+  breakpointMd,
+  breakpointSm,
+  breakpointXl,
+  breakpointXs,
   colorActiveDark,
-  colorBaseDark,
+  colorActiveLight,
+  colorCanvasDark,
+  colorCanvasLight,
   colorContrastHighDark,
+  colorContrastHighLight,
   colorContrastLowDark,
+  colorContrastLowLight,
   colorContrastMediumDark,
+  colorContrastMediumLight,
   colorDisabledDark,
+  colorDisabledLight,
   colorErrorDark,
+  colorErrorLight,
   colorErrorSoftDark,
+  colorErrorSoftLight,
   colorFocusDark,
+  colorFocusLight,
   colorFrostedDark,
+  colorFrostedLight,
   colorHoverDark,
+  colorHoverLight,
   colorInfoDark,
+  colorInfoLight,
   colorInfoSoftDark,
+  colorInfoSoftLight,
   colorPrimaryDark,
+  colorPrimaryLight,
   colorShadingDark,
+  colorShadingLight,
   colorSuccessDark,
+  colorSuccessLight,
   colorSuccessSoftDark,
+  colorSuccessSoftLight,
   colorSurfaceDark,
+  colorSurfaceLight,
   colorWarningDark,
+  colorWarningLight,
   colorWarningSoftDark,
-  fontSize2Xl,
+  colorWarningSoftLight,
   fontFamily,
   fontLineHeight,
+  fontSize2Xl,
   fontSize2Xs,
   fontSizeLg,
   fontSizeMd,
@@ -51,33 +63,7 @@ import {
   fontWeightBold,
   fontWeightRegular,
   fontWeightSemiBold,
-  spacingFluidSm,
-  breakpoint2Xl,
-  breakpointLg,
-  breakpointMd,
-  breakpointSm,
-  breakpointXl,
-  breakpointXs,
-  spacingFluid2Xl,
-  spacingFluidLg,
-  spacingFluidMd,
-  spacingFluidXl,
-  spacingFluidXs,
-  spacingStaticXl,
-  spacingStaticXs,
-  spacingStaticSm,
-  spacingStaticMd,
-  spacingStaticLg,
-  spacingStatic2Xl,
-  borderRadiusLg,
-  borderRadiusMd,
-  borderRadiusSm,
-  borderWidthRegular,
-  borderWidthThin,
-  blurFrosted,
-  shadowHigh,
-  shadowLow,
-  shadowMedium,
+  gradientFade,
   motionDurationLong,
   motionDurationModerate,
   motionDurationShort,
@@ -85,7 +71,21 @@ import {
   motionEaseIn,
   motionEaseInOut,
   motionEaseOut,
-  gradientFade,
+  shadowHigh,
+  shadowLow,
+  shadowMedium,
+  spacingFluid2Xl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXl,
+  spacingFluidXs,
+  spacingStatic2Xl,
+  spacingStaticLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXl,
+  spacingStaticXs,
 } from '@porsche-design-system/tokens';
 
 export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
@@ -93,7 +93,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 @theme {
   /* Color */
   --color-primary: ${colorPrimaryLight};
-  --color-base: ${colorBaseLight};
+  --color-canvas: ${colorCanvasLight};
   --color-surface: ${colorSurfaceLight};
   --color-shading: ${colorShadingLight};
   --color-frosted: ${colorFrostedLight};
@@ -115,7 +115,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-skeleton: #f7f7f7;
 
   --color-primary-light: ${colorPrimaryLight};
-  --color-base-light: ${colorBaseLight};
+  --color-canvas-light: ${colorCanvasLight};
   --color-surface-light: ${colorSurfaceLight};
   --color-shading-light: ${colorShadingLight};
   --color-frosted-light: ${colorFrostedLight};
@@ -137,7 +137,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-skeleton-light: #f7f7f7;
 
   --color-primary-dark: ${colorPrimaryDark};
-  --color-base-dark: ${colorBaseDark};
+  --color-canvas-dark: ${colorCanvasDark};
   --color-surface-dark: ${colorSurfaceDark};
   --color-shading-dark: ${colorShadingDark};
   --color-frosted-dark: ${colorFrostedDark};
@@ -257,7 +257,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 @layer theme {
   .light {
     --color-primary: ${colorPrimaryLight};
-    --color-base: ${colorBaseLight};
+    --color-canvas: ${colorCanvasLight};
     --color-surface: ${colorSurfaceLight};
     --color-shading: ${colorShadingLight};
     --color-frosted: ${colorFrostedLight};
@@ -281,7 +281,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
   .dark {
     --color-primary: ${colorPrimaryDark};
-    --color-base: ${colorBaseDark};
+    --color-canvas: ${colorCanvasDark};
     --color-surface: ${colorSurfaceDark};
     --color-shading: ${colorShadingDark};
     --color-frosted: ${colorFrostedDark};
@@ -306,7 +306,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   .auto {
     @media (prefers-color-scheme: dark) {
       --color-primary: ${colorPrimaryDark};
-      --color-base: ${colorBaseDark};
+      --color-canvas: ${colorCanvasDark};
       --color-surface: ${colorSurfaceDark};
       --color-shading: ${colorShadingDark};
       --color-frosted: ${colorFrostedDark};

@@ -786,6 +786,34 @@ exports[`should call validateProps() with correct parameters via render for p-ra
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-radio-group: propTypes with ValidatorFunctions 1`] = `
+{
+  "compact": "boolean",
+  "description": "string",
+  "direction": "breakpoint",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-radio-group-option: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "label": "string",
+  "loading": "boolean",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-scroller: propTypes with ValidatorFunctions 1`] = `
 {
   "alignScrollIndicator": "oneOf",

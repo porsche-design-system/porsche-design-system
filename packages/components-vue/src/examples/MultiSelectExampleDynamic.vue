@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  type MultiSelectUpdateEventDetail,
+  type MultiSelectChangeEventDetail,
   PButton,
   PMultiSelect,
   PMultiSelectOption,
@@ -21,7 +21,7 @@ const onResetValue = () => {
   inputValue.value = '';
 };
 
-const onUpdate = (e: MultiSelectUpdateEventDetail) => {
+const onChange = (e: MultiSelectChangeEventDetail) => {
   selectedValues.value = e.value;
   inputValue.value = e.value.join(',');
 };
@@ -45,7 +45,7 @@ const onRemoveOption = () => {
     <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
     <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
 
-    <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @update="onUpdate">
+    <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @change="onChange">
       <PMultiSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`">
         Option {{ idx }}
       </PMultiSelectOption>

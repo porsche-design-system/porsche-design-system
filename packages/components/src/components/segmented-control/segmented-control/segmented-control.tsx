@@ -4,21 +4,21 @@ import {
   Element,
   Event,
   type EventEmitter,
+  forceUpdate,
   Host,
+  h,
   type JSX,
   Listen,
   Prop,
   Watch,
-  forceUpdate,
-  h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   hasPropValueChanged,
   observeChildren,
+  THEMES,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
@@ -27,12 +27,13 @@ import {
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
+  getItemMaxWidth,
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
   SEGMENTED_CONTROL_COLUMNS,
   type SegmentedControlBackgroundColor,
+  type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
   type SegmentedControlUpdateEventDetail,
-  getItemMaxWidth,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
 
@@ -94,7 +95,15 @@ export class SegmentedControl {
    * Emitted when selected element changes. */
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlUpdateEventDetail>;
 
-  /** Emitted when selected element changes. */
+  /** Emitted when the segmented-control has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<void>;
+
+  /** Emitted when the selection is changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<SegmentedControlChangeEventDetail>;
+
+  /**
+   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
+   */
   @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -107,6 +116,12 @@ export class SegmentedControl {
     if (!this.disabled) {
       this.updateValue(e.target);
     }
+  }
+
+  @Listen('internalBlur')
+  public emitBlurEvent(e: CustomEvent): void {
+    e.stopPropagation();
+    this.blur.emit();
   }
 
   @Watch('value')
@@ -176,6 +191,7 @@ export class SegmentedControl {
 
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
     this.value = item.value; // causes rerender
+    this.change.emit({ value: this.value });
     this.update.emit({ value: this.value });
     this.segmentedControlChange.emit({ value: this.value });
     item.focus();

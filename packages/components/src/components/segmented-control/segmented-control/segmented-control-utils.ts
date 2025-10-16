@@ -17,7 +17,9 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 
 /** @deprecated */
 export type SegmentedControlUpdateEvent = { value: string | number };
+/** @deprecated */
 export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
+export type SegmentedControlChangeEventDetail = SegmentedControlUpdateEventDetail;
 
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];

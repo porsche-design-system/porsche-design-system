@@ -18483,6 +18483,302 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 </p-radio-button-wrapper>
 `;
 
+exports[`should render dsr component for PRadioGroup 1`] = `
+<p-radio-group
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  color-scheme: light dark !important;
+  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: grid;
+  justify-self: flex-start;
+  row-gap: 4px;
+}
+.wrapper {
+  align-items: stretch;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
+  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: inherit;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="radio-group"
+        id="label"
+      />
+      <div
+        aria-labelledby="radio-group"
+        class="wrapper"
+        role="radiogroup"
+      >
+        <slot />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-radio-group>
+`;
+
+exports[`should render dsr component for PRadioGroupOption 1`] = `
+<p-radio-group-option
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  color-scheme: light dark !important;
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+input {
+  grid-area: 1/1;
+  border-radius: 50%;
+  position: relative;
+  width: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
+  height: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+}
+input::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+input:checked {
+  border-color: #010205;
+  background-color: #010205;
+  background-size: max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex)));
+  background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle fill="%23FBFCFF" cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;');
+}
+input::-moz-focus-inner {
+  border: 0;
+}
+input:focus {
+  outline: 0;
+}
+input:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+@media(hover:hover) {
+  input:hover,label:hover~.wrapper input {
+    border-color: #010205;
+  }
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #535457;
+    background-color: #535457;
+  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    label:hover~.wrapper input {
+      transition: unset;
+    }
+}
+
+}
+
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: grid;
+  grid-area: 1/1;
+  min-width: 24px;
+  min-height: 24px;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="radio-group-option"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <input
+          aria-describedby="description message"
+          id="radio-group-option"
+          tabindex="-1"
+          type="radio"
+        />
+      </div>
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+</p-radio-group-option>
+`;
+
 exports[`should render dsr component for PScroller 1`] = `
 <p-scroller
   data-ssr=""
