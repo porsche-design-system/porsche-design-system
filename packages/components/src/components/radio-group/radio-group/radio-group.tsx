@@ -113,6 +113,9 @@ export class RadioGroup {
   /** Controls the visual appearance of the component. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Emitted when the radio-group has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<void>;
+
   /** Emitted when the selected option is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<RadioGroupChangeEventDetail>;
 
@@ -134,6 +137,13 @@ export class RadioGroup {
     setSelectedRadioGroupOption(this.radioGroupOptions, selectedOption);
     this.value = selectedOption.value;
     this.change.emit(originalEvent);
+  }
+
+  @Listen('internalRadioGroupOptionBlur')
+  public emitBlurEvent(e: CustomEvent): void {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    this.blur.emit();
   }
 
   @Watch('value')
