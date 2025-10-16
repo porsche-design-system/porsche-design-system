@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `blur` event ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
 - `Radio Group`: `blur` event ([#4057](https://github.com/porsche-design-system/porsche-design-system/pull/4057))
+- `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
 
 ### Changed
 
@@ -50,8 +52,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4001](https://github.com/porsche-design-system/porsche-design-system/pull/4001))
 - `Checkbox`: `update` event is deprecated. Use `change` event instead.
   ([#4010](https://github.com/porsche-design-system/porsche-design-system/pull/4010))
-- `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
-  ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
 
 ### Fixed
 
