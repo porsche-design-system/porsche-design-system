@@ -326,10 +326,11 @@ test.describe('Blur Event', () => {
   });
 
   test('should emit blur event when button loses focus by keyboard', async ({ page }) => {
-    await initSelect(page);
+    await initSelect(page, { options: { markupAfter: '<button id="test-button">Some button</button>' } });
     const host = getHost(page);
     const button = getButton(page);
     const dropdown = getDropdown(page);
+    const buttonAfter = page.locator('#test-button');
     await addEventListener(host, 'blur');
 
     await page.keyboard.press('Tab');
@@ -341,7 +342,9 @@ test.describe('Blur Event', () => {
     await page.keyboard.press('Tab');
     await expect(dropdown).toBeHidden();
     await expect(button).toBeFocused();
+
     await page.keyboard.press('Tab');
+    await expect(buttonAfter).toBeFocused();
 
     expect((await getEventSummary(host, 'blur')).counter, 'after focus next element by keyboard').toBe(1);
   });
