@@ -25,7 +25,6 @@ export const getScalingVar = (compact: boolean) =>
   `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
 
 export const ICON_OFFSET = '4px';
-export const ITEM_PADDING = '17px';
 
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
