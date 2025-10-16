@@ -298,7 +298,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(
           /(getSegmentedControlCss)\(\s*getItemMaxWidth\(\s*this\.props\s*,\s*this\.props\.compact\s*\)/,
-          '$1(100'
+          '$1(54'
         )
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
