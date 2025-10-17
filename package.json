@@ -264,7 +264,9 @@
     "**/vite/rollup": "^4.52.4",
     "**/workbox-build/rollup": "^4.52.4",
     "**/@types/node": "24.7.2",
-    "**/ts-jest": "29.4.5"
+    "**/ts-jest": "29.4.5",
+    "**/next": "15.4.0-canary.99",
+    "**/@next/mdx": "^15.4.0-canary.99"
   },
   "volta": {
     "node": "22.12.0",
