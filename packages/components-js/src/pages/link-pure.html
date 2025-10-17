@@ -16,15 +16,6 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should not render with different weight">
-  <p-link-pure href="https://porsche.com" weight="regular">Label weight regular</p-link-pure>
-  <p-link-pure weight="regular"><a href="https://porsche.com">Label slotted weight regular</a></p-link-pure>
-  <p-link-pure href="https://porsche.com" weight="semi-bold">Label weight semi-bold</p-link-pure>
-  <p-link-pure weight="semi-bold"><a href="https://porsche.com">Label slotted weight semi-bold</a></p-link-pure>
-  <p-link-pure href="https://porsche.com" weight="bold">Label weight bold</p-link-pure>
-  <p-link-pure weight="bold"><a href="https://porsche.com">Label slotted weight bold</a></p-link-pure>
-</div>
-
 <div class="playground light auto-layout-inline" title="should render with active state">
   <p-link-pure href="https://porsche.com" active="true">Label active</p-link-pure>
   <p-link-pure active="true"><a href="https://porsche.com">Label slotted active</a></p-link-pure>
@@ -86,26 +77,15 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should align label to start">
-  <p-link-pure href="https://porsche.com" align-label="left">Label align left (deprecated)</p-link-pure>
   <p-link-pure href="https://porsche.com" align-label="start">Label align start</p-link-pure>
-  <p-link-pure align-label="left"><a href="https://porsche.com">Label slotted align left (deprecated)</a></p-link-pure>
   <p-link-pure align-label="start"><a href="https://porsche.com">Label slotted align start</a></p-link-pure>
 </div>
 <div class="playground light auto-layout-inline" title="should align label to the start or end depending on viewport">
   <p-link-pure
     href="https://porsche.com"
-    align-label="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }"
-  >
-    Label align responsive
-  </p-link-pure>
-  <p-link-pure
-    href="https://porsche.com"
     align-label="{ base: 'start', xs: 'end', s: 'start', m: 'end', l: 'start', xl: 'end' }"
   >
     Label align responsive
-  </p-link-pure>
-  <p-link-pure align-label="{ base: 'left', xs: 'right', s: 'left', m: 'right', l: 'left', xl: 'right' }">
-    <a href="https://porsche.com">Label slotted align responsive</a>
   </p-link-pure>
   <p-link-pure align-label="{ base: 'start', xs: 'end', s: 'start', m: 'end', l: 'start', xl: 'end' }">
     <a href="https://porsche.com">Label slotted align responsive</a>

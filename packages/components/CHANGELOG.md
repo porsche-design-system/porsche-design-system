@@ -34,11 +34,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - event `carouselChange` use `update` instead
 - `Checkbox`:
   - event `update` (use `change` instead)
+- `Display`:
+  - value `left | right` of prop `align` (use `start | end` instead)
 - `Divider`:
   - prop `orientation` (use `direction` instead)
   - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
-- `Display`:
-  - value `left | right` of prop `align` (use `start | end` instead)
 - `Flyout`:
   - value `left | right` of prop `position` (use `start | end` instead)
 - `Heading`:
@@ -122,6 +122,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Toast`:
   - value `neutral` of prop `state` (use `info` instead)
 - Components:
+  - `Button Group` (use Tailwind CSS instead)
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
   - `Link Tile Model Signature`
