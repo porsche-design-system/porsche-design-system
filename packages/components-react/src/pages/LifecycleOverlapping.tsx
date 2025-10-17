@@ -1,33 +1,21 @@
+import { PInputText, PTextarea } from '@porsche-design-system/components-react';
 import { useState } from 'react';
-import { PTextareaWrapper, PTextFieldWrapper } from '@porsche-design-system/components-react';
 
 export const LifecycleOverlappingPage = (): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
 
   const props = {
     label: 'Some label',
-    showCounter: false,
+    name: 'some-name',
   };
 
   return (
     <>
       <button onClick={() => setIsActive(!isActive)}>Set Active</button>
-      <PTextFieldWrapper {...props}>
-        <input type="text" />
-      </PTextFieldWrapper>
-      {isActive && (
-        <PTextFieldWrapper {...props}>
-          <input type="text" />
-        </PTextFieldWrapper>
-      )}
-      <PTextareaWrapper {...props}>
-        <textarea />
-      </PTextareaWrapper>
-      {isActive && (
-        <PTextareaWrapper {...props}>
-          <textarea />
-        </PTextareaWrapper>
-      )}
+      <PInputText {...props} />
+      {isActive && <PInputText {...props} />}
+      <PTextarea {...props} />
+      {isActive && <PTextarea {...props} />}
     </>
   );
 };

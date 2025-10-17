@@ -1,8 +1,7 @@
 import { camelCase } from 'change-case';
 import fs from 'fs';
 import path from 'path';
-import type { TagName } from '../src';
-import type { Framework, FrameworkMarkup } from '../src/models';
+import type { Framework, FrameworkMarkup, TagName } from '../src';
 
 type SampleName =
   | TagName
@@ -771,29 +770,6 @@ const codeExamples: CodeSample[] = [
           angular: '/textarea-example-controlled.component.ts',
           react: '/TextareaExampleControlled.tsx',
           vue: '/TextareaExampleControlled.vue',
-        },
-      },
-    ],
-  },
-  {
-    component: 'p-text-field-wrapper',
-    examples: [
-      // {
-      //   name: 'TextFieldWrapperExampleIMask',
-      //   paths: {
-      //     'vanilla-js': '/text-field-wrapper-example-imask.html',
-      //     angular: '/text-field-wrapper-example-imask.component.ts',
-      //     react: '/TextFieldWrapperExampleIMask.tsx',
-      //     vue: '/TextFieldWrapperExampleIMask.vue',
-      //   },
-      // },
-      {
-        name: 'TextFieldWrapperExampleSearch',
-        paths: {
-          'vanilla-js': '/text-field-wrapper-example-search.html',
-          angular: '/text-field-wrapper-example-search.component.ts',
-          react: '/TextFieldWrapperExampleSearch.tsx',
-          vue: '/TextFieldWrapperExampleSearch.vue',
         },
       },
     ],

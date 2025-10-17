@@ -426,27 +426,6 @@ const generateComponentMeta = (): void => {
             {} as { [propName: string]: PropMeta['allowedValues'] }
           );
 
-    // custom workaround for variant prop of p-headline which isn't validated because of complexity
-    // and therefore can't be easily extracted
-    if (tagName === 'p-headline') {
-      allowedPropValues.variant = [
-        'large-title',
-        'headline-1',
-        'headline-2',
-        'headline-3',
-        'headline-4',
-        'headline-5',
-        'xx-small', // only these are breakpoint customizable
-        'x-small', // only these are breakpoint customizable
-        'small', // only these are breakpoint customizable
-        'medium', // only these are breakpoint customizable
-        'large', // only these are breakpoint customizable
-        'x-large', // only these are breakpoint customizable
-        'inherit', // only these are breakpoint customizable
-      ];
-      breakpointCustomizableProps.push('variant');
-    }
-
     // new format
     breakpointCustomizableProps.forEach((propName) => (propsMeta[propName].isBreakpointCustomizable = true));
     Object.entries(allowedPropValues).forEach(
@@ -467,11 +446,15 @@ const generateComponentMeta = (): void => {
         .replace(/\/\/.*/g, '') // strip comments
         .split(rawAttachComponentCssParams.includes('\n') ? '\n' : ',')
         .map((x) => x.trim());
-      const internalPropParams = attachComponentCssParams
+      const internalPropParams: [string, string | undefined][] = attachComponentCssParams
         .slice(2) // get rid of first 2 params: this.host and getComponentCss
-        .filter((param) => param.startsWith('this.host.')) // get rid of regular props, states and private members
-        .map((param) => /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z: ,{}]+)'?)?/.exec(param) || []) // extract param and default value if there is any
-        .map(([, param, value]) => [param, value]);
+        .filter((param: string): boolean => param.startsWith('this.host.')) // get rid of regular props, states and private members
+        .map((param: string): string[] => {
+          const match = /this\.host\.([A-Za-z]+)(?: \|\| '?([\dA-Za-z: ,{}]+)'?)?/.exec(param);
+          return (match || []) as (string | undefined)[];
+        })
+        .filter((matchArray: string[]): matchArray is [string, string, string | undefined] => matchArray.length >= 2) // Filter for successful matches
+        .map((matchArray) => [matchArray[1], matchArray[2]]);
 
       internalPropParams.forEach(([prop, value]) => {
         internalProps[prop] = value || null; // null is needed to not lose property in JSON.stringify

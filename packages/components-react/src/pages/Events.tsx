@@ -1,12 +1,10 @@
-import { type ChangeEvent, useCallback, useState } from 'react';
 import type {
-  AccordionUpdateEvent, // using deprecated to verify it is still available
-  CarouselUpdateEvent, // using deprecated to verify it is still available
-  PaginationUpdateEvent, // using deprecated to verify it is still available
-  TableUpdateEvent, // using deprecated to verify it is still available
-  SwitchUpdateEvent, // using deprecated to verify it is still available
-  TabsBarUpdateEvent, // using deprecated to verify it is still available
-  TabsUpdateEvent, // using deprecated to verify it is still available
+  AccordionUpdateEventDetail,
+  CarouselUpdateEventDetail,
+  PaginationUpdateEventDetail,
+  SwitchUpdateEventDetail,
+  TableUpdateEventDetail,
+  TabsBarUpdateEventDetail,
 } from '@porsche-design-system/components-react';
 import {
   PAccordion,
@@ -22,15 +20,14 @@ import {
   PTabs,
   PTabsBar,
   PTabsItem,
-  PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
 
 export const EventsPage = (): JSX.Element => {
   const [accordionUpdateEventCounter, setAccordionUpdateEventCounter] = useState(0);
   const [paginationUpdateEventCounter, setPaginationUpdateEventCounter] = useState(0);
   const [tabsBarUpdateEventCounter, setTabsBarUpdateEventCounter] = useState(0);
   const [tabsUpdateEventCounter, setTabsUpdateEventCounter] = useState(0);
-  const [textFieldSearchValue, setTextFieldSearchValue] = useState('');
   const [switchUpdateEventCounter, setSwitchUpdateEventCounter] = useState(0);
   const [bannerDismissEventCounter, setBannerDismissEventCounter] = useState(0);
   const [isBannerOpen, setIsBannerOpen] = useState(false);
@@ -43,27 +40,23 @@ export const EventsPage = (): JSX.Element => {
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionUpdate = useCallback(
-    (_: CustomEvent<AccordionUpdateEvent>) => setAccordionUpdateEventCounter((prev) => prev + 1),
+    (_: CustomEvent<AccordionUpdateEventDetail>) => setAccordionUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onPaginationUpdate = useCallback(
-    (_: CustomEvent<PaginationUpdateEvent>) => setPaginationUpdateEventCounter((prev) => prev + 1),
+    (_: CustomEvent<PaginationUpdateEventDetail>) => setPaginationUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsBarUpdate = useCallback(
-    (_: CustomEvent<TabsBarUpdateEvent>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
+    (_: CustomEvent<TabsBarUpdateEventDetail>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsUpdate = useCallback(
-    (_: CustomEvent<TabsUpdateEvent>) => setTabsUpdateEventCounter((prev) => prev + 1),
-    []
-  );
-  const onTextFieldSearchChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setTextFieldSearchValue(e.target.value),
+    (_: CustomEvent<TabsBarUpdateEventDetail>) => setTabsUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onSwitchUpdate = useCallback(
-    (_: CustomEvent<SwitchUpdateEvent>) => setSwitchUpdateEventCounter((prev) => prev + 1),
+    (_: CustomEvent<SwitchUpdateEventDetail>) => setSwitchUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onBannerClose = useCallback(() => {
@@ -75,11 +68,11 @@ export const EventsPage = (): JSX.Element => {
     setIsModalOpen(false);
   }, []);
   const onTableUpdate = useCallback(
-    (_: CustomEvent<TableUpdateEvent>) => setTableUpdateEventCounter((prev) => prev + 1),
+    (_: CustomEvent<TableUpdateEventDetail>) => setTableUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onCarouselUpdate = useCallback(
-    (_: CustomEvent<CarouselUpdateEvent>) => setCarouselUpdateEventCounter((prev) => prev + 1),
+    (_: CustomEvent<CarouselUpdateEventDetail>) => setCarouselUpdateEventCounter((prev) => prev + 1),
     []
   );
 
@@ -111,13 +104,6 @@ export const EventsPage = (): JSX.Element => {
           <PTabsItem label="Tab 3">Content 3</PTabsItem>
         </PTabs>
         <p>{tabsUpdateEventCounter}</p>
-      </div>
-
-      <div className="playground light">
-        <PTextFieldWrapper>
-          <input type="search" value={textFieldSearchValue} onChange={onTextFieldSearchChange} />
-        </PTextFieldWrapper>
-        <p>Value: {textFieldSearchValue}</p>
       </div>
 
       <div className="playground light">

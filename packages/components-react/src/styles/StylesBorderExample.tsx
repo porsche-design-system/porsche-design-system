@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
   borderRadiusLarge,
   borderRadiusMedium,
@@ -14,6 +13,7 @@ import {
   themeDarkPrimary,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
+import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

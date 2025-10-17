@@ -1,24 +1,24 @@
-import { Component, Element, Event, type EventEmitter, Fragment, type JSX, Prop, h } from '@stencil/core';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
+import { Component, Element, Event, type EventEmitter, Fragment, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  THEMES,
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-product-styles';
 import {
+  anchorSlot,
+  headerSlot,
   type LinkTileProductAspectRatio,
   type LinkTileProductLikeEventDetail,
   type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
-  anchorSlot,
-  headerSlot,
 } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
@@ -73,7 +73,7 @@ export class LinkTileProduct {
   @Prop() public href?: string;
 
   /** Aspect ratio of the link-tile-product. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3:4';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3/4';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTileProductTarget = '_self';

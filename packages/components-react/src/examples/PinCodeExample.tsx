@@ -1,10 +1,10 @@
 import { PButton, PPinCode, PText } from '@porsche-design-system/components-react';
-import { useCallback, useState } from 'react';
+import { type FormEvent, useCallback, useState } from 'react';
 
 export const PinCodeExamplePage = (): JSX.Element => {
   const [lastSubmittedValue, setLastSubmittedValue] = useState('none');
 
-  const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     setLastSubmittedValue(Array.from(formData.values()).join() || 'none');

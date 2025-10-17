@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { PButton } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
 export const ThemeInjectionPage = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);

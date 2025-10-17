@@ -22,8 +22,8 @@ export const SelectExampleRequiredPage = (): JSX.Element => {
 
   return (
     <>
-      <PCheckbox label="Required" name="required" checked={isRequired} onUpdate={onChangeRequired} />
-      <PCheckbox label="Allow deselection" name="deselection" checked={hasDeselection} onUpdate={onChangeDeselection} />
+      <PCheckbox label="Required" name="required" checked={isRequired} onChange={onChangeRequired} />
+      <PCheckbox label="Allow deselection" name="deselection" checked={hasDeselection} onChange={onChangeDeselection} />
 
       <form onSubmit={onSubmit}>
         <PSelect name="options" label="Some Label" required={isRequired}>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { PCarousel } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
 export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);

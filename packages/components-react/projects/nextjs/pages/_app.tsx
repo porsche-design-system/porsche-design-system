@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
-import type { JSX } from 'react';
 import Head from 'next/head';
+import type { JSX } from 'react';
 import { Providers } from '../app/providers';
 
 // NOTE: mostly unused since we are using app directory for generated pages

@@ -17,7 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed (deprecated in v3 already)
 
 - `Accordion`:
-  - `tag`, `accordionChange`
+  - `tag` (use `heading-tag` instead)
+  - `accordionChange`
   - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Banner`:
   - `slot="title"` (use `slot="heading"` instead)
@@ -124,6 +125,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Components:
   - `Button Group` (use Tailwind CSS instead)
   - `Checkbox Wrapper` (use `Checkbox` instead)
+  - `Radio Button Wrapper` (use `radio-group` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
   - `Link Tile Model Signature`
   - `Fieldset Wrapper` (use `Fieldset` instead)

@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
   borderRadiusLarge,
   gridGap,
@@ -14,6 +13,7 @@ import {
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

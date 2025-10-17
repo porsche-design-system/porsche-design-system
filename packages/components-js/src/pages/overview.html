@@ -5,40 +5,11 @@
     grid-template-columns: repeat(2, 50%);
   }
 
-  p-flex-item > p,
-  my-prefix-p-flex-item > p,
-  p-grid-item > p,
-  my-prefix-p-grid-item > p,
-  p-content-wrapper > p,
-  my-prefix-p-content-wrapper > p {
-    margin: 0;
-    padding: 4px 2vw;
-    text-align: center;
-    color: white;
-    background-color: lightskyblue;
-  }
-
-  p-flex-item:nth-child(1n) > p,
-  my-prefix-p-flex-item:nth-child(1n) > p,
-  p-grid-item:nth-child(1n) > p,
-  my-prefix-p-grid-item:nth-child(1n) > p {
-    background: skyblue;
-  }
-
-  p-flex-item:nth-child(2n) > p,
-  my-prefix-p-flex-item:nth-child(2n) > p,
-  p-grid-item:nth-child(2n) > p,
-  my-prefix-p-grid-item:nth-child(2n) > p {
-    background: deepskyblue;
-  }
-
   p-link-tile,
   p-button-tile,
-  p-link-tile-model-signature,
   p-link-tile-product,
   my-prefix-p-link-tile,
   my-prefix-p-button-tile,
-  my-prefix-p-link-tile-model-signature,
   my-prefix-p-link-tile-product {
     max-width: 400px;
   }
@@ -53,10 +24,6 @@
 <div>
   <div class="playground light" title="should render default heading">
     <p-heading>Some Heading</p-heading>
-  </div>
-
-  <div class="playground light" title="should render default headline">
-    <p-headline>Some Headline</p-headline>
   </div>
 
   <div class="playground light" title="should render default display">
@@ -103,27 +70,8 @@
     <p-button>Some label</p-button>
   </div>
 
-  <div class="playground light" title="should render default button-group">
-    <p-button-group>
-      <p-button>Some label</p-button>
-      <p-button>Some label</p-button>
-    </p-button-group>
-  </div>
-
   <div class="playground light" title="should render default button-pure">
     <p-button-pure>Some label</p-button-pure>
-  </div>
-
-  <div class="playground light" title="should render default checkbox-wrapper">
-    <p-checkbox-wrapper label="Some label">
-      <input type="checkbox" />
-    </p-checkbox-wrapper>
-  </div>
-
-  <div class="playground light" title="should render default radio-button-wrapper">
-    <p-radio-button-wrapper label="Some label">
-      <input type="radio" />
-    </p-radio-button-wrapper>
   </div>
 
   <div class="playground light" title="should render default radio-group">
@@ -142,16 +90,6 @@
     </p-select>
   </div>
 
-  <div class="playground light" title="should render default select-wrapper">
-    <p-select-wrapper label="Some label">
-      <select>
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </p-select-wrapper>
-  </div>
-
   <div class="playground light" title="should render default multi-select">
     <p-multi-select label="Some label" name="options">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
@@ -160,30 +98,8 @@
     </p-multi-select>
   </div>
 
-  <div class="playground light" title="should render default text-field-wrapper">
-    <p-text-field-wrapper label="Some label">
-      <input type="text" />
-    </p-text-field-wrapper>
-  </div>
-
-  <div class="playground light" title="should render default textarea-wrapper">
-    <p-textarea-wrapper label="Some label">
-      <textarea></textarea>
-    </p-textarea-wrapper>
-  </div>
-
   <div class="playground light" title="should render default fieldset">
     <p-fieldset label="Some label"></p-fieldset>
-  </div>
-
-  <div class="playground light" title="should render default fieldset-wrapper">
-    <p-fieldset-wrapper label="Some label"></p-fieldset-wrapper>
-  </div>
-
-  <div class="playground light" title="should render default content-wrapper">
-    <p-content-wrapper>
-      <p>Some content</p>
-    </p-content-wrapper>
   </div>
 
   <div class="playground light" title="should render default text">
@@ -210,14 +126,6 @@
 
   <div class="playground light" title="should render default link-pure">
     <p-link-pure href="https://porsche.com">Some label</p-link-pure>
-  </div>
-
-  <div class="playground light" title="should render default link-social">
-    <p-link-social href="https://porsche.com" icon="logo-facebook">Some label</p-link-social>
-  </div>
-
-  <div class="playground light" title="should render default marque">
-    <p-marque></p-marque>
   </div>
 
   <div class="playground light" title="should render default wordmark">
@@ -282,20 +190,6 @@
 
   <div class="playground light" title="should render default spinner">
     <p-spinner></p-spinner>
-  </div>
-
-  <div class="playground light" title="should render default flex">
-    <p-flex>
-      <p-flex-item><p>1</p></p-flex-item>
-      <p-flex-item><p>2</p></p-flex-item>
-    </p-flex>
-  </div>
-
-  <div class="playground light" title="should render default grid">
-    <p-grid>
-      <p-grid-item size="6"><p>1</p></p-grid-item>
-      <p-grid-item size="6"><p>2</p></p-grid-item>
-    </p-grid>
   </div>
 
   <div class="playground light" title="should render default tag">
@@ -378,19 +272,6 @@
     </p-button-tile>
   </div>
 
-  <div class="playground light" title="should render default link-tile-model-signature">
-    <p-link-tile-model-signature description="Default" heading="Some Heading">
-      <img
-        alt="Beach"
-        height="50"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-        width="50"
-      />
-      <p-link href="#primary" slot="primary">Some label</p-link>
-      <p-link href="#secondary" slot="secondary">Some label</p-link>
-    </p-link-tile-model-signature>
-  </div>
-
   <div class="playground light" title="should render default link-tile-product">
     <p-link-tile-product heading="Some product" href="https://porsche.com" price="1.911,00 €">
       <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
@@ -405,10 +286,6 @@
 <div data-prefix="my-prefix">
   <div class="playground light" title="should render default heading with custom prefix">
     <my-prefix-p-heading>Some Heading</my-prefix-p-heading>
-  </div>
-
-  <div class="playground light" title="should render default headline with custom prefix">
-    <my-prefix-p-headline>Some Headline</my-prefix-p-headline>
   </div>
 
   <div class="playground light" title="should render default display with custom prefix">
@@ -458,27 +335,8 @@
     <my-prefix-p-button>Some label</my-prefix-p-button>
   </div>
 
-  <div class="playground light" title="should render default button-group with custom prefix">
-    <my-prefix-p-button-group>
-      <my-prefix-p-button>Some label</my-prefix-p-button>
-      <my-prefix-p-button>Some label</my-prefix-p-button>
-    </my-prefix-p-button-group>
-  </div>
-
   <div class="playground light" title="should render default button-pure with custom prefix">
     <my-prefix-p-button-pure>Some label</my-prefix-p-button-pure>
-  </div>
-
-  <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
-    <my-prefix-p-checkbox-wrapper label="Some label">
-      <input type="checkbox" />
-    </my-prefix-p-checkbox-wrapper>
-  </div>
-
-  <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
-    <my-prefix-p-radio-button-wrapper label="Some label">
-      <input type="radio" />
-    </my-prefix-p-radio-button-wrapper>
   </div>
 
   <div class="playground light" title="should render default radio-group with custom prefix">
@@ -497,16 +355,6 @@
     </my-prefix-p-select>
   </div>
 
-  <div class="playground light" title="should render default select-wrapper with custom prefix">
-    <my-prefix-p-select-wrapper label="Some label">
-      <select>
-        <option value="a">Option A</option>
-        <option value="b">Option B</option>
-        <option value="c">Option C</option>
-      </select>
-    </my-prefix-p-select-wrapper>
-  </div>
-
   <div class="playground light" title="should render default multi-select with custom prefix">
     <my-prefix-p-multi-select label="Some label" name="options">
       <my-prefix-p-multi-select-option value="a">Option A</my-prefix-p-multi-select-option>
@@ -515,30 +363,8 @@
     </my-prefix-p-multi-select>
   </div>
 
-  <div class="playground light" title="should render default text-field-wrapper with custom prefix">
-    <my-prefix-p-text-field-wrapper label="Some label">
-      <input type="text" />
-    </my-prefix-p-text-field-wrapper>
-  </div>
-
-  <div class="playground light" title="should render default textarea-wrapper with custom prefix">
-    <my-prefix-p-textarea-wrapper label="Some label">
-      <textarea></textarea>
-    </my-prefix-p-textarea-wrapper>
-  </div>
-
   <div class="playground light" title="should render default fieldset with custom prefix">
     <my-prefix-p-fieldset label="Some label"></my-prefix-p-fieldset>
-  </div>
-
-  <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-    <my-prefix-p-fieldset-wrapper label="Some label"></my-prefix-p-fieldset-wrapper>
-  </div>
-
-  <div class="playground light" title="should render default content-wrapper with custom prefix">
-    <my-prefix-p-content-wrapper>
-      <p>Some content</p>
-    </my-prefix-p-content-wrapper>
   </div>
 
   <div class="playground light" title="should render default text with custom prefix">
@@ -565,14 +391,6 @@
 
   <div class="playground light" title="should render default link-pure with custom prefix">
     <my-prefix-p-link-pure href="https://porsche.com">Some label</my-prefix-p-link-pure>
-  </div>
-
-  <div class="playground light" title="should render default link-social with custom prefix">
-    <my-prefix-p-link-social href="https://porsche.com" icon="logo-facebook">Some label</my-prefix-p-link-social>
-  </div>
-
-  <div class="playground light" title="should render default marque with custom prefix">
-    <my-prefix-p-marque></my-prefix-p-marque>
   </div>
 
   <div class="playground light" title="should render default wordmark with custom prefix">
@@ -637,20 +455,6 @@
 
   <div class="playground light" title="should render default spinner with custom prefix">
     <my-prefix-p-spinner></my-prefix-p-spinner>
-  </div>
-
-  <div class="playground light" title="should render default flex with custom prefix">
-    <my-prefix-p-flex>
-      <my-prefix-p-flex-item><p>1</p></my-prefix-p-flex-item>
-      <my-prefix-p-flex-item><p>2</p></my-prefix-p-flex-item>
-    </my-prefix-p-flex>
-  </div>
-
-  <div class="playground light" title="should render default grid with custom prefix">
-    <my-prefix-p-grid>
-      <my-prefix-p-grid-item size="6"><p>1</p></my-prefix-p-grid-item>
-      <my-prefix-p-grid-item size="6"><p>2</p></my-prefix-p-grid-item>
-    </my-prefix-p-grid>
   </div>
 
   <div class="playground light" title="should render default tag with custom prefix">
@@ -731,19 +535,6 @@
         width="50"
       />
     </my-prefix-p-button-tile>
-  </div>
-
-  <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
-    <my-prefix-p-link-tile-model-signature description="Default" heading="Some Heading">
-      <img
-        alt="Beach"
-        height="50"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-        width="50"
-      />
-      <my-prefix-p-link href="#primary" slot="primary">Some label</my-prefix-p-link>
-      <my-prefix-p-link href="#secondary" slot="secondary">Some label</my-prefix-p-link>
-    </my-prefix-p-link-tile-model-signature>
   </div>
 
   <div class="playground light" title="should render default link-tile-product with custom prefix">

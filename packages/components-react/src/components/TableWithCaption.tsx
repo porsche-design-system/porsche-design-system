@@ -9,7 +9,7 @@ import {
   PTableRow,
   type Theme,
 } from '@porsche-design-system/components-react';
-import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
+import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared';
 
 export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
   return (
