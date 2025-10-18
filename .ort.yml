@@ -17,7 +17,7 @@ excludes:
 
     - pattern: "packages/storefront/**"
       reason: DOCUMENTATION_OF
-      comment: "Storybook and documentation site; not part of distributed PDS components."
+      comment: "PDS examples and documentation site; not part of distributed PDS components."
 
     - pattern: "packages/**/tests/**"
       reason: TEST_OF
