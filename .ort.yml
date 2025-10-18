@@ -21,11 +21,11 @@ excludes:
 
     - pattern: "packages/**/tests/**"
       reason: TEST_OF
-      comment: "Unit, integration, and E2E tests; not part of runtime."
+      comment: "Unit, integration, and E2E tests; not included in any distributed artifacts."
 
     - pattern: "packages/components/test-utils/**"
       reason: TEST_TOOL_OF
-      comment: "Helper utilities for testing; not included in distributed runtime artifacts."
+      comment: "Helper utilities for testing; not included in any distributed artifacts."
 
   # -----------------------------
   # Scope-based excludes
