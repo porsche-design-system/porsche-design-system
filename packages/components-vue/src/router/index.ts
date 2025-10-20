@@ -413,16 +413,6 @@ export const routes: RouteType[] = [
     component: fromExamples.TextareaExampleControlled,
   },
   {
-    path: '/text-field-wrapper-example-imask',
-    name: 'Text Field Wrapper Example IMask',
-    component: fromExamples.TextFieldWrapperExampleIMask,
-  },
-  {
-    path: '/text-field-wrapper-example-search',
-    name: 'Text Field Wrapper Example Search',
-    component: fromExamples.TextFieldWrapperExampleSearch,
-  },
-  {
     path: '/toast-example',
     name: 'Toast Example',
     component: fromExamples.ToastExample,

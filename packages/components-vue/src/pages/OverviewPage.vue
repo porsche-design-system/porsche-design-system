@@ -1,73 +1,57 @@
 <script lang="ts" setup>
-  import {
-    PAccordion,
-    PButton,
-    PButtonGroup,
-    PButtonPure,
-    PButtonTile,
-    PCarousel,
-    PCheckboxWrapper,
-    PContentWrapper,
-    PCrest,
-    PDisplay,
-    PDivider,
-    PFieldset,
-    PFieldsetWrapper,
-    PFlag,
-    PFlex,
-    PFlexItem,
-    PGrid,
-    PGridItem,
-    PHeading,
-    PHeadline,
-    PIcon,
-    PInlineNotification,
-    PLink,
-    PLinkPure,
-    PLinkSocial,
-    PLinkTile,
-    PLinkTileModelSignature,
-    PLinkTileProduct,
-    PMarque,
-    PModelSignature,
-    PMultiSelect,
-    PMultiSelectOption,
-    PorscheDesignSystemProvider,
-    PPagination,
-    PPinCode,
-    PPopover,
-    PRadioButtonWrapper,
-    PRadioGroup,
-    PRadioGroupOption,
-    PScroller,
-    PSegmentedControl,
-    PSegmentedControlItem,
-    PSelect,
-    PSelectOption,
-    PSelectWrapper,
-    PSpinner,
-    PStepperHorizontal,
-    PStepperHorizontalItem,
-    PSwitch,
-    PTable,
-    PTableBody,
-    PTableCell,
-    PTableHead,
-    PTableHeadCell,
-    PTableHeadRow,
-    PTableRow,
-    PTabs,
-    PTabsBar,
-    PTabsItem,
-    PTag,
-    PTagDismissible,
-    PText,
-    PTextareaWrapper,
-    PTextFieldWrapper,
-    PTextList,
-    PTextListItem,
-    PWordmark,
-  } from '@porsche-design-system/components-vue';
+import {
+  PAccordion,
+  PButton,
+  PButtonPure,
+  PButtonTile,
+  PCarousel,
+  PCrest,
+  PDisplay,
+  PDivider,
+  PFieldset,
+  PFlag,
+  PHeading,
+  PIcon,
+  PInlineNotification,
+  PLink,
+  PLinkPure,
+  PLinkTile,
+  PLinkTileProduct,
+  PModelSignature,
+  PMultiSelect,
+  PMultiSelectOption,
+  PorscheDesignSystemProvider,
+  PPagination,
+  PPinCode,
+  PPopover,
+  PRadioGroup,
+  PRadioGroupOption,
+  PScroller,
+  PSegmentedControl,
+  PSegmentedControlItem,
+  PSelect,
+  PSelectOption,
+  PSpinner,
+  PStepperHorizontal,
+  PStepperHorizontalItem,
+  PSwitch,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
+  PTag,
+  PTagDismissible,
+  PText,
+  PTextList,
+  PTextListItem,
+  PWordmark,
+} from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -75,10 +59,6 @@
     <div>
       <div class="playground light" title="should render default heading">
         <PHeading>Some Heading</PHeading>
-      </div>
-
-      <div class="playground light" title="should render default headline">
-        <PHeadline>Some Headline</PHeadline>
       </div>
 
       <div class="playground light" title="should render default display">
@@ -125,27 +105,8 @@
         <PButton>Some label</PButton>
       </div>
 
-      <div class="playground light" title="should render default button-group">
-        <PButtonGroup>
-          <PButton>Some label</PButton>
-          <PButton>Some label</PButton>
-        </PButtonGroup>
-      </div>
-
       <div class="playground light" title="should render default button-pure">
         <PButtonPure>Some label</PButtonPure>
-      </div>
-
-      <div class="playground light" title="should render default checkbox-wrapper">
-        <PCheckboxWrapper :label="'Some label'">
-          <input type="checkbox" />
-        </PCheckboxWrapper>
-      </div>
-
-      <div class="playground light" title="should render default radio-button-wrapper">
-        <PRadioButtonWrapper :label="'Some label'">
-          <input type="radio" />
-        </PRadioButtonWrapper>
       </div>
 
       <div class="playground light" title="should render default radio-group">
@@ -164,16 +125,6 @@
         </PSelect>
       </div>
 
-      <div class="playground light" title="should render default select-wrapper">
-        <PSelectWrapper :label="'Some label'">
-          <select>
-            <option value="a">Option A</option>
-            <option value="b">Option B</option>
-            <option value="c">Option C</option>
-          </select>
-        </PSelectWrapper>
-      </div>
-
       <div class="playground light" title="should render default multi-select">
         <PMultiSelect :label="'Some label'" :name="'options'">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
@@ -182,30 +133,8 @@
         </PMultiSelect>
       </div>
 
-      <div class="playground light" title="should render default text-field-wrapper">
-        <PTextFieldWrapper :label="'Some label'">
-          <input type="text" />
-        </PTextFieldWrapper>
-      </div>
-
-      <div class="playground light" title="should render default textarea-wrapper">
-        <PTextareaWrapper :label="'Some label'">
-          <textarea />
-        </PTextareaWrapper>
-      </div>
-
       <div class="playground light" title="should render default fieldset">
         <PFieldset :label="'Some label'"></PFieldset>
-      </div>
-
-      <div class="playground light" title="should render default fieldset-wrapper">
-        <PFieldsetWrapper :label="'Some label'" />
-      </div>
-
-      <div class="playground light" title="should render default content-wrapper">
-        <PContentWrapper>
-          <p>Some content</p>
-        </PContentWrapper>
       </div>
 
       <div class="playground light" title="should render default text">
@@ -232,14 +161,6 @@
 
       <div class="playground light" title="should render default link-pure">
         <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
-      </div>
-
-      <div class="playground light" title="should render default link-social">
-        <PLinkSocial :href="'https://porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
-      </div>
-
-      <div class="playground light" title="should render default marque">
-        <PMarque />
       </div>
 
       <div class="playground light" title="should render default wordmark">
@@ -304,20 +225,6 @@
 
       <div class="playground light" title="should render default spinner">
         <PSpinner />
-      </div>
-
-      <div class="playground light" title="should render default flex">
-        <PFlex>
-          <PFlexItem><p>1</p></PFlexItem>
-          <PFlexItem><p>2</p></PFlexItem>
-        </PFlex>
-      </div>
-
-      <div class="playground light" title="should render default grid">
-        <PGrid>
-          <PGridItem :size="6"><p>1</p></PGridItem>
-          <PGridItem :size="6"><p>2</p></PGridItem>
-        </PGrid>
       </div>
 
       <div class="playground light" title="should render default tag">
@@ -400,21 +307,6 @@
         </PButtonTile>
       </div>
 
-      <div class="playground light" title="should render default link-tile-model-signature">
-        <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-        <PLinkTileModelSignature :description="'Default'" :heading="'Some Heading'">
-          <img
-            alt="Beach"
-            height="50"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-            width="50"
-          />
-          <PLink slot="primary" :href="'#primary'">Some label</PLink>
-          <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
-        </PLinkTileModelSignature>
-        <!-- eslint-enable vue/no-deprecated-slot-attribute -->
-      </div>
-
       <div class="playground light" title="should render default link-tile-product">
         <PLinkTileProduct :heading="'Some product'" :href="'https://porsche.com'" :price="'1.911,00 €'">
           <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
@@ -430,10 +322,6 @@
       <div>
         <div class="playground light" title="should render default heading with custom prefix">
           <PHeading>Some Heading</PHeading>
-        </div>
-
-        <div class="playground light" title="should render default headline with custom prefix">
-          <PHeadline>Some Headline</PHeadline>
         </div>
 
         <div class="playground light" title="should render default display with custom prefix">
@@ -480,27 +368,8 @@
           <PButton>Some label</PButton>
         </div>
 
-        <div class="playground light" title="should render default button-group with custom prefix">
-          <PButtonGroup>
-            <PButton>Some label</PButton>
-            <PButton>Some label</PButton>
-          </PButtonGroup>
-        </div>
-
         <div class="playground light" title="should render default button-pure with custom prefix">
           <PButtonPure>Some label</PButtonPure>
-        </div>
-
-        <div class="playground light" title="should render default checkbox-wrapper with custom prefix">
-          <PCheckboxWrapper :label="'Some label'">
-            <input type="checkbox" />
-          </PCheckboxWrapper>
-        </div>
-
-        <div class="playground light" title="should render default radio-button-wrapper with custom prefix">
-          <PRadioButtonWrapper :label="'Some label'">
-            <input type="radio" />
-          </PRadioButtonWrapper>
         </div>
 
         <div class="playground light" title="should render default radio-group with custom prefix">
@@ -519,16 +388,6 @@
           </PSelect>
         </div>
 
-        <div class="playground light" title="should render default select-wrapper with custom prefix">
-          <PSelectWrapper :label="'Some label'">
-            <select>
-              <option value="a">Option A</option>
-              <option value="b">Option B</option>
-              <option value="c">Option C</option>
-            </select>
-          </PSelectWrapper>
-        </div>
-
         <div class="playground light" title="should render default multi-select with custom prefix">
           <PMultiSelect :label="'Some label'" :name="'options'">
             <PMultiSelectOption value="a">Option A</PMultiSelectOption>
@@ -537,30 +396,8 @@
           </PMultiSelect>
         </div>
 
-        <div class="playground light" title="should render default text-field-wrapper with custom prefix">
-          <PTextFieldWrapper :label="'Some label'">
-            <input type="text" />
-          </PTextFieldWrapper>
-        </div>
-
-        <div class="playground light" title="should render default textarea-wrapper with custom prefix">
-          <PTextareaWrapper :label="'Some label'">
-            <textarea />
-          </PTextareaWrapper>
-        </div>
-
         <div class="playground light" title="should render default fieldset with custom prefix">
           <PFieldset :label="'Some label'"></PFieldset>
-        </div>
-
-        <div class="playground light" title="should render default fieldset-wrapper with custom prefix">
-          <PFieldsetWrapper :label="'Some label'" />
-        </div>
-
-        <div class="playground light" title="should render default content-wrapper with custom prefix">
-          <PContentWrapper>
-            <p>Some content</p>
-          </PContentWrapper>
         </div>
 
         <div class="playground light" title="should render default text with custom prefix">
@@ -587,14 +424,6 @@
 
         <div class="playground light" title="should render default link-pure with custom prefix">
           <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
-        </div>
-
-        <div class="playground light" title="should render default link-social with custom prefix">
-          <PLinkSocial :href="'https://porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
-        </div>
-
-        <div class="playground light" title="should render default marque with custom prefix">
-          <PMarque />
         </div>
 
         <div class="playground light" title="should render default wordmark with custom prefix">
@@ -659,20 +488,6 @@
 
         <div class="playground light" title="should render default spinner with custom prefix">
           <PSpinner />
-        </div>
-
-        <div class="playground light" title="should render default flex with custom prefix">
-          <PFlex>
-            <PFlexItem><p>1</p></PFlexItem>
-            <PFlexItem><p>2</p></PFlexItem>
-          </PFlex>
-        </div>
-
-        <div class="playground light" title="should render default grid with custom prefix">
-          <PGrid>
-            <PGridItem :size="6"><p>1</p></PGridItem>
-            <PGridItem :size="6"><p>2</p></PGridItem>
-          </PGrid>
         </div>
 
         <div class="playground light" title="should render default tag with custom prefix">
@@ -755,21 +570,6 @@
           </PButtonTile>
         </div>
 
-        <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
-          <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-          <PLinkTileModelSignature :description="'Default'" :heading="'Some Heading'">
-            <img
-              alt="Beach"
-              height="50"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-              width="50"
-            />
-            <PLink slot="primary" :href="'#primary'">Some label</PLink>
-            <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
-          </PLinkTileModelSignature>
-          <!-- eslint-enable vue/no-deprecated-slot-attribute -->
-        </div>
-
         <div class="playground light" title="should render default link-tile-product with custom prefix">
           <PLinkTileProduct :heading="'Some product'" :href="'https://porsche.com'" :price="'1.911,00 €'">
             <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
@@ -790,41 +590,9 @@
     grid-template-columns: repeat(2, 50%);
   }
 
-  p-flex-item > p,
-  my-prefix-p-flex-item > p,
-  p-grid-item > p,
-  my-prefix-p-grid-item > p,
-  p-content-wrapper > p,
-  my-prefix-p-content-wrapper > p {
-    margin: 0;
-    padding: 4px 2vw;
-    text-align: center;
-    color: white;
-    background: lightskyblue;
-  }
-
-  p-flex-item:nth-child(1n) > p,
-  my-prefix-p-flex-item:nth-child(1n) > p,
-  p-grid-item:nth-child(1n) > p,
-  my-prefix-p-grid-item:nth-child(1n) > p {
-    background: skyblue;
-  }
-
-  p-flex-item:nth-child(2n) > p,
-  my-prefix-p-flex-item:nth-child(2n) > p,
-  p-grid-item:nth-child(2n) > p,
-  my-prefix-p-grid-item:nth-child(2n) > p {
-    background: deepskyblue;
-  }
-
   p-link-tile,
   p-button-tile,
-  p-link-tile-model-signature,
-  p-link-tile-product,
-  my-prefix-p-link-tile,
-  my-prefix-p-button-tile,
-  my-prefix-p-link-tile-model-signature,
-  my-prefix-p-link-tile-product {
+  p-link-tile-product {
     max-width: 400px;
   }
 

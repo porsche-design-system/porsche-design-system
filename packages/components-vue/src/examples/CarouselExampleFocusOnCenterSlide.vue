@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { CarouselUpdateEventDetail } from '@porsche-design-system/components-vue';
 import { PCarousel } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
-import type { CarouselUpdateEventDetail } from '@porsche-design-system/components-vue';
 
 const activeSlideIndex = ref(0);
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PHeading, PSheet, PText, PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+import { PHeading, PorscheDesignSystemProvider, PSheet, PText } from '@porsche-design-system/components-vue';
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PButtonGroup, PButtonPure, PText, PTextarea } from '@porsche-design-system/components-vue';
+import { PButtonPure, PText, PTextarea } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const lastSubmittedData = ref('none');
@@ -14,10 +14,8 @@ const handleSubmit = (e: Event) => {
     <PTextarea :name="'some-name'" :label="'Some Label'" />
   </form>
 
-  <PButtonGroup>
-    <PButtonPure type="submit" form="some-form">Submit</PButtonPure>
-    <PButtonPure type="reset" form="some-form">Reset</PButtonPure>
-  </PButtonGroup>
+  <PButtonPure type="submit" form="some-form">Submit</PButtonPure>
+  <PButtonPure type="reset" form="some-form">Reset</PButtonPure>
 
   <PText>Last submitted data: {{ lastSubmittedData }}</PText>
 </template>

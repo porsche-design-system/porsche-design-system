@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {
-  type StepperHorizontalItemState,
-  type StepperHorizontalUpdateEventDetail,
   PButton,
-  PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
+  type StepperHorizontalItemState,
+  type StepperHorizontalUpdateEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -74,24 +73,22 @@ const onUpdate = (e: StepperHorizontalUpdateEventDetail): void => {
 
   <PText :key="getActiveStepIndex(steps)">{{ stepContent[getActiveStepIndex(steps)] }}</PText>
 
-  <PButtonGroup>
-    <PButton
-      type="button"
-      :icon="'arrow-head-left'"
-      :variant="'tertiary'"
-      @click="onNextPrevStep('prev')"
-      :disabled="getActiveStepIndex(steps) === 0"
-    >
-      Previous Step
-    </PButton>
+  <PButton
+    type="button"
+    :icon="'arrow-head-left'"
+    :variant="'secondary'"
+    @click="onNextPrevStep('prev')"
+    :disabled="getActiveStepIndex(steps) === 0"
+  >
+    Previous Step
+  </PButton>
 
-    <PButton
-      type="button"
-      :variant="'primary'"
-      :disabled="getActiveStepIndex(steps) === steps.length - 1"
-      @click="onNextPrevStep('next')"
-    >
-      Next Step
-    </PButton>
-  </PButtonGroup>
+  <PButton
+    type="button"
+    :variant="'primary'"
+    :disabled="getActiveStepIndex(steps) === steps.length - 1"
+    @click="onNextPrevStep('next')"
+  >
+    Next Step
+  </PButton>
 </template>

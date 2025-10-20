@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import type {
+  AccordionUpdateEventDetail,
+  CarouselUpdateEventDetail,
+  InputTextInputEventDetail,
+  PaginationUpdateEventDetail,
+  SwitchUpdateEventDetail,
+  TableUpdateEventDetail,
+  TabsBarUpdateEventDetail,
+  TabsUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
 import {
   PAccordion,
-  PCarousel,
   PBanner,
+  PCarousel,
+  PInputText,
   PModal,
   PPagination,
   PSwitch,
@@ -14,17 +24,8 @@ import {
   PTabs,
   PTabsBar,
   PTabsItem,
-  PTextFieldWrapper,
 } from '@porsche-design-system/components-vue';
-import type {
-  AccordionUpdateEvent, // using deprecated to verify it is still available
-  CarouselUpdateEvent, // using deprecated to verify it is still available
-  PaginationUpdateEvent, // using deprecated to verify it is still available
-  TableUpdateEvent, // using deprecated to verify it is still available
-  SwitchUpdateEvent, // using deprecated to verify it is still available
-  TabsBarUpdateEvent, // using deprecated to verify it is still available
-  TabsUpdateEvent, // using deprecated to verify it is still available
-} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
 const accordionUpdateEventCounter = ref(0);
 const paginationUpdateEventCounter = ref(0);
@@ -43,12 +44,13 @@ const carouselUpdateEventCounter = ref(0);
 
 // unused event parameters are used to verify that types can be imported from package root
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const onAccordionUpdate = (detail: AccordionUpdateEvent) => accordionUpdateEventCounter.value++;
-const onPaginationUpdate = (detail: PaginationUpdateEvent) => paginationUpdateEventCounter.value++;
-const onTabsBarUpdate = (detail: TabsBarUpdateEvent) => tabsBarUpdateEventCounter.value++;
-const onTabsUpdate = (detail: TabsUpdateEvent) => tabsUpdateEventCounter.value++;
-const onTextFieldSearchChange = (e: Event) => (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
-const onSwitchUpdate = (detail: SwitchUpdateEvent) => switchUpdateEventCounter.value++;
+const onAccordionUpdate = (detail: AccordionUpdateEventDetail) => accordionUpdateEventCounter.value++;
+const onPaginationUpdate = (detail: PaginationUpdateEventDetail) => paginationUpdateEventCounter.value++;
+const onTabsBarUpdate = (detail: TabsBarUpdateEventDetail) => tabsBarUpdateEventCounter.value++;
+const onTabsUpdate = (detail: TabsUpdateEventDetail) => tabsUpdateEventCounter.value++;
+const onTextFieldSearchChange = (e: InputTextInputEventDetail) =>
+  (textFieldSearchValue.value = (e.target as HTMLInputElement).value);
+const onSwitchUpdate = (detail: SwitchUpdateEventDetail) => switchUpdateEventCounter.value++;
 const onBannerDismiss = () => {
   bannerDismissEventCounter.value++;
   isBannerOpen.value = false;
@@ -57,8 +59,8 @@ const onModalDismiss = () => {
   modalDismissEventCounter.value++;
   isModalOpen.value = false;
 };
-const onTableUpdate = (detail: TableUpdateEvent) => tableUpdateEventCounter.value++;
-const onCarouselUpdate = (detail: CarouselUpdateEvent) => carouselUpdateEventCounter.value++;
+const onTableUpdate = (detail: TableUpdateEventDetail) => tableUpdateEventCounter.value++;
+const onCarouselUpdate = (detail: CarouselUpdateEventDetail) => carouselUpdateEventCounter.value++;
 /* eslint-enable @typescript-eslint/no-unused-vars */
 </script>
 
@@ -92,9 +94,7 @@ const onCarouselUpdate = (detail: CarouselUpdateEvent) => carouselUpdateEventCou
   </div>
 
   <div class="playground light">
-    <PTextFieldWrapper>
-      <input type="search" :value="textFieldSearchValue" @input="onTextFieldSearchChange" />
-    </PTextFieldWrapper>
+    <PInputText name="some-name" type="search" :value="textFieldSearchValue" @input="onTextFieldSearchChange" />
     <p>Value: {{ textFieldSearchValue }}</p>
   </div>
 
