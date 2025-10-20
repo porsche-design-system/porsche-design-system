@@ -1,6 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
-import { linkTileStory } from "@/app/components/link-tile/link-tile.stories";
+import { linkTileSlotStory, linkTileStory } from "@/app/components/link-tile/link-tile.stories";
 
 export const metadata = {
   title: 'Link Tile - Porsche Design System',
@@ -22,4 +22,4 @@ teaser with a more detailed description of the link and where it leads to.
 
 The `label` property is used to describe the anchor.
 
-<Configurator tagName="p-link-tile" story={linkTileStory} />
+<Configurator tagName="p-link-tile" story={linkTileStory} slotStories={linkTileSlotStory}/>

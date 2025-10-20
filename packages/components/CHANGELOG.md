@@ -24,8 +24,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi Select`:
   - `update` event is deprecated. Use `change` event instead.
   - `blur` event ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
+- `Link Tile`, `Button Tile`: added `footer` slot
+  ([#4025](https://github.com/porsche-design-system/porsche-design-system/pull/4025))
 - `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
 - `Radio Group`: `blur` event ([#4057](https://github.com/porsche-design-system/porsche-design-system/pull/4057))
+- `Flyout`: Prop `backdrop` ([#4058](https://github.com/porsche-design-system/porsche-design-system/pull/4058))
 
 ### Changed
 
@@ -39,13 +42,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select Wrapper`: disabled options in native dropdown not displayed correctly
   ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
+  ([#4037](https://github.com/porsche-design-system/porsche-design-system/pull/4037))
+- `Button`, `Link`: rendering of `variant="ghost"` in high contrast mode (HCM)
+  ([#4032](https://github.com/porsche-design-system/porsche-design-system/pull/4032))
 
 ## [3.30.0-rc.0] - 2025-09-10
 
 ### Added
 
 - `Icon`: `ai-3d-object`, `ai-code`, `ai-edit`, `ai-image`, `ai-scale`, `ai-sound`, `ai-text`, `ai-video`
+  ([#4022](https://github.com/porsche-design-system/porsche-design-system/pull/4022))
 - `Model Signature`: `gt3`, `gt3-rs` and `gts`
+  ([#4012](https://github.com/porsche-design-system/porsche-design-system/pull/4021))
 - `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
   `aria` prop to provide additional context for screen readers.
   ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))
