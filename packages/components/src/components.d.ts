@@ -27,7 +27,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -59,7 +59,6 @@ import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, Pin
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-import { RadioGroupOptionBlurEventDetail } from "./components/radio-group/radio-group-option/radio-group-option-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
@@ -105,7 +104,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -137,7 +136,6 @@ export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, Pin
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
-export { RadioGroupOptionBlurEventDetail } from "./components/radio-group/radio-group-option/radio-group-option-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
@@ -913,6 +911,10 @@ export namespace Components {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+         */
+        "backdrop"?: FlyoutBackdrop;
         /**
           * If true, the flyout will not be closable via backdrop click.
          */
@@ -3342,10 +3344,6 @@ export interface PRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPRadioGroupElement;
 }
-export interface PRadioGroupOptionCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPRadioGroupOptionElement;
-}
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPSegmentedControlElement;
@@ -4068,6 +4066,7 @@ declare global {
         new (): HTMLPRadioButtonWrapperElement;
     };
     interface HTMLPRadioGroupElementEventMap {
+        "blur": void;
         "change": RadioGroupChangeEventDetail;
     }
     interface HTMLPRadioGroupElement extends Components.PRadioGroup, HTMLStencilElement {
@@ -4084,18 +4083,7 @@ declare global {
         prototype: HTMLPRadioGroupElement;
         new (): HTMLPRadioGroupElement;
     };
-    interface HTMLPRadioGroupOptionElementEventMap {
-        "blur": RadioGroupOptionBlurEventDetail;
-    }
     interface HTMLPRadioGroupOptionElement extends Components.PRadioGroupOption, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPRadioGroupOptionElementEventMap>(type: K, listener: (this: HTMLPRadioGroupOptionElement, ev: PRadioGroupOptionCustomEvent<HTMLPRadioGroupOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPRadioGroupOptionElementEventMap>(type: K, listener: (this: HTMLPRadioGroupOptionElement, ev: PRadioGroupOptionCustomEvent<HTMLPRadioGroupOptionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPRadioGroupOptionElement: {
         prototype: HTMLPRadioGroupOptionElement;
@@ -5354,6 +5342,10 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+         */
+        "backdrop"?: FlyoutBackdrop;
         /**
           * If true, the flyout will not be closable via backdrop click.
          */
@@ -7094,6 +7086,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Emitted when the radio-group has lost focus.
+         */
+        "onBlur"?: (event: PRadioGroupCustomEvent<void>) => void;
+        /**
           * Emitted when the selected option is changed.
          */
         "onChange"?: (event: PRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
@@ -7127,10 +7123,6 @@ declare namespace LocalJSX {
           * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
-        /**
-          * Emitted when the radio input has lost focus.
-         */
-        "onBlur"?: (event: PRadioGroupOptionCustomEvent<RadioGroupOptionBlurEventDetail>) => void;
         /**
           * The value for the input.
          */

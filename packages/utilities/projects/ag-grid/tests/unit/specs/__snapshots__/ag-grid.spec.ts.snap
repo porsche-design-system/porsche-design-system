@@ -59,6 +59,11 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #6B6D70);
 	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #010205);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
+	--ag-color-picker-color-border-radius: var(--ag-inherited-color-picker-color-border-radius, 4px);
+	--ag-color-picker-thumb-border-width: var(--ag-inherited-color-picker-thumb-border-width, 3px);
+	--ag-color-picker-thumb-size: var(--ag-inherited-color-picker-thumb-size, 18px);
+	--ag-color-picker-track-border-radius: var(--ag-inherited-color-picker-track-border-radius, 12px);
+	--ag-color-picker-track-size: var(--ag-inherited-color-picker-track-size, 12px);
 	--ag-column-border: var(--ag-inherited-column-border, solid 1px transparent);
 	--ag-column-drop-cell-background-color: var(--ag-inherited-column-drop-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
 	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
@@ -71,6 +76,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-dialog-shadow: var(--ag-inherited-dialog-shadow, var(--ag-popup-shadow));
 	--ag-drag-and-drop-image-background-color: var(--ag-inherited-drag-and-drop-image-background-color, var(--ag-background-color));
 	--ag-drag-and-drop-image-border: var(--ag-inherited-drag-and-drop-image-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-drag-and-drop-image-not-allowed-border: var(--ag-inherited-drag-and-drop-image-not-allowed-border, solid var(--ag-border-width) color-mix(in srgb, var(--ag-drag-and-drop-image-background-color), var(--ag-invalid-color) 50%));
 	--ag-drag-and-drop-image-shadow: var(--ag-inherited-drag-and-drop-image-shadow, var(--ag-popup-shadow));
 	--ag-drag-handle-color: var(--ag-inherited-drag-handle-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 70%));
 	--ag-dropdown-shadow: var(--ag-inherited-dropdown-shadow, var(--ag-card-shadow));
@@ -398,6 +404,11 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-checkbox-unchecked-border-color: var(--ag-checkbox-unchecked-border-color);
 	--ag-inherited-checkbox-unchecked-hover-border-color: var(--ag-checkbox-unchecked-hover-border-color);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
+	--ag-inherited-color-picker-color-border-radius: var(--ag-color-picker-color-border-radius);
+	--ag-inherited-color-picker-thumb-border-width: var(--ag-color-picker-thumb-border-width);
+	--ag-inherited-color-picker-thumb-size: var(--ag-color-picker-thumb-size);
+	--ag-inherited-color-picker-track-border-radius: var(--ag-color-picker-track-border-radius);
+	--ag-inherited-color-picker-track-size: var(--ag-color-picker-track-size);
 	--ag-inherited-column-border: var(--ag-column-border);
 	--ag-inherited-column-drop-cell-background-color: var(--ag-column-drop-cell-background-color);
 	--ag-inherited-column-drop-cell-border: var(--ag-column-drop-cell-border);
@@ -410,6 +421,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-dialog-shadow: var(--ag-dialog-shadow);
 	--ag-inherited-drag-and-drop-image-background-color: var(--ag-drag-and-drop-image-background-color);
 	--ag-inherited-drag-and-drop-image-border: var(--ag-drag-and-drop-image-border);
+	--ag-inherited-drag-and-drop-image-not-allowed-border: var(--ag-drag-and-drop-image-not-allowed-border);
 	--ag-inherited-drag-and-drop-image-shadow: var(--ag-drag-and-drop-image-shadow);
 	--ag-inherited-drag-handle-color: var(--ag-drag-handle-color);
 	--ag-inherited-dropdown-shadow: var(--ag-dropdown-shadow);
@@ -900,6 +912,11 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
+    "colorPickerColorBorderRadius": 4,
+    "colorPickerThumbBorderWidth": 3,
+    "colorPickerThumbSize": 18,
+    "colorPickerTrackBorderRadius": 12,
+    "colorPickerTrackSize": 12,
     "columnBorder": {
       "color": "transparent",
       "style": "solid",
@@ -941,6 +958,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "backgroundColor",
     },
     "dragAndDropImageBorder": true,
+    "dragAndDropImageNotAllowedBorder": {
+      "color": {
+        "mix": 0.5,
+        "onto": "dragAndDropImageBackgroundColor",
+        "ref": "invalidColor",
+      },
+    },
     "dragAndDropImageShadow": {
       "ref": "popupShadow",
     },

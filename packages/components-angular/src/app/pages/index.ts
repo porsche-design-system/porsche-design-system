@@ -90,6 +90,8 @@ import { FlagComponent } from './generated/flag.component';
 import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
+import { FlyoutBackdropBlurComponent } from './generated/flyout-backdrop-blur.component';
+import { FlyoutBackdropShadingComponent } from './generated/flyout-backdrop-shading.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
 import { FlyoutCssVariables_1Component } from './generated/flyout-css-variables-1.component';
 import { FlyoutCssVariables_2Component } from './generated/flyout-css-variables-2.component';
@@ -316,6 +318,8 @@ export const generatedPages = [
   FlexComponent,
   Flyout_1Component,
   Flyout_2Component,
+  FlyoutBackdropBlurComponent,
+  FlyoutBackdropShadingComponent,
   FlyoutBasicComponent,
   FlyoutCssVariables_1Component,
   FlyoutCssVariables_2Component,
@@ -773,6 +777,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout 2',
     path: 'flyout-2',
     component: Flyout_2Component,
+  },
+  {
+    name: 'Flyout Backdrop Blur',
+    path: 'flyout-backdrop-blur',
+    component: FlyoutBackdropBlurComponent,
+  },
+  {
+    name: 'Flyout Backdrop Shading',
+    path: 'flyout-backdrop-shading',
+    component: FlyoutBackdropShadingComponent,
   },
   {
     name: 'Flyout Basic',

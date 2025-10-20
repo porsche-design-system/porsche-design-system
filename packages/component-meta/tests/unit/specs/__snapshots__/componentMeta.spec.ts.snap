@@ -3231,6 +3231,15 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "FlyoutAriaAttribute",
       },
+      "backdrop": {
+        "allowedValues": [
+          "blur",
+          "shading",
+        ],
+        "defaultValue": "blur",
+        "description": "Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).",
+        "type": "FlyoutBackdrop",
+      },
       "disableBackdropClick": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -8807,6 +8816,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-radio-group": {
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the radio-group has lost focus.",
+        "type": "void",
+      },
       "change": {
         "description": "Emitted when the selected option is changed.",
         "type": "RadioGroupChangeEventDetail",
@@ -8954,16 +8967,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group-option": {
-    "eventsMeta": {
-      "blur": {
-        "description": "Emitted when the radio input has lost focus.",
-        "type": "RadioGroupOptionBlurEventDetail",
-        "typeDetail": "Event",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
-    "hasEvent": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,

@@ -18,7 +18,7 @@ export const linkTileProductStory: Story<'p-link-tile-product'> = {
       tag: 'p-link-tile-product',
       properties,
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onLike: {
           target: 'p-link-tile-product',
           prop: 'liked',
@@ -66,7 +66,7 @@ export const linkTileProductStoryFrameworkRouting: Story<'p-link-tile-product'> 
       tag: 'p-link-tile-product',
       properties,
       events: {
-        // @ts-ignore
+        // @ts-expect-error
         onLike: {
           target: 'p-link-tile-product',
           prop: 'liked',
