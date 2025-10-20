@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: false, filter: false, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: false, filter: false, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -179,7 +179,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: false, filter: false, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: false, filter: false, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -358,7 +358,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: false, filter: true, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: false, filter: true, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -564,7 +564,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: false, filter: true, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: false, filter: true, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -770,7 +770,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: true, filter: false, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: true, filter: false, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -949,7 +949,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: true, filter: false, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: true, filter: false, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -1128,7 +1128,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: true, filter: true, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: true, filter: true, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -1334,7 +1334,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, state: none, disabled: true, filter: true, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, state: none, disabled: true, filter: true, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -1540,7 +1540,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: false, filter: false, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: false, filter: false, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -1719,7 +1719,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: false, filter: false, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: false, filter: false, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -1898,7 +1898,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: false, filter: true, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: false, filter: true, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -2104,7 +2104,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: true, filter: false, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: true, filter: false, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -2283,7 +2283,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: true, filter: false, and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: true, filter: false, and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -2462,7 +2462,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: true, filter: false, and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: true, filter: false, and theme: light 2`] = `
 ":host {
   display: block;
   position: relative;
@@ -2641,7 +2641,7 @@ button:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, state: none, disabled: true, filter: true, and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, state: none, disabled: true, filter: true, and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;

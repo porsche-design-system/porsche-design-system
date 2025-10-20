@@ -40,6 +40,6 @@ it('should throw error if there are children not of kind', () => {
   parent.append(child1, child2);
 
   expect(() => getOnlyChildrenOfKindHTMLElementOrThrow(parent, 'a,button')).toThrowErrorMatchingInlineSnapshot(
-    '"[Porsche Design System] child HTMLElements of div are invalid. Expected all of: a or button."'
+    `[Error: [Porsche Design System] child HTMLElements of div are invalid. Expected all of: a or button.]`
   );
 });

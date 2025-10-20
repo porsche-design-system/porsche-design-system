@@ -43,7 +43,7 @@ it('should throw error if return value of getPrefixedTagNames() !== getTagName()
   const slot = document.createElement('a');
 
   expect(() => throwIfElementIsNotOfKind(host, slot, 'p-link')).toThrowErrorMatchingInlineSnapshot(
-    `"[Porsche Design System] child a of div has to be a p-link."`
+    `[Error: [Porsche Design System] child a of div has to be a p-link.]`
   );
 });
 
@@ -58,7 +58,7 @@ it('should throw error if tagName is not included in prefixedTagNames', () => {
   expect(() =>
     throwIfElementIsNotOfKind(host, testElement, ['p-multi-select-option', 'p-optgroup'])
   ).toThrowErrorMatchingInlineSnapshot(
-    `"[Porsche Design System] child a of div has to be a p-multi-select-option | p-optgroup."`
+    `[Error: [Porsche Design System] child a of div has to be a p-multi-select-option | p-optgroup.]`
   );
 });
 

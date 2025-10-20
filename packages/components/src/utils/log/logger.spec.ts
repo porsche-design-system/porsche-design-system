@@ -29,6 +29,6 @@ describe('consoleError()', () => {
 
 describe('throwException()', () => {
   it('should throw a new Error with correct parameters', () => {
-    expect(() => throwException('a message')).toThrowErrorMatchingInlineSnapshot(`"${messagePrefix} a message"`);
+    expect(() => throwException('a message')).toThrowErrorMatchingInlineSnapshot(`[Error: [Porsche Design System] a message]`);
   });
 });

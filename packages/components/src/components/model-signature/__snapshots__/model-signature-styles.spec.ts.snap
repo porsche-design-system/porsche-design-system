@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: inherit, color: inherit and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: inherit, color: inherit and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -36,7 +36,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: inherit, color: inherit and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: inherit, color: inherit and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -72,7 +72,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: inherit, color: primary and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: inherit, color: primary and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -108,7 +108,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: inherit, color: primary and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: inherit, color: primary and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -144,7 +144,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: contrast-high and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: contrast-high and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -180,7 +180,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: contrast-high and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: contrast-high and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -216,7 +216,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: contrast-low and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: contrast-low and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -252,7 +252,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: contrast-low and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: contrast-low and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -288,7 +288,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: contrast-medium and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: contrast-medium and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -324,7 +324,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: contrast-medium and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: contrast-medium and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -360,7 +360,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: inherit and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: inherit and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -396,7 +396,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: inherit and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: inherit and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -432,7 +432,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: primary and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: primary and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -468,7 +468,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: 911, safe-zone: true, size: small, color: primary and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: 911, safe-zone: true, size: small, color: primary and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -504,7 +504,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: cayenne, safe-zone: false, size: small, color: primary and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for model: cayenne, safe-zone: false, size: small, color: primary and theme: auto 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -546,7 +546,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: cayenne, safe-zone: false, size: small, color: primary and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: cayenne, safe-zone: false, size: small, color: primary and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -582,7 +582,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for model: cayenne, safe-zone: true, size: small, color: primary and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for model: cayenne, safe-zone: true, size: small, color: primary and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;

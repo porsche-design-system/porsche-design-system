@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getContentAriaAttributes() should return correct aria attributes for state: error 1`] = `
+exports[`getContentAriaAttributes() > should return correct aria attributes for state: error 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -9,7 +9,7 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
-exports[`getContentAriaAttributes() should return correct aria attributes for state: info 1`] = `
+exports[`getContentAriaAttributes() > should return correct aria attributes for state: info 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -18,7 +18,7 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
-exports[`getContentAriaAttributes() should return correct aria attributes for state: neutral 1`] = `
+exports[`getContentAriaAttributes() > should return correct aria attributes for state: neutral 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -27,7 +27,7 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
-exports[`getContentAriaAttributes() should return correct aria attributes for state: success 1`] = `
+exports[`getContentAriaAttributes() > should return correct aria attributes for state: success 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -36,7 +36,7 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
-exports[`getContentAriaAttributes() should return correct aria attributes for state: warning 1`] = `
+exports[`getContentAriaAttributes() > should return correct aria attributes for state: warning 1`] = `
 {
   "aria-describedby": "descriptionId",
   "aria-labelledby": "labelId",
@@ -45,12 +45,12 @@ exports[`getContentAriaAttributes() should return correct aria attributes for st
 }
 `;
 
-exports[`getInlineNotificationIconName() should return correct icon for state: error 1`] = `"error-filled"`;
+exports[`getInlineNotificationIconName() > should return correct icon for state: error 1`] = `"error-filled"`;
 
-exports[`getInlineNotificationIconName() should return correct icon for state: info 1`] = `"information-filled"`;
+exports[`getInlineNotificationIconName() > should return correct icon for state: info 1`] = `"information-filled"`;
 
-exports[`getInlineNotificationIconName() should return correct icon for state: neutral 1`] = `"information-filled"`;
+exports[`getInlineNotificationIconName() > should return correct icon for state: neutral 1`] = `"information-filled"`;
 
-exports[`getInlineNotificationIconName() should return correct icon for state: success 1`] = `"success-filled"`;
+exports[`getInlineNotificationIconName() > should return correct icon for state: success 1`] = `"success-filled"`;
 
-exports[`getInlineNotificationIconName() should return correct icon for state: warning 1`] = `"warning-filled"`;
+exports[`getInlineNotificationIconName() > should return correct icon for state: warning 1`] = `"warning-filled"`;

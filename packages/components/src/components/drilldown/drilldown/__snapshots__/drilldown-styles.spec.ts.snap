@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for isOpen: false, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -172,7 +172,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -340,7 +340,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: true and theme: light 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -493,7 +493,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: false and theme: light 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -675,7 +675,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: auto 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -857,7 +857,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: dark 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -1029,7 +1029,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);

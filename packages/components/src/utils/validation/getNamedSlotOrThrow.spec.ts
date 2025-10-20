@@ -17,7 +17,7 @@ it('should throw error if getNamedSlot() returns null', () => {
   const host = document.createElement('div');
 
   expect(() => getNamedSlotOrThrow(host, 'slot')).toThrowErrorMatchingInlineSnapshot(
-    `"[Porsche Design System] named slot='slot' is missing for component div."`
+    `[Error: [Porsche Design System] named slot='slot' is missing for component div.]`
   );
 });
 

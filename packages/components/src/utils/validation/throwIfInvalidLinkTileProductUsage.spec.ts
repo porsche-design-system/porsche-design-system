@@ -21,7 +21,7 @@ describe('without href value', () => {
 
   it('should throw error without using anchor slot', () => {
     const host = document.createElement('div');
-    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct <a> child element in the anchor slot.]`);
   });
 
   it('should throw error with nested anchor in anchor slot', () => {
@@ -36,7 +36,7 @@ describe('without href value', () => {
     // https://github.com/jsdom/jsdom/issues/2998
     vi.spyOn(host, 'querySelector').mockReturnValue(null);
 
-    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct <a> child element in the anchor slot.]`);
   });
 
   it('should throw error with anchor slot but with missing label', () => {
@@ -44,7 +44,7 @@ describe('without href value', () => {
     const anchor = document.createElement('a');
     anchor.slot = anchorSlot;
     host.append(anchor);
-    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessageA11y);
+    expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessageA11y`[Error: [Porsche Design System] usage of div is not valid. Anchor tag must have slotted text content or an aria-label attribute for accessibility.]`);
   });
 
   it('should not throw error with direct and only anchor and label', () => {
