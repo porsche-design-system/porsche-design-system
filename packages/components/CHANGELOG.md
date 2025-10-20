@@ -24,12 +24,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `blur` event ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
 - `Radio Group`: `blur` event ([#4057](https://github.com/porsche-design-system/porsche-design-system/pull/4057))
+- `Flyout`: Prop `backdrop` ([#4058](https://github.com/porsche-design-system/porsche-design-system/pull/4058))
 
 ### Changed
 
 - `Radio Button Wrapper`: component is deprecated. Use `Radio Group` instead.
   ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
-
 
 ### Fixed
 
