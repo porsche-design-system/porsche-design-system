@@ -1,5 +1,6 @@
-import { getOnlyChildrenOfKindHTMLElementOrThrow } from './getOnlyChildrenOfKindHTMLElementOrThrow';
+import { vi } from 'vitest';
 import * as getDirectChildHTMLElementsUtils from '../dom/getDirectChildHTMLElements';
+import { getOnlyChildrenOfKindHTMLElementOrThrow } from './getOnlyChildrenOfKindHTMLElementOrThrow';
 
 it('should call getDirectChildHTMLElements() with correct parameters and return its first result', () => {
   const parent = document.createElement('div');
@@ -7,7 +8,7 @@ it('should call getDirectChildHTMLElements() with correct parameters and return 
   const child2 = document.createElement('span');
   parent.append(child1, child2);
 
-  const spy = jest.spyOn(getDirectChildHTMLElementsUtils, 'getDirectChildHTMLElements').mockReturnValue([child1]);
+  const spy = vi.spyOn(getDirectChildHTMLElementsUtils, 'getDirectChildHTMLElements').mockReturnValue([child1]);
   const selector = 'a,button';
 
   const result = getOnlyChildrenOfKindHTMLElementOrThrow(parent, selector);

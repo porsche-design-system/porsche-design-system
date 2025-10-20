@@ -1,8 +1,9 @@
-import { getOnlyChildHTMLElementOrThrow } from './getOnlyChildHTMLElementOrThrow';
+import { vi } from 'vitest';
 import * as getDirectChildHTMLElementUtils from '../dom/getDirectChildHTMLElement';
+import { getOnlyChildHTMLElementOrThrow } from './getOnlyChildHTMLElementOrThrow';
 
 it('should call getDirectChildHTMLElement() with correct parameters', () => {
-  const spy = jest
+  const spy = vi
     .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
     .mockReturnValue(document.createElement('button'));
   const parent = document.createElement('div');
@@ -16,7 +17,7 @@ it('should call getDirectChildHTMLElement() with correct parameters', () => {
 it('should return result of getDirectChildHTMLElement()', () => {
   const parent = document.createElement('div');
   const child = document.createElement('a');
-  jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement').mockReturnValue(child);
+  vi.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement').mockReturnValue(child);
 
   expect(getOnlyChildHTMLElementOrThrow(parent, 'a')).toBe(child);
 });

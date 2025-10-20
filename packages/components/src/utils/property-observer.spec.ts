@@ -1,14 +1,15 @@
+import { vi } from 'vitest';
 import { observeProperties } from './property-observer';
 
 describe('observeProperties()', () => {
-  const callback = jest.fn();
+  const callback = vi.fn();
 
   it('should define getter and setter for single prop', () => {
     const node = document.createElement('input');
     observeProperties(node, ['checked'], callback);
 
-    const spyGet = jest.spyOn(node, 'checked', 'get').mockReturnValueOnce(false);
-    const spySet = jest.spyOn(node, 'checked', 'set');
+    const spyGet = vi.spyOn(node, 'checked', 'get').mockReturnValueOnce(false);
+    const spySet = vi.spyOn(node, 'checked', 'set');
 
     expect(spyGet).not.toHaveBeenCalled();
     expect(spySet).not.toHaveBeenCalled();
@@ -27,12 +28,12 @@ describe('observeProperties()', () => {
     const node = document.createElement('input');
     observeProperties(node, ['checked', 'disabled', 'indeterminate'], callback);
 
-    const spyCheckedGet = jest.spyOn(node, 'checked', 'get');
-    const spyCheckedSet = jest.spyOn(node, 'checked', 'set');
-    const spyDisabledGet = jest.spyOn(node, 'disabled', 'get');
-    const spyDisabledSet = jest.spyOn(node, 'disabled', 'set');
-    const spyIndeterminateGet = jest.spyOn(node, 'indeterminate', 'get');
-    const spyIndeterminateSet = jest.spyOn(node, 'indeterminate', 'set');
+    const spyCheckedGet = vi.spyOn(node, 'checked', 'get');
+    const spyCheckedSet = vi.spyOn(node, 'checked', 'set');
+    const spyDisabledGet = vi.spyOn(node, 'disabled', 'get');
+    const spyDisabledSet = vi.spyOn(node, 'disabled', 'set');
+    const spyIndeterminateGet = vi.spyOn(node, 'indeterminate', 'get');
+    const spyIndeterminateSet = vi.spyOn(node, 'indeterminate', 'set');
 
     expect(spyCheckedGet).not.toHaveBeenCalled();
     expect(spyDisabledGet).not.toHaveBeenCalled();

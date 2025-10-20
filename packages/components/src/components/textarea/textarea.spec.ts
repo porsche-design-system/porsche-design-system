@@ -1,14 +1,14 @@
 import { Textarea } from './textarea';
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 
-jest.mock('../../utils/dom');
+vi.mock('../../utils/dom');
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
-let mockEmit: jest.SpyInstance;
+let mockEmit: vi.SpyInstance;
 
 const initComponent = (): Textarea => {
   const component = new Textarea();
@@ -21,7 +21,7 @@ const initComponent = (): Textarea => {
   component['textAreaElement'] = textarea;
   component['internals'] = new MockElementInternals() as unknown as ElementInternals;
 
-  mockEmit = jest.fn();
+  mockEmit = vi.fn();
 
   // Mock the emit methods
   component.change = { emit: mockEmit } as any;
@@ -35,7 +35,7 @@ describe('formResetCallback', () => {
   const defaultValue = 'default-value';
   component['defaultValue'] = defaultValue;
   component.value = 'test';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   component.formResetCallback();
   expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
   expect(component.value).toBe(defaultValue);
@@ -56,15 +56,15 @@ describe('formStateRestoreCallback', () => {
 describe('componentDidLoad', () => {
   const component = initComponent();
   component.value = 'test';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   component.componentDidLoad();
   expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
 });
 describe('onChange', () => {
   const component = initComponent();
   const event = {
-    stopPropagation: jest.fn(),
-    stopImmediatePropagation: jest.fn(),
+    stopPropagation: vi.fn(),
+    stopImmediatePropagation: vi.fn(),
   } as unknown as Event;
 
   component['onChange'](event);
@@ -75,8 +75,8 @@ describe('onBlur', () => {
   it('should stop propagation and emit blur event on onBlur', () => {
     const component = initComponent();
     const event = {
-      stopPropagation: jest.fn(),
-      stopImmediatePropagation: jest.fn(),
+      stopPropagation: vi.fn(),
+      stopImmediatePropagation: vi.fn(),
     } as unknown as Event;
 
     component['onBlur'](event);
@@ -91,8 +91,8 @@ describe('onInput', () => {
     const component = initComponent();
     const testValue = 'test';
     const event = {
-      stopPropagation: jest.fn(),
-      stopImmediatePropagation: jest.fn(),
+      stopPropagation: vi.fn(),
+      stopImmediatePropagation: vi.fn(),
       target: {
         value: testValue,
       },
@@ -109,7 +109,7 @@ describe('onInput', () => {
 describe('componentDidRender', () => {
   it('should call ElementInternals setValidity()', () => {
     const component = initComponent();
-    const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+    const setValiditySpy = vi.spyOn(component['internals'], 'setValidity' as any);
     component.componentDidRender();
     expect(setValiditySpy).toHaveBeenCalledTimes(1);
     expect(setValiditySpy).toHaveBeenCalledWith(

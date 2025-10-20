@@ -1,11 +1,11 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
 const initComponent = (): MultiSelect => {
@@ -23,7 +23,7 @@ const initComponent = (): MultiSelect => {
 describe('connectedCallback', () => {
   it('should add event listener', () => {
     const component = initComponent();
-    const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
+    const addEventListenerSpy = vi.spyOn(document, 'addEventListener');
     component.connectedCallback();
     expect(addEventListenerSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
   });
@@ -32,8 +32,8 @@ describe('connectedCallback', () => {
 describe('componentWillLoad', () => {
   it('should call setSelectedOptions() and setFormValue() with correct parameters', () => {
     const component = initComponent();
-    const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setSelectedOptionsSpy = vi.spyOn(multiSelectUtils, 'setSelectedOptions');
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     const value = 'a';
     component.name = 'some-name';
     component.value = [value];
@@ -50,8 +50,8 @@ describe('componentDidLoad', () => {
   it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
     const component = initComponent();
     const slot = document.createElement('slot');
-    const slotSpy = jest.spyOn(slot, 'addEventListener');
-    const getShadowRootHTMLElementSpy = jest
+    const slotSpy = vi.spyOn(slot, 'addEventListener');
+    const getShadowRootHTMLElementSpy = vi.
       .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
       .mockReturnValueOnce(slot);
     component.componentDidLoad();
@@ -61,7 +61,7 @@ describe('componentDidLoad', () => {
   it('should set inputSearchInputElement and set ariaControlsElements on it', () => {
     const component = initComponent();
     const slot = document.createElement('slot');
-    jest.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValueOnce(slot);
+    vi.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValueOnce(slot);
     const listbox = document.createElement('div');
     component['listboxElement'] = listbox;
     component.componentDidLoad();
@@ -76,7 +76,7 @@ describe('componentDidLoad', () => {
 describe('disconnectedCallback', () => {
   it('should remove event listener', () => {
     const component = initComponent();
-    const spy = jest.spyOn(document, 'removeEventListener');
+    const spy = vi.spyOn(document, 'removeEventListener');
     component.disconnectedCallback();
     expect(spy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
   });
@@ -84,7 +84,7 @@ describe('disconnectedCallback', () => {
 
 describe('render', () => {
   it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
-    const spy = jest.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
+    const spy = vi.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
     const component = initComponent();
     component.render();
     expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
@@ -97,7 +97,7 @@ describe('formResetCallback', () => {
   component['defaultValue'] = defaultValue;
   component.value = ['test'];
   component.name = 'name';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   component.formResetCallback();
   const formData = new FormData();
   defaultValue.forEach((val) => {
@@ -109,7 +109,7 @@ describe('formResetCallback', () => {
 
 describe('setFormValue', () => {
   const component = initComponent();
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   const value = ['a', 'b', 'c'];
   component.name = 'some-name';
   component.setFormValue(value);

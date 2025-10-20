@@ -1,3 +1,8 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import * as globby from 'globby-legacy';
+import type { JssStyle, Styles } from 'jss';
+import { vi } from 'vitest';
 import * as jssUtils from './jss';
 import {
   attachComponentCss,
@@ -9,10 +14,6 @@ import {
   mergeDeep,
   supportsConstructableStylesheets,
 } from './jss';
-import type { JssStyle, Styles } from 'jss';
-import * as globby from 'globby-legacy';
-import * as path from 'node:path';
-import * as fs from 'node:fs';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -328,7 +329,7 @@ describe('attachComponentCss()', () => {
   it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+    const spy = vi.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
 
     attachComponentCss(host, (_x: boolean) => 'some css', true);
 
@@ -353,7 +354,7 @@ describe('attachComponentCss()', () => {
 
   describe('without CSSStyleSheet support', () => {
     it('should create style node and prepend it in shadowRoot', () => {
-      const spy = jest.spyOn(jssUtils, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
+      const spy = vi.spyOn(jssUtils, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
 
       const div = document.createElement('p-some-component');
       div.attachShadow({ mode: 'open' });
@@ -421,7 +422,7 @@ describe('getCachedComponentCss()', () => {
     const host1 = document.createElement('p-some-element');
     const host2 = document.createElement('p-some-element');
     const host3 = document.createElement('p-some-element');
-    const getComponentCss = jest.fn();
+    const getComponentCss = vi.fn();
 
     getCachedComponentCss(host1, getComponentCss, 'some-param');
 
@@ -439,7 +440,7 @@ describe('getCachedComponentCss()', () => {
   it('should not call provided css function again for prefixed version of host type', () => {
     const host = document.createElement('p-some-element');
     const hostPrefixed = document.createElement('my-prefix-p-some-element');
-    const getComponentCss = jest.fn();
+    const getComponentCss = vi.fn();
 
     getCachedComponentCss(host, getComponentCss);
 

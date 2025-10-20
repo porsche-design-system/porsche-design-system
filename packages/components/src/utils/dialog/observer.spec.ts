@@ -1,11 +1,11 @@
-import {
-  scrollAreaObserverMap,
-  observedStickyNodesMap,
-  getIntersectionObserverStickyArea,
-  observeStickyArea,
-} from './observer';
+import { vi } from 'vitest';
 import * as observerUtils from './observer';
-import { expect } from '@jest/globals';
+import {
+  getIntersectionObserverStickyArea,
+  observedStickyNodesMap,
+  observeStickyArea,
+  scrollAreaObserverMap,
+} from './observer';
 
 describe('getIntersectionObserverStickyArea()', () => {
   const mockObserverInstance = {
@@ -16,7 +16,7 @@ describe('getIntersectionObserverStickyArea()', () => {
 
   beforeEach(() => {
     // IntersectionObserver isn't available in test environment
-    const mockIntersectionObserver = jest.fn();
+    const mockIntersectionObserver = vi.fn();
     mockIntersectionObserver.mockReturnValue(mockObserverInstance);
     window.IntersectionObserver = mockIntersectionObserver;
   });
@@ -43,7 +43,7 @@ describe('observeStickyArea()', () => {
     stickyNode = document.createElement('div');
     scrollArea.appendChild(stickyNode);
     // IntersectionObserver isn't available in test environment
-    const mockIntersectionObserver = jest.fn();
+    const mockIntersectionObserver = vi.fn();
     mockIntersectionObserver.mockReturnValue(mockObserverInstance);
     window.IntersectionObserver = mockIntersectionObserver;
     scrollAreaObserverMap.clear();
@@ -51,8 +51,8 @@ describe('observeStickyArea()', () => {
   });
 
   it('should create new intersection observer instance and observe node if scroll area was not observed before', () => {
-    const getIntersectionObserverStickyAreaSpy = jest.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
-    const observeSpy = jest.spyOn(mockObserverInstance, 'observe');
+    const getIntersectionObserverStickyAreaSpy = vi.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
+    const observeSpy = vi.spyOn(mockObserverInstance, 'observe');
 
     observeStickyArea(scrollArea, stickyNode);
 
@@ -63,8 +63,8 @@ describe('observeStickyArea()', () => {
   });
 
   it('should not create new intersection observer instance if scrollArea was observed before and observe node', () => {
-    const getIntersectionObserverStickyAreaSpy = jest.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
-    const observeSpy = jest.spyOn(mockObserverInstance, 'observe');
+    const getIntersectionObserverStickyAreaSpy = vi.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
+    const observeSpy = vi.spyOn(mockObserverInstance, 'observe');
     scrollAreaObserverMap.set(scrollArea, mockObserverInstance);
 
     observeStickyArea(scrollArea, stickyNode);
@@ -75,8 +75,8 @@ describe('observeStickyArea()', () => {
   });
 
   it('should not create new intersection observer instance if scrollArea was observed before and not call observe node again if it already is observed', () => {
-    const getIntersectionObserverStickyAreaSpy = jest.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
-    const observeSpy = jest.spyOn(mockObserverInstance, 'observe');
+    const getIntersectionObserverStickyAreaSpy = vi.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
+    const observeSpy = vi.spyOn(mockObserverInstance, 'observe');
     scrollAreaObserverMap.set(scrollArea, mockObserverInstance);
     observedStickyNodesMap.set(stickyNode, mockObserverInstance);
 

@@ -1,10 +1,10 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import { RadioGroup } from './radio-group';
 import * as radioGroupUtils from './radio-group-utils';
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
 const initComponent = (): RadioGroup => {
@@ -46,7 +46,7 @@ describe('componentWillLoad', () => {
 
   it('should call updateOptions() and updateRadioGroupOptions() with correct parameters', () => {
     const component = initComponent();
-    const updateRadioGroupOptionsSpy = jest.spyOn(radioGroupUtils, 'updateRadioGroupOptions');
+    const updateRadioGroupOptionsSpy = vi.spyOn(radioGroupUtils, 'updateRadioGroupOptions');
 
     component.componentWillLoad();
     expect(updateRadioGroupOptionsSpy).toHaveBeenCalledWith(component['radioGroupOptions'], component['value']);
@@ -56,14 +56,14 @@ describe('componentWillLoad', () => {
 describe('componentDidLoad', () => {
   const component = initComponent();
   component.value = 'test';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   component.componentDidLoad();
   expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
 });
 
 describe('render', () => {
   it('should call syncRadioGroupChildrenProps() with correct parameters', () => {
-    const spy = jest.spyOn(radioGroupUtils, 'syncRadioGroupChildrenProps');
+    const spy = vi.spyOn(radioGroupUtils, 'syncRadioGroupChildrenProps');
     const component = initComponent();
     component.render();
     expect(spy).toHaveBeenCalledWith(

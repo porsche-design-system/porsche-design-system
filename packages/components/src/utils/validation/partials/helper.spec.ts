@@ -1,6 +1,8 @@
 import type { TagName } from '@porsche-design-system/shared';
+import { vi } from 'vitest';
 import * as detectDuplicatesUtils from '../../is-already-in-array';
 import * as tagNameUtils from '../../tag-name';
+import * as helperUtils from './helper';
 import {
   getPdsComponentsSelector,
   getPorscheDesignSystemPrefixesForVersions,
@@ -10,7 +12,6 @@ import {
   getUsedTagNamesForVersions,
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
-import * as helperUtils from './helper';
 
 describe('getPreloadedTagNamesForCoreChunk()', () => {
   let coreChunkLinkElement: HTMLLinkElement;
@@ -60,7 +61,7 @@ describe('getPreloadedTagNamesForVersion()', () => {
   const version = '1.2.3';
 
   it('should call document.querySelector() with correct parameters', () => {
-    const documentQuerySelectorSpy = jest.spyOn(document, 'querySelector');
+    const documentQuerySelectorSpy = vi.spyOn(document, 'querySelector');
 
     getPreloadedTagNamesForVersion(version);
     expect(documentQuerySelectorSpy).toHaveBeenCalledWith('[href*=porsche-design-system\\.v1\\.2\\.3]');
@@ -71,8 +72,8 @@ describe('getPreloadedTagNamesForVersion()', () => {
 
   it('should call getPreloadedTagNamesForCoreChunk() with correct parameter when core chunk link is found', () => {
     const querySelectorMockReturn = document.createElement('link');
-    jest.spyOn(document, 'querySelector').mockReturnValue(querySelectorMockReturn);
-    const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForCoreChunk');
+    vi.spyOn(document, 'querySelector').mockReturnValue(querySelectorMockReturn);
+    const spy = vi.spyOn(helperUtils, 'getPreloadedTagNamesForCoreChunk');
     getPreloadedTagNamesForVersion(version);
 
     expect(spy).toHaveBeenCalledWith(querySelectorMockReturn);
@@ -88,7 +89,7 @@ describe('getPreloadedTagNamesForVersions()', () => {
 
   it('should return preloaded tag names for versions', () => {
     const mockReturnValue: TagName[] = ['p-text'];
-    jest.spyOn(helperUtils, 'getPreloadedTagNamesForVersion').mockReturnValue(mockReturnValue);
+    vi.spyOn(helperUtils, 'getPreloadedTagNamesForVersion').mockReturnValue(mockReturnValue);
 
     expect(getPreloadedTagNamesForVersions(versions)).toEqual({
       '1.2.3': mockReturnValue,
@@ -98,7 +99,7 @@ describe('getPreloadedTagNamesForVersions()', () => {
   });
 
   it('should call getPreloadedTagNamesForVersion() with correct parameters', () => {
-    const spy = jest.spyOn(helperUtils, 'getPreloadedTagNamesForVersion');
+    const spy = vi.spyOn(helperUtils, 'getPreloadedTagNamesForVersion');
     getPreloadedTagNamesForVersions(versions);
 
     expect(spy).toHaveBeenCalledWith('1.2.3');
@@ -110,11 +111,15 @@ describe('getPreloadedTagNamesForVersions()', () => {
 
 describe('getPdsComponentsSelector()', () => {
   it('should return joined TAG_NAMES_WITH_CHUNK if no prefixes are passed', () => {
-    expect(getPdsComponentsSelector([''])).toMatchInlineSnapshot(`"p-accordion,p-banner,p-button,p-button-group,p-button-pure,p-button-tile,p-canvas,p-carousel,p-checkbox,p-checkbox-wrapper,p-content-wrapper,p-crest,p-display,p-divider,p-drilldown,p-fieldset,p-fieldset-wrapper,p-flag,p-flex,p-flyout,p-grid,p-heading,p-headline,p-icon,p-inline-notification,p-input-date,p-input-email,p-input-number,p-input-password,p-input-search,p-input-tel,p-input-text,p-input-time,p-input-url,p-link,p-link-pure,p-link-social,p-link-tile,p-link-tile-model-signature,p-link-tile-product,p-marque,p-modal,p-model-signature,p-multi-select,p-optgroup,p-pagination,p-pin-code,p-popover,p-radio-button-wrapper,p-radio-group,p-radio-group-option,p-scroller,p-segmented-control,p-select,p-select-wrapper,p-sheet,p-spinner,p-stepper-horizontal,p-switch,p-table,p-tabs,p-tabs-bar,p-tag,p-tag-dismissible,p-text,p-text-field-wrapper,p-text-list,p-textarea,p-textarea-wrapper,p-toast,p-wordmark"`);
+    expect(getPdsComponentsSelector([''])).toMatchInlineSnapshot(
+      `"p-accordion,p-banner,p-button,p-button-group,p-button-pure,p-button-tile,p-canvas,p-carousel,p-checkbox,p-checkbox-wrapper,p-content-wrapper,p-crest,p-display,p-divider,p-drilldown,p-fieldset,p-fieldset-wrapper,p-flag,p-flex,p-flyout,p-grid,p-heading,p-headline,p-icon,p-inline-notification,p-input-date,p-input-email,p-input-number,p-input-password,p-input-search,p-input-tel,p-input-text,p-input-time,p-input-url,p-link,p-link-pure,p-link-social,p-link-tile,p-link-tile-model-signature,p-link-tile-product,p-marque,p-modal,p-model-signature,p-multi-select,p-optgroup,p-pagination,p-pin-code,p-popover,p-radio-button-wrapper,p-radio-group,p-radio-group-option,p-scroller,p-segmented-control,p-select,p-select-wrapper,p-sheet,p-spinner,p-stepper-horizontal,p-switch,p-table,p-tabs,p-tabs-bar,p-tag,p-tag-dismissible,p-text,p-text-field-wrapper,p-text-list,p-textarea,p-textarea-wrapper,p-toast,p-wordmark"`
+    );
   });
 
   it('should return joined and prefixed TAG_NAMES_WITH_CHUNK for passed prefixes', () => {
-    expect(getPdsComponentsSelector(['my-prefix', 'some-prefix'])).toMatchInlineSnapshot(`"my-prefix-p-accordion,my-prefix-p-banner,my-prefix-p-button,my-prefix-p-button-group,my-prefix-p-button-pure,my-prefix-p-button-tile,my-prefix-p-canvas,my-prefix-p-carousel,my-prefix-p-checkbox,my-prefix-p-checkbox-wrapper,my-prefix-p-content-wrapper,my-prefix-p-crest,my-prefix-p-display,my-prefix-p-divider,my-prefix-p-drilldown,my-prefix-p-fieldset,my-prefix-p-fieldset-wrapper,my-prefix-p-flag,my-prefix-p-flex,my-prefix-p-flyout,my-prefix-p-grid,my-prefix-p-heading,my-prefix-p-headline,my-prefix-p-icon,my-prefix-p-inline-notification,my-prefix-p-input-date,my-prefix-p-input-email,my-prefix-p-input-number,my-prefix-p-input-password,my-prefix-p-input-search,my-prefix-p-input-tel,my-prefix-p-input-text,my-prefix-p-input-time,my-prefix-p-input-url,my-prefix-p-link,my-prefix-p-link-pure,my-prefix-p-link-social,my-prefix-p-link-tile,my-prefix-p-link-tile-model-signature,my-prefix-p-link-tile-product,my-prefix-p-marque,my-prefix-p-modal,my-prefix-p-model-signature,my-prefix-p-multi-select,my-prefix-p-optgroup,my-prefix-p-pagination,my-prefix-p-pin-code,my-prefix-p-popover,my-prefix-p-radio-button-wrapper,my-prefix-p-radio-group,my-prefix-p-radio-group-option,my-prefix-p-scroller,my-prefix-p-segmented-control,my-prefix-p-select,my-prefix-p-select-wrapper,my-prefix-p-sheet,my-prefix-p-spinner,my-prefix-p-stepper-horizontal,my-prefix-p-switch,my-prefix-p-table,my-prefix-p-tabs,my-prefix-p-tabs-bar,my-prefix-p-tag,my-prefix-p-tag-dismissible,my-prefix-p-text,my-prefix-p-text-field-wrapper,my-prefix-p-text-list,my-prefix-p-textarea,my-prefix-p-textarea-wrapper,my-prefix-p-toast,my-prefix-p-wordmark,some-prefix-p-accordion,some-prefix-p-banner,some-prefix-p-button,some-prefix-p-button-group,some-prefix-p-button-pure,some-prefix-p-button-tile,some-prefix-p-canvas,some-prefix-p-carousel,some-prefix-p-checkbox,some-prefix-p-checkbox-wrapper,some-prefix-p-content-wrapper,some-prefix-p-crest,some-prefix-p-display,some-prefix-p-divider,some-prefix-p-drilldown,some-prefix-p-fieldset,some-prefix-p-fieldset-wrapper,some-prefix-p-flag,some-prefix-p-flex,some-prefix-p-flyout,some-prefix-p-grid,some-prefix-p-heading,some-prefix-p-headline,some-prefix-p-icon,some-prefix-p-inline-notification,some-prefix-p-input-date,some-prefix-p-input-email,some-prefix-p-input-number,some-prefix-p-input-password,some-prefix-p-input-search,some-prefix-p-input-tel,some-prefix-p-input-text,some-prefix-p-input-time,some-prefix-p-input-url,some-prefix-p-link,some-prefix-p-link-pure,some-prefix-p-link-social,some-prefix-p-link-tile,some-prefix-p-link-tile-model-signature,some-prefix-p-link-tile-product,some-prefix-p-marque,some-prefix-p-modal,some-prefix-p-model-signature,some-prefix-p-multi-select,some-prefix-p-optgroup,some-prefix-p-pagination,some-prefix-p-pin-code,some-prefix-p-popover,some-prefix-p-radio-button-wrapper,some-prefix-p-radio-group,some-prefix-p-radio-group-option,some-prefix-p-scroller,some-prefix-p-segmented-control,some-prefix-p-select,some-prefix-p-select-wrapper,some-prefix-p-sheet,some-prefix-p-spinner,some-prefix-p-stepper-horizontal,some-prefix-p-switch,some-prefix-p-table,some-prefix-p-tabs,some-prefix-p-tabs-bar,some-prefix-p-tag,some-prefix-p-tag-dismissible,some-prefix-p-text,some-prefix-p-text-field-wrapper,some-prefix-p-text-list,some-prefix-p-textarea,some-prefix-p-textarea-wrapper,some-prefix-p-toast,some-prefix-p-wordmark"`);
+    expect(getPdsComponentsSelector(['my-prefix', 'some-prefix'])).toMatchInlineSnapshot(
+      `"my-prefix-p-accordion,my-prefix-p-banner,my-prefix-p-button,my-prefix-p-button-group,my-prefix-p-button-pure,my-prefix-p-button-tile,my-prefix-p-canvas,my-prefix-p-carousel,my-prefix-p-checkbox,my-prefix-p-checkbox-wrapper,my-prefix-p-content-wrapper,my-prefix-p-crest,my-prefix-p-display,my-prefix-p-divider,my-prefix-p-drilldown,my-prefix-p-fieldset,my-prefix-p-fieldset-wrapper,my-prefix-p-flag,my-prefix-p-flex,my-prefix-p-flyout,my-prefix-p-grid,my-prefix-p-heading,my-prefix-p-headline,my-prefix-p-icon,my-prefix-p-inline-notification,my-prefix-p-input-date,my-prefix-p-input-email,my-prefix-p-input-number,my-prefix-p-input-password,my-prefix-p-input-search,my-prefix-p-input-tel,my-prefix-p-input-text,my-prefix-p-input-time,my-prefix-p-input-url,my-prefix-p-link,my-prefix-p-link-pure,my-prefix-p-link-social,my-prefix-p-link-tile,my-prefix-p-link-tile-model-signature,my-prefix-p-link-tile-product,my-prefix-p-marque,my-prefix-p-modal,my-prefix-p-model-signature,my-prefix-p-multi-select,my-prefix-p-optgroup,my-prefix-p-pagination,my-prefix-p-pin-code,my-prefix-p-popover,my-prefix-p-radio-button-wrapper,my-prefix-p-radio-group,my-prefix-p-radio-group-option,my-prefix-p-scroller,my-prefix-p-segmented-control,my-prefix-p-select,my-prefix-p-select-wrapper,my-prefix-p-sheet,my-prefix-p-spinner,my-prefix-p-stepper-horizontal,my-prefix-p-switch,my-prefix-p-table,my-prefix-p-tabs,my-prefix-p-tabs-bar,my-prefix-p-tag,my-prefix-p-tag-dismissible,my-prefix-p-text,my-prefix-p-text-field-wrapper,my-prefix-p-text-list,my-prefix-p-textarea,my-prefix-p-textarea-wrapper,my-prefix-p-toast,my-prefix-p-wordmark,some-prefix-p-accordion,some-prefix-p-banner,some-prefix-p-button,some-prefix-p-button-group,some-prefix-p-button-pure,some-prefix-p-button-tile,some-prefix-p-canvas,some-prefix-p-carousel,some-prefix-p-checkbox,some-prefix-p-checkbox-wrapper,some-prefix-p-content-wrapper,some-prefix-p-crest,some-prefix-p-display,some-prefix-p-divider,some-prefix-p-drilldown,some-prefix-p-fieldset,some-prefix-p-fieldset-wrapper,some-prefix-p-flag,some-prefix-p-flex,some-prefix-p-flyout,some-prefix-p-grid,some-prefix-p-heading,some-prefix-p-headline,some-prefix-p-icon,some-prefix-p-inline-notification,some-prefix-p-input-date,some-prefix-p-input-email,some-prefix-p-input-number,some-prefix-p-input-password,some-prefix-p-input-search,some-prefix-p-input-tel,some-prefix-p-input-text,some-prefix-p-input-time,some-prefix-p-input-url,some-prefix-p-link,some-prefix-p-link-pure,some-prefix-p-link-social,some-prefix-p-link-tile,some-prefix-p-link-tile-model-signature,some-prefix-p-link-tile-product,some-prefix-p-marque,some-prefix-p-modal,some-prefix-p-model-signature,some-prefix-p-multi-select,some-prefix-p-optgroup,some-prefix-p-pagination,some-prefix-p-pin-code,some-prefix-p-popover,some-prefix-p-radio-button-wrapper,some-prefix-p-radio-group,some-prefix-p-radio-group-option,some-prefix-p-scroller,some-prefix-p-segmented-control,some-prefix-p-select,some-prefix-p-select-wrapper,some-prefix-p-sheet,some-prefix-p-spinner,some-prefix-p-stepper-horizontal,some-prefix-p-switch,some-prefix-p-table,some-prefix-p-tabs,some-prefix-p-tabs-bar,some-prefix-p-tag,some-prefix-p-tag-dismissible,some-prefix-p-text,some-prefix-p-text-field-wrapper,some-prefix-p-text-list,some-prefix-p-textarea,some-prefix-p-textarea-wrapper,some-prefix-p-toast,some-prefix-p-wordmark"`
+    );
   });
 });
 
@@ -123,7 +128,7 @@ describe('getUsedTagNamesForVersions()', () => {
     const prefixesForVersion = { '1.2.3': ['', 'my-prefix', 'some-prefix'], '1.2.4': ['', 'my-prefix', 'some-prefix'] };
 
     it('should call getPdsComponentsSelector() with correct parameters', () => {
-      const spy = jest.spyOn(helperUtils, 'getPdsComponentsSelector');
+      const spy = vi.spyOn(helperUtils, 'getPdsComponentsSelector');
       getUsedTagNamesForVersions(prefixesForVersion);
 
       expect(spy).toHaveBeenCalledWith(prefixesForVersion['1.2.3']);
@@ -133,8 +138,8 @@ describe('getUsedTagNamesForVersions()', () => {
 
     it('should call document.querySelectorAll() with correct parameters', () => {
       const pdsComponentsSelectorMock = 'someSelector';
-      jest.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
-      const spy = jest.spyOn(document, 'querySelectorAll');
+      vi.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
+      const spy = vi.spyOn(document, 'querySelectorAll');
       getUsedTagNamesForVersions(prefixesForVersion);
 
       expect(spy).toHaveBeenCalledWith(pdsComponentsSelectorMock);
@@ -145,8 +150,8 @@ describe('getUsedTagNamesForVersions()', () => {
       const el1 = document.createElement('my-prefix-p-text');
       const el2 = document.createElement('my-prefix-p-text');
       const mockReturnValue = [el, el1, el2];
-      jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
-      const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
+      vi.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
+      const spy = vi.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
       getUsedTagNamesForVersions({ '1.2.3': ['p-text', 'my-prefix-p-text'] }); // Pass only one version to reduce number of calls
 
       expect(spy).toHaveBeenCalledWith(el, 0, mockReturnValue);
@@ -156,7 +161,7 @@ describe('getUsedTagNamesForVersions()', () => {
     });
 
     it('should call document.querySelector() with correct parameters', () => {
-      const spy = jest.spyOn(document, 'querySelector');
+      const spy = vi.spyOn(document, 'querySelector');
       getUsedTagNamesForVersions(prefixesForVersion);
 
       expect(spy).toHaveBeenCalledWith('phn-header');
@@ -165,10 +170,10 @@ describe('getUsedTagNamesForVersions()', () => {
     it('should call isAlreadyInArray() with correct parameters and return tagNames for each version without duplicates', () => {
       const el = document.createElement('p-text');
       const mockReturnValueArrayFrom = [el];
-      jest.spyOn(Array, 'from').mockReturnValue(mockReturnValueArrayFrom);
+      vi.spyOn(Array, 'from').mockReturnValue(mockReturnValueArrayFrom);
       const mockReturnValueMap: TagName[] = ['p-text', 'p-text', 'p-button', 'p-button', 'p-link'];
-      jest.spyOn(mockReturnValueArrayFrom, 'map').mockReturnValue(mockReturnValueMap);
-      const spy = jest.spyOn(detectDuplicatesUtils, 'isAlreadyInArray');
+      vi.spyOn(mockReturnValueArrayFrom, 'map').mockReturnValue(mockReturnValueMap);
+      const spy = vi.spyOn(detectDuplicatesUtils, 'isAlreadyInArray');
 
       expect(
         getUsedTagNamesForVersions({
@@ -199,8 +204,8 @@ describe('getUsedTagNamesForVersions()', () => {
 
     it('should call querySelectorAll() with correct parameters', () => {
       const pdsComponentsSelectorMock = 'someSelector';
-      jest.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
-      const spy = jest.spyOn(document, 'querySelectorAll');
+      vi.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
+      const spy = vi.spyOn(document, 'querySelectorAll');
       getUsedTagNamesForVersions(prefixesForVersion);
 
       expect(spy).toHaveBeenCalledWith(pdsComponentsSelectorMock);
@@ -211,9 +216,9 @@ describe('getUsedTagNamesForVersions()', () => {
       const el1 = document.createElement('phn-p-text');
       const el2 = document.createElement('phn-p-text');
       const mockReturnValue = [el, el1, el2];
-      jest.spyOn(Array, 'from').mockReturnValueOnce([]); // first Array.from() call is not relevant for this unit test
-      jest.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
-      const spy = jest.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
+      vi.spyOn(Array, 'from').mockReturnValueOnce([]); // first Array.from() call is not relevant for this unit test
+      vi.spyOn(Array, 'from').mockReturnValue(mockReturnValue);
+      const spy = vi.spyOn(tagNameUtils, 'getTagNameWithoutPrefix');
       getUsedTagNamesForVersions(prefixesForVersion);
 
       expect(spy).toHaveBeenCalledWith(el, 0, mockReturnValue);
@@ -227,7 +232,7 @@ describe('getUsedTagNamesForVersions()', () => {
       document.body.append(el);
       const elShadow = document.createElement('phn-p-button');
       phnHeader.shadowRoot.append(elShadow);
-      const spy = jest.spyOn(detectDuplicatesUtils, 'isAlreadyInArray');
+      const spy = vi.spyOn(detectDuplicatesUtils, 'isAlreadyInArray');
 
       expect(
         getUsedTagNamesForVersions({

@@ -1,18 +1,19 @@
-import * as pinCodeUtils from './pin-code-utils';
-import * as getTagNameWithoutPrefixUtils from '../../utils/tag-name';
+import { vi } from 'vitest';
 import * as consoleWarnUtils from '../../utils/log/logger';
+import * as getTagNameWithoutPrefixUtils from '../../utils/tag-name';
+import { PinCode } from './pin-code';
+import * as pinCodeUtils from './pin-code-utils';
 import {
-  removeSlottedSelector,
-  hasInputOnlyDigitsOrWhitespaces,
-  isInputOnlyDigits,
   getConcatenatedInputValues,
-  warnAboutTransformedValue,
   getSanitisedValue,
+  hasInputOnlyDigitsOrWhitespaces,
+  isCurrentInput,
+  isInputOnlyDigits,
+  removeSlottedSelector,
   removeStyles,
   removeWhiteSpaces,
-  isCurrentInput,
+  warnAboutTransformedValue,
 } from './pin-code-utils';
-import { PinCode } from './pin-code';
 
 describe('removeSlottedSelector()', () => {
   it('should remove ::slotted() selector from Styles object keys', () => {
@@ -112,8 +113,8 @@ describe('warnAboutTransformedValue()', () => {
   it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
     const host = document.createElement('p-pin-code');
     const warningPrefix = 'Property value of component p-pin-code:';
-    const spyGetTagNameWithoutPrefix = jest.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
-    const spyConsoleWarn = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
+    const spyGetTagNameWithoutPrefix = vi.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
+    const spyConsoleWarn = vi.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 
     warnAboutTransformedValue(host, 4);
 
@@ -188,7 +189,7 @@ describe('getSanitisedValue()', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1234';
-    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
+    const spy = vi.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
@@ -200,7 +201,7 @@ describe('getSanitisedValue()', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1a&^b';
-    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
+    const spy = vi.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
@@ -212,7 +213,7 @@ describe('getSanitisedValue()', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '12345678';
-    const spy = jest.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
+    const spy = vi.spyOn(pinCodeUtils, 'warnAboutTransformedValue');
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 

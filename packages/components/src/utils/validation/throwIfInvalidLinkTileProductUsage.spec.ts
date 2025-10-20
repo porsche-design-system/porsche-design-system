@@ -1,5 +1,6 @@
-import { throwIfInvalidLinkTileProductUsage } from './throwIfInvalidLinkTileProductUsage';
+import { vi } from 'vitest';
 import { anchorSlot } from '../../components/link-tile-product/link-tile-product-utils';
+import { throwIfInvalidLinkTileProductUsage } from './throwIfInvalidLinkTileProductUsage';
 
 const errorMessage =
   '"[Porsche Design System] usage of div is not valid. Please provide a href property or a single and direct <a> child element in the anchor slot."';
@@ -16,7 +17,7 @@ describe('with href value', () => {
 });
 
 describe('without href value', () => {
-  const href = undefined;
+  const href: any = undefined;
 
   it('should throw error without using anchor slot', () => {
     const host = document.createElement('div');
@@ -33,7 +34,7 @@ describe('without href value', () => {
 
     // TODO: workaround until jsdom actually returns null for this case
     // https://github.com/jsdom/jsdom/issues/2998
-    jest.spyOn(host, 'querySelector').mockReturnValue(null);
+    vi.spyOn(host, 'querySelector').mockReturnValue(null);
 
     expect(() => throwIfInvalidLinkTileProductUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
   });

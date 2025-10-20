@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import type { DrilldownItemInternalHTMLProps } from '../drilldown-item/drilldown-item-utils';
 import * as drilldownUtils from './drilldown-utils';
@@ -24,7 +24,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
-    const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
     validateActiveIdentifier<typeof SomeInstance>(instance, items, undefined);
     expect(spy).not.toHaveBeenCalled();
   });
@@ -33,7 +33,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild()];
 
-    const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).not.toHaveBeenCalled();
   });
@@ -42,7 +42,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
-    const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessage);
   });
@@ -51,19 +51,19 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild(identifier)];
 
-    const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessageMultiple, ...items);
   });
 });
 
 describe('updateDrilldownItemState()', () => {
-  let traverseTreeAndUpdateStateSpy: jest.SpyInstance;
+  let traverseTreeAndUpdateStateSpy: vi.SpyInstance;
   let host: HTMLElement & { primary?: boolean };
   let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
 
   beforeEach(() => {
-    traverseTreeAndUpdateStateSpy = jest.spyOn(drilldownUtils, 'traverseTreeAndUpdateState').mockImplementation();
+    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils, 'traverseTreeAndUpdateState').mockImplementation();
 
     host = document.createElement('p-drilldown');
     child = document.createElement('p-drilldown-item');
@@ -72,7 +72,7 @@ describe('updateDrilldownItemState()', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should set secondary prop of item with activeIdentifier to value=true and call functions', () => {
@@ -88,13 +88,13 @@ describe('updateDrilldownItemState()', () => {
 });
 
 describe('traverseTreeAndUpdateState()', () => {
-  let traverseTreeAndUpdateStateSpy: jest.SpyInstance;
+  let traverseTreeAndUpdateStateSpy: vi.SpyInstance;
   let host: HTMLElement & { primary?: boolean };
   let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
   let grandChild: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
 
   beforeEach(() => {
-    traverseTreeAndUpdateStateSpy = jest.spyOn(drilldownUtils, 'traverseTreeAndUpdateState');
+    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils, 'traverseTreeAndUpdateState');
 
     host = document.createElement('p-drilldown');
     child = document.createElement('p-drilldown-item');
@@ -104,7 +104,7 @@ describe('traverseTreeAndUpdateState()', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should traverse up the tree and set states to value', () => {

@@ -1,15 +1,16 @@
-import { StepperHorizontal } from './stepper-horizontal';
-import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
-import * as throwIfChildCountIsExceededUtils from '../../../utils/validation/throwIfChildCountIsExceeded';
+import { vi } from 'vitest';
 import * as breakpointObserverUtils from '../../../utils/breakpoint-observer';
-import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 import * as scrollingUtils from '../../../utils/scrolling';
+import * as throwIfChildCountIsExceededUtils from '../../../utils/validation/throwIfChildCountIsExceeded';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
+import { StepperHorizontal } from './stepper-horizontal';
+import * as stepperHorizontalUtils from './stepper-horizontal-utils';
 
 describe('connectedCallback', () => {
   it('should call this.validateComponent()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'validateComponent' as any);
+    const spy = vi.spyOn(component, 'validateComponent' as any);
 
     component.connectedCallback();
     expect(spy).toHaveBeenCalledWith();
@@ -17,7 +18,7 @@ describe('connectedCallback', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+    const spy = vi.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
     expect(spy).toHaveBeenCalledWith();
@@ -28,7 +29,7 @@ describe('componentWillLoad', () => {
   it('should call this.validateComponent()', () => {
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
-    const spy = jest.spyOn(component, 'validateComponent' as any);
+    const spy = vi.spyOn(component, 'validateComponent' as any);
 
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -46,14 +47,14 @@ describe('componentDidLoad', () => {
   });
 
   it('should call getIndexOfStepWithStateCurrent() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'getIndexOfStepWithStateCurrent');
+    const spy = vi.spyOn(stepperHorizontalUtils, 'getIndexOfStepWithStateCurrent');
 
     component.componentDidLoad();
     expect(spy).toHaveBeenCalledWith(component['stepperHorizontalItems']);
   });
 
   it('should call this.observeBreakpointChange()', () => {
-    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+    const spy = vi.spyOn(component, 'observeBreakpointChange' as any);
 
     component.componentDidLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -61,7 +62,7 @@ describe('componentDidLoad', () => {
 
   it('should set correct value of this.scrollerElement.scrollToPosition', () => {
     component['scrollerElement'] = document.createElement('p-scroller');
-    jest.spyOn(scrollingUtils, 'getScrollActivePosition').mockReturnValue(5);
+    vi.spyOn(scrollingUtils, 'getScrollActivePosition').mockReturnValue(5);
 
     component.componentDidLoad();
     expect(component['scrollerElement'].scrollToPosition).toEqual({
@@ -73,7 +74,7 @@ describe('componentDidLoad', () => {
 
 describe('render', () => {
   it('should call syncItemsProps() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'syncStepperHorizontalItemsProps');
+    const spy = vi.spyOn(stepperHorizontalUtils, 'syncStepperHorizontalItemsProps');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
     component.host.attachShadow({ mode: 'open' });
@@ -85,7 +86,7 @@ describe('render', () => {
 
 describe('componentDidUpdate', () => {
   it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
+    const spy = vi.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
 
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
@@ -98,7 +99,7 @@ describe('componentDidUpdate', () => {
 describe('disconnectedCallback', () => {
   it('should call unobserveBreakpointChange() with correct parameters', () => {
     const component = new StepperHorizontal();
-    const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
+    const spy = vi.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
     component.host = document.createElement('p-stepper-horizontal');
 
     component.disconnectedCallback();
@@ -108,7 +109,7 @@ describe('disconnectedCallback', () => {
 
 describe('this.validateComponent()', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+    const spy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
@@ -117,7 +118,7 @@ describe('this.validateComponent()', () => {
   });
 
   it('should call throwIfChildCountIsExceeded() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
+    const spy = vi.spyOn(throwIfChildCountIsExceededUtils, 'throwIfChildCountIsExceeded');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
@@ -126,7 +127,7 @@ describe('this.validateComponent()', () => {
   });
 
   it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
-    const spy = jest.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
+    const spy = vi.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');
     const component = new StepperHorizontal();
     component.host = document.createElement('p-stepper-horizontal');
 
@@ -141,7 +142,7 @@ describe('this.observeBreakpointChange()', () => {
   it('should not call observeBreakpointChange() with correct parameters if this.size is not breakpoint customizable', () => {
     const component = new StepperHorizontal();
     component.size = 'small';
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+    const spy = vi.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
 
     component['observeBreakpointChange']();
     expect(spy).not.toHaveBeenCalled();
@@ -150,7 +151,7 @@ describe('this.observeBreakpointChange()', () => {
   it('should call observeBreakpointChange() with correct parameters if this.size is breakpoint customizable', () => {
     const component = new StepperHorizontal();
     component.size = { base: 'small', s: 'medium' };
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+    const spy = vi.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
 
     component['observeBreakpointChange']();
     expect(spy).toHaveBeenCalledWith(component.host, component['scrollIntoView']);

@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { MultiSelectOption } from '../../components/multi-select/multi-select-option/multi-select-option';
 import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
@@ -59,14 +60,14 @@ const generateOptions = (
     host.disabled = disabledIndex === idx;
     host.hidden = hiddenIndex === idx;
     host.style.display = 'block';
-    host.scrollIntoView = jest.fn();
+    host.scrollIntoView = vi.fn();
 
     return host;
   });
 };
 
 beforeEach(() => {
-  jest.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
+  vi.spyOn(global, 'requestAnimationFrame').mockImplementation((cb) => {
     // @ts-expect-error
     cb(); // immediately call the provided callback
     return 0;
@@ -74,7 +75,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  jest.restoreAllMocks();
+  vi.restoreAllMocks();
 });
 
 // getActionFromKey is not tested on purpose
@@ -126,8 +127,8 @@ describe('getUpdatedIndex()', () => {
 describe('getNextOptionToHighlight()', () => {
   it('should return null when getUpdatedIndex returns -1', () => {
     const options = generateOptions();
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
-    const getUpdatedIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getUpdatedIndex');
+    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
+    const getUpdatedIndexSpy = vi.spyOn(keyboardBehaviorUtils, 'getUpdatedIndex');
     getUsableSelectOptionsSpy.mockReturnValueOnce(options);
     getUpdatedIndexSpy.mockReturnValueOnce(-1);
 
@@ -138,8 +139,8 @@ describe('getNextOptionToHighlight()', () => {
   });
   it('should call getUpdatedIndex with correct parameters and return option', () => {
     const options = generateOptions({ highlightedIndex: 0 });
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
-    const getUpdatedIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getUpdatedIndex');
+    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
+    const getUpdatedIndexSpy = vi.spyOn(keyboardBehaviorUtils, 'getUpdatedIndex');
     getUsableSelectOptionsSpy.mockReturnValueOnce(options);
     getUpdatedIndexSpy.mockReturnValueOnce(1);
 
@@ -154,7 +155,7 @@ describe('getNextOptionToHighlight()', () => {
 describe('updateHighlightedOption()', () => {
   it('should return currently highlighted option and return if new option is equal to current', () => {
     const options = generateOptions({ highlightedIndex: 0 });
-    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    const setHighlightedSelectOptionSpy = vi.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
 
     const currentlyhighlightedOption = updateHighlightedOption(options[0], options[0]);
 
@@ -168,8 +169,8 @@ describe('updateHighlightedOption()', () => {
 
   it('should set highlight to new option when only new option is provided', () => {
     const options = generateOptions();
-    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
-    const scrollIntoViewSpy = jest.spyOn(options[1], 'scrollIntoView');
+    const setHighlightedSelectOptionSpy = vi.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    const scrollIntoViewSpy = vi.spyOn(options[1], 'scrollIntoView');
 
     const currentlyhighlightedOption = updateHighlightedOption(null, options[1]);
 
@@ -185,8 +186,8 @@ describe('updateHighlightedOption()', () => {
 
   it('should remove highlight from old and set highlight to new option when two options are provided', () => {
     const options = generateOptions({ highlightedIndex: 1 });
-    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
-    const scrollIntoViewSpy = jest.spyOn(options[1], 'scrollIntoView');
+    const setHighlightedSelectOptionSpy = vi.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    const scrollIntoViewSpy = vi.spyOn(options[1], 'scrollIntoView');
 
     const currentlyhighlightedOption = updateHighlightedOption(options[0], options[1]);
 
@@ -198,8 +199,8 @@ describe('updateHighlightedOption()', () => {
 
   it('should not call scrollIntoView if scrollIntoView parameter is false', () => {
     const options = generateOptions({ highlightedIndex: 1 });
-    const setHighlightedSelectOptionSpy = jest.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
-    options[1].scrollIntoView = jest.fn();
+    const setHighlightedSelectOptionSpy = vi.spyOn(keyboardBehaviorUtils, 'setHighlightedSelectOption');
+    options[1].scrollIntoView = vi.fn();
 
     const currentlyhighlightedOption = updateHighlightedOption(options[0], options[1], false);
 
@@ -225,14 +226,14 @@ describe('getUsableSelectOptions()', () => {
 
 describe('filterSelectOptions()', () => {
   it('should return only matching options', () => {
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
+    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
     const options = generateOptions({ textContents: ['a', 'b', 'c', 'd'] });
     const filteredOptions = filterSelectOptions(options, 'a');
     expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
     expect(filteredOptions).toEqual([options[0]]);
   });
   it('should return only non hidden or non disabled options', () => {
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
+    const getUsableSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
     const options = generateOptions({ disabledIndex: 0, hiddenIndex: 1 });
     const filteredOptions = filterSelectOptions(options, 'o');
     expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
@@ -243,10 +244,10 @@ describe('filterSelectOptions()', () => {
 describe('getMatchingSelectOptionIndex()', () => {
   it('should return correct matching option', () => {
     const options = generateOptions({ textContents: ['a', 'b', 'c'] });
-    const getHighlightedSelectOptionIndexSpy = jest
+    const getHighlightedSelectOptionIndexSpy = vi.
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
       .mockReturnValueOnce(-1);
-    const filterSelectOptionsSpy = jest
+    const filterSelectOptionsSpy = vi.
       .spyOn(keyboardBehaviorUtils, 'filterSelectOptions')
       .mockReturnValueOnce(options);
     const matchingOption = getMatchingSelectOptionIndex(options, 'a');
@@ -257,11 +258,11 @@ describe('getMatchingSelectOptionIndex()', () => {
 
   it('should return correct matching option when same key pressed multiple times', () => {
     const options = generateOptions({ textContents: ['a', 'a', 'c'] });
-    const getHighlightedSelectOptionIndexSpy = jest
+    const getHighlightedSelectOptionIndexSpy = vi.
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
       .mockReturnValueOnce(-1)
       .mockReturnValueOnce(0);
-    const filterSelectOptionsSpy = jest
+    const filterSelectOptionsSpy = vi.
       .spyOn(keyboardBehaviorUtils, 'filterSelectOptions')
       .mockReturnValueOnce(options);
 
@@ -302,10 +303,10 @@ describe('setHighlightedSelectOption()', () => {
 describe('getHighlightedSelectOptionIndex()', () => {
   it('should return correct highlighted select option index', () => {
     const options = generateOptions();
-    const getUsableSelectOptionsSpy = jest
+    const getUsableSelectOptionsSpy = vi.
       .spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions')
       .mockReturnValueOnce(options);
-    const getHighlightedSelectOptionSpy = jest
+    const getHighlightedSelectOptionSpy = vi.
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOption')
       .mockReturnValueOnce(options[1]);
 

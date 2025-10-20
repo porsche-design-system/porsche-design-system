@@ -1,10 +1,11 @@
 import * as stencilUtils from '@stencil/core';
+import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import * as selectUtils from './select-utils';
 import {
-  type SelectOption,
   getSelectedOptionString,
   resetSelectedOption,
+  type SelectOption,
   setSelectedOption,
   syncSelectChildrenProps,
   updateSelectOptions,
@@ -73,7 +74,7 @@ describe('getSelectedOptionString', () => {
 describe('resetSelectedOption', () => {
   it('should reset selected option when selected option exists and call forceUpdate', () => {
     const options = generateOptions({ selectedIndices: [2] });
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
+    const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     expect(options[2].selected).toBe(true);
     resetSelectedOption(options);
     expect(options[2].selected).toBe(false);
@@ -81,7 +82,7 @@ describe('resetSelectedOption', () => {
   });
   it('should not call forceUpdate when no selected option exists', () => {
     const options = generateOptions();
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
+    const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     expect(options[2].selected).toBe(false);
     resetSelectedOption(options);
     expect(options[2].selected).toBe(false);
@@ -92,7 +93,7 @@ describe('resetSelectedOption', () => {
 describe('updateSelectOptions', () => {
   it('should not select option when value="undefined" and no option with that value exists', () => {
     const options = generateOptions();
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils, 'resetSelectedOption');
     updateSelectOptions(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     options.forEach((option) => {
@@ -106,7 +107,7 @@ describe('updateSelectOptions', () => {
       { value: 'a', selected: false },
       { value: 'b', selected: false },
     ] as SelectOption[];
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils, 'resetSelectedOption');
     updateSelectOptions(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
@@ -115,7 +116,7 @@ describe('updateSelectOptions', () => {
   });
   it('should not select option and show warning when value="a" and no option with that value exists', () => {
     const options = generateOptions();
-    const consoleWarnSpy = jest.spyOn(loggerUtils, 'consoleWarn');
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
     updateSelectOptions(options, 'a');
     options.forEach((option) => {
       expect(option.selected).toBe(false);
@@ -131,7 +132,7 @@ describe('updateSelectOptions', () => {
       { value: 'b', selected: false },
       { value: 'c', selected: false },
     ] as SelectOption[];
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils, 'resetSelectedOption');
     updateSelectOptions(options, 'a');
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
@@ -142,8 +143,8 @@ describe('updateSelectOptions', () => {
 
 describe('setSelectedOption', () => {
   it('should set option selected and call resetSelectedOption and forceUpdate', () => {
-    const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils, 'resetSelectedOption');
+    const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     const options = generateOptions();
     setSelectedOption(options, options[1]);
     expect(options[0].selected).toBe(false);

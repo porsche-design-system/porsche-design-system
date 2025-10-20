@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { throwIfInvalidLinkUsage } from './throwIfInvalidLinkUsage';
 
 const errorMessage =
@@ -19,7 +20,7 @@ describe('with href value', () => {
 });
 
 describe('without href value', () => {
-  const href = undefined;
+  const href: any = undefined;
 
   it('should throw error without any child', () => {
     const host = document.createElement('div');
@@ -40,7 +41,7 @@ describe('without href value', () => {
 
     // TODO: workaround until jsdom actually returns null for this case
     // https://github.com/jsdom/jsdom/issues/2998
-    jest.spyOn(host, 'querySelector').mockReturnValue(null);
+    vi.spyOn(host, 'querySelector').mockReturnValue(null);
 
     expect(() => throwIfInvalidLinkUsage(host, href)).toThrowErrorMatchingInlineSnapshot(errorMessage);
   });

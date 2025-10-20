@@ -1,8 +1,9 @@
-import { type ToastManager, ToastManagerClass } from './toast-manager';
 import * as stencilCore from '@stencil/core';
+import { vi } from 'vitest';
+import { type ToastManager, ToastManagerClass } from './toast-manager';
 
 let toastManager: ToastManager;
-const dismissCallbackFunction = jest.fn();
+const dismissCallbackFunction = vi.fn();
 
 beforeEach(() => {
   toastManager = new ToastManagerClass();
@@ -63,7 +64,7 @@ describe('addMessage()', () => {
   });
 
   it('should force update if first element was added to messages array', () => {
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
     toastManager.addMessage({ text: 'Some Message One' });
     expect(spy).toHaveBeenCalledWith(toastElement);
 
@@ -89,7 +90,7 @@ describe('addMessage()', () => {
 
 describe('dismissToastItem()', () => {
   const toastElement = document.createElement('p-toast');
-  const dismissCallbackFunction = jest.fn();
+  const dismissCallbackFunction = vi.fn();
 
   beforeEach(() => {
     toastManager.register(toastElement, dismissCallbackFunction);
@@ -115,7 +116,7 @@ describe('dismissToastItem()', () => {
 
   it('should trigger force update', () => {
     toastManager.addMessage({ text: 'Some Message' });
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
     toastManager.dismissToastItem();
 
     expect(spy).toHaveBeenCalledWith(toastElement);
@@ -144,7 +145,7 @@ describe('getToast()', () => {
   });
 
   it('should call startTimeout()', () => {
-    const spy = jest.spyOn(toastManager, 'startTimeout');
+    const spy = vi.spyOn(toastManager, 'startTimeout');
     toastManager.getToast();
 
     expect(spy).toHaveBeenCalledTimes(1);

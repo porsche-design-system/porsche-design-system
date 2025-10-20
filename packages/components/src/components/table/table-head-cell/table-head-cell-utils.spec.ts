@@ -1,3 +1,7 @@
+import { vi } from 'vitest';
+import type { AriaAttributes } from '../../../types';
+import type { Direction, TableHeadCellSort } from '../table/table-utils';
+import * as tableUtils from './table-head-cell-utils';
 import {
   createSortedEventInitDictDetail,
   getAriaSort,
@@ -5,9 +9,6 @@ import {
   isSortable,
   toggleDirection,
 } from './table-head-cell-utils';
-import * as tableUtils from './table-head-cell-utils';
-import type { AriaAttributes } from '../../../types';
-import type { Direction, TableHeadCellSort } from '../table/table-utils';
 
 describe('isDirectionAsc()', () => {
   it('should return true for "asc"', () => {
@@ -48,13 +49,13 @@ describe('createSortedEventInitDictDetail()', () => {
   const inactiveSort: TableHeadCellSort = { id: '1', active: false, direction: 'asc' };
 
   it('should call toggleDirection() when active', () => {
-    const spy = jest.spyOn(tableUtils, 'toggleDirection');
+    const spy = vi.spyOn(tableUtils, 'toggleDirection');
     createSortedEventInitDictDetail(activeSort);
     expect(spy).toHaveBeenCalledWith('asc');
   });
 
   it('should not call toggleDirection() when not active', () => {
-    const spy = jest.spyOn(tableUtils, 'toggleDirection');
+    const spy = vi.spyOn(tableUtils, 'toggleDirection');
     createSortedEventInitDictDetail(inactiveSort);
     expect(spy).not.toHaveBeenCalled();
   });

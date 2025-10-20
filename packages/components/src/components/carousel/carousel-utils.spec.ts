@@ -1,4 +1,5 @@
 import type { Splide } from '@splidejs/splide';
+import { vi } from 'vitest';
 import type { ButtonPure } from '../button-pure/button-pure';
 import * as carouselUtils from './carousel-utils';
 import {
@@ -149,7 +150,7 @@ describe('isLastPage()', () => {
 
 describe('slidePrev()', () => {
   it('should call isFirstPage() with correct parameter', () => {
-    const spy = jest.spyOn(carouselUtils, 'isFirstPage');
+    const spy = vi.spyOn(carouselUtils, 'isFirstPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     slidePrev(splide, 5);
 
@@ -168,7 +169,7 @@ describe('slidePrev()', () => {
   ])(
     'should for splide.index: %s and amountOfPages: %s call splide.go() with: %s',
     (index, amountOfPages, expected) => {
-      const go: (page: string | number) => Splide = jest.fn();
+      const go: (page: string | number) => Splide = vi.fn();
       const splide = { index, go } as Splide;
 
       slidePrev(splide, amountOfPages);
@@ -179,7 +180,7 @@ describe('slidePrev()', () => {
 
 describe('slideNext()', () => {
   it('should call isLastPage() with correct parameter', () => {
-    const spy = jest.spyOn(carouselUtils, 'isLastPage');
+    const spy = vi.spyOn(carouselUtils, 'isLastPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     slideNext(splide, 5);
 
@@ -196,7 +197,7 @@ describe('slideNext()', () => {
   ])(
     'should for splide.index: %s and amountOfPages: %s call splide.go() with: %s',
     (index, amountOfPages, expected) => {
-      const go: (page: string | number) => Splide = jest.fn();
+      const go: (page: string | number) => Splide = vi.fn();
       const splide = { index, go } as Splide;
 
       slideNext(splide, amountOfPages);
@@ -231,7 +232,7 @@ describe('updatePrevNextButtons()', () => {
   };
 
   it('should call isFirstPage() with correct parameter', () => {
-    const spy = jest.spyOn(carouselUtils, 'isFirstPage');
+    const spy = vi.spyOn(carouselUtils, 'isFirstPage');
     const splide = getSplide();
 
     updatePrevNextButtons(...getButtons(), splide);
@@ -239,8 +240,8 @@ describe('updatePrevNextButtons()', () => {
   });
 
   it('should call isLastPage() with correct parameters', () => {
-    const spy = jest.spyOn(carouselUtils, 'isLastPage');
-    jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const spy = vi.spyOn(carouselUtils, 'isLastPage');
+    vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const splide = getSplide();
 
     updatePrevNextButtons(...getButtons(), splide);
@@ -248,7 +249,7 @@ describe('updatePrevNextButtons()', () => {
   });
 
   it('should call getAmountOfPages() with correct parameters', () => {
-    const spy = jest.spyOn(carouselUtils, 'getAmountOfPages');
+    const spy = vi.spyOn(carouselUtils, 'getAmountOfPages');
     const splide = getSplide();
 
     updatePrevNextButtons(...getButtons(), splide);
@@ -256,8 +257,8 @@ describe('updatePrevNextButtons()', () => {
   });
 
   it('should correctly set aria property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = jest.spyOn(carouselUtils, 'isFirstPage');
-    const isLastPageSpy = jest.spyOn(carouselUtils, 'isLastPage');
+    const isFirstPageSpy = vi.spyOn(carouselUtils, 'isFirstPage');
+    const isLastPageSpy = vi.spyOn(carouselUtils, 'isLastPage');
     const [btnPrev, btnNext] = getButtons();
     const splide = getSplide();
 
@@ -275,8 +276,8 @@ describe('updatePrevNextButtons()', () => {
   });
 
   it('should correctly set disabled property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = jest.spyOn(carouselUtils, 'isFirstPage');
-    const isLastPageSpy = jest.spyOn(carouselUtils, 'isLastPage');
+    const isFirstPageSpy = vi.spyOn(carouselUtils, 'isFirstPage');
+    const isLastPageSpy = vi.spyOn(carouselUtils, 'isLastPage');
     const [btnPrev, btnNext] = getButtons();
     const splide = getSplide();
 

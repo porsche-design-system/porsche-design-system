@@ -1,9 +1,10 @@
+import { vi } from 'vitest';
 import { PinCode } from './pin-code';
 import * as pinCodeUtils from './pin-code-utils';
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
 const initComponent = (): PinCode => {
@@ -44,7 +45,7 @@ describe('componentWillUpdate()', () => {
 describe('componentWillLoad', () => {
   it('should call getSanitisedValue() with correct parameters', () => {
     const component = initComponent();
-    const spy = jest.spyOn(pinCodeUtils, 'getSanitisedValue');
+    const spy = vi.spyOn(pinCodeUtils, 'getSanitisedValue');
     const value = '3333';
     component.value = value;
     component.componentWillLoad();
@@ -69,7 +70,7 @@ describe('componentWillLoad', () => {
 describe('componentDidLoad', () => {
   const component = initComponent();
   component.value = '1234';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   component.componentDidLoad();
   expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
 });
@@ -78,7 +79,7 @@ describe('formResetCallback', () => {
   const defaultValue = '1234';
   component['defaultValue'] = defaultValue;
   component.value = 'test';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
   component.formResetCallback();
   expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
   expect(component.value).toBe(defaultValue);
@@ -101,8 +102,8 @@ describe('updateValue()', () => {
   it('should call change.emit() with correct parameters and call setFormValue()', () => {
     const component = initComponent();
     const newValue = '1234';
-    const emitSpy = jest.fn();
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const emitSpy = vi.fn();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.change = { emit: emitSpy };
     component.update = { emit: emitSpy };

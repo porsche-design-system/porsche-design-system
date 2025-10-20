@@ -1,15 +1,13 @@
-import { Flyout } from './flyout';
-import * as flyoutUtilsUtils from './flyout-utils';
-import * as setScrollLockUtils from '../../utils/setScrollLock';
-import * as applyConstructableStylesheetStyleUtils from '../../utils/applyConstructableStylesheetStyle';
-import * as domUtils from '../../utils/dom';
-import { getSlottedAnchorStyles } from '../../styles';
+import { vi } from 'vitest';
 import * as childrenObserverUtils from '../../utils/children-observer';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as observerUtils from '../../utils/dialog/observer';
-import { expect } from '@jest/globals';
+import * as domUtils from '../../utils/dom';
+import * as setScrollLockUtils from '../../utils/setScrollLock';
+import { Flyout } from './flyout';
+import * as flyoutUtilsUtils from './flyout-utils';
 
-jest.mock('../../utils/dom');
+vi.mock('../../utils/dom');
 
 let component: Flyout;
 
@@ -37,7 +35,7 @@ beforeEach(() => {
 
 describe('connectedCallback', () => {
   it('should call observeChildren with correct parameters', () => {
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+    const spy = vi.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
 
     expect(spy).toHaveBeenCalledWith(component.host, expect.anything(), undefined, {
@@ -50,7 +48,7 @@ describe('connectedCallback', () => {
 
 describe('componentWillRender', () => {
   it('should call setScrollLock() with correct parameters if flyout is open', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = true;
     component.componentWillRender();
 
@@ -58,7 +56,7 @@ describe('componentWillRender', () => {
   });
 
   it('should call setScrollLock() with correct parameters if flyout is not open', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = false;
     component.componentWillRender();
 
@@ -68,7 +66,7 @@ describe('componentWillRender', () => {
 
 describe('componentDidRender', () => {
   it('should call setDialogVisibility() with correct parameters', () => {
-    const setDialogVisibilitySpy = jest.spyOn(dialogUtils, 'setDialogVisibility');
+    const setDialogVisibilitySpy = vi.spyOn(dialogUtils, 'setDialogVisibility');
     component.componentDidRender();
 
     expect(setDialogVisibilitySpy).toHaveBeenCalledWith(component.open, component['dialog'], component['scroller']);
@@ -77,12 +75,12 @@ describe('componentDidRender', () => {
 
 describe('componentDidLoad', () => {
   it('should call addStickyTopCssVarStyleSheet()', () => {
-    const addStickyTopCssVarStyleSheetSpy = jest.spyOn(flyoutUtilsUtils, 'addStickyTopCssVarStyleSheet');
+    const addStickyTopCssVarStyleSheetSpy = vi.spyOn(flyoutUtilsUtils, 'addStickyTopCssVarStyleSheet');
     component.componentDidLoad();
     expect(addStickyTopCssVarStyleSheetSpy).toHaveBeenCalledWith(component.host);
   });
   it('should call updateSlotObserver()', () => {
-    const updateSlotObserverSpy = jest.spyOn(component as any, 'updateSlotObserver');
+    const updateSlotObserverSpy = vi.spyOn(component as any, 'updateSlotObserver');
     component.componentDidLoad();
     expect(updateSlotObserverSpy).toHaveBeenCalled();
   });
@@ -90,7 +88,7 @@ describe('componentDidLoad', () => {
 
 describe('componentDidUpdate', () => {
   it('should call updateSlotObserver()', () => {
-    const updateSlotObserverSpy = jest.spyOn(component as any, 'updateSlotObserver');
+    const updateSlotObserverSpy = vi.spyOn(component as any, 'updateSlotObserver');
     component.componentDidUpdate();
     expect(updateSlotObserverSpy).toHaveBeenCalled();
   });
@@ -98,14 +96,14 @@ describe('componentDidUpdate', () => {
 
 describe('disconnectedCallback', () => {
   it('should call setScrollLock() with correct parameters', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = true;
     component.disconnectedCallback(); // component gets removed from dom
 
     expect(utilsSpy).toHaveBeenCalledWith(false);
   });
   it('should call unobserveChildren() with correct parameters', () => {
-    const unobserveChildrenSpy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+    const unobserveChildrenSpy = vi.spyOn(childrenObserverUtils, 'unobserveChildren');
     component.open = true;
     component.disconnectedCallback(); // component gets removed from dom
 
@@ -115,11 +113,11 @@ describe('disconnectedCallback', () => {
 
 describe('render', () => {
   beforeEach(() => {
-    jest.spyOn(global.console, 'warn').mockImplementation();
+    vi.spyOn(global.console, 'warn').mockImplementation();
   });
 
   it('should call hasNamedSlot() with correct parameters', () => {
-    const hasNamedSlotSpy = jest.spyOn(domUtils, 'hasNamedSlot');
+    const hasNamedSlotSpy = vi.spyOn(domUtils, 'hasNamedSlot');
     const header = document.createElement('header');
     header.slot = 'heading';
     component.host.appendChild(header);
@@ -134,35 +132,35 @@ describe('render', () => {
 
 describe('updateSlotObserver', () => {
   it('should call observeStickyArea() with correct parameters if hasHeader is true', () => {
-    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
     component['hasHeader'] = true;
     component['updateSlotObserver']();
 
     expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
   });
   it('should not call observeStickyArea() with if hasHeader is false', () => {
-    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
     component['hasHeader'] = false;
     component['updateSlotObserver']();
 
     expect(observeStickyAreaSpy).not.toHaveBeenCalled();
   });
   it('should call observeStickyArea() with correct parameters if hasFooter is true', () => {
-    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
     component['hasFooter'] = true;
     component['updateSlotObserver']();
 
     expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['footer']);
   });
   it('should not call observeStickyArea() with if hasFooter is false', () => {
-    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    const observeStickyAreaSpy = vi.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
     component['hasFooter'] = false;
     component['updateSlotObserver']();
 
     expect(observeStickyAreaSpy).not.toHaveBeenCalled();
   });
   it('should call handleUpdateStickyTopCssVar() with correct parameters', () => {
-    const handleUpdateStickyTopCssVarSpy = jest
+    const handleUpdateStickyTopCssVarSpy = vi.
       .spyOn(flyoutUtilsUtils, 'handleUpdateStickyTopCssVar')
       .mockReturnValueOnce();
 
