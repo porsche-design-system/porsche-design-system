@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type {
-  AccordionUpdateEvent, // using deprecated to verify it is still available
-  CarouselUpdateEvent, // using deprecated to verify it is still available
-  PaginationUpdateEvent, // using deprecated to verify it is still available
-  SwitchUpdateEvent, // using deprecated to verify it is still available
-  TableUpdateEvent, // using deprecated to verify it is still available
-  TabsBarUpdateEvent, // using deprecated to verify it is still available
-  TabsUpdateEvent, // using deprecated to verify it is still available
+  AccordionUpdateEventDetail,
+  CarouselUpdateEventDetail,
+  PaginationUpdateEventDetail,
+  SwitchUpdateEventDetail,
+  TableUpdateEventDetail,
+  TabsBarUpdateEventDetail,
+  TabsUpdateEventDetail,
 } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -112,19 +112,19 @@ export class EventsComponent {
   // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
   // unused event parameters are used to verify that types can be imported package root
-  public onAccordionUpdate(e: CustomEvent<AccordionUpdateEvent>) {
+  public onAccordionUpdate(e: CustomEvent<AccordionUpdateEventDetail>) {
     this.accordionUpdateEventCounter++;
   }
 
-  public onPaginationUpdate(e: CustomEvent<PaginationUpdateEvent>) {
+  public onPaginationUpdate(e: CustomEvent<PaginationUpdateEventDetail>) {
     this.paginationUpdateEventCounter++;
   }
 
-  public onTabsBarUpdate(e: CustomEvent<TabsBarUpdateEvent>) {
+  public onTabsBarUpdate(e: CustomEvent<TabsBarUpdateEventDetail>) {
     this.tabsBarUpdateEventCounter++;
   }
 
-  public onTabsUpdate(e: CustomEvent<TabsUpdateEvent>) {
+  public onTabsUpdate(e: CustomEvent<TabsUpdateEventDetail>) {
     this.tabsUpdateEventCounter++;
   }
 
@@ -132,7 +132,7 @@ export class EventsComponent {
     this.textFieldSearchValue = (e.target as HTMLInputElement).value;
   }
 
-  public onSwitchUpdate(e: CustomEvent<SwitchUpdateEvent>) {
+  public onSwitchUpdate(e: CustomEvent<SwitchUpdateEventDetail>) {
     this.switchUpdateEventCounter++;
   }
 
@@ -154,11 +154,11 @@ export class EventsComponent {
     this.isModalOpen = false;
   }
 
-  public onTableUpdate(e: CustomEvent<TableUpdateEvent>) {
+  public onTableUpdate(e: CustomEvent<TableUpdateEventDetail>) {
     this.tableUpdateEventCounter++;
   }
 
-  public onCarouselUpdate(e: CustomEvent<CarouselUpdateEvent>) {
+  public onCarouselUpdate(e: CustomEvent<CarouselUpdateEventDetail>) {
     this.carouselUpdateEventCounter++;
   }
 }

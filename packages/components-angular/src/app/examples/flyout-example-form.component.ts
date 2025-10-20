@@ -11,10 +11,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         <p-checkbox name="some-checkbox" label="Some Label"></p-checkbox>
         <p-textarea name="some-textarea" label="Some Label"></p-textarea>
       </form>
-      <p-button-group slot="footer">
-        <p-button type="submit" form="some-form">Submit</p-button>
-        <p-button type="reset" [variant]="'secondary'" form="some-form">Reset</p-button>
-      </p-button-group>
+      <p-button slot="footer" type="submit" form="some-form">Submit</p-button>
+      <p-button slot="footer" type="reset" [variant]="'secondary'" form="some-form">Reset</p-button>
       <p-text slot="sub-footer">
         Last submitted data:
         <br/><br/>

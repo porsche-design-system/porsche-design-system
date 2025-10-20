@@ -8,10 +8,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <p-flyout [open]="isFlyoutOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'Some Heading' }">
       <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
       <p-text>Some Content</p-text>
-      <p-button-group slot="footer">
-        <p-button type="button">Proceed</p-button>
-        <p-button type="button" [variant]="'secondary'">Cancel</p-button>
-      </p-button-group>
+      <p-button slot="footer" type="button">Proceed</p-button>
+      <p-button slot="footer" type="button" [variant]="'secondary'">Cancel</p-button>
       <p-text slot="sub-footer">Some additional Sub-Footer</p-text>
     </p-flyout>
   `,
