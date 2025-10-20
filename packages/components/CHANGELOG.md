@@ -36,6 +36,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select Wrapper`: disabled options in native dropdown not displayed correctly
   ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
+- `Button`, `Link`: rendering of `variant="ghost"` in high contrast mode (HCM)
+  ([#4032](https://github.com/porsche-design-system/porsche-design-system/pull/4032))
 
 ## [3.30.0-rc.0] - 2025-09-10
 
