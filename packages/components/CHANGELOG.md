@@ -18,6 +18,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Angular: form components implement ControlValueAccessor interface to support Angular forms out of the box
   ([#4048](https://github.com/porsche-design-system/porsche-design-system/pull/4048))
+- Vue: form components support `v-model` with argument `value|checked`. Can be used like this:
+  `<PInputText v-model:value="foo" />`
+  ([#4066](https://github.com/porsche-design-system/porsche-design-system/pull/4066))
 - `Pin Code`, `Segmented Control`:
   - `update` event is deprecated. Use `change` event instead.
   - `blur` event ([#4050](https://github.com/porsche-design-system/porsche-design-system/pull/4050))
