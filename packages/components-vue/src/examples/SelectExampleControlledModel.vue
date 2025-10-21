@@ -17,7 +17,7 @@
 import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const mySelect = ref('');
+const mySelect = ref('a');
 
 const resetValue = () => {
   mySelect.value = '';
