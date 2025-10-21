@@ -13,15 +13,15 @@ test('should work with v-model:checked manually and programmatic', async ({ page
   const dialog = getDialog(page);
   const options = getOptions(page);
 
-  await expect(host).toHaveJSProperty('value', '');
-  await expect(page.locator('[data-field="value"]')).toHaveText('');
+  await expect(host).toHaveJSProperty('value', 'a');
+  await expect(page.locator('[data-field="value"]')).toHaveText('a');
 
   await combobox.click();
   await expect(dialog).toBeVisible();
-  await options.nth(0).click();
+  await options.nth(1).click();
 
-  await expect(host).toHaveJSProperty('value', 'a');
-  await expect(page.locator('[data-field="value"]')).toHaveText('a');
+  await expect(host).toHaveJSProperty('value', 'b');
+  await expect(page.locator('[data-field="value"]')).toHaveText('b');
 
   await page.getByRole('button', { name: 'Reset', exact: true }).click();
 
