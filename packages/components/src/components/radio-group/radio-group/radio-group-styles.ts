@@ -83,6 +83,9 @@ export const getComponentCss = (
       display: 'grid',
       justifySelf: 'flex-start',
       rowGap: spacingStaticXSmall,
+      margin: 0,
+      padding: 0,
+      border: 'none',
     },
     wrapper: {
       alignItems: 'start',
