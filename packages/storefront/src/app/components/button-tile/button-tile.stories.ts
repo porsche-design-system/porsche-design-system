@@ -1,23 +1,51 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
-export const buttonTileStory: Story<'p-button-tile'> = {
-  state: {
-    properties: { label: 'Some label', description: 'Some Description' },
-  },
-  generator: ({ properties } = {}) => [
-    {
-      tag: 'p-button-tile',
-      properties,
-      children: [
+export const buttonTileSlotStory: SlotStories<'p-button-tile'> = {
+  header: {
+    basic: {
+      name: "Basic header",
+      generator: () => [
         {
           tag: 'p-tag',
           properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
           children: ['Some tag'],
-        },
+        }
+      ]
+    }
+  },
+  footer: {
+    basic: {
+      name: "Basic footer",
+      generator: () => [
+        {
+          tag: 'p-text',
+          properties: { slot: 'footer', theme: 'dark' },
+          children: ['Some footer text'],
+        }
+      ]
+    }
+  }
+}
+
+export const buttonTileStory: Story<'p-button-tile'> = {
+  state: {
+    properties: { label: 'Some label', description: 'Some Description' },
+    slots: {
+      header: buttonTileSlotStory.header.basic,
+      footer: buttonTileSlotStory.footer.basic,
+    }
+  },
+  generator: ({ properties, slots } = {}) => [
+    {
+      tag: 'p-button-tile',
+      properties,
+      children: [
+        ...(slots?.header?.generator() ?? []),
         { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        ...(slots?.footer?.generator() ?? []),
       ],
     },
   ],
@@ -63,6 +91,48 @@ export const buttonTileStoryGrid: Story<'p-button-tile'> = {
           ],
         })),
       ] as (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
+    },
+  ],
+};
+
+export const buttonTileStoryFooterSlot: Story<'p-button-tile'> = {
+  state: {
+    properties: { label: 'Some label', description: 'Some Description' },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'div',
+      properties: {
+        className: 'grid grid-cols-2 gap-static-md',
+      },
+      children: [
+        {
+          tag: 'p-button-tile',
+          properties,
+          children: [
+            {
+              tag: 'p-tag',
+              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              children: ['Some tag'],
+            },
+            { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+          ],
+        },
+        {
+          tag: 'p-button-tile',
+          properties: { ...properties, compact: true },
+          children: [
+            {
+              tag: 'p-tag',
+              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              children: ['Some tag'],
+            },
+            { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+          ],
+        },
+      ],
     },
   ],
 };

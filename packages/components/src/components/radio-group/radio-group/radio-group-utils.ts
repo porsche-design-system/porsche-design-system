@@ -25,7 +25,9 @@ export const updateRadioGroupOptions = (options: RadioGroupOption[], value: stri
     optionToSelect.selected = true;
     forceUpdate(optionToSelect);
   } else {
-    consoleWarn('The provided value is not included in the options of the radio group:', value);
+    if (value !== '') {
+      consoleWarn('The provided value is not included in the options of the radio group:', value);
+    }
   }
 };
 

@@ -289,28 +289,26 @@ test.describe('blur event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
   });
 
-  skipInBrowsers(['firefox', 'webkit'], () => {
-    test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
-      await initSegmentedControl(page, { amount: 2, markupAfter: '<button id="test-button">Some button</button>' });
-      const host = getHost(page);
-      await addEventListener(host, 'blur');
-      const items = getSegmentedControlItems(page);
-      const button = page.locator('#test-button');
+  test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2, markupAfter: '<button id="test-button">Some button</button>' });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const items = getSegmentedControlItems(page);
+    const button = page.locator('#test-button');
 
-      await page.keyboard.press('Tab');
-      await expect(items.nth(0)).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(items.nth(0)).toBeFocused();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after 1st item got focus').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st item got focus').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(items.nth(1)).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(items.nth(1)).toBeFocused();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item got focus').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item got focus').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(button).toBeFocused();
-      expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
-    });
+    await page.keyboard.press('Tab');
+    await expect(button).toBeFocused();
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
   });
 });
 
