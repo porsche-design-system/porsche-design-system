@@ -156,6 +156,7 @@ export class RadioGroup {
         updateRadioGroupOptions(this.radioGroupOptions, this.value);
       }
       this.preventOptionUpdate = false;
+      this.updateTabStops();
     }
   }
 
@@ -194,6 +195,7 @@ export class RadioGroup {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
+    this.updateTabStops();
   }
 
   public render(): JSX.Element {
@@ -280,6 +282,7 @@ export class RadioGroup {
     }
 
     this.focusOption(nextIndex);
+    this.updateTabStops();
   };
 
   private updateOptions = (): void => {
@@ -296,5 +299,26 @@ export class RadioGroup {
   private onSlotChange = (): void => {
     this.updateOptions();
     updateRadioGroupOptions(this.radioGroupOptions, this.value);
+    this.updateTabStops();
   };
+
+  // Roving Tabindex: only selected or initial option gets focused
+  private updateTabStops(): void {
+    if (!this.radioGroupOptions.length) return;
+
+    const activeIndex = getActiveOptionIndex(this.radioGroupOptions);
+    const firstEnabledIndex = this.radioGroupOptions.findIndex((o) => {
+      const input = o.shadowRoot?.querySelector('input[type="radio"]');
+      return input instanceof HTMLInputElement && !input.disabled;
+    });
+
+    const focusIndex = activeIndex !== -1 ? activeIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;
+
+    this.radioGroupOptions.forEach((opt, i) => {
+      const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
+      if (input) {
+        input.tabIndex = i === focusIndex ? 0 : -1;
+      }
+    });
+  }
 }
