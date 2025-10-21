@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.30.0-rc.1] - 2025-10-21
+
 ### Added
 
 - Angular: form components implement ControlValueAccessor interface to support Angular forms out of the box
