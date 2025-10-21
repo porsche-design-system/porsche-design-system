@@ -880,41 +880,39 @@ test.describe('blur event', () => {
     expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input lost focus').toBe(1);
   });
 
-  skipInBrowsers(['firefox', 'webkit'], () => {
-    test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
-      await initPinCode(page, { options: { markupAfter: '<button>Some button</button>' } });
-      const host = getHost(page);
-      await addEventListener(host, 'blur');
-      const input1 = getInput(page, 1);
-      const input2 = getInput(page, 2);
-      const input3 = getInput(page, 3);
-      const input4 = getInput(page, 4);
-      const button = page.locator('button');
+  test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
+    await initPinCode(page, { options: { markupAfter: '<button>Some button</button>' } });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const input1 = getInput(page, 1);
+    const input2 = getInput(page, 2);
+    const input3 = getInput(page, 3);
+    const input4 = getInput(page, 4);
+    const button = page.locator('button');
 
-      await page.keyboard.press('Tab');
-      await expect(input1).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(input1).toBeFocused();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after 1st input got focus').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st input got focus').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(input2).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(input2).toBeFocused();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input got focus').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input got focus').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(input3).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(input3).toBeFocused();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after 3rd input got focus').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'after 3rd input got focus').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(input4).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(input4).toBeFocused();
 
-      expect((await getEventSummary(host, 'blur')).counter, 'after 4th input got focus').toBe(0);
+    expect((await getEventSummary(host, 'blur')).counter, 'after 4th input got focus').toBe(0);
 
-      await page.keyboard.press('Tab');
-      await expect(button).toBeFocused();
-      expect((await getEventSummary(host, 'blur')).counter, 'after 4th input lost focus').toBe(1);
-    });
+    await page.keyboard.press('Tab');
+    await expect(button).toBeFocused();
+    expect((await getEventSummary(host, 'blur')).counter, 'after 4th input lost focus').toBe(1);
   });
 });
 
