@@ -1,4 +1,4 @@
-import { Component, Element, type JSX, Listen, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Listen, Prop, State } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type {
   BreakpointCustomizable,
@@ -9,16 +9,17 @@ import type {
 } from '../../types';
 import {
   AllowedTypes,
-  BUTTON_ARIA_ATTRIBUTES,
-  BUTTON_TYPES,
-  type ITileProps,
-  TILE_WEIGHTS,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  BUTTON_ARIA_ATTRIBUTES,
+  BUTTON_TYPES,
   getPrefixedTagNames,
+  hasNamedSlot,
   hasPropValueChanged,
+  type ITileProps,
   isDisabledOrLoading,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
@@ -48,6 +49,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
 /**
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ * @slot {"name": "footer", "description": "Renders a footer section below the description." }
  */
 @Component({
   tag: 'p-button-tile',
@@ -101,6 +103,8 @@ export class ButtonTile implements ITileProps {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
 
+  @State() private hasFooterSlot: boolean = false;
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
@@ -114,6 +118,7 @@ export class ButtonTile implements ITileProps {
 
   public componentWillLoad(): void {
     preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
+    this.updateSlotObserver();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -133,6 +138,7 @@ export class ButtonTile implements ITileProps {
       this.align,
       this.compact,
       this.gradient,
+      this.hasFooterSlot,
       this.disabled
     );
 
@@ -174,9 +180,14 @@ export class ButtonTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
+          <slot name="footer" onSlotchange={this.updateSlotObserver} />
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>
       </div>
     );
   }
+
+  private updateSlotObserver = (): void => {
+    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
+  };
 }

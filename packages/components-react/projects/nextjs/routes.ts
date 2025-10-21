@@ -236,6 +236,14 @@ const generatedRoutes = {
     "path": "/flyout-2",
     "name": "Flyout_2"
   },
+  "flyoutBackdropBlur": {
+    "path": "/flyout-backdrop-blur",
+    "name": "FlyoutBackdropBlur"
+  },
+  "flyoutBackdropShading": {
+    "path": "/flyout-backdrop-shading",
+    "name": "FlyoutBackdropShading"
+  },
   "flyoutBasic": {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
