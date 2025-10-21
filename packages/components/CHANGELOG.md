@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- Vue: Custom form components support `v-model` with argument `value|checked`. Can be used like this:
+  `<PInputText v-model:value="foo" />`
+  ([#4066](https://github.com/porsche-design-system/porsche-design-system/pull/4066))
 - `Pin Code`, `Segmented Control`:
   - `update` event is deprecated. Use `change` event instead.
   - `blur` event ([#4050](https://github.com/porsche-design-system/porsche-design-system/pull/4050))
