@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- Angular: custom form components implement ControlValueAccessor interface to support Angular forms out of the box
+- Angular: form components implement ControlValueAccessor interface to support Angular forms out of the box
   ([#4048](https://github.com/porsche-design-system/porsche-design-system/pull/4048))
 - `Pin Code`, `Segmented Control`:
   - `update` event is deprecated. Use `change` event instead.
