@@ -260,8 +260,8 @@ export class Textarea {
   private onInput = (e: InputEvent): void => {
     e.stopPropagation();
     e.stopImmediatePropagation();
-    this.input.emit(e);
     const target = e.target as HTMLTextAreaElement;
     this.value = target.value; // triggers @Watch('value')
+    this.input.emit(e);
   };
 }
