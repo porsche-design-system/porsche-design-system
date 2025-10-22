@@ -7,18 +7,47 @@ excludes:
   # Path-based excludes
   # -----------------------------
   paths:
-    - pattern: "docker/**"
-      reason: OTHER
-      comment: "The path only contains tools and executables used for CI/CD automation which is not included in any distributed artifacts."
 
     - pattern: "packages/shared/**"
       reason: OTHER
       comment: "The path only contains tools and dependencies used as devDependencies in other packages which is not included in any distributed artifacts."
 
-    - pattern: "packages/storefront/**"
-      reason: DOCUMENTATION_OF
-      comment: "PDS examples and documentation site; not part of distributed PDS components."
+    # -----------------------------
+    # components-react
+    # -----------------------------
+    - pattern: "packages/components-react/package.json"
+      reason: OTHER
+      comment: "Excluded project definition for React components; not part of distributed artifacts."
 
+    - pattern: "packages/components-react/projects/nextjs/**"
+      reason: EXAMPLE_OF
+      comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
+
+    - pattern: "packages/components-react/projects/react-router/**"
+      reason: EXAMPLE_OF
+      comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
+
+    - pattern: "packages/components-react/projects/remix/**"
+      reason: EXAMPLE_OF
+      comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
+
+    # -----------------------------
+    # components-angular
+    # -----------------------------
+    - pattern: "packages/components-angular/package.json"
+      reason: OTHER
+      comment: "Excluded project definition for Angular components; not part of distributed artifacts."
+
+    # -----------------------------
+    # components-vue
+    # -----------------------------
+    - pattern: "packages/components-vue/package.json"
+      reason: OTHER
+      comment: "Excluded project definition for Vue components; not part of distributed artifacts."
+
+    # -----------------------------
+    # test tools
+    # -----------------------------
     - pattern: "packages/**/tests/**"
       reason: TEST_OF
       comment: "Unit, integration, and E2E tests; not included in any distributed artifacts."
