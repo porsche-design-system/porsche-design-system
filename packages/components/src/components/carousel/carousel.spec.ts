@@ -14,7 +14,7 @@ import * as carouselUtils from './carousel-utils';
 
 const splideMock = {
   index: 0,
-  on: (_, __) => ({}) as Splide,
+  on: (_: any, __: any) => ({}) as Splide,
   mount: () => {},
   Components: { Elements: { slides: [] } },
 } as Splide;
@@ -395,7 +395,7 @@ describe('disconnectedCallback', () => {
 
 describe('registerSplideHandlers()', () => {
   it('should call this.splide.on() with correct parameters', () => {
-    const onSpy: (_, __) => Splide = vi.fn();
+    const onSpy: (_: any, __: any) => Splide = vi.fn();
     const component = new Carousel();
     const splide = { ...splideMock, on: onSpy } as Splide;
 
@@ -462,7 +462,7 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call this.splide.mount()', () => {
-    const mountSpy: (_, __) => Splide = vi.fn();
+    const mountSpy: (_: any, __: any) => Splide = vi.fn();
     const splide = { ...splideMock, mount: mountSpy } as Splide;
     const component = new Carousel();
 
@@ -522,7 +522,7 @@ describe('updateSlidesAndPagination()', () => {
 describe('updateAmountOfPages()', () => {
   it('should call getCurrentMatchingBreakpointValue() and getAmountOfPages() with correct parameters and set this.amountOfPages', () => {
     const getAmountOfPagesSpy = vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
-    const getCurrentMatchingBreakpointValueSpy = vi.
+    const getCurrentMatchingBreakpointValueSpy = vi
       .spyOn(breakpointObserverUtilsUtils, 'getCurrentMatchingBreakpointValue')
       .mockReturnValue(11);
     const mathRoundSpy = vi.spyOn(Math, 'round').mockReturnValue(12);
