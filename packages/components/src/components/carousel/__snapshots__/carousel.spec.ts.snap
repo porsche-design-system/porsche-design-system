@@ -1,4 +1,82 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`componentDidLoad > should call Splide constructor with correct parameters and set this.splide 1`] = `
+[
+  <div
+    class="splide"
+  >
+    <div
+      class="splide__track"
+    >
+      <div
+        class="splide__list"
+      />
+    </div>
+  </div>,
+  {
+    "arrows": false,
+    "breakpoints": {
+      "0": {
+        "autoWidth": false,
+        "perPage": 1,
+      },
+    },
+    "direction": "ltr",
+    "drag": false,
+    "easing": "cubic-bezier(0.25,0.1,0.25,1)",
+    "focus": undefined,
+    "gap": "clamp(16px, 1.25vw + 12px, 36px)",
+    "i18n": {},
+    "mediaQuery": "min",
+    "pagination": false,
+    "perMove": 1,
+    "rewind": true,
+    "rewindByDrag": true,
+    "speed": 400,
+    "start": 0,
+    "trimSpace": true,
+  },
+]
+`;
+
+exports[`componentDidLoad > should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto 1`] = `
+[
+  <div
+    class="splide"
+  >
+    <div
+      class="splide__track"
+    >
+      <div
+        class="splide__list"
+      />
+    </div>
+  </div>,
+  {
+    "arrows": false,
+    "breakpoints": {
+      "0": {
+        "autoWidth": true,
+        "perPage": 1,
+      },
+    },
+    "direction": "ltr",
+    "drag": true,
+    "easing": "cubic-bezier(0.25,0.1,0.25,1)",
+    "focus": undefined,
+    "gap": "clamp(16px, 1.25vw + 12px, 36px)",
+    "i18n": {},
+    "mediaQuery": "min",
+    "pagination": false,
+    "perMove": 1,
+    "rewind": true,
+    "rewindByDrag": true,
+    "speed": 400,
+    "start": 0,
+    "trimSpace": true,
+  },
+]
+`;
 
 exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide 1`] = `
 [
