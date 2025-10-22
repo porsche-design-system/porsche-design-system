@@ -190,6 +190,11 @@ export const sitemap: Routes = {
             path: '/developing/angular/faq',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/angular/form',
+            type: 'TAB',
+          },
         },
       },
       astro: {
