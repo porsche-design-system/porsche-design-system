@@ -8,7 +8,7 @@ class MockElementInternals {
   setFormValue = vi.fn();
 }
 
-let mockEmit: vi.SpyInstance;
+let mockEmit: ReturnType<typeof vi.fn>;
 
 const initComponent = (): Checkbox => {
   const component = new Checkbox();
