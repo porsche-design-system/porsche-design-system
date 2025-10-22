@@ -357,6 +357,11 @@ export const sitemap: Routes = {
             path: '/developing/vue/faq',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/vue/form',
+            type: 'TAB',
+          },
         },
       },
       'components-ready': {
