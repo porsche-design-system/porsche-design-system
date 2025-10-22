@@ -1,4 +1,4 @@
-import { test, expect, type Locator } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
 
 const getCounterValue = async (el: Locator): Promise<string> => {
@@ -232,5 +232,206 @@ test.describe('carousel', () => {
 
     await prevSlideButton.click();
     expect(await getCounterValue(carouselUpdateEventCounter)).toBe('3');
+  });
+});
+
+test.describe('input-date', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-date');
+    const inputValue = page.locator('p-input-date + p');
+    const blurValue = page.locator('p-input-date + p + p');
+    const changeValue = page.locator('p-input-date + p + p + p');
+
+    await input.focus();
+    await page.locator('p-input-date input').fill('2025-10-17');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: 2025-10-17');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-email', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-email');
+    const inputValue = page.locator('p-input-email + p');
+    const blurValue = page.locator('p-input-email + p + p');
+    const changeValue = page.locator('p-input-email + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('hello@example.com');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: hello@example.com');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-number', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-number');
+    const inputValue = page.locator('p-input-number + p');
+    const blurValue = page.locator('p-input-number + p + p');
+    const changeValue = page.locator('p-input-number + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('42');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: 42');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-password', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-password');
+    const inputValue = page.locator('p-input-password + p');
+    const blurValue = page.locator('p-input-password + p + p');
+    const changeValue = page.locator('p-input-password + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('secret123');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: secret123');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-search', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-search');
+    const inputValue = page.locator('p-input-search + p');
+    const blurValue = page.locator('p-input-search + p + p');
+    const changeValue = page.locator('p-input-search + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('query');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: query');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-tel', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-tel');
+    const inputValue = page.locator('p-input-tel + p');
+    const blurValue = page.locator('p-input-tel + p + p');
+    const changeValue = page.locator('p-input-tel + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('+123456789');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: +123456789');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-text', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-text');
+    const inputValue = page.locator('p-input-text + p');
+    const blurValue = page.locator('p-input-text + p + p');
+    const changeValue = page.locator('p-input-text + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('hello world');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: hello world');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-time', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-time');
+    const inputValue = page.locator('p-input-time + p');
+    const blurValue = page.locator('p-input-time + p + p');
+    const changeValue = page.locator('p-input-time + p + p + p');
+
+    await input.focus();
+    await page.locator('p-input-time input').fill('12:34');
+
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: 12:34');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-url', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-url');
+    const inputValue = page.locator('p-input-url + p');
+    const blurValue = page.locator('p-input-url + p + p');
+    const changeValue = page.locator('p-input-url + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('https://example.com');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: https://example.com');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('textarea', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-textarea');
+    const inputValue = page.locator('p-textarea + p');
+    const blurValue = page.locator('p-textarea + p + p');
+    const changeValue = page.locator('p-textarea + p + p + p');
+
+    await input.focus();
+    await page.keyboard.type('This is a textarea test');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: This is a textarea test');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
   });
 });
