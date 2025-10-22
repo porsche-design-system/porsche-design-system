@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Flag`: added `AD, GI, LI, MC, ME, TW` flags & `XX` for unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+
+### Changed
+
+- `Flag`: international flag replaces `DE` flag as fallback for an unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+
 ### Fixed
 
 - `Radio Group`: fixed `compact` mode styles ([#4073](https://github.com/porsche-design-system/porsche-design-system/pull/4073))
