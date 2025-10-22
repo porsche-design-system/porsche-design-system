@@ -1,5 +1,6 @@
 import type { Splide } from '@splidejs/splide';
 import { vi } from 'vitest';
+import type { HTMLPButtonPureElement } from '../../components';
 import type { ButtonPure } from '../button-pure/button-pure';
 import * as carouselUtils from './carousel-utils';
 import {
@@ -222,7 +223,7 @@ const getSplide = (): Splide =>
   }) as Splide;
 
 describe('updatePrevNextButtons()', () => {
-  const getButtons = (): [ButtonPure, ButtonPure] => {
+  const getButtons = (): [HTMLPButtonPureElement, HTMLPButtonPureElement] => {
     const btnPrev = document.createElement('button') as HTMLButtonElement & ButtonPure;
     btnPrev.id = 'btnPrev';
     const btnNext = document.createElement('button') as HTMLButtonElement & ButtonPure;
@@ -243,7 +244,6 @@ describe('updatePrevNextButtons()', () => {
     const spy = vi.spyOn(carouselUtils, 'isLastPage');
     vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const splide = getSplide();
-
     updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(splide, 5);
   });
@@ -251,7 +251,6 @@ describe('updatePrevNextButtons()', () => {
   it('should call getAmountOfPages() with correct parameters', () => {
     const spy = vi.spyOn(carouselUtils, 'getAmountOfPages');
     const splide = getSplide();
-
     updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(3, 1);
   });
