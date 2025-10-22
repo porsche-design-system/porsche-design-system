@@ -1,5 +1,3 @@
-import { formatDescription, formatEventType } from '@/utils/formatting';
-import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import {
   PHeading,
@@ -11,6 +9,8 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
+import { formatDescription, formatEventType } from '@/utils/formatting';
+import { getFlags } from '@/utils/getFlags';
 
 type ComponentMetaEventsProps = {
   eventsMeta: ComponentMeta['eventsMeta'];

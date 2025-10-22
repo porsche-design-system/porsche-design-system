@@ -1,8 +1,8 @@
 'use client';
 
-import { isDevEnvironment } from '@/utils/isDev';
 import { PButton } from '@porsche-design-system/components-react/ssr';
 import { CDN_BASE_PATH, FALLBACKS_MANIFEST } from '@porsche-design-system/fallbacks';
+import { isDevEnvironment } from '@/utils/isDev';
 
 export const showBrowserSupportFallback = () => {
   const script = document.createElement('script');

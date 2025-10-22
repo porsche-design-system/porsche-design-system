@@ -1,10 +1,10 @@
-import type { ConfiguratorTagNames, ElementConfig } from '@/utils/generator/generator';
-import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import type { InputTextInputEventDetail } from '@porsche-design-system/components-react';
 import { PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
-import { InputTextInputEventDetail } from '@porsche-design-system/components-react';
+import type { ConfiguratorTagNames, ElementConfig } from '@/utils/generator/generator';
+import { getFlags } from '@/utils/getFlags';
 
 type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;

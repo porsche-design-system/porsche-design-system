@@ -123,7 +123,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Toast`:
   - value `neutral` of prop `state` (use `info` instead)
 - Components:
-  - `Button Group` (use Tailwind CSS instead)
+  - `Button Group` (use Tailwind CSS instead,
+    `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
   - `Checkbox Wrapper` (use `Checkbox` instead)
   - `Radio Button Wrapper` (use `radio-group` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)

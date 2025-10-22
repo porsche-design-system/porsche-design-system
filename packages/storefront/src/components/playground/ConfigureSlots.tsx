@@ -1,9 +1,9 @@
-import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
 import React from 'react';
+import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
+import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
   tagName: Tag;
@@ -59,7 +59,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   hideLabel={true}
                   label="Select slot to be configured"
                   compact={true}
-                  onUpdate={(e) =>
+                  onChange={(e) =>
                     onUpdateSlots(
                       slotName,
                       Object.values(slotExamples).find((slot) => slot.name === e.detail.value)

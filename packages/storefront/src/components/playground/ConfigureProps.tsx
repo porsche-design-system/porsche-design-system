@@ -1,5 +1,5 @@
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
-import type { InputSearchInputEventDetail, InputNumberInputEventDetail } from '@porsche-design-system/components-react';
+import type { InputNumberInputEventDetail, InputSearchInputEventDetail } from '@porsche-design-system/components-react';
 import {
   PInputNumber,
   PInputText,
@@ -168,7 +168,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           value={getCurrentValue(propName, propMeta)}
           compact={true}
           required={propMeta.isRequired}
-          onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
+          onChange={(e) => onUpdateProps(propName, e.detail.value)}
         >
           <span slot="label" className="inline-flex gap-static-xs">
             {capitalCase(propName)}
@@ -206,13 +206,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           return {
             value: option,
             label: option,
-          };
-        });
-      } else if (tagName === 'p-link-social' && propName === 'icon') {
-        options = propMeta.allowedValues.map((option) => {
-          return {
-            value: option === '' ? undefined : option,
-            label: option === '' ? undefined : option,
           };
         });
       } else if (tagName === 'p-segmented-control' && propName === 'value') {

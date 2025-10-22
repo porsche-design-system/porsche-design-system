@@ -1,5 +1,8 @@
 'use client';
 
+import type { CodeSample, Framework } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import { useMemo } from 'react';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
@@ -7,9 +10,6 @@ import { createStackblitzMarkupFromSample } from '@/lib/stackblitz/createStackbl
 import type { BackgroundColor } from '@/models/backgroundColor';
 import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
-import type { CodeSample, Framework } from '@porsche-design-system/shared';
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
-import { useMemo } from 'react';
 
 type ComponentSampleProps = {
   codeSample: CodeSample;

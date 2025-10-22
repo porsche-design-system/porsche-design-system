@@ -1,10 +1,10 @@
 'use client';
 
-import { getPathnameRoutes } from '@/utils/pathname';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 import { redirect, usePathname } from 'next/navigation';
 import { useMemo, useState } from 'react';
+import { getPathnameRoutes } from '@/utils/pathname';
 
 export default function Tabs() {
   const [tabIndex, setTabIndex] = useState<number>(0);

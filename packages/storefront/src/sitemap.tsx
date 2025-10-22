@@ -14,10 +14,6 @@ const getComponents = (): Routes => {
   // TODO: Maybe we could automatically generate this depending what routes/folders exist?
   const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
     'p-canvas',
-    'p-content-wrapper',
-    'p-flex',
-    'p-grid',
-    'p-marque',
     'p-pagination',
     'p-flag',
     'p-switch',

@@ -4,23 +4,23 @@ import {
   PSelect,
   PSelectOption,
   type PSelectProps,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
 
-type ThemeSelectProps = {
+type FrameworkSelectProps = {
   framework: Framework;
   label?: PSelectProps['label'];
   hideLabel?: PSelectProps['hideLabel'];
-  onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
+  onFrameworkChange: (event: CustomEvent<SelectChangeEventDetail>) => void;
 };
 
 export const FrameworkSelect = ({
   framework = 'vanilla-js',
   label = 'Theme',
   hideLabel = false,
-  onUpdate,
-}: ThemeSelectProps) => {
+  onFrameworkChange,
+}: FrameworkSelectProps) => {
   return (
     <PSelect
       className="xs:w-[min(calc(50%-(var(--spacing-fluid-xs))/2),12.5rem)]"
@@ -28,7 +28,7 @@ export const FrameworkSelect = ({
       value={framework}
       label={label}
       hideLabel={hideLabel}
-      onUpdate={onUpdate}
+      onChange={onFrameworkChange}
     >
       <PSelectOption disabled={true}>Select framework</PSelectOption>
       <PSelectOption value="angular">Angular</PSelectOption>

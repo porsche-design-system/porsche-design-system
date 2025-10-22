@@ -1,5 +1,8 @@
 'use client';
 
+import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
+import React, { type ReactNode, useEffect, useState } from 'react';
 import { ConfiguratorControls } from '@/components/playground/ConfiguratorControls';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
@@ -7,10 +10,7 @@ import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
 import type { SlotStories, Story, StoryState } from '@/models/story';
 import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
-import { type ConfiguratorTagNames, type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
-import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
-import { openInStackblitz } from '@porsche-design-system/stackblitz';
-import React, { type ReactNode, useEffect, useState } from 'react';
+import { type ConfiguratorTagNames, createElements, type HTMLTagOrComponent } from '@/utils/generator/generator';
 
 type ConfiguratorTestProps<T extends HTMLTagOrComponent> = {
   tagName: T;

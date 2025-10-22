@@ -1,5 +1,10 @@
 'use client';
 
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
+import type React from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
@@ -12,11 +17,6 @@ import type {
   PropTypeMapping,
 } from '@/utils/generator/generator';
 import { isAllowedValue } from '@/utils/isAllowedValue';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
-import type React from 'react';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 type ConfiguratorControlsProps<T extends ConfiguratorTagNames> = {
   tagName: T;

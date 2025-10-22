@@ -1,4 +1,3 @@
-import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import {
   PHeading,
@@ -10,6 +9,7 @@ import {
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
+import { getFlags } from '@/utils/getFlags';
 
 type ComponentMetaSlotsProps = {
   slotsMeta: ComponentMeta['slotsMeta'];

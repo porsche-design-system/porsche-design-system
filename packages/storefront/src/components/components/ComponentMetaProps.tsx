@@ -1,7 +1,5 @@
 'use client';
 
-import { formatDescription, formatPropDefaultValue, formatPropType } from '@/utils/formatting';
-import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import {
   PHeading,
@@ -14,6 +12,8 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { kebabCase } from 'change-case';
 import type React from 'react';
+import { formatDescription, formatPropDefaultValue, formatPropType } from '@/utils/formatting';
+import { getFlags } from '@/utils/getFlags';
 
 type ComponentMetaPropsProps = {
   propsMeta: ComponentMeta['propsMeta'];

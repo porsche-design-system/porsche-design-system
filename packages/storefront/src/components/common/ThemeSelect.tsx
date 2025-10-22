@@ -1,30 +1,30 @@
 'use client';
 
-import type { PlaygroundTheme } from '@/models/theme';
 import {
   PPopover,
   PSelect,
   PSelectOption,
   type PSelectProps,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
+import type { PlaygroundTheme } from '@/models/theme';
 
 type ThemeSelectProps = {
   value: PlaygroundTheme;
-  onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
+  onThemeChange: (event: CustomEvent<SelectChangeEventDetail>) => void;
 } & Partial<PSelectProps>;
 
 export const ThemeSelect = ({
   value = 'light',
-  onUpdate,
+  onThemeChange,
   name = 'theme',
   label = 'Theme',
   hideLabel = false,
   ...rest
 }: ThemeSelectProps) => {
   return (
-    <PSelect name={name} value={value} onUpdate={onUpdate} label={label} hideLabel={hideLabel} {...rest}>
+    <PSelect name={name} value={value} onChange={onThemeChange} label={label} hideLabel={hideLabel} {...rest}>
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>

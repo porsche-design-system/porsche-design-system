@@ -4,8 +4,6 @@ import {
   PBanner,
   type PBannerProps,
   PButton,
-  PButtonGroup,
-  type PButtonGroupProps,
   type PButtonProps,
   PButtonPure,
   type PButtonPureProps,
@@ -17,10 +15,6 @@ import {
   type PCarouselProps,
   PCheckbox,
   type PCheckboxProps,
-  PCheckboxWrapper,
-  type PCheckboxWrapperProps,
-  PContentWrapper,
-  type PContentWrapperProps,
   PCrest,
   type PCrestProps,
   PDisplay,
@@ -35,36 +29,22 @@ import {
   type PDrilldownProps,
   PFieldset,
   type PFieldsetProps,
-  PFieldsetWrapper,
-  type PFieldsetWrapperProps,
   PFlag,
   type PFlagProps,
-  PFlex,
-  PFlexItem,
-  type PFlexItemProps,
-  type PFlexProps,
   PFlyout,
   type PFlyoutProps,
-  PGrid,
-  PGridItem,
-  type PGridItemProps,
-  type PGridProps,
   PHeading,
   type PHeadingProps,
-  PHeadline,
-  type PHeadlineProps,
   PIcon,
   type PIconProps,
   PInlineNotification,
   type PInlineNotificationProps,
+  PInputDate,
+  type PInputDateProps,
   PInputEmail,
   type PInputEmailProps,
   PInputNumber,
   type PInputNumberProps,
-  PInputDate,
-  type PInputDateProps,
-  PInputTime,
-  type PInputTimeProps,
   PInputPassword,
   type PInputPasswordProps,
   PInputSearch,
@@ -73,22 +53,18 @@ import {
   type PInputTelProps,
   PInputText,
   type PInputTextProps,
+  PInputTime,
+  type PInputTimeProps,
   PInputUrl,
   type PInputUrlProps,
   PLink,
   type PLinkProps,
   PLinkPure,
   type PLinkPureProps,
-  PLinkSocial,
-  type PLinkSocialProps,
   PLinkTile,
-  PLinkTileModelSignature,
-  type PLinkTileModelSignatureProps,
   PLinkTileProduct,
   type PLinkTileProductProps,
   type PLinkTileProps,
-  PMarque,
-  type PMarqueProps,
   PModal,
   type PModalProps,
   PModelSignature,
@@ -105,12 +81,10 @@ import {
   type PPinCodeProps,
   PPopover,
   type PPopoverProps,
-  PRadioButtonWrapper,
-  type PRadioButtonWrapperProps,
   PRadioGroup,
-  type PRadioGroupProps,
   PRadioGroupOption,
   type PRadioGroupOptionProps,
+  type PRadioGroupProps,
   PScroller,
   type PScrollerProps,
   PSegmentedControl,
@@ -121,8 +95,6 @@ import {
   PSelectOption,
   type PSelectOptionProps,
   type PSelectProps,
-  PSelectWrapper,
-  type PSelectWrapperProps,
   PSheet,
   type PSheetProps,
   PSpinner,
@@ -160,10 +132,6 @@ import {
   PText,
   PTextarea,
   type PTextareaProps,
-  PTextareaWrapper,
-  type PTextareaWrapperProps,
-  PTextFieldWrapper,
-  type PTextFieldWrapperProps,
   PTextList,
   PTextListItem,
   type PTextListItemProps,
@@ -269,30 +237,21 @@ export type PropTypeMapping = {
   'p-accordion': PAccordionProps;
   'p-banner': PBannerProps;
   'p-button': PButtonProps;
-  'p-button-group': PButtonGroupProps;
   'p-button-pure': PButtonPureProps;
   'p-button-tile': PButtonTileProps;
   'p-canvas': PCanvasProps;
   'p-carousel': PCarouselProps;
   'p-checkbox': PCheckboxProps;
-  'p-checkbox-wrapper': PCheckboxWrapperProps;
-  'p-content-wrapper': PContentWrapperProps;
   'p-crest': PCrestProps;
   'p-display': PDisplayProps;
   'p-divider': PDividerProps;
   'p-fieldset': PFieldsetProps;
-  'p-fieldset-wrapper': PFieldsetWrapperProps;
   'p-flag': PFlagProps;
-  'p-flex': PFlexProps;
-  'p-flex-item': PFlexItemProps;
   'p-flyout': PFlyoutProps;
   'p-drilldown': PDrilldownProps;
   'p-drilldown-item': PDrilldownItemProps;
   'p-drilldown-link': PDrilldownLinkProps;
-  'p-grid': PGridProps;
-  'p-grid-item': PGridItemProps;
   'p-heading': PHeadingProps;
-  'p-headline': PHeadlineProps;
   'p-icon': PIconProps;
   'p-inline-notification': PInlineNotificationProps;
   'p-input-password': PInputPasswordProps;
@@ -306,11 +265,8 @@ export type PropTypeMapping = {
   'p-input-url': PInputUrlProps;
   'p-link': PLinkProps;
   'p-link-pure': PLinkPureProps;
-  'p-link-social': PLinkSocialProps;
   'p-link-tile': PLinkTileProps;
-  'p-link-tile-model-signature': PLinkTileModelSignatureProps;
   'p-link-tile-product': PLinkTileProductProps;
-  'p-marque': PMarqueProps;
   'p-modal': PModalProps;
   'p-model-signature': PModelSignatureProps;
   'p-multi-select': PMultiSelectProps;
@@ -319,7 +275,6 @@ export type PropTypeMapping = {
   'p-pagination': PPaginationProps;
   'p-pin-code': PPinCodeProps;
   'p-popover': PPopoverProps;
-  'p-radio-button-wrapper': PRadioButtonWrapperProps;
   'p-radio-group': PRadioGroupProps;
   'p-radio-group-option': PRadioGroupOptionProps;
   'p-scroller': PScrollerProps;
@@ -327,7 +282,6 @@ export type PropTypeMapping = {
   'p-segmented-control-item': PSegmentedControlItemProps;
   'p-select': PSelectProps;
   'p-select-option': PSelectOptionProps;
-  'p-select-wrapper': PSelectWrapperProps;
   'p-sheet': PSheetProps;
   'p-spinner': PSpinnerProps;
   'p-stepper-horizontal': PStepperHorizontalProps;
@@ -346,11 +300,9 @@ export type PropTypeMapping = {
   'p-tag': PTagProps;
   'p-tag-dismissible': PTagDismissibleProps;
   'p-text': PTextProps;
-  'p-text-field-wrapper': PTextFieldWrapperProps;
   'p-text-list': PTextListProps;
   'p-text-list-item': PTextListItemProps;
   'p-textarea': PTextareaProps;
-  'p-textarea-wrapper': PTextareaWrapperProps;
   'p-toast': PToastProps;
   'p-wordmark': PWordmarkProps;
 };
@@ -359,30 +311,21 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-accordion': PAccordion,
   'p-banner': PBanner,
   'p-button': PButton,
-  'p-button-group': PButtonGroup,
   'p-button-pure': PButtonPure,
   'p-button-tile': PButtonTile,
   'p-canvas': PCanvas,
   'p-carousel': PCarousel,
   'p-checkbox': PCheckbox,
-  'p-checkbox-wrapper': PCheckboxWrapper,
-  'p-content-wrapper': PContentWrapper,
   'p-crest': PCrest,
   'p-display': PDisplay,
   'p-divider': PDivider,
   'p-fieldset': PFieldset,
-  'p-fieldset-wrapper': PFieldsetWrapper,
   'p-flag': PFlag,
-  'p-flex': PFlex,
-  'p-flex-item': PFlexItem,
   'p-flyout': PFlyout,
   'p-drilldown': PDrilldown,
   'p-drilldown-item': PDrilldownItem,
   'p-drilldown-link': PDrilldownLink,
-  'p-grid': PGrid,
-  'p-grid-item': PGridItem,
   'p-heading': PHeading,
-  'p-headline': PHeadline,
   'p-icon': PIcon,
   'p-inline-notification': PInlineNotification,
   'p-input-password': PInputPassword,
@@ -396,11 +339,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-input-url': PInputUrl,
   'p-link': PLink,
   'p-link-pure': PLinkPure,
-  'p-link-social': PLinkSocial,
   'p-link-tile': PLinkTile,
-  'p-link-tile-model-signature': PLinkTileModelSignature,
   'p-link-tile-product': PLinkTileProduct,
-  'p-marque': PMarque,
   'p-modal': PModal,
   'p-model-signature': PModelSignature,
   'p-multi-select': PMultiSelect,
@@ -409,7 +349,6 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-pagination': PPagination,
   'p-pin-code': PPinCode,
   'p-popover': PPopover,
-  'p-radio-button-wrapper': PRadioButtonWrapper,
   'p-radio-group': PRadioGroup,
   'p-radio-group-option': PRadioGroupOption,
   'p-scroller': PScroller,
@@ -417,7 +356,6 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-segmented-control-item': PSegmentedControlItem,
   'p-select': PSelect,
   'p-select-option': PSelectOption,
-  'p-select-wrapper': PSelectWrapper,
   'p-sheet': PSheet,
   'p-spinner': PSpinner,
   'p-stepper-horizontal': PStepperHorizontal,
@@ -436,11 +374,9 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-tag': PTag,
   'p-tag-dismissible': PTagDismissible,
   'p-text': PText,
-  'p-text-field-wrapper': PTextFieldWrapper,
   'p-text-list': PTextList,
   'p-text-list-item': PTextListItem,
   'p-textarea': PTextarea,
-  'p-textarea-wrapper': PTextareaWrapper,
   'p-toast': PToast,
   'p-wordmark': PWordmark,
 };
