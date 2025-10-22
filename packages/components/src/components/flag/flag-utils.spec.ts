@@ -16,7 +16,7 @@ describe('buildFlagUrl()', () => {
     expect(cdnFlagUrl).toEqual(DE_FLAG_URL);
   });
 
-  it('should return default flag url if flag name is not in manifest', () => {
+  it('should return unknown flag url if flag name is not in manifest', () => {
     const cdnFlagUrl = buildFlagUrl('xyz' as FlagName);
     expect(cdnFlagUrl).toEqual(UNKNOWN_FLAG_URL);
   });
