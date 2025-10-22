@@ -43,7 +43,7 @@ const sharedPlugins = [
     ROLLUP_REPLACE_VERSION: `"${pkgJson.version}"`,
     ROLLUP_REPLACE_CDN_BASE_URL: isDevBuild
       ? '"http://localhost:3001"'
-      : 'global.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system"', // global (not window!) because this is used during SSR on server side in nodejs
+      : '"./assets"', // global (not window!) because this is used during SSR on server side in nodejs
     'process.env.NODE_ENV': '"production"',
   }),
   commonjs(),
