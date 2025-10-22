@@ -244,12 +244,10 @@ describe('filterSelectOptions()', () => {
 describe('getMatchingSelectOptionIndex()', () => {
   it('should return correct matching option', () => {
     const options = generateOptions({ textContents: ['a', 'b', 'c'] });
-    const getHighlightedSelectOptionIndexSpy = vi.
+    const getHighlightedSelectOptionIndexSpy = vi
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
       .mockReturnValueOnce(-1);
-    const filterSelectOptionsSpy = vi.
-      .spyOn(keyboardBehaviorUtils, 'filterSelectOptions')
-      .mockReturnValueOnce(options);
+    const filterSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils, 'filterSelectOptions').mockReturnValueOnce(options);
     const matchingOption = getMatchingSelectOptionIndex(options, 'a');
     expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
     expect(filterSelectOptionsSpy).toHaveBeenCalledWith(options, 'a');
@@ -258,13 +256,11 @@ describe('getMatchingSelectOptionIndex()', () => {
 
   it('should return correct matching option when same key pressed multiple times', () => {
     const options = generateOptions({ textContents: ['a', 'a', 'c'] });
-    const getHighlightedSelectOptionIndexSpy = vi.
+    const getHighlightedSelectOptionIndexSpy = vi
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex')
       .mockReturnValueOnce(-1)
       .mockReturnValueOnce(0);
-    const filterSelectOptionsSpy = vi.
-      .spyOn(keyboardBehaviorUtils, 'filterSelectOptions')
-      .mockReturnValueOnce(options);
+    const filterSelectOptionsSpy = vi.spyOn(keyboardBehaviorUtils, 'filterSelectOptions').mockReturnValueOnce(options);
 
     const matchingOption = getMatchingSelectOptionIndex(options, 'a');
     expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
@@ -303,10 +299,10 @@ describe('setHighlightedSelectOption()', () => {
 describe('getHighlightedSelectOptionIndex()', () => {
   it('should return correct highlighted select option index', () => {
     const options = generateOptions();
-    const getUsableSelectOptionsSpy = vi.
+    const getUsableSelectOptionsSpy = vi
       .spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions')
       .mockReturnValueOnce(options);
-    const getHighlightedSelectOptionSpy = vi.
+    const getHighlightedSelectOptionSpy = vi
       .spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOption')
       .mockReturnValueOnce(options[1]);
 

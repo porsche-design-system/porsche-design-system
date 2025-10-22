@@ -5,7 +5,7 @@ import { injectGlobalStyle } from './inject-global-style';
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  vi.spyOn(global.console, 'warn').mockImplementation(); // to suppress logs
+  vi.spyOn(global.console, 'warn').mockImplementation(() => null); // to suppress logs
 });
 
 describe('if global styles are missing', () => {
@@ -23,9 +23,7 @@ describe('if global styles are missing', () => {
         `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}'],style[data-pds-font-face-styles=""]`
       );
 
-      vi.
-        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
-        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+      vi.spyOn(getCDNBaseURLUtils, 'getCDNBaseURL').mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
       injectGlobalStyle();
       expect(spy).toHaveBeenCalledWith(
         `link[href='https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}'],style[data-pds-font-face-styles=""]`

@@ -38,7 +38,7 @@ afterAll(() => {
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  vi.spyOn(global.console, 'warn').mockImplementation(); // to suppress logs
+  vi.spyOn(global.console, 'warn').mockImplementation(() => null); // to suppress logs
 });
 
 describe('validatePartialUsage()', () => {
@@ -48,9 +48,9 @@ describe('validatePartialUsage()', () => {
   });
 
   it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesUsage() and validateGetFontLinksUsage()', () => {
-    const validateGetInitialStylesUsageSpy = vi.
+    const validateGetInitialStylesUsageSpy = vi
       .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
-      .mockImplementation(); // mocked since it throws an exception
+      .mockImplementation(() => null); // mocked since it throws an exception
     const validateGetFontFaceStylesUsageSpy = vi.spyOn(validatePartialUsageUtils, 'validateGetFontFaceStylesUsage');
     const validateGetFontLinksUsageSpy = vi.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
     const validateGetComponentChunkLinksUsagesSpy = vi.spyOn(
@@ -94,9 +94,7 @@ describe('validateGetFontFaceStylesUsage()', () => {
         `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"],style[data-pds-font-face-styles=""]`
       );
 
-      vi.
-        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
-        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+      vi.spyOn(getCDNBaseURLUtils, 'getCDNBaseURL').mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
       validateGetFontFaceStylesUsage();
 
       expect(spy).toHaveBeenCalledWith(
@@ -231,9 +229,10 @@ describe('validateGetComponentChunkLinksUsage()', () => {
   });
 
   it('should call consoleWarn() util for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
-    vi.
-      .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
-      .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
+    vi.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({
+      '1.2.3': ['p-text'],
+      '1.2.4': ['p-text', 'p-button', 'p-link'],
+    });
     const spy = vi.spyOn(global.console, 'warn');
 
     validateGetComponentChunkLinksUsage();
@@ -242,9 +241,10 @@ describe('validateGetComponentChunkLinksUsage()', () => {
   });
 
   it('should call getValidatePartialErrorSecondaryText() with correct parameters for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
-    vi.
-      .spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions')
-      .mockReturnValue({ '1.2.3': ['p-text'], '1.2.4': ['p-text', 'p-button', 'p-link'] });
+    vi.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({
+      '1.2.3': ['p-text'],
+      '1.2.4': ['p-text', 'p-button', 'p-link'],
+    });
     const spy = vi.spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText');
 
     validateGetComponentChunkLinksUsage();
@@ -298,7 +298,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 describe('validateGetInitialStylesUsage()', () => {
   it('should call document.head.querySelector() with correct parameters', () => {
     const spy = vi.spyOn(document.head, 'querySelector');
-    vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(); // mocked since it throws an exception
+    vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(() => null); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -307,7 +307,7 @@ describe('validateGetInitialStylesUsage()', () => {
   });
 
   it('should call throwPartialValidationError() with correct parameters when initial style is not found', () => {
-    const spy = vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(); // mocked since it throws an exception
+    const spy = vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(() => null); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -328,11 +328,11 @@ describe('validateGetInitialStylesUsage()', () => {
 describe('throwPartialValidationError()', () => {
   it('should call throwException() with result of getValidatePartialErrorPrimaryText() and getValidatePartialErrorSecondaryText() when called with "getInitialStyles"', () => {});
 
-  const throwExceptionSpy = vi.spyOn(loggerUtils, 'throwException').mockImplementation();
-  const getValidatePartialErrorPrimaryTextSpy = vi.
+  const throwExceptionSpy = vi.spyOn(loggerUtils, 'throwException').mockImplementation(() => null);
+  const getValidatePartialErrorPrimaryTextSpy = vi
     .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorPrimaryText')
     .mockReturnValue('main');
-  const getValidatePartialErrorSecondaryTextSpy = vi.
+  const getValidatePartialErrorSecondaryTextSpy = vi
     .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText')
     .mockReturnValue('additional');
 
@@ -354,10 +354,10 @@ describe('logPartialValidationWarning()', () => {
     'should call consoleWarn() with result of getValidatePartialErrorPrimaryText() and getValidatePartialErrorSecondaryText() when called with "%s"',
     (partialName) => {
       const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-      const getValidatePartialErrorPrimaryTextSpy = vi.
+      const getValidatePartialErrorPrimaryTextSpy = vi
         .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorPrimaryText')
         .mockReturnValue('main');
-      const getValidatePartialErrorSecondaryTextSpy = vi.
+      const getValidatePartialErrorSecondaryTextSpy = vi
         .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText')
         .mockReturnValue('additional');
 

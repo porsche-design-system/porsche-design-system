@@ -1,7 +1,7 @@
+import { vi } from 'vitest';
+import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { Select } from './select';
 import * as selectUtils from './select-utils';
-import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
-import { vi } from 'vitest';
 
 class MockElementInternals {
   setValidity = vi.fn();
@@ -43,7 +43,7 @@ describe('componentDidLoad', () => {
     component.value = 'test';
     const slot = document.createElement('slot');
     const slotSpy = vi.spyOn(slot, 'addEventListener');
-    const getShadowRootHTMLElementSpy = vi.
+    const getShadowRootHTMLElementSpy = vi
       .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
       .mockReturnValueOnce(slot);
 

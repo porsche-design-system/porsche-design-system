@@ -12,7 +12,7 @@ vi.mock('../../utils/dom');
 let component: Flyout;
 
 class MockResizeObserver {
-  constructor(callback) {
+  constructor(callback: any) {
     this.callback = callback;
   }
 
@@ -113,7 +113,7 @@ describe('disconnectedCallback', () => {
 
 describe('render', () => {
   beforeEach(() => {
-    vi.spyOn(global.console, 'warn').mockImplementation();
+    vi.spyOn(global.console, 'warn').mockImplementation(() => null);
   });
 
   it('should call hasNamedSlot() with correct parameters', () => {
@@ -160,7 +160,7 @@ describe('updateSlotObserver', () => {
     expect(observeStickyAreaSpy).not.toHaveBeenCalled();
   });
   it('should call handleUpdateStickyTopCssVar() with correct parameters', () => {
-    const handleUpdateStickyTopCssVarSpy = vi.
+    const handleUpdateStickyTopCssVarSpy = vi
       .spyOn(flyoutUtilsUtils, 'handleUpdateStickyTopCssVar')
       .mockReturnValueOnce();
 

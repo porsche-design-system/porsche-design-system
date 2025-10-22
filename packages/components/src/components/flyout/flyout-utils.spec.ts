@@ -11,7 +11,7 @@ import {
 } from './flyout-utils';
 
 class MockResizeObserver {
-  constructor(callback) {
+  constructor(callback: any) {
     this.callback = callback;
   }
   public callback: any;
@@ -47,7 +47,7 @@ describe('addStickyTopCssVarStyleSheet()', () => {
   });
 
   it('should not do anything if getHasConstructableStylesheetSupport() returns false', () => {
-    const getHasConstructableStylesheetSupportSpy = vi.
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(false);
 
@@ -58,7 +58,7 @@ describe('addStickyTopCssVarStyleSheet()', () => {
   });
 
   it('should create new stylesheet and push it into host.adoptedStyleSheets and update --flyout-sticky-top var', () => {
-    const getHasConstructableStylesheetSupportSpy = vi.
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(true);
     const updateStickyTopCssVarStyleSheetSpy = vi.spyOn(flyoutUtilsUtils, 'updateStickyTopCssVarStyleSheet');
@@ -96,7 +96,7 @@ describe('handleUpdateStickyTopCssVar()', () => {
   });
 
   it('should not do anything if getHasConstructableStylesheetSupport() returns false', () => {
-    const getHasConstructableStylesheetSupportSpy = vi.
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(false);
     const getStickyTopResizeObserverSpy = vi.spyOn(flyoutUtilsUtils, 'getStickyTopResizeObserver');
@@ -110,10 +110,10 @@ describe('handleUpdateStickyTopCssVar()', () => {
   });
 
   it('should create new resize observer and observe header if hasHeader true and resize observer undefined', () => {
-    const getHasConstructableStylesheetSupportSpy = vi.
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(true);
-    const getStickyTopResizeObserverSpy = vi.
+    const getStickyTopResizeObserverSpy = vi
       .spyOn(flyoutUtilsUtils, 'getStickyTopResizeObserver')
       .mockReturnValueOnce(mockResizeObserver);
     const observeSpy = vi.spyOn(mockResizeObserver, 'observe');
@@ -128,7 +128,7 @@ describe('handleUpdateStickyTopCssVar()', () => {
   it('should remove resize observer and reset stickyTopCssVar if hasHeader is false and resize observer exists', () => {
     stickyTopCssVarResizeObserverMap.set(host, mockResizeObserver);
     stickyTopCssVarStyleSheetMap.set(host, stylesheetMock);
-    const getHasConstructableStylesheetSupportSpy = vi.
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(true);
 

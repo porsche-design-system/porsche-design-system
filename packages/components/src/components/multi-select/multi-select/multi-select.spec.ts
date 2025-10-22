@@ -51,7 +51,7 @@ describe('componentDidLoad', () => {
     const component = initComponent();
     const slot = document.createElement('slot');
     const slotSpy = vi.spyOn(slot, 'addEventListener');
-    const getShadowRootHTMLElementSpy = vi.
+    const getShadowRootHTMLElementSpy = vi
       .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
       .mockReturnValueOnce(slot);
     component.componentDidLoad();

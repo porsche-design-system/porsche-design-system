@@ -50,10 +50,8 @@ describe('componentDidLoad', () => {
   it('should call this.scrollActiveTabIntoView() with correct parameter when activeTabIndex !== undefined', () => {
     const component = initComponent();
     component.activeTabIndex = 0;
-    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation();
-    vi.
-      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-      .mockReturnValue(document.createElement('slot'));
+    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation(() => null);
+    vi.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValue(document.createElement('slot'));
 
     component.componentDidLoad();
     expect(spy).toHaveBeenCalledWith(false);
@@ -63,9 +61,7 @@ describe('componentDidLoad', () => {
     const component = initComponent();
     component['scrollerElement'] = document.createElement('p-scroller');
     const spy = vi.spyOn(component, 'observeBreakpointChange' as any);
-    vi.
-      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-      .mockReturnValue(document.createElement('slot'));
+    vi.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValue(document.createElement('slot'));
 
     component.componentDidLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -74,7 +70,7 @@ describe('componentDidLoad', () => {
 
 describe('render', () => {
   it('should call this.setAccessibilityAttributes()', () => {
-    vi.spyOn(jssUtils, 'attachComponentCss').mockImplementation();
+    vi.spyOn(jssUtils, 'attachComponentCss').mockImplementation(() => null);
     const component = initComponent();
     const spy = vi.spyOn(component, 'setAccessibilityAttributes' as any);
 
@@ -111,7 +107,7 @@ describe('this.activeTabIndexHandler()', () => {
     expect(component['direction']).toBe('prev');
 
     component['internalTabIndex'] = 2;
-    vi.spyOn(component, 'setTabElements' as any).mockImplementation();
+    vi.spyOn(component, 'setTabElements' as any).mockImplementation(() => null);
 
     component.activeTabIndexHandler(0, 1);
     expect(component['direction']).toBe('next');
@@ -141,7 +137,7 @@ describe('this.activeTabIndexHandler()', () => {
 
   it('should call this.setBarStyle()', () => {
     const component = initComponent();
-    const spy = vi.spyOn(component, 'setBarStyle' as any).mockImplementation();
+    const spy = vi.spyOn(component, 'setBarStyle' as any).mockImplementation(() => null);
 
     component.activeTabIndexHandler(0, undefined);
     expect(spy).toHaveBeenCalledWith();
@@ -149,7 +145,7 @@ describe('this.activeTabIndexHandler()', () => {
 
   it('should call this.scrollActiveTabIntoView()', () => {
     const component = initComponent();
-    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation();
+    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation(() => null);
 
     component.activeTabIndexHandler(0, undefined);
     expect(spy).toHaveBeenCalledWith();
@@ -194,9 +190,9 @@ describe('this.setTabElements()', () => {
   it('should set this.tabElements', () => {
     const component = initComponent();
     const elements = getElements('a');
-    vi.
-      .spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow')
-      .mockReturnValue(elements);
+    vi.spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow').mockReturnValue(
+      elements
+    );
 
     expect(component['tabElements']).toEqual([]);
 
@@ -206,8 +202,7 @@ describe('this.setTabElements()', () => {
 
   it('should set this.areTabsButtons based on result of this.tabElements', () => {
     const component = initComponent();
-    vi.
-      .spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow')
+    vi.spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow')
       .mockReturnValueOnce(getElements('a')) // 1st call
       .mockReturnValueOnce(getElements('button')); // 2nd call
 
@@ -223,8 +218,7 @@ describe('this.setTabElements()', () => {
   it('should call sanitizeActiveTabIndex() with correct parameters', () => {
     const component = initComponent();
     component.activeTabIndex = 2;
-    vi.
-      .spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow')
+    vi.spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow')
       .mockReturnValueOnce([])
       .mockReturnValueOnce(getElements('button'));
 
