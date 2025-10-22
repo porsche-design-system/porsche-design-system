@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Radio Group`: fixed `compact` mode styles ([#4073](https://github.com/porsche-design-system/porsche-design-system/pull/4073))
+
 ## [3.30.0-rc.1] - 2025-10-21
 
 ### Added
