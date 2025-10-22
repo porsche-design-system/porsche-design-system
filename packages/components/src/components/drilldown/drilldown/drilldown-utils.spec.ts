@@ -24,7 +24,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
     validateActiveIdentifier<typeof SomeInstance>(instance, items, undefined);
     expect(spy).not.toHaveBeenCalled();
   });
@@ -33,7 +33,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild()];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).not.toHaveBeenCalled();
   });
@@ -42,7 +42,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessage);
   });
@@ -51,19 +51,21 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild(identifier)];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation();
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessageMultiple, ...items);
   });
 });
 
 describe('updateDrilldownItemState()', () => {
-  let traverseTreeAndUpdateStateSpy: vi.SpyInstance;
+  let traverseTreeAndUpdateStateSpy: ReturnType<typeof vi.spyOn>;
   let host: HTMLElement & { primary?: boolean };
-  let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
+  let child: HTMLPDrilldownItemElement;
 
   beforeEach(() => {
-    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils, 'traverseTreeAndUpdateState').mockImplementation();
+    traverseTreeAndUpdateStateSpy = vi
+      .spyOn(drilldownUtils, 'traverseTreeAndUpdateState')
+      .mockImplementation(() => null);
 
     host = document.createElement('p-drilldown');
     child = document.createElement('p-drilldown-item');
@@ -88,10 +90,10 @@ describe('updateDrilldownItemState()', () => {
 });
 
 describe('traverseTreeAndUpdateState()', () => {
-  let traverseTreeAndUpdateStateSpy: vi.SpyInstance;
+  let traverseTreeAndUpdateStateSpy: ReturnType<typeof vi.spyOn>;
   let host: HTMLElement & { primary?: boolean };
-  let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
-  let grandChild: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
+  let child: HTMLPDrilldownItemElement;
+  let grandChild: HTMLPDrilldownItemElement;
 
   beforeEach(() => {
     traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils, 'traverseTreeAndUpdateState');
