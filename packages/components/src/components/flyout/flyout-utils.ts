@@ -1,6 +1,7 @@
 // 'left' is deprecated and will be mapped to 'start'
 // 'right' is deprecated and will be mapped to 'end'
 
+import type { Backdrop } from '../../styles/dialog-styles';
 import { getHasConstructableStylesheetSupport } from '../../utils';
 
 /** @deprecated */
@@ -19,6 +20,8 @@ export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
 export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
 export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+
+export type FlyoutBackdrop = Backdrop;
 
 /**
  * Map of flyout instances and their corresponding resize observers to update the experimental css property --p-flyout-sticky-top.
