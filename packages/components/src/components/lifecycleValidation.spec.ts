@@ -157,7 +157,7 @@ describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
   const component = componentFactory(tagName);
 
   it('should call hasPropValueChanged() with correct parameters via componentShouldUpdate and return its result', () => {
-    const spy = vi.
+    const spy = vi
       .spyOn(hasPropValueChangedUtils, 'hasPropValueChanged')
       .mockReturnValueOnce(true)
       .mockReturnValueOnce(false);
