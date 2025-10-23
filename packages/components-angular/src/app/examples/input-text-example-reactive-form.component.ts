@@ -3,10 +3,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-input-url-example-form',
+  selector: 'page-input-text-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-url formControlName="myInputUrl" [label]="'Some Label'" [required]="true" />
+      <p-input-text formControlName="myInputText" [label]="'Some Label'" [required]="true" />
       <button type="submit">Submit</button>
     </form>
 
@@ -19,37 +19,37 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </button>
 
     <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputUrl.disabled ? 'Enable' : 'Disable' }}
+      {{ form.controls.myInputText.disabled ? 'Enable' : 'Disable' }}
     </button>
 
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputUrl.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputUrl.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputUrl.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputUrl.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputUrl.valid }}</span></div>
+    <div>Touched: <span data-field="touched">{{ form.controls.myInputText.touched }}</span></div>
+    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputText.dirty }}</span></div>
+    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputText.disabled }}</span></div>
+    <div>Value: <span data-field="value">{{ form.controls.myInputText.value }}</span></div>
+    <div>Valid: <span data-field="valid">{{ form.controls.myInputText.valid }}</span></div>
     <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class InputUrlExampleFormComponent {
+export class InputTextExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputUrl: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputText: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });
 
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myInputUrl.setValue('https://www.porsche.com');
+    this.form.controls.myInputText.setValue('Some text');
   }
 
   resetValue(): void {
-    this.form.controls.myInputUrl.reset('');
+    this.form.controls.myInputText.reset('');
   }
 
   toggleDisabled(): void {
-    const control = this.form.get('myInputUrl')!;
+    const control = this.form.get('myInputText')!;
     control.disabled ? control.enable() : control.disable();
   }
 

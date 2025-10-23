@@ -33,7 +33,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class InputDateExampleFormComponent {
+export class InputDateExampleReactiveFormComponent {
   form = new FormGroup({
     myInputDate: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });

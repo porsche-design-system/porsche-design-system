@@ -40,7 +40,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class SegmentedControlExampleFormComponent {
+export class SegmentedControlExampleReactiveFormComponent {
   form = new FormGroup({
     mySegmentedControl: new FormControl<string | number | undefined>(
       { value: undefined, disabled: false },

@@ -3,11 +3,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-pin-code-example-form',
+  selector: 'page-input-search-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-pin-code formControlName="myPinCode" [label]="'Some Label'" [required]="true" />
-
+      <p-input-search formControlName="myInputSearch" [label]="'Some Label'" [required]="true" />
       <button type="submit">Submit</button>
     </form>
 
@@ -20,40 +19,37 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </button>
 
     <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myPinCode.disabled ? 'Enable' : 'Disable' }}
+      {{ form.controls.myInputSearch.disabled ? 'Enable' : 'Disable' }}
     </button>
 
-    <div>Touched: <span data-field="touched">{{ form.controls.myPinCode.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myPinCode.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myPinCode.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myPinCode.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myPinCode.valid }}</span></div>
+    <div>Touched: <span data-field="touched">{{ form.controls.myInputSearch.touched }}</span></div>
+    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputSearch.dirty }}</span></div>
+    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputSearch.disabled }}</span></div>
+    <div>Value: <span data-field="value">{{ form.controls.myInputSearch.value }}</span></div>
+    <div>Valid: <span data-field="valid">{{ form.controls.myInputSearch.valid }}</span></div>
     <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class PinCodeExampleFormComponent {
+export class InputSearchExampleReactiveFormComponent {
   form = new FormGroup({
-    myPinCode: new FormControl<string>(
-      { value: '', disabled: false },
-      { validators: Validators.required, nonNullable: true }
-    ),
+    myInputSearch: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });
 
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myPinCode.setValue('1234');
+    this.form.controls.myInputSearch.setValue('Some search term');
   }
 
   resetValue(): void {
-    this.form.controls.myPinCode.reset({ value: '', disabled: false });
+    this.form.controls.myInputSearch.reset('');
   }
 
   toggleDisabled(): void {
-    const control = this.form.get('myPinCode')!;
+    const control = this.form.get('myInputSearch')!;
     control.disabled ? control.enable() : control.disable();
   }
 

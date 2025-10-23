@@ -41,7 +41,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class SelectExampleFormComponent {
+export class SelectExampleReactiveFormComponent {
   form = new FormGroup({
     mySelect: new FormControl<string | undefined>(
       { value: undefined, disabled: false },

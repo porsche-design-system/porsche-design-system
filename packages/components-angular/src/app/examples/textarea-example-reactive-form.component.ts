@@ -3,10 +3,11 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-input-tel-example-form',
+  selector: 'page-textarea-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-tel formControlName="myInputTel" [label]="'Some Label'" [required]="true" />
+      <p-textarea formControlName="myTextarea" [label]="'Some Label'" [required]="true" />
+
       <button type="submit">Submit</button>
     </form>
 
@@ -19,37 +20,37 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </button>
 
     <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputTel.disabled ? 'Enable' : 'Disable' }}
+      {{ form.controls.myTextarea.disabled ? 'Enable' : 'Disable' }}
     </button>
 
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputTel.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputTel.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputTel.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputTel.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputTel.valid }}</span></div>
+    <div>Touched: <span data-field="touched">{{ form.controls.myTextarea.touched }}</span></div>
+    <div>Dirty: <span data-field="dirty">{{ form.controls.myTextarea.dirty }}</span></div>
+    <div>Disabled: <span data-field="disabled">{{ form.controls.myTextarea.disabled }}</span></div>
+    <div>Value: <span data-field="value">{{ form.controls.myTextarea.value }}</span></div>
+    <div>Valid: <span data-field="valid">{{ form.controls.myTextarea.valid }}</span></div>
     <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class InputTelExampleFormComponent {
+export class TextareaExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputTel: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myTextarea: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });
 
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myInputTel.setValue('0123 4567890');
+    this.form.controls.myTextarea.setValue('a');
   }
 
   resetValue(): void {
-    this.form.controls.myInputTel.reset('');
+    this.form.controls.myTextarea.reset('');
   }
 
   toggleDisabled(): void {
-    const control = this.form.get('myInputTel')!;
+    const control = this.form.get('myTextarea')!;
     control.disabled ? control.enable() : control.disable();
   }
 

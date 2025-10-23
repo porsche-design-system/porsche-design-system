@@ -3,10 +3,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-input-email-example-form',
+  selector: 'page-input-number-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-email formControlName="myInputEmail" [label]="'Some Label'" [required]="true" />
+      <p-input-number formControlName="myInputNumber" [label]="'Some Label'" [required]="true" />
       <button type="submit">Submit</button>
     </form>
 
@@ -19,37 +19,37 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </button>
 
     <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputEmail.disabled ? 'Enable' : 'Disable' }}
+      {{ form.controls.myInputNumber.disabled ? 'Enable' : 'Disable' }}
     </button>
 
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputEmail.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputEmail.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputEmail.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputEmail.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputEmail.valid }}</span></div>
+    <div>Touched: <span data-field="touched">{{ form.controls.myInputNumber.touched }}</span></div>
+    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputNumber.dirty }}</span></div>
+    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputNumber.disabled }}</span></div>
+    <div>Value: <span data-field="value">{{ form.controls.myInputNumber.value }}</span></div>
+    <div>Valid: <span data-field="valid">{{ form.controls.myInputNumber.valid }}</span></div>
     <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class InputEmailExampleFormComponent {
+export class InputNumberExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputEmail: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputNumber: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });
 
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myInputEmail.setValue('example@mail.com');
+    this.form.controls.myInputNumber.setValue('123456');
   }
 
   resetValue(): void {
-    this.form.controls.myInputEmail.reset('');
+    this.form.controls.myInputNumber.reset('');
   }
 
   toggleDisabled(): void {
-    const control = this.form.get('myInputEmail')!;
+    const control = this.form.get('myInputNumber')!;
     control.disabled ? control.enable() : control.disable();
   }
 

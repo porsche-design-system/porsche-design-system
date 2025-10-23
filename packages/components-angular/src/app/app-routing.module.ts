@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { type Route, RouterModule } from '@angular/router';
 import * as fromExamples from './examples';
-import { SelectExampleFormComponent } from './examples/select-example-form.component';
+import { SelectExampleReactiveFormComponent } from './examples/select-example-reactive-form.component';
 import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
@@ -219,7 +219,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Password Example Form',
     path: 'input-password-example-form',
-    component: fromExamples.InputPasswordExampleFormComponent,
+    component: fromExamples.InputPasswordExampleReactiveFormComponent,
   },
   {
     name: 'Input Number Example',
@@ -234,7 +234,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Number Example Form',
     path: 'input-number-example-form',
-    component: fromExamples.InputNumberExampleFormComponent,
+    component: fromExamples.InputNumberExampleReactiveFormComponent,
   },
   {
     name: 'Input Date Example',
@@ -249,7 +249,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Date Example Form',
     path: 'input-date-example-form',
-    component: fromExamples.InputDateExampleFormComponent,
+    component: fromExamples.InputDateExampleReactiveFormComponent,
   },
   {
     name: 'Input Search Example',
@@ -264,7 +264,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Search Example Form',
     path: 'input-search-example-form',
-    component: fromExamples.InputSearchExampleFormComponent,
+    component: fromExamples.InputSearchExampleReactiveFormComponent,
   },
   {
     name: 'Input Time Example',
@@ -279,7 +279,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Time Example Form',
     path: 'input-time-example-form',
-    component: fromExamples.InputTimeExampleFormComponent,
+    component: fromExamples.InputTimeExampleReactiveFormComponent,
   },
   {
     name: 'Input Text Example',
@@ -294,7 +294,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Text Example Form',
     path: 'input-text-example-form',
-    component: fromExamples.InputTextExampleFormComponent,
+    component: fromExamples.InputTextExampleReactiveFormComponent,
   },
   {
     name: 'Input Tel Example',
@@ -309,7 +309,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Tel Example Form',
     path: 'input-tel-example-form',
-    component: fromExamples.InputTelExampleFormComponent,
+    component: fromExamples.InputTelExampleReactiveFormComponent,
   },
   {
     name: 'Input Url Example',
@@ -324,7 +324,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Url Example Form',
     path: 'input-url-example-form',
-    component: fromExamples.InputUrlExampleFormComponent,
+    component: fromExamples.InputUrlExampleReactiveFormComponent,
   },
   {
     name: 'Input Email Example',
@@ -339,7 +339,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Input Email Example Form',
     path: 'input-email-example-form',
-    component: fromExamples.InputEmailExampleFormComponent,
+    component: fromExamples.InputEmailExampleReactiveFormComponent,
   },
   {
     name: 'Link Tile Example Hyphens',
@@ -374,7 +374,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Multi-Select Example Form',
     path: 'multi-select-example-form',
-    component: fromExamples.MultiSelectExampleFormComponent,
+    component: fromExamples.MultiSelectExampleReactiveFormComponent,
   },
   {
     name: 'Pin Code Example',
@@ -389,7 +389,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Pin Code Example Form',
     path: 'pin-code-example-form',
-    component: fromExamples.PinCodeExampleFormComponent,
+    component: fromExamples.PinCodeExampleReactiveFormComponent,
   },
   {
     name: 'Radio Group Example',
@@ -404,7 +404,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Radio Group Example Form',
     path: 'radio-group-example-form',
-    component: fromExamples.RadioGroupExampleFormComponent,
+    component: fromExamples.RadioGroupExampleReactiveFormComponent,
   },
   {
     name: 'Scroller Example',
@@ -424,7 +424,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Segmented Control Example Form',
     path: 'segmented-control-example-form',
-    component: fromExamples.SegmentedControlExampleFormComponent,
+    component: fromExamples.SegmentedControlExampleReactiveFormComponent,
   },
   {
     name: 'Select Example',
@@ -444,7 +444,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Select Example Form',
     path: 'select-example-form',
-    component: fromExamples.SelectExampleFormComponent,
+    component: fromExamples.SelectExampleReactiveFormComponent,
   },
   {
     name: 'Select Example Required',
@@ -504,7 +504,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Textarea Example Form',
     path: 'textarea-example-form',
-    component: fromExamples.TextareaExampleFormComponent,
+    component: fromExamples.TextareaExampleReactiveFormComponent,
   },
   {
     name: 'Checkbox Example',
@@ -519,7 +519,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Checkbox Example Form',
     path: 'checkbox-example-form',
-    component: fromExamples.CheckboxExampleFormComponent,
+    component: fromExamples.CheckboxExampleReactiveFormComponent,
   },
   {
     name: 'Text Field Wrapper Example Search',

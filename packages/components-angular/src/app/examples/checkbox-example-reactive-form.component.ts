@@ -3,10 +3,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-input-number-example-form',
+  selector: 'page-checkbox-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-number formControlName="myInputNumber" [label]="'Some Label'" [required]="true" />
+      <p-checkbox formControlName="myCheckbox" [label]="'Some Label'" [required]="true" />
       <button type="submit">Submit</button>
     </form>
 
@@ -19,40 +19,37 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </button>
 
     <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputNumber.disabled ? 'Enable' : 'Disable' }}
+      {{ form.controls.myCheckbox.disabled ? 'Enable' : 'Disable' }}
     </button>
 
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputNumber.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputNumber.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputNumber.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputNumber.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputNumber.valid }}</span></div>
+    <div>Touched: <span data-field="touched">{{ form.controls.myCheckbox.touched }}</span></div>
+    <div>Dirty: <span data-field="dirty">{{ form.controls.myCheckbox.dirty }}</span></div>
+    <div>Disabled: <span data-field="disabled">{{ form.controls.myCheckbox.disabled }}</span></div>
+    <div>Value: <span data-field="value">{{ form.controls.myCheckbox.value }}</span></div>
+    <div>Valid: <span data-field="valid">{{ form.controls.myCheckbox.valid }}</span></div>
     <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class InputNumberExampleFormComponent {
+export class CheckboxExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputNumber: new FormControl<string>(
-      "",
-      { validators: Validators.required, nonNullable: true }
-    ),
+    myCheckbox: new FormControl<boolean>(false, { validators: Validators.requiredTrue }),
   });
 
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myInputNumber.setValue("123456");
+    this.form.controls.myCheckbox.setValue(true);
   }
 
   resetValue(): void {
-    this.form.controls.myInputNumber.reset("");
+    this.form.controls.myCheckbox.reset(false);
   }
 
   toggleDisabled(): void {
-    const control = this.form.get('myInputNumber')!;
+    const control = this.form.get('myCheckbox')!;
     control.disabled ? control.enable() : control.disable();
   }
 

@@ -41,12 +41,9 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class RadioGroupExampleFormComponent {
+export class RadioGroupExampleReactiveFormComponent {
   form = new FormGroup({
-    myRadioGroup: new FormControl<string>(
-      "",
-      { validators: Validators.required, nonNullable: true }
-    ),
+    myRadioGroup: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });
 
   submittedValue: any = undefined;
@@ -56,7 +53,7 @@ export class RadioGroupExampleFormComponent {
   }
 
   resetValue(): void {
-    this.form.controls.myRadioGroup.reset("");
+    this.form.controls.myRadioGroup.reset('');
   }
 
   toggleDisabled(): void {

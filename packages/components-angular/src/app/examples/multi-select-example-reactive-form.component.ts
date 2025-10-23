@@ -41,7 +41,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class MultiSelectExampleFormComponent {
+export class MultiSelectExampleReactiveFormComponent {
   form = new FormGroup({
     myMultiSelect: new FormControl<string[]>([], { validators: Validators.required, nonNullable: true }),
   });

@@ -3,10 +3,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-checkbox-example-form',
+  selector: 'page-input-password-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-checkbox formControlName="myCheckbox" [label]="'Some Label'" [required]="true" />
+      <p-input-password formControlName="myInputPassword" [label]="'Some Label'" [required]="true" />
       <button type="submit">Submit</button>
     </form>
 
@@ -19,37 +19,37 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </button>
 
     <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myCheckbox.disabled ? 'Enable' : 'Disable' }}
+      {{ form.controls.myInputPassword.disabled ? 'Enable' : 'Disable' }}
     </button>
 
-    <div>Touched: <span data-field="touched">{{ form.controls.myCheckbox.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myCheckbox.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myCheckbox.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myCheckbox.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myCheckbox.valid }}</span></div>
+    <div>Touched: <span data-field="touched">{{ form.controls.myInputPassword.touched }}</span></div>
+    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputPassword.dirty }}</span></div>
+    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputPassword.disabled }}</span></div>
+    <div>Value: <span data-field="value">{{ form.controls.myInputPassword.value }}</span></div>
+    <div>Valid: <span data-field="valid">{{ form.controls.myInputPassword.valid }}</span></div>
     <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, FormsModule, ReactiveFormsModule], // <-- PDS module is imported here
 })
-export class CheckboxExampleFormComponent {
+export class InputPasswordExampleReactiveFormComponent {
   form = new FormGroup({
-    myCheckbox: new FormControl<boolean>(false, { validators: Validators.requiredTrue }),
+    myInputPassword: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
   });
 
   submittedValue: any = undefined;
 
   setValue(): void {
-    this.form.controls.myCheckbox.setValue(true);
+    this.form.controls.myInputPassword.setValue('some-password');
   }
 
   resetValue(): void {
-    this.form.controls.myCheckbox.reset(false);
+    this.form.controls.myInputPassword.reset('');
   }
 
   toggleDisabled(): void {
-    const control = this.form.get('myCheckbox')!;
+    const control = this.form.get('myInputPassword')!;
     control.disabled ? control.enable() : control.disable();
   }
 
