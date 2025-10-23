@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-textarea-example-form',
+  selector: 'page-textarea-example-reactive-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <p-textarea formControlName="myTextarea" [label]="'Some Label'" [required]="true" />
