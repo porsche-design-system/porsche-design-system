@@ -30,6 +30,8 @@ import { getComponentCss } from './radio-group-styles';
 import {
   findNextEnabledIndex,
   getActiveOptionIndex,
+  getCheckedOptionIndex,
+  getFirstEnabledOptionIndex,
   type RadioGroupChangeEventDetail,
   type RadioGroupDirection,
   type RadioGroupOption,
@@ -195,7 +197,6 @@ export class RadioGroup {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
-    this.updateTabStops();
   }
 
   public render(): JSX.Element {
@@ -304,14 +305,9 @@ export class RadioGroup {
 
   private updateTabStops(): void {
     if (!this.radioGroupOptions.length) return;
-
-    const activeIndex = getActiveOptionIndex(this.radioGroupOptions);
-    const firstEnabledIndex = this.radioGroupOptions.findIndex((o) => {
-      const input = o.shadowRoot?.querySelector('input[type="radio"]');
-      return input instanceof HTMLInputElement && !input.disabled;
-    });
-
-    const focusIndex = activeIndex !== -1 ? activeIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;
+    const selectedIndex = getCheckedOptionIndex(this.radioGroupOptions);
+    const firstEnabledIndex = getFirstEnabledOptionIndex(this.radioGroupOptions);
+    const focusIndex = selectedIndex !== -1 ? selectedIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;
 
     this.radioGroupOptions.forEach((opt, i) => {
       const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
