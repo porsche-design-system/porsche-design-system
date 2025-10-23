@@ -302,7 +302,6 @@ export class RadioGroup {
     this.updateTabStops();
   };
 
-  // Roving Tabindex: only selected or initial option gets focused
   private updateTabStops(): void {
     if (!this.radioGroupOptions.length) return;
 
