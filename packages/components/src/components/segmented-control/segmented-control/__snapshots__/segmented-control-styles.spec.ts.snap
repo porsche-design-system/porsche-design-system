@@ -5,7 +5,7 @@ exports[`getComponentCss() > should return correct css for maxWidth: 20 and colu
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 6px !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -36,7 +36,7 @@ exports[`getComponentCss() > should return correct css for maxWidth: 20 and colu
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 46px) !important;
-  gap: 6px !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -49,7 +49,7 @@ exports[`getComponentCss() > should return correct css for maxWidth: 80 and colu
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-  gap: 6px !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -62,7 +62,7 @@ exports[`getComponentCss() > should return correct css for maxWidth: 230 and col
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
-  gap: 6px !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
