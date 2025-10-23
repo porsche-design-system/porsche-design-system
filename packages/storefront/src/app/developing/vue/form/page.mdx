@@ -9,18 +9,22 @@ export const metadata = {
 
 # Vue
 
-<TableOfContents headings={[]} />
+<TableOfContents
+  headings={['Form Integration Demo', 'Automatic Data Binding', 'Manual State Management', 'Native Form Submission']}
+/>
 
-Integrating Porsche Design System form components in Vue can be done in several ways — depending on your preferred state
-management approach and form handling strategy.
+Porsche Design System form components can be integrated into Vue using different techniques based on your state
+management and form handling preferences. Each component automatically keeps its internal value in sync, similar to
+native form elements.
 
 All form components support:
 
-- **Two-way binding** using `v-model:property` directive (e.g. `v-model:value` or `v-model:checked`)
-- **Controlled behavior** using `value`/`checked` properties and `change`/`input`/`blur` event listeners
-- **Native form submission** through the built-in Form-associated custom elements API
+- **Automatic Data Binding (`v-model`)** using `v-model:property` directive (e.g. `v-model:value` or `v-model:checked`)
+- **Manual State Management (Props + Events)** using `value`/`checked` properties and `change`/`input`/`blur` event
+  listeners
+- **Native form submission** using form-associated custom elements
 
-Below you’ll find a demo and examples for each approach.
+## Form Integration Demo
 
 A complete example of how to integrate form components with Vue can be explored here:
 
@@ -40,49 +44,33 @@ A complete example of how to integrate form components with Vue can be explored 
   src="https://porsche-design-system.github.io/examples/vue"
 />
 
-## Vue v-model
+## Automatic Data Binding (Preferred)
 
 All custom form components support [`v-model`](https://vuejs.org/guide/components/v-model) for seamless two-way data
 binding with your model. Because our components don’t use the default `modelValue` property, you need to explicitly
 specify which property should be bound to the model by using an argument — for example, `v-model:value` or
 `v-model:checked`.
 
-For example, to bind a model to the `p-input-text` component:
-
-```vue
-<template>
-  <PInputText v-model:value="myInputText" :name="'myInputText'" :label="'Some Label'" />
-</template>
-
-<script setup lang="ts">
-  import { PInputText } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
-
-  const myInputText = ref('');
-</script>
+```javascript
+<PInputText v-model:value="myInputText" :name="'myInputText'" :label="'Some Label'" />
+...
+const myInputText = ref('');
 ```
 
-## Controlled
+## Manual State Management
 
 While all custom form components update their internal state automatically, you can manage their values externally using
 the `value` or `checked` props along with `input`, `change`, and `blur` events. This approach allows flexible
 integration with any form library.
 
-```vue
-<template>
-  <PInputText :name="'some-name'" :label="'Some Label'" :value="value" @input="onInput" />
-</template>
+```javascript
+<PInputText :name="'myInputText'" :label="'Some Label'" :value="value" @input="onInput" />
+...
+const value = ref<string>('');
 
-<script setup lang="ts">
-  import { type InputTextInputEventDetail, PInputText, PText } from '@porsche-design-system/components-vue';
-  import { computed, ref } from 'vue';
-
-  const value = ref<string>('');
-
-  const onInput = (e: InputTextInputEventDetail) => {
-    value.value = (e.target as HTMLInputElement).value;
-  };
-</script>
+const onInput = (e: InputTextInputEventDetail) => {
+  value.value = (e.target as HTMLInputElement).value;
+};
 ```
 
 ## Native Form Submission
@@ -92,18 +80,13 @@ All custom form components are form-associated custom elements that integrate se
 native counterparts, ensuring compatibility with form behaviors. However, note that browser support for this API is
 limited.
 
-```vue
-<template>
-  <form @submit.prevent="onSubmit">
-    <PInputText :name="'myInputText'" :label="'Some Label'" />
-    <PButton type="submit">Submit</PButton>
-  </form>
-</template>
-
-<script setup lang="ts">
-  import { PButton, PInputText, PText } from '@porsche-design-system/components-vue';
-  const onSubmit = (e: Event) => {
-    console.log(e);
-  };
-</script>
+```javascript
+<form @submit.prevent="onSubmit">
+  <PInputText :name="'myInputText'" :label="'Some Label'" />
+  <PButton type="submit">Submit</PButton>
+</form>
+...
+const onSubmit = (e: SubmitEvent) => {
+  console.log(e);
+};
 ```

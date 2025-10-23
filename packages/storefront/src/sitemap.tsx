@@ -261,6 +261,11 @@ export const sitemap: Routes = {
             path: '/developing/react/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/react/form',
+            type: 'TAB',
+          },
           testing: {
             name: 'Testing',
             path: '/developing/react/testing',
