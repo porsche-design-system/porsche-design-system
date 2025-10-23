@@ -18525,6 +18525,9 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -18602,18 +18605,17 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 }
 
     </style>
-    <div
+    <fieldset
+      aria-describedby="description message"
       class="root"
+      role="radiogroup"
     >
-      <label
+      <legend
         class="label"
-        for="radio-group"
         id="label"
       />
       <div
-        aria-labelledby="radio-group"
         class="wrapper"
-        role="radiogroup"
       >
         <slot />
       </div>
@@ -18627,7 +18629,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
         id="loading"
         role="status"
       />
-    </div>
+    </fieldset>
   </template>
   Some child
 </p-radio-group>
@@ -18783,7 +18785,6 @@ input:focus-visible {
         <input
           aria-describedby="description message"
           id="radio-group-option"
-          tabindex="-1"
           type="radio"
         />
       </div>
