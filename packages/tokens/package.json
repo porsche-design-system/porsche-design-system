@@ -1,7 +1,8 @@
 {
   "name": "@porsche-design-system/tokens",
-  "version": "0.0.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "./dist/index.js",
@@ -19,7 +20,9 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {

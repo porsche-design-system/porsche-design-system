@@ -9,5 +9,5 @@ export default defineConfig({
   skipNodeModulesBundle: true,
   target: 'esnext',
   outDir: 'dist',
-  entry: ['src/**/*.ts'],
+  entry: ['src/**/*.ts', '!src/**/*.spec.ts'],
 });
