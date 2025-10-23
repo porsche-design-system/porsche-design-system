@@ -11,18 +11,28 @@ import {
   breakpointSm,
   breakpointXl,
   breakpointXs,
-  colorActiveDark,
-  colorActiveLight,
   colorCanvasDark,
+  colorCanvasInvertedDark,
+  colorCanvasInvertedLight,
   colorCanvasLight,
-  colorContrastHighDark,
-  colorContrastHighLight,
-  colorContrastLowDark,
-  colorContrastLowLight,
-  colorContrastMediumDark,
-  colorContrastMediumLight,
-  colorDisabledDark,
-  colorDisabledLight,
+  colorContrast10Dark,
+  colorContrast10Light,
+  colorContrast20Dark,
+  colorContrast20Light,
+  colorContrast30Dark,
+  colorContrast30Light,
+  colorContrast40Dark,
+  colorContrast40Light,
+  colorContrast50Dark,
+  colorContrast50Light,
+  colorContrast60Dark,
+  colorContrast60Light,
+  colorContrast70Dark,
+  colorContrast70Light,
+  colorContrast80Dark,
+  colorContrast80Light,
+  colorContrast90Dark,
+  colorContrast90Light,
   colorErrorDark,
   colorErrorLight,
   colorErrorSoftDark,
@@ -31,16 +41,14 @@ import {
   colorFocusLight,
   colorFrostedDark,
   colorFrostedLight,
-  colorHoverDark,
-  colorHoverLight,
   colorInfoDark,
   colorInfoLight,
   colorInfoSoftDark,
   colorInfoSoftLight,
   colorPrimaryDark,
   colorPrimaryLight,
-  colorShadingDark,
-  colorShadingLight,
+  colorScrimDark,
+  colorScrimLight,
   colorSuccessDark,
   colorSuccessLight,
   colorSuccessSoftDark,
@@ -92,14 +100,21 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Color */
-  --color-primary: ${colorPrimaryLight};
   --color-canvas: ${colorCanvasLight};
+  --color-canvas-inverted: ${colorCanvasInvertedLight};
   --color-surface: ${colorSurfaceLight};
-  --color-shading: ${colorShadingLight};
   --color-frosted: ${colorFrostedLight};
-  --color-contrast-low: ${colorContrastLowLight};
-  --color-contrast-medium: ${colorContrastMediumLight};
-  --color-contrast-high: ${colorContrastHighLight};
+  --color-scrim: ${colorScrimLight};
+  --color-contrast-10: ${colorContrast10Light};
+  --color-contrast-20: ${colorContrast20Light};
+  --color-contrast-30: ${colorContrast30Light};
+  --color-contrast-40: ${colorContrast40Light};
+  --color-contrast-50: ${colorContrast50Light};
+  --color-contrast-60: ${colorContrast60Light};
+  --color-contrast-70: ${colorContrast70Light};
+  --color-contrast-80: ${colorContrast80Light};
+  --color-contrast-90: ${colorContrast90Light};
+  --color-primary: ${colorPrimaryLight};
   --color-success: ${colorSuccessLight};
   --color-success-soft: ${colorSuccessSoftLight};
   --color-warning: ${colorWarningLight};
@@ -108,20 +123,24 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-error-soft: ${colorErrorSoftLight};
   --color-info: ${colorInfoLight};
   --color-info-soft: ${colorInfoSoftLight};
-  --color-hover: ${colorHoverLight};
-  --color-active: ${colorActiveLight};
   --color-focus: ${colorFocusLight};
-  --color-disabled: ${colorDisabledLight};
   --color-skeleton: #f7f7f7;
 
-  --color-primary-light: ${colorPrimaryLight};
   --color-canvas-light: ${colorCanvasLight};
+  --color-canvas-inverted-light: ${colorCanvasInvertedLight};
   --color-surface-light: ${colorSurfaceLight};
-  --color-shading-light: ${colorShadingLight};
   --color-frosted-light: ${colorFrostedLight};
-  --color-contrast-low-light: ${colorContrastLowLight};
-  --color-contrast-medium-light: ${colorContrastMediumLight};
-  --color-contrast-high-light: ${colorContrastHighLight};
+  --color-scrim-light: ${colorScrimLight};
+  --color-contrast-10-light: ${colorContrast10Light};
+  --color-contrast-20-light: ${colorContrast20Light};
+  --color-contrast-30-light: ${colorContrast30Light};
+  --color-contrast-40-light: ${colorContrast40Light};
+  --color-contrast-50-light: ${colorContrast50Light};
+  --color-contrast-60-light: ${colorContrast60Light};
+  --color-contrast-70-light: ${colorContrast70Light};
+  --color-contrast-80-light: ${colorContrast80Light};
+  --color-contrast-90-light: ${colorContrast90Light};
+  --color-primary-light: ${colorPrimaryLight};
   --color-success-light: ${colorSuccessLight};
   --color-success-soft-light: ${colorSuccessSoftLight};
   --color-warning-light: ${colorWarningLight};
@@ -130,20 +149,24 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-error-soft-light: ${colorErrorSoftLight};
   --color-info-light: ${colorInfoLight};
   --color-info-soft-light: ${colorInfoSoftLight};
-  --color-hover-light: ${colorHoverLight};
-  --color-active-light: ${colorActiveLight};
   --color-focus-light: ${colorFocusLight};
-  --color-disabled-light: ${colorDisabledLight};
   --color-skeleton-light: #f7f7f7;
 
-  --color-primary-dark: ${colorPrimaryDark};
   --color-canvas-dark: ${colorCanvasDark};
+  --color-canvas-inverted-dark: ${colorCanvasInvertedDark};
   --color-surface-dark: ${colorSurfaceDark};
-  --color-shading-dark: ${colorShadingDark};
   --color-frosted-dark: ${colorFrostedDark};
-  --color-contrast-low-dark: ${colorContrastLowDark};
-  --color-contrast-medium-dark: ${colorContrastMediumDark};
-  --color-contrast-high-dark: ${colorContrastHighDark};
+  --color-scrim-dark: ${colorScrimDark};
+  --color-contrast-10-dark: ${colorContrast10Dark};
+  --color-contrast-20-dark: ${colorContrast20Dark};
+  --color-contrast-30-dark: ${colorContrast30Dark};
+  --color-contrast-40-dark: ${colorContrast40Dark};
+  --color-contrast-50-dark: ${colorContrast50Dark};
+  --color-contrast-60-dark: ${colorContrast60Dark};
+  --color-contrast-70-dark: ${colorContrast70Dark};
+  --color-contrast-80-dark: ${colorContrast80Dark};
+  --color-contrast-90-dark: ${colorContrast90Dark};
+  --color-primary-dark: ${colorPrimaryDark};
   --color-success-dark: ${colorSuccessDark};
   --color-success-soft-dark: ${colorSuccessSoftDark};
   --color-warning-dark: ${colorWarningDark};
@@ -152,10 +175,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-error-soft-dark: ${colorErrorSoftDark};
   --color-info-dark: ${colorInfoDark};
   --color-info-soft-dark: ${colorInfoSoftDark};
-  --color-hover-dark: ${colorHoverDark};
-  --color-active-dark: ${colorActiveDark};
   --color-focus-dark: ${colorFocusDark};
-  --color-disabled-dark: ${colorDisabledDark};
   --color-skeleton-dark: #1a1b1e;
 
   /* Typography */
@@ -256,14 +276,21 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @layer theme {
   .light {
-    --color-primary: ${colorPrimaryLight};
     --color-canvas: ${colorCanvasLight};
+    --color-canvas-inverted: ${colorCanvasInvertedLight};
     --color-surface: ${colorSurfaceLight};
-    --color-shading: ${colorShadingLight};
     --color-frosted: ${colorFrostedLight};
-    --color-contrast-low: ${colorContrastLowLight};
-    --color-contrast-medium: ${colorContrastMediumLight};
-    --color-contrast-high: ${colorContrastHighLight};
+    --color-scrim: ${colorScrimLight};
+    --color-contrast-10: ${colorContrast10Light};
+    --color-contrast-20: ${colorContrast20Light};
+    --color-contrast-30: ${colorContrast30Light};
+    --color-contrast-40: ${colorContrast40Light};
+    --color-contrast-50: ${colorContrast50Light};
+    --color-contrast-60: ${colorContrast60Light};
+    --color-contrast-70: ${colorContrast70Light};
+    --color-contrast-80: ${colorContrast80Light};
+    --color-contrast-90: ${colorContrast90Light};
+    --color-primary: ${colorPrimaryLight};
     --color-success: ${colorSuccessLight};
     --color-success-soft: ${colorSuccessSoftLight};
     --color-warning: ${colorWarningLight};
@@ -272,22 +299,26 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-error-soft: ${colorErrorSoftLight};
     --color-info: ${colorInfoLight};
     --color-info-soft: ${colorInfoSoftLight};
-    --color-hover: ${colorHoverLight};
-    --color-active: ${colorActiveLight};
     --color-focus: ${colorFocusLight};
-    --color-disabled: ${colorDisabledLight};
     --color-skeleton: #f7f7f7;
   }
 
   .dark {
-    --color-primary: ${colorPrimaryDark};
     --color-canvas: ${colorCanvasDark};
+    --color-canvas-inverted: ${colorCanvasInvertedDark};
     --color-surface: ${colorSurfaceDark};
-    --color-shading: ${colorShadingDark};
     --color-frosted: ${colorFrostedDark};
-    --color-contrast-low: ${colorContrastLowDark};
-    --color-contrast-medium: ${colorContrastMediumDark};
-    --color-contrast-high: ${colorContrastHighDark};
+    --color-scrim: ${colorScrimDark};
+    --color-contrast-10: ${colorContrast10Dark};
+    --color-contrast-20: ${colorContrast20Dark};
+    --color-contrast-30: ${colorContrast30Dark};
+    --color-contrast-40: ${colorContrast40Dark};
+    --color-contrast-50: ${colorContrast50Dark};
+    --color-contrast-60: ${colorContrast60Dark};
+    --color-contrast-70: ${colorContrast70Dark};
+    --color-contrast-80: ${colorContrast80Dark};
+    --color-contrast-90: ${colorContrast90Dark};
+    --color-primary: ${colorPrimaryDark};
     --color-success: ${colorSuccessDark};
     --color-success-soft: ${colorSuccessSoftDark};
     --color-warning: ${colorWarningDark};
@@ -296,23 +327,27 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-error-soft: ${colorErrorSoftDark};
     --color-info: ${colorInfoDark};
     --color-info-soft: ${colorInfoSoftDark};
-    --color-hover: ${colorHoverDark};
-    --color-active: ${colorActiveDark};
     --color-focus: ${colorFocusDark};
-    --color-disabled: ${colorDisabledDark};
     --color-skeleton: #1a1b1e;
   }
 
   .auto {
     @media (prefers-color-scheme: dark) {
-      --color-primary: ${colorPrimaryDark};
       --color-canvas: ${colorCanvasDark};
+      --color-canvas-inverted: ${colorCanvasInvertedDark};
       --color-surface: ${colorSurfaceDark};
-      --color-shading: ${colorShadingDark};
       --color-frosted: ${colorFrostedDark};
-      --color-contrast-low: ${colorContrastLowDark};
-      --color-contrast-medium: ${colorContrastMediumDark};
-      --color-contrast-high: ${colorContrastHighDark};
+      --color-scrim: ${colorScrimDark};
+      --color-contrast-10: ${colorContrast10Dark};
+      --color-contrast-20: ${colorContrast20Dark};
+      --color-contrast-30: ${colorContrast30Dark};
+      --color-contrast-40: ${colorContrast40Dark};
+      --color-contrast-50: ${colorContrast50Dark};
+      --color-contrast-60: ${colorContrast60Dark};
+      --color-contrast-70: ${colorContrast70Dark};
+      --color-contrast-80: ${colorContrast80Dark};
+      --color-contrast-90: ${colorContrast90Dark};
+      --color-primary: ${colorPrimaryDark};
       --color-success: ${colorSuccessDark};
       --color-success-soft: ${colorSuccessSoftDark};
       --color-warning: ${colorWarningDark};
@@ -321,10 +356,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
       --color-error-soft: ${colorErrorSoftDark};
       --color-info: ${colorInfoDark};
       --color-info-soft: ${colorInfoSoftDark};
-      --color-hover: ${colorHoverDark};
-      --color-active: ${colorActiveDark};
       --color-focus: ${colorFocusDark};
-      --color-disabled: ${colorDisabledDark};
       --color-skeleton: #1a1b1e;
     }
   }

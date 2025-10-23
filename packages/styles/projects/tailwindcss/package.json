@@ -1,6 +1,7 @@
 {
   "name": "@porsche-design-system/tailwindcss",
   "version": "0.0.0",
+  "type": "commonjs",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -11,7 +12,9 @@
     }
   },
   "sideEffects": false,
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
