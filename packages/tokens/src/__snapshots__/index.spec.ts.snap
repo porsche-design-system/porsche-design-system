@@ -30,19 +30,19 @@ exports[`should contain correct value for colorActiveLight 1`] = `"rgba(148,149,
 
 exports[`should contain correct value for colorCanvasDark 1`] = `"#0E0E12"`;
 
-exports[`should contain correct value for colorCanvasLight 1`] = `"#FFF"`;
+exports[`should contain correct value for colorCanvasDark 1`] = `"#FFF"`;
 
 exports[`should contain correct value for colorContrastHighDark 1`] = `"#AFB0B3"`;
 
-exports[`should contain correct value for colorContrastHighLight 1`] = `"#535457"`;
+exports[`should contain correct value for colorContrast90Dark 1`] = `"#535457"`;
 
 exports[`should contain correct value for colorContrastLowDark 1`] = `"#404044"`;
 
-exports[`should contain correct value for colorContrastLowLight 1`] = `"#D8D8DB"`;
+exports[`should contain correct value for colorContrast80Dark 1`] = `"#D8D8DB"`;
 
 exports[`should contain correct value for colorContrastMediumDark 1`] = `"#88898C"`;
 
-exports[`should contain correct value for colorContrastMediumLight 1`] = `"#6B6D70"`;
+exports[`should contain correct value for colorContrast70Dark 1`] = `"#6B6D70"`;
 
 exports[`should contain correct value for colorDisabledDark 1`] = `"#7E7F82"`;
 
@@ -50,19 +50,19 @@ exports[`should contain correct value for colorDisabledLight 1`] = `"#949598"`;
 
 exports[`should contain correct value for colorErrorDark 1`] = `"#FC4040"`;
 
-exports[`should contain correct value for colorErrorLight 1`] = `"#CC1922"`;
+exports[`should contain correct value for colorErrorDark 1`] = `"#CC1922"`;
 
 exports[`should contain correct value for colorErrorSoftDark 1`] = `"#3A0F0F"`;
 
-exports[`should contain correct value for colorErrorSoftLight 1`] = `"#FFE2E4"`;
+exports[`should contain correct value for colorErrorSoftDark 1`] = `"#FFE2E4"`;
 
 exports[`should contain correct value for colorFocusDark 1`] = `"#1A44EA"`;
 
-exports[`should contain correct value for colorFocusLight 1`] = `"#1A44EA"`;
+exports[`should contain correct value for colorFocusDark 1`] = `"#1A44EA"`;
 
 exports[`should contain correct value for colorFrostedDark 1`] = `"hsl(240 3% 26%/35%)"`;
 
-exports[`should contain correct value for colorFrostedLight 1`] = `"hsl(240 4% 85%/35%)"`;
+exports[`should contain correct value for colorFrostedDark 1`] = `"hsl(240 4% 85%/35%)"`;
 
 exports[`should contain correct value for colorHoverDark 1`] = `"rgba(148,149,152,.18)"`;
 
@@ -70,39 +70,39 @@ exports[`should contain correct value for colorHoverLight 1`] = `"rgba(148,149,1
 
 exports[`should contain correct value for colorInfoDark 1`] = `"#178BFF"`;
 
-exports[`should contain correct value for colorInfoLight 1`] = `"#2762EC"`;
+exports[`should contain correct value for colorInfoDark 1`] = `"#2762EC"`;
 
 exports[`should contain correct value for colorInfoSoftDark 1`] = `"#04294E"`;
 
-exports[`should contain correct value for colorInfoSoftLight 1`] = `"#D3E1FF"`;
+exports[`should contain correct value for colorInfoSoftDark 1`] = `"#D3E1FF"`;
 
 exports[`should contain correct value for colorPrimaryDark 1`] = `"#FBFCFF"`;
 
-exports[`should contain correct value for colorPrimaryLight 1`] = `"#010205"`;
+exports[`should contain correct value for colorPrimaryDark 1`] = `"#010205"`;
 
 exports[`should contain correct value for colorShadingDark 1`] = `"rgba(38,38,41,.67)"`;
 
-exports[`should contain correct value for colorShadingLight 1`] = `"rgba(1,2,5,.67)"`;
+exports[`should contain correct value for colorScrimDark 1`] = `"rgba(1,2,5,.67)"`;
 
 exports[`should contain correct value for colorSuccessDark 1`] = `"#09D087"`;
 
-exports[`should contain correct value for colorSuccessLight 1`] = `"#197E10"`;
+exports[`should contain correct value for colorSuccessDark 1`] = `"#197E10"`;
 
 exports[`should contain correct value for colorSuccessSoftDark 1`] = `"#003320"`;
 
-exports[`should contain correct value for colorSuccessSoftLight 1`] = `"#E4FFEC"`;
+exports[`should contain correct value for colorSuccessSoftDark 1`] = `"#E4FFEC"`;
 
 exports[`should contain correct value for colorSurfaceDark 1`] = `"#212225"`;
 
-exports[`should contain correct value for colorSurfaceLight 1`] = `"#EEEFF2"`;
+exports[`should contain correct value for colorSurfaceDark 1`] = `"#EEEFF2"`;
 
 exports[`should contain correct value for colorWarningDark 1`] = `"#F7CB47"`;
 
-exports[`should contain correct value for colorWarningLight 1`] = `"#F3BE00"`;
+exports[`should contain correct value for colorWarningDark 1`] = `"#F3BE00"`;
 
 exports[`should contain correct value for colorWarningSoftDark 1`] = `"#362B0A"`;
 
-exports[`should contain correct value for colorWarningSoftLight 1`] = `"#FFF4D2"`;
+exports[`should contain correct value for colorWarningSoftDark 1`] = `"#FFF4D2"`;
 
 exports[`should contain correct value for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
 
