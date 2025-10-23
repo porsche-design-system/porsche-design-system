@@ -132,7 +132,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b', { checked: true });
     const opt3 = createOption('c', { checked: false });
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(1);
+    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(1);
+    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(0);
 
     (component as any).updateTabStops();
 
@@ -148,7 +149,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(-1);
+    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
+    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
 
     (component as any).updateTabStops();
 
@@ -164,7 +166,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('y', { disabled: true });
     const opt3 = createOption('z', { disabled: true });
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(-1);
+    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(-1);
+    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
 
     (component as any).updateTabStops();
 
@@ -186,7 +189,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(-1);
+    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
+    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
 
     (component as any).updateTabStops();
 
