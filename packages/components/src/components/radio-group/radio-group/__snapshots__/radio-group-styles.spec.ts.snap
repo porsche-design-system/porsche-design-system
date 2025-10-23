@@ -1032,7 +1032,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.5);
+  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.6668);
 }
 :host([hidden]) {
   display: none !important;
@@ -1050,8 +1050,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 0.5) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 0.5) * 8px);
+  column-gap: max(8px, var(--p-internal-radio-group-scaling, 0.6668) * 16px);
+  row-gap: max(4px, var(--p-internal-radio-group-scaling, 0.6668) * 8px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1126,7 +1126,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.5);
+  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.6668);
 }
 :host([hidden]) {
   display: none !important;
@@ -1144,8 +1144,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 0.5) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 0.5) * 8px);
+  column-gap: max(8px, var(--p-internal-radio-group-scaling, 0.6668) * 16px);
+  row-gap: max(4px, var(--p-internal-radio-group-scaling, 0.6668) * 8px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
