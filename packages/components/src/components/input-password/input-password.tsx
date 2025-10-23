@@ -263,9 +263,9 @@ export class InputPassword {
   private onInput = (e: InputEvent): void => {
     e.stopPropagation();
     e.stopImmediatePropagation();
-    this.input.emit(e);
     const target = e.target as HTMLInputElement;
     this.value = target.value; // triggers @Watch('value')
+    this.input.emit(e);
   };
 
   private togglePassword = (): void => {
