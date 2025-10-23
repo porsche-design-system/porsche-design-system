@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getColors() should return correct colors for tagColor: background-base and theme: dark 1`] = `
+exports[`getColors() > should return correct colors for tagColor: background-base and theme: dark 1`] = `
 {
   "backgroundColor": "#0E0E12",
   "backgroundHoverColor": "#292934",
@@ -8,7 +8,7 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 }
 `;
 
-exports[`getColors() should return correct colors for tagColor: background-base and theme: light 1`] = `
+exports[`getColors() > should return correct colors for tagColor: background-base and theme: light 1`] = `
 {
   "backgroundColor": "#FFF",
   "backgroundHoverColor": "#E0E0E0",
@@ -16,7 +16,7 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 }
 `;
 
-exports[`getColors() should return correct colors for tagColor: primary and theme: dark 1`] = `
+exports[`getColors() > should return correct colors for tagColor: primary and theme: dark 1`] = `
 {
   "backgroundColor": "#FBFCFF",
   "backgroundHoverColor": "#CECFD1",
@@ -24,7 +24,7 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 }
 `;
 
-exports[`getColors() should return correct colors for tagColor: primary and theme: light 1`] = `
+exports[`getColors() > should return correct colors for tagColor: primary and theme: light 1`] = `
 {
   "backgroundColor": "#010205",
   "backgroundHoverColor": "#535457",
@@ -32,7 +32,7 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 }
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, compact: false, isFocusable: false, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, compact: false, isFocusable: false, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -103,7 +103,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, compact: false, isFocusable: false, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, compact: false, isFocusable: false, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -174,7 +174,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -251,7 +251,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -328,7 +328,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, compact: true, isFocusable: false, hasIcon: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, compact: true, isFocusable: false, hasIcon: false and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -396,7 +396,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, compact: true, isFocusable: false, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, compact: true, isFocusable: false, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -467,7 +467,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-frosted, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-frosted, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -546,7 +546,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-frosted, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-frosted, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -625,7 +625,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-surface, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -702,7 +702,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-surface, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -779,7 +779,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-error-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-error-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -856,7 +856,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-error-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-error-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -933,7 +933,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-info-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-info-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1010,7 +1010,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-info-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-info-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1087,7 +1087,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-success-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-success-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1164,7 +1164,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-success-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-success-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1241,7 +1241,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-warning-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-warning-soft, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1318,7 +1318,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-warning-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: notification-warning-soft, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1395,7 +1395,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: primary, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: primary, compact: false, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1473,7 +1473,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: primary, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: primary, compact: false, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;

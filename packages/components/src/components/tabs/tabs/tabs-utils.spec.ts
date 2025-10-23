@@ -1,7 +1,8 @@
-import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
-import type { Theme } from '../../../types';
-import { syncTabsItemsProps } from './tabs-utils';
 import * as stencilCore from '@stencil/core';
+import { vi } from 'vitest';
+import type { Theme } from '../../../types';
+import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
+import { syncTabsItemsProps } from './tabs-utils';
 
 describe('syncTabsItemsProps()', () => {
   const child1: HTMLPTabsItemElement & TabsItemInternalHTMLProps = document.createElement('div') as any;
@@ -21,7 +22,7 @@ describe('syncTabsItemsProps()', () => {
   });
 
   it('should call forceUpdate() on every item', () => {
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
 
     syncTabsItemsProps(children, theme);
 

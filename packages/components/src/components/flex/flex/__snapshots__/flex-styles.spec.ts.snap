@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for alignContent: "center" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "center" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -15,7 +15,7 @@ exports[`getComponentCss() should return correct css for alignContent: "center" 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: "flex-end" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "flex-end" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -30,7 +30,7 @@ exports[`getComponentCss() should return correct css for alignContent: "flex-end
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: "flex-start" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "flex-start" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -45,7 +45,7 @@ exports[`getComponentCss() should return correct css for alignContent: "flex-sta
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: "space-around" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "space-around" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -60,7 +60,7 @@ exports[`getComponentCss() should return correct css for alignContent: "space-ar
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: "space-between" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "space-between" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -75,7 +75,7 @@ exports[`getComponentCss() should return correct css for alignContent: "space-be
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: "space-evenly" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "space-evenly" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -90,7 +90,7 @@ exports[`getComponentCss() should return correct css for alignContent: "space-ev
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: "stretch" 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: "stretch" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -105,7 +105,7 @@ exports[`getComponentCss() should return correct css for alignContent: "stretch"
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignContent: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
+exports[`getComponentCss() > should return correct css for alignContent: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -150,7 +150,7 @@ exports[`getComponentCss() should return correct css for alignContent: {"base":"
 "
 `;
 
-exports[`getComponentCss() should return correct css for alignItems: "baseline" 1`] = `
+exports[`getComponentCss() > should return correct css for alignItems: "baseline" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -165,7 +165,7 @@ exports[`getComponentCss() should return correct css for alignItems: "baseline" 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignItems: "center" 1`] = `
+exports[`getComponentCss() > should return correct css for alignItems: "center" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -180,7 +180,7 @@ exports[`getComponentCss() should return correct css for alignItems: "center" 1`
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignItems: "flex-end" 1`] = `
+exports[`getComponentCss() > should return correct css for alignItems: "flex-end" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -195,7 +195,7 @@ exports[`getComponentCss() should return correct css for alignItems: "flex-end" 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignItems: "flex-start" 1`] = `
+exports[`getComponentCss() > should return correct css for alignItems: "flex-start" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -210,7 +210,7 @@ exports[`getComponentCss() should return correct css for alignItems: "flex-start
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignItems: "stretch" 1`] = `
+exports[`getComponentCss() > should return correct css for alignItems: "stretch" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -225,7 +225,7 @@ exports[`getComponentCss() should return correct css for alignItems: "stretch" 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignItems: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
+exports[`getComponentCss() > should return correct css for alignItems: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -270,7 +270,7 @@ exports[`getComponentCss() should return correct css for alignItems: {"base":"st
 "
 `;
 
-exports[`getComponentCss() should return correct css for all props being breakpoint customizable 1`] = `
+exports[`getComponentCss() > should return correct css for all props being breakpoint customizable 1`] = `
 ":host {
   display: inline-flex;
   color-scheme: light dark !important;
@@ -335,7 +335,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
+exports[`getComponentCss() > should return correct css for direction: "column" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -350,7 +350,7 @@ exports[`getComponentCss() should return correct css for direction: "column" 1`]
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: "column-reverse" 1`] = `
+exports[`getComponentCss() > should return correct css for direction: "column-reverse" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -365,7 +365,7 @@ exports[`getComponentCss() should return correct css for direction: "column-reve
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
+exports[`getComponentCss() > should return correct css for direction: "row" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -380,7 +380,7 @@ exports[`getComponentCss() should return correct css for direction: "row" 1`] = 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: "row-reverse" 1`] = `
+exports[`getComponentCss() > should return correct css for direction: "row-reverse" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -395,7 +395,7 @@ exports[`getComponentCss() should return correct css for direction: "row-reverse
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
+exports[`getComponentCss() > should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -440,7 +440,7 @@ exports[`getComponentCss() should return correct css for direction: {"base":"row
 "
 `;
 
-exports[`getComponentCss() should return correct css for inline: {"base":true,"xs":false,"s":false,"m":true,"l":false,"xl":true} 1`] = `
+exports[`getComponentCss() > should return correct css for inline: {"base":true,"xs":false,"s":false,"m":true,"l":false,"xl":true} 1`] = `
 ":host {
   display: inline-flex;
   color-scheme: light dark !important;
@@ -485,7 +485,7 @@ exports[`getComponentCss() should return correct css for inline: {"base":true,"x
 "
 `;
 
-exports[`getComponentCss() should return correct css for inline: false 1`] = `
+exports[`getComponentCss() > should return correct css for inline: false 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -500,7 +500,7 @@ exports[`getComponentCss() should return correct css for inline: false 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for inline: true 1`] = `
+exports[`getComponentCss() > should return correct css for inline: true 1`] = `
 ":host {
   display: inline-flex;
   color-scheme: light dark !important;
@@ -515,7 +515,7 @@ exports[`getComponentCss() should return correct css for inline: true 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: "center" 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: "center" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -530,7 +530,7 @@ exports[`getComponentCss() should return correct css for justifyContent: "center
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: "flex-end" 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: "flex-end" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -545,7 +545,7 @@ exports[`getComponentCss() should return correct css for justifyContent: "flex-e
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: "flex-start" 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: "flex-start" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -560,7 +560,7 @@ exports[`getComponentCss() should return correct css for justifyContent: "flex-s
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: "space-around" 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: "space-around" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -575,7 +575,7 @@ exports[`getComponentCss() should return correct css for justifyContent: "space-
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: "space-between" 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: "space-between" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -590,7 +590,7 @@ exports[`getComponentCss() should return correct css for justifyContent: "space-
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: "space-evenly" 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: "space-evenly" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -605,7 +605,7 @@ exports[`getComponentCss() should return correct css for justifyContent: "space-
 }"
 `;
 
-exports[`getComponentCss() should return correct css for justifyContent: {"base":"flex-start","xs":"center","s":"flex-start","m":"center","l":"flex-start","xl":"center"} 1`] = `
+exports[`getComponentCss() > should return correct css for justifyContent: {"base":"flex-start","xs":"center","s":"flex-start","m":"center","l":"flex-start","xl":"center"} 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -650,7 +650,7 @@ exports[`getComponentCss() should return correct css for justifyContent: {"base"
 "
 `;
 
-exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
+exports[`getComponentCss() > should return correct css for wrap: "nowrap" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -665,7 +665,7 @@ exports[`getComponentCss() should return correct css for wrap: "nowrap" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
+exports[`getComponentCss() > should return correct css for wrap: "wrap" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -680,7 +680,7 @@ exports[`getComponentCss() should return correct css for wrap: "wrap" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for wrap: "wrap-reverse" 1`] = `
+exports[`getComponentCss() > should return correct css for wrap: "wrap-reverse" 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;
@@ -695,7 +695,7 @@ exports[`getComponentCss() should return correct css for wrap: "wrap-reverse" 1`
 }"
 `;
 
-exports[`getComponentCss() should return correct css for wrap: {"base":"nowrap","xs":"wrap","s":"nowrap","m":"wrap","l":"nowrap","xl":"wrap"} 1`] = `
+exports[`getComponentCss() > should return correct css for wrap: {"base":"nowrap","xs":"wrap","s":"nowrap","m":"wrap","l":"nowrap","xl":"wrap"} 1`] = `
 ":host {
   display: flex;
   color-scheme: light dark !important;

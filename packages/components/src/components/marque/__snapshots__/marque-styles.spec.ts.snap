@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for size: medium 1`] = `
+exports[`getComponentCss() > should return correct css for size: medium 1`] = `
 ":host {
   position: relative;
   display: inline-flex;
@@ -47,7 +47,7 @@ img {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: responsive 1`] = `
+exports[`getComponentCss() > should return correct css for size: responsive 1`] = `
 ":host {
   position: relative;
   display: inline-flex;
@@ -101,7 +101,7 @@ img {
 "
 `;
 
-exports[`getComponentCss() should return correct css for size: small 1`] = `
+exports[`getComponentCss() > should return correct css for size: small 1`] = `
 ":host {
   position: relative;
   display: inline-flex;

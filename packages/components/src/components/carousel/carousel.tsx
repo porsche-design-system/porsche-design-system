@@ -1,11 +1,10 @@
 import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { Splide } from '@splidejs/splide';
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
@@ -19,6 +18,7 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
+  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -26,6 +26,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
+import type { ButtonPure } from '../button-pure/button-pure';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
   CAROUSEL_ALIGN_CONTROLS,
@@ -184,8 +185,8 @@ export class Carousel {
 
   private splide: Splide;
   private container: HTMLElement;
-  private btnPrev: HTMLPButtonPureElement;
-  private btnNext: HTMLPButtonPureElement;
+  private btnPrev: ButtonPure;
+  private btnNext: ButtonPure;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
@@ -370,7 +371,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
-                ref={(ref: HTMLPButtonPureElement) => (this.btnPrev = ref)}
+                ref={(ref: ButtonPure) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
               />
             )}
@@ -378,7 +379,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
-                ref={(ref: HTMLPButtonPureElement) => (this.btnNext = ref)}
+                ref={(ref: ButtonPure) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
                 onKeyDown={this.onNextKeyDown}
               />
@@ -496,15 +497,11 @@ export class Carousel {
 
   private observeSlides(): void {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
-    observeChildren(
-      this.container,
-      () => {
-        for (const el of this.splideSlides) {
-          el.removeAttribute('aria-hidden');
-          el.setAttribute('tabindex', '0');
-        }
-      },
-      ['aria-hidden']
-    );
+    observeChildren(this.container, () => {
+      for (const el of this.splideSlides) {
+        el.removeAttribute('aria-hidden');
+        el.setAttribute('tabindex', '0');
+      }
+    }, ['aria-hidden']);
   }
 }

@@ -1,4 +1,3 @@
-import { expect } from '@jest/globals';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 

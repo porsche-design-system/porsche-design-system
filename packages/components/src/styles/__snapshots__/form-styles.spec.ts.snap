@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: error, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: input, state: error, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -43,7 +43,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: none, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: input, state: none, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -86,7 +86,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: none, isLoading: true, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: input, state: none, isLoading: true, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -124,7 +124,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: success, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: input, state: success, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -167,7 +167,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: select, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -206,7 +206,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: select, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -245,7 +245,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: select, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -284,7 +284,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -328,7 +328,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -371,7 +371,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: textarea, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -414,7 +414,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
+exports[`getSlottedTextFieldTextareaSelectStyles() > should return correct jss style for child: textarea, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(:not(input[type="password"]))": {
     "textOverflow": "ellipsis",
@@ -457,7 +457,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: false and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: false, isReadonly: false and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#88898C",
@@ -473,7 +473,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: false and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: false, isReadonly: false and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#88898C",
@@ -486,7 +486,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: false and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: false, isReadonly: false and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#6B6D70",
@@ -499,7 +499,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: true and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: false, isReadonly: true and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#88898C",
@@ -515,7 +515,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: true and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: false, isReadonly: true and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#AFB0B3",
@@ -528,7 +528,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: true and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: false, isReadonly: true and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#535457",
@@ -541,7 +541,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true, isReadonly: false and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: true, isReadonly: false and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#7E7F82",
@@ -557,7 +557,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true, isReadonly: false and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: true, isReadonly: false and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#7E7F82",
@@ -570,7 +570,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true, isReadonly: false and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() > should return correct jss style for isDisabled: true, isReadonly: false and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#949598",

@@ -1,10 +1,11 @@
+import { vi } from 'vitest';
 import * as getDirectChildHTMLElementUtils from '../../utils/dom/getDirectChildHTMLElement';
-import { Tag } from './tag';
 import * as warnIfDeprecatedPropValueIsUsed from '../../utils/log/warnIfDeprecatedPropValueIsUsed';
+import { Tag } from './tag';
 
 describe('render', () => {
   it('should call getDirectChildHTMLElement() with correct parameters', () => {
-    const spy = jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
+    const spy = vi.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
     const component = new Tag();
     component.host = document.createElement('p-tag');
     component.host.attachShadow({ mode: 'open' });
@@ -15,7 +16,7 @@ describe('render', () => {
   });
 
   it('should call warnIfDeprecatedPropValueIsUsed() with correct parameters', () => {
-    const spy = jest.spyOn(warnIfDeprecatedPropValueIsUsed, 'warnIfDeprecatedPropValueIsUsed');
+    const spy = vi.spyOn(warnIfDeprecatedPropValueIsUsed, 'warnIfDeprecatedPropValueIsUsed');
     const component = new Tag();
     component.host = document.createElement('p-tag');
     component.host.attachShadow({ mode: 'open' });

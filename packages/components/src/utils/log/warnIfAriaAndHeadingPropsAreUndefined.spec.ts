@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
 import { warnIfAriaAndHeadingPropsAreUndefined } from './warnIfAriaAndHeadingPropsAreUndefined';
 
 describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
   it('should print warning when aria and heading props are undefined', () => {
-    const spy = jest.spyOn(global.console, 'warn').mockImplementation();
+    const spy = vi.spyOn(global.console, 'warn').mockImplementation(() => null);
     const host = document.createElement('p-modal');
 
     warnIfAriaAndHeadingPropsAreUndefined(host, true, undefined);

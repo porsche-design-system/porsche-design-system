@@ -1,6 +1,5 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { expect } from '@jest/globals';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
@@ -68,6 +67,11 @@ describe.each<TagName>(
       });
 
       // TODO: Add @slot type validation
+    });
+  } else {
+    describe.skip('slots', () => {
+      // vitest throw an error if no tests are defined
+      it('has no slots', () => {});
     });
   }
 

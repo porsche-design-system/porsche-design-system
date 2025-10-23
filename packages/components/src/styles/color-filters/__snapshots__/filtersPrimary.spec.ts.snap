@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should have correct filter for filterDarkPrimary 1`] = `"invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%)"`;
 

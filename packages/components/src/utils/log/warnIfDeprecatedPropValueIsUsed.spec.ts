@@ -1,5 +1,6 @@
-import * as loggerUtils from './logger';
+import { vi } from 'vitest';
 import * as helperUtils from './helper';
+import * as loggerUtils from './logger';
 import { warnIfDeprecatedPropValueIsUsed } from './warnIfDeprecatedPropValueIsUsed';
 
 const warningMessage1 =
@@ -19,8 +20,8 @@ type SomeInstanceProp = (typeof SOME_INSTANCE_PROP)[number];
 it('should call getDeprecatedPropOrSlotWarningMessage() with correct parameters when prop value is key of deprecationMap and set deprecatedPropWarningMessage', () => {
   const instance = new SomeInstance();
   instance.prop = 'deprecatedValue';
-  const getDeprecatedPropOrSlotWarningMessageSpy = jest.spyOn(helperUtils, 'getDeprecatedPropOrSlotWarningMessage');
-  const consoleWarnSpy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
+  const getDeprecatedPropOrSlotWarningMessageSpy = vi.spyOn(helperUtils, 'getDeprecatedPropOrSlotWarningMessage');
+  const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn').mockImplementation(() => null);
 
   warnIfDeprecatedPropValueIsUsed<typeof SomeInstance, SomeInstancePropDeprecated, SomeInstanceProp>(instance, 'prop', {
     deprecatedValue: 'value',
@@ -32,7 +33,7 @@ it('should call getDeprecatedPropOrSlotWarningMessage() with correct parameters 
 
 it('should not call getDeprecatedPropOrSlotWarningMessage() when prop value is not a key of deprecationMap', () => {
   const instance = new SomeInstance();
-  const spy = jest.spyOn(helperUtils, 'getDeprecatedPropOrSlotWarningMessage');
+  const spy = vi.spyOn(helperUtils, 'getDeprecatedPropOrSlotWarningMessage');
 
   warnIfDeprecatedPropValueIsUsed<typeof SomeInstance, SomeInstancePropDeprecated, SomeInstanceProp>(instance, 'prop', {
     deprecatedValue: 'value',
@@ -44,7 +45,7 @@ it('should not call getDeprecatedPropOrSlotWarningMessage() when prop value is n
 it('should call consoleWarn() with correct parameters when prop value is key of deprecationMap', () => {
   const instance = new SomeInstance();
   instance.prop = 'deprecatedValue';
-  const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
+  const spy = vi.spyOn(loggerUtils, 'consoleWarn').mockImplementation(() => null);
 
   warnIfDeprecatedPropValueIsUsed<typeof SomeInstance, SomeInstancePropDeprecated, SomeInstanceProp>(instance, 'prop', {
     deprecatedValue: 'value',
@@ -55,7 +56,7 @@ it('should call consoleWarn() with correct parameters when prop value is key of 
 
 it('should not call consoleWarn() when prop value is not a key of deprecationMap', () => {
   const instance = new SomeInstance();
-  const spy = jest.spyOn(loggerUtils, 'consoleWarn').mockImplementation();
+  const spy = vi.spyOn(loggerUtils, 'consoleWarn').mockImplementation(() => null);
 
   warnIfDeprecatedPropValueIsUsed<typeof SomeInstance, SomeInstancePropDeprecated, SomeInstanceProp>(instance, 'prop', {
     deprecatedValue: 'value',

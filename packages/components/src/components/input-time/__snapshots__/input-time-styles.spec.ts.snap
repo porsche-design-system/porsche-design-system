@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -111,7 +111,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -221,7 +221,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -331,7 +331,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -442,7 +442,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -553,7 +553,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -663,7 +663,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -765,7 +765,7 @@ input::-webkit-calendar-picker-indicator {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -945,7 +945,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1110,7 +1110,7 @@ input::-webkit-calendar-picker-indicator {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for size: "inherit", align: center, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "inherit", align: center, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -24,7 +24,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: center, color: primary, ellipsis: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: center, color: primary, ellipsis: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -48,7 +48,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: end, color: primary, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -75,7 +75,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: e
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: left, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: left, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -99,7 +99,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: right, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: right, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -123,7 +123,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: r
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -147,7 +147,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -171,7 +171,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: start, color: primary, ellipsis: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: true and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -198,7 +198,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "large", align: start, color: primary, ellipsis: true and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: true and theme: light 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -225,7 +225,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", align: end, color: inherit, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", align: end, color: inherit, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -252,7 +252,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", align: start, color: inherit, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", align: start, color: inherit, ellipsis: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -276,7 +276,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: {"base":"medium","xs":"large","s":"medium","m":"inherit","l":"large","xl":"medium"}, align: center, color: primary, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"large","s":"medium","m":"inherit","l":"large","xl":"medium"}, align: center, color: primary, ellipsis: true and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

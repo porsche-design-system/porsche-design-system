@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import * as formUtils from '../../utils/form/form-utils';
 import * as jssUtils from './../../utils/jss';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
@@ -34,7 +35,7 @@ const getInputElement = (): HTMLInputElement => {
 describe('hasCounterAndIsTypeText()', () => {
   it('should call isType() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'isType');
     hasCounterAndIsTypeText(inputElement);
 
     expect(spy).toHaveBeenCalledWith(inputElement.type, 'text');
@@ -42,7 +43,7 @@ describe('hasCounterAndIsTypeText()', () => {
 
   it('should call hasCounter() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = jest.spyOn(formUtils, 'hasCounter');
+    const spy = vi.spyOn(formUtils, 'hasCounter');
     hasCounterAndIsTypeText(inputElement);
 
     expect(spy).toHaveBeenCalledWith(inputElement);
@@ -50,16 +51,16 @@ describe('hasCounterAndIsTypeText()', () => {
 
   it('should for input type="text" with maxLength return true', () => {
     const inputElement = getInputElement();
-    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
-    jest.spyOn(formUtils, 'hasCounter').mockReturnValue(true);
+    vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    vi.spyOn(formUtils, 'hasCounter').mockReturnValue(true);
 
     expect(hasCounterAndIsTypeText(inputElement)).toBe(true);
   });
 
   it('should for input type="text" without maxLength return false', () => {
     const inputElement = getInputElement();
-    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
-    jest.spyOn(formUtils, 'hasCounter').mockReturnValue(false);
+    vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    vi.spyOn(formUtils, 'hasCounter').mockReturnValue(false);
 
     expect(hasCounterAndIsTypeText(inputElement)).toBe(false);
   });
@@ -79,7 +80,7 @@ describe('hasCounterAndIsTypeText()', () => {
 describe('hasUnitAndIsTypeTextOrNumber()', () => {
   it('should call isType() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
+    const spy = vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
     hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR');
 
     expect(spy).toHaveBeenNthCalledWith(1, inputElement.type, 'text');
@@ -160,7 +161,7 @@ describe('throwIfUnitLengthExceeded()', () => {
 describe('addInputEventListenerForSearch()', () => {
   it('should register event listeners on element', () => {
     const inputElement = getInputElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
+    const spy = vi.spyOn(inputElement, 'addEventListener');
     addInputEventListenerForSearch(inputElement, () => {});
 
     expect(spy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
@@ -170,7 +171,7 @@ describe('addInputEventListenerForSearch()', () => {
 
   it('should on input event call inputChangeCallback()', () => {
     const inputElement = getInputElement();
-    const callback = jest.fn();
+    const callback = vi.fn();
     addInputEventListenerForSearch(inputElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
@@ -181,11 +182,11 @@ describe('addInputEventListenerForSearch()', () => {
   it('should if input.value is not empty on keydown event for Escape key, call event.preventDefault(), reset input.value, call dispatchInputEvent() with correct parameter', () => {
     const inputElement = getInputElement();
     inputElement.value = 'search-term';
-    addInputEventListenerForSearch(inputElement, jest.fn());
+    addInputEventListenerForSearch(inputElement, vi.fn());
 
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
-    const spyPreventDefault = jest.spyOn(event, 'preventDefault');
-    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyPreventDefault = vi.spyOn(event, 'preventDefault');
+    const spyDispatchInputEvent = vi.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
     inputElement.dispatchEvent(event);
 
     expect(spyPreventDefault).toHaveBeenCalledWith();
@@ -196,11 +197,11 @@ describe('addInputEventListenerForSearch()', () => {
   it('should if input.value is empty on keydown event for Escape key not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
     const inputElement = getInputElement();
     inputElement.value = '';
-    addInputEventListenerForSearch(inputElement, jest.fn());
+    addInputEventListenerForSearch(inputElement, vi.fn());
 
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
-    const spyPreventDefault = jest.spyOn(event, 'preventDefault');
-    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyPreventDefault = vi.spyOn(event, 'preventDefault');
+    const spyDispatchInputEvent = vi.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
     inputElement.dispatchEvent(event);
 
     expect(spyPreventDefault).not.toHaveBeenCalled();
@@ -211,13 +212,13 @@ describe('addInputEventListenerForSearch()', () => {
   it('should on keydown event for other keys than Escape, not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
     const inputElement = getInputElement();
     inputElement.value = 'search-term';
-    addInputEventListenerForSearch(inputElement, jest.fn());
+    addInputEventListenerForSearch(inputElement, vi.fn());
 
     const event1 = new KeyboardEvent('keydown', { key: 'A' });
     const event2 = new KeyboardEvent('keydown', { key: 'Enter' });
-    const spyPreventDefaultEvent1 = jest.spyOn(event1, 'preventDefault');
-    const spyPreventDefaultEvent2 = jest.spyOn(event2, 'preventDefault');
-    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyPreventDefaultEvent1 = vi.spyOn(event1, 'preventDefault');
+    const spyPreventDefaultEvent2 = vi.spyOn(event2, 'preventDefault');
+    const spyDispatchInputEvent = vi.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
 
     inputElement.dispatchEvent(event1);
     inputElement.dispatchEvent(event2);
@@ -232,7 +233,7 @@ describe('addInputEventListenerForSearch()', () => {
 describe('dispatchInputEvent()', () => {
   it('should call element.dispatchEvent() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = jest.spyOn(inputElement, 'dispatchEvent');
+    const spy = vi.spyOn(inputElement, 'dispatchEvent');
     dispatchInputEvent(inputElement);
 
     expect(spy).toHaveBeenCalledWith(new Event('input', { bubbles: true }));
@@ -243,21 +244,21 @@ describe('dispatchInputEvent()', () => {
 describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
   let host: any;
   const stylesheetMock = {
-    replaceSync: jest.fn(),
-    insertRule: jest.fn(),
-    deleteRule: jest.fn(),
+    replaceSync: vi.fn(),
+    insertRule: vi.fn(),
+    deleteRule: vi.fn(),
     cssRules: [],
   } as unknown as CSSStyleSheet;
 
   beforeEach(() => {
-    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
+    global.CSSStyleSheet = vi.fn().mockImplementation(() => {
       return stylesheetMock;
     });
     host = new MockHTMLElement();
   });
 
   it('should not do anything if getHasConstructableStylesheetSupport() returns false', () => {
-    const getHasConstructableStylesheetSupportSpy = jest
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(false);
 
@@ -268,10 +269,10 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
   });
 
   it('should create new stylesheet and push it into host.adoptedStyleSheets and update --p-internal-counter-character-length var', () => {
-    const getHasConstructableStylesheetSupportSpy = jest
+    const getHasConstructableStylesheetSupportSpy = vi
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(true);
-    const updateCounterCharacterLengthCssVarStyleSheet = jest.spyOn(
+    const updateCounterCharacterLengthCssVarStyleSheet = vi.spyOn(
       textFieldWrapperUtils,
       'updateCounterCharacterLengthCssVarStyleSheet'
     );
@@ -288,22 +289,22 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
 describe('updateCounterCharacterLengthCssVarStyleSheet()', () => {
   let host: any;
   const stylesheetMock = {
-    replaceSync: jest.fn(),
-    insertRule: jest.fn(),
-    deleteRule: jest.fn(),
+    replaceSync: vi.fn(),
+    insertRule: vi.fn(),
+    deleteRule: vi.fn(),
     cssRules: [],
   } as unknown as CSSStyleSheet;
 
   beforeEach(() => {
     host = new MockHTMLElement();
-    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
+    global.CSSStyleSheet = vi.fn().mockImplementation(() => {
       return stylesheetMock;
     });
   });
 
   it('should update stylesheet correctly', () => {
     counterCharacterLengthCssVarStyleSheetMap.set(host, stylesheetMock);
-    const replaceSyncSpy = jest.spyOn(stylesheetMock, 'replaceSync');
+    const replaceSyncSpy = vi.spyOn(stylesheetMock, 'replaceSync');
 
     updateCounterCharacterLengthCssVarStyleSheet(host, 10);
 

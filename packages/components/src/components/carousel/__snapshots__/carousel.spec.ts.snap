@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide 1`] = `
+exports[`componentDidLoad > should call Splide constructor with correct parameters and set this.splide 1`] = `
 [
   <div
     class="splide"
@@ -39,7 +39,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
 ]
 `;
 
-exports[`componentDidLoad should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto 1`] = `
+exports[`componentDidLoad > should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto 1`] = `
 [
   <div
     class="splide"

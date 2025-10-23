@@ -1,14 +1,15 @@
+import { vi } from 'vitest';
 import * as handleButtonUtils from './button-handling';
 import { handleButtonEvent, improveButtonHandlingForCustomElement } from './button-handling';
 
 describe('improveButtonHandlingForCustomElement()', () => {
   it('should add a click event listener to the element', () => {
     const element = document.createElement('button');
-    const getType = jest.fn().mockReturnValue('button');
-    const getName = jest.fn().mockReturnValue('name');
-    const getValue = jest.fn().mockReturnValue('value');
-    const getDisabled = jest.fn().mockReturnValue(false);
-    const handleButtonEventSpy = jest.spyOn(handleButtonUtils, 'handleButtonEvent');
+    const getType = vi.fn().mockReturnValue('button');
+    const getName = vi.fn().mockReturnValue('name');
+    const getValue = vi.fn().mockReturnValue('value');
+    const getDisabled = vi.fn().mockReturnValue(false);
+    const handleButtonEventSpy = vi.spyOn(handleButtonUtils, 'handleButtonEvent');
 
     improveButtonHandlingForCustomElement(element, getType, getDisabled, getName, getValue);
 
@@ -26,22 +27,22 @@ describe('improveButtonHandlingForCustomElement()', () => {
 
 describe('handleButtonEvent()', () => {
   const element = document.createElement('button');
-  const getType = jest.fn().mockReturnValue('submit');
-  const getName = jest.fn().mockReturnValue('name');
-  const getValue = jest.fn().mockReturnValue('value');
+  const getType = vi.fn().mockReturnValue('submit');
+  const getName = vi.fn().mockReturnValue('name');
+  const getValue = vi.fn().mockReturnValue('value');
 
   it('should create a submit button and click it', async () => {
-    const getDisabled = jest.fn().mockReturnValue(false);
+    const getDisabled = vi.fn().mockReturnValue(false);
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
-    const formAppendChildSpy = jest.spyOn(form, 'appendChild');
+    const formAppendChildSpy = vi.spyOn(form, 'appendChild');
 
     const fakeButton = document.createElement('button');
-    const fakeButtonClickSpy = jest.spyOn(fakeButton, 'click');
-    const fakeButtonRemoveSpy = jest.spyOn(fakeButton, 'remove');
+    const fakeButtonClickSpy = vi.spyOn(fakeButton, 'click');
+    const fakeButtonRemoveSpy = vi.spyOn(fakeButton, 'remove');
 
-    jest.spyOn(document, 'createElement').mockReturnValueOnce(fakeButton);
+    vi.spyOn(document, 'createElement').mockReturnValueOnce(fakeButton);
 
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
 
@@ -64,12 +65,12 @@ describe('handleButtonEvent()', () => {
   });
 
   it('should not create a submit button if disabled', () => {
-    const getDisabled = jest.fn().mockReturnValue(true);
+    const getDisabled = vi.fn().mockReturnValue(true);
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
 
-    const createElementSpy = jest.spyOn(document, 'createElement');
+    const createElementSpy = vi.spyOn(document, 'createElement');
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
 
     expect(getDisabled).toHaveBeenCalled();
@@ -77,8 +78,8 @@ describe('handleButtonEvent()', () => {
   });
 
   it('should not create a submit button if not within form', () => {
-    const getDisabled = jest.fn().mockReturnValue(true);
-    const createElementSpy = jest.spyOn(document, 'createElement');
+    const getDisabled = vi.fn().mockReturnValue(true);
+    const createElementSpy = vi.spyOn(document, 'createElement');
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
     expect(createElementSpy).not.toHaveBeenCalled();
   });

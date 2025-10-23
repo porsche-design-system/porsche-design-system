@@ -1,13 +1,14 @@
 import type { Breakpoint } from '@porsche-design-system/styles';
+import { breakpoints } from '@porsche-design-system/styles';
+import { vi } from 'vitest';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
+import { mediaQueryLists, overrideMediaQueryLists } from './breakpoint-observer';
+import * as breakpointObserverUtils from './breakpoint-observer-utils';
 import {
   flippedBreakpoint,
   getCurrentBreakpointKey,
   getCurrentMatchingBreakpointValue,
 } from './breakpoint-observer-utils';
-import * as breakpointObserverUtils from './breakpoint-observer-utils';
-import { mediaQueryLists, overrideMediaQueryLists } from './breakpoint-observer';
-import { breakpoints } from '@porsche-design-system/styles';
 
 it('should match flippedBreakpoint snapshot', () => {
   expect(flippedBreakpoint).toMatchSnapshot();
@@ -73,14 +74,14 @@ describe('getCurrentMatchingBreakpointValue()', () => {
   it.each<[BreakpointCustomizable<Breakpoint>, Breakpoint, Breakpoint]>(data)(
     'should for breakpointCustomizable: %s and breakpoint: %s return: %s',
     (breakpointCustomizable, breakpoint, result) => {
-      jest.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey').mockReturnValue(breakpoint);
+      vi.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey').mockReturnValue(breakpoint);
       expect(getCurrentMatchingBreakpointValue(breakpointCustomizable)).toBe(result);
     }
   );
 
   it('should return correct breakpoint value for BreakpointCustomizable<boolean>', () => {
     const value: BreakpointCustomizable<boolean> = { base: true, m: false, xl: true, xxl: false };
-    const spy = jest.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey');
+    const spy = vi.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey');
 
     spy.mockReturnValue('base');
     expect(getCurrentMatchingBreakpointValue(value)).toBe(true);
@@ -100,7 +101,7 @@ describe('getCurrentMatchingBreakpointValue()', () => {
 
   it('should return correct breakpoint value for BreakpointCustomizable<number>', () => {
     const value: BreakpointCustomizable<number> = { base: 3, s: 2, m: 1, xl: 5, xxl: 6 };
-    const spy = jest.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey');
+    const spy = vi.spyOn(breakpointObserverUtils, 'getCurrentBreakpointKey');
 
     spy.mockReturnValue('base');
     expect(getCurrentMatchingBreakpointValue(value)).toBe(3);

@@ -1,6 +1,5 @@
-import { isElementOfKind } from './isElementOfKind';
 import type { TagName } from '@porsche-design-system/shared';
-import { expect } from '@jest/globals';
+import { isElementOfKind } from './isElementOfKind';
 
 const combinations: [boolean, TagName, TagName][] = [
   [true, 'p-select-option', 'p-select-option'],

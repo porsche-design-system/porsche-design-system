@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: complete, isDisabled: false and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -67,7 +67,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: complete, isDisabled: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: complete, isDisabled: false and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -134,7 +134,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: complete, isDisabled: true and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -190,7 +190,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: complete, isDisabled: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: complete, isDisabled: true and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -246,7 +246,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: current, isDisabled: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: current, isDisabled: false and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -343,7 +343,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: current, isDisabled: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: current, isDisabled: false and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -440,7 +440,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: current, isDisabled: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: current, isDisabled: true and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -526,7 +526,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: current, isDisabled: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: current, isDisabled: true and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -612,7 +612,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: undefined, isDisabled: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: false and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -696,7 +696,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: undefined, isDisabled: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: false and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -780,7 +780,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: undefined, isDisabled: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: true and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -864,7 +864,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: undefined, isDisabled: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: true and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -948,7 +948,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: warning, isDisabled: false and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -1015,7 +1015,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: warning, isDisabled: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: warning, isDisabled: false and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -1082,7 +1082,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: warning, isDisabled: true and theme: dark 1`] = `
 ":host {
   font-size: inherit !important;
 }
@@ -1138,7 +1138,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for state: warning, isDisabled: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: warning, isDisabled: true and theme: light 1`] = `
 ":host {
   font-size: inherit !important;
 }

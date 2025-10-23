@@ -1,8 +1,9 @@
-import { getOnlyChildHTMLElementOrThrow } from './getOnlyChildHTMLElementOrThrow';
+import { vi } from 'vitest';
 import * as getDirectChildHTMLElementUtils from '../dom/getDirectChildHTMLElement';
+import { getOnlyChildHTMLElementOrThrow } from './getOnlyChildHTMLElementOrThrow';
 
 it('should call getDirectChildHTMLElement() with correct parameters', () => {
-  const spy = jest
+  const spy = vi
     .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
     .mockReturnValue(document.createElement('button'));
   const parent = document.createElement('div');
@@ -16,7 +17,7 @@ it('should call getDirectChildHTMLElement() with correct parameters', () => {
 it('should return result of getDirectChildHTMLElement()', () => {
   const parent = document.createElement('div');
   const child = document.createElement('a');
-  jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement').mockReturnValue(child);
+  vi.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement').mockReturnValue(child);
 
   expect(getOnlyChildHTMLElementOrThrow(parent, 'a')).toBe(child);
 });
@@ -29,7 +30,7 @@ it('should throw error if there is a another child before', () => {
   const child2 = document.createElement('a');
   parent.append(child1, child2);
 
-  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
 });
 
 it('should throw error if there is a another child after', () => {
@@ -38,13 +39,13 @@ it('should throw error if there is a another child after', () => {
   const child2 = document.createElement('button');
   parent.append(child1, child2);
 
-  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
 });
 
 it('should throw error if there is no child', () => {
   const parent = document.createElement('div');
 
-  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
 });
 
 it('should throw error if there is a nested child', () => {
@@ -54,5 +55,5 @@ it('should throw error if there is a nested child', () => {
   child.append(nestedChild);
   parent.append(child);
 
-  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
+  expect(() => getOnlyChildHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
 });

@@ -1,7 +1,8 @@
+import { vi } from 'vitest';
 import { setScrollLock } from './setScrollLock';
 
 it('should add correct body styles on Desktop Safari for parameter isOpen: true', () => {
-  jest.spyOn(window, 'navigator', 'get').mockImplementation(
+  vi.spyOn(window, 'navigator', 'get').mockImplementation(
     () =>
       ({
         userAgent:
@@ -14,7 +15,7 @@ it('should add correct body styles on Desktop Safari for parameter isOpen: true'
 });
 
 it('should add correct body styles on Desktop Chrome for parameter isOpen: true', () => {
-  jest.spyOn(window, 'navigator', 'get').mockImplementation(
+  vi.spyOn(window, 'navigator', 'get').mockImplementation(
     () =>
       ({
         userAgent:
@@ -27,7 +28,7 @@ it('should add correct body styles on Desktop Chrome for parameter isOpen: true'
 });
 
 it('should add correct body styles on Desktop Firefox for parameter isOpen: true', () => {
-  jest.spyOn(window, 'navigator', 'get').mockImplementation(
+  vi.spyOn(window, 'navigator', 'get').mockImplementation(
     () =>
       ({
         userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/114.0',
@@ -39,7 +40,7 @@ it('should add correct body styles on Desktop Firefox for parameter isOpen: true
 });
 
 it('should only remove previously added body styles on Desktop Safari for parameter isOpen: false', () => {
-  jest.spyOn(window, 'navigator', 'get').mockImplementation(
+  vi.spyOn(window, 'navigator', 'get').mockImplementation(
     () =>
       ({
         userAgent:

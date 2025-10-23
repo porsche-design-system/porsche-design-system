@@ -1,11 +1,12 @@
+import { vi } from 'vitest';
+import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
+import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 import {
   getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
-import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
-import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 
 describe('isStateCompleteOrWarning()', () => {
   it('should return true if state is complete or warning', () => {
@@ -66,7 +67,7 @@ describe('isItemClickable()', () => {
   });
 
   it('should call isStateCompleteOrWarning()', () => {
-    const spy = jest.spyOn(stepperHorizontalItemUtils, 'isStateCompleteOrWarning');
+    const spy = vi.spyOn(stepperHorizontalItemUtils, 'isStateCompleteOrWarning');
     isItemClickable('current', false);
 
     expect(spy).toHaveBeenCalledWith('current');

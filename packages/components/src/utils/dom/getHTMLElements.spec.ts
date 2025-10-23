@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
 import { getHTMLElements } from './getHTMLElements';
 
 it('should call querySelectorAll on element with selector parameter', () => {
   const element = document.createElement('div');
-  const spy = jest.spyOn(element, 'querySelectorAll');
+  const spy = vi.spyOn(element, 'querySelectorAll');
 
   getHTMLElements(element, 'span');
   expect(spy).toHaveBeenCalledWith('span');
@@ -19,7 +20,7 @@ it('should return result of querySelectorAll', () => {
 
   const spanNodeList = element.querySelectorAll('span');
 
-  jest.spyOn(element, 'querySelectorAll').mockReturnValue(spanNodeList);
+  vi.spyOn(element, 'querySelectorAll').mockReturnValue(spanNodeList);
 
   expect(getHTMLElements(element, 'span')).toStrictEqual(Array.from(spanNodeList));
 });
