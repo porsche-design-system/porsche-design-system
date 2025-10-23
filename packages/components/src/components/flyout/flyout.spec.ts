@@ -7,8 +7,6 @@ import * as setScrollLockUtils from '../../utils/setScrollLock';
 import { Flyout } from './flyout';
 import * as flyoutUtilsUtils from './flyout-utils';
 
-vi.mock('../../utils/dom');
-
 let component: Flyout;
 
 class MockResizeObserver {
