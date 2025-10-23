@@ -73,17 +73,21 @@ describe('formResetCallback', () => {
   });
 });
 describe('formDisabledCallback', () => {
-  const component = initComponent();
-  component.disabled = false;
-  component.formDisabledCallback(true);
-  expect(component.disabled).toBe(true);
+  it('should set disabled to true when called with true', () => {
+    const component = initComponent();
+    component.disabled = false;
+    component.formDisabledCallback(true);
+    expect(component.disabled).toBe(true);
+  });
 });
 describe('formStateRestoreCallback', () => {
-  const component = initComponent();
-  component.checked = false;
-  const restoredValue = 'on';
-  component.formStateRestoreCallback(restoredValue);
-  expect(component.checked).toBe(true);
+  it('should set checked to true when restoredValue is "on"', () => {
+    const component = initComponent();
+    component.checked = false;
+    const restoredValue = 'on';
+    component.formStateRestoreCallback(restoredValue);
+    expect(component.checked).toBe(true);
+  });
 });
 
 describe('componentDidRender', () => {
