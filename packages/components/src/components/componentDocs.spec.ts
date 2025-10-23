@@ -68,6 +68,11 @@ describe.each<TagName>(
 
       // TODO: Add @slot type validation
     });
+  } else {
+    describe.skip('slots', () => {
+      // vitest throw an error if no tests are defined
+      it('has no slots', () => {});
+    });
   }
 
   const hasControlledAnnotation = sourceFileContent.includes('@controlled');
