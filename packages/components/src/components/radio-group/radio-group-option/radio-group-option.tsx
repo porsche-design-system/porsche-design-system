@@ -85,7 +85,6 @@ export class RadioGroupOption {
           />
           <div class="wrapper">
             <input
-              tabIndex={isSelected && !isDisabled ? 0 : -1}
               id={id}
               type="radio"
               name={name}

@@ -1,10 +1,11 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { hasDescription, hasLabel, isParentFieldsetRequired } from '../../../utils';
 import { Required } from '../required/required';
-import { descriptionId, labelId } from './label-utils';
+import { descriptionId, type LabelTag, labelId } from './label-utils';
 
 type LabelProps = {
-  htmlFor: string;
+  htmlFor?: string;
+  tag?: LabelTag;
   isRequired?: boolean;
   host: HTMLElement;
   label: string;
@@ -21,6 +22,7 @@ type LabelProps = {
 export const Label: FunctionalComponent<LabelProps> = ({
   host,
   label,
+  tag,
   description,
   htmlFor,
   isRequired,
@@ -34,9 +36,11 @@ export const Label: FunctionalComponent<LabelProps> = ({
     }
   };
 
+  const TagType = tag || 'label';
+
   return (
     <Fragment>
-      <label
+      <TagType
         class="label"
         id={labelId}
         aria-disabled={isLoading || isDisabled ? 'true' : null}
@@ -49,7 +53,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
             {isRequired && !isParentFieldsetRequired(host) && <Required />}
           </Fragment>
         )}
-      </label>
+      </TagType>
       {hasDescription(host, description) && (
         <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>
           {description || <slot name="description" />}
