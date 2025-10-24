@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-segmented-control-example-form',
   template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
       <p-segmented-control formControlName="mySegmentedControl">
         <p-segmented-control-item [value]="1">Option 1</p-segmented-control-item>
         <p-segmented-control-item [value]="2">Option 2</p-segmented-control-item>
@@ -13,28 +13,12 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         <p-segmented-control-item [value]="4">Option 4</p-segmented-control-item>
         <p-segmented-control-item [value]="5">Option 5</p-segmented-control-item>
       </p-segmented-control>
-
-      <button type="submit">Submit</button>
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
     </form>
-
-    <button type="button" (click)="setValue()">
-      Set Value
-    </button>
-
-    <button type="button" (click)="resetValue()">
-      Reset
-    </button>
-
-    <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.mySegmentedControl.disabled ? 'Enable' : 'Disable' }}
-    </button>
-
-    <div>Touched: <span data-field="touched">{{ form.controls.mySegmentedControl.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.mySegmentedControl.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.mySegmentedControl.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.mySegmentedControl.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.mySegmentedControl.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -42,26 +26,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SegmentedControlExampleFormComponent {
   form = new FormGroup({
-    mySegmentedControl: new FormControl<string | number | undefined>(
-      { value: undefined, disabled: false },
-      { validators: Validators.required, nonNullable: true }
-    ),
+    mySegmentedControl: new FormControl<string | number | undefined>({ value: undefined, disabled: false }),
   });
 
   submittedValue: any = undefined;
-
-  setValue(): void {
-    this.form.controls.mySegmentedControl.setValue(1);
-  }
-
-  resetValue(): void {
-    this.form.controls.mySegmentedControl.reset({ value: undefined, disabled: false });
-  }
-
-  toggleDisabled(): void {
-    const control = this.form.get('mySegmentedControl')!;
-    control.disabled ? control.enable() : control.disable();
-  }
 
   onSubmit(): void {
     this.submittedValue = JSON.stringify(this.form.value);

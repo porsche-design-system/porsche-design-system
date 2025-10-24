@@ -5,8 +5,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-multi-select-example-form',
   template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-multi-select formControlName="myMultiSelect" [label]="'Some Label'" [required]="true">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
+      <p-multi-select formControlName="myMultiSelect" [label]="'Some Label'" >
         <p-multi-select-option value="a">Option A</p-multi-select-option>
         <p-multi-select-option value="b">Option B</p-multi-select-option>
         <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -14,28 +14,12 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         <p-multi-select-option value="e">Option E</p-multi-select-option>
         <p-multi-select-option value="f">Option F</p-multi-select-option>
       </p-multi-select>
-
-      <button type="submit">Submit</button>
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
     </form>
-
-    <button type="button" (click)="setValue()">
-      Set Value
-    </button>
-
-    <button type="button" (click)="resetValue()">
-      Reset
-    </button>
-
-    <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myMultiSelect.disabled ? 'Enable' : 'Disable' }}
-    </button>
-
-    <div>Touched: <span data-field="touched">{{ form.controls.myMultiSelect.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myMultiSelect.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myMultiSelect.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myMultiSelect.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myMultiSelect.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -43,23 +27,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class MultiSelectExampleFormComponent {
   form = new FormGroup({
-    myMultiSelect: new FormControl<string[]>([], { validators: Validators.required, nonNullable: true }),
+    myMultiSelect: new FormControl<string[]>([]),
   });
 
   submittedValue: any = undefined;
-
-  setValue(): void {
-    this.form.controls.myMultiSelect.setValue(['a']);
-  }
-
-  resetValue(): void {
-    this.form.controls.myMultiSelect.reset([]);
-  }
-
-  toggleDisabled(): void {
-    const control = this.form.get('myMultiSelect')!;
-    control.disabled ? control.enable() : control.disable();
-  }
 
   onSubmit(): void {
     this.submittedValue = JSON.stringify(this.form.value);

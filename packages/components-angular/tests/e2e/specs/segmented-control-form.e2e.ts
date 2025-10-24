@@ -13,7 +13,7 @@ const setValue = async (page) => {
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/segmented-control-example-form');
+    await page.goto('/segmented-control-example-reactive-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');

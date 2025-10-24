@@ -23,7 +23,7 @@ const setValue = async (page) => {
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/multi-select-example-form');
+    await page.goto('/multi-select-example-reactive-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
@@ -41,7 +41,7 @@ test.describe('Angular forms integration', () => {
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('true');
     await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
-    await expect(page.locator('[data-field="value"]')).toHaveText("a,b");
+    await expect(page.locator('[data-field="value"]')).toHaveText('a,b');
     await expect(page.locator('[data-field="valid"]')).toHaveText('true');
 
     await page.locator('[data-field="touched"]').click();

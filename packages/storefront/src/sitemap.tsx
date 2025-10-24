@@ -190,6 +190,11 @@ export const sitemap: Routes = {
             path: '/developing/angular/faq',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/angular/form',
+            type: 'TAB',
+          },
         },
       },
       astro: {
@@ -254,6 +259,11 @@ export const sitemap: Routes = {
           demo: {
             name: 'Demo',
             path: '/developing/react/demo',
+            type: 'TAB',
+          },
+          form: {
+            name: 'Form',
+            path: '/developing/react/form',
             type: 'TAB',
           },
           testing: {
@@ -350,6 +360,11 @@ export const sitemap: Routes = {
           faq: {
             name: 'FAQ',
             path: '/developing/vue/faq',
+            type: 'TAB',
+          },
+          form: {
+            name: 'Form',
+            path: '/developing/vue/form',
             type: 'TAB',
           },
         },

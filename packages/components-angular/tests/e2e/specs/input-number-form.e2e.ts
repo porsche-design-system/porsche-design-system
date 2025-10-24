@@ -9,12 +9,12 @@ const setValue = async (page) => {
 
   await input.fill('123456');
 
-  await expect(host).toHaveJSProperty('value', "123456");
+  await expect(host).toHaveJSProperty('value', '123456');
 };
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/input-number-example-form');
+    await page.goto('/input-number-example-reactive-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
@@ -45,7 +45,7 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Set Value' }).click();
 
-    await expect(host).toHaveJSProperty('value', "123456");
+    await expect(host).toHaveJSProperty('value', '123456');
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
@@ -60,7 +60,7 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Reset', exact: true }).click();
 
-    await expect(host).toHaveJSProperty('value', "");
+    await expect(host).toHaveJSProperty('value', '');
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('false');

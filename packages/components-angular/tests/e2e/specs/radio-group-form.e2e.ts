@@ -14,7 +14,7 @@ const setValue = async (page) => {
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/radio-group-example-form');
+    await page.goto('/radio-group-example-reactive-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
@@ -23,7 +23,7 @@ test.describe('Angular forms integration', () => {
     await expect(page.locator('[data-field="value"]')).toHaveText('');
     await expect(page.locator('[data-field="valid"]')).toHaveText('false');
 
-    await expect(host).toHaveJSProperty('value', "");
+    await expect(host).toHaveJSProperty('value', '');
   });
 
   test('setting value manually updates form state correctly', async ({ page }) => {
@@ -60,7 +60,7 @@ test.describe('Angular forms integration', () => {
 
     await page.getByRole('button', { name: 'Reset', exact: true }).click();
 
-    await expect(host).toHaveJSProperty('value', "");
+    await expect(host).toHaveJSProperty('value', '');
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
     await expect(page.locator('[data-field="dirty"]')).toHaveText('false');

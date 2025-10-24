@@ -15,7 +15,7 @@ const setValue = async (page) => {
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/textarea-example-form');
+    await page.goto('/textarea-example-reactive-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');
