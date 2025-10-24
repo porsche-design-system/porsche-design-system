@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-input-url-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
-      <p-input-url formControlName="myInputUrl" [label]="'Some Label'" />
+      <p-input-url formControlName="myInputUrl" [label]="'Some Label'" [indicator]="true" />
       <div class="flex gap-fluid-sm">
         <p-button type="submit">Submit</p-button>
         <p-button type="reset">Reset</p-button>

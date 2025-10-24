@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-input-email-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
-      <p-input-email formControlName="myInputEmail" [label]="'Some Label'" />
+      <p-input-email formControlName="myInputEmail" [label]="'Some Label'" [indicator]="true" />
       <div class="flex gap-fluid-sm">
         <p-button type="submit">Submit</p-button>
         <p-button type="reset">Reset</p-button>

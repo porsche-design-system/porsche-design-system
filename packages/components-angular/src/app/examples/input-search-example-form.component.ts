@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-input-search-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
-      <p-input-search formControlName="myInputSearch" [label]="'Some Label'" />
+      <p-input-search formControlName="myInputSearch" [label]="'Some Label'" [indicator]="true" [clear]="true" />
       <div class="flex gap-fluid-sm">
         <p-button type="submit">Submit</p-button>
         <p-button type="reset">Reset</p-button>
