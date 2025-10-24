@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-input-date-example-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
-      <p-input-date formControlName="myInputDate" [label]="'Some Label'" [indicator]="true" />
+      <p-input-date formControlName="myInputDate" [label]="'Some Label'" />
       <div class="flex gap-fluid-sm">
         <p-button type="submit">Submit</p-button>
         <p-button type="reset">Reset</p-button>

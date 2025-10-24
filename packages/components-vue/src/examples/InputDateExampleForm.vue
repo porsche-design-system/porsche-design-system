@@ -4,7 +4,6 @@
       v-model:value="form.myInputDate"
       :name="'myInputDate'"
       :label="'Some Label'"
-      :indicator="true"
     />
     <div class="flex gap-fluid-sm">
       <PButton type="submit">Submit</PButton>
