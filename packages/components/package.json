@@ -12,8 +12,7 @@
     "prestart": "yarn patchStencilCore && yarn prestart:prepareAriaTypes",
     "prestart:prepareAriaTypes": "tsx scripts/prepareAriaTypes.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,stencil' 'serve-cdn' 'PDS_IS_STAGING=1 stencil build --watch --serve --dev'",
-    "prebuild": "yarn patchStencilCore && yarn clean:build && yarn prebuild:generateThemesObject && yarn prebuild:generateConstructorMap",
-    "prebuild:generateThemesObject": "tsx scripts/generateThemesObject.ts",
+    "prebuild": "yarn patchStencilCore && yarn clean:build && yarn prebuild:generateConstructorMap",
     "prebuild:generateConstructorMap": "tsx scripts/generateConstructorMap.ts",
     "build": "PDS_IS_STAGING=${PDS_IS_STAGING:-1} stencil build --docs && yarn build:cleanReadmes && yarn build:addTableOfContents && yarn build:type && yarn build:wrappers && yarn build:copyCjsBuildToComponentsJs && yarn build:clean",
     "build:wrappers": "yarn build:wrappers:generateWrappers && yarn build:wrappers:generateDSRComponents && yarn build:wrappers:bundleStyles && yarn build:wrappers:bundleUtils",
@@ -46,6 +45,7 @@
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/styles": "0.0.0",
+    "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "~4.23.0"
   },

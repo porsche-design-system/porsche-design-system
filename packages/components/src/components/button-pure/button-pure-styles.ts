@@ -1,7 +1,7 @@
+import { fontLineHeight } from '@porsche-design-system/styles';
+import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
-import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import { fontLineHeight } from '@porsche-design-system/styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const getComponentCss = (

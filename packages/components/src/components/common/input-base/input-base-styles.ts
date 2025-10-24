@@ -61,12 +61,12 @@ export const getFunctionalComponentInputBaseStyles = (
   // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
   const buttonCompensation = `clamp(0, 6.42 * pow(calc(${scalingVar} - 0.5), 0.6826), 12)`;
 
-  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrast20Color, contrast50Color, contrast40Color } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
+    contrast20Color: contrast20ColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast40Color: contrast40ColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -106,11 +106,11 @@ export const getFunctionalComponentInputBaseStyles = (
         width: '100%',
         minWidth: '2rem',
         ...(disabled && {
-          color: disabledColor,
-          WebkitTextFillColor: disabledColor,
+          color: contrast40Color,
+          WebkitTextFillColor: contrast40Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-            WebkitTextFillColor: disabledColorDark,
+            color: contrast40ColorDark,
+            WebkitTextFillColor: contrast40ColorDark,
           }),
         }),
         ...additionalInputJssStyle,
@@ -121,7 +121,7 @@ export const getFunctionalComponentInputBaseStyles = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
-      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+      border: `${borderWidthBase} solid ${formStateColor || contrast50Color}`,
       borderRadius: borderRadiusSmall,
       paddingInline,
       display: 'flex',
@@ -129,7 +129,7 @@ export const getFunctionalComponentInputBaseStyles = (
       gap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: formStateColorDark || contrastMediumColorDark,
+        borderColor: formStateColorDark || contrast50ColorDark,
       }),
       ...(!disabled &&
         !readOnly && {
@@ -145,18 +145,18 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       ...(disabled && {
         cursor: 'not-allowed',
-        borderColor: disabledColor,
+        borderColor: contrast40Color,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: disabledColorDark,
+          borderColor: contrast40ColorDark,
         }),
       }),
       ...(readOnly && {
         cursor: 'text',
-        borderColor: contrastLowColor,
-        background: contrastLowColor,
+        borderColor: contrast20Color,
+        background: contrast20Color,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrastLowColorDark,
-          background: contrastLowColorDark,
+          borderColor: contrast20ColorDark,
+          background: contrast20ColorDark,
         }),
       }),
     },

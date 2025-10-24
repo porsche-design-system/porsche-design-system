@@ -1,7 +1,5 @@
-import type { Theme } from '../../types';
-import type { InlineNotificationState } from './inline-notification-utils';
 import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
-import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -11,13 +9,15 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { Theme } from '../../types';
+import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
-import type { JssStyle } from 'jss';
-import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
 const getTextJssStyle = (theme: Theme): JssStyle => ({

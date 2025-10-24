@@ -35,12 +35,12 @@ export const getComponentCss = (
   resize: TextareaResize,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrast20Color, contrast50Color, contrast40Color } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
+    contrast20Color: contrast20ColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast40Color: contrast40ColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -67,7 +67,7 @@ export const getComponentCss = (
         WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         boxSizing: 'border-box',
-        border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+        border: `${borderWidthBase} solid ${formStateColor || contrast50Color}`,
         borderRadius: borderRadiusSmall,
         background: 'transparent',
         textIndent: 0,
@@ -76,7 +76,7 @@ export const getComponentCss = (
         minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: formStateColorDark || contrastMediumColorDark,
+          borderColor: formStateColorDark || contrast50ColorDark,
           color: primaryColorDark,
         }),
         gridArea: '1/1',
@@ -93,21 +93,21 @@ export const getComponentCss = (
         },
         '&:disabled': {
           cursor: 'not-allowed',
-          color: disabledColor,
-          borderColor: disabledColor,
-          WebkitTextFillColor: disabledColor,
+          color: contrast40Color,
+          borderColor: contrast40Color,
+          WebkitTextFillColor: contrast40Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-            borderColor: disabledColorDark,
-            WebkitTextFillColor: disabledColorDark,
+            color: contrast40ColorDark,
+            borderColor: contrast40ColorDark,
+            WebkitTextFillColor: contrast40ColorDark,
           }),
         },
         '&[readonly]': {
-          borderColor: contrastLowColor,
-          background: contrastLowColor,
+          borderColor: contrast20Color,
+          background: contrast20Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: contrastLowColorDark,
-            background: contrastLowColorDark,
+            borderColor: contrast20ColorDark,
+            background: contrast20ColorDark,
           }),
         },
       },

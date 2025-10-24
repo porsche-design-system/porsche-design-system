@@ -13,27 +13,26 @@ type Colors = {
   backgroundColor: string;
 };
 const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: Theme): Colors => {
-  const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor, backgroundFrostedColor } =
-    getThemedColors(theme);
+  const { contrast50Color, contrast80Color, contrast40Color, frostedColor } = getThemedColors(theme);
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: isHighContrastMode ? disabledColor : contrastHighColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? contrastHighColor : disabledColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? contrastHighColor : disabledColor,
+      textColor: isHighContrastMode ? contrast40Color : contrast80Color,
+      borderColor: isHighContrastMode ? contrast40Color : loading ? contrast80Color : contrast40Color,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? contrast80Color : contrast40Color,
     },
     secondary: {
-      textColor: disabledColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? contrastMediumColor : disabledColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? hoverColor : 'transparent',
+      textColor: contrast40Color,
+      borderColor: isHighContrastMode ? contrast40Color : loading ? contrast50Color : contrast40Color,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? frostedColor : 'transparent',
     },
     ghost: {
-      textColor: disabledColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
+      textColor: contrast40Color,
+      borderColor: isHighContrastMode ? contrast40Color : loading ? frostedColor : frostedColor,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? frostedColor : frostedColor,
     },
   };
 

@@ -46,6 +46,8 @@ import {
   colorInfoSoftDark,
   colorInfoSoftLight,
   colorPrimaryDark,
+  colorPrimaryInvertedDark,
+  colorPrimaryInvertedLight,
   colorPrimaryLight,
   colorScrimDark,
   colorScrimLight,
@@ -115,6 +117,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-contrast-80: ${colorContrast80Light};
   --color-contrast-90: ${colorContrast90Light};
   --color-primary: ${colorPrimaryLight};
+  --color-primary-inverted: ${colorPrimaryInvertedLight};
   --color-success: ${colorSuccessLight};
   --color-success-soft: ${colorSuccessSoftLight};
   --color-warning: ${colorWarningLight};
@@ -141,6 +144,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-contrast-80-light: ${colorContrast80Light};
   --color-contrast-90-light: ${colorContrast90Light};
   --color-primary-light: ${colorPrimaryLight};
+  --color-primary-inverted-light: ${colorPrimaryInvertedLight};
   --color-success-light: ${colorSuccessLight};
   --color-success-soft-light: ${colorSuccessSoftLight};
   --color-warning-light: ${colorWarningLight};
@@ -167,6 +171,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-contrast-80-dark: ${colorContrast80Dark};
   --color-contrast-90-dark: ${colorContrast90Dark};
   --color-primary-dark: ${colorPrimaryDark};
+  --color-primary-inverted-dark: ${colorPrimaryInvertedDark};
   --color-success-dark: ${colorSuccessDark};
   --color-success-soft-dark: ${colorSuccessSoftDark};
   --color-warning-dark: ${colorWarningDark};
@@ -291,6 +296,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-contrast-80: ${colorContrast80Light};
     --color-contrast-90: ${colorContrast90Light};
     --color-primary: ${colorPrimaryLight};
+    --color-primary-inverted: ${colorPrimaryInvertedLight};
     --color-success: ${colorSuccessLight};
     --color-success-soft: ${colorSuccessSoftLight};
     --color-warning: ${colorWarningLight};
@@ -319,6 +325,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-contrast-80: ${colorContrast80Dark};
     --color-contrast-90: ${colorContrast90Dark};
     --color-primary: ${colorPrimaryDark};
+    --color-primary-inverted: ${colorPrimaryInvertedDark};
     --color-success: ${colorSuccessDark};
     --color-success-soft: ${colorSuccessSoftDark};
     --color-warning: ${colorWarningDark};
@@ -348,6 +355,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
       --color-contrast-80: ${colorContrast80Dark};
       --color-contrast-90: ${colorContrast90Dark};
       --color-primary: ${colorPrimaryDark};
+      --color-primary-inverted: ${colorPrimaryInvertedDark};
       --color-success: ${colorSuccessDark};
       --color-success-soft: ${colorSuccessSoftDark};
       --color-warning: ${colorWarningDark};

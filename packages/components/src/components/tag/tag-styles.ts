@@ -8,7 +8,6 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
-  getInvertedThemedColors,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -30,12 +29,12 @@ export const getColors = (
   backgroundHoverColor: string;
 } => {
   const themedColors = getThemedColors(theme);
-  const { primaryColor } = tagColor === 'primary' ? getInvertedThemedColors(theme) : themedColors;
+  const { primaryColor, primaryInvertedColor } = themedColors;
 
   return {
-    textColor: primaryColor,
+    textColor: tagColor === 'primary' ? primaryInvertedColor : primaryColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
-    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
+    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors),
   };
 };
 

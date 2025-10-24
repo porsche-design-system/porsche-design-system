@@ -1,17 +1,3 @@
-import type { JssStyle } from 'jss';
-import type { Theme } from '../../types';
-import { getCss } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -23,6 +9,20 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import type { Theme } from '../../types';
+import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
@@ -39,11 +39,11 @@ const disabledCursorStyle: JssStyle = {
 const hiddenStyle: JssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrast40Color, frostedColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    hoverColor: hoverColorDark,
+    contrast40Color: contrast40ColorDark,
+    frostedColor: frostedColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -134,9 +134,9 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
-            background: hoverColor,
+            background: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
+              background: frostedColorDark,
             }),
           },
         }),
@@ -151,9 +151,9 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
-          color: disabledColor,
+          color: contrast40Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
+            color: contrast40ColorDark,
           }),
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly

@@ -53,12 +53,12 @@ export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor, contrast80Color, contrast50Color, surfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    contrastHighColor: contrastHighColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    contrast80Color: contrast80ColorDark,
+    contrast50Color: contrast50ColorDark,
+    surfaceColor: surfaceColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -101,9 +101,9 @@ export const getComponentCss = (
       }),
       ...(hasPriceOriginal && {
         s: {
-          color: contrastMediumColor,
+          color: contrast50Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastMediumColorDark,
+            color: contrast50ColorDark,
           }),
         },
       }),
@@ -117,13 +117,13 @@ export const getComponentCss = (
       borderRadius: borderRadiusMedium,
       padding: spacingFluidSmall,
       color: primaryColor,
-      backgroundColor: backgroundSurfaceColor,
+      backgroundColor: surfaceColor,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
         aspectRatio: ratio,
       })),
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
-        backgroundColor: backgroundSurfaceColorDark,
+        backgroundColor: surfaceColorDark,
       }),
     },
     ...(!hasSlottedAnchor && {
@@ -185,9 +185,9 @@ export const getComponentCss = (
         margin: 0, // ua-style reset
         ...textXXSmallStyle,
         ...getMultilineEllipsis(2),
-        color: contrastHighColor,
+        color: contrast80Color,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
+          color: contrast80ColorDark,
         }),
       },
     }),

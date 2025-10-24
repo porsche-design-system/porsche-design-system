@@ -1,6 +1,12 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
-import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,23 +19,17 @@ import {
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../styles';
-import {
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
@@ -43,12 +43,12 @@ export const getComponentCss = (
   compact: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrast50Color, contrast80Color, contrast40Color, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    contrastHighColor: contrastHighColorDark,
-    disabledColor: disabledColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast80Color: contrast80ColorDark,
+    contrast40Color: contrast40ColorDark,
     focusColor: focusColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
@@ -60,25 +60,25 @@ export const getComponentCss = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedColorDark = disabledOrLoading ? disabledColorDark : formStateColorDark || contrastMediumColorDark;
+  const uncheckedColor = disabledOrLoading ? contrast40Color : formStateColor || contrast50Color;
+  const uncheckedColorDark = disabledOrLoading ? contrast40ColorDark : formStateColorDark || contrast50ColorDark;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
   const uncheckedHoverColorDark = formStateHoverColorDark || primaryColorDark;
   const checkedColor = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-      ? disabledColor
+      ? contrast40Color
       : formStateColor || primaryColor;
   const checkedColorDark = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-      ? disabledColorDark
+      ? contrast40ColorDark
       : formStateColorDark || primaryColorDark;
-  const checkedHoverColor = formStateHoverColor || contrastHighColor;
-  const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
+  const checkedHoverColor = formStateHoverColor || contrast80Color;
+  const checkedHoverColorDark = formStateHoverColorDark || contrast80ColorDark;
 
   const indeterminateIconColor = escapeHashCharacter(
-    disabledOrLoading ? disabledColorDark : formStateColor || primaryColor
+    disabledOrLoading ? contrast40ColorDark : formStateColor || primaryColor
   );
   const indeterminateIconColorDark = escapeHashCharacter(formStateColorDark || primaryColorDark);
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);

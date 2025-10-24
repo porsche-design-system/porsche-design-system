@@ -8,8 +8,8 @@ export const getFunctionalComponentNoResultsOptionStyles = (
   cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
   theme: Theme
 ): Styles => {
-  const { contrastMediumColor } = getThemedColors(theme);
-  const { contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+  const { contrast50Color } = getThemedColors(theme);
+  const { contrast50Color: contrast50ColorDark } = getThemedColors('dark');
 
   return {
     'no-results': {
@@ -17,9 +17,9 @@ export const getFunctionalComponentNoResultsOptionStyles = (
       '&[role=option]': {
         cursor: 'not-allowed',
       },
-      color: contrastMediumColor,
+      color: contrast50Color,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastMediumColorDark,
+        color: contrast50ColorDark,
       }),
     },
     'sr-only': getHiddenTextJssStyle(),

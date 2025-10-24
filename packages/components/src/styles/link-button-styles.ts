@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
-import { buildResponsiveStyles, darken, hasVisibleIcon, isHighContrastMode, lighten } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -23,9 +23,6 @@ import {
   SCALING_BASE_VALUE,
 } from './';
 
-const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
-const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
-
 type Colors = {
   textColor: string;
   borderColor: string;
@@ -35,7 +32,7 @@ type Colors = {
 };
 
 const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor, backgroundFrostedColor } =
+  const { primaryColor, canvasInvertedColor, primaryInvertedColor, contrast80Color, contrast50Color, frostedColor } =
     getThemedColors(theme);
   const { canvasColor } = getHighContrastColors();
 
@@ -43,25 +40,25 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: theme === 'dark' ? lightThemePrimaryColor : darkThemePrimaryColor,
-      borderColor: primaryColor,
-      borderColorHover: contrastHighColor,
-      backgroundColor: primaryColor,
-      backgroundColorHover: contrastHighColor,
+      textColor: primaryInvertedColor,
+      borderColor: canvasInvertedColor,
+      borderColorHover: contrast80Color,
+      backgroundColor: canvasInvertedColor,
+      backgroundColorHover: contrast80Color,
     },
     secondary: {
       textColor: primaryColor,
       borderColor: primaryColor,
-      borderColorHover: contrastMediumColor,
+      borderColorHover: contrast50Color,
       backgroundColor: isHighContrastMode ? canvasColor : 'transparent',
-      backgroundColorHover: hoverColor,
+      backgroundColorHover: frostedColor,
     },
     ghost: {
       textColor: primaryColor,
-      borderColor: backgroundFrostedColor,
-      borderColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
-      backgroundColor: backgroundFrostedColor,
-      backgroundColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
+      borderColor: frostedColor,
+      borderColorHover: frostedColor,
+      backgroundColor: frostedColor,
+      backgroundColorHover: frostedColor,
     },
   };
 

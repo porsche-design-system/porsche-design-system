@@ -19,11 +19,11 @@ import type { TagDismissibleColor } from './tag-dismissible-utils';
 export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
   const themedColors = getThemedColors(theme);
   const themedColorsDark = getThemedColors('dark');
-  const { primaryColor, hoverColor, contrastHighColor } = themedColors;
+  const { primaryColor, frostedColor, contrast80Color } = themedColors;
   const {
     primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    contrastHighColor: contrastHighColorDark,
+    frostedColor: frostedColorDark,
+    contrast80Color: contrast80ColorDark,
   } = themedColorsDark;
   const backgroundColor = getThemedBackgroundColor(color, themedColors);
   const backgroundColorDark = getThemedBackgroundColor(color, themedColorsDark);
@@ -65,9 +65,9 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
         }),
         ...hoverMediaQuery({
           '&:hover > .icon': {
-            backgroundColor: hoverColor,
+            backgroundColor: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
+              backgroundColor: frostedColorDark,
             }),
           },
         }),
@@ -78,10 +78,10 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
       label: {
         display: 'block',
         marginBottom: '-4px',
-        color: contrastHighColor,
+        color: contrast80Color,
         fontSize: fontSizeTextXSmall,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
+          color: contrast80ColorDark,
         }),
       },
     }),

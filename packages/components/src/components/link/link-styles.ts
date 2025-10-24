@@ -1,6 +1,4 @@
-import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
+import { borderRadiusSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -8,7 +6,9 @@ import {
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
 } from '../../styles';
-import { borderRadiusSmall } from '@porsche-design-system/styles';
+import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
+import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 
 const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
 

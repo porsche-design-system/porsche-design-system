@@ -1,11 +1,3 @@
-import type { Theme } from '../../../types';
-import type { ToastState } from '../toast/toast-utils';
-import { getCss, isThemeDark } from '../../../utils';
-import {
-  getNotificationContentJssStyle,
-  getNotificationIconJssStyle,
-  getNotificationRootJssStyle,
-} from '../../inline-notification/inline-notification-styles-shared';
 import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
@@ -14,6 +6,14 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import type { Theme } from '../../../types';
+import { getCss, isThemeDark } from '../../../utils';
+import {
+  getNotificationContentJssStyle,
+  getNotificationIconJssStyle,
+  getNotificationRootJssStyle,
+} from '../../inline-notification/inline-notification-styles-shared';
+import type { ToastState } from '../toast/toast-utils';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({

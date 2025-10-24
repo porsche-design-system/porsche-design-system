@@ -15,21 +15,21 @@ export const getComponentCss = (
   orientation: BreakpointCustomizable<DividerDirection>,
   theme: Theme
 ): string => {
-  const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
+  const { contrast20Color, contrast50Color, contrast80Color } = getThemedColors(theme);
   const {
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    contrastHighColor: contrastHighColorDark,
+    contrast20Color: contrast20ColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast80Color: contrast80ColorDark,
   } = getThemedColors('dark');
   const colorMap: Record<DividerColor, string> = {
-    'contrast-low': contrastLowColor,
-    'contrast-medium': contrastMediumColor,
-    'contrast-high': contrastHighColor,
+    'contrast-low': contrast20Color,
+    'contrast-medium': contrast50Color,
+    'contrast-high': contrast80Color,
   };
   const colorMapDark: Record<DividerColor, string> = {
-    'contrast-low': contrastLowColorDark,
-    'contrast-medium': contrastMediumColorDark,
-    'contrast-high': contrastHighColorDark,
+    'contrast-low': contrast20ColorDark,
+    'contrast-medium': contrast50ColorDark,
+    'contrast-high': contrast80ColorDark,
   };
 
   return getCss({

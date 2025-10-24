@@ -29,19 +29,19 @@ export const getColors = (
   borderColor: string;
   hoverBorderColor: string;
 } => {
-  const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, contrast50Color, contrast40Color, contrast20Color } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
   return {
-    buttonColor: isDisabled ? disabledColor : primaryColor,
-    labelColor: isDisabled ? disabledColor : contrastMediumColor,
+    buttonColor: isDisabled ? contrast40Color : primaryColor,
+    labelColor: isDisabled ? contrast40Color : contrast50Color,
     borderColor: isSelected
       ? isDisabled
-        ? disabledColor
+        ? contrast40Color
         : isHighContrastMode
           ? highlightColor
           : primaryColor
-      : contrastLowColor,
+      : contrast20Color,
     hoverBorderColor: primaryColor,
   };
 };

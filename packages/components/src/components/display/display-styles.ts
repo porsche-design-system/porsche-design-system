@@ -1,14 +1,14 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { type DisplayAlign, type DisplayColor, type DisplaySize, DISPLAY_TAGS } from './display-utils';
-import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   displayLargeStyle,
   fontSizeDisplayLarge,
   fontSizeDisplayMedium,
   fontSizeDisplaySmall,
 } from '@porsche-design-system/styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import { DISPLAY_TAGS, type DisplayAlign, type DisplayColor, type DisplaySize } from './display-utils';
 
 const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {
   small: fontSizeDisplaySmall,

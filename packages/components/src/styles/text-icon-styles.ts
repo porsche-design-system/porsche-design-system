@@ -15,9 +15,9 @@ export const getThemedTypographyColor = (
     string
   > = {
     primary: themedColors.primaryColor,
-    'contrast-low': themedColors.contrastLowColor,
-    'contrast-medium': themedColors.contrastMediumColor,
-    'contrast-high': themedColors.contrastHighColor,
+    'contrast-low': themedColors.contrast20Color,
+    'contrast-medium': themedColors.contrast50Color,
+    'contrast-high': themedColors.contrast80Color,
     'notification-success': themedColors.successColor,
     'notification-warning': themedColors.warningColor,
     'notification-error': themedColors.errorColor,

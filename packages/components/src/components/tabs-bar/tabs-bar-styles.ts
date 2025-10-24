@@ -39,8 +39,8 @@ export const getComponentCss = (
   weight: TabsBarWeight,
   theme: Theme
 ): string => {
-  const { primaryColor, hoverColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, hoverColor: hoverColorDark } = getThemedColors('dark');
+  const { primaryColor, frostedColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, frostedColor: frostedColorDark } = getThemedColors('dark');
 
   const barJssStyle: JssStyle = {
     position: 'absolute',
@@ -120,9 +120,9 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           [transformSelector('::slotted([role]:hover)::before')]: {
             ...frostedGlassStyle,
-            background: hoverColor,
+            background: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
+              background: frostedColorDark,
             }),
           },
         }),

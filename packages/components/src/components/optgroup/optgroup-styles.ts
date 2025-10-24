@@ -13,8 +13,8 @@ export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
 const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
 
 export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
+  const { primaryColor, contrast40Color } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrast40Color: contrast40ColorDark } = getThemedColors('dark');
 
   const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
   const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
@@ -42,9 +42,9 @@ export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
           color: primaryColorDark,
         }),
         ...(isDisabled && {
-          color: disabledColor,
+          color: contrast40Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
+            color: contrast40ColorDark,
           }),
         }),
       },

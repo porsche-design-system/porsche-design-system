@@ -1,8 +1,8 @@
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { borderRadiusSmall } from '@porsche-design-system/styles';
 import { addImportantToEachRule, getFocusJssStyle, getResetInitialStylesForSlottedAnchor } from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import { borderRadiusSmall } from '@porsche-design-system/styles';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,

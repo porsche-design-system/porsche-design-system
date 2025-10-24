@@ -1,6 +1,6 @@
-import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { spacingFluidSmall } from '@porsche-design-system/styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 
 export const getComponentCss = (multiline: boolean): string => {

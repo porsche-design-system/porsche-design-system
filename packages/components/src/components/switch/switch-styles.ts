@@ -41,20 +41,20 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
-  const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
+  const { primaryColor, contrast50Color, successColor, contrast40Color } = getThemedColors(theme);
+  const { canvasColor: lightThemeBackgroundColor } = getThemedColors('light');
   const { canvasColor, canvasTextColor } = getHighContrastColors();
   const checkedColor = isHighContrastMode ? canvasTextColor : successColor;
-  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
+  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && contrast40Color;
 
   return {
-    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
-    buttonBorderColorHover: checked ? (isHighContrastMode ? primaryColor : successColorDarken) : primaryColor,
+    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrast50Color),
+    buttonBorderColorHover: checked ? (isHighContrastMode ? primaryColor : 'deeppink') : primaryColor,
     buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? (isHighContrastMode ? checkedColor : successColorDarken) : 'transparent',
+    buttonBackgroundColorHover: checked ? (isHighContrastMode ? checkedColor : 'deeppink') : 'transparent',
     toggleBackgroundColor:
       (loading && 'transparent') ||
-      (disabled && !checked && disabledColor) ||
+      (disabled && !checked && contrast40Color) ||
       (checked
         ? isHighContrastMode
           ? canvasColor
@@ -152,12 +152,12 @@ export const getComponentCss = (
         boxSizing: 'content-box',
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
         borderRadius: `calc((${dimension} + ${borderWidthBase} * 2) / 2)`,
-        backgroundColor: buttonBackgroundColor,
+        canvasColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: buttonBorderColorDark,
-          backgroundColor: buttonBackgroundColorDark,
+          canvasColor: buttonBackgroundColorDark,
         }),
         margin: 0, // Removes default button margin on safari 15
         padding: 0,
@@ -168,15 +168,15 @@ export const getComponentCss = (
           hoverMediaQuery({
             '&:hover': {
               borderColor: buttonBorderColorHover,
-              backgroundColor: buttonBackgroundColorHover,
+              canvasColor: buttonBackgroundColorHover,
               ...prefersColorSchemeDarkMediaQuery(theme, {
                 borderColor: buttonBorderColorHoverDark,
-                backgroundColor: buttonBackgroundColorHoverDark,
+                canvasColor: buttonBackgroundColorHoverDark,
               }),
               '& .toggle': {
-                backgroundColor: toggleBackgroundColorHover,
+                canvasColor: toggleBackgroundColorHover,
                 ...prefersColorSchemeDarkMediaQuery(theme, {
-                  backgroundColor: toggleBackgroundColorHoverDark,
+                  canvasColor: toggleBackgroundColorHoverDark,
                 }),
               },
             },
@@ -218,14 +218,14 @@ export const getComponentCss = (
       width: `calc(${dimension} - ${borderWidthBase} * 2)`,
       height: `calc(${dimension} - ${borderWidthBase} * 2)`,
       borderRadius: '50%',
-      backgroundColor: toggleBackgroundColor,
+      canvasColor: toggleBackgroundColor,
       transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
       transform: `translate3d(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase}, 0, 0)`,
       '&:dir(rtl)': {
         transform: `translate3d(calc(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase} * -1), 0, 0)`,
       },
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: toggleBackgroundColorDark,
+        canvasColor: toggleBackgroundColorDark,
       }),
     },
     ...(loading && {

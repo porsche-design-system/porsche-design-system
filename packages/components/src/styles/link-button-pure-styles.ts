@@ -52,11 +52,11 @@ export const getLinkButtonPureStyles = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
-  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrast40Color, frostedColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    hoverColor: hoverColorDark,
+    contrast40Color: contrast40ColorDark,
+    frostedColor: frostedColorDark,
   } = getThemedColors('dark');
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
@@ -82,10 +82,10 @@ export const getLinkButtonPureStyles = (
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      color: isDisabledOrLoading ? contrast40Color : primaryColor,
       textDecoration: underline ? 'underline' : 'none',
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
+        color: isDisabledOrLoading ? contrast40ColorDark : primaryColorDark,
       }),
       ...textSmallStyle,
       ...mergeDeep(
@@ -113,9 +113,9 @@ export const getLinkButtonPureStyles = (
         transition: getTransition('background-color'),
         ...(active && {
           ...frostedGlassStyle,
-          backgroundColor: hoverColor,
+          backgroundColor: frostedColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundColor: hoverColorDark,
+            backgroundColor: frostedColorDark,
           }),
         }),
       },
@@ -123,9 +123,9 @@ export const getLinkButtonPureStyles = (
         hoverMediaQuery({
           '&:hover::before': {
             ...frostedGlassStyle,
-            backgroundColor: hoverColor,
+            backgroundColor: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
+              backgroundColor: frostedColorDark,
             }),
           },
         })),

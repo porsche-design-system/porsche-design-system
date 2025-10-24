@@ -12,11 +12,11 @@ export const getOptionJssStyle = (
 ): JssStyle => {
   const {
     primaryColor: primaryColorDark,
-    contrastHighColor: contrastHighColorDark,
-    disabledColor: disabledColorDark,
-    contrastLowColor: contrastLowColorDark,
+    contrast80Color: contrast80ColorDark,
+    contrast40Color: contrast40ColorDark,
+    contrast20Color: contrast20ColorDark,
   } = getThemedColors('dark');
-  const { primaryColor, contrastLowColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrast20Color, contrast80Color, contrast40Color } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
   const gap = `max(4px, ${cssVarScaling} * 12px)`;
@@ -30,9 +30,9 @@ export const getOptionJssStyle = (
     paddingInline,
     minHeight: fontLineHeight, // preserves height for empty option
     ...textSmallStyle,
-    color: contrastHighColor,
+    color: contrast80Color,
     ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: contrastHighColorDark,
+      color: contrast80ColorDark,
     }),
     cursor: 'pointer',
     textAlign: 'start',
@@ -41,9 +41,9 @@ export const getOptionJssStyle = (
     borderRadius: borderRadiusSmall,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: contrastLowColor,
+      background: contrast20Color,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: contrastLowColorDark,
+        background: contrast20ColorDark,
       }),
     },
     '&--highlighted, &--selected': {
@@ -54,9 +54,9 @@ export const getOptionJssStyle = (
     },
     '&--disabled': {
       cursor: 'not-allowed',
-      color: disabledColor,
+      color: contrast40Color,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: disabledColorDark,
+        color: contrast40ColorDark,
       }),
     },
     '&--hidden': {
