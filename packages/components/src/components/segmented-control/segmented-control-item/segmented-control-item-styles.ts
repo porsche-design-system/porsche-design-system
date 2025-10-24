@@ -1,4 +1,10 @@
-import { borderRadiusSmall, borderWidthBase, textSmallStyle, textXSmallStyle } from '@porsche-design-system/styles';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  textSmallStyle,
+  textXSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
@@ -12,8 +18,14 @@ import {
 } from '../../../styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode } from '../../../utils';
+import { formElementPaddingVertical } from '../../../styles/form-styles';
 
-export const ITEM_PADDING = '17px';
+export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
+export const getScalingVar = (compact: boolean) =>
+  `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
+
+export const ICON_OFFSET = '4px';
+
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
@@ -46,10 +58,26 @@ export const getColors = (
   };
 };
 
-export const getItemPadding = (hasIconAndSlottedContent: boolean): string =>
-  hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`;
+export const getScalableItemStyles = (
+  hasIconAndSlottedContent: boolean,
+  compact: boolean
+): { padding: string; dimension: string } => {
+  const scalingVar = getScalingVar(compact);
+
+  const verticalPadding = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+  const horizontalPadding = `calc(${verticalPadding} + ${ICON_OFFSET})`;
+
+  const padding = hasIconAndSlottedContent
+    ? `${verticalPadding} ${horizontalPadding} ${verticalPadding} ${verticalPadding}`
+    : `${verticalPadding} ${horizontalPadding}`;
+
+  const dimension = `calc(max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px)) + (${verticalPadding} + ${borderWidthBase}) * 2)`;
+
+  return { padding, dimension };
+};
 
 export const getComponentCss = (
+  compact: boolean,
   isDisabled: boolean,
   isSelected: boolean,
   hasIcon: boolean,
@@ -63,6 +91,7 @@ export const getComponentCss = (
     borderColor: borderColorDark,
     hoverBorderColor: hoverBorderColorDark,
   } = getColors(isDisabled, isSelected, 'dark');
+  const scalableItemStyles = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
     '@global': {
@@ -79,8 +108,9 @@ export const getComponentCss = (
         position: 'relative',
         display: 'block',
         height: '100%',
+        minHeight: scalableItemStyles.dimension,
         width: '100%',
-        padding: getItemPadding(hasIcon && hasSlottedContent),
+        padding: scalableItemStyles.padding,
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,

@@ -51,7 +51,7 @@ export const getComponentCss = (
   direction: BreakpointCustomizable<GroupDirection>,
   theme: Theme
 ): string => {
-  const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.5 : 1})`;
+  const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
 
   const { primaryColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark } = getThemedColors('dark');
