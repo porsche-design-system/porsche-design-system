@@ -14,12 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.30.0-rc.2] - 2025-10-24
+
 ### Added
 
 - `Flag`: added `AD, GI, LI, MC, ME, TW` flags & `XX` for unknown region
   ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
 - `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
+- `Flag`: added `AD, GI, LI, MC, ME, TW` flags & `XX` for unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+- Vue: export `prefixInjectionKey`
 
 ### Changed
 
