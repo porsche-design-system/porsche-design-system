@@ -2,7 +2,6 @@ import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import type { DrilldownItemInternalHTMLProps } from '../drilldown-item/drilldown-item-utils';
 import * as drilldownUtils from './drilldown-utils';
-import { traverseTreeAndUpdateState, updateDrilldownItemState, validateActiveIdentifier } from './drilldown-utils';
 
 const createChild = (identifier: string = undefined): HTMLPDrilldownItemElement & DrilldownItemInternalHTMLProps => {
   const el = document.createElement('div') as any;
@@ -25,7 +24,7 @@ describe('validateActiveIdentifier()', () => {
     const items = [createChild(), createChild()];
 
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
-    validateActiveIdentifier<typeof SomeInstance>(instance, items, undefined);
+    drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, undefined);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -34,7 +33,7 @@ describe('validateActiveIdentifier()', () => {
     const items = [createChild(identifier), createChild()];
 
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
-    validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
+    drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -43,7 +42,7 @@ describe('validateActiveIdentifier()', () => {
     const items = [createChild(), createChild()];
 
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
-    validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
+    drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessage);
   });
 
@@ -52,7 +51,7 @@ describe('validateActiveIdentifier()', () => {
     const items = [createChild(identifier), createChild(identifier)];
 
     const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
-    validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
+    drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessageMultiple, ...items);
   });
 });
@@ -64,7 +63,7 @@ describe('updateDrilldownItemState()', () => {
 
   beforeEach(() => {
     traverseTreeAndUpdateStateSpy = vi
-      .spyOn(drilldownUtils, 'traverseTreeAndUpdateState')
+      .spyOn(drilldownUtils.internal, 'traverseTreeAndUpdateState')
       .mockImplementation(() => null);
 
     host = document.createElement('p-drilldown');
@@ -78,12 +77,12 @@ describe('updateDrilldownItemState()', () => {
   });
 
   it('should set secondary prop of item with activeIdentifier to value=true and call functions', () => {
-    updateDrilldownItemState(child, true);
+    drilldownUtils.updateDrilldownItemState(child, true);
     expect(child.secondary).toBe(true);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', true);
   });
   it('should set secondary prop of item with activeIdentifier to value=false and call functions', () => {
-    updateDrilldownItemState(child, false);
+    drilldownUtils.updateDrilldownItemState(child, false);
     expect(child.secondary).toBe(false);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', false);
   });
@@ -96,7 +95,7 @@ describe('traverseTreeAndUpdateState()', () => {
   let grandChild: HTMLPDrilldownItemElement;
 
   beforeEach(() => {
-    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils, 'traverseTreeAndUpdateState');
+    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils.internal, 'traverseTreeAndUpdateState');
 
     host = document.createElement('p-drilldown');
     child = document.createElement('p-drilldown-item');
@@ -110,7 +109,7 @@ describe('traverseTreeAndUpdateState()', () => {
   });
 
   it('should traverse up the tree and set states to value', () => {
-    traverseTreeAndUpdateState(grandChild, 'primary', true);
+    drilldownUtils.internal.traverseTreeAndUpdateState(grandChild, 'primary', true);
     expect(grandChild.primary).toBe(true);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(child, 'cascade', true);
 
