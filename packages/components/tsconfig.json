@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "types": ["node", "jest"]
+    "types": ["node", "vitest/globals", "vitest/jsdom"]
   },
   "include": ["src"],
   "exclude": ["./tests", "**/*.spec.ts"]
