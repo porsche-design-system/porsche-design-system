@@ -1,3 +1,1 @@
-import { colorCanvasLight } from '../background';
-
-export const colorPrimaryInvertedLight = colorCanvasLight;
+export const colorPrimaryInvertedLight = 'hsla(0,0%,100%,1)';

@@ -1,1 +1,1 @@
-export const colorPrimaryInvertedDark = 'hsla(0,0%,100%,1)';
+export const colorPrimaryInvertedDark = 'hsla(0,0%,8%,1)';

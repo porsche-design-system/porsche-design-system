@@ -1,3 +1,1 @@
-import { colorPrimaryLight } from '../contrast';
-
-export const colorCanvasInvertedLight = colorPrimaryLight;
+export const colorCanvasInvertedLight = 'hsla(225,67%,1%,1)';

@@ -2,24 +2,17 @@
   "name": "@porsche-design-system/tokens",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "./dist/"
   ],
@@ -27,7 +20,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:package",
-    "build:package": "tsup",
+    "build:package": "rollup -c rollup.config.js",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
@@ -36,7 +29,8 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
-    "tsup": "*",
+    "@rollup/plugin-typescript": "*",
+    "rollup": "*",
     "typescript": "*",
     "vitest": "*"
   },
