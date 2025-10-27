@@ -33,8 +33,8 @@ export const borderWidthBase = "2px";
 export const spacingStaticXSmall = "4px";
 export const themeDarkNotificationSuccess = "#09D087";
 export const themeLightNotificationSuccess = "#197E10";
-export const themeLightBackgroundSurfaceDarken = "#CBCED7";
-export const themeDarkBackgroundSurfaceDarken = "#040405";
-export const themeLightSuccessColorDarken = "#0E4809";
-export const themeDarkSuccessColorDarken = "#069561";
+export const themeLightBackgroundSurfaceDarken = "#EEEFF2";
+export const themeDarkBackgroundSurfaceDarken = "#212225";
+export const themeLightSuccessColorDarken = "#197E10";
+export const themeDarkSuccessColorDarken = "#09D087";
 /* Auto Generated End */
