@@ -2,27 +2,14 @@ import type { Splide } from '@splidejs/splide';
 import { vi } from 'vitest';
 import type { ButtonPure } from '../button-pure/button-pure';
 import * as carouselUtils from './carousel-utils';
-import {
-  getAmountOfPages,
-  getLangDirection,
-  getSlidesAndAddAttributes,
-  getSplideBreakpoints,
-  isFirstPage,
-  isLastPage,
-  renderPagination,
-  slideNext,
-  slidePrev,
-  updatePagination,
-  updatePrevNextButtons,
-} from './carousel-utils';
 
 describe('getSplideBreakpoints()', () => {
   it('should return correct result for flat BreakpointCustomizable parameter', () => {
-    expect(getSplideBreakpoints(10)).toEqual({ 0: { autoWidth: false, perPage: 10 } });
+    expect(carouselUtils.getSplideBreakpoints(10)).toEqual({ 0: { autoWidth: false, perPage: 10 } });
   });
 
   it('should return correct result for nested BreakpointCustomizable parameter', () => {
-    expect(getSplideBreakpoints({ base: 5, s: 10, m: 'auto' })).toEqual({
+    expect(carouselUtils.getSplideBreakpoints({ base: 5, s: 10, m: 'auto' })).toEqual({
       0: { autoWidth: false, perPage: 5 },
       760: { autoWidth: false, perPage: 10 },
       1000: { autoWidth: true, perPage: 1 },
@@ -30,7 +17,7 @@ describe('getSplideBreakpoints()', () => {
   });
 
   it('should return correct result for nested floating number BreakpointCustomizable parameter', () => {
-    expect(getSplideBreakpoints({ base: 2.2, xs: 2.5, s: 2.9 })).toEqual({
+    expect(carouselUtils.getSplideBreakpoints({ base: 2.2, xs: 2.5, s: 2.9 })).toEqual({
       0: { autoWidth: false, perPage: 2 },
       480: { autoWidth: false, perPage: 3 },
       760: { autoWidth: false, perPage: 3 },
@@ -54,11 +41,11 @@ describe('getSlidesAndAddAttributes()', () => {
 
   it('should return parameters children as array ', () => {
     const host = document.createElement('p-carousel');
-    expect(getSlidesAndAddAttributes(host)).toEqual([]);
+    expect(carouselUtils.getSlidesAndAddAttributes(host)).toEqual([]);
 
     const children = getChildren();
     host.append(...children);
-    expect(getSlidesAndAddAttributes(host)).toEqual(children);
+    expect(carouselUtils.getSlidesAndAddAttributes(host)).toEqual(children);
   });
 
   it('should not return parameters children with slot="heading" or slot="post-heading"', () => {
@@ -69,7 +56,7 @@ describe('getSlidesAndAddAttributes()', () => {
     child3.slot = 'description';
 
     host.append(child1, child2, child3);
-    expect(getSlidesAndAddAttributes(host)).toEqual([child1]);
+    expect(carouselUtils.getSlidesAndAddAttributes(host)).toEqual([child1]);
   });
 
   it('should add incremental slot="slide-x" and tabindex="0" properties and attributes on each child', () => {
@@ -77,7 +64,7 @@ describe('getSlidesAndAddAttributes()', () => {
     const children = getChildren();
     host.append(...children);
 
-    const result = getSlidesAndAddAttributes(host);
+    const result = carouselUtils.getSlidesAndAddAttributes(host);
     result.forEach((child, i) => {
       expect(child.slot).toBe(`slide-${i}`);
       expect(child.getAttribute('slot')).toBe(`slide-${i}`);
@@ -111,48 +98,48 @@ describe('getAmountOfPages()', () => {
     [5, 4, 2],
     [6, 4, 3],
   ])('should for amountOfSlides: %s and slidesPerPage: %s return: %s', (amountOfSlides, slidesPerPage, result) => {
-    expect(getAmountOfPages(amountOfSlides, slidesPerPage)).toBe(result);
+    expect(carouselUtils.getAmountOfPages(amountOfSlides, slidesPerPage)).toBe(result);
   });
 });
 
 describe('isFirstPage()', () => {
   it('should return true if splide.index === 0', () => {
-    expect(isFirstPage({ index: 0 } as Splide)).toBe(true);
+    expect(carouselUtils.isFirstPage({ index: 0 } as Splide)).toBe(true);
   });
 
   it('should return false for splide.index !== 0', () => {
-    expect(isFirstPage({ index: 1 } as Splide)).toBe(false);
-    expect(isFirstPage({ index: 2 } as Splide)).toBe(false);
-    expect(isFirstPage({ index: 5 } as Splide)).toBe(false);
+    expect(carouselUtils.isFirstPage({ index: 1 } as Splide)).toBe(false);
+    expect(carouselUtils.isFirstPage({ index: 2 } as Splide)).toBe(false);
+    expect(carouselUtils.isFirstPage({ index: 5 } as Splide)).toBe(false);
   });
 });
 
 describe('isLastPage()', () => {
   it('should return true for splide.index >= amountOfPages - 1', () => {
-    expect(isLastPage({ index: 0 } as Splide, 1)).toBe(true);
-    expect(isLastPage({ index: 1 } as Splide, 1)).toBe(true);
-    expect(isLastPage({ index: 1 } as Splide, 2)).toBe(true);
+    expect(carouselUtils.isLastPage({ index: 0 } as Splide, 1)).toBe(true);
+    expect(carouselUtils.isLastPage({ index: 1 } as Splide, 1)).toBe(true);
+    expect(carouselUtils.isLastPage({ index: 1 } as Splide, 2)).toBe(true);
 
-    expect(isLastPage({ index: 4 } as Splide, 5)).toBe(true);
-    expect(isLastPage({ index: 5 } as Splide, 5)).toBe(true);
-    expect(isLastPage({ index: 6 } as Splide, 5)).toBe(true);
+    expect(carouselUtils.isLastPage({ index: 4 } as Splide, 5)).toBe(true);
+    expect(carouselUtils.isLastPage({ index: 5 } as Splide, 5)).toBe(true);
+    expect(carouselUtils.isLastPage({ index: 6 } as Splide, 5)).toBe(true);
   });
 
   it('should return false for splide.index < amountOfPages - 1', () => {
-    expect(isLastPage({ index: 0 } as Splide, 2)).toBe(false);
+    expect(carouselUtils.isLastPage({ index: 0 } as Splide, 2)).toBe(false);
 
-    expect(isLastPage({ index: 0 } as Splide, 5)).toBe(false);
-    expect(isLastPage({ index: 1 } as Splide, 5)).toBe(false);
-    expect(isLastPage({ index: 2 } as Splide, 5)).toBe(false);
-    expect(isLastPage({ index: 3 } as Splide, 5)).toBe(false);
+    expect(carouselUtils.isLastPage({ index: 0 } as Splide, 5)).toBe(false);
+    expect(carouselUtils.isLastPage({ index: 1 } as Splide, 5)).toBe(false);
+    expect(carouselUtils.isLastPage({ index: 2 } as Splide, 5)).toBe(false);
+    expect(carouselUtils.isLastPage({ index: 3 } as Splide, 5)).toBe(false);
   });
 });
 
 describe('slidePrev()', () => {
   it('should call isFirstPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils, 'isFirstPage');
+    const spy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
-    slidePrev(splide, 5);
+    carouselUtils.slidePrev(splide, 5);
 
     expect(spy).toHaveBeenCalledWith(splide);
   });
@@ -172,7 +159,7 @@ describe('slidePrev()', () => {
       const go: (page: string | number) => Splide = vi.fn();
       const splide = { index, go } as Splide;
 
-      slidePrev(splide, amountOfPages);
+      carouselUtils.slidePrev(splide, amountOfPages);
       expect(go).toHaveBeenCalledWith(expected);
     }
   );
@@ -180,9 +167,9 @@ describe('slidePrev()', () => {
 
 describe('slideNext()', () => {
   it('should call isLastPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils, 'isLastPage');
+    const spy = vi.spyOn(carouselUtils.internal, 'isLastPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
-    slideNext(splide, 5);
+    carouselUtils.slideNext(splide, 5);
 
     expect(spy).toHaveBeenCalledWith(splide, 5);
   });
@@ -200,7 +187,7 @@ describe('slideNext()', () => {
       const go: (page: string | number) => Splide = vi.fn();
       const splide = { index, go } as Splide;
 
-      slideNext(splide, amountOfPages);
+      carouselUtils.slideNext(splide, amountOfPages);
       expect(go).toHaveBeenCalledWith(expected);
     }
   );
@@ -232,62 +219,62 @@ describe('updatePrevNextButtons()', () => {
   };
 
   it('should call isFirstPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils, 'isFirstPage');
+    const spy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
     const splide = getSplide();
 
-    updatePrevNextButtons(...getButtons(), splide);
+    carouselUtils.updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(splide);
   });
 
   it('should call isLastPage() with correct parameters', () => {
-    const spy = vi.spyOn(carouselUtils, 'isLastPage');
-    vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const spy = vi.spyOn(carouselUtils.internal, 'isLastPage');
+    vi.spyOn(carouselUtils.internal, 'getAmountOfPages').mockReturnValue(5);
     const splide = getSplide();
-    updatePrevNextButtons(...getButtons(), splide);
+    carouselUtils.updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(splide, 5);
   });
 
   it('should call getAmountOfPages() with correct parameters', () => {
-    const spy = vi.spyOn(carouselUtils, 'getAmountOfPages');
+    const spy = vi.spyOn(carouselUtils.internal, 'getAmountOfPages');
     const splide = getSplide();
-    updatePrevNextButtons(...getButtons(), splide);
+    carouselUtils.updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(3, 1);
   });
 
   it('should correctly set aria property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = vi.spyOn(carouselUtils, 'isFirstPage');
-    const isLastPageSpy = vi.spyOn(carouselUtils, 'isLastPage');
+    const isFirstPageSpy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
+    const isLastPageSpy = vi.spyOn(carouselUtils.internal, 'isLastPage');
     const [btnPrev, btnNext] = getButtons();
     const splide = getSplide();
 
     isFirstPageSpy.mockReturnValue(false);
     isLastPageSpy.mockReturnValue(false);
-    updatePrevNextButtons(btnPrev, btnNext, splide);
+    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
     expect(btnPrev.aria).toEqual({ 'aria-label': 'custom prev' });
     expect(btnNext.aria).toEqual({ 'aria-label': 'custom next' });
 
     isFirstPageSpy.mockReturnValue(true);
     isLastPageSpy.mockReturnValue(true);
-    updatePrevNextButtons(btnPrev, btnNext, splide);
+    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
     expect(btnPrev.aria).toEqual({ 'aria-label': 'custom last' });
     expect(btnNext.aria).toEqual({ 'aria-label': 'custom first' });
   });
 
   it('should correctly set disabled property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = vi.spyOn(carouselUtils, 'isFirstPage');
-    const isLastPageSpy = vi.spyOn(carouselUtils, 'isLastPage');
+    const isFirstPageSpy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
+    const isLastPageSpy = vi.spyOn(carouselUtils.internal, 'isLastPage');
     const [btnPrev, btnNext] = getButtons();
     const splide = getSplide();
 
     isFirstPageSpy.mockReturnValue(false);
     isLastPageSpy.mockReturnValue(false);
-    updatePrevNextButtons(btnPrev, btnNext, splide);
+    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
     expect(btnPrev.disabled).toEqual(false);
     expect(btnNext.disabled).toEqual(false);
 
     isFirstPageSpy.mockReturnValue(true);
     isLastPageSpy.mockReturnValue(true);
-    updatePrevNextButtons(btnPrev, btnNext, splide);
+    carouselUtils.updatePrevNextButtons(btnPrev, btnNext, splide);
     expect(btnPrev.disabled).toEqual(true);
     expect(btnNext.disabled).toEqual(true);
   });
@@ -302,72 +289,72 @@ describe('renderPagination()', () => {
   it('should render correct children of pagination', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 1, -1, splide);
+    carouselUtils.renderPagination(el, 1, -1, splide);
     expect(el.innerHTML).toBe(bulletMarkup);
 
-    renderPagination(el, 2, -1, splide);
+    carouselUtils.renderPagination(el, 2, -1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletMarkup].join(''));
 
-    renderPagination(el, 3, -1, splide);
+    carouselUtils.renderPagination(el, 3, -1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletMarkup, bulletMarkup].join(''));
   });
 
   it('should render correct children of pagination with activeIndex', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 1, 0, splide);
+    carouselUtils.renderPagination(el, 1, 0, splide);
     expect(el.innerHTML).toBe(bulletActiveMarkup);
 
-    renderPagination(el, 2, 1, splide);
+    carouselUtils.renderPagination(el, 2, 1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup].join(''));
 
-    renderPagination(el, 3, 1, splide);
+    carouselUtils.renderPagination(el, 3, 1, splide);
     expect(el.innerHTML).toBe([bulletMarkup, bulletActiveMarkup, bulletMarkup].join(''));
   });
 
   it('should render correct children of pagination when using less or equal than 5 slides', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 4, 0, splide);
+    carouselUtils.renderPagination(el, 4, 0, splide);
     expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
 
-    renderPagination(el, 5, 0, splide);
+    carouselUtils.renderPagination(el, 5, 0, splide);
     expect(el.innerHTML).toBe([bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletMarkup].join(''));
   });
 
   it('should render correct children of pagination when using more than 5 slides', () => {
     const el = document.createElement('div');
 
-    renderPagination(el, 6, 0, splide);
+    carouselUtils.renderPagination(el, 6, 0, splide);
     expect(el.innerHTML).toBe(
       [bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
     );
 
-    renderPagination(el, 6, 1, splide);
+    carouselUtils.renderPagination(el, 6, 1, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join('')
     );
 
-    renderPagination(el, 6, 2, splide);
+    carouselUtils.renderPagination(el, 6, 2, splide);
     expect(el.innerHTML).toBe(
       [bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup, bulletMarkup].join(
         ''
       )
     );
 
-    renderPagination(el, 6, 3, splide);
+    carouselUtils.renderPagination(el, 6, 3, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup, bulletInfiniteMarkup].join(
         ''
       )
     );
 
-    renderPagination(el, 6, 4, splide);
+    carouselUtils.renderPagination(el, 6, 4, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup, bulletMarkup].join('')
     );
 
-    renderPagination(el, 6, 5, splide);
+    carouselUtils.renderPagination(el, 6, 5, splide);
     expect(el.innerHTML).toBe(
       [bulletMarkup, bulletInfiniteMarkup, bulletMarkup, bulletMarkup, bulletMarkup, bulletActiveMarkup].join('')
     );
@@ -382,7 +369,7 @@ describe('updatePagination()', () => {
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[2].classList).toContain('bullet--active');
 
-    updatePagination(el, 3, 0);
+    carouselUtils.updatePagination(el, 3, 0);
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
     expect(el.children[2].outerHTML).not.toContain('bullet--active');
   });
@@ -394,7 +381,7 @@ describe('updatePagination()', () => {
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
     expect(el.children[2].classList).not.toContain('bullet--active');
 
-    updatePagination(el, 3, 2);
+    carouselUtils.updatePagination(el, 3, 2);
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[2].classList).toContain('bullet--active');
   });
@@ -414,7 +401,7 @@ describe('updatePagination()', () => {
     expect(el.children[1].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[2].outerHTML).toBe(bulletMarkup);
 
-    updatePagination(el, 6, 2);
+    carouselUtils.updatePagination(el, 6, 2);
     expect(el.children[0].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[1].outerHTML).toBe(bulletMarkup);
     expect(el.children[2].outerHTML).toBe(bulletActiveMarkup);
@@ -438,7 +425,7 @@ describe('updatePagination()', () => {
     expect(el.children[4].outerHTML).toBe(bulletMarkup);
     expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
 
-    updatePagination(el, 7, 4);
+    carouselUtils.updatePagination(el, 7, 4);
     expect(el.children[2].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[3].outerHTML).toBe(bulletMarkup);
     expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
@@ -461,7 +448,7 @@ describe('updatePagination()', () => {
     expect(el.children[4].outerHTML).toBe(bulletActiveMarkup);
     expect(el.children[3].outerHTML).toBe(bulletMarkup);
 
-    updatePagination(el, 6, 3);
+    carouselUtils.updatePagination(el, 6, 3);
     expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[4].outerHTML).toBe(bulletMarkup);
     expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
@@ -473,7 +460,7 @@ describe('getLangDirection()', () => {
     const wrapper = document.createElement('div');
     const host = document.createElement('p-carousel');
     wrapper.append(host);
-    expect(getLangDirection(host)).toBe('ltr');
+    expect(carouselUtils.getLangDirection(host)).toBe('ltr');
   });
 
   it('should return correct language direction if wrapper has dir="rtl"', () => {
@@ -481,6 +468,6 @@ describe('getLangDirection()', () => {
     const host = document.createElement('p-carousel');
     wrapper.append(host);
     wrapper.setAttribute('dir', 'rtl');
-    expect(getLangDirection(host)).toBe('rtl');
+    expect(carouselUtils.getLangDirection(host)).toBe('rtl');
   });
 });
