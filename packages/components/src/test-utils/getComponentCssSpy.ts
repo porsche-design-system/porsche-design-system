@@ -14,6 +14,6 @@ export const getComponentCssSpy = (): ReturnType<typeof vi.spyOn> => {
 
 export const getComponentCssObject = (spy: ReturnType<typeof vi.spyOn>): object | null => {
   const [result] = spy.mock.results;
-  if (!result || result.value !== 'return') return null;
-  return getCssObject(result.value);
+  if (!result || result.type !== 'return') return null;
+  return getCssObject(String(result.value));
 };
