@@ -175,6 +175,11 @@ export const sitemap: Routes = {
             path: '/developing/angular/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/angular/form',
+            type: 'TAB',
+          },
           testing: {
             name: 'Testing',
             path: '/developing/angular/testing',
@@ -188,11 +193,6 @@ export const sitemap: Routes = {
           faq: {
             name: 'FAQ',
             path: '/developing/angular/faq',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/angular/form',
             type: 'TAB',
           },
         },
@@ -227,6 +227,11 @@ export const sitemap: Routes = {
           'getting-started': {
             name: 'Getting Started',
             path: '/developing/next-js/getting-started',
+            type: 'TAB',
+          },
+          form: {
+            name: 'Form',
+            path: '/developing/next-js/form',
             type: 'TAB',
           },
           demo: {
@@ -298,6 +303,11 @@ export const sitemap: Routes = {
             path: '/developing/react-router/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/react-router/form',
+            type: 'TAB',
+          },
           faq: {
             name: 'FAQ',
             path: '/developing/react-router/faq',
@@ -323,6 +333,11 @@ export const sitemap: Routes = {
           demo: {
             name: 'Demo',
             path: '/developing/vanilla-js/demo',
+            type: 'TAB',
+          },
+          form: {
+            name: 'Form',
+            path: '/developing/vanilla-js/form',
             type: 'TAB',
           },
           advanced: {
@@ -352,6 +367,11 @@ export const sitemap: Routes = {
             path: '/developing/vue/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/vue/form',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vue/advanced',
@@ -360,11 +380,6 @@ export const sitemap: Routes = {
           faq: {
             name: 'FAQ',
             path: '/developing/vue/faq',
-            type: 'TAB',
-          },
-          form: {
-            name: 'Form',
-            path: '/developing/vue/form',
             type: 'TAB',
           },
         },
