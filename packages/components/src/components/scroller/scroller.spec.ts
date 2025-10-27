@@ -9,7 +9,7 @@ describe('scrollToPositionHandler', () => {
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
     const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
-    vi.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation();
+    vi.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation(() => null);
 
     component.scrollToPositionHandler();
 
@@ -21,7 +21,7 @@ describe('scrollToPositionHandler', () => {
     const component = new Scroller();
     component.scrollToPosition = { scrollPosition: 100, isSmooth: true };
     component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = vi.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation();
+    const spy = vi.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation(() => null);
 
     component.scrollToPositionHandler();
 
@@ -66,7 +66,7 @@ describe('componentDidLoad', () => {
   });
   it('should call scrollToPositionHandler() if scrollToPosition', () => {
     const component = new Scroller();
-    vi.spyOn(component, 'initIntersectionObserver' as any).mockImplementation();
+    vi.spyOn(component, 'initIntersectionObserver' as any).mockImplementation(() => null);
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
     const spy = vi.spyOn(component, 'scrollToPositionHandler');
