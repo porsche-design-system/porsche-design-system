@@ -1,3 +1,1 @@
-import { colorCanvasDark } from '../background';
-
-export const colorPrimaryDark = colorCanvasDark;
+export const colorPrimaryDark = 'hsla(240,7%,95%,1)';
