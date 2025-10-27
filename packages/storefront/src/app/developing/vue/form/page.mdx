@@ -10,7 +10,12 @@ export const metadata = {
 # Vue
 
 <TableOfContents
-  headings={['Form Integration Demo', 'Automatic Data Binding', 'Manual State Management', 'Native Form Submission']}
+  headings={[
+    'Form Integration Demo',
+    'Automatic Data Binding (Preferred)',
+    'Manual State Management',
+    'Native Form Submission',
+  ]}
 />
 
 Porsche Design System form components can be integrated into Vue using different techniques based on your state
@@ -86,7 +91,7 @@ limited.
   <PButton type="submit">Submit</PButton>
 </form>
 ...
-const onSubmit = (e: SubmitEvent) => {
+const onSubmit = (e: Event) => {
   console.log(e);
 };
 ```
