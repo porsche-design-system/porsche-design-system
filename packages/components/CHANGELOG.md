@@ -16,6 +16,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Removed (deprecated in v3 already)
 
+- Tailwind CSS:
+  - e.g. `border-contrast-low` => `border-contrast-20`
+  - e.g. `border-contrast-medium` => `border-contrast-50`
+  - e.g. `border-contrast-high` => `border-contrast-80`
+  - e.g. `bg-base` => `bg-canvas`
+  - e.g. `bg-shading` => `bg-scrim`
+  - e.g. `--color-hover` => ?
+  - e.g. `--color-active` => ?
+  - e.g. `--color-disabled` => `bg-contrast-40`, `border-contrast-40` or `text-contrast-40`
+
 - `Accordion`:
   - `tag` (use `heading-tag` instead)
   - `accordionChange`

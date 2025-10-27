@@ -51,7 +51,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
               </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect
-                  className="[--p-select-background-color:bg-shading]"
+                  className="[--p-select-background-color:bg-scrim]"
                   name={slotName}
                   value={configuredSlots?.slots?.[slotName]?.name}
                   disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
