@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import path from 'node:path';
+import * as path from 'node:path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -15,7 +15,7 @@ export default defineConfig({
     restoreMocks: true,
     alias: {
       '@stencil/core': path.resolve(__dirname, '../../../tests/unit/mocks/stencil-decorator.mocks.ts'),
-    }, // replaces `moduleNameMapper`
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
