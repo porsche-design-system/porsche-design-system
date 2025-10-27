@@ -92,47 +92,55 @@ describe('render', () => {
 });
 
 describe('formResetCallback', () => {
-  const component = initComponent();
-  const defaultValue = ['default-value'];
-  component['defaultValue'] = defaultValue;
-  component.value = ['test'];
-  component.name = 'name';
-  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-  component.formResetCallback();
-  const formData = new FormData();
-  defaultValue.forEach((val) => {
-    formData.append(component.name, val);
+  it('should reset value to defaultValue', () => {
+    const component = initComponent();
+    const defaultValue = ['default-value'];
+    component['defaultValue'] = defaultValue;
+    component.value = ['test'];
+    component.name = 'name';
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.formResetCallback();
+    const formData = new FormData();
+    defaultValue.forEach((val) => {
+      formData.append(component.name, val);
+    });
+    expect(setFormValueSpy).toHaveBeenCalledWith(formData);
+    expect(component.value).toBe(defaultValue);
   });
-  expect(setFormValueSpy).toHaveBeenCalledWith(formData);
-  expect(component.value).toBe(defaultValue);
 });
 
 describe('setFormValue', () => {
-  const component = initComponent();
-  const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-  const value = ['a', 'b', 'c'];
-  component.name = 'some-name';
-  component.setFormValue(value);
-  const formData = new FormData();
-  value.forEach((val) => {
-    formData.append(component.name, val);
+  it('should call setFormValue with correct FormData', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    const value = ['a', 'b', 'c'];
+    component.name = 'some-name';
+    component.setFormValue(value);
+    const formData = new FormData();
+    value.forEach((val) => {
+      formData.append(component.name, val);
+    });
+    expect(setFormValueSpy).toHaveBeenCalledWith(formData);
   });
-  expect(setFormValueSpy).toHaveBeenCalledWith(formData);
 });
 
 describe('formDisabledCallback', () => {
-  const component = initComponent();
-  component.disabled = false;
-  component.formDisabledCallback(true);
-  expect(component.disabled).toBe(true);
+  it('should set disabled to true when called with true', () => {
+    const component = initComponent();
+    component.disabled = false;
+    component.formDisabledCallback(true);
+    expect(component.disabled).toBe(true);
+  });
 });
 
 describe('formStateRestoreCallback', () => {
-  const component = initComponent();
-  component.value = ['test'];
-  const restoredValue = 'restored-value';
-  const formData = new FormData();
-  formData.append(component.name, restoredValue);
-  component.formStateRestoreCallback(formData);
-  expect(component.value).toStrictEqual([restoredValue]);
+  it('should restore value', () => {
+    const component = initComponent();
+    component.value = ['test'];
+    const restoredValue = 'restored-value';
+    const formData = new FormData();
+    formData.append(component.name, restoredValue);
+    component.formStateRestoreCallback(formData);
+    expect(component.value).toStrictEqual([restoredValue]);
+  });
 });
