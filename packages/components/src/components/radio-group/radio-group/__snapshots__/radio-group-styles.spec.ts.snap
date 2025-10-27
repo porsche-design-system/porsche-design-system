@@ -43,6 +43,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -140,6 +141,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -237,6 +239,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -333,6 +336,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -429,6 +433,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -525,6 +530,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -622,6 +628,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -719,6 +726,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -816,6 +824,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -913,6 +922,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -1009,6 +1019,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -1105,6 +1116,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -1202,6 +1214,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;
@@ -1308,6 +1321,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  float: inline-start;
 }
 .label:empty {
   display: none;

@@ -18553,6 +18553,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   overflow: visible;
   clip: auto;
   white-space: normal;
+  float: inline-start;
 }
 .label:empty {
   display: none;
