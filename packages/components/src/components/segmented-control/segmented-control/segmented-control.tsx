@@ -39,6 +39,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
   form: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
 };
 
@@ -63,6 +64,9 @@ export class SegmentedControl {
 
   /** The name of the segmented-control. */
   @Prop({ reflect: true }) public name?: string;
+
+  /** A boolean value that, if present, renders the segmented-control as a compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
@@ -145,8 +149,14 @@ export class SegmentedControl {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host), this.columns);
-    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      getItemMaxWidth(this.host, this.compact),
+      this.columns,
+      this.compact
+    );
+    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact, this.theme);
 
     return (
       <Host role="group" inert={this.disabled}>

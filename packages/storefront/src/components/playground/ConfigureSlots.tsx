@@ -53,7 +53,6 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                 <PSelect
                   className="[--p-select-background-color:bg-shading]"
                   name={slotName}
-                  // @ts-ignore
                   value={configuredSlots?.slots?.[slotName]?.name}
                   disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   hideLabel={true}

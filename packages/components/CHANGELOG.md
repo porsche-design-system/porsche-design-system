@@ -139,15 +139,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
   - `Textarea Wrapper` (use `Textarea` instead)
 
+## [3.30.0-rc.2] - 2025-10-24
+
 ### Added
 
+- `Flag`: added `AD, GI, LI, MC, ME, TW` flags & `XX` for unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+- `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
+- Vue: export `prefixInjectionKey` ([#4079](https://github.com/porsche-design-system/porsche-design-system/pull/4079))
+
+### Changed
+
+- `Flag`: international flag replaces `DE` flag as fallback for an unknown region
+  ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
+
+### Fixed
+
+- `Radio Group`: fixed `compact` mode styles
+  ([#4073](https://github.com/porsche-design-system/porsche-design-system/pull/4073))
+
+## [3.30.0-rc.1] - 2025-10-21
+
+### Added
+
+- Angular: form components implement ControlValueAccessor interface to support Angular forms out of the box
+  ([#4048](https://github.com/porsche-design-system/porsche-design-system/pull/4048))
+- Vue: form components support `v-model` with argument `value|checked`. Can be used like this:
+  `<PInputText v-model:value="foo" />`
+  ([#4066](https://github.com/porsche-design-system/porsche-design-system/pull/4066))
 - `Pin Code`, `Segmented Control`:
   - `update` event is deprecated. Use `change` event instead.
   - `blur` event ([#4050](https://github.com/porsche-design-system/porsche-design-system/pull/4050))
 - `Select`, `Multi Select`:
   - `update` event is deprecated. Use `change` event instead.
   - `blur` event ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
+- `Link Tile`, `Button Tile`: added `footer` slot
+  ([#4025](https://github.com/porsche-design-system/porsche-design-system/pull/4025))
 - `Radio Group`: ([#4042](https://github.com/porsche-design-system/porsche-design-system/pull/4042))
+- `Radio Group`: `blur` event ([#4057](https://github.com/porsche-design-system/porsche-design-system/pull/4057))
+- `Flyout`: Prop `backdrop` ([#4058](https://github.com/porsche-design-system/porsche-design-system/pull/4058))
 
 ### Changed
 
@@ -156,16 +187,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Textarea`, `Input Password`: `input` event `target` doesn't have updated `value`
+  ([#4048](https://github.com/porsche-design-system/porsche-design-system/pull/4048))
 - `Select Wrapper`: disabled options in native dropdown not displayed correctly
   ([#4046](https://github.com/porsche-design-system/porsche-design-system/pull/4046))
 - `Tailwind`: change `--color-base` to `--color-canvas` to avoid conflicts with `text-base`
+  ([#4037](https://github.com/porsche-design-system/porsche-design-system/pull/4037))
+- `Button`, `Link`: rendering of `variant="ghost"` in high contrast mode (HCM)
+  ([#4032](https://github.com/porsche-design-system/porsche-design-system/pull/4032))
 
 ## [3.30.0-rc.0] - 2025-09-10
 
 ### Added
 
 - `Icon`: `ai-3d-object`, `ai-code`, `ai-edit`, `ai-image`, `ai-scale`, `ai-sound`, `ai-text`, `ai-video`
+  ([#4022](https://github.com/porsche-design-system/porsche-design-system/pull/4022))
 - `Model Signature`: `gt3`, `gt3-rs` and `gts`
+  ([#4012](https://github.com/porsche-design-system/porsche-design-system/pull/4021))
 - `Button`, `Button Pure`, `Button Tile`, `Link`, `Link Pure`, `Link Tile`: `aria-description` is now supported via
   `aria` prop to provide additional context for screen readers.
   ([#3969](https://github.com/porsche-design-system/porsche-design-system/pull/3969))

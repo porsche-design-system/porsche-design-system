@@ -430,7 +430,7 @@ export class Select {
           this.currentlyHighlightedOption,
           getNextOptionToHighlight(this.selectOptions, this.currentlyHighlightedOption, action)
         );
-        // @ts-ignore - HTMLCombobox type is missing
+        // @ts-expect-error - HTMLCombobox type is missing
         (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
           this.currentlyHighlightedOption;
         break;
@@ -469,7 +469,7 @@ export class Select {
       const selectedOption = getSelectedOption(this.selectOptions);
       if (selectedOption && isUsableOption(selectedOption)) {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
-        // @ts-ignore - HTMLCombobox type is missing
+        // @ts-expect-error - HTMLCombobox type is missing
         (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
           this.currentlyHighlightedOption;
       }

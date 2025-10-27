@@ -17,7 +17,7 @@ import {
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
 import { getCss, type Theme } from '../../utils';
-import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
+import type { FlyoutBackdrop, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
 /**
  * @css-variable {"name": "--p-flyout-width", "description": "Width of the flyout.", "defaultValue": "auto"}
@@ -37,6 +37,7 @@ const cssVariableMaxWidth = '--p-flyout-max-width';
 
 export const getComponentCss = (
   isOpen: boolean,
+  backdrop: FlyoutBackdrop,
   position: FlyoutPosition,
   hasHeader: boolean,
   hasFooter: boolean,
@@ -104,7 +105,7 @@ export const getComponentCss = (
           },
         }),
       },
-      dialog: getDialogJssStyle(isOpen, theme),
+      dialog: getDialogJssStyle(isOpen, theme, backdrop),
     },
     scroller: {
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),

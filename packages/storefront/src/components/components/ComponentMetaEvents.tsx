@@ -20,6 +20,7 @@ export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) =>
   const sortedEventsMeta = Object.entries(eventsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
   return (
     <>
+      {/** biome-ignore lint/correctness/useUniqueElementIds: <Needed> */}
       <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="events">
         Events
       </PHeading>

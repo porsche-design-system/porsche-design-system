@@ -4377,7 +4377,7 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: 6px !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -4410,8 +4410,9 @@ button {
   position: relative;
   display: block;
   height: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
-  padding: 13px 17px;
+  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
@@ -4473,8 +4474,9 @@ button {
   position: relative;
   display: block;
   height: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
-  padding: 13px 17px;
+  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
   border: 2px solid #404044;
   border-radius: 4px;
@@ -9385,6 +9387,10 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
+slot[name="footer"] {
+  grid-row: 2;
+  z-index: 3;
+}
 ::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
@@ -9441,18 +9447,20 @@ p {
 .footer {
   grid-area: 4/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
 }
 @media (forced-colors: active) {
@@ -9489,6 +9497,9 @@ p {
         class="footer"
       >
         <p />
+        <slot
+          name="footer"
+        />
         <p-button
           class="link-or-button"
           data-ssr=""
@@ -15488,6 +15499,10 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
+slot[name="footer"] {
+  grid-row: 2;
+  z-index: 3;
+}
 ::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
@@ -15543,18 +15558,20 @@ p {
 .footer {
   grid-area: 4/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
 }
 @media (forced-colors: active) {
@@ -15596,6 +15613,9 @@ p {
         class="footer"
       >
         <p />
+        <slot
+          name="footer"
+        />
         <p-link
           class="link-or-button"
           data-ssr=""
@@ -19276,7 +19296,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: 6px !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -19313,8 +19333,9 @@ button {
   position: relative;
   display: block;
   height: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
-  padding: 13px 17px;
+  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
   border: 2px solid #D8D8DB;
   border-radius: 4px;

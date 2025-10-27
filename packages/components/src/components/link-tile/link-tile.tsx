@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, State } from '@stencil/core';
 import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
@@ -6,6 +6,7 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
+  hasNamedSlot,
   hasPropValueChanged,
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
@@ -38,6 +39,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
 /**
  * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ * @slot {"name": "footer", "description": "Renders a footer section below the description." }
  */
 @Component({
   tag: 'p-link-tile',
@@ -88,12 +90,15 @@ export class LinkTile implements ITileProps {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
+  @State() private hasFooterSlot: boolean = false;
+
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
   public componentWillLoad(): void {
     preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
+    this.updateSlotObserver();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -111,7 +116,8 @@ export class LinkTile implements ITileProps {
       this.background,
       this.align,
       this.compact,
-      this.gradient
+      this.gradient,
+      this.hasFooterSlot
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -157,9 +163,14 @@ export class LinkTile implements ITileProps {
         </div>
         <div class="footer">
           <p>{this.description}</p>
+          <slot name="footer" onSlotchange={this.updateSlotObserver} />
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
       </div>
     );
   }
+
+  private updateSlotObserver = (): void => {
+    this.hasFooterSlot = hasNamedSlot(this.host, 'footer');
+  };
 }

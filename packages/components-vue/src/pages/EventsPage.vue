@@ -8,6 +8,36 @@ import type {
   TableUpdateEventDetail,
   TabsBarUpdateEventDetail,
   TabsUpdateEventDetail,
+  InputDateInputEventDetail,
+  InputDateBlurEventDetail,
+  InputDateChangeEventDetail,
+  InputEmailInputEventDetail,
+  InputEmailBlurEventDetail,
+  InputEmailChangeEventDetail,
+  InputNumberInputEventDetail,
+  InputNumberBlurEventDetail,
+  InputNumberChangeEventDetail,
+  InputPasswordInputEventDetail,
+  InputPasswordBlurEventDetail,
+  InputPasswordChangeEventDetail,
+  InputSearchInputEventDetail,
+  InputSearchBlurEventDetail,
+  InputSearchChangeEventDetail,
+  InputTelInputEventDetail,
+  InputTelBlurEventDetail,
+  InputTelChangeEventDetail,
+  InputTextInputEventDetail,
+  InputTextBlurEventDetail,
+  InputTextChangeEventDetail,
+  InputTimeInputEventDetail,
+  InputTimeBlurEventDetail,
+  InputTimeChangeEventDetail,
+  InputUrlInputEventDetail,
+  InputUrlBlurEventDetail,
+  InputUrlChangeEventDetail,
+  TextareaInputEventDetail,
+  TextareaBlurEventDetail,
+  TextareaChangeEventDetail,
 } from '@porsche-design-system/components-vue';
 import {
   PAccordion,
@@ -24,23 +54,73 @@ import {
   PTabs,
   PTabsBar,
   PTabsItem,
+  PInputDate,
+  PInputEmail,
+  PInputNumber,
+  PInputPassword,
+  PInputSearch,
+  PInputTel,
+  PInputText,
+  PInputTime,
+  PInputUrl,
+  PTextarea,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const accordionUpdateEventCounter = ref(0);
-const paginationUpdateEventCounter = ref(0);
-const tabsBarUpdateEventCounter = ref(0);
-const tabsUpdateEventCounter = ref(0);
-const textFieldSearchValue = ref('');
-const switchUpdateEventCounter = ref(0);
-const bannerDismissEventCounter = ref(0);
-const isBannerOpen = ref(false);
-const modalDismissEventCounter = ref(0);
-const isModalOpen = ref(false);
-const tableUpdateEventCounter = ref(0);
-const carouselUpdateEventCounter = ref(0);
+  const accordionUpdateEventCounter = ref(0);
+  const paginationUpdateEventCounter = ref(0);
+  const tabsBarUpdateEventCounter = ref(0);
+  const tabsUpdateEventCounter = ref(0);
+  const textFieldSearchValue = ref('');
+  const switchUpdateEventCounter = ref(0);
+  const bannerDismissEventCounter = ref(0);
+  const isBannerOpen = ref(false);
+  const modalDismissEventCounter = ref(0);
+  const isModalOpen = ref(false);
+  const tableUpdateEventCounter = ref(0);
+  const carouselUpdateEventCounter = ref(0);
 
-// TODO: inline-notification, segmented-control and stepper-horizontal are missing
+  const inputDateValue = ref('');
+  const inputDateBlurCounter = ref(0);
+  const inputDateChangeCounter = ref(0);
+
+  const inputEmailValue = ref('');
+  const inputEmailBlurCounter = ref(0);
+  const inputEmailChangeCounter = ref(0);
+
+  const inputNumberValue = ref('');
+  const inputNumberBlurCounter = ref(0);
+  const inputNumberChangeCounter = ref(0);
+
+  const inputPasswordValue = ref('');
+  const inputPasswordBlurCounter = ref(0);
+  const inputPasswordChangeCounter = ref(0);
+
+  const inputSearchValue = ref('');
+  const inputSearchBlurCounter = ref(0);
+  const inputSearchChangeCounter = ref(0);
+
+  const inputTelValue = ref('');
+  const inputTelBlurCounter = ref(0);
+  const inputTelChangeCounter = ref(0);
+
+  const inputTextValue = ref('');
+  const inputTextBlurCounter = ref(0);
+  const inputTextChangeCounter = ref(0);
+
+  const inputTimeValue = ref('');
+  const inputTimeBlurCounter = ref(0);
+  const inputTimeChangeCounter = ref(0);
+
+  const inputUrlValue = ref('');
+  const inputUrlBlurCounter = ref(0);
+  const inputUrlChangeCounter = ref(0);
+
+  const textareaValue = ref('');
+  const textareaBlurCounter = ref(0);
+  const textareaChangeCounter = ref(0);
+
+  // TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
 // unused event parameters are used to verify that types can be imported from package root
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -61,6 +141,76 @@ const onModalDismiss = () => {
 };
 const onTableUpdate = (detail: TableUpdateEventDetail) => tableUpdateEventCounter.value++;
 const onCarouselUpdate = (detail: CarouselUpdateEventDetail) => carouselUpdateEventCounter.value++;
+
+// PInputDate
+const onInputDateInput = (e: InputDateInputEventDetail) => {
+  inputDateValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputDateBlur = (_: InputDateBlurEventDetail) => inputDateBlurCounter.value++;
+const onInputDateChange = (_: InputDateChangeEventDetail) => inputDateChangeCounter.value++;
+
+// PInputEmail
+const onInputEmailInput = (e: InputEmailInputEventDetail) => {
+  inputEmailValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputEmailBlur = (_: InputEmailBlurEventDetail) => inputEmailBlurCounter.value++;
+const onInputEmailChange = (_: InputEmailChangeEventDetail) => inputEmailChangeCounter.value++;
+
+// PInputNumber
+const onInputNumberInput = (e: InputNumberInputEventDetail) => {
+  inputNumberValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputNumberBlur = (_: InputNumberBlurEventDetail) => inputNumberBlurCounter.value++;
+const onInputNumberChange = (_: InputNumberChangeEventDetail) => inputNumberChangeCounter.value++;
+
+// PInputPassword
+const onInputPasswordInput = (e: InputPasswordInputEventDetail) => {
+  inputPasswordValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputPasswordBlur = (_: InputPasswordBlurEventDetail) => inputPasswordBlurCounter.value++;
+const onInputPasswordChange = (_: InputPasswordChangeEventDetail) => inputPasswordChangeCounter.value++;
+
+// PInputSearch
+const onInputSearchInput = (e: InputSearchInputEventDetail) => {
+  inputSearchValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputSearchBlur = (_: InputSearchBlurEventDetail) => inputSearchBlurCounter.value++;
+const onInputSearchChange = (_: InputSearchChangeEventDetail) => inputSearchChangeCounter.value++;
+
+// PInputTel
+const onInputTelInput = (e: InputTelInputEventDetail) => {
+  inputTelValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputTelBlur = (_: InputTelBlurEventDetail) => inputTelBlurCounter.value++;
+const onInputTelChange = (_: InputTelChangeEventDetail) => inputTelChangeCounter.value++;
+
+// PInputText
+const onInputTextInput = (e: InputTextInputEventDetail) => {
+  inputTextValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputTextBlur = (_: InputTextBlurEventDetail) => inputTextBlurCounter.value++;
+const onInputTextChange = (_: InputTextChangeEventDetail) => inputTextChangeCounter.value++;
+
+// PInputTime
+const onInputTimeInput = (e: InputTimeInputEventDetail) => {
+  inputTimeValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputTimeBlur = (_: InputTimeBlurEventDetail) => inputTimeBlurCounter.value++;
+const onInputTimeChange = (_: InputTimeChangeEventDetail) => inputTimeChangeCounter.value++;
+
+// PInputUrl
+const onInputUrlInput = (e: InputUrlInputEventDetail) => {
+  inputUrlValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputUrlBlur = (_: InputUrlBlurEventDetail) => inputUrlBlurCounter.value++;
+const onInputUrlChange = (_: InputUrlChangeEventDetail) => inputUrlChangeCounter.value++;
+
+// PTextarea
+const onTextareaInput = (e: TextareaInputEventDetail) => {
+  textareaValue.value = (e.target as HTMLTextAreaElement).value;
+};
+const onTextareaBlur = (_: TextareaBlurEventDetail) => textareaBlurCounter.value++;
+const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter.value++;
 /* eslint-enable @typescript-eslint/no-unused-vars */
 </script>
 
@@ -133,5 +283,150 @@ const onCarouselUpdate = (detail: CarouselUpdateEventDetail) => carouselUpdateEv
       <div>Slide 3</div>
     </PCarousel>
     <p>{{ carouselUpdateEventCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputDate
+      v-model="inputDateValue"
+      @input="onInputDateInput"
+      @blur="onInputDateBlur"
+      @change="onInputDateChange"
+      name="date"
+      label="Date Input"
+    />
+    <p>Value: {{ inputDateValue }}</p>
+    <p>Blur: {{ inputDateBlurCounter }}</p>
+    <p>Change: {{ inputDateChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputEmail
+      v-model="inputEmailValue"
+      @input="onInputEmailInput"
+      @blur="onInputEmailBlur"
+      @change="onInputEmailChange"
+      name="email"
+      label="Email Input"
+    />
+    <p>Value: {{ inputEmailValue }}</p>
+    <p>Blur: {{ inputEmailBlurCounter }}</p>
+    <p>Change: {{ inputEmailChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputNumber
+      v-model="inputNumberValue"
+      @input="onInputNumberInput"
+      @blur="onInputNumberBlur"
+      @change="onInputNumberChange"
+      name="number"
+      label="Number Input"
+      controls
+    />
+    <p>Value: {{ inputNumberValue }}</p>
+    <p>Blur: {{ inputNumberBlurCounter }}</p>
+    <p>Change: {{ inputNumberChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputPassword
+      v-model="inputPasswordValue"
+      @input="onInputPasswordInput"
+      @blur="onInputPasswordBlur"
+      @change="onInputPasswordChange"
+      name="password"
+      label="Password Input"
+      toggle
+    />
+    <p>Value: {{ inputPasswordValue }}</p>
+    <p>Blur: {{ inputPasswordBlurCounter }}</p>
+    <p>Change: {{ inputPasswordChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputSearch
+      v-model="inputSearchValue"
+      @input="onInputSearchInput"
+      @blur="onInputSearchBlur"
+      @change="onInputSearchChange"
+      name="search"
+      label="Search Input"
+      indicator
+    />
+    <p>Value: {{ inputSearchValue }}</p>
+    <p>Blur: {{ inputSearchBlurCounter }}</p>
+    <p>Change: {{ inputSearchChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputTel
+      v-model="inputTelValue"
+      @input="onInputTelInput"
+      @blur="onInputTelBlur"
+      @change="onInputTelChange"
+      name="tel"
+      label="Tel Input"
+    />
+    <p>Value: {{ inputTelValue }}</p>
+    <p>Blur: {{ inputTelBlurCounter }}</p>
+    <p>Change: {{ inputTelChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputText
+      v-model="inputTextValue"
+      @input="onInputTextInput"
+      @blur="onInputTextBlur"
+      @change="onInputTextChange"
+      name="text"
+      label="Text Input"
+      placeholder="Some placeholder"
+    />
+    <p>Value: {{ inputTextValue }}</p>
+    <p>Blur: {{ inputTextBlurCounter }}</p>
+    <p>Change: {{ inputTextChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputTime
+      v-model="inputTimeValue"
+      @input="onInputTimeInput"
+      @blur="onInputTimeBlur"
+      @change="onInputTimeChange"
+      name="time"
+      label="Time Input"
+    />
+    <p>Value: {{ inputTimeValue }}</p>
+    <p>Blur: {{ inputTimeBlurCounter }}</p>
+    <p>Change: {{ inputTimeChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputUrl
+      v-model="inputUrlValue"
+      @input="onInputUrlInput"
+      @blur="onInputUrlBlur"
+      @change="onInputUrlChange"
+      name="url"
+      label="URL Input"
+      indicator
+    />
+    <p>Value: {{ inputUrlValue }}</p>
+    <p>Blur: {{ inputUrlBlurCounter }}</p>
+    <p>Change: {{ inputUrlChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PTextarea
+      v-model="textareaValue"
+      @input="onTextareaInput"
+      @blur="onTextareaBlur"
+      @change="onTextareaChange"
+      name="textarea"
+      label="Textarea"
+    />
+    <p>Value: {{ textareaValue }}</p>
+    <p>Blur: {{ textareaBlurCounter }}</p>
+    <p>Change: {{ textareaChangeCounter }}</p>
   </div>
 </template>

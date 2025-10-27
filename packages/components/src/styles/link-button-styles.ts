@@ -94,8 +94,8 @@ export const getLinkButtonStyles = (
 
   const scalingVar = `var(${cssVariableInternalScaling}, var(--p-internal-scaling-factor))`;
 
-  const borderCompensation = variant === 'ghost' ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
-
+  const borderCompensation = variant === 'ghost' && !isHighContrastMode ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
+  const borderStyle = `${borderWidthBase} solid ${borderColor}`;
   const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} ${borderCompensation})`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
   const paddingInline = `max(calc(${scalingVar} * 1.625 * ${SCALING_BASE_VALUE} ${borderCompensation}), ${variant === 'ghost' ? '6px' : '4px'})`; // 1.625 * SCALING_BASE_VALUE corresponds to 26px
   const gap = `clamp(2px, calc(${scalingVar} * 0.5 * ${SCALING_BASE_VALUE}), 16px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 8px
@@ -128,8 +128,11 @@ export const getLinkButtonStyles = (
       textDecoration: 'none',
       ...textSmallStyle,
       ...(variant === 'ghost'
-        ? { ...frostedGlassStyle, border: 'none' } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
-        : { border: `${borderWidthBase} solid ${borderColor}` }),
+        ? {
+            ...frostedGlassStyle,
+            border: isHighContrastMode ? borderStyle : 'none',
+          } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
+        : { border: borderStyle }),
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,

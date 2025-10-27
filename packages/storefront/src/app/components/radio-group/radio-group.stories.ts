@@ -1,7 +1,7 @@
 'use client';
 
 import type { Story } from '@/models/story';
-import { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
   { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },

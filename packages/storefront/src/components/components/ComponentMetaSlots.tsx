@@ -18,6 +18,7 @@ type ComponentMetaSlotsProps = {
 export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => {
   return (
     <>
+      {/** biome-ignore lint/correctness/useUniqueElementIds: <Needed> */}
       <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="slots">
         Slots
       </PHeading>

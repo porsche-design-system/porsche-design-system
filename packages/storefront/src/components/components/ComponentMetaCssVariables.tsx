@@ -18,6 +18,7 @@ type ComponentMetaCssVariablesProps = {
 export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCssVariablesProps) => {
   return (
     <>
+      {/** biome-ignore lint/correctness/useUniqueElementIds: <Needed> */}
       <PHeading
         tag="h2"
         size="x-large"

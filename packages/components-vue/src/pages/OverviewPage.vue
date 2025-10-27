@@ -22,6 +22,15 @@ import {
   PMultiSelectOption,
   PorscheDesignSystemProvider,
   PPagination,
+  PInputDate,
+  PInputEmail,
+  PInputNumber,
+  PInputPassword,
+  PInputSearch,
+  PInputTel,
+  PInputText,
+  PInputTime,
+  PInputUrl,
   PPinCode,
   PPopover,
   PRadioGroup,
@@ -51,6 +60,7 @@ import {
   PTextList,
   PTextListItem,
   PWordmark,
+  PTextarea,
 } from '@porsche-design-system/components-vue';
 </script>
 
@@ -316,6 +326,62 @@ import {
       <div class="playground light" title="should render default switch">
         <PSwitch>Some label</PSwitch>
       </div>
+
+      <div class="playground light" title="should render default input-text">
+        <PInputText
+          name="some-name"
+          label="Label with placeholder"
+          placeholder="Some placeholder"
+          :counter="true"
+          :max-length="20"
+        ></PInputText>
+      </div>
+
+      <div class="playground light" title="should render default input-date">
+        <PInputDate name="some-name" label="Label"></PInputDate>
+      </div>
+
+      <div class="playground light" title="should render default input-email">
+        <PInputEmail name="some-name" label="Label"></PInputEmail>
+      </div>
+
+      <div class="playground light" title="should render default input-number">
+        <PInputNumber name="some-name" label="Label" value="1234" :controls="true"></PInputNumber>
+      </div>
+
+      <div class="playground light" title="should render default input-password">
+        <PInputPassword name="some-name" label="Label" value="some password" :toggle="true"></PInputPassword>
+      </div>
+
+      <div class="playground light" title="should render default input-search">
+        <PInputSearch name="some-name" label="Label" value="Some value" :clear="true" :indicator="true"></PInputSearch>
+      </div>
+
+      <div class="playground light" title="should render default input-tel">
+        <PInputTel name="some-name" label="Label"></PInputTel>
+      </div>
+
+      <div class="playground light" title="should render default input-text">
+        <PInputText name="some-name" label="Label" value="some-value" :counter="true" :max-length="20"></PInputText>
+      </div>
+
+      <div class="playground light" title="should render default input-time">
+        <PInputTime name="some-name" label="Label"></PInputTime>
+      </div>
+
+      <div class="playground light" title="should render default input-url">
+        <PInputUrl
+          name="some-name"
+          label="Label"
+          value="https://designsystem.porsche.com/"
+          :indicator="true"
+          :max-length="20"
+        ></PInputUrl>
+      </div>
+
+      <div class="playground light" title="should render default textarea">
+        <PTextarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></PTextarea>
+      </div>
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
@@ -578,6 +644,68 @@ import {
 
         <div class="playground light" title="should render default switch with custom prefix">
           <PSwitch>Some label</PSwitch>
+        </div>
+
+        <div class="playground light" title="should render default input-text with custom prefix">
+          <PInputText
+            name="some-name"
+            label="Label with placeholder"
+            placeholder="Some placeholder"
+            :counter="true"
+            :max-length="20"
+          ></PInputText>
+        </div>
+
+        <div class="playground light" title="should render default input-date with custom prefix">
+          <PInputDate name="some-name" label="Label"></PInputDate>
+        </div>
+
+        <div class="playground light" title="should render default input-email with custom prefix">
+          <PInputEmail name="some-name" label="Label"></PInputEmail>
+        </div>
+
+        <div class="playground light" title="should render default input-number with custom prefix">
+          <PInputNumber name="some-name" label="Label" value="1234" :controls="true"></PInputNumber>
+        </div>
+
+        <div class="playground light" title="should render default input-password with custom prefix">
+          <PInputPassword name="some-name" label="Label" value="some password" :toggle="true"></PInputPassword>
+        </div>
+
+        <div class="playground light" title="should render default input-search with custom prefix">
+          <PInputSearch
+            name="some-name"
+            label="Label"
+            value="Some value"
+            :clear="true"
+            :indicator="true"
+          ></PInputSearch>
+        </div>
+
+        <div class="playground light" title="should render default input-tel with custom prefix">
+          <PInputTel name="some-name" label="Label"></PInputTel>
+        </div>
+
+        <div class="playground light" title="should render default input-text with custom prefix">
+          <PInputText name="some-name" label="Label" value="some-value" :counter="true" :max-length="20"></PInputText>
+        </div>
+
+        <div class="playground light" title="should render default input-time with custom prefix">
+          <PInputTime name="some-name" label="Label"></PInputTime>
+        </div>
+
+        <div class="playground light" title="should render default input-url with custom prefix">
+          <PInputUrl
+            name="some-name"
+            label="Label"
+            value="https://designsystem.porsche.com/"
+            :indicator="true"
+            :max-length="20"
+          ></PInputUrl>
+        </div>
+
+        <div class="playground light" title="should render default textarea with custom prefix">
+          <PTextarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></PTextarea>
         </div>
       </div>
     </PorscheDesignSystemProvider>

@@ -1,4 +1,5 @@
 import { getHasConstructableStylesheetSupport } from '../../utils';
+import type { Backdrop } from '../../styles/dialog-styles';
 
 export const FLYOUT_POSITIONS = ['start', 'end'] as const;
 export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
@@ -11,6 +12,8 @@ export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
 export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
 export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+
+export type FlyoutBackdrop = Backdrop;
 
 /**
  * Map of flyout instances and their corresponding resize observers to update the experimental css property --p-flyout-sticky-top.
@@ -28,7 +31,6 @@ export const addStickyTopCssVarStyleSheet = (host: HTMLElement): void => {
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
     // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
     /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
-    // @ts-ignore
     host.shadowRoot.adoptedStyleSheets.push(stickyTopCssVarStyleSheetMap.get(host));
     updateStickyTopCssVarStyleSheet(host, 0);
   }

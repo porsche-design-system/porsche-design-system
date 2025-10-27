@@ -1627,6 +1627,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "footer": {
+        "description": "Renders a footer section below the description.",
+      },
       "header": {
         "description": "Renders a header section above the content area.",
       },
@@ -2847,6 +2850,7 @@ exports[`should match snapshot 1`] = `
       },
       "name": {
         "allowedValues": [
+          "ad",
           "ae",
           "am",
           "ar",
@@ -2883,6 +2887,7 @@ exports[`should match snapshot 1`] = `
           "gb",
           "ge",
           "gh",
+          "gi",
           "gr",
           "gt",
           "hk",
@@ -2905,12 +2910,15 @@ exports[`should match snapshot 1`] = `
           "kw",
           "kz",
           "lb",
+          "li",
           "lk",
           "lt",
           "lu",
           "lv",
           "ma",
+          "mc",
           "md",
+          "me",
           "mk",
           "mn",
           "mo",
@@ -2947,12 +2955,14 @@ exports[`should match snapshot 1`] = `
           "tn",
           "tr",
           "tt",
+          "tw",
           "ua",
           "us",
           "uy",
           "uz",
           "ve",
           "vn",
+          "xx",
           "za",
         ],
         "defaultValue": "de",
@@ -3227,6 +3237,15 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
+      },
+      "backdrop": {
+        "allowedValues": [
+          "blur",
+          "shading",
+        ],
+        "defaultValue": "blur",
+        "description": "Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).",
+        "type": "FlyoutBackdrop",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
@@ -7539,6 +7558,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "footer": {
+        "description": "Renders a footer section below the description.",
+      },
       "header": {
         "description": "Renders a header section above the content area.",
       },
@@ -8801,6 +8823,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-radio-group": {
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the radio-group has lost focus.",
+        "type": "void",
+      },
       "change": {
         "description": "Emitted when the selected option is changed.",
         "type": "RadioGroupChangeEventDetail",
@@ -8948,16 +8974,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group-option": {
-    "eventsMeta": {
-      "blur": {
-        "description": "Emitted when the radio input has lost focus.",
-        "type": "RadioGroupOptionBlurEventDetail",
-        "typeDetail": "Event",
-      },
-    },
     "hasAriaProp": false,
     "hasElementInternals": false,
-    "hasEvent": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
@@ -9194,6 +9213,12 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "SegmentedControlColumns",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
+        "type": "boolean",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9259,6 +9284,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "internalProps": {
+      "compact": null,
       "selected": null,
       "theme": "light",
     },
