@@ -4,7 +4,7 @@
     <input
       id="radio-group-option"
       type="radio"
-      aria-describedby="description message"
+      aria-describedby="message"
       tabindex="0"
     />
   </div>
