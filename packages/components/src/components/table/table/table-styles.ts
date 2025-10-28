@@ -1,4 +1,4 @@
-import { spacingFluidMedium, textSmallStyle, spacingStaticSmall } from '@porsche-design-system/styles';
+import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -19,11 +19,11 @@ export const cssVariableTableBorderWidth = '--p-internal-table-border-width';
 export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
 
 export const getComponentCss = (compact: boolean, layout: TableLayout, theme: Theme): string => {
-  const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
+  const { primaryColor, frostedColor, contrast20Color } = doGetThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    contrastLowColor: contrastLowColorDark,
+    frostedColor: frostedColorDark,
+    contrast20Color: contrast20ColorDark,
   } = doGetThemedColors('dark');
 
   return getCss({
@@ -44,12 +44,12 @@ export const getComponentCss = (compact: boolean, layout: TableLayout, theme: Th
       ...preventFoucOfNestedElementsStyles,
       '::slotted(*)': addImportantToEachRule({
         ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
-        [cssVariableTableHoverColor]: hoverColor,
-        [cssVariableTableBorderColor]: contrastLowColor,
+        [cssVariableTableHoverColor]: frostedColor,
+        [cssVariableTableBorderColor]: contrast20Color,
         [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          [cssVariableTableHoverColor]: hoverColorDark,
-          [cssVariableTableBorderColor]: contrastLowColorDark,
+          [cssVariableTableHoverColor]: frostedColorDark,
+          [cssVariableTableBorderColor]: contrast20ColorDark,
           [cssVariableTableHeadCellIconFilter]: 'invert(100%)',
         }),
         ...(isHighContrastMode &&

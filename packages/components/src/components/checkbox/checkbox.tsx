@@ -26,12 +26,7 @@ import { descriptionId } from '../common/label/label-utils';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
-import type {
-  CheckboxBlurEventDetail,
-  CheckboxChangeEventDetail,
-  CheckboxState,
-  CheckboxUpdateEventDetail,
-} from './checkbox-utils';
+import type { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from './checkbox-utils';
 
 const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
@@ -108,12 +103,6 @@ export class Checkbox {
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  /**
-   * Emitted when checkbox checked property is changed.
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
 
   /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
@@ -270,11 +259,5 @@ export class Checkbox {
     this.checked = checked;
     this.internals?.setFormValue(checked ? this.value : undefined);
     this.change.emit(e);
-
-    this.update.emit({
-      value: this.value,
-      name: this.name,
-      checked,
-    });
   };
 }

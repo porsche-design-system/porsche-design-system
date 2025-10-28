@@ -1,6 +1,12 @@
-import type { TabsBarSize, TabsBarWeight, TabsBarWeightDeprecated } from './tabs-bar-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import {
+  borderRadiusSmall,
+  fontSizeText,
+  frostedGlassStyle,
+  motionDurationModerate,
+  spacingStaticMedium,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -18,15 +24,9 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import {
-  borderRadiusSmall,
-  fontSizeText,
-  frostedGlassStyle,
-  motionDurationModerate,
-  spacingStaticMedium,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import type { TabsBarSize, TabsBarWeight } from './tabs-bar-utils';
 
 export const scrollerAnimatedCssClass = 'scroller--animated';
 
@@ -36,11 +36,11 @@ const transformSelector = (selector: string): string =>
 
 export const getComponentCss = (
   size: BreakpointCustomizable<TabsBarSize>,
-  weight: Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
+  weight: TabsBarWeight,
   theme: Theme
 ): string => {
-  const { primaryColor, hoverColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, hoverColor: hoverColorDark } = getThemedColors('dark');
+  const { primaryColor, frostedColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, frostedColor: frostedColorDark } = getThemedColors('dark');
 
   const barJssStyle: JssStyle = {
     position: 'absolute',
@@ -120,9 +120,9 @@ export const getComponentCss = (
         ...hoverMediaQuery({
           [transformSelector('::slotted([role]:hover)::before')]: {
             ...frostedGlassStyle,
-            background: hoverColor,
+            background: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
+              background: frostedColorDark,
             }),
           },
         }),

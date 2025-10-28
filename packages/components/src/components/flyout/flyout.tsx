@@ -17,7 +17,6 @@ import {
   THEMES,
   unobserveChildren,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
@@ -33,11 +32,8 @@ import {
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
   type FlyoutPosition,
-  type FlyoutPositionDeprecated,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
-
-type PositionDeprecationMapType = Record<FlyoutPositionDeprecated, Exclude<FlyoutPosition, FlyoutPositionDeprecated>>;
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -145,16 +141,6 @@ export class Flyout {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const positionDeprecationMap: PositionDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Flyout, FlyoutPositionDeprecated, FlyoutPosition>(
-      this,
-      'position',
-      positionDeprecationMap
-    );
-
     this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
@@ -164,10 +150,7 @@ export class Flyout {
       getComponentCss,
       this.open,
       this.backdrop,
-      (positionDeprecationMap[this.position as keyof PositionDeprecationMapType] || this.position) as Exclude<
-        FlyoutPosition,
-        FlyoutPositionDeprecated
-      >,
+      this.position,
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,

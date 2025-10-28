@@ -74,18 +74,6 @@ describe('render', () => {
       component.theme
     );
   });
-
-  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
-    const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
-    const component = initComponent();
-    component.host = document.createElement('p-segmented-control');
-    component.backgroundColor = 'background-surface';
-    component.host.attachShadow({ mode: 'open' });
-
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component, 'backgroundColor');
-  });
 });
 
 describe('updateSegmentedControlItemHandler', () => {

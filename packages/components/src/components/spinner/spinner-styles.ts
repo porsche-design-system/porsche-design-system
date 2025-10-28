@@ -1,7 +1,5 @@
+import { motionDurationVeryLong } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import type { SpinnerSize } from './spinner-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -12,7 +10,9 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { motionDurationVeryLong } from '@porsche-design-system/styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import type { SpinnerSize } from './spinner-utils';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';
@@ -29,8 +29,8 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
   const strokeDasharray = '57'; // C = 2πR
   const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+  const { primaryColor, contrast50Color } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrast50Color: contrast50ColorDark } = getThemedColors('dark');
   const { canvasColor, canvasTextColor } = getHighContrastColors();
   const firstHighContrastStrokeColor = isHighContrastMode && canvasTextColor;
   const lastHighContrastStrokeColor = isHighContrastMode && canvasColor;
@@ -53,9 +53,9 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       circle: {
         '&:first-child': {
           // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: firstHighContrastStrokeColor || contrastMediumColor,
+          stroke: firstHighContrastStrokeColor || contrast50Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: firstHighContrastStrokeColor || contrastMediumColorDark,
+            stroke: firstHighContrastStrokeColor || contrast50ColorDark,
           }),
         },
         '&:last-child': {

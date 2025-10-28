@@ -1,9 +1,9 @@
-import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
-import { getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
 import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
 
@@ -13,31 +13,30 @@ type Colors = {
   backgroundColor: string;
 };
 const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: Theme): Colors => {
-  const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor, backgroundFrostedColor } =
-    getThemedColors(theme);
+  const { contrast50Color, contrast80Color, contrast40Color, frostedColor } = getThemedColors(theme);
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
-    [v in Exclude<LinkButtonVariant, 'tertiary'>]: Colors;
+    [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: isHighContrastMode ? disabledColor : contrastHighColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? contrastHighColor : disabledColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? contrastHighColor : disabledColor,
+      textColor: isHighContrastMode ? contrast40Color : contrast80Color,
+      borderColor: isHighContrastMode ? contrast40Color : loading ? contrast80Color : contrast40Color,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? contrast80Color : contrast40Color,
     },
     secondary: {
-      textColor: disabledColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? contrastMediumColor : disabledColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? hoverColor : 'transparent',
+      textColor: contrast40Color,
+      borderColor: isHighContrastMode ? contrast40Color : loading ? contrast50Color : contrast40Color,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? frostedColor : 'transparent',
     },
     ghost: {
-      textColor: disabledColor,
-      borderColor: isHighContrastMode ? disabledColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
+      textColor: contrast40Color,
+      borderColor: isHighContrastMode ? contrast40Color : loading ? frostedColor : frostedColor,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? frostedColor : frostedColor,
     },
   };
 
-  return colors[variant === 'tertiary' ? 'secondary' : variant];
+  return colors[variant];
 };
 
 export const getComponentCss = (

@@ -11,6 +11,7 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
+
 ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
 type ColumnDefs = DataAdvanced & {

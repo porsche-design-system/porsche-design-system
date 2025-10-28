@@ -124,8 +124,8 @@ export const getComponentCss = (
   hasNavigation: boolean,
   alignControls: CarouselAlignControls
 ): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+  const { primaryColor, contrast50Color } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrast50Color: contrast50ColorDark } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
@@ -342,9 +342,9 @@ export const getComponentCss = (
               background: canvasTextColor,
             }
           : {
-              background: contrastMediumColor,
+              background: contrast50Color,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: contrastMediumColorDark,
+                background: contrast50ColorDark,
               }),
             }),
         ...(isInfinitePagination

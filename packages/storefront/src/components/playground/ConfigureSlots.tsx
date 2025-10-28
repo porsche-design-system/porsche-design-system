@@ -58,7 +58,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   hideLabel={true}
                   label="Select slot to be configured"
                   compact={true}
-                  onUpdate={(e) =>
+                  onChange={(e) =>
                     onUpdateSlots(
                       slotName,
                       Object.values(slotExamples).find((slot) => slot.name === e.detail.value)

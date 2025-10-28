@@ -1,8 +1,3 @@
-import type { JssStyle } from 'jss';
-import type { FormState } from '../../utils/form/form-state';
-import { isDisabledOrLoading, type Theme } from '../../utils';
-import { getThemedColors } from '../colors';
-import { getThemedFormStateColors } from '../form-state-color-styles';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -10,7 +5,12 @@ import {
   fontLineHeight,
   fontSizeTextSmall,
 } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
+import { isDisabledOrLoading, type Theme } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
+import { getThemedColors } from '../colors';
 import { addImportantToEachRule, getTransition, SCALING_BASE_VALUE } from '../common-styles';
+import { getThemedFormStateColors } from '../form-state-color-styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
@@ -22,15 +22,15 @@ export const getCheckboxBaseStyles = (
   state?: FormState,
   compact?: boolean
 ): JssStyle => {
-  const { contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const { contrastMediumColor: contrastMediumColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
+  const { contrast50Color, contrast40Color } = getThemedColors(theme);
+  const { contrast50Color: contrast50ColorDark, contrast40Color: contrast40ColorDark } = getThemedColors('dark');
   const { formStateColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark } = getThemedFormStateColors('dark', state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedColorDark = disabledOrLoading ? disabledColorDark : formStateColorDark || contrastMediumColorDark;
+  const uncheckedColor = disabledOrLoading ? contrast40Color : formStateColor || contrast50Color;
+  const uncheckedColorDark = disabledOrLoading ? contrast40ColorDark : formStateColorDark || contrast50ColorDark;
 
   const background = `transparent 0% 0% / ${fontLineHeight}`;
 

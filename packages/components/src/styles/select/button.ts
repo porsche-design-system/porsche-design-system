@@ -21,11 +21,11 @@ export const getButtonJssStyle = (
   const cssVarTextColor = `--p-${componentName}-text-color`;
   const cssVarBorderColor = `--p-${componentName}-border-color`;
 
-  const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor, contrast40Color, contrast50Color } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastMediumColor: contrastMediumColorDark,
+    contrast40Color: contrast40ColorDark,
+    contrast50Color: contrast50ColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -47,20 +47,20 @@ export const getButtonJssStyle = (
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     color: `var(${cssVarTextColor}, ${primaryColor})`,
     backgroundColor: `var(${cssVarBackgroundColor}, transparent)`,
-    border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrastMediumColor})`,
+    border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrast50Color})`,
     borderRadius: borderRadiusSmall,
     ...(isDisabled && {
       cursor: 'not-allowed',
-      color: disabledColor,
-      borderColor: disabledColor,
+      color: contrast40Color,
+      borderColor: contrast40Color,
     }),
     ...prefersColorSchemeDarkMediaQuery(theme, {
       color: `var(${cssVarTextColor}, ${primaryColorDark})`,
       backgroundColor: `var(${cssVarBackgroundColor}, transparent)`,
-      border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark})`,
+      border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateColorDark || contrast50ColorDark})`,
       ...(isDisabled && {
-        color: disabledColorDark,
-        borderColor: disabledColorDark,
+        color: contrast40ColorDark,
+        borderColor: contrast40ColorDark,
       }),
     }),
     ...(!isDisabled && {

@@ -1,7 +1,3 @@
-import type { BreakpointCustomizable, HeadingSize, Theme } from '../../types';
-import type { HeadingAlign, HeadingColor } from './heading-utils';
-import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   fontSizeHeadingLarge,
   fontSizeHeadingMedium,
@@ -10,7 +6,11 @@ import {
   fontSizeHeadingXXLarge,
   headingXXLargeStyle,
 } from '@porsche-design-system/styles';
-import { getTypographySlottedJssStyle, getTypographyRootJssStyle } from '../../styles/typography-styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { BreakpointCustomizable, HeadingSize, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
+import type { HeadingAlign, HeadingColor } from './heading-utils';
 
 export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
   small: fontSizeHeadingSmall,

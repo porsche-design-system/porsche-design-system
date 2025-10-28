@@ -1,12 +1,12 @@
 import {
   type DrilldownUpdateEventDetail,
   PButton,
+  PButtonTile,
   PDrilldown,
   PDrilldownItem,
-  PLink,
-  PButtonTile,
-  PModelSignature,
   PDrilldownLink,
+  PLink,
+  PModelSignature,
 } from '@porsche-design-system/components-react';
 import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
 import React, { useCallback, useState } from 'react';

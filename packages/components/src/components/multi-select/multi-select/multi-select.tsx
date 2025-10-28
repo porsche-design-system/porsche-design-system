@@ -54,7 +54,6 @@ import {
   type MultiSelectOptgroup,
   type MultiSelectOption,
   type MultiSelectState,
-  type MultiSelectUpdateEventDetail,
   resetSelectedOptions,
   setSelectedMultiSelectOption,
   setSelectedOptions,
@@ -139,11 +138,6 @@ export class MultiSelect {
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<MultiSelectChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
@@ -544,10 +538,6 @@ export class MultiSelect {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.currentValue,
-      name: this.name,
-    });
-    this.update.emit({
       value: this.currentValue,
       name: this.name,
     });

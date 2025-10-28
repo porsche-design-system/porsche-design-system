@@ -11,11 +11,11 @@ import {
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-styles';
 import {
-  LINK_TILE_WEIGHTS,
   type LinkTileAlign,
   type LinkTileAriaAttribute,
   type LinkTileAspectRatio,
@@ -28,7 +28,7 @@ import {
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
-  weight: AllowedTypes.breakpoint<LinkTileWeight>(LINK_TILE_WEIGHTS),
+  weight: AllowedTypes.breakpoint<LinkTileWeight>(TILE_WEIGHTS),
   href: AllowedTypes.string,
   target: AllowedTypes.string,
   download: AllowedTypes.string,

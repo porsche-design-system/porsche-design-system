@@ -1,6 +1,3 @@
-import type { DividerColor, DividerDirection, DividerColorDeprecated } from './divider-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -9,27 +6,30 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import type { DividerColor, DividerDirection } from './divider-utils';
 
 export const getComponentCss = (
-  color: Exclude<DividerColor, DividerColorDeprecated>,
+  color: DividerColor,
   orientation: BreakpointCustomizable<DividerDirection>,
   theme: Theme
 ): string => {
-  const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
+  const { contrast20Color, contrast50Color, contrast80Color } = getThemedColors(theme);
   const {
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    contrastHighColor: contrastHighColorDark,
+    contrast20Color: contrast20ColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast80Color: contrast80ColorDark,
   } = getThemedColors('dark');
-  const colorMap: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
-    'contrast-low': contrastLowColor,
-    'contrast-medium': contrastMediumColor,
-    'contrast-high': contrastHighColor,
+  const colorMap: Record<DividerColor, string> = {
+    'contrast-low': contrast20Color,
+    'contrast-medium': contrast50Color,
+    'contrast-high': contrast80Color,
   };
-  const colorMapDark: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
-    'contrast-low': contrastLowColorDark,
-    'contrast-medium': contrastMediumColorDark,
-    'contrast-high': contrastHighColorDark,
+  const colorMapDark: Record<DividerColor, string> = {
+    'contrast-low': contrast20ColorDark,
+    'contrast-medium': contrast50ColorDark,
+    'contrast-high': contrast80ColorDark,
   };
 
   return getCss({

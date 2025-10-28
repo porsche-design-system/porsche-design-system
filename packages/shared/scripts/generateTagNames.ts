@@ -1,9 +1,9 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { globbySync } from 'globby';
 import { camelCase } from 'change-case';
+import * as fs from 'fs';
+import { globbySync } from 'globby';
+import * as path from 'path';
 
-const INTERNAL_TAG_NAMES = ['p-select-wrapper-dropdown', 'p-toast-item'];
+const INTERNAL_TAG_NAMES = ['p-toast-item'];
 
 const generateTagNames = (): void => {
   // can't resolve @porsche-design-system/components without building it first, therefore we use relative path

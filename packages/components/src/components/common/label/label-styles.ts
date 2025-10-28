@@ -6,7 +6,7 @@ import {
   getTransition,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { type Theme, buildResponsiveStyles } from '../../../utils';
+import { buildResponsiveStyles, type Theme } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
@@ -17,11 +17,11 @@ export const getFunctionalComponentLabelStyles = (
   additionalDefaultJssStyle?: JssStyle,
   additionalIsShownJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
+  const { primaryColor, contrast40Color, contrast80Color } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
+    contrast40Color: contrast40ColorDark,
+    contrast80Color: contrast80ColorDark,
   } = getThemedColors('dark');
 
   return {
@@ -29,13 +29,13 @@ export const getFunctionalComponentLabelStyles = (
       ...textSmallStyle,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      color: isDisabledOrLoading ? contrast40Color : primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
         getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)
       ),
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
+        color: isDisabledOrLoading ? contrast40ColorDark : primaryColorDark,
       }),
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
@@ -45,9 +45,9 @@ export const getFunctionalComponentLabelStyles = (
         marginTop: `-${spacingStaticXSmall}`,
         fontSize: fontSizeTextXSmall,
         ...(!isDisabledOrLoading && {
-          color: contrastHighColor,
+          color: contrast80Color,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastHighColorDark,
+            color: contrast80ColorDark,
           }),
         }),
       },

@@ -1,8 +1,8 @@
-import type { JssStyle, Styles } from 'jss';
-import type { Theme } from '../../../types';
-import { getTransition, prefersColorSchemeDarkMediaQuery } from '../../../styles';
 import { spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import type { JssStyle, Styles } from 'jss';
+import { getTransition, prefersColorSchemeDarkMediaQuery } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
+import type { Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 
 export const getFunctionalComponentStateMessageStyles = (

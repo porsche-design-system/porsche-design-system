@@ -1,23 +1,23 @@
-import type { FormState } from '../../utils/form/form-state';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss } from '../../utils';
-import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderWidthBase,
   fontLineHeight,
   spacingStaticSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
 
 export const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
 export const getScalingVar = (compact: boolean) => `var(${cssVarInternalPinCodeScaling}, ${compact ? 0.5 : 1})`;

@@ -16,9 +16,9 @@ const generatedRoutes = {
     "path": "/banner-error",
     "name": "BannerError"
   },
-  "bannerNeutral": {
-    "path": "/banner-neutral",
-    "name": "BannerNeutral"
+  "bannerInfo": {
+    "path": "/banner-info",
+    "name": "BannerInfo"
   },
   "bannerNoDismiss": {
     "path": "/banner-no-dismiss",
@@ -47,10 +47,6 @@ const generatedRoutes = {
   "button": {
     "path": "/button",
     "name": "Button"
-  },
-  "buttonGroup": {
-    "path": "/button-group",
-    "name": "ButtonGroup"
   },
   "buttonPure": {
     "path": "/button-pure",
@@ -119,14 +115,6 @@ const generatedRoutes = {
   "checkbox": {
     "path": "/checkbox",
     "name": "Checkbox"
-  },
-  "checkboxWrapper": {
-    "path": "/checkbox-wrapper",
-    "name": "CheckboxWrapper"
-  },
-  "contentWrapper": {
-    "path": "/content-wrapper",
-    "name": "ContentWrapper"
   },
   "coreInitializer": {
     "path": "/core-initializer",
@@ -216,17 +204,9 @@ const generatedRoutes = {
     "path": "/fieldset",
     "name": "Fieldset"
   },
-  "fieldsetWrapper": {
-    "path": "/fieldset-wrapper",
-    "name": "FieldsetWrapper"
-  },
   "flag": {
     "path": "/flag",
     "name": "Flag"
-  },
-  "flex": {
-    "path": "/flex",
-    "name": "Flex"
   },
   "flyout_1": {
     "path": "/flyout-1",
@@ -336,10 +316,6 @@ const generatedRoutes = {
     "path": "/flyout-header-footer-subfooter",
     "name": "FlyoutHeaderFooterSubfooter"
   },
-  "flyoutHeaderFooterSubfooterPositionLeft": {
-    "path": "/flyout-header-footer-subfooter-position-left",
-    "name": "FlyoutHeaderFooterSubfooterPositionLeft"
-  },
   "flyoutHeaderFooterSubfooterPositionStart": {
     "path": "/flyout-header-footer-subfooter-position-start",
     "name": "FlyoutHeaderFooterSubfooterPositionStart"
@@ -360,10 +336,6 @@ const generatedRoutes = {
     "path": "/flyout-header-scrollable-content",
     "name": "FlyoutHeaderScrollableContent"
   },
-  "flyoutPositionLeft": {
-    "path": "/flyout-position-left",
-    "name": "FlyoutPositionLeft"
-  },
   "flyoutPositionStart": {
     "path": "/flyout-position-start",
     "name": "FlyoutPositionStart"
@@ -372,17 +344,9 @@ const generatedRoutes = {
     "path": "/flyout-prefixed",
     "name": "FlyoutPrefixed"
   },
-  "grid": {
-    "path": "/grid",
-    "name": "Grid"
-  },
   "heading": {
     "path": "/heading",
     "name": "Heading"
-  },
-  "headline": {
-    "path": "/headline",
-    "name": "Headline"
   },
   "icon": {
     "path": "/icon",
@@ -436,25 +400,13 @@ const generatedRoutes = {
     "path": "/link-pure",
     "name": "LinkPure"
   },
-  "linkSocial": {
-    "path": "/link-social",
-    "name": "LinkSocial"
-  },
   "linkTile": {
     "path": "/link-tile",
     "name": "LinkTile"
   },
-  "linkTileModelSignature": {
-    "path": "/link-tile-model-signature",
-    "name": "LinkTileModelSignature"
-  },
   "linkTileProduct": {
     "path": "/link-tile-product",
     "name": "LinkTileProduct"
-  },
-  "marque": {
-    "path": "/marque",
-    "name": "Marque"
   },
   "modal": {
     "path": "/modal",
@@ -507,10 +459,6 @@ const generatedRoutes = {
   "modalSlottedHeader": {
     "path": "/modal-slotted-header",
     "name": "ModalSlottedHeader"
-  },
-  "modalSlottedHeading": {
-    "path": "/modal-slotted-heading",
-    "name": "ModalSlottedHeading"
   },
   "modalStickyFooter": {
     "path": "/modal-sticky-footer",
@@ -656,10 +604,6 @@ const generatedRoutes = {
     "path": "/popover-top",
     "name": "PopoverTop"
   },
-  "radioButtonWrapper": {
-    "path": "/radio-button-wrapper",
-    "name": "RadioButtonWrapper"
-  },
   "radioGroup": {
     "path": "/radio-group",
     "name": "RadioGroup"
@@ -756,14 +700,6 @@ const generatedRoutes = {
     "path": "/select-scaling-2",
     "name": "SelectScaling_2"
   },
-  "selectWrapper": {
-    "path": "/select-wrapper",
-    "name": "SelectWrapper"
-  },
-  "selectWrapperOpenedScrollContext": {
-    "path": "/select-wrapper-opened-scroll-context",
-    "name": "SelectWrapperOpenedScrollContext"
-  },
   "sheet": {
     "path": "/sheet",
     "name": "Sheet"
@@ -832,10 +768,6 @@ const generatedRoutes = {
     "path": "/text",
     "name": "Text"
   },
-  "textFieldWrapper": {
-    "path": "/text-field-wrapper",
-    "name": "TextFieldWrapper"
-  },
   "textList": {
     "path": "/text-list",
     "name": "TextList"
@@ -843,10 +775,6 @@ const generatedRoutes = {
   "textarea": {
     "path": "/textarea",
     "name": "Textarea"
-  },
-  "textareaWrapper": {
-    "path": "/textarea-wrapper",
-    "name": "TextareaWrapper"
   },
   "toast": {
     "path": "/toast",
@@ -868,9 +796,9 @@ const generatedRoutes = {
     "path": "/toast-prefixed",
     "name": "ToastPrefixed"
   },
-  "toastStateNeutral": {
-    "path": "/toast-state-neutral",
-    "name": "ToastStateNeutral"
+  "toastStateInfo": {
+    "path": "/toast-state-info",
+    "name": "ToastStateInfo"
   },
   "toastStateSuccess": {
     "path": "/toast-state-success",

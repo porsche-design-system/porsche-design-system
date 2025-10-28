@@ -1,4 +1,4 @@
-import { getCss } from '../../utils';
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -9,14 +9,14 @@ import {
   prefersColorSchemeDarkMediaQuery,
   type ThemedColors,
 } from '../../styles';
+import type { Theme } from '../../types';
+import { getCss } from '../../utils';
 import {
+  getSvgUrl,
   type ModelSignatureColor,
   type ModelSignatureModel,
   type ModelSignatureSize,
-  getSvgUrl,
 } from './model-signature-utils';
-import type { Theme } from '../../types';
-import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 
 const cssVariableWidth = '--p-model-signature-width';
 const cssVariableHeight = '--p-model-signature-height';
@@ -28,9 +28,9 @@ const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors):
   const colorMap: Record<ModelSignatureColor, string> = {
     primary: themedColors.primaryColor,
     inherit: 'black',
-    'contrast-low': themedColors.contrastLowColor,
-    'contrast-medium': themedColors.contrastMediumColor,
-    'contrast-high': themedColors.contrastHighColor,
+    'contrast-low': themedColors.contrast20Color,
+    'contrast-medium': themedColors.contrast50Color,
+    'contrast-high': themedColors.contrast80Color,
   };
 
   return colorMap[color];

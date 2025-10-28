@@ -1,6 +1,14 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { AccordionSize } from './accordion-utils';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXXSmall,
+  fontWeightSemiBold,
+  motionDurationShort,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,17 +21,9 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXXSmall,
-  fontWeightSemiBold,
-  motionDurationShort,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { AccordionSize } from './accordion-utils';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
@@ -32,12 +32,12 @@ export const getComponentCss = (
   theme: Theme,
   sticky: boolean
 ): string => {
-  const { primaryColor, hoverColor, contrastLowColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor, frostedColor, contrast20Color, canvasColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    contrastLowColor: contrastLowColorDark,
-    backgroundColor: backgroundColorDark,
+    frostedColor: frostedColorDark,
+    contrast20Color: contrast20ColorColorDark,
+    canvasColor: canvasColorDark,
   } = getThemedColors('dark');
   const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
   const positionStickyTopFallback = '0';
@@ -50,9 +50,9 @@ export const getComponentCss = (
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
             : {
-                borderBottom: `1px solid ${contrastLowColor}`,
+                borderBottom: `1px solid ${contrast20Color}`,
                 ...prefersColorSchemeDarkMediaQuery(theme, {
-                  borderColor: contrastLowColorDark,
+                  borderColor: contrast20ColorColorDark,
                 }),
               }),
           '&(:only-of-type)': { borderBottom: 0 },
@@ -109,9 +109,9 @@ export const getComponentCss = (
               transition: getTransition('background-color'),
             },
             '&:hover::before': {
-              background: hoverColor,
+              background: frostedColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: hoverColorDark,
+                background: frostedColorDark,
               }),
             },
           })
@@ -125,9 +125,9 @@ export const getComponentCss = (
         position: 'sticky',
         top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
         zIndex: 1, // to be on top of the collapsible
-        backgroundColor,
+        backgroundColor: canvasColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: backgroundColorDark,
+          backgroundColor: canvasColorDark,
         }),
       }),
     },

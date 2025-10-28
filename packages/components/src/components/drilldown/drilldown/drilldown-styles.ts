@@ -51,12 +51,12 @@ export const getComponentCss = (
   isSecondaryScrollerVisible: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
+  const { primaryColor, canvasColor, surfaceColor, scrimColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    backgroundShadingColor: backgroundShadingColorDark,
+    canvasColor: canvasColorDark,
+    surfaceColor: surfaceColorDark,
+    scrimColor: scrimColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -76,17 +76,17 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           [cssVarColorPrimary]: primaryColor,
-          [cssVarColorBackgroundBase]: backgroundColor,
-          [cssVarColorBackgroundSurface]: backgroundSurfaceColor,
-          [cssVarColorBackgroundShading]: backgroundShadingColor,
+          [cssVarColorBackgroundBase]: canvasColor,
+          [cssVarColorBackgroundSurface]: surfaceColor,
+          [cssVarColorBackgroundShading]: scrimColor,
           [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             [cssVarColorPrimary]: primaryColorDark,
-            [cssVarColorBackgroundBase]: backgroundColorDark,
-            [cssVarColorBackgroundSurface]: backgroundSurfaceColorDark,
-            [cssVarColorBackgroundShading]: backgroundShadingColorDark,
+            [cssVarColorBackgroundBase]: canvasColorDark,
+            [cssVarColorBackgroundSurface]: surfaceColorDark,
+            [cssVarColorBackgroundShading]: scrimColorDark,
             [cssVarColorBackgroundScroller]: 'rgba(0,0,0,.01)', // ensures that the scrollbar color is mostly set correctly
           }),
         }),

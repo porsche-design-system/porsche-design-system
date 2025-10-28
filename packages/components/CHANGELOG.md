@@ -14,6 +14,131 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Removed (deprecated in v3 already)
+
+- `Accordion`:
+  - `tag` (use `heading-tag` instead)
+  - `accordionChange`
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Banner`:
+  - `slot="title"` (use `slot="heading"` instead)
+  - prop `persistent` (use `dismissButton` instead)
+  - prop `width`
+  - value `neutral` of prop `state` (use `info` instead)
+- `Button Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Carousel`:
+  - prop `wrapContent` (has no effect anyway)
+  - prop `disablePagination` (use `pagination` instead)
+  - value `left` of prop `alignHeader` (use `start` instead)
+  - event `carouselChange` use `update` instead
+- `Checkbox`:
+  - event `update` (use `change` instead)
+- `Display`:
+  - value `left | right` of prop `align` (use `start | end` instead)
+- `Divider`:
+  - prop `orientation` (use `direction` instead)
+  - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
+- `Flyout`:
+  - value `left | right` of prop `position` (use `start | end` instead)
+- `Heading`:
+  - value `left | right` of prop `align` (use `start | end` instead)
+- `Icon`:
+  - prop: `lazy`
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+- `Inline Notification`:
+  - prop `persistent` (use `dismissButton` instead)
+  - value `neutral` of prop `state` (use `info` instead)
+- `Link Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
+  - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` (use `1/1 | 4/3 | 3/4 | 16/9 | 9/16` instead)
+- `Link Tile`, `Button Tile`:
+  - Value `default` of prop `size` (use `medium` instead)
+  - Value `semibold` of prop `weight` (use `semi-bold` instead)
+- `Modal`:
+  - prop `disableCloseButton` (use `dismissButton` instead)
+  - prop `heading` (use `slot="header"` instead)
+  - slot `heading` (use `slot="header"` instead)
+  - event `close` (use `dismiss` instead)
+- `Multi Select`:
+  - event `update` (use `change` instead)
+- `Pagination`:
+  - prop `allyLabel` (use `intl.root` instead)
+  - prop `allyLabelPrev` (use `intl.prev` instead)
+  - prop `allyLabelPage` (use `intl.page` instead)
+  - prop `allyLabelNext` (use `intl.next` instead)
+  - prop `maxNumberOfPageLinks` (has no effect anyway)
+  - event `pageChange` (use `update` instead)
+- `Pin Code`:
+  - event `update` (use `change` instead)
+- `Scroller`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
+- `Segmented Control`:
+  - prop `backgroundColor` (has no effect anyway)
+  - event `segmentedControlChange` (use `change` instead)
+  - event `update` (use `change` instead)
+- `Select`:
+  - event `update` (use `change` instead)
+- `Stepper Horizontal`:
+  - event `stepChange` (use `update` instead)
+- `Switch`:
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+  - event `switchChange` (use `update` instead)
+- `Table`:
+  - event `sortingChange` (use `update` instead)
+- `Tabs`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - event `tabChange` (use `update` instead)
+- `Tabs Bar`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - event `tabChange` (use `update` instead)
+- `Tag`:
+  - value
+    `background-default | neutral-contrast-high | notification-neutral | notification-warning | notification-error | notification-success`
+    of prop `color` (use
+    `background-base | primary | notification-info-soft | notification-warning-soft | notification-error-soft | notification-success-soft`
+    instead)
+- `Tag Dismissible`:
+  - value `background-default` of prop `color` (use `background-base` instead)
+- `Text`
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+- `Text List`
+  - prop `listType` (use `type` instead)
+  - prop `orderType` (use `type` instead)
+  - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
+- `Toast`:
+  - value `neutral` of prop `state` (use `info` instead)
+- Components:
+  - `Button Group` (use Tailwind CSS instead,
+    `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
+  - `Checkbox Wrapper` (use `Checkbox` instead)
+  - `Radio Button Wrapper` (use `radio-group` instead)
+  - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
+  - `Link Tile Model Signature`
+  - `Fieldset Wrapper` (use `Fieldset` instead)
+  - `Flex` (use CSS Flex instead, Tailwind CSS is recommended)
+  - `Grid` (use CSS Grid instead, Tailwind CSS is recommended)
+  - `Headline` (use `Heading` instead)
+  - `Link Social`
+  - `Marque` (use `Wordmark` (recommended) or `Crest` instead)
+  - `Select Wrapper` (use `Select` instead)
+  - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
+  - `Textarea Wrapper` (use `Textarea` instead)
+
 ## [3.30.0-rc.2] - 2025-10-24
 
 ### Added

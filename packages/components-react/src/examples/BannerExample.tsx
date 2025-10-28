@@ -1,5 +1,5 @@
+import { PBanner, PButton } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { PButton, PBanner } from '@porsche-design-system/components-react';
 
 export const BannerExamplePage = (): JSX.Element => {
   const [isBannerOpen, setIsBannerOpen] = useState(false);

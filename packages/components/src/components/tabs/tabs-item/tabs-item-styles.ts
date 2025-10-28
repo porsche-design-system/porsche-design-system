@@ -1,5 +1,3 @@
-import type { Theme } from '../../../types';
-import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
@@ -7,6 +5,8 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
+import type { Theme } from '../../../types';
+import { getCss } from '../../../utils';
 
 export const getComponentCss = (theme: Theme): string => {
   const { primaryColor } = getThemedColors(theme);

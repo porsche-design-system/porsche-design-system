@@ -293,7 +293,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="bg-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4"
+        className="bg-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12"
         aria-label="Benefits"
       >
         <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-(--max-width-prose) mx-auto">

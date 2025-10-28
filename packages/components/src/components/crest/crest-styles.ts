@@ -1,6 +1,6 @@
+import { addImportantToEachRule, colorSchemeStyles, getFocusJssStyle, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import { crestSize } from './crest-utils';
-import { addImportantToEachRule, colorSchemeStyles, getFocusJssStyle, hostHiddenStyles } from '../../styles';
 
 const { width, height } = crestSize;
 const getDimensionStyle = {

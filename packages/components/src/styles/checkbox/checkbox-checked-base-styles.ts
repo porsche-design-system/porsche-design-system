@@ -1,10 +1,10 @@
 import type { JssStyle } from 'jss';
-import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import type { FormState } from '../../utils/form/form-state';
 import { isDisabledOrLoading, isHighContrastMode, type Theme } from '../../utils';
-import { getHighContrastColors, getInvertedThemedColors, getThemedColors } from '../colors';
-import { getThemedFormStateColors } from '../form-state-color-styles';
+import type { FormState } from '../../utils/form/form-state';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { getHighContrastColors, getThemedColors } from '../colors';
+import { getThemedFormStateColors } from '../form-state-color-styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 import { getSchemedHighContrastMediaQuery } from '../schemed-high-contrast-media-query';
 
@@ -20,8 +20,12 @@ export const getCheckboxCheckedBaseStyles = (
   isLoading?: boolean,
   state?: FormState
 ): JssStyle => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
+  const { primaryColor, primaryInvertedColor, contrast40Color } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    primaryInvertedColor: primaryInvertedColorDark,
+    contrast40Color: contrast40ColorDark,
+  } = getThemedColors('dark');
   const { formStateColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark } = getThemedFormStateColors('dark', state);
   const { canvasTextColor } = getHighContrastColors();
@@ -31,16 +35,16 @@ export const getCheckboxCheckedBaseStyles = (
   const checkedColor = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-      ? disabledColor
+      ? contrast40Color
       : formStateColor || primaryColor;
   const checkedColorDark = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-      ? disabledColorDark
+      ? contrast40ColorDark
       : formStateColorDark || primaryColorDark;
 
-  const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
-  const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
+  const checkedIconColor = escapeHashCharacter(primaryInvertedColor);
+  const checkedIconColorDark = escapeHashCharacter(primaryInvertedColorDark);
 
   return {
     borderColor: checkedColor,

@@ -5,7 +5,7 @@ import {
   PSelect,
   PSelectOption,
   type PSelectProps,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { StorefrontDirection } from '@/models/dir';
 
@@ -13,17 +13,17 @@ type DirectionSelectProps = {
   value: StorefrontDirection;
   label?: PSelectProps['label'];
   hideLabel?: PSelectProps['hideLabel'];
-  onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
+  onDirectionChange: (event: CustomEvent<SelectChangeEventDetail>) => void;
 };
 
 export const DirectionSelect = ({
   value = 'ltr',
   label = 'Direction',
   hideLabel = false,
-  onUpdate,
+  onDirectionChange,
 }: DirectionSelectProps) => {
   return (
-    <PSelect name="direction" value={value} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
+    <PSelect name="direction" value={value} hideLabel={hideLabel} compact={true} onChange={onDirectionChange}>
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>

@@ -16,7 +16,7 @@ import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import type { Theme } from '../types';
 import { isThemeDark } from '../utils';
-import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { getThemedColors, prefersColorSchemeDarkMediaQuery, type ThemedColors } from './';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;

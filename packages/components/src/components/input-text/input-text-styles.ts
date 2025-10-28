@@ -1,9 +1,9 @@
+import { getHiddenTextJssStyle } from '../../styles';
+import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
-import { getUnitCounterJssStyle } from '../../styles/form-styles';
-import { getHiddenTextJssStyle } from '../../styles';
 
 // CSS Variables defined in base input
 /**

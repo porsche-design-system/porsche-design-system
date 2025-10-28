@@ -1,6 +1,13 @@
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  frostedGlassStyle,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import { type GetJssStyleFunction, buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
+import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -12,13 +19,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -52,11 +52,11 @@ export const getLinkButtonPureStyles = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
-  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrast40Color, frostedColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    hoverColor: hoverColorDark,
+    contrast40Color: contrast40ColorDark,
+    frostedColor: frostedColorDark,
   } = getThemedColors('dark');
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
@@ -82,10 +82,10 @@ export const getLinkButtonPureStyles = (
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      color: isDisabledOrLoading ? contrast40Color : primaryColor,
       textDecoration: underline ? 'underline' : 'none',
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
+        color: isDisabledOrLoading ? contrast40ColorDark : primaryColorDark,
       }),
       ...textSmallStyle,
       ...mergeDeep(
@@ -113,9 +113,9 @@ export const getLinkButtonPureStyles = (
         transition: getTransition('background-color'),
         ...(active && {
           ...frostedGlassStyle,
-          backgroundColor: hoverColor,
+          backgroundColor: frostedColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundColor: hoverColorDark,
+            backgroundColor: frostedColorDark,
           }),
         }),
       },
@@ -123,9 +123,9 @@ export const getLinkButtonPureStyles = (
         hoverMediaQuery({
           '&:hover::before': {
             ...frostedGlassStyle,
-            backgroundColor: hoverColor,
+            backgroundColor: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
+              backgroundColor: frostedColorDark,
             }),
           },
         })),
@@ -149,8 +149,7 @@ export const getLinkButtonPureStyles = (
             { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
             buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-              // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-              order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+              order: alignLabelValue === 'start' ? -1 : 0,
             }))
           ),
         }

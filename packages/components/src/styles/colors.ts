@@ -1,143 +1,161 @@
-import type { Theme } from '@porsche-design-system/styles';
-import { isThemeDark, isHighContrastMode } from '../utils';
+import { isHighContrastMode, type Theme } from '../utils';
+import {
+  colorCanvasDark,
+  colorCanvasInvertedDark,
+  colorCanvasInvertedLight,
+  colorCanvasLight,
+  colorContrast10Dark,
+  colorContrast10Light,
+  colorContrast20Dark,
+  colorContrast20Light,
+  colorContrast30Dark,
+  colorContrast30Light,
+  colorContrast40Dark,
+  colorContrast40Light,
+  colorContrast50Dark,
+  colorContrast50Light,
+  colorContrast60Dark,
+  colorContrast60Light,
+  colorContrast70Dark,
+  colorContrast70Light,
+  colorContrast80Dark,
+  colorContrast80Light,
+  colorContrast90Dark,
+  colorContrast90Light,
+  colorErrorDark,
+  colorErrorLight,
+  colorErrorSoftDark,
+  colorErrorSoftLight,
+  colorFocusDark,
+  colorFocusLight,
+  colorFrostedDark,
+  colorFrostedLight,
+  colorInfoDark,
+  colorInfoLight,
+  colorInfoSoftDark,
+  colorInfoSoftLight,
+  colorPrimaryDark,
+  colorPrimaryLight,
+  colorScrimDark,
+  colorScrimLight,
+  colorPrimaryInvertedLight,
+  colorPrimaryInvertedDark,
+  colorSuccessDark,
+  colorSuccessLight,
+  colorSuccessSoftDark,
+  colorSuccessSoftLight,
+  colorSurfaceDark,
+  colorSurfaceLight,
+  colorWarningDark,
+  colorWarningLight,
+  colorWarningSoftDark,
+  colorWarningSoftLight,
+} from '@porsche-design-system/tokens';
 
 type ThemedColor =
-  | 'primaryColor'
-  | 'primaryColorDarken'
-  | 'backgroundColor'
-  | 'backgroundColorDarken'
-  | 'backgroundColorLighten'
-  | 'backgroundSurfaceColor'
-  | 'backgroundSurfaceColorDarken'
-  | 'backgroundSurfaceColorLighten'
-  | 'backgroundShadingColor'
-  | 'backgroundFrostedColor'
-  | 'contrastLowColor'
-  | 'contrastMediumColor'
-  | 'contrastHighColor'
-  | 'contrastHighColorDarken'
-  | 'contrastHighColorLighten'
-  | 'hoverColor'
-  | 'hoverColorDarken'
-  | 'activeColor'
+  // a11y
   | 'focusColor'
-  | 'disabledColor'
+  // background
+  | 'canvasColor'
+  | 'canvasInvertedColor'
+  | 'surfaceColor'
+  | 'frostedColor'
+  | 'scrimColor'
+  // contrast
+  | 'contrast10Color'
+  | 'contrast20Color'
+  | 'contrast30Color'
+  | 'contrast40Color'
+  | 'contrast50Color'
+  | 'contrast60Color'
+  | 'contrast70Color'
+  | 'contrast80Color'
+  | 'contrast90Color'
+  | 'primaryColor'
+  | 'primaryInvertedColor'
+  // semantic
   | 'errorColor'
-  | 'errorColorDarken'
   | 'errorSoftColor'
-  | 'errorSoftColorDarken'
-  | 'errorSoftColorLighten'
   | 'successColor'
-  | 'successColorDarken'
   | 'successSoftColor'
-  | 'successSoftColorDarken'
-  | 'successSoftColorLighten'
   | 'warningColor'
   | 'warningSoftColor'
-  | 'warningSoftColorDarken'
-  | 'warningSoftColorLighten'
   | 'infoColor'
-  | 'infoSoftColor'
-  | 'infoSoftColorDarken'
-  | 'infoSoftColorLighten';
+  | 'infoSoftColor';
 
 export type ThemedColors = { [key in ThemedColor]: string };
 
-/* Auto Generated Start */
-const themeLight = {
-  primaryColor: '#010205',
-  primaryColorDarken: '#000000',
-  backgroundColor: '#FFF',
-  backgroundColorDarken: '#E0E0E0',
-  backgroundColorLighten: '#FFFFFF',
-  backgroundSurfaceColor: '#EEEFF2',
-  backgroundSurfaceColorDarken: '#CBCED7',
-  backgroundSurfaceColorLighten: '#FFFFFF',
-  backgroundShadingColor: 'rgba(1, 2, 5, 0.67)',
-  backgroundFrostedColor: 'hsl(240 4% 85%/35%)',
-  contrastLowColor: '#D8D8DB',
-  contrastMediumColor: '#6B6D70',
-  contrastHighColor: '#535457',
-  contrastHighColorDarken: '#353638',
-  contrastHighColorLighten: '#717276',
-  hoverColor: 'rgba(148, 149, 152, .18)',
-  hoverColorDarken: '#75767A',
-  activeColor: 'rgba(148, 149, 152, 0.20)',
-  focusColor: '#1A44EA',
-  disabledColor: '#949598',
-  errorColor: '#CC1922',
-  errorColorDarken: '#951219',
-  errorSoftColor: '#FFE2E4',
-  errorSoftColorDarken: '#F4CED1',
-  errorSoftColorLighten: '#FFFFFF',
-  successColor: '#197E10',
-  successColorDarken: '#0E4809',
-  successSoftColor: '#E4FFEC',
-  successSoftColorDarken: '#D0F4DB',
-  successSoftColorLighten: '#FFFFFF',
-  warningColor: '#F3BE00',
-  warningSoftColor: '#FFF4D2',
-  warningSoftColorDarken: '#F1E5C1',
-  warningSoftColorLighten: '#FCFAF3',
-  infoColor: '#2762EC',
-  infoSoftColor: '#D3E1FF',
-  infoSoftColorDarken: '#C2D1F1',
-  infoSoftColorLighten: '#F4F7FD'
+const themeLight: ThemedColors = {
+  // a11y
+  'focusColor': colorFocusLight,
+  // background
+  'canvasColor': colorCanvasLight,
+  'canvasInvertedColor': colorCanvasInvertedLight,
+  'surfaceColor': colorSurfaceLight,
+  'frostedColor': colorFrostedLight,
+  'scrimColor': colorScrimLight,
+  // contrast
+  'contrast10Color': colorContrast10Light,
+  'contrast20Color': colorContrast20Light,
+  'contrast30Color': colorContrast30Light,
+  'contrast40Color': colorContrast40Light,
+  'contrast50Color': colorContrast50Light,
+  'contrast60Color': colorContrast60Light,
+  'contrast70Color': colorContrast70Light,
+  'contrast80Color': colorContrast80Light,
+  'contrast90Color': colorContrast90Light,
+  'primaryColor': colorPrimaryLight,
+  'primaryInvertedColor': colorPrimaryInvertedLight,
+  // semantic
+  'errorColor': colorErrorLight,
+  'errorSoftColor': colorErrorSoftLight,
+  'successColor': colorSuccessLight,
+  'successSoftColor': colorSuccessSoftLight,
+  'warningColor': colorWarningLight,
+  'warningSoftColor': colorWarningSoftLight,
+  'infoColor': colorInfoLight,
+  'infoSoftColor': colorInfoSoftLight,
 };
 
-const themeDark = {
-  primaryColor: '#FBFCFF',
-  primaryColorDarken: '#BECEFF',
-  backgroundColor: '#0E0E12',
-  backgroundColorDarken: '#000000',
-  backgroundColorLighten: '#292934',
-  backgroundSurfaceColor: '#212225',
-  backgroundSurfaceColorDarken: '#040405',
-  backgroundSurfaceColorLighten: '#3E4045',
-  backgroundShadingColor: 'rgba(38, 38, 41, 0.67)',
-  backgroundFrostedColor: 'hsl(240 3% 26%/35%)',
-  contrastLowColor: '#404044',
-  contrastMediumColor: '#88898C',
-  contrastHighColor: '#AFB0B3',
-  contrastHighColorDarken: '#909195',
-  contrastHighColorLighten: '#CECFD1',
-  hoverColor: 'rgba(148, 149, 152, .18)',
-  hoverColorDarken: '#75767A',
-  activeColor: 'rgba(126, 127, 130, 0.20)',
-  focusColor: '#1A44EA',
-  disabledColor: '#7E7F82',
-  errorColor: '#FC4040',
-  errorColorDarken: '#FB0404',
-  errorSoftColor: '#3A0F0F',
-  errorSoftColorDarken: '#1A1111',
-  errorSoftColorLighten: '#3F2828',
-  successColor: '#09D087',
-  successColorDarken: '#069561',
-  successSoftColor: '#003320',
-  successSoftColorDarken: '#04110C',
-  successSoftColorLighten: '#0F432F',
-  warningColor: '#F7CB47',
-  warningSoftColor: '#362B0A',
-  warningSoftColorDarken: '#16130B',
-  warningSoftColorLighten: '#3E3720',
-  infoColor: '#178BFF',
-  infoSoftColor: '#04294E',
-  infoSoftColorDarken: '#0C1A27',
-  infoSoftColorLighten: '#1A3856'
+const themeDark: ThemedColors = {
+  // a11y
+  'focusColor': colorFocusDark,
+  // background
+  'canvasColor': colorCanvasDark,
+  'canvasInvertedColor': colorCanvasInvertedDark,
+  'surfaceColor': colorSurfaceDark,
+  'frostedColor': colorFrostedDark,
+  'scrimColor': colorScrimDark,
+  // contrast
+  'contrast10Color': colorContrast10Dark,
+  'contrast20Color': colorContrast20Dark,
+  'contrast30Color': colorContrast30Dark,
+  'contrast40Color': colorContrast40Dark,
+  'contrast50Color': colorContrast50Dark,
+  'contrast60Color': colorContrast60Dark,
+  'contrast70Color': colorContrast70Dark,
+  'contrast80Color': colorContrast80Dark,
+  'contrast90Color': colorContrast90Dark,
+  'primaryColor': colorPrimaryDark,
+  'primaryInvertedColor': colorPrimaryInvertedDark,
+  // semantic
+  'errorColor': colorErrorDark,
+  'errorSoftColor': colorErrorSoftDark,
+  'successColor': colorSuccessDark,
+  'successSoftColor': colorSuccessSoftDark,
+  'warningColor': colorWarningDark,
+  'warningSoftColor': colorWarningSoftDark,
+  'infoColor': colorInfoDark,
+  'infoSoftColor': colorInfoSoftDark,
 };
-
-const themeAuto = {
-  ...themeLight,};
 
 const themes = {
   'light': themeLight,
   'dark': themeDark,
-  'auto': themeAuto
+  'auto': themeLight
 };
-/* Auto Generated End */
 
 const schemeHighContrastMerged: Partial<ThemedColors> = {
-  disabledColor: 'GrayText',
   focusColor: 'Highlight',
 };
 
@@ -158,8 +176,4 @@ export const getThemedColors = (theme: Theme): ThemedColors => {
 
 export const getHighContrastColors = (): HighContrastColors => {
   return schemeHighContrast;
-};
-
-export const getInvertedThemedColors = (theme: Theme): ThemedColors => {
-  return getThemedColors(isThemeDark(theme) ? 'light' : 'dark');
 };

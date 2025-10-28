@@ -1,5 +1,19 @@
 'use client';
 
+import {
+  type CanvasSidebarStartUpdateEventDetail,
+  componentsReady,
+  PButton,
+  PCanvas,
+  PHeading,
+  PLink,
+} from '@porsche-design-system/components-react/ssr';
+import { breakpointS } from '@porsche-design-system/components-react/styles';
+import { breakpointM } from '@porsche-design-system/styles/src/js';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import type React from 'react';
+import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
@@ -12,20 +26,6 @@ import { useTextZoom } from '@/hooks/useTextZoom';
 import type { StorefrontDirection } from '@/models/dir';
 import type { StorefrontTextZoom } from '@/models/textZoom';
 import type { StorefrontTheme } from '@/models/theme';
-import {
-  type CanvasSidebarStartUpdateEventDetail,
-  PButton,
-  PCanvas,
-  PHeading,
-  PLink,
-} from '@porsche-design-system/components-react/ssr';
-import { componentsReady } from '@porsche-design-system/components-react/ssr';
-import { breakpointS } from '@porsche-design-system/components-react/styles';
-import { breakpointM } from '@porsche-design-system/styles/src/js';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type React from 'react';
-import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 
 declare global {
   interface Window {
@@ -139,16 +139,16 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           </PHeading>
           <ThemeSelect
             value={storefrontTheme}
-            onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
+            onThemeChange={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
             compact={true}
           />
           <DirectionSelect
             value={storefrontDirection}
-            onUpdate={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+            onDirectionChange={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
           />
           <TextZoomSelect
             value={storefrontTextZoom}
-            onUpdate={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
+            onTextZoomChange={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
           />
         </div>
       </div>

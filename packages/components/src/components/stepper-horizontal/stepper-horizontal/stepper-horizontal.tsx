@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
@@ -15,16 +15,16 @@ import {
   unobserveBreakpointChange,
   validateProps,
 } from '../../../utils';
+import { getClickedItem } from '../../../utils/dom/getClickedItem';
 import { getComponentCss } from './stepper-horizontal-styles';
 import {
-  type StepperHorizontalSize,
-  type StepperHorizontalUpdateEventDetail,
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
+  type StepperHorizontalSize,
+  type StepperHorizontalUpdateEventDetail,
   syncStepperHorizontalItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
-import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
   size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),
@@ -46,11 +46,6 @@ export class StepperHorizontal {
 
   /** Adapts the tag color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when active step is changed. */
-  @Event({ bubbles: false }) public stepChange: EventEmitter<StepperHorizontalUpdateEventDetail>;
 
   /** Emitted when active step is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalUpdateEventDetail>;
@@ -138,7 +133,6 @@ export class StepperHorizontal {
       const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
       this.update.emit({ activeStepIndex: clickedStepIndex });
-      this.stepChange.emit({ activeStepIndex: clickedStepIndex });
     }
   };
 

@@ -35,7 +35,7 @@ import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
 import { BannerErrorComponent } from './generated/banner-error.component';
-import { BannerNeutralComponent } from './generated/banner-neutral.component';
+import { BannerInfoComponent } from './generated/banner-info.component';
 import { BannerNoDismissComponent } from './generated/banner-no-dismiss.component';
 import { BannerPersistentComponent } from './generated/banner-persistent.component';
 import { BannerPrefixedComponent } from './generated/banner-prefixed.component';
@@ -43,7 +43,6 @@ import { BannerSlottedDescriptionHeadingComponent } from './generated/banner-slo
 import { BannerSlottedDescriptionTitleComponent } from './generated/banner-slotted-description-title.component';
 import { BannerWarningComponent } from './generated/banner-warning.component';
 import { ButtonComponent } from './generated/button.component';
-import { ButtonGroupComponent } from './generated/button-group.component';
 import { ButtonPureComponent } from './generated/button-pure.component';
 import { ButtonTileComponent } from './generated/button-tile.component';
 import { CanvasComponent } from './generated/canvas.component';
@@ -61,8 +60,6 @@ import { CanvasSidebarStartComponent } from './generated/canvas-sidebar-start.co
 import { CanvasTitleComponent } from './generated/canvas-title.component';
 import { CarouselComponent } from './generated/carousel.component';
 import { CheckboxComponent } from './generated/checkbox.component';
-import { CheckboxWrapperComponent } from './generated/checkbox-wrapper.component';
-import { ContentWrapperComponent } from './generated/content-wrapper.component';
 import { CoreInitializerComponent } from './generated/core-initializer.component';
 import { CrestComponent } from './generated/crest.component';
 import { DisplayComponent } from './generated/display.component';
@@ -85,9 +82,7 @@ import { DrilldownPrefixedComponent } from './generated/drilldown-prefixed.compo
 import { DrilldownScrolledComponent } from './generated/drilldown-scrolled.component';
 import { DrilldownSlottedButtonHeaderComponent } from './generated/drilldown-slotted-button-header.component';
 import { FieldsetComponent } from './generated/fieldset.component';
-import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlagComponent } from './generated/flag.component';
-import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBackdropBlurComponent } from './generated/flyout-backdrop-blur.component';
@@ -115,18 +110,14 @@ import { FlyoutHeaderFooterScrollableContentComponent } from './generated/flyout
 import { FlyoutHeaderFooterScrolledComponent } from './generated/flyout-header-footer-scrolled.component';
 import { FlyoutHeaderFooterScrolledRelativeComponent } from './generated/flyout-header-footer-scrolled-relative.component';
 import { FlyoutHeaderFooterSubfooterComponent } from './generated/flyout-header-footer-subfooter.component';
-import { FlyoutHeaderFooterSubfooterPositionLeftComponent } from './generated/flyout-header-footer-subfooter-position-left.component';
 import { FlyoutHeaderFooterSubfooterPositionStartComponent } from './generated/flyout-header-footer-subfooter-position-start.component';
 import { FlyoutHeaderFooterSubfooterScrollableContentComponent } from './generated/flyout-header-footer-subfooter-scrollable-content.component';
 import { FlyoutHeaderFooterSubfooterScrolledComponent } from './generated/flyout-header-footer-subfooter-scrolled.component';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapComponent } from './generated/flyout-header-footer-subfooter-scrolled-overlap.component';
 import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-header-scrollable-content.component';
-import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
 import { FlyoutPrefixedComponent } from './generated/flyout-prefixed.component';
-import { GridComponent } from './generated/grid.component';
 import { HeadingComponent } from './generated/heading.component';
-import { HeadlineComponent } from './generated/headline.component';
 import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
 import { InputDateComponent } from './generated/input-date.component';
@@ -140,11 +131,8 @@ import { InputTimeComponent } from './generated/input-time.component';
 import { InputUrlComponent } from './generated/input-url.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
-import { LinkSocialComponent } from './generated/link-social.component';
 import { LinkTileComponent } from './generated/link-tile.component';
-import { LinkTileModelSignatureComponent } from './generated/link-tile-model-signature.component';
 import { LinkTileProductComponent } from './generated/link-tile-product.component';
-import { MarqueComponent } from './generated/marque.component';
 import { ModalComponent } from './generated/modal.component';
 import { ModalBackdropBlurComponent } from './generated/modal-backdrop-blur.component';
 import { ModalBackdropShadingComponent } from './generated/modal-backdrop-shading.component';
@@ -158,7 +146,6 @@ import { ModalGridComponent } from './generated/modal-grid.component';
 import { ModalPrefixedComponent } from './generated/modal-prefixed.component';
 import { ModalScrollableComponent } from './generated/modal-scrollable.component';
 import { ModalSlottedHeaderComponent } from './generated/modal-slotted-header.component';
-import { ModalSlottedHeadingComponent } from './generated/modal-slotted-heading.component';
 import { ModalStickyFooterComponent } from './generated/modal-sticky-footer.component';
 import { ModalStretchToFullWidthComponent } from './generated/modal-stretch-to-full-width.component';
 import { ModalWithoutDismissButtonComponent } from './generated/modal-without-dismiss-button.component';
@@ -195,7 +182,6 @@ import { PopoverLeftComponent } from './generated/popover-left.component';
 import { PopoverRightComponent } from './generated/popover-right.component';
 import { PopoverScrolledComponent } from './generated/popover-scrolled.component';
 import { PopoverTopComponent } from './generated/popover-top.component';
-import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.component';
 import { RadioGroupComponent } from './generated/radio-group.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
@@ -220,8 +206,6 @@ import { SelectScaling_0_5Component } from './generated/select-scaling-0-5.compo
 import { SelectScaling_0_8Component } from './generated/select-scaling-0-8.component';
 import { SelectScaling_1Component } from './generated/select-scaling-1.component';
 import { SelectScaling_2Component } from './generated/select-scaling-2.component';
-import { SelectWrapperComponent } from './generated/select-wrapper.component';
-import { SelectWrapperOpenedScrollContextComponent } from './generated/select-wrapper-opened-scroll-context.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
@@ -240,15 +224,13 @@ import { TagComponent } from './generated/tag.component';
 import { TagDismissibleComponent } from './generated/tag-dismissible.component';
 import { TextComponent } from './generated/text.component';
 import { TextareaComponent } from './generated/textarea.component';
-import { TextareaWrapperComponent } from './generated/textarea-wrapper.component';
-import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
 import { TextListComponent } from './generated/text-list.component';
 import { ToastComponent } from './generated/toast.component';
 import { ToastBasicComponent } from './generated/toast-basic.component';
 import { ToastMultilineComponent } from './generated/toast-multiline.component';
 import { ToastOffsetComponent } from './generated/toast-offset.component';
 import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
-import { ToastStateNeutralComponent } from './generated/toast-state-neutral.component';
+import { ToastStateInfoComponent } from './generated/toast-state-info.component';
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
@@ -263,7 +245,7 @@ export const generatedPages = [
   BannerComponent,
   BannerBasicComponent,
   BannerErrorComponent,
-  BannerNeutralComponent,
+  BannerInfoComponent,
   BannerNoDismissComponent,
   BannerPersistentComponent,
   BannerPrefixedComponent,
@@ -271,7 +253,6 @@ export const generatedPages = [
   BannerSlottedDescriptionTitleComponent,
   BannerWarningComponent,
   ButtonComponent,
-  ButtonGroupComponent,
   ButtonPureComponent,
   ButtonTileComponent,
   CanvasComponent,
@@ -289,8 +270,6 @@ export const generatedPages = [
   CanvasTitleComponent,
   CarouselComponent,
   CheckboxComponent,
-  CheckboxWrapperComponent,
-  ContentWrapperComponent,
   CoreInitializerComponent,
   CrestComponent,
   DisplayComponent,
@@ -313,9 +292,7 @@ export const generatedPages = [
   DrilldownScrolledComponent,
   DrilldownSlottedButtonHeaderComponent,
   FieldsetComponent,
-  FieldsetWrapperComponent,
   FlagComponent,
-  FlexComponent,
   Flyout_1Component,
   Flyout_2Component,
   FlyoutBackdropBlurComponent,
@@ -343,18 +320,14 @@ export const generatedPages = [
   FlyoutHeaderFooterScrolledComponent,
   FlyoutHeaderFooterScrolledRelativeComponent,
   FlyoutHeaderFooterSubfooterComponent,
-  FlyoutHeaderFooterSubfooterPositionLeftComponent,
   FlyoutHeaderFooterSubfooterPositionStartComponent,
   FlyoutHeaderFooterSubfooterScrollableContentComponent,
   FlyoutHeaderFooterSubfooterScrolledComponent,
   FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
   FlyoutHeaderScrollableContentComponent,
-  FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
   FlyoutPrefixedComponent,
-  GridComponent,
   HeadingComponent,
-  HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
   InputDateComponent,
@@ -368,11 +341,8 @@ export const generatedPages = [
   InputUrlComponent,
   LinkComponent,
   LinkPureComponent,
-  LinkSocialComponent,
   LinkTileComponent,
-  LinkTileModelSignatureComponent,
   LinkTileProductComponent,
-  MarqueComponent,
   ModalComponent,
   ModalBackdropBlurComponent,
   ModalBackdropShadingComponent,
@@ -386,7 +356,6 @@ export const generatedPages = [
   ModalPrefixedComponent,
   ModalScrollableComponent,
   ModalSlottedHeaderComponent,
-  ModalSlottedHeadingComponent,
   ModalStickyFooterComponent,
   ModalStretchToFullWidthComponent,
   ModalWithoutDismissButtonComponent,
@@ -423,7 +392,6 @@ export const generatedPages = [
   PopoverRightComponent,
   PopoverScrolledComponent,
   PopoverTopComponent,
-  RadioButtonWrapperComponent,
   RadioGroupComponent,
   ScrollerComponent,
   SegmentedControlComponent,
@@ -448,8 +416,6 @@ export const generatedPages = [
   SelectScaling_0_8Component,
   SelectScaling_1Component,
   SelectScaling_2Component,
-  SelectWrapperComponent,
-  SelectWrapperOpenedScrollContextComponent,
   SheetComponent,
   SheetBasicComponent,
   SheetGridComponent,
@@ -468,15 +434,13 @@ export const generatedPages = [
   TagDismissibleComponent,
   TextComponent,
   TextareaComponent,
-  TextareaWrapperComponent,
-  TextFieldWrapperComponent,
   TextListComponent,
   ToastComponent,
   ToastBasicComponent,
   ToastMultilineComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
-  ToastStateNeutralComponent,
+  ToastStateInfoComponent,
   ToastStateSuccessComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
@@ -509,9 +473,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: BannerErrorComponent,
   },
   {
-    name: 'Banner Neutral',
-    path: 'banner-neutral',
-    component: BannerNeutralComponent,
+    name: 'Banner Info',
+    path: 'banner-info',
+    component: BannerInfoComponent,
   },
   {
     name: 'Banner No Dismiss',
@@ -547,11 +511,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Button',
     path: 'button',
     component: ButtonComponent,
-  },
-  {
-    name: 'Button Group',
-    path: 'button-group',
-    component: ButtonGroupComponent,
   },
   {
     name: 'Button Pure',
@@ -637,16 +596,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Checkbox',
     path: 'checkbox',
     component: CheckboxComponent,
-  },
-  {
-    name: 'Checkbox Wrapper',
-    path: 'checkbox-wrapper',
-    component: CheckboxWrapperComponent,
-  },
-  {
-    name: 'Content Wrapper',
-    path: 'content-wrapper',
-    component: ContentWrapperComponent,
   },
   {
     name: 'Crest',
@@ -754,19 +703,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FieldsetComponent,
   },
   {
-    name: 'Fieldset Wrapper',
-    path: 'fieldset-wrapper',
-    component: FieldsetWrapperComponent,
-  },
-  {
     name: 'Flag',
     path: 'flag',
     component: FlagComponent,
-  },
-  {
-    name: 'Flex',
-    path: 'flex',
-    component: FlexComponent,
   },
   {
     name: 'Flyout 1',
@@ -904,11 +843,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutHeaderFooterSubfooterComponent,
   },
   {
-    name: 'Flyout Header Footer Subfooter Position Left',
-    path: 'flyout-header-footer-subfooter-position-left',
-    component: FlyoutHeaderFooterSubfooterPositionLeftComponent,
-  },
-  {
     name: 'Flyout Header Footer Subfooter Position Start',
     path: 'flyout-header-footer-subfooter-position-start',
     component: FlyoutHeaderFooterSubfooterPositionStartComponent,
@@ -934,11 +868,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutHeaderScrollableContentComponent,
   },
   {
-    name: 'Flyout Position Left',
-    path: 'flyout-position-left',
-    component: FlyoutPositionLeftComponent,
-  },
-  {
     name: 'Flyout Position Start',
     path: 'flyout-position-start',
     component: FlyoutPositionStartComponent,
@@ -949,19 +878,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutPrefixedComponent,
   },
   {
-    name: 'Grid',
-    path: 'grid',
-    component: GridComponent,
-  },
-  {
     name: 'Heading',
     path: 'heading',
     component: HeadingComponent,
-  },
-  {
-    name: 'Headline',
-    path: 'headline',
-    component: HeadlineComponent,
   },
   {
     name: 'Icon',
@@ -1029,29 +948,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: LinkPureComponent,
   },
   {
-    name: 'Link Social',
-    path: 'link-social',
-    component: LinkSocialComponent,
-  },
-  {
     name: 'Link Tile',
     path: 'link-tile',
     component: LinkTileComponent,
   },
   {
-    name: 'Link Tile Model Signature',
-    path: 'link-tile-model-signature',
-    component: LinkTileModelSignatureComponent,
-  },
-  {
     name: 'Link Tile Product',
     path: 'link-tile-product',
     component: LinkTileProductComponent,
-  },
-  {
-    name: 'Marque',
-    path: 'marque',
-    component: MarqueComponent,
   },
   {
     name: 'Modal',
@@ -1117,11 +1021,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal Slotted Header',
     path: 'modal-slotted-header',
     component: ModalSlottedHeaderComponent,
-  },
-  {
-    name: 'Modal Slotted Heading',
-    path: 'modal-slotted-heading',
-    component: ModalSlottedHeadingComponent,
   },
   {
     name: 'Modal Sticky Footer',
@@ -1299,11 +1198,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: PopoverTopComponent,
   },
   {
-    name: 'Radio Button Wrapper',
-    path: 'radio-button-wrapper',
-    component: RadioButtonWrapperComponent,
-  },
-  {
     name: 'Radio Group',
     path: 'radio-group',
     component: RadioGroupComponent,
@@ -1424,16 +1318,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: SelectScaling_2Component,
   },
   {
-    name: 'Select Wrapper',
-    path: 'select-wrapper',
-    component: SelectWrapperComponent,
-  },
-  {
-    name: 'Select Wrapper Opened Scroll Context',
-    path: 'select-wrapper-opened-scroll-context',
-    component: SelectWrapperOpenedScrollContextComponent,
-  },
-  {
     name: 'Sheet',
     path: 'sheet',
     component: SheetComponent,
@@ -1519,11 +1403,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TextComponent,
   },
   {
-    name: 'Text Field Wrapper',
-    path: 'text-field-wrapper',
-    component: TextFieldWrapperComponent,
-  },
-  {
     name: 'Text List',
     path: 'text-list',
     component: TextListComponent,
@@ -1532,11 +1411,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Textarea',
     path: 'textarea',
     component: TextareaComponent,
-  },
-  {
-    name: 'Textarea Wrapper',
-    path: 'textarea-wrapper',
-    component: TextareaWrapperComponent,
   },
   {
     name: 'Toast',
@@ -1564,9 +1438,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ToastPrefixedComponent,
   },
   {
-    name: 'Toast State Neutral',
-    path: 'toast-state-neutral',
-    component: ToastStateNeutralComponent,
+    name: 'Toast State Info',
+    path: 'toast-state-info',
+    component: ToastStateInfoComponent,
   },
   {
     name: 'Toast State Success',

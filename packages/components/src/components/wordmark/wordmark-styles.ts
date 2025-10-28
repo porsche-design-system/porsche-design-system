@@ -1,6 +1,3 @@
-import type { WordmarkSize } from './wordmark-utils';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,6 +7,9 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
+import type { Theme } from '../../types';
+import { getCss, isHighContrastMode } from '../../utils';
+import type { WordmarkSize } from './wordmark-utils';
 
 export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
   return getCss({

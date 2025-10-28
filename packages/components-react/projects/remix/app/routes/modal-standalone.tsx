@@ -1,6 +1,6 @@
 import { Link, Outlet } from '@remix-run/react';
-import { useCallback, useState } from 'react';
-import { PModal, PText, PLink, PButtonGroup, PButton } from '@porsche-design-system/components-react/ssr';
+import {useCallback, useState} from 'react';
+import {PModal, PText, PLink, PButton, PHeading} from '@porsche-design-system/components-react/ssr';
 
 export default function ModalLayout(): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -39,14 +39,15 @@ export default function ModalLayout(): JSX.Element {
         Open Modal (without route change)
       </PButton>
       {isModalOpen && (
-        <PModal heading="Some Heading" open={isModalOpen} onDismiss={onDismiss}>
+        <PModal open={isModalOpen} onDismiss={onDismiss}>
+          <PHeading slot="header" size="large" tag="h2">
+            Some Heading
+          </PHeading>
           <PText>Some Content</PText>
-          <PButtonGroup className="footer">
-            <PButton>Save</PButton>
-            <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-              Close
-            </PButton>
-          </PButtonGroup>
+          <PButton slot="footer">Save</PButton>
+          <PButton slot="footer" type="button" variant="secondary" icon="close" onClick={onDismiss}>
+            Close
+          </PButton>
         </PModal>
       )}
       <Outlet />

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   template: `
     <p-inline-notification
       [heading]="'Some heading'"
-      [heading-tag]="'h4'"
+      [headingTag]="'h4'"
       [description]="'Some description.'"
       [actionLabel]="'Retry'"
       [actionIcon]="'reset'"

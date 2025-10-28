@@ -1,4 +1,6 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
@@ -8,16 +10,14 @@ import {
   THEMES,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
 import {
-  type TableUpdateEventDetail,
   SORT_EVENT_NAME,
-  warnIfCaptionIsMissing,
-  type TableLayout,
   TABLE_LAYOUTS,
+  type TableLayout,
+  type TableUpdateEventDetail,
+  warnIfCaptionIsMissing,
 } from './table-utils';
-import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
@@ -50,11 +50,6 @@ export class Table {
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when sorting is changed. */
-  @Event({ bubbles: false }) public sortingChange: EventEmitter<TableUpdateEventDetail>;
-
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
 
@@ -67,7 +62,6 @@ export class Table {
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEventDetail>) => {
       e.stopPropagation();
       this.update.emit(e.detail);
-      this.sortingChange.emit(e.detail);
     });
   }
 

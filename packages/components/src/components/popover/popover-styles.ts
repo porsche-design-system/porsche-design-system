@@ -31,11 +31,11 @@ import { POPOVER_SAFE_ZONE } from './popover-utils';
 const { canvasTextColor } = getHighContrastColors();
 
 export const getComponentCss = (theme: Theme): string => {
-  const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { frostedColor, canvasColor, primaryColor, surfaceColor } = getThemedColors(theme);
   const {
-    hoverColor: hoverColorDark,
+    frostedColor: frostedColorDark,
     primaryColor: primaryColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    surfaceColor: surfaceColorDark,
   } = getThemedColors('dark');
 
   const shadowColor = 'rgba(0,0,0,0.3)';
@@ -79,9 +79,9 @@ export const getComponentCss = (theme: Theme): string => {
           transition: getTransition('background-color'),
           '&:hover': {
             ...frostedGlassStyle,
-            backgroundColor: hoverColor,
+            canvasColor: frostedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
+              canvasColor: frostedColorDark,
             }),
           },
         }),
@@ -113,9 +113,9 @@ export const getComponentCss = (theme: Theme): string => {
             background: canvasTextColor,
           }
         : {
-            background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
+            background: isThemeDark(theme) ? surfaceColor : canvasColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundSurfaceColorDark,
+              background: surfaceColorDark,
             }),
           }),
     },
@@ -130,10 +130,10 @@ export const getComponentCss = (theme: Theme): string => {
         outline: `1px solid ${canvasTextColor}`,
       }),
       ...textSmallStyle,
-      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
+      background: isThemeDark(theme) ? surfaceColor : canvasColor,
       color: primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundSurfaceColorDark,
+        background: surfaceColorDark,
         color: primaryColorDark,
       }),
     },

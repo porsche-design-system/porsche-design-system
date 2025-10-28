@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  PButton,
-  PButtonGroup,
-  PCheckbox,
-  PFlyout,
-  PHeading,
-  PText,
-  PTextarea,
-} from '@porsche-design-system/components-vue';
+import { PButton, PCheckbox, PFlyout, PHeading, PText, PTextarea } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isFlyoutOpen = ref(false);
@@ -34,10 +26,8 @@ const onSubmit = (e: Event) => {
       <PCheckbox name="some-checkbox" label="Some Label"></PCheckbox>
       <PTextarea name="some-textarea" label="Some Label"></PTextarea>
     </form>
-    <PButtonGroup slot="footer">
-      <PButton type="submit" form="some-form">Submit</PButton>
-      <PButton type="reset" variant="secondary" form="some-form">Reset</PButton>
-    </PButtonGroup>
+    <PButton slot="footer" type="submit" form="some-form">Submit</PButton>
+    <PButton slot="footer" type="reset" variant="secondary" form="some-form">Reset</PButton>
     <PText slot="sub-footer">
       Last submitted data:
       <br />

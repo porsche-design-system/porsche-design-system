@@ -9,13 +9,10 @@ export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLPr
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
-/** @deprecated */
-export type SelectUpdateEventDetail = {
+export type SelectChangeEventDetail = {
   name: string;
   value: string;
 };
-
-export type SelectChangeEventDetail = SelectUpdateEventDetail;
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {

@@ -1,8 +1,8 @@
 'use client';
 
+import React, { createContext, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
 import type { StorefrontTheme } from '@/models/theme';
-import React, { createContext, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
 interface StorefrontThemeContextProps {
   storefrontTheme: StorefrontTheme;

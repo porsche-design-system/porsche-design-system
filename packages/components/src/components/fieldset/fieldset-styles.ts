@@ -1,7 +1,4 @@
-import type { Theme } from '../../types';
-import type { FieldsetLabelSize } from './fieldset-utils';
-import type { FormState } from '../../utils/form/form-state';
-import { getCss, mergeDeep } from '../../utils';
+import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,9 +7,12 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/styles';
+import type { Theme } from '../../types';
+import { getCss, mergeDeep } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import type { FieldsetLabelSize } from './fieldset-utils';
 
 export const getComponentCss = (
   state: FormState,

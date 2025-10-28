@@ -1,26 +1,20 @@
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Listen, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
+  THEMES,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './switch-styles';
-import {
-  type SwitchAlignLabel,
-  type SwitchAlignLabelDeprecated,
-  type SwitchUpdateEventDetail,
-  getSwitchButtonAriaAttributes,
-} from './switch-utils';
+import { getSwitchButtonAriaAttributes, type SwitchAlignLabel, type SwitchUpdateEventDetail } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -69,11 +63,6 @@ export class Switch {
   /** Adapts the switch color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when checked status is changed. */
-  @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchUpdateEventDetail>;
-
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
@@ -107,20 +96,6 @@ export class Switch {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignLabelDeprecationMap: Record<
-      SwitchAlignLabelDeprecated,
-      Exclude<SwitchAlignLabel, SwitchAlignLabelDeprecated>
-    > = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Switch, SwitchAlignLabelDeprecated, SwitchAlignLabel>(
-      this,
-      'alignLabel',
-      alignLabelDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -164,6 +139,5 @@ export class Switch {
 
   private onSwitchClick = (): void => {
     this.update.emit({ checked: !this.checked });
-    this.switchChange.emit({ checked: !this.checked });
   };
 }

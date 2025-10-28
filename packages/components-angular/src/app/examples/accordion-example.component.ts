@@ -1,13 +1,13 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AccordionUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-accordion-example',
   template: `
-    <p-accordion [heading]="'Some Heading'" [heading-tag]="'h3'" [open]="isOpen1" (update)="onUpdate1($event)">
+    <p-accordion [heading]="'Some Heading'" [headingTag]="'h3'" [open]="isOpen1" (update)="onUpdate1($event)">
       <p-text>{{ content }}</p-text>
     </p-accordion>
-    <p-accordion [heading]="'Some Heading'" [heading-tag]="'h3'" [open]="isOpen2" (update)="onUpdate2($event)">
+    <p-accordion [heading]="'Some Heading'" [headingTag]="'h3'" [open]="isOpen2" (update)="onUpdate2($event)">
       <p-text>{{ content }}</p-text>
     </p-accordion>
   `,

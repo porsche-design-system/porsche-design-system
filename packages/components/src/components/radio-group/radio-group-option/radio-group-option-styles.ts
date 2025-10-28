@@ -11,7 +11,6 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getHighContrastColors,
-  getInvertedThemedColors,
   getSchemedHighContrastMediaQuery,
   getThemedColors,
   getTransition,
@@ -37,12 +36,14 @@ const getCheckedSVGBackgroundImage = (fill: string): string => {
 };
 
 export const getComponentCss = (disabled: boolean, loading: boolean, state: RadioGroupState, theme: Theme): string => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, primaryInvertedColor, contrast50Color, contrast80Color, contrast40Color, focusColor } =
+    getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    contrastHighColor: contrastHighColorDark,
-    disabledColor: disabledColorDark,
+    primaryInvertedColor: primaryInvertedColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast80Color: contrast80ColorDark,
+    contrast40Color: contrast40ColorDark,
     focusColor: focusColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
@@ -54,22 +55,22 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedColorDark = disabledOrLoading ? disabledColorDark : formStateColorDark || contrastMediumColorDark;
+  const uncheckedColor = disabledOrLoading ? contrast40Color : formStateColor || contrast50Color;
+  const uncheckedColorDark = disabledOrLoading ? contrast40ColorDark : formStateColorDark || contrast50ColorDark;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
   const uncheckedHoverColorDark = formStateHoverColorDark || primaryColorDark;
   const checkedColor = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-      ? disabledColor
+      ? contrast40Color
       : formStateColor || primaryColor;
   const checkedColorDark = isHighContrastMode
     ? canvasTextColor
     : disabledOrLoading
-      ? disabledColorDark
+      ? contrast40ColorDark
       : formStateColorDark || primaryColorDark;
-  const checkedHoverColor = formStateHoverColor || contrastHighColor;
-  const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
+  const checkedHoverColor = formStateHoverColor || contrast80Color;
+  const checkedHoverColorDark = formStateHoverColorDark || contrast80ColorDark;
 
   const minDimension = `calc(${SCALING_BASE_VALUE} * 0.75)`;
   const scalingVar = `var(${cssVarInternalRadioGroupOptionScaling}, 1)`;
@@ -81,8 +82,8 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
-  const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
-  const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
+  const checkedIconColor = escapeHashCharacter(primaryInvertedColor);
+  const checkedIconColorDark = escapeHashCharacter(primaryInvertedColorDark);
 
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
   const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the radio-group, whichever is larger.

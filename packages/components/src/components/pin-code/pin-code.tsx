@@ -27,7 +27,6 @@ import {
   type PinCodeLength,
   type PinCodeState,
   type PinCodeType,
-  type PinCodeUpdateEventDetail,
   removeWhiteSpaces,
 } from './pin-code-utils';
 
@@ -116,11 +115,6 @@ export class PinCode {
 
   /** Emitted when the input is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -309,7 +303,6 @@ export class PinCode {
     this.internals?.setFormValue(this.value);
     const details = { value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length };
     this.change.emit(details);
-    this.update.emit(details);
   };
 
   private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {

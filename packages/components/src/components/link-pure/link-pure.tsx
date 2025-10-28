@@ -1,38 +1,33 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
-  LINK_ARIA_ATTRIBUTES,
-  TEXT_SIZES,
-  THEMES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   isSsrHydration,
+  LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
+  TEXT_SIZES,
+  THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './link-pure-styles';
 import type {
   LinkPureAlignLabel,
-  LinkPureAlignLabelDeprecated,
   LinkPureAriaAttribute,
   LinkPureIcon,
   LinkPureSize,
   LinkPureTarget,
-  LinkPureWeight,
 } from './link-pure-utils';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<LinkPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
   size: AllowedTypes.breakpoint<LinkPureSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<LinkPureWeight>(TYPOGRAPHY_TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
@@ -64,12 +59,6 @@ export class LinkPure {
 
   /** Size of the link. */
   @Prop() public size?: BreakpointCustomizable<LinkPureSize> = 'small';
-
-  /**
-   * The weight of the text (only has effect with visible label).
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public weight?: LinkPureWeight = 'regular';
 
   /** The icon shown. By choosing 'none', no icon is displayed */
   @Prop() public icon?: LinkPureIcon = 'arrow-right';
@@ -118,20 +107,6 @@ export class LinkPure {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignLabelDeprecationMap: Record<
-      LinkPureAlignLabelDeprecated,
-      Exclude<LinkPureAlignLabel, LinkPureAlignLabelDeprecated>
-    > = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof LinkPure, LinkPureAlignLabelDeprecated, LinkPureAlignLabel>(
-      this,
-      'alignLabel',
-      alignLabelDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,

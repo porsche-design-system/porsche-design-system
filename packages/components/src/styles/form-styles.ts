@@ -22,12 +22,12 @@ export const getSlottedTextFieldTextareaSelectStyles = (
   theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrast20Color, contrast50Color, contrast40Color } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
+    contrast20Color: contrast20ColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast40Color: contrast40ColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -48,7 +48,7 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+      border: `${borderWidthBase} solid ${formStateColor || contrast50Color}`,
       borderRadius: borderRadiusSmall,
       background: 'transparent',
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
@@ -56,7 +56,7 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       color: primaryColor,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: formStateColorDark || contrastMediumColorDark,
+        borderColor: formStateColorDark || contrast50ColorDark,
         color: primaryColorDark,
       }),
       ...additionalDefaultJssStyle,
@@ -85,22 +85,22 @@ export const getSlottedTextFieldTextareaSelectStyles = (
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
-      color: disabledColor,
-      borderColor: disabledColor,
-      WebkitTextFillColor: disabledColor,
+      color: contrast40Color,
+      borderColor: contrast40Color,
+      WebkitTextFillColor: contrast40Color,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: disabledColorDark,
-        borderColor: disabledColorDark,
-        WebkitTextFillColor: disabledColorDark,
+        color: contrast40ColorDark,
+        borderColor: contrast40ColorDark,
+        WebkitTextFillColor: contrast40ColorDark,
       }),
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
-        borderColor: contrastLowColor,
-        background: contrastLowColor,
+        borderColor: contrast20Color,
+        background: contrast20Color,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrastLowColorDark,
-          background: contrastLowColorDark,
+          borderColor: contrast20ColorDark,
+          background: contrast20ColorDark,
         }),
       },
     }),
@@ -124,8 +124,12 @@ export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 
 
 // TODO: re-use in textarea-wrapper not only in text-field-wrapper
 export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean, theme: Theme): JssStyle => {
-  const { disabledColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-  const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+  const { contrast40Color, contrast50Color, contrast80Color } = getThemedColors(theme);
+  const {
+    contrast40Color: contrast40ColorDark,
+    contrast50Color: contrast50ColorDark,
+    contrast80Color: contrast80ColorDark,
+  } = getThemedColors('dark');
 
   return {
     pointerEvents: 'none',
@@ -135,18 +139,21 @@ export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     font: textSmallStyle.font,
-    color: contrastMediumColor,
+    color: contrast50Color,
     ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: contrastMediumColorDark,
+      color: contrast50ColorDark,
     }),
     ...(isDisabled && {
-      color: disabledColor,
+      color: contrast40Color,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: disabledColorDark,
+        color: contrast40ColorDark,
       }),
     }),
     ...(isReadonly && {
-      color: contrastHighColor,
+      color: contrast80Color,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrast80ColorDark,
+      }),
     }),
   };
 };

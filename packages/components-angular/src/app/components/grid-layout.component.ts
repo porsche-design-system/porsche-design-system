@@ -14,7 +14,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
         inset: 0;
         pointer-events: none;
 
-        > span {
+        & > span {
           background: rgba(0, 0, 255, 0.1);
           &:first-child,
           &:last-child {

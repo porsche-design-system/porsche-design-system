@@ -37,7 +37,7 @@ import {
 } from '../../styles/color-filters';
 import type { IconName, TextSize, Theme } from '../../types';
 import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
-import type { IconColor, IconColorDeprecated } from './icon-utils';
+import type { IconColor } from './icon-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
@@ -48,7 +48,7 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'x-large': fontSizeTextXLarge,
 };
 
-const filterLight: Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string> = {
+const filterLight: Record<Exclude<IconColor, 'inherit'>, string> = {
   primary: filterLightPrimary,
   'state-disabled': filterLightDisabled,
   'contrast-low': filterLightContrastLow,
@@ -60,7 +60,7 @@ const filterLight: Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, s
   'notification-info': filterLightNotificationInfo,
 };
 
-const filterDark: Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string> = {
+const filterDark: Record<Exclude<IconColor, 'inherit'>, string> = {
   primary: filterDarkPrimary,
   'state-disabled': filterDarkDisabled,
   'contrast-low': filterDarkContrastLow,
@@ -72,7 +72,7 @@ const filterDark: Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, st
   'notification-info': filterDarkNotificationInfo,
 };
 
-const filterMap: Record<Theme, Record<Exclude<IconColor, IconColorDeprecated | 'inherit'>, string>> = {
+const filterMap: Record<Theme, Record<Exclude<IconColor, 'inherit'>, string>> = {
   auto: filterLight,
   light: filterLight,
   dark: filterDark,
@@ -118,7 +118,7 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
 export const getComponentCss = (
   name: IconName,
   source: string,
-  color: Exclude<IconColor, IconColorDeprecated>,
+  color: IconColor,
   size: TextSize,
   theme: Theme
 ): string => {

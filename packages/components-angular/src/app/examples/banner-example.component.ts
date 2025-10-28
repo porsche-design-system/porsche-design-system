@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -8,7 +8,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <p-banner
       [open]="isBannerOpen"
       [heading]="'Some Heading'"
-      [heading-tag]="'h3'"
+      [headingTag]="'h3'"
       [description]="'Some Description'"
       (dismiss)="onDismiss()"
     >

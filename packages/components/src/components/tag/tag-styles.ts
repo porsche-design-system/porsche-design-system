@@ -4,13 +4,10 @@ import {
   spacingStaticXSmall,
   textXSmallStyle,
 } from '@porsche-design-system/styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
-  getInvertedThemedColors,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -18,11 +15,13 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import type { Theme } from '../../types';
+import { getCss, isHighContrastMode } from '../../utils';
 import { getThemedBackgroundColor } from './tag-shared-utils';
-import { getThemedBackgroundHoverColor, type TagColor, type TagColorDeprecated } from './tag-utils';
+import { getThemedBackgroundHoverColor, type TagColor } from './tag-utils';
 
 export const getColors = (
-  tagColor: Exclude<TagColor, TagColorDeprecated>,
+  tagColor: TagColor,
   theme: Theme
 ): {
   textColor: string;
@@ -30,17 +29,17 @@ export const getColors = (
   backgroundHoverColor: string;
 } => {
   const themedColors = getThemedColors(theme);
-  const { primaryColor } = tagColor === 'primary' ? getInvertedThemedColors(theme) : themedColors;
+  const { primaryColor, primaryInvertedColor } = themedColors;
 
   return {
-    textColor: primaryColor,
+    textColor: tagColor === 'primary' ? primaryInvertedColor : primaryColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
-    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
+    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors),
   };
 };
 
 export const getComponentCss = (
-  tagColor: Exclude<TagColor, TagColorDeprecated>,
+  tagColor: TagColor,
   compact: boolean,
   isFocusable: boolean,
   hasIcon: boolean,

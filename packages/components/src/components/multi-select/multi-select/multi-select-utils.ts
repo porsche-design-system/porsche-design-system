@@ -9,14 +9,10 @@ export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
-/** @deprecated */
-export type MultiSelectUpdateEvent = {
+export type MultiSelectChangeEventDetail = {
   name: string;
   value: string[];
 };
-/** @deprecated */
-export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
-export type MultiSelectChangeEventDetail = MultiSelectUpdateEventDetail;
 
 // TODO: share between select & multi-select
 export const syncMultiSelectChildrenProps = (
