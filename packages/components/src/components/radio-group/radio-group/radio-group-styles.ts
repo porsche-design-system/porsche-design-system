@@ -116,6 +116,8 @@ export const getComponentCss = (
           '&:hover~.wrapper': hoverStyles,
         }),
         cursor: 'inherit', // the label is not clickable
+      },
+      {
         float: 'inline-start', // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       }
     ),
