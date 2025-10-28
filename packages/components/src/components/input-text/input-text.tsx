@@ -11,8 +11,15 @@ import {
   Watch,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, THEMES, validateProps } from '../../utils';
-import { implicitSubmit } from '../../utils/form/implicitSubmit';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  FORM_STATES,
+  hasPropValueChanged,
+  implicitSubmit,
+  THEMES,
+  validateProps,
+} from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
 import type {

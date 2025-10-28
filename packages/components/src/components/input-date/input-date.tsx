@@ -7,10 +7,10 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   hasShowPickerSupport,
+  implicitSubmit,
   THEMES,
   validateProps,
 } from '../../utils';
-import { implicitSubmit } from '../../utils/form/implicitSubmit';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-date-styles';
 import type {

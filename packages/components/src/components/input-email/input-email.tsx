@@ -6,10 +6,10 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  implicitSubmit,
   THEMES,
   validateProps,
 } from '../../utils';
-import { implicitSubmit } from '../../utils/form/implicitSubmit';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-email-styles';
 import type {
