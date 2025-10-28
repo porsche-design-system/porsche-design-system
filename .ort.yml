@@ -64,6 +64,6 @@ excludes:
       reason: DEV_DEPENDENCY_OF
       comment: "Development-only packages."
 
-    - scope: "peerDependencies"
+    - pattern: "peerDependencies"
       reason: PROVIDED_DEPENDENCY_OF
       comment: "Peer dependencies must be provided by the consuming project; not part of delivered artifacts."
