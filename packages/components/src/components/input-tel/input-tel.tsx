@@ -10,6 +10,7 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
+import { implicitSubmit } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-tel-styles';
 import type {
   InputTelBlurEventDetail,
@@ -204,6 +205,7 @@ export class InputTel {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="tel"
@@ -227,6 +229,10 @@ export class InputTel {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

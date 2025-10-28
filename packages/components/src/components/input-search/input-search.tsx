@@ -21,6 +21,7 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
+import { implicitSubmit } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-search-styles';
 import type {
   InputSearchBlurEventDetail,
@@ -212,6 +213,7 @@ export class InputSearch {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="search"
@@ -249,6 +251,10 @@ export class InputSearch {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

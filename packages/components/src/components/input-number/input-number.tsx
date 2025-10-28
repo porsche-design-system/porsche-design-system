@@ -21,6 +21,7 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
+import { implicitSubmit } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-number-styles';
 import type {
   InputNumberBlurEventDetail,
@@ -217,6 +218,7 @@ export class InputNumber {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="number"
@@ -267,6 +269,10 @@ export class InputNumber {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

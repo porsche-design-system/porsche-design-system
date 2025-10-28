@@ -13,6 +13,7 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, THEMES, validateProps } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
+import { implicitSubmit } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-text-styles';
 import type {
   InputTextBlurEventDetail,
@@ -206,6 +207,7 @@ export class InputText {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="text"
@@ -240,6 +242,10 @@ export class InputText {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();
