@@ -20,8 +20,8 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
+import { implicitSubmit } from '../../utils/form/implicitSubmit';
 import { InputBase } from '../common/input-base/input-base';
-import { implicitSubmit } from '../common/input-base/input-base-utils';
 import { getComponentCss } from './input-search-styles';
 import type {
   InputSearchBlurEventDetail,
