@@ -5,6 +5,7 @@ import {
   fontSizeTextSmall,
   fontSizeTextXXSmall,
   fontWeightSemiBold,
+  frostedGlassStyle,
   motionDurationShort,
   spacingStaticSmall,
   textSmallStyle,
@@ -74,6 +75,7 @@ export const getComponentCss = (
         background: 'transparent',
         cursor: 'pointer',
         textAlign: 'start',
+        zIndex: 0,
         color: primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
@@ -89,6 +91,7 @@ export const getComponentCss = (
           {
             '&::before': {
               content: '""',
+              zIndex: -1,
               position: 'absolute',
               borderRadius: borderRadiusSmall,
               left: '-4px',
@@ -109,6 +112,7 @@ export const getComponentCss = (
               transition: getTransition('background-color'),
             },
             '&:hover::before': {
+              ...frostedGlassStyle,
               background: frostedColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
                 background: frostedColorDark,

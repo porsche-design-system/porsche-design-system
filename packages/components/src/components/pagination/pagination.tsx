@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -17,7 +17,6 @@ import {
   getTotalPages,
   ItemType,
   type PaginationInternationalization,
-  type PaginationMaxNumberOfPageLinks,
   type PaginationUpdateEventDetail,
 } from './pagination-utils';
 

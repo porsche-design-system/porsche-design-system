@@ -17,13 +17,28 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-medium' },
-          children: ['.text-contrast-medium'],
+          properties: { className: 'text-contrast-90' },
+          children: ['.text-contrast-90'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-high' },
-          children: ['.text-contrast-high'],
+          properties: { className: 'text-contrast-80' },
+          children: ['.text-contrast-80'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-contrast-70' },
+          children: ['.text-contrast-70'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-contrast-60' },
+          children: ['.text-contrast-60'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-contrast-50' },
+          children: ['.text-contrast-50'],
         },
         {
           tag: 'li',
@@ -32,8 +47,18 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
+          properties: { className: 'text-warning' },
+          children: ['.text-warning'],
+        },
+        {
+          tag: 'li',
           properties: { className: 'text-error' },
           children: ['.text-error'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-info' },
+          children: ['.text-info'],
         },
       ],
     },
@@ -188,7 +213,7 @@ export const colorStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-50 w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-medium',
+            '.border-contrast-50',
           ],
         },
         {
@@ -201,7 +226,7 @@ export const colorStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-80 w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-high',
+            '.border-contrast-80',
           ],
         },
       ],
