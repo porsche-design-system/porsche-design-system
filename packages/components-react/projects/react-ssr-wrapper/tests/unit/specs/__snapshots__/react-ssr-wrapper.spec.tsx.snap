@@ -18784,7 +18784,7 @@ input:focus-visible {
         class="wrapper"
       >
         <input
-          aria-describedby="description message"
+          aria-describedby="message"
           id="radio-group-option"
           type="radio"
         />
