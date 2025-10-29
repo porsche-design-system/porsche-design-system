@@ -35,7 +35,7 @@ const getInputElement = (): HTMLInputElement => {
 describe('hasCounterAndIsTypeText()', () => {
   it('should call isType() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = vi.spyOn(textFieldWrapperUtils, 'isType');
+    const spy = vi.spyOn(textFieldWrapperUtils.internal, 'isType');
     hasCounterAndIsTypeText(inputElement);
 
     expect(spy).toHaveBeenCalledWith(inputElement.type, 'text');
@@ -80,7 +80,7 @@ describe('hasCounterAndIsTypeText()', () => {
 describe('hasUnitAndIsTypeTextOrNumber()', () => {
   it('should call isType() with correct parameters', () => {
     const inputElement = getInputElement();
-    const spy = vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
+    const spy = vi.spyOn(textFieldWrapperUtils.internal, 'isType').mockReturnValue(false);
     hasUnitAndIsTypeTextOrNumber(inputElement, 'EUR');
 
     expect(spy).toHaveBeenNthCalledWith(1, inputElement.type, 'text');
@@ -186,7 +186,7 @@ describe('addInputEventListenerForSearch()', () => {
 
     const event = new KeyboardEvent('keydown', { key: 'Escape' });
     const spyPreventDefault = vi.spyOn(event, 'preventDefault');
-    const spyDispatchInputEvent = vi.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyDispatchInputEvent = vi.spyOn(textFieldWrapperUtils.internal, 'dispatchInputEvent');
     inputElement.dispatchEvent(event);
 
     expect(spyPreventDefault).toHaveBeenCalledWith();
@@ -273,7 +273,7 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
       .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
       .mockReturnValueOnce(true);
     const updateCounterCharacterLengthCssVarStyleSheet = vi.spyOn(
-      textFieldWrapperUtils,
+      textFieldWrapperUtils.internal,
       'updateCounterCharacterLengthCssVarStyleSheet'
     );
 
