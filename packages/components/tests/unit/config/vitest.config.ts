@@ -20,6 +20,9 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
     },
+    typecheck: {
+      tsconfig: 'tsconfig.test.json',
+    },
   },
   define: {
     ROLLUP_REPLACE_IS_STAGING: JSON.stringify('production'),
