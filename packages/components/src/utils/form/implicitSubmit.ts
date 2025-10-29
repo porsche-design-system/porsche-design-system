@@ -53,7 +53,8 @@ export const implicitSubmit = (e: KeyboardEvent, internals: ElementInternals, ho
     for (const control of formElements) {
       if (
         control.matches(':default') ||
-        (isElementOfKind(control, 'p-button') && (control as HTMLPButtonElement).type === 'submit')
+        (isElementOfKind(control, 'p-button') && (control as HTMLPButtonElement).type === 'submit') ||
+        (isElementOfKind(control, 'p-button-pure') && (control as HTMLPButtonPureElement).type === 'submit')
       ) {
         if (!(control as HTMLElement & { disabled: boolean }).disabled) {
           control.click();
