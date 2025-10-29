@@ -708,9 +708,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -807,9 +804,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-legend {
-  display: contents;
 }
 .root {
   display: grid;
@@ -908,9 +902,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -1007,9 +998,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -1105,9 +1093,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-legend {
-  display: contents;
 }
 .root {
   display: grid;
@@ -1206,9 +1191,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -1305,9 +1287,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-legend {
-  display: contents;
 }
 .root {
   display: grid;
@@ -1479,9 +1458,6 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -1635,9 +1611,6 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-legend {
-  display: contents;
 }
 .root {
   display: grid;

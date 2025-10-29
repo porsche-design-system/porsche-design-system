@@ -78,9 +78,11 @@ export const getComponentCss = (
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
       },
       ...preventFoucOfNestedElementsStyles,
-      legend: {
-        display: 'contents', // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-      },
+      ...(!hideLabel && {
+        legend: {
+          display: 'contents', // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
+        },
+      }),
     },
     root: {
       display: 'grid',
