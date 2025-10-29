@@ -73,7 +73,7 @@ describe('getPreloadedTagNamesForVersion()', () => {
   it('should call getPreloadedTagNamesForCoreChunk() with correct parameter when core chunk link is found', () => {
     const querySelectorMockReturn = document.createElement('link');
     vi.spyOn(document, 'querySelector').mockReturnValue(querySelectorMockReturn);
-    const spy = vi.spyOn(helperUtils, 'getPreloadedTagNamesForCoreChunk');
+    const spy = vi.spyOn(helperUtils.internalHelper, 'getPreloadedTagNamesForCoreChunk');
     getPreloadedTagNamesForVersion(version);
 
     expect(spy).toHaveBeenCalledWith(querySelectorMockReturn);
@@ -89,7 +89,7 @@ describe('getPreloadedTagNamesForVersions()', () => {
 
   it('should return preloaded tag names for versions', () => {
     const mockReturnValue: TagName[] = ['p-text'];
-    vi.spyOn(helperUtils, 'getPreloadedTagNamesForVersion').mockReturnValue(mockReturnValue);
+    vi.spyOn(helperUtils.internalHelper, 'getPreloadedTagNamesForVersion').mockReturnValue(mockReturnValue);
 
     expect(getPreloadedTagNamesForVersions(versions)).toEqual({
       '1.2.3': mockReturnValue,
@@ -99,7 +99,7 @@ describe('getPreloadedTagNamesForVersions()', () => {
   });
 
   it('should call getPreloadedTagNamesForVersion() with correct parameters', () => {
-    const spy = vi.spyOn(helperUtils, 'getPreloadedTagNamesForVersion');
+    const spy = vi.spyOn(helperUtils.internalHelper, 'getPreloadedTagNamesForVersion');
     getPreloadedTagNamesForVersions(versions);
 
     expect(spy).toHaveBeenCalledWith('1.2.3');
@@ -128,7 +128,7 @@ describe('getUsedTagNamesForVersions()', () => {
     const prefixesForVersion = { '1.2.3': ['', 'my-prefix', 'some-prefix'], '1.2.4': ['', 'my-prefix', 'some-prefix'] };
 
     it('should call getPdsComponentsSelector() with correct parameters', () => {
-      const spy = vi.spyOn(helperUtils, 'getPdsComponentsSelector');
+      const spy = vi.spyOn(helperUtils.internalHelper, 'getPdsComponentsSelector');
       getUsedTagNamesForVersions(prefixesForVersion);
 
       expect(spy).toHaveBeenCalledWith(prefixesForVersion['1.2.3']);
@@ -138,7 +138,7 @@ describe('getUsedTagNamesForVersions()', () => {
 
     it('should call document.querySelectorAll() with correct parameters', () => {
       const pdsComponentsSelectorMock = 'someSelector';
-      vi.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
+      vi.spyOn(helperUtils.internalHelper, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
       const spy = vi.spyOn(document, 'querySelectorAll');
       getUsedTagNamesForVersions(prefixesForVersion);
 
@@ -204,7 +204,7 @@ describe('getUsedTagNamesForVersions()', () => {
 
     it('should call querySelectorAll() with correct parameters', () => {
       const pdsComponentsSelectorMock = 'someSelector';
-      vi.spyOn(helperUtils, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
+      vi.spyOn(helperUtils.internalHelper, 'getPdsComponentsSelector').mockReturnValue(pdsComponentsSelectorMock);
       const spy = vi.spyOn(document, 'querySelectorAll');
       getUsedTagNamesForVersions(prefixesForVersion);
 
