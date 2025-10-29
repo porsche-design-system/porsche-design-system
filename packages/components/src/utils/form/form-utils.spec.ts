@@ -83,8 +83,8 @@ describe('updateCounter()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
 
-    const setCounterInnerHtmlSpy = vi.spyOn(formUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = vi.spyOn(formUtils, 'setAriaElementInnerHtml');
+    const setCounterInnerHtmlSpy = vi.spyOn(formUtils.internal, 'setCounterInnerHtml');
+    const setAriaElementInnerHtmlSpy = vi.spyOn(formUtils.internal, 'setAriaElementInnerHtml');
     updateCounter(inputElement, ariaElement, counterElement);
 
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
@@ -106,7 +106,7 @@ describe('updateCounter()', () => {
 });
 
 describe('debounce', () => {
-  let mockFn: vi.Mock;
+  let mockFn: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
     mockFn = vi.fn();
