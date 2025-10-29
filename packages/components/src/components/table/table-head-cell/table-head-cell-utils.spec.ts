@@ -2,31 +2,24 @@ import { vi } from 'vitest';
 import type { AriaAttributes } from '../../../types';
 import type { Direction, TableHeadCellSort } from '../table/table-utils';
 import * as tableUtils from './table-head-cell-utils';
-import {
-  createSortedEventInitDictDetail,
-  getAriaSort,
-  isDirectionAsc,
-  isSortable,
-  toggleDirection,
-} from './table-head-cell-utils';
 
 describe('isDirectionAsc()', () => {
   it('should return true for "asc"', () => {
-    expect(isDirectionAsc('asc')).toBe(true);
+    expect(tableUtils.isDirectionAsc('asc')).toBe(true);
   });
 
   it('should return false for "desc"', () => {
-    expect(isDirectionAsc('desc')).toBe(false);
+    expect(tableUtils.isDirectionAsc('desc')).toBe(false);
   });
 });
 
 describe('toggleDirection()', () => {
   it('should return "asc" for "desc"', () => {
-    expect(toggleDirection('asc')).toBe('desc');
+    expect(tableUtils.toggleDirection('asc')).toBe('desc');
   });
 
   it('should return "desc" for "asc"', () => {
-    expect(toggleDirection('desc')).toBe('asc');
+    expect(tableUtils.toggleDirection('desc')).toBe('asc');
   });
 });
 
@@ -40,7 +33,7 @@ describe('getAriaSort()', () => {
     [{} as TableHeadCellSort, null],
   ];
   it.each(data)('should for %s return %s', (params, result) => {
-    expect(getAriaSort(params)).toBe(result);
+    expect(tableUtils.getAriaSort(params)).toBe(result);
   });
 });
 
@@ -49,26 +42,26 @@ describe('createSortedEventInitDictDetail()', () => {
   const inactiveSort: TableHeadCellSort = { id: '1', active: false, direction: 'asc' };
 
   it('should call toggleDirection() when active', () => {
-    const spy = vi.spyOn(tableUtils, 'toggleDirection');
-    createSortedEventInitDictDetail(activeSort);
+    const spy = vi.spyOn(tableUtils.internal, 'toggleDirection');
+    tableUtils.createSortedEventInitDictDetail(activeSort);
     expect(spy).toHaveBeenCalledWith('asc');
   });
 
   it('should not call toggleDirection() when not active', () => {
-    const spy = vi.spyOn(tableUtils, 'toggleDirection');
-    createSortedEventInitDictDetail(inactiveSort);
+    const spy = vi.spyOn(tableUtils.internal, 'toggleDirection');
+    tableUtils.createSortedEventInitDictDetail(inactiveSort);
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('should return correct eventInitDict when active', () => {
-    expect(createSortedEventInitDictDetail(activeSort)).toEqual({
+    expect(tableUtils.createSortedEventInitDictDetail(activeSort)).toEqual({
       bubbles: true,
       detail: { id: '1', active: true, direction: 'desc' },
     });
   });
 
   it('should return correct eventInitDict when not active', () => {
-    expect(createSortedEventInitDictDetail(inactiveSort)).toEqual({
+    expect(tableUtils.createSortedEventInitDictDetail(inactiveSort)).toEqual({
       bubbles: true,
       detail: { id: '1', active: true, direction: 'asc' },
     });
@@ -88,6 +81,6 @@ describe('isSortable()', () => {
     [true, 'desc', true],
   ];
   it.each(data)('should for active: %s and direction: %s return %s', (active, direction, result) => {
-    expect(isSortable(active, direction)).toBe(result);
+    expect(tableUtils.isSortable(active, direction)).toBe(result);
   });
 });

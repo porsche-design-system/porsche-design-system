@@ -1,5 +1,5 @@
 import type { AriaAttributes } from '../../../types';
-import type { Direction, TableUpdateEventDetail, TableHeadCellSort } from '../table/table-utils';
+import type { Direction, TableHeadCellSort, TableUpdateEventDetail } from '../table/table-utils';
 
 export const isDirectionAsc = (dir: Direction): boolean => dir === 'asc';
 
@@ -9,9 +9,13 @@ export const getAriaSort = (sort: TableHeadCellSort): AriaAttributes['aria-sort'
 
 export const toggleDirection = (dir: Direction): Direction => (isDirectionAsc(dir) ? 'desc' : 'asc');
 
+export const internal = {
+  toggleDirection,
+};
+
 export const createSortedEventInitDictDetail = (sort: TableHeadCellSort): CustomEventInit<TableUpdateEventDetail> => ({
   bubbles: true,
-  detail: { ...sort, active: true, direction: sort.active ? toggleDirection(sort.direction) : sort.direction },
+  detail: { ...sort, active: true, direction: sort.active ? internal.toggleDirection(sort.direction) : sort.direction },
 });
 
 export const isSortable = (active: boolean, direction: Direction): boolean => {
