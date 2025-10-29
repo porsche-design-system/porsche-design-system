@@ -10,9 +10,9 @@ export type TextFieldWrapperActionIcon = Extract<IconName, 'locate'>;
 export type TextFieldWrapperState = FormState;
 
 export const hasCounterAndIsTypeText = (el: HTMLInputElement | undefined): boolean =>
-  el && internal.isType(el.type, 'text') && hasCounter(el);
+  el && internalTFWrapper.isType(el.type, 'text') && hasCounter(el);
 export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement | undefined, unit: string): boolean => {
-  return el && !!unit && (internal.isType(el.type, 'text') || internal.isType(el.type, 'number'));
+  return el && !!unit && (internalTFWrapper.isType(el.type, 'text') || internalTFWrapper.isType(el.type, 'number'));
 };
 
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;
@@ -40,7 +40,7 @@ export const addInputEventListenerForSearch = (
       e.preventDefault();
       e.target.value = '';
       // need to emit event so consumer's change listeners fire for resetting a search, etc.
-      internal.dispatchInputEvent(e.target);
+      internalTFWrapper.dispatchInputEvent(e.target);
     }
   });
 };
@@ -67,7 +67,7 @@ export const addCounterCharacterLengthCssVarStyleSheet = (host: HTMLElement): vo
     // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
     /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
     host.shadowRoot.adoptedStyleSheets.push(counterCharacterLengthCssVarStyleSheetMap.get(host));
-    internal.updateCounterCharacterLengthCssVarStyleSheet(host, 0);
+    internalTFWrapper.updateCounterCharacterLengthCssVarStyleSheet(host, 0);
   }
 };
 
@@ -78,7 +78,7 @@ export const updateCounterCharacterLengthCssVarStyleSheet = (host: HTMLElement, 
     .replaceSync(`:host{--p-internal-counter-character-length:${value}}`);
 };
 
-export const internal = {
+export const internalTFWrapper = {
   isType,
   dispatchInputEvent,
   updateCounterCharacterLengthCssVarStyleSheet,

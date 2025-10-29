@@ -42,13 +42,13 @@ describe('createSortedEventInitDictDetail()', () => {
   const inactiveSort: TableHeadCellSort = { id: '1', active: false, direction: 'asc' };
 
   it('should call toggleDirection() when active', () => {
-    const spy = vi.spyOn(tableUtils.internal, 'toggleDirection');
+    const spy = vi.spyOn(tableUtils.internalTHCell, 'toggleDirection');
     tableUtils.createSortedEventInitDictDetail(activeSort);
     expect(spy).toHaveBeenCalledWith('asc');
   });
 
   it('should not call toggleDirection() when not active', () => {
-    const spy = vi.spyOn(tableUtils.internal, 'toggleDirection');
+    const spy = vi.spyOn(tableUtils.internalTHCell, 'toggleDirection');
     tableUtils.createSortedEventInitDictDetail(inactiveSort);
     expect(spy).not.toHaveBeenCalled();
   });

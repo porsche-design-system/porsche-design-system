@@ -85,7 +85,7 @@ describe('resetSelectedOption', () => {
 describe('updateSelectOptions', () => {
   it('should not select option when value="undefined" and no option with that value exists', () => {
     const options = generateOptions();
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internal, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
     selectUtils.updateSelectOptions(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     options.forEach((option) => {
@@ -99,7 +99,7 @@ describe('updateSelectOptions', () => {
       { value: 'a', selected: false },
       { value: 'b', selected: false },
     ] as selectUtils.SelectOption[];
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internal, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
     selectUtils.updateSelectOptions(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
@@ -124,7 +124,7 @@ describe('updateSelectOptions', () => {
       { value: 'b', selected: false },
       { value: 'c', selected: false },
     ] as selectUtils.SelectOption[];
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internal, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
     selectUtils.updateSelectOptions(options, 'a');
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
@@ -135,7 +135,7 @@ describe('updateSelectOptions', () => {
 
 describe('setSelectedOption', () => {
   it('should set option selected and call resetSelectedOption and forceUpdate', () => {
-    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internal, 'resetSelectedOption');
+    const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
     const forceUpdateSpy = vi.spyOn(stencilUtils, 'forceUpdate');
     const options = generateOptions();
     selectUtils.setSelectedOption(options, options[1]);

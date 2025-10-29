@@ -63,7 +63,7 @@ describe('updateDrilldownItemState()', () => {
 
   beforeEach(() => {
     traverseTreeAndUpdateStateSpy = vi
-      .spyOn(drilldownUtils.internal, 'traverseTreeAndUpdateState')
+      .spyOn(drilldownUtils.internalDrilldown, 'traverseTreeAndUpdateState')
       .mockImplementation(() => null);
 
     host = document.createElement('p-drilldown');
@@ -95,7 +95,7 @@ describe('traverseTreeAndUpdateState()', () => {
   let grandChild: HTMLPDrilldownItemElement;
 
   beforeEach(() => {
-    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils.internal, 'traverseTreeAndUpdateState');
+    traverseTreeAndUpdateStateSpy = vi.spyOn(drilldownUtils.internalDrilldown, 'traverseTreeAndUpdateState');
 
     host = document.createElement('p-drilldown');
     child = document.createElement('p-drilldown-item');
@@ -109,7 +109,7 @@ describe('traverseTreeAndUpdateState()', () => {
   });
 
   it('should traverse up the tree and set states to value', () => {
-    drilldownUtils.internal.traverseTreeAndUpdateState(grandChild, 'primary', true);
+    drilldownUtils.internalDrilldown.traverseTreeAndUpdateState(grandChild, 'primary', true);
     expect(grandChild.primary).toBe(true);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(child, 'cascade', true);
 

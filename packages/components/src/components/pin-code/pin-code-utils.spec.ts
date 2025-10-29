@@ -180,7 +180,7 @@ describe('getSanitisedValue()', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1234';
-    const spy = vi.spyOn(pinCodeUtils.internal, 'warnAboutTransformedValue');
+    const spy = vi.spyOn(pinCodeUtils.internalPin, 'warnAboutTransformedValue');
 
     const sanitisedValue = pinCodeUtils.getSanitisedValue(component.host, component.value, 4);
 
@@ -192,7 +192,7 @@ describe('getSanitisedValue()', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '1a&^b';
-    const spy = vi.spyOn(pinCodeUtils.internal, 'warnAboutTransformedValue');
+    const spy = vi.spyOn(pinCodeUtils.internalPin, 'warnAboutTransformedValue');
 
     const sanitisedValue = pinCodeUtils.getSanitisedValue(component.host, component.value, 4);
 
@@ -204,7 +204,7 @@ describe('getSanitisedValue()', () => {
     const component = new PinCode();
     component.host = document.createElement('p-pin-code');
     component.value = '12345678';
-    const spy = vi.spyOn(pinCodeUtils.internal, 'warnAboutTransformedValue');
+    const spy = vi.spyOn(pinCodeUtils.internalPin, 'warnAboutTransformedValue');
 
     const sanitisedValue = pinCodeUtils.getSanitisedValue(component.host, component.value, 4);
 

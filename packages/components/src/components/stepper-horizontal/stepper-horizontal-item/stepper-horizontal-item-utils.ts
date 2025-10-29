@@ -13,7 +13,7 @@ export const isStateCompleteOrWarning = (state: StepperHorizontalItemState): boo
   return state === 'complete' || state === 'warning';
 };
 
-export const internal = {
+export const internalStepper = {
   isStateCompleteOrWarning,
 };
 
@@ -33,5 +33,5 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
 };
 
 export const isItemClickable = (state: StepperHorizontalItemState, disabled: boolean): boolean => {
-  return !!state && internal.isStateCompleteOrWarning(state) && !disabled;
+  return !!state && internalStepper.isStateCompleteOrWarning(state) && !disabled;
 };

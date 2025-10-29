@@ -137,7 +137,7 @@ describe('isLastPage()', () => {
 
 describe('slidePrev()', () => {
   it('should call isFirstPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
+    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     carouselUtils.slidePrev(splide, 5);
 
@@ -167,7 +167,7 @@ describe('slidePrev()', () => {
 
 describe('slideNext()', () => {
   it('should call isLastPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils.internal, 'isLastPage');
+    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     carouselUtils.slideNext(splide, 5);
 
@@ -219,7 +219,7 @@ describe('updatePrevNextButtons()', () => {
   };
 
   it('should call isFirstPage() with correct parameter', () => {
-    const spy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
+    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
     const splide = getSplide();
 
     carouselUtils.updatePrevNextButtons(...getButtons(), splide);
@@ -227,23 +227,23 @@ describe('updatePrevNextButtons()', () => {
   });
 
   it('should call isLastPage() with correct parameters', () => {
-    const spy = vi.spyOn(carouselUtils.internal, 'isLastPage');
-    vi.spyOn(carouselUtils.internal, 'getAmountOfPages').mockReturnValue(5);
+    const spy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
+    vi.spyOn(carouselUtils.internalCarousel, 'getAmountOfPages').mockReturnValue(5);
     const splide = getSplide();
     carouselUtils.updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(splide, 5);
   });
 
   it('should call getAmountOfPages() with correct parameters', () => {
-    const spy = vi.spyOn(carouselUtils.internal, 'getAmountOfPages');
+    const spy = vi.spyOn(carouselUtils.internalCarousel, 'getAmountOfPages');
     const splide = getSplide();
     carouselUtils.updatePrevNextButtons(...getButtons(), splide);
     expect(spy).toHaveBeenCalledWith(3, 1);
   });
 
   it('should correctly set aria property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
-    const isLastPageSpy = vi.spyOn(carouselUtils.internal, 'isLastPage');
+    const isFirstPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
+    const isLastPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
     const [btnPrev, btnNext] = getButtons();
     const splide = getSplide();
 
@@ -261,8 +261,8 @@ describe('updatePrevNextButtons()', () => {
   });
 
   it('should correctly set disabled property on btnNext and btnPrev parameter', () => {
-    const isFirstPageSpy = vi.spyOn(carouselUtils.internal, 'isFirstPage');
-    const isLastPageSpy = vi.spyOn(carouselUtils.internal, 'isLastPage');
+    const isFirstPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isFirstPage');
+    const isLastPageSpy = vi.spyOn(carouselUtils.internalCarousel, 'isLastPage');
     const [btnPrev, btnNext] = getButtons();
     const splide = getSplide();
 

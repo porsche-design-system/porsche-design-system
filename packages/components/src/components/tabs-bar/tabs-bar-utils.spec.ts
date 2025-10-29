@@ -90,14 +90,14 @@ describe('setBarStyle()', () => {
   });
 
   it('should not call getTransformation() if there is no active tabElement', () => {
-    const spy = vi.spyOn(tabsBarUtils.internal, 'getTransformation');
+    const spy = vi.spyOn(tabsBarUtils.internalTBar, 'getTransformation');
     setBarStyle([el1, el2], undefined, barElement);
 
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call getTransformation() with correct parameters if there is an active tabElement ', () => {
-    const spy = vi.spyOn(tabsBarUtils.internal, 'getTransformation');
+    const spy = vi.spyOn(tabsBarUtils.internalTBar, 'getTransformation');
     setBarStyle([el1, el2], 1, barElement);
 
     expect(spy).toHaveBeenCalledWith(el1);
@@ -106,7 +106,9 @@ describe('setBarStyle()', () => {
   });
 
   it('should set result of getTransformation() as style on barElement', () => {
-    vi.spyOn(tabsBarUtils.internal, 'getTransformation').mockReturnValue('transform: translate3d(0px,0,0);width: 15px');
+    vi.spyOn(tabsBarUtils.internalTBar, 'getTransformation').mockReturnValue(
+      'transform: translate3d(0px,0,0);width: 15px'
+    );
     setBarStyle([el1, el2], 0, barElement);
 
     expect(barElement.style.cssText).toBe('transform: translate3d(0px,0,0); width: 15px;');

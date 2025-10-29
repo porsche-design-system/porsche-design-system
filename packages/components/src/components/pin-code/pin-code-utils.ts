@@ -48,7 +48,7 @@ export const warnAboutTransformedValue = (host: HTMLElement, length?: number): v
   );
 };
 
-export const internal = {
+export const internalPin = {
   warnAboutTransformedValue,
 };
 
@@ -62,11 +62,11 @@ export const getConcatenatedInputValues = (pinCodeElements: HTMLInputElement[]):
 // reset value if it contains invalid characters and cut string if pasted value is longer than pin code length
 export const getSanitisedValue = (host: HTMLElement, value: string, length: number): string => {
   if (value && !hasInputOnlyDigitsOrWhitespaces(value)) {
-    internal.warnAboutTransformedValue(host);
+    internalPin.warnAboutTransformedValue(host);
     return '';
   }
   if (removeWhiteSpaces(value)?.length > length) {
-    internal.warnAboutTransformedValue(host, length);
+    internalPin.warnAboutTransformedValue(host, length);
     return value.slice(0, length);
   }
   return value;
