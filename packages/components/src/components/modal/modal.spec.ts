@@ -8,8 +8,6 @@ import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAr
 import * as setScrollLockUtils from '../../utils/setScrollLock';
 import { Modal } from './modal';
 
-vi.mock('../../utils/dom');
-
 let component: Modal;
 
 beforeEach(() => {
@@ -150,6 +148,7 @@ describe('render', () => {
 
   it('should call hasNamedSlot() with correct parameters', () => {
     const hasNamedSlotSpy = vi.spyOn(domUtils, 'hasNamedSlot');
+
     const header = document.createElement('header');
     header.slot = 'heading';
     component.host.appendChild(header);
@@ -157,8 +156,10 @@ describe('render', () => {
 
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'heading');
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'header');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(4, component.host, 'footer');
-    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(4);
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'footer');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(4, component.host, 'heading');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(5, component.host, 'header');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(6, component.host, 'heading');
+    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(6);
   });
 });
