@@ -9,7 +9,7 @@ describe('improveButtonHandlingForCustomElement()', () => {
     const getName = vi.fn().mockReturnValue('name');
     const getValue = vi.fn().mockReturnValue('value');
     const getDisabled = vi.fn().mockReturnValue(false);
-    const handleButtonEventSpy = vi.spyOn(handleButtonUtils, 'handleButtonEvent');
+    const handleButtonEventSpy = vi.spyOn(handleButtonUtils.internal, 'handleButtonEvent');
 
     improveButtonHandlingForCustomElement(element, getType, getDisabled, getName, getValue);
 
@@ -55,6 +55,7 @@ describe('handleButtonEvent()', () => {
     // Timeout necessary since function uses 1 tick timeout
     await asyncTimeout(10);
 
+    // TODO: recieving "undefined" instead of undefined
     expect(fakeButton.getAttribute('type')).toBe(getType());
     expect(fakeButton.getAttribute('name')).toBe(getName());
     expect(fakeButton.getAttribute('value')).toBe(getValue());
