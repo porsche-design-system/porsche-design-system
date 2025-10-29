@@ -56,7 +56,8 @@
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
     "globby-legacy": "npm:globby@^11.0.4",
-    "imask": "7.6.1"
+    "imask": "7.6.1",
+    "happy-dom": "^20.0.10"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
