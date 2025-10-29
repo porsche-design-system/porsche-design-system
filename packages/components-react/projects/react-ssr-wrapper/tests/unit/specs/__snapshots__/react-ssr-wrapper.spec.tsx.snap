@@ -18521,9 +18521,6 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -18556,6 +18553,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;

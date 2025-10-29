@@ -11,9 +11,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -46,6 +43,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -111,9 +111,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -146,6 +143,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -211,9 +211,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -246,6 +243,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -310,9 +310,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -345,6 +342,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -409,9 +409,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -444,6 +441,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -508,9 +508,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -543,6 +540,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -608,9 +608,6 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-legend {
-  display: contents;
-}
 .root {
   display: grid;
   justify-self: flex-start;
@@ -643,6 +640,9 @@ legend {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -1385,6 +1385,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(min-width:760px) {
@@ -1411,6 +1414,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(min-width:1300px) {
@@ -1436,6 +1442,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(legend) {
+    margin-bottom: 4px;
   }
 }
 
@@ -1545,6 +1554,9 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(min-width:760px) {
@@ -1571,6 +1583,9 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(min-width:1300px) {
@@ -1596,6 +1611,9 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(legend) {
+    margin-bottom: 4px;
   }
 }
 "
