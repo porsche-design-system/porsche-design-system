@@ -356,6 +356,7 @@ test.describe('form', () => {
       await expect(inputSearch).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
 
@@ -375,6 +376,7 @@ test.describe('form', () => {
       await expect(inputSearch).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
 
@@ -395,6 +397,7 @@ test.describe('form', () => {
       await expect(inputSearch).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     });
 
@@ -416,6 +419,7 @@ test.describe('form', () => {
       await expect(inputSearch).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
     });
 
@@ -437,6 +441,7 @@ test.describe('form', () => {
       await expect(inputSearch).toBeFocused();
 
       await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
     });
   });
