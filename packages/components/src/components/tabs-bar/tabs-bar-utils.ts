@@ -1,5 +1,5 @@
-import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorScheme } from '../scroller/scroller-utils';
 import { getAttribute, setAttribute } from '../../utils';
+import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorScheme } from '../scroller/scroller-utils';
 
 export const TABS_BAR_SIZES = ['small', 'medium'] as const;
 export type TabsBarSize = (typeof TABS_BAR_SIZES)[number];
@@ -32,6 +32,10 @@ export const getTransformation = (el: HTMLElement = {} as HTMLElement): string =
   return `transform: translate3d(${el.offsetLeft > 0 ? el.offsetLeft : 0}px,0,0);width: ${rect.width}px`;
 };
 
+export const internal = {
+  getTransformation,
+};
+
 export const getPrevNextTabIndex = (
   direction: ScrollerDirection,
   tabElementsLength: number,
@@ -59,12 +63,12 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
     if (currentActiveTabElement) {
       // for initial activeTabIndex > 0 and resized window with fluid font-size for size="medium"
       // we need to adjust the starting point of the transition
-      setAttribute(barElement, 'style', `transition: none;${getTransformation(currentActiveTabElement)}`);
+      setAttribute(barElement, 'style', `transition: none;${internal.getTransformation(currentActiveTabElement)}`);
     }
 
     const newActiveTabElement = tabElements[activeTabIndex];
     if (newActiveTabElement) {
-      setAttribute(barElement, 'style', getTransformation(newActiveTabElement));
+      setAttribute(barElement, 'style', internal.getTransformation(newActiveTabElement));
     }
 
     // when there was an active item before, we need to reset the animation
