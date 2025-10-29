@@ -13,6 +13,10 @@ export const isStateCompleteOrWarning = (state: StepperHorizontalItemState): boo
   return state === 'complete' || state === 'warning';
 };
 
+export const internal = {
+  isStateCompleteOrWarning,
+};
+
 export const getStepperHorizontalIconName = (
   state: StepperHorizontalItemState
 ): Extract<IconName, 'success' | 'warning'> => {
@@ -29,5 +33,5 @@ export const throwIfCurrentAndDisabled = (host: HTMLElement): void => {
 };
 
 export const isItemClickable = (state: StepperHorizontalItemState, disabled: boolean): boolean => {
-  return !!state && isStateCompleteOrWarning(state) && !disabled;
+  return !!state && internal.isStateCompleteOrWarning(state) && !disabled;
 };

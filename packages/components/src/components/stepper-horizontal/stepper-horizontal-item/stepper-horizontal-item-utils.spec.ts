@@ -67,7 +67,7 @@ describe('isItemClickable()', () => {
   });
 
   it('should call isStateCompleteOrWarning()', () => {
-    const spy = vi.spyOn(stepperHorizontalItemUtils, 'isStateCompleteOrWarning');
+    const spy = vi.spyOn(stepperHorizontalItemUtils.internal, 'isStateCompleteOrWarning');
     isItemClickable('current', false);
 
     expect(spy).toHaveBeenCalledWith('current');
