@@ -47,7 +47,7 @@ describe('isValueNotOfType()', () => {
 
 describe('validateValueOfType()', () => {
   it('should call isValueNotOfType() with correct parameters', () => {
-    const spy = vi.spyOn(validatePropsUtils, 'isValueNotOfType');
+    const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isValueNotOfType');
     validateValueOfType('propName', 'propValue', 'string');
 
     expect(spy).toHaveBeenCalledWith('propValue', 'string');
@@ -60,7 +60,7 @@ describe('validateValueOfType()', () => {
   });
 
   it('should return error object if isValueNotOfType() is true', () => {
-    vi.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValue(true);
+    vi.spyOn(validatePropsUtils.internalValidateProps, 'isValueNotOfType').mockReturnValue(true);
     const result = validateValueOfType('propName', 'propValue', 'string');
     expect(result).toEqual({
       propName: 'propName',
@@ -84,7 +84,7 @@ describe('getBreakpointCustomizableStructure()', () => {
   });
 
   it('should call formatArrayOutput() for array type', () => {
-    const spy = vi.spyOn(validatePropsUtils, 'formatArrayOutput');
+    const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'formatArrayOutput');
     getBreakpointCustomizableStructure('boolean');
     expect(spy).not.toHaveBeenCalled();
 
@@ -120,13 +120,15 @@ describe('getShapeStructure()', () => {
 describe('isBreakpointCustomizableValueInvalid()', () => {
   describe('for boolean', () => {
     it('should call isValueNotOfType() with correct parameters', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'isValueNotOfType');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isValueNotOfType');
       isBreakpointCustomizableValueInvalid(true, 'boolean');
       expect(spy).toHaveBeenCalledWith(true, 'boolean');
     });
 
     it('should return result of isValueNotOfType()', () => {
-      vi.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValueOnce(true).mockReturnValueOnce(false);
+      vi.spyOn(validatePropsUtils.internalValidateProps, 'isValueNotOfType')
+        .mockReturnValueOnce(true)
+        .mockReturnValueOnce(false);
       expect(isBreakpointCustomizableValueInvalid(true, 'boolean')).toBe(true);
       expect(isBreakpointCustomizableValueInvalid(true, 'boolean')).toBe(false);
     });
@@ -134,13 +136,15 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
 
   describe('for number', () => {
     it('should call isValueNotOfType() with correct parameters', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'isValueNotOfType');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isValueNotOfType');
       isBreakpointCustomizableValueInvalid(true, 'number');
       expect(spy).toHaveBeenCalledWith(true, 'number');
     });
 
     it('should return result of isValueNotOfType()', () => {
-      vi.spyOn(validatePropsUtils, 'isValueNotOfType').mockReturnValueOnce(true).mockReturnValueOnce(false);
+      vi.spyOn(validatePropsUtils.internalValidateProps, 'isValueNotOfType')
+        .mockReturnValueOnce(true)
+        .mockReturnValueOnce(false);
       expect(isBreakpointCustomizableValueInvalid(true, 'number')).toBe(true);
       expect(isBreakpointCustomizableValueInvalid(true, 'number')).toBe(false);
     });
@@ -216,7 +220,7 @@ describe('validateProps()', () => {
   });
 
   it('should call printErrorMessage() for each validation error', () => {
-    const spy = vi.spyOn(validatePropsUtils, 'printErrorMessage').mockReturnValue();
+    const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'printErrorMessage').mockReturnValue();
     const error1: ValidationError & { componentName: string } = {
       propName: 'prop1',
       propValue: 'value1',
@@ -237,7 +241,7 @@ describe('validateProps()', () => {
   });
 
   it('should not call printErrorMessage() without validation errors', () => {
-    const spy = vi.spyOn(validatePropsUtils, 'printErrorMessage');
+    const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'printErrorMessage');
     validateProps(instance, propTypes);
 
     expect(spy).not.toHaveBeenCalled();
@@ -253,13 +257,13 @@ describe('AllowedTypes', () => {
 
   describe('.string', () => {
     it('should call validateValueOfType() with correct parameters', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'validateValueOfType');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType');
       AllowedTypes.string('propName', 'propValue');
       expect(spy).toHaveBeenCalledWith('propName', 'propValue', 'string');
     });
 
     it('should return result of validateValueOfType()', () => {
-      vi.spyOn(validatePropsUtils, 'validateValueOfType').mockReturnValue(mockResult);
+      vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType').mockReturnValue(mockResult);
       const result = AllowedTypes.string('propName', 'propValue');
       expect(result).toEqual(mockResult);
     });
@@ -267,13 +271,13 @@ describe('AllowedTypes', () => {
 
   describe('.number', () => {
     it('should call validateValueOfType() with correct parameters', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'validateValueOfType');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType');
       AllowedTypes.number('propName', 1);
       expect(spy).toHaveBeenCalledWith('propName', 1, 'number');
     });
 
     it('should return result of validateValueOfType()', () => {
-      vi.spyOn(validatePropsUtils, 'validateValueOfType').mockReturnValue(mockResult);
+      vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType').mockReturnValue(mockResult);
       const result = AllowedTypes.number('propName', 'propValue');
       expect(result).toEqual(mockResult);
     });
@@ -281,13 +285,13 @@ describe('AllowedTypes', () => {
 
   describe('.boolean', () => {
     it('should call validateValueOfType() with correct parameters', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'validateValueOfType');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType');
       AllowedTypes.boolean('propName', true);
       expect(spy).toHaveBeenCalledWith('propName', true, 'boolean');
     });
 
     it('should return result of validateValueOfType()', () => {
-      vi.spyOn(validatePropsUtils, 'validateValueOfType').mockReturnValue(mockResult);
+      vi.spyOn(validatePropsUtils.internalValidateProps, 'validateValueOfType').mockReturnValue(mockResult);
       const result = AllowedTypes.boolean('propName', 'propValue');
       expect(result).toEqual(mockResult);
     });
@@ -301,7 +305,7 @@ describe('AllowedTypes', () => {
     });
 
     it('should call isValidArray() via anonymous ValidatorFunction', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'isValidArray');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isValidArray');
       validatorFunctionValues('propName', ['a', 'b']);
       expect(spy).toHaveBeenCalledWith('propName', ['a', 'b'], AllowedTypes.string);
     });
@@ -339,7 +343,7 @@ describe('AllowedTypes', () => {
       });
 
       it('should call formatArrayOutput() via anonymous ValidatorFunction', () => {
-        const spy = vi.spyOn(validatePropsUtils, 'formatArrayOutput');
+        const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'formatArrayOutput');
         validatorFunctionValues('propName', 'c');
         expect(spy).toHaveBeenCalledWith(['a', 'b']);
       });
@@ -432,13 +436,13 @@ describe('AllowedTypes', () => {
     });
 
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for flat value via anonymous ValidatorFunction', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isBreakpointCustomizableValueInvalid');
       validatorFunctionArray('propName', 'a');
       expect(spy).toHaveBeenCalledWith('a', ['a', 'b']);
     });
 
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for nested values via anonymous ValidatorFunction', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'isBreakpointCustomizableValueInvalid');
       const propValue = { base: 'a', s: 'b' };
       validatorFunctionArray('propName', propValue);
       expect(spy).toHaveBeenCalledTimes(2);
@@ -447,13 +451,13 @@ describe('AllowedTypes', () => {
     });
 
     it('should call getBreakpointCustomizableStructure() via anonymous ValidatorFunction', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'getBreakpointCustomizableStructure');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'getBreakpointCustomizableStructure');
       validatorFunctionArray('propName', 'c');
       expect(spy).toHaveBeenCalledWith(['a', 'b']);
     });
 
     it('should call formatObjectOutput() via anonymous ValidatorFunction', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'formatObjectOutput');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'formatObjectOutput');
       validatorFunctionArray('propName', 'c');
       expect(spy).toHaveBeenCalledWith('c');
     });
@@ -469,7 +473,7 @@ describe('AllowedTypes', () => {
         const result1 = validatorFunctionArray('propName', 'c');
         expect(result1).toEqual(error);
 
-        vi.spyOn(validatePropsUtils, 'formatObjectOutput').mockReturnValue('formattedValue');
+        vi.spyOn(validatePropsUtils.internalValidateProps, 'formatObjectOutput').mockReturnValue('formattedValue');
         const result2 = validatorFunctionArray('propName', { base: 'a', s: 'c' });
         expect(result2).toEqual({ ...error, propValue: 'formattedValue' });
       });
@@ -478,7 +482,7 @@ describe('AllowedTypes', () => {
         const result1 = validatorFunctionBoolean('propName', 'c');
         expect(result1).toEqual(error);
 
-        vi.spyOn(validatePropsUtils, 'formatObjectOutput').mockReturnValue('formattedValue');
+        vi.spyOn(validatePropsUtils.internalValidateProps, 'formatObjectOutput').mockReturnValue('formattedValue');
         const result2 = validatorFunctionArray('propName', { base: true, s: 'c' });
         expect(result2).toEqual({ ...error, propValue: 'formattedValue' });
       });
@@ -520,7 +524,7 @@ describe('AllowedTypes', () => {
 
     it('should call formatObjectOutput() with result of parseJSONAttribute() via anonymous ValidatorFunction', () => {
       vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue(mockResult);
-      const spy = vi.spyOn(validatePropsUtils, 'formatObjectOutput');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'formatObjectOutput');
       validatorFunction('aria', 'propValue');
 
       expect(spy).toHaveBeenCalledWith(mockResult);
@@ -528,7 +532,7 @@ describe('AllowedTypes', () => {
 
     it('should call getAriaStructure() with correct parameters via anonymous ValidatorFunction', () => {
       vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue(mockResult);
-      const spy = vi.spyOn(validatePropsUtils, 'getAriaStructure');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'getAriaStructure');
       validatorFunction('aria', 'propValue');
 
       expect(spy).toHaveBeenCalledWith(['aria-label', 'aria-disabled']);
@@ -579,7 +583,7 @@ describe('AllowedTypes', () => {
     });
 
     it('should call getShapeStructure() with correct parameter', () => {
-      const spy = vi.spyOn(validatePropsUtils, 'getShapeStructure');
+      const spy = vi.spyOn(validatePropsUtils.internalValidateProps, 'getShapeStructure');
       nestedValidatorFunction1.mockReturnValueOnce(mockError);
       validatorFunction('sort', { id: '1' });
       expect(spy).toHaveBeenCalledWith(shapeStructure);
