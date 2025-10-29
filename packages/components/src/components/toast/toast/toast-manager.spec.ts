@@ -96,6 +96,11 @@ describe('dismissToastItem()', () => {
 
   beforeEach(() => {
     toastManager.register(toastElement, dismissCallbackFunction);
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   it('should remove timeout', () => {
@@ -116,11 +121,13 @@ describe('dismissToastItem()', () => {
     expect(dismissCallbackFunction).toHaveBeenCalledTimes(1);
   });
 
-  // TODO: rethink the internal logic here to make it testable
-  it.skip('should trigger force update', () => {
+  it('should trigger force update', () => {
     toastManager.addMessage({ text: 'Some Message' });
     const spy = vi.spyOn(stencilCore, 'forceUpdate');
+
     toastManager.dismissToastItem();
+
+    vi.runAllTimers();
 
     expect(spy).toHaveBeenCalledWith(toastElement);
   });
