@@ -36,8 +36,12 @@ export const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
+export const internal = {
+  resetSelectedOption,
+};
+
 export const updateSelectOptions = (options: SelectOption[], value: string): void => {
-  resetSelectedOption(options);
+  internal.resetSelectedOption(options);
   if (value === undefined) {
     // Option without value for empty selection
     const optionToSelect = options.find((option) => option.value === undefined);
@@ -59,7 +63,7 @@ export const updateSelectOptions = (options: SelectOption[], value: string): voi
 };
 
 export const setSelectedOption = (options: SelectOption[], selectedOption: SelectOption): void => {
-  resetSelectedOption(options);
+  internal.resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
 };
