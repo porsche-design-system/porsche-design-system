@@ -51,7 +51,7 @@ describe('observeStickyArea()', () => {
   });
 
   it('should create new intersection observer instance and observe node if scroll area was not observed before', () => {
-    const getIntersectionObserverStickyAreaSpy = vi.spyOn(observerUtils, 'getIntersectionObserverStickyArea');
+    const getIntersectionObserverStickyAreaSpy = vi.spyOn(observerUtils.internal, 'getIntersectionObserverStickyArea');
     const observeSpy = vi.spyOn(mockObserverInstance, 'observe');
 
     observeStickyArea(scrollArea, stickyNode);
