@@ -16,7 +16,7 @@ it('should call getDirectChildHTMLElements() with correct parameters and return 
   expect(spy).toHaveBeenCalledWith(parent, selector);
 });
 
-const errorMessage = '"[Porsche Design System] div has to contain a single direct child of: a"';
+const errorMessage = `[Error: [Porsche Design System] div has to contain a single direct child of: a]`;
 
 it('should throw error if there is more than 1 child of same kind', () => {
   const parent = document.createElement('div');
@@ -24,7 +24,7 @@ it('should throw error if there is more than 1 child of same kind', () => {
   const child2 = document.createElement('a');
   parent.append(child1, child2);
 
-  expect(() => getOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
+  expect(() => getOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
 it('should not throw error if there is exactly 1 child of kind', () => {
@@ -39,7 +39,7 @@ it('should not throw error if there is exactly 1 child of kind', () => {
 it('should throw error if there is no child', () => {
   const parent = document.createElement('div');
 
-  expect(() => getOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
+  expect(() => getOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
 
 it('should throw error if there is only a nested child', () => {
@@ -53,5 +53,5 @@ it('should throw error if there is only a nested child', () => {
   // https://github.com/jsdom/jsdom/issues/2998
   vi.spyOn(parent, 'querySelectorAll').mockReturnValue(document.createDocumentFragment().querySelectorAll('*'));
 
-  expect(() => getOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage`[Error: [Porsche Design System] div has to contain a single direct child of: a]`);
+  expect(() => getOnlyChildOfKindHTMLElementOrThrow(parent, 'a')).toThrowErrorMatchingInlineSnapshot(errorMessage);
 });
