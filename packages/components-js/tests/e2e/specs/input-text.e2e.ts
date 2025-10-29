@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
@@ -308,6 +308,108 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('disabled', false);
     await expect(inputText).toHaveJSProperty('disabled', false);
   });
+
+  test.describe('implicit form submission on enter key', () => {
+    test('should implicit submit form on enter when there is a p-button type submit', async ({ page }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+        markupAfter: `<p-button type="submit">Submit</p-button>`,
+      });
+
+      const inputText = getInputText(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    });
+
+    test('should implicit submit form on enter when there is a native button type submit', async ({ page }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+        markupAfter: `<button type="submit">Submit</button>`,
+      });
+
+      const inputText = getInputText(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    });
+
+    test('should implicit submit form on enter when there is no submit button and no blocking elements', async ({
+      page,
+    }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+      });
+
+      const inputText = getInputText(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    });
+
+    test('should not implicit submit form on enter when there is no submit button and a native input type text', async ({
+      page,
+    }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+        markupAfter: `<input name="some-input" type="text" />`,
+      });
+
+      const inputText = getInputText(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    });
+
+    test('should not implicit submit form on enter when there is no submit button and a p-input-text', async ({
+      page,
+    }) => {
+      await initInputText(page, {
+        isWithinForm: true,
+        markupAfter: `<p-input-text name="some-input" />`,
+      });
+
+      const inputText = getInputText(page).first();
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputText.click();
+      await expect(inputText).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    });
+  });
 });
 
 test.describe('focus state', () => {
@@ -495,7 +597,6 @@ test.describe('Counter', () => {
     await clickElementPosition(page, counter);
 
     await expect(inputText).toBeFocused();
-
   });
 
   test('should display correct counter when typing', async ({ page }) => {

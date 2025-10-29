@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
@@ -367,6 +367,108 @@ test.describe('form', () => {
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe('-5');
+  });
+
+  test.describe('implicit form submission on enter key', () => {
+    test('should implicit submit form on enter when there is a p-button type submit', async ({ page }) => {
+      await initInputNumber(page, {
+        isWithinForm: true,
+        markupAfter: `<p-button type="submit">Submit</p-button>`,
+      });
+
+      const inputNumber = getInputNumber(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputNumber.click();
+      await expect(inputNumber).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    });
+
+    test('should implicit submit form on enter when there is a native button type submit', async ({ page }) => {
+      await initInputNumber(page, {
+        isWithinForm: true,
+        markupAfter: `<button type="submit">Submit</button>`,
+      });
+
+      const inputNumber = getInputNumber(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputNumber.click();
+      await expect(inputNumber).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    });
+
+    test('should implicit submit form on enter when there is no submit button and no blocking elements', async ({
+      page,
+    }) => {
+      await initInputNumber(page, {
+        isWithinForm: true,
+      });
+
+      const inputNumber = getInputNumber(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputNumber.click();
+      await expect(inputNumber).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    });
+
+    test('should not implicit submit form on enter when there is no submit button and a native input type text', async ({
+      page,
+    }) => {
+      await initInputNumber(page, {
+        isWithinForm: true,
+        markupAfter: `<input name="some-input" type="text" />`,
+      });
+
+      const inputNumber = getInputNumber(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputNumber.click();
+      await expect(inputNumber).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    });
+
+    test('should not implicit submit form on enter when there is no submit button and a p-input-text', async ({
+      page,
+    }) => {
+      await initInputNumber(page, {
+        isWithinForm: true,
+        markupAfter: `<p-input-text name="some-input" />`,
+      });
+
+      const inputNumber = getInputNumber(page);
+      const form = getForm(page);
+
+      await addEventListener(form, 'submit');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+      await inputNumber.click();
+      await expect(inputNumber).toBeFocused();
+
+      await page.keyboard.press('Enter');
+      expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    });
   });
 });
 
