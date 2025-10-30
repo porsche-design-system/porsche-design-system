@@ -51,8 +51,14 @@ describe('validatePartialUsage()', () => {
     const validateGetInitialStylesUsageSpy = vi
       .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
       .mockImplementation(() => null); // mocked since it throws an exception
-    const validateGetFontFaceStylesUsageSpy = vi.spyOn(validatePartialUsageUtils, 'validateGetFontFaceStylesUsage');
-    const validateGetFontLinksUsageSpy = vi.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
+    const validateGetFontFaceStylesUsageSpy = vi.spyOn(
+      validatePartialUsageUtils.internalPartial,
+      'validateGetFontFaceStylesUsage'
+    );
+    const validateGetFontLinksUsageSpy = vi.spyOn(
+      validatePartialUsageUtils.internalPartial,
+      'validateGetFontLinksUsage'
+    );
     const validateGetComponentChunkLinksUsagesSpy = vi.spyOn(
       validatePartialUsageUtils,
       'validateGetComponentChunkLinksUsage'
@@ -142,7 +148,7 @@ describe('validateGetFontFaceStylesUsage()', () => {
 
   it('should call logPartialValidationWarning() with correct parameters', () => {
     vi.spyOn(document, 'querySelector').mockReturnValue(null);
-    const spy = vi.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
+    const spy = vi.spyOn(validatePartialUsageUtils.internalPartial, 'logPartialValidationWarning');
 
     validateGetFontFaceStylesUsage();
 
@@ -161,7 +167,7 @@ describe('validateGetFontLinksUsage()', () => {
 
   it('should call logPartialValidationWarning() with correct parameters', () => {
     vi.spyOn(document.head, 'querySelector').mockReturnValue(null);
-    const spy = vi.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
+    const spy = vi.spyOn(validatePartialUsageUtils.internalPartial, 'logPartialValidationWarning');
 
     validateGetFontLinksUsage();
 
@@ -245,7 +251,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
       '1.2.3': ['p-text'],
       '1.2.4': ['p-text', 'p-button', 'p-link'],
     });
-    const spy = vi.spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText');
+    const spy = vi.spyOn(validatePartialUsageUtils.internalPartial, 'getValidatePartialErrorSecondaryText');
 
     validateGetComponentChunkLinksUsage();
 
@@ -257,7 +263,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     vi.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions').mockReturnValue({});
     const warnSpy = vi.spyOn(global.console, 'warn');
     const getValidatePartialErrorSecondaryTextSpy = vi.spyOn(
-      validatePartialUsageUtils,
+      validatePartialUsageUtils.internalPartial,
       'getValidatePartialErrorSecondaryText'
     );
 
@@ -278,7 +284,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 
   it('should call logPartialValidationWarning() with correct parameters', () => {
     vi.spyOn(document.body, 'querySelector').mockReturnValue(null);
-    const spy = vi.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
+    const spy = vi.spyOn(validatePartialUsageUtils.internalPartial, 'logPartialValidationWarning');
 
     validateGetLoaderScriptUsage();
 
@@ -287,7 +293,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 
   it('should not call logPartialValidationWarning() if loader script is found', () => {
     vi.spyOn(document.body, 'querySelector').mockReturnValue(document.createElement('link'));
-    const spy = vi.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
+    const spy = vi.spyOn(validatePartialUsageUtils.internalPartial, 'logPartialValidationWarning');
 
     validateGetLoaderScriptUsage();
 
@@ -298,7 +304,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 describe('validateGetInitialStylesUsage()', () => {
   it('should call document.head.querySelector() with correct parameters', () => {
     const spy = vi.spyOn(document.head, 'querySelector');
-    vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(() => null); // mocked since it throws an exception
+    vi.spyOn(validatePartialUsageUtils.internalPartial, 'throwPartialValidationError').mockImplementation(() => null); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -307,7 +313,9 @@ describe('validateGetInitialStylesUsage()', () => {
   });
 
   it('should call throwPartialValidationError() with correct parameters when initial style is not found', () => {
-    const spy = vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError').mockImplementation(() => null); // mocked since it throws an exception
+    const spy = vi
+      .spyOn(validatePartialUsageUtils.internalPartial, 'throwPartialValidationError')
+      .mockImplementation(() => null); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -317,7 +325,7 @@ describe('validateGetInitialStylesUsage()', () => {
 
   it('should not call throwPartialValidationError() when initial style tags are found for each prefix', () => {
     vi.spyOn(document.head, 'querySelector').mockReturnValue(document.createElement('style'));
-    const spy = vi.spyOn(validatePartialUsageUtils, 'throwPartialValidationError');
+    const spy = vi.spyOn(validatePartialUsageUtils.internalPartial, 'throwPartialValidationError');
 
     validateGetInitialStylesUsage();
 
@@ -330,10 +338,10 @@ describe('throwPartialValidationError()', () => {
 
   const throwExceptionSpy = vi.spyOn(loggerUtils, 'throwException').mockImplementation(() => null);
   const getValidatePartialErrorPrimaryTextSpy = vi
-    .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorPrimaryText')
+    .spyOn(validatePartialUsageUtils.internalPartial, 'getValidatePartialErrorPrimaryText')
     .mockReturnValue('main');
   const getValidatePartialErrorSecondaryTextSpy = vi
-    .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText')
+    .spyOn(validatePartialUsageUtils.internalPartial, 'getValidatePartialErrorSecondaryText')
     .mockReturnValue('additional');
 
   throwPartialValidationError('getInitialStyles', 'my-prefix');
@@ -355,10 +363,10 @@ describe('logPartialValidationWarning()', () => {
     (partialName) => {
       const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
       const getValidatePartialErrorPrimaryTextSpy = vi
-        .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorPrimaryText')
+        .spyOn(validatePartialUsageUtils.internalPartial, 'getValidatePartialErrorPrimaryText')
         .mockReturnValue('main');
       const getValidatePartialErrorSecondaryTextSpy = vi
-        .spyOn(validatePartialUsageUtils, 'getValidatePartialErrorSecondaryText')
+        .spyOn(validatePartialUsageUtils.internalPartial, 'getValidatePartialErrorSecondaryText')
         .mockReturnValue('additional');
 
       logPartialValidationWarning(partialName);
