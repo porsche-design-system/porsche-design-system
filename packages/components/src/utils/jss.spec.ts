@@ -329,7 +329,7 @@ describe('attachComponentCss()', () => {
   it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = vi.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
+    const spy = vi.spyOn(jssUtils.internalJss, 'getCachedComponentCss').mockImplementation(() => '');
 
     attachComponentCss(host, (_x: boolean) => 'some css', true);
 
@@ -354,7 +354,7 @@ describe('attachComponentCss()', () => {
 
   describe('without CSSStyleSheet support', () => {
     it('should create style node and prepend it in shadowRoot', () => {
-      const spy = vi.spyOn(jssUtils, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
+      const spy = vi.spyOn(jssUtils.internalJss, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
 
       const div = document.createElement('p-some-component');
       div.attachShadow({ mode: 'open' });
