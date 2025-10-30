@@ -25,8 +25,8 @@ import {
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
   getSelectedOption,
-  getShadowRootHTMLElement,
   hasMessage,
+  hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
@@ -54,6 +54,7 @@ import {
   type SelectOptgroup,
   type SelectOption,
   type SelectState,
+  type SelectToggleEventDetail,
   type SelectUpdateEventDetail,
   setSelectedOption,
   syncSelectChildrenProps,
@@ -82,6 +83,7 @@ const propTypes: PropTypes<typeof Select> = {
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "", "description": "Default slot for the `p-select-option` tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
  * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
  */
@@ -125,7 +127,7 @@ export class Select {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
-  /** Shows an input in the dropdown allowing options to be filtered. */
+  /** Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used. */
   @Prop() public filter?: boolean = false;
 
   /** Displays as compact version. */
@@ -148,6 +150,9 @@ export class Select {
    */
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
+  /** Emitted whenever the dropdown menu is opened or closed */
+  @Event({ bubbles: true }) public toggle: EventEmitter<SelectToggleEventDetail>;
+
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
 
@@ -157,7 +162,8 @@ export class Select {
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
   private inputSearchElement: HTMLPInputSearchElement;
-  private inputSearchInputElement: HTMLInputElement;
+  private filterSlot: HTMLSlotElement;
+  private inputSearchInputElement: HTMLInputElement | HTMLPInputSearchElement;
   private listboxElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
@@ -243,9 +249,14 @@ export class Select {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
-    if (this.filter) {
-      this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+    if (this.filterSlot) {
+      const filter = this.filterSlot.assignedElements()[0];
+      filter.addEventListener('keydown', this.onComboKeyDown);
+    }
+    if (this.filter || this.filterSlot) {
+      this.inputSearchInputElement = this.filter
+        ? this.inputSearchElement.shadowRoot.querySelector('input')
+        : (this.filterSlot.assignedElements()[0] as HTMLPInputSearchElement);
       // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
       if (this.inputSearchInputElement) {
         // @ts-expect-error typings missing
@@ -284,6 +295,8 @@ export class Select {
       this.theme
     );
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
+
+    const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
@@ -335,7 +348,7 @@ export class Select {
           aria-hidden={this.isOpen ? null : 'true'}
           ref={(el) => (this.popoverElement = el)}
         >
-          {this.filter && (
+          {this.filter && !hasCustomFilterSlot && (
             <PrefixedTagNames.pInputSearch
               class="filter"
               name="filter"
@@ -353,6 +366,7 @@ export class Select {
               ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
             />
           )}
+          {hasCustomFilterSlot && <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>}
           <div
             class="options"
             role="listbox"
@@ -361,7 +375,7 @@ export class Select {
             ref={(el) => (this.listboxElement = el)}
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
-            <slot />
+            <slot onSlotchange={this.onSlotchange} />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -500,8 +514,18 @@ export class Select {
     this.selectOptgroups = [];
 
     for (const child of Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      (el) =>
+        el.tagName !== 'SELECT' &&
+        el.slot !== 'label' &&
+        el.slot !== 'description' &&
+        el.slot !== 'message' &&
+        el.slot !== 'filter'
     )) {
+      if ((child as HTMLElement).slot === 'filter') {
+        throwIfElementIsNotOfKind(this.host, child as HTMLElement, 'p-input-search');
+        continue;
+      }
+
       throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
 
       if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
@@ -582,11 +606,12 @@ export class Select {
   };
 
   private onToggle = (): void => {
-    if (this.isOpen && this.filter) {
-      // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
+    this.toggle.emit({ value: this.isOpen });
+    if (this.isOpen && (this.filter || this.filterSlot)) {
+      // Double requestAnimationFrame as a Safari fix to make sure the input will receive focus
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          this.inputSearchElement.focus();
+          this.inputSearchInputElement.focus();
         });
       });
     }
