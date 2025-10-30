@@ -382,6 +382,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.SelectExampleRequiredPage />,
   },
   {
+    name: 'Select Example Async (Load on Open)',
+    path: '/select-example-async-load',
+    element: <fromExamples.SelectExampleAsyncLoad />,
+  },
+  {
+    name: 'Select Example Async (Load on Filter)',
+    path: '/select-example-async-filter',
+    element: <fromExamples.SelectExampleAsyncFilter />,
+  },
+  {
     name: 'Stepper Horizontal Example',
     path: '/stepper-horizontal-example',
     element: <fromExamples.StepperHorizontalExamplePage />,

@@ -59,6 +59,8 @@ export * from './RadioGroupExample';
 export * from './RadioGroupExampleControlled';
 export * from './SelectExampleDynamic';
 export * from './SelectExampleRequired';
+export * from './SelectExampleAsyncLoad';
+export * from './SelectExampleAsyncFilter';
 export * from './SheetExample';
 export * from './StepperHorizontalExample';
 export * from './TableExampleAdvanced';

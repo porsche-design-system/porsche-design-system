@@ -1,0 +1,72 @@
+<p-select id="mySelect" name="options" value="a">
+  <p-input-search
+    id="inputSearch"
+    name="Some name"
+    clear="true"
+    indicator="true"
+    slot="filter"
+    compact="true"
+    auto-complete="off"
+  ></p-input-search>
+
+  <p-select-option value="a">Option A</p-select-option>
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+</p-select>
+
+<script>
+  const select = document.getElementById('mySelect');
+  const inputSearch = document.getElementById('inputSearch');
+
+  const defaultOptions = Array.from(select.querySelectorAll('p-select-option')).map(opt => ({
+    value: opt.value,
+    text: opt.textContent,
+  }));
+
+  let debounceTimer;
+
+  function debounce(fn, delay) {
+    return function (...args) {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  function setOptions(options) {
+    select.querySelectorAll('p-select-option').forEach(el => el.remove());
+    options.forEach(({ value, text }) => {
+      const option = document.createElement('p-select-option');
+      option.value = value;
+      option.textContent = text;
+      select.appendChild(option);
+    });
+  }
+
+  async function loadOptions(searchTerm) {
+    inputSearch.loading = true;
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    inputSearch.loading = false;
+
+    const newOptions = Array.from({ length: 3 }, (_, i) => ({
+      value: `${searchTerm}-${i + 1}`,
+      text: `Result ${i + 1} for "${searchTerm}"`,
+    }));
+
+    setOptions(newOptions);
+  }
+
+  inputSearch.addEventListener(
+    'input',
+    debounce(async event => {
+      const searchTerm = inputSearch.value?.trim() ?? '';
+
+      if (searchTerm) {
+        await loadOptions(searchTerm);
+      } else {
+        setOptions(defaultOptions);
+      }
+    }, 400)
+  );
+</script>
