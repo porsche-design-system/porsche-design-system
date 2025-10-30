@@ -136,7 +136,8 @@ describe('this.validateComponent()', () => {
   });
 });
 
-xdescribe('this.scrollIntoView()', () => {});
+// TODO: finish
+// describe('this.scrollIntoView()', () => {});
 
 describe('this.observeBreakpointChange()', () => {
   it('should not call observeBreakpointChange() with correct parameters if this.size is not breakpoint customizable', () => {
