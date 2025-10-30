@@ -9,7 +9,7 @@ it('should call getHTMLElement() with element and result of transformSelectorToD
     transformSelectorToDirectChildSelectorUtils,
     'transformSelectorToDirectChildSelector'
   );
-  const getHTMLElementSpy = vi.spyOn(getHTMLElementUtils, 'getHTMLElement').mockImplementation(() => null);
+  const getHTMLElementSpy = vi.spyOn(getHTMLElementUtils, 'getHTMLElement').mockImplementation(() => {});
   const parent = document.createElement('div');
   const selector = 'span,a';
 

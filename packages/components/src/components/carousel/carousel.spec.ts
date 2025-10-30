@@ -75,7 +75,7 @@ describe('connectedCallback', () => {
       const component = new Carousel();
       component.host = document.createElement('p-carousel');
       component['splide'] = splideMock;
-      const spy = vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => null);
+      const spy = vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => {});
 
       component.connectedCallback();
       expect(spy).toHaveBeenCalledWith();
@@ -85,7 +85,7 @@ describe('connectedCallback', () => {
       const component = new Carousel();
       component.host = document.createElement('p-carousel');
       component['splide'] = splideMock;
-      vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => null);
+      vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => {});
       const spy = vi.spyOn(component, 'registerSplideHandlers' as any);
 
       component.connectedCallback();
@@ -229,7 +229,7 @@ describe('render', () => {
   });
 
   it('should call parseJSON() with correct parameter and set this.parsedDisablePagination', () => {
-    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => null);
+    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
     const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
@@ -243,7 +243,7 @@ describe('render', () => {
   });
 
   it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
-    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => null);
+    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
     const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
@@ -259,7 +259,7 @@ describe('render', () => {
 
 describe('componentDidUpdate', () => {
   it('should call this.splide.refresh()', () => {
-    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const refreshSpy: () => Splide = vi.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
@@ -269,7 +269,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should set drag in this.splide.options to true when amountOfPages > 1', () => {
-    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
 
     const mockSplideInstance = {
@@ -285,7 +285,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should set drag in this.splide.options to false when amountOfPages <= 1', () => {
-    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
 
     component['splide'] = {
@@ -299,7 +299,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should set drag in this.splide.options to true when slidesPerPage set to auto', () => {
-    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
 
     const mockSplideInstance = {
@@ -316,7 +316,7 @@ describe('componentDidUpdate', () => {
 
   it('should call renderPagination when hasNavigation = true', () => {
     vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockReturnValueOnce();
-    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => null);
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = {
       options: {},
@@ -334,7 +334,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should not call renderPagination when hasNavigation = false', () => {
-    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => null);
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = {
       options: {},
@@ -347,7 +347,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call updatePrevNextButtons() with correct parameters when hasNavigation = true', () => {
-    const spy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
+    const spy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
     Object.defineProperty(component, 'hasNavigation', { value: true });
     component['splide'] = {
@@ -359,7 +359,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should not call updatePrevNextButtons() when hasNavigation = false', () => {
-    const spy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
+    const spy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
     Object.defineProperty(component, 'hasNavigation', { value: false });
     component['splide'] = {
@@ -406,8 +406,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = true with correct parameters on mounted event', () => {
-    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
-    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => null);
+    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = new Splide(getContainerEl(), { drag: true }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
@@ -427,8 +427,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should not call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = false on mounted event', () => {
-    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
-    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => null);
+    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = new Splide(getContainerEl(), { drag: false }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
@@ -439,8 +439,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call updatePrevNextButtons(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on splide events', () => {
-    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => null);
-    const updatePaginationSpy = vi.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => null);
+    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const updatePaginationSpy = vi.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
     const changeEmitSpy = vi.fn();
     const carouselChangeEmitSpy = vi.fn();
     const component = new Carousel();
@@ -570,7 +570,7 @@ describe('updateAmountOfPages()', () => {
   });
 
   it('should call this.splide.refresh()', () => {
-    vi.spyOn(carouselUtils, 'getAmountOfPages').mockImplementation(() => null);
+    vi.spyOn(carouselUtils, 'getAmountOfPages').mockImplementation(() => {});
     const refreshSpy: () => Splide = vi.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;

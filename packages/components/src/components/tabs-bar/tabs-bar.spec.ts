@@ -50,7 +50,7 @@ describe('componentDidLoad', () => {
   it('should call this.scrollActiveTabIntoView() with correct parameter when activeTabIndex !== undefined', () => {
     const component = initComponent();
     component.activeTabIndex = 0;
-    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation(() => null);
+    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation(() => {});
     vi.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValue(document.createElement('slot'));
 
     component.componentDidLoad();
@@ -70,7 +70,7 @@ describe('componentDidLoad', () => {
 
 describe('render', () => {
   it('should call this.setAccessibilityAttributes()', () => {
-    vi.spyOn(jssUtils, 'attachComponentCss').mockImplementation(() => null);
+    vi.spyOn(jssUtils, 'attachComponentCss').mockImplementation(() => {});
     const component = initComponent();
     const spy = vi.spyOn(component, 'setAccessibilityAttributes' as any);
 
@@ -107,7 +107,7 @@ describe('this.activeTabIndexHandler()', () => {
     expect(component['direction']).toBe('prev');
 
     component['internalTabIndex'] = 2;
-    vi.spyOn(component, 'setTabElements' as any).mockImplementation(() => null);
+    vi.spyOn(component, 'setTabElements' as any).mockImplementation(() => {});
 
     component.activeTabIndexHandler(0, 1);
     expect(component['direction']).toBe('next');
@@ -137,7 +137,7 @@ describe('this.activeTabIndexHandler()', () => {
 
   it('should call this.setBarStyle()', () => {
     const component = initComponent();
-    const spy = vi.spyOn(component, 'setBarStyle' as any).mockImplementation(() => null);
+    const spy = vi.spyOn(component, 'setBarStyle' as any).mockImplementation(() => {});
 
     component.activeTabIndexHandler(0, undefined);
     expect(spy).toHaveBeenCalledWith();
@@ -145,7 +145,7 @@ describe('this.activeTabIndexHandler()', () => {
 
   it('should call this.scrollActiveTabIntoView()', () => {
     const component = initComponent();
-    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation(() => null);
+    const spy = vi.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation(() => {});
 
     component.activeTabIndexHandler(0, undefined);
     expect(spy).toHaveBeenCalledWith();

@@ -4,7 +4,7 @@ import { warnIfCaptionIsMissing } from './table-utils';
 describe('warnIfCaptionIsMissing()', () => {
   let spy: vi.SpyInstance;
   beforeEach(() => {
-    spy = vi.spyOn(global.console, 'warn').mockImplementation(() => null);
+    spy = vi.spyOn(global.console, 'warn').mockImplementation(() => {});
   });
   afterEach(() => {
     spy.mockRestore();

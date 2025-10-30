@@ -86,7 +86,7 @@ describe('getSelectedOptionsString', () => {
 
 describe('setSelectedOptions', () => {
   it('should update the selected state of options not fitting the value', () => {
-    const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation();
+    const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = generateMultiSelectOptions({ amount: 5, selectedIndices: [0, 2, 3] });
     const value1 = ['Value 1', 'Value 2'];
 

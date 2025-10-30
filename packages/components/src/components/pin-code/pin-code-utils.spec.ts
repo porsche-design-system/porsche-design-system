@@ -105,7 +105,7 @@ describe('warnAboutTransformedValue()', () => {
     const host = document.createElement('p-pin-code');
     const warningPrefix = 'Property value of component p-pin-code:';
     const spyGetTagNameWithoutPrefix = vi.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
-    const spyConsoleWarn = vi.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation(() => null);
+    const spyConsoleWarn = vi.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation(() => {});
 
     pinCodeUtils.warnAboutTransformedValue(host, 4);
 

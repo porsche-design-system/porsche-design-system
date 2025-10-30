@@ -38,7 +38,7 @@ afterAll(() => {
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  vi.spyOn(global.console, 'warn').mockImplementation(() => null); // to suppress logs
+  vi.spyOn(global.console, 'warn').mockImplementation(() => {}); // to suppress logs
 });
 
 describe('validatePartialUsage()', () => {
@@ -50,7 +50,7 @@ describe('validatePartialUsage()', () => {
   it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesUsage() and validateGetFontLinksUsage()', () => {
     const validateGetInitialStylesUsageSpy = vi
       .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
-      .mockImplementation(() => null); // mocked since it throws an exception
+      .mockImplementation(() => {}); // mocked since it throws an exception
     const validateGetFontFaceStylesUsageSpy = vi.spyOn(
       validatePartialUsageUtils.internalPartial,
       'validateGetFontFaceStylesUsage'
@@ -304,7 +304,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 describe('validateGetInitialStylesUsage()', () => {
   it('should call document.head.querySelector() with correct parameters', () => {
     const spy = vi.spyOn(document.head, 'querySelector');
-    vi.spyOn(validatePartialUsageUtils.internalPartial, 'throwPartialValidationError').mockImplementation(() => null); // mocked since it throws an exception
+    vi.spyOn(validatePartialUsageUtils.internalPartial, 'throwPartialValidationError').mockImplementation(() => {}); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -315,7 +315,7 @@ describe('validateGetInitialStylesUsage()', () => {
   it('should call throwPartialValidationError() with correct parameters when initial style is not found', () => {
     const spy = vi
       .spyOn(validatePartialUsageUtils.internalPartial, 'throwPartialValidationError')
-      .mockImplementation(() => null); // mocked since it throws an exception
+      .mockImplementation(() => {}); // mocked since it throws an exception
 
     validateGetInitialStylesUsage();
 
@@ -336,7 +336,7 @@ describe('validateGetInitialStylesUsage()', () => {
 describe('throwPartialValidationError()', () => {
   it('should call throwException() with result of getValidatePartialErrorPrimaryText() and getValidatePartialErrorSecondaryText() when called with "getInitialStyles"', () => {});
 
-  const throwExceptionSpy = vi.spyOn(loggerUtils, 'throwException').mockImplementation(() => null);
+  const throwExceptionSpy = vi.spyOn(loggerUtils, 'throwException').mockImplementation(() => {});
   const getValidatePartialErrorPrimaryTextSpy = vi
     .spyOn(validatePartialUsageUtils.internalPartial, 'getValidatePartialErrorPrimaryText')
     .mockReturnValue('main');

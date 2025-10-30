@@ -5,7 +5,7 @@ import { injectGlobalStyle } from './inject-global-style';
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  vi.spyOn(global.console, 'warn').mockImplementation(() => null); // to suppress logs
+  vi.spyOn(global.console, 'warn').mockImplementation(() => {}); // to suppress logs
 });
 
 describe('if global styles are missing', () => {

@@ -633,7 +633,7 @@ describe('formatArrayOutput()', () => {
 
 describe('printErrorMessage()', () => {
   it('should call consoleError() util with correct parameter', () => {
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link' });
 
     expect(spy).toHaveBeenCalledWith(expect.any(String));

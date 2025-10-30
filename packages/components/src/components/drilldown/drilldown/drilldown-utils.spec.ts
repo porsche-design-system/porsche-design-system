@@ -23,7 +23,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, undefined);
     expect(spy).not.toHaveBeenCalled();
   });
@@ -32,7 +32,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild()];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).not.toHaveBeenCalled();
   });
@@ -41,7 +41,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessage);
   });
@@ -50,7 +50,7 @@ describe('validateActiveIdentifier()', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild(identifier)];
 
-    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => null);
+    const spy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
     drilldownUtils.validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessageMultiple, ...items);
   });
@@ -64,7 +64,7 @@ describe('updateDrilldownItemState()', () => {
   beforeEach(() => {
     traverseTreeAndUpdateStateSpy = vi
       .spyOn(drilldownUtils.internalDrilldown, 'traverseTreeAndUpdateState')
-      .mockImplementation(() => null);
+      .mockImplementation(() => {});
 
     host = document.createElement('p-drilldown');
     child = document.createElement('p-drilldown-item');

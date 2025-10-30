@@ -111,7 +111,7 @@ describe('disconnectedCallback', () => {
 
 describe('render', () => {
   beforeEach(() => {
-    vi.spyOn(global.console, 'warn').mockImplementation(() => null);
+    vi.spyOn(global.console, 'warn').mockImplementation(() => {});
   });
 
   it('should call hasNamedSlot() with correct parameters', () => {
