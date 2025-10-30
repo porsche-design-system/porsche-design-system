@@ -3,12 +3,7 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
 import { selectStoryOptgroups, selectStorySlottedImages } from '@/app/components/select/select.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import {
-  selectExample,
-  selectExampleControlled,
-  selectExampleDynamic,
-  selectExampleRequired,
-} from '@porsche-design-system/shared/examples';
+import { selectExampleForm, selectExampleDynamic, selectExampleRequired } from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { Notification } from '@/components/common/Notification';
 
@@ -20,15 +15,34 @@ export const metadata = {
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
 <TableOfContents
-  headings={[
-    'Basic example without preselection',
-    'Slotted images',
-    'Form',
-    'Controlled',
-    'Set Value',
-    'With optgroups',
-  ]}
+  headings={['Form', 'Basic example without preselection', 'Slotted images', 'Set Value', 'With optgroups']}
 />
+
+## Form
+
+The `p-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similar to a native `<select>`, automatically managing its own
+state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  <code>p-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
+  <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
+</Notification>
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
+
+<ComponentExample codeSample={selectExampleForm} />
 
 ## Basic example without preselection
 
@@ -46,35 +60,6 @@ In order to show an icon for each option, you can optionally slot an `img` tag w
 that the `p-select-option` can only contain a `#text` and an `img` node.
 
 <ComponentStory story={selectStorySlottedImages} />
-
-## Form
-
-The `p-select` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
-[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions similar to a
-native select, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
-
-When used within a form element, it's required to provide a name attribute to the `p-select` component. This attribute
-establishes the link between the component and the form, enabling the selected value to be included in the form's data
-when it's submitted.
-
-<Notification heading="Attention" heading-tag="h2" state="warning">
-  <code>p-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
-  <code>ValidityState</code>
-  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
-  validation behavior and error display will need to be implemented separately if required.
-</Notification>
-
-<ComponentExample codeSample={selectExample} />
-
----
-
-## Controlled
-
-In the controlled approach, the `p-select` component is externally controlled. Selecting an option triggers a custom
-update event, allowing you to use the updated value. Internally, the value will be updated automatically but can be
-overwritten by passing in a new value.
-
-<ComponentExample codeSample={selectExampleControlled} />
 
 ---
 

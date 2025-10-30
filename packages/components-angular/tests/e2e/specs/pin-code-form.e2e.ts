@@ -7,17 +7,17 @@ const setValue = async (page) => {
   const host = getHost(page);
   const inputs = getInputs(page);
 
-  await inputs.nth(0).fill("1");
-  await inputs.nth(1).fill("2");
-  await inputs.nth(2).fill("3");
-  await inputs.nth(3).fill("4");
+  await inputs.nth(0).fill('1');
+  await inputs.nth(1).fill('2');
+  await inputs.nth(2).fill('3');
+  await inputs.nth(3).fill('4');
 
   await expect(host).toHaveJSProperty('value', '1234');
 };
 
 test.describe('Angular forms integration', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/pin-code-example-form');
+    await page.goto('/pin-code-example-reactive-form');
     const host = getHost(page);
 
     await expect(page.locator('[data-field="touched"]')).toHaveText('false');

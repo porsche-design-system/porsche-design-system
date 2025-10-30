@@ -5,29 +5,14 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-input-email-example-form',
   template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-email formControlName="myInputEmail" [label]="'Some Label'" [required]="true" />
-      <button type="submit">Submit</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
+      <p-input-email formControlName="myInputEmail" [label]="'Some Label'" [indicator]="true" />
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
     </form>
-
-    <button type="button" (click)="setValue()">
-      Set Value
-    </button>
-
-    <button type="button" (click)="resetValue()">
-      Reset
-    </button>
-
-    <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputEmail.disabled ? 'Enable' : 'Disable' }}
-    </button>
-
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputEmail.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputEmail.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputEmail.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputEmail.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputEmail.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,23 +20,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputEmailExampleFormComponent {
   form = new FormGroup({
-    myInputEmail: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputEmail: new FormControl<string>(''),
   });
 
   submittedValue: any = undefined;
-
-  setValue(): void {
-    this.form.controls.myInputEmail.setValue('example@mail.com');
-  }
-
-  resetValue(): void {
-    this.form.controls.myInputEmail.reset('');
-  }
-
-  toggleDisabled(): void {
-    const control = this.form.get('myInputEmail')!;
-    control.disabled ? control.enable() : control.disable();
-  }
 
   onSubmit(): void {
     this.submittedValue = JSON.stringify(this.form.value);

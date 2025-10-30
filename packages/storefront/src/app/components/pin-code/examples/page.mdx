@@ -2,7 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Notification } from '@/components/common/Notification';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { pinCodeExample, pinCodeExampleControlled } from '@porsche-design-system/shared/examples';
+import { pinCodeExampleForm } from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { pinCodeStory } from '@/app/components/pin-code/pin-code.stories';
 
@@ -13,34 +13,32 @@ export const metadata = {
 
 # Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Controlled', 'Copy+Paste and autocomplete']} />
+<TableOfContents headings={['Form', 'Copy+Paste and autocomplete']} />
 
 ## Form
 
-The `p-pin-code` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
-[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
-input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+The `p-pin-code` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your needs.
 
-To ensure proper submission of the form, it's required to provide an individual `name` prop to the `p-pin-code`
-component, enabling the `p-pin-code`'s value to be included in the form's data when it is submitted.
+In the **controlled** approach, the input state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similar to a single native `<input type="text" />`, automatically
+managing its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
-  <code>p-pin-code</code> does not use a native input internally. As a result, it lacks access to native{' '}
+  <code>p-pin-code</code> does not use a single native input internally. As a result, it lacks access to native{' '}
   <code>ValidityState</code>
   properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
   validation behavior and error display will need to be implemented separately if required.
 </Notification>
 
-<ComponentExample codeSample={pinCodeExample} />
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
 
-## Controlled
-
-We do not envision a lot of scenarios where you would need this level of control, however the `p-pin-code` can be used
-as a controlled component. This means it does not contain any internal state, and you got full control over its
-behavior. Any change of the input's values triggers a custom update event and the value is updated immediately. The prop
-`value` is an array of strings synchronized with the input's values.
-
-<ComponentExample codeSample={pinCodeExampleControlled} />
+<ComponentExample codeSample={pinCodeExampleForm} />
 
 ## Copy+Paste and autocomplete
 
