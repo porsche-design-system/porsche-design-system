@@ -1,4 +1,5 @@
 import { expect } from '@jest/globals';
+import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 import { InputDate } from './input-date';
 
 jest.mock('../../utils/dom');
@@ -102,6 +103,17 @@ describe('onInput', () => {
     expect(component.value).toBe(testValue);
   });
 });
+
+describe('onKeyDown', () => {
+  it('should call implicitSubmit with correct parameters', () => {
+    const component = initComponent();
+    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+    const implicitSubmitSpy = jest.spyOn(implicitSubmitUtils, 'implicitSubmit');
+    component['onKeyDown'](event);
+    expect(implicitSubmitSpy).toHaveBeenCalledWith(event, component['internals'], component.host);
+  });
+});
+
 describe('componentDidRender', () => {
   it('should call ElementInternals setValidity()', () => {
     const component = initComponent();
@@ -153,4 +165,3 @@ describe('componentWillLoad', () => {
     expect(component['initialLoading']).toBe(false);
   });
 });
-
