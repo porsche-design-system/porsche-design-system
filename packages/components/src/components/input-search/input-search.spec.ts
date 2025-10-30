@@ -1,9 +1,6 @@
 import { vi } from 'vitest';
-import { InputSearch } from './input-search';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
-
-// TODO: check if tests are correct
-vi.mock('../../utils/dom');
+import { InputSearch } from './input-search';
 
 class MockElementInternals {
   setValidity = vi.fn();

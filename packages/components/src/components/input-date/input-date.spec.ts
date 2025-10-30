@@ -2,8 +2,6 @@ import { vi } from 'vitest';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 import { InputDate } from './input-date';
 
-vi.mock('../../utils/dom');
-
 class MockElementInternals {
   setValidity = vi.fn();
   setFormValue = vi.fn();

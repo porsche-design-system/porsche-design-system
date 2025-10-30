@@ -1,9 +1,6 @@
 import { vi } from 'vitest';
-import { InputEmail } from './input-email';
 import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
-
-
-vi.mock('../../utils/dom');
+import { InputEmail } from './input-email';
 
 class MockElementInternals {
   setValidity = vi.fn();
