@@ -16,10 +16,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`: implicit submit on `Enter` key press when used inside a form
+  ([#4084](https://github.com/porsche-design-system/porsche-design-system/pull/4084))
+
+## [3.30.0-rc.2] - 2025-10-24
+
+### Added
+
 - `Flag`: added `AD, GI, LI, MC, ME, TW` flags & `XX` for unknown region
   ([#4074](https://github.com/porsche-design-system/porsche-design-system/pull/4074))
 - `Segmented Control`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4020](https://github.com/porsche-design-system/porsche-design-system/pull/4020))
+- Vue: export `prefixInjectionKey` ([#4079](https://github.com/porsche-design-system/porsche-design-system/pull/4079))
 
 ### Changed
 
@@ -28,7 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
-- `Radio Group`: fixed `compact` mode styles ([#4073](https://github.com/porsche-design-system/porsche-design-system/pull/4073))
+- `Radio Group`: fixed `compact` mode styles
+  ([#4073](https://github.com/porsche-design-system/porsche-design-system/pull/4073))
 
 ## [3.30.0-rc.1] - 2025-10-21
 

@@ -1,6 +1,8 @@
 import { vi } from 'vitest';
 import { InputText } from './input-text';
+import * as implicitSubmitUtils from '../../utils/form/implicitSubmit';
 
+// TODO: check if tests are correct
 vi.mock('../../utils/dom');
 
 class MockElementInternals {
@@ -112,6 +114,17 @@ describe('onInput', () => {
     expect(component.value).toBe(testValue);
   });
 });
+
+describe('onKeyDown', () => {
+  it('should call implicitSubmit with correct parameters', () => {
+    const component = initComponent();
+    const event = new KeyboardEvent('keydown', { key: 'Enter' });
+    const implicitSubmitSpy = vi.spyOn(implicitSubmitUtils, 'implicitSubmit');
+    component['onKeyDown'](event);
+    expect(implicitSubmitSpy).toHaveBeenCalledWith(event, component['internals'], component.host);
+  });
+});
+
 describe('componentDidRender', () => {
   it('should call ElementInternals setValidity()', () => {
     const component = initComponent();
