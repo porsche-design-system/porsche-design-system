@@ -80,12 +80,10 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
+      all: 'unset',
       display: 'grid',
       justifySelf: 'flex-start',
       rowGap: spacingStaticXSmall,
-      margin: 0,
-      padding: 0,
-      border: 'none',
     },
     wrapper: {
       alignItems: 'start',

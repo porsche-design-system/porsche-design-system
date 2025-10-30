@@ -12,12 +12,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -112,12 +110,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -212,12 +208,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -311,12 +305,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -410,12 +402,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -509,12 +499,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -609,12 +597,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -709,12 +695,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -806,12 +790,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -903,12 +885,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -999,12 +979,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -1095,12 +1073,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -1192,12 +1168,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -1289,12 +1263,10 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -1468,12 +1440,10 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
@@ -1631,12 +1601,10 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;

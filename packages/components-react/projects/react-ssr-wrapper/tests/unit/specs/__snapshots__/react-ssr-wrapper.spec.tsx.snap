@@ -18522,12 +18522,10 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 .wrapper {
   align-items: stretch;
