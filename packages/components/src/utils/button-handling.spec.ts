@@ -14,6 +14,7 @@ describe('improveButtonHandlingForCustomElement()', () => {
     improveButtonHandlingForCustomElement(element, getType, getDisabled, getName, getValue);
 
     element.click();
+
     expect(handleButtonEventSpy).toHaveBeenCalledWith(
       expect.any(MouseEvent),
       element,
@@ -26,13 +27,21 @@ describe('improveButtonHandlingForCustomElement()', () => {
 });
 
 describe('handleButtonEvent()', () => {
-  const element = document.createElement('button');
-  const getType = vi.fn().mockReturnValue('submit');
-  const getName = vi.fn().mockReturnValue('name');
-  const getValue = vi.fn().mockReturnValue('value');
+  let element: HTMLButtonElement;
+  let getType: ReturnType<typeof vi.fn>;
+  let getName: ReturnType<typeof vi.fn>;
+  let getValue: ReturnType<typeof vi.fn>;
+  let getDisabled: ReturnType<typeof vi.fn>;
+
+  beforeEach(() => {
+    element = document.createElement('button');
+    getType = vi.fn().mockReturnValue('submit');
+    getName = vi.fn().mockReturnValue('name');
+    getValue = vi.fn().mockReturnValue('value');
+    getDisabled = vi.fn().mockReturnValue(false);
+  });
 
   it('should create a submit button and click it', async () => {
-    const getDisabled = vi.fn().mockReturnValue(false);
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
@@ -46,19 +55,11 @@ describe('handleButtonEvent()', () => {
 
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
 
-    const asyncTimeout = (ms: number): Promise<void> => {
-      return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-      });
-    };
+    await new Promise((resolve) => setTimeout(resolve, 10));
 
-    // Timeout necessary since function uses 1 tick timeout
-    await asyncTimeout(10);
-
-    // TODO: recieving "undefined" instead of undefined
-    expect(fakeButton.getAttribute('type')).toBe(getType());
-    expect(fakeButton.getAttribute('name')).toBe(getName());
-    expect(fakeButton.getAttribute('value')).toBe(getValue());
+    expect(fakeButton.getAttribute('type')).toBe('submit');
+    expect(fakeButton.getAttribute('name')).toBe('name');
+    expect(fakeButton.getAttribute('value')).toBe('value');
     expect(fakeButton.style.display).toBe('none');
     expect(formAppendChildSpy).toHaveBeenCalledWith(fakeButton);
     expect(fakeButtonClickSpy).toHaveBeenCalled();
@@ -66,7 +67,7 @@ describe('handleButtonEvent()', () => {
   });
 
   it('should not create a submit button if disabled', () => {
-    const getDisabled = vi.fn().mockReturnValue(true);
+    getDisabled.mockReturnValue(true);
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
@@ -79,7 +80,6 @@ describe('handleButtonEvent()', () => {
   });
 
   it('should not create a submit button if not within form', () => {
-    const getDisabled = vi.fn().mockReturnValue(true);
     const createElementSpy = vi.spyOn(document, 'createElement');
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
     expect(createElementSpy).not.toHaveBeenCalled();
