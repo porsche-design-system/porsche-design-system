@@ -11,7 +11,7 @@ let mockEmit: ReturnType<typeof vi.fn>;
 
 const initComponent = (): InputSearch => {
   const component = new InputSearch();
-  component.host = document.createElement('p-input-number');
+  component.host = document.createElement('p-input-search');
   component.host.attachShadow({ mode: 'open' });
   const input = document.createElement('input');
   component.host.shadowRoot.appendChild(input);
