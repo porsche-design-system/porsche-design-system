@@ -45,6 +45,7 @@ type InputBaseProps = {
   onInput?: (e: InputBaseInputEventDetail) => void;
   onChange?: (e: InputBaseChangeEventDetail) => void;
   onBlur?: (e: InputBaseBlurEventDetail) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
   refElement?: (el: HTMLInputElement) => void;
   start?: JSX.Element;
   end?: JSX.Element;
@@ -81,6 +82,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   onWheel,
   onChange,
   onBlur,
+  onKeyDown,
   refElement,
   start,
   end,
@@ -112,6 +114,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           onChange={onChange}
           onBlur={onBlur}
           onWheel={onWheel}
+          onKeyDown={onKeyDown}
           name={name}
           form={form}
           type={type}
