@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for type: alphabetically and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for type: alphabetically and theme: dark 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -31,7 +31,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: alphabetically and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for type: alphabetically and theme: light 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -62,7 +62,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: numbered and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for type: numbered and theme: dark 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -93,7 +93,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: numbered and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for type: numbered and theme: light 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -124,7 +124,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: unordered and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for type: unordered and theme: dark 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -152,7 +152,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: unordered and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for type: unordered and theme: light 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;

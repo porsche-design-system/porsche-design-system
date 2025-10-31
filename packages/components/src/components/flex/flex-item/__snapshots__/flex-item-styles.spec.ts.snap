@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for alignSelf: "auto" 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: "auto" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -14,7 +14,7 @@ exports[`getComponentCss() should return correct css for alignSelf: "auto" 1`] =
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignSelf: "baseline" 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: "baseline" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -28,7 +28,7 @@ exports[`getComponentCss() should return correct css for alignSelf: "baseline" 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignSelf: "center" 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: "center" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -42,7 +42,7 @@ exports[`getComponentCss() should return correct css for alignSelf: "center" 1`]
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignSelf: "flex-end" 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: "flex-end" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -56,7 +56,7 @@ exports[`getComponentCss() should return correct css for alignSelf: "flex-end" 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignSelf: "flex-start" 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: "flex-start" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -70,7 +70,7 @@ exports[`getComponentCss() should return correct css for alignSelf: "flex-start"
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignSelf: "stretch" 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: "stretch" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -84,7 +84,7 @@ exports[`getComponentCss() should return correct css for alignSelf: "stretch" 1`
 }"
 `;
 
-exports[`getComponentCss() should return correct css for alignSelf: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
+exports[`getComponentCss() > should return correct css for alignSelf: {"base":"stretch","xs":"center","s":"stretch","m":"center","l":"stretch","xl":"center"} 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -128,7 +128,7 @@ exports[`getComponentCss() should return correct css for alignSelf: {"base":"str
 "
 `;
 
-exports[`getComponentCss() should return correct css for all props being breakpoint customizable 1`] = `
+exports[`getComponentCss() > should return correct css for all props being breakpoint customizable 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -186,7 +186,7 @@ exports[`getComponentCss() should return correct css for all props being breakpo
 "
 `;
 
-exports[`getComponentCss() should return correct css for flex: "auto" 1`] = `
+exports[`getComponentCss() > should return correct css for flex: "auto" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -199,7 +199,7 @@ exports[`getComponentCss() should return correct css for flex: "auto" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for flex: "equal" 1`] = `
+exports[`getComponentCss() > should return correct css for flex: "equal" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -212,7 +212,7 @@ exports[`getComponentCss() should return correct css for flex: "equal" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for flex: "initial" 1`] = `
+exports[`getComponentCss() > should return correct css for flex: "initial" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -226,7 +226,7 @@ exports[`getComponentCss() should return correct css for flex: "initial" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for flex: "none" 1`] = `
+exports[`getComponentCss() > should return correct css for flex: "none" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -239,7 +239,7 @@ exports[`getComponentCss() should return correct css for flex: "none" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for flex: {"base":"auto","xs":"equal","s":"auto","m":"equal","l":"auto","xl":"equal"} 1`] = `
+exports[`getComponentCss() > should return correct css for flex: {"base":"auto","xs":"equal","s":"auto","m":"equal","l":"auto","xl":"equal"} 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -282,7 +282,7 @@ exports[`getComponentCss() should return correct css for flex: {"base":"auto","x
 "
 `;
 
-exports[`getComponentCss() should return correct css for grow: {"base":1,"xs":0,"s":1,"m":0,"l":1,"xl":0} 1`] = `
+exports[`getComponentCss() > should return correct css for grow: {"base":1,"xs":0,"s":1,"m":0,"l":1,"xl":0} 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -326,7 +326,7 @@ exports[`getComponentCss() should return correct css for grow: {"base":1,"xs":0,
 "
 `;
 
-exports[`getComponentCss() should return correct css for grow: 0 1`] = `
+exports[`getComponentCss() > should return correct css for grow: 0 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -340,7 +340,7 @@ exports[`getComponentCss() should return correct css for grow: 0 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for grow: 1 1`] = `
+exports[`getComponentCss() > should return correct css for grow: 1 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -354,7 +354,7 @@ exports[`getComponentCss() should return correct css for grow: 1 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: "half" 1`] = `
+exports[`getComponentCss() > should return correct css for offset: "half" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -368,7 +368,7 @@ exports[`getComponentCss() should return correct css for offset: "half" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: "none" 1`] = `
+exports[`getComponentCss() > should return correct css for offset: "none" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -382,7 +382,7 @@ exports[`getComponentCss() should return correct css for offset: "none" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: "one-quarter" 1`] = `
+exports[`getComponentCss() > should return correct css for offset: "one-quarter" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -396,7 +396,7 @@ exports[`getComponentCss() should return correct css for offset: "one-quarter" 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: "one-third" 1`] = `
+exports[`getComponentCss() > should return correct css for offset: "one-third" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -410,7 +410,7 @@ exports[`getComponentCss() should return correct css for offset: "one-third" 1`]
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: "three-quarters" 1`] = `
+exports[`getComponentCss() > should return correct css for offset: "three-quarters" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -424,7 +424,7 @@ exports[`getComponentCss() should return correct css for offset: "three-quarters
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: "two-thirds" 1`] = `
+exports[`getComponentCss() > should return correct css for offset: "two-thirds" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -438,7 +438,7 @@ exports[`getComponentCss() should return correct css for offset: "two-thirds" 1`
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: {"base":"one-third","xs":"half","s":"one-third","m":"half","l":"one-third","xl":"half"} 1`] = `
+exports[`getComponentCss() > should return correct css for offset: {"base":"one-third","xs":"half","s":"one-third","m":"half","l":"one-third","xl":"half"} 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -482,7 +482,7 @@ exports[`getComponentCss() should return correct css for offset: {"base":"one-th
 "
 `;
 
-exports[`getComponentCss() should return correct css for shrink: {"base":0,"xs":1,"s":0,"m":1,"l":0,"xl":1} 1`] = `
+exports[`getComponentCss() > should return correct css for shrink: {"base":0,"xs":1,"s":0,"m":1,"l":0,"xl":1} 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -526,7 +526,7 @@ exports[`getComponentCss() should return correct css for shrink: {"base":0,"xs":
 "
 `;
 
-exports[`getComponentCss() should return correct css for shrink: 0 1`] = `
+exports[`getComponentCss() > should return correct css for shrink: 0 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -540,7 +540,7 @@ exports[`getComponentCss() should return correct css for shrink: 0 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for shrink: 1 1`] = `
+exports[`getComponentCss() > should return correct css for shrink: 1 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -554,7 +554,7 @@ exports[`getComponentCss() should return correct css for shrink: 1 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "auto" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "auto" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;
@@ -568,7 +568,7 @@ exports[`getComponentCss() should return correct css for width: "auto" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "full" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "full" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: 100% !important;
@@ -582,7 +582,7 @@ exports[`getComponentCss() should return correct css for width: "full" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "half" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "half" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: 50% !important;
@@ -596,7 +596,7 @@ exports[`getComponentCss() should return correct css for width: "half" 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "one-quarter" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "one-quarter" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: 25% !important;
@@ -610,7 +610,7 @@ exports[`getComponentCss() should return correct css for width: "one-quarter" 1`
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "one-third" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "one-third" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: 33.333333% !important;
@@ -624,7 +624,7 @@ exports[`getComponentCss() should return correct css for width: "one-third" 1`] 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "three-quarters" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "three-quarters" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: 75% !important;
@@ -638,7 +638,7 @@ exports[`getComponentCss() should return correct css for width: "three-quarters"
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: "two-thirds" 1`] = `
+exports[`getComponentCss() > should return correct css for width: "two-thirds" 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: 66.666667% !important;
@@ -652,7 +652,7 @@ exports[`getComponentCss() should return correct css for width: "two-thirds" 1`]
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: {"base":"auto","xs":"half","s":"auto","m":"half","l":"auto","xl":"half"} 1`] = `
+exports[`getComponentCss() > should return correct css for width: {"base":"auto","xs":"half","s":"auto","m":"half","l":"auto","xl":"half"} 1`] = `
 ":host {
   box-sizing: border-box !important;
   width: auto% !important;

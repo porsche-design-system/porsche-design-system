@@ -1,15 +1,16 @@
+import { vi } from 'vitest';
 import { implicitSubmit } from './implicitSubmit';
 
 describe('implicitSubmit', () => {
-  let mockClick: jest.Mock;
-  let mockRequestSubmit: jest.Mock;
+  let mockClick: ReturnType<typeof vi.fn>;
+  let mockRequestSubmit: ReturnType<typeof vi.fn>;
   let form: HTMLFormElement;
   let internals: { form: HTMLFormElement };
   let host: HTMLElement;
 
   beforeEach(() => {
-    mockClick = jest.fn();
-    mockRequestSubmit = jest.fn();
+    mockClick = vi.fn();
+    mockRequestSubmit = vi.fn();
 
     form = document.createElement('form');
     (form as any).requestSubmit = mockRequestSubmit;
@@ -36,7 +37,7 @@ describe('implicitSubmit', () => {
   it('clicks a native submit button', () => {
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
-    submitButton.matches = jest.fn().mockReturnValue(true);
+    submitButton.matches = vi.fn().mockReturnValue(true);
     submitButton.click = mockClick;
 
     form.appendChild(submitButton);
@@ -51,7 +52,7 @@ describe('implicitSubmit', () => {
   it('clicks a PDS submit button', () => {
     const submitButton = document.createElement('p-button');
     submitButton.type = 'submit';
-    submitButton.matches = jest.fn().mockReturnValue(true);
+    submitButton.matches = vi.fn().mockReturnValue(true);
     submitButton.click = mockClick;
     // Manually include in form.elements
     Object.defineProperty(form, 'elements', {

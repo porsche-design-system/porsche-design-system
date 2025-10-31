@@ -12,8 +12,8 @@ import {
 export const validatePartialUsage = (): void => {
   // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
   // validateGetInitialStylesUsage();
-  validateGetFontFaceStylesUsage();
-  validateGetFontLinksUsage();
+  internalPartial.validateGetFontFaceStylesUsage();
+  internalPartial.validateGetFontLinksUsage();
   // TODO: integration test (real world test) first, before rollout
   // validateGetLoaderScriptUsage();
   // validateGetComponentChunkLinksUsage();
@@ -26,13 +26,13 @@ export const validateGetFontFaceStylesUsage = (): void => {
       ? `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`
       : 'http://localhost:3001/styles/font-face.css';
   if (!document.head.querySelector(`link[href="${styleUrl}"],style[data-pds-font-face-styles=""]`)) {
-    logPartialValidationWarning('getFontFaceStyles');
+    internalPartial.logPartialValidationWarning('getFontFaceStyles');
   }
 };
 
 export const validateGetFontLinksUsage = (): void => {
   if (!document.head.querySelector('link[rel=preload][as=font][href*=porsche-next]')) {
-    logPartialValidationWarning('getFontLinks');
+    internalPartial.logPartialValidationWarning('getFontLinks');
   }
 };
 
@@ -49,33 +49,33 @@ export const validateGetComponentChunkLinksUsage = (): void => {
   for (const [version, tagNames] of Object.entries(usedTagNamesWithoutPreloadForVersions)) {
     consoleWarn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(', ')}' detected without preloading.`,
-      getValidatePartialErrorSecondaryText('getComponentChunkLinks')
+      internalPartial.getValidatePartialErrorSecondaryText('getComponentChunkLinks')
     );
   }
 };
 
 export const validateGetLoaderScriptUsage = (): void => {
   if (!document.body.querySelector('script[data-pds-loader-script]')) {
-    logPartialValidationWarning('getLoaderScript');
+    internalPartial.logPartialValidationWarning('getLoaderScript');
   }
 };
 
 export const validateGetInitialStylesUsage = (): void => {
   if (!document.head.querySelector('style[data-pds-initial-styles]')) {
-    throwPartialValidationError('getInitialStyles');
+    internalPartial.throwPartialValidationError('getInitialStyles');
   }
 };
 
 export const logPartialValidationWarning = (partialName: PartialName, prefix?: string): void => {
   consoleWarn(
-    getValidatePartialErrorPrimaryText(partialName, prefix),
-    getValidatePartialErrorSecondaryText(partialName)
+    internalPartial.getValidatePartialErrorPrimaryText(partialName, prefix),
+    internalPartial.getValidatePartialErrorSecondaryText(partialName)
   );
 };
 
 export const throwPartialValidationError = (partialName: PartialName, prefix?: string): void => {
   throwException(
-    `${getValidatePartialErrorPrimaryText(partialName, prefix)} ${getValidatePartialErrorSecondaryText(partialName, true)}`
+    `${internalPartial.getValidatePartialErrorPrimaryText(partialName, prefix)} ${internalPartial.getValidatePartialErrorSecondaryText(partialName, true)}`
   );
 };
 
@@ -93,4 +93,13 @@ export const getValidatePartialErrorSecondaryText = (partialName: string, requir
   return `The usage of the ${partialName}() partial is ${
     required ? 'required' : 'recommended'
   } as described at https://designsystem.porsche.com/v3/partials/${partialUrl} to enhance loading behavior.`;
+};
+
+export const internalPartial = {
+  getValidatePartialErrorPrimaryText,
+  getValidatePartialErrorSecondaryText,
+  throwPartialValidationError,
+  validateGetFontFaceStylesUsage,
+  validateGetFontLinksUsage,
+  logPartialValidationWarning,
 };

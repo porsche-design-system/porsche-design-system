@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -102,7 +102,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -204,7 +204,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -305,7 +305,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -406,7 +406,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 2`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -507,7 +507,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -609,7 +609,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -711,7 +711,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: { padding: +0 }, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -814,7 +814,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -916,7 +916,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1017,7 +1017,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1118,7 +1118,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: false, compact: true, readOnly: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: false, compact: true, readOnly: 'light', theme: { padding: +0 }, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1212,7 +1212,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: true, compact: true, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: true, compact: true, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1305,7 +1305,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1476,7 +1476,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'dark', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'dark', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1632,7 +1632,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: true, loading: true, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

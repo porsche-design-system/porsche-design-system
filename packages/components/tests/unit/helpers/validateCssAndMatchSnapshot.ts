@@ -1,4 +1,3 @@
-import { expect } from '@jest/globals';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { getCssObject } from '../../../src/test-utils';

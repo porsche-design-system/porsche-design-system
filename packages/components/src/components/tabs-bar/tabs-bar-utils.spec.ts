@@ -1,3 +1,5 @@
+import { vi } from 'vitest';
+import * as tabsBarUtils from './tabs-bar-utils';
 import {
   getFocusedTabIndex,
   getPrevNextTabIndex,
@@ -5,7 +7,6 @@ import {
   sanitizeActiveTabIndex,
   setBarStyle,
 } from './tabs-bar-utils';
-import * as tabsBarUtils from './tabs-bar-utils';
 
 describe('sanitizeActiveTabIndex()', () => {
   it.each([
@@ -22,8 +23,8 @@ describe('sanitizeActiveTabIndex()', () => {
 
 type Rect = Partial<Pick<DOMRect, 'width' | 'height' | 'top' | 'left' | 'bottom' | 'right'> & { offsetLeft: number }>;
 const mockBoundingClientRect = (element: HTMLElement, opts: Rect): void => {
-  jest.spyOn(element, 'getBoundingClientRect').mockImplementation(() => opts as DOMRect);
-  jest.spyOn(element, 'offsetLeft', 'get').mockReturnValue(opts.offsetLeft);
+  vi.spyOn(element, 'getBoundingClientRect').mockImplementation(() => opts as DOMRect);
+  vi.spyOn(element, 'offsetLeft', 'get').mockReturnValue(opts.offsetLeft);
 };
 
 describe('getTransformation()', () => {
@@ -89,14 +90,14 @@ describe('setBarStyle()', () => {
   });
 
   it('should not call getTransformation() if there is no active tabElement', () => {
-    const spy = jest.spyOn(tabsBarUtils, 'getTransformation');
+    const spy = vi.spyOn(tabsBarUtils.internalTBar, 'getTransformation');
     setBarStyle([el1, el2], undefined, barElement);
 
     expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call getTransformation() with correct parameters if there is an active tabElement ', () => {
-    const spy = jest.spyOn(tabsBarUtils, 'getTransformation');
+    const spy = vi.spyOn(tabsBarUtils.internalTBar, 'getTransformation');
     setBarStyle([el1, el2], 1, barElement);
 
     expect(spy).toHaveBeenCalledWith(el1);
@@ -105,14 +106,16 @@ describe('setBarStyle()', () => {
   });
 
   it('should set result of getTransformation() as style on barElement', () => {
-    jest.spyOn(tabsBarUtils, 'getTransformation').mockReturnValue('transform: translate3d(0px,0,0);width: 15px');
+    vi.spyOn(tabsBarUtils.internalTBar, 'getTransformation').mockReturnValue(
+      'transform: translate3d(0px,0,0);width: 15px'
+    );
     setBarStyle([el1, el2], 0, barElement);
 
     expect(barElement.style.cssText).toBe('transform: translate3d(0px,0,0); width: 15px;');
   });
 
   it('should not reset animation on barElement when there is no selected tabElement', () => {
-    const spy = jest.spyOn(global, 'setTimeout');
+    const spy = vi.spyOn(global, 'setTimeout');
     expect(barElement.style.animation).toBe('');
 
     setBarStyle([el1, el2], 0, barElement);
@@ -121,11 +124,10 @@ describe('setBarStyle()', () => {
   });
 
   it('should reset animation on barElement when there is a selected tabElement', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     let count = 0;
-    const spy = jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+    const spy = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
       // we can then use fake timers to preserve the async nature of this call
-      // @ts-expect-error
       setTimeout(() => cb(100 * ++count), 100);
       return 0;
     });
@@ -136,7 +138,7 @@ describe('setBarStyle()', () => {
 
     expect(barElement.style.animation).toBe('none');
 
-    jest.runAllTimers();
+    vi.runAllTimers();
 
     expect(spy).toHaveBeenCalledWith(expect.any(Function));
     expect(barElement.style.animation).toBe('');
@@ -147,12 +149,12 @@ describe('setBarStyle()', () => {
 
     expect(barElement.style.animation).toBe('none');
 
-    jest.runAllTimers();
+    vi.runAllTimers();
 
     expect(spy).toHaveBeenCalledWith(expect.any(Function));
     expect(barElement.style.animation).toBe('');
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });
 

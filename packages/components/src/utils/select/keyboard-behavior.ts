@@ -62,9 +62,9 @@ export const getNextOptionToHighlight = <T extends Option>(
   currentlyHighlightedOption: T | null,
   action: SelectAction | MultiSelectAction
 ): Option | null => {
-  const usableOptions = getUsableSelectOptions(options);
+  const usableOptions = internalKeyBehavior.getUsableSelectOptions(options);
   const currentIndex = usableOptions.indexOf(currentlyHighlightedOption);
-  const newIndex = getUpdatedIndex(currentIndex, usableOptions.length - 1, action);
+  const newIndex = internalKeyBehavior.getUpdatedIndex(currentIndex, usableOptions.length - 1, action);
   return newIndex !== -1 ? usableOptions[newIndex] : null;
 };
 
@@ -83,9 +83,9 @@ export const updateHighlightedOption = <T extends Option>(
   scrollIntoView: boolean = true
 ): Option | null => {
   if (currentlyHighlightedOption === newHighlightedOption) return currentlyHighlightedOption;
-  currentlyHighlightedOption && setHighlightedSelectOption(currentlyHighlightedOption, false);
+  currentlyHighlightedOption && internalKeyBehavior.setHighlightedSelectOption(currentlyHighlightedOption, false);
   if (newHighlightedOption !== null) {
-    setHighlightedSelectOption(newHighlightedOption, true);
+    internalKeyBehavior.setHighlightedSelectOption(newHighlightedOption, true);
     if (scrollIntoView) {
       // Need to wait until the listbox is opened before scrolling
       requestAnimationFrame(() => {
@@ -130,9 +130,9 @@ export const isUsableOption = <T extends Option>(option: T): boolean =>
  * @returns {T[]} - An array of filtered and usable select options.
  */
 export const filterSelectOptions = <T extends Option>(options: T[], filter: string): T[] =>
-  getUsableSelectOptions(options).filter(
-    (option) => option.textContent.trim().toLowerCase().indexOf(filter.toLowerCase()) === 0
-  );
+  internalKeyBehavior
+    .getUsableSelectOptions(options)
+    .filter((option) => option.textContent.trim().toLowerCase().indexOf(filter.toLowerCase()) === 0);
 
 /**
  * Determines the index of the next matching select option based on a filter string.
@@ -143,11 +143,11 @@ export const filterSelectOptions = <T extends Option>(options: T[], filter: stri
  * @returns {T | null} - The next matching select option, or null if none is found.
  */
 export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], filter: string): T | null => {
-  const usableOptions = getUsableSelectOptions(options);
-  const startIndex = getHighlightedSelectOptionIndex(options) + 1;
+  const usableOptions = internalKeyBehavior.getUsableSelectOptions(options);
+  const startIndex = internalKeyBehavior.getHighlightedSelectOptionIndex(options) + 1;
   // Shift already searched options to the end of the array in order to find the next matching option
   const orderedOptions = [...usableOptions.slice(startIndex), ...usableOptions.slice(0, startIndex)];
-  const firstMatch = filterSelectOptions(orderedOptions, filter)[0];
+  const firstMatch = internalKeyBehavior.filterSelectOptions(orderedOptions, filter)[0];
 
   const allSameLetter = (str: string): boolean => str.split('').every((letter: string) => letter === str[0]);
 
@@ -157,7 +157,7 @@ export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], fil
   }
   // if the same letter is being repeated, cycle through first-letter matches
   if (allSameLetter(filter)) {
-    const matches = filterSelectOptions(orderedOptions, filter[0]);
+    const matches = internalKeyBehavior.filterSelectOptions(orderedOptions, filter[0]);
     return usableOptions[usableOptions.indexOf(matches[0])];
   }
   // No matching option found
@@ -187,7 +187,7 @@ export const setHighlightedSelectOption = <T extends Option>(option: T, highligh
  * @returns {number} - The index of the highlighted select option, or -1 if none is highlighted.
  */
 export const getHighlightedSelectOptionIndex = <T extends Option>(options: T[]): number =>
-  getUsableSelectOptions(options).indexOf(getHighlightedSelectOption(options));
+  internalKeyBehavior.getUsableSelectOptions(options).indexOf(internalKeyBehavior.getHighlightedSelectOption(options));
 
 /**
  * Gets the currently highlighted select option.
@@ -222,4 +222,13 @@ export const getLastSelectedOption = <T extends Option>(options: T[]): T | undef
     }
   }
   return undefined;
+};
+
+export const internalKeyBehavior = {
+  getUsableSelectOptions,
+  setHighlightedSelectOption,
+  getUpdatedIndex,
+  getHighlightedSelectOptionIndex,
+  getHighlightedSelectOption,
+  filterSelectOptions,
 };

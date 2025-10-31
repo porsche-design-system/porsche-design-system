@@ -1,5 +1,6 @@
-import { validateVersions, VERSION_VALIDATION_TIMEOUT } from './validateVersions';
+import { vi } from 'vitest';
 import * as loggerUtils from '../log/logger';
+import { VERSION_VALIDATION_TIMEOUT, validateVersions } from './validateVersions';
 
 describe('validateVersions()', () => {
   it('should warn about multiple used versions', async () => {
@@ -14,7 +15,7 @@ describe('validateVersions()', () => {
       '1.2.5': { ...sharedProps, prefixes: ['my-prefix'] },
     };
 
-    const consoleWarnSpy = jest.spyOn(loggerUtils, 'consoleWarn');
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
 
     validateVersions();
 
@@ -36,7 +37,7 @@ describe('validateVersions()', () => {
       '1.2.5': { ...sharedProps, prefixes: ['prefix, another-prefix'] },
     };
 
-    const consoleWarnSpy = jest.spyOn(loggerUtils, 'consoleWarn');
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
     validateVersions();
 
     await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation

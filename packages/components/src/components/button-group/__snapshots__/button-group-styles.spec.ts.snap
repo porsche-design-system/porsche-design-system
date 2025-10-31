@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for direction: "column" 1`] = `
+exports[`getComponentCss() > should return correct css for direction: "column" 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -16,7 +16,7 @@ div {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: "row" 1`] = `
+exports[`getComponentCss() > should return correct css for direction: "row" 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -32,7 +32,7 @@ div {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: {"base":"column","xs":"row"} 1`] = `
+exports[`getComponentCss() > should return correct css for direction: {"base":"column","xs":"row"} 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -55,7 +55,7 @@ div {
 "
 `;
 
-exports[`getComponentCss() should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
+exports[`getComponentCss() > should return correct css for direction: {"base":"row","xs":"column","s":"row","m":"column","l":"row","xl":"column"} 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

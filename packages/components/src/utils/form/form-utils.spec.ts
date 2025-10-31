@@ -1,6 +1,8 @@
+import { vi } from 'vitest';
 import * as formUtils from './form-utils';
 import { hasCounter, setAriaElementInnerHtml, setCounterInnerHtml, updateCounter } from './form-utils';
-jest.useFakeTimers();
+
+vi.useFakeTimers();
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -59,18 +61,18 @@ describe('setAriaElementInnerHtml()', () => {
 
     inputElement.maxLength = 20;
     setAriaElementInnerHtml(inputElement, ariaElement);
-    jest.advanceTimersByTime(800);
+    vi.advanceTimersByTime(800);
     expect(ariaElement.innerText).toBe(getAccessibilityMessage(20, 20));
 
     inputElement.value = 'some';
     setAriaElementInnerHtml(inputElement, ariaElement);
-    jest.advanceTimersByTime(800);
+    vi.advanceTimersByTime(800);
     expect(ariaElement.innerText).toBe(getAccessibilityMessage(16, 20));
 
     inputElement.maxLength = 25;
     inputElement.value = 'Hi';
     setAriaElementInnerHtml(inputElement, ariaElement);
-    jest.advanceTimersByTime(800);
+    vi.advanceTimersByTime(800);
     expect(ariaElement.innerText).toBe(getAccessibilityMessage(23, 25));
   });
 });
@@ -81,8 +83,8 @@ describe('updateCounter()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
 
-    const setCounterInnerHtmlSpy = jest.spyOn(formUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
+    const setCounterInnerHtmlSpy = vi.spyOn(formUtils.internal, 'setCounterInnerHtml');
+    const setAriaElementInnerHtmlSpy = vi.spyOn(formUtils.internal, 'setAriaElementInnerHtml');
     updateCounter(inputElement, ariaElement, counterElement);
 
     expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
@@ -96,7 +98,7 @@ describe('updateCounter()', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
-    const callback = jest.fn();
+    const callback = vi.fn();
     updateCounter(inputElement, ariaElement, counterElement, callback);
 
     expect(callback).toHaveBeenCalledTimes(1);
@@ -104,10 +106,10 @@ describe('updateCounter()', () => {
 });
 
 describe('debounce', () => {
-  let mockFn: jest.Mock;
+  let mockFn: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
-    mockFn = jest.fn();
+    mockFn = vi.fn();
   });
 
   it('should call the function after the specified delay', () => {
@@ -117,7 +119,7 @@ describe('debounce', () => {
     expect(mockFn).not.toHaveBeenCalled();
 
     // Fast-forward time by 800ms
-    jest.advanceTimersByTime(800);
+    vi.advanceTimersByTime(800);
 
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(mockFn).toHaveBeenCalledWith('test');
@@ -131,7 +133,7 @@ describe('debounce', () => {
     debouncedFn('third call');
 
     // Fast-forward time by 800ms
-    jest.advanceTimersByTime(800);
+    vi.advanceTimersByTime(800);
 
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(mockFn).toHaveBeenCalledWith('third call');
@@ -141,13 +143,13 @@ describe('debounce', () => {
     const debouncedFn = formUtils.debounce(mockFn, 800);
 
     debouncedFn('first call');
-    jest.advanceTimersByTime(500);
+    vi.advanceTimersByTime(500);
     debouncedFn('second call');
-    jest.advanceTimersByTime(500);
+    vi.advanceTimersByTime(500);
 
     expect(mockFn).not.toHaveBeenCalled();
 
-    jest.advanceTimersByTime(300);
+    vi.advanceTimersByTime(300);
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(mockFn).toHaveBeenCalledWith('second call');
   });

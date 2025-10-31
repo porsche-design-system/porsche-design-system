@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for color: contrast-high, orientation: "horizontal" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "horizontal" and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -19,7 +19,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-high, orientation: "horizontal" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "horizontal" and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -38,7 +38,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-high, orientation: "vertical" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "vertical" and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -57,7 +57,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-high, orientation: "vertical" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "vertical" and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -76,7 +76,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-low, orientation: "horizontal" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "horizontal" and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -95,7 +95,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-low, orientation: "horizontal" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "horizontal" and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -114,7 +114,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-low, orientation: "vertical" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "vertical" and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -133,7 +133,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-low, orientation: "vertical" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "vertical" and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -152,7 +152,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-low, orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -206,7 +206,7 @@ hr {
 "
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-medium, orientation: "horizontal" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "horizontal" and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -225,7 +225,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-medium, orientation: "horizontal" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "horizontal" and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -244,7 +244,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-medium, orientation: "vertical" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "vertical" and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -263,7 +263,7 @@ hr {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: contrast-medium, orientation: "vertical" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "vertical" and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

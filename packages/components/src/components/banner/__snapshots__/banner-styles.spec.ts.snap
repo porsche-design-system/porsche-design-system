@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for open: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false 1`] = `
 ":host {
   display: block;
   position: fixed !important;
@@ -62,7 +62,7 @@ exports[`getComponentCss() should return correct css for open: false 1`] = `
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: true 1`] = `
 ":host {
   display: block;
   position: fixed !important;

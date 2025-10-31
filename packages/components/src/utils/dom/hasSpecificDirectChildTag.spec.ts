@@ -1,10 +1,11 @@
+import { vi } from 'vitest';
 import * as getDirectChildHTMLElementUtils from './getDirectChildHTMLElement';
 import { hasSpecificDirectChildTag } from './hasSpecificDirectChildTag';
 
 it('should call getDirectChildHTMLElement() with correct parameters', () => {
   const host = document.createElement('div');
   const tag = 'button';
-  const spy = jest.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
+  const spy = vi.spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement');
 
   hasSpecificDirectChildTag(host, tag);
 

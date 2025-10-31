@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
+import * as childrenObserverUtils from '../../../utils/children-observer';
+import * as propertyObserverUtils from '../../../utils/property-observer';
+import * as throwIfRootNodeIsNotOneOfKindUtils from '../../../utils/validation/throwIfRootNodeIsNotOneOfKind';
 import { SelectWrapperDropdown } from './select-wrapper-dropdown';
 import * as selectWrapperDropdownUtils from './select-wrapper-dropdown-utils';
-import * as propertyObserverUtils from '../../../utils/property-observer';
-import * as childrenObserverUtils from '../../../utils/children-observer';
-import * as throwIfRootNodeIsNotOneOfKindUtils from '../../../utils/validation/throwIfRootNodeIsNotOneOfKind';
 
 const initComponent = (): SelectWrapperDropdown => {
   const component = new SelectWrapperDropdown();
@@ -15,8 +16,8 @@ const initComponent = (): SelectWrapperDropdown => {
 describe('connectedCallback', () => {
   it('should call observeChildren() with correct parameters', () => {
     const component = initComponent();
-    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
-    jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind').mockReturnValue();
+    const spy = vi.spyOn(childrenObserverUtils, 'observeChildren');
+    vi.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind').mockReturnValue();
     component.connectedCallback();
 
     expect(spy).toHaveBeenCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
@@ -26,7 +27,7 @@ describe('connectedCallback', () => {
 describe('disconnectedCallback', () => {
   it('should call unobserveChildren() with correct parameters', () => {
     const component = initComponent();
-    const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+    const spy = vi.spyOn(childrenObserverUtils, 'unobserveChildren');
 
     try {
       component.disconnectedCallback();
@@ -41,7 +42,7 @@ describe('componentDidRender', () => {
     const component = initComponent();
     component['isOpen'] = true;
 
-    const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
+    const spy = vi.spyOn(selectWrapperDropdownUtils, 'handleScroll');
     try {
       component.componentDidRender();
     } catch (e) {}
@@ -51,7 +52,7 @@ describe('componentDidRender', () => {
   it('should not call handleScroll() when dropdown isOpen = false', () => {
     const component = initComponent();
 
-    const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
+    const spy = vi.spyOn(selectWrapperDropdownUtils, 'handleScroll');
     try {
       component.componentDidRender();
     } catch (e) {}
@@ -64,7 +65,7 @@ describe('componentWillLoad', () => {
   it('should call observeProperties()', () => {
     const component = initComponent();
 
-    const spy = jest.spyOn(component, 'observeProperties' as any);
+    const spy = vi.spyOn(component, 'observeProperties' as any);
     try {
       component.componentWillLoad();
     } catch (e) {}
@@ -76,7 +77,7 @@ describe('componentWillLoad', () => {
 describe('observeProperties()', () => {
   it.each(['setOptionMaps', 'observeOptions'])('should call %s()', (fn) => {
     const component = initComponent();
-    const spy = jest.spyOn(component, fn as any);
+    const spy = vi.spyOn(component, fn as any);
     component.componentWillLoad();
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -84,7 +85,7 @@ describe('observeProperties()', () => {
 
   it('should call observeProperties() with correct parameters', () => {
     const component = initComponent();
-    const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    const spy = vi.spyOn(propertyObserverUtils, 'observeProperties');
     component.componentWillLoad();
 
     expect(spy).toHaveBeenCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
@@ -103,7 +104,7 @@ describe('this.observeOptions()', () => {
       options.push(el);
     });
 
-    const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    const spy = vi.spyOn(propertyObserverUtils, 'observeProperties');
     component['observeOptions']();
 
     expect(spy).toHaveBeenCalledTimes(3);

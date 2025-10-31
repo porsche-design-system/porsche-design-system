@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for color: background-base, hasLabel: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -65,7 +65,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, hasLabel: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -130,7 +130,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, hasLabel: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: true and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -201,7 +201,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, hasLabel: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: true and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -272,7 +272,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface, hasLabel: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-surface, hasLabel: true and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -343,7 +343,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface, hasLabel: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for color: background-surface, hasLabel: true and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;

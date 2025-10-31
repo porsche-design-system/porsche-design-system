@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for open: false, dismissButton: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, dismissButton: false and theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -79,7 +79,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for open: false, dismissButton: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, dismissButton: true and theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -168,7 +168,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for open: true, dismissButton: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, dismissButton: true and theme: auto 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -270,7 +270,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() should return correct css for open: true, dismissButton: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, dismissButton: true and theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -356,7 +356,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for open: true, dismissButton: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, dismissButton: true and theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;

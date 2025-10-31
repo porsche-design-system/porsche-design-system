@@ -1,10 +1,11 @@
-import * as tableUtils from './table-utils';
+import { vi } from 'vitest';
 import { Table } from './table';
+import * as tableUtils from './table-utils';
 
 describe('table', () => {
   describe('componentWillLoad', () => {
     it('should call warnIfCaptionIsMissing() with correct parameters', () => {
-      const spy = jest.spyOn(tableUtils, 'warnIfCaptionIsMissing');
+      const spy = vi.spyOn(tableUtils, 'warnIfCaptionIsMissing');
       const component = new Table();
       component.host = document.createElement('p-table');
       component.host.attachShadow({ mode: 'open' });

@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { SelectWrapper } from './select-wrapper';
 import * as selectWrapperUtils from './select-wrapper-utils';
 
@@ -14,7 +15,7 @@ describe('componentWillLoad', () => {
     const component = initComponent();
     component.native = true;
 
-    const spy = jest.spyOn(selectWrapperUtils, 'isCustomDropdown');
+    const spy = vi.spyOn(selectWrapperUtils, 'isCustomDropdown');
     component.componentWillLoad();
 
     expect(spy).toHaveBeenCalledWith(false, true);

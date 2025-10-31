@@ -1,6 +1,6 @@
 import { TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
-import { getTagNameWithoutPrefix } from '../../tag-name';
 import { isAlreadyInArray } from '../../is-already-in-array';
+import { getTagNameWithoutPrefix } from '../../tag-name';
 
 export type TagNamesForVersions = { [key: string]: TagName[] };
 
@@ -22,14 +22,14 @@ export const getPreloadedTagNamesForVersion = (version: string): TagName[] => {
     `[href*=porsche-design-system.v${version}]`.replace(/\./g, '\\.')
   );
 
-  return coreChunkLinkElement ? getPreloadedTagNamesForCoreChunk(coreChunkLinkElement) : [];
+  return coreChunkLinkElement ? internalHelper.getPreloadedTagNamesForCoreChunk(coreChunkLinkElement) : [];
 };
 
 export const getPreloadedTagNamesForVersions = (versions: string[]): TagNamesForVersions =>
   versions.reduce(
     (result, version) => ({
       ...result,
-      [version]: getPreloadedTagNamesForVersion(version),
+      [version]: internalHelper.getPreloadedTagNamesForVersion(version),
     }),
     {}
   );
@@ -43,7 +43,7 @@ export const getPdsComponentsSelector = (prefixes: string[]): string =>
 
 export const getUsedTagNamesForVersions = (prefixesForVersions: { [key: string]: string[] }): TagNamesForVersions =>
   Object.entries(prefixesForVersions).reduce((result, [version, prefixes]) => {
-    const pdsComponentsSelector = getPdsComponentsSelector(prefixes);
+    const pdsComponentsSelector = internalHelper.getPdsComponentsSelector(prefixes);
     const pdsElements = Array.from(document.querySelectorAll(pdsComponentsSelector));
     const tagNames = pdsElements.map(getTagNameWithoutPrefix);
 
@@ -90,3 +90,9 @@ export const getPorscheDesignSystemPrefixesForVersions = (): { [key: string]: st
           },
     {}
   );
+
+export const internalHelper = {
+  getPreloadedTagNamesForCoreChunk,
+  getPreloadedTagNamesForVersion,
+  getPdsComponentsSelector,
+};

@@ -1,6 +1,7 @@
-import * as optgroupUtils from './optgroup-utils';
-import { Optgroup } from './optgroup';
+import { vi } from 'vitest';
 import * as throwIfParentIsNotOfKindUtils from '../../utils/validation/throwIfParentIsNotOfKind';
+import { Optgroup } from './optgroup';
+import * as optgroupUtils from './optgroup-utils';
 
 const initComponent = (): Optgroup => {
   const component = new Optgroup();
@@ -12,7 +13,7 @@ const initComponent = (): Optgroup => {
 describe('connectedCallback', () => {
   it('should call throwIfParentIsNotOfKind() with correct arguments', () => {
     const component = initComponent();
-    const throwIfParentIsNotOfKindSpy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
+    const throwIfParentIsNotOfKindSpy = vi.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
     component.connectedCallback();
     expect(throwIfParentIsNotOfKindSpy).toHaveBeenCalledWith(component.host, ['p-select', 'p-multi-select']);
   });
@@ -21,7 +22,7 @@ describe('connectedCallback', () => {
 describe('componentWillLoad', () => {
   it('should call updateOptionsDisabled() with correct arguments', () => {
     const component = initComponent();
-    const updateOptionsDisabledSpy = jest.spyOn(optgroupUtils, 'updateOptionsDisabled');
+    const updateOptionsDisabledSpy = vi.spyOn(optgroupUtils, 'updateOptionsDisabled');
     component.componentWillLoad();
     expect(updateOptionsDisabledSpy).toHaveBeenCalledWith(component.host, component.disabled);
   });
@@ -30,7 +31,7 @@ describe('componentWillLoad', () => {
 describe('handleDisabledChange()', () => {
   it('should call updateOptionsDisabled() with correct arguments', () => {
     const component = initComponent();
-    const updateOptionsDisabledSpy = jest.spyOn(optgroupUtils, 'updateOptionsDisabled');
+    const updateOptionsDisabledSpy = vi.spyOn(optgroupUtils, 'updateOptionsDisabled');
     component.handleDisabledChange();
     expect(updateOptionsDisabledSpy).toHaveBeenCalledWith(component.host, component.disabled);
   });

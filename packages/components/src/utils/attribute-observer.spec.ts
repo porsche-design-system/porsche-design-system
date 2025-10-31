@@ -1,4 +1,5 @@
-import { observeAttributes, unobserveAttributes, attributeMutationMap } from './attribute-observer';
+import { vi } from 'vitest';
+import { attributeMutationMap, observeAttributes, unobserveAttributes } from './attribute-observer';
 
 describe('observeAttributes()', () => {
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('observeAttributes()', () => {
   describe('on attribute change', () => {
     it('should run callback once when observeAttributes is reapplied', async () => {
       const input = document.createElement('input');
-      const cb = jest.fn();
+      const cb = vi.fn();
 
       observeAttributes(input, ['disabled'], cb);
       expect(attributeMutationMap.size).toBe(1);
@@ -38,7 +39,7 @@ describe('observeAttributes()', () => {
 
     it('should run callback once when observeAttributes is called multiple times', async () => {
       const input = document.createElement('input');
-      const cb = jest.fn();
+      const cb = vi.fn();
 
       observeAttributes(input, ['disabled'], cb);
       observeAttributes(input, ['disabled'], cb);
@@ -54,8 +55,8 @@ describe('observeAttributes()', () => {
       const input1 = document.createElement('input');
       const input2 = document.createElement('input');
 
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
 
       observeAttributes(input1, ['disabled'], cb1);
       observeAttributes(input2, ['disabled'], cb2);
@@ -69,7 +70,7 @@ describe('observeAttributes()', () => {
 
     it('should run callback once when multiple attributes are changed', async () => {
       const input = document.createElement('input');
-      const cb = jest.fn();
+      const cb = vi.fn();
       const name = 'some-name';
 
       observeAttributes(input, ['disabled', 'checked', 'name'], cb);

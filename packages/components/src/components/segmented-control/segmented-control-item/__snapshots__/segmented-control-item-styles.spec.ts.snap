@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false, compact: false and theme: dark 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -56,7 +56,7 @@ span {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -112,7 +112,7 @@ span {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: false and theme: dark 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -172,7 +172,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -232,7 +232,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: true and theme: dark 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -293,7 +293,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -340,7 +340,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -391,7 +391,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: true and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -443,7 +443,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -490,7 +490,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -541,7 +541,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -588,7 +588,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -639,7 +639,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -686,7 +686,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;

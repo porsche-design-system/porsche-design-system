@@ -1,5 +1,6 @@
-import { isCustomDropdown } from './select-wrapper-utils';
+import { vi } from 'vitest';
 import * as deviceDetectionUtils from '../../../utils/device-detection';
+import { isCustomDropdown } from './select-wrapper-utils';
 
 describe('isCustomDropdown()', () => {
   it.each<[boolean, boolean, boolean, boolean]>([
@@ -13,7 +14,7 @@ describe('isCustomDropdown()', () => {
     [false, false, true, false],
   ])('should for filter: %s, native: %s and isTouchDevice: %s return %s', (filter, native, isTouchDevice, expected) => {
     if (isTouchDevice) {
-      jest.spyOn(deviceDetectionUtils, 'isTouchDevice').mockImplementation(() => true);
+      vi.spyOn(deviceDetectionUtils, 'isTouchDevice').mockImplementation(() => true);
     }
 
     expect(isCustomDropdown(filter, native)).toBe(expected);

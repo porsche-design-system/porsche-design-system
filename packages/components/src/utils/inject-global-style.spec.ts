@@ -1,10 +1,11 @@
-import { injectGlobalStyle } from './inject-global-style';
-import { FONT_FACE_CDN_FILE_COM, FONT_FACE_CDN_FILE_CN } from '@porsche-design-system/assets';
+import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/assets';
+import { vi } from 'vitest';
 import * as getCDNBaseURLUtils from './getCDNBaseURL';
+import { injectGlobalStyle } from './inject-global-style';
 
 beforeEach(() => {
   document.head.innerHTML = ''; // reset between tests
-  jest.spyOn(global.console, 'warn').mockImplementation(); // to suppress logs
+  vi.spyOn(global.console, 'warn').mockImplementation(() => {}); // to suppress logs
 });
 
 describe('if global styles are missing', () => {
@@ -15,16 +16,14 @@ describe('if global styles are missing', () => {
     });
 
     it('should call document.head.querySelector() with correct parameters', () => {
-      const spy = jest.spyOn(document.head, 'querySelector');
+      const spy = vi.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
       expect(spy).toHaveBeenCalledWith(
         `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}'],style[data-pds-font-face-styles=""]`
       );
 
-      jest
-        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
-        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+      vi.spyOn(getCDNBaseURLUtils, 'getCDNBaseURL').mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
       injectGlobalStyle();
       expect(spy).toHaveBeenCalledWith(
         `link[href='https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}'],style[data-pds-font-face-styles=""]`
@@ -51,7 +50,7 @@ describe('if global styles are missing', () => {
     });
 
     it('should not call document.head.querySelector() when ROLLUP_REPLACE_IS_STAGING="staging"', () => {
-      const spy = jest.spyOn(document.head, 'querySelector');
+      const spy = vi.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
       expect(spy).not.toHaveBeenCalled();
@@ -71,7 +70,7 @@ describe('if global styles are there (link)', () => {
     });
 
     it('should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING is %s', () => {
-      const spy = jest.spyOn(document.head, 'querySelector');
+      const spy = vi.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
       expect(spy).toHaveBeenCalledWith(
@@ -87,7 +86,7 @@ describe('if global styles are there (link)', () => {
     });
 
     it('should not call document.head.querySelector() when ROLLUP_REPLACE_IS_STAGING="staging"', () => {
-      const spy = jest.spyOn(document.head, 'querySelector');
+      const spy = vi.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
       expect(spy).not.toHaveBeenCalled();
@@ -107,7 +106,7 @@ describe('if global styles are there (inline style)', () => {
     });
 
     it('should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING is %s', () => {
-      const spy = jest.spyOn(document.head, 'querySelector');
+      const spy = vi.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
       expect(spy).toHaveBeenCalledWith(
@@ -123,7 +122,7 @@ describe('if global styles are there (inline style)', () => {
     });
 
     it('should not call document.head.querySelector() when ROLLUP_REPLACE_IS_STAGING="staging"', () => {
-      const spy = jest.spyOn(document.head, 'querySelector');
+      const spy = vi.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
       expect(spy).not.toHaveBeenCalled();

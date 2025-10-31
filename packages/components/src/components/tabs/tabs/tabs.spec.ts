@@ -1,13 +1,14 @@
+import { vi } from 'vitest';
+import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import { Tabs } from './tabs';
 import * as tabsUtils from './tabs-utils';
-import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 
 describe('componentWillLoad', () => {
   it('should call this.defineTabsItemElements()', () => {
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
     component.host.attachShadow({ mode: 'open' });
-    const spy = jest.spyOn(component, 'defineTabsItemElements' as any);
+    const spy = vi.spyOn(component, 'defineTabsItemElements' as any);
 
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -16,7 +17,7 @@ describe('componentWillLoad', () => {
 
 describe('render', () => {
   it('should call syncTabsItemsProps() with correct parameters', () => {
-    const spy = jest.spyOn(tabsUtils, 'syncTabsItemsProps');
+    const spy = vi.spyOn(tabsUtils, 'syncTabsItemsProps');
 
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
@@ -33,7 +34,7 @@ describe('render', () => {
 describe('componentDidRender', () => {
   it('should call this.setAccessibilityAttributes()', () => {
     const component = new Tabs();
-    const spy = jest.spyOn(component, 'setAccessibilityAttributes' as any);
+    const spy = vi.spyOn(component, 'setAccessibilityAttributes' as any);
 
     component.componentDidRender();
     expect(spy).toHaveBeenCalledWith();
@@ -42,7 +43,7 @@ describe('componentDidRender', () => {
 
 describe('this.defineTabsItemElements()', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+    const spy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
 

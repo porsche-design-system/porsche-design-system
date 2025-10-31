@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -78,7 +78,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -159,7 +159,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -237,7 +237,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -318,7 +318,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -396,7 +396,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -477,7 +477,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -555,7 +555,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;

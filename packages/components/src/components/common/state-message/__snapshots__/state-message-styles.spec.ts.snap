@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: error 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: dark and state: error 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -16,7 +16,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: none 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: dark and state: none 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -31,7 +31,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: dark and state: success 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: dark and state: success 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -47,7 +47,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: error 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: light and state: error 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -63,7 +63,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: none 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: light and state: none 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -78,7 +78,7 @@ exports[`getFunctionalComponentStateMessageStyles() should return correct JssSty
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() should return correct JssStyle for theme: light and state: success 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: light and state: success 1`] = `
 ".message {
   display: flex;
   gap: 4px;

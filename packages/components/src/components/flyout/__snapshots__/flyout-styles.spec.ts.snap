@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -102,7 +102,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -219,7 +219,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -334,7 +334,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -432,7 +432,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -530,7 +530,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -628,7 +628,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -730,7 +730,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -847,7 +847,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -945,7 +945,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1050,7 +1050,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1147,7 +1147,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1244,7 +1244,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1352,7 +1352,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: auto 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1469,7 +1469,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1591,7 +1591,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1703,7 +1703,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1827,7 +1827,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1943,7 +1943,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2067,7 +2067,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2194,7 +2194,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2335,7 +2335,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2478,7 +2478,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2611,7 +2611,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2708,7 +2708,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2805,7 +2805,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2917,7 +2917,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -3029,7 +3029,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -3145,7 +3145,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: auto 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -3256,7 +3256,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, backdrop: shading, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: shading, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
