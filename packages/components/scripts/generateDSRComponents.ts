@@ -261,15 +261,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
-        newFileContent = newFileContent
-          .replace(
+        // radio-group-option uses a label component without allowing slots
+        if (tagName === 'p-radio-group-option') {
+          newFileContent = newFileContent.replace(
+            /(<Label(?!Props))([\s\S]*?\/>)/,
+            '$1 hasLabel={this.props.label} hasDescription={false}$2'
+          );
+        } else {
+          newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,
             "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
-          )
-          .replace(
-            /(<StateMessage(?!Props))([\s\S]*?\/>)/,
-            "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
           );
+        }
+        newFileContent = newFileContent.replace(
+          /(<StateMessage(?!Props))([\s\S]*?\/>)/,
+          "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
+        );
       } else {
         newFileContent = newFileContent
           .replace(
@@ -289,7 +296,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
+        .replace(
+          /(getSegmentedControlCss)\(\s*getItemMaxWidth\(\s*this\.props\s*,\s*this\.props\.compact\s*\)/,
+          '$1(100'
+        )
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
@@ -528,13 +538,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // part prop is not typed in JSX, although it's valid HTML attribute
           .replace(/( +)part=/g, '$1/* @ts-ignore */\n$&')
           // Remove markup after button
-          .replace(/\{\[\n\s*<div\s+className="sr-text"\s+id=\{labelId}>[\s\S]+?]}/, '')
+          .replace(/\{\[\n\s*this\.props\.description && \([\s\S]+?]}/, '')
           // Change isOpen, optionMaps, searchString to not be a prop
           .replace(/this\.props\.(isOpen|optionMaps|searchString)(?=[,)}])/g, 'this.$1')
           // fix warning about read-only field
           .replace(/value={/, 'defaultValue={')
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
-          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
+          .replace(/\{\.\.\.getFilterInputAriaAttributes([\s\S]*?)\)}/, '')
+          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes([\s\S]*?)\)}/, '');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           .replace(/(required={).*(})/, '$1false$2')
@@ -598,6 +608,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
           .replace(/private searchTimeout: any\.Timeout \| number = null;/, '')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-radio-group') {
+        newFileContent = newFileContent
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')

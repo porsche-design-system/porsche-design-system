@@ -1,0 +1,9 @@
+- radiogroup "Some label":
+  - radio "Some label A"
+  - status
+  - radio "Some label B" [checked]
+  - status
+  - radio "Some label C"
+  - status
+  - status: Some success validation message.
+  - status

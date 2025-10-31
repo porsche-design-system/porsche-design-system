@@ -1,42 +1,47 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 import {
   inputPasswordStoryToggle,
-   inputPasswordStorySlots,
-} from "@/app/components/input-password/input-password.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {inputPasswordExample, inputPasswordExampleControlled} from "@porsche-design-system/shared/examples";
+  inputPasswordStorySlots,
+} from '@/app/components/input-password/input-password.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { inputPasswordExampleForm } from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Input Password - Porsche Design System',
-  description: "Discover detailed examples and insights of the Input Password component."
-}
+  description: 'Discover detailed examples and insights of the Input Password component.',
+};
 
 # Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
 
-<TableOfContents headings={['Show password toggle button','Form','Controlled','Slots']} />
+<TableOfContents headings={['Form', 'Show password toggle button', 'Slots']} />
+
+## Form
+
+The `p-input-password` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similar to a native `<input type="password" />`, automatically
+managing its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
+
+<ComponentExample codeSample={inputPasswordExampleForm} />
 
 ## Show password toggle button
 
 If you want to show the password toggle button, you can pass `toggle="true"`.
 
 <ComponentStory story={inputPasswordStoryToggle} />
-
-## Form
-
-The `p-input-password` component is a form-associated custom element that integrates seamlessly with forms. Leveraging
-the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a
-native input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
-
-<ComponentExample codeSample={inputPasswordExample} />
-
-## Controlled
-
-In the controlled approach, the `p-input-password` value is externally managed. While the internal value will be updated
-automatically, you can use the `input`, `change` or `blur` event to update the external state.
-
-<ComponentExample codeSample={inputPasswordExampleControlled} />
 
 ## Slots
 

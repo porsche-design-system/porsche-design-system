@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -92,7 +92,6 @@
       "!**/components-js/**/*",
       "!**/components-react/**/*",
       "!**/components-vue/**/*",
-      "!**/crawler/**/*",
       "!**/shared/**/*",
       "!**/storefront-old/**/*",
       "!**/utilities/**/*"
@@ -127,7 +126,6 @@
       "includes": [
         "**/scripts/**/*",
         "**/bin/**/*",
-        "packages/crawler/**/*",
         "packages/components-js/projects/components-manager-cli/**/*",
         "**/rollup*",
         "**/webpack*",

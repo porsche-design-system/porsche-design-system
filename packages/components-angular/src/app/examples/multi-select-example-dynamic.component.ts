@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-dynamic',
@@ -17,7 +17,7 @@ import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsch
     <p-button type="button" (click)="onSetValue()" [compact]="true">Set Value</p-button>
     <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
 
-    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="onUpdate($event)">
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (change)="onChange($event)">
       <p-multi-select-option *ngFor="let idx of optionIndices" [value]="(idx + 1).toString()"
         >Option {{ idx + 1 }}</p-multi-select-option
       >
@@ -52,7 +52,7 @@ export class MultiSelectExampleDynamicComponent {
     this.inputValue = '';
   }
 
-  onUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
+  onChange(e: CustomEvent<MultiSelectChangeEventDetail>) {
     this.selectedValues = e.detail.value;
     this.inputValue = e.detail.value.join(',');
   }

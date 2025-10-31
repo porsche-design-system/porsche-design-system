@@ -2,7 +2,8 @@
 
 exports[`getComponentCss() should return correct css for aspectRatio: "1:1", weight: "regular", linkDirection: "column" and hasDescription: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -47,10 +48,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 400;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 1/1;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -103,6 +109,12 @@ h1,h2,h3,h4,h5,h6 {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 "
@@ -110,7 +122,8 @@ h1,h2,h3,h4,h5,h6 {
 
 exports[`getComponentCss() should return correct css for aspectRatio: "3:4", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -164,10 +177,15 @@ p {
   hyphens: inherit;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -220,6 +238,12 @@ p {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 "
@@ -227,7 +251,8 @@ p {
 
 exports[`getComponentCss() should return correct css for aspectRatio: "4:3", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -281,10 +306,15 @@ p {
   hyphens: inherit;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 4/3;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -339,12 +369,19 @@ p {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
 "
 `;
 
 exports[`getComponentCss() should return correct css for aspectRatio: "9:16", weight: "semi-bold", linkDirection: "row" and hasDescription: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -389,10 +426,15 @@ h1,h2,h3,h4,h5,h6 {
   color: #FBFCFF;
   font-weight: 600;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 9/16;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -447,12 +489,19 @@ h1,h2,h3,h4,h5,h6 {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
 "
 `;
 
 exports[`getComponentCss() should return correct css for aspectRatio: "16:9", weight: "regular", linkDirection: "column" and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -506,10 +555,15 @@ p {
   hyphens: inherit;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 16/9;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -564,12 +618,19 @@ p {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
 "
 `;
 
 exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, linkDirection: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -653,10 +714,15 @@ p {
   }
 }
 
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 1/1;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -759,6 +825,12 @@ p {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 "

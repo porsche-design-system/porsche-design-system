@@ -1,10 +1,11 @@
-import { Component, Element, Host, type JSX, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  isElementOfKind,
   throwIfParentIsNotOfKind,
   throwIfPropIsUndefined,
   updateParent,
@@ -12,12 +13,12 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import {
+  getIconColor,
+  getSegmentedControlItemAriaAttributes,
   SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
   type SegmentedControlItemAriaAttribute,
   type SegmentedControlItemIcon,
   type SegmentedControlItemInternalHTMLProps,
-  getIconColor,
-  getSegmentedControlItemAriaAttributes,
 } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
@@ -85,6 +86,7 @@ export class SegmentedControlItem {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.host.compact,
       isDisabled,
       this.host.selected,
       hasIcon,
@@ -94,7 +96,7 @@ export class SegmentedControlItem {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      <Host onClick={!isDisabled && this.onClick} onBlur={this.onBlur}>
         <button type="button" {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}>
           {this.label && <span>{this.label}</span>}
           {hasIcon && (
@@ -118,6 +120,17 @@ export class SegmentedControlItem {
     if (!this.disabled && !this.host.selected) {
       this.host.dispatchEvent(
         new CustomEvent('internalSegmentedControlItemUpdate', {
+          bubbles: true,
+        })
+      );
+    }
+  };
+
+  private onBlur = (e: FocusEvent): void => {
+    e.stopPropagation();
+    if (!e.relatedTarget || !isElementOfKind(e.relatedTarget as HTMLElement, 'p-segmented-control-item')) {
+      this.host.dispatchEvent(
+        new CustomEvent('internalBlur', {
           bubbles: true,
         })
       );

@@ -1,8 +1,8 @@
 <template>
-  <div class="light flex flex-wrap items-start justify-center gap-fluid-md p-fluid-md bg-base-light">
+  <div class="light flex flex-wrap items-start justify-center gap-fluid-md p-fluid-md bg-canvas-light">
     <h3 class="prose-heading-md text-center w-full m-0">Theme Light</h3>
     <div class="bg-primary rounded-sm p-fluid-md border-thin border-gray-500" />
-    <div class="bg-base rounded-sm p-fluid-md border-thin border-gray-500" />
+    <div class="bg-canvas rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-surface rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-shading rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-frosted rounded-sm p-fluid-md border-thin border-gray-500" />
@@ -22,10 +22,10 @@
     <div class="bg-focus rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-disabled rounded-sm p-fluid-md border-thin border-gray-500" />
   </div>
-  <div class="dark flex flex-wrap items-start justify-center gap-fluid-md p-fluid-md bg-base-dark">
+  <div class="dark flex flex-wrap items-start justify-center gap-fluid-md p-fluid-md bg-canvas-dark">
     <h3 class="prose-heading-md text-center w-full m-0">Theme Dark</h3>
     <div class="bg-primary rounded-sm p-fluid-md border-thin border-gray-500" />
-    <div class="bg-base rounded-sm p-fluid-md border-thin border-gray-500" />
+    <div class="bg-canvas rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-surface rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-shading rounded-sm p-fluid-md border-thin border-gray-500" />
     <div class="bg-frosted rounded-sm p-fluid-md border-thin border-gray-500" />

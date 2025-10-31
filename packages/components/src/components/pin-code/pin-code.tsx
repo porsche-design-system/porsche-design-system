@@ -1,32 +1,33 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId, labelId } from '../common/label/label-utils';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { StateMessage, messageId } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './pin-code-styles';
 import {
+  getConcatenatedInputValues,
+  getSanitisedValue,
   type HTMLInputElementEventTarget,
+  isCurrentInput,
+  isFormSubmittable,
+  isInputOnlyDigits,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
+  type PinCodeChangeEventDetail,
   type PinCodeLength,
   type PinCodeState,
   type PinCodeType,
   type PinCodeUpdateEventDetail,
-  getConcatenatedInputValues,
-  getSanitisedValue,
-  isCurrentInput,
-  isFormSubmittable,
-  isInputOnlyDigits,
   removeWhiteSpaces,
 } from './pin-code-utils';
 
@@ -44,6 +45,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   value: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -100,13 +102,24 @@ export class PinCode {
   /** Sets the initial value of the Pin Code. */
   @Prop({ mutable: true }) public value?: string = '';
 
+  /** A boolean value that, if present, renders the pin-code as a compact version. */
+  @Prop() public compact?: boolean = false;
+
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** The id of a form element the pin-code should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Emitted when selected element changes. */
+  /** Emitted when the pin-code has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<void>;
+
+  /** Emitted when the input is changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
+
+  /**
+   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
+   */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -177,6 +190,7 @@ export class PinCode {
       this.disabled,
       this.loading,
       this.length,
+      this.compact,
       this.theme
     );
 
@@ -217,6 +231,7 @@ export class PinCode {
               value={this.value[index] === ' ' ? null : this.value[index]}
               disabled={this.disabled}
               required={this.required}
+              onBlur={this.onInputBlur}
               ref={(el) => this.inputElements.push(el)}
             />
           ))}
@@ -292,12 +307,21 @@ export class PinCode {
   private updateValue = (newValue: string): void => {
     this.value = newValue;
     this.internals?.setFormValue(this.value);
-    this.update.emit({ value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length });
+    const details = { value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length };
+    this.change.emit(details);
+    this.update.emit(details);
   };
 
   private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {
     this.inputElements[
       sanitisedValue.length === this.length ? sanitisedValue.length - 1 : sanitisedValue.length
     ]?.focus();
+  };
+
+  private onInputBlur = (e: FocusEvent): void => {
+    e.stopPropagation();
+    if (!e.relatedTarget || !this.inputElements.includes(e.relatedTarget as HTMLInputElement)) {
+      this.blur.emit();
+    }
   };
 }

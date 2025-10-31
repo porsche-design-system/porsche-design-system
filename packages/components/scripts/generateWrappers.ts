@@ -6,7 +6,6 @@ const generateWrappers = (): void => {
   generator.generate('react');
   generator.generate('nextjs');
   generator.generate('vue');
-  generator.generate('uxpin');
 };
 
 generateWrappers();

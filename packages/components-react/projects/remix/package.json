@@ -21,22 +21,22 @@
     "patchRemixRunProcessBrowserGlobalIdentifier": "tsx ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.29.0",
-    "@remix-run/node": "^2.16.8",
-    "@remix-run/react": "^2.16.8",
-    "@remix-run/serve": "^2.16.8",
-    "@remix-run/server-runtime": "^2.16.8",
-    "isbot": "^5.1.28",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@porsche-design-system/components-react": "3.30.0",
+    "@remix-run/node": "^2.17.1",
+    "@remix-run/react": "^2.17.1",
+    "@remix-run/serve": "^2.17.1",
+    "@remix-run/server-runtime": "^2.17.1",
+    "isbot": "^5.1.31",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^2.16.8",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@remix-run/dev": "^2.17.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "binode": "^1.0.5",
-    "cross-env": "^7.0.3"
+    "cross-env": "^10.1.0"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 33.0.0 <35.0.0",

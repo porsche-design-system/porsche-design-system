@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { type Route, RouterModule } from '@angular/router';
 import * as fromExamples from './examples';
+import { SelectExampleReactiveFormComponent } from './examples/select-example-reactive-form.component';
 import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
@@ -166,6 +167,26 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.CarouselExampleJumpToSlideComponent,
   },
   {
+    name: 'Checkbox Example',
+    path: 'checkbox-example',
+    component: fromExamples.CheckboxExampleComponent,
+  },
+  {
+    name: 'Checkbox Example Controlled',
+    path: 'checkbox-example-controlled',
+    component: fromExamples.CheckboxExampleControlledComponent,
+  },
+  {
+    name: 'Checkbox Example Reactive Form',
+    path: 'checkbox-example-reactive-form',
+    component: fromExamples.CheckboxExampleReactiveFormComponent,
+  },
+  {
+    name: 'Checkbox Example Form',
+    path: 'checkbox-example-form',
+    component: fromExamples.CheckboxExampleFormComponent,
+  },
+  {
     name: 'Flyout Example',
     path: 'flyout-example',
     component: fromExamples.FlyoutExampleComponent,
@@ -212,8 +233,18 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Password Example Controlled',
-    path: 'input-password-controlled-example',
+    path: 'input-password-example-controlled',
     component: fromExamples.InputPasswordExampleControlledComponent,
+  },
+  {
+    name: 'Input Password Example Form',
+    path: 'input-password-example-form',
+    component: fromExamples.InputPasswordExampleFormComponent,
+  },
+  {
+    name: 'Input Password Example Reactive Form',
+    path: 'input-password-example-reactive-form',
+    component: fromExamples.InputPasswordExampleReactiveFormComponent,
   },
   {
     name: 'Input Number Example',
@@ -222,8 +253,18 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Number Example Controlled',
-    path: 'input-number-controlled-example',
+    path: 'input-number-example-controlled',
     component: fromExamples.InputNumberExampleControlledComponent,
+  },
+  {
+    name: 'Input Number Example Form',
+    path: 'input-number-example-form',
+    component: fromExamples.InputNumberExampleFormComponent,
+  },
+  {
+    name: 'Input Number Example Reactive Form',
+    path: 'input-number-example-reactive-form',
+    component: fromExamples.InputNumberExampleReactiveFormComponent,
   },
   {
     name: 'Input Date Example',
@@ -232,8 +273,38 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Date Example Controlled',
-    path: 'input-date-controlled-example',
+    path: 'input-date-example-controlled',
     component: fromExamples.InputDateExampleControlledComponent,
+  },
+  {
+    name: 'Input Date Example Form',
+    path: 'input-date-example-form',
+    component: fromExamples.InputDateExampleFormComponent,
+  },
+  {
+    name: 'Input Date Example Reactive Form',
+    path: 'input-date-example-reactive-form',
+    component: fromExamples.InputDateExampleReactiveFormComponent,
+  },
+  {
+    name: 'Input Search Example',
+    path: 'input-search-example',
+    component: fromExamples.InputSearchExampleComponent,
+  },
+  {
+    name: 'Input Search Example Controlled',
+    path: 'input-search-example-controlled',
+    component: fromExamples.InputSearchExampleControlledComponent,
+  },
+  {
+    name: 'Input Search Example Form',
+    path: 'input-search-example-form',
+    component: fromExamples.InputSearchExampleFormComponent,
+  },
+  {
+    name: 'Input Search Example Reactive Form',
+    path: 'input-search-example-reactive-form',
+    component: fromExamples.InputSearchExampleReactiveFormComponent,
   },
   {
     name: 'Input Time Example',
@@ -242,8 +313,18 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Time Example Controlled',
-    path: 'input-time-controlled-example',
+    path: 'input-time-example-controlled',
     component: fromExamples.InputTimeExampleControlledComponent,
+  },
+  {
+    name: 'Input Time Example Form',
+    path: 'input-time-example-form',
+    component: fromExamples.InputTimeExampleFormComponent,
+  },
+  {
+    name: 'Input Time Example Reactive Form',
+    path: 'input-time-example-reactive-form',
+    component: fromExamples.InputTimeExampleReactiveFormComponent,
   },
   {
     name: 'Input Text Example',
@@ -252,8 +333,18 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Text Example Controlled',
-    path: 'input-text-controlled-example',
+    path: 'input-text-example-controlled',
     component: fromExamples.InputTextExampleControlledComponent,
+  },
+  {
+    name: 'Input Text Example Form',
+    path: 'input-text-example-form',
+    component: fromExamples.InputTextExampleFormComponent,
+  },
+  {
+    name: 'Input Text Example Reactive Form',
+    path: 'input-text-example-reactive-form',
+    component: fromExamples.InputTextExampleReactiveFormComponent,
   },
   {
     name: 'Input Tel Example',
@@ -262,8 +353,38 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Tel Example Controlled',
-    path: 'input-tel-controlled-example',
+    path: 'input-tel-example-controlled',
     component: fromExamples.InputTelExampleControlledComponent,
+  },
+  {
+    name: 'Input Tel Example Form',
+    path: 'input-tel-example-form',
+    component: fromExamples.InputTelExampleFormComponent,
+  },
+  {
+    name: 'Input Tel Example Reactive Form',
+    path: 'input-tel-example-reactive-form',
+    component: fromExamples.InputTelExampleReactiveFormComponent,
+  },
+  {
+    name: 'Input Url Example',
+    path: 'input-url-example',
+    component: fromExamples.InputUrlExampleComponent,
+  },
+  {
+    name: 'Input Url Example Controlled',
+    path: 'input-url-example-controlled',
+    component: fromExamples.InputUrlExampleControlledComponent,
+  },
+  {
+    name: 'Input Url Example Form',
+    path: 'input-url-example-form',
+    component: fromExamples.InputUrlExampleFormComponent,
+  },
+  {
+    name: 'Input Url Example Reactive Form',
+    path: 'input-url-example-reactive-form',
+    component: fromExamples.InputUrlExampleReactiveFormComponent,
   },
   {
     name: 'Input Email Example',
@@ -272,8 +393,18 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Input Email Example Controlled',
-    path: 'input-email-controlled-example',
+    path: 'input-email-example-controlled',
     component: fromExamples.InputEmailExampleControlledComponent,
+  },
+  {
+    name: 'Input Email Example Form',
+    path: 'input-email-example-form',
+    component: fromExamples.InputEmailExampleFormComponent,
+  },
+  {
+    name: 'Input Email Example Reactive Form',
+    path: 'input-email-example-reactive-form',
+    component: fromExamples.InputEmailExampleReactiveFormComponent,
   },
   {
     name: 'Link Tile Example Hyphens',
@@ -306,6 +437,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.MultiSelectExampleDynamicComponent,
   },
   {
+    name: 'Multi-Select Example Form',
+    path: 'multi-select-example-form',
+    component: fromExamples.MultiSelectExampleFormComponent,
+  },
+  {
+    name: 'Multi-Select Example Reactive Form',
+    path: 'multi-select-example-reactive-form',
+    component: fromExamples.MultiSelectExampleReactiveFormComponent,
+  },
+  {
     name: 'Pin Code Example',
     path: 'pin-code-example',
     component: fromExamples.PinCodeExampleComponent,
@@ -314,6 +455,36 @@ export const routes: ExtendedRoute[] = [
     name: 'Pin Code Example Controlled',
     path: 'pin-code-example-controlled',
     component: fromExamples.PinCodeExampleControlledComponent,
+  },
+  {
+    name: 'Pin Code Example Form',
+    path: 'pin-code-example-form',
+    component: fromExamples.PinCodeExampleFormComponent,
+  },
+  {
+    name: 'Pin Code Example Reactive Form',
+    path: 'pin-code-example-reactive-form',
+    component: fromExamples.PinCodeExampleReactiveFormComponent,
+  },
+  {
+    name: 'Radio Group Example',
+    path: 'radio-group-example',
+    component: fromExamples.RadioGroupExampleComponent,
+  },
+  {
+    name: 'Radio Group Example Controlled',
+    path: 'radio-group-example-controlled',
+    component: fromExamples.RadioGroupExampleControlledComponent,
+  },
+  {
+    name: 'Radio Group Example Form',
+    path: 'radio-group-example-form',
+    component: fromExamples.RadioGroupExampleFormComponent,
+  },
+  {
+    name: 'Radio Group Example Reactive Form',
+    path: 'radio-group-example-reactive-form',
+    component: fromExamples.RadioGroupExampleReactiveFormComponent,
   },
   {
     name: 'Scroller Example',
@@ -331,6 +502,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SegmentedControlExampleControlledComponent,
   },
   {
+    name: 'Segmented Control Example Form',
+    path: 'segmented-control-example-form',
+    component: fromExamples.SegmentedControlExampleFormComponent,
+  },
+  {
+    name: 'Segmented Control Example Reactive Form',
+    path: 'segmented-control-example-reactive-form',
+    component: fromExamples.SegmentedControlExampleReactiveFormComponent,
+  },
+  {
     name: 'Select Example',
     path: 'select-example',
     component: fromExamples.SelectExampleComponent,
@@ -344,6 +525,16 @@ export const routes: ExtendedRoute[] = [
     name: 'Select Example Dynamic',
     path: 'select-example-dynamic',
     component: fromExamples.SelectExampleDynamicComponent,
+  },
+  {
+    name: 'Select Example Form',
+    path: 'select-example-form',
+    component: fromExamples.SelectExampleFormComponent,
+  },
+  {
+    name: 'Select Example Reactive Form',
+    path: 'select-example-reactive-form',
+    component: fromExamples.SelectExampleReactiveFormComponent,
   },
   {
     name: 'Select Example Required',
@@ -397,18 +588,18 @@ export const routes: ExtendedRoute[] = [
   },
   {
     name: 'Textarea Example Controlled',
-    path: 'textarea-controlled-example',
+    path: 'textarea-example-controlled',
     component: fromExamples.TextareaExampleControlledComponent,
   },
   {
-    name: 'Checkbox Example',
-    path: 'checkbox-example',
-    component: fromExamples.CheckboxExampleComponent,
+    name: 'Textarea Example Form',
+    path: 'textarea-example-form',
+    component: fromExamples.TextareaExampleFormComponent,
   },
   {
-    name: 'Checkbox Example Controlled',
-    path: 'checkbox-controlled-example',
-    component: fromExamples.CheckboxExampleControlledComponent,
+    name: 'Textarea Example Reactive Form',
+    path: 'textarea-example-reactive-form',
+    component: fromExamples.TextareaExampleReactiveFormComponent,
   },
   {
     name: 'Text Field Wrapper Example Search',

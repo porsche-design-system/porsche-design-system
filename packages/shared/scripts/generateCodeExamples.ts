@@ -195,21 +195,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-checkbox',
     examples: [
       {
-        name: 'CheckboxExample',
+        name: 'CheckboxExampleForm',
         paths: {
-          'vanilla-js': '/checkbox-example.html',
-          angular: '/checkbox-example.component.ts',
-          react: '/CheckboxExample.tsx',
-          vue: '/CheckboxExample.vue',
-        },
-      },
-      {
-        name: 'CheckboxExampleControlled',
-        paths: {
-          'vanilla-js': '/checkbox-example-controlled.html',
-          angular: '/checkbox-example-controlled.component.ts',
-          react: '/CheckboxExampleControlled.tsx',
-          vue: '/CheckboxExampleControlled.vue',
+          'vanilla-js': '/checkbox-example-form.html',
+          angular: '/checkbox-example-form.component.ts',
+          react: '/CheckboxExampleForm.tsx',
+          vue: '/CheckboxExampleForm.vue',
         },
       },
     ],
@@ -237,38 +228,6 @@ const codeExamples: CodeSample[] = [
       },
     ],
   },
-  // {
-  //   component: 'p-drilldown',
-  //   examples: [
-  //     {
-  //       name: 'DrilldownExample',
-  //       paths: {
-  //         'vanilla-js': '/drilldown-example.html',
-  //         angular: '/drilldown-example.component.ts',
-  //         react: '/DrilldownExample.tsx',
-  //         vue: '/DrilldownExample.vue',
-  //       },
-  //     },
-  //     {
-  //       name: 'DrilldownExampleActiveIdentifier',
-  //       paths: {
-  //         'vanilla-js': '/drilldown-example-active-identifier.html',
-  //         angular: '/drilldown-example-active-identifier.component.ts',
-  //         react: '/DrilldownExampleActiveIdentifier.tsx',
-  //         vue: '/DrilldownExampleActiveIdentifier.vue',
-  //       },
-  //     },
-  //     {
-  //       name: 'DrilldownExampleCustomContent',
-  //       paths: {
-  //         'vanilla-js': '/drilldown-example-custom-content.html',
-  //         angular: '/drilldown-example-custom-content.component.ts',
-  //         react: '/DrilldownExampleCustomContent.tsx',
-  //         vue: '/DrilldownExampleCustomContent.vue',
-  //       },
-  //     },
-  //   ],
-  // },
   {
     component: 'p-inline-notification',
     examples: [
@@ -296,21 +255,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-password',
     examples: [
       {
-        name: 'InputPasswordExample',
+        name: 'InputPasswordExampleForm',
         paths: {
-          'vanilla-js': '/input-password-example.html',
-          angular: '/input-password-example.component.ts',
-          react: '/InputPasswordExample.tsx',
-          vue: '/InputPasswordExample.vue',
-        },
-      },
-      {
-        name: 'InputPasswordExampleControlled',
-        paths: {
-          'vanilla-js': '/input-password-example-controlled.html',
-          angular: '/input-password-example-controlled.component.ts',
-          react: '/InputPasswordExampleControlled.tsx',
-          vue: '/InputPasswordExampleControlled.vue',
+          'vanilla-js': '/input-password-example-form.html',
+          angular: '/input-password-example-form.component.ts',
+          react: '/InputPasswordExampleForm.tsx',
+          vue: '/InputPasswordExampleForm.vue',
         },
       },
     ],
@@ -319,21 +269,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-number',
     examples: [
       {
-        name: 'InputNumberExample',
+        name: 'InputNumberExampleForm',
         paths: {
-          'vanilla-js': '/input-number-example.html',
-          angular: '/input-number-example.component.ts',
-          react: '/InputNumberExample.tsx',
-          vue: '/InputNumberExample.vue',
-        },
-      },
-      {
-        name: 'InputNumberExampleControlled',
-        paths: {
-          'vanilla-js': '/input-number-example-controlled.html',
-          angular: '/input-number-example-controlled.component.ts',
-          react: '/InputNumberExampleControlled.tsx',
-          vue: '/InputNumberExampleControlled.vue',
+          'vanilla-js': '/input-number-example-form.html',
+          angular: '/input-number-example-form.component.ts',
+          react: '/InputNumberExampleForm.tsx',
+          vue: '/InputNumberExampleForm.vue',
         },
       },
     ],
@@ -342,21 +283,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-date',
     examples: [
       {
-        name: 'InputDateExample',
+        name: 'InputDateExampleForm',
         paths: {
-          'vanilla-js': '/input-date-example.html',
-          angular: '/input-date-example.component.ts',
-          react: '/InputDateExample.tsx',
-          vue: '/InputDateExample.vue',
-        },
-      },
-      {
-        name: 'InputDateExampleControlled',
-        paths: {
-          'vanilla-js': '/input-date-example-controlled.html',
-          angular: '/input-date-example-controlled.component.ts',
-          react: '/InputDateExampleControlled.tsx',
-          vue: '/InputDateExampleControlled.vue',
+          'vanilla-js': '/input-date-example-form.html',
+          angular: '/input-date-example-form.component.ts',
+          react: '/InputDateExampleForm.tsx',
+          vue: '/InputDateExampleForm.vue',
         },
       },
     ],
@@ -365,21 +297,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-time',
     examples: [
       {
-        name: 'InputTimeExample',
+        name: 'InputTimeExampleForm',
         paths: {
-          'vanilla-js': '/input-time-example.html',
-          angular: '/input-time-example.component.ts',
-          react: '/InputTimeExample.tsx',
-          vue: '/InputTimeExample.vue',
-        },
-      },
-      {
-        name: 'InputTimeExampleControlled',
-        paths: {
-          'vanilla-js': '/input-time-example-controlled.html',
-          angular: '/input-time-example-controlled.component.ts',
-          react: '/InputTimeExampleControlled.tsx',
-          vue: '/InputTimeExampleControlled.vue',
+          'vanilla-js': '/input-time-example-form.html',
+          angular: '/input-time-example-form.component.ts',
+          react: '/InputTimeExampleForm.tsx',
+          vue: '/InputTimeExampleForm.vue',
         },
       },
     ],
@@ -388,21 +311,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-text',
     examples: [
       {
-        name: 'InputTextExample',
+        name: 'InputTextExampleForm',
         paths: {
-          'vanilla-js': '/input-text-example.html',
-          angular: '/input-text-example.component.ts',
-          react: '/InputTextExample.tsx',
-          vue: '/InputTextExample.vue',
-        },
-      },
-      {
-        name: 'InputTextExampleControlled',
-        paths: {
-          'vanilla-js': '/input-text-example-controlled.html',
-          angular: '/input-text-example-controlled.component.ts',
-          react: '/InputTextExampleControlled.tsx',
-          vue: '/InputTextExampleControlled.vue',
+          'vanilla-js': '/input-text-example-form.html',
+          angular: '/input-text-example-form.component.ts',
+          react: '/InputTextExampleForm.tsx',
+          vue: '/InputTextExampleForm.vue',
         },
       },
     ],
@@ -411,21 +325,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-email',
     examples: [
       {
-        name: 'InputEmailExample',
+        name: 'InputEmailExampleForm',
         paths: {
-          'vanilla-js': '/input-email-example.html',
-          angular: '/input-email-example.component.ts',
-          react: '/InputEmailExample.tsx',
-          vue: '/InputEmailExample.vue',
-        },
-      },
-      {
-        name: 'InputEmailExampleControlled',
-        paths: {
-          'vanilla-js': '/input-email-example-controlled.html',
-          angular: '/input-email-example-controlled.component.ts',
-          react: '/InputEmailExampleControlled.tsx',
-          vue: '/InputEmailExampleControlled.vue',
+          'vanilla-js': '/input-email-example-form.html',
+          angular: '/input-email-example-form.component.ts',
+          react: '/InputEmailExampleForm.tsx',
+          vue: '/InputEmailExampleForm.vue',
         },
       },
     ],
@@ -434,21 +339,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-tel',
     examples: [
       {
-        name: 'InputTelExample',
+        name: 'InputTelExampleForm',
         paths: {
-          'vanilla-js': '/input-tel-example.html',
-          angular: '/input-tel-example.component.ts',
-          react: '/InputTelExample.tsx',
-          vue: '/InputTelExample.vue',
-        },
-      },
-      {
-        name: 'InputTelExampleControlled',
-        paths: {
-          'vanilla-js': '/input-tel-example-controlled.html',
-          angular: '/input-tel-example-controlled.component.ts',
-          react: '/InputTelExampleControlled.tsx',
-          vue: '/InputTelExampleControlled.vue',
+          'vanilla-js': '/input-tel-example-form.html',
+          angular: '/input-tel-example-form.component.ts',
+          react: '/InputTelExampleForm.tsx',
+          vue: '/InputTelExampleForm.vue',
         },
       },
     ],
@@ -457,21 +353,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-url',
     examples: [
       {
-        name: 'InputUrlExample',
+        name: 'InputUrlExampleForm',
         paths: {
-          'vanilla-js': '/input-url-example.html',
-          angular: '/input-url-example.component.ts',
-          react: '/InputUrlExample.tsx',
-          vue: '/InputUrlExample.vue',
-        },
-      },
-      {
-        name: 'InputUrlExampleControlled',
-        paths: {
-          'vanilla-js': '/input-url-example-controlled.html',
-          angular: '/input-url-example-controlled.component.ts',
-          react: '/InputUrlExampleControlled.tsx',
-          vue: '/InputUrlExampleControlled.vue',
+          'vanilla-js': '/input-url-example-form.html',
+          angular: '/input-url-example-form.component.ts',
+          react: '/InputUrlExampleForm.tsx',
+          vue: '/InputUrlExampleForm.vue',
         },
       },
     ],
@@ -480,21 +367,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-input-search',
     examples: [
       {
-        name: 'InputSearchExample',
+        name: 'InputSearchExampleForm',
         paths: {
-          'vanilla-js': '/input-search-example.html',
-          angular: '/input-search-example.component.ts',
-          react: '/InputSearchExample.tsx',
-          vue: '/InputSearchExample.vue',
-        },
-      },
-      {
-        name: 'InputSearchExampleControlled',
-        paths: {
-          'vanilla-js': '/input-search-example-controlled.html',
-          angular: '/input-search-example-controlled.component.ts',
-          react: '/InputSearchExampleControlled.tsx',
-          vue: '/InputSearchExampleControlled.vue',
+          'vanilla-js': '/input-search-example-form.html',
+          angular: '/input-search-example-form.component.ts',
+          react: '/InputSearchExampleForm.tsx',
+          vue: '/InputSearchExampleForm.vue',
         },
       },
     ],
@@ -531,21 +409,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-multi-select',
     examples: [
       {
-        name: 'MultiSelectExample',
+        name: 'MultiSelectExampleForm',
         paths: {
-          'vanilla-js': '/multi-select-example.html',
-          angular: '/multi-select-example.component.ts',
-          react: '/MultiSelectExample.tsx',
-          vue: '/MultiSelectExample.vue',
-        },
-      },
-      {
-        name: 'MultiSelectExampleControlled',
-        paths: {
-          'vanilla-js': '/multi-select-example-controlled.html',
-          angular: '/multi-select-example-controlled.component.ts',
-          react: '/MultiSelectExampleControlled.tsx',
-          vue: '/MultiSelectExampleControlled.vue',
+          'vanilla-js': '/multi-select-example-form.html',
+          angular: '/multi-select-example-form.component.ts',
+          react: '/MultiSelectExampleForm.tsx',
+          vue: '/MultiSelectExampleForm.vue',
         },
       },
       {
@@ -563,21 +432,26 @@ const codeExamples: CodeSample[] = [
     component: 'p-pin-code',
     examples: [
       {
-        name: 'PinCodeExample',
+        name: 'PinCodeExampleForm',
         paths: {
-          'vanilla-js': '/pin-code-example.html',
-          angular: '/pin-code-example.component.ts',
-          react: '/PinCodeExample.tsx',
-          vue: '/PinCodeExample.vue',
+          'vanilla-js': '/pin-code-example-form.html',
+          angular: '/pin-code-example-form.component.ts',
+          react: '/PinCodeExampleForm.tsx',
+          vue: '/PinCodeExampleForm.vue',
         },
       },
+    ],
+  },
+  {
+    component: 'p-radio-group',
+    examples: [
       {
-        name: 'PinCodeExampleControlled',
+        name: 'RadioGroupExampleForm',
         paths: {
-          'vanilla-js': '/pin-code-example-controlled.html',
-          angular: '/pin-code-example-controlled.component.ts',
-          react: '/PinCodeExampleControlled.tsx',
-          vue: '/PinCodeExampleControlled.vue',
+          'vanilla-js': '/radio-group-example-form.html',
+          angular: '/radio-group-example-form.component.ts',
+          react: '/RadioGroupExampleForm.tsx',
+          vue: '/RadioGroupExampleForm.vue',
         },
       },
     ],
@@ -600,21 +474,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-segmented-control',
     examples: [
       {
-        name: 'SegmentedControlExample',
+        name: 'SegmentedControlExampleForm',
         paths: {
-          'vanilla-js': '/segmented-control-example.html',
-          angular: '/segmented-control-example.component.ts',
-          react: '/SegmentedControlExample.tsx',
-          vue: '/SegmentedControlExample.vue',
-        },
-      },
-      {
-        name: 'SegmentedControlExampleControlled',
-        paths: {
-          'vanilla-js': '/segmented-control-example-controlled.html',
-          angular: '/segmented-control-example-controlled.component.ts',
-          react: '/SegmentedControlExampleControlled.tsx',
-          vue: '/SegmentedControlExampleControlled.vue',
+          'vanilla-js': '/segmented-control-example-form.html',
+          angular: '/segmented-control-example-form.component.ts',
+          react: '/SegmentedControlExampleForm.tsx',
+          vue: '/SegmentedControlExampleForm.vue',
         },
       },
     ],
@@ -623,21 +488,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-select',
     examples: [
       {
-        name: 'SelectExample',
+        name: 'SelectExampleForm',
         paths: {
-          'vanilla-js': '/select-example.html',
-          angular: '/select-example.component.ts',
-          react: '/SelectExample.tsx',
-          vue: '/SelectExample.vue',
-        },
-      },
-      {
-        name: 'SelectExampleControlled',
-        paths: {
-          'vanilla-js': '/select-example-controlled.html',
-          angular: '/select-example-controlled.component.ts',
-          react: '/SelectExampleControlled.tsx',
-          vue: '/SelectExampleControlled.vue',
+          'vanilla-js': '/select-example-form.html',
+          angular: '/select-example-form.component.ts',
+          react: '/SelectExampleForm.tsx',
+          vue: '/SelectExampleForm.vue',
         },
       },
       {
@@ -733,21 +589,12 @@ const codeExamples: CodeSample[] = [
     component: 'p-textarea',
     examples: [
       {
-        name: 'TextareaExample',
+        name: 'TextareaExampleForm',
         paths: {
-          'vanilla-js': '/textarea-example.html',
-          angular: '/textarea-example.component.ts',
-          react: '/TextareaExample.tsx',
-          vue: '/TextareaExample.vue',
-        },
-      },
-      {
-        name: 'TextareaExampleControlled',
-        paths: {
-          'vanilla-js': '/textarea-example-controlled.html',
-          angular: '/textarea-example-controlled.component.ts',
-          react: '/TextareaExampleControlled.tsx',
-          vue: '/TextareaExampleControlled.vue',
+          'vanilla-js': '/textarea-example-form.html',
+          angular: '/textarea-example-form.component.ts',
+          react: '/TextareaExampleForm.tsx',
+          vue: '/TextareaExampleForm.vue',
         },
       },
     ],
@@ -755,15 +602,6 @@ const codeExamples: CodeSample[] = [
   {
     component: 'p-text-field-wrapper',
     examples: [
-      // {
-      //   name: 'TextFieldWrapperExampleIMask',
-      //   paths: {
-      //     'vanilla-js': '/text-field-wrapper-example-imask.html',
-      //     angular: '/text-field-wrapper-example-imask.component.ts',
-      //     react: '/TextFieldWrapperExampleIMask.tsx',
-      //     vue: '/TextFieldWrapperExampleIMask.vue',
-      //   },
-      // },
       {
         name: 'TextFieldWrapperExampleSearch',
         paths: {

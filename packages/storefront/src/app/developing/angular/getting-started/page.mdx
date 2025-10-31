@@ -107,23 +107,30 @@ Create a `index-html-transform.js` file in your project root directory.
 ```js
 // index-html-transform.js
 
-const partials = require('@porsche-design-system/components-angular/partials');
+import {
+  getComponentChunkLinks,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-angular/partials';
 
 // https://github.com/just-jeb/angular-builders/blob/fdd7c8ed00b7eb7e1761aaa6cb5bda41693ceb5d/packages/custom-webpack/README.md#index-transform
-module.exports = (_, html) => {
+export default (_, html) => {
   const headPartials = [
     // injects stylesheet which defines visibility of pre-hydrated PDS components
-    partials.getInitialStyles(),
+    getInitialStyles(),
     // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
-    partials.getFontFaceStyles(),
+    getFontFaceStyles(),
     // preloads Porsche Next font (=> minimize FOUT)
-    partials.getFontLinks(),
+    getFontLinks(),
     // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
-    partials.getComponentChunkLinks(),
+    getComponentChunkLinks(),
     // preloads Porsche icons (=> minimize FOUC)
-    partials.getIconLinks(),
+    getIconLinks(),
     // injects favicon, apple touch icons, android touch icons, etc.
-    partials.getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+    getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
   ].join('');
 
   return html.replace(/<\/head>/, `${headPartials}$&`);
@@ -133,10 +140,18 @@ module.exports = (_, html) => {
 ### Step 4 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
-[Tailwind CSS Theme](/tailwindcss/introduction) allows you to leverage a utility-first CSS framework while maintaining
-seamless styling consistency with Porsche's design principles. This integration enables you to use the provided
-[Patterns](/patterns) and [Templates](/templates), all written in Tailwind CSS, to build your application quickly and
-efficiently.
+[Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
+**seamless styling consistency** with Porsche's design principles.
+
+#### The Key Advantage: Universal Code Sharing & Scalability
+
+> Using Tailwind CSS with the Porsche Design System Theme provides a powerful benefit: **Your styles are truly
+> framework-agnostic**. Since Tailwind generates atomic **utility classes**, you eliminate cascading style issues,
+> promoting long-term **scalability and maintainability** for large projects. The patterns and components you build are
+> easily portable. You can **copy and paste** the same styling code between projects, teams, and different technology
+> stacks (React, Angular, Vue, plain HTML, etc.), ensuring **100% visual uniformity** across the organization. You can
+> now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
+> Tailwind CSS, to build applications quickly and efficiently.
 
 Install Tailwind CSS within your project directory.
 

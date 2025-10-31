@@ -275,6 +275,7 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -323,8 +324,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -741,6 +750,7 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -783,8 +793,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -1185,6 +1203,7 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
           "aria-expanded": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
@@ -1265,8 +1284,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -1600,6 +1627,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "footer": {
+        "description": "Renders a footer section below the description.",
+      },
       "header": {
         "description": "Renders a header section above the content area.",
       },
@@ -1924,8 +1954,12 @@ exports[`should match snapshot 1`] = `
         "type": "CheckboxBlurEventDetail",
         "typeDetail": "Event",
       },
-      "update": {
+      "change": {
         "description": "Emitted when checkbox checked property is changed.",
+        "type": "CheckboxChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "update": {
         "type": "CheckboxUpdateEventDetail",
         "typeDetail": "{ name: string; value?: string; checked: boolean }",
       },
@@ -1957,7 +1991,7 @@ exports[`should match snapshot 1`] = `
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays as a compact version.",
         "type": "boolean",
       },
       "disabled": {
@@ -1978,7 +2012,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
+        "description": "Show or hide label. For better accessibility, it's recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -2213,6 +2247,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -2578,6 +2613,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -2814,6 +2850,7 @@ exports[`should match snapshot 1`] = `
       },
       "name": {
         "allowedValues": [
+          "ad",
           "ae",
           "am",
           "ar",
@@ -2850,6 +2887,7 @@ exports[`should match snapshot 1`] = `
           "gb",
           "ge",
           "gh",
+          "gi",
           "gr",
           "gt",
           "hk",
@@ -2872,12 +2910,15 @@ exports[`should match snapshot 1`] = `
           "kw",
           "kz",
           "lb",
+          "li",
           "lk",
           "lt",
           "lu",
           "lv",
           "ma",
+          "mc",
           "md",
+          "me",
           "mk",
           "mn",
           "mo",
@@ -2914,12 +2955,14 @@ exports[`should match snapshot 1`] = `
           "tn",
           "tr",
           "tt",
+          "tw",
           "ua",
           "us",
           "uy",
           "uz",
           "ve",
           "vn",
+          "xx",
           "za",
         ],
         "defaultValue": "de",
@@ -3194,6 +3237,15 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
+      },
+      "backdrop": {
+        "allowedValues": [
+          "blur",
+          "shading",
+        ],
+        "defaultValue": "blur",
+        "description": "Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).",
+        "type": "FlyoutBackdrop",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
@@ -3640,8 +3692,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -3985,8 +4045,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6123,6 +6191,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -6166,8 +6235,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6538,6 +6615,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -6575,8 +6653,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6983,8 +7069,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -7328,6 +7422,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -7463,6 +7558,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "footer": {
+        "description": "Renders a footer section below the description.",
+      },
       "header": {
         "description": "Renders a header section above the content area.",
       },
@@ -7554,6 +7652,9 @@ exports[`should match snapshot 1`] = `
           "boxster",
           "cayenne",
           "cayman",
+          "gt3-rs",
+          "gt3",
+          "gts",
           "macan",
           "panamera",
           "taycan",
@@ -7743,6 +7844,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },
@@ -7989,6 +8091,9 @@ exports[`should match snapshot 1`] = `
           "boxster",
           "cayenne",
           "cayman",
+          "gt3-rs",
+          "gt3",
+          "gts",
           "macan",
           "panamera",
           "taycan",
@@ -8043,8 +8148,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "update": {
+      "blur": {
+        "description": "Emitted when the multi-select has lost focus.",
+        "type": "void",
+      },
+      "change": {
         "description": "Emitted when the selection is changed.",
+        "type": "MultiSelectChangeEventDetail",
+        "typeDetail": "{ name: string; value: string[] }",
+      },
+      "update": {
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
+        "isDeprecated": true,
         "type": "MultiSelectUpdateEventDetail",
         "typeDetail": "{ name: string; value: string[] }",
       },
@@ -8397,8 +8512,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the pin-code has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the input is changed.",
+        "type": "PinCodeChangeEventDetail",
+        "typeDetail": "{ value: string; isComplete: boolean }",
+      },
       "update": {
-        "description": "Emitted when selected element changes.",
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the input is changed.",
+        "isDeprecated": true,
         "type": "PinCodeUpdateEventDetail",
         "typeDetail": "{ value: string; isComplete: boolean }",
       },
@@ -8418,6 +8543,12 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the pin-code as a compact version.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -8607,6 +8738,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-button-wrapper": {
+    "deprecationMessage": "since v3.30.0, will be removed with next major release. Please use \`p-radio-group\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8615,6 +8747,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -8686,6 +8819,204 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
     },
+    "styling": "jss",
+  },
+  "p-radio-group": {
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the radio-group has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the selected option is changed.",
+        "type": "RadioGroupChangeEventDetail",
+        "typeDetail": "Event",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-spinner",
+      "p-icon",
+    ],
+    "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the radio group as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the radio group.",
+        "type": "string",
+      },
+      "direction": {
+        "allowedValues": [
+          "row",
+          "column",
+        ],
+        "defaultValue": "column",
+        "description": "Defines the direction of the main and cross axis. The default is 'column' showing options vertically stacked. You always need to provide a base value when using breakpoints.",
+        "isBreakpointCustomizable": true,
+        "type": "RadioGroupDirection",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the group of radio buttons, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the radio group component.",
+        "type": "RadioGroupState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default value for the radio-group.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the p-radio-group-option tags.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-radio-group-option": {
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": false,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-spinner",
+    ],
+    "propsMeta": {
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the radio group option unusable and unclickable.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The value for the input.",
+        "type": "string",
+      },
+    },
+    "requiredParent": [
+      "p-radio-group",
+    ],
     "styling": "jss",
   },
   "p-scroller": {
@@ -8801,6 +9132,15 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the segmented-control has lost focus.",
+        "type": "void",
+      },
+      "change": {
+        "description": "Emitted when the selection is changed.",
+        "type": "SegmentedControlChangeEventDetail",
+        "typeDetail": "{ value: string | number }",
+      },
       "segmentedControlChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
         "isDeprecated": true,
@@ -8808,7 +9148,8 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ value: string | number }",
       },
       "update": {
-        "description": "Emitted when selected element changes.",
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when selected element changes.",
+        "isDeprecated": true,
         "type": "SegmentedControlUpdateEventDetail",
         "typeDetail": "{ value: string | number }",
       },
@@ -8871,6 +9212,12 @@ exports[`should match snapshot 1`] = `
         "description": "Sets the amount of columns.",
         "isBreakpointCustomizable": true,
         "type": "SegmentedControlColumns",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
+        "type": "boolean",
       },
       "disabled": {
         "allowedValues": "boolean",
@@ -8937,6 +9284,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "internalProps": {
+      "compact": null,
       "selected": null,
       "theme": "light",
     },
@@ -8973,8 +9321,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -9290,8 +9646,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "eventsMeta": {
-      "update": {
+      "blur": {
+        "description": "Emitted when the select has lost focus.",
+        "type": "void",
+      },
+      "change": {
         "description": "Emitted when the selection is changed.",
+        "type": "SelectChangeEventDetail",
+        "typeDetail": "{ name: string; value: string }",
+      },
+      "update": {
+        "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
+        "isDeprecated": true,
         "type": "SelectUpdateEventDetail",
         "typeDetail": "{ name: string; value: string }",
       },
@@ -10554,8 +10920,16 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-3d-object",
+          "ai-code",
+          "ai-edit",
+          "ai-image",
+          "ai-scale",
+          "ai-sound",
           "ai-spark",
           "ai-spark-filled",
+          "ai-text",
+          "ai-video",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -11678,6 +12052,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-description": "string",
           "aria-haspopup": "string",
           "aria-label": "string",
         },

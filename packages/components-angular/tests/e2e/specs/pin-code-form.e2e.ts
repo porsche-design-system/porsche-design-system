@@ -1,0 +1,97 @@
+import { expect, Page, test } from '@playwright/test';
+
+const getHost = (page: Page) => page.locator('p-pin-code');
+const getInputs = (page: Page) => page.locator('p-pin-code input');
+
+const setValue = async (page) => {
+  const host = getHost(page);
+  const inputs = getInputs(page);
+
+  await inputs.nth(0).fill('1');
+  await inputs.nth(1).fill('2');
+  await inputs.nth(2).fill('3');
+  await inputs.nth(3).fill('4');
+
+  await expect(host).toHaveJSProperty('value', '1234');
+};
+
+test.describe('Angular forms integration', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/pin-code-example-reactive-form');
+    const host = getHost(page);
+
+    await expect(page.locator('[data-field="touched"]')).toHaveText('false');
+    await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
+    await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
+    await expect(page.locator('[data-field="value"]')).toHaveText('');
+    await expect(page.locator('[data-field="valid"]')).toHaveText('false');
+
+    await expect(host).toHaveJSProperty('value', '');
+  });
+
+  test('setting value manually updates form state correctly', async ({ page }) => {
+    await setValue(page);
+
+    await expect(page.locator('[data-field="touched"]')).toHaveText('false');
+    await expect(page.locator('[data-field="dirty"]')).toHaveText('true');
+    await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
+    await expect(page.locator('[data-field="value"]')).toHaveText('1234');
+    await expect(page.locator('[data-field="valid"]')).toHaveText('true');
+
+    await page.locator('[data-field="touched"]').click();
+
+    await expect(page.locator('[data-field="touched"]')).toHaveText(/true/);
+  });
+
+  test('setting value programmatically updates form state correctly', async ({ page }) => {
+    const host = getHost(page);
+
+    await page.getByRole('button', { name: 'Set Value' }).click();
+
+    await expect(host).toHaveJSProperty('value', '1234');
+
+    await expect(page.locator('[data-field="touched"]')).toHaveText('false');
+    await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
+    await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
+    await expect(page.locator('[data-field="value"]')).toHaveText('1234');
+    await expect(page.locator('[data-field="valid"]')).toHaveText('true');
+  });
+
+  test('resetting form updates web component correctly', async ({ page }) => {
+    const host = getHost(page);
+    await setValue(page);
+
+    await page.getByRole('button', { name: 'Reset', exact: true }).click();
+
+    await expect(host).toHaveJSProperty('value', '');
+
+    await expect(page.locator('[data-field="touched"]')).toHaveText('false');
+    await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
+    await expect(page.locator('[data-field="disabled"]')).toHaveText('false');
+    await expect(page.locator('[data-field="value"]')).toHaveText('');
+    await expect(page.locator('[data-field="valid"]')).toHaveText('false');
+  });
+
+  test('disabling form updates web component correctly', async ({ page }) => {
+    const host = getHost(page);
+    await expect(host).toHaveJSProperty('disabled', false);
+
+    await page.getByRole('button', { name: 'Disable' }).click();
+
+    await expect(host).toHaveJSProperty('disabled', true);
+
+    await expect(page.locator('[data-field="touched"]')).toHaveText('false');
+    await expect(page.locator('[data-field="dirty"]')).toHaveText('false');
+    await expect(page.locator('[data-field="disabled"]')).toHaveText('true');
+    await expect(page.locator('[data-field="value"]')).toHaveText('');
+    await expect(page.locator('[data-field="valid"]')).toHaveText('false');
+  });
+
+  test('submitted form contains correct information', async ({ page }) => {
+    await setValue(page);
+
+    await page.getByRole('button', { name: 'Submit' }).click();
+
+    await expect(page.locator('[data-field="submitted"]')).toHaveText('{"myPinCode":"1234"}');
+  });
+});

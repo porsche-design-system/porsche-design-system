@@ -1,9 +1,9 @@
 'use client';
 
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PDisplay, PHeading, PLinkPure, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import AppearAnimation from './appearAnimation';
 
 type HomeProps = {
@@ -77,7 +77,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <Link href="https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">
             Figma
           </Link>
-          {''} and UX Pin libraries, as well as public accessible {''}
+          {''} library, as well as public accessible {''}
           <Link href="https://npmjs.com/org/porsche-design-system">npm releases</Link> for Vanilla JS, {''}
           <Link href="https://angular.io">Angular</Link>, <a href="https://react.dev">React</a>, {''}
           <Link href="https://nextjs.org">Next.js</Link>, <a href="https://remix.run">Remix</a> and {''}
@@ -307,7 +307,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </div>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Short & Longterm Efficiency">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -319,7 +319,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Brand Fit">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -331,7 +331,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Accessibility">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -343,7 +343,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Framework Agnostic">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -354,7 +354,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Fluid & Responsive">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -366,7 +366,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Compliant Quality">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -378,7 +378,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Updated Capability">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -390,7 +390,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Open-Source Code">
-          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
+          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">

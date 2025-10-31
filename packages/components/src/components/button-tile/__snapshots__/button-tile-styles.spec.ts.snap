@@ -2,7 +2,8 @@
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -22,6 +23,10 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
+  z-index: 3;
+}
+slot[name="footer"] {
+  grid-row: 2;
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -48,11 +53,16 @@ p {
   font-weight: 600;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 4/3;
   cursor: pointer;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -75,18 +85,20 @@ p {
 .footer {
   grid-area: 4/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
 }
 @media (forced-colors: active) {
@@ -100,12 +112,19 @@ p {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
 "
 `;
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "9:16", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: false and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -125,6 +144,10 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
+  z-index: 3;
+}
+slot[name="footer"] {
+  grid-row: 2;
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -151,11 +174,16 @@ p {
   font-weight: 600;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 9/16;
   cursor: pointer;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -169,18 +197,20 @@ p {
 .footer {
   grid-area: 4/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
 }
 @media(hover:hover) {
@@ -188,12 +218,19 @@ p {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
 "
 `;
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "16:9", size: "inherit", weight: "regular", background: light, align: top, isCompact: true, hasGradient: false and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -213,6 +250,10 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
+  z-index: 3;
+}
+slot[name="footer"] {
+  grid-row: 2;
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -239,11 +280,16 @@ p {
   font-weight: 400;
   color: #010205;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 16/9;
   cursor: pointer;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -256,26 +302,41 @@ p {
 }
 .footer {
   grid-area: 2/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: inline-block;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: none;
-}"
+}
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: light, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, hasGradient: true and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -295,6 +356,10 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
+  z-index: 3;
+}
+slot[name="footer"] {
+  grid-row: 2;
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -356,11 +421,16 @@ p {
   }
 }
 
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 1/1;
   cursor: pointer;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -373,19 +443,21 @@ p {
 }
 .footer {
   grid-area: 2/2;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: inline-block;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: none;
 }
 @media(min-width:480px) {
@@ -393,8 +465,9 @@ p {
     aspect-ratio: 4/3;
   }
   .footer {
-    align-items: flex-start;
+    display: flex;
     flex-direction: column;
+    align-items: start;
   }
   .link-or-button-pure {
     display: none;
@@ -409,8 +482,9 @@ p {
     aspect-ratio: 3/4;
   }
   .footer {
-    align-items: center;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 16px;
   }
   .link-or-button-pure {
     display: inline-block;
@@ -425,8 +499,9 @@ p {
     aspect-ratio: 16/9;
   }
   .footer {
-    align-items: flex-start;
+    display: flex;
     flex-direction: column;
+    align-items: start;
   }
   .link-or-button-pure {
     display: none;
@@ -441,8 +516,9 @@ p {
     aspect-ratio: 9/16;
   }
   .footer {
-    align-items: center;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 16px;
   }
   .link-or-button-pure {
     display: inline-block;
@@ -457,8 +533,9 @@ p {
     aspect-ratio: 1/1;
   }
   .footer {
-    align-items: flex-start;
+    display: flex;
     flex-direction: column;
+    align-items: start;
   }
   .link-or-button-pure {
     display: none;
@@ -473,12 +550,19 @@ p {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
 "
 `;
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "1:1", size: "inherit", weight: "regular", background: light, align: bottom, isCompact: false, hasGradient: true and isDisabled: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -498,6 +582,10 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
+  z-index: 3;
+}
+slot[name="footer"] {
+  grid-row: 2;
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -524,11 +612,16 @@ p {
   font-weight: 400;
   color: #010205;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 1/1;
   cursor: not-allowed;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -542,25 +635,40 @@ p {
 .footer {
   grid-area: 4/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
-}"
+}
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "3:4", size: "default", weight: "semi-bold", background: dark, align: top, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
+  align-items: stretch;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -580,6 +688,10 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
+  z-index: 3;
+}
+slot[name="footer"] {
+  grid-row: 2;
   z-index: 3;
 }
 ::slotted(:is(img,picture,video)) {
@@ -606,11 +718,16 @@ p {
   font-weight: 600;
   color: #FBFCFF;
 }
+@supports (-webkit-hyphens: auto) {
+  :host {
+    align-items: baseline;
+  }
+}
+
 .root {
   aspect-ratio: 3/4;
   cursor: not-allowed;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -633,18 +750,20 @@ p {
 .footer {
   grid-area: 2/2;
   display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: start;
 }
 .link-or-button-pure {
   z-index: 5;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
   z-index: 5;
+  margin-top: 16px;
   display: inline-block;
 }
 @media (forced-colors: active) {
@@ -656,6 +775,12 @@ p {
 @media(hover:hover) {
   .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
+  }
+}
+
+@supports (-webkit-hyphens: auto) {
+  .root {
+    height: 100%;
   }
 }
 "

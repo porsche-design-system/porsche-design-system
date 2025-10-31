@@ -1,4 +1,25 @@
 import {
+  borderRadiusLarge,
+  gradientToBottomStyle,
+  gradientToTopStyle,
+  spacingFluidLarge,
+  spacingFluidMedium,
+  spacingStaticMedium,
+  textMediumStyle,
+} from '@porsche-design-system/styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  forcedColorsMediaQuery,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import { getFontSizeText } from '../../styles/font-size-text-styles';
+import { getFontWeight } from '../../styles/font-weight-styles';
+import {
   buildResponsiveStyles,
   getCss,
   isThemeDark,
@@ -10,29 +31,8 @@ import {
   type TileSize,
   type TileWeight,
 } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  forcedColorsMediaQuery,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import {
-  borderRadiusLarge,
-  gradientToBottomStyle,
-  gradientToTopStyle,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingStaticMedium,
-  textMediumStyle,
-} from '@porsche-design-system/styles';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import type { LinkTileWeight } from './link-tile-utils';
-import { getFontWeight } from '../../styles/font-weight-styles';
-import { getFontSizeText } from '../../styles/font-size-text-styles';
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
@@ -42,6 +42,7 @@ export const getComponentCss = (
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
+  hasFooterSlot: boolean,
   isDisabled?: boolean
 ): string => {
   const isTopAligned = align === 'top';
@@ -49,7 +50,12 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'block', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
+        display: 'flex',
+        alignItems: 'stretch',
+        // Safari workaround to scale the tile properly
+        '@supports (-webkit-hyphens: auto)': {
+          alignItems: 'baseline',
+        },
         hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
         ...addImportantToEachRule({
           ...colorSchemeStyles,
@@ -66,6 +72,10 @@ export const getComponentCss = (
         },
         '&[name="header"]': {
           gridArea: `${isTopAligned ? 4 : 2}/2`,
+          zIndex: 3,
+        },
+        '&[name="footer"]': {
+          gridRow: 2,
           zIndex: 3,
         },
       },
@@ -106,7 +116,10 @@ export const getComponentCss = (
         aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
       })),
       width: '100%', // necessary in case tile content overflows in grid or flex context
-      height: '100%', // necessary in case tile content overflows in grid or flex context
+      // Safari workaround to scale the tile properly
+      '@supports (-webkit-hyphens: auto)': {
+        height: '100%',
+      },
       display: 'grid',
       gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
       ...(hasGradient &&
@@ -150,23 +163,25 @@ export const getComponentCss = (
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
-      display: 'flex',
-      gap: spacingStaticMedium,
-      justifyContent: 'space-between',
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
-              alignItems: 'center',
-              flexDirection: 'row',
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              columnGap: spacingStaticMedium,
             }
           : {
-              alignItems: 'flex-start',
+              display: 'flex',
               flexDirection: 'column',
+              alignItems: 'start',
             }
       ),
     },
     'link-or-button-pure': {
       zIndex: 5,
+      gridColumn: 2,
+      gridRow: hasFooterSlot && !isTopAligned ? 2 : 1,
+      alignSelf: 'center',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
       })),
@@ -174,6 +189,7 @@ export const getComponentCss = (
     'link-or-button': {
       minHeight: '54px', // prevent content shift
       zIndex: 5,
+      marginTop: spacingStaticMedium,
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'none' : 'inline-block',
       })),

@@ -1,5 +1,5 @@
 export { colorActiveDark } from './colorActiveDark';
-export { colorBaseDark } from './colorBaseDark';
+export { colorCanvasDark } from './colorCanvasDark';
 export { colorContrastHighDark } from './colorContrastHighDark';
 export { colorContrastLowDark } from './colorContrastLowDark';
 export { colorContrastMediumDark } from './colorContrastMediumDark';
