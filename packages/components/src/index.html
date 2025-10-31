@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" class="bg-canvas" style="--ai-gradient-color: #3400f0">
   <head>
     <meta charset="utf-8" />
     <title>Playground</title>
@@ -9,31 +9,282 @@
     <link href="http://localhost:3001/styles/font-face.css" rel="stylesheet" type="text/css" />
     <script nomodule src="/build/porsche-design-system.js"></script>
     <script src="/build/porsche-design-system.esm.js" type="module"></script>
-    <link rel="stylesheet" href="/tailwind.css">
+    <link rel="stylesheet" href="/assets/tailwind.css">
   </head>
-  <body>
-    <header dir="ltr">
-      <h1>Playground</h1>
+  <body class="grid-template">
 
-      <select id="theme" onchange="updateRoute({theme: this.value})">
+    <header dir="ltr" class="col-extended sticky top-fluid-sm mt-fluid-sm z-1 py-fluid-sm px-fluid-md rounded-lg shadow-medium flex gap-fluid-md justify-center items-center bg-frosted-20 backdrop-blur-frosted text-primary">
+      <select id="theme" class="px-fluid-sm py-fluid-xs bg-frosted-20 rounded-sm" onchange="updateRoute({theme: this.value})">
         <option disabled selected>Select a theme</option>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="auto">Auto</option>
       </select>
-
-      <select id="dir" onchange="updateRoute({dir: this.value})">
+      <select id="dir" class="px-fluid-sm py-fluid-xs bg-frosted-20 rounded-sm" onchange="updateRoute({dir: this.value})">
         <option disabled selected>Select a direction</option>
         <option value="ltr">LTR (left-to-right)</option>
         <option value="rtl">RTL (right-to-left)</option>
         <option value="auto">Auto</option>
       </select>
+      <input type="color" name="gradient" value="#3400f0" />
     </header>
 
-    <main></main>
+    <main class="col-wide grid grid-cols-subgrid gap-y-fluid-md">
+      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-canvas light">
+          <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+            <p-tag color="background-frosted">
+              <button type="button">Color background-frosted</button>
+            </p-tag>
+            <p-tag color="notification-info-soft">
+              <button type="button">Color notification-info-soft</button>
+            </p-tag>
+            <p-tag color="notification-warning-soft">
+              <button type="button">Color notification-warning-soft</button>
+            </p-tag>
+            <p-tag color="notification-success-soft">
+              <button type="button">Color notification-success-soft</button>
+            </p-tag>
+            <p-tag color="notification-error-soft">
+              <button type="button">Color notification-error-soft</button>
+            </p-tag>
+            <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+              <p-text slot="start" color="contrast-medium" aria-hidden="true">
+                Search
+              </p-text>
+              <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+            </p-input-search>
+            <p-button>Some label</p-button>
+            <p-button variant="secondary">Some label</p-button>
+          </div>
+          <div class="grid gap-fluid-sm">
+            <p-tag color="background-frosted">
+              <button type="button">Color background-frosted</button>
+            </p-tag>
+            <p-tag color="notification-info-soft">
+              <button type="button">Color notification-info-soft</button>
+            </p-tag>
+            <p-tag color="notification-warning-soft">
+              <button type="button">Color notification-warning-soft</button>
+            </p-tag>
+            <p-tag color="notification-success-soft">
+              <button type="button">Color notification-success-soft</button>
+            </p-tag>
+            <p-tag color="notification-error-soft">
+              <button type="button">Color notification-error-soft</button>
+            </p-tag>
+          </div>
+          <div class="grid gap-fluid-sm">
+            <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+              <p-text slot="start" color="contrast-medium" aria-hidden="true">
+                Search
+              </p-text>
+              <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+            </p-input-search>
+          </div>
+          <div class="grid gap-fluid-sm">
+            <p-button>Some label</p-button>
+            <p-button variant="secondary">Some label</p-button>
+          </div>
+          <div class="grid gap-fluid-sm">
+            <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+            <p-inline-notification state="warning" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+            <p-inline-notification state="error" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+            <p-inline-notification heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          </div>
+      </div>
+      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-canvas dark">
+        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+          <p-tag color="background-frosted">
+            <button type="button">Color background-frosted</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Color notification-info-soft</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Color notification-warning-soft</button>
+          </p-tag>
+          <p-tag color="notification-success-soft">
+            <button type="button">Color notification-success-soft</button>
+          </p-tag>
+          <p-tag color="notification-error-soft">
+            <button type="button">Color notification-error-soft</button>
+          </p-tag>
+          <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+            <p-text slot="start" color="contrast-medium" aria-hidden="true">
+              Search
+            </p-text>
+            <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+          </p-input-search>
+          <p-button>Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-tag color="background-frosted">
+            <button type="button">Color background-frosted</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Color notification-info-soft</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Color notification-warning-soft</button>
+          </p-tag>
+          <p-tag color="notification-success-soft">
+            <button type="button">Color notification-success-soft</button>
+          </p-tag>
+          <p-tag color="notification-error-soft">
+            <button type="button">Color notification-error-soft</button>
+          </p-tag>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+            <p-text slot="start" color="contrast-medium" aria-hidden="true">
+              Search
+            </p-text>
+            <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+          </p-input-search>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-button>Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification state="warning" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification state="error" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+        </div>
+      </div>
+      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md relative overflow-hidden before:absolute before:-inset-[50px] before:-z-1 before:pointer-events-none before:animate-ai before:bg-[conic-gradient(from_var(--ai-rotate-angle)_at_50%_50%,var(--ai-gradient-color),color-mix(in_oklab,var(--ai-gradient-color),rgb(from_var(--ai-gradient-color)_calc(255-r)_calc(255-g)_calc(255-b))_100%))] before:bg-fixed">
+        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+          <p-tag color="background-frosted">
+            <button type="button">Color background-frosted</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Color notification-info-soft</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Color notification-warning-soft</button>
+          </p-tag>
+          <p-tag color="notification-success-soft">
+            <button type="button">Color notification-success-soft</button>
+          </p-tag>
+          <p-tag color="notification-error-soft">
+            <button type="button">Color notification-error-soft</button>
+          </p-tag>
+          <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+            <p-text slot="start" color="contrast-medium" aria-hidden="true">
+              Search
+            </p-text>
+            <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+          </p-input-search>
+          <p-button>Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-tag color="background-frosted">
+            <button type="button">Color background-frosted</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Color notification-info-soft</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Color notification-warning-soft</button>
+          </p-tag>
+          <p-tag color="notification-success-soft">
+            <button type="button">Color notification-success-soft</button>
+          </p-tag>
+          <p-tag color="notification-error-soft">
+            <button type="button">Color notification-error-soft</button>
+          </p-tag>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+            <p-text slot="start" color="contrast-medium" aria-hidden="true">
+              Search
+            </p-text>
+            <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+          </p-input-search>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-button>Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification state="warning" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification state="error" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+        </div>
+      </div>
+      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-[url(/assets/cat.jpg)] bg-fixed">
+        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+          <p-tag color="background-frosted">
+            <button type="button">Color background-frosted</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Color notification-info-soft</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Color notification-warning-soft</button>
+          </p-tag>
+          <p-tag color="notification-success-soft">
+            <button type="button">Color notification-success-soft</button>
+          </p-tag>
+          <p-tag color="notification-error-soft">
+            <button type="button">Color notification-error-soft</button>
+          </p-tag>
+          <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+            <p-text slot="start" color="contrast-medium" aria-hidden="true">
+              Search
+            </p-text>
+            <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+          </p-input-search>
+          <p-button>Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-tag color="background-frosted">
+            <button type="button">Color background-frosted</button>
+          </p-tag>
+          <p-tag color="notification-info-soft">
+            <button type="button">Color notification-info-soft</button>
+          </p-tag>
+          <p-tag color="notification-warning-soft">
+            <button type="button">Color notification-warning-soft</button>
+          </p-tag>
+          <p-tag color="notification-success-soft">
+            <button type="button">Color notification-success-soft</button>
+          </p-tag>
+          <p-tag color="notification-error-soft">
+            <button type="button">Color notification-error-soft</button>
+          </p-tag>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-input-search label="Some label" name="Some name" clear="true" indicator="true">
+            <p-text slot="start" color="contrast-medium" aria-hidden="true">
+              Search
+            </p-text>
+            <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
+          </p-input-search>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-button>Some label</p-button>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification state="warning" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification state="error" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+          <p-inline-notification heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
+        </div>
+      </div>
+    </main>
+
+    <footer class="col-full flex justify-center">
+      <p-wordmark class="my-fluid-lg"></p-wordmark>
+    </footer>
 
     <script>
-      <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
@@ -63,13 +314,9 @@
         const dir = getDir();
 
         document.querySelector('html').setAttribute('dir', dir);
-        const mainEl = document.querySelector('main');
-        mainEl.querySelectorAll('.playground').forEach((el) => {
-          el.classList.remove('light', 'dark', 'auto');
-          el.classList.add(theme);
-        });
-
-        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
+        document.querySelector('html').classList.remove('light', 'dark', 'auto');
+        document.querySelector('html').classList.add(theme);
+        document.querySelectorAll('*').forEach((el) => (el.theme = theme));
       };
 
       const updateSelect = (id, value) => {
@@ -78,10 +325,15 @@
         }
       };
 
+      document.querySelector('input[type=color][name=gradient]').addEventListener('input', (event) => {
+        console.log(event.target.value);
+        document.documentElement.style.setProperty('--ai-gradient-color', event.target.value);
+      });
+
       updateSelect('theme', getTheme());
       updateSelect('dir', getDir());
       updateRoute();
     </script>
-    <!-- /END -->
+
   </body>
 </html>
