@@ -1,8 +1,8 @@
-<div class="root">
-  <label class="label" id="label" for="radio-group"> </label>
-  <div class="wrapper" role="radiogroup" aria-labelledby="radio-group">
+<fieldset class="root" role="radiogroup" aria-describedby="description message">
+  <legend class="label" id="label"></legend>
+  <div class="wrapper">
     <slot> </slot>
   </div>
   <span id="message" class="message" role="alert"> </span>
   <span id="loading" class="loading" role="status"> </span>
-</div>
+</fieldset>

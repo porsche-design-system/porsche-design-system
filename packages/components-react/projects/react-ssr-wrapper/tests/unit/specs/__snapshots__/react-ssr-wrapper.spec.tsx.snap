@@ -18522,6 +18522,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -18550,6 +18551,9 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -18602,18 +18606,17 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 }
 
     </style>
-    <div
+    <fieldset
+      aria-describedby="description message"
       class="root"
+      role="radiogroup"
     >
-      <label
+      <legend
         class="label"
-        for="radio-group"
         id="label"
       />
       <div
-        aria-labelledby="radio-group"
         class="wrapper"
-        role="radiogroup"
       >
         <slot />
       </div>
@@ -18627,7 +18630,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
         id="loading"
         role="status"
       />
-    </div>
+    </fieldset>
   </template>
   Some child
 </p-radio-group>
@@ -18781,9 +18784,8 @@ input:focus-visible {
         class="wrapper"
       >
         <input
-          aria-describedby="description message"
+          aria-describedby="message"
           id="radio-group-option"
-          tabindex="-1"
           type="radio"
         />
       </div>
