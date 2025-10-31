@@ -42,6 +42,8 @@ describe('handleButtonEvent()', () => {
   });
 
   it('should create a submit button and click it', async () => {
+    vi.useFakeTimers();
+
     const form = document.createElement('form');
     document.body.appendChild(form);
     form.append(element);
@@ -55,7 +57,7 @@ describe('handleButtonEvent()', () => {
 
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
 
-    await new Promise((resolve) => setTimeout(resolve, 10));
+    await vi.runAllTimersAsync();
 
     expect(fakeButton.getAttribute('type')).toBe('submit');
     expect(fakeButton.getAttribute('name')).toBe('name');
@@ -64,6 +66,8 @@ describe('handleButtonEvent()', () => {
     expect(formAppendChildSpy).toHaveBeenCalledWith(fakeButton);
     expect(fakeButtonClickSpy).toHaveBeenCalled();
     expect(fakeButtonRemoveSpy).toHaveBeenCalled();
+
+    vi.useRealTimers();
   });
 
   it('should not create a submit button if disabled', () => {
