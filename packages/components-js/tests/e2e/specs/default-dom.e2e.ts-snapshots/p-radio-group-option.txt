@@ -2,10 +2,10 @@
   <label class="label" id="label" for="radio-group-option"> Some label</label>
   <div class="wrapper">
     <input
-      tabindex="-1"
       id="radio-group-option"
       type="radio"
-      aria-describedby="description message"
+      aria-describedby="message"
+      tabindex="0"
     />
   </div>
   <span id="loading" class="loading" role="status"> </span>
