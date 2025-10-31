@@ -1,8 +1,8 @@
 import { forceUpdate } from '@stencil/core';
+import type { GroupDirection } from '../../../styles/group-direction-styles';
 import { consoleWarn, type Theme } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { RadioGroupOptionInternalHTMLProps } from '../radio-group-option/radio-group-option-utils';
-import type { GroupDirection } from '../../../styles/group-direction-styles';
 export type RadioGroupState = FormState;
 
 export type RadioGroupDirection = GroupDirection;
@@ -58,6 +58,14 @@ export const syncRadioGroupChildrenProps = (
 /** Get the index of the currently active/focused option */
 export function getActiveOptionIndex<T extends HTMLElement>(options: T[]): number {
   return options.findIndex((opt) => opt === document.activeElement || opt.contains(document.activeElement));
+}
+
+export function getCheckedOptionIndex(options: RadioGroupOption[]): number {
+  return options.findIndex((opt) => !opt.disabled && opt.selected);
+}
+
+export function getFirstEnabledOptionIndex(options: RadioGroupOption[]): number {
+  return options.findIndex((opt) => !opt.disabled);
 }
 
 /**

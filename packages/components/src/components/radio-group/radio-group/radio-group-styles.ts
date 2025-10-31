@@ -80,6 +80,7 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
+      all: 'unset',
       display: 'grid',
       justifySelf: 'flex-start',
       rowGap: spacingStaticXSmall,
@@ -113,6 +114,11 @@ export const getComponentCss = (
           '&:hover~.wrapper': hoverStyles,
         }),
         cursor: 'inherit', // the label is not clickable
+      },
+      {
+        '&:is(legend)': {
+          marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
+        },
       }
     ),
     // .message
