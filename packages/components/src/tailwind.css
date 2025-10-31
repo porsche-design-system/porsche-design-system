@@ -1,25 +1,25 @@
 @import "tailwindcss";
 @import "@porsche-design-system/tailwindcss";
 
-@property --ai-rotate-angle {
+@property --gradient-rotate-angle {
   syntax: "<angle>";
   inherits: false;
   initial-value: 90deg;
 }
 
 @theme {
-  --animate-ai: ai-rotate calc(var(--transition-duration-moderate) * 50) linear infinite, ai-blur calc(var(--transition-duration-moderate) * 25) var(--ease-in-out) infinite;
+  --animate-gradient: gradient-rotate calc(var(--transition-duration-moderate) * 50) linear infinite, gradient-blur calc(var(--transition-duration-moderate) * 25) var(--ease-in-out) infinite;
 
-  @keyframes ai-rotate {
+  @keyframes gradient-rotate {
     from {
-      --ai-rotate-angle: 0deg;
+      --gradient-rotate-angle: 0deg;
     }
     to {
-      --ai-rotate-angle: 360deg;
+      --gradient-rotate-angle: 360deg;
     }
   }
 
-  @keyframes ai-blur {
+  @keyframes gradient-blur {
     0%,
     100% {
       filter: blur(120px);
