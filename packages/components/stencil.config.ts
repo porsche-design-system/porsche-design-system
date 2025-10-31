@@ -58,6 +58,10 @@ export const config: Config = {
           src: './favicon.ico',
           dest: 'favicon.ico',
         },
+        {
+          src: './tailwind-generated.css',
+          dest: 'tailwind.css',
+        },
       ],
     },
   ],

@@ -70,6 +70,7 @@ packages/components/src/components/**/readme.md
 packages/components/src/utils-entry.ts
 packages/components/src/styles-entry.ts
 packages/components/src/test-utils/tag-names-constructor-map.ts
+packages/components/src/tailwind-generated.css
 
 # Components JS
 packages/components-js/public/assets/imask.min.js
