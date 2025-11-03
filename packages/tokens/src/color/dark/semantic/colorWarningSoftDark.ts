@@ -1,1 +1,1 @@
-export const colorWarningSoftDark = 'hsla(28,90%,56%,.2)';
+export const colorWarningSoftDark = 'hsla(45,63%,41%,.5)';

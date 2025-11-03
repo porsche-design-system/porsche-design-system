@@ -1,1 +1,1 @@
-export const colorSuccessSoftDark = 'hsla(158,92%,43%,.2)';
+export const colorSuccessSoftDark = 'hsla(157,63%,33%,.5)';

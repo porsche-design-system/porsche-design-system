@@ -1,1 +1,1 @@
-export const colorInfoSoftLight = 'hsla(222,84%,54%,.12)';
+export const colorInfoSoftLight = 'hsla(222,100%,82%,.5)';
