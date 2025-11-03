@@ -16,6 +16,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -72,6 +73,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -128,6 +130,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -188,6 +191,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -248,6 +252,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1));
   margin: 0;
@@ -309,6 +314,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -356,6 +362,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -407,6 +414,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1));
   margin: 0;
@@ -459,6 +467,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -506,6 +515,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
@@ -557,6 +567,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   margin: 0;
@@ -604,6 +615,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   margin: 0;
@@ -655,6 +667,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   margin: 0;
@@ -702,6 +715,7 @@ button {
   display: block;
   height: 100%;
   min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 0.5) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 2px) * 2);
   width: 100%;
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   margin: 0;
