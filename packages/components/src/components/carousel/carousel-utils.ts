@@ -1,7 +1,6 @@
 import { type Breakpoint, breakpoint } from '@porsche-design-system/styles';
 import type { Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
-import type { ButtonPure } from '../button-pure/button-pure';
 import {
   bulletActiveClass,
   bulletClass,
@@ -124,7 +123,11 @@ export const slideNext = (splide: Splide, amountOfPages: number, focusOnCenterSl
   }
 };
 
-export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
+export const updatePrevNextButtons = (
+  btnPrev: HTMLPButtonPureElement,
+  btnNext: HTMLPButtonPureElement,
+  splide: Splide
+): void => {
   const { i18n, rewind } = splide.options;
   const isFirst = internalCarousel.isFirstPage(splide);
   btnPrev.disabled = isFirst && !rewind;

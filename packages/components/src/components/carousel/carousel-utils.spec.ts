@@ -1,6 +1,5 @@
 import type { Splide } from '@splidejs/splide';
 import { vi } from 'vitest';
-import type { ButtonPure } from '../button-pure/button-pure';
 import * as carouselUtils from './carousel-utils';
 
 describe('getSplideBreakpoints()', () => {
@@ -209,10 +208,10 @@ const getSplide = (): Splide =>
   }) as Splide;
 
 describe('updatePrevNextButtons()', () => {
-  const getButtons = (): [ButtonPure, ButtonPure] => {
-    const btnPrev = document.createElement('button') as HTMLButtonElement & ButtonPure;
+  const getButtons = (): [HTMLPButtonPureElement, HTMLPButtonPureElement] => {
+    const btnPrev = document.createElement('p-button-pure') as HTMLPButtonPureElement;
     btnPrev.id = 'btnPrev';
-    const btnNext = document.createElement('button') as HTMLButtonElement & ButtonPure;
+    const btnNext = document.createElement('p-button-pure') as HTMLPButtonPureElement;
     btnNext.id = 'btnNext';
 
     return [btnPrev, btnNext];

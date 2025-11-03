@@ -185,8 +185,8 @@ export class Carousel {
 
   private splide: Splide;
   private container: HTMLElement;
-  private btnPrev: ButtonPure;
-  private btnNext: ButtonPure;
+  private btnPrev: HTMLPButtonPureElement;
+  private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
@@ -371,7 +371,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
-                ref={(ref: ButtonPure) => (this.btnPrev = ref)}
+                ref={(ref: ButtonPure) => (this.btnPrev = ref as unknown as HTMLPButtonPureElement)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
               />
             )}
@@ -379,7 +379,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
-                ref={(ref: ButtonPure) => (this.btnNext = ref)}
+                ref={(ref: ButtonPure) => (this.btnNext = ref as unknown as HTMLPButtonPureElement)}
                 onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
                 onKeyDown={this.onNextKeyDown}
               />
