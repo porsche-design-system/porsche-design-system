@@ -10,7 +10,7 @@ describe('getComponentCss()', () => {
     [false, true, false],
     [false, false, true],
     [false, false, false],
-  ])('should return correct css for isPrimary: %s, isSecondary: %s, isCascade: %s and theme: %s', (...args) => {
+  ])('should return correct css for isPrimary: %s, isSecondary: %s and isCascade: %s', (...args) => {
     // TODO: Adjust and use validateCssAndMatchSnapshot
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
