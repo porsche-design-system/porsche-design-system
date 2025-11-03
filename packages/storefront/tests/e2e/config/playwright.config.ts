@@ -3,6 +3,7 @@ import { playwrightConfigE2E } from '@porsche-design-system/shared/testing';
 
 export default defineConfig({
   ...playwrightConfigE2E,
+  timeout: 30 * 1000,
   projects: [
     {
       name: 'chrome',
