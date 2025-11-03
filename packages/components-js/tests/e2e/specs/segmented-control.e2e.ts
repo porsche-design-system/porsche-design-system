@@ -29,6 +29,7 @@ const getAllItemButtons = async (page: Page) =>
       (await x.evaluateHandle((x) => x.shadowRoot.querySelector('button'))).asElement()
     )
   );
+const getSegmentedControlItems = (page: Page) => page.locator('p-segmented-control-item');
 const getForm = (page: Page) => page.locator('form');
 
 const getFirstItemOffsetWidth = async (page: Page): Promise<number> => getOffsetWidth(getFirstItemHost(page));
@@ -149,6 +150,165 @@ test.describe('width calculation', () => {
         return await el.evaluate((el: HTMLElement) => el.offsetWidth);
       })
       .toBeLessThan(initialItemWidth);
+  });
+});
+
+test.describe('change event', () => {
+  test('should emit change event when a valid selection is made by click', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2 });
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+    const items = getSegmentedControlItems(page);
+
+    await expect(host).toHaveJSProperty('value', undefined);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before item was selected').toBe(0);
+
+    await items.nth(0).click();
+    await expect(items.nth(0)).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '1');
+
+    expect((await getEventSummary(host, 'change')).counter, 'after first item was selected').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after first item was selected').toEqual([
+      {
+        value: '1',
+      },
+    ]);
+
+    await items.nth(1).click();
+    await expect(items.nth(1)).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '2');
+
+    expect((await getEventSummary(host, 'change')).counter, 'after second item was selected').toBe(2);
+    expect((await getEventSummary(host, 'change')).details, 'after second item was selected').toEqual([
+      {
+        value: '1',
+      },
+      {
+        value: '2',
+      },
+    ]);
+  });
+
+  test('should emit change event when a valid selection is made by keyboard', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2 });
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+    const items = getSegmentedControlItems(page);
+
+    await expect(host).toHaveJSProperty('value', undefined);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before item was selected').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(items.nth(0)).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(host).toHaveJSProperty('value', '1');
+
+    expect((await getEventSummary(host, 'change')).counter, 'after first item was selected').toBe(1);
+    expect((await getEventSummary(host, 'change')).details, 'after first item was selected').toEqual([
+      {
+        value: '1',
+      },
+    ]);
+
+    await page.keyboard.press('Tab');
+    await expect(items.nth(1)).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(host).toHaveJSProperty('value', '2');
+
+    expect((await getEventSummary(host, 'change')).counter, 'after second item was selected').toBe(2);
+    expect((await getEventSummary(host, 'change')).details, 'after second item was selected').toEqual([
+      {
+        value: '1',
+      },
+      {
+        value: '2',
+      },
+    ]);
+  });
+
+  test('should not emit change event when a disabled item is selected by click', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2 });
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+    const items = getSegmentedControlItems(page);
+    await setProperty(items.nth(0), 'disabled', true);
+    await expect(items.nth(0)).toHaveJSProperty('disabled', true);
+
+    await expect(host).toHaveJSProperty('value', undefined);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before item was selected').toBe(0);
+
+    await items.nth(0).click();
+    await expect(host).toHaveJSProperty('value', undefined);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after disabled item was clicked').toBe(0);
+  });
+});
+
+test.describe('blur event', () => {
+  test('should emit blur event when focus of an item is lost by mouse click', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2, markupAfter: '<button id="test-button">Some button</button>' });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const item = getFirstItemHost(page);
+    const button = page.locator('#test-button');
+
+    await item.click();
+    await expect(item).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'before item lost focus').toBe(0);
+
+    await button.click();
+    await expect(button).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after input lost focus').toBe(1);
+  });
+
+  test('should not emit blur event when focus is moved to next item by click', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2, markupAfter: '<button id="test-button">Some button</button>' });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const items = getSegmentedControlItems(page);
+    const button = page.locator('#test-button');
+
+    await items.nth(0).click();
+    await expect(items.nth(0)).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st item got focus').toBe(0);
+
+    await items.nth(1).click();
+    await expect(items.nth(1)).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item got focus').toBe(0);
+
+    await button.click();
+    await expect(button).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
+  });
+
+  test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
+    await initSegmentedControl(page, { amount: 2, markupAfter: '<button id="test-button">Some button</button>' });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const items = getSegmentedControlItems(page);
+    const button = page.locator('#test-button');
+
+    await page.keyboard.press('Tab');
+    await expect(items.nth(0)).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st item got focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(items.nth(1)).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item got focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(button).toBeFocused();
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd item lost focus').toBe(1);
   });
 });
 

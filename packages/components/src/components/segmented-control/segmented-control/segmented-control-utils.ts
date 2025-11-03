@@ -6,7 +6,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
   BUTTON_FONT,
-  getItemPadding,
+  getScalableItemStyles,
   ICON_MARGIN,
   ICON_SIZE,
   LABEL_FONT,
@@ -18,7 +18,9 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 
 /** @deprecated */
 export type SegmentedControlUpdateEvent = { value: string | number };
+/** @deprecated */
 export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
+export type SegmentedControlChangeEventDetail = SegmentedControlUpdateEventDetail;
 
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
@@ -57,7 +59,14 @@ export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => 
 
   const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
-    tempDiv.style.padding = getItemPadding(false /* Uses the largest possible padding of the item */, compact);
+    tempDiv.style.minWidth = getScalableItemStyles(
+      false /* Uses the largest possible padding of the item */,
+      compact
+    ).dimension;
+    tempDiv.style.padding = getScalableItemStyles(
+      false /* Uses the largest possible padding of the item */,
+      compact
+    ).padding;
 
     if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);

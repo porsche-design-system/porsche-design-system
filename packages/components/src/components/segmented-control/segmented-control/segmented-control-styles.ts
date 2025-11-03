@@ -9,6 +9,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
+import { getScalingVar } from '../segmented-control-item/segmented-control-item-styles';
 
 const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
@@ -16,15 +17,17 @@ const MAX_ITEM_WIDTH = 220;
 export const getComponentCss = (
   maxWidth: number,
   columns: BreakpointCustomizable<SegmentedControlColumns>,
+  compact: boolean,
   state: SegmentedControlState,
   theme: Theme
 ): string => {
+  const scalingVar = getScalingVar(compact);
   return getCss({
     '@global': {
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          gap: spacingStaticXSmall,
+          gap: `max(${spacingStaticXSmall}, ${scalingVar} * 6px)`,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

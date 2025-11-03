@@ -3,7 +3,7 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { inputSearchStorySlots } from '@/app/components/input-search/input-search.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { inputSearchExample, inputSearchExampleControlled } from '@porsche-design-system/shared/examples';
+import { inputSearchExampleForm } from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Input Search - Porsche Design System',
@@ -12,22 +12,27 @@ export const metadata = {
 
 # Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
 
-<TableOfContents headings={['Form','Controlled','Slots']} />
+<TableOfContents headings={['Form', 'Slots']} />
 
 ## Form
 
-The `p-input-search` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
-[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
-input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+The `p-input-search` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
 
-<ComponentExample codeSample={inputSearchExample} />
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
 
-## Controlled
+In the **uncontrolled** approach, the input behaves similar to a native `<input type="search" />`, automatically
+managing its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
 
-In the controlled approach, the `p-input-search` value is externally managed. While the internal value will be updated
-automatically, you can use the `input`, `change` or `blur` event to update the external state.
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
 
-<ComponentExample codeSample={inputSearchExampleControlled} />
+<ComponentExample codeSample={inputSearchExampleForm} />
 
 ## Slots
 

@@ -49,6 +49,7 @@ import { getComponentCss } from './multi-select-styles';
 import {
   getSelectedOptionsString,
   getSelectedOptionValues,
+  type MultiSelectChangeEventDetail,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
   type MultiSelectOption,
@@ -133,7 +134,15 @@ export class MultiSelect {
   /** The id of a form element the multi-select should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
+  /** Emitted when the multi-select has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<void>;
+
   /** Emitted when the selection is changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<MultiSelectChangeEventDetail>;
+
+  /**
+   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
+   */
   @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
 
   @State() private isOpen = false;
@@ -303,6 +312,7 @@ export class MultiSelect {
           disabled={this.disabled}
           onClick={this.onComboClick}
           onKeyDown={this.onComboKeyDown}
+          onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
           <span>{getSelectedOptionsString(this.multiSelectOptions)}</span>
@@ -334,6 +344,7 @@ export class MultiSelect {
           popover="manual"
           tabIndex={-1}
           onToggle={() => this.onToggle()}
+          onBlur={(e: any) => e.stopPropagation()}
           role="dialog"
           aria-label={this.label}
           aria-hidden={this.isOpen ? null : 'true'}
@@ -351,6 +362,8 @@ export class MultiSelect {
             theme={this.theme}
             onInput={this.onFilterInput}
             onKeyDown={this.onComboKeyDown}
+            onBlur={(e: any) => e.stopPropagation()}
+            onChange={(e: any) => e.stopPropagation()}
             ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
           />
           <div
@@ -401,6 +414,7 @@ export class MultiSelect {
       isClickOutside(e, this.popoverElement)
     ) {
       this.isOpen = false;
+      this.blur.emit();
     }
   };
 
@@ -445,7 +459,7 @@ export class MultiSelect {
           this.currentlyHighlightedOption,
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
-        // @ts-ignore - HTMLCombobox type is missing
+        // @ts-expect-error - HTMLCombobox type is missing
         this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
         break;
       }
@@ -475,7 +489,7 @@ export class MultiSelect {
       const selectedOption = getLastSelectedOption(this.multiSelectOptions);
       if (selectedOption && isUsableOption(selectedOption)) {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
-        // @ts-ignore - HTMLCombobox type is missing
+        // @ts-expect-error - HTMLCombobox type is missing
         this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
       }
     }
@@ -529,6 +543,10 @@ export class MultiSelect {
   };
 
   private emitUpdateEvent = (): void => {
+    this.change.emit({
+      value: this.currentValue,
+      name: this.name,
+    });
     this.update.emit({
       value: this.currentValue,
       name: this.name,
@@ -536,6 +554,7 @@ export class MultiSelect {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    e.stopPropagation();
     const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.multiSelectOptions,
       this.multiSelectOptgroups,
@@ -553,6 +572,15 @@ export class MultiSelect {
           this.inputSearchElement.focus();
         });
       });
+    }
+  };
+
+  private onComboBlur = (e: FocusEvent): void => {
+    e.stopPropagation();
+
+    // Don't emit blur when opening the dropdown or when clicking the reset button
+    if (!this.isOpen && e.relatedTarget !== this.resetButtonElement) {
+      this.blur.emit();
     }
   };
 }

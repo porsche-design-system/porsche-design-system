@@ -1,4 +1,5 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
   getElementStyle,
@@ -12,7 +13,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-pin-code');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -445,6 +445,202 @@ test.describe('form', () => {
   });
 });
 
+test.describe('change event', () => {
+  test('should emit change event on valid input and focus next input if there is one', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+    const currentInput = getCurrentInput(page);
+
+    await currentInput.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before input').toBe(0);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
+
+    page.keyboard.press('1');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
+    expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
+      {
+        isComplete: false,
+        value: '1   ',
+      },
+    ]);
+
+    page.keyboard.press('2');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(2);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+    expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
+      {
+        isComplete: false,
+        value: '1   ',
+      },
+      {
+        isComplete: false,
+        value: '12  ',
+      },
+    ]);
+
+    page.keyboard.press('3');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(3);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+    expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
+      {
+        isComplete: false,
+        value: '1   ',
+      },
+      {
+        isComplete: false,
+        value: '12  ',
+      },
+      {
+        isComplete: false,
+        value: '123 ',
+      },
+    ]);
+
+    page.keyboard.press('4');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(4);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+    expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([
+      {
+        isComplete: false,
+        value: '1   ',
+      },
+      {
+        isComplete: false,
+        value: '12  ',
+      },
+      {
+        isComplete: false,
+        value: '123 ',
+      },
+      {
+        isComplete: true,
+        value: '1234',
+      },
+    ]);
+  });
+
+  // (alphanumeric, "Dead" (e.g. ^¨), "Process" (e.g.^ in firefox)
+  test('should not emit change event on not valid input', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+    const input = getCurrentInput(page);
+
+    await input.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before input').toBe(0);
+
+    page.keyboard.press('a');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(0);
+    expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([]);
+    expect(await getProperty<string>(input, 'value')).toBe('');
+
+    page.keyboard.press('^');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after input').toBe(0);
+    expect((await getEventSummary(host, 'change')).details, 'after input').toEqual([]);
+    expect(await getProperty<string>(input, 'value')).toBe('');
+  });
+
+  test('should emit change event on backspace and focus correct input element', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    await setProperty(host, 'value', '1234');
+    await addEventListener(host, 'change');
+    const input4 = getInput(page, 4);
+
+    await input4.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before backspace').toBe(0);
+
+    page.keyboard.press('Backspace');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after backspace').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+    expect((await getEventSummary(host, 'change')).details, 'after backspace').toEqual([
+      {
+        isComplete: false,
+        value: '123 ',
+      },
+    ]);
+
+    page.keyboard.press('Backspace');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after backspace').toBe(2);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+    expect((await getEventSummary(host, 'change')).details, 'after backspace').toEqual([
+      {
+        isComplete: false,
+        value: '123 ',
+      },
+      {
+        isComplete: false,
+        value: '12  ',
+      },
+    ]);
+  });
+
+  test('should emit change event on delete and focus correct input element', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    await setProperty(host, 'value', '1234');
+    await addEventListener(host, 'change');
+    const input1 = getInput(page, 1);
+
+    await input1.click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'before delete').toBe(0);
+
+    page.keyboard.press('Delete');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after delete').toBe(1);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
+    expect((await getEventSummary(host, 'change')).details, 'after delete').toEqual([
+      {
+        isComplete: false,
+        value: ' 234',
+      },
+    ]);
+
+    page.keyboard.press('Delete');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after delete').toBe(2);
+    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
+    expect((await getEventSummary(host, 'change')).details, 'after delete').toEqual([
+      {
+        isComplete: false,
+        value: ' 234',
+      },
+      {
+        isComplete: false,
+        value: '  34',
+      },
+    ]);
+  });
+});
+
 test.describe('update event', () => {
   test('should emit update event on valid input and focus next input if there is one', async ({ page }) => {
     await initPinCode(page);
@@ -638,6 +834,85 @@ test.describe('update event', () => {
         value: '  34',
       },
     ]);
+  });
+});
+
+test.describe('blur event', () => {
+  test('should emit blur event when focus of an input is lost by mouse click', async ({ page }) => {
+    await initPinCode(page, { options: { markupAfter: '<button>Some button</button>' } });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const input = getCurrentInput(page);
+    const button = page.locator('button');
+
+    await input.click();
+    await expect(input).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'before input lost focus').toBe(0);
+
+    await button.click();
+    await expect(button).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after input lost focus').toBe(1);
+  });
+
+  test('should not emit blur event when focus is moved to next input by click', async ({ page }) => {
+    await initPinCode(page, { options: { markupAfter: '<button>Some button</button>' } });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const input1 = getInput(page, 1);
+    const input2 = getInput(page, 2);
+    const button = page.locator('button');
+
+    await input1.click();
+    await expect(input1).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st input got focus').toBe(0);
+
+    await input2.click();
+    await expect(input2).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input got focus').toBe(0);
+
+    await button.click();
+    await expect(button).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input lost focus').toBe(1);
+  });
+
+  test('should emit blur event when focus of an input is lost by keyboard', async ({ page }) => {
+    await initPinCode(page, { options: { markupAfter: '<button>Some button</button>' } });
+    const host = getHost(page);
+    await addEventListener(host, 'blur');
+    const input1 = getInput(page, 1);
+    const input2 = getInput(page, 2);
+    const input3 = getInput(page, 3);
+    const input4 = getInput(page, 4);
+    const button = page.locator('button');
+
+    await page.keyboard.press('Tab');
+    await expect(input1).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 1st input got focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(input2).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 2nd input got focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(input3).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 3rd input got focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(input4).toBeFocused();
+
+    expect((await getEventSummary(host, 'blur')).counter, 'after 4th input got focus').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(button).toBeFocused();
+    expect((await getEventSummary(host, 'blur')).counter, 'after 4th input lost focus').toBe(1);
   });
 });
 

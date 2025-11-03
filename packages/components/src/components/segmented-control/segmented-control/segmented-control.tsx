@@ -33,6 +33,7 @@ import {
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
   SEGMENTED_CONTROL_COLUMNS,
   type SegmentedControlBackgroundColor,
+  type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
   type SegmentedControlState,
   type SegmentedControlUpdateEventDetail,
@@ -106,7 +107,15 @@ export class SegmentedControl {
    * Emitted when selected element changes. */
   @Event({ bubbles: false }) public segmentedControlChange: EventEmitter<SegmentedControlUpdateEventDetail>;
 
-  /** Emitted when selected element changes. */
+  /** Emitted when the segmented-control has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<void>;
+
+  /** Emitted when the selection is changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<SegmentedControlChangeEventDetail>;
+
+  /**
+   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
+   */
   @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -119,6 +128,12 @@ export class SegmentedControl {
     if (!this.disabled) {
       this.updateValue(e.target);
     }
+  }
+
+  @Listen('internalBlur')
+  public emitBlurEvent(e: CustomEvent): void {
+    e.stopPropagation();
+    this.blur.emit();
   }
 
   @Watch('value')
@@ -175,6 +190,7 @@ export class SegmentedControl {
       getComponentCss,
       getItemMaxWidth(this.host, this.compact),
       this.columns,
+      this.compact,
       this.state,
       this.theme
     );
@@ -198,6 +214,7 @@ export class SegmentedControl {
 
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
     this.value = item.value; // causes rerender
+    this.change.emit({ value: this.value });
     this.update.emit({ value: this.value });
     this.segmentedControlChange.emit({ value: this.value });
     item.focus();

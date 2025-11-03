@@ -1,0 +1,9 @@
+- radiogroup "Some label":
+  - radio "A"
+  - status
+  - radio "B" [checked]
+  - status
+  - radio "C"
+  - status
+  - alert
+  - status

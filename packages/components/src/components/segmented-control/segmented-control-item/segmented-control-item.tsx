@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  isElementOfKind,
   throwIfParentIsNotOfKind,
   throwIfPropIsUndefined,
   updateParent,
@@ -96,7 +97,7 @@ export class SegmentedControlItem {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      <Host onClick={!isDisabled && this.onClick} onBlur={this.onBlur}>
         <button
           type="button"
           {...getSegmentedControlItemAriaAttributes(
@@ -129,6 +130,17 @@ export class SegmentedControlItem {
     if (!this.disabled && !this.host.selected) {
       this.host.dispatchEvent(
         new CustomEvent('internalSegmentedControlItemUpdate', {
+          bubbles: true,
+        })
+      );
+    }
+  };
+
+  private onBlur = (e: FocusEvent): void => {
+    e.stopPropagation();
+    if (!e.relatedTarget || !isElementOfKind(e.relatedTarget as HTMLElement, 'p-segmented-control-item')) {
+      this.host.dispatchEvent(
+        new CustomEvent('internalBlur', {
           bubbles: true,
         })
       );

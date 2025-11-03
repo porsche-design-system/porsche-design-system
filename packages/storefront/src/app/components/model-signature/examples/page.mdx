@@ -1,24 +1,28 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 import {
   modelSignatureStoryCustomStyling,
-  modelSignatureStoryMaskBlendMode, modelSignatureStoryMaskImage, modelSignatureStoryMaskVideo,
-  modelSignatureStorySafeZone
-} from "@/app/components/model-signature/model-signature.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
+  modelSignatureStoryMaskBlendMode,
+  modelSignatureStoryMaskImage,
+  modelSignatureStoryMaskVideo,
+  modelSignatureStorySafeZone,
+} from '@/app/components/model-signature/model-signature.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import {Notification} from "@/components/common/Notification";
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Model Signature - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Model Signature component.'
-}
+  description: 'Discover detailed examples and insights of the Model Signature component.',
+};
 
-export const modelSignatureSafeZoneDefault = JSON.stringify(componentMeta["p-model-signature"].propsMeta.safeZone.defaultValue);
+export const modelSignatureSafeZoneDefault = JSON.stringify(
+  componentMeta['p-model-signature'].propsMeta.safeZone.defaultValue
+);
 
 # Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
 
-<TableOfContents headings={['Safe Zone','Mask: Blend Mode','Mask: Image','Mask: Video','Custom styling']} />
+<TableOfContents headings={['Safe Zone', 'Mask: Blend Mode', 'Mask: Image', 'Mask: Video', 'Custom styling']} />
 
 ## Safe Zone
 

@@ -16,7 +16,7 @@ const generatedRoutes: RouteType[] = Object.keys(fromPages).map<RouteType>((page
     path: '/' + kebabCase(name),
     name: name,
     component: (fromPages as Record<string, RouteComponent>)[page],
-  };
+  } as RouteType;
 });
 
 export const routes: RouteType[] = [
@@ -118,6 +118,16 @@ export const routes: RouteType[] = [
     component: fromExamples.CheckboxExampleControlled,
   },
   {
+    path: '/checkbox-example-controlled-model',
+    name: 'Checkbox Example Controlled Model',
+    component: fromExamples.CheckboxExampleControlledModel,
+  },
+  {
+    path: '/checkbox-example-form',
+    name: 'Checkbox Example Form',
+    component: fromExamples.CheckboxExampleForm,
+  },
+  {
     path: '/flyout-basic',
     name: 'FlyoutBasic',
     component: fromPages.FlyoutBasicPage,
@@ -188,6 +198,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputPasswordExampleControlled,
   },
   {
+    path: '/input-password-example-controlled-model',
+    name: 'Input Password Example Controlled Model',
+    component: fromExamples.InputPasswordExampleControlledModel,
+  },
+  {
+    path: '/input-password-example-form',
+    name: 'Input Password Example Form',
+    component: fromExamples.InputPasswordExampleForm,
+  },
+  {
     path: '/input-number-example',
     name: 'Input Number Example',
     component: fromExamples.InputNumberExample,
@@ -196,6 +216,16 @@ export const routes: RouteType[] = [
     path: '/input-number-example-controlled',
     name: 'Input Number Example Controlled',
     component: fromExamples.InputNumberExampleControlled,
+  },
+  {
+    path: '/input-number-example-controlled-model',
+    name: 'Input Number Example Controlled Model',
+    component: fromExamples.InputNumberExampleControlledModel,
+  },
+  {
+    path: '/input-number-example-form',
+    name: 'Input Number Example Form',
+    component: fromExamples.InputNumberExampleForm,
   },
   {
     path: '/input-date-example',
@@ -208,6 +238,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputDateExampleControlled,
   },
   {
+    path: '/input-date-example-controlled-model',
+    name: 'Input Date Example Controlled Model',
+    component: fromExamples.InputDateExampleControlledModel,
+  },
+  {
+    path: '/input-date-example-form',
+    name: 'Input Date Example Form',
+    component: fromExamples.InputDateExampleForm,
+  },
+  {
     path: '/input-time-example',
     name: 'Input Time Example',
     component: fromExamples.InputTimeExample,
@@ -216,6 +256,16 @@ export const routes: RouteType[] = [
     path: '/input-time-example-controlled',
     name: 'Input Time Example Controlled',
     component: fromExamples.InputTimeExampleControlled,
+  },
+  {
+    path: '/input-time-example-controlled-model',
+    name: 'Input Time Example Controlled Model',
+    component: fromExamples.InputTimeExampleControlledModel,
+  },
+  {
+    path: '/input-time-example-form',
+    name: 'Input Time Example Form',
+    component: fromExamples.InputTimeExampleForm,
   },
   {
     path: '/input-text-example',
@@ -228,6 +278,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputTextExampleControlled,
   },
   {
+    path: '/input-text-example-controlled-model',
+    name: 'Input Text Example Controlled Model',
+    component: fromExamples.InputTextExampleControlledModel,
+  },
+  {
+    path: '/input-text-example-form',
+    name: 'Input Text Example Form',
+    component: fromExamples.InputTextExampleForm,
+  },
+  {
     path: '/input-email-example',
     name: 'Input Email Example',
     component: fromExamples.InputEmailExample,
@@ -236,6 +296,16 @@ export const routes: RouteType[] = [
     path: '/input-email-example-controlled',
     name: 'Input Email Example Controlled',
     component: fromExamples.InputEmailExampleControlled,
+  },
+  {
+    path: '/input-email-example-controlled-model',
+    name: 'Input Email Example Controlled Model',
+    component: fromExamples.InputEmailExampleControlledModel,
+  },
+  {
+    path: '/input-email-example-form',
+    name: 'Input Email Example Form',
+    component: fromExamples.InputEmailExampleForm,
   },
   {
     path: '/input-tel-example',
@@ -248,6 +318,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputTelExampleControlled,
   },
   {
+    path: '/input-tel-example-controlled-model',
+    name: 'Input Tel Example Controlled Model',
+    component: fromExamples.InputTelExampleControlledModel,
+  },
+  {
+    path: '/input-tel-example-form',
+    name: 'Input Tel Example Form',
+    component: fromExamples.InputTelExampleForm,
+  },
+  {
     path: '/input-url-example',
     name: 'Input Url Example',
     component: fromExamples.InputUrlExample,
@@ -258,6 +338,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputUrlExampleControlled,
   },
   {
+    path: '/input-url-example-controlled-model',
+    name: 'Input Url Example Controlled Model',
+    component: fromExamples.InputUrlExampleControlledModel,
+  },
+  {
+    path: '/input-url-example-form',
+    name: 'Input Url Example Form',
+    component: fromExamples.InputUrlExampleForm,
+  },
+  {
     path: '/input-search-example',
     name: 'Input Search Example',
     component: fromExamples.InputSearchExample,
@@ -266,6 +356,16 @@ export const routes: RouteType[] = [
     path: '/input-search-example-controlled',
     name: 'Input Search Example Controlled',
     component: fromExamples.InputSearchExampleControlled,
+  },
+  {
+    path: '/input-search-example-controlled-model',
+    name: 'Input Search Example Controlled Model',
+    component: fromExamples.InputSearchExampleControlledModel,
+  },
+  {
+    path: '/input-search-example-form',
+    name: 'Input Search Example Form',
+    component: fromExamples.InputSearchExampleForm,
   },
   {
     path: '/link-tile-example-hyphens',
@@ -313,9 +413,19 @@ export const routes: RouteType[] = [
     component: fromExamples.MultiSelectExampleControlled,
   },
   {
+    path: '/multi-select-example-controlled-model',
+    name: 'Multi-Select Example Controlled Model',
+    component: fromExamples.MultiSelectExampleControlledModel,
+  },
+  {
     path: '/multi-select-example-dynamic',
     name: 'Multi-Select Example Dynamic',
     component: fromExamples.MultiSelectExampleDynamic,
+  },
+  {
+    path: '/multi-select-example-form',
+    name: 'Multi-Select Example Form',
+    component: fromExamples.MultiSelectExampleForm,
   },
   {
     path: '/pin-code-example',
@@ -326,6 +436,16 @@ export const routes: RouteType[] = [
     path: '/pin-code-example-controlled',
     name: 'Pin Code Example Controlled',
     component: fromExamples.PinCodeExampleControlled,
+  },
+  {
+    path: '/pin-code-example-controlled-model',
+    name: 'Pin Code Example Controlled Model',
+    component: fromExamples.PinCodeExampleControlledModel,
+  },
+  {
+    path: '/pin-code-example-form',
+    name: 'Pin Code Example Form',
+    component: fromExamples.PinCodeExampleForm,
   },
   {
     path: '/scroller-example',
@@ -343,6 +463,36 @@ export const routes: RouteType[] = [
     component: fromExamples.SegmentedControlExampleControlled,
   },
   {
+    path: '/segmented-control-example-controlled-model',
+    name: 'Segmented Control Example Controlled Model',
+    component: fromExamples.SegmentedControlExampleControlledModel,
+  },
+  {
+    path: '/segmented-control-example-form',
+    name: 'Segmented Control Example Form',
+    component: fromExamples.SegmentedControlExampleForm,
+  },
+  {
+    path: '/radio-group-example',
+    name: 'Radio Group Example',
+    component: fromExamples.RadioGroupExample,
+  },
+  {
+    path: '/radio-group-example-controlled',
+    name: 'Radio Group Example Controlled',
+    component: fromExamples.RadioGroupExampleControlled,
+  },
+  {
+    path: '/radio-group-example-controlled-model',
+    name: 'Radio Group Example Controlled Model',
+    component: fromExamples.RadioGroupExampleControlledModel,
+  },
+  {
+    path: '/radio-group-example-form',
+    name: 'Radio Group Example Form',
+    component: fromExamples.RadioGroupExampleForm,
+  },
+  {
     path: '/select-example',
     name: 'Select Example',
     component: fromExamples.SelectExample,
@@ -353,6 +503,11 @@ export const routes: RouteType[] = [
     component: fromExamples.SelectExampleControlled,
   },
   {
+    path: '/select-example-controlled-model',
+    name: 'Select Example Controlled Model',
+    component: fromExamples.SelectExampleControlledModel,
+  },
+  {
     path: '/select-example-dynamic',
     name: 'Select Example Dynamic',
     component: fromExamples.SelectExampleDynamic,
@@ -361,6 +516,11 @@ export const routes: RouteType[] = [
     path: '/select-example-required',
     name: 'Select Example Required',
     component: fromExamples.SelectExampleRequired,
+  },
+  {
+    path: '/select-example-form',
+    name: 'Select Example Form',
+    component: fromExamples.SelectExampleForm,
   },
   {
     path: '/stepper-horizontal-example',
@@ -401,6 +561,16 @@ export const routes: RouteType[] = [
     path: '/textarea-example-controlled',
     name: 'Textarea Example Controlled',
     component: fromExamples.TextareaExampleControlled,
+  },
+  {
+    path: '/textarea-example-controlled-model',
+    name: 'Textarea Example Controlled Model',
+    component: fromExamples.TextareaExampleControlledModel,
+  },
+  {
+    path: '/textarea-example-form',
+    name: 'Textarea Example Form',
+    component: fromExamples.TextareaExampleForm,
   },
   {
     path: '/text-field-wrapper-example-imask',

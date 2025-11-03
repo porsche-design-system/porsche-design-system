@@ -1,27 +1,19 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { selectStory } from "@/app/components/select/select.stories";
-import {Notification} from "@/components/common/Notification";
-import Link from "next/link";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
+import { selectStory } from '@/app/components/select/select.stories';
+import { Notification } from '@/components/common/Notification';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Select - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Select component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Select component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
-The `p-select` component is a versatile custom form element that enables the selection of a single options. It can be
-used [within a form](components/select/examples#form) or in a
-[controlled manner](components/select/examples#controlled).
-
-<Notification heading="Attention" heading-tag="h2" state="warning">
-  When the <code>p-select</code> component is used within a form, it utilizes the
-  <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</Link> API, which has limited
-  browser support. For broader browser compatibility, consider using a
-  <Link href="components/select/examples#controlled">controlled</Link> approach instead.
-</Notification>
+The `p-select` component is a versatile custom form element that enables the selection of a single option.
 
 Many of the properties closely resemble those found in the [select-wrapper](/components/select-wrapper/examples/) and
 other form components (e.g. `label`, `description`, `state`, `message`, `hideLabel`, `disabled`, `required` &
@@ -29,11 +21,13 @@ other form components (e.g. `label`, `description`, `state`, `message`, `hideLab
 
 Options are slotted using the `p-select-option` component. Each option needs to have an assigned value, which can be
 passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved using
-the value property on the `p-select` component ([More Info](/components/select/examples/#set-value)). Options don't have a
-selected attribute or property. If an option should be visible but not selectable, it can be disabled by using the
+the value property on the `p-select` component ([More Info](/components/select/examples/#set-value)). Options don't have
+a selected attribute or property. If an option should be visible but not selectable, it can be disabled by using the
 `disabled` attribute. If the selection isn't required or should be clearable again, you can use an empty
 `p-select-option` as default selection ([More Info](/components/select/examples/#empty)).
 
-**Hint:** The `p-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
+**Hint:** The `p-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to
+render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
+container.
 
 <Configurator tagName="p-select" story={selectStory} />

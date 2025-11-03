@@ -1,0 +1,24 @@
+<form class="flex flex-col gap-fluid-sm">
+  <p-segmented-control name="mySegmentedControl" value="1">
+    <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
+    <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
+    <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
+    <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
+    <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
+  </p-segmented-control>
+  <div class="flex gap-fluid-sm">
+    <p-button type="submit">Submit</p-button>
+    <p-button type="reset">Reset</p-button>
+  </div>
+  <p-text>Last submitted data: </p-text>
+</form>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    debugElement.innerText = `Last submitted data: ${formData.get('mySegmentedControl') || 'none'}`;
+  });
+</script>
