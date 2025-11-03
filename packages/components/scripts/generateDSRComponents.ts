@@ -230,7 +230,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onKeyDown|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
@@ -263,10 +263,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (!newFileContent.includes('export const InputBase:')) {
         // radio-group-option uses a label component without allowing slots
         if (tagName === 'p-radio-group-option') {
-          newFileContent = newFileContent.replace(
-            /(<Label(?!Props))([\s\S]*?\/>)/,
-            '$1 hasLabel={this.props.label} hasDescription={false}$2'
-          );
+          newFileContent = newFileContent
+            .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
+            .replace(/e\.stopImmediatePropagation\(\);/, '');
         } else {
           newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,
