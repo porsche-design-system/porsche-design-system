@@ -1,71 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for maxWidth: 20 and columns: { base: 4, s: 3, m: 2, l: 'auto' } 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, state: false and theme: none 1`] = `
 ":host {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
 @media(min-width:760px) {
-  :host {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  slot:not([name]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media(min-width:1000px) {
-  :host {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  slot:not([name]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media(min-width:1300px) {
-  :host {
-    grid-template-columns: repeat(auto-fit, 46px) !important;
+  slot:not([name]) {
+    grid-template-columns: repeat(auto-fit, 46px);
   }
+}
+
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for maxWidth: 20, columns: 2, state: false and theme: none 1`] = `
+":host {
+  display: grid;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+@media (prefers-color-scheme: dark) {
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 20 and columns: auto 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 80, columns: 1, state: true and theme: none 1`] = `
 ":host {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 46px) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 0.5) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 6px;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 80 and columns: 1 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 230, columns: 10, state: false and theme: error 1`] = `
 ":host {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for maxWidth: 230 and columns: 10 1`] = `
-":host {
-  display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
-  color-scheme: light dark !important;
 }
-:host([hidden]) {
-  display: none !important;
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 6px;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #CC1922;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }"
 `;
