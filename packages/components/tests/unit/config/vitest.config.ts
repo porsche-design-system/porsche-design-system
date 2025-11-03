@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom', // replaces `testEnvironment: 'jsdom'`
     root: path.resolve(__dirname, '../../../'), // replaces `rootDir`
-    setupFiles: ['tests/unit/config/jest.setup.ts'], // same purpose
+    setupFiles: ['tests/unit/config/vitest.setup.ts'], // same purpose
     include: ['src/**/*.spec.ts', 'tests/unit/specs/**/*.spec.ts'], // replaces `testMatch`
     exclude: ['dist'], // replaces `modulePathIgnorePatterns`
     globals: true, // enables global test APIs like describe, it, expect
