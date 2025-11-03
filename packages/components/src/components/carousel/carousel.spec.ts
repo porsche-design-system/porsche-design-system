@@ -570,7 +570,7 @@ describe('updateAmountOfPages()', () => {
   });
 
   it('should call this.splide.refresh()', () => {
-    vi.spyOn(carouselUtils, 'getAmountOfPages').mockImplementation(() => {});
+    vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const refreshSpy: () => Splide = vi.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
