@@ -26,7 +26,6 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
-import type { ButtonPure } from '../button-pure/button-pure';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
   CAROUSEL_ALIGN_CONTROLS,
@@ -371,7 +370,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
-                ref={(ref: ButtonPure) => (this.btnPrev = ref as unknown as HTMLPButtonPureElement)}
+                ref={(ref: HTMLPButtonPureElement) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
               />
             )}
@@ -379,7 +378,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
-                ref={(ref: ButtonPure) => (this.btnNext = ref as unknown as HTMLPButtonPureElement)}
+                ref={(ref: HTMLPButtonPureElement) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
                 onKeyDown={this.onNextKeyDown}
               />
