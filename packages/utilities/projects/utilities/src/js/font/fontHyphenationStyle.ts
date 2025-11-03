@@ -1,4 +1,4 @@
 export const fontHyphenationStyle = {
   overflowWrap: 'break-word',
-  hyphens: 'auto',
+  hyphens: 'var(--p-hyphens, auto)',
 } as const;
