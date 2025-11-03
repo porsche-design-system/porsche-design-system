@@ -16,9 +16,9 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { formElementPaddingVertical } from '../../../styles/form-styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode } from '../../../utils';
-import { formElementPaddingVertical } from '../../../styles/form-styles';
 
 export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
 export const getScalingVar = (compact: boolean) =>
@@ -109,6 +109,7 @@ export const getComponentCss = (
         display: 'block',
         height: '100%',
         minHeight: scalableItemStyles.dimension,
+        minWidth: scalableItemStyles.dimension,
         width: '100%',
         padding: scalableItemStyles.padding,
         margin: 0, // Removes default button margin on safari 15
