@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for maxWidth: 36 and columns: 230 1`] = `
+exports[`getComponentCss() should return correct css for minWidth: 36, maxWidth: 230, columns: 10 and compact: true 1`] = `
 ":host {
   display: grid;
   grid-auto-rows: 1fr !important;
@@ -13,20 +13,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 36 and column
 }"
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 46 and columns: 20 1`] = `
-":host {
-  display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 46px) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for maxWidth: 46 and columns: 20 2`] = `
+exports[`getComponentCss() should return correct css for minWidth: 46, maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' } and compact: true 1`] = `
 ":host {
   display: grid;
   grid-auto-rows: 1fr !important;
@@ -57,7 +44,20 @@ exports[`getComponentCss() should return correct css for maxWidth: 46 and column
 "
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 46 and columns: 80 1`] = `
+exports[`getComponentCss() should return correct css for minWidth: 46, maxWidth: 20, columns: auto and compact: false 1`] = `
+":host {
+  display: grid;
+  grid-auto-rows: 1fr !important;
+  grid-template-columns: repeat(auto-fit, 46px) !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for minWidth: 46, maxWidth: 80, columns: 1 and compact: false 1`] = `
 ":host {
   display: grid;
   grid-auto-rows: 1fr !important;
