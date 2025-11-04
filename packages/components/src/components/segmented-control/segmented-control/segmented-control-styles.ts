@@ -8,7 +8,6 @@ import {
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { getScalingVar } from '../segmented-control-item/segmented-control-item-styles';
 import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 
 const MIN_ITEM_WIDTH = 46;
@@ -17,11 +16,9 @@ const MAX_ITEM_WIDTH = 220;
 export const getComponentCss = (
   maxWidth: number,
   columns: BreakpointCustomizable<SegmentedControlColumns>,
-  compact: boolean,
   state: SegmentedControlState,
   theme: Theme
 ): string => {
-  const scalingVar = getScalingVar(compact);
   return getCss({
     '@global': {
       ':host': {
@@ -40,7 +37,7 @@ export const getComponentCss = (
               ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) || maxWidth}px)`
               : `repeat(${col}, minmax(0, 1fr))`,
         })),
-        gap: `max(${spacingStaticXSmall}, ${scalingVar} * 6px)`,
+        gap: '6px',
       },
     },
     ...(state !== 'none' && {

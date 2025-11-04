@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, state: false and theme: none 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, state: none and theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -14,7 +14,7 @@ slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px);
+  gap: 6px;
 }
 @media(min-width:760px) {
   slot:not([name]) {
@@ -48,7 +48,7 @@ slot:not([name]) {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 20, columns: 2, state: false and theme: none 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 20, columns: 2, state: none and theme: auto 1`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -62,7 +62,7 @@ slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px);
+  gap: 6px;
 }
 .message {
   display: flex;
@@ -81,7 +81,7 @@ slot:not([name]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 80, columns: 1, state: true and theme: none 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 80, columns: 1, state: none and theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -95,7 +95,7 @@ slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 0.5) * 6px);
+  gap: 6px;
 }
 .message {
   display: flex;
@@ -111,7 +111,7 @@ slot:not([name]) {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 230, columns: 10, state: false and theme: error 1`] = `
+exports[`getComponentCss() should return correct css for maxWidth: 230, columns: 10, state: error and theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -125,7 +125,7 @@ slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(10, minmax(0, 1fr));
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px);
+  gap: 6px;
 }
 .root {
   display: flex;

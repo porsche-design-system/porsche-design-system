@@ -189,7 +189,6 @@ export class SegmentedControl {
       getComponentCss,
       getItemMaxWidth(this.host, this.compact),
       this.columns,
-      this.compact,
       this.state,
       this.theme
     );

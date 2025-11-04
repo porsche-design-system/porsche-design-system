@@ -4386,7 +4386,7 @@ slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(auto-fit, 100px);
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px);
+  gap: 6px;
 }
 .message {
   display: flex;
@@ -19334,7 +19334,7 @@ slot:not([name]) {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(auto-fit, 100px);
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px);
+  gap: 6px;
 }
 .message {
   display: flex;
