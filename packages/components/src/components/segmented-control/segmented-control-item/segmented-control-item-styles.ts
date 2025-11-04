@@ -64,7 +64,7 @@ export const getScalableItemStyles = (
 ): { padding: string; dimension: string } => {
   const scalingVar = getScalingVar(compact);
 
-  const verticalPadding = `max(2px, ${formElementPaddingVertical})`;
+  const verticalPadding = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
   const horizontalPadding = `calc(${verticalPadding} + ${ICON_OFFSET})`;
 
   const padding = hasIconAndSlottedContent
@@ -108,9 +108,9 @@ export const getComponentCss = (
         position: 'relative',
         display: 'block',
         height: '100%',
+        width: '100%',
         minHeight: scalableItemStyles.dimension,
         minWidth: scalableItemStyles.dimension,
-        width: '100%',
         padding: scalableItemStyles.padding,
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
