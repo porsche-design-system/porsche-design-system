@@ -1,12 +1,12 @@
-import { getComponentCss } from './segmented-control-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
+import { getComponentCss, MIN_ITEM_WIDTH } from './segmented-control-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [20, 'auto'],
-    [80, 1],
-    [230, 10],
-    [20, { base: 4, s: 3, m: 2, l: 'auto' }],
+    [MIN_ITEM_WIDTH, 20, 'auto', false],
+    [MIN_ITEM_WIDTH, 80, 1, false],
+    [36, 230, 10, true],
+    [MIN_ITEM_WIDTH, 20, { base: 4, s: 3, m: 2, l: 'auto' }, true],
   ])('should return correct css for maxWidth: %s and columns: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });

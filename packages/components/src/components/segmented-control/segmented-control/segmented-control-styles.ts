@@ -1,11 +1,11 @@
+import { spacingStaticXSmall } from '@porsche-design-system/styles';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import type { SegmentedControlColumns } from './segmented-control-utils';
-import { spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getScalingVar } from '../segmented-control-item/segmented-control-item-styles';
+import type { SegmentedControlColumns } from './segmented-control-utils';
 
-const MIN_ITEM_WIDTH = 46;
+export const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
 
 export const getComponentCss = (
