@@ -94,7 +94,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 400;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
@@ -213,7 +213,7 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 400;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }
@@ -332,7 +332,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 400;
   font-size: 1rem;
 }
@@ -451,7 +451,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 400;
   font-size: 1rem;
 }
@@ -570,7 +570,7 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 600;
   font-size: 1rem;
 }
@@ -689,7 +689,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-weight: 400;
   font-size: 1rem;
 }

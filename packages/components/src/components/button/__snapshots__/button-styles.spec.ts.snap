@@ -27,7 +27,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   border: none;
@@ -117,7 +117,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   border: none;
@@ -207,7 +207,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   border: none;
@@ -297,7 +297,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -477,7 +477,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -564,7 +564,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -651,7 +651,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -738,7 +738,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -918,7 +918,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -998,7 +998,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -1086,7 +1086,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -1174,7 +1174,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -1262,7 +1262,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
@@ -1350,7 +1350,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
