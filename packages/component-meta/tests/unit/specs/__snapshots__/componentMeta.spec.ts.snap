@@ -9160,9 +9160,6 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
-    "hostAttributes": {
-      "role": "group",
-    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
