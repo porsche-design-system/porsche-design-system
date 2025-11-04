@@ -64,7 +64,7 @@ export const getScalableItemStyles = (
 ): { padding: string; dimension: string } => {
   const scalingVar = getScalingVar(compact);
 
-  const verticalPadding = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+  const verticalPadding = `max(2px, ${formElementPaddingVertical})`;
   const horizontalPadding = `calc(${verticalPadding} + ${ICON_OFFSET})`;
 
   const padding = hasIconAndSlottedContent
