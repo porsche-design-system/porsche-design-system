@@ -1,2 +1,4 @@
-<slot> </slot>
-<span id="message" class="message" role="alert"> </span>
+<div role="group" class="root">
+  <slot> </slot>
+  <span id="message" class="message" role="alert"> </span>
+</div>

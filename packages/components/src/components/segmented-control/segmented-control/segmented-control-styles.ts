@@ -8,8 +8,8 @@ import {
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 import { getScalingVar } from '../segmented-control-item/segmented-control-item-styles';
+import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 
 const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
@@ -25,9 +25,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'grid',
         ...addImportantToEachRule({
-          gap: `max(${spacingStaticXSmall}, ${scalingVar} * 6px)`,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -42,9 +40,16 @@ export const getComponentCss = (
               ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) || maxWidth}px)`
               : `repeat(${col}, minmax(0, 1fr))`,
         })),
-        gap: '6px',
+        gap: `max(${spacingStaticXSmall}, ${scalingVar} * 6px)`,
       },
     },
+    ...(state !== 'none' && {
+      root: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: spacingStaticXSmall,
+      },
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

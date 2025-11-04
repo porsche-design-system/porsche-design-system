@@ -5,7 +5,6 @@ import {
   Event,
   type EventEmitter,
   forceUpdate,
-  Host,
   h,
   type JSX,
   Listen,
@@ -205,10 +204,10 @@ export class SegmentedControl {
     );
 
     return (
-      <Host role="group" inert={this.disabled}>
+      <div role="group" inert={this.disabled} class="root">
         <slot />
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-      </Host>
+      </div>
     );
   }
 
