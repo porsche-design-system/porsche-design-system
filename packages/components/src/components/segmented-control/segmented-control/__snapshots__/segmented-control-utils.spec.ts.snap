@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempDiv 1`] = `
+exports[`getItemWidths() styles of temporary elements should have correct style for tempDiv 1`] = `
 CSSStyleDeclaration {
   "0": "position",
   "1": "visibility",
@@ -41,14 +41,14 @@ CSSStyleDeclaration {
     "font-variant": "normal",
     "font-weight": "400",
     "line-height": "normal",
-    "min-width": "calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px) + 2px) * 2)",
+    "min-width": "calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2)",
     "position": "absolute",
     "visibility": "hidden",
   },
 }
 `;
 
-exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempIcon 1`] = `
+exports[`getItemWidths() styles of temporary elements should have correct style for tempIcon 1`] = `
 CSSStyleDeclaration {
   "0": "display",
   "1": "width",
@@ -68,7 +68,7 @@ CSSStyleDeclaration {
 }
 `;
 
-exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempLabel 1`] = `
+exports[`getItemWidths() styles of temporary elements should have correct style for tempLabel 1`] = `
 CSSStyleDeclaration {
   "0": "font",
   "_importants": {

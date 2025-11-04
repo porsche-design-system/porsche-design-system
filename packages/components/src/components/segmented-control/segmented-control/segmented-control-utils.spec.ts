@@ -1,16 +1,10 @@
-import {
-  getItemMaxWidth,
-  syncSegmentedControlItemsProps,
-  tempDiv,
-  tempIcon,
-  tempLabel,
-} from './segmented-control-utils';
-import type { Theme } from '../../../types';
-import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
-import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import * as stencilCore from '@stencil/core';
+import type { Theme } from '../../../types';
+import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
+import { getItemWidths, syncSegmentedControlItemsProps, tempDiv, tempIcon, tempLabel } from './segmented-control-utils';
 
-describe('getItemMaxWidth()', () => {
+describe('getItemWidths()', () => {
   const host = document.createElement('p-segmented-control');
   host.attachShadow({ mode: 'open' });
 
@@ -33,12 +27,12 @@ describe('getItemMaxWidth()', () => {
     // mocked getComputedStyle() since it isn't working in jsdom
     jest.spyOn(window, 'getComputedStyle').mockImplementation(() => {
       const cssStyleDeclaration = new CSSStyleDeclaration();
-      // let's take the amount of characters to have some variation
+      // let's take the number of characters to have some variation
       cssStyleDeclaration.width = `${[child1, child2, child3][calls++].innerHTML.length}px`;
       return cssStyleDeclaration;
     });
 
-    expect(getItemMaxWidth(host, false)).toBe(17);
+    expect(getItemWidths(host, false).maxWidth).toBe(17);
   });
 
   it('should append temporary div', () => {
@@ -46,7 +40,7 @@ describe('getItemMaxWidth()', () => {
     jest.spyOn(tempDiv, 'remove').mockImplementationOnce(() => {});
     expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
 
-    getItemMaxWidth(host, false);
+    getItemWidths(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempDiv);
     expect(Array.from(host.shadowRoot.children)).toContain(tempDiv);
@@ -54,7 +48,7 @@ describe('getItemMaxWidth()', () => {
 
   it('should remove temporary div', () => {
     const spy = jest.spyOn(tempDiv, 'remove');
-    getItemMaxWidth(host, false);
+    getItemWidths(host, false);
 
     expect(spy).toHaveBeenCalledWith();
     expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
@@ -68,7 +62,7 @@ describe('getItemMaxWidth()', () => {
     host.append(child);
     expect(Array.from(tempDiv.children)).not.toContain(tempIcon);
 
-    getItemMaxWidth(host, false);
+    getItemWidths(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempIcon);
     expect(Array.from(tempDiv.children)).toContain(tempIcon);
@@ -82,7 +76,7 @@ describe('getItemMaxWidth()', () => {
     host.append(child);
     expect(Array.from(tempDiv.children)).not.toContain(tempIcon);
 
-    getItemMaxWidth(host, false);
+    getItemWidths(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempIcon);
     expect(Array.from(tempDiv.children)).toContain(tempIcon);
@@ -96,7 +90,7 @@ describe('getItemMaxWidth()', () => {
     host.append(child);
     expect(Array.from(tempDiv.children)).not.toContain(tempLabel);
 
-    getItemMaxWidth(host, false);
+    getItemWidths(host, false);
 
     expect(spy).toHaveBeenCalledWith(tempLabel);
     expect(Array.from(tempDiv.children)).toContain(tempLabel);
