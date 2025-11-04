@@ -1,4 +1,5 @@
 import { borderRadiusSmall, spacingFluidSmall, textMediumStyle } from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -9,7 +10,6 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getCss } from '../../../utils';
-import type { JssStyle } from 'jss';
 import { cssVarColorPrimary } from '../drilldown/drilldown-styles';
 
 export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): string => {
