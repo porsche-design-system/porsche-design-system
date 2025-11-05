@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.30.0] - 2025-10-31
+
+## [3.30.0-rc.3] - 2025-10-30
+
+### Added
+
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`: implicit submit on `Enter` key press when used inside a form
+  ([#4084](https://github.com/porsche-design-system/porsche-design-system/pull/4084))
+
 ## [3.30.0-rc.2] - 2025-10-24
 
 ### Added

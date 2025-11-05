@@ -6,6 +6,7 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  implicitSubmit,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -208,6 +209,7 @@ export class InputEmail {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="email"
@@ -232,6 +234,10 @@ export class InputEmail {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

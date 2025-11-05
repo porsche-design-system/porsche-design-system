@@ -8,7 +8,6 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { descriptionId } from '../../common/label/label-utils';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
 import { messageId } from '../../common/state-message/state-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
@@ -85,7 +84,6 @@ export class RadioGroupOption {
           />
           <div class="wrapper">
             <input
-              tabIndex={isSelected && !isDisabled ? 0 : -1}
               id={id}
               type="radio"
               name={name}
@@ -98,7 +96,7 @@ export class RadioGroupOption {
               }}
               onChange={this.onChange}
               onBlur={this.onBlur}
-              aria-describedby={isLoading ? loadingId : `${descriptionId} ${messageId}`}
+              aria-describedby={isLoading ? loadingId : `${messageId}`}
               aria-invalid={state === 'error' ? 'true' : null}
               aria-disabled={isDisabled || isLoading ? 'true' : null}
               ref={(el) => (this.inputElement = el)}
