@@ -7,6 +7,7 @@ export default defineConfig({
     clearMocks: true,
     restoreMocks: true,
     mockReset: true,
+    globals: false,
     typecheck: {
       tsconfig: 'tsconfig.test.json',
     },
