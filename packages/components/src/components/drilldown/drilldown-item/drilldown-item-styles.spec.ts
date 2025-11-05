@@ -2,15 +2,15 @@ import { getComponentCss } from './drilldown-item-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [true, true, true, 'light'],
-    [true, true, false, 'light'],
-    [true, false, true, 'light'],
-    [false, true, true, 'light'],
-    [true, false, false, 'light'],
-    [false, true, false, 'light'],
-    [false, false, true, 'auto'],
-    [false, false, false, 'dark'],
-  ])('should return correct css for isPrimary: %s, isSecondary: %s, isCascade: %s and theme: %s', (...args) => {
+    [true, true, true],
+    [true, true, false],
+    [true, false, true],
+    [false, true, true],
+    [true, false, false],
+    [false, true, false],
+    [false, false, true],
+    [false, false, false],
+  ])('should return correct css for isPrimary: %s, isSecondary: %s and isCascade: %s', (...args) => {
     // TODO: Adjust and use validateCssAndMatchSnapshot
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
