@@ -1,13 +1,10 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, TextSize, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, TextSize } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   hasPropValueChanged,
   TEXT_SIZES,
-  THEMES,
   TYPOGRAPHY_ALIGNS,
   TYPOGRAPHY_TEXT_COLORS,
   TYPOGRAPHY_TEXT_WEIGHTS,
@@ -23,7 +20,6 @@ const propTypes: PropTypes<typeof Text> = {
   align: AllowedTypes.oneOf<TextAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<TextColor>(TYPOGRAPHY_TEXT_COLORS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -54,28 +50,13 @@ export class Text {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      this.weight,
-      this.align,
-      this.color,
-      this.ellipsis,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.align, this.color, this.ellipsis);
 
     const TagType = getTextTagType(this.host, this.tag);
 

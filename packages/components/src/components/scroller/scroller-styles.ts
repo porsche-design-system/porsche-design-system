@@ -8,8 +8,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isThemeDark } from '../../utils';
+import { getCss } from '../../utils';
 import type { ScrollerAlignScrollIndicator } from './scroller-utils';
 
 const prevNextWrapperWidth = `calc(${fontLineHeight} + 24px)`;
@@ -18,8 +17,7 @@ export const getComponentCss = (
   isNextHidden: boolean,
   isPrevHidden: boolean,
   alignScrollIndicator: ScrollerAlignScrollIndicator,
-  hasScrollbar: boolean,
-  theme: Theme
+  hasScrollbar: boolean
 ): string => {
   const actionPrevNextStyles = {
     position: 'absolute',
@@ -80,7 +78,7 @@ export const getComponentCss = (
       minWidth: '100%',
       verticalAlign: 'top',
       borderRadius: borderRadiusSmall,
-      ...getFocusJssStyle(theme),
+      ...getFocusJssStyle(),
     },
     trigger: {
       position: 'absolute',
@@ -123,7 +121,7 @@ export const getComponentCss = (
     },
     'action-button': {
       ...dismissButtonJssStyle,
-      ...(!isThemeDark(theme) && dropShadowLowStyle),
+      ...dropShadowLowStyle,
     },
     icon: {
       '&:dir(rtl)': {

@@ -123,7 +123,6 @@ export class LinkTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const linkProps = {
-      theme: this.background,
       variant: 'secondary',
       aria: this.aria,
     };

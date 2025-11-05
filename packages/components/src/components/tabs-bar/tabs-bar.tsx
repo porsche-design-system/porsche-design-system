@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -12,7 +12,6 @@ import {
   observeBreakpointChange,
   parseJSON,
   setAttributes,
-  THEMES,
   unobserveBreakpointChange,
   validateProps,
 } from '../../utils';
@@ -33,7 +32,6 @@ import {
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
   weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -54,9 +52,6 @@ export class TabsBar {
 
   /** The text weight. */
   @Prop() public weight?: TabsBarWeight = 'regular';
-
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected. */
   @Prop() public activeTabIndex?: number | undefined;
@@ -124,7 +119,7 @@ export class TabsBar {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.weight, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.weight);
     this.setAccessibilityAttributes();
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -133,7 +128,6 @@ export class TabsBar {
       <PrefixedTagNames.pScroller
         class="scroller"
         {...(this.areTabsButtons && { aria: { role: 'tablist' } })}
-        theme={this.theme}
         alignScrollIndicator="top"
         ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         onClick={this.onClick}

@@ -3,12 +3,11 @@ import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
 import { getOptionJssStyle } from '../../../styles/select';
-import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 
 export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
 
-export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boolean): string => {
+export const getComponentCss = (isDisabled: boolean, selected: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -24,7 +23,7 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
         display: 'block',
       },
     },
-    option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`, theme),
+    option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`),
     'checkbox-wrapper': {
       fontFamily: fontFamily,
       fontSize: fontSizeTextSmall,
@@ -34,8 +33,8 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
     },
     checkbox: {
       flexShrink: 0,
-      ...getCheckboxBaseStyles(theme, isDisabled),
-      ...(selected && getCheckboxCheckedBaseStyles(theme, isDisabled)),
+      ...getCheckboxBaseStyles(isDisabled),
+      ...(selected && getCheckboxCheckedBaseStyles(isDisabled)),
     },
   });
 };

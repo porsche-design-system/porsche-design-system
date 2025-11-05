@@ -11,17 +11,16 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   cssVariableTransitionDuration,
   dismissButtonJssStyle,
   getAnimation,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   motionDurationMap,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss, type Theme } from '../../../utils';
+import { getCss } from '../../../utils';
 
 // public css variables
 export const cssVariableGridTemplate = '--p-drilldown-grid-template';
@@ -45,20 +44,9 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
-export const getComponentCss = (
-  isOpen: boolean,
-  isPrimary: boolean,
-  isSecondaryScrollerVisible: boolean,
-  theme: Theme
-): string => {
-  const { primaryColor, canvasColor, surfaceColor, scrimColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    canvasColor: canvasColorDark,
-    surfaceColor: surfaceColorDark,
-    scrimColor: scrimColorDark,
-  } = getThemedColors('dark');
+const { primaryColor, canvasColor, surfaceColor, backdropColor } = colors;
 
+export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondaryScrollerVisible: boolean): string => {
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
@@ -78,17 +66,11 @@ export const getComponentCss = (
           [cssVarColorPrimary]: primaryColor,
           [cssVarColorBackgroundBase]: canvasColor,
           [cssVarColorBackgroundSurface]: surfaceColor,
-          [cssVarColorBackgroundShading]: scrimColor,
-          [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
+          [cssVarColorBackgroundShading]: backdropColor,
+          // [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
+          [cssVarColorBackgroundScroller]: 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            [cssVarColorPrimary]: primaryColorDark,
-            [cssVarColorBackgroundBase]: canvasColorDark,
-            [cssVarColorBackgroundSurface]: surfaceColorDark,
-            [cssVarColorBackgroundShading]: scrimColorDark,
-            [cssVarColorBackgroundScroller]: 'rgba(0,0,0,.01)', // ensures that the scrollbar color is mostly set correctly
-          }),
         }),
       },
       ...preventFoucOfNestedElementsStyles,

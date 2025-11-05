@@ -3,6 +3,7 @@ import {
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
+  frostedGlassStyle,
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
@@ -10,28 +11,27 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../styles';
-import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import type { AlignLabel, BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
+const { primaryColor, contrastMediumColor, successColor, contrastDisabledColor, frostedColor, successFrostedColor } =
+  colors;
 const getColors = (
   checked: boolean,
   disabled: boolean,
-  loading: boolean,
-  theme: Theme
+  loading: boolean
 ): {
   buttonBorderColor: string;
   buttonBorderColorHover: string;
@@ -41,32 +41,18 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const { primaryColor, contrast50Color, successColor, contrast40Color } = getThemedColors(theme);
-  const { canvasColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const { canvasColor, canvasTextColor } = getHighContrastColors();
-  const checkedColor = isHighContrastMode ? canvasTextColor : successColor;
-  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && contrast40Color;
+  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && contrastDisabledColor;
 
   return {
-    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrast50Color),
-    buttonBorderColorHover: checked ? (isHighContrastMode ? primaryColor : 'deeppink') : primaryColor,
-    buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? (isHighContrastMode ? checkedColor : 'deeppink') : 'transparent',
+    buttonBorderColor: disabledOrLoadingColor || (checked ? successFrostedColor : contrastMediumColor),
+    buttonBorderColorHover: checked ? successColor : primaryColor,
+    buttonBackgroundColor: checked ? successFrostedColor : disabledOrLoadingColor || frostedColor,
+    buttonBackgroundColorHover: checked ? successFrostedColor : frostedColor,
     toggleBackgroundColor:
       (loading && 'transparent') ||
-      (disabled && !checked && contrast40Color) ||
-      (checked
-        ? isHighContrastMode
-          ? canvasColor
-          : lightThemeBackgroundColor
-        : isHighContrastMode
-          ? canvasTextColor
-          : primaryColor),
-    toggleBackgroundColorHover: checked
-      ? lightThemeBackgroundColor
-      : isHighContrastMode
-        ? canvasTextColor
-        : primaryColor,
+      (disabled && !checked && contrastDisabledColor) ||
+      (checked ? successColor : primaryColor),
+    toggleBackgroundColorHover: checked ? successColor : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
 };
@@ -78,8 +64,7 @@ export const getComponentCss = (
   checked: boolean,
   disabled: boolean,
   loading: boolean,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): string => {
   const {
     buttonBorderColor,
@@ -89,16 +74,7 @@ export const getComponentCss = (
     toggleBackgroundColor,
     toggleBackgroundColorHover,
     textColor,
-  } = getColors(checked, disabled, loading, theme);
-  const {
-    buttonBorderColor: buttonBorderColorDark,
-    buttonBorderColorHover: buttonBorderColorHoverDark,
-    buttonBackgroundColor: buttonBackgroundColorDark,
-    buttonBackgroundColorHover: buttonBackgroundColorHoverDark,
-    toggleBackgroundColor: toggleBackgroundColorDark,
-    toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
-    textColor: textColorDark,
-  } = getColors(checked, disabled, loading, 'dark');
+  } = getColors(checked, disabled, loading);
 
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
 
@@ -150,15 +126,12 @@ export const getComponentCss = (
         height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         boxSizing: 'content-box',
+        ...frostedGlassStyle,
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
         borderRadius: `calc((${dimension} + ${borderWidthBase} * 2) / 2)`,
-        canvasColor: buttonBackgroundColor,
+        backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: buttonBorderColorDark,
-          canvasColor: buttonBackgroundColorDark,
-        }),
         margin: 0, // Removes default button margin on safari 15
         padding: 0,
         marginTop,
@@ -168,20 +141,13 @@ export const getComponentCss = (
           hoverMediaQuery({
             '&:hover': {
               borderColor: buttonBorderColorHover,
-              canvasColor: buttonBackgroundColorHover,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: buttonBorderColorHoverDark,
-                canvasColor: buttonBackgroundColorHoverDark,
-              }),
+              backgroundColor: buttonBackgroundColorHover,
               '& .toggle': {
-                canvasColor: toggleBackgroundColorHover,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  canvasColor: toggleBackgroundColorHoverDark,
-                }),
+                backgroundColor: toggleBackgroundColorHover,
               },
             },
           })),
-        ...getFocusJssStyle(theme),
+        ...getFocusJssStyle(),
         '&::before': {
           // Ensures the touch target is at least 24px, even if the switch is smaller than the minimum touch target size.
           // This pseudo-element expands the clickable area without affecting the visual size of the switch itself.
@@ -196,9 +162,6 @@ export const getComponentCss = (
         minHeight: 0, // prevents flex child to overflow max available parent size
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         color: textColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: textColorDark,
-        }),
         ...mergeDeep(
           buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
             order: alignLabelValue === 'start' ? -1 : 0,
@@ -218,15 +181,12 @@ export const getComponentCss = (
       width: `calc(${dimension} - ${borderWidthBase} * 2)`,
       height: `calc(${dimension} - ${borderWidthBase} * 2)`,
       borderRadius: '50%',
-      canvasColor: toggleBackgroundColor,
+      backgroundColor: toggleBackgroundColor,
       transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
       transform: `translate3d(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase}, 0, 0)`,
       '&:dir(rtl)': {
         transform: `translate3d(calc(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase} * -1), 0, 0)`,
       },
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        canvasColor: toggleBackgroundColorDark,
-      }),
     },
     ...(loading && {
       spinner: {

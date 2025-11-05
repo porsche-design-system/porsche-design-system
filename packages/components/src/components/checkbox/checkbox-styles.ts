@@ -10,19 +10,17 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHighContrastColors,
+  colors,
   getSchemedHighContrastMediaQuery,
-  getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
@@ -35,54 +33,28 @@ const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
+const { primaryColor, contrastMediumColor, contrastHighColor, contrastDisabledColor, focusColor } = colors;
+
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): string => {
-  const { primaryColor, contrast50Color, contrast80Color, contrast40Color, focusColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrast50Color: contrast50ColorDark,
-    contrast80Color: contrast80ColorDark,
-    contrast40Color: contrast40ColorDark,
-    focusColor: focusColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
-  const { canvasTextColor } = getHighContrastColors();
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? contrast40Color : formStateColor || contrast50Color;
-  const uncheckedColorDark = disabledOrLoading ? contrast40ColorDark : formStateColorDark || contrast50ColorDark;
+  const uncheckedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const uncheckedHoverColorDark = formStateHoverColorDark || primaryColorDark;
-  const checkedColor = isHighContrastMode
-    ? canvasTextColor
-    : disabledOrLoading
-      ? contrast40Color
-      : formStateColor || primaryColor;
-  const checkedColorDark = isHighContrastMode
-    ? canvasTextColor
-    : disabledOrLoading
-      ? contrast40ColorDark
-      : formStateColorDark || primaryColorDark;
-  const checkedHoverColor = formStateHoverColor || contrast80Color;
-  const checkedHoverColorDark = formStateHoverColorDark || contrast80ColorDark;
+  const checkedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor;
+  const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   const indeterminateIconColor = escapeHashCharacter(
-    disabledOrLoading ? contrast40ColorDark : formStateColor || primaryColor
+    disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor
   );
-  const indeterminateIconColorDark = escapeHashCharacter(formStateColorDark || primaryColorDark);
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
-  const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
   const background = `transparent 0% 0% / ${fontLineHeight}`;
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
@@ -103,33 +75,22 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
+      input: getCheckboxBaseStyles(isDisabled, isLoading, state, compact),
       ...(isLoading
         ? {
             'input:checked': {
               // background-image is merged in later
               borderColor: checkedColor,
               backgroundColor: checkedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
             },
           }
         : {
-            'input:checked': getCheckboxCheckedBaseStyles(theme, isDisabled, isLoading, state),
+            'input:checked': getCheckboxCheckedBaseStyles(isDisabled, isLoading, state),
             'input:indeterminate': {
               background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
               borderColor: uncheckedColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
               backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getIndeterminateSVGBackgroundImage(
-                  disabledOrLoading ? indeterminateIconColor : indeterminateIconColorDark
-                ),
-                borderColor: uncheckedColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-                backgroundColor: 'transparent', // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-              }),
-              // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+              // This is a workaround for Blink based browsers, which do not reflect the high semantic system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
               ...(isHighContrastMode &&
                 getSchemedHighContrastMediaQuery(
                   {
@@ -146,27 +107,15 @@ export const getComponentCss = (
         hoverMediaQuery({
           'input:hover,label:hover~.wrapper input': {
             borderColor: uncheckedHoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: uncheckedHoverColorDark,
-            }),
           },
           'input:checked:hover,label:hover~.wrapper input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: checkedHoverColorDark,
-              backgroundColor: checkedHoverColorDark,
-            }),
           },
           'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColorDark)),
-              borderColor: uncheckedHoverColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode
-              backgroundColor: 'transparent',
-            }),
           },
           'label:hover~.wrapper input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
@@ -182,9 +131,6 @@ export const getComponentCss = (
         'input:focus-visible': {
           outline: `${borderWidthBase} solid ${focusColor}`,
           outlineOffset: '2px',
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
-          }),
         },
       }),
     },
@@ -222,7 +168,6 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(
       isDisabled || isLoading,
       hideLabel,
-      theme,
       {
         gridArea: '1/2',
         ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
@@ -233,7 +178,7 @@ export const getComponentCss = (
       }
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state, {
+    ...getFunctionalComponentStateMessageStyles(state, {
       gridColumn: '1/3',
     }),
     // .loading

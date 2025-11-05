@@ -1,15 +1,12 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
@@ -24,7 +21,6 @@ const propTypes: PropTypes<typeof Switch> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -60,9 +56,6 @@ export class Switch {
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the switch color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
@@ -77,7 +70,6 @@ export class Switch {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
@@ -105,8 +97,7 @@ export class Switch {
       this.checked,
       this.disabled,
       this.loading,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -124,9 +115,7 @@ export class Switch {
         >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">
-            {this.loading && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-            )}
+            {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
           </span>
         </button>
         <label id="label" htmlFor="switch">

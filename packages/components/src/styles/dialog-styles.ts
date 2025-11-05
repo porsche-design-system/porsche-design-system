@@ -7,14 +7,7 @@ import {
   spacingStaticMedium,
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { isThemeDark, type Theme } from '../utils';
-import {
-  cssVariableTransitionDuration,
-  getThemedColors,
-  getTransition,
-  motionDurationMap,
-  prefersColorSchemeDarkMediaQuery,
-} from './';
+import { colors, cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -28,10 +21,10 @@ export const dialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-width-max': 'none',
 };
 
-export const getDialogJssStyle = (isVisible: boolean, theme: Theme, backdrop: Backdrop = 'blur'): JssStyle => {
+export const getDialogJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   return {
     ...dialogBackdropResetJssStyle,
-    ...getDialogBackdropTransitionJssStyle(isVisible, theme, backdrop),
+    ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
   };
 };
 
@@ -53,14 +46,10 @@ const dialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-const getDialogBackdropTransitionJssStyle = (
-  isVisible: boolean,
-  theme: Theme,
-  backdrop: Backdrop = 'blur'
-): JssStyle => {
+const { backdropColor, primaryColor, canvasColor } = colors;
+
+const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
-  const { scrimColor } = getThemedColors(theme);
-  const { scrimColor: scrimColorDark } = getThemedColors('dark');
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
@@ -77,11 +66,8 @@ const getDialogBackdropTransitionJssStyle = (
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          background: scrimColor,
+          background: backdropColor,
           ...(isBackdropBlur && frostedGlassStyle),
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: scrimColorDark,
-          }),
         }
       : {
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
@@ -97,11 +83,11 @@ const getDialogBackdropTransitionJssStyle = (
   };
 };
 
-export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
+export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): JssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
-  const background: { [K in Theme]: string } = {
+  const background = {
     light: backgroundLight,
     dark: backgroundDark,
     auto: backgroundLight,
@@ -122,10 +108,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
-    background: background[theme],
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: background.dark,
-    }),
+    background: background.light,
   };
 };
 
@@ -139,17 +122,10 @@ export const dialogGridJssStyle: JssStyle = {
   alignContent: 'flex-start',
 };
 
-export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
-  const { primaryColor, canvasColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, canvasColor: canvasColorDark } = getThemedColors('dark');
-
+export const getDialogColorJssStyle = (): JssStyle => {
   return {
     color: primaryColor, // enables color inheritance for slots
     background: canvasColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: primaryColorDark,
-      background: canvasColorDark,
-    }),
   };
 };
 
@@ -176,11 +152,9 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
-  const { canvasColor } = getThemedColors(theme);
-  const { canvasColor: canvasColorDark } = getThemedColors('dark');
+export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer'): JssStyle => {
   const scrollShadowColor = 'rgba(204, 204, 204, 0.35)';
-  const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
+  // const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
   const isAreaHeader = area === 'header';
   const boxShadowDimension = `0 ${isAreaHeader ? 5 : -5}px 10px`;
 
@@ -193,16 +167,10 @@ export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Th
       isAreaHeader ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)` : `-${spacingStaticMedium}`
     } -${spacingStaticMedium}`,
     background: canvasColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: canvasColorDark,
-    }),
     clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
-      boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} ${boxShadowDimension}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        boxShadow: `${scrollShadowColorDark} ${boxShadowDimension}`,
-      }),
+      boxShadow: `${scrollShadowColor} ${boxShadowDimension}`,
     },
   };
 };

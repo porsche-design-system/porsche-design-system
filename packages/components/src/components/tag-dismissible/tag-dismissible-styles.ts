@@ -2,31 +2,22 @@ import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
+import { getCss } from '../../utils';
 import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import type { TagDismissibleColor } from './tag-dismissible-utils';
 
-export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, theme: Theme): string => {
-  const themedColors = getThemedColors(theme);
-  const themedColorsDark = getThemedColors('dark');
-  const { primaryColor, frostedColor, contrast80Color } = themedColors;
-  const {
-    primaryColor: primaryColorDark,
-    frostedColor: frostedColorDark,
-    contrast80Color: contrast80ColorDark,
-  } = themedColorsDark;
-  const backgroundColor = getThemedBackgroundColor(color, themedColors);
-  const backgroundColorDark = getThemedBackgroundColor(color, themedColorsDark);
+const { primaryColor, frostedColor, contrastHighColor } = colors;
+
+export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
+  const backgroundColor = getThemedBackgroundColor(color);
 
   return getCss({
     '@global': {
@@ -55,34 +46,20 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean, t
         color: primaryColor,
         textAlign: 'start',
         ...textSmallStyle,
-        ...(isHighContrastMode && {
-          // TODO: using border would increase the dimension but using outline interferes with the focus style
-          outline: '1px solid transparent',
-        }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-          color: primaryColorDark,
-        }),
         ...hoverMediaQuery({
           '&:hover > .icon': {
             backgroundColor: frostedColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: frostedColorDark,
-            }),
           },
         }),
-        ...getFocusJssStyle(theme),
+        ...getFocusJssStyle(),
       },
     },
     ...(hasLabel && {
       label: {
         display: 'block',
         marginBottom: '-4px',
-        color: contrast80Color,
+        color: contrastHighColor,
         fontSize: fontSizeTextXSmall,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrast80ColorDark,
-        }),
       },
     }),
     icon: {

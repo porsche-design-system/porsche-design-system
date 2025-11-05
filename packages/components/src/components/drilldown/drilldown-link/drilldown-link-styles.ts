@@ -45,8 +45,7 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
                   textDecorationColor: 'inherit',
                 },
               }),
-              // TODO: focus color is the same for all themes but could change in the future
-              ...getFocusJssStyle('light', { slotted: 'a', offset: '-2px' }),
+              ...getFocusJssStyle({ slotted: 'a', offset: '-2px' }),
             }),
           }
         : {
@@ -57,8 +56,7 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
                   textDecorationColor: 'inherit',
                 },
               }),
-              // TODO: focus color is the same for all themes but could change in the future
-              ...getFocusJssStyle('light', { offset: '-2px' }),
+              ...getFocusJssStyle({ offset: '-2px' }),
             },
           }),
     },

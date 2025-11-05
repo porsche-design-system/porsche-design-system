@@ -1,14 +1,11 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { PropTypes, Theme } from '../../types';
+import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   HEADING_TAGS,
   hasHeading,
-  THEMES,
   validateProps,
 } from '../../utils';
 import type { IconColor } from '../icon/icon-utils';
@@ -31,7 +28,6 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   actionLabel: AllowedTypes.string,
   actionLoading: AllowedTypes.boolean,
   actionIcon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -69,22 +65,15 @@ export class InlineNotification {
   /** Action icon of the inline-notification. */
   @Prop() public actionIcon?: InlineNotificationActionIcon = 'arrow-right';
 
-  /** Adapts the inline-notification color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   /** Emitted when the action button is clicked. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.dismissButton, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.state, !!this.actionLabel, this.dismissButton);
 
     const bannerId = 'banner';
     const labelId = 'label';
@@ -98,7 +87,6 @@ export class InlineNotification {
           class="icon"
           name={getInlineNotificationIconName(this.state)}
           color={`notification-${this.state}` as IconColor}
-          theme={this.theme}
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
@@ -117,7 +105,6 @@ export class InlineNotification {
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure
             class="action"
-            theme={this.theme}
             icon={this.actionIcon}
             loading={this.actionLoading}
             onClick={this.action.emit}
@@ -131,7 +118,6 @@ export class InlineNotification {
             type="button"
             variant="ghost"
             icon="close"
-            theme={this.theme}
             hideLabel={true}
             aria-controls={bannerId}
             onClick={this.dismiss.emit}

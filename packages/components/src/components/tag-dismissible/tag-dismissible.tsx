@@ -1,12 +1,11 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
@@ -19,7 +18,6 @@ import {
 
 const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   label: AllowedTypes.string,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
 };
@@ -37,9 +35,6 @@ export class TagDismissible {
   /** Background color variations */
   @Prop() public color?: TagDismissibleColor = 'background-surface';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** The label text. */
   @Prop() public label?: string;
 
@@ -52,7 +47,7 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.color, !!this.label, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.color, !!this.label);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
@@ -62,7 +57,7 @@ export class TagDismissible {
           {this.label && <span class="label">{this.label}</span>}
           <slot />
         </span>
-        <PrefixedTagNames.pIcon class="icon" name="close" theme={this.theme} aria-hidden="true" />
+        <PrefixedTagNames.pIcon class="icon" name="close" aria-hidden="true" />
       </button>
     );
   }

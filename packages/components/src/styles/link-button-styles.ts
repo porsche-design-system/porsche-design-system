@@ -1,64 +1,41 @@
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  frostedGlassStyle,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { borderRadiusSmall, fontLineHeight, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
+import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
+import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from './';
 
 type Colors = {
   textColor: string;
-  borderColor: string;
-  borderColorHover: string;
   backgroundColor: string;
   backgroundColorHover: string;
 };
 
-const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, canvasInvertedColor, primaryInvertedColor, contrast80Color, contrast50Color, frostedColor } =
-    getThemedColors(theme);
-  const { canvasColor } = getHighContrastColors();
+const { primaryColor, canvasColor, contrastHighColor, frostedColor, frostedSoftColor } = colors;
 
+const getVariantColors = (variant: LinkButtonVariant): Colors => {
   const colors: {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: primaryInvertedColor,
-      borderColor: canvasInvertedColor,
-      borderColorHover: contrast80Color,
-      backgroundColor: canvasInvertedColor,
-      backgroundColorHover: contrast80Color,
+      textColor: canvasColor,
+      backgroundColor: primaryColor,
+      backgroundColorHover: contrastHighColor,
     },
     secondary: {
       textColor: primaryColor,
-      borderColor: primaryColor,
-      borderColorHover: contrast50Color,
-      backgroundColor: isHighContrastMode ? canvasColor : 'transparent',
-      backgroundColorHover: frostedColor,
-    },
-    ghost: {
-      textColor: primaryColor,
-      borderColor: frostedColor,
-      borderColorHover: frostedColor,
       backgroundColor: frostedColor,
-      backgroundColorHover: frostedColor,
+      backgroundColorHover: frostedSoftColor,
     },
   };
 
@@ -73,31 +50,17 @@ export const getLinkButtonStyles = (
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   compact: BreakpointCustomizable<boolean>,
-  cssVariableInternalScaling: string,
-  theme: Theme
+  cssVariableInternalScaling: string
 ): Styles => {
-  const isPrimary = variant === 'primary';
-  const { textColor, borderColor, borderColorHover, backgroundColor, backgroundColorHover } = getVariantColors(
-    variant,
-    theme
-  );
-  const {
-    textColor: textColorDark,
-    borderColor: borderColorDark,
-    borderColorHover: borderColorHoverDark,
-    backgroundColor: backgroundColorDark,
-    backgroundColorHover: backgroundColorHoverDark,
-  } = getVariantColors(variant, 'dark');
+  const { textColor, backgroundColor, backgroundColorHover } = getVariantColors(variant);
 
-  const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
+  const isSecondary = variant === 'secondary';
 
   const scalingVar = `var(${cssVariableInternalScaling}, var(--p-internal-scaling-factor))`;
 
-  const borderCompensation = variant === 'ghost' && !isHighContrastMode ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
-  const borderStyle = `${borderWidthBase} solid ${borderColor}`;
-  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} ${borderCompensation})`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
-  const paddingInline = `max(calc(${scalingVar} * 1.625 * ${SCALING_BASE_VALUE} ${borderCompensation}), ${variant === 'ghost' ? '6px' : '4px'})`; // 1.625 * SCALING_BASE_VALUE corresponds to 26px
+  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE})`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
+  const paddingInline = `max(calc(${scalingVar} * 1.625 * ${SCALING_BASE_VALUE}), ${isSecondary ? '6px' : '4px'})`; // 1.625 * SCALING_BASE_VALUE corresponds to 26px
   const gap = `clamp(2px, calc(${scalingVar} * 0.5 * ${SCALING_BASE_VALUE}), 16px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 8px
   const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * -0.5 * ${SCALING_BASE_VALUE}), -2px)`; // -0.5 * SCALING_BASE_VALUE corresponds to -8px
 
@@ -116,6 +79,7 @@ export const getLinkButtonStyles = (
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
+      border: 'none',
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'center',
@@ -126,13 +90,8 @@ export const getLinkButtonStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
+      ...frostedGlassStyle,
       ...textSmallStyle,
-      ...(variant === 'ghost'
-        ? {
-            ...frostedGlassStyle,
-            border: isHighContrastMode ? borderStyle : 'none',
-          } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
-        : { border: borderStyle }),
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
@@ -145,24 +104,13 @@ export const getLinkButtonStyles = (
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
         gap: hideLabelValue ? 0 : gap,
       })),
-      ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
+      ...(!hasSlottedAnchor && getFocusJssStyle()),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
             backgroundColor: backgroundColorHover,
-            borderColor: isHighContrastMode ? focusColor : borderColorHover,
-            ...(!isPrimary && frostedGlassStyle),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: backgroundColorHoverDark,
-              borderColor: borderColorHoverDark,
-            }),
           },
         })),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: borderColorDark,
-        backgroundColor: backgroundColorDark,
-        color: textColorDark,
-      }),
     },
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {

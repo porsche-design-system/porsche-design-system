@@ -1,24 +1,16 @@
 import { fontWeightSemiBold, spacingStaticSmall, textXSmallStyle } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import type { Theme } from '../../types';
+import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 
 export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
+
 const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
+const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
+const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
 
-export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
-  const { primaryColor, contrast40Color } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrast40Color: contrast40ColorDark } = getThemedColors('dark');
+const { primaryColor, contrastDisabledColor } = colors;
 
-  const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
-  const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
-
+export const getComponentCss = (isDisabled: boolean): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
@@ -37,16 +29,7 @@ export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
       '[role="presentation"]': {
         padding,
         font: textXSmallStyle.font.replace(' 400 ', ` ${fontWeightSemiBold} `),
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-        ...(isDisabled && {
-          color: contrast40Color,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrast40ColorDark,
-          }),
-        }),
+        color: isDisabled ? contrastDisabledColor : primaryColor,
       },
     },
   });

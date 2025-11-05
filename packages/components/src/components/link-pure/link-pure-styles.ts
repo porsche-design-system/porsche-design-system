@@ -1,7 +1,7 @@
 import { borderRadiusSmall } from '@porsche-design-system/styles';
 import { addImportantToEachRule, getFocusJssStyle, getResetInitialStylesForSlottedAnchor } from '../../styles';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
 export const getComponentCss = (
@@ -13,8 +13,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
-  hasSlottedAnchor: boolean,
-  theme: Theme
+  hasSlottedAnchor: boolean
 ): string => {
   return getCss(
     mergeDeep(
@@ -28,8 +27,7 @@ export const getComponentCss = (
         hideLabel,
         alignLabel,
         underline,
-        hasSlottedAnchor,
-        theme
+        hasSlottedAnchor
       ),
       hasSlottedAnchor && {
         '@global': addImportantToEachRule({
@@ -52,7 +50,7 @@ export const getComponentCss = (
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
               })),
             },
-            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true, offset: '-2px' }),
+            ...getFocusJssStyle({ slotted: 'a', pseudo: true, offset: '-2px' }),
           },
         }),
       }

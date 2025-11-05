@@ -1,18 +1,16 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../types';
+import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getDirectChildHTMLElement,
   getPrefixedTagNames,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
 import { TAG_COLORS, type TagColor, type TagIcon } from './tag-utils';
 
 const propTypes: PropTypes<typeof Tag> = {
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
   icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   iconSource: AllowedTypes.string,
@@ -28,9 +26,6 @@ const propTypes: PropTypes<typeof Tag> = {
 })
 export class Tag {
   @Element() public host!: HTMLElement;
-
-  /** Adapts the tag color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Background color variations depending on theme property. */
   @Prop() public color?: TagColor = 'background-surface';
@@ -53,8 +48,7 @@ export class Tag {
       this.color,
       this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
-      hasIcon,
-      this.theme
+      hasIcon
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -67,7 +61,6 @@ export class Tag {
             source={this.iconSource}
             color="primary"
             size="x-small"
-            theme={this.theme}
             aria-hidden="true"
           />
         )}

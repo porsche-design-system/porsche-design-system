@@ -1,15 +1,6 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
-import type { PropTypes, Theme } from '../../../types';
-import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  getPrefixedTagNames,
-  hasNamedSlot,
-  THEMES,
-  validateProps,
-} from '../../../utils';
+import type { PropTypes } from '../../../types';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasNamedSlot, validateProps } from '../../../utils';
 import { getComponentCss } from './table-styles';
 import {
   SORT_EVENT_NAME,
@@ -23,7 +14,6 @@ const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
   compact: AllowedTypes.boolean,
   layout: AllowedTypes.oneOf<TableLayout>(TABLE_LAYOUTS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -47,15 +37,8 @@ export class Table {
   /** Controls the layout behavior of the table. */
   @Prop() public layout?: TableLayout = 'auto';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
 
   public componentWillLoad(): void {
     warnIfCaptionIsMissing(this.host, this.caption);
@@ -67,7 +50,7 @@ export class Table {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.compact, this.layout, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.compact, this.layout);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
@@ -84,7 +67,7 @@ export class Table {
           </div>
         )}
 
-        <PrefixedTagNames.pScroller scrollbar={true} theme={this.theme}>
+        <PrefixedTagNames.pScroller scrollbar={true}>
           <div class="table" role="table" {...tableAttr}>
             <slot />
           </div>

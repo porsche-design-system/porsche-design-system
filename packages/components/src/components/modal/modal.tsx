@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import { BACKDROPS } from '../../styles/dialog-styles';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,7 +14,6 @@ import {
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
-  THEMES,
   unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
@@ -37,7 +36,6 @@ const propTypes: PropTypes<typeof Modal> = {
   backdrop: AllowedTypes.oneOf<ModalBackdrop>(BACKDROPS),
   fullscreen: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ModalAriaAttribute>(MODAL_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -71,9 +69,6 @@ export class Modal {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
-
-  /** Adapts the modal color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -153,8 +148,7 @@ export class Modal {
       this.fullscreen,
       this.dismissButton,
       this.hasHeader,
-      this.hasFooter,
-      this.theme
+      this.hasFooter
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -184,7 +178,6 @@ export class Modal {
                 hideLabel={true}
                 icon="close"
                 onClick={this.dismissDialog}
-                theme={this.theme}
               >
                 Dismiss modal
               </PrefixedTagNames.pButton>

@@ -1,12 +1,11 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../types';
+import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   validateProps,
 } from '../../utils';
@@ -31,7 +30,6 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
     next: AllowedTypes.string,
     page: AllowedTypes.string,
   }),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -64,9 +62,6 @@ export class Pagination {
     page: 'Page',
   };
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the page changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEventDetail>;
 
@@ -82,7 +77,7 @@ export class Pagination {
     validateProps(this, propTypes);
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
-    attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage);
     const paginationItems = createPaginationItems({
       activePage: getCurrentActivePage(this.activePage, pageTotal),
       pageTotal,
@@ -112,7 +107,6 @@ export class Pagination {
               onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e, value),
             };
             const iconProps = {
-              theme: this.theme,
               color: isActive ? 'primary' : 'state-disabled',
               'aria-hidden': 'true',
             };

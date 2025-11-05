@@ -90,8 +90,7 @@ export class SegmentedControlItem {
       isDisabled,
       this.host.selected,
       hasIcon,
-      hasSlottedContent,
-      this.host.theme || 'light' // default as fallback
+      hasSlottedContent
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -106,7 +105,6 @@ export class SegmentedControlItem {
               name={this.icon}
               source={this.iconSource}
               color={getIconColor(this.disabled)}
-              theme={this.host.theme || 'light'}
               aria-hidden="true"
             />
           )}

@@ -8,16 +8,14 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -26,7 +24,7 @@ import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils
 type NumberedCircleColors = {
   primaryColor: string;
   invertedBaseColor: string;
-  contrast40Color: string;
+  contrastDisabledColor: string;
 };
 
 const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
@@ -36,8 +34,8 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
     {} as NumberedCircleColors
   );
 
-  const { contrast40Color, invertedBaseColor, primaryColor } = escapedNumberedCircleColors;
-  const fillColor = isStateCurrent ? invertedBaseColor : contrast40Color;
+  const { contrastDisabledColor, invertedBaseColor, primaryColor } = escapedNumberedCircleColors;
+  const fillColor = isStateCurrent ? invertedBaseColor : contrastDisabledColor;
 
   const svgCirclePath = `<circle fill="${isStateCurrent ? primaryColor : 'none'}"${
     isStateCurrent ? '' : ` stroke="${fillColor}"`
@@ -61,15 +59,9 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
   return svgNumberedCirclePaths[stepCount];
 };
 
-export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean, theme: Theme): string => {
-  const { primaryColor, primaryInvertedColor, frostedColor, contrast40Color } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    primaryInvertedColor: primaryInvertedColorDark,
-    frostedColor: frostedColorDark,
-    contrast40Color: contrast40ColorDark,
-  } = getThemedColors('dark');
+const { primaryColor, canvasColor, frostedColor, contrastDisabledColor } = colors;
 
+export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean): string => {
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;
   const isDisabled = !state || disabled;
@@ -87,25 +79,12 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
                     i,
                     {
                       primaryColor,
-                      invertedBaseColor: primaryInvertedColor,
-                      contrast40Color,
+                      invertedBaseColor: canvasColor,
+                      contrastDisabledColor,
                     },
                     isStateCurrent
                   )
                 ),
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  backgroundImage: getInlineSVGBackgroundImage(
-                    getSVGPath(
-                      i,
-                      {
-                        primaryColor: primaryColorDark,
-                        invertedBaseColor: primaryInvertedColorDark,
-                        contrast40Color: contrast40ColorDark,
-                      },
-                      isStateCurrent
-                    )
-                  ),
-                }),
               },
             }),
             {} as JssStyle
@@ -123,7 +102,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         display: 'flex',
         position: 'relative',
         gap: '3px',
-        color: isDisabled ? contrast40Color : primaryColor,
+        color: isDisabled ? contrastDisabledColor : primaryColor,
         padding: '4px 10px 4px 6px',
         margin: 0, // Removes default button margin on safari 15
         background: 0,
@@ -137,21 +116,12 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           ...frostedGlassStyle,
           background: frostedColor,
         }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: isDisabled ? contrast40ColorDark : primaryColorDark,
-          ...(isStateCurrent && {
-            background: frostedColorDark,
-          }),
-        }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
               ...frostedGlassStyle,
               background: frostedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: frostedColorDark,
-              }),
             },
           })),
         ...(isStateCurrentOrUndefined && {
@@ -163,7 +133,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
             width: fontLineHeight,
           },
         }),
-        ...getFocusJssStyle(theme, { offset: '-2px' }),
+        ...getFocusJssStyle({ offset: '-2px' }),
       },
     },
     ...(!isStateCurrentOrUndefined && {

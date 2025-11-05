@@ -1,15 +1,6 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  hasPropValueChanged,
-  THEMES,
-  TYPOGRAPHY_ALIGNS,
-  validateProps,
-} from '../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, TYPOGRAPHY_ALIGNS, validateProps } from '../../utils';
 import { getComponentCss } from './display-styles';
 import {
   DISPLAY_COLORS,
@@ -28,7 +19,6 @@ const propTypes: PropTypes<typeof Display> = {
   align: AllowedTypes.oneOf<DisplayAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -56,20 +46,13 @@ export class Display {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis);
 
     const TagType = getDisplayTagType(this.host, this.size, this.tag);
 

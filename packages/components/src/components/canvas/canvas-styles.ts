@@ -11,31 +11,26 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss, isThemeDark, type Theme } from '../../utils';
+import { getCss } from '../../utils';
 
 // public css classes
-const cssClassGrid = '-p-canvas-grid';
+const cssClassGrid = '-p-canvasColor-grid';
 
 // public css variables
-const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
-const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
+const cssVarSidebarStartWidth = '--p-canvasColor-sidebar-start-width';
+const cssVarSidebarEndWidth = '--p-canvasColor-sidebar-end-width';
 
 // default values for public css variables
 const sidebarStartWidth = `var(${cssVarSidebarStartWidth},320px)`;
 const sidebarEndWidth = `var(${cssVarSidebarEndWidth},320px)`;
 
 // private css variables
-const cssVarPrimaryColor = '--_a';
-const cssVarCanvasColor = '--_b';
-const cssVarSurfaceColor = '--_c';
-const cssVarContrast20Color = '--_d';
 const cssVarFooterGradientColor = '--_e';
 const cssVarTemplateSidebarStartWidth = '--_f';
 const cssVarTemplateSidebarEndWidth = '--_g';
@@ -47,15 +42,9 @@ const mediaQueryM = getMediaQueryMin('m');
 // others
 const spacingBase = gridGap.replace('36px', '24px');
 
-export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
-  const { primaryColor, canvasColor, surfaceColor, contrast20Color } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    canvasColor: canvasColorDark,
-    surfaceColor: surfaceColorDark,
-    contrast20Color: contrast20ColorDark,
-  } = getThemedColors('dark');
+const { primaryColor, canvasColor, surfaceColor, contrastLowColor } = colors;
 
+export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -82,7 +71,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
             color: 'inherit',
             borderRadius: borderRadiusSmall,
           },
-          ...getFocusJssStyle(theme, { slotted: 'a' }),
+          ...getFocusJssStyle({ slotted: 'a' }),
         },
         '&[name="sidebar-end-header"]': {
           display: 'block', // ensures header section of sidebar-end area is aligned correctly
@@ -121,11 +110,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
     },
     root: {
-      [cssVarPrimaryColor]: primaryColor,
-      [cssVarCanvasColor]: canvasColor,
-      [cssVarSurfaceColor]: surfaceColor,
-      [cssVarContrast20Color]: contrast20Color,
-      [cssVarFooterGradientColor]: `0,0%,${isThemeDark(theme) ? '0%' : '100%'}`,
+      [cssVarFooterGradientColor]: '0,0%,100%',
       [cssVarTemplateSidebarStartWidth]: isSidebarStartOpen ? sidebarStartWidth : '0px',
       [cssVarTemplateSidebarEndWidth]: isSidebarEndOpen ? sidebarEndWidth : '0px',
       display: 'grid',
@@ -134,16 +119,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       minWidth: '320px',
       minHeight: '100dvh',
       font: textSmallStyle.font,
-      color: `var(${cssVarPrimaryColor})`,
-      background: `var(${cssVarCanvasColor})`,
+      color: primaryColor,
+      background: canvasColor,
       transition: getTransition('grid-template-columns'),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        [cssVarPrimaryColor]: primaryColorDark,
-        [cssVarCanvasColor]: canvasColorDark,
-        [cssVarSurfaceColor]: surfaceColorDark,
-        [cssVarContrast20Color]: contrast20ColorDark,
-        [cssVarFooterGradientColor]: '0,0%,0%',
-      }),
       [mediaQueryS]: {
         gridTemplateColumns: `var(${cssVarTemplateSidebarStartWidth}) minmax(0,1fr)`,
         gridTemplateAreas: '"sidebar-start header" "sidebar-start main" "sidebar-start footer"',
@@ -158,8 +136,8 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           content: '""',
           zIndex: 2,
           gridArea: '1/2/-1/3',
-          boxShadow: `1px 0 0 0 var(${cssVarContrast20Color})`,
-          background: `var(${cssVarCanvasColor})`,
+          boxShadow: `1px 0 0 0 ${contrastLowColor}`,
+          background: canvasColor,
           pointerEvents: 'none',
         },
       },
@@ -311,7 +289,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         gridArea: 'sidebar-start',
         justifySelf: 'flex-end',
         width: sidebarStartWidth,
-        canvasColor: `var(${cssVarSurfaceColor})`,
+        background: surfaceColor,
         '&::before': {
           content: '""',
           zIndex: -1,
@@ -323,7 +301,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           pointerEvents: 'none',
           top: 0,
           borderTopLeftRadius: '16px',
-          boxShadow: `0 -16px 0 0 var(${cssVarSurfaceColor})`,
+          boxShadow: `0 -16px 0 0 ${surfaceColor}`,
         },
       },
       '&--end': {
@@ -331,7 +309,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         gridArea: 'sidebar-end',
         justifySelf: 'flex-end',
         width: sidebarEndWidth,
-        canvasColor: `var(${cssVarCanvasColor})`,
+        background: canvasColor,
       },
       '&__scroller': {
         position: 'absolute',
@@ -353,13 +331,13 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         '&--start': {
           justifyContent: 'flex-start',
           '&::before': {
-            background: `linear-gradient(180deg,var(${cssVarSurfaceColor}) 0%,var(${cssVarSurfaceColor}) 65%,transparent 100%)`,
+            background: `linear-gradient(180deg,${surfaceColor} 0%,${surfaceColor} 65%,transparent 100%)`,
           },
         },
         '&--end': {
           justifyContent: 'space-between',
           '&::before': {
-            background: `linear-gradient(180deg,var(${cssVarCanvasColor}) 0%,var(${cssVarCanvasColor}) 65%,transparent 100%)`,
+            background: `linear-gradient(180deg,${canvasColor} 0%,${canvasColor} 65%,transparent 100%)`,
           },
         },
         '&::before': {

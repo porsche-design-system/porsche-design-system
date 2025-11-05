@@ -1,14 +1,12 @@
-import { Modal } from './modal';
-import * as setScrollLockUtils from '../../utils/setScrollLock';
-import * as domUtils from '../../utils/dom';
-import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
-import * as hasHeading from '../../utils/form/hasHeading';
-import * as applyConstructableStylesheetStyleUtils from '../../utils/applyConstructableStylesheetStyle';
 import { expect } from '@jest/globals';
-import { getSlottedAnchorStyles } from '../../styles';
 import * as childrenObserverUtils from '../../utils/children-observer';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as observerUtils from '../../utils/dialog/observer';
+import * as domUtils from '../../utils/dom';
+import * as hasHeading from '../../utils/form/hasHeading';
+import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
+import * as setScrollLockUtils from '../../utils/setScrollLock';
+import { Modal } from './modal';
 
 jest.mock('../../utils/dom');
 

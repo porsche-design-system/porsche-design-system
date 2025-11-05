@@ -1,9 +1,7 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
@@ -11,24 +9,15 @@ import {
   removeAttribute,
   setAttribute,
   setAttributes,
-  THEMES,
   throwIfChildrenAreNotOfKind,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './tabs-styles';
-import {
-  syncTabsItemsProps,
-  TABS_SIZES,
-  TABS_WEIGHTS,
-  type TabsSize,
-  type TabsUpdateEventDetail,
-  type TabsWeight,
-} from './tabs-utils';
+import { TABS_SIZES, TABS_WEIGHTS, type TabsSize, type TabsUpdateEventDetail, type TabsWeight } from './tabs-utils';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_SIZES),
   weight: AllowedTypes.oneOf<TabsWeight>(TABS_WEIGHTS),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -50,9 +39,6 @@ export class Tabs {
   /** The text weight. */
   @Prop() public weight?: TabsWeight = 'regular';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
 
@@ -65,10 +51,6 @@ export class Tabs {
   public activeTabHandler(newValue: number): void {
     this.setAccessibilityAttributes();
     this.update.emit({ activeTabIndex: newValue });
-  }
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
@@ -90,7 +72,6 @@ export class Tabs {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss);
-    syncTabsItemsProps(this.tabsItemElements, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -100,7 +81,6 @@ export class Tabs {
           class="root"
           size={this.size}
           weight={this.weight}
-          theme={this.theme}
           activeTabIndex={this.activeTabIndex}
           onUpdate={this.onTabsBarUpdate}
           onTabChange={(e: Event) => e.stopPropagation()} // prevent double event emission because of identical name

@@ -1,8 +1,8 @@
 import { forceUpdate } from '@stencil/core';
-import { consoleWarn, type Theme } from '../../../utils';
+import type { GroupDirection } from '../../../styles/group-direction-styles';
+import { consoleWarn } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { RadioGroupOptionInternalHTMLProps } from '../radio-group-option/radio-group-option-utils';
-import type { GroupDirection } from '../../../styles/group-direction-styles';
 export type RadioGroupState = FormState;
 
 export type RadioGroupDirection = GroupDirection;
@@ -39,14 +39,12 @@ export const setSelectedRadioGroupOption = (options: RadioGroupOption[], selecte
 
 export const syncRadioGroupChildrenProps = (
   children: RadioGroupOption[],
-  theme: Theme,
   disabled: boolean,
   loading: boolean,
   state: RadioGroupState,
   name: string
 ): void => {
   for (const child of children) {
-    child.theme = theme;
     child.disabledParent = disabled;
     child.name = name;
     child.loadingParent = loading;

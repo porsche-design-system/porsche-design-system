@@ -1,17 +1,9 @@
-import {
-  addImportantToEachRule,
-  getFocusJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../../styles';
-import type { Theme } from '../../../types';
+import { addImportantToEachRule, colors, getFocusJssStyle, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 
-export const getComponentCss = (theme: Theme): string => {
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
+const { primaryColor } = colors;
 
+export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -20,10 +12,7 @@ export const getComponentCss = (theme: Theme): string => {
           color: primaryColor, // enables color inheritance for e.g. slotted anchor
           borderRadius: '2px',
           ...hostHiddenStyles,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
-          ...getFocusJssStyle(theme, { slotted: true }),
+          ...getFocusJssStyle({ slotted: true }),
         }),
       },
     },

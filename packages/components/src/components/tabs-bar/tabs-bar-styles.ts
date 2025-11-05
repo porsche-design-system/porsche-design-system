@@ -11,20 +11,18 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
+  colors,
   cssVariableAnimationDuration,
   cssVariableTransitionDuration,
   getFocusJssStyle,
-  getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import type { TabsBarSize, TabsBarWeight } from './tabs-bar-utils';
 
@@ -34,30 +32,16 @@ const targetSelectors = ['a', 'button'];
 const transformSelector = (selector: string): string =>
   targetSelectors.map((tag) => selector.replace(/\[role]/g, tag)).join();
 
-export const getComponentCss = (
-  size: BreakpointCustomizable<TabsBarSize>,
-  weight: TabsBarWeight,
-  theme: Theme
-): string => {
-  const { primaryColor, frostedColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, frostedColor: frostedColorDark } = getThemedColors('dark');
+const { primaryColor, frostedColor } = colors;
 
-  const barJssStyle: JssStyle = {
-    position: 'absolute',
-    height: '2px',
-    left: 0,
-    ...(isHighContrastMode
-      ? {
-          background: getHighContrastColors().canvasTextColor,
-        }
-      : {
-          background: primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: primaryColorDark,
-          }),
-        }),
-  };
+const barJssStyle: JssStyle = {
+  position: 'absolute',
+  height: '2px',
+  left: 0,
+  background: primaryColor,
+};
 
+export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weight: TabsBarWeight): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -73,8 +57,8 @@ export const getComponentCss = (
         '::slotted': {
           // TODO: produces duplicated css code in SSR context, we should try to make use of multiple selector like
           //  `::slotted(:is(a,button))`.
-          ...getFocusJssStyle(theme, { slotted: 'a', offset: '1px' }),
-          ...getFocusJssStyle(theme, { slotted: 'button', offset: '1px' }),
+          ...getFocusJssStyle({ slotted: 'a', offset: '1px' }),
+          ...getFocusJssStyle({ slotted: 'button', offset: '1px' }),
         },
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
@@ -103,9 +87,6 @@ export const getComponentCss = (
           cursor: 'pointer',
           borderRadius: borderRadiusSmall,
           zIndex: 0, // needed for ::before pseudo element to be visible
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
           ...hoverMediaQuery({
             '&::before': {
               content: '""',
@@ -121,9 +102,6 @@ export const getComponentCss = (
           [transformSelector('::slotted([role]:hover)::before')]: {
             ...frostedGlassStyle,
             background: frostedColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: frostedColorDark,
-            }),
           },
         }),
         // basic invisible bar, that will be delayed via transition: visibility

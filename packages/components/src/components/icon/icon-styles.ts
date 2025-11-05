@@ -8,36 +8,37 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getSchemedHighContrastMediaQuery,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import {
-  filterDarkContrastHigh,
-  filterDarkContrastLow,
-  filterDarkContrastMedium,
-  filterDarkDisabled,
-  filterDarkNotificationError,
-  filterDarkNotificationInfo,
-  filterDarkNotificationSuccess,
-  filterDarkNotificationWarning,
-  filterDarkPrimary,
-  filterLightContrastHigh,
-  filterLightContrastLow,
-  filterLightContrastMedium,
-  filterLightDisabled,
-  filterLightNotificationError,
-  filterLightNotificationInfo,
-  filterLightNotificationSuccess,
-  filterLightNotificationWarning,
-  filterLightPrimary,
-} from '../../styles/color-filters';
-import type { IconName, TextSize, Theme } from '../../types';
-import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
-import type { IconColor } from './icon-utils';
+import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
+import type { IconName, TextSize } from '../../types';
+import { getCss } from '../../utils';
+import { buildIconUrl, type IconColor } from './icon-utils';
+
+const cssVarColor = '--p-icon-color';
+
+const {
+  primaryColor,
+  contrastLowColor,
+  contrastMediumColor,
+  contrastHighColor,
+  successColor,
+  errorColor,
+  warningColor,
+  infoColor,
+  contrastDisabledColor,
+} = colors;
+
+const colorMap: Record<IconColor, string> = {
+  primary: primaryColor,
+  inherit: 'currentcolor',
+  'contrast-low': contrastLowColor,
+  'contrast-medium': contrastMediumColor,
+  'contrast-high': contrastHighColor,
+  'notification-success': successColor,
+  'notification-warning': warningColor,
+  'notification-error': errorColor,
+  'notification-info': infoColor,
+  'state-disabled': contrastDisabledColor,
+};
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
@@ -47,49 +48,6 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   large: fontSizeTextLarge,
   'x-large': fontSizeTextXLarge,
 };
-
-const filterLight: Record<Exclude<IconColor, 'inherit'>, string> = {
-  primary: filterLightPrimary,
-  'state-disabled': filterLightDisabled,
-  'contrast-low': filterLightContrastLow,
-  'contrast-medium': filterLightContrastMedium,
-  'contrast-high': filterLightContrastHigh,
-  'notification-success': filterLightNotificationSuccess,
-  'notification-warning': filterLightNotificationWarning,
-  'notification-error': filterLightNotificationError,
-  'notification-info': filterLightNotificationInfo,
-};
-
-const filterDark: Record<Exclude<IconColor, 'inherit'>, string> = {
-  primary: filterDarkPrimary,
-  'state-disabled': filterDarkDisabled,
-  'contrast-low': filterDarkContrastLow,
-  'contrast-medium': filterDarkContrastMedium,
-  'contrast-high': filterDarkContrastHigh,
-  'notification-success': filterDarkNotificationSuccess,
-  'notification-warning': filterDarkNotificationWarning,
-  'notification-error': filterDarkNotificationError,
-  'notification-info': filterDarkNotificationInfo,
-};
-
-const filterMap: Record<Theme, Record<Exclude<IconColor, 'inherit'>, string>> = {
-  auto: filterLight,
-  light: filterLight,
-  dark: filterDark,
-};
-
-const forceRerenderAnimationStyle = {
-  '0%': {
-    transform: 'rotateZ(0)',
-  },
-  '100%': {
-    transform: 'rotateZ(0)',
-  },
-};
-const keyFramesLight = 'rerender-light';
-const keyFramesDark = 'rerender-dark';
-
-const cssVariableFilter = '--p-internal-icon-filter';
 
 const isFlippableIcon = (name: IconName, source: string): boolean => {
   return (
@@ -106,6 +64,7 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
       name === 'arrow-right' ||
       name === 'chart' ||
       name === 'chat' ||
+      name === 'copy' ||
       name === 'external' ||
       name === 'increase' ||
       name === 'list' ||
@@ -115,68 +74,41 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
   );
 };
 
-export const getComponentCss = (
-  name: IconName,
-  source: string,
-  color: IconColor,
-  size: TextSize,
-  theme: Theme
-): string => {
-  const isColorInherit = color === 'inherit';
+export const getComponentCss = (name: IconName, source: string, color: IconColor, size: TextSize): string => {
   const isSizeInherit = size === 'inherit';
-  const isDark = isThemeDark(theme);
-  const animationName = `${isDark ? keyFramesDark : keyFramesLight}-${color}`;
 
   return getCss({
     '@global': {
       ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        width: fontLineHeight,
+        height: fontLineHeight,
+        font: `${isSizeInherit ? sizeMap['small'] : sizeMap[size]} ${fontFamily}`,
         ...addImportantToEachRule({
+          mask: `url(${buildIconUrl(source || name)}) no-repeat left top / contain`,
+          aspectRatio: '1/1',
+          background: `var(${cssVarColor}, ${colorMap[color]})`,
+          ...(isFlippableIcon(name, source) && {
+            '&:dir(rtl)': {
+              transform: 'scaleX(-1)',
+            },
+          }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      // the <img /> is only needed for a11y compliance because of alt text and to handle the fetch priority
       img: {
-        display: 'block', // without display, img tag gets some extra spacing
-        margin: 0,
-        padding: 0,
+        all: 'unset',
+        position: 'absolute', // prevents unintended bottom white-space
+        opacity: 0,
+        width: '1px',
+        height: '1px',
         pointerEvents: 'none', // disable dragging/ghosting of images
-        ...(!isColorInherit && {
-          filter: `var(${cssVariableFilter},${filterMap[theme][color]})`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            filter: `var(${cssVariableFilter},${filterMap.dark[color]})`,
-          }),
-          ...(isHighContrastMode &&
-            getSchemedHighContrastMediaQuery(
-              {
-                filter: filterMap.light[color],
-              },
-              {
-                filter: filterMap.dark[color],
-              }
-            )),
-          WebkitAnimation: `${animationName} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically
-        }),
-        ...(isSizeInherit
-          ? {
-              width: size,
-              height: size,
-            }
-          : {
-              width: fontLineHeight,
-              height: fontLineHeight,
-              font: `${sizeMap[size]} ${fontFamily}`,
-            }),
-        ...(isFlippableIcon(name, source) && {
-          '&:dir(rtl)': {
-            transform: 'scaleX(-1)',
-          },
-        }),
       },
-      ...(!isColorInherit && {
-        [`@keyframes ${animationName}`]: forceRerenderAnimationStyle,
-      }),
     },
   });
 };

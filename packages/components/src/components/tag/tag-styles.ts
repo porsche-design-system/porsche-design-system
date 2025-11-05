@@ -8,33 +8,26 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
-import { getThemedBackgroundColor } from './tag-shared-utils';
-import { getThemedBackgroundHoverColor, type TagColor } from './tag-utils';
+import { getThemedBackgroundColor, getThemedBackgroundHoverColor2, getThemedTextColor } from './tag-shared-utils';
+import type { TagColor } from './tag-utils';
 
 export const getColors = (
-  tagColor: TagColor,
-  theme: Theme
+  tagColor: TagColor
 ): {
   textColor: string;
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
-  const themedColors = getThemedColors(theme);
-  const { primaryColor, primaryInvertedColor } = themedColors;
-
   return {
-    textColor: tagColor === 'primary' ? primaryInvertedColor : primaryColor,
-    backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
-    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors),
+    textColor: getThemedTextColor(tagColor),
+    backgroundColor: getThemedBackgroundColor(tagColor),
+    backgroundHoverColor: getThemedBackgroundHoverColor2(tagColor),
   };
 };
 
@@ -42,16 +35,9 @@ export const getComponentCss = (
   tagColor: TagColor,
   compact: boolean,
   isFocusable: boolean,
-  hasIcon: boolean,
-  theme: Theme
+  hasIcon: boolean
 ): string => {
-  const { textColor, backgroundColor, backgroundHoverColor } = getColors(tagColor, theme);
-  const {
-    textColor: textColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundHoverColor: backgroundHoverColorDark,
-  } = getColors(tagColor, 'dark');
-  const isBackgroundFrosted = tagColor === 'background-frosted';
+  const { textColor, backgroundColor, backgroundHoverColor } = getColors(tagColor);
 
   return getCss({
     '@global': {
@@ -72,24 +58,14 @@ export const getComponentCss = (
         padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
         borderRadius: borderRadiusSmall,
         font: textXSmallStyle.font,
+        ...frostedGlassStyle,
         color: textColor,
         background: backgroundColor,
-        ...(isBackgroundFrosted && frostedGlassStyle),
-        ...(isHighContrastMode && {
-          outline: '1px solid transparent',
-        }),
         transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`, // transition style should always be applied to have a smooth color change in case color prop gets updated during runtime
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: textColorDark,
-          background: backgroundColorDark,
-        }),
         ...(isFocusable &&
           hoverMediaQuery({
             '&:hover': {
               background: backgroundHoverColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: backgroundHoverColorDark,
-              }),
             },
           })),
       },
@@ -107,8 +83,8 @@ export const getComponentCss = (
           inset: 0,
           borderRadius: '4px',
         },
-        ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
-        ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
+        ...getFocusJssStyle({ slotted: 'a', pseudo: true }),
+        ...getFocusJssStyle({ slotted: 'button', pseudo: true }),
         '&(br)': {
           display: 'none',
         },

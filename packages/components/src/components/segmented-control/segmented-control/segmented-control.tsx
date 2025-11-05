@@ -12,13 +12,12 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   observeChildren,
-  THEMES,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
@@ -34,7 +33,6 @@ import {
 } from './segmented-control-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
@@ -55,9 +53,6 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 })
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
-
-  /** Adapts the segmented-control color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Sets the initial value of the segmented-control. */
   @Prop({ mutable: true }) public value?: string | number;
@@ -156,7 +151,7 @@ export class SegmentedControl {
       this.columns,
       this.compact
     );
-    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact, this.theme);
+    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact);
 
     return (
       <Host role="group" inert={this.disabled}>

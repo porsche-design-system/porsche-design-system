@@ -2,24 +2,19 @@ import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@por
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getThemedColors,
+  colors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
 import { getCss, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FieldsetLabelSize } from './fieldset-utils';
 
-export const getComponentCss = (
-  state: FormState,
-  labelSize: FieldsetLabelSize,
-  hasLabel: boolean,
-  theme: Theme
-): string => {
+const { primaryColor } = colors;
+
+export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, hasLabel: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -39,16 +34,13 @@ export const getComponentCss = (
         legend: {
           margin: `0 0 ${spacingStaticMedium}`,
           padding: 0,
-          color: getThemedColors(theme).primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: getThemedColors('dark').primaryColor,
-          }),
+          color: primaryColor,
           ...(labelSize === 'small' ? headingSmallStyle : headingMediumStyle),
         },
       }),
     },
     ...getFunctionalComponentRequiredStyles(),
-    ...mergeDeep(getFunctionalComponentStateMessageStyles(theme, state), {
+    ...mergeDeep(getFunctionalComponentStateMessageStyles(state), {
       message: {
         marginTop: spacingStaticMedium,
       },

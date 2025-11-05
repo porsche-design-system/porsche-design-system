@@ -1,21 +1,13 @@
 import { breakpointM, breakpointS } from '@porsche-design-system/styles';
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, h } from '@stencil/core';
-import type { PropTypes, Theme } from '../../types';
-import {
-  AllowedTypes,
-  THEMES,
-  attachComponentCss,
-  getPrefixedTagNames,
-  hasNamedSlot,
-  validateProps,
-} from '../../utils';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State } from '@stencil/core';
+import type { PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasNamedSlot, validateProps } from '../../utils';
 import { getComponentCss } from './canvas-styles';
 import type { CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
   sidebarEndOpen: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -43,9 +35,6 @@ export class Canvas {
 
   /** Open the sidebar on the end side */
   @Prop() public sidebarEndOpen?: boolean = false;
-
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the sidebar start requests to be opened or dismissed. */
   @Event({ bubbles: false }) public sidebarStartUpdate?: EventEmitter<CanvasSidebarStartUpdateEventDetail>;
@@ -111,7 +100,7 @@ export class Canvas {
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasBackground = hasNamedSlot(this.host, 'background');
 
-    attachComponentCss(this.host, getComponentCss, this.theme, this.sidebarStartOpen, this.sidebarEndOpen);
+    attachComponentCss(this.host, getComponentCss, this.sidebarStartOpen, this.sidebarEndOpen);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -132,7 +121,6 @@ export class Canvas {
             <div class="header__area header__area--start">
               {!this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
-                  theme={this.theme}
                   icon="sidebar"
                   variant="ghost"
                   compact={true}
@@ -146,7 +134,7 @@ export class Canvas {
               <slot name="header-start" />
             </div>
             <PrefixedTagNames.pCrest class="header__crest" />
-            <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
+            <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" />
             <div class="header__area header__area--end">
               <slot name="header-end" />
             </div>
@@ -161,7 +149,6 @@ export class Canvas {
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--start">
                   <PrefixedTagNames.pButton
-                    theme={this.theme}
                     icon="sidebar"
                     variant="ghost"
                     compact={true}
@@ -197,7 +184,6 @@ export class Canvas {
                 <div class="sidebar__header sidebar__header--end">
                   <slot name="sidebar-end-header" />
                   <PrefixedTagNames.pButton
-                    theme={this.theme}
                     icon="close"
                     variant="ghost"
                     compact={true}
@@ -224,7 +210,6 @@ export class Canvas {
         {!this.isMediaQueryS && (
           <PrefixedTagNames.pFlyout
             class="flyout-start"
-            theme={this.theme}
             open={this.sidebarStartOpen}
             position="start"
             onDismiss={this.onDismissSidebarStart}
@@ -240,7 +225,6 @@ export class Canvas {
         {this.hasSidebarEnd && !this.isMediaQueryM && (
           <PrefixedTagNames.pFlyout
             class="flyout-end"
-            theme={this.theme}
             open={this.sidebarEndOpen}
             position="end"
             onDismiss={this.onDismissSidebarEnd}

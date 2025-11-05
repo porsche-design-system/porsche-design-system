@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,7 +18,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -42,7 +41,6 @@ const propTypes: PropTypes<typeof Checkbox> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -100,9 +98,6 @@ export class Checkbox {
 
   /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
-
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
@@ -202,8 +197,7 @@ export class Checkbox {
       this.state,
       this.disabled,
       this.loading,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -236,11 +230,9 @@ export class Checkbox {
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
           />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );

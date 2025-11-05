@@ -36,7 +36,7 @@ export const getComponentCss = (): string => {
           inset: 0,
           borderRadius: '1px',
         },
-        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
+        ...getFocusJssStyle({ pseudo: true }),
       },
       picture: {
         display: 'block',

@@ -1,17 +1,14 @@
 import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
-import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   dismissButtonJssStyle,
-  getThemedColors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { Theme } from '../../types';
-import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
+import { getCss, HEADING_TAGS } from '../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
@@ -20,43 +17,38 @@ import {
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
-const getTextJssStyle = (theme: Theme): JssStyle => ({
+
+const { primaryColor } = colors;
+
+const getTextJssStyle = {
   margin: 0,
-  color: getThemedColors(theme).primaryColor,
-  ...prefersColorSchemeDarkMediaQuery(theme, {
-    color: getThemedColors('dark').primaryColor,
-  }),
-});
+  color: primaryColor,
+};
 
-const getHeadingJssStyle = (theme: Theme): JssStyle => ({
+const getHeadingJssStyle = {
   ...headingSmallStyle,
-  ...getTextJssStyle(theme),
-});
+  ...getTextJssStyle,
+};
 
-export const getComponentCss = (
-  state: InlineNotificationState,
-  hasAction: boolean,
-  hasClose: boolean,
-  theme: Theme
-): string => {
+export const getComponentCss = (state: InlineNotificationState, hasAction: boolean, hasClose: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          ...getNotificationRootJssStyle(state, hasAction, hasClose, theme),
+          ...getNotificationRootJssStyle(state, hasAction, hasClose),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
-      'slot[name="heading"]': getHeadingJssStyle(theme),
+      'slot[name="heading"]': getHeadingJssStyle,
     },
-    heading: getHeadingJssStyle(theme),
+    heading: getHeadingJssStyle,
     description: {
       ...textSmallStyle,
-      ...getTextJssStyle(theme),
+      ...getTextJssStyle,
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
@@ -70,10 +62,7 @@ export const getComponentCss = (
     }),
     close: {
       ...dismissButtonJssStyle,
-      mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        mixBlendMode: 'plus-lighter',
-      }),
+      mixBlendMode: 'multiply',
     },
   });
 };

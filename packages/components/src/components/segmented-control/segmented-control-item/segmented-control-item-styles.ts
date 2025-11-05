@@ -7,18 +7,15 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  colors,
   getFocusJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { Theme } from '../../../types';
-import { getCss, isHighContrastMode } from '../../../utils';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
+import { getCss } from '../../../utils';
 
 export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
 export const getScalingVar = (compact: boolean) =>
@@ -31,29 +28,21 @@ export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
 export const ICON_MARGIN = '.25rem';
 
+const { primaryColor, contrastMediumColor, contrastDisabledColor, contrastLowColor } = colors;
+
 export const getColors = (
   isDisabled: boolean,
-  isSelected: boolean,
-  theme: Theme
+  isSelected: boolean
 ): {
   buttonColor: string;
   labelColor: string;
   borderColor: string;
   hoverBorderColor: string;
 } => {
-  const { primaryColor, contrast50Color, contrast40Color, contrast20Color } = getThemedColors(theme);
-  const { highlightColor } = getHighContrastColors();
-
   return {
-    buttonColor: isDisabled ? contrast40Color : primaryColor,
-    labelColor: isDisabled ? contrast40Color : contrast50Color,
-    borderColor: isSelected
-      ? isDisabled
-        ? contrast40Color
-        : isHighContrastMode
-          ? highlightColor
-          : primaryColor
-      : contrast20Color,
+    buttonColor: isDisabled ? contrastDisabledColor : primaryColor,
+    labelColor: isDisabled ? contrastDisabledColor : contrastMediumColor,
+    borderColor: isSelected ? (isDisabled ? contrastDisabledColor : primaryColor) : contrastLowColor,
     hoverBorderColor: primaryColor,
   };
 };
@@ -81,16 +70,9 @@ export const getComponentCss = (
   isDisabled: boolean,
   isSelected: boolean,
   hasIcon: boolean,
-  hasSlottedContent: boolean,
-  theme: Theme
+  hasSlottedContent: boolean
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
-  const {
-    buttonColor: buttonColorDark,
-    labelColor: labelColorDark,
-    borderColor: borderColorDark,
-    hoverBorderColor: hoverBorderColorDark,
-  } = getColors(isDisabled, isSelected, 'dark');
+  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected);
   const scalableItemStyles = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
@@ -128,17 +110,10 @@ export const getComponentCss = (
                   transition: getTransition('border-color'),
                   '&:hover': {
                     borderColor: hoverBorderColor,
-                    ...prefersColorSchemeDarkMediaQuery(theme, {
-                      borderColor: hoverBorderColorDark,
-                    }),
                   },
                 })),
             }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: borderColorDark,
-          color: buttonColorDark,
-        }),
-        ...getFocusJssStyle(theme),
+        ...getFocusJssStyle(),
       },
       // label
       span: {
@@ -146,9 +121,6 @@ export const getComponentCss = (
         ...textXSmallStyle,
         overflowWrap: 'normal',
         color: labelColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: labelColorDark,
-        }),
       },
     },
     ...(hasIcon && {

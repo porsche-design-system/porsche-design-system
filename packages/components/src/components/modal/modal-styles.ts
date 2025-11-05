@@ -21,7 +21,7 @@ import {
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import type { ModalBackdrop } from './modal-utils';
 
@@ -44,8 +44,7 @@ export const getComponentCss = (
   fullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
   hasHeader: boolean,
-  hasFooter: boolean,
-  theme: Theme
+  hasFooter: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -108,18 +107,18 @@ export const getComponentCss = (
         }),
         ...(hasFooter && {
           '&[name=footer]': {
-            ...getDialogStickyAreaJssStyle('footer', theme),
+            ...getDialogStickyAreaJssStyle('footer'),
             gridColumn: '1/-1',
             zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
       },
-      dialog: getDialogJssStyle(isOpen, theme, backdrop),
+      dialog: getDialogJssStyle(isOpen, backdrop),
     },
-    scroller: getScrollerJssStyle('fullscreen', theme),
+    scroller: getScrollerJssStyle('fullscreen'),
     modal: {
       ...dialogGridJssStyle,
-      ...getDialogColorJssStyle(theme),
+      ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>

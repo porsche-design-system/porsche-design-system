@@ -1,6 +1,5 @@
 import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
 import { forceUpdate } from '@stencil/core';
-import type { Theme } from '../../../types';
 import { hasDocument } from '../../../utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
@@ -80,12 +79,10 @@ export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
   value: string | number,
   disabled: boolean,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): void => {
   for (const item of Array.from(host.children)) {
     (item as Item).selected = (item as Item).value === value;
-    (item as Item).theme = theme;
     (item as Item).compact = compact;
     (item as Item).disabledParent = disabled;
     forceUpdate(item);

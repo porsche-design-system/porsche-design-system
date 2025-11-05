@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -9,7 +9,6 @@ import {
   hasPropValueChanged,
   observeBreakpointChange,
   parseJSON,
-  THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveBreakpointChange,
@@ -22,13 +21,11 @@ import {
   STEPPER_HORIZONTAL_SIZES,
   type StepperHorizontalSize,
   type StepperHorizontalUpdateEventDetail,
-  syncStepperHorizontalItemsProps,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
   size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -43,9 +40,6 @@ export class StepperHorizontal {
 
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<StepperHorizontalSize> = 'small';
-
-  /** Adapts the tag color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when active step is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalUpdateEventDetail>;
@@ -103,7 +97,6 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-    syncStepperHorizontalItemsProps(this.host, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -112,7 +105,6 @@ export class StepperHorizontal {
         <PrefixedTagNames.pScroller
           class="scroller"
           aria={{ role: 'list' }}
-          theme={this.theme}
           onClick={this.onClickScroller}
           ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         >

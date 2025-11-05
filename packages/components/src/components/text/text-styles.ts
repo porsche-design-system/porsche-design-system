@@ -10,7 +10,7 @@ import {
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { BreakpointCustomizable, TextSize, Theme } from '../../types';
+import type { BreakpointCustomizable, TextSize } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { TEXT_TAGS, type TextAlign, type TextColor, type TextWeight } from './text-utils';
 
@@ -28,8 +28,7 @@ export const getComponentCss = (
   weight: TextWeight,
   align: TextAlign,
   color: TextColor,
-  ellipsis: boolean,
-  theme: Theme
+  ellipsis: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -50,8 +49,7 @@ export const getComponentCss = (
       })),
       align,
       color,
-      ellipsis,
-      theme
+      ellipsis
     ),
   });
 };

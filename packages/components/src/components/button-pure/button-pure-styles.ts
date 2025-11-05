@@ -1,6 +1,6 @@
 import { fontLineHeight } from '@porsche-design-system/styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
@@ -14,8 +14,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
-  underline: boolean,
-  theme: Theme
+  underline: boolean
 ): string => {
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
@@ -31,8 +30,7 @@ export const getComponentCss = (
         hideLabel,
         alignLabel,
         underline,
-        false,
-        theme
+        false
       ),
       {
         root: {

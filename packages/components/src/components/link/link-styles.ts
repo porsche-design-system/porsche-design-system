@@ -3,11 +3,10 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   getFocusJssStyle,
-  getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
 } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } from '../../types';
+import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
 import { getCss, isHighContrastMode, mergeDeep } from '../../utils';
 
 const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
@@ -18,10 +17,8 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
-  compact: BreakpointCustomizable<boolean>,
-  theme: Theme
+  compact: BreakpointCustomizable<boolean>
 ): string => {
-  const { linkColor } = getHighContrastColors();
   const isPrimary = variant === 'primary';
 
   return getCss(
@@ -34,8 +31,7 @@ export const getComponentCss = (
         false,
         hasSlottedAnchor,
         compact,
-        cssVariableInternalLinkScaling,
-        theme
+        cssVariableInternalLinkScaling
       ),
       {
         label: {
@@ -49,11 +45,6 @@ export const getComponentCss = (
           }),
       },
       hasSlottedAnchor && {
-        ...(isHighContrastMode && {
-          root: {
-            borderColor: linkColor,
-          },
-        }),
         '@global': addImportantToEachRule({
           '::slotted': {
             '&(a)': {
@@ -68,10 +59,10 @@ export const getComponentCss = (
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              inset: variant === 'ghost' ? '0px' : '-2px', // Variant ghost has no border to compensate
+              inset: variant === 'secondary' ? '0px' : '-2px', // Variant ghost has no border to compensate
               borderRadius: borderRadiusSmall,
             },
-            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
+            ...getFocusJssStyle({ slotted: 'a', pseudo: true }),
           },
         }),
       }

@@ -6,9 +6,9 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -19,7 +19,7 @@ import { cssVariableTableHeadCellIconFilter, cssVariableTablePadding } from '../
 import type { Direction } from '../table/table-utils';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
-const { frostedColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
+const { frostedColor } = colors;
 
 const buttonBeforeOffsetVertical = '-2px';
 const buttonBeforeOffsetHorizontal = '-4px';
@@ -83,8 +83,7 @@ export const getComponentCss = (
                   backgroundColor: frostedColor,
                 },
               }),
-              // TODO: to be future proof, we need to pass theme parameter
-              ...getFocusJssStyle('light', { pseudo: true, offset: '-2px' }),
+              ...getFocusJssStyle({ pseudo: true, offset: '-2px' }),
             },
           }
         : hideLabel && {

@@ -1,5 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import { consoleWarn, type SelectComponentsDropdownDirection, type Theme } from '../../../utils';
+import { consoleWarn, type SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
@@ -12,17 +12,6 @@ export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLPro
 export type MultiSelectChangeEventDetail = {
   name: string;
   value: string[];
-};
-
-// TODO: share between select & multi-select
-export const syncMultiSelectChildrenProps = (
-  children: (MultiSelectOption | MultiSelectOptgroup)[],
-  theme: Theme
-): void => {
-  for (const child of children.filter((child) => child.theme !== theme)) {
-    child.theme = theme;
-    forceUpdate(child);
-  }
 };
 
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>

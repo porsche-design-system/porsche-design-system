@@ -1,15 +1,12 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, Watch } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { PropTypes, Theme } from '../../types';
+import type { PropTypes } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   HEADING_TAGS,
   hasNamedSlot,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
@@ -22,7 +19,6 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -56,9 +52,6 @@ export class Banner {
   /** If false, the banner will not have a dismiss button. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** Adapts the banner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
@@ -77,7 +70,6 @@ export class Banner {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     if (this.open && this.dismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }
@@ -114,7 +106,6 @@ export class Banner {
           description={this.description}
           state={this.state}
           dismissButton={this.dismissButton}
-          theme={this.theme}
           onDismiss={this.onDismiss}
           aria-hidden={this.open ? 'false' : 'true'}
         >

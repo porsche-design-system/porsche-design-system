@@ -1,14 +1,11 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   HEADING_SIZES,
   HEADING_TAGS,
   hasPropValueChanged,
-  THEMES,
   TYPOGRAPHY_ALIGNS,
   validateProps,
 } from '../../utils';
@@ -21,7 +18,6 @@ const propTypes: PropTypes<typeof Heading> = {
   align: AllowedTypes.oneOf<HeadingAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -49,20 +45,13 @@ export class Heading {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis);
 
     const TagType = getHeadingTagType(this.host, this.size, this.tag);
 

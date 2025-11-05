@@ -1,5 +1,6 @@
 import {
   borderRadiusSmall,
+  frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
   spacingStaticMedium,
@@ -7,21 +8,21 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../styles';
-import type { Theme } from '../../types';
+import { colors } from '../../styles';
 import { isHighContrastMode } from '../../utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
 
-const getBackgroundColor = (state: InlineNotificationState, theme: Theme): string => {
-  const { infoSoftColor, successSoftColor, errorSoftColor, warningSoftColor } = getThemedColors(theme);
+const { infoFrostedColor, successFrostedColor, errorFrostedColor, warningFrostedColor } = colors;
+
+const getBackgroundColor = (state: InlineNotificationState): string => {
   const colorMap: Record<InlineNotificationState, string> = {
-    info: infoSoftColor,
-    warning: warningSoftColor,
-    success: successSoftColor,
-    error: errorSoftColor,
+    info: infoFrostedColor,
+    warning: warningFrostedColor,
+    success: successFrostedColor,
+    error: errorFrostedColor,
   };
   return colorMap[state];
 };
@@ -29,8 +30,7 @@ const getBackgroundColor = (state: InlineNotificationState, theme: Theme): strin
 export const getNotificationRootJssStyle = (
   state: InlineNotificationState,
   hasAction: boolean,
-  hasClose: boolean,
-  theme: Theme
+  hasClose: boolean
 ): JssStyle => {
   return {
     // display: 'grid', // NOTE: display property is moved into component styled to not apply !important keyword
@@ -39,10 +39,8 @@ export const getNotificationRootJssStyle = (
     gap: spacingStaticMedium,
     placeItems: 'start',
     padding: spacingStaticMedium,
-    background: getBackgroundColor(state, theme),
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: getBackgroundColor(state, 'dark'),
-    }),
+    ...frostedGlassStyle,
+    background: getBackgroundColor(state),
     borderRadius: borderRadiusSmall,
     ...(isHighContrastMode && {
       outline: '1px solid transparent',

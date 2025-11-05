@@ -8,16 +8,15 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getHiddenTextJssStyle,
-  getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
@@ -42,27 +41,22 @@ const getRadioGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDi
   return groupRadioGroupDirectionJssStyles[direction];
 };
 
+const { primaryColor } = colors;
+
 export const getComponentCss = (
   disabled: boolean,
   loading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
-  direction: BreakpointCustomizable<GroupDirection>,
-  theme: Theme
+  direction: BreakpointCustomizable<GroupDirection>
 ): string => {
   const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
 
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
+  const { formStateHoverColor } = getThemedFormStateColors(state);
 
   const hoverStyles = {
     borderColor: formStateHoverColor || primaryColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      borderColor: formStateHoverColorDark || primaryColorDark,
-    }),
   };
   const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
   const columnGap = `max(${spacingStaticSmall}, ${scalingVar} * ${spacingStaticMedium})`;
@@ -107,7 +101,6 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(
       disabled,
       hideLabel,
-      theme,
       !disabled && {
         ...hoverMediaQuery({
           '&:hover~.wrapper': hoverStyles,
@@ -116,7 +109,7 @@ export const getComponentCss = (
       }
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
     'sr-only': getHiddenTextJssStyle(),

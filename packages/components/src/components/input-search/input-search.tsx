@@ -10,14 +10,13 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -47,7 +46,6 @@ const propTypes: PropTypes<typeof InputSearch> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -117,9 +115,6 @@ export class InputSearch {
 
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the search input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputSearchChangeEventDetail>;
@@ -196,7 +191,6 @@ export class InputSearch {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
       this.clear
     );
 
@@ -223,18 +217,16 @@ export class InputSearch {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         loading={this.loading}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="state-disabled" theme={this.theme} />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="state-disabled" />,
         })}
         {...(this.clear && {
           end: (
             <PrefixedTagNames.pButtonPure
               tabIndex={-1}
               hideLabel={true}
-              theme={this.theme}
               class="button"
               type="button"
               icon="close"

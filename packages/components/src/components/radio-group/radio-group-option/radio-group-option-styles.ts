@@ -10,18 +10,15 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHighContrastColors,
+  colors,
   getSchemedHighContrastMediaQuery,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import type { Theme } from '../../../types';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../../utils';
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -34,43 +31,17 @@ export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-o
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
 };
+const { primaryColor, canvasColor, contrastMediumColor, contrastHighColor, contrastDisabledColor, focusColor } = colors;
 
-export const getComponentCss = (disabled: boolean, loading: boolean, state: RadioGroupState, theme: Theme): string => {
-  const { primaryColor, primaryInvertedColor, contrast50Color, contrast80Color, contrast40Color, focusColor } =
-    getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    primaryInvertedColor: primaryInvertedColorDark,
-    contrast50Color: contrast50ColorDark,
-    contrast80Color: contrast80ColorDark,
-    contrast40Color: contrast40ColorDark,
-    focusColor: focusColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
-  const { canvasTextColor } = getHighContrastColors();
+export const getComponentCss = (disabled: boolean, loading: boolean, state: RadioGroupState): string => {
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? contrast40Color : formStateColor || contrast50Color;
-  const uncheckedColorDark = disabledOrLoading ? contrast40ColorDark : formStateColorDark || contrast50ColorDark;
+  const uncheckedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const uncheckedHoverColorDark = formStateHoverColorDark || primaryColorDark;
-  const checkedColor = isHighContrastMode
-    ? canvasTextColor
-    : disabledOrLoading
-      ? contrast40Color
-      : formStateColor || primaryColor;
-  const checkedColorDark = isHighContrastMode
-    ? canvasTextColor
-    : disabledOrLoading
-      ? contrast40ColorDark
-      : formStateColorDark || primaryColorDark;
-  const checkedHoverColor = formStateHoverColor || contrast80Color;
-  const checkedHoverColorDark = formStateHoverColorDark || contrast80ColorDark;
+  const checkedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor;
+  const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   const minDimension = `calc(${SCALING_BASE_VALUE} * 0.75)`;
   const scalingVar = `var(${cssVarInternalRadioGroupOptionScaling}, 1)`;
@@ -82,8 +53,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
-  const checkedIconColor = escapeHashCharacter(primaryInvertedColor);
-  const checkedIconColorDark = escapeHashCharacter(primaryInvertedColorDark);
+  const checkedIconColor = escapeHashCharacter(canvasColor);
 
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
   const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the radio-group, whichever is larger.
@@ -121,9 +91,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           : {
               cursor: 'pointer',
             }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: uncheckedColorDark,
-        }),
         '&::before': {
           // Ensures the touch target is at least '24px', even if the radio button is smaller than the minimum touch target size.
           // This pseudo-element expands the clickable area without affecting the visual size of the radio button itself.
@@ -137,12 +104,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         backgroundColor: checkedColor,
         backgroundSize: dimension,
         backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: checkedColorDark,
-          backgroundColor: checkedColorDark,
-          backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
-        }),
-        // This is a workaround for Blink-based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+        // This is a workaround for Blink-based browsers, which do not reflect the high semantic system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
         ...(isHighContrastMode &&
           getSchemedHighContrastMediaQuery(
             {
@@ -158,17 +120,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         hoverMediaQuery({
           'input:hover,label:hover~.wrapper input': {
             borderColor: uncheckedHoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: uncheckedHoverColorDark,
-            }),
           },
           'input:checked:hover,label:hover~.wrapper input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: checkedHoverColorDark,
-              backgroundColor: checkedHoverColorDark,
-            }),
           },
           'label:hover~.wrapper input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes a chrome bug where transition properties are stuck on hover
@@ -184,9 +139,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         'input:focus-visible': {
           outline: `${borderWidthBase} solid ${focusColor}`,
           outlineOffset: '2px',
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
-          }),
         },
       }),
       ...preventFoucOfNestedElementsStyles,
@@ -225,7 +177,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     ...getFunctionalComponentLabelStyles(
       disabled || loading,
       false,
-      theme,
       {
         gridArea: '1/2',
       },

@@ -6,17 +6,16 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
 import { getFontSizeText } from './font-size-text-styles';
@@ -39,6 +38,8 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
 export const offsetVertical = '-2px';
 export const offsetHorizontal = '-4px';
 
+const { primaryColor, contrastDisabledColor, frostedColor } = colors;
+
 export const getLinkButtonPureStyles = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -49,15 +50,8 @@ export const getLinkButtonPureStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
   underline: boolean,
-  hasSlottedAnchor: boolean,
-  theme: Theme
+  hasSlottedAnchor: boolean
 ): Styles => {
-  const { primaryColor, contrast40Color, frostedColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrast40Color: contrast40ColorDark,
-    frostedColor: frostedColorDark,
-  } = getThemedColors('dark');
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
   return {
@@ -82,11 +76,8 @@ export const getLinkButtonPureStyles = (
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
-      color: isDisabledOrLoading ? contrast40Color : primaryColor,
+      color: isDisabledOrLoading ? contrastDisabledColor : primaryColor,
       textDecoration: underline ? 'underline' : 'none',
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isDisabledOrLoading ? contrast40ColorDark : primaryColorDark,
-      }),
       ...textSmallStyle,
       ...mergeDeep(
         buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
@@ -114,9 +105,6 @@ export const getLinkButtonPureStyles = (
         ...(active && {
           ...frostedGlassStyle,
           backgroundColor: frostedColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundColor: frostedColorDark,
-          }),
         }),
       },
       ...(!isDisabledOrLoading &&
@@ -124,12 +112,9 @@ export const getLinkButtonPureStyles = (
           '&:hover::before': {
             ...frostedGlassStyle,
             backgroundColor: frostedColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: frostedColorDark,
-            }),
           },
         })),
-      ...(!hasSlottedAnchor && getFocusJssStyle(theme, { pseudo: true, offset: '-2px' })),
+      ...(!hasSlottedAnchor && getFocusJssStyle({ pseudo: true, offset: '-2px' })),
     },
     ...(hasIcon
       ? {

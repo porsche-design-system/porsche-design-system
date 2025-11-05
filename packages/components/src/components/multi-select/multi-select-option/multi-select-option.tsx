@@ -37,10 +37,10 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
 
-    attachComponentCss(this.host, getComponentCss, theme, isDisabled, isSelected);
+    attachComponentCss(this.host, getComponentCss, isDisabled, isSelected);
 
     return (
       // TODO: get rid of ARIA sprouting and use `elementInternals` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259

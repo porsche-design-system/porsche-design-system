@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import { BACKDROPS } from '../../styles/dialog-styles';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,7 +14,6 @@ import {
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
-  THEMES,
   unobserveChildren,
   validateProps,
 } from '../../utils';
@@ -41,7 +40,6 @@ const propTypes: PropTypes<typeof Flyout> = {
   disableBackdropClick: AllowedTypes.boolean,
   backdrop: AllowedTypes.oneOf<FlyoutBackdrop>(BACKDROPS),
   footerBehavior: AllowedTypes.oneOf<FlyoutFooterBehavior>(FLYOUT_FOOTER_BEHAVIOR),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
 
@@ -74,9 +72,6 @@ export class Flyout {
 
   /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
   @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
-
-  /** Adapts the flyout color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
@@ -154,8 +149,7 @@ export class Flyout {
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
-      this.footerBehavior,
-      this.theme
+      this.footerBehavior
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -182,7 +176,6 @@ export class Flyout {
               type="button"
               hideLabel={true}
               icon="close"
-              theme={this.theme}
               onClick={this.dismissDialog}
             >
               Dismiss flyout

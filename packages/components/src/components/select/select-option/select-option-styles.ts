@@ -1,11 +1,10 @@
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import { getButtonImageJssStyle, getOptionJssStyle } from '../../../styles/select';
-import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 
 export const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
 
-export const getComponentCss = (theme: Theme): string => {
+export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -21,7 +20,7 @@ export const getComponentCss = (theme: Theme): string => {
       }),
       ...preventFoucOfNestedElementsStyles,
     },
-    option: getOptionJssStyle('select-option', `var(${cssVarInternalSelectOptionScaling}, 1)`, theme),
+    option: getOptionJssStyle('select-option', `var(${cssVarInternalSelectOptionScaling}, 1)`),
     icon: {
       marginInlineStart: 'auto',
     },

@@ -1,11 +1,9 @@
 import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { Splide } from '@splidejs/splide';
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
@@ -18,7 +16,6 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -76,7 +73,6 @@ const propTypes: PropTypes<typeof Carousel> = {
     slideLabel: AllowedTypes.string,
     slide: AllowedTypes.string,
   }),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
   skipLinkTarget: AllowedTypes.string,
   alignControls: AllowedTypes.oneOf<CarouselAlignControls>(CAROUSEL_ALIGN_CONTROLS),
@@ -130,9 +126,6 @@ export class Carousel {
   /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
   @Prop() public intl?: CarouselInternationalization;
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Defines which slide to be active (zero-based numbering). */
   @Prop() public activeSlideIndex?: number = 0;
 
@@ -185,7 +178,6 @@ export class Carousel {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     observeChildren(this.host, this.updateSlidesAndPagination);
     this.observeBreakpointChange();
 
@@ -271,7 +263,6 @@ export class Carousel {
       this.parsedPagination,
       isInfinitePagination(this.focusOnCenterSlide ? this.slides.length : this.amountOfPages),
       this.alignHeader,
-      this.theme,
       this.hasNavigation,
       this.alignControls
     );
@@ -282,7 +273,6 @@ export class Carousel {
       class: 'btn',
       type: 'button',
       hideLabel: true,
-      theme: this.theme,
       // 'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
     };
 
@@ -307,7 +297,6 @@ export class Carousel {
             {this.skipLinkTarget && (
               <PrefixedTagNames.pLinkPure
                 href={this.skipLinkTarget}
-                theme={this.theme}
                 icon="arrow-last"
                 class="btn skip-link"
                 alignLabel="start"

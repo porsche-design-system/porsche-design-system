@@ -61,12 +61,12 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, name, state } = this.host;
+    const { selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;
     const isLoading = isOptionLoading || this.host.loadingParent;
 
-    attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state, theme);
+    attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state);
 
     const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -105,7 +105,7 @@ export class RadioGroupOption {
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
             {isOptionLoading && !this.host.loadingParent && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />
+              <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
             )}
           </div>
           {!this.host.loadingParent && (

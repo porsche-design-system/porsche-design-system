@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +10,6 @@ import {
   parseJSONAttribute,
   scrollAreaClass,
   scrollElementTo,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
@@ -32,7 +31,6 @@ const propTypes: PropTypes<typeof Scroller> = {
   }),
   alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
   scrollbar: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
 };
 
@@ -51,9 +49,6 @@ export class Scroller {
 
   /** Sets the vertical position of scroll indicator. */
   @Prop() public alignScrollIndicator?: ScrollerAlignScrollIndicator = 'center';
-
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
@@ -115,8 +110,7 @@ export class Scroller {
       this.isNextHidden,
       this.isPrevHidden,
       this.alignScrollIndicator,
-      this.scrollbar,
-      this.theme
+      this.scrollbar
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -131,7 +125,6 @@ export class Scroller {
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
-            theme={this.theme}
             dir="ltr" // Otherwise icon will be flipped which doesn't make sense in this use case
           >
             {direction}

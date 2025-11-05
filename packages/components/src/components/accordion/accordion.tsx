@@ -1,14 +1,11 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   HEADING_TAGS,
   hasPropValueChanged,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './accordion-styles';
@@ -21,7 +18,6 @@ import {
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
   open: AllowedTypes.boolean,
@@ -45,9 +41,6 @@ export class Accordion {
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<AccordionSize> = 'small';
 
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
 
@@ -68,17 +61,13 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme, this.sticky);
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.sticky);
 
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
@@ -101,7 +90,6 @@ export class Accordion {
               <PrefixedTagNames.pIcon
                 class="icon"
                 name={this.open ? 'minus' : 'plus'}
-                theme={this.theme}
                 size="xx-small"
                 aria-hidden="true"
               />

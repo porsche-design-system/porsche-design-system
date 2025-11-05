@@ -16,7 +16,7 @@ import {
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
 } from '../../../styles/select';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
@@ -32,8 +32,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
 
@@ -52,11 +51,11 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar, theme),
+        ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar),
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
+      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40),
     },
     root: {
       display: 'grid',
@@ -64,14 +63,14 @@ export const getComponentCss = (
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
-    filter: getFilterJssStyle(scalingVar, theme),
+    filter: getFilterJssStyle(scalingVar),
     options: getOptionsJssStyle(scalingVar),
-    icon: getIconJssStyle('select', isOpen),
+    icon: getIconJssStyle(isOpen),
     // .no-results / .sr-only
-    ...getFunctionalComponentNoResultsOptionStyles('select-option', scalingVar, theme),
+    ...getFunctionalComponentNoResultsOptionStyles('select-option', scalingVar),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
   });
 };

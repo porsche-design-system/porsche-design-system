@@ -1,27 +1,29 @@
-import type { Theme } from '@porsche-design-system/styles';
 import type { DisplayColor } from '../components/display/display-utils';
 import type { HeadingColor } from '../components/heading/heading-utils';
 import type { TypographyTextColor } from '../types';
-import { getThemedColors } from './colors';
+import { colors } from './colors';
 
-export const getThemedTypographyColor = (
-  theme: Theme,
-  textColor: TypographyTextColor | HeadingColor | DisplayColor // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-): string => {
-  const themedColors = getThemedColors(theme);
+export const getThemedTypographyColor = (textColor: TypographyTextColor | HeadingColor | DisplayColor): string => {
+  const {
+    primaryColor,
+    contrastLowColor,
+    contrastMediumColor,
+    contrastHighColor,
+    successColor,
+    warningColor,
+    errorColor,
+    infoColor,
+  } = colors;
 
-  const colorMap: Record<
-    TypographyTextColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-    string
-  > = {
-    primary: themedColors.primaryColor,
-    'contrast-low': themedColors.contrast20Color,
-    'contrast-medium': themedColors.contrast50Color,
-    'contrast-high': themedColors.contrast80Color,
-    'notification-success': themedColors.successColor,
-    'notification-warning': themedColors.warningColor,
-    'notification-error': themedColors.errorColor,
-    'notification-info': themedColors.infoColor,
+  const colorMap: Record<TypographyTextColor | HeadingColor | DisplayColor, string> = {
+    primary: primaryColor,
+    'contrast-low': contrastLowColor,
+    'contrast-medium': contrastMediumColor,
+    'contrast-high': contrastHighColor,
+    'notification-success': successColor,
+    'notification-warning': warningColor,
+    'notification-error': errorColor,
+    'notification-info': infoColor,
     inherit: 'currentColor',
   };
   return colorMap[textColor];

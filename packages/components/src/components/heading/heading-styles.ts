@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/styles';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { BreakpointCustomizable, HeadingSize, Theme } from '../../types';
+import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
 import type { HeadingAlign, HeadingColor } from './heading-utils';
 
@@ -24,8 +24,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<HeadingSize>,
   align: HeadingAlign,
   color: HeadingColor,
-  ellipsis: boolean,
-  theme: Theme
+  ellipsis: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -45,8 +44,7 @@ export const getComponentCss = (
       })),
       align,
       color,
-      ellipsis,
-      theme
+      ellipsis
     ),
   });
 };

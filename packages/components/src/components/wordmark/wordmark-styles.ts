@@ -1,17 +1,10 @@
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getHighContrastColors,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, colors, getFocusJssStyle, hostHiddenStyles } from '../../styles';
+import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
 
-export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
+const { primaryColor } = colors;
+
+export const getComponentCss = (size: WordmarkSize): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -49,18 +42,11 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
           inset: 0,
           borderRadius: '1px',
         },
-        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
+        ...getFocusJssStyle({ pseudo: true }),
       },
-      svg: isHighContrastMode
-        ? {
-            fill: getHighContrastColors().canvasTextColor,
-          }
-        : {
-            fill: getThemedColors(theme).primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              fill: getThemedColors('dark').primaryColor,
-            }),
-          },
+      svg: {
+        fill: primaryColor,
+      },
     },
   });
 };

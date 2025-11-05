@@ -8,32 +8,21 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import type { Theme } from '../types';
 import type { FormState } from '../utils/form/form-state';
-import { getThemedColors, getTransition, hoverMediaQuery, prefersColorSchemeDarkMediaQuery } from './';
+import { colors, getTransition, hoverMediaQuery } from './';
 import { getThemedFormStateColors } from './form-state-color-styles';
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
+
+const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor, contrastDisabledColor } = colors;
 
 export const getSlottedTextFieldTextareaSelectStyles = (
   child: ChildSelector,
   state: FormState,
   isLoading: boolean,
-  theme: Theme,
   additionalDefaultJssStyle?: JssStyle
 ): Styles => {
-  const { primaryColor, contrast20Color, contrast50Color, contrast40Color } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrast20Color: contrast20ColorDark,
-    contrast50Color: contrast50ColorDark,
-    contrast40Color: contrast40ColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
 
   return {
     [`::slotted(${child})`]: {
@@ -48,17 +37,13 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       boxSizing: 'border-box',
-      border: `${borderWidthBase} solid ${formStateColor || contrast50Color}`,
+      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       background: 'transparent',
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
       textIndent: 0,
       color: primaryColor,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: formStateColorDark || contrast50ColorDark,
-        color: primaryColorDark,
-      }),
       ...additionalDefaultJssStyle,
     },
     '::slotted(:not(input[type="password"]))': {
@@ -71,37 +56,22 @@ export const getSlottedTextFieldTextareaSelectStyles = (
           child === 'select' ? ',label:hover~.wrapper ::part(select-wrapper-dropdown)' : ''
         }`]: {
           borderColor: formStateHoverColor || primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: formStateHoverColorDark || primaryColorDark,
-          }),
         },
       }) as Styles)),
     // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: primaryColorDark,
-      }),
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
-      color: contrast40Color,
-      borderColor: contrast40Color,
-      WebkitTextFillColor: contrast40Color,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrast40ColorDark,
-        borderColor: contrast40ColorDark,
-        WebkitTextFillColor: contrast40ColorDark,
-      }),
+      color: contrastDisabledColor,
+      borderColor: contrastDisabledColor,
+      WebkitTextFillColor: contrastDisabledColor,
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
-        borderColor: contrast20Color,
-        background: contrast20Color,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrast20ColorDark,
-          background: contrast20ColorDark,
-        }),
+        borderColor: contrastLowColor,
+        background: contrastLowColor,
       },
     }),
   };
@@ -123,14 +93,7 @@ export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 
 };
 
 // TODO: re-use in textarea-wrapper not only in text-field-wrapper
-export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean, theme: Theme): JssStyle => {
-  const { contrast40Color, contrast50Color, contrast80Color } = getThemedColors(theme);
-  const {
-    contrast40Color: contrast40ColorDark,
-    contrast50Color: contrast50ColorDark,
-    contrast80Color: contrast80ColorDark,
-  } = getThemedColors('dark');
-
+export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean): JssStyle => {
   return {
     pointerEvents: 'none',
     maxWidth: '100%',
@@ -139,21 +102,12 @@ export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     font: textSmallStyle.font,
-    color: contrast50Color,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: contrast50ColorDark,
-    }),
+    color: contrastMediumColor,
     ...(isDisabled && {
-      color: contrast40Color,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrast40ColorDark,
-      }),
+      color: contrastDisabledColor,
     }),
     ...(isReadonly && {
-      color: contrast80Color,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrast80ColorDark,
-      }),
+      color: contrastHighColor,
     }),
   };
 };

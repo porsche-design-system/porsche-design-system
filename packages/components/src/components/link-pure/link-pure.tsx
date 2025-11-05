@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
@@ -11,7 +11,6 @@ import {
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
-  THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
 } from '../../utils';
@@ -34,7 +33,6 @@ const propTypes: PropTypes<typeof LinkPure> = {
   href: AllowedTypes.string,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
@@ -78,9 +76,6 @@ export class LinkPure {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkPureTarget = '_self';
 
@@ -118,8 +113,7 @@ export class LinkPure {
       this.hideLabel,
       this.alignLabel,
       this.underline,
-      !this.href,
-      this.theme
+      !this.href
     );
 
     const TagType = this.href === undefined ? 'span' : 'a';
@@ -143,7 +137,6 @@ export class LinkPure {
             size="inherit"
             name={this.icon}
             source={this.iconSource}
-            theme={this.theme}
             aria-hidden="true"
           />
         )}

@@ -1,7 +1,5 @@
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
-import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
-
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -11,6 +9,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './select-option-styles';
+import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
   value: AllowedTypes.string,
@@ -39,9 +38,9 @@ export class SelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
-    attachComponentCss(this.host, getComponentCss, theme);
+    attachComponentCss(this.host, getComponentCss);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -66,7 +65,6 @@ export class SelectOption {
               aria-hidden="true"
               name="check"
               color={isDisabled ? 'state-disabled' : 'primary'}
-              theme={theme}
             />
           )}
         </div>

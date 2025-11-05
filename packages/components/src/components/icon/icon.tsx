@@ -1,13 +1,12 @@
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { IconName, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   TEXT_SIZES,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './icon-styles';
@@ -25,7 +24,6 @@ const propTypes: PropTypes<typeof Icon> = {
   source: AllowedTypes.string,
   color: AllowedTypes.oneOf<IconColor>(ICON_COLORS),
   size: AllowedTypes.oneOf<IconSize>(TEXT_SIZES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<IconAriaAttribute>(ICON_ARIA_ATTRIBUTES),
 };
 
@@ -48,9 +46,6 @@ export class Icon {
   /** The size of the icon. */
   @Prop() public size?: IconSize = 'small';
 
-  /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
@@ -60,7 +55,7 @@ export class Icon {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.name, this.source, this.color, this.size, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.name, this.source, this.color, this.size);
 
     return (
       <img

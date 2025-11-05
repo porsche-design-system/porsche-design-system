@@ -1,13 +1,11 @@
 import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  colors,
   dismissButtonJssStyle,
-  getThemedColors,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { Theme } from '../../../types';
-import { getCss, isThemeDark } from '../../../utils';
+import { getCss } from '../../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
@@ -15,7 +13,9 @@ import {
 } from '../../inline-notification/inline-notification-styles-shared';
 import type { ToastState } from '../toast/toast-utils';
 
-export const getComponentCss = (state: ToastState, theme: Theme): string => {
+const { primaryColor } = colors;
+
+export const getComponentCss = (state: ToastState): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -32,7 +32,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
           width: 'auto', // ua popover reset
           height: 'auto', // ua popover reset
         }),
-        ...getNotificationRootJssStyle(state, false, true, theme),
+        ...getNotificationRootJssStyle(state, false, true),
         ...dropShadowHighStyle,
         '&::backdrop': {
           display: 'none',
@@ -42,20 +42,14 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
       p: {
         ...textSmallStyle,
         margin: 0,
-        color: getThemedColors(theme).primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: getThemedColors('dark').primaryColor,
-        }),
+        color: primaryColor,
         ...getNotificationContentJssStyle(),
       },
     },
     icon: getNotificationIconJssStyle(),
     close: {
       ...dismissButtonJssStyle,
-      mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        mixBlendMode: 'plus-lighter',
-      }),
+      mixBlendMode: 'multiply',
     },
   });
 };

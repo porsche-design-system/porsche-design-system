@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
@@ -65,7 +65,7 @@ import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventD
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
@@ -154,10 +154,6 @@ export namespace Components {
           * @experimental Sticks the Accordion heading at the top, fixed while scrolling
          */
         "sticky"?: boolean;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -187,10 +183,6 @@ export namespace Components {
           * State of the banner.
          */
         "state"?: BannerState;
-        /**
-          * Adapts the banner color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PButton {
         /**
@@ -229,10 +221,6 @@ export namespace Components {
           * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
          */
         "name"?: string;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -295,10 +283,6 @@ export namespace Components {
           * Stretches the area between icon and label to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -386,10 +370,6 @@ export namespace Components {
           * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
-        /**
-          * Adapts the color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -452,10 +432,6 @@ export namespace Components {
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
-        /**
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
          */
         "trimSpace"?: boolean;
@@ -514,10 +490,6 @@ export namespace Components {
          */
         "state"?: CheckboxState;
         /**
-          * Adapts the color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
          */
         "value"?: string;
@@ -557,10 +529,6 @@ export namespace Components {
           * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: DisplayTag;
-        /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
     }
     interface PDivider {
         /**
@@ -571,10 +539,6 @@ export namespace Components {
           * Defines direction.
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -594,10 +558,6 @@ export namespace Components {
           * If true, the drilldown is visualized as opened.
          */
         "open"?: boolean;
-        /**
-          * Adapts the drilldown color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @experimental 
@@ -678,10 +638,6 @@ export namespace Components {
           * The validation state.
          */
         "state"?: FieldsetState;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     interface PFlag {
         /**
@@ -725,10 +681,6 @@ export namespace Components {
           * The position of the flyout
          */
         "position"?: FlyoutPosition;
-        /**
-          * Adapts the flyout color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PHeading {
         /**
@@ -751,10 +703,6 @@ export namespace Components {
           * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: HeadingTag;
-        /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
     }
     interface PIcon {
         /**
@@ -777,10 +725,6 @@ export namespace Components {
           * Specifies a whole icon path which can be used for custom icons.
          */
         "source"?: string;
-        /**
-          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -815,10 +759,6 @@ export namespace Components {
           * State of the inline-notification.
          */
         "state"?: InlineNotificationState;
-        /**
-          * Adapts the inline-notification color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PInputDate {
         /**
@@ -885,10 +825,6 @@ export namespace Components {
           * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
          */
         "step"?: number;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
          */
@@ -972,10 +908,6 @@ export namespace Components {
          */
         "state"?: InputEmailState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The default email address (or comma-separated list of addresses) for the input.
          */
         "value"?: string;
@@ -1054,10 +986,6 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The number input value.
          */
         "value"?: string;
@@ -1127,10 +1055,6 @@ export namespace Components {
           * Indicates the validation or overall status of the input component.
          */
         "state"?: InputPasswordState;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * Show or hide password toggle for `input type="password"`.
          */
@@ -1205,10 +1129,6 @@ export namespace Components {
           * Indicates the validation or overall status of the input component.
          */
         "state"?: InputSearchState;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The search input value.
          */
@@ -1288,10 +1208,6 @@ export namespace Components {
          */
         "state"?: InputTelState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The tel input value.
          */
         "value"?: string;
@@ -1370,10 +1286,6 @@ export namespace Components {
          */
         "state"?: InputTextState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The text input value.
          */
         "value"?: string;
@@ -1443,10 +1355,6 @@ export namespace Components {
           * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
          */
         "step"?: number;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
          */
@@ -1526,10 +1434,6 @@ export namespace Components {
          */
         "state"?: InputUrlState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The url input value.
          */
         "value"?: string;
@@ -1571,10 +1475,6 @@ export namespace Components {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
-        /**
-          * Adapts the link color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * The style variant of the link.
          */
@@ -1629,10 +1529,6 @@ export namespace Components {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkPureTarget;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Shows an underline under the label.
          */
@@ -1741,10 +1637,6 @@ export namespace Components {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTileProductTarget;
-        /**
-          * Adapts the link-tile-product color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -1774,10 +1666,6 @@ export namespace Components {
           * If true, the modal is open.
          */
         "open": boolean;
-        /**
-          * Adapts the modal color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PModelSignature {
         /**
@@ -1804,10 +1692,6 @@ export namespace Components {
           * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
          */
         "size"?: ModelSignatureSize;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -1858,10 +1742,6 @@ export namespace Components {
          */
         "state"?: MultiSelectState;
         /**
-          * Adapts the multi-select color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * The selected values.
          */
         "value"?: string[];
@@ -1906,10 +1786,6 @@ export namespace Components {
           * Show or hide the button to jump to the last page.
          */
         "showLastPage"?: boolean;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * The total count of items.
          */
@@ -1968,10 +1844,6 @@ export namespace Components {
          */
         "state"?: PinCodeState;
         /**
-          * Adapts the color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * Pin Code type.
          */
         "type"?: PinCodeType;
@@ -1993,10 +1865,6 @@ export namespace Components {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
-        /**
-          * Adapts the popover color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PRadioGroup {
         /**
@@ -2048,10 +1916,6 @@ export namespace Components {
          */
         "state"?: RadioGroupState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The default value for the radio-group.
          */
         "value"?: string;
@@ -2091,10 +1955,6 @@ export namespace Components {
           * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -2120,10 +1980,6 @@ export namespace Components {
           * The name of the segmented-control.
          */
         "name"?: string;
-        /**
-          * Adapts the segmented-control color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Sets the initial value of the segmented-control.
          */
@@ -2208,10 +2064,6 @@ export namespace Components {
          */
         "state"?: SelectState;
         /**
-          * Adapts the select color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * The selected value.
          */
         "value"?: string;
@@ -2246,10 +2098,6 @@ export namespace Components {
           * If true, the sheet is open.
          */
         "open": boolean;
-        /**
-          * Adapts the sheet color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PSpinner {
         /**
@@ -2260,20 +2108,12 @@ export namespace Components {
           * Size of the spinner.
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
-        /**
-          * Adapts the spinner color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
           * The text size.
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PStepperHorizontalItem {
         /**
@@ -2317,10 +2157,6 @@ export namespace Components {
           * Stretches the contents to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * Adapts the switch color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -2335,10 +2171,6 @@ export namespace Components {
           * Controls the layout behavior of the table.
          */
         "layout"?: TableLayout;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -2381,10 +2213,6 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
-        /**
           * The text weight.
          */
         "weight"?: TabsWeight;
@@ -2401,10 +2229,6 @@ export namespace Components {
           * The text size.
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -2433,10 +2257,6 @@ export namespace Components {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PTagDismissible {
         /**
@@ -2451,10 +2271,6 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -2478,19 +2294,11 @@ export namespace Components {
          */
         "tag"?: TextTag;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
-        /**
           * The weight of the text.
          */
         "weight"?: TextWeight;
     }
     interface PTextList {
-        /**
-          * Adapts the text color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * The list style type.
          */
@@ -2572,10 +2380,6 @@ export namespace Components {
          */
         "state"?: TextareaState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The textarea value.
          */
         "value"?: string;
@@ -2586,10 +2390,6 @@ export namespace Components {
     }
     interface PToast {
         "addMessage": (message: ToastMessage) => Promise<void>;
-        /**
-          * Adapts the toast color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PToastItem {
         /**
@@ -2600,10 +2400,6 @@ export namespace Components {
           * Text of the toast-item.
          */
         "text"?: string;
-        /**
-          * Adapts the toast-item color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PWordmark {
         /**
@@ -2622,10 +2418,6 @@ export namespace Components {
           * Target attribute where the link should be opened.
          */
         "target"?: WordmarkTarget;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
 }
 export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
@@ -3759,10 +3551,6 @@ declare namespace LocalJSX {
           * @experimental Sticks the Accordion heading at the top, fixed while scrolling
          */
         "sticky"?: boolean;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3796,10 +3584,6 @@ declare namespace LocalJSX {
           * State of the banner.
          */
         "state"?: BannerState;
-        /**
-          * Adapts the banner color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PButton {
         /**
@@ -3838,10 +3622,6 @@ declare namespace LocalJSX {
           * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
          */
         "name"?: string;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -3904,10 +3684,6 @@ declare namespace LocalJSX {
           * Stretches the area between icon and label to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Specifies the type of the button.
          */
@@ -4003,10 +3779,6 @@ declare namespace LocalJSX {
           * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
-        /**
-          * Adapts the color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -4072,10 +3844,6 @@ declare namespace LocalJSX {
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
          */
@@ -4143,10 +3911,6 @@ declare namespace LocalJSX {
          */
         "state"?: CheckboxState;
         /**
-          * Adapts the color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
          */
         "value"?: string;
@@ -4186,10 +3950,6 @@ declare namespace LocalJSX {
           * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: DisplayTag;
-        /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
     }
     interface PDivider {
         /**
@@ -4200,10 +3960,6 @@ declare namespace LocalJSX {
           * Defines direction.
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -4231,10 +3987,6 @@ declare namespace LocalJSX {
           * If true, the drilldown is visualized as opened.
          */
         "open"?: boolean;
-        /**
-          * Adapts the drilldown color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @experimental 
@@ -4315,10 +4067,6 @@ declare namespace LocalJSX {
           * The validation state.
          */
         "state"?: FieldsetState;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     interface PFlag {
         /**
@@ -4374,10 +4122,6 @@ declare namespace LocalJSX {
           * The position of the flyout
          */
         "position"?: FlyoutPosition;
-        /**
-          * Adapts the flyout color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PHeading {
         /**
@@ -4400,10 +4144,6 @@ declare namespace LocalJSX {
           * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: HeadingTag;
-        /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
     }
     interface PIcon {
         /**
@@ -4426,10 +4166,6 @@ declare namespace LocalJSX {
           * Specifies a whole icon path which can be used for custom icons.
          */
         "source"?: string;
-        /**
-          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
@@ -4472,10 +4208,6 @@ declare namespace LocalJSX {
           * State of the inline-notification.
          */
         "state"?: InlineNotificationState;
-        /**
-          * Adapts the inline-notification color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PInputDate {
         /**
@@ -4554,10 +4286,6 @@ declare namespace LocalJSX {
           * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
          */
         "step"?: number;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
          */
@@ -4653,10 +4381,6 @@ declare namespace LocalJSX {
          */
         "state"?: InputEmailState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The default email address (or comma-separated list of addresses) for the input.
          */
         "value"?: string;
@@ -4747,10 +4471,6 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The number input value.
          */
         "value"?: string;
@@ -4832,10 +4552,6 @@ declare namespace LocalJSX {
           * Indicates the validation or overall status of the input component.
          */
         "state"?: InputPasswordState;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * Show or hide password toggle for `input type="password"`.
          */
@@ -4922,10 +4638,6 @@ declare namespace LocalJSX {
           * Indicates the validation or overall status of the input component.
          */
         "state"?: InputSearchState;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The search input value.
          */
@@ -5017,10 +4729,6 @@ declare namespace LocalJSX {
          */
         "state"?: InputTelState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The tel input value.
          */
         "value"?: string;
@@ -5111,10 +4819,6 @@ declare namespace LocalJSX {
          */
         "state"?: InputTextState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The text input value.
          */
         "value"?: string;
@@ -5196,10 +4900,6 @@ declare namespace LocalJSX {
           * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
          */
         "step"?: number;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
          */
@@ -5291,10 +4991,6 @@ declare namespace LocalJSX {
          */
         "state"?: InputUrlState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The url input value.
          */
         "value"?: string;
@@ -5336,10 +5032,6 @@ declare namespace LocalJSX {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTarget;
-        /**
-          * Adapts the link color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * The style variant of the link.
          */
@@ -5394,10 +5086,6 @@ declare namespace LocalJSX {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkPureTarget;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Shows an underline under the label.
          */
@@ -5510,10 +5198,6 @@ declare namespace LocalJSX {
           * Target attribute where the link should be opened.
          */
         "target"?: LinkTileProductTarget;
-        /**
-          * Adapts the link-tile-product color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -5555,10 +5239,6 @@ declare namespace LocalJSX {
           * If true, the modal is open.
          */
         "open"?: boolean;
-        /**
-          * Adapts the modal color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PModelSignature {
         /**
@@ -5585,10 +5265,6 @@ declare namespace LocalJSX {
           * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
          */
         "size"?: ModelSignatureSize;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -5647,10 +5323,6 @@ declare namespace LocalJSX {
          */
         "state"?: MultiSelectState;
         /**
-          * Adapts the multi-select color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * The selected values.
          */
         "value"?: string[];
@@ -5699,10 +5371,6 @@ declare namespace LocalJSX {
           * Show or hide the button to jump to the last page.
          */
         "showLastPage"?: boolean;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * The total count of items.
          */
@@ -5769,10 +5437,6 @@ declare namespace LocalJSX {
          */
         "state"?: PinCodeState;
         /**
-          * Adapts the color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * Pin Code type.
          */
         "type"?: PinCodeType;
@@ -5794,10 +5458,6 @@ declare namespace LocalJSX {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
-        /**
-          * Adapts the popover color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PRadioGroup {
         /**
@@ -5857,10 +5517,6 @@ declare namespace LocalJSX {
          */
         "state"?: RadioGroupState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The default value for the radio-group.
          */
         "value"?: string;
@@ -5900,10 +5556,6 @@ declare namespace LocalJSX {
           * Specifies if scrollbar should be shown.
          */
         "scrollbar"?: boolean;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -5937,10 +5589,6 @@ declare namespace LocalJSX {
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEventDetail>) => void;
-        /**
-          * Adapts the segmented-control color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * Sets the initial value of the segmented-control.
          */
@@ -6033,10 +5681,6 @@ declare namespace LocalJSX {
          */
         "state"?: SelectState;
         /**
-          * Adapts the select color depending on the theme.
-         */
-        "theme"?: Theme;
-        /**
           * The selected value.
          */
         "value"?: string;
@@ -6083,10 +5727,6 @@ declare namespace LocalJSX {
           * If true, the sheet is open.
          */
         "open"?: boolean;
-        /**
-          * Adapts the sheet color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PSpinner {
         /**
@@ -6097,10 +5737,6 @@ declare namespace LocalJSX {
           * Size of the spinner.
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
-        /**
-          * Adapts the spinner color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
@@ -6111,10 +5747,6 @@ declare namespace LocalJSX {
           * The text size.
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PStepperHorizontalItem {
         /**
@@ -6162,10 +5794,6 @@ declare namespace LocalJSX {
           * Stretches the contents to max available space.
          */
         "stretch"?: BreakpointCustomizable<boolean>;
-        /**
-          * Adapts the switch color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PTable {
         /**
@@ -6184,10 +5812,6 @@ declare namespace LocalJSX {
           * Emitted when sorting is changed.
          */
         "onUpdate"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     interface PTableBody {
     }
@@ -6234,10 +5858,6 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
-        /**
           * The text weight.
          */
         "weight"?: TabsWeight;
@@ -6258,10 +5878,6 @@ declare namespace LocalJSX {
           * The text size.
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
         /**
           * The text weight.
          */
@@ -6290,10 +5906,6 @@ declare namespace LocalJSX {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
-        /**
-          * Adapts the tag color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PTagDismissible {
         /**
@@ -6308,10 +5920,6 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
-        /**
-          * Adapts the color when used on dark background.
-         */
-        "theme"?: Theme;
     }
     interface PText {
         /**
@@ -6335,19 +5943,11 @@ declare namespace LocalJSX {
          */
         "tag"?: TextTag;
         /**
-          * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
-         */
-        "theme"?: Theme;
-        /**
           * The weight of the text.
          */
         "weight"?: TextWeight;
     }
     interface PTextList {
-        /**
-          * Adapts the text color depending on the theme.
-         */
-        "theme"?: Theme;
         /**
           * The list style type.
          */
@@ -6441,10 +6041,6 @@ declare namespace LocalJSX {
          */
         "state"?: TextareaState;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The textarea value.
          */
         "value"?: string;
@@ -6454,10 +6050,6 @@ declare namespace LocalJSX {
         "wrap"?: TextareaWrap;
     }
     interface PToast {
-        /**
-          * Adapts the toast color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PToastItem {
         /**
@@ -6472,10 +6064,6 @@ declare namespace LocalJSX {
           * Text of the toast-item.
          */
         "text"?: string;
-        /**
-          * Adapts the toast-item color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PWordmark {
         /**
@@ -6494,10 +6082,6 @@ declare namespace LocalJSX {
           * Target attribute where the link should be opened.
          */
         "target"?: WordmarkTarget;
-        /**
-          * Adapts color depending on theme.
-         */
-        "theme"?: Theme;
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;

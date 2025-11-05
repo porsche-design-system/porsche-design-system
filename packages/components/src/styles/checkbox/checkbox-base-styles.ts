@@ -6,31 +6,27 @@ import {
   fontSizeTextSmall,
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { isDisabledOrLoading, type Theme } from '../../utils';
+import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getThemedColors } from '../colors';
+import { colors } from '../colors';
 import { addImportantToEachRule, getTransition, SCALING_BASE_VALUE } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
-import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
+const { contrastMediumColor, contrastDisabledColor } = colors;
+
 export const getCheckboxBaseStyles = (
-  theme: Theme,
   isDisabled?: boolean,
   isLoading?: boolean,
   state?: FormState,
   compact?: boolean
 ): JssStyle => {
-  const { contrast50Color, contrast40Color } = getThemedColors(theme);
-  const { contrast50Color: contrast50ColorDark, contrast40Color: contrast40ColorDark } = getThemedColors('dark');
-  const { formStateColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark } = getThemedFormStateColors('dark', state);
+  const { formStateColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? contrast40Color : formStateColor || contrast50Color;
-  const uncheckedColorDark = disabledOrLoading ? contrast40ColorDark : formStateColorDark || contrast50ColorDark;
+  const uncheckedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || contrastMediumColor;
 
   const background = `transparent 0% 0% / ${fontLineHeight}`;
 
@@ -76,9 +72,6 @@ export const getCheckboxBaseStyles = (
       : {
           cursor: 'pointer',
         }),
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      borderColor: uncheckedColorDark,
-    }),
     gridArea: '1/1',
     borderRadius: borderRadiusSmall,
     ...addImportantToEachRule({

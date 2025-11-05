@@ -16,7 +16,7 @@ import {
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
-import { getCss, type Theme } from '../../utils';
+import { getCss } from '../../utils';
 import type { FlyoutBackdrop, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
 /**
@@ -42,8 +42,7 @@ export const getComponentCss = (
   hasHeader: boolean,
   hasFooter: boolean,
   hasSubFooter: boolean,
-  footerBehavior: FlyoutFooterBehavior,
-  theme: Theme
+  footerBehavior: FlyoutFooterBehavior
 ): string => {
   const isPositionStart = position === 'start';
   const isFooterFixed = footerBehavior === 'fixed';
@@ -76,7 +75,7 @@ export const getComponentCss = (
         },
         ...(hasHeader && {
           '&[name=header]': {
-            ...getDialogStickyAreaJssStyle('header', theme),
+            ...getDialogStickyAreaJssStyle('header'),
             gridColumn: '1/-1',
             zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
             ...(isFooterFixed && {
@@ -87,7 +86,7 @@ export const getComponentCss = (
         }),
         ...(hasFooter && {
           '&[name=footer]': {
-            ...getDialogStickyAreaJssStyle('footer', theme),
+            ...getDialogStickyAreaJssStyle('footer'),
             gridColumn: '1/-1',
             zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
             ...(isFooterFixed && {
@@ -105,10 +104,10 @@ export const getComponentCss = (
           },
         }),
       },
-      dialog: getDialogJssStyle(isOpen, theme, backdrop),
+      dialog: getDialogJssStyle(isOpen, backdrop),
     },
     scroller: {
-      ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
+      ...getScrollerJssStyle(isPositionStart ? 'start' : 'end'),
       // compared to Modal, the transition is handled on the scroller to have correct stucked behaviour (visibility of drop shadow)
       // for sticky header area while transitioned
       ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
@@ -119,7 +118,7 @@ export const getComponentCss = (
     },
     flyout: {
       ...dialogGridJssStyle,
-      ...getDialogColorJssStyle(theme),
+      ...getDialogColorJssStyle(),
       width: `var(${cssVariableWidth},auto)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,

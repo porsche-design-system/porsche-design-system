@@ -16,6 +16,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Removed (deprecated in v3 already)
 
+- Components:
+  - Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS class
+  - Remove slotted Anchor Styles entirely from all components. Use `Link Pure` instead or define an anchor style
+
+- Tailwind CSS: Reset all default Tailwind color tokens
+- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
 - Tailwind CSS:
   - e.g. `border-contrast-low` => `border-contrast-20`
   - e.g. `border-contrast-medium` => `border-contrast-50`

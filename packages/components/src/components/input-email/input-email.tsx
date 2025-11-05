@@ -1,12 +1,11 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -39,7 +38,6 @@ const propTypes: PropTypes<typeof InputEmail> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -112,9 +110,6 @@ export class InputEmail {
 
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list. */
   @Prop() public multiple?: boolean = false;
@@ -192,8 +187,7 @@ export class InputEmail {
       this.hideLabel,
       this.state,
       this.compact,
-      this.readOnly,
-      this.theme
+      this.readOnly
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -221,13 +215,12 @@ export class InputEmail {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         loading={this.loading}
         pattern={this.pattern}
         multiple={this.multiple}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" theme={this.theme} />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" />,
         })}
       />
     );

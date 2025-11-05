@@ -10,16 +10,15 @@ import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getThemedColors,
+  colors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
@@ -39,6 +38,8 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
+const { primaryColor, contrastLowColor, contrastMediumColor, contrastDisabledColor, frostedColor } = colors;
+
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
   loading: boolean,
@@ -46,7 +47,6 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  theme: Theme,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
   const scalingVar = getScalingVar(compact);
@@ -61,24 +61,10 @@ export const getFunctionalComponentInputBaseStyles = (
   // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
   const buttonCompensation = `clamp(0, 6.42 * pow(calc(${scalingVar} - 0.5), 0.6826), 12)`;
 
-  const { primaryColor, contrast20Color, contrast50Color, contrast40Color } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrast20Color: contrast20ColorDark,
-    contrast50Color: contrast50ColorDark,
-    contrast40Color: contrast40ColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
 
   const hoverStyles = {
     borderColor: formStateHoverColor || primaryColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      borderColor: formStateHoverColorDark || primaryColorDark,
-    }),
   };
 
   return {
@@ -100,18 +86,11 @@ export const getFunctionalComponentInputBaseStyles = (
         height,
         paddingBlock,
         color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
         width: '100%',
         minWidth: '2rem',
         ...(disabled && {
-          color: contrast40Color,
-          WebkitTextFillColor: contrast40Color,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrast40ColorDark,
-            WebkitTextFillColor: contrast40ColorDark,
-          }),
+          color: contrastDisabledColor,
+          WebkitTextFillColor: contrastDisabledColor,
         }),
         ...additionalInputJssStyle,
       },
@@ -121,23 +100,21 @@ export const getFunctionalComponentInputBaseStyles = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
-      border: `${borderWidthBase} solid ${formStateColor || contrast50Color}`,
+      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
+      background: frostedColor,
+      // ...frostedGlassStyle,
+      height,
+      paddingBlock,
       paddingInline,
       display: 'flex',
       alignItems: 'center',
       gap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: formStateColorDark || contrast50ColorDark,
-      }),
       ...(!disabled &&
         !readOnly && {
           '&:has(input:focus)': {
             borderColor: primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: primaryColorDark,
-            }),
           },
           ...hoverMediaQuery({
             '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
@@ -145,19 +122,12 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       ...(disabled && {
         cursor: 'not-allowed',
-        borderColor: contrast40Color,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrast40ColorDark,
-        }),
+        borderColor: contrastDisabledColor,
       }),
       ...(readOnly && {
         cursor: 'text',
-        borderColor: contrast20Color,
-        background: contrast20Color,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrast20ColorDark,
-          background: contrast20ColorDark,
-        }),
+        borderColor: contrastLowColor,
+        background: contrastLowColor,
       }),
     },
     ...(loading && {
@@ -171,7 +141,6 @@ export const getFunctionalComponentInputBaseStyles = (
     ...getFunctionalComponentLabelStyles(
       disabled,
       hideLabel,
-      theme,
       !disabled &&
         !readOnly &&
         hoverMediaQuery({
@@ -179,7 +148,7 @@ export const getFunctionalComponentInputBaseStyles = (
         })
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   };

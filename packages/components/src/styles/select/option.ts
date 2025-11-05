@@ -1,24 +1,14 @@
 import { borderRadiusSmall, fontLineHeight, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { isHighContrastMode, type Theme } from '../../utils';
-import { getHighContrastColors, getThemedColors } from '../colors';
+import { colors } from '../colors';
 import { getTransition } from '../common-styles';
-import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
+
+const { primaryColor, contrastLowColor, contrastHighColor, contrastDisabledColor } = colors;
 
 export const getOptionJssStyle = (
-  componentName: 'select-wrapper' | 'select-option' | 'multi-select-option',
-  cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
-  theme: Theme
+  componentName: 'select-option' | 'multi-select-option',
+  cssVarScaling: string | 1 // "1" is needed for components not yet supporting compact mode
 ): JssStyle => {
-  const {
-    primaryColor: primaryColorDark,
-    contrast80Color: contrast80ColorDark,
-    contrast40Color: contrast40ColorDark,
-    contrast20Color: contrast20ColorDark,
-  } = getThemedColors('dark');
-  const { primaryColor, contrast20Color, contrast80Color, contrast40Color } = getThemedColors(theme);
-  const { highlightColor } = getHighContrastColors();
-
   const gap = `max(4px, ${cssVarScaling} * 12px)`;
   const paddingBlock = `max(2px, ${cssVarScaling} * ${spacingStaticSmall})`;
   const paddingInline = `max(4px, ${cssVarScaling} * var(--p-internal-${componentName}-padding-left, 12px)) max(4px, ${cssVarScaling} * 12px)`;
@@ -30,10 +20,7 @@ export const getOptionJssStyle = (
     paddingInline,
     minHeight: fontLineHeight, // preserves height for empty option
     ...textSmallStyle,
-    color: contrast80Color,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: contrast80ColorDark,
-    }),
+    color: contrastHighColor,
     cursor: 'pointer',
     textAlign: 'start',
     wordBreak: 'break-word',
@@ -41,23 +28,14 @@ export const getOptionJssStyle = (
     borderRadius: borderRadiusSmall,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: contrast20Color,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: contrast20ColorDark,
-      }),
+      background: contrastLowColor,
     },
     '&--highlighted, &--selected': {
-      color: isHighContrastMode ? highlightColor : primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: isHighContrastMode ? highlightColor : primaryColorDark,
-      }),
+      color: primaryColor,
     },
     '&--disabled': {
       cursor: 'not-allowed',
-      color: contrast40Color,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrast40ColorDark,
-      }),
+      color: contrastDisabledColor,
     },
     '&--hidden': {
       display: 'none',

@@ -1,16 +1,28 @@
-import type { Theme } from '@porsche-design-system/styles';
 import type { FormState } from '../utils/form/form-state';
-import { getThemedColors, type ThemedColors } from './';
+import { colors } from './colors';
 
 type ThemedFormStateColors = {
-  formStateColor: string | undefined; // form state: "none" => undefined
-  formStateHoverColor: string | undefined; // form state: "none" => undefined
+  formStateColor: string | undefined;
+  formStateHoverColor: string | undefined;
 };
 
-export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
-  const themedColors = getThemedColors(theme);
+const { successColor, successFrostedSoftColor, errorColor, errorFrostedSoftColor } = colors;
+
+const colorMap: Record<FormState, string> = {
+  success: successColor,
+  error: errorColor,
+  none: undefined,
+};
+
+const colorHoverMap: Record<FormState, string> = {
+  success: successFrostedSoftColor,
+  error: errorFrostedSoftColor,
+  none: undefined,
+};
+
+export const getThemedFormStateColors = (state: FormState): ThemedFormStateColors => {
   return {
-    formStateColor: themedColors[`${state}Color` as keyof ThemedColors],
-    formStateHoverColor: themedColors[`${state}ColorDarken` as keyof ThemedColors],
+    formStateColor: colorMap[state],
+    formStateHoverColor: colorHoverMap[state],
   };
 };

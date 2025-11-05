@@ -16,7 +16,7 @@ import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import type { Theme } from '../types';
 import { isThemeDark } from '../utils';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery, type ThemedColors } from './';
+import { colors } from './colors';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -92,21 +92,15 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-// TODO: this is workaround, in order the colors to be bundled in the main bundle, we need to have at least one function here, which is used in project and which calls "getThemedColors"
-// TODO: This mechanism needs to be investigated as part of refactoring
-export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
-  return getThemedColors(theme);
-};
+const { focusColor } = colors;
 
 type Options = {
   offset?: string | 0;
   slotted?: true | string;
   pseudo?: boolean;
 };
-export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
+export const getFocusJssStyle = (opts?: Options): JssStyle => {
   const { offset = '2px', slotted = '', pseudo = false } = opts || {};
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
   const slottedSelector = slotted && slotted !== true ? slotted : '';
 
   return {
@@ -124,9 +118,6 @@ export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
     [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
       outline: `${borderWidthBase} solid ${focusColor}`,
       outlineOffset: offset,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        outlineColor: focusColorDark,
-      }),
     },
   };
 };
@@ -193,9 +184,6 @@ export const getBackdropJssStyle = (
     zIndex,
     // TODO: background shading is missing in getThemedColors(theme).backgroundShading
     background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: themeDarkBackgroundShading,
-    }),
     ...(isVisible
       ? {
           visibility: 'inherit',

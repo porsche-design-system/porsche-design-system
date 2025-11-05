@@ -13,36 +13,29 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   cssVariableTransitionDuration,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import type { AccordionSize } from './accordion-utils';
+
+const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
+const positionStickyTopFallback = '0';
+
+const { contrastLowColor, primaryColor, frostedSoftColor, canvasColor } = colors;
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
   open: boolean,
-  theme: Theme,
   sticky: boolean
 ): string => {
-  const { primaryColor, frostedColor, contrast20Color, canvasColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    frostedColor: frostedColorDark,
-    contrast20Color: contrast20ColorColorDark,
-    canvasColor: canvasColorDark,
-  } = getThemedColors('dark');
-  const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
-  const positionStickyTopFallback = '0';
-
   return getCss({
     '@global': {
       ':host': {
@@ -51,10 +44,7 @@ export const getComponentCss = (
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
             : {
-                borderBottom: `1px solid ${contrast20Color}`,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  borderColor: contrast20ColorColorDark,
-                }),
+                borderBottom: `1px solid ${contrastLowColor}`,
               }),
           '&(:only-of-type)': { borderBottom: 0 },
           ...colorSchemeStyles,
@@ -77,9 +67,6 @@ export const getComponentCss = (
         textAlign: 'start',
         zIndex: 0,
         color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
         ...textSmallStyle,
         fontWeight: fontWeightSemiBold,
         ...buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -113,14 +100,11 @@ export const getComponentCss = (
             },
             '&:hover::before': {
               ...frostedGlassStyle,
-              background: frostedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: frostedColorDark,
-              }),
+              background: frostedSoftColor,
             },
           })
         ),
-        ...getFocusJssStyle(theme, { pseudo: true, offset: '-2px' }),
+        ...getFocusJssStyle({ pseudo: true, offset: '-2px' }),
       },
     },
     heading: {
@@ -130,9 +114,6 @@ export const getComponentCss = (
         top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
         zIndex: 1, // to be on top of the collapsible
         backgroundColor: canvasColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: canvasColorDark,
-        }),
       }),
     },
     'icon-container': {
@@ -151,9 +132,6 @@ export const getComponentCss = (
     },
     collapsible: {
       color: primaryColor, // enables color inheritance for slotted content
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-      }),
       display: 'grid',
       ...(sticky && {
         position: 'relative',

@@ -10,8 +10,8 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, THEMES, validateProps } from '../../utils';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, FORM_STATES, hasPropValueChanged, validateProps } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId } from '../common/label/label-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
@@ -48,7 +48,6 @@ const propTypes: PropTypes<typeof Textarea> = {
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -126,9 +125,6 @@ export class Textarea {
   /** A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Emitted when the textarea loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<TextareaChangeEventDetail>;
 
@@ -191,8 +187,7 @@ export class Textarea {
       this.hideLabel,
       this.state,
       this.counter,
-      this.resize,
-      this.theme
+      this.resize
     );
 
     const id = 'textarea';
@@ -242,7 +237,7 @@ export class Textarea {
             </Fragment>
           )}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }

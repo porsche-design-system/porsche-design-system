@@ -1,7 +1,7 @@
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
-import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import { colors, getTransition } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant } from '../../types';
 import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
@@ -12,27 +12,20 @@ type Colors = {
   borderColor: string;
   backgroundColor: string;
 };
-const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: Theme): Colors => {
-  const { contrast50Color, contrast80Color, contrast40Color, frostedColor } = getThemedColors(theme);
-  const { canvasColor } = getHighContrastColors();
-
+const { frostedColor, contrastDisabledColor, contrastHighColor } = colors;
+const getDisabledColors = (variant: LinkButtonVariant, loading: boolean): Colors => {
   const colors: {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: isHighContrastMode ? contrast40Color : contrast80Color,
-      borderColor: isHighContrastMode ? contrast40Color : loading ? contrast80Color : contrast40Color,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? contrast80Color : contrast40Color,
+      textColor: contrastHighColor,
+      borderColor: loading ? contrastHighColor : contrastDisabledColor,
+      backgroundColor: loading ? contrastHighColor : contrastDisabledColor,
     },
     secondary: {
-      textColor: contrast40Color,
-      borderColor: isHighContrastMode ? contrast40Color : loading ? contrast50Color : contrast40Color,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? frostedColor : 'transparent',
-    },
-    ghost: {
-      textColor: contrast40Color,
-      borderColor: isHighContrastMode ? contrast40Color : loading ? frostedColor : frostedColor,
-      backgroundColor: isHighContrastMode ? canvasColor : loading ? frostedColor : frostedColor,
+      textColor: contrastDisabledColor,
+      borderColor: frostedColor,
+      backgroundColor: frostedColor,
     },
   };
 
@@ -46,16 +39,10 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   disabled: boolean,
   loading: boolean,
-  compact: BreakpointCustomizable<boolean>,
-  theme: Theme
+  compact: BreakpointCustomizable<boolean>
 ): string => {
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
-  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, theme);
-  const {
-    textColor: textColorDark,
-    borderColor: borderColorDark,
-    backgroundColor: backgroundColorDark,
-  } = getDisabledColors(variant, loading, 'dark');
+  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading);
   const isPrimary = variant === 'primary';
 
   return getCss(
@@ -68,8 +55,7 @@ export const getComponentCss = (
         disabledOrLoading,
         false,
         compact,
-        cssVariableInternalButtonScaling,
-        theme
+        cssVariableInternalButtonScaling
       ),
       {
         root: {
@@ -78,11 +64,6 @@ export const getComponentCss = (
             backgroundColor,
             borderColor,
             color: textColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: backgroundColorDark,
-              borderColor: borderColorDark,
-              color: textColorDark,
-            }),
           }),
           ...(loading && !isPrimary && frostedGlassStyle),
           margin: 0, // Removes default button margin on safari 15

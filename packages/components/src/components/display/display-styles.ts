@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/styles';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { DISPLAY_TAGS, type DisplayAlign, type DisplayColor, type DisplaySize } from './display-utils';
 
@@ -20,8 +20,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<DisplaySize>,
   align: DisplayAlign,
   color: DisplayColor,
-  ellipsis: boolean,
-  theme: Theme
+  ellipsis: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -41,8 +40,7 @@ export const getComponentCss = (
       })),
       align,
       color,
-      ellipsis,
-      theme
+      ellipsis
     ),
   });
 };

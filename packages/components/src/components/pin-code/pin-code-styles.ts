@@ -11,7 +11,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
@@ -28,8 +28,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   isLoading: boolean,
   length: PinCodeLength,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): string => {
   const scalingVar = getScalingVar(compact);
 
@@ -42,7 +41,7 @@ export const getComponentCss = (
   const inputStyles = removeStyles(
     'input[readonly]',
     removeSlottedSelector(
-      getSlottedTextFieldTextareaSelectStyles('input', state, isLoading, theme, {
+      getSlottedTextFieldTextareaSelectStyles('input', state, isLoading, {
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start
         textAlign: 'center',
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. isLoading
@@ -96,9 +95,9 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

@@ -1,15 +1,5 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  forcedColorsMediaQuery,
-  getHighContrastColors,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-  type ThemedColors,
-} from '../../styles';
-import type { Theme } from '../../types';
+import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import {
   getSvgUrl,
@@ -22,26 +12,21 @@ const cssVariableWidth = '--p-model-signature-width';
 const cssVariableHeight = '--p-model-signature-height';
 const cssVariableColor = '--p-model-signature-color';
 
-const { canvasTextColor } = getHighContrastColors();
+const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
 
-const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
-  const colorMap: Record<ModelSignatureColor, string> = {
-    primary: themedColors.primaryColor,
-    inherit: 'black',
-    'contrast-low': themedColors.contrast20Color,
-    'contrast-medium': themedColors.contrast50Color,
-    'contrast-high': themedColors.contrast80Color,
-  };
-
-  return colorMap[color];
+const colorMap: Record<ModelSignatureColor, string> = {
+  primary: primaryColor,
+  inherit: 'black',
+  'contrast-low': contrastLowColor,
+  'contrast-medium': contrastMediumColor,
+  'contrast-high': contrastHighColor,
 };
 
 export const getComponentCss = (
   model: ModelSignatureModel,
   safeZone: boolean,
   size: ModelSignatureSize,
-  color: ModelSignatureColor,
-  theme: Theme
+  color: ModelSignatureColor
 ): string => {
   const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
   const isSizeInherit = size === 'inherit';
@@ -59,13 +44,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
-          background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors(theme))})`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors('dark'))})`,
-          }),
-          ...forcedColorsMediaQuery({
-            background: canvasTextColor,
-          }),
+          background: `var(${cssVariableColor},${colorMap[color]})`,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

@@ -5,10 +5,9 @@ import {
   spacingStaticSmall,
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import { isThemeDark, OPTION_LIST_SAFE_ZONE, type Theme } from '../../utils';
-import { getThemedColors } from '../colors';
+import { OPTION_LIST_SAFE_ZONE } from '../../utils';
+import { colors } from '../colors';
 import { cssVariableAnimationDuration } from '../common-styles';
-import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 
 const keyframesName = 'fade-in';
 
@@ -23,15 +22,13 @@ export const getPopoverKeyframesStyles: Styles = {
   },
 };
 
+const { contrastLowColor, canvasColor } = colors;
+
 export const getPopoverJssStyle = (
   isOpen: boolean,
   cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
-  optionHeight: 40 | 44,
-  theme: Theme
+  optionHeight: 40 | 44
 ): JssStyle => {
-  const { contrast20Color, canvasColor, surfaceColor } = getThemedColors(theme);
-  const { contrast20Color: contrast20ColorDark, surfaceColor: surfaceColorDark } = getThemedColors('dark');
-
   const minHeightOptionList = `calc(${4.5 * (optionHeight + 8) + 6 + 2}px)`; // 4.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
 
   return {
@@ -49,13 +46,9 @@ export const getPopoverJssStyle = (
     scrollbarColor: 'auto', // firefox
     animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) ${keyframesName} ${motionEasingBase} forwards`,
     filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
-    background: isThemeDark(theme) ? surfaceColor : canvasColor,
-    border: `1px solid ${contrast20Color}`,
+    background: canvasColor,
+    border: `1px solid ${contrastLowColor}`,
     borderRadius: borderRadiusMedium,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: surfaceColorDark,
-      borderColor: contrast20ColorDark,
-    }),
     '&:not(:popover-open)': {
       display: 'none',
     },

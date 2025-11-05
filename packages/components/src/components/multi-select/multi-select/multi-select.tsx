@@ -13,7 +13,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -34,7 +34,6 @@ import {
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
   setHighlightedSelectOption,
-  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
   updateHighlightedOption,
@@ -57,7 +56,6 @@ import {
   resetSelectedOptions,
   setSelectedMultiSelectOption,
   setSelectedOptions,
-  syncMultiSelectChildrenProps,
 } from './multi-select-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -73,7 +71,6 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -126,9 +123,6 @@ export class MultiSelect {
 
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
-
-  /** Adapts the multi-select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** The id of a form element the multi-select should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
@@ -275,10 +269,8 @@ export class MultiSelect {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.compact,
-      this.theme
+      this.compact
     );
-    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
@@ -316,7 +308,6 @@ export class MultiSelect {
               class="button"
               icon="close"
               hideLabel={true}
-              theme={this.theme}
               onClick={this.onResetClick}
               onKeyDown={(e: KeyboardEvent) => e.key === 'Tab' && (this.isOpen = false)}
               disabled={this.disabled}
@@ -328,7 +319,6 @@ export class MultiSelect {
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
-            theme={this.theme}
             color={this.disabled ? 'state-disabled' : 'primary'}
             aria-hidden="true"
           />
@@ -353,7 +343,6 @@ export class MultiSelect {
             clear={true}
             indicator={true}
             compact={true}
-            theme={this.theme}
             onInput={this.onFilterInput}
             onKeyDown={this.onComboKeyDown}
             onBlur={(e: any) => e.stopPropagation()}
@@ -372,7 +361,7 @@ export class MultiSelect {
             <slot />
           </div>
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }
