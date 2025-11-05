@@ -57,27 +57,29 @@ export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => 
   tempDiv.innerHTML = '';
   host.shadowRoot.append(tempDiv);
 
-  const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
-    tempDiv.innerHTML = item.innerHTML;
-    tempDiv.style.minWidth = getScalableItemStyles(
-      false /* Uses the largest possible padding of the item */,
-      compact
-    ).dimension;
-    tempDiv.style.padding = getScalableItemStyles(
-      false /* Uses the largest possible padding of the item */,
-      compact
-    ).padding;
+  const widths = Array.from(host.children)
+    .filter((el) => el.slot !== 'message')
+    .map((item: HTMLElement & SegmentedControlItem) => {
+      tempDiv.innerHTML = item.innerHTML;
+      tempDiv.style.minWidth = getScalableItemStyles(
+        false /* Uses the largest possible padding of the item */,
+        compact
+      ).dimension;
+      tempDiv.style.padding = getScalableItemStyles(
+        false /* Uses the largest possible padding of the item */,
+        compact
+      ).padding;
 
-    if (item.icon || item.iconSource) {
-      tempDiv.prepend(tempIcon);
-    }
-    if (item.label) {
-      tempLabel.innerHTML = item.label;
-      tempDiv.prepend(tempLabel);
-    }
+      if (item.icon || item.iconSource) {
+        tempDiv.prepend(tempIcon);
+      }
+      if (item.label) {
+        tempLabel.innerHTML = item.label;
+        tempDiv.prepend(tempLabel);
+      }
 
-    return Number.parseFloat(getComputedStyle(tempDiv).width);
-  });
+      return Number.parseFloat(getComputedStyle(tempDiv).width);
+    });
 
   tempDiv.remove();
 
