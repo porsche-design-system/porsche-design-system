@@ -1,7 +1,8 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES_CONSTRUCTOR_MAP, addParentAndSetRequiredProps, componentFactory } from '../test-utils';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import { vi } from 'vitest';
+import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_MAP } from '../test-utils';
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as hasPropValueChangedUtils from '../utils/has-prop-value-changed';
@@ -45,7 +46,7 @@ it('should have same amount of elements in TAG_NAMES_CONSTRUCTOR_MAP as in TAG_N
 it.each<TagName>(tagNamesWithRequiredChild)(
   'should call getOnlyChildOfKindHTMLElementOrThrow() with correct parameters via componentWillLoad for %s',
   (tagName) => {
-    const spy = jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow');
+    const spy = vi.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow');
     const component = componentFactory(tagName);
 
     try {
@@ -67,7 +68,7 @@ it('should contain every component with -item suffix in tagNamesWithRequiredChil
 it.each<TagName>(tagNamesWithRequiredParent)(
   'should call throwIfParentIsNotOfKind() with correct parameters via connectedCallback for %s',
   (tagName) => {
-    const spy = jest.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
+    const spy = vi.spyOn(throwIfParentIsNotOfKindUtils, 'throwIfParentIsNotOfKind');
     const component = componentFactory(tagName);
 
     component.connectedCallback();
@@ -79,7 +80,7 @@ it.each<TagName>(tagNamesWithRequiredParent)(
 it.each<TagName>(tagNamesWithRequiredRootNode)(
   'should call throwIfRootNodeIsNotOneOfKind() with correct parameters via connectedCallback for %s',
   (tagName) => {
-    const spy = jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind');
+    const spy = vi.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind');
     const component = componentFactory(tagName);
 
     try {
@@ -97,7 +98,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
     // this works for first level only, so nested ValidatorFunctions inside .oneOf are not considered
     // also any validation against allowedValues[] is not verified
     let propTypes: { [key: string]: string } = {};
-    const spy = jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation(
+    const spy = vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(
       (_instance, props) =>
         (propTypes = Object.entries(props).reduce(
           (prev, [prop, func]) => ({
@@ -142,7 +143,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
 );
 
 it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() for %s', (tagName) => {
-  const spy = jest.spyOn(validatePropsUtils, 'validateProps');
+  const spy = vi.spyOn(validatePropsUtils, 'validateProps');
   const component = componentFactory(tagName);
 
   try {
@@ -156,7 +157,7 @@ describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
   const component = componentFactory(tagName);
 
   it('should call hasPropValueChanged() with correct parameters via componentShouldUpdate and return its result', () => {
-    const spy = jest
+    const spy = vi
       .spyOn(hasPropValueChangedUtils, 'hasPropValueChanged')
       .mockReturnValueOnce(true)
       .mockReturnValueOnce(false);
@@ -174,7 +175,7 @@ describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',
   (tagName) => {
-    const spy = jest.spyOn(jssUtils, 'attachComponentCss');
+    const spy = vi.spyOn(jssUtils, 'attachComponentCss');
     const component = componentFactory(tagName);
 
     // some components require a parent and certain props in order to work
@@ -209,15 +210,15 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   const el = document.createElement('div');
 
   it('should call observeAttributes() with correct parameters via connectedCallback', () => {
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
+    const spy = vi.spyOn(attributeObserverUtils, 'observeAttributes');
     component.connectedCallback();
 
     expect(spy).toHaveBeenCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
   it('should call observeAttributes() with correct parameters via componentWillLoad', () => {
-    jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
-    const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
+    vi.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
+    const spy = vi.spyOn(attributeObserverUtils, 'observeAttributes');
 
     if (tagName === 'p-select-wrapper') {
       (component as any).native = true;
@@ -229,10 +230,10 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
   });
 
   it('should call unobserveAttributes() with correct parameters via disconnectedCallback', () => {
-    jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
+    vi.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(el);
     component.componentWillLoad(); // to ensure reference too "el" is in component instance
 
-    const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
+    const spy = vi.spyOn(attributeObserverUtils, 'unobserveAttributes');
     component.disconnectedCallback();
 
     expect(spy).toHaveBeenCalledWith(el);
@@ -246,14 +247,14 @@ describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !
     const component = componentFactory(tagName);
 
     it('should call observeChildren() with correct parameters via connectedCallback', () => {
-      const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+      const spy = vi.spyOn(childrenObserverUtils, 'observeChildren');
       component.connectedCallback();
 
       expect(spy).toHaveBeenCalled();
     });
 
     it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
-      const spy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+      const spy = vi.spyOn(childrenObserverUtils, 'unobserveChildren');
 
       try {
         // carousel's splide.destroy() gets caught here

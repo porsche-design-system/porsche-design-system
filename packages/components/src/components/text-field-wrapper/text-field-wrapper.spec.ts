@@ -1,15 +1,16 @@
-import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import { TextFieldWrapper } from './text-field-wrapper';
+import { vi } from 'vitest';
 import * as a11yUtils from '../../utils/a11y/a11y';
-import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
-import * as propertyObserverUtils from '../../utils/property-observer';
-import * as isWithinFormUtils from '../../utils/form/isWithinForm';
 import * as formUtils from '../../utils/form/form-utils';
+import * as isWithinFormUtils from '../../utils/form/isWithinForm';
+import * as propertyObserverUtils from '../../utils/property-observer';
+import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
+import { TextFieldWrapper } from './text-field-wrapper';
+import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 
-jest.mock('../../utils/dom');
+vi.mock('../../utils/dom');
 
 const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement) =>
-  jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);
+  vi.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);
 
 describe('componentWillLoad', () => {
   it('should call isType() with correct parameters and set isSearch', () => {
@@ -17,7 +18,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'isType');
 
     expect(component['isSearch']).toBe(undefined);
 
@@ -36,7 +37,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'isType');
 
     expect(component['isPassword']).toBe(undefined);
 
@@ -55,7 +56,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(isWithinFormUtils, 'isWithinForm');
+    const spy = vi.spyOn(isWithinFormUtils, 'isWithinForm');
 
     expect(component['isWithinForm']).toBe(undefined);
 
@@ -73,7 +74,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasLocateAction');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'hasLocateAction');
 
     expect(component['hasAction']).toBe(undefined);
 
@@ -92,7 +93,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     // sets value of this.isSearch
-    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
+    vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(false);
 
     const component = new TextFieldWrapper();
     expect(component['isClearable']).toBe(false);
@@ -106,7 +107,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     // sets value of this.isSearch
-    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
 
     const component = new TextFieldWrapper();
     expect(component['isClearable']).toBe(false);
@@ -125,8 +126,8 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     // sets value of this.isSearch
-    jest.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
-    const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    vi.spyOn(textFieldWrapperUtils, 'isType').mockReturnValue(true);
+    const spy = vi.spyOn(propertyObserverUtils, 'observeProperties');
 
     const component = new TextFieldWrapper();
     component.componentWillLoad();
@@ -141,7 +142,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     // mock return value once to prove connection between util actually setting hasCounter
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText').mockReturnValueOnce(false);
+    const spy = vi.spyOn(textFieldWrapperUtils, 'hasCounterAndIsTypeText').mockReturnValueOnce(false);
     const component = new TextFieldWrapper();
 
     expect(component['hasCounter']).toBe(undefined);
@@ -162,7 +163,7 @@ describe('componentWillLoad', () => {
     input.maxLength = 50;
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber');
     const component = new TextFieldWrapper();
     component.unit = 'EUR';
 
@@ -180,7 +181,7 @@ describe('componentWillLoad', () => {
     mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
     // mock return value once to prove connection between util actually setting hasCounter
-    const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber').mockReturnValueOnce(false);
+    const spy = vi.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber').mockReturnValueOnce(false);
     const component = new TextFieldWrapper();
     component.unit = 'EUR';
     component.showCharacterCount = false;
@@ -208,7 +209,7 @@ describe('componentWillLoad', () => {
       mockGetOnlyChildOfKindHTMLElementOrThrow(input);
 
       // mock return value once to prove connection between util actually setting hasCounter
-      const spy = jest.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber').mockReturnValueOnce(false);
+      const spy = vi.spyOn(textFieldWrapperUtils, 'hasUnitAndIsTypeTextOrNumber').mockReturnValueOnce(false);
       const component = new TextFieldWrapper();
       component.unit = 'EUR';
 
@@ -228,7 +229,7 @@ describe('componentWillLoad', () => {
 
 describe('render', () => {
   it('should call throwIfUnitLengthExceeded() with correct parameter', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'throwIfUnitLengthExceeded');
     const component = new TextFieldWrapper();
     component.unit = '123456';
 
@@ -242,7 +243,7 @@ describe('render', () => {
 
 describe('componentDidLoad', () => {
   it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
+    const spy = vi.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
     const input = document.createElement('input');
     const component = new TextFieldWrapper();
     component['input'] = input;
@@ -257,18 +258,18 @@ describe('componentDidLoad', () => {
 
 describe('componentDidRender', () => {
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
-    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
-    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
-    const addCounterCharacterLengthCssVarStyleSheetSpy = jest.spyOn(
+    const updateCounterSpy = vi.spyOn(formUtils, 'updateCounter');
+    const observePropertiesSpy = vi.spyOn(propertyObserverUtils, 'observeProperties');
+    const addCounterCharacterLengthCssVarStyleSheetSpy = vi.spyOn(
       textFieldWrapperUtils,
       'addCounterCharacterLengthCssVarStyleSheet'
     );
-    const updateCounterCharacterLengthCssVarStyleSheetSpy = jest.spyOn(
+    const updateCounterCharacterLengthCssVarStyleSheetSpy = vi.spyOn(
       textFieldWrapperUtils,
       'updateCounterCharacterLengthCssVarStyleSheet'
     );
-    const addEventListenerSpy = jest.fn();
-    const removeEventListenerSpy = jest.fn();
+    const addEventListenerSpy = vi.fn();
+    const removeEventListenerSpy = vi.fn();
 
     const input = document.createElement('input');
     input.type = 'text';
@@ -320,7 +321,7 @@ describe('componentDidRender', () => {
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
+    const spy = vi.spyOn(a11yUtils, 'setAriaAttributes');
     const component = new TextFieldWrapper();
     const input = document.createElement('input');
     input.type = 'text';
@@ -337,8 +338,8 @@ describe('componentDidRender', () => {
 describe('onClear()', () => {
   it('should call this.onLabelClick(), clear input.value and call dispatchInputEvent() with correct parameters', () => {
     const component = new TextFieldWrapper();
-    const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
-    const spyOnLabelClick = jest.spyOn(component, 'onLabelClick' as any);
+    const spyDispatchInputEvent = vi.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
+    const spyOnLabelClick = vi.spyOn(component, 'onLabelClick' as any);
     const input = document.createElement('input');
     input.value = 'search-term';
     component['input'] = input;

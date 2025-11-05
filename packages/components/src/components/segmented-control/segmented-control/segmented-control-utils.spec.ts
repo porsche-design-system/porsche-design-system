@@ -1,4 +1,5 @@
 import * as stencilCore from '@stencil/core';
+import { vi } from 'vitest';
 import type { Theme } from '../../../types';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
@@ -25,7 +26,7 @@ describe('getItemWidths()', () => {
 
     let calls = 0;
     // mocked getComputedStyle() since it isn't working in jsdom
-    jest.spyOn(window, 'getComputedStyle').mockImplementation(() => {
+    vi.spyOn(window, 'getComputedStyle').mockImplementation(() => {
       const cssStyleDeclaration = new CSSStyleDeclaration();
       // let's take the number of characters to have some variation
       cssStyleDeclaration.width = `${[child1, child2, child3][calls++].innerHTML.length}px`;
@@ -36,8 +37,8 @@ describe('getItemWidths()', () => {
   });
 
   it('should append temporary div', () => {
-    const spy = jest.spyOn(host.shadowRoot, 'append');
-    jest.spyOn(tempDiv, 'remove').mockImplementationOnce(() => {});
+    const spy = vi.spyOn(host.shadowRoot, 'append');
+    vi.spyOn(tempDiv, 'remove').mockImplementationOnce(() => {});
     expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
 
     getItemWidths(host, false);
@@ -47,7 +48,7 @@ describe('getItemWidths()', () => {
   });
 
   it('should remove temporary div', () => {
-    const spy = jest.spyOn(tempDiv, 'remove');
+    const spy = vi.spyOn(tempDiv, 'remove');
     getItemWidths(host, false);
 
     expect(spy).toHaveBeenCalledWith();
@@ -55,7 +56,7 @@ describe('getItemWidths()', () => {
   });
 
   it('should use temporary icon element if icon is set', () => {
-    const spy = jest.spyOn(tempDiv, 'prepend');
+    const spy = vi.spyOn(tempDiv, 'prepend');
 
     const child: HTMLElement & SegmentedControlItem = document.createElement('div') as any;
     child.icon = 'truck';
@@ -69,7 +70,7 @@ describe('getItemWidths()', () => {
   });
 
   it('should use temporary icon element if iconSource is set', () => {
-    const spy = jest.spyOn(tempDiv, 'prepend');
+    const spy = vi.spyOn(tempDiv, 'prepend');
 
     const child: HTMLElement & SegmentedControlItem = document.createElement('div') as any;
     child.iconSource = 'truck.svg';
@@ -83,7 +84,7 @@ describe('getItemWidths()', () => {
   });
 
   it('should use temporary label if label is set', () => {
-    const spy = jest.spyOn(tempDiv, 'prepend');
+    const spy = vi.spyOn(tempDiv, 'prepend');
 
     const child: HTMLElement & SegmentedControlItem = document.createElement('div') as any;
     child.label = 'Some label';
@@ -146,7 +147,7 @@ describe('syncSegmentedControlItemsProps()', () => {
   });
 
   it('should call forceUpdate() on every item', () => {
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
 
     syncSegmentedControlItemsProps(host, value, disabled, compact, theme);
 
