@@ -4366,7 +4366,6 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 exports[`manual test cases > should pass internal props correctly to p-segmented-control-item 1`] = `
 <p-segmented-control
   data-ssr=""
-  role="group"
 >
   <template
     shadowroot="open"
@@ -19314,7 +19313,6 @@ img:dir(rtl) {
 exports[`should render dsr component for PSegmentedControl 1`] = `
 <p-segmented-control
   data-ssr=""
-  role="group"
 >
   <template
     shadowroot="open"
