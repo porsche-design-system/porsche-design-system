@@ -95,7 +95,7 @@ export const syncSegmentedControlItemsProps = (
   compact: boolean,
   theme: Theme
 ): void => {
-  for (const item of Array.from(host.children)) {
+  for (const item of Array.from(host.children).filter((el) => el.slot !== 'message')) {
     (item as Item).selected = (item as Item).value === value;
     (item as Item).theme = theme;
     (item as Item).state = state;

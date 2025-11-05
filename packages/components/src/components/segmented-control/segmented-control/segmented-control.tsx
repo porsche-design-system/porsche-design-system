@@ -19,7 +19,6 @@ import {
   hasPropValueChanged,
   observeChildren,
   THEMES,
-  throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -141,12 +140,9 @@ export class SegmentedControl {
   }
 
   public connectedCallback(): void {
-    throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
-
     // child property changes to label or icon are detected via prop watchers within child
     // here we take care of dom changes like adding/removing a child or changing its content
     observeChildren(this.host, () => {
-      throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
       forceUpdate(this.host);
     });
   }

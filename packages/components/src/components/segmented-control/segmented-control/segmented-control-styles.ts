@@ -42,8 +42,7 @@ export const getComponentCss = (
     },
     ...(state !== 'none' && {
       root: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: 'grid',
         gap: spacingStaticXSmall,
       },
     }),
