@@ -25,6 +25,9 @@ export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup
   }
 };
 
+export const getSelectedOptionByValue = (options: SelectOption[], value: string): SelectOption | undefined =>
+  options.find((option) => option.value === value);
+
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';
 

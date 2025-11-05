@@ -48,7 +48,7 @@ import { messageId, StateMessage } from '../../common/state-message/state-messag
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
 import {
-  getSelectedOptionString,
+  getSelectedOptionByValue,
   type SelectChangeEventDetail,
   type SelectDropdownDirection,
   type SelectOptgroup,
@@ -151,6 +151,7 @@ export class Select {
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
+  @State() private selectedOption: SelectOption;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -180,6 +181,7 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
+    this.selectedOption = getSelectedOption(this.selectOptions);
     this.internals?.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
@@ -241,6 +243,7 @@ export class Select {
     this.internals?.setFormValue(this.value);
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
+    this.selectedOption = getSelectedOption(this.selectOptions);
     this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
   }
 
@@ -324,7 +327,7 @@ export class Select {
           ref={(el) => (this.buttonElement = el)}
         >
           {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
-          <span>{getSelectedOptionString(this.selectOptions)}</span>
+          <span>{this.selectedOption?.textContent ?? ''}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
@@ -394,6 +397,7 @@ export class Select {
   private onSlotchange = (): void => {
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
+    this.selectedOption = getSelectedOptionByValue(this.selectOptions, this.value) || this.selectedOption;
     this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);
@@ -482,9 +486,8 @@ export class Select {
   private highlightSelectedOption = (): void => {
     // Moves highlight to the selected option if available
     if (!this.currentlyHighlightedOption) {
-      const selectedOption = getSelectedOption(this.selectOptions);
-      if (selectedOption && isUsableOption(selectedOption)) {
-        this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
+      if (this.selectedOption && isUsableOption(this.selectedOption)) {
+        this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, this.selectedOption);
         // @ts-expect-error - HTMLCombobox type is missing
         (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
           this.currentlyHighlightedOption;
