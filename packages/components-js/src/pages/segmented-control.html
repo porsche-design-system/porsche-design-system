@@ -396,3 +396,49 @@
     </p-segmented-control>
   </div>
 </div>
+
+<div class="playground light" title="should render with error state and error message">
+  <p-segmented-control value="s" class="a11ytree-snapshot-test" state="error" message="Some error message">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with success state and success message">
+  <p-segmented-control value="s" class="a11ytree-snapshot-test" state="success" message="Some success message">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with error state and slotted error message">
+  <p-segmented-control value="s" state="error">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+    <span slot="message">
+      Some error message with a
+      <a href="https://designsystem.porsche.com"> link </a>
+      .
+    </span>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with success state and slotted success message">
+  <p-segmented-control value="s" state="success">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+    <span slot="message">
+      Some success message with a
+      <a href="https://designsystem.porsche.com"> link </a>
+      .
+    </span>
+  </p-segmented-control>
+</div>
