@@ -1,6 +1,7 @@
 import * as fromComponentsManagerCore from '@porsche-design-system/components-manager-core';
-import { load } from './with-prefix';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { EntryConfig } from '../shared-definitions/entry-config';
+import { load } from './with-prefix';
 
 declare global {
   var CM_CONFIG: EntryConfig;
@@ -20,14 +21,14 @@ describe('load()', () => {
   });
 
   it('should call loadComponentLibrary() with correct default parameters', () => {
-    const spy = jest.spyOn(fromComponentsManagerCore, 'loadComponentLibrary');
+    const spy = vi.spyOn(fromComponentsManagerCore, 'loadComponentLibrary');
 
     load();
     expect(spy).toHaveBeenCalledWith({ prefix: '', ...global.CM_CONFIG });
   });
 
   it('should call loadComponentLibrary() with correct prefix parameters', () => {
-    const spy = jest.spyOn(fromComponentsManagerCore, 'loadComponentLibrary');
+    const spy = vi.spyOn(fromComponentsManagerCore, 'loadComponentLibrary');
 
     load({ prefix: 'my-prefix' });
     expect(spy).toHaveBeenCalledWith({ prefix: 'my-prefix', ...global.CM_CONFIG });
@@ -111,7 +112,7 @@ describe('load()', () => {
   });
 
   // TODO: enable once backwards compatibility with older versions isn't needed anymore
-  xdescribe('for flat structure', () => {
+  describe.skip('for flat structure', () => {
     it('should for window.PORSCHE_DESIGN_SYSTEM_CDN="auto" set document.porscheDesignSystem.cdn="https://cdn.ui.porsche.com"', () => {
       window.PORSCHE_DESIGN_SYSTEM_CDN = 'auto';
 
