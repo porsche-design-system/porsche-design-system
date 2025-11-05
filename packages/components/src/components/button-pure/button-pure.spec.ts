@@ -1,15 +1,15 @@
-import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
+import { vi } from 'vitest';
 import { ButtonPure } from './button-pure';
 
-jest.mock('../../utils/button-handling');
+vi.mock('../../utils/button-handling');
 
 const initComponent = (): ButtonPure => {
   const component = new ButtonPure();
   component.host = document.createElement('p-button-pure');
   component.host.attachShadow({ mode: 'open' });
   component['internals'] = {
-    setFormValue: jest.fn(),
-    form: { requestSubmit: jest.fn(), reset: jest.fn() } as unknown as HTMLFormElement,
+    setFormValue: vi.fn(),
+    form: { requestSubmit: vi.fn(), reset: vi.fn() } as unknown as HTMLFormElement,
   } as unknown as ElementInternals;
   component.form = 'some-form';
   return component;
@@ -95,14 +95,14 @@ describe('onClick()', () => {
 
   beforeEach(() => {
     mockEvent = new MouseEvent('click');
-    jest.spyOn(mockEvent, 'stopPropagation');
-    jest.spyOn(mockEvent, 'preventDefault');
+    vi.spyOn(mockEvent, 'stopPropagation');
+    vi.spyOn(mockEvent, 'preventDefault');
 
     component = initComponent();
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should stop propagation if the component is disabled or loading', () => {

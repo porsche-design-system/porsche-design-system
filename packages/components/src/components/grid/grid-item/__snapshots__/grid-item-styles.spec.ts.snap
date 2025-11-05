@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `
+exports[`getComponentCss() > should return correct css for offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -44,7 +44,7 @@ exports[`getComponentCss() should return correct css for offset: {"base":6,"xs":
 "
 `;
 
-exports[`getComponentCss() should return correct css for offset: 0 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 0 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -58,7 +58,7 @@ exports[`getComponentCss() should return correct css for offset: 0 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 1 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 1 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -72,7 +72,7 @@ exports[`getComponentCss() should return correct css for offset: 1 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 2 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 2 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -86,7 +86,7 @@ exports[`getComponentCss() should return correct css for offset: 2 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 3 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 3 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -100,7 +100,7 @@ exports[`getComponentCss() should return correct css for offset: 3 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 4 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 4 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -114,7 +114,7 @@ exports[`getComponentCss() should return correct css for offset: 4 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 5 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 5 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -128,7 +128,7 @@ exports[`getComponentCss() should return correct css for offset: 5 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 6 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 6 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -142,7 +142,7 @@ exports[`getComponentCss() should return correct css for offset: 6 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 7 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 7 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -156,7 +156,7 @@ exports[`getComponentCss() should return correct css for offset: 7 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 8 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 8 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -170,7 +170,7 @@ exports[`getComponentCss() should return correct css for offset: 8 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 9 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 9 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -184,7 +184,7 @@ exports[`getComponentCss() should return correct css for offset: 9 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 10 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 10 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -198,7 +198,7 @@ exports[`getComponentCss() should return correct css for offset: 10 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for offset: 11 1`] = `
+exports[`getComponentCss() > should return correct css for offset: 11 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -212,7 +212,7 @@ exports[`getComponentCss() should return correct css for offset: 11 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -261,7 +261,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
 "
 `;
 
-exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} and offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":6,"xs":12,"s":6,"m":12,"l":6,"xl":12} and offset: {"base":6,"xs":0,"s":6,"m":0,"l":6,"xl":0} 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -315,7 +315,7 @@ exports[`getComponentCss() should return correct css for size: {"base":6,"xs":12
 "
 `;
 
-exports[`getComponentCss() should return correct css for size: 1 1`] = `
+exports[`getComponentCss() > should return correct css for size: 1 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -329,7 +329,7 @@ exports[`getComponentCss() should return correct css for size: 1 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 1 and offset: 11 1`] = `
+exports[`getComponentCss() > should return correct css for size: 1 and offset: 11 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -343,7 +343,7 @@ exports[`getComponentCss() should return correct css for size: 1 and offset: 11 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 2 1`] = `
+exports[`getComponentCss() > should return correct css for size: 2 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -357,7 +357,7 @@ exports[`getComponentCss() should return correct css for size: 2 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 2 and offset: 10 1`] = `
+exports[`getComponentCss() > should return correct css for size: 2 and offset: 10 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -371,7 +371,7 @@ exports[`getComponentCss() should return correct css for size: 2 and offset: 10 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 3 1`] = `
+exports[`getComponentCss() > should return correct css for size: 3 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -385,7 +385,7 @@ exports[`getComponentCss() should return correct css for size: 3 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 3 and offset: 9 1`] = `
+exports[`getComponentCss() > should return correct css for size: 3 and offset: 9 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -399,7 +399,7 @@ exports[`getComponentCss() should return correct css for size: 3 and offset: 9 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 4 1`] = `
+exports[`getComponentCss() > should return correct css for size: 4 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -413,7 +413,7 @@ exports[`getComponentCss() should return correct css for size: 4 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 4 and offset: 8 1`] = `
+exports[`getComponentCss() > should return correct css for size: 4 and offset: 8 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -427,7 +427,7 @@ exports[`getComponentCss() should return correct css for size: 4 and offset: 8 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 5 1`] = `
+exports[`getComponentCss() > should return correct css for size: 5 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -441,7 +441,7 @@ exports[`getComponentCss() should return correct css for size: 5 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 5 and offset: 7 1`] = `
+exports[`getComponentCss() > should return correct css for size: 5 and offset: 7 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -455,7 +455,7 @@ exports[`getComponentCss() should return correct css for size: 5 and offset: 7 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 6 1`] = `
+exports[`getComponentCss() > should return correct css for size: 6 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -469,7 +469,7 @@ exports[`getComponentCss() should return correct css for size: 6 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 6 and offset: 6 1`] = `
+exports[`getComponentCss() > should return correct css for size: 6 and offset: 6 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -483,7 +483,7 @@ exports[`getComponentCss() should return correct css for size: 6 and offset: 6 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 7 1`] = `
+exports[`getComponentCss() > should return correct css for size: 7 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -497,7 +497,7 @@ exports[`getComponentCss() should return correct css for size: 7 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 7 and offset: 5 1`] = `
+exports[`getComponentCss() > should return correct css for size: 7 and offset: 5 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -511,7 +511,7 @@ exports[`getComponentCss() should return correct css for size: 7 and offset: 5 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 8 1`] = `
+exports[`getComponentCss() > should return correct css for size: 8 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -525,7 +525,7 @@ exports[`getComponentCss() should return correct css for size: 8 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 8 and offset: 4 1`] = `
+exports[`getComponentCss() > should return correct css for size: 8 and offset: 4 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -539,7 +539,7 @@ exports[`getComponentCss() should return correct css for size: 8 and offset: 4 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 9 1`] = `
+exports[`getComponentCss() > should return correct css for size: 9 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -553,7 +553,7 @@ exports[`getComponentCss() should return correct css for size: 9 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 9 and offset: 3 1`] = `
+exports[`getComponentCss() > should return correct css for size: 9 and offset: 3 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -567,7 +567,7 @@ exports[`getComponentCss() should return correct css for size: 9 and offset: 3 1
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 10 1`] = `
+exports[`getComponentCss() > should return correct css for size: 10 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -581,7 +581,7 @@ exports[`getComponentCss() should return correct css for size: 10 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 10 and offset: 2 1`] = `
+exports[`getComponentCss() > should return correct css for size: 10 and offset: 2 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -595,7 +595,7 @@ exports[`getComponentCss() should return correct css for size: 10 and offset: 2 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 11 1`] = `
+exports[`getComponentCss() > should return correct css for size: 11 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -609,7 +609,7 @@ exports[`getComponentCss() should return correct css for size: 11 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 11 and offset: 1 1`] = `
+exports[`getComponentCss() > should return correct css for size: 11 and offset: 1 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -623,7 +623,7 @@ exports[`getComponentCss() should return correct css for size: 11 and offset: 1 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 12 1`] = `
+exports[`getComponentCss() > should return correct css for size: 12 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
@@ -637,7 +637,7 @@ exports[`getComponentCss() should return correct css for size: 12 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: 12 and offset: 0 1`] = `
+exports[`getComponentCss() > should return correct css for size: 12 and offset: 0 1`] = `
 ":host {
   padding-left: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;
   padding-right: calc(clamp(16px, 1.25vw + 12px, 36px) / 2) !important;

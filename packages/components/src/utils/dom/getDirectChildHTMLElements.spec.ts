@@ -1,14 +1,15 @@
-import * as getHTMLElementsUtils from './getHTMLElements';
+import { vi } from 'vitest';
 import { getDirectChildHTMLElements } from './getDirectChildHTMLElements';
-import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
+import * as getHTMLElementsUtils from './getHTMLElements';
 import * as transformSelectorToDirectChildSelectorUtils from './transformSelectorToDirectChildSelector';
+import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
 
 it('should call getHTMLElements() with element and result of transformSelectorToDirectChildSelector()', () => {
-  const transformSelectorToDirectChildSelectorSpy = jest.spyOn(
+  const transformSelectorToDirectChildSelectorSpy = vi.spyOn(
     transformSelectorToDirectChildSelectorUtils,
     'transformSelectorToDirectChildSelector'
   );
-  const getHTMLElementsSpy = jest.spyOn(getHTMLElementsUtils, 'getHTMLElements');
+  const getHTMLElementsSpy = vi.spyOn(getHTMLElementsUtils, 'getHTMLElements');
   const parent = document.createElement('div');
   const selector = 'span,a';
 

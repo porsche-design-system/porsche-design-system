@@ -9,7 +9,7 @@ export const improveButtonHandlingForCustomElement = (
   getValue?: () => string | undefined
 ): void => {
   element.addEventListener('click', (event) =>
-    handleButtonEvent(event, element, getType, getDisabled, getName, getValue)
+    internal.handleButtonEvent(event, element, getType, getDisabled, getName, getValue)
   );
 };
 
@@ -48,4 +48,8 @@ export const handleButtonEvent = (
       }
     }, 1);
   }
+};
+
+export const internal = {
+  handleButtonEvent,
 };

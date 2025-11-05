@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for hasLikeButton: false, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "9:16" and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: false, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "9:16" and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -103,7 +103,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: auto 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -220,7 +220,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -327,7 +327,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: {"base":"3:4","xs":"9:16"} and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: {"base":"3:4","xs":"9:16"} and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -440,7 +440,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -548,7 +548,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: false, aspectRatio: "3:4" and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: false, aspectRatio: "3:4" and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -673,7 +673,7 @@ s {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: true, aspectRatio: "3:4" and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: true, aspectRatio: "3:4" and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;

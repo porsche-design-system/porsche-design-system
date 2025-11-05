@@ -1,9 +1,9 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as setScrollLockUtils from '../../utils/setScrollLock';
 import { Sheet } from './sheet';
 
-jest.mock('../../utils/dom');
+vi.mock('../../utils/dom');
 
 let component: Sheet;
 
@@ -16,7 +16,7 @@ beforeEach(() => {
 
 describe('componentWillRender', () => {
   it('should call setScrollLock() with correct parameters if dialog is open', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = true;
     component.componentWillRender();
 
@@ -24,7 +24,7 @@ describe('componentWillRender', () => {
   });
 
   it('should call setScrollLock() with correct parameters if dialog is not open', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = false;
     component.componentWillRender();
 
@@ -34,7 +34,7 @@ describe('componentWillRender', () => {
 
 describe('componentDidRender', () => {
   it('should call setDialogVisibility() with correct parameters', () => {
-    const setDialogVisibilitySpy = jest.spyOn(dialogUtils, 'setDialogVisibility');
+    const setDialogVisibilitySpy = vi.spyOn(dialogUtils, 'setDialogVisibility');
     component.componentDidRender();
 
     expect(setDialogVisibilitySpy).toHaveBeenCalledWith(component.open, component['dialog'], component['scroller']);
@@ -43,7 +43,7 @@ describe('componentDidRender', () => {
 
 describe('disconnectedCallback', () => {
   it('should call setScrollLock() with correct parameters', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    const utilsSpy = vi.spyOn(setScrollLockUtils, 'setScrollLock');
     component.open = true;
     component.disconnectedCallback(); // component gets removed from dom
 

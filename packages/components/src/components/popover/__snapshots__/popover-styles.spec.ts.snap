@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -106,7 +106,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
