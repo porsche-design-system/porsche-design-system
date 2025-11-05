@@ -1,11 +1,16 @@
-import { render } from '@testing-library/react';
-import { testSnapshot } from '../helpers';
-import { PButton, PorscheDesignSystemProvider } from '../../../src/public-api';
 import * as fromComponentsJs from '@porsche-design-system/components-js';
+import { render } from '@testing-library/react';
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { PButton, PorscheDesignSystemProvider } from '../../../src/public-api';
+import { testSnapshot } from '../helpers';
 
-jest.mock('@porsche-design-system/components-js', () => ({
-  load: jest.fn(),
-}));
+vi.mock('@porsche-design-system/components-js', async () => {
+  const actual = await vi.importActual('@porsche-design-system/components-js');
+  return {
+    ...actual,
+    load: vi.fn(),
+  };
+});
 
 declare global {
   var PORSCHE_DESIGN_SYSTEM_CDN_URL: string;
@@ -43,15 +48,15 @@ describe('PorscheDesignSystemProvider', () => {
   });
 
   it('should throw error if PorscheDesignSystemProvider is missing', () => {
-    jest.spyOn(global.console, 'error').mockImplementation();
+    vi.spyOn(global.console, 'error').mockImplementation(() => {});
 
     expect(() => render(<PButton>Some Button</PButton>)).toThrowErrorMatchingInlineSnapshot(
-      '"It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it."'
+      `[Error: It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.]`
     );
   });
 
   it('should call load() with default parameters once', () => {
-    const spy = jest.spyOn(fromComponentsJs, 'load');
+    const spy = vi.spyOn(fromComponentsJs, 'load');
     const { rerender } = render(<PorscheDesignSystemProvider />);
     expect(spy).toHaveBeenCalledWith({ prefix: '' });
 
@@ -60,7 +65,7 @@ describe('PorscheDesignSystemProvider', () => {
   });
 
   it('should call load() with custom parameters once', () => {
-    const spy = jest.spyOn(fromComponentsJs, 'load');
+    const spy = vi.spyOn(fromComponentsJs, 'load');
     const { rerender } = render(<PorscheDesignSystemProvider prefix="my-prefix" cdn="cn" />);
     expect(spy).toHaveBeenCalledWith({ prefix: 'my-prefix', cdn: 'cn' });
 
