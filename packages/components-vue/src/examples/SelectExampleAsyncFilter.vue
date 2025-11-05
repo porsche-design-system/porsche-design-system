@@ -49,11 +49,6 @@
       }
     }, 400);
   };
-
-  const onSubmit = (e: Event) => {
-    const formData = new FormData(e.target as HTMLFormElement);
-    lastSubmittedData.value = formData.get('options')?.toString() || 'none';
-  };
 </script>
 
 <template>
@@ -61,7 +56,7 @@
     <PInputSearch
       slot="filter"
       name="search"
-      v-model="searchValue"
+      v-model:value="searchValue"
       :loading="loading"
       clear
       indicator

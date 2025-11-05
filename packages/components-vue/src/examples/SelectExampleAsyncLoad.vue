@@ -1,20 +1,13 @@
 <script setup lang="ts">
+  import { PInputSearch, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
-  import {
-    PSelect,
-    PSelectOption,
-    PInputSearch,
-    type SelectToggleEventDetail,
-  } from '@porsche-design-system/components-vue';
 
   const options = ref<{ value: string; label: string }[]>([]);
   const loading = ref(false);
   const hasLoaded = ref(false);
 
-  const onToggle = (event: SelectToggleEventDetail) => {
-    const isOpen = event.value;
-
-    if (isOpen && !hasLoaded.value && options.value.length === 0) {
+  const onClick = (_: Event) => {
+    if (!hasLoaded.value && options.value.length === 0) {
       loading.value = true;
 
       setTimeout(() => {
@@ -31,7 +24,7 @@
 </script>
 
 <template>
-  <p-select name="options" label="Async Load on Open" @toggle="onToggle">
+  <p-select name="options" label="Async Load on Open" @click="onClick">
     <PInputSearch slot="filter" name="search" :loading="loading" clear indicator compact autoComplete="off" />
     <p-select-option v-for="opt in options" :key="opt.value" :value="opt.value">
       {{ opt.label }}

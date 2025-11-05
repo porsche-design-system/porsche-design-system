@@ -14,6 +14,8 @@
   const select = document.getElementById('mySelect');
   const inputSearch = document.getElementById('inputSearch');
 
+  let hasLoaded = false;
+
   function setOptions(options) {
     Array.from(select.children)
       .filter(el => el.tagName.toLowerCase() === 'p-select-option')
@@ -31,26 +33,20 @@
     }
   }
 
-  select.addEventListener('toggle', (event) => {
-    const isOpen = event.detail;
+  select.addEventListener('click', () => {
+    if (hasLoaded) return; // only load once
+    hasLoaded = true;
 
-    if (isOpen) {
-      const hasOptions = Array.from(select.children)
-        .some(el => el.tagName.toLowerCase() === 'p-select-option');
+    inputSearch.loading = true;
 
-      if (!hasOptions) {
-        inputSearch.loading = true;
+    setTimeout(() => {
+      inputSearch.loading = false;
 
-        setTimeout(() => {
-          inputSearch.loading = false;
-
-          setOptions([
-            { value: 'a', text: 'Option A' },
-            { value: 'b', text: 'Option B' },
-            { value: 'c', text: 'Option C' }
-          ]);
-        }, 1000);
-      }
-    }
+      setOptions([
+        { value: 'a', text: 'Option A' },
+        { value: 'b', text: 'Option B' },
+        { value: 'c', text: 'Option C' }
+      ]);
+    }, 1000);
   });
 </script>

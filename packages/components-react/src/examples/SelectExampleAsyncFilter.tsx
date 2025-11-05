@@ -32,7 +32,7 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
   }, []);
 
   const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
-    const term = (e.detail.target as HTMLInputElement).value;
+    const term = (e.target as HTMLInputElement).value;
     setSearchValue(term); // keep the input value controlled
 
     if (debounceTimer.current) {

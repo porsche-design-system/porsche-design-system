@@ -9,10 +9,6 @@ export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLPr
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
-export type SelectToggleEventDetail = {
-  value: boolean;
-};
-
 /** @deprecated */
 export type SelectUpdateEventDetail = {
   name: string;
