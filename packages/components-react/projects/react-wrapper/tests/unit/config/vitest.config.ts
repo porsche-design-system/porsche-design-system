@@ -1,10 +1,11 @@
+import * as path from 'node:path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  root: '../../../',
   test: {
+    root: path.resolve(__dirname, '../../../'),
     environment: 'jsdom',
-    setupFiles: ['<rootDir>/tests/unit/config/jest.setup.ts'],
+    setupFiles: ['tests/unit/config/vitest.setup.ts'],
     include: ['**/tests/unit/specs/**/*.spec.{tsx,ts}'],
     coverage: {
       provider: 'v8',
