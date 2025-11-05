@@ -1,8 +1,12 @@
 export { colorErrorLight } from './colorErrorLight';
-export { colorErrorSoftLight } from './colorErrorSoftLight';
+export { colorErrorFrostedLight } from './colorErrorFrostedLight';
+export { colorErrorFrostedSoftLight } from './colorErrorFrostedSoftLight';
 export { colorInfoLight } from './colorInfoLight';
-export { colorInfoSoftLight } from './colorInfoSoftLight';
+export { colorInfoFrostedLight } from './colorInfoFrostedLight';
+export { colorInfoFrostedSoftLight } from './colorInfoFrostedSoftLight';
 export { colorSuccessLight } from './colorSuccessLight';
-export { colorSuccessSoftLight } from './colorSuccessSoftLight';
+export { colorSuccessFrostedLight } from './colorSuccessFrostedLight';
+export { colorSuccessFrostedSoftLight } from './colorSuccessFrostedSoftLight';
 export { colorWarningLight } from './colorWarningLight';
-export { colorWarningSoftLight } from './colorWarningSoftLight';
+export { colorWarningFrostedLight } from './colorWarningFrostedLight';
+export { colorWarningFrostedSoftLight } from './colorWarningFrostedSoftLight';

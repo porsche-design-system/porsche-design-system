@@ -1,8 +1,12 @@
 export { colorErrorDark } from './colorErrorDark';
-export { colorErrorSoftDark } from './colorErrorSoftDark';
+export { colorErrorFrostedDark } from './colorErrorFrostedDark';
+export { colorErrorFrostedSoftDark } from './colorErrorFrostedSoftDark';
 export { colorInfoDark } from './colorInfoDark';
-export { colorInfoSoftDark } from './colorInfoSoftDark';
+export { colorInfoFrostedDark } from './colorInfoFrostedDark';
+export { colorInfoFrostedSoftDark } from './colorInfoFrostedSoftDark';
 export { colorSuccessDark } from './colorSuccessDark';
-export { colorSuccessSoftDark } from './colorSuccessSoftDark';
+export { colorSuccessFrostedDark } from './colorSuccessFrostedDark';
+export { colorSuccessFrostedSoftDark } from './colorSuccessFrostedSoftDark';
 export { colorWarningDark } from './colorWarningDark';
-export { colorWarningSoftDark } from './colorWarningSoftDark';
+export { colorWarningFrostedDark } from './colorWarningFrostedDark';
+export { colorWarningFrostedSoftDark } from './colorWarningFrostedSoftDark';

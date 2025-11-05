@@ -1,5 +1,5 @@
-export { colorCanvasInvertedLight } from './colorCanvasInvertedLight';
+export { colorBackdropLight } from './colorBackdropLight';
 export { colorCanvasLight } from './colorCanvasLight';
-export { colorFrostedLight } from './colorFrostedLight';
-export { colorScrimLight } from './colorScrimLight';
 export { colorSurfaceLight } from './colorSurfaceLight';
+export { colorFrostedLight } from './colorFrostedLight';
+export { colorFrostedSoftLight } from './colorFrostedSoftLight';

@@ -1,1 +1,1 @@
-export const colorFrostedLight = 'hsla(240,4%,80%,.23)';
+export const colorFrostedLight = 'oklch(0.840 0.006 286.3 / .4)';

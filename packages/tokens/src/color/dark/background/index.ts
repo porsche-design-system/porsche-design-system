@@ -1,5 +1,5 @@
+export { colorBackdropDark } from './colorBackdropDark';
 export { colorCanvasDark } from './colorCanvasDark';
-export { colorCanvasInvertedDark } from './colorCanvasInvertedDark';
 export { colorFrostedDark } from './colorFrostedDark';
-export { colorScrimDark } from './colorScrimDark';
+export { colorFrostedSoftDark } from './colorFrostedSoftDark';
 export { colorSurfaceDark } from './colorSurfaceDark';
