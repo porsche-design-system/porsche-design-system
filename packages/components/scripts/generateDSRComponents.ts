@@ -296,7 +296,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(/getItemWidths\(this.props, this.props.compact\)/g, '{ minWidth: 46, maxWidth: 100 }')
+        .replace(/getItemWidths\(this.props, this.props.compact\)/g, '{ minWidth: 100, maxWidth: 100 }')
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
