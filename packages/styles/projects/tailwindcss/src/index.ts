@@ -11,56 +11,56 @@ import {
   breakpointSm,
   breakpointXl,
   breakpointXs,
+  colorBackdropDark,
+  colorBackdropLight,
   colorCanvasDark,
-  colorCanvasInvertedDark,
-  colorCanvasInvertedLight,
   colorCanvasLight,
-  colorContrast10Dark,
-  colorContrast10Light,
-  colorContrast20Dark,
-  colorContrast20Light,
-  colorContrast30Dark,
-  colorContrast30Light,
-  colorContrast40Dark,
-  colorContrast40Light,
-  colorContrast50Dark,
-  colorContrast50Light,
-  colorContrast60Dark,
-  colorContrast60Light,
-  colorContrast70Dark,
-  colorContrast70Light,
-  colorContrast80Dark,
-  colorContrast80Light,
-  colorContrast90Dark,
-  colorContrast90Light,
+  colorContrastDisabledDark,
+  colorContrastDisabledLight,
+  colorContrastHighDark,
+  colorContrastHigherDark,
+  colorContrastHigherLight,
+  colorContrastHighLight,
+  colorContrastLowDark,
+  colorContrastLowerDark,
+  colorContrastLowerLight,
+  colorContrastLowLight,
+  colorContrastMediumDark,
+  colorContrastMediumLight,
   colorErrorDark,
+  colorErrorFrostedDark,
+  colorErrorFrostedLight,
+  colorErrorFrostedSoftDark,
+  colorErrorFrostedSoftLight,
   colorErrorLight,
-  colorErrorSoftDark,
-  colorErrorSoftLight,
   colorFocusDark,
   colorFocusLight,
   colorFrostedDark,
   colorFrostedLight,
+  colorFrostedSoftDark,
+  colorFrostedSoftLight,
   colorInfoDark,
+  colorInfoFrostedDark,
+  colorInfoFrostedLight,
+  colorInfoFrostedSoftDark,
+  colorInfoFrostedSoftLight,
   colorInfoLight,
-  colorInfoSoftDark,
-  colorInfoSoftLight,
   colorPrimaryDark,
-  colorPrimaryInvertedDark,
-  colorPrimaryInvertedLight,
   colorPrimaryLight,
-  colorScrimDark,
-  colorScrimLight,
   colorSuccessDark,
+  colorSuccessFrostedDark,
+  colorSuccessFrostedLight,
+  colorSuccessFrostedSoftDark,
+  colorSuccessFrostedSoftLight,
   colorSuccessLight,
-  colorSuccessSoftDark,
-  colorSuccessSoftLight,
   colorSurfaceDark,
   colorSurfaceLight,
   colorWarningDark,
+  colorWarningFrostedDark,
+  colorWarningFrostedLight,
+  colorWarningFrostedSoftDark,
+  colorWarningFrostedSoftLight,
   colorWarningLight,
-  colorWarningSoftDark,
-  colorWarningSoftLight,
   fontFamily,
   fontLineHeight,
   fontSize2Xl,
@@ -101,87 +101,42 @@ import {
 export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  /* Reset */
+  --color-*: initial;
+
   /* Color */
+
+  /* a11y */
+  --color-focus: ${colorFocusLight};
+  /* background */
   --color-canvas: ${colorCanvasLight};
-  --color-canvas-inverted: ${colorCanvasInvertedLight};
   --color-surface: ${colorSurfaceLight};
   --color-frosted: ${colorFrostedLight};
-  --color-scrim: ${colorScrimLight};
-  --color-contrast-10: ${colorContrast10Light};
-  --color-contrast-20: ${colorContrast20Light};
-  --color-contrast-30: ${colorContrast30Light};
-  --color-contrast-40: ${colorContrast40Light};
-  --color-contrast-50: ${colorContrast50Light};
-  --color-contrast-60: ${colorContrast60Light};
-  --color-contrast-70: ${colorContrast70Light};
-  --color-contrast-80: ${colorContrast80Light};
-  --color-contrast-90: ${colorContrast90Light};
+  --color-frosted-soft: ${colorFrostedSoftLight};
+  --color-backdrop: ${colorBackdropLight};
+  /* foreground */
+  --color-contrast-lower: ${colorContrastLowerLight};
+  --color-contrast-low: ${colorContrastLowLight};
+  --color-contrast-medium: ${colorContrastMediumLight};
+  --color-contrast-high: ${colorContrastHighLight};
+  --color-contrast-higher: ${colorContrastHigherLight};
+  --color-contrast-disabled: ${colorContrastDisabledLight};
   --color-primary: ${colorPrimaryLight};
-  --color-primary-inverted: ${colorPrimaryInvertedLight};
+  /* semantic */
   --color-success: ${colorSuccessLight};
-  --color-success-soft: ${colorSuccessSoftLight};
+  --color-success-frosted: ${colorSuccessFrostedLight};
+  --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
   --color-warning: ${colorWarningLight};
-  --color-warning-soft: ${colorWarningSoftLight};
+  --color-warning-frosted: ${colorWarningFrostedLight};
+  --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
   --color-error: ${colorErrorLight};
-  --color-error-soft: ${colorErrorSoftLight};
+  --color-error-frosted: ${colorErrorFrostedLight};
+  --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
   --color-info: ${colorInfoLight};
-  --color-info-soft: ${colorInfoSoftLight};
-  --color-focus: ${colorFocusLight};
+  --color-info-frosted: ${colorInfoFrostedLight};
+  --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
+  /* special */
   --color-skeleton: #f7f7f7;
-
-  --color-canvas-light: ${colorCanvasLight};
-  --color-canvas-inverted-light: ${colorCanvasInvertedLight};
-  --color-surface-light: ${colorSurfaceLight};
-  --color-frosted-light: ${colorFrostedLight};
-  --color-scrim-light: ${colorScrimLight};
-  --color-contrast-10-light: ${colorContrast10Light};
-  --color-contrast-20-light: ${colorContrast20Light};
-  --color-contrast-30-light: ${colorContrast30Light};
-  --color-contrast-40-light: ${colorContrast40Light};
-  --color-contrast-50-light: ${colorContrast50Light};
-  --color-contrast-60-light: ${colorContrast60Light};
-  --color-contrast-70-light: ${colorContrast70Light};
-  --color-contrast-80-light: ${colorContrast80Light};
-  --color-contrast-90-light: ${colorContrast90Light};
-  --color-primary-light: ${colorPrimaryLight};
-  --color-primary-inverted-light: ${colorPrimaryInvertedLight};
-  --color-success-light: ${colorSuccessLight};
-  --color-success-soft-light: ${colorSuccessSoftLight};
-  --color-warning-light: ${colorWarningLight};
-  --color-warning-soft-light: ${colorWarningSoftLight};
-  --color-error-light: ${colorErrorLight};
-  --color-error-soft-light: ${colorErrorSoftLight};
-  --color-info-light: ${colorInfoLight};
-  --color-info-soft-light: ${colorInfoSoftLight};
-  --color-focus-light: ${colorFocusLight};
-  --color-skeleton-light: #f7f7f7;
-
-  --color-canvas-dark: ${colorCanvasDark};
-  --color-canvas-inverted-dark: ${colorCanvasInvertedDark};
-  --color-surface-dark: ${colorSurfaceDark};
-  --color-frosted-dark: ${colorFrostedDark};
-  --color-scrim-dark: ${colorScrimDark};
-  --color-contrast-10-dark: ${colorContrast10Dark};
-  --color-contrast-20-dark: ${colorContrast20Dark};
-  --color-contrast-30-dark: ${colorContrast30Dark};
-  --color-contrast-40-dark: ${colorContrast40Dark};
-  --color-contrast-50-dark: ${colorContrast50Dark};
-  --color-contrast-60-dark: ${colorContrast60Dark};
-  --color-contrast-70-dark: ${colorContrast70Dark};
-  --color-contrast-80-dark: ${colorContrast80Dark};
-  --color-contrast-90-dark: ${colorContrast90Dark};
-  --color-primary-dark: ${colorPrimaryDark};
-  --color-primary-inverted-dark: ${colorPrimaryInvertedDark};
-  --color-success-dark: ${colorSuccessDark};
-  --color-success-soft-dark: ${colorSuccessSoftDark};
-  --color-warning-dark: ${colorWarningDark};
-  --color-warning-soft-dark: ${colorWarningSoftDark};
-  --color-error-dark: ${colorErrorDark};
-  --color-error-soft-dark: ${colorErrorSoftDark};
-  --color-info-dark: ${colorInfoDark};
-  --color-info-soft-dark: ${colorInfoSoftDark};
-  --color-focus-dark: ${colorFocusDark};
-  --color-skeleton-dark: #1a1b1e;
 
   /* Typography */
   --font-porsche-next: ${fontFamily};
@@ -281,90 +236,105 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @layer theme {
   .light {
+    /* a11y */
+    --color-focus: ${colorFocusLight};
+    /* background */
     --color-canvas: ${colorCanvasLight};
-    --color-canvas-inverted: ${colorCanvasInvertedLight};
     --color-surface: ${colorSurfaceLight};
     --color-frosted: ${colorFrostedLight};
-    --color-scrim: ${colorScrimLight};
-    --color-contrast-10: ${colorContrast10Light};
-    --color-contrast-20: ${colorContrast20Light};
-    --color-contrast-30: ${colorContrast30Light};
-    --color-contrast-40: ${colorContrast40Light};
-    --color-contrast-50: ${colorContrast50Light};
-    --color-contrast-60: ${colorContrast60Light};
-    --color-contrast-70: ${colorContrast70Light};
-    --color-contrast-80: ${colorContrast80Light};
-    --color-contrast-90: ${colorContrast90Light};
+    --color-frosted-soft: ${colorFrostedSoftLight};
+    --color-backdrop: ${colorBackdropLight};
+    /* foreground */
+    --color-contrast-lower: ${colorContrastLowerLight};
+    --color-contrast-low: ${colorContrastLowLight};
+    --color-contrast-medium: ${colorContrastMediumLight};
+    --color-contrast-high: ${colorContrastHighLight};
+    --color-contrast-higher: ${colorContrastHigherLight};
+    --color-contrast-disabled: ${colorContrastDisabledLight};
     --color-primary: ${colorPrimaryLight};
-    --color-primary-inverted: ${colorPrimaryInvertedLight};
+    /* semantic */
     --color-success: ${colorSuccessLight};
-    --color-success-soft: ${colorSuccessSoftLight};
+    --color-success-frosted: ${colorSuccessFrostedLight};
+    --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
     --color-warning: ${colorWarningLight};
-    --color-warning-soft: ${colorWarningSoftLight};
+    --color-warning-frosted: ${colorWarningFrostedLight};
+    --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
     --color-error: ${colorErrorLight};
-    --color-error-soft: ${colorErrorSoftLight};
+    --color-error-frosted: ${colorErrorFrostedLight};
+    --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
     --color-info: ${colorInfoLight};
-    --color-info-soft: ${colorInfoSoftLight};
-    --color-focus: ${colorFocusLight};
+    --color-info-frosted: ${colorInfoFrostedLight};
+    --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
+    /* special */
     --color-skeleton: #f7f7f7;
   }
 
   .dark {
+    /* a11y */
+    --color-focus: ${colorFocusDark};
+    /* background */
     --color-canvas: ${colorCanvasDark};
-    --color-canvas-inverted: ${colorCanvasInvertedDark};
     --color-surface: ${colorSurfaceDark};
     --color-frosted: ${colorFrostedDark};
-    --color-scrim: ${colorScrimDark};
-    --color-contrast-10: ${colorContrast10Dark};
-    --color-contrast-20: ${colorContrast20Dark};
-    --color-contrast-30: ${colorContrast30Dark};
-    --color-contrast-40: ${colorContrast40Dark};
-    --color-contrast-50: ${colorContrast50Dark};
-    --color-contrast-60: ${colorContrast60Dark};
-    --color-contrast-70: ${colorContrast70Dark};
-    --color-contrast-80: ${colorContrast80Dark};
-    --color-contrast-90: ${colorContrast90Dark};
+    --color-frosted-soft: ${colorFrostedSoftDark};
+    --color-backdrop: ${colorBackdropDark};
+    /* foreground */
+    --color-contrast-lower: ${colorContrastLowerDark};
+    --color-contrast-low: ${colorContrastLowDark};
+    --color-contrast-medium: ${colorContrastMediumDark};
+    --color-contrast-high: ${colorContrastHighDark};
+    --color-contrast-higher: ${colorContrastHigherDark};
+    --color-contrast-disabled: ${colorContrastDisabledDark};
     --color-primary: ${colorPrimaryDark};
-    --color-primary-inverted: ${colorPrimaryInvertedDark};
+    /* semantic */
     --color-success: ${colorSuccessDark};
-    --color-success-soft: ${colorSuccessSoftDark};
+    --color-success-frosted: ${colorSuccessFrostedDark};
+    --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
     --color-warning: ${colorWarningDark};
-    --color-warning-soft: ${colorWarningSoftDark};
+    --color-warning-frosted: ${colorWarningFrostedDark};
+    --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
     --color-error: ${colorErrorDark};
-    --color-error-soft: ${colorErrorSoftDark};
+    --color-error-frosted: ${colorErrorFrostedDark};
+    --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
     --color-info: ${colorInfoDark};
-    --color-info-soft: ${colorInfoSoftDark};
-    --color-focus: ${colorFocusDark};
+    --color-info-frosted: ${colorInfoFrostedDark};
+    --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
+    /* special */
     --color-skeleton: #1a1b1e;
   }
 
   .auto {
     @media (prefers-color-scheme: dark) {
+      /* a11y */
+      --color-focus: ${colorFocusDark};
+      /* background */
       --color-canvas: ${colorCanvasDark};
-      --color-canvas-inverted: ${colorCanvasInvertedDark};
       --color-surface: ${colorSurfaceDark};
       --color-frosted: ${colorFrostedDark};
-      --color-scrim: ${colorScrimDark};
-      --color-contrast-10: ${colorContrast10Dark};
-      --color-contrast-20: ${colorContrast20Dark};
-      --color-contrast-30: ${colorContrast30Dark};
-      --color-contrast-40: ${colorContrast40Dark};
-      --color-contrast-50: ${colorContrast50Dark};
-      --color-contrast-60: ${colorContrast60Dark};
-      --color-contrast-70: ${colorContrast70Dark};
-      --color-contrast-80: ${colorContrast80Dark};
-      --color-contrast-90: ${colorContrast90Dark};
+      --color-frosted-soft: ${colorFrostedSoftDark};
+      --color-backdrop: ${colorBackdropDark};
+      /* foreground */
+      --color-contrast-lower: ${colorContrastLowerDark};
+      --color-contrast-low: ${colorContrastLowDark};
+      --color-contrast-medium: ${colorContrastMediumDark};
+      --color-contrast-high: ${colorContrastHighDark};
+      --color-contrast-higher: ${colorContrastHigherDark};
+      --color-contrast-disabled: ${colorContrastDisabledDark};
       --color-primary: ${colorPrimaryDark};
-      --color-primary-inverted: ${colorPrimaryInvertedDark};
+      /* semantic */
       --color-success: ${colorSuccessDark};
-      --color-success-soft: ${colorSuccessSoftDark};
+      --color-success-frosted: ${colorSuccessFrostedDark};
+      --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
       --color-warning: ${colorWarningDark};
-      --color-warning-soft: ${colorWarningSoftDark};
+      --color-warning-frosted: ${colorWarningFrostedDark};
+      --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
       --color-error: ${colorErrorDark};
-      --color-error-soft: ${colorErrorSoftDark};
+      --color-error-frosted: ${colorErrorFrostedDark};
+      --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
       --color-info: ${colorInfoDark};
-      --color-info-soft: ${colorInfoSoftDark};
-      --color-focus: ${colorFocusDark};
+      --color-info-frosted: ${colorInfoFrostedDark};
+      --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
+      /* special */
       --color-skeleton: #1a1b1e;
     }
   }
