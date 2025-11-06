@@ -23,6 +23,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
+import { Label } from '../../common/label/label';
 import { StateMessage } from '../../common/state-message/state-message';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
@@ -43,15 +44,19 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
     undefined,
     ...SEGMENTED_CONTROL_BACKGROUND_COLORS,
   ]),
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
   form: AllowedTypes.string,
   compact: AllowedTypes.boolean,
+  required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
   message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
 };
 
 /**
@@ -76,6 +81,12 @@ export class SegmentedControl {
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Text content for a user-facing label. */
+  @Prop() public label?: string = '';
+
+  /** Supplementary text providing more context or explanation for the segmented-control. */
+  @Prop() public description?: string = '';
+
   /** Sets the initial value of the segmented-control. */
   @Prop({ mutable: true }) public value?: string | number;
 
@@ -88,8 +99,14 @@ export class SegmentedControl {
   /** Indicates the validation or overall status of the component. */
   @Prop() public state?: SegmentedControlState = 'none';
 
+  /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
+  @Prop() public required?: boolean = false;
+
   /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
+
+  /** Controls the visibility of the label. */
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
@@ -185,6 +202,8 @@ export class SegmentedControl {
       getComponentCss,
       getItemMaxWidth(this.host, this.compact),
       this.columns,
+      this.disabled,
+      this.hideLabel,
       this.state,
       this.theme
     );
@@ -199,10 +218,18 @@ export class SegmentedControl {
     );
 
     return (
-      <div role="group" inert={this.disabled} class="root">
+      <fieldset inert={this.disabled} aria-invalid={this.state === 'error' ? 'true' : null} class="root">
+        <Label
+          host={this.host}
+          tag="legend"
+          label={this.label}
+          description={this.description}
+          isRequired={this.required}
+          isDisabled={this.disabled}
+        />
         <slot />
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-      </div>
+      </fieldset>
     );
   }
 

@@ -2560,6 +2560,10 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
+          * Supplementary text providing more context or explanation for the segmented-control.
+         */
+        "description"?: string;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -2568,6 +2572,14 @@ export namespace Components {
          */
         "form"?: string;
         /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
           * Dynamic feedback text for validation or status.
          */
         "message"?: string;
@@ -2575,6 +2587,10 @@ export namespace Components {
           * The name of the segmented-control.
          */
         "name"?: string;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
         /**
           * Indicates the validation or overall status of the component.
          */
@@ -7191,6 +7207,10 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
+          * Supplementary text providing more context or explanation for the segmented-control.
+         */
+        "description"?: string;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -7198,6 +7218,14 @@ declare namespace LocalJSX {
           * The id of a form element the segmented-control should be associated with.
          */
         "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
         /**
           * Dynamic feedback text for validation or status.
          */
@@ -7222,6 +7250,10 @@ declare namespace LocalJSX {
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when selected element changes.
          */
         "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
         /**
           * Indicates the validation or overall status of the component.
          */

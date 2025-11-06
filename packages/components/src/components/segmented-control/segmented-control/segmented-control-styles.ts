@@ -7,6 +7,7 @@ import {
 } from '../../../styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
+import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 
@@ -16,6 +17,8 @@ const MAX_ITEM_WIDTH = 220;
 export const getComponentCss = (
   maxWidth: number,
   columns: BreakpointCustomizable<SegmentedControlColumns>,
+  disabled: boolean,
+  hideLabel: BreakpointCustomizable<boolean>,
   state: SegmentedControlState,
   theme: Theme
 ): string => {
@@ -42,8 +45,16 @@ export const getComponentCss = (
     },
     ...(state !== 'none' && {
       root: {
+        all: 'unset',
         display: 'grid',
         gap: spacingStaticXSmall,
+      },
+    }),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+      cursor: 'inherit',
+      '&:is(legend)': {
+        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       },
     }),
     // .message
