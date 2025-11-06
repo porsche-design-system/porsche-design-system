@@ -54,9 +54,10 @@ export const getComponentCss = (
       button: {
         ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar, theme),
         '& img': getButtonImageJssStyle,
-        '& span': getButtonLabelJssStyle,
+        '& span': getButtonLabelJssStyle(scalingVar),
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
+      '::slotted([slot="filter"])': getFilterJssStyle(scalingVar, theme),
     },
     root: {
       display: 'grid',
