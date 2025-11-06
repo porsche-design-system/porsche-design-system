@@ -62,7 +62,7 @@ import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } fro
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -139,7 +139,7 @@ export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } fro
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -4132,7 +4132,6 @@ declare global {
         "blur": void;
         "change": SelectChangeEventDetail;
         "update": SelectUpdateEventDetail;
-        "toggle": SelectToggleEventDetail;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -7298,10 +7297,6 @@ declare namespace LocalJSX {
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
-        /**
-          * Emitted whenever the dropdown menu is opened or closed
-         */
-        "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */

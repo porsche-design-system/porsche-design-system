@@ -52,7 +52,7 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar, theme),
-        '& span': getButtonLabelJssStyle,
+        '& span': getButtonLabelJssStyle(scalingVar),
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
     },

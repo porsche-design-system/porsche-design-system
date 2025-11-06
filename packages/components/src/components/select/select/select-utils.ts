@@ -1,5 +1,10 @@
 import { forceUpdate } from '@stencil/core';
-import { consoleWarn, type SelectComponentsDropdownDirection, type Theme } from '../../../utils';
+import {
+  consoleWarn,
+  getTagNameWithoutPrefix,
+  type SelectComponentsDropdownDirection,
+  type Theme,
+} from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
@@ -25,9 +30,6 @@ export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup
   }
 };
 
-export const getSelectedOptionByValue = (options: SelectOption[], value: string): SelectOption | undefined =>
-  options.find((option) => option.value === value);
-
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';
 
@@ -39,26 +41,29 @@ export const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
-export const updateSelectOptions = (options: SelectOption[], value: string): void => {
+export const selectOptionByValue = (
+  host: HTMLElement,
+  options: SelectOption[],
+  value: string,
+  preventWarning = false
+): SelectOption | null => {
   resetSelectedOption(options);
-  if (value === undefined) {
-    // Option without value for empty selection
-    const optionToSelect = options.find((option) => option.value === undefined);
-    if (optionToSelect) {
-      optionToSelect.selected = true;
-      forceUpdate(optionToSelect);
-    }
-  } else {
-    // TODO: Do we want to cover multiple options with the same value?
-    const optionToSelect = options.find((option) => option.value === value);
-    if (optionToSelect) {
-      optionToSelect.selected = true;
-      forceUpdate(optionToSelect);
-    } else {
-      // TODO: Add select node
-      consoleWarn('The provided value is not included in the options of the p-select:', value);
-    }
+  const optionToSelect = options.find((option) => option.value === value);
+
+  if (optionToSelect) {
+    optionToSelect.selected = true;
+    forceUpdate(optionToSelect);
+    return optionToSelect;
   }
+
+  if (value !== undefined && !preventWarning) {
+    consoleWarn(
+      `The provided value: ${value} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
+      host
+    );
+  }
+
+  return null;
 };
 
 export const setSelectedOption = (options: SelectOption[], selectedOption: SelectOption): void => {
