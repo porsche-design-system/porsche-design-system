@@ -9219,6 +9219,12 @@ exports[`should match snapshot 1`] = `
         "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
         "type": "boolean",
       },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the segmented-control.",
+        "type": "string",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9237,6 +9243,19 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -9251,6 +9270,12 @@ exports[`should match snapshot 1`] = `
           "reflect": true,
         },
         "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
       },
       "state": {
         "allowedValues": [
