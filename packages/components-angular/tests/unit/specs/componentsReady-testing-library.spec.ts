@@ -43,6 +43,10 @@ beforeAll(() => {
   (window as any).PDS_SKIP_FETCH = true;
 });
 
+afterEach(() => {
+  TestBed.resetTestingModule();
+});
+
 it('should return 0 when nothing is rendered', async () => {
   await render(EmptyComponent);
 
