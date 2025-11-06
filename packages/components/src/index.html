@@ -13,7 +13,7 @@
   </head>
   <body class="grid-template before:fixed before:z-1 before:inset-[0_0_auto] before:h-[100px] before:bg-linear-[to_bottom,var(--color-surface)_20%,transparent_100%] before:pointer-events-none">
 
-    <header dir="ltr" class="col-extended sticky top-fluid-sm mt-fluid-sm z-2 p-fluid-sm overflow-x-auto rounded-lg shadow-medium bg-frosted-20 backdrop-blur-frosted">
+    <header dir="ltr" class="col-extended sticky top-fluid-sm mt-fluid-sm z-2 p-fluid-sm overflow-x-auto rounded-lg shadow-medium bg-frosted backdrop-blur-frosted">
       <form class="flex gap-fluid-sm justify-center items-center" onreset="updateRoute({theme: 'light', dir: 'ltr', zoom: '100%', transition: 'transitioned', animation: 'animated', accent: '#3400f0'})">
         <p-select name="theme" value="light" label="Theme" hide-label="true" compact="true" onchange="updateRoute({theme: this.value})">
           <p-select-option value="light">Light</p-select-option>
@@ -74,12 +74,33 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
-          <p-button>Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
+          <p-button>Submit</p-button>
+          <p-button variant="secondary">Reset</p-button>
         </div>
-        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+        <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
           </p-tag>
@@ -101,6 +122,27 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
         </div>
@@ -136,12 +178,33 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
-          <p-button>Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
+          <p-button>Submit</p-button>
+          <p-button variant="secondary">Reset</p-button>
         </div>
-        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+        <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
           </p-tag>
@@ -163,6 +226,27 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
         </div>
@@ -173,7 +257,7 @@
           <p-inline-notification heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
         </div>
       </div>
-      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-canvas-inverted))] before:bg-fixed">
+      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-primary))] before:bg-fixed">
         <div class="grid gap-fluid-sm">
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
@@ -198,12 +282,33 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
-          <p-button>Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
+          <p-button>Submit</p-button>
+          <p-button variant="secondary">Reset</p-button>
         </div>
-        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+        <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
           </p-tag>
@@ -225,6 +330,27 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
         </div>
@@ -260,12 +386,33 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
-          <p-button>Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
+          <p-button>Submit</p-button>
+          <p-button variant="secondary">Reset</p-button>
         </div>
-        <div class="grid gap-fluid-sm bg-frosted-20 backdrop-blur-frosted p-fluid-sm rounded-lg">
+        <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
           </p-tag>
@@ -287,6 +434,27 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
+          <p-multi-select name="name" label="Some Label" description="Some description">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
         </div>
@@ -339,7 +507,6 @@
         // Theme
         document.documentElement.classList.remove('light', 'dark', 'auto');
         document.documentElement.classList.add(theme);
-        document.querySelectorAll('*').forEach((el) => (el.theme = theme));
         // Direction
         document.documentElement.setAttribute('dir', dir);
         // Zoom
