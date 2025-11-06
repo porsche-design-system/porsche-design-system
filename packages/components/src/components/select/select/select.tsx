@@ -23,6 +23,7 @@ import {
   getNextOptionToHighlight,
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
+  getShadowRootHTMLElement,
   hasMessage,
   hasNamedSlot,
   hasPropValueChanged,
@@ -248,6 +249,7 @@ export class Select {
   }
 
   public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
     if (this.hasFilter) {
       // Does not work if filterSlot is added dynamically after component load, but should be fine
       this.inputSearchElement = this.filterSlot
@@ -370,7 +372,7 @@ export class Select {
             ref={(el) => (this.listboxElement = el)}
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
-            <slot onSlotchange={this.onSlotchange} />
+            <slot />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
