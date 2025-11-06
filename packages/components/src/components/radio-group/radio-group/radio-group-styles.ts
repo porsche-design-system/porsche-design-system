@@ -9,13 +9,9 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getHiddenTextJssStyle,
-  getThemedColors,
   hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
@@ -53,17 +49,6 @@ export const getComponentCss = (
 ): string => {
   const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
 
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
-
-  const hoverStyles = {
-    borderColor: formStateHoverColor || primaryColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      borderColor: formStateHoverColorDark || primaryColorDark,
-    }),
-  };
   const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
   const columnGap = `max(${spacingStaticSmall}, ${scalingVar} * ${spacingStaticMedium})`;
   const rowGap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
@@ -105,22 +90,12 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled,
-      hideLabel,
-      theme,
-      !disabled && {
-        ...hoverMediaQuery({
-          '&:hover~.wrapper': hoverStyles,
-        }),
-        cursor: 'inherit', // the label is not clickable
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+      cursor: 'inherit',
+      '&:is(legend)': {
+        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       },
-      {
-        '&:is(legend)': {
-          marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-        },
-      }
-    ),
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
     // .loading
