@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type JSX, useRef } from 'react';
-import { beforeEach, describe, expect, it, test, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, test, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
 import { PButton } from '../../../src/public-api';
 import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests } from '../../../src/utils';
@@ -60,6 +60,10 @@ const Sample = ({ isRefCallback }: Props): JSX.Element => {
     </PButton>
   );
 };
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('syncRefs()', () => {
   beforeEach(() => {
