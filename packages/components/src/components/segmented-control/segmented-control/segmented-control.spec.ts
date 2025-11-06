@@ -1,6 +1,5 @@
 import { vi } from 'vitest';
 import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
-import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { SegmentedControl } from './segmented-control';
 import * as segmentedControlUtils from './segmented-control-utils';
@@ -47,18 +46,6 @@ describe('formStateRestoreCallback', () => {
     const restoredValue = 'restored-value';
     component.formStateRestoreCallback(restoredValue);
     expect(component.value).toBe(restoredValue);
-  });
-});
-
-describe('connectedCallback', () => {
-  it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
-    const spy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
-
-    const component = initComponent();
-    component.host = document.createElement('p-segmented-control');
-
-    component.connectedCallback();
-    expect(spy).toHaveBeenCalledWith(component.host, 'p-segmented-control-item');
   });
 });
 
