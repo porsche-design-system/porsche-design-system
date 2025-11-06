@@ -6,6 +6,7 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  implicitSubmit,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -198,6 +199,7 @@ export class InputTel {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="tel"
@@ -220,6 +222,10 @@ export class InputTel {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

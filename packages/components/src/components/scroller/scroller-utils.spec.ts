@@ -1,6 +1,7 @@
+import { vi } from 'vitest';
+import * as getHTMLElementsUtils from '../../utils/dom/getHTMLElements';
 import type { ScrollerDirection } from './scroller-utils';
 import { getScrollerElements, getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
-import * as getHTMLElementsUtils from '../../utils/dom/getHTMLElements';
 
 describe('getScrollPositionAfterPrevNextClick()', () => {
   it.each<[number, number, ScrollerDirection, number]>([
@@ -19,7 +20,7 @@ describe('getScrollPositionAfterPrevNextClick()', () => {
 
 describe('getScrollerElements()', () => {
   it('should call getHTMLElements() with correct parameters', () => {
-    const spy = jest.spyOn(getHTMLElementsUtils, 'getHTMLElements');
+    const spy = vi.spyOn(getHTMLElementsUtils, 'getHTMLElements');
     const scroller = document.createElement('p-scroller');
     scroller.attachShadow({ mode: 'open' });
 
@@ -32,7 +33,7 @@ describe('getScrollerElements()', () => {
     mockResult1.id = 'mock-result-1';
     const mockResult2 = document.createElement('div');
     mockResult2.id = 'mock-result-2';
-    jest.spyOn(getHTMLElementsUtils, 'getHTMLElements').mockReturnValue([mockResult1, mockResult2]);
+    vi.spyOn(getHTMLElementsUtils, 'getHTMLElements').mockReturnValue([mockResult1, mockResult2]);
 
     const scroller = document.createElement('p-scroller');
     scroller.attachShadow({ mode: 'open' });

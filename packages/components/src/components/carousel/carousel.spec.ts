@@ -1,18 +1,20 @@
 import * as splideModule from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
+import { vi } from 'vitest';
 import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
 import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as hasDescription from '../../utils/form/hasDescription';
 import * as hasHeading from '../../utils/form/hasHeading';
 import * as jsonUtils from '../../utils/json';
+import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as validatePropsUtils from '../../utils/validation/validateProps';
 import { Carousel } from './carousel';
 import * as carouselUtils from './carousel-utils';
 
 const splideMock = {
   index: 0,
-  on: (_, __) => ({}) as Splide,
+  on: (_: any, __: any) => ({}) as Splide,
   mount: () => {},
   Components: { Elements: { slides: [] } },
 } as Splide;
@@ -48,9 +50,9 @@ beforeAll(() => {
     matches: false,
     media: query,
     onchange: null,
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   });
 });
 
@@ -62,7 +64,7 @@ describe('connectedCallback', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
-    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+    const spy = vi.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
     expect(spy).toHaveBeenCalledWith();
@@ -73,7 +75,7 @@ describe('connectedCallback', () => {
       const component = new Carousel();
       component.host = document.createElement('p-carousel');
       component['splide'] = splideMock;
-      const spy = jest.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation();
+      const spy = vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => {});
 
       component.connectedCallback();
       expect(spy).toHaveBeenCalledWith();
@@ -83,8 +85,8 @@ describe('connectedCallback', () => {
       const component = new Carousel();
       component.host = document.createElement('p-carousel');
       component['splide'] = splideMock;
-      jest.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation();
-      const spy = jest.spyOn(component, 'registerSplideHandlers' as any);
+      vi.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation(() => {});
+      const spy = vi.spyOn(component, 'registerSplideHandlers' as any);
 
       component.connectedCallback();
       expect(spy).toHaveBeenCalledWith(component['splide']);
@@ -94,7 +96,7 @@ describe('connectedCallback', () => {
 
 describe('componentWillLoad', () => {
   it('should call parseJSON() in private "parsedSlidesPerPage()" with correct parameters', () => {
-    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(5);
+    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(5);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.slidesPerPage = 2;
@@ -109,7 +111,7 @@ describe('componentWillLoad', () => {
   it('should call this.updateSlidesAndPagination()', () => {
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
-    const spy = jest.spyOn(component, 'updateSlidesAndPagination' as any);
+    const spy = vi.spyOn(component, 'updateSlidesAndPagination' as any);
 
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -118,7 +120,7 @@ describe('componentWillLoad', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
-    const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
+    const spy = vi.spyOn(component, 'observeBreakpointChange' as any);
 
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith();
@@ -127,8 +129,8 @@ describe('componentWillLoad', () => {
 
 describe('componentDidLoad', () => {
   it('should call getSplideBreakpoints() with correct parameters', () => {
-    jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
-    const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
+    vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    const spy = vi.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
     component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
@@ -139,8 +141,8 @@ describe('componentDidLoad', () => {
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {
-    jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
-    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
+    vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute');
     const component = new Carousel();
     component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
@@ -151,7 +153,7 @@ describe('componentDidLoad', () => {
   });
 
   it('should call Splide constructor with correct parameters and set this.splide', () => {
-    const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    const spy = vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -165,7 +167,7 @@ describe('componentDidLoad', () => {
   });
 
   it('should call Splide constructor with correct parameters and set this.splide for slidesPerPage=auto', () => {
-    const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    const spy = vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
     component.host = getHostEl();
@@ -180,11 +182,11 @@ describe('componentDidLoad', () => {
   });
 
   it('should call this.registerSplideHandlers() with correct parameters', () => {
-    jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
+    vi.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const component = new Carousel();
     component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
-    const spy = jest.spyOn(component, 'registerSplideHandlers' as any);
+    const spy = vi.spyOn(component, 'registerSplideHandlers' as any);
 
     component.componentDidLoad();
     expect(spy).toHaveBeenCalledWith(splideMock);
@@ -192,8 +194,20 @@ describe('componentDidLoad', () => {
 });
 
 describe('render', () => {
+  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
+    const spy = vi.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.wrapContent = true;
+    component.host.attachShadow({ mode: 'open' });
+
+    component.render();
+
+    expect(spy).toHaveBeenCalledWith(component, 'wrapContent');
+  });
+
   it('should call hasHeading() with correct parameters', () => {
-    const spy = jest.spyOn(hasHeading, 'hasHeading');
+    const spy = vi.spyOn(hasHeading, 'hasHeading');
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.host.attachShadow({ mode: 'open' });
@@ -204,7 +218,7 @@ describe('render', () => {
   });
 
   it('should call hasDescription() with correct parameters', () => {
-    const spy = jest.spyOn(hasDescription, 'hasDescription');
+    const spy = vi.spyOn(hasDescription, 'hasDescription');
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.host.attachShadow({ mode: 'open' });
@@ -214,9 +228,23 @@ describe('render', () => {
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
+  it('should call parseJSON() with correct parameter and set this.parsedDisablePagination', () => {
+    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
+    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.host.attachShadow({ mode: 'open' });
+    component.disablePagination = true;
+
+    component.render();
+    expect(spy).toHaveBeenCalledWith(true);
+
+    expect((component as any).parsedDisablePagination).toBe(false);
+  });
+
   it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
-    jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
-    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
+    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
+    const spy = vi.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.host.attachShadow({ mode: 'open' });
@@ -231,8 +259,8 @@ describe('render', () => {
 
 describe('componentDidUpdate', () => {
   it('should call this.splide.refresh()', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
-    const refreshSpy: () => Splide = jest.fn();
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const refreshSpy: () => Splide = vi.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
 
@@ -241,7 +269,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should set drag in this.splide.options to true when amountOfPages > 1', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
 
     const mockSplideInstance = {
@@ -257,7 +285,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should set drag in this.splide.options to false when amountOfPages <= 1', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
 
     component['splide'] = {
@@ -271,7 +299,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should set drag in this.splide.options to true when slidesPerPage set to auto', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
 
     const mockSplideInstance = {
@@ -287,8 +315,8 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call renderPagination when hasNavigation = true', () => {
-    jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockReturnValueOnce();
-    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockReturnValueOnce();
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = {
       options: {},
@@ -306,7 +334,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should not call renderPagination when hasNavigation = false', () => {
-    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = {
       options: {},
@@ -319,7 +347,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should call updatePrevNextButtons() with correct parameters when hasNavigation = true', () => {
-    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const spy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
     Object.defineProperty(component, 'hasNavigation', { value: true });
     component['splide'] = {
@@ -331,7 +359,7 @@ describe('componentDidUpdate', () => {
   });
 
   it('should not call updatePrevNextButtons() when hasNavigation = false', () => {
-    const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
+    const spy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     const component = new Carousel();
     Object.defineProperty(component, 'hasNavigation', { value: false });
     component['splide'] = {
@@ -345,17 +373,17 @@ describe('componentDidUpdate', () => {
 
 describe('disconnectedCallback', () => {
   it('should call unobserveBreakpointChange() with correct parameters', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
+    const spy = vi.spyOn(breakpointObserverUtils, 'unobserveBreakpointChange');
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
-    component['splide'] = { destroy: jest.fn() as any } as Splide;
+    component['splide'] = { destroy: vi.fn() as any } as Splide;
 
     component.disconnectedCallback();
     expect(spy).toHaveBeenCalledWith(component.host);
   });
 
   it('should call this.splide.destroy()', () => {
-    const destroySpy: () => Splide = jest.fn();
+    const destroySpy: () => Splide = vi.fn();
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component['splide'] = { destroy: destroySpy } as Splide;
@@ -367,7 +395,7 @@ describe('disconnectedCallback', () => {
 
 describe('registerSplideHandlers()', () => {
   it('should call this.splide.on() with correct parameters', () => {
-    const onSpy: (_, __) => Splide = jest.fn();
+    const onSpy: (_: any, __: any) => Splide = vi.fn();
     const component = new Carousel();
     const splide = { ...splideMock, on: onSpy } as Splide;
 
@@ -378,8 +406,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = true with correct parameters on mounted event', () => {
-    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
-    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = new Splide(getContainerEl(), { drag: true }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
@@ -399,8 +427,8 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should not call updatePrevNextButtons() and renderPagination() when this.splide.options.drag = false on mounted event', () => {
-    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
-    const renderPaginationSpy = jest.spyOn(carouselUtils, 'renderPagination').mockImplementation();
+    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const renderPaginationSpy = vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['splide'] = new Splide(getContainerEl(), { drag: false }); // actual implementation for verifying event emission
     component['registerSplideHandlers'](component['splide']);
@@ -411,13 +439,15 @@ describe('registerSplideHandlers()', () => {
   });
 
   it('should call updatePrevNextButtons(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on splide events', () => {
-    const updatePrevNextButtonsSpy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
-    const updatePaginationSpy = jest.spyOn(carouselUtils, 'updatePagination').mockImplementation();
-    const changeEmitSpy = jest.fn();
+    const updatePrevNextButtonsSpy = vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
+    const updatePaginationSpy = vi.spyOn(carouselUtils, 'updatePagination').mockImplementation(() => {});
+    const changeEmitSpy = vi.fn();
+    const carouselChangeEmitSpy = vi.fn();
     const component = new Carousel();
     component['amountOfPages'] = 2; // hasNavigation = true
     component['splide'] = new Splide(getContainerEl()); // actual implementation for verifying event emission
     component['update'] = { emit: changeEmitSpy };
+    component['carouselChange'] = { emit: carouselChangeEmitSpy };
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('move', 1, 0);
@@ -428,10 +458,11 @@ describe('registerSplideHandlers()', () => {
     );
     expect(updatePaginationSpy).toHaveBeenCalledWith(component['paginationEl'], 2, 1);
     expect(changeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
+    expect(carouselChangeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
   });
 
   it('should call this.splide.mount()', () => {
-    const mountSpy: (_, __) => Splide = jest.fn();
+    const mountSpy: (_: any, __: any) => Splide = vi.fn();
     const splide = { ...splideMock, mount: mountSpy } as Splide;
     const component = new Carousel();
 
@@ -442,7 +473,7 @@ describe('registerSplideHandlers()', () => {
 
 describe('observeBreakpointChange()', () => {
   it('should not call observeBreakpointChange() if slidesPerPage is a number', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+    const spy = vi.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const component = new Carousel();
     component.slidesPerPage = 1;
 
@@ -451,7 +482,7 @@ describe('observeBreakpointChange()', () => {
   });
 
   it('should call observeBreakpointChange() with correct parameters if slidesPerPage is an object', () => {
-    const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
+    const spy = vi.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.slidesPerPage = { base: 2, m: 3 };
@@ -468,7 +499,7 @@ describe('updateSlidesAndPagination()', () => {
     const slide2 = document.createElement('div');
     slide2.id = 'slide2';
     const getSlidesMock = [slide1, slide2];
-    const spy = jest.spyOn(carouselUtils, 'getSlidesAndAddAttributes').mockReturnValue(getSlidesMock);
+    const spy = vi.spyOn(carouselUtils, 'getSlidesAndAddAttributes').mockReturnValue(getSlidesMock);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     expect(component['slides']).toEqual([]);
@@ -479,9 +510,9 @@ describe('updateSlidesAndPagination()', () => {
   });
 
   it('should call this.updateAmountOfPages()', () => {
-    jest.spyOn(carouselUtils, 'getSlidesAndAddAttributes').mockImplementation(() => []);
+    vi.spyOn(carouselUtils, 'getSlidesAndAddAttributes').mockImplementation(() => []);
     const component = new Carousel();
-    const spy = jest.spyOn(component, 'updateAmountOfPages' as any);
+    const spy = vi.spyOn(component, 'updateAmountOfPages' as any);
 
     component['updateSlidesAndPagination']();
     expect(spy).toHaveBeenCalledWith();
@@ -490,11 +521,11 @@ describe('updateSlidesAndPagination()', () => {
 
 describe('updateAmountOfPages()', () => {
   it('should call getCurrentMatchingBreakpointValue() and getAmountOfPages() with correct parameters and set this.amountOfPages', () => {
-    const getAmountOfPagesSpy = jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
-    const getCurrentMatchingBreakpointValueSpy = jest
+    const getAmountOfPagesSpy = vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const getCurrentMatchingBreakpointValueSpy = vi
       .spyOn(breakpointObserverUtilsUtils, 'getCurrentMatchingBreakpointValue')
       .mockReturnValue(11);
-    const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
+    const mathRoundSpy = vi.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 1;
     component['slides'] = new Array(2);
@@ -508,12 +539,12 @@ describe('updateAmountOfPages()', () => {
   });
 
   it('should call getCurrentMatchingBreakpointValue() and getAmountOfPages() with correct parameters and set this.amountOfPages for slidesPerPage=auto', () => {
-    const getAmountOfPagesSpy = jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
-    const getCurrentMatchingBreakpointValueSpy = jest.spyOn(
+    const getAmountOfPagesSpy = vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const getCurrentMatchingBreakpointValueSpy = vi.spyOn(
       breakpointObserverUtilsUtils,
       'getCurrentMatchingBreakpointValue'
     );
-    const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
+    const mathRoundSpy = vi.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 'auto';
     component['slides'] = new Array(2);
@@ -527,9 +558,9 @@ describe('updateAmountOfPages()', () => {
   });
 
   it('should call renderPagination() with correct parameters', () => {
-    jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
-    const spy = jest.spyOn(carouselUtils, 'renderPagination');
-    const refreshSpy: () => Splide = jest.fn();
+    vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const spy = vi.spyOn(carouselUtils, 'renderPagination');
+    const refreshSpy: () => Splide = vi.fn();
     const component = new Carousel();
     component['slides'] = new Array(2);
     component['splide'] = { index: 1, refresh: refreshSpy } as Splide;
@@ -539,8 +570,8 @@ describe('updateAmountOfPages()', () => {
   });
 
   it('should call this.splide.refresh()', () => {
-    jest.spyOn(carouselUtils, 'getAmountOfPages').mockImplementation();
-    const refreshSpy: () => Splide = jest.fn();
+    vi.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
+    const refreshSpy: () => Splide = vi.fn();
     const component = new Carousel();
     component['splide'] = { refresh: refreshSpy } as Splide;
 

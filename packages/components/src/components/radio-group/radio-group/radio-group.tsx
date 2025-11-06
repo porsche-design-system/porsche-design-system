@@ -22,12 +22,15 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { LoadingMessage } from '../../common/loading-message/loading-message';
-import { StateMessage } from '../../common/state-message/state-message';
+import { descriptionId } from '../../common/label/label-utils';
+import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 import { getComponentCss } from './radio-group-styles';
 import {
   findNextEnabledIndex,
   getActiveOptionIndex,
+  getCheckedOptionIndex,
+  getFirstEnabledOptionIndex,
   type RadioGroupChangeEventDetail,
   type RadioGroupDirection,
   type RadioGroupOption,
@@ -150,6 +153,7 @@ export class RadioGroup {
         updateRadioGroupOptions(this.radioGroupOptions, this.value);
       }
       this.preventOptionUpdate = false;
+      this.updateTabStops();
     }
   }
 
@@ -205,27 +209,34 @@ export class RadioGroup {
     );
     syncRadioGroupChildrenProps(this.radioGroupOptions, this.disabled, this.loading, this.state, this.name);
 
-    const id = 'radio-group';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <div class="root">
+      <fieldset
+        class="root"
+        // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: radiogroup is the correct role for a fieldset containing radio buttons
+        role="radiogroup"
+        aria-required={this.required ? 'true' : null}
+        aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
+        aria-invalid={this.state === 'error' ? 'true' : null}
+        onKeyDown={this.onKeyDown}
+      >
         <Label
           host={this.host}
+          tag="legend"
           label={this.label}
           description={this.description}
-          htmlFor={id}
           isRequired={this.required}
           isLoading={this.loading}
           isDisabled={this.disabled}
         />
-        <div class="wrapper" role="radiogroup" aria-labelledby={id} onKeyDown={this.onKeyDown}>
+        <div class="wrapper">
           <slot onSlotchange={this.onSlotChange} />
           {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
-      </div>
+      </fieldset>
     );
   }
 
@@ -264,6 +275,7 @@ export class RadioGroup {
     }
 
     this.focusOption(nextIndex);
+    this.updateTabStops();
   };
 
   private updateOptions = (): void => {
@@ -280,5 +292,20 @@ export class RadioGroup {
   private onSlotChange = (): void => {
     this.updateOptions();
     updateRadioGroupOptions(this.radioGroupOptions, this.value);
+    this.updateTabStops();
   };
+
+  private updateTabStops(): void {
+    if (!this.radioGroupOptions.length) return;
+    const selectedIndex = getCheckedOptionIndex(this.radioGroupOptions);
+    const firstEnabledIndex = getFirstEnabledOptionIndex(this.radioGroupOptions);
+    const focusIndex = selectedIndex !== -1 ? selectedIndex : firstEnabledIndex !== -1 ? firstEnabledIndex : -1;
+
+    this.radioGroupOptions.forEach((opt, i) => {
+      const input = opt.shadowRoot?.querySelector('input[type="radio"]') as HTMLInputElement | null;
+      if (input) {
+        input.tabIndex = i === focusIndex ? 0 : -1;
+      }
+    });
+  }
 }

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -109,7 +109,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: false, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -219,7 +219,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -328,7 +328,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: true 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -443,7 +443,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -552,7 +552,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: true 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -667,7 +667,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "medium", compact: true, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -777,7 +777,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -886,7 +886,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true, theme: dark and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #404044 !important;
@@ -996,7 +996,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: false, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #D8D8DB !important;
@@ -1106,7 +1106,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: true, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: false, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -1215,7 +1215,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small", compact: true, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: true, theme: light and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
@@ -1325,7 +1325,7 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true, theme: dark and sticky: false 1`] = `
 ":host {
   display: block;
   border-bottom: 1px solid #404044 !important;

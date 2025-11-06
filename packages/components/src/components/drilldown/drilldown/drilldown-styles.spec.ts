@@ -1,6 +1,5 @@
 // import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 import { getComponentCss } from './drilldown-styles';
-import { expect } from '@jest/globals';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([

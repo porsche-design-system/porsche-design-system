@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -12,6 +12,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -40,6 +41,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -94,7 +98,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -106,6 +110,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -134,6 +139,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -188,7 +196,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -200,6 +208,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -228,6 +237,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -281,7 +293,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -293,6 +305,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -321,6 +334,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -374,7 +390,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 3`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 3`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -386,6 +402,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -414,6 +431,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -467,7 +487,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -479,6 +499,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -507,6 +528,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -561,7 +585,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -573,6 +597,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -601,6 +626,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .label:empty {
   display: none;
@@ -655,7 +683,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -667,6 +695,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -749,7 +778,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -761,6 +790,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -843,7 +873,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -855,6 +885,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -936,7 +967,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -948,6 +979,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -1029,7 +1061,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.6668);
@@ -1041,6 +1073,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -1123,7 +1156,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 2`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.6668);
@@ -1135,6 +1168,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -1217,7 +1251,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -1229,6 +1263,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -1322,6 +1357,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(min-width:760px) {
@@ -1347,6 +1385,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(legend) {
+    margin-bottom: 4px;
   }
 }
 
@@ -1374,6 +1415,9 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(hover:hover) {
@@ -1384,7 +1428,7 @@ exports[`getComponentCss() should return correct css for disabled: false, loadin
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: dark 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -1396,6 +1440,7 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;
@@ -1479,6 +1524,9 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 
 @media(min-width:760px) {
@@ -1504,6 +1552,9 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(legend) {
+    margin-bottom: 4px;
   }
 }
 
@@ -1531,11 +1582,14 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
     clip: auto;
     white-space: normal;
   }
+  .label:is(legend) {
+    margin-bottom: 4px;
+  }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
 ":host {
   color-scheme: light dark !important;
   --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
@@ -1547,6 +1601,7 @@ exports[`getComponentCss() should return correct css for disabled: true, loading
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: grid;
   justify-self: flex-start;
   row-gap: 4px;

@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { Button } from './button';
 
 const initComponent = (): Button => {
@@ -5,8 +6,8 @@ const initComponent = (): Button => {
   component.host = document.createElement('p-button');
   component.host.attachShadow({ mode: 'open' });
   component['internals'] = {
-    setFormValue: jest.fn(),
-    form: { requestSubmit: jest.fn(), reset: jest.fn() } as unknown as HTMLFormElement,
+    setFormValue: vi.fn(),
+    form: { requestSubmit: vi.fn(), reset: vi.fn() } as unknown as HTMLFormElement,
   } as unknown as ElementInternals;
   component.form = 'some-form';
   return component;
@@ -92,14 +93,14 @@ describe('onClick()', () => {
 
   beforeEach(() => {
     mockEvent = new MouseEvent('click');
-    jest.spyOn(mockEvent, 'stopPropagation');
-    jest.spyOn(mockEvent, 'preventDefault');
+    vi.spyOn(mockEvent, 'stopPropagation');
+    vi.spyOn(mockEvent, 'preventDefault');
 
     component = initComponent();
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should stop propagation if the component is disabled or loading', () => {

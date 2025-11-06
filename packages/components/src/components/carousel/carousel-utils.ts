@@ -89,13 +89,19 @@ export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number):
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
 export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index >= amountOfPages - 1; // catch removal of slide
 
+export const internalCarousel = {
+  isFirstPage,
+  isLastPage,
+  getAmountOfPages,
+};
+
 export const slidePrev = (splide: Splide, amountOfPages: number, focusOnCenterSlide?: boolean): void => {
   if (focusOnCenterSlide) {
     splide.go('<');
   } else {
     // sanitize in case of removal of slide since splide.index seems to be from before splide.refresh()
     const prevSlide = splide.index === amountOfPages ? splide.index - 2 : '<';
-    splide.go(isFirstPage(splide) ? amountOfPages - 1 : prevSlide);
+    splide.go(internalCarousel.isFirstPage(splide) ? amountOfPages - 1 : prevSlide);
   }
 };
 
@@ -103,7 +109,7 @@ export const slideNext = (splide: Splide, amountOfPages: number, focusOnCenterSl
   if (focusOnCenterSlide) {
     splide.go('>');
   } else {
-    splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
+    splide.go(internalCarousel.isLastPage(splide, amountOfPages) ? 0 : '>');
   }
 };
 
@@ -113,11 +119,14 @@ export const updatePrevNextButtons = (
   splide: Splide
 ): void => {
   const { i18n, rewind } = splide.options;
-  const isFirst = isFirstPage(splide);
+  const isFirst = internalCarousel.isFirstPage(splide);
   btnPrev.disabled = isFirst && !rewind;
   btnPrev.aria = { 'aria-label': i18n[isFirst ? 'last' : 'prev'] };
 
-  const isLast = isLastPage(splide, getAmountOfPages(splide.length, splide.options.perPage));
+  const isLast = internalCarousel.isLastPage(
+    splide,
+    internalCarousel.getAmountOfPages(splide.length, splide.options.perPage)
+  );
   btnNext.disabled = isLast && !rewind;
   btnNext.aria = {
     'aria-label': i18n[isLast ? 'first' : 'next'],

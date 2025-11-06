@@ -7,6 +7,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   hasShowPickerSupport,
+  implicitSubmit,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -191,6 +192,7 @@ export class InputTime {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type="time"
@@ -223,6 +225,10 @@ export class InputTime {
       />
     );
   }
+
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
 
   private onChange = (e: Event): void => {
     e.stopPropagation();

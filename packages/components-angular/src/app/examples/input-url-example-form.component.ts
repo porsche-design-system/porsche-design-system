@@ -5,29 +5,14 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-input-url-example-form',
   template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-url formControlName="myInputUrl" [label]="'Some Label'" [required]="true" />
-      <button type="submit">Submit</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
+      <p-input-url formControlName="myInputUrl" [label]="'Some Label'" [indicator]="true" />
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
     </form>
-
-    <button type="button" (click)="setValue()">
-      Set Value
-    </button>
-
-    <button type="button" (click)="resetValue()">
-      Reset
-    </button>
-
-    <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputUrl.disabled ? 'Enable' : 'Disable' }}
-    </button>
-
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputUrl.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputUrl.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputUrl.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputUrl.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputUrl.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,23 +20,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputUrlExampleFormComponent {
   form = new FormGroup({
-    myInputUrl: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputUrl: new FormControl<string>(''),
   });
 
   submittedValue: any = undefined;
-
-  setValue(): void {
-    this.form.controls.myInputUrl.setValue('https://www.porsche.com');
-  }
-
-  resetValue(): void {
-    this.form.controls.myInputUrl.reset('');
-  }
-
-  toggleDisabled(): void {
-    const control = this.form.get('myInputUrl')!;
-    control.disabled ? control.enable() : control.disable();
-  }
 
   onSubmit(): void {
     this.submittedValue = JSON.stringify(this.form.value);

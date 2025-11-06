@@ -1,0 +1,125 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PLinkPure } from '@porsche-design-system/components-react/ssr';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Angular: Form - Porsche Design System',
+  description: 'Form integration in Angular with the Porsche Design System.',
+};
+
+# Angular
+
+<TableOfContents
+  headings={['Form Integration Demo', 'Angular Forms Integration', 'Manual State Management', 'Native Form Submission']}
+/>
+
+Porsche Design System form components can be integrated into Angular using different techniques based on your state
+management and form handling preferences. Each component automatically keeps its internal value in sync, similar to
+native form elements.
+
+All form components support:
+
+- **Angular Forms Integration**
+  - **Reactive Forms** using `formControl` or `formControlName`
+    ([Reactive Forms](https://angular.dev/guide/forms/reactive-forms))
+  - **Template-Driven Forms** using `[(ngModel)]`
+    ([Template-Driven Forms](https://angular.dev/guide/forms/template-driven-forms))
+- **Manual State Management (Props + Events)** using `value`/`checked` properties and `change`/`input`/`blur` event
+  listeners
+- **Native form submission** using form-associated custom elements
+
+## Form Integration Demo
+
+A complete example of how to integrate form components with Angular can be explored here:
+
+<div className="flex flex-wrap gap-static-md mt-fluid-lg">
+  <PLinkPure icon="external">
+    {/* prettier-ignore */}
+    <Link href="https://github.com/porsche-design-system/examples/tree/main/frameworks/angular">Source Code</Link>
+  </PLinkPure>
+  <PLinkPure icon="external">
+    <Link href="https://porsche-design-system.github.io/examples/angular">View Fullscreen</Link>
+  </PLinkPure>
+</div>
+
+<iframe
+  className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
+  title="Angular: Demo application"
+  src="https://porsche-design-system.github.io/examples/angular"
+/>
+
+## Angular Forms Integration
+
+All custom form components implement the `ControlValueAccessor` interface for seamless two-way data binding with your
+model.
+
+### Reactive Forms (Preferred)
+
+Use a `FormControl` and bind it directly with `[formControl]`, or use a `FormGroup` and bind individual controls by name
+with `formControlName`. See the [Reactive Forms](https://angular.dev/guide/forms/reactive-forms) guide for more details.
+
+```angular20html
+<p-input-text [formControl]="myInputText" [label]="'Some Label'" />
+...
+myInputText = new FormControl('');
+```
+
+```angular20html
+<p-input-text formControlName="myInputText" [label]="'Some Label'" />
+...
+form = new FormGroup({
+  myInputText: new FormControl(''),
+});
+```
+
+### Template-Driven Forms
+
+You can either bind form fields directly to a component property using two-way data binding with `[(ngModel)]`, or
+withing a form by linking them with their name using the `ngModel` directive. For more details, see the
+[Template-Driven Forms](https://angular.dev/guide/forms/template-driven-forms) guide.
+
+```angular20html
+<p-input-text [(ngModel)]="myInputText" #ctrl="ngModel" [label]="'Some Label'" />
+...
+myInputText: string = '';
+```
+
+```angular20html
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <p-input-text :name="'myInputText'" ngModel [label]="'Some Label'" />
+</form>
+...
+onSubmit(f: NgForm) {
+  console.log(f.value);
+}
+```
+
+## Manual State Management
+
+While all custom form components update their internal state automatically, you can manage their values externally using
+the `value` or `checked` props along with `input`, `change`, and `blur` events. This approach allows flexible
+integration with any form library.
+
+```angular20html
+<p-input-text [value]="value" (input)="onInput($event)" :name="'myInputText'" :label="'Some Label'"  />
+...
+value: string = '';
+
+onInput(e: CustomEvent<InputTextInputEventDetail>) {
+  this.value = (e.detail.target as HTMLInputElement).value;
+}
+```
+
+## Native Form Submission
+
+All custom form components are form-associated custom elements that integrate seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, They will work like their
+native counterparts, ensuring compatibility with form behaviors.
+
+```angular20html
+<form (ngSubmit)="onSubmit(f)">
+  <p-input-text :name="'myInputText'" :label="'Some Label'"  />
+</form>
+...
+const onSubmit = (form: NgForm) => { console.log(form.value); };
+```

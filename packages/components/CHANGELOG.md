@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file and publishe
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [v4]
 
 ### Removed (deprecated in v3 already)
 
@@ -154,6 +154,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `Select Wrapper` (use `Select` instead)
   - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
   - `Textarea Wrapper` (use `Textarea` instead)
+
+## [Unreleased]
+
+## [3.30.0] - 2025-10-31
+
+## [3.30.0-rc.3] - 2025-10-30
+
+### Added
+
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`: implicit submit on `Enter` key press when used inside a form
+  ([#4084](https://github.com/porsche-design-system/porsche-design-system/pull/4084))
 
 ## [3.30.0-rc.2] - 2025-10-24
 

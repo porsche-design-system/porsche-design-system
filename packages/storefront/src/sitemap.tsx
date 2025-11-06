@@ -171,6 +171,11 @@ export const sitemap: Routes = {
             path: '/developing/angular/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/angular/form',
+            type: 'TAB',
+          },
           testing: {
             name: 'Testing',
             path: '/developing/angular/testing',
@@ -220,6 +225,11 @@ export const sitemap: Routes = {
             path: '/developing/next-js/getting-started',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/next-js/form',
+            type: 'TAB',
+          },
           demo: {
             name: 'Demo',
             path: '/developing/next-js/demo',
@@ -250,6 +260,11 @@ export const sitemap: Routes = {
           demo: {
             name: 'Demo',
             path: '/developing/react/demo',
+            type: 'TAB',
+          },
+          form: {
+            name: 'Form',
+            path: '/developing/react/form',
             type: 'TAB',
           },
           testing: {
@@ -284,6 +299,11 @@ export const sitemap: Routes = {
             path: '/developing/react-router/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/react-router/form',
+            type: 'TAB',
+          },
           faq: {
             name: 'FAQ',
             path: '/developing/react-router/faq',
@@ -311,6 +331,11 @@ export const sitemap: Routes = {
             path: '/developing/vanilla-js/demo',
             type: 'TAB',
           },
+          form: {
+            name: 'Form',
+            path: '/developing/vanilla-js/form',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vanilla-js/advanced',
@@ -336,6 +361,11 @@ export const sitemap: Routes = {
           demo: {
             name: 'Demo',
             path: '/developing/vue/demo',
+            type: 'TAB',
+          },
+          form: {
+            name: 'Form',
+            path: '/developing/vue/form',
             type: 'TAB',
           },
           advanced: {

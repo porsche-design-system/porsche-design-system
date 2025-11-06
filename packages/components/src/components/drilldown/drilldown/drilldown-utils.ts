@@ -15,18 +15,6 @@ export type DrilldownUpdateEventDetail = {
 export type Item = HTMLPDrilldownItemElement & DrilldownItemInternalHTMLProps;
 
 /**
- * Updates the state of the drilldown and its children based on the provided activeItem and value.
- *
- * @param {string | undefined} activeItem - The drilldown-item element which is currently active (which has the activeIdentifier as identifier). If undefined, updates the root element.
- * @param {boolean} value - The new state value to apply.
- * @returns {void}
- */
-export const updateDrilldownItemState = (activeItem: HTMLPDrilldownItemElement, value: boolean): void => {
-  activeItem.secondary = value;
-  traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
-};
-
-/**
  * Recursively updates the state of a drilldown item's parent elements by traversing up the DOM tree.
  *
  * @param {HTMLPDrilldownItemElement} activeItem - The current drilldown item being updated.
@@ -40,8 +28,28 @@ export const traverseTreeAndUpdateState = (
 ) => {
   if (isElementOfKind(activeItem, 'p-drilldown-item')) {
     activeItem[prop] = value;
-    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'cascade', value);
+    internalDrilldown.traverseTreeAndUpdateState(
+      activeItem.parentElement as HTMLPDrilldownItemElement,
+      'cascade',
+      value
+    );
   }
+};
+
+export const internalDrilldown = {
+  traverseTreeAndUpdateState,
+};
+
+/**
+ * Updates the state of the drilldown and its children based on the provided activeItem and value.
+ *
+ * @param {string | undefined} activeItem - The drilldown-item element which is currently active (which has the activeIdentifier as identifier). If undefined, updates the root element.
+ * @param {boolean} value - The new state value to apply.
+ * @returns {void}
+ */
+export const updateDrilldownItemState = (activeItem: HTMLPDrilldownItemElement, value: boolean): void => {
+  activeItem.secondary = value;
+  internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
 };
 
 /**

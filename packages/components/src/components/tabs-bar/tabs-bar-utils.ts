@@ -22,6 +22,10 @@ export const getTransformation = (el: HTMLElement = {} as HTMLElement): string =
   return `transform: translate3d(${el.offsetLeft > 0 ? el.offsetLeft : 0}px,0,0);width: ${rect.width}px`;
 };
 
+export const internalTBar = {
+  getTransformation,
+};
+
 export const getPrevNextTabIndex = (
   direction: ScrollerDirection,
   tabElementsLength: number,
@@ -49,12 +53,12 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
     if (currentActiveTabElement) {
       // for initial activeTabIndex > 0 and resized window with fluid font-size for size="medium"
       // we need to adjust the starting point of the transition
-      setAttribute(barElement, 'style', `transition: none;${getTransformation(currentActiveTabElement)}`);
+      setAttribute(barElement, 'style', `transition: none;${internalTBar.getTransformation(currentActiveTabElement)}`);
     }
 
     const newActiveTabElement = tabElements[activeTabIndex];
     if (newActiveTabElement) {
-      setAttribute(barElement, 'style', getTransformation(newActiveTabElement));
+      setAttribute(barElement, 'style', internalTBar.getTransformation(newActiveTabElement));
     }
 
     // when there was an active item before, we need to reset the animation

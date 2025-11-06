@@ -2,7 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { radioGroupExample, radioGroupExampleControlled } from '@porsche-design-system/shared/examples';
+import { radioGroupExampleForm } from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { Notification } from '@/components/common/Notification';
 import { radioGroupStorySlots } from '@/app/components/radio-group/radio-group.stories';
@@ -14,30 +14,26 @@ export const metadata = {
 
 # Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Controlled', 'Slots']} />
+<TableOfContents headings={['Form', 'Slots']} />
 
 ## Form
 
-The `p-radio-group` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
-[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions similar to a
-collection of native radio inputs, ensuring compatibility with form behaviors. However, note that browser support for
-this API is limited.
+The `p-radio-group` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
 
-When used within a form element, it's required to provide a name attribute to the `p-radio-group` component. This
-attribute establishes the link between the component and the form, enabling the selected value to be included in the
-form's data when it's submitted.
+In the **controlled** approach, the `p-radio-group` state is externally managed using the `value` property and `change`
+event to keep it in sync with your application logic. This approach is ideal for complex forms or when using a form
+library. Note that the component will still always update its internal value automatically when interacted with.
 
-<ComponentExample codeSample={radioGroupExample} />
+In the **uncontrolled** approach, the `p-radio-group` automatically managing its own state and includes its value in
+form submissions through the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API.
+This is convenient for smaller forms or simple submissions.
 
----
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
 
-## Controlled
-
-In the controlled approach, the `p-radio-group` component is externally controlled. Selecting an option triggers a
-change event, allowing you to use the updated value. Internally, the value will be updated automatically but can be
-overwritten by passing in a new value.
-
-<ComponentExample codeSample={radioGroupExampleControlled} />
+<ComponentExample codeSample={radioGroupExampleForm} />
 
 ---
 

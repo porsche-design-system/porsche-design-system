@@ -1,14 +1,10 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import {
-  segmentedControlStory,
-  segmentedControlStoryEvent,
-  segmentedControlStoryLabel,
-} from '@/app/components/segmented-control/segmented-control.stories';
+import { segmentedControlStoryLabel } from '@/app/components/segmented-control/segmented-control.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { segmentedControlExample, segmentedControlExampleControlled } from '@porsche-design-system/shared/examples';
+import { segmentedControlExampleForm } from '@porsche-design-system/shared/examples';
 import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
@@ -18,18 +14,20 @@ export const metadata = {
 
 # Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Controlled', 'With Labels']} />
+<TableOfContents headings={['Form', 'With Labels']} />
 
 ## Form
 
-The `p-segmented-control` component is a form-associated custom element that integrates seamlessly with forms.
-Leveraging the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions
-similar to a native select, ensuring compatibility with form behaviors. However, note that browser support for this API
-is limited.
+The `p-segmented-control` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on
+your needs.
 
-When used within a form element, it's required to provide a name attribute to the `p-segmented-control` component. This
-attribute establishes the link between the component and the form, enabling the selected value to be included in the
-form's data when it's submitted.
+In the **controlled** approach, the `p-segmented-control` state is externally managed using the `value` property and
+`change` event to keep it in sync with your application logic. This approach is ideal for complex forms or when using a
+form library. Note that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the `p-segmented-control` automatically managing its own state and including its value
+in form submissions through the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
+API. This is convenient for smaller forms or simple submissions.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
   The <code>p-segmented-control</code> lacks access to native <code>ValidityState</code>
@@ -37,15 +35,11 @@ form's data when it's submitted.
   validation behavior and error display will need to be implemented separately if required.
 </Notification>
 
-<ComponentExample codeSample={segmentedControlExample} />
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
 
-## Controlled
-
-In the controlled approach, the `p-segmented-control` component is externally controlled. Selected items trigger a
-custom update event, allowing you to use the updated value. Internally, the value will be updated automatically but can
-be overwritten by passing in a new value.
-
-<ComponentExample codeSample={segmentedControlExampleControlled} />
+<ComponentExample codeSample={segmentedControlExampleForm} />
 
 ## With Labels
 

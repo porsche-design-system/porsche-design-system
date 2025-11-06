@@ -58,6 +58,14 @@ export function getActiveOptionIndex<T extends HTMLElement>(options: T[]): numbe
   return options.findIndex((opt) => opt === document.activeElement || opt.contains(document.activeElement));
 }
 
+export function getCheckedOptionIndex(options: RadioGroupOption[]): number {
+  return options.findIndex((opt) => !opt.disabled && opt.selected);
+}
+
+export function getFirstEnabledOptionIndex(options: RadioGroupOption[]): number {
+  return options.findIndex((opt) => !opt.disabled);
+}
+
 /**
  * Find the next enabled option index in the group.
  * Wraps around and skips disabled/loading options.

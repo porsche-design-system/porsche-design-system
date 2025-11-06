@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -62,7 +62,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -124,7 +124,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -186,7 +186,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -248,7 +248,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -310,7 +310,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
   opacity: 0;

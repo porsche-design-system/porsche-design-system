@@ -5,29 +5,14 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-input-search-example-form',
   template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p-input-search formControlName="myInputSearch" [label]="'Some Label'" [required]="true" />
-      <button type="submit">Submit</button>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-fluid-sm">
+      <p-input-search formControlName="myInputSearch" [label]="'Some Label'" [indicator]="true" [clear]="true" />
+      <div class="flex gap-fluid-sm">
+        <p-button type="submit">Submit</p-button>
+        <p-button type="reset">Reset</p-button>
+      </div>
+      <p-text>Last submitted data: {{ submittedValue }}</p-text>
     </form>
-
-    <button type="button" (click)="setValue()">
-      Set Value
-    </button>
-
-    <button type="button" (click)="resetValue()">
-      Reset
-    </button>
-
-    <button type="button" (click)="toggleDisabled()">
-      {{ form.controls.myInputSearch.disabled ? 'Enable' : 'Disable' }}
-    </button>
-
-    <div>Touched: <span data-field="touched">{{ form.controls.myInputSearch.touched }}</span></div>
-    <div>Dirty: <span data-field="dirty">{{ form.controls.myInputSearch.dirty }}</span></div>
-    <div>Disabled: <span data-field="disabled">{{ form.controls.myInputSearch.disabled }}</span></div>
-    <div>Value: <span data-field="value">{{ form.controls.myInputSearch.value }}</span></div>
-    <div>Valid: <span data-field="valid">{{ form.controls.myInputSearch.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,23 +20,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputSearchExampleFormComponent {
   form = new FormGroup({
-    myInputSearch: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputSearch: new FormControl<string>(''),
   });
 
   submittedValue: any = undefined;
-
-  setValue(): void {
-    this.form.controls.myInputSearch.setValue('Some search term');
-  }
-
-  resetValue(): void {
-    this.form.controls.myInputSearch.reset('');
-  }
-
-  toggleDisabled(): void {
-    const control = this.form.get('myInputSearch')!;
-    control.disabled ? control.enable() : control.disable();
-  }
 
   onSubmit(): void {
     this.submittedValue = JSON.stringify(this.form.value);

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: false 1`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -23,7 +23,7 @@ exports[`getComponentCss() should return correct css for theme: false 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: false 2`] = `
+exports[`getComponentCss() > should return correct css for theme: false 2`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for theme: false 2`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: true 1`] = `
 ":host {
   color-scheme: light dark !important;
 }
@@ -69,7 +69,7 @@ exports[`getComponentCss() should return correct css for theme: true 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: true 2`] = `
+exports[`getComponentCss() > should return correct css for theme: true 2`] = `
 ":host {
   color-scheme: light dark !important;
 }

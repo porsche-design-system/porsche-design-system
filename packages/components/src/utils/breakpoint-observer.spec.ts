@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import {
   breakpointChangeCallbackMap,
   handleBreakpointChange,
@@ -17,7 +18,7 @@ describe('observeBreakpointChange()', () => {
   });
 
   it('should call addEventLister() for each media query with correct parameters', () => {
-    const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'addEventListener'));
+    const spies = mediaQueryLists.map((mediaQueryList) => vi.spyOn(mediaQueryList, 'addEventListener'));
 
     const node = document.createElement('div');
     const callback = () => {};
@@ -66,7 +67,7 @@ describe('unobserveBreakpointChange()', () => {
   });
 
   it('should call removeEventListener() for each media query with correct parameters', () => {
-    const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'removeEventListener'));
+    const spies = mediaQueryLists.map((mediaQueryList) => vi.spyOn(mediaQueryList, 'removeEventListener'));
     const node = document.createElement('div');
     const callback = () => {};
     observeBreakpointChange(node, callback);

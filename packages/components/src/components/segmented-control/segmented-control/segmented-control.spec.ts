@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
@@ -6,8 +6,8 @@ import { SegmentedControl } from './segmented-control';
 import * as segmentedControlUtils from './segmented-control-utils';
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
 const initComponent = (): SegmentedControl => {
@@ -19,34 +19,40 @@ const initComponent = (): SegmentedControl => {
 };
 
 describe('formResetCallback', () => {
-  const component = initComponent();
-  const defaultValue = 'default-value';
-  component['defaultValue'] = defaultValue;
-  component.value = 'test';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-  component.formResetCallback();
-  expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
-  expect(component.value).toBe(defaultValue);
+  it('should reset value to defaultValue', () => {
+    const component = initComponent();
+    const defaultValue = 'default-value';
+    component['defaultValue'] = defaultValue;
+    component.value = 'test';
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.formResetCallback();
+    expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
+    expect(component.value).toBe(defaultValue);
+  });
 });
 
 describe('formDisabledCallback', () => {
-  const component = initComponent();
-  component.disabled = false;
-  component.formDisabledCallback(true);
-  expect(component.disabled).toBe(true);
+  it('should set disabled to true when called with true', () => {
+    const component = initComponent();
+    component.disabled = false;
+    component.formDisabledCallback(true);
+    expect(component.disabled).toBe(true);
+  });
 });
 
 describe('formStateRestoreCallback', () => {
-  const component = initComponent();
-  component.value = 'test';
-  const restoredValue = 'restored-value';
-  component.formStateRestoreCallback(restoredValue);
-  expect(component.value).toBe(restoredValue);
+  it('should restore value', () => {
+    const component = initComponent();
+    component.value = 'test';
+    const restoredValue = 'restored-value';
+    component.formStateRestoreCallback(restoredValue);
+    expect(component.value).toBe(restoredValue);
+  });
 });
 
 describe('connectedCallback', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
-    const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
+    const spy = vi.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
 
     const component = initComponent();
     component.host = document.createElement('p-segmented-control');
@@ -58,7 +64,7 @@ describe('connectedCallback', () => {
 
 describe('render', () => {
   it('should call syncItemsProps() with correct parameters', () => {
-    const spy = jest.spyOn(segmentedControlUtils, 'syncSegmentedControlItemsProps');
+    const spy = vi.spyOn(segmentedControlUtils, 'syncSegmentedControlItemsProps');
 
     const component = initComponent();
     component.host = document.createElement('p-segmented-control');
@@ -74,23 +80,35 @@ describe('render', () => {
       component.theme
     );
   });
+
+  it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
+    const spy = vi.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
+    const component = initComponent();
+    component.host = document.createElement('p-segmented-control');
+    component.backgroundColor = 'background-surface';
+    component.host.attachShadow({ mode: 'open' });
+
+    component.render();
+
+    expect(spy).toHaveBeenCalledWith(component, 'backgroundColor');
+  });
 });
 
 describe('updateSegmentedControlItemHandler', () => {
   const mockEvent = {
-    stopPropagation: jest.fn(),
+    stopPropagation: vi.fn(),
     target: {
       value: '1',
-      focus: jest.fn(),
+      focus: vi.fn(),
     } as unknown as HTMLElement & SegmentedControlItem,
   } as unknown as Event & { target: HTMLElement & SegmentedControlItem };
 
   it('should stop event propagation', () => {
     const component = initComponent();
 
-    component.change = { emit: jest.fn() };
-    component.update = { emit: jest.fn() };
-    component.segmentedControlChange = { emit: jest.fn() };
+    component.change = { emit: vi.fn() };
+    component.update = { emit: vi.fn() };
+    component.segmentedControlChange = { emit: vi.fn() };
 
     component.updateSegmentedControlItemHandler(mockEvent);
     expect(mockEvent.stopPropagation).toHaveBeenCalled();
@@ -99,12 +117,12 @@ describe('updateSegmentedControlItemHandler', () => {
   it('should call updateValue when not disabled', () => {
     const component = initComponent();
 
-    component.change = { emit: jest.fn() };
-    component.update = { emit: jest.fn() };
-    component.segmentedControlChange = { emit: jest.fn() };
+    component.change = { emit: vi.fn() };
+    component.update = { emit: vi.fn() };
+    component.segmentedControlChange = { emit: vi.fn() };
     component.disabled = false;
     // @ts-expect-error
-    const updateValueSpy = jest.spyOn(component, 'updateValue');
+    const updateValueSpy = vi.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
 
@@ -115,7 +133,7 @@ describe('updateSegmentedControlItemHandler', () => {
     const component = initComponent();
     component.disabled = true;
     // @ts-expect-error
-    const updateValueSpy = jest.spyOn(component, 'updateValue');
+    const updateValueSpy = vi.spyOn(component, 'updateValue');
 
     component.updateSegmentedControlItemHandler(mockEvent);
 
@@ -128,7 +146,7 @@ describe('onValueChange', () => {
     const component = initComponent();
     const value = 1;
     component.value = value;
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.onValueChange();
     expect(setFormValueSpy).toHaveBeenCalledWith(value.toString());
   });
@@ -139,7 +157,7 @@ describe('componentDidLoad', () => {
     const component = initComponent();
     const value = '1';
     component.value = value;
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
     expect(setFormValueSpy).toHaveBeenCalledWith(value);
   });
@@ -147,8 +165,8 @@ describe('componentDidLoad', () => {
 
 describe('updateValue()', () => {
   const component = initComponent();
-  const emitSpy = jest.fn();
-  component.change = { emit: jest.fn() };
+  const emitSpy = vi.fn();
+  component.change = { emit: vi.fn() };
   component.update = { emit: emitSpy };
   component.segmentedControlChange = { emit: emitSpy };
 
@@ -175,7 +193,7 @@ describe('updateValue()', () => {
   });
 
   it('should call focus() on item', () => {
-    const spy = jest.spyOn(item, 'focus');
+    const spy = vi.spyOn(item, 'focus');
     // @ts-expect-error
     component.updateValue(item);
 

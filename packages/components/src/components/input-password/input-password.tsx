@@ -17,6 +17,7 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  implicitSubmit,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -208,6 +209,7 @@ export class InputPassword {
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
+        onKeyDown={this.onKeyDown}
         name={this.name}
         form={this.form}
         type={this.showPassword ? 'text' : 'password'}
@@ -242,7 +244,13 @@ export class InputPassword {
     );
   }
 
+  private onKeyDown = (e: KeyboardEvent): void => {
+    implicitSubmit(e, this.internals, this.host);
+  };
+
   private onChange = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.change.emit(e);
   };
 
