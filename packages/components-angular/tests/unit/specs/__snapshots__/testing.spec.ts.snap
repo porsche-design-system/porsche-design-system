@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`testing > should match snapshot 1`] = `
+[
+  "getByLabelTextShadowed",
+  "getByRoleShadowed",
+  "getByTextShadowed",
+]
+`;
+
+exports[`testing > should match snapshot 2`] = `
+[
+  "getByLabelTextShadowed",
+  "getByRoleShadowed",
+  "getByTextShadowed",
+]
+`;
