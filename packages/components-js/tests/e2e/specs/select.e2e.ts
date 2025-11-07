@@ -388,6 +388,7 @@ test.describe('Blur Event', () => {
   });
 });
 
+// TODO: Should the change event be emitted when slot changes? e.g. option with current set value is added
 test.describe('Change Event', () => {
   test('should emit change event with correct details when option is selected by click', async ({ page }) => {
     await initSelect(page);
@@ -553,6 +554,93 @@ test.describe('Update Event', () => {
         },
       ]);
     });
+  });
+});
+
+test.describe('Toggle Event', () => {
+  test('should emit toggle event with correct details when select is toggled by click', async ({ page }) => {
+    await initSelect(page, { options: { markupBefore: '<button id="outside">Some element outside</button>' } });
+    const host = getHost(page);
+    const dropdown = getDropdown(page);
+    const outsideElement = page.locator('#outside');
+    await addEventListener(host, 'toggle');
+
+    expect((await getEventSummary(host, 'toggle')).counter, 'before opening').toBe(0);
+
+    const buttonElement = getButton(page);
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'toggle')).counter, 'after opening').toBe(1);
+    expect((await getEventSummary(host, 'toggle')).details, 'after opening').toEqual([
+      {
+        open: true,
+      },
+    ]);
+
+    await outsideElement.click();
+    await expect(dropdown).toBeHidden();
+    await expect(outsideElement).toBeFocused();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'toggle')).counter, 'after closing').toBe(2);
+    expect((await getEventSummary(host, 'toggle')).details, 'after closing').toEqual([
+      {
+        open: true,
+      },
+      {
+        open: false,
+      },
+    ]);
+  });
+
+  test('should emit toggle event with correct details when select is toggled by keyboard', async ({ page }) => {
+    await initSelect(page, {
+      options: {
+        markupBefore: '<button id="focus">set focus</button>',
+      },
+    });
+
+    const markupBeforeButton = page.locator('#focus');
+
+    // Focus by click first to make sure tabbing order is correct in safari
+    await markupBeforeButton.click();
+
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const dropdown = getDropdown(page);
+    await addEventListener(host, 'toggle');
+
+    expect((await getEventSummary(host, 'toggle')).counter, 'before opening').toBe(0);
+
+    await page.keyboard.press('Tab');
+    await expect(buttonElement).toBeFocused();
+    await page.keyboard.press('Space');
+    await expect(dropdown).toBeVisible();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'toggle')).counter, 'after opening').toBe(1);
+    expect((await getEventSummary(host, 'toggle')).details, 'after opening').toEqual([
+      {
+        open: true,
+      },
+    ]);
+
+    await page.keyboard.press('Tab');
+    await expect(buttonElement).toBeFocused();
+    await expect(dropdown).toBeHidden();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'toggle')).counter, 'after closing').toBe(2);
+    expect((await getEventSummary(host, 'toggle')).details, 'after closing').toEqual([
+      {
+        open: true,
+      },
+      {
+        open: false,
+      },
+    ]);
   });
 });
 
