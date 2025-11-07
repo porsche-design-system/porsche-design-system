@@ -14,12 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-## [3.30.0] - 2025-10-31
-
 ### Fixed
 
 - `Segmented Control`: restore proportional shrinking of items when container is narrow
   ([#4094](https://github.com/porsche-design-system/porsche-design-system/pull/4094))
+
+## [3.30.0] - 2025-10-31
 
 ## [3.30.0-rc.3] - 2025-10-30
 
