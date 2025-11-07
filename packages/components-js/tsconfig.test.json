@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "vitest/jsdom", "vitest/globals"]
+  },
+  "include": ["**/*.spec.ts", "**/*.spec.tsx"]
+}

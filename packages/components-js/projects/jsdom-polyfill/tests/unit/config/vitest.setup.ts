@@ -1,8 +1,6 @@
-import { beforeEach } from 'vitest';
-import '@testing-library/jest-dom';
 import '@porsche-design-system/components-js/jsdom-polyfill';
 import 'whatwg-fetch'; // not part of jsdom-polyfill anymore since we don't do fetch calls
-import { vi } from 'vitest';
+import { vi, beforeEach, beforeAll } from 'vitest';
 
 beforeAll(() => {
   // Mock for the Dialog API
