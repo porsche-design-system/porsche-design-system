@@ -105,6 +105,19 @@ const addOption = async (page: Page, value: string, textContent?: string, image?
   );
 };
 
+const removeOption = async (page: Page, value: string) => {
+  const host = getHost(page);
+  await host.evaluate((el, value) => {
+    const optionToRemove = Array.from(el.children).find(
+      (child) =>
+        child.tagName.toLowerCase() === 'p-select-option' && (child as HTMLPSelectOptionElement).value === value
+    );
+    if (optionToRemove) {
+      el.removeChild(optionToRemove);
+    }
+  }, value);
+};
+
 const testValues = [
   'Afghanistan',
   'Åland Islands',
@@ -239,6 +252,7 @@ type Option = {
 type InitOptions = {
   props?: Components.PSelect;
   slots?: {
+    filter?: string;
     label?: string;
     description?: string;
     message?: string;
@@ -265,7 +279,7 @@ const initSelect = (page: Page, opt?: InitOptions, withImage?: boolean): Promise
     markupAfter = '',
     includeOptgroups = false,
   } = options || {};
-  const { label = '', description = '', message = '' } = slots || {};
+  const { label = '', description = '', message = '', filter = '' } = slots || {};
 
   const getOption = (opt: Option) => {
     const attrs = [opt.disabled ? 'disabled' : '', opt.hidden ? 'hidden' : ''].join(' ');
@@ -287,6 +301,7 @@ const initSelect = (page: Page, opt?: InitOptions, withImage?: boolean): Promise
       <p-select ${getHTMLAttributes(props)}>
         ${label}
         ${description}
+        ${filter}
         ${selectOptions}
         ${message}
       </p-select>
@@ -2074,6 +2089,230 @@ test.describe('filter', () => {
       await expect(options.nth(0)).toBeVisible();
       await expect(options.nth(1)).toBeHidden();
       await expect(options.nth(2)).toBeHidden();
+    });
+  });
+});
+
+test.describe('slotted filter', () => {
+  test.describe('focus', () => {
+    test('should automatically focus slotted filter on click', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+      });
+
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+    });
+    test('should automatically focus slotted filter on key press', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+        options: { markupBefore: '<button id="focus">set focus</button>' },
+      });
+
+      const markupBeforeButton = page.locator('#focus');
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      // Focus by click first to make sure tabbing order is correct in safari
+      await markupBeforeButton.click();
+
+      await page.keyboard.press('Tab');
+      await expect(buttonElement).toBeFocused();
+
+      await page.keyboard.press('Space');
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      await page.keyboard.press('Escape');
+      await expect(buttonElement).toBeFocused();
+    });
+  });
+  test.describe('input', () => {
+    test('should not automatically filter options', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+      });
+
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const options = getSelectOptions(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      for (const option of await options.all()) {
+        await expect(option).toBeVisible();
+      }
+
+      await slottedFilter.locator('input').fill('b');
+
+      for (const option of await options.all()) {
+        await expect(option).toBeVisible();
+      }
+    });
+    test('should not close select when Space character is typed into filter', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+      });
+
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      await page.keyboard.press('Space');
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+    });
+  });
+
+  test.describe('keyboard behavior', () => {
+    test('should have correct keyboard handling', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+        options: { markupBefore: '<button id="focus">set focus</button>' },
+      });
+
+      const host = getHost(page);
+      const markupBeforeButton = page.locator('#focus');
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+      const options = getSelectOptions(page);
+
+      // Focus by click first to make sure tabbing order is correct in safari
+      await markupBeforeButton.click();
+
+      await page.keyboard.press('Tab');
+      await expect(buttonElement).toBeFocused();
+
+      await page.keyboard.press('Space');
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      for (const option of await options.all()) {
+        await expect(option).toBeVisible();
+        await expect(option).toHaveJSProperty('highlighted', undefined);
+      }
+
+      await page.keyboard.press('ArrowDown');
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+      await page.keyboard.press('ArrowDown');
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
+
+      await page.keyboard.press('Enter');
+      await expect(dropdown).toBeHidden();
+      await expect(buttonElement).toBeFocused();
+      await expect(buttonElement).toHaveText('b');
+      await expect(host).toHaveJSProperty('value', 'b');
+
+      await buttonElement.press('ArrowDown');
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+      await buttonElement.press('ArrowDown');
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+
+      await page.keyboard.press('Escape');
+      await expect(dropdown).toBeHidden();
+      await expect(buttonElement).toBeFocused();
+      await expect(buttonElement).toHaveText('b');
+      await expect(host).toHaveJSProperty('value', 'b');
+    });
+  });
+
+  test.describe('dynamic option change', () => {
+    test('should show selected option when option with value is slotted', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name', value: 'd' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+      });
+
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const options = getSelectOptions(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      for (const option of await options.all()) {
+        await expect(option).toBeVisible();
+        await expect(option).toHaveJSProperty('selected', undefined);
+      }
+
+      await addOption(page, 'd', 'd');
+      await expect(buttonElement).toHaveText('d');
+
+      await expect(options.nth(3)).toHaveJSProperty('selected', true);
+    });
+    test('should not reset selected option when no option with selected value is slotted', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name', value: 'c' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+      });
+
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const options = getSelectOptions(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      await expect(buttonElement).toHaveText('c');
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      await expect(options).toHaveCount(3);
+      await removeOption(page, 'c');
+      const optionsAfterRemove = getSelectOptions(page);
+      await expect(optionsAfterRemove).toHaveCount(2);
+
+      await expect(buttonElement).toHaveText('c'); // Shown selection stays visible
     });
   });
 });
