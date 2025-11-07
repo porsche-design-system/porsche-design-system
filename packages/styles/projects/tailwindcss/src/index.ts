@@ -15,8 +15,8 @@ import {
   colorBackdropLight,
   colorCanvasDark,
   colorCanvasLight,
-  colorContrastDisabledDark,
-  colorContrastDisabledLight,
+  colorDisabledDark,
+  colorDisabledLight,
   colorContrastHighDark,
   colorContrastHigherDark,
   colorContrastHigherLight,
@@ -108,6 +108,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
   /* a11y */
   --color-focus: ${colorFocusLight};
+  --color-disabled: ${colorDisabledLight};
   /* background */
   --color-canvas: ${colorCanvasLight};
   --color-surface: ${colorSurfaceLight};
@@ -120,7 +121,6 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-contrast-medium: ${colorContrastMediumLight};
   --color-contrast-high: ${colorContrastHighLight};
   --color-contrast-higher: ${colorContrastHigherLight};
-  --color-contrast-disabled: ${colorContrastDisabledLight};
   --color-primary: ${colorPrimaryLight};
   /* semantic */
   --color-success: ${colorSuccessLight};
@@ -238,6 +238,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   .light {
     /* a11y */
     --color-focus: ${colorFocusLight};
+    --color-disabled: ${colorDisabledLight};
     /* background */
     --color-canvas: ${colorCanvasLight};
     --color-surface: ${colorSurfaceLight};
@@ -250,7 +251,6 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-contrast-medium: ${colorContrastMediumLight};
     --color-contrast-high: ${colorContrastHighLight};
     --color-contrast-higher: ${colorContrastHigherLight};
-    --color-contrast-disabled: ${colorContrastDisabledLight};
     --color-primary: ${colorPrimaryLight};
     /* semantic */
     --color-success: ${colorSuccessLight};
@@ -272,6 +272,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   .dark {
     /* a11y */
     --color-focus: ${colorFocusDark};
+    --color-disabled: ${colorDisabledDark};
     /* background */
     --color-canvas: ${colorCanvasDark};
     --color-surface: ${colorSurfaceDark};
@@ -284,7 +285,6 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-contrast-medium: ${colorContrastMediumDark};
     --color-contrast-high: ${colorContrastHighDark};
     --color-contrast-higher: ${colorContrastHigherDark};
-    --color-contrast-disabled: ${colorContrastDisabledDark};
     --color-primary: ${colorPrimaryDark};
     /* semantic */
     --color-success: ${colorSuccessDark};
@@ -307,6 +307,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     @media (prefers-color-scheme: dark) {
       /* a11y */
       --color-focus: ${colorFocusDark};
+      --color-disabled: ${colorDisabledDark};
       /* background */
       --color-canvas: ${colorCanvasDark};
       --color-surface: ${colorSurfaceDark};
@@ -319,7 +320,6 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
       --color-contrast-medium: ${colorContrastMediumDark};
       --color-contrast-high: ${colorContrastHighDark};
       --color-contrast-higher: ${colorContrastHigherDark};
-      --color-contrast-disabled: ${colorContrastDisabledDark};
       --color-primary: ${colorPrimaryDark};
       /* semantic */
       --color-success: ${colorSuccessDark};
