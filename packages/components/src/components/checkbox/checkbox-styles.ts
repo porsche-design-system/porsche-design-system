@@ -33,7 +33,7 @@ const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
-const { primaryColor, contrastMediumColor, contrastHighColor, contrastDisabledColor, focusColor } = colors;
+const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = colors;
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -46,13 +46,13 @@ export const getComponentCss = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || contrastMediumColor;
+  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor;
+  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   const indeterminateIconColor = escapeHashCharacter(
-    disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor
+    disabledOrLoading ? disabledColor : formStateColor || primaryColor
   );
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
   const background = `transparent 0% 0% / ${fontLineHeight}`;

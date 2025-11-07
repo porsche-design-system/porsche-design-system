@@ -12,18 +12,18 @@ type Colors = {
   borderColor: string;
   backgroundColor: string;
 };
-const { frostedColor, contrastDisabledColor, contrastHighColor } = colors;
+const { frostedColor, disabledColor, contrastHighColor } = colors;
 const getDisabledColors = (variant: LinkButtonVariant, loading: boolean): Colors => {
   const colors: {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
       textColor: contrastHighColor,
-      borderColor: loading ? contrastHighColor : contrastDisabledColor,
-      backgroundColor: loading ? contrastHighColor : contrastDisabledColor,
+      borderColor: loading ? contrastHighColor : disabledColor,
+      backgroundColor: loading ? contrastHighColor : disabledColor,
     },
     secondary: {
-      textColor: contrastDisabledColor,
+      textColor: disabledColor,
       borderColor: frostedColor,
       backgroundColor: frostedColor,
     },

@@ -14,7 +14,7 @@ import { getThemedFormStateColors } from '../form-state-color-styles';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
-const { contrastMediumColor, contrastDisabledColor } = colors;
+const { contrastMediumColor, disabledColor } = colors;
 
 export const getCheckboxBaseStyles = (
   isDisabled?: boolean,
@@ -26,7 +26,7 @@ export const getCheckboxBaseStyles = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || contrastMediumColor;
+  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
 
   const background = `transparent 0% 0% / ${fontLineHeight}`;
 

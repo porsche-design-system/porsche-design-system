@@ -1,6 +1,7 @@
 export const colors = {
   // a11y
   focusColor: 'var(--color-focus)',
+  disabledColor: 'var(--color-disabled)',
   // background
   canvasColor: 'var(--color-canvas)',
   surfaceColor: 'var(--color-surface)',
@@ -13,7 +14,6 @@ export const colors = {
   contrastMediumColor: 'var(--color-contrast-medium)',
   contrastHighColor: 'var(--color-contrast-high)',
   contrastHigherColor: 'var(--color-contrast-higher)',
-  contrastDisabledColor: 'var(--color-contrast-disabled)',
   primaryColor: 'var(--color-primary)',
   // semantic
   successColor: 'var(--color-success)',

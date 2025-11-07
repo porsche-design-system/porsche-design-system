@@ -3,7 +3,7 @@ import type { JssStyle } from 'jss';
 import { colors } from '../colors';
 import { getTransition } from '../common-styles';
 
-const { primaryColor, contrastLowColor, contrastHighColor, contrastDisabledColor } = colors;
+const { primaryColor, contrastLowColor, contrastHighColor, disabledColor } = colors;
 
 export const getOptionJssStyle = (
   componentName: 'select-option' | 'multi-select-option',
@@ -35,7 +35,7 @@ export const getOptionJssStyle = (
     },
     '&--disabled': {
       cursor: 'not-allowed',
-      color: contrastDisabledColor,
+      color: disabledColor,
     },
     '&--hidden': {
       display: 'none',

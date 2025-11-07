@@ -25,7 +25,7 @@ import { getFunctionalComponentLabelStyles } from '../common/label/label-styles'
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, contrastDisabledColor } = colors;
+const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = colors;
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -76,9 +76,9 @@ export const getComponentCss = (
         },
         '&:disabled': {
           cursor: 'not-allowed',
-          color: contrastDisabledColor,
-          borderColor: contrastDisabledColor,
-          WebkitTextFillColor: contrastDisabledColor,
+          color: disabledColor,
+          borderColor: disabledColor,
+          WebkitTextFillColor: disabledColor,
         },
         '&[readonly]': {
           borderColor: contrastLowColor,

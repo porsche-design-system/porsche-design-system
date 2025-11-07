@@ -38,7 +38,7 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
 export const offsetVertical = '-2px';
 export const offsetHorizontal = '-4px';
 
-const { primaryColor, contrastDisabledColor, frostedColor } = colors;
+const { primaryColor, disabledColor, frostedColor } = colors;
 
 export const getLinkButtonPureStyles = (
   icon: LinkButtonIconName,
@@ -76,7 +76,7 @@ export const getLinkButtonPureStyles = (
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
-      color: isDisabledOrLoading ? contrastDisabledColor : primaryColor,
+      color: isDisabledOrLoading ? disabledColor : primaryColor,
       textDecoration: underline ? 'underline' : 'none',
       ...textSmallStyle,
       ...mergeDeep(

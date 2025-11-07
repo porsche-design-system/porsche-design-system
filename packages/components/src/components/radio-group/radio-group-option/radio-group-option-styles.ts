@@ -31,16 +31,16 @@ export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-o
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
 };
-const { primaryColor, canvasColor, contrastMediumColor, contrastHighColor, contrastDisabledColor, focusColor } = colors;
+const { primaryColor, canvasColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = colors;
 
 export const getComponentCss = (disabled: boolean, loading: boolean, state: RadioGroupState): string => {
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || contrastMediumColor;
+  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor;
+  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   const minDimension = `calc(${SCALING_BASE_VALUE} * 0.75)`;

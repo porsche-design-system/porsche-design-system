@@ -24,7 +24,7 @@ const {
   errorColor,
   warningColor,
   infoColor,
-  contrastDisabledColor,
+  disabledColor,
 } = colors;
 
 const colorMap: Record<IconColor, string> = {
@@ -37,7 +37,7 @@ const colorMap: Record<IconColor, string> = {
   'notification-warning': warningColor,
   'notification-error': errorColor,
   'notification-info': infoColor,
-  'state-disabled': contrastDisabledColor,
+  'state-disabled': disabledColor,
 };
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {

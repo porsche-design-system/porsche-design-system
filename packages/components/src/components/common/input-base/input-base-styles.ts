@@ -38,7 +38,7 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, contrastDisabledColor, frostedColor } = colors;
+const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor, frostedColor } = colors;
 
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
@@ -89,8 +89,8 @@ export const getFunctionalComponentInputBaseStyles = (
         width: '100%',
         minWidth: '2rem',
         ...(disabled && {
-          color: contrastDisabledColor,
-          WebkitTextFillColor: contrastDisabledColor,
+          color: disabledColor,
+          WebkitTextFillColor: disabledColor,
         }),
         ...additionalInputJssStyle,
       },
@@ -122,7 +122,7 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       ...(disabled && {
         cursor: 'not-allowed',
-        borderColor: contrastDisabledColor,
+        borderColor: disabledColor,
       }),
       ...(readOnly && {
         cursor: 'text',

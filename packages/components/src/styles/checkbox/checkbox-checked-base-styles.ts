@@ -12,7 +12,7 @@ export const getCheckedSVGBackgroundImage = (fill: string): string => {
   );
 };
 
-const { primaryColor, canvasColor, contrastDisabledColor } = colors;
+const { primaryColor, canvasColor, disabledColor } = colors;
 
 export const getCheckboxCheckedBaseStyles = (
   isDisabled?: boolean,
@@ -23,7 +23,7 @@ export const getCheckboxCheckedBaseStyles = (
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const checkedColor = disabledOrLoading ? contrastDisabledColor : formStateColor || primaryColor;
+  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
   const checkedIconColor = escapeHashCharacter(canvasColor);
 
   return {

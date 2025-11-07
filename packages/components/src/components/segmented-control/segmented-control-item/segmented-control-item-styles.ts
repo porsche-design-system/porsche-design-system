@@ -28,7 +28,7 @@ export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
 export const ICON_MARGIN = '.25rem';
 
-const { primaryColor, contrastMediumColor, contrastDisabledColor, contrastLowColor } = colors;
+const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = colors;
 
 export const getColors = (
   isDisabled: boolean,
@@ -40,9 +40,9 @@ export const getColors = (
   hoverBorderColor: string;
 } => {
   return {
-    buttonColor: isDisabled ? contrastDisabledColor : primaryColor,
-    labelColor: isDisabled ? contrastDisabledColor : contrastMediumColor,
-    borderColor: isSelected ? (isDisabled ? contrastDisabledColor : primaryColor) : contrastLowColor,
+    buttonColor: isDisabled ? disabledColor : primaryColor,
+    labelColor: isDisabled ? disabledColor : contrastMediumColor,
+    borderColor: isSelected ? (isDisabled ? disabledColor : primaryColor) : contrastLowColor,
     hoverBorderColor: primaryColor,
   };
 };

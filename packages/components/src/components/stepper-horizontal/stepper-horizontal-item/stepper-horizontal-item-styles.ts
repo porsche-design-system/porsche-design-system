@@ -24,7 +24,7 @@ import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils
 type NumberedCircleColors = {
   primaryColor: string;
   invertedBaseColor: string;
-  contrastDisabledColor: string;
+  disabledColor: string;
 };
 
 const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
@@ -34,8 +34,8 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
     {} as NumberedCircleColors
   );
 
-  const { contrastDisabledColor, invertedBaseColor, primaryColor } = escapedNumberedCircleColors;
-  const fillColor = isStateCurrent ? invertedBaseColor : contrastDisabledColor;
+  const { disabledColor, invertedBaseColor, primaryColor } = escapedNumberedCircleColors;
+  const fillColor = isStateCurrent ? invertedBaseColor : disabledColor;
 
   const svgCirclePath = `<circle fill="${isStateCurrent ? primaryColor : 'none'}"${
     isStateCurrent ? '' : ` stroke="${fillColor}"`
@@ -59,7 +59,7 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
   return svgNumberedCirclePaths[stepCount];
 };
 
-const { primaryColor, canvasColor, frostedColor, contrastDisabledColor } = colors;
+const { primaryColor, canvasColor, frostedColor, disabledColor } = colors;
 
 export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean): string => {
   const isStateCurrent = state === 'current';
@@ -80,7 +80,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
                     {
                       primaryColor,
                       invertedBaseColor: canvasColor,
-                      contrastDisabledColor,
+                      disabledColor,
                     },
                     isStateCurrent
                   )
@@ -102,7 +102,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         display: 'flex',
         position: 'relative',
         gap: '3px',
-        color: isDisabled ? contrastDisabledColor : primaryColor,
+        color: isDisabled ? disabledColor : primaryColor,
         padding: '4px 10px 4px 6px',
         margin: 0, // Removes default button margin on safari 15
         background: 0,

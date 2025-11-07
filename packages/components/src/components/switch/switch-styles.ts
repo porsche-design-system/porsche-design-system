@@ -26,7 +26,7 @@ import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-me
 
 const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
-const { primaryColor, contrastMediumColor, successColor, contrastDisabledColor, frostedColor, successFrostedColor } =
+const { primaryColor, contrastMediumColor, successColor, disabledColor, frostedColor, successFrostedColor } =
   colors;
 const getColors = (
   checked: boolean,
@@ -41,7 +41,7 @@ const getColors = (
   toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && contrastDisabledColor;
+  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
     buttonBorderColor: disabledOrLoadingColor || (checked ? successFrostedColor : contrastMediumColor),
@@ -50,7 +50,7 @@ const getColors = (
     buttonBackgroundColorHover: checked ? successFrostedColor : frostedColor,
     toggleBackgroundColor:
       (loading && 'transparent') ||
-      (disabled && !checked && contrastDisabledColor) ||
+      (disabled && !checked && disabledColor) ||
       (checked ? successColor : primaryColor),
     toggleBackgroundColorHover: checked ? successColor : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,

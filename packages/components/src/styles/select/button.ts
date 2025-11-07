@@ -7,7 +7,7 @@ import { getThemedFormStateColors } from '../form-state-color-styles';
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../form-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
 
-const { primaryColor, contrastDisabledColor, contrastMediumColor } = colors;
+const { primaryColor, disabledColor, contrastMediumColor } = colors;
 
 export const getButtonJssStyle = (
   componentName: 'select' | 'multi-select',
@@ -40,8 +40,8 @@ export const getButtonJssStyle = (
     borderRadius: borderRadiusSmall,
     ...(isDisabled && {
       cursor: 'not-allowed',
-      color: contrastDisabledColor,
-      borderColor: contrastDisabledColor,
+      color: disabledColor,
+      borderColor: disabledColor,
     }),
     ...(!isDisabled && {
       ...hoverMediaQuery({

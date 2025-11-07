@@ -14,7 +14,7 @@ import { getThemedFormStateColors } from './form-state-color-styles';
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor, contrastDisabledColor } = colors;
+const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor, disabledColor } = colors;
 
 export const getSlottedTextFieldTextareaSelectStyles = (
   child: ChildSelector,
@@ -64,9 +64,9 @@ export const getSlottedTextFieldTextareaSelectStyles = (
     },
     [`::slotted(${child}:disabled)`]: {
       cursor: 'not-allowed',
-      color: contrastDisabledColor,
-      borderColor: contrastDisabledColor,
-      WebkitTextFillColor: contrastDisabledColor,
+      color: disabledColor,
+      borderColor: disabledColor,
+      WebkitTextFillColor: disabledColor,
     },
     ...(child !== 'select' && {
       [`::slotted(${child}[readonly])`]: {
@@ -104,7 +104,7 @@ export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean)
     font: textSmallStyle.font,
     color: contrastMediumColor,
     ...(isDisabled && {
-      color: contrastDisabledColor,
+      color: disabledColor,
     }),
     ...(isReadonly && {
       color: contrastHighColor,

@@ -37,7 +37,7 @@ const disabledCursorStyle: JssStyle = {
 const hiddenStyle: JssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean): string => {
-  const { primaryColor, contrastDisabledColor, frostedColor } = colors;
+  const { primaryColor, disabledColor, frostedColor } = colors;
 
   return getCss({
     '@global': {
@@ -134,7 +134,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
-          color: contrastDisabledColor,
+          color: disabledColor,
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
         '&:not(.ellipsis)': getFocusJssStyle(),
