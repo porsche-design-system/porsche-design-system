@@ -249,7 +249,7 @@ export class Select {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    getShadowRootHTMLElement(this.host, 'slot:not([name])').addEventListener('slotchange', this.onSlotchange);
     if (this.hasFilter) {
       // Does not work if filterSlot is added dynamically after component load, but should be fine
       this.inputSearchElement = this.filterSlot
