@@ -21,6 +21,7 @@ export type SelectUpdateEventDetail = {
 };
 
 export type SelectChangeEventDetail = SelectUpdateEventDetail;
+export type SelectToggleEventDetail = { open: boolean };
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {

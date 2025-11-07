@@ -52,6 +52,7 @@ import {
   type SelectOptgroup,
   type SelectOption,
   type SelectState,
+  type SelectToggleEventDetail,
   type SelectUpdateEventDetail,
   selectOptionByValue,
   setSelectedOption,
@@ -141,6 +142,9 @@ export class Select {
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<SelectChangeEventDetail>;
+
+  /** Emitted when the dropdown is toggled. */
+  @Event({ bubbles: false }) public toggle: EventEmitter<SelectToggleEventDetail>;
 
   /**
    * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
@@ -601,6 +605,7 @@ export class Select {
   };
 
   private onToggle = (): void => {
+    this.toggle.emit({ open: this.isOpen });
     if (this.isOpen && this.hasFilter) {
       // Double requestAnimationFrame as a Safari fix to make sure the input will receive focus
       requestAnimationFrame(() => {
