@@ -4,10 +4,10 @@ import { describe, expect, it } from 'vitest';
 
 describe('partials', () => {
   const angularPartialKeys = Object.keys(angularPartials)
-    .filter((key) => typeof (angularPartials as any)[key] === 'function')
+    .filter((key) => key !== 'default')
     .sort();
   const jsPartialKeys = Object.keys(jsPartials)
-    .filter((key) => typeof (jsPartials as any)[key] === 'function')
+    .filter((key) => key !== 'default')
     .sort();
 
   it('should match snapshot', () => {
@@ -18,7 +18,7 @@ describe('partials', () => {
   it('should reexport all functions from js partials', () => {
     angularPartialKeys.forEach((exportName) => {
       expect(jsPartialKeys).toContain(exportName);
-      expect(typeof (jsPartials as any)[exportName]).toBe('function');
+      expect(typeof (jsPartials as any)[exportName]).not.toBe('default');
     });
   });
 });

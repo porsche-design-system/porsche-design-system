@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Angular partials > should match snapshot 1`] = `
+exports[`partials > should match snapshot 1`] = `
 [
   "getBrowserSupportFallbackScript",
   "getComponentChunkLinks",
@@ -16,7 +16,7 @@ exports[`Angular partials > should match snapshot 1`] = `
 ]
 `;
 
-exports[`Angular partials > should match snapshot 2`] = `
+exports[`partials > should match snapshot 2`] = `
 [
   "getBrowserSupportFallbackScript",
   "getComponentChunkLinks",
