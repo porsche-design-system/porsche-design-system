@@ -43,13 +43,11 @@ export const getComponentCss = (
         gap: '6px',
       },
     },
-    ...(state !== 'none' && {
-      root: {
-        all: 'unset',
-        display: 'grid',
-        gap: spacingStaticXSmall,
-      },
-    }),
+    root: {
+      all: 'unset',
+      display: 'grid',
+      gap: spacingStaticXSmall,
+    },
     // .label / .required
     ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
       cursor: 'inherit',
