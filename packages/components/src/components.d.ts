@@ -53,7 +53,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -130,7 +130,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -3980,6 +3980,7 @@ declare global {
     interface HTMLPMultiSelectElementEventMap {
         "blur": void;
         "change": MultiSelectChangeEventDetail;
+        "toggle": MultiSelectToggleEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
     /**
@@ -6826,6 +6827,10 @@ declare namespace LocalJSX {
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
         /**
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */

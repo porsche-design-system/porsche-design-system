@@ -177,7 +177,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
           .replace(
-            /this\.(?:input|select|textarea)(?!Elements)/g,
+            /this\.(?:input|select|textarea)(?!Elements|edOptions)/g,
             "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
           ); // fallback for undefined input, select and textarea reference
 
@@ -564,15 +564,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          .replace(
-            /getSelectedOptionValues\(this\.props\.multiSelectOptions\);/,
-            'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
-          )
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(
-            /getSelectedOptionsString\(this\.props\.multiSelectOptions\)/,
-            'getSelectedOptionsString(otherChildren)'
-          )
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')

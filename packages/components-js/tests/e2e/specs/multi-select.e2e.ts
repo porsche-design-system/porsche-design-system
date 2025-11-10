@@ -1258,6 +1258,7 @@ test.describe('selection', () => {
 
       await expect(dropdown).toBeHidden();
       await expect(host).toHaveJSProperty('value', []);
+      await expect(buttonElement).toHaveText('');
       await expect(options.nth(0)).toHaveJSProperty('selected', false);
       await expect(options.nth(1)).toHaveJSProperty('selected', undefined);
       await expect(options.nth(2)).toHaveJSProperty('selected', undefined);
@@ -1473,7 +1474,7 @@ test.describe('keyboard handling', () => {
     await page.keyboard.press('PageUp');
     await page.keyboard.press('Enter');
 
-    await expect(host).toHaveJSProperty('value', ['a', 'c']);
+    await expect(host).toHaveJSProperty('value', ['c', 'a']);
     await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
     await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
