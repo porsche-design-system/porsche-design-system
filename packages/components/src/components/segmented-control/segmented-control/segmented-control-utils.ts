@@ -63,7 +63,7 @@ export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: 
   );
 
   const widths = Array.from(host.children)
-    .filter((el) => el.slot !== 'message')
+    .filter((el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description')
     .map((item: HTMLElement & SegmentedControlItem) => {
       tempDiv.innerHTML = item.innerHTML;
       tempDiv.style.minWidth = dimension;
