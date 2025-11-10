@@ -252,7 +252,7 @@ export class MultiSelect {
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    getShadowRootHTMLElement(this.host, 'slot:not([name])').addEventListener('slotchange', this.onSlotchange);
     this.inputSearchElement = this.filterSlot
       ? (this.filterSlot.assignedElements()[0] as HTMLPInputSearchElement)
       : this.inputSearchElement;
@@ -564,7 +564,7 @@ export class MultiSelect {
         this.selectedOptions = [...this.selectedOptions, selectedOption];
         this.value = [...this.value, selectedOption.value];
       } else {
-        this.selectedOptions = this.selectedOptions.filter((option) => option !== selectedOption);
+        this.selectedOptions = this.selectedOptions.filter((option) => option.value !== selectedOption.value);
         this.value = this.value.filter((val) => val !== selectedOption.value);
       }
       this.emitUpdateEvent();
