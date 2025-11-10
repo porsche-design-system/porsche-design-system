@@ -2410,10 +2410,11 @@ test.describe('slotted filter', () => {
       await expect(buttonElement).toHaveText('c');
       await expect(host).toHaveJSProperty('value', 'c');
 
-      await optionsAfterAdd.nth(2).click();
+      await optionsAfterAdd.nth(1).click();
+      await expect(optionsAfterAdd.nth(1)).toHaveJSProperty('selected', true);
       await expect(optionsAfterAdd.nth(2)).toHaveJSProperty('selected', false);
-      await expect(buttonElement).toHaveText('');
-      await expect(host).toHaveJSProperty('value', undefined);
+      await expect(buttonElement).toHaveText('b');
+      await expect(host).toHaveJSProperty('value', 'b');
     });
   });
 });
