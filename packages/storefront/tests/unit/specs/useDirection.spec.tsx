@@ -1,8 +1,8 @@
-import { StorefrontDirectionProvider } from '@/components/providers/StorefrontDirectionProvider';
-import { useDirection } from '@/hooks/useDirection';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { StorefrontDirectionProvider } from '@/components/providers/StorefrontDirectionProvider';
+import { useDirection } from '@/hooks/useDirection';
 
 vi.stubGlobal('localStorage', {
   getItem: vi.fn(),
