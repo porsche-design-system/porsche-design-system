@@ -3,7 +3,7 @@ import { addScript } from './add-script';
 
 const url = 'http://localhost/some-url.js';
 let scriptTags: HTMLScriptElement[];
-let spy: ReturnType<typeof vi.spyOn>;
+let spy: any;
 
 const dispatchOnload = (index: number) => {
   const scriptTag = scriptTags[index];
@@ -14,7 +14,7 @@ const dispatchOnload = (index: number) => {
 
 beforeEach(() => {
   scriptTags = [];
-  spy = vi.spyOn(document.body, 'appendChild').mockImplementation((addedScript) => {
+  spy = vi.spyOn(document.body, 'appendChild').mockImplementation((addedScript: any) => {
     scriptTags.push(addedScript as HTMLScriptElement);
     return addedScript;
   });
