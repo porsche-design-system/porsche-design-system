@@ -2495,7 +2495,7 @@ test.describe('slots', () => {
 
     expect(await getSelectValue(page), 'after option selected removed').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option selected removed').toBeUndefined();
-    await expect(getButton(page)).toHaveText('');
+    await expect(getButton(page)).toHaveText('c'); // Selection is kept for controlled async filtering to work
   });
 });
 
