@@ -528,11 +528,6 @@ export class Select {
         el.slot !== 'message' &&
         el.slot !== 'filter'
     )) {
-      if ((child as HTMLElement).slot === 'filter') {
-        throwIfElementIsNotOfKind(this.host, child as HTMLElement, 'p-input-search');
-        continue;
-      }
-
       throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
 
       if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
