@@ -11,10 +11,11 @@ import { getFunctionalComponentLabelStyles } from '../../common/label/label-styl
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 
-const MIN_ITEM_WIDTH = 46;
+export const MIN_ITEM_WIDTH = 46;
 const MAX_ITEM_WIDTH = 220;
 
 export const getComponentCss = (
+  minWidth: number | string,
   maxWidth: number,
   columns: BreakpointCustomizable<SegmentedControlColumns>,
   disabled: boolean,
@@ -33,14 +34,18 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       'slot:not([name])': {
         display: 'grid',
-        gridAutoRows: '1fr', // for equal height
-        ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
-          gridTemplateColumns:
-            col === 'auto'
-              ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && MIN_ITEM_WIDTH) || maxWidth}px)`
-              : `repeat(${col}, minmax(0, 1fr))`,
-        })),
-        gap: '6px',
+        ...addImportantToEachRule({
+          gridAutoRows: '1fr', // for equal height
+          ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
+            gridTemplateColumns:
+              col === 'auto'
+                ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
+                : `repeat(${col}, minmax(0, 1fr))`,
+          })),
+          gap: '6px',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
       },
     },
     root: {

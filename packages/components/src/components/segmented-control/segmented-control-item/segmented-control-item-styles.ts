@@ -101,7 +101,7 @@ export const getComponentCss = (
     borderColor: borderColorDark,
     hoverBorderColor: hoverBorderColorDark,
   } = getColors(isDisabled, isSelected, state, 'dark');
-  const scalableItemStyles = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
+  const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
     '@global': {
@@ -118,9 +118,10 @@ export const getComponentCss = (
         position: 'relative',
         display: 'block',
         height: '100%',
-        minHeight: scalableItemStyles.dimension,
         width: '100%',
-        padding: scalableItemStyles.padding,
+        minHeight: dimension,
+        minWidth: dimension,
+        padding: padding,
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,

@@ -4457,8 +4457,9 @@ button {
   position: relative;
   display: block;
   height: 100%;
-  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
   border: 2px solid #FBFCFF;
@@ -4521,8 +4522,9 @@ button {
   position: relative;
   display: block;
   height: 100%;
-  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
   border: 2px solid #404044;
@@ -19364,8 +19366,9 @@ button {
   position: relative;
   display: block;
   height: 100%;
-  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   width: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   margin: 0;
   border: 2px solid #D8D8DB;
