@@ -16,7 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
- `Segmented Control`: add `state` and `message` props to enable visual validation states
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
+- `desription` and `required` props for better form integration
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
 
 ## [3.30.0] - 2025-10-31
