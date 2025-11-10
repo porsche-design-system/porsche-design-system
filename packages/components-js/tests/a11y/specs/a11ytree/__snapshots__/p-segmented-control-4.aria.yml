@@ -1,0 +1,7 @@
+- group "Some label":
+  - text: Some label Some description
+  - button "S" [pressed]
+  - button "M"
+  - button "L"
+  - button "XL" [disabled]
+  - alert

@@ -4373,9 +4373,18 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(auto-fit, 100px);
-  gap: 6px;
+  grid-auto-rows: 1fr !important;
+  grid-template-columns: repeat(auto-fit, 100px) !important;
+  gap: 6px !important;
+  color-scheme: light dark !important;
+}
+slot:not([name])([hidden]) {
+  display: none !important;
+}
+.root {
+  all: unset;
+  display: grid;
+  gap: 4px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -19278,9 +19287,18 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(auto-fit, 100px);
-  gap: 6px;
+  grid-auto-rows: 1fr !important;
+  grid-template-columns: repeat(auto-fit, 100px) !important;
+  gap: 6px !important;
+  color-scheme: light dark !important;
+}
+slot:not([name])([hidden]) {
+  display: none !important;
+}
+.root {
+  all: unset;
+  display: grid;
+  gap: 4px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
