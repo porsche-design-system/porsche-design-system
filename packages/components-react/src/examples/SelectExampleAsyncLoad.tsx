@@ -1,12 +1,12 @@
 import {
+  PInputSearch,
   PSelect,
   PSelectOption,
-  PInputSearch,
   type PSelectProps,
   type SelectChangeEventDetail,
   type SelectToggleEventDetail,
 } from '@porsche-design-system/components-react';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export const SelectExampleAsyncLoad = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value'] | undefined>('a');
@@ -20,7 +20,7 @@ export const SelectExampleAsyncLoad = (): JSX.Element => {
   };
 
   const onToggle = (e: CustomEvent<SelectToggleEventDetail>) => {
-    const isOpen = e.detail.value;
+    const isOpen = e.detail.open;
 
     if (isOpen && !hasLoadedRef.current) {
       setLoading(true);
