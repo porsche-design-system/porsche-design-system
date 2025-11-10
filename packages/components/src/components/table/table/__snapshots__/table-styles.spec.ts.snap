@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for compact: false, layout: auto and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false, layout: auto and theme: dark 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -32,7 +32,7 @@ exports[`getComponentCss() should return correct css for compact: false, layout:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: false, layout: auto and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false, layout: auto and theme: light 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -64,7 +64,7 @@ exports[`getComponentCss() should return correct css for compact: false, layout:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: false, layout: fixed and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false, layout: fixed and theme: dark 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -97,7 +97,7 @@ exports[`getComponentCss() should return correct css for compact: false, layout:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: false, layout: fixed and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false, layout: fixed and theme: light 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -130,7 +130,7 @@ exports[`getComponentCss() should return correct css for compact: false, layout:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: true, layout: auto and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true, layout: auto and theme: dark 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -163,7 +163,7 @@ exports[`getComponentCss() should return correct css for compact: true, layout: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: true, layout: auto and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true, layout: auto and theme: light 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -196,7 +196,7 @@ exports[`getComponentCss() should return correct css for compact: true, layout: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: true, layout: fixed and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true, layout: fixed and theme: dark 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -230,7 +230,7 @@ exports[`getComponentCss() should return correct css for compact: true, layout: 
 }"
 `;
 
-exports[`getComponentCss() should return correct css for compact: true, layout: fixed and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true, layout: fixed and theme: light 1`] = `
 ":host {
   display: block;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -193,7 +193,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -386,7 +386,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -492,7 +492,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -621,7 +621,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -726,7 +726,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -854,7 +854,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -960,7 +960,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1089,7 +1089,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1195,7 +1195,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1324,7 +1324,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1429,7 +1429,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1557,7 +1557,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1663,7 +1663,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1792,7 +1792,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, hasCounter: true, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, hasCounter: true, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1920,7 +1920,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, hasCounter: false, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

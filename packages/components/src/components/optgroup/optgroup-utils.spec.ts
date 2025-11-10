@@ -1,7 +1,6 @@
-import { updateOptionsDisabled } from './optgroup-utils';
-import { expect } from '@jest/globals';
-import type { SelectOption } from '../select/select/select-utils';
 import type { MultiSelectOption } from '../multi-select/multi-select/multi-select-utils';
+import type { SelectOption } from '../select/select/select-utils';
+import { updateOptionsDisabled } from './optgroup-utils';
 
 describe('updateOptionsDisabled()', () => {
   it('should update disabledParent attribute of each option to disabled attribute of parent', () => {

@@ -27,7 +27,7 @@ import {
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
-  getItemMaxWidth,
+  getItemWidths,
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
   SEGMENTED_CONTROL_COLUMNS,
   type SegmentedControlBackgroundColor,
@@ -173,13 +173,9 @@ export class SegmentedControl {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      getItemMaxWidth(this.host, this.compact),
-      this.columns,
-      this.compact
-    );
+    const { minWidth, maxWidth } = getItemWidths(this.host, this.compact);
+
+    attachComponentCss(this.host, getComponentCss, minWidth, maxWidth, this.columns, this.compact);
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact, this.theme);
 
     return (

@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
 import * as getClosestHTMLElementUtils from '../dom/getClosestHTMLElement';
 import { isWithinForm } from './isWithinForm';
 
 it('should call getClosestHTMLElement() with correct parameters', () => {
-  const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
+  const spy = vi.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
   const el = document.createElement('input');
   isWithinForm(el);
 
@@ -10,7 +11,7 @@ it('should call getClosestHTMLElement() with correct parameters', () => {
 });
 
 it('should return true or false based on result of getClosestHTMLElement()', () => {
-  const spy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
+  const spy = vi.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
   const el = document.createElement('input');
 
   spy.mockReturnValue(null);

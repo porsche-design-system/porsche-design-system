@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: false, isActive: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: false and theme: light 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -41,7 +41,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: false, isActive: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: auto 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -82,7 +82,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: false, isActive: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: dark 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -123,7 +123,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: false, isActive: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: light 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -164,7 +164,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: true, isActive: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: false and theme: light 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -205,7 +205,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: true, isActive: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: auto 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -246,7 +246,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: true, isActive: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: dark 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;
@@ -287,7 +287,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasSlottedAnchor: true, isActive: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: light 1`] = `
 ":host {
   display: grid;
   color-scheme: light dark !important;

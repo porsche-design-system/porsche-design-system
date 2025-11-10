@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, counter: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, counter: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -128,7 +128,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, counter: true 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, counter: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -256,7 +256,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -372,7 +372,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, counter: false 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, counter: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -488,7 +488,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, counter: false 3`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, counter: false 3`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -604,7 +604,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -721,7 +721,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, counter: false 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, counter: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -838,7 +838,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -955,7 +955,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, counter: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, counter: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1083,7 +1083,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1199,7 +1199,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, counter: false 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, counter: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1315,7 +1315,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, counter: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, counter: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1434,7 +1434,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, counter: true 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, counter: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1553,7 +1553,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1739,7 +1739,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1910,7 +1910,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, counter: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, counter: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempDiv 1`] = `
+exports[`getItemWidths() > styles of temporary elements > should have correct style for tempDiv 1`] = `
 CSSStyleDeclaration {
   "0": "position",
   "1": "visibility",
@@ -48,7 +48,7 @@ CSSStyleDeclaration {
 }
 `;
 
-exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempIcon 1`] = `
+exports[`getItemWidths() > styles of temporary elements > should have correct style for tempIcon 1`] = `
 CSSStyleDeclaration {
   "0": "display",
   "1": "width",
@@ -68,7 +68,7 @@ CSSStyleDeclaration {
 }
 `;
 
-exports[`getItemMaxWidth() styles of temporary elements should have correct style for tempLabel 1`] = `
+exports[`getItemWidths() > styles of temporary elements > should have correct style for tempLabel 1`] = `
 CSSStyleDeclaration {
   "0": "font",
   "_importants": {

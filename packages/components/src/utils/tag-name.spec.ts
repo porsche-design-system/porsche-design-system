@@ -1,5 +1,6 @@
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { getTagName, getTagNameWithoutPrefix, getPrefixedTagNames, PREFIXED_TAG_NAMES_CACHE } from './tag-name';
+import { vi } from 'vitest';
+import { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix, PREFIXED_TAG_NAMES_CACHE } from './tag-name';
 
 describe('getTagName()', () => {
   it.each([
@@ -65,7 +66,7 @@ describe('getPrefixedTagNames()', () => {
   });
 
   it('should return cached result after first call', () => {
-    const spy = jest.spyOn(PREFIXED_TAG_NAMES_CACHE, 'set');
+    const spy = vi.spyOn(PREFIXED_TAG_NAMES_CACHE, 'set');
     getPrefixedTagNames(document.createElement('p-button'));
     getPrefixedTagNames(document.createElement('p-button'));
     expect(spy).toHaveBeenCalledTimes(1);
