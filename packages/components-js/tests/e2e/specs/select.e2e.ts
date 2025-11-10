@@ -2385,6 +2385,7 @@ test.describe('slotted filter', () => {
         },
       });
 
+      const host = getHost(page);
       const buttonElement = getButton(page);
       const dropdown = getDropdown(page);
       const options = getSelectOptions(page);
@@ -2401,6 +2402,18 @@ test.describe('slotted filter', () => {
       await expect(optionsAfterRemove).toHaveCount(2);
 
       await expect(buttonElement).toHaveText('c'); // Shown selection stays visible
+
+      await addOption(page, 'c');
+      const optionsAfterAdd = getSelectOptions(page);
+      await expect(optionsAfterAdd).toHaveCount(3);
+      await expect(optionsAfterAdd.nth(2)).toHaveJSProperty('selected', true);
+      await expect(buttonElement).toHaveText('c');
+      await expect(host).toHaveJSProperty('value', 'c');
+
+      await optionsAfterAdd.nth(2).click();
+      await expect(optionsAfterAdd.nth(2)).toHaveJSProperty('selected', false);
+      await expect(buttonElement).toHaveText('');
+      await expect(host).toHaveJSProperty('value', undefined);
     });
   });
 });
