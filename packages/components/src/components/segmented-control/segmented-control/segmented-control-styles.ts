@@ -34,18 +34,14 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       'slot:not([name])': {
         display: 'grid',
-        ...addImportantToEachRule({
-          gridAutoRows: '1fr', // for equal height
-          ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
-            gridTemplateColumns:
-              col === 'auto'
-                ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
-                : `repeat(${col}, minmax(0, 1fr))`,
-          })),
-          gap: '6px',
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
-        }),
+        gridAutoRows: '1fr', // for equal height
+        ...buildResponsiveStyles(columns, (col: SegmentedControlColumns) => ({
+          gridTemplateColumns:
+            col === 'auto'
+              ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
+              : `repeat(${col}, minmax(0, 1fr))`,
+        })),
+        gap: '6px',
       },
     },
     root: {

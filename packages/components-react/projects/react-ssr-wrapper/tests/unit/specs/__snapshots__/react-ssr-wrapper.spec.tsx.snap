@@ -4373,13 +4373,9 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: 6px !important;
-  color-scheme: light dark !important;
-}
-slot:not([name])([hidden]) {
-  display: none !important;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 6px;
 }
 .root {
   all: unset;
@@ -19287,13 +19283,9 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: 6px !important;
-  color-scheme: light dark !important;
-}
-slot:not([name])([hidden]) {
-  display: none !important;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 6px;
 }
 .root {
   all: unset;

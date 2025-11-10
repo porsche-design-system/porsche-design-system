@@ -12,13 +12,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 36, maxWidt
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
-  gap: 6px !important;
-  color-scheme: light dark !important;
-}
-slot:not([name])([hidden]) {
-  display: none !important;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 6px;
 }
 .root {
   all: unset;
@@ -149,29 +145,25 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 6px !important;
-  color-scheme: light dark !important;
-}
-slot:not([name])([hidden]) {
-  display: none !important;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
 }
 @media(min-width:760px) {
   slot:not([name]) {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media(min-width:1000px) {
   slot:not([name]) {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media(min-width:1300px) {
   slot:not([name]) {
-    grid-template-columns: repeat(auto-fit, 46px) !important;
+    grid-template-columns: repeat(auto-fit, 46px);
   }
 }
 
@@ -238,13 +230,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 46px) !important;
-  gap: 6px !important;
-  color-scheme: light dark !important;
-}
-slot:not([name])([hidden]) {
-  display: none !important;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 46px);
+  gap: 6px;
 }
 .root {
   all: unset;
@@ -318,13 +306,9 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 }
 slot:not([name]) {
   display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-  gap: 6px !important;
-  color-scheme: light dark !important;
-}
-slot:not([name])([hidden]) {
-  display: none !important;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 6px;
 }
 .root {
   all: unset;
