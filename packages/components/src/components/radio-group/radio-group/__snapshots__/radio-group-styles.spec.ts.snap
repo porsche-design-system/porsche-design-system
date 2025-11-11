@@ -42,9 +42,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -53,6 +50,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -89,13 +89,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #951219;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 2`] = `
@@ -140,9 +134,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -151,6 +142,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -187,13 +181,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #951219;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 1`] = `
@@ -238,9 +226,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -249,6 +234,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -284,13 +272,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 2`] = `
@@ -335,9 +317,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -346,6 +325,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -381,13 +363,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 3`] = `
@@ -432,9 +408,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -443,6 +416,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -478,13 +454,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 1`] = `
@@ -529,9 +499,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -540,6 +507,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -576,13 +546,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #0E4809;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 2`] = `
@@ -627,9 +591,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -638,6 +599,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -674,13 +638,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #0E4809;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
@@ -734,6 +692,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -769,13 +730,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #951219;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 2`] = `
@@ -829,6 +784,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -864,13 +822,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #951219;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 1`] = `
@@ -924,6 +876,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -958,13 +913,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 2`] = `
@@ -1018,6 +967,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -1052,13 +1004,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 1`] = `
@@ -1112,6 +1058,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -1147,13 +1096,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #0E4809;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 2`] = `
@@ -1207,6 +1150,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -1242,13 +1188,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #0E4809;
-  }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: light 1`] = `
@@ -1311,6 +1251,9 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
 }
+.label:is(legend) {
+  margin-bottom: 4px;
+}
 .required {
   user-select: none;
 }
@@ -1357,9 +1300,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
     clip: auto;
     white-space: normal;
   }
-  .label:is(legend) {
-    margin-bottom: 4px;
-  }
 }
 
 @media(min-width:760px) {
@@ -1386,9 +1326,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
     clip: auto;
     white-space: normal;
   }
-  .label:is(legend) {
-    margin-bottom: 4px;
-  }
 }
 
 @media(min-width:1300px) {
@@ -1414,15 +1351,6 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
     overflow: visible;
     clip: auto;
     white-space: normal;
-  }
-  .label:is(legend) {
-    margin-bottom: 4px;
-  }
-}
-
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
   }
 }
 "
@@ -1457,7 +1385,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  cursor: not-allowed;
+  cursor: inherit;
   justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1477,6 +1405,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -1524,9 +1455,6 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
     clip: auto;
     white-space: normal;
   }
-  .label:is(legend) {
-    margin-bottom: 4px;
-  }
 }
 
 @media(min-width:760px) {
@@ -1553,9 +1481,6 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
     clip: auto;
     white-space: normal;
   }
-  .label:is(legend) {
-    margin-bottom: 4px;
-  }
 }
 
 @media(min-width:1300px) {
@@ -1581,9 +1506,6 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
     overflow: visible;
     clip: auto;
     white-space: normal;
-  }
-  .label:is(legend) {
-    margin-bottom: 4px;
   }
 }
 "
@@ -1627,7 +1549,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  cursor: not-allowed;
+  cursor: inherit;
   justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1647,6 +1569,9 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
