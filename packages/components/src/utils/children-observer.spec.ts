@@ -1,4 +1,5 @@
-import { observeChildren, unobserveChildren, observedNodesMap } from './children-observer';
+import { vi } from 'vitest';
+import { observeChildren, observedNodesMap, unobserveChildren } from './children-observer';
 
 describe('observeChildren()', () => {
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('observeChildren()', () => {
   describe('on children change', () => {
     it('should run callback once when observeChildren is reapplied', async () => {
       const div = document.createElement('div');
-      const cb = jest.fn();
+      const cb = vi.fn();
 
       observeChildren(div, cb);
       expect(observedNodesMap.size).toBe(1);
@@ -38,7 +39,7 @@ describe('observeChildren()', () => {
 
     it('should run callback once when observeChildren is called multiple times', async () => {
       const div = document.createElement('div');
-      const cb = jest.fn();
+      const cb = vi.fn();
 
       observeChildren(div, cb);
       observeChildren(div, cb);
@@ -54,8 +55,8 @@ describe('observeChildren()', () => {
       const div1 = document.createElement('div');
       const div2 = document.createElement('div');
 
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
 
       observeChildren(div1, cb1);
       observeChildren(div2, cb2);
@@ -69,7 +70,7 @@ describe('observeChildren()', () => {
 
     it('should run callback once when multiple attributes are changed', async () => {
       const input = document.createElement('input');
-      const cb = jest.fn();
+      const cb = vi.fn();
       const name = 'some-name';
 
       observeChildren(input, cb, ['disabled', 'checked', 'name']);
@@ -94,8 +95,8 @@ describe('observeChildren()', () => {
       subParent.appendChild(subChild1);
       child2.append(subParent);
 
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
 
       observeChildren(parent, cb1);
       observeChildren(subParent, cb2);

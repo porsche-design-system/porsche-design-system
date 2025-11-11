@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -46,7 +46,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -77,7 +77,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -106,7 +106,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, clear: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -152,7 +152,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -183,7 +183,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -216,7 +216,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -262,7 +262,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -293,7 +293,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -321,7 +321,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: false 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -367,7 +367,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -398,7 +398,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -426,7 +426,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -472,7 +472,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -503,7 +503,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -535,7 +535,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, clear: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -581,7 +581,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -612,7 +612,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -645,7 +645,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, clear: true 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, clear: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -691,7 +691,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -722,7 +722,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -755,7 +755,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -801,7 +801,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -832,7 +832,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -861,7 +861,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -907,7 +907,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -938,7 +938,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -967,7 +967,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, clear: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1013,7 +1013,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1044,7 +1044,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1076,7 +1076,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, clear: true 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, clear: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1122,7 +1122,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1153,7 +1153,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1185,7 +1185,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, clear: true 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1231,7 +1231,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1262,7 +1262,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1286,7 +1286,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, clear: true 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, clear: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1332,7 +1332,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1363,7 +1363,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1387,7 +1387,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, clear: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1438,7 +1438,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1469,7 +1469,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1562,7 +1562,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, clear: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1608,7 +1608,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -1638,7 +1638,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1722,7 +1722,7 @@ input[type="search"]::-webkit-search-cancel-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1773,7 +1773,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -1803,7 +1803,7 @@ input[type="search"]::-webkit-search-cancel-button {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }

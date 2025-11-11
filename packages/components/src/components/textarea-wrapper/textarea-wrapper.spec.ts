@@ -3,18 +3,19 @@ import { TextareaWrapper } from './textarea-wrapper';
 import * as formUtils from '../../utils/form/form-utils';
 import * as a11yUtils from '../../utils/a11y/a11y';
 import * as propertyObserverUtils from '../../utils/property-observer';
+import { vi } from 'vitest';
 
-jest.mock('../../utils/dom');
+vi.mock('../../utils/dom');
 
 describe('componentWillLoad', () => {
   // TODO: prove connection between util actually setting member value
   it('should call hasCounter() with correct parameter and set hasCounter', () => {
     const textarea = document.createElement('textarea');
-    jest
+    vi
       .spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow')
       .mockReturnValue(textarea);
 
-    const spy = jest.spyOn(formUtils, 'hasCounter');
+    const spy = vi.spyOn(formUtils, 'hasCounter');
     const component = new TextareaWrapper();
 
     expect(component['hasCounter']).toBe(undefined);
@@ -27,10 +28,10 @@ describe('componentWillLoad', () => {
 
 describe('componentDidRender', () => {
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
-    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
-    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
-    const addEventListenerSpy = jest.fn();
-    const removeEventListenerSpy = jest.fn();
+    const updateCounterSpy = vi.spyOn(formUtils, 'updateCounter');
+    const observePropertiesSpy = vi.spyOn(propertyObserverUtils, 'observeProperties');
+    const addEventListenerSpy = vi.fn();
+    const removeEventListenerSpy = vi.fn();
 
     const textarea = document.createElement('textarea');
     textarea.addEventListener = addEventListenerSpy;
@@ -60,7 +61,7 @@ describe('componentDidRender', () => {
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
+    const spy = vi.spyOn(a11yUtils, 'setAriaAttributes');
     const component = new TextareaWrapper();
     const textarea = document.createElement('textarea');
     component['textarea'] = textarea;

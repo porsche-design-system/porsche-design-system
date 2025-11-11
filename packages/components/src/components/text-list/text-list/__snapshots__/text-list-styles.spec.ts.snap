@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for type: alphabetically and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for type: alphabetically and theme: dark 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -12,7 +12,7 @@ exports[`getComponentCss() should return correct css for type: alphabetically an
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -31,7 +31,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: alphabetically and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for type: alphabetically and theme: light 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -43,7 +43,7 @@ exports[`getComponentCss() should return correct css for type: alphabetically an
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -62,7 +62,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: numbered and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for type: numbered and theme: dark 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -74,7 +74,7 @@ exports[`getComponentCss() should return correct css for type: numbered and them
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -93,7 +93,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: numbered and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for type: numbered and theme: light 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -105,7 +105,7 @@ exports[`getComponentCss() should return correct css for type: numbered and them
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -124,7 +124,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: unordered and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for type: unordered and theme: dark 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -136,7 +136,7 @@ exports[`getComponentCss() should return correct css for type: unordered and the
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;
@@ -152,7 +152,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for type: unordered and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for type: unordered and theme: light 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -164,7 +164,7 @@ exports[`getComponentCss() should return correct css for type: unordered and the
 ol,ul {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   padding: var(--p-internal-text-list-padding-top,0) 0 var(--p-internal-text-list-padding-bottom,0) 0;
   list-style-type: none;

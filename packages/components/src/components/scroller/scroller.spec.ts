@@ -1,14 +1,15 @@
-import { Scroller } from './scroller';
+import { vi } from 'vitest';
 import * as jsonUtils from '../../utils/json';
 import * as scrollingUtils from '../../utils/scrolling';
+import { Scroller } from './scroller';
 
 describe('scrollToPositionHandler', () => {
   it('should call parseJSONAttribute() with correct parameters and set scrollPosition', () => {
     const component = new Scroller();
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
-    jest.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation();
+    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
+    vi.spyOn(scrollingUtils, 'scrollElementTo' as any).mockImplementation(() => {});
 
     component.scrollToPositionHandler();
 
@@ -20,7 +21,7 @@ describe('scrollToPositionHandler', () => {
     const component = new Scroller();
     component.scrollToPosition = { scrollPosition: 100, isSmooth: true };
     component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation();
+    const spy = vi.spyOn(scrollingUtils, 'scrollElementTo').mockImplementation(() => {});
 
     component.scrollToPositionHandler();
 
@@ -43,7 +44,7 @@ describe('connectedCallback', () => {
     const component = new Scroller();
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
+    const spy = vi.spyOn(jsonUtils, 'parseJSONAttribute').mockReturnValue({ scrollPosition: 200 });
 
     component.connectedCallback();
 
@@ -55,7 +56,7 @@ describe('connectedCallback', () => {
 describe('componentDidLoad', () => {
   it('should call initIntersectionObserver()', () => {
     const component = new Scroller();
-    const spy = jest.spyOn(component, 'initIntersectionObserver' as any);
+    const spy = vi.spyOn(component, 'initIntersectionObserver' as any);
 
     try {
       component.componentDidLoad();
@@ -65,10 +66,10 @@ describe('componentDidLoad', () => {
   });
   it('should call scrollToPositionHandler() if scrollToPosition', () => {
     const component = new Scroller();
-    jest.spyOn(component, 'initIntersectionObserver' as any).mockImplementation();
+    vi.spyOn(component, 'initIntersectionObserver' as any).mockImplementation(() => {});
     component.scrollToPosition = { scrollPosition: 100 };
     component['scrollAreaElement'] = document.createElement('p-scroller');
-    const spy = jest.spyOn(component, 'scrollToPositionHandler');
+    const spy = vi.spyOn(component, 'scrollToPositionHandler');
 
     component.componentDidLoad();
 

@@ -1,5 +1,6 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import type { Story } from '@/models/story';
 
 export const textStory: Story<'p-text'> = {
@@ -53,6 +54,31 @@ export const textStorySemantics: Story<'p-text'> = {
     {
       tag: 'p-text',
       children: [{ tag: 'blockquote', children: ['The quick brown fox jumps over the lazy dog'] }],
+    },
+  ],
+};
+
+export const textStoryHyphenation: Story<'p-text'> = {
+  generator: () => [
+    {
+      tag: 'div',
+      properties: { className: 'w-25 flex flex-col gap-fluid-sm' },
+      children: [
+        {
+          tag: 'p-text',
+          children: ['An extraordinarily Porsche'],
+        },
+        {
+          tag: 'p-text',
+          properties: { style: { '--p-hyphens': 'manual' } as CSSProperties },
+          children: ['An extra\u00ADordinarily Porsche'],
+        },
+        {
+          tag: 'p-text',
+          properties: { style: { '--p-hyphens': 'none' } as CSSProperties },
+          children: ['An extraordinarily Porsche'],
+        },
+      ],
     },
   ],
 };

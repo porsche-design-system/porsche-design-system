@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -51,7 +51,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -82,7 +82,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -173,7 +173,7 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 "
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -249,7 +249,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -283,7 +283,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -304,7 +304,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -380,7 +380,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -414,7 +414,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -435,7 +435,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -486,7 +486,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -519,7 +519,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -540,7 +540,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -591,7 +591,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -624,7 +624,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -645,7 +645,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -721,7 +721,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -755,7 +755,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -775,7 +775,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -851,7 +851,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -885,7 +885,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -905,7 +905,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -956,7 +956,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -989,7 +989,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -1009,7 +1009,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1060,7 +1060,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -1093,7 +1093,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -1113,7 +1113,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1189,7 +1189,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -1223,7 +1223,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1244,7 +1244,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1320,7 +1320,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1354,7 +1354,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1375,7 +1375,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1426,7 +1426,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -1459,7 +1459,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1480,7 +1480,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1531,7 +1531,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -1564,7 +1564,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1585,7 +1585,7 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1661,7 +1661,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -1693,7 +1693,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1714,7 +1714,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1790,7 +1790,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1822,7 +1822,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1843,7 +1843,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1894,7 +1894,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -1925,7 +1925,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -1946,7 +1946,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1997,7 +1997,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -2028,7 +2028,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -2049,7 +2049,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2125,7 +2125,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -2157,7 +2157,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2177,7 +2177,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2253,7 +2253,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -2285,7 +2285,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2305,7 +2305,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2371,7 +2371,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -2402,7 +2402,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2422,7 +2422,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2488,7 +2488,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -2519,7 +2519,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2539,7 +2539,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2590,7 +2590,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -2621,7 +2621,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2641,7 +2641,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2692,7 +2692,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -2723,7 +2723,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2743,7 +2743,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2799,7 +2799,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -2830,7 +2830,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2850,7 +2850,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2906,7 +2906,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -2937,7 +2937,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
 }
@@ -2957,7 +2957,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3033,7 +3033,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -3065,7 +3065,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -3086,7 +3086,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3162,7 +3162,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -3194,7 +3194,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -3215,7 +3215,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3266,7 +3266,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -3297,7 +3297,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
@@ -3318,7 +3318,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }"
 `;
 
-exports[`getComponentCss() should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3369,7 +3369,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -3400,7 +3400,7 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;

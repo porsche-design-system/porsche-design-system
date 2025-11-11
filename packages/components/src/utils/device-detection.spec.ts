@@ -1,8 +1,9 @@
+import { vi } from 'vitest';
 import { isTouchDevice } from './device-detection';
 
 describe('isTouchDevice()', () => {
   it('should return true for touch device', () => {
-    jest.spyOn(window, 'window', 'get').mockImplementation(
+    vi.spyOn(window, 'window', 'get').mockImplementation(
       () =>
         ({
           ontouchstart: null,
@@ -16,7 +17,7 @@ describe('isTouchDevice()', () => {
   });
 
   it('should return false for non touch device', () => {
-    jest.spyOn(window, 'navigator', 'get').mockImplementation(
+    vi.spyOn(window, 'navigator', 'get').mockImplementation(
       () =>
         ({
           maxTouchPoints: 0,

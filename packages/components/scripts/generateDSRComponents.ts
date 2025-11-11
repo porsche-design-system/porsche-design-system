@@ -230,7 +230,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onKeyDown|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
@@ -263,10 +263,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (!newFileContent.includes('export const InputBase:')) {
         // radio-group-option uses a label component without allowing slots
         if (tagName === 'p-radio-group-option') {
-          newFileContent = newFileContent.replace(
-            /(<Label(?!Props))([\s\S]*?\/>)/,
-            '$1 hasLabel={this.props.label} hasDescription={false}$2'
-          );
+          newFileContent = newFileContent
+            .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
+            .replace(/e\.stopImmediatePropagation\(\);/, '');
         } else {
           newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,
@@ -296,10 +295,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(
-          /(getSegmentedControlCss)\(\s*getItemMaxWidth\(\s*this\.props\s*,\s*this\.props\.compact\s*\)/,
-          '$1(100'
-        )
+        .replace(/getItemWidths\(this.props, this.props.compact\)/g, '{ minWidth: 100, maxWidth: 100 }')
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(

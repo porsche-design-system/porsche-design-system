@@ -1,8 +1,9 @@
-import { hasNamedSlot } from './hasNamedSlot';
+import { vi } from 'vitest';
 import * as getNamedSlotUtils from '../getNamedSlot';
+import { hasNamedSlot } from './hasNamedSlot';
 
 it('should call getNamedSlot() with correct parameters', () => {
-  const spy = jest.spyOn(getNamedSlotUtils, 'getNamedSlot');
+  const spy = vi.spyOn(getNamedSlotUtils, 'getNamedSlot');
   const host = document.createElement('div');
   const slotName = 'slot';
 

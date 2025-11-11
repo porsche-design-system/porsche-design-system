@@ -1,11 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for maxWidth: 20 and columns: { base: 4, s: 3, m: 2, l: 'auto' } 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 36, maxWidth: 230, columns: 10 and compact: true 1`] = `
+":host {
+  display: grid;
+  grid-auto-rows: 1fr !important;
+  grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 0.5) * 6px) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' } and compact: true 1`] = `
 ":host {
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
+  gap: max(4px, var(--p-internal-segmented-control-scaling, 0.5) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -31,7 +44,7 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 "
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 20 and columns: auto 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: auto and compact: false 1`] = `
 ":host {
   display: grid;
   grid-auto-rows: 1fr !important;
@@ -44,24 +57,11 @@ exports[`getComponentCss() should return correct css for maxWidth: 20 and column
 }"
 `;
 
-exports[`getComponentCss() should return correct css for maxWidth: 80 and columns: 1 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 80, columns: 1 and compact: false 1`] = `
 ":host {
   display: grid;
   grid-auto-rows: 1fr !important;
   grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}"
-`;
-
-exports[`getComponentCss() should return correct css for maxWidth: 230 and columns: 10 1`] = `
-":host {
-  display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
   gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }

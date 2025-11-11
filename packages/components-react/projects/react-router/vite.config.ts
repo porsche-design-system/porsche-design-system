@@ -8,6 +8,13 @@ export default defineConfig(({ isSsrBuild }) => {
     define: {
       'process.browser': JSON.stringify(!isSsrBuild),
     },
-    plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+    plugins: [
+      tailwindcss(),
+      reactRouter(),
+      tsconfigPaths({
+        // Only look for tsconfig in the current project
+        root: './',
+      }),
+    ],
   };
 });

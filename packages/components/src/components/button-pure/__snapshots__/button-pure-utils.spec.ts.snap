@@ -1,35 +1,30 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
 {
   "aria-disabled": null,
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 2`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 2`] = `
 {
   "aria-disabled": null,
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
 {
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
 {
   "aria-disabled": "true",
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {
-  'aria-label': 'Some more detailed label',
-  'aria-expanded': true,
-  'aria-haspopup': true,
-  'aria-pressed': true
-} 1`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and aria: { 'aria-label': 'Some more detailed label', 'aria-expanded': true, 'aria-haspopup': true, 'aria-pressed': true } 1`] = `
 {
   "aria-disabled": "true",
   "aria-expanded": "true",
@@ -39,7 +34,7 @@ exports[`getButtonPureAriaAttributes() should return correct aria attributes for
 }
 `;
 
-exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
+exports[`getButtonPureAriaAttributes() > should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
 {
   "aria-disabled": "true",
 }

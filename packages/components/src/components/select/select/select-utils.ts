@@ -42,6 +42,10 @@ export const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
+export const internalSelect = {
+  resetSelectedOption,
+};
+
 export const selectOptionByValue = (
   host: HTMLElement,
   options: SelectOption[],
@@ -68,7 +72,7 @@ export const selectOptionByValue = (
 };
 
 export const setSelectedOption = (options: SelectOption[], selectedOption: SelectOption): void => {
-  resetSelectedOption(options);
+  internalSelect.resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
 };

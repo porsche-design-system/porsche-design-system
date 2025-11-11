@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for width: basic 1`] = `
+exports[`getComponentCss() > should return correct css for width: basic 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -26,7 +26,7 @@ exports[`getComponentCss() should return correct css for width: basic 1`] = `
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: extended 1`] = `
+exports[`getComponentCss() > should return correct css for width: extended 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -52,7 +52,7 @@ exports[`getComponentCss() should return correct css for width: extended 1`] = `
 "
 `;
 
-exports[`getComponentCss() should return correct css for width: fluid 1`] = `
+exports[`getComponentCss() > should return correct css for width: fluid 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -66,7 +66,7 @@ exports[`getComponentCss() should return correct css for width: fluid 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: full 1`] = `
+exports[`getComponentCss() > should return correct css for width: full 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -80,7 +80,7 @@ exports[`getComponentCss() should return correct css for width: full 1`] = `
 }"
 `;
 
-exports[`getComponentCss() should return correct css for width: narrow 1`] = `
+exports[`getComponentCss() > should return correct css for width: narrow 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

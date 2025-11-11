@@ -1,11 +1,10 @@
 import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { Splide } from '@splidejs/splide';
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
@@ -19,6 +18,7 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
+  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -496,15 +496,11 @@ export class Carousel {
 
   private observeSlides(): void {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
-    observeChildren(
-      this.container,
-      () => {
-        for (const el of this.splideSlides) {
-          el.removeAttribute('aria-hidden');
-          el.setAttribute('tabindex', '0');
-        }
-      },
-      ['aria-hidden']
-    );
+    observeChildren(this.container, () => {
+      for (const el of this.splideSlides) {
+        el.removeAttribute('aria-hidden');
+        el.setAttribute('tabindex', '0');
+      }
+    }, ['aria-hidden']);
   }
 }

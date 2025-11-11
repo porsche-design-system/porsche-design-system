@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: auto, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: auto, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -106,11 +106,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 "
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: dark, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: 0 } 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: dark, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -138,11 +138,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -170,11 +170,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: light, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: 0 } 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: light, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -202,11 +202,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -234,11 +234,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #FBFCFF;
@@ -266,11 +266,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -298,11 +298,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: fal
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -329,11 +329,11 @@ exports[`getLabelStyles() should return correct css for isDisabledOrLoading: tru
 }"
 `;
 
-exports[`getLabelStyles() should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -42,7 +42,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -73,7 +73,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -102,7 +102,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -144,7 +144,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -175,7 +175,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -204,7 +204,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -246,7 +246,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -277,7 +277,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -305,7 +305,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -347,7 +347,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -378,7 +378,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -406,7 +406,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 2`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -448,7 +448,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -479,7 +479,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -507,7 +507,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -549,7 +549,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -580,7 +580,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -609,7 +609,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -651,7 +651,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -682,7 +682,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -711,7 +711,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: { padding: +0 }, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -754,7 +754,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -785,7 +785,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -814,7 +814,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -856,7 +856,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -887,7 +887,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -916,7 +916,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -958,7 +958,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -989,7 +989,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1017,7 +1017,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1059,7 +1059,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1090,7 +1090,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1118,7 +1118,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: false, compact: true, readOnly: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: false, compact: true, readOnly: 'light', theme: { padding: +0 }, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1161,7 +1161,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1192,7 +1192,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1212,7 +1212,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: true, compact: true, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: true, compact: true, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1254,7 +1254,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1285,7 +1285,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1305,7 +1305,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1352,7 +1352,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
   color: #010205;
@@ -1383,7 +1383,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1476,7 +1476,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'dark', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'dark', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1518,7 +1518,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #7E7F82;
@@ -1548,7 +1548,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .message:empty {
@@ -1632,7 +1632,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: true, loading: true, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1679,7 +1679,7 @@ input {
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
   justify-self: flex-start;
   color: #949598;
@@ -1709,7 +1709,7 @@ input {
   gap: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }

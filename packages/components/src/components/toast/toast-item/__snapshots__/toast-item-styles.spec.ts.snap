@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -30,7 +30,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: #FBFCFF;
   display: grid;
@@ -62,7 +62,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -92,7 +92,7 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: #010205;
   display: grid;
@@ -124,7 +124,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -154,7 +154,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: #FBFCFF;
   display: grid;
@@ -186,7 +186,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -216,7 +216,7 @@ exports[`getComponentCss() should return correct css for state: neutral and them
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: #010205;
   display: grid;
@@ -248,7 +248,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -278,7 +278,7 @@ exports[`getComponentCss() should return correct css for state: success and them
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: #FBFCFF;
   display: grid;
@@ -310,7 +310,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
   opacity: 0;
@@ -340,7 +340,7 @@ exports[`getComponentCss() should return correct css for state: success and them
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   margin: 0;
   color: #010205;
   display: grid;

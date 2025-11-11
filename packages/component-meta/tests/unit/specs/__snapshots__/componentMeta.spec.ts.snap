@@ -11,6 +11,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "accordionChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when accordion state is changed.",
@@ -258,6 +264,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -711,6 +723,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-pure": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": true,
     "hasEvent": false,
@@ -1177,6 +1195,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-tile": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -1735,6 +1759,10 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "none",
         "description": "CSS Filter applied to the navigation (prev/next buttons)",
       },
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
     },
     "eventsMeta": {
       "carouselChange": {
@@ -1948,6 +1976,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-checkbox": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the checkbox has lost focus.",
@@ -2094,6 +2128,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-checkbox-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-checkbox\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -4009,6 +4049,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-inline-notification": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "action": {
         "description": "Emitted when the action button is clicked.",
@@ -4413,6 +4459,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-date": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4601,6 +4651,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-email": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -4807,6 +4861,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-number": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5007,6 +5065,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-password": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5201,6 +5263,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-search": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5390,6 +5456,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-tel": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5590,6 +5660,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-text": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5787,6 +5861,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-time": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -5975,6 +6053,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-input-url": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--ref-p-input-slotted-margin": {
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
@@ -6174,6 +6256,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -6576,6 +6664,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-pure": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7395,6 +7489,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7568,6 +7668,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile-model-signature": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -7709,6 +7815,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "like": {
         "description": "Emitted when the like button is clicked.",
@@ -8147,6 +8259,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the multi-select has lost focus.",
@@ -8308,6 +8426,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-multi-select-option": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8519,6 +8643,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the pin-code has lost focus.",
@@ -8684,6 +8814,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -8746,6 +8882,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-button-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.30.0, will be removed with next major release. Please use \`p-radio-group\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -8830,6 +8972,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the radio-group has lost focus.",
@@ -8982,6 +9130,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-radio-group-option": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9285,6 +9439,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control-item": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9653,6 +9813,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the select has lost focus.",
@@ -9821,6 +9987,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-option": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -9860,6 +10032,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-select\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -10229,6 +10407,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-stepper-horizontal-item": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -10284,6 +10468,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "switchChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when checked status is changed.",
@@ -11244,6 +11434,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tag-dismissible": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -11305,6 +11501,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -11435,6 +11637,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-text-field-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: \`p-input-date\`, \`p-input-email\`, \`p-input-number\`, \`p-input-password\`, \`p-input-search\`, \`p-input-tel\`, \`p-input-text\`, \`p-input-time\` or \`p-input-url\`.",
     "eventsMeta": {
       "action": {
@@ -11669,6 +11877,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the textarea has lost focus.",
@@ -11871,6 +12085,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-textarea-wrapper": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+    },
     "deprecationMessage": "since v3.29.0, will be removed with next major release. Please use \`p-textarea\` instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -11972,6 +12192,10 @@ exports[`should match snapshot 1`] = `
   },
   "p-toast": {
     "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
       "--p-toast-position-bottom": {
         "defaultValue": "56px",
         "description": "Defines the spacing between the toast and the bottom edge of its container.",
