@@ -8157,6 +8157,11 @@ exports[`should match snapshot 1`] = `
         "type": "MultiSelectChangeEventDetail",
         "typeDetail": "{ name: string; value: string[] }",
       },
+      "toggle": {
+        "description": "Emitted when the dropdown is toggled.",
+        "type": "MultiSelectToggleEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
       "update": {
         "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
         "isDeprecated": true,
@@ -8289,6 +8294,9 @@ exports[`should match snapshot 1`] = `
       },
       "description": {
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "filter": {
+        "description": "Optional slot for providing a custom \`p-input-search\` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior.",
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -9655,6 +9663,11 @@ exports[`should match snapshot 1`] = `
         "type": "SelectChangeEventDetail",
         "typeDetail": "{ name: string; value: string }",
       },
+      "toggle": {
+        "description": "Emitted when the dropdown is toggled.",
+        "type": "SelectToggleEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
       "update": {
         "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
         "isDeprecated": true,
@@ -9711,7 +9724,7 @@ exports[`should match snapshot 1`] = `
       "filter": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Shows an input in the dropdown allowing options to be filtered.",
+        "description": "Shows an input in the dropdown allowing options to be filtered. Will be ignored if the \`filter\` slot is used.",
         "type": "boolean",
       },
       "form": {
@@ -9794,6 +9807,9 @@ exports[`should match snapshot 1`] = `
       },
       "description": {
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "filter": {
+        "description": "Optional slot for providing a custom \`p-input-search\` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior.",
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
