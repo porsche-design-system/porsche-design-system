@@ -1,10 +1,8 @@
 import type { JssStyle } from 'jss';
 
-export const getButtonLabelJssStyle = (cssVarScaling: string): JssStyle => ({
-  display: 'flex',
-  gap: `max(4px, ${cssVarScaling} * 12px)`,
+export const getButtonLabelJssStyle: JssStyle = {
   flexGrow: 1,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-});
+};

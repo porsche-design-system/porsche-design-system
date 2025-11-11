@@ -330,7 +330,10 @@ export class Select {
           onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
-          <span innerHTML={this.selectedOption?.innerHTML}></span>
+          {this.selectedOption?.querySelector?.('img') && (
+            <img src={this.selectedOption.querySelector('img').src} alt="" />
+          )}
+          <span>{this.selectedOption?.textContent ?? ''}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
