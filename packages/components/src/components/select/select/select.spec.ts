@@ -1,7 +1,7 @@
+import { expect } from '@jest/globals';
+import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { Select } from './select';
 import * as selectUtils from './select-utils';
-import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
-import { expect } from '@jest/globals';
 
 class MockElementInternals {
   setValidity = jest.fn();
@@ -26,13 +26,13 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call updateOptions(), updateSelectOptions() and setFormValue() with correct parameters', () => {
+  it('should call updateOptions(), selectOptionByValue() and setFormValue() with correct parameters', () => {
     const component = initComponent();
-    const updateSelectOptionsSpy = jest.spyOn(selectUtils, 'updateSelectOptions');
+    const updateSelectOptionsSpy = jest.spyOn(selectUtils, 'selectOptionByValue');
     const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
 
     component.componentWillLoad();
-    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component['selectOptions'], component['value']);
+    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], component['value']);
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -48,7 +48,7 @@ describe('componentDidLoad', () => {
       .mockReturnValueOnce(slot);
 
     component.componentDidLoad();
-    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
     expect(slotSpy).toHaveBeenCalledTimes(1);
   });
 });
