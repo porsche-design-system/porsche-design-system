@@ -523,13 +523,8 @@ export const routes: RouteType[] = [
     component: fromExamples.SelectExampleForm,
   },
   {
-    path: '/select-example-async-load',
-    name: 'Select Example Async (Load on Open)',
-    component: fromExamples.SelectExampleAsyncLoad,
-  },
-  {
     path: '/select-example-async-filter',
-    name: 'Select Example Async (Load on Filter)',
+    name: 'Select Example Async',
     component: fromExamples.SelectExampleAsyncFilter,
   },
   {

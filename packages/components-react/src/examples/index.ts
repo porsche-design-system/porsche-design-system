@@ -74,7 +74,6 @@ export * from './SelectExampleControlled';
 export * from './SelectExampleDynamic';
 export * from './SelectExampleForm';
 export * from './SelectExampleRequired';
-export * from './SelectExampleAsyncLoad';
 export * from './SelectExampleAsyncFilter';
 export * from './SheetExample';
 export * from './StepperHorizontalExample';

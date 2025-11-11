@@ -102,7 +102,6 @@ import { ToastExampleComponent } from './toast-example.component';
 import { RadioGroupExampleComponent } from './radio-group-example.component';
 import { RadioGroupExampleControlledComponent } from './radio-group-example-controlled.component';
 import { RadioGroupExampleFormComponent } from './radio-group-example-form.component';
-import { SelectExampleAsyncLoadComponent } from './select-example-async-load.component';
 import { SelectExampleAsyncFilterComponent } from './select-example-async-filter.component';
 
 export const examples = [
@@ -196,7 +195,6 @@ export const examples = [
   SelectExampleFormComponent,
   SelectExampleReactiveFormComponent,
   SelectExampleRequiredComponent,
-  SelectExampleAsyncLoadComponent,
   SelectExampleAsyncFilterComponent,
   StepperHorizontalExampleComponent,
   StepperHorizontalNavigationExampleStartComponent,
@@ -304,7 +302,6 @@ export * from './select-example-form.component';
 export * from './select-example-reactive-form.component';
 export * from './select-example-required.component';
 export * from './select-example-async-filter.component';
-export * from './select-example-async-load.component';
 export * from './sheet-example.component';
 export * from './stepper-horizontal-example.component';
 export * from './stepper-horizontal-navigation-example-second.component';

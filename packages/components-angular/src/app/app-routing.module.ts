@@ -542,14 +542,9 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SelectExampleRequiredComponent,
   },
   {
-    name: 'Select Example Async (Load on Filter)',
+    name: 'Select Example Async',
     path: 'select-example-async-filter',
     component: fromExamples.SelectExampleAsyncFilterComponent,
-  },
-  {
-    name: 'Select Example Async (Load on Open)',
-    path: 'select-example-async-load',
-    component: fromExamples.SelectExampleAsyncLoadComponent,
   },
   {
     name: 'Stepper Horizontal Example',

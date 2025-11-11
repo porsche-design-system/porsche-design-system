@@ -87,7 +87,6 @@ export { default as SelectExampleDynamic } from './SelectExampleDynamic.vue';
 export { default as SelectExampleForm } from './SelectExampleForm.vue';
 export { default as SelectExampleRequired } from './SelectExampleRequired.vue';
 export { default as SelectExampleAsyncFilter } from './SelectExampleAsyncFilter.vue';
-export { default as SelectExampleAsyncLoad } from './SelectExampleAsyncLoad.vue';
 export { default as SheetExample } from './SheetExample.vue';
 export { default as StepperHorizontalExample } from './StepperHorizontalExample.vue';
 export { default as TableExampleAdvanced } from './TableExampleAdvanced.vue';
