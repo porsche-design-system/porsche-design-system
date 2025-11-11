@@ -1,7 +1,7 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
-  spacingStaticLarge,
+  fontLineHeight,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
@@ -26,15 +26,32 @@ import { getFunctionalComponentLabelStyles } from '../common/label/label-styles'
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
+export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
+export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
+
 export const getComponentCss = (
   isDisabled: boolean,
   isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  compact: boolean,
   counter: boolean,
   resize: TextareaResize,
   theme: Theme
 ): string => {
+  const scalingVar = getScalingVar(compact);
+
+  const minPadding = '2px';
+  const minCounterPadding = '12px';
+
+  const basePaddingInline = `max(${minPadding}, calc(${formElementPaddingHorizontal} * ${scalingVar}))`;
+  const basePaddingBlock = `max(${minPadding}, calc(12px * ${scalingVar}))`;
+
+  const counterPaddingInline = `max(${minCounterPadding}, calc((${formElementPaddingHorizontal} + ${borderWidthBase}) * ${scalingVar}))`;
+  const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
+
+  const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
+
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -82,8 +99,8 @@ export const getComponentCss = (
         gridArea: '1/1',
         font: textSmallStyle.font, // to override line-height
         padding: counter
-          ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
-          : `12px ${formElementPaddingHorizontal}`,
+          ? `${basePaddingBlock} ${basePaddingInline} ${paddingBottom}`
+          : `${basePaddingBlock} ${basePaddingInline}`,
         // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
         '&:focus': {
           borderColor: primaryColor,
@@ -134,7 +151,7 @@ export const getComponentCss = (
         ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
         gridArea: '1/1',
         placeSelf: 'flex-end',
-        padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
+        padding: `${counterPaddingBlock} ${counterPaddingInline}`,
       },
       // TODO: maybe we should extract it as functional component too
       'sr-only': getHiddenTextJssStyle(),
