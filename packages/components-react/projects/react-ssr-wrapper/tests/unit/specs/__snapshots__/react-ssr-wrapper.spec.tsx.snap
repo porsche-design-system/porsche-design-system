@@ -23830,7 +23830,7 @@ textarea {
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: 12px 16px;
+  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1)));
 }
 textarea:focus {
   border-color: #010205;

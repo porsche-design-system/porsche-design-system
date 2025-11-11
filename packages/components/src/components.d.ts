@@ -3095,6 +3095,10 @@ export namespace Components {
          */
         "autoComplete"?: string;
         /**
+          * A boolean value that, if present, renders the textarea as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Show or hide the character counter.
          */
         "counter"?: boolean;
@@ -7801,6 +7805,10 @@ declare namespace LocalJSX {
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the textarea as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * Show or hide the character counter.
          */

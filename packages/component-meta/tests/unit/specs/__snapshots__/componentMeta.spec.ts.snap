@@ -11690,6 +11690,12 @@ exports[`should match snapshot 1`] = `
         "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the textarea as a compact version.",
+        "type": "boolean",
+      },
       "counter": {
         "allowedValues": "boolean",
         "defaultValue": false,
