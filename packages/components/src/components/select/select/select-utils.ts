@@ -52,7 +52,7 @@ export const selectOptionByValue = (
   value: string,
   preventWarning = false
 ): SelectOption | null => {
-  resetSelectedOption(options);
+  internalSelect.resetSelectedOption(options);
   const optionToSelect = options.find((option) => option.value === value);
 
   if (optionToSelect) {
