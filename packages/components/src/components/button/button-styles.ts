@@ -1,9 +1,9 @@
-import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
-import { getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
-import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
 import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
 
@@ -40,6 +40,10 @@ const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: 
   return colors[variant === 'tertiary' ? 'secondary' : variant];
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,

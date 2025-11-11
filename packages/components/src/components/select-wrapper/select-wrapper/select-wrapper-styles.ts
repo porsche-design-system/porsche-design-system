@@ -1,5 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss } from '../../../utils';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -15,11 +14,16 @@ import {
   getCalculatedFormElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
 } from '../../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import type { BreakpointCustomizable, Theme } from '../../../types';
+import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   isDisabled: boolean,
   hasCustomDropdown: boolean,

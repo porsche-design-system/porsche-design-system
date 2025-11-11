@@ -3,6 +3,7 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
 import {
   textStory,
+  textStoryHyphenation,
   textStorySemantics,
   textStorySize,
   textStorySizeResponsive,
@@ -16,7 +17,7 @@ export const metadata = {
 
 # Text <ComponentStatus tagName="p-text"></ComponentStatus>
 
-<TableOfContents headings={['Size', 'Semantics']} />
+<TableOfContents headings={['Size', 'Semantics', 'Hyphens']} />
 
 ## Size
 
@@ -34,3 +35,15 @@ is needed, the size can be set to `inherit` to specify the text size from outsid
 To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
 
 <ComponentStory story={textStorySemantics} />
+
+## Hyphens
+
+By default, the `p-text` component has hyphens set to `auto`, but this can be overridden using the `--p-hyphens` CSS
+variable. When inserting manual hyphens, you can choose to use soft hyphens. For example, `extra&shy;ordinarily`, as
+shown in the second example.
+
+However, please note that hyphenation behavior can vary depending on the browser and the language of the text. In some
+cases, it may be necessary to set the appropriate lang attribute on your HTML element to ensure that hyphenation works
+correctly for the desired language.
+
+<ComponentStory story={textStoryHyphenation} />

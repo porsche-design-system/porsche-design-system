@@ -1,7 +1,5 @@
-import type { Theme } from '../../types';
-import type { InlineNotificationState } from './inline-notification-utils';
 import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
-import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -11,13 +9,15 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { Theme } from '../../types';
+import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
-import type { JssStyle } from 'jss';
-import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
 const getTextJssStyle = (theme: Theme): JssStyle => ({
@@ -33,6 +33,10 @@ const getHeadingJssStyle = (theme: Theme): JssStyle => ({
   ...getTextJssStyle(theme),
 });
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   state: InlineNotificationState,
   hasAction: boolean,
