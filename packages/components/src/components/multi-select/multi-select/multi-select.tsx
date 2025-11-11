@@ -411,6 +411,7 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
+    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
     const selectedOptions = setSelectedOptions(this.host, this.multiSelectOptions, this.value);
     // Add new matching options if there is any but still keep the old ones as selected
     selectedOptions.forEach((option) => {

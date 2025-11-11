@@ -401,6 +401,7 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
+    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
     const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, true);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
