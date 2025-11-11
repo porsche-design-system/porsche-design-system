@@ -1,8 +1,8 @@
+import { getHiddenTextJssStyle } from '../../styles';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
-import { getHiddenTextJssStyle } from '../../styles';
 
 // CSS Variables defined in base input
 /**
@@ -11,7 +11,10 @@ import { getHiddenTextJssStyle } from '../../styles';
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   disabled: boolean,
   loading: boolean,

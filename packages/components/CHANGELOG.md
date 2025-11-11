@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `hyphens` CSS property can be changed by CSS variable `--p-hyphens` in all components containing text content
+  ([#4093](https://github.com/porsche-design-system/porsche-design-system/pull/4093))
+
 ### Fixed
 
 - `Segmented Control`: restore proportional shrinking of items when container is narrow

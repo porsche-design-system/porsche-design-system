@@ -1,6 +1,12 @@
-import type { TabsBarSize, TabsBarWeight, TabsBarWeightDeprecated } from './tabs-bar-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import {
+  borderRadiusSmall,
+  fontSizeText,
+  frostedGlassStyle,
+  motionDurationModerate,
+  spacingStaticMedium,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -18,15 +24,9 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import {
-  borderRadiusSmall,
-  fontSizeText,
-  frostedGlassStyle,
-  motionDurationModerate,
-  spacingStaticMedium,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import type { JssStyle } from 'jss';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import type { TabsBarSize, TabsBarWeight, TabsBarWeightDeprecated } from './tabs-bar-utils';
 
 export const scrollerAnimatedCssClass = 'scroller--animated';
 
