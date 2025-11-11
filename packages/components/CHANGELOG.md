@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `hyphens` CSS property can be changed by CSS variable `--p-hyphens` in all components containing text content
   ([#4093](https://github.com/porsche-design-system/porsche-design-system/pull/4093))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
 
 ### Fixed
 
