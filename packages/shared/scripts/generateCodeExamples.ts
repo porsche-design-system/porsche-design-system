@@ -514,6 +514,15 @@ const codeExamples: CodeSample[] = [
           vue: '/SelectExampleRequired.vue',
         },
       },
+      {
+        name: 'SelectExampleAsync',
+        paths: {
+          'vanilla-js': '/select-example-async-filter.html',
+          angular: '/select-example-async-filter.component.ts',
+          react: '/SelectExampleAsyncFilter.tsx',
+          vue: '/SelectExampleAsyncFilter.vue',
+        },
+      },
     ],
   },
   {
