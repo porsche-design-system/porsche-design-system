@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.31.0] - 2025-11-11
+
 ### Added
 
 - `hyphens` CSS property can be changed by CSS variable `--p-hyphens` in all components containing text content
