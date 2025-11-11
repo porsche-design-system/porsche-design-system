@@ -1438,7 +1438,7 @@ test.describe('selection', () => {
     await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
     await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
     await expect(buttonElement.locator('span').first()).toHaveText('a');
-    await expect(getButtonImage2(page)).toHaveAttribute('src', 'image-a.jpg');
+    await expect(getButtonImage2(page)).toHaveAttribute('src', 'http://localhost:8575/image-a.jpg');
 
     await buttonElement.click(); // Open dropdown again
     await expect(options.nth(0)).toHaveJSProperty('highlighted', true); // Highlight is restored to the selected option
@@ -1459,7 +1459,7 @@ test.describe('selection', () => {
     await expect(options.nth(2)).toHaveJSProperty('highlighted', false); // Highlight is reset after dropdown is closed
     await expect(options.nth(2)).toHaveJSProperty('selected', true);
     await expect(buttonElement.locator('span').first()).toHaveText('c');
-    await expect(getButtonImage2(page)).toHaveAttribute('src', 'image-c.jpg');
+    await expect(getButtonImage2(page)).toHaveAttribute('src', 'http://localhost:8575/image-c.jpg');
   });
 
   test('should not select disabled option on Click', async ({ page }) => {
@@ -1523,14 +1523,14 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page)).toBe('c');
     await expect(getButton(page)).toHaveText('c');
-    expect(await getButtonImage(page)).toBe('image-c.jpg');
+    expect(await getButtonImage(page)).toBe('http://localhost:8575/image-c.jpg');
 
     await setProperty(select, 'value', 'b');
 
     await waitForStencilLifecycle(page);
     expect(await getSelectValue(page)).toBe('b');
     await expect(getButton(page)).toHaveText('b');
-    expect(await getButtonImage(page)).toBe('image-b.jpg');
+    expect(await getButtonImage(page)).toBe('http://localhost:8575/image-b.jpg');
   });
 });
 
@@ -2470,13 +2470,13 @@ test.describe('slots', () => {
     await waitForStencilLifecycle(page);
     expect(await getSelectValue(page)).toBe('d');
 
-    await addOption(page, 'd', 'd', 'image-d.jpg');
+    await addOption(page, 'd', 'd', 'http://localhost:8575/image-d.jpg');
     await waitForStencilLifecycle(page);
 
     expect(await getSelectValue(page), 'after option added').toBe('d');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('d');
     await expect(getButton(page)).toHaveText('d');
-    expect(await getButtonImage(page)).toBe('image-d.jpg');
+    expect(await getButtonImage(page)).toBe('http://localhost:8575/image-d.jpg');
   });
 
   test('should update when selected option is removed', async ({ page }) => {
