@@ -1,4 +1,4 @@
-<p-select name="async-search-select" label="Async Search">
+<p-multi-select name="async-search-select" label="Async Search">
   <p-input-search
     slot="filter"
     name="search"
@@ -29,17 +29,17 @@
     <p-icon name="information" color="notification-error"></p-icon>
     <span class="text-error"></span>
   </div>
-</p-select>
+</p-multi-select>
 
 <script>
-  const select = document.querySelector('p-select');
+  const select = document.querySelector('p-multi-select');
   const input = select.querySelector('p-input-search');
   const skeletonContainer = select.querySelector('.skeleton-container');
   const noResults = select.querySelector('.no-results');
   const errorContainer = select.querySelector('.error');
   const errorText = errorContainer.querySelector('span.text-error');
 
-  let value = undefined;
+  let value = [];
   let options = [];
   let searchValue = '';
   let initialLoading = false;
@@ -104,9 +104,9 @@
     skeletonContainer.classList.toggle('hidden', !(initialLoading && !error));
 
     // Options
-    select.querySelectorAll('p-select-option').forEach(opt => opt.remove());
+    select.querySelectorAll('p-multi-select-option').forEach(opt => opt.remove());
     options.forEach(opt => {
-      const optionEl = document.createElement('p-select-option');
+      const optionEl = document.createElement('p-multi-select-option');
       optionEl.setAttribute('value', opt.value);
       optionEl.textContent = opt.label;
       select.appendChild(optionEl);

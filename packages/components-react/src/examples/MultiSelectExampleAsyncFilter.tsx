@@ -1,11 +1,11 @@
 import {
   type InputSearchInputEventDetail,
+  type MultiSelectChangeEventDetail,
+  type MultiSelectToggleEventDetail,
   PIcon,
   PInputSearch,
-  PSelect,
-  PSelectOption,
-  type SelectChangeEventDetail,
-  type SelectToggleEventDetail,
+  PMultiSelect,
+  PMultiSelectOption,
 } from '@porsche-design-system/components-react';
 import { useCallback, useRef, useState } from 'react';
 
@@ -17,8 +17,8 @@ const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
   };
 };
 
-export const SelectExampleAsyncFilter = (): JSX.Element => {
-  const [value, setValue] = useState<string | undefined>(undefined);
+export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
+  const [value, setValue] = useState<string[]>([]);
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 
   const [searchValue, setSearchValue] = useState('');
@@ -71,18 +71,18 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
     debouncedFetch(term.trim() || undefined);
   };
 
-  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
-    setValue((e.target as HTMLElement & { value: string }).value);
+  const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
+    setValue((e.target as HTMLElement & { value: string[] }).value);
   };
 
-  const onToggle = async (e: CustomEvent<SelectToggleEventDetail>) => {
+  const onToggle = async (e: CustomEvent<MultiSelectToggleEventDetail>) => {
     if (e.detail.open && !hasLoadedOnce.current) {
       fetchOptions(undefined, true);
     }
   };
 
   return (
-    <PSelect name="async-search-select" label="Async Search" value={value} onChange={onChange} onToggle={onToggle}>
+    <PMultiSelect name="async-search-select" label="Async Search" value={value} onChange={onChange} onToggle={onToggle}>
       <PInputSearch
         slot="filter"
         name="search"
@@ -105,9 +105,9 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
 
       {/* Options */}
       {options.map((opt) => (
-        <PSelectOption key={opt.value} value={opt.value}>
+        <PMultiSelectOption key={opt.value} value={opt.value}>
           {opt.label}
-        </PSelectOption>
+        </PMultiSelectOption>
       ))}
 
       {/* No filter results */}
@@ -129,6 +129,6 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
           <span className="text-error">{error}</span>
         </div>
       )}
-    </PSelect>
+    </PMultiSelect>
   );
 };

@@ -2,15 +2,15 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import {
   type InputSearchInputEventDetail,
+  type MultiSelectChangeEventDetail,
+  type MultiSelectToggleEventDetail,
   PorscheDesignSystemModule,
-  type SelectChangeEventDetail,
-  type SelectToggleEventDetail,
 } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-select-example-async-search',
+  selector: 'page-multi-select-example-async-search',
   template: `
-    <p-select
+    <p-multi-select
       name="async-search-select"
       label="Async Search"
       [value]="value"
@@ -37,9 +37,9 @@ import {
       }
 
       <!-- Options -->
-      <p-select-option *ngFor="let opt of options" [value]="opt.value">
+      <p-multi-select-option *ngFor="let opt of options" [value]="opt.value">
         {{ opt.label }}
-      </p-select-option>
+      </p-multi-select-option>
 
       <!-- No filter results -->
       @if (!initialLoading && options.length === 0 && !error) {
@@ -64,15 +64,15 @@ import {
           <span class="text-error">{{ error }}</span>
         </div>
       }
-    </p-select>
+    </p-multi-select>
 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule, CommonModule],
 })
-export class SelectExampleAsyncFilterComponent {
-  value?: string;
+export class MultiSelectExampleAsyncFilterComponent {
+  value?: string[] = [];
   options: { value: string; label: string }[] = [];
 
   searchValue = '';
@@ -133,11 +133,11 @@ export class SelectExampleAsyncFilterComponent {
     }, 400);
   }
 
-  onChange(event: CustomEvent<SelectChangeEventDetail>) {
-    this.value = (event.target as HTMLElement & { value: string }).value;
+  onChange(event: CustomEvent<MultiSelectChangeEventDetail>) {
+    this.value = (event.target as HTMLElement & { value: string[] }).value;
   }
 
-  onToggle(event: CustomEvent<SelectToggleEventDetail>) {
+  onToggle(event: CustomEvent<MultiSelectToggleEventDetail>) {
     if (event.detail.open && !this.hasLoadedOnce) {
       this.fetchOptions(undefined, true);
     }
