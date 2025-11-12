@@ -15,7 +15,7 @@ import { getThemedFormStateColors } from '../form-state-color-styles';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
-const { contrastMediumColor, disabledColor } = colors;
+const { disabledColor } = colors;
 
 export const getCheckboxBaseStyles = (
   isDisabled?: boolean,
@@ -23,7 +23,7 @@ export const getCheckboxBaseStyles = (
   state?: FormState,
   compact?: boolean
 ): JssStyle => {
-  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
+  const { formStateBackgroundColor, formStateBorderColor } = getThemedFormStateColors(state);
 
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 

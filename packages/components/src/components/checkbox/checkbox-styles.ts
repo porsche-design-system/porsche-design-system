@@ -33,7 +33,7 @@ const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
-const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = colors;
+const { primaryColor, contrastMediumColor, disabledColor, focusColor } = colors;
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,

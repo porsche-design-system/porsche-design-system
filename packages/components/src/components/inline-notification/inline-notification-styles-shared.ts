@@ -15,16 +15,7 @@ import type { InlineNotificationState } from './inline-notification-utils';
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
 
-const {
-  infoFrostedSoftColor,
-  successFrostedSoftColor,
-  errorFrostedSoftColor,
-  warningFrostedSoftColor,
-  infoFrostedColor,
-  successFrostedColor,
-  errorFrostedColor,
-  warningFrostedColor,
-} = colors;
+const { infoFrostedColor, successFrostedColor, errorFrostedColor, warningFrostedColor } = colors;
 
 const getBackgroundColor = (state: InlineNotificationState): string => {
   const colorMap: Record<InlineNotificationState, string> = {

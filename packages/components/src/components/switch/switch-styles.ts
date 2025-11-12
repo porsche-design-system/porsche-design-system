@@ -32,9 +32,7 @@ const {
   contrastMediumColor,
   successColor,
   disabledColor,
-  frostedColor,
   frostedSoftColor,
-  successFrostedColor,
   successFrostedSoftColor,
   successMediumColor,
 } = colors;
