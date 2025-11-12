@@ -135,6 +135,7 @@ slot:not([name]) {
 
 exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, disabled: true, hideLabel: false, state: success and theme 1`] = `
 ":host {
+  cursor: not-allowed !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {

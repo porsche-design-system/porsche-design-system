@@ -27,6 +27,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
+          ...(disabled && { cursor: 'not-allowed' }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
