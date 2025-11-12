@@ -1,1 +1,3 @@
-export const colorSurfaceDark = 'hsla(0,0%,0%,1)';
+import { palette } from '../../palette';
+
+export const colorSurfaceDark = palette.dark.grey['50'];

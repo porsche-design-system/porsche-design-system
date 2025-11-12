@@ -1,1 +1,3 @@
-export const colorErrorLight = 'hsla(0,97%,62%,1)';
+import { palette } from '../../palette';
+
+export const colorErrorLight = palette.light.red["800"];

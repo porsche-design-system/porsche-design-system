@@ -1,1 +1,3 @@
-export const colorInfoFrostedSoftLight = 'oklch(0.807 0.096 266.4 / .5)';
+import { palette } from '../../palette';
+
+export const colorInfoFrostedSoftLight = palette.light.blue['100a'];

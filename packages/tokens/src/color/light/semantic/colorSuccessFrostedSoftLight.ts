@@ -1,1 +1,3 @@
-export const colorSuccessFrostedSoftLight = 'hsla(124,56%,62%,.5)';
+import { palette } from '../../palette';
+
+export const colorSuccessFrostedSoftLight = palette.light.green['100a'];

@@ -1,1 +1,3 @@
-export const colorPrimaryDark = 'hsla(240,7%,95%,1)';
+import { palette } from '../../palette';
+
+export const colorPrimaryDark = palette.dark.grey["950"];

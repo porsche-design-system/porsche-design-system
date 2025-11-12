@@ -1,1 +1,3 @@
-export const colorFrostedDark = 'oklch(0.513 0.007 286.2 / .23)';
+import { palette } from '../../palette';
+
+export const colorFrostedDark = palette.light.grey['300a'];

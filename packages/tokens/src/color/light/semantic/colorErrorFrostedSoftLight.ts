@@ -1,1 +1,3 @@
-export const colorErrorFrostedSoftLight = 'hsla(0,73%,55%,.5)';
+import { palette } from '../../palette';
+
+export const colorErrorFrostedSoftLight = palette.light.red['100a'];

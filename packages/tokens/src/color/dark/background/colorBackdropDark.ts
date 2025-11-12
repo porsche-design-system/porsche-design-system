@@ -1,1 +1,3 @@
-export const colorBackdropDark = 'hsla(240,13%,13%,.81)';
+import { palette } from '../../palette';
+
+export const colorBackdropDark = palette.light.grey['800a'];

@@ -1,1 +1,3 @@
-export const colorContrastLowerDark = 'hsla(240,4%,78%,.13)';
+import { palette } from '../../palette';
+
+export const colorContrastLowerDark = palette.dark.grey['300a'];

@@ -1,1 +1,3 @@
-export const colorSuccessDark = 'hsla(137,49%,50%,1)';
+import { palette } from '../../palette';
+
+export const colorSuccessDark = palette.dark.green['800'];

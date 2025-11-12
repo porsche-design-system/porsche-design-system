@@ -1,1 +1,3 @@
-export const colorInfoFrostedSoftDark = 'oklch(0.373 0.125 263.9 / .5)';
+import { palette } from '../../palette';
+
+export const colorInfoFrostedSoftDark = palette.dark.blue['100a'];

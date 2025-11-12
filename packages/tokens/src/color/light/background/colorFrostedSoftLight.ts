@@ -1,1 +1,3 @@
-export const colorFrostedSoftLight = 'hsla(240,7%,88%,.60)';
+import { palette } from '../../palette';
+
+export const colorFrostedSoftLight = palette.dark.grey['400a'];
