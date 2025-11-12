@@ -1359,6 +1359,34 @@ test.describe('slotted filter', () => {
       await expect(dropdown).toBeVisible();
       await expect(slottedFilter).toBeFocused();
     });
+
+    test('should not automatically reset filter on close', async ({ page }) => {
+      await initMultiSelect(page, {
+        props: { name: 'Some name' },
+        slots: {
+          filter:
+            '<p-input-search slot="filter" name="search" clear indicator compact autoComplete="off"></p-input-search>',
+        },
+      });
+
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const slottedFilter = page.locator('p-input-search[slot="filter"]');
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+
+      await slottedFilter.locator('input').fill('b');
+      await page.keyboard.press('Escape');
+      await expect(dropdown).toBeHidden();
+      await expect(buttonElement).toBeFocused();
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+      await expect(slottedFilter).toBeFocused();
+      await expect(slottedFilter.locator('input')).toHaveValue('b');
+    });
   });
 
   test.describe('keyboard behavior', () => {
