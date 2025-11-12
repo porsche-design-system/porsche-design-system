@@ -428,6 +428,11 @@ export const routes: RouteType[] = [
     component: fromExamples.MultiSelectExampleForm,
   },
   {
+    path: '/multi-select-example-async-filter',
+    name: 'Multi Select Example Async',
+    component: fromExamples.MultiSelectExampleAsyncFilter,
+  },
+  {
     path: '/pin-code-example',
     name: 'Pin Code Example',
     component: fromExamples.PinCodeExample,

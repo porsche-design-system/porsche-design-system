@@ -64,6 +64,7 @@ import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.com
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
 import { MultiSelectExampleComponent } from './multi-select-example.component';
+import { MultiSelectExampleAsyncFilterComponent } from './multi-select-example-async-filter.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
 import { MultiSelectExampleDynamicComponent } from './multi-select-example-dynamic.component';
 import { MultiSelectExampleFormComponent } from './multi-select-example-form.component';
@@ -72,6 +73,9 @@ import { PinCodeExampleComponent } from './pin-code-example.component';
 import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { PinCodeExampleFormComponent } from './pin-code-example-form.component';
 import { PinCodeExampleReactiveFormComponent } from './pin-code-example-reactive-form.component';
+import { RadioGroupExampleComponent } from './radio-group-example.component';
+import { RadioGroupExampleControlledComponent } from './radio-group-example-controlled.component';
+import { RadioGroupExampleFormComponent } from './radio-group-example-form.component';
 import { RadioGroupExampleReactiveFormComponent } from './radio-group-example-reactive-form.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
@@ -79,6 +83,7 @@ import { SegmentedControlExampleControlledComponent } from './segmented-control-
 import { SegmentedControlExampleFormComponent } from './segmented-control-example-form.component';
 import { SegmentedControlExampleReactiveFormComponent } from './segmented-control-example-reactive-form.component';
 import { SelectExampleComponent } from './select-example.component';
+import { SelectExampleAsyncFilterComponent } from './select-example-async-filter.component';
 import { SelectExampleControlledComponent } from './select-example-controlled.component';
 import { SelectExampleDynamicComponent } from './select-example-dynamic.component';
 import { SelectExampleFormComponent } from './select-example-form.component';
@@ -99,10 +104,6 @@ import { TextareaExampleControlledComponent } from './textarea-example-controlle
 import { TextareaExampleFormComponent } from './textarea-example-form.component';
 import { TextareaExampleReactiveFormComponent } from './textarea-example-reactive-form.component';
 import { ToastExampleComponent } from './toast-example.component';
-import { RadioGroupExampleComponent } from './radio-group-example.component';
-import { RadioGroupExampleControlledComponent } from './radio-group-example-controlled.component';
-import { RadioGroupExampleFormComponent } from './radio-group-example-form.component';
-import { SelectExampleAsyncFilterComponent } from './select-example-async-filter.component';
 
 export const examples = [
   AccordionExampleComponent,
@@ -176,6 +177,7 @@ export const examples = [
   MultiSelectExampleDynamicComponent,
   MultiSelectExampleFormComponent,
   MultiSelectExampleReactiveFormComponent,
+  MultiSelectExampleAsyncFilterComponent,
   PinCodeExampleComponent,
   PinCodeExampleControlledComponent,
   PinCodeExampleFormComponent,
@@ -278,6 +280,7 @@ export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
 export * from './multi-select-example.component';
+export * from './multi-select-example-async-filter.component';
 export * from './multi-select-example-controlled.component';
 export * from './multi-select-example-dynamic.component';
 export * from './multi-select-example-form.component';
@@ -296,12 +299,12 @@ export * from './segmented-control-example-controlled.component';
 export * from './segmented-control-example-form.component';
 export * from './segmented-control-example-reactive-form.component';
 export * from './select-example.component';
+export * from './select-example-async-filter.component';
 export * from './select-example-controlled.component';
 export * from './select-example-dynamic.component';
 export * from './select-example-form.component';
 export * from './select-example-reactive-form.component';
 export * from './select-example-required.component';
-export * from './select-example-async-filter.component';
 export * from './sheet-example.component';
 export * from './stepper-horizontal-example.component';
 export * from './stepper-horizontal-navigation-example-second.component';
