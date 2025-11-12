@@ -14,14 +14,95 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [v4]
 
+### Re-design components (early alpha)
+
+#### Common
+
+- ⌛️Accordion
+- ⌛Button
+- ⌛Button Pure
+- ⌛Button Tile
+- ⌛Canvas
+- ⌛Carousel
+- ⌛Divider
+- ⌛Flag
+- ⌛Icon
+- ⌛Scroller
+- ⌛Stepper Horizontal
+- ⌛Table
+- ⌛Tag
+- ⌛Tag Dismissible
+- ⌛Text List
+
+#### Brand
+
+- ⌛Crest
+- ⌛Wordmark
+- ⌛Model Signature
+
+#### Feedback
+
+- ⌛Banner
+- ⌛Toast
+- ⌛Inline Notification
+- ⌛Spinner
+
+#### Navigation
+
+- ⌛Drilldown
+- ⌛Link
+- ⌛Link Pure
+- ⌛Link Tile
+- ⌛Link Tile Product
+- ⌛Pagination
+- ⌛Tabs
+- ⌛Tabs Bar
+
+#### Dialog
+
+- ⌛Modal
+- ⌛Flyout
+- ⌛Sheet
+- ⌛Popover
+
+#### Typography:
+
+- ⌛Display
+- ⌛Heading
+- ⌛Text
+
+#### Form:
+
+- ⌛Checkbox
+- ⌛Fieldset
+- ⌛Input Date
+- ⌛Input Email
+- ⌛Input Number
+- ⌛Input Password
+- ⌛Input Search
+- ⌛Input Tel
+- ⌛Input Text
+- ⌛Input Time
+- ⌛Input Url
+- ⌛Multi Select
+- ⌛Optgroup
+- ⌛Pin Code
+- ⌛Radio Group
+- ⌛Segmented Control
+- ⌛Select
+- ⌛Switch
+- ⌛Textarea
+
 ### Removed (deprecated in v3 already)
 
 - Components:
-  - Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS class
+  - Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
+    class
   - Remove slotted Anchor Styles entirely from all components. Use `Link Pure` instead or define an anchor style
 
 - Tailwind CSS: Reset all default Tailwind color tokens
-- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
+- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
+  only
 - Tailwind CSS:
   - e.g. `border-contrast-low` => `border-contrast-20`
   - e.g. `border-contrast-medium` => `border-contrast-50`
