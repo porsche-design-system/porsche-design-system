@@ -15,8 +15,6 @@ import {
   colorBackdropLight,
   colorCanvasDark,
   colorCanvasLight,
-  colorDisabledDark,
-  colorDisabledLight,
   colorContrastHighDark,
   colorContrastHigherDark,
   colorContrastHigherLight,
@@ -27,12 +25,16 @@ import {
   colorContrastLowLight,
   colorContrastMediumDark,
   colorContrastMediumLight,
+  colorDisabledDark,
+  colorDisabledLight,
   colorErrorDark,
   colorErrorFrostedDark,
   colorErrorFrostedLight,
   colorErrorFrostedSoftDark,
   colorErrorFrostedSoftLight,
   colorErrorLight,
+  colorErrorMediumDark,
+  colorErrorMediumLight,
   colorFocusDark,
   colorFocusLight,
   colorFrostedDark,
@@ -45,6 +47,8 @@ import {
   colorInfoFrostedSoftDark,
   colorInfoFrostedSoftLight,
   colorInfoLight,
+  colorInfoMediumDark,
+  colorInfoMediumLight,
   colorPrimaryDark,
   colorPrimaryLight,
   colorSuccessDark,
@@ -53,6 +57,8 @@ import {
   colorSuccessFrostedSoftDark,
   colorSuccessFrostedSoftLight,
   colorSuccessLight,
+  colorSuccessMediumDark,
+  colorSuccessMediumLight,
   colorSurfaceDark,
   colorSurfaceLight,
   colorWarningDark,
@@ -61,6 +67,8 @@ import {
   colorWarningFrostedSoftDark,
   colorWarningFrostedSoftLight,
   colorWarningLight,
+  colorWarningMediumDark,
+  colorWarningMediumLight,
   fontFamily,
   fontLineHeight,
   fontSize2Xl,
@@ -124,15 +132,19 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --color-primary: ${colorPrimaryLight};
   /* semantic */
   --color-success: ${colorSuccessLight};
+  --color-success-medium: ${colorSuccessMediumLight};
   --color-success-frosted: ${colorSuccessFrostedLight};
   --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
   --color-warning: ${colorWarningLight};
+  --color-warning-medium: ${colorWarningMediumLight};
   --color-warning-frosted: ${colorWarningFrostedLight};
   --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
   --color-error: ${colorErrorLight};
+  --color-error-medium: ${colorErrorMediumLight};
   --color-error-frosted: ${colorErrorFrostedLight};
   --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
   --color-info: ${colorInfoLight};
+  --color-info-medium: ${colorInfoMediumLight};
   --color-info-frosted: ${colorInfoFrostedLight};
   --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
   /* special */
@@ -254,15 +266,19 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-primary: ${colorPrimaryLight};
     /* semantic */
     --color-success: ${colorSuccessLight};
+    --color-success-medium: ${colorSuccessMediumLight};
     --color-success-frosted: ${colorSuccessFrostedLight};
     --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
     --color-warning: ${colorWarningLight};
+    --color-warning-medium: ${colorWarningMediumLight};
     --color-warning-frosted: ${colorWarningFrostedLight};
     --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
     --color-error: ${colorErrorLight};
+    --color-error-medium: ${colorErrorMediumLight};
     --color-error-frosted: ${colorErrorFrostedLight};
     --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
     --color-info: ${colorInfoLight};
+    --color-info-medium: ${colorInfoMediumLight};
     --color-info-frosted: ${colorInfoFrostedLight};
     --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
     /* special */
@@ -288,15 +304,19 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
     --color-primary: ${colorPrimaryDark};
     /* semantic */
     --color-success: ${colorSuccessDark};
+    --color-success-medium: ${colorSuccessMediumDark};
     --color-success-frosted: ${colorSuccessFrostedDark};
     --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
     --color-warning: ${colorWarningDark};
+    --color-warning-medium: ${colorWarningMediumDark};
     --color-warning-frosted: ${colorWarningFrostedDark};
     --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
     --color-error: ${colorErrorDark};
+    --color-error-medium: ${colorErrorMediumDark};
     --color-error-frosted: ${colorErrorFrostedDark};
     --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
     --color-info: ${colorInfoDark};
+    --color-info-medium: ${colorInfoMediumDark};
     --color-info-frosted: ${colorInfoFrostedDark};
     --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
     /* special */
@@ -323,15 +343,19 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
       --color-primary: ${colorPrimaryDark};
       /* semantic */
       --color-success: ${colorSuccessDark};
+      --color-success-medium: ${colorSuccessMediumDark};
       --color-success-frosted: ${colorSuccessFrostedDark};
       --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
       --color-warning: ${colorWarningDark};
+      --color-warning-medium: ${colorWarningMediumDark};
       --color-warning-frosted: ${colorWarningFrostedDark};
       --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
       --color-error: ${colorErrorDark};
+      --color-error-medium: ${colorErrorMediumDark};
       --color-error-frosted: ${colorErrorFrostedDark};
       --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
       --color-info: ${colorInfoDark};
+      --color-info-medium: ${colorInfoMediumDark};
       --color-info-frosted: ${colorInfoFrostedDark};
       --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
       /* special */
