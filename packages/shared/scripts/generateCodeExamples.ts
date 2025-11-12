@@ -426,6 +426,15 @@ const codeExamples: CodeSample[] = [
           vue: '/MultiSelectExampleDynamic.vue',
         },
       },
+      {
+        name: 'MultiSelectExampleAsync',
+        paths: {
+          'vanilla-js': '/multi-select-example-async-filter.html',
+          angular: '/multi-select-example-async-filter.component.ts',
+          react: '/MultiSelectExampleAsyncFilter.tsx',
+          vue: '/MultiSelectExampleAsyncFilter.vue',
+        },
+      },
     ],
   },
   {
