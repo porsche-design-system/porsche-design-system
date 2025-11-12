@@ -535,8 +535,6 @@ export class MultiSelect {
         el.slot !== 'message' &&
         el.slot !== 'filter'
     )) {
-      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-multi-select-option', 'p-optgroup']);
-
       if (isElementOfKind(child as HTMLElement, 'p-multi-select-option')) {
         this.multiSelectOptions.push(child as MultiSelectOption);
       } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {

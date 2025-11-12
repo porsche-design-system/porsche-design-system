@@ -532,8 +532,6 @@ export class Select {
         el.slot !== 'message' &&
         el.slot !== 'filter'
     )) {
-      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
-
       if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
         this.selectOptions.push(child as SelectOption);
       } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
