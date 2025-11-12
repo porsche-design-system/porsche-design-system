@@ -1,72 +1,138 @@
-<script setup lang="ts">
-  import { ref } from 'vue';
-  import {
-    PSelect,
-    PSelectOption,
-    PInputSearch,
-    type InputSearchInputEventDetail,
-  } from '@porsche-design-system/components-vue';
-
-  const searchValue = ref('');
-  const options = ref([
-    { value: 'a', label: 'Option A' },
-    { value: 'b', label: 'Option B' },
-    { value: 'c', label: 'Option C' },
-  ]);
-  const loading = ref(false);
-  const defaultOptions = [...options.value];
-  const lastSubmittedData = ref<string>('none');
-
-  let debounceTimer: number | undefined;
-
-  const setOptions = (newOptions: { value: string; label: string }[]) => {
-    options.value = newOptions;
-  };
-
-  const loadOptions = async (term: string) => {
-    loading.value = true;
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    loading.value = false;
-    const newOptions = Array.from({ length: 3 }, (_, i) => ({
-      value: `${term}-${i + 1}`,
-      label: `Result ${i + 1} for "${term}"`,
-    }));
-    setOptions(newOptions);
-  };
-
-  const onInput = (event: InputSearchInputEventDetail) => {
-    const term = (event.target as HTMLInputElement).value;
-    searchValue.value = term;
-
-    if (debounceTimer) clearTimeout(debounceTimer);
-
-    debounceTimer = window.setTimeout(() => {
-      if (term.trim()) {
-        loadOptions(term.trim());
-      } else {
-        setOptions(defaultOptions);
-      }
-    }, 400);
-  };
-</script>
-
 <template>
-  <p-select name="options" label="Async Search">
+  <PSelect
+    name="async-search-select"
+    label="Async Search"
+    :value="value"
+    @change="onChange"
+    @toggle="onToggle"
+  >
     <PInputSearch
       slot="filter"
       name="search"
-      v-model:value="searchValue"
-      :loading="loading"
       clear
       indicator
       compact
-      autoComplete="off"
+      autocomplete="off"
+      :loading="loading"
+      :value="searchValue"
       @input="onInput"
+      @blur.stop
+      @change.stop
     />
 
-    <p-select-option v-for="opt in options" :key="opt.value" :value="opt.value">
+    <!-- Initial skeleton loading -->
+    <template v-if="initialLoading && !error">
+      <div v-for="i in 6" :key="i" class="skeleton h-[40px]" />
+    </template>
+
+    <!-- Options -->
+    <PSelectOption v-for="opt in options" :key="opt.value" :value="opt.value">
       {{ opt.label }}
-    </p-select-option>
-  </p-select>
+    </PSelectOption>
+
+    <!-- No filter results -->
+    <div
+      v-if="!initialLoading && options.length === 0 && !error"
+      class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
+      aria-live="polite"
+      role="option"
+    >
+      <span aria-hidden="true">–</span>
+      <span class="sr-only">No results found</span>
+    </div>
+
+    <!-- Error state -->
+    <div
+      v-if="error"
+      class="flex gap-static-sm py-static-sm px-[12px]"
+      aria-live="polite"
+      role="alert"
+    >
+      <PIcon name="information" color="notification-error" />
+      <span class="text-error">{{ error }}</span>
+    </div>
+  </PSelect>
 </template>
+
+<script setup lang="ts">
+import {
+  type InputSearchInputEventDetail,
+  PIcon,
+  PInputSearch,
+  PSelect,
+  PSelectOption,
+  type SelectChangeEventDetail,
+  type SelectToggleEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+
+function useDebounce<T>(callback: (value: T) => void, delay = 400) {
+  let timer: number | undefined;
+  return (value: T) => {
+    if (timer) clearTimeout(timer);
+    timer = window.setTimeout(() => callback(value), delay);
+  };
+}
+
+const value = ref<string | undefined>(undefined);
+const options = ref<{ value: string; label: string }[]>([]);
+const searchValue = ref('');
+const initialLoading = ref(false);
+const loading = ref(false);
+const error = ref<string | null>(null);
+
+const hasLoadedOnce = ref(false);
+let currentFetchId = 0;
+
+// 💡 Consider using Vue Query or SWRV for data fetching.
+async function fetchOptions(term?: string, isInitial?: boolean) {
+  const fetchId = ++currentFetchId;
+  if (isInitial) initialLoading.value = true;
+  else loading.value = true;
+
+  try {
+    const url = term
+      ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+      : `https://jsonplaceholder.typicode.com/users`;
+    const res = await fetch(url);
+    const data: { id: number; name: string; username: string }[] = await res.json();
+
+    if (fetchId !== currentFetchId) return; // ignore stale fetch
+
+    options.value = data.map((user) => ({
+      value: user.id.toString(),
+      label: `${user.name} (${user.username})`,
+    }));
+    error.value = null;
+    hasLoadedOnce.value = true;
+  } catch (err) {
+    console.error('Failed to fetch options', err);
+    options.value = [];
+    error.value = 'Failed to load options';
+  } finally {
+    if (isInitial) initialLoading.value = false;
+    else loading.value = false;
+  }
+}
+
+const debouncedFetch = useDebounce((term?: string) => fetchOptions(term), 400);
+
+function onInput(e: InputSearchInputEventDetail) {
+  const term = (e.target as HTMLInputElement).value;
+  searchValue.value = term;
+  debouncedFetch(term.trim() || undefined);
+}
+
+function onChange(e: SelectChangeEventDetail) {
+  // Can be called from bubbling onChange event of PInputSearch, ignore those
+  if (e.name) {
+    value.value = e.value;
+  }
+}
+
+function onToggle(e: SelectToggleEventDetail) {
+  if (e.open && !hasLoadedOnce.value) {
+    fetchOptions(undefined, true);
+  }
+}
+</script>

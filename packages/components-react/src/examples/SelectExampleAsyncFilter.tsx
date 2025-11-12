@@ -9,36 +9,42 @@ import {
 } from '@porsche-design-system/components-react';
 import { useCallback, useRef, useState } from 'react';
 
+const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
+  const timer = useRef<number | undefined>(undefined);
+  return (value: T) => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => callback(value), delay);
+  };
+};
+
 export const SelectExampleAsyncFilter = (): JSX.Element => {
   const [value, setValue] = useState<string | undefined>(undefined);
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 
-  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const [initialLoading, setInitialLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [searchValue, setSearchValue] = useState('');
-  const debounceTimer = useRef<number | undefined>(undefined);
+  const hasLoadedOnce = useRef(false);
+  const currentFetchId = useRef(0);
 
-  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
-    setValue((e.target as HTMLElement & { value: string }).value);
-  };
-
-  const loadOptions = useCallback(async (term?: string, isInitial?: boolean) => {
-    if (isInitial) {
-      setInitialLoading(true);
-    } else {
-      setLoading(true);
-    }
+  // 💡Consider using a data-fetching library like React Query or SWR here.
+  // They provide built-in caching, deduplication, retries, and loading/error state management,
+  // which would make this async logic cleaner and more reliable than manual fetch handling.
+  const fetchOptions = useCallback(async (term?: string, isInitial?: boolean) => {
+    const fetchId = ++currentFetchId.current;
+    isInitial ? setInitialLoading(true) : setLoading(true);
     try {
-      // If no term is provided, fetch all users
       const url = term
         ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
         : `https://jsonplaceholder.typicode.com/users`;
 
       const res = await fetch(url);
       const data: { id: number; name: string; username: string }[] = await res.json();
+
+      // Ignore stale results
+      if (fetchId !== currentFetchId.current) return;
 
       const newOptions = data.map((user) => ({
         value: user.id.toString(),
@@ -47,38 +53,31 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
 
       setOptions(newOptions);
       setError(null);
-      if (isInitial) {
-        setHasLoadedOnce(true);
-      }
+      hasLoadedOnce.current = true;
     } catch (err) {
       console.error('Failed to fetch options', err);
       setOptions([]);
       setError('Failed to load options');
     } finally {
-      if (isInitial) {
-        setInitialLoading(false);
-      } else {
-        setLoading(false);
-      }
+      isInitial ? setInitialLoading(false) : setLoading(false);
     }
   }, []);
 
+  const debouncedFetch = useDebounce(fetchOptions, 400);
+
   const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
-    const term = (e.target as HTMLInputElement).value;
+    const term = (e.target as HTMLElement & { value: string }).value;
     setSearchValue(term);
+    debouncedFetch(term.trim() || undefined);
+  };
 
-    if (debounceTimer.current) {
-      clearTimeout(debounceTimer.current);
-    }
-
-    debounceTimer.current = window.setTimeout(() => {
-      loadOptions(term.trim() || undefined);
-    }, 400);
+  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
+    setValue((e.target as HTMLElement & { value: string }).value);
   };
 
   const onToggle = async (e: CustomEvent<SelectToggleEventDetail>) => {
-    if (e.detail.open && !hasLoadedOnce) {
-      loadOptions(undefined, true);
+    if (e.detail.open && !hasLoadedOnce.current) {
+      fetchOptions(undefined, true);
     }
   };
 
@@ -94,24 +93,24 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
         compact
         autoComplete="off"
         onInput={onInput}
+        // Prevent bubbling
         onBlur={(e: any) => e.stopPropagation()}
         onChange={(e: any) => e.stopPropagation()}
       />
-      {initialLoading && !error && (
-        <>
-          <div className="skeleton h-[40px]" />
-          <div className="skeleton h-[40px]" />
-          <div className="skeleton h-[40px]" />
-          <div className="skeleton h-[40px]" />
-          <div className="skeleton h-[40px]" />
-          <div className="skeleton h-[40px]" />
-        </>
-      )}
+
+      {/* Initial skeleton loading */}
+      {initialLoading &&
+        !error &&
+        Array.from({ length: 6 }).map((_, i) => <div key={i} className="skeleton h-[40px]" />)}
+
+      {/* Options */}
       {options.map((opt) => (
         <PSelectOption key={opt.value} value={opt.value}>
           {opt.label}
         </PSelectOption>
       ))}
+
+      {/* No filter results */}
       {!initialLoading && options.length === 0 && !error && (
         <div
           className="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
@@ -122,8 +121,10 @@ export const SelectExampleAsyncFilter = (): JSX.Element => {
           <span className="sr-only">No results found</span>
         </div>
       )}
+
+      {/* Error state */}
       {error && (
-        <div className="flex flex-col gap-static-sm py-static-sm px-[12px]" aria-live="polite" role="alert">
+        <div className="flex gap-static-sm py-static-sm px-[12px]" aria-live="polite" role="alert">
           <PIcon name="information" color="notification-error" />
           <span className="text-error">{error}</span>
         </div>
