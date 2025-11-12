@@ -49,7 +49,8 @@ export const getSelectedOptionsString = (options: MultiSelectOption[]): string =
 export const setSelectedOptions = (
   host: HTMLElement,
   options: MultiSelectOption[],
-  value: string[]
+  value: string[],
+  preventWarning = false
 ): MultiSelectOption[] => {
   const selectedValues = new Set(value);
   const selectedOptions: MultiSelectOption[] = [];
@@ -67,7 +68,7 @@ export const setSelectedOptions = (
 
   const valuesNotIncluded = value.filter((val) => !options.some((option) => option.value === val));
 
-  if (valuesNotIncluded.length > 0) {
+  if (valuesNotIncluded.length > 0 && !preventWarning) {
     consoleWarn(
       `The provided value: ${valuesNotIncluded.join(', ')} is not included in the options of the ${getTagNameWithoutPrefix(host)}:`,
       host
