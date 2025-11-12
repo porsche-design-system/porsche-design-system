@@ -74,7 +74,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -94,11 +94,83 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
           <p-button>Submit</p-button>
           <p-button variant="secondary">Reset</p-button>
+          <p-button disabled="true">Disabled</p-button>
         </div>
         <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
@@ -122,7 +194,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -142,9 +214,81 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
+          <p-button disabled="true">Some label</p-button>
         </div>
         <div class="grid gap-fluid-sm">
           <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
@@ -178,7 +322,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -198,11 +342,83 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
           <p-button>Submit</p-button>
           <p-button variant="secondary">Reset</p-button>
+          <p-button disabled="true">Disabled</p-button>
         </div>
         <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
@@ -226,7 +442,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -246,9 +462,81 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
+          <p-button disabled="true">Some label</p-button>
         </div>
         <div class="grid gap-fluid-sm">
           <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
@@ -282,7 +570,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -302,11 +590,83 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
           <p-button>Submit</p-button>
           <p-button variant="secondary">Reset</p-button>
+          <p-button disabled="true">Disabled</p-button>
         </div>
         <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
@@ -330,7 +690,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -350,9 +710,81 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
+          <p-button disabled="true">Some label</p-button>
         </div>
         <div class="grid gap-fluid-sm">
           <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
@@ -361,7 +793,7 @@
           <p-inline-notification heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
         </div>
       </div>
-      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-[url(/assets/cat.jpg)] bg-fixed bg-cover bg-center">
+      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-[url(/assets/cabin.webp)] bg-fixed bg-cover bg-center">
         <div class="grid gap-fluid-sm">
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
@@ -386,7 +818,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -406,11 +838,83 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
           <p-button>Submit</p-button>
           <p-button variant="secondary">Reset</p-button>
+          <p-button disabled="true">Disabled</p-button>
         </div>
         <div class="grid gap-fluid-sm bg-frosted backdrop-blur-frosted p-fluid-sm rounded-lg">
           <p-tag color="background-frosted">
@@ -434,7 +938,7 @@
             </p-text>
             <p-button-pure slot="end" icon="information" hide-label="true" class="p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)"></p-button-pure>
           </p-input-search>
-          <p-multi-select name="name" label="Some Label" description="Some description">
+          <p-multi-select name="name" label="Some Label" description="Some description" state="none">
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
@@ -454,9 +958,81 @@
               Option F
             </p-multi-select-option>
           </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some success message" state="success">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" message="Some error message" state="error">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-multi-select name="name" label="Some Label" description="Some description" disabled="true">
+            <p-multi-select-option value="a">
+              Option A
+            </p-multi-select-option>
+            <p-multi-select-option value="b">
+              Option B
+            </p-multi-select-option>
+            <p-multi-select-option value="c">
+              Option C
+            </p-multi-select-option>
+            <p-multi-select-option value="d">
+              Option D
+            </p-multi-select-option>
+            <p-multi-select-option value="e">
+              Option E
+            </p-multi-select-option>
+            <p-multi-select-option value="f">
+              Option F
+            </p-multi-select-option>
+          </p-multi-select>
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
           <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
           <p-button>Some label</p-button>
           <p-button variant="secondary">Some label</p-button>
+          <p-button disabled="true">Some label</p-button>
         </div>
         <div class="grid gap-fluid-sm">
           <p-inline-notification state="success" heading="Some heading" heading-tag="h2" description="Some description."></p-inline-notification>
