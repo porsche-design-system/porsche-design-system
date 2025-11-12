@@ -42,14 +42,14 @@ export const getComponentCss = (
   isLoading: boolean,
   compact: boolean
 ): string => {
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
+  const { formStateColor, formStateHoverColor, formStateBackgroundColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
   const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
   const uncheckedHoverColor = formStateHoverColor || primaryColor;
   const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
-  const checkedHoverColor = formStateHoverColor || contrastHighColor;
+  const checkedHoverColor = formStateBackgroundColor;
 
   const indeterminateIconColor = escapeHashCharacter(
     disabledOrLoading ? disabledColor : formStateColor || primaryColor
@@ -111,6 +111,9 @@ export const getComponentCss = (
           'input:checked:hover,label:hover~.wrapper input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
+            '&::before': {
+              backgroundColor: primaryColor,
+            },
           },
           'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.

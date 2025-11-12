@@ -5,7 +5,7 @@ import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
-const { primaryColor, disabledColor, contrastHighColor } = colors;
+const { primaryColor, contrastHighColor } = colors;
 
 export const getFunctionalComponentLabelStyles = (
   isDisabledOrLoading: boolean,
@@ -18,7 +18,7 @@ export const getFunctionalComponentLabelStyles = (
       ...textSmallStyle,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      color: primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
         getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)
@@ -30,9 +30,7 @@ export const getFunctionalComponentLabelStyles = (
         cursor: 'unset',
         marginTop: `-${spacingStaticXSmall}`,
         fontSize: fontSizeTextXSmall,
-        ...(!isDisabledOrLoading && {
-          color: contrastHighColor,
-        }),
+        color: contrastHighColor,
       },
       ...additionalDefaultJssStyle,
     },

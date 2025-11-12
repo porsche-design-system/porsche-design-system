@@ -222,7 +222,7 @@ export class InputSearch {
         loading={this.loading}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="state-disabled" />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="contrast-medium" />,
         })}
         {...(this.clear && {
           end: (

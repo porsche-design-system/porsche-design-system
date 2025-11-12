@@ -1,6 +1,7 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
+  borderWidthThin,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -22,13 +23,12 @@ export const getCheckboxBaseStyles = (
   state?: FormState,
   compact?: boolean
 ): JssStyle => {
-  const { formStateColor } = getThemedFormStateColors(state);
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
+
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-
-  const background = `transparent 0% 0% / ${fontLineHeight}`;
+  const uncheckedBorderColor = disabledOrLoading ? disabledColor : formStateBorderColor;
 
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
@@ -61,9 +61,9 @@ export const getCheckboxBaseStyles = (
     WebkitAppearance: 'none', // iOS safari
     appearance: 'none',
     boxSizing: 'content-box',
-    background,
+    background: formStateBackgroundColor,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-    border: `${borderWidthBase} solid ${uncheckedColor}`,
+    border: `${borderWidthThin} solid ${uncheckedBorderColor}`,
     outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
     ...(disabledOrLoading
       ? {

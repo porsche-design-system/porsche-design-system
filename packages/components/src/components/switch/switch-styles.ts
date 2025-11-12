@@ -1,5 +1,6 @@
 import {
   borderWidthBase,
+  borderWidthThin,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -26,8 +27,17 @@ import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-me
 
 const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
-const { primaryColor, contrastMediumColor, successColor, disabledColor, frostedColor, successFrostedColor } =
-  colors;
+const {
+  primaryColor,
+  contrastMediumColor,
+  successColor,
+  disabledColor,
+  frostedColor,
+  frostedSoftColor,
+  successFrostedColor,
+  successFrostedSoftColor,
+  successMediumColor,
+} = colors;
 const getColors = (
   checked: boolean,
   disabled: boolean,
@@ -44,14 +54,12 @@ const getColors = (
   const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
 
   return {
-    buttonBorderColor: disabledOrLoadingColor || (checked ? successFrostedColor : contrastMediumColor),
+    buttonBorderColor: disabledOrLoadingColor || (checked ? successMediumColor : contrastMediumColor),
     buttonBorderColorHover: checked ? successColor : primaryColor,
-    buttonBackgroundColor: checked ? successFrostedColor : disabledOrLoadingColor || frostedColor,
-    buttonBackgroundColorHover: checked ? successFrostedColor : frostedColor,
+    buttonBackgroundColor: checked ? successFrostedSoftColor : disabledOrLoadingColor || frostedSoftColor,
+    buttonBackgroundColorHover: checked ? successFrostedSoftColor : frostedSoftColor,
     toggleBackgroundColor:
-      (loading && 'transparent') ||
-      (disabled && !checked && disabledColor) ||
-      (checked ? successColor : primaryColor),
+      (loading && 'transparent') || (disabled && !checked && disabledColor) || (checked ? successColor : primaryColor),
     toggleBackgroundColorHover: checked ? successColor : primaryColor,
     textColor: disabledOrLoadingColor || primaryColor,
   };
@@ -127,8 +135,8 @@ export const getComponentCss = (
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         boxSizing: 'content-box',
         ...frostedGlassStyle,
-        border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: `calc((${dimension} + ${borderWidthBase} * 2) / 2)`,
+        border: `${borderWidthThin} solid ${buttonBorderColor}`,
+        borderRadius: `calc((${dimension} + ${borderWidthThin} * 2) / 2)`,
         backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,

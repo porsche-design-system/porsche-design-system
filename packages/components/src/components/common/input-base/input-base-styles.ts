@@ -1,6 +1,6 @@
 import {
   borderRadiusSmall,
-  borderWidthBase,
+  borderWidthThin,
   fontLineHeight,
   spacingStaticMedium,
   spacingStaticXSmall,
@@ -38,7 +38,7 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor, frostedColor } = colors;
+const { primaryColor, contrastLowColor, disabledColor } = colors;
 
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
@@ -61,10 +61,10 @@ export const getFunctionalComponentInputBaseStyles = (
   // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
   const buttonCompensation = `clamp(0, 6.42 * pow(calc(${scalingVar} - 0.5), 0.6826), 12)`;
 
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   const hoverStyles = {
-    borderColor: formStateHoverColor || primaryColor,
+    borderColor: formStateBorderHoverColor,
   };
 
   return {
@@ -100,9 +100,9 @@ export const getFunctionalComponentInputBaseStyles = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
-      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+      border: `${borderWidthThin} solid ${formStateBorderColor}`,
       borderRadius: borderRadiusSmall,
-      background: frostedColor,
+      background: formStateBackgroundColor,
       // ...frostedGlassStyle,
       height,
       paddingBlock,

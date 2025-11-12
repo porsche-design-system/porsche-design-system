@@ -1,6 +1,7 @@
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  alphaDisabled,
   colorSchemeStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -41,6 +42,10 @@ export const getComponentCss = (
       ...getPopoverKeyframesStyles,
       ':host': {
         display: 'block',
+        ...(isDisabled && {
+          opacity: alphaDisabled,
+          cursor: 'not-allowed',
+        }),
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
