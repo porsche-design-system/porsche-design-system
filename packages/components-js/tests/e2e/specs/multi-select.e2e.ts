@@ -1372,12 +1372,13 @@ test.describe('slotted filter', () => {
       const buttonElement = getButton(page);
       const dropdown = getDropdown(page);
       const slottedFilter = page.locator('p-input-search[slot="filter"]');
+      const slottedFilterInput = slottedFilter.locator('input');
 
       await buttonElement.click();
       await expect(dropdown).toBeVisible();
       await expect(slottedFilter).toBeFocused();
 
-      await slottedFilter.locator('input').fill('b');
+      await slottedFilterInput.fill('b');
       await page.keyboard.press('Escape');
       await expect(dropdown).toBeHidden();
       await expect(buttonElement).toBeFocused();
@@ -1385,7 +1386,7 @@ test.describe('slotted filter', () => {
       await buttonElement.click();
       await expect(dropdown).toBeVisible();
       await expect(slottedFilter).toBeFocused();
-      await expect(slottedFilter.locator('input')).toHaveValue('b');
+      await expect(slottedFilter).toHaveJSProperty('value', 'b');
     });
   });
 
