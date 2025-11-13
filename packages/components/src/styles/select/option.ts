@@ -3,7 +3,7 @@ import type { JssStyle } from 'jss';
 import { colors } from '../colors';
 import { getTransition } from '../common-styles';
 
-const { primaryColor, contrastLowColor, contrastHighColor, disabledColor } = colors;
+const { primaryColor, frostedSoftColor, contrastHighColor } = colors;
 
 export const getOptionJssStyle = (
   componentName: 'select-option' | 'multi-select-option',
@@ -28,14 +28,13 @@ export const getOptionJssStyle = (
     borderRadius: borderRadiusSmall,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: contrastLowColor,
+      background: frostedSoftColor,
     },
     '&--highlighted, &--selected': {
       color: primaryColor,
     },
     '&--disabled': {
       cursor: 'not-allowed',
-      color: disabledColor,
     },
     '&--hidden': {
       display: 'none',

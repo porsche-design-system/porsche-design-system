@@ -9,26 +9,20 @@ import {
 import type { JssStyle } from 'jss';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { colors } from '../colors';
-import { addImportantToEachRule, getTransition, SCALING_BASE_VALUE } from '../common-styles';
+import { getTransition, SCALING_BASE_VALUE } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
-const { disabledColor } = colors;
-
 export const getCheckboxBaseStyles = (
-  isDisabled?: boolean,
-  isLoading?: boolean,
-  state?: FormState,
+  isDisabled: boolean,
+  isLoading: boolean,
+  state: FormState,
   compact?: boolean
 ): JssStyle => {
   const { formStateBackgroundColor, formStateBorderColor } = getThemedFormStateColors(state);
 
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
-
-  // TODO: needs to be extracted into a color function
-  const uncheckedBorderColor = disabledOrLoading ? disabledColor : formStateBorderColor;
 
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
@@ -44,38 +38,26 @@ export const getCheckboxBaseStyles = (
   const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
 
   return {
-    position: 'relative',
-    '&::before': {
-      // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
-      // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
-      content: '""',
-      position: 'absolute',
-      inset,
-    },
+    all: 'unset',
+    display: 'grid', // ensures the pseudo-element can be positioned correctly
+    flexShrink: 0, // prevents the checkbox from shrinking when placed inside a flex container
     width: dimension,
     height: dimension,
     font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-    display: 'block',
-    margin: 0,
-    padding: 0,
-    WebkitAppearance: 'none', // iOS safari
-    appearance: 'none',
-    boxSizing: 'content-box',
     background: formStateBackgroundColor,
-    transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-    border: `${borderWidthThin} solid ${uncheckedBorderColor}`,
-    outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
-    ...(disabledOrLoading
-      ? {
-          pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
-        }
-      : {
-          cursor: 'pointer',
-        }),
-    gridArea: '1/1',
+    transition: getTransition('border-color'),
+    border: `${borderWidthThin} solid ${formStateBorderColor}`,
     borderRadius: borderRadiusSmall,
-    ...addImportantToEachRule({
-      backgroundSize: 'cover',
+    cursor: 'pointer',
+    ...(disabledOrLoading && {
+      pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
     }),
+    '&::before': {
+      // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
+      // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
+      // In addition, it is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.
+      content: '""',
+      margin: inset,
+    },
   };
 };

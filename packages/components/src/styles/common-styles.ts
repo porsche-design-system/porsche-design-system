@@ -16,6 +16,7 @@ import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import type { Theme } from '../types';
 import { isThemeDark } from '../utils';
+import { alphaDisabled } from './alpha-disabled';
 import { colors } from './colors';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
@@ -93,6 +94,20 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
 };
 
 const { focusColor } = colors;
+
+export const getFocusBaseStyles = (): JssStyle => {
+  return {
+    outline: `${borderWidthBase} solid ${focusColor}`,
+    outlineOffset: '2px',
+  };
+};
+
+export const getDisabledBaseStyles = (): JssStyle => {
+  return {
+    opacity: alphaDisabled,
+    cursor: 'not-allowed',
+  };
+};
 
 type Options = {
   offset?: string | 0;

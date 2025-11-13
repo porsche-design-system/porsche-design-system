@@ -57,9 +57,7 @@ export class MultiSelectOption {
             'option--disabled': isDisabled,
           }}
         >
-          <span class="checkbox-wrapper">
-            <span class="checkbox" aria-hidden="true" />
-          </span>
+          <span class="checkbox" aria-hidden="true" />
           <slot slot="label" />
         </div>
       </Host>

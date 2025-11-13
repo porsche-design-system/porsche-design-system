@@ -10,8 +10,7 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  colors,
-  getSchemedHighContrastMediaQuery,
+  getFocusBaseStyles,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
@@ -19,21 +18,14 @@ import {
 } from '../../styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
-import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import { getCss, isDisabledOrLoading, supportsChromiumMediaQuery } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
-import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-
-const getIndeterminateSVGBackgroundImage = (fill: string): string => {
-  return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
-};
-
-const { primaryColor, contrastMediumColor, disabledColor, focusColor } = colors;
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -42,20 +34,9 @@ export const getComponentCss = (
   isLoading: boolean,
   compact: boolean
 ): string => {
-  const { formStateColor, formStateHoverColor, formStateBackgroundColor } = getThemedFormStateColors(state);
+  const { formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
-  // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
-  const checkedHoverColor = formStateBackgroundColor;
-
-  const indeterminateIconColor = escapeHashCharacter(
-    disabledOrLoading ? disabledColor : formStateColor || primaryColor
-  );
-  const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
-  const background = `transparent 0% 0% / ${fontLineHeight}`;
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
   const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
@@ -75,67 +56,22 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      input: getCheckboxBaseStyles(isDisabled, isLoading, state, compact),
-      ...(isLoading
-        ? {
-            'input:checked': {
-              // background-image is merged in later
-              borderColor: checkedColor,
-              backgroundColor: checkedColor,
+      input: {
+        gridArea: '1/1',
+        ...getCheckboxBaseStyles(isDisabled, isLoading, state, compact),
+        '&:checked': getCheckboxCheckedBaseStyles(),
+        '&:indeterminate': getCheckboxIndeterminateBaseStyles(),
+        '&:focus-visible': getFocusBaseStyles(),
+        ...(!disabledOrLoading &&
+          hoverMediaQuery({
+            '&:hover,label:hover~.wrapper>&': {
+              borderColor: formStateBorderHoverColor,
             },
-          }
-        : {
-            'input:checked': getCheckboxCheckedBaseStyles(isDisabled, isLoading, state),
-            'input:indeterminate': {
-              background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-              borderColor: uncheckedColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-              // This is a workaround for Blink based browsers, which do not reflect the high semantic system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
-              ...(isHighContrastMode &&
-                getSchemedHighContrastMediaQuery(
-                  {
-                    backgroundImage: getIndeterminateSVGBackgroundImage('black'),
-                  },
-                  {
-                    backgroundImage: getIndeterminateSVGBackgroundImage('white'),
-                  }
-                )),
-            },
-          }),
-      ...(!disabledOrLoading &&
-        !isHighContrastMode &&
-        hoverMediaQuery({
-          'input:hover,label:hover~.wrapper input': {
-            borderColor: uncheckedHoverColor,
-          },
-          'input:checked:hover,label:hover~.wrapper input:checked': {
-            borderColor: checkedHoverColor,
-            backgroundColor: checkedHoverColor,
-            '&::before': {
-              backgroundColor: primaryColor,
-            },
-          },
-          'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
-            background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-            borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-            backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
-          },
-          'label:hover~.wrapper input': supportsChromiumMediaQuery({
-            transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
-          }),
-        })),
-      ...(!isDisabled && {
-        'input::-moz-focus-inner': {
-          border: 0, // reset ua-style (for FF)
-        },
-        'input:focus': {
-          outline: 0, // reset ua-style (for older browsers)
-        },
-        'input:focus-visible': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          outlineOffset: '2px',
-        },
-      }),
+            'label:hover~.wrapper>&': supportsChromiumMediaQuery({
+              transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
+            }),
+          })),
+      },
     },
     root: {
       display: 'grid',

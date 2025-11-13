@@ -201,7 +201,7 @@ export class Checkbox {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const id = 'checkbox';
+    const id = 'x';
     return (
       <div class="root">
         <Label

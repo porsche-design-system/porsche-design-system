@@ -1,0 +1,17 @@
+import type { JssStyle } from 'jss';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { colors } from '../colors';
+
+const { primaryColor } = colors;
+
+const indeterminateIcon = getInlineSVGBackgroundImage(`<path d="m20,11v2H4v-2h16Z"/>`);
+
+export const getCheckboxIndeterminateBaseStyles = (): JssStyle => {
+  return {
+    '&::before': {
+      WebkitMask: `${indeterminateIcon} center/24px 24px no-repeat`,
+      mask: `${indeterminateIcon} center/24px 24px no-repeat`,
+      backgroundColor: primaryColor,
+    },
+  };
+};
