@@ -101,7 +101,7 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
       {/* Initial skeleton loading */}
       {initialLoading &&
         !error &&
-        Array.from({ length: 6 }).map((_, i) => <div key={i} className="skeleton h-[40px]" />)}
+        Array.from({ length: 9 }).map((_, i) => <div key={i} className="skeleton h-[40px]" />)}
 
       {/* Options */}
       {options.map((opt) => (

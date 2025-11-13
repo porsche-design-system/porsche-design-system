@@ -22,7 +22,7 @@
 
     <!-- Initial skeleton loading -->
     <template v-if="initialLoading && !error">
-      <div v-for="i in 6" :key="i" class="skeleton h-[40px]" />
+      <div v-for="i in 9" :key="i" class="skeleton h-[40px]" />
     </template>
 
     <!-- Options -->

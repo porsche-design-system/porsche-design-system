@@ -33,13 +33,17 @@ import {
 
       <!-- Initial skeleton loading -->
       @if (initialLoading && !error) {
-        <div *ngFor="let _ of [1,2,3,4,5,6]" class="skeleton h-[40px]"></div>
+        @for (_ of [1,2,3,4,5,6,7,8,9]; track $index) {
+          <div class="skeleton h-[40px]"></div>
+        }
       }
 
       <!-- Options -->
-      <p-select-option *ngFor="let opt of options" [value]="opt.value">
-        {{ opt.label }}
-      </p-select-option>
+      @for (option of options; track option.value) {
+        <p-select-option [value]="option.value">
+          {{ option.label }}
+        </p-select-option>
+      }
 
       <!-- No filter results -->
       @if (!initialLoading && options.length === 0 && !error) {
