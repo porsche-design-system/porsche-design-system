@@ -46,7 +46,7 @@ export const getSelectedOptionsString = (options: MultiSelectOption[]): string =
     .map((option) => option.textContent)
     .join(', ');
 
-export const setSelectedOptions = (
+export const selectOptionsByValue = (
   host: HTMLElement,
   options: MultiSelectOption[],
   value: string[],
