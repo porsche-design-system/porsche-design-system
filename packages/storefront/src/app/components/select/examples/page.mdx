@@ -96,7 +96,8 @@ option value.
 The `p-select` component automatically filters options based on user input. However, if you have a large dataset or need
 custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter` slot.
 
-To do so, place a `p-input-search` inside the `filter` slot and handle the user input and option fetching yourself.
-Remember to also display “no results found” and error states as shown in the example.
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
 
 <ComponentExample codeSample={selectExampleAsyncFilter} />
