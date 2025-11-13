@@ -51,6 +51,59 @@
       <h1 class="col-span-full my-fluid-lg prose-display-lg text-center">Playground</h1>
       <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-canvas">
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Input E-Mail</p-heading>
+          <p-input-email label="Some label" name="some-name" indicator="true" placeholder="Default"></p-input-email>
+          <p-input-email label="Some label" name="some-name" indicator="true" placeholder="Success" state="success" message="Some message."></p-input-email>
+          <p-input-email label="Some label" name="some-name" indicator="true" placeholder="Error" state="error" message="Some message."></p-input-email>
+          <p-input-email label="Some label" name="some-name" indicator="true" placeholder="Disabled" disabled="true"></p-input-email>
+          <p-input-email label="Some label" name="some-name" indicator="true" value="Read only" read-only="true"></p-input-email>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Input Text</p-heading>
+          <p-input-text label="Some label" name="some-name" placeholder="Default" counter="true" max-length="100"></p-input-text>
+          <p-input-text label="Some label" name="some-name" placeholder="Success" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
+          <p-input-text label="Some label" name="some-name" placeholder="Error" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
+          <p-input-text label="Some label" name="some-name" placeholder="Disabled" counter="true" max-length="100" disabled="true"></p-input-text>
+          <p-input-text label="Some label" name="some-name" value="Read only" counter="true" max-length="100" read-only="true"></p-input-text>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Input Tel</p-heading>
+          <p-input-tel label="Some label" name="some-name" placeholder="Default"></p-input-tel>
+          <p-input-tel label="Some label" name="some-name" placeholder="Success" state="success" message="Some message."></p-input-tel>
+          <p-input-tel label="Some label" name="some-name" placeholder="Error" state="error" message="Some message."></p-input-tel>
+          <p-input-tel label="Some label" name="some-name" placeholder="Disabled" disabled="true"></p-input-tel>
+          <p-input-tel label="Some label" name="some-name" value="Read only" read-only="true"></p-input-tel>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Input Search</p-heading>
+          <p-input-search label="Some label" name="some-name" clear="true" indicator="true" value="Default"></p-input-search>
+          <p-input-search label="Some label" name="some-name" clear="true" indicator="true" value="Success" state="success" message="Some message."></p-input-search>
+          <p-input-search label="Some label" name="some-name" clear="true" indicator="true" value="Error" state="error" message="Some message."></p-input-search>
+          <p-input-search label="Some label" name="some-name" clear="true" indicator="true" placeholder="Disabled" disabled="true"></p-input-search>
+          <p-input-search label="Some label" name="some-name" clear="true" indicator="true" value="Read only" read-only="true"></p-input-search>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Input URL</p-heading>
+          <p-input-url label="Some label" name="some-name" indicator="true" placeholder="Default"></p-input-url>
+          <p-input-url label="Some label" name="some-name" indicator="true" placeholder="Success" state="success" message="Some message."></p-input-url>
+          <p-input-url label="Some label" name="some-name" indicator="true" placeholder="Error" state="error" message="Some message."></p-input-url>
+          <p-input-url label="Some label" name="some-name" indicator="true" placeholder="Disabled" disabled="true"></p-input-url>
+          <p-input-url label="Some label" name="some-name" indicator="true" value="Read only" read-only="true"></p-input-url>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Checkbox</p-heading>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Tags</p-heading>
           <p-tag color="background-frosted">
             <button type="button">Color background-frosted</button>
           </p-tag>
@@ -78,7 +131,7 @@
             <p-multi-select-option value="a">
               Option A
             </p-multi-select-option>
-            <p-multi-select-option value="b">
+            <p-multi-select-option value="b" disabled="true">
               Option B
             </p-multi-select-option>
             <p-multi-select-option value="c">
@@ -158,14 +211,6 @@
           <p-switch checked="true">Some label</p-switch>
           <p-switch disabled="true">Some label</p-switch>
           <p-switch checked="true" disabled="true">Some label</p-switch>
-          <p-checkbox label="Some label" name="some-name"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="success"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="success"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="error"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="error"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
         </div>
         <div class="grid gap-fluid-sm">
           <p-button>Submit</p-button>
@@ -1104,6 +1149,12 @@
       updateInput('transition', getTransition());
       updateInput('accent', getAccent());
       updateRoute();
+    </script>
+
+    <script>
+      for (const el of document.querySelectorAll("p-switch")) {
+        el.addEventListener('update', (e) => e.target.checked = e.detail.checked);
+      }
     </script>
 
   </body>

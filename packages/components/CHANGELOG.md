@@ -76,14 +76,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Checkbox
 - ⌛Fieldset
 - ⌛Input Date
-- ⌛Input Email
+- ✅Input Email
 - ⌛Input Number
 - ⌛Input Password
 - ✅Input Search
-- ⌛Input Tel
+- ✅Input Tel
 - ✅Input Text
 - ⌛Input Time
-- ⌛Input Url
+- ✅Input Url
 - ⌛Multi Select
 - ⌛Optgroup
 - ⌛Pin Code

@@ -1,4 +1,3 @@
-import { getHiddenTextJssStyle } from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -20,14 +19,5 @@ export const getComponentCss = (
   compact: boolean,
   readOnly: boolean
 ): string => {
-  return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
-      '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-        WebkitAppearance: 'none',
-      },
-    }),
-    'sr-only': getHiddenTextJssStyle(),
-  });
+  return getCss(getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly));
 };
