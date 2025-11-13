@@ -102,12 +102,11 @@ export const getComponentCss = (
     },
     ...(counter && {
       counter: {
-        ...getUnitCounterJssStyle(isDisabled, isReadonly),
+        ...getUnitCounterJssStyle(),
         gridArea: '1/1',
         placeSelf: 'flex-end',
         padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
       },
-      // TODO: maybe we should extract it as functional component too
       'sr-only': getHiddenTextJssStyle(),
     }),
     // .label / .required

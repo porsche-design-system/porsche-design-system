@@ -11,6 +11,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
+  getDisabledBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -38,7 +39,7 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
-const { primaryColor, contrastLowColor, disabledColor } = colors;
+const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
@@ -63,19 +64,16 @@ export const getFunctionalComponentInputBaseStyles = (
 
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
-  const hoverStyles = {
-    borderColor: formStateBorderHoverColor,
-  };
-
   return {
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
           [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
           [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...(disabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -83,15 +81,11 @@ export const getFunctionalComponentInputBaseStyles = (
         all: 'unset',
         flex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        color: 'inherit', // relies on wrapper color
         height,
         paddingBlock,
-        color: primaryColor,
         width: '100%',
-        minWidth: '2rem',
-        ...(disabled && {
-          color: disabledColor,
-          WebkitTextFillColor: disabledColor,
-        }),
+        minWidth: '2ch', // to show at least 2 characters in very narrow containers
         ...additionalInputJssStyle,
       },
     },
@@ -100,35 +94,33 @@ export const getFunctionalComponentInputBaseStyles = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
-      border: `${borderWidthThin} solid ${formStateBorderColor}`,
-      borderRadius: borderRadiusSmall,
-      background: formStateBackgroundColor,
-      // ...frostedGlassStyle,
-      height,
-      paddingBlock,
-      paddingInline,
       display: 'flex',
       alignItems: 'center',
       gap,
-      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...(!disabled &&
-        !readOnly && {
-          '&:has(input:focus)': {
-            borderColor: primaryColor,
-          },
-          ...hoverMediaQuery({
-            '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
-          }),
-        }),
-      ...(disabled && {
-        cursor: 'not-allowed',
-        borderColor: disabledColor,
-      }),
+      height,
+      paddingBlock,
+      paddingInline,
+      border: `${borderWidthThin} solid ${formStateBorderColor}`,
+      borderRadius: borderRadiusSmall,
+      background: formStateBackgroundColor,
+      color: primaryColor,
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
       ...(readOnly && {
-        cursor: 'text',
-        borderColor: contrastLowColor,
-        background: contrastLowColor,
+        borderColor: 'transparent',
+        background: frostedColor,
+        color: contrastMediumColor,
       }),
+      '&:focus-within': {
+        borderColor: formStateBorderHoverColor,
+      },
+      ...(!disabled &&
+        !readOnly &&
+        !loading &&
+        hoverMediaQuery({
+          '&:hover:not(.button:hover),label:hover~&': {
+            borderColor: formStateBorderHoverColor,
+          },
+        })),
     },
     ...(loading && {
       spinner: {
@@ -138,15 +130,7 @@ export const getFunctionalComponentInputBaseStyles = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled,
-      hideLabel,
-      !disabled &&
-        !readOnly &&
-        hoverMediaQuery({
-          '&:hover~.wrapper': hoverStyles,
-        })
-    ),
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

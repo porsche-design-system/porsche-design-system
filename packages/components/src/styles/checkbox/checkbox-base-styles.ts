@@ -45,7 +45,7 @@ export const getCheckboxBaseStyles = (
     height: dimension,
     font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
     background: formStateBackgroundColor,
-    transition: getTransition('border-color'),
+    transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${borderWidthThin} solid ${formStateBorderColor}`,
     borderRadius: borderRadiusSmall,
     cursor: 'pointer',

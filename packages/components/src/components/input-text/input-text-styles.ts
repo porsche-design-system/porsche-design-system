@@ -23,19 +23,10 @@ export const getComponentCss = (
   counter: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
-      '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-        WebkitAppearance: 'none',
-      },
-    }),
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly),
     ...(counter && {
-      counter: {
-        ...getUnitCounterJssStyle(disabled, readOnly),
-        cursor: 'text',
-      },
+      counter: getUnitCounterJssStyle(),
+      'sr-only': getHiddenTextJssStyle(),
     }),
-    'sr-only': getHiddenTextJssStyle(),
   });
 };

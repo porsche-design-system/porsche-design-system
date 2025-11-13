@@ -10,6 +10,7 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getDisabledBaseStyles,
   getFocusBaseStyles,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -53,6 +54,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
