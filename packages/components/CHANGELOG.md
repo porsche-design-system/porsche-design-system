@@ -14,16 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
+- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+
 ## [3.31.0-rc.0] - 2025-11-11
 
 ### Added
 
 - `hyphens` CSS property can be changed by CSS variable `--p-hyphens` in all components containing text content
   ([#4093](https://github.com/porsche-design-system/porsche-design-system/pull/4093))
-- `Segmented Control`: add `state` and `message` props to enable visual validation states
-  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
-- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
-  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
 
 ### Fixed
 
