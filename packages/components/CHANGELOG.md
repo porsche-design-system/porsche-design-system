@@ -79,9 +79,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Input Email
 - ⌛Input Number
 - ⌛Input Password
-- ⌛Input Search
+- ✅Input Search
 - ⌛Input Tel
-- ⌛Input Text
+- ✅Input Text
 - ⌛Input Time
 - ⌛Input Url
 - ⌛Multi Select

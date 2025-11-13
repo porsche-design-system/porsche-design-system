@@ -86,6 +86,7 @@ export const getFunctionalComponentInputBaseStyles = (
         paddingBlock,
         width: '100%',
         minWidth: '2ch', // to show at least 2 characters in very narrow containers
+        textOverflow: 'ellipsis', // TODO: do we need this style?
         ...additionalInputJssStyle,
       },
     },

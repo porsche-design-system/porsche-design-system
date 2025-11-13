@@ -26,8 +26,7 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
-      textOverflow: 'ellipsis',
-      '&[type="search"]::-webkit-search-cancel-button': {
+      '&::-webkit-search-cancel-button': {
         display: 'none',
       },
     }),
