@@ -25,11 +25,7 @@ export const getComponentCss = (
   readOnly: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
-      '&[type="text"]': {
-        textOverflow: 'ellipsis',
-      },
-    }),
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly),
     ...(toggle && {
       button: {
         padding: `var(${cssVarButtonPurePadding})`,
