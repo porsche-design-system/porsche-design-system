@@ -217,7 +217,7 @@ export class InputTel {
         pattern={this.pattern}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="phone" color="state-disabled" />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="phone" color="contrast-low" />,
         })}
       />
     );

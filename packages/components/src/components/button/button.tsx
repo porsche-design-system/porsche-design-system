@@ -182,7 +182,7 @@ export class Button {
               size="inherit"
               name={this.iconSource ? undefined : this.icon}
               source={this.iconSource}
-              color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
+              color="primary"
               aria-hidden="true"
             />
           )}

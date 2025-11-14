@@ -20,7 +20,7 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, me
       {hasMessage(host, message, state) && [
         <PrefixedTagNames.pIcon
           name={isErrorState ? 'exclamation' : 'check'}
-          color={isErrorState ? 'notification-error' : 'notification-success'}
+          color={isErrorState ? 'error' : 'success'}
           aria-hidden="true"
         />,
         message || <slot name="message" />,

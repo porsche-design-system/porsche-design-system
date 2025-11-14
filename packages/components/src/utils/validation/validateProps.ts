@@ -52,11 +52,13 @@ export const printErrorMessage = ({
   propValue, // TODO: might be nicer if this is always a string
   propType,
   componentName,
-}: ValidationError & { componentName: string }): void => {
+  instance,
+}: ValidationError & { componentName: string; instance: any }): void => {
   consoleError(
     `Invalid property '${propName}' with value '${internalValidateProps.formatObjectOutput(
       propValue
-    )}' supplied to ${componentName}, expected one of: ${propType}`
+    )}' supplied to ${componentName}, expected one of: ${propType}.`,
+    instance.host
   );
 };
 
@@ -267,6 +269,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
     internalValidateProps.printErrorMessage({
       ...error,
       componentName: getTagNameWithoutPrefix(instance.host as HTMLElement),
+      instance,
     });
   }
 };

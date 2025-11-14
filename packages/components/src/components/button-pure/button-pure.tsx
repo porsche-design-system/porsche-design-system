@@ -214,7 +214,7 @@ export class ButtonPure {
                 {...iconProps}
                 name={this.icon}
                 source={this.iconSource}
-                color={this.isDisabledOrLoading ? 'state-disabled' : 'primary'}
+                color="primary"
                 aria-hidden="true"
               />
             )

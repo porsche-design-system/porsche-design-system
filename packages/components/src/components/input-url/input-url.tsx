@@ -217,7 +217,7 @@ export class InputUrl {
         pattern={this.pattern}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="linked" color="state-disabled" />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="linked" color="contrast-low" />,
         })}
       />
     );

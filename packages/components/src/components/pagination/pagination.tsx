@@ -107,7 +107,7 @@ export class Pagination {
               onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e, value),
             };
             const iconProps = {
-              color: isActive ? 'primary' : 'state-disabled',
+              color: 'primary',
               'aria-hidden': 'true',
             };
 

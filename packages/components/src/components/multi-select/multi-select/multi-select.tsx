@@ -316,12 +316,7 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name="arrow-head-down"
-            color={this.disabled ? 'state-disabled' : 'primary'}
-            aria-hidden="true"
-          />
+          <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
         <div
           id={popoverId}

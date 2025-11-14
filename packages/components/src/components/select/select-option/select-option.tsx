@@ -59,14 +59,7 @@ export class SelectOption {
           }}
         >
           <slot onSlotchange={this.onSlotChange} />
-          {isSelected && (
-            <PrefixedTagNames.pIcon
-              class="icon"
-              aria-hidden="true"
-              name="check"
-              color={isDisabled ? 'state-disabled' : 'primary'}
-            />
-          )}
+          {isSelected && <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="primary" />}
         </div>
       </Host>
     );

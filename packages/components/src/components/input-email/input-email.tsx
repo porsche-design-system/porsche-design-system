@@ -222,7 +222,7 @@ export class InputEmail {
         multiple={this.multiple}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="contrast-low" />,
         })}
       />
     );
