@@ -32,15 +32,12 @@ export const getButtonJssStyle = (
     height: `max(${fontLineHeight}, ${cssVarScaling} * (${fontLineHeight} + 10px))`,
     boxSizing: 'content-box', // ensures height calculation is based on content, not including padding
     font: textSmallStyle.font,
-    cursor: 'pointer',
+    cursor: isDisabled ? 'not-allowed' : 'pointer',
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     color: `var(${cssVarTextColor}, ${primaryColor})`,
     backgroundColor: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
     border: `${borderWidthThin} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateBorderColor})`,
     borderRadius: borderRadiusSmall,
-    ...(isDisabled && {
-      cursor: 'not-allowed',
-    }),
     ...(!isDisabled && {
       ...hoverMediaQuery({
         '&:hover,label:hover~&': {

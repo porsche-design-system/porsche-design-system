@@ -51,6 +51,21 @@
       <h1 class="col-span-full my-fluid-lg prose-display-lg text-center">Playground</h1>
       <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-canvas">
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Checkbox</p-heading>
+          <p-checkbox label="Some label" name="some-name"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" loading="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h2" size="medium">Input Date</p-heading>
           <p-input-date label="Some label" name="some-name" value="1931-04-25"></p-input-date>
           <p-input-date label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
@@ -132,20 +147,37 @@
           <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
         </div>
         <div class="grid gap-fluid-sm">
-          <p-heading tag="h2" size="medium">Checkbox</p-heading>
-          <p-checkbox label="Some label" name="some-name"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
+          <p-heading tag="h2" size="medium">Multi Select</p-heading>
+          <p-multi-select label="Some label" name="some-name">
+            <p-multi-select-option value="a">Option A</p-multi-select-option>
+            <p-optgroup label="Some optgroup">
+              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+              <p-multi-select-option value="c">Option C</p-multi-select-option>
+            </p-optgroup>
+          </p-multi-select>
+          <p-multi-select label="Some label" name="some-name" state="success" message="Some message.">
+            <p-multi-select-option value="a">Option A</p-multi-select-option>
+            <p-optgroup label="Some optgroup">
+              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+              <p-multi-select-option value="c">Option C</p-multi-select-option>
+            </p-optgroup>
+          </p-multi-select>
+          <p-multi-select label="Some label" name="some-name" state="error" message="Some message.">
+            <p-multi-select-option value="a">Option A</p-multi-select-option>
+            <p-optgroup label="Some optgroup">
+              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+              <p-multi-select-option value="c">Option C</p-multi-select-option>
+            </p-optgroup>
+          </p-multi-select>
+          <p-multi-select label="Some label" name="some-name" disabled="true">
+            <p-multi-select-option value="a">Option A</p-multi-select-option>
+            <p-optgroup label="Some optgroup">
+              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+              <p-multi-select-option value="c">Option C</p-multi-select-option>
+            </p-optgroup>
+          </p-multi-select>
         </div>
+
         <div class="grid gap-fluid-sm">
           <p-heading tag="h2" size="medium">Tags</p-heading>
           <p-tag color="background-frosted">

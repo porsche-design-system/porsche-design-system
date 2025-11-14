@@ -84,7 +84,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Input Text
 - ✅Input Time
 - ✅Input Url
-- ⌛Multi Select
+- ✅Multi Select
 - ⌛Optgroup
 - ⌛Pin Code
 - ⌛Radio Group
