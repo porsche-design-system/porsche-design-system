@@ -17,6 +17,7 @@ describe('load()', () => {
   beforeEach(() => {
     // @ts-ignore
     delete window.PORSCHE_DESIGN_SYSTEM_CDN;
+    // @ts-ignore
     delete document.porscheDesignSystem;
   });
 
