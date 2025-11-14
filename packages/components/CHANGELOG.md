@@ -82,7 +82,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Input Search
 - ✅Input Tel
 - ✅Input Text
-- ⌛Input Time
+- ✅Input Time
 - ✅Input Url
 - ⌛Multi Select
 - ⌛Optgroup

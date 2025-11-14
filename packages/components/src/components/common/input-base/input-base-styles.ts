@@ -20,7 +20,6 @@ import {
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../../types';
-import { isDisabledOrLoading } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
@@ -107,7 +106,7 @@ export const getFunctionalComponentInputBaseStyles = (
       background: formStateBackgroundColor,
       color: primaryColor,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-      cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'text',
+      cursor: disabled ? 'not-allowed' : 'text',
       ...(readOnly && {
         borderColor: 'transparent',
         background: frostedColor,
