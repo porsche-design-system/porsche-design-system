@@ -1,15 +1,16 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
+  borderWidthThin,
   spacingStaticLarge,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import type { Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
+  getDisabledBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -25,7 +26,7 @@ import { getFunctionalComponentLabelStyles } from '../common/label/label-styles'
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = colors;
+const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -35,7 +36,7 @@ export const getComponentCss = (
   counter: boolean,
   resize: TextareaResize
 ): string => {
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
+  const { formStateBorderColor, formStateBackgroundColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   return getCss({
     '@global': {
@@ -44,54 +45,43 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       textarea: {
-        resize,
+        all: 'unset',
+        gridArea: '1/1',
         display: 'block',
-        width: '100%',
-        height: 'auto',
-        margin: 0,
-        outline: 0,
-        WebkitAppearance: 'none', // iOS safari
-        appearance: 'none',
-        boxSizing: 'border-box',
-        border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+        resize,
+        border: `${borderWidthThin} solid ${formStateBorderColor}`,
         borderRadius: borderRadiusSmall,
-        background: 'transparent',
-        textIndent: 0,
+        background: formStateBackgroundColor,
         color: primaryColor,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-        minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
-        gridArea: '1/1',
-        font: textSmallStyle.font, // to override line-height
+        minWidth: '2ch', // to show at least 2 characters in very narrow containers
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
+        font: textSmallStyle.font,
         padding: counter
           ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
           : `12px ${formElementPaddingHorizontal}`,
-        // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
         '&:focus': {
-          borderColor: primaryColor,
+          borderColor: formStateBorderHoverColor,
         },
-        '&:disabled': {
-          cursor: 'not-allowed',
-          color: disabledColor,
-          borderColor: disabledColor,
-          WebkitTextFillColor: disabledColor,
-        },
-        '&[readonly]': {
-          borderColor: contrastLowColor,
-          background: contrastLowColor,
-        },
+        cursor: isDisabled ? 'not-allowed' : 'text',
+        ...(isReadonly && {
+          borderColor: 'transparent',
+          background: frostedColor,
+          color: contrastMediumColor,
+        }),
+        ...(!isDisabled &&
+          !isReadonly &&
+          hoverMediaQuery({
+            '&:hover,label:hover~&': {
+              borderColor: formStateBorderHoverColor,
+            },
+          })),
       },
-      ...(hoverMediaQuery({
-        // with the media query the selector has higher priority and overrides disabled styles
-        'textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
-          {
-            borderColor: formStateHoverColor || primaryColor,
-          },
-      }) as Styles),
     },
     root: {
       display: 'grid',
