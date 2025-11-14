@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `toggle` event when opening/closing the dropdown
     ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
 
+## [3.31.0] - 2025-11-13
+
 ## [3.31.0-rc.0] - 2025-11-11
 
 ### Added
