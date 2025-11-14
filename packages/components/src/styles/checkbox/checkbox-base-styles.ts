@@ -40,7 +40,6 @@ export const getCheckboxBaseStyles = (
   return {
     all: 'unset',
     display: 'grid', // ensures the pseudo-element can be positioned correctly
-    flexShrink: 0, // prevents the checkbox from shrinking when placed inside a flex container
     width: dimension,
     height: dimension,
     font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
@@ -48,7 +47,6 @@ export const getCheckboxBaseStyles = (
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${borderWidthThin} solid ${formStateBorderColor}`,
     borderRadius: borderRadiusSmall,
-    cursor: 'pointer',
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
     }),

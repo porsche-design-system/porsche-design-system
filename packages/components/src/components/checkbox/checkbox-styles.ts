@@ -5,7 +5,6 @@ import {
   fontSizeTextSmall,
   spacingStaticSmall,
   spacingStaticXSmall,
-  textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
@@ -22,7 +21,7 @@ import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-che
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
-import { getCss, isDisabledOrLoading, supportsChromiumMediaQuery } from '../../utils';
+import { getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
@@ -45,7 +44,6 @@ export const getComponentCss = (
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
-  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the checkbox, whichever is larger.
 
   return getCss({
     '@global': {
@@ -59,19 +57,15 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
-        gridArea: '1/1',
         ...getCheckboxBaseStyles(isDisabled, isLoading, state, compact),
-        '&:checked': getCheckboxCheckedBaseStyles(),
-        '&:indeterminate': getCheckboxIndeterminateBaseStyles(),
+        '&:checked': getCheckboxCheckedBaseStyles(isLoading),
+        '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading),
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
           hoverMediaQuery({
             '&:hover,label:hover~.wrapper>&': {
               borderColor: formStateBorderHoverColor,
             },
-            'label:hover~.wrapper>&': supportsChromiumMediaQuery({
-              transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
-            }),
           })),
       },
     },
@@ -79,30 +73,20 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
-      ...(disabledOrLoading && {
-        cursor: 'not-allowed',
-      }),
     },
     wrapper: {
-      ...textSmallStyle,
-      minWidth: minimumTouchTargetSize,
-      minHeight: minimumTouchTargetSize,
-      justifyContent: 'center',
-      alignItems: 'center',
-      display: 'grid',
-      gridArea: '1/1',
-      alignSelf: 'flex-start', // in case label becomes multiline
-      height,
+      position: 'relative',
+      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
     },
     ...(isLoading && {
       spinner: {
-        position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
-        gridArea: '1/1',
-        placeSelf: 'center',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)',
         width: dimension,
         height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-        pointerEvents: 'none',
       },
     }),
     // .label / .required
@@ -111,7 +95,6 @@ export const getComponentCss = (
       hideLabel,
       {
         gridArea: '1/2',
-        ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
       {
         paddingTop,
@@ -120,7 +103,7 @@ export const getComponentCss = (
     ),
     // .message
     ...getFunctionalComponentStateMessageStyles(state, {
-      gridColumn: '1/3',
+      gridColumn: '1/-1',
     }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),

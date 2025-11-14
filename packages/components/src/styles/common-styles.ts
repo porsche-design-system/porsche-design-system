@@ -105,7 +105,6 @@ export const getFocusBaseStyles = (): JssStyle => {
 export const getDisabledBaseStyles = (): JssStyle => {
   return {
     opacity: alphaDisabled,
-    cursor: 'not-allowed',
   };
 };
 

@@ -26,7 +26,7 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
     option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`),
     checkbox: mergeDeep(
       getCheckboxBaseStyles(isDisabled, false, 'none'),
-      selected ? getCheckboxCheckedBaseStyles() : {}
+      selected ? getCheckboxCheckedBaseStyles(false) : {}
     ),
   });
 };
