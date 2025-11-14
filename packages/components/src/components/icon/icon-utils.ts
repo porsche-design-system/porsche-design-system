@@ -7,7 +7,7 @@ export type IconAriaAttribute = (typeof ICON_ARIA_ATTRIBUTES)[number];
 
 export type IconSize = TextSize;
 
-export const ICON_COLORS = [...TYPOGRAPHY_TEXT_COLORS, 'state-disabled'] as const;
+export const ICON_COLORS = TYPOGRAPHY_TEXT_COLORS;
 export type IconColor = (typeof ICON_COLORS)[number];
 
 export const isUrl = (str: string): boolean => str?.length > 0 && /(\/)/.test(str);

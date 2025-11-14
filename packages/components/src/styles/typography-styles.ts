@@ -12,8 +12,7 @@ export const getTypographyRootJssStyle = (
   ellipsis: boolean
 ): JssStyle => {
   return {
-    margin: 0,
-    padding: 0,
+    all: 'unset',
     ...baseTextStyle,
     color: getThemedTypographyColor(color),
     textAlign: align,

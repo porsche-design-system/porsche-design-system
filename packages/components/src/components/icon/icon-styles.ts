@@ -24,20 +24,18 @@ const {
   errorColor,
   warningColor,
   infoColor,
-  disabledColor,
 } = colors;
 
 const colorMap: Record<IconColor, string> = {
   primary: primaryColor,
-  inherit: 'currentcolor',
-  'contrast-low': contrastLowColor,
-  'contrast-medium': contrastMediumColor,
   'contrast-high': contrastHighColor,
-  'notification-success': successColor,
-  'notification-warning': warningColor,
-  'notification-error': errorColor,
-  'notification-info': infoColor,
-  'state-disabled': disabledColor,
+  'contrast-medium': contrastMediumColor,
+  'contrast-low': contrastLowColor,
+  success: successColor,
+  warning: warningColor,
+  error: errorColor,
+  info: infoColor,
+  inherit: 'currentcolor',
 };
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {

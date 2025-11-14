@@ -26,7 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Carousel
 - ⌛Divider
 - ⌛Flag
-- ⌛Icon
+- ✅Icon
 - ⌛Scroller
 - ⌛Stepper Horizontal
 - ⌛Table
@@ -67,9 +67,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Typography:
 
-- ⌛Display
-- ⌛Heading
-- ⌛Text
+- ✅Display
+- ✅Heading
+- ✅Text
 
 #### Form:
 
@@ -92,6 +92,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Select
 - ✅Switch
 - ✅Textarea
+
+### Changed
+
+- `Heading`: Uses a regular instead of semi-bold font-weight
+- `Text` and `Icon`:
+  - value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop `color`
+    (use `'success', 'warning', 'error', 'info'` instead)
+- `Icon`
+  - value `'state-disabled'` of prop color is removed
 
 ### Removed (deprecated in v3 already)
 

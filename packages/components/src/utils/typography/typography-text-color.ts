@@ -1,12 +1,12 @@
 export const TYPOGRAPHY_TEXT_COLORS = [
   'primary',
-  'contrast-low',
-  'contrast-medium',
   'contrast-high',
-  'notification-success',
-  'notification-warning',
-  'notification-error',
-  'notification-info',
+  'contrast-medium',
+  'contrast-low',
+  'success',
+  'warning',
+  'error',
+  'info',
   'inherit',
 ] as const;
 export type TypographyTextColor = (typeof TYPOGRAPHY_TEXT_COLORS)[number];

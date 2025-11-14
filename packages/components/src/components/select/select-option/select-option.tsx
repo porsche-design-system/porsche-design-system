@@ -1,5 +1,4 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import { disabled } from 'happy-dom/lib/PropertySymbol';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
