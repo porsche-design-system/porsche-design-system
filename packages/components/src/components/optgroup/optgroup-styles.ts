@@ -1,5 +1,11 @@
 import { fontWeightSemiBold, spacingStaticSmall, textXSmallStyle } from '@porsche-design-system/styles';
-import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  colors,
+  getDisabledBaseStyles,
+  hostHiddenStyles,
+} from '../../styles';
 import { getCss } from '../../utils';
 
 export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
@@ -8,7 +14,7 @@ const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
 const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
 const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
 
-const { primaryColor, disabledColor } = colors;
+const { primaryColor } = colors;
 
 export const getComponentCss = (isDisabled: boolean): string => {
   return getCss({
@@ -16,6 +22,7 @@ export const getComponentCss = (isDisabled: boolean): string => {
       ':host': addImportantToEachRule({
         ...colorSchemeStyles,
         ...hostHiddenStyles,
+        ...(isDisabled && getDisabledBaseStyles()),
       }),
       '::slotted(*)': {
         '--p-internal-select-option-padding-left': '28px',
@@ -29,7 +36,7 @@ export const getComponentCss = (isDisabled: boolean): string => {
       '[role="presentation"]': {
         padding,
         font: textXSmallStyle.font.replace(' 400 ', ` ${fontWeightSemiBold} `),
-        color: isDisabled ? disabledColor : primaryColor,
+        color: primaryColor,
       },
     },
   });

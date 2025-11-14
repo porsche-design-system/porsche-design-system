@@ -42,12 +42,12 @@ export const getComponentCss = (
       ...getPopoverKeyframesStyles,
       ':host': {
         display: 'block',
-        ...(isDisabled && getDisabledBaseStyles()),
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
           [`${cssVarInternalMultiSelectOptionScaling}`]: scalingVar,
           [`${cssVarInternalOptgroupScaling}`]: scalingVar,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
