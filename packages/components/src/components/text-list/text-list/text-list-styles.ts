@@ -1,6 +1,4 @@
-import { type TextListType, isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
-import type { Theme } from '../../../types';
-import { getCss } from '../../../utils';
+import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -8,7 +6,9 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import type { Theme } from '../../../types';
+import { getCss } from '../../../utils';
+import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
 export const cssVariablePaddingTop = '--p-internal-text-list-padding-top';
 export const cssVariablePaddingBottom = '--p-internal-text-list-padding-bottom';

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for size: "medium" 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium" 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -14,12 +14,12 @@ exports[`getComponentCss() should return correct css for size: "medium" 1`] = `
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: "small" 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -33,12 +33,12 @@ exports[`getComponentCss() should return correct css for size: "small" 1`] = `
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-size: 1rem;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -52,7 +52,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   font-size: 1rem;
 }
 @media(min-width:480px) {

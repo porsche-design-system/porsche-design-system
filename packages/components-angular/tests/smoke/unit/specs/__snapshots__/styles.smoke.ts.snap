@@ -72,7 +72,7 @@ exports[`style package content > should match content 1`] = `
   },
   "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "fontHyphenationStyle": {
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "fontLineHeight": "calc(6px + 2.125ex)",
@@ -341,32 +341,32 @@ exports[`style package content > should match content 1`] = `
   "spacingStaticXXLarge": "80px",
   "textLargeStyle": {
     "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textMediumStyle": {
     "font": "normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textSmallStyle": {
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textXLargeStyle": {
     "font": "normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textXSmallStyle": {
     "font": "normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textXXSmallStyle": {
     "font": "normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "theme": {
@@ -606,7 +606,7 @@ exports[`style package content > should match vanilla-extract content 1`] = `
   },
   "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
   "fontHyphenationStyle": {
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "fontLineHeight": "calc(6px + 2.125ex)",
@@ -883,32 +883,32 @@ exports[`style package content > should match vanilla-extract content 1`] = `
   "spacingStaticXXLarge": "80px",
   "textLargeStyle": {
     "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textMediumStyle": {
     "font": "normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textSmallStyle": {
     "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textXLargeStyle": {
     "font": "normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textXSmallStyle": {
     "font": "normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "textXXSmallStyle": {
     "font": "normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
-    "hyphens": "auto",
+    "hyphens": "var(--p-hyphens, auto)",
     "overflowWrap": "break-word",
   },
   "theme": {

@@ -1,11 +1,11 @@
-import { expect } from '@jest/globals';
+import { vi } from 'vitest';
 import { RadioGroup } from './radio-group';
 import type { RadioGroupOption } from './radio-group-utils';
 import * as radioGroupUtils from './radio-group-utils';
 
 class MockElementInternals {
-  setValidity = jest.fn();
-  setFormValue = jest.fn();
+  setValidity = vi.fn();
+  setFormValue = vi.fn();
 }
 
 const initComponent = (): RadioGroup => {
@@ -47,7 +47,7 @@ describe('componentWillLoad', () => {
 
   it('should call updateOptions() and updateRadioGroupOptions() with correct parameters', () => {
     const component = initComponent();
-    const updateRadioGroupOptionsSpy = jest.spyOn(radioGroupUtils, 'updateRadioGroupOptions');
+    const updateRadioGroupOptionsSpy = vi.spyOn(radioGroupUtils, 'updateRadioGroupOptions');
 
     component.componentWillLoad();
     expect(updateRadioGroupOptionsSpy).toHaveBeenCalledWith(component['radioGroupOptions'], component['value']);
@@ -55,16 +55,18 @@ describe('componentWillLoad', () => {
 });
 
 describe('componentDidLoad', () => {
-  const component = initComponent();
-  component.value = 'test';
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-  component.componentDidLoad();
-  expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
+  it('should call setFormValue with correct value', () => {
+    const component = initComponent();
+    component.value = 'test';
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.componentDidLoad();
+    expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
+  });
 });
 
 describe('render', () => {
   it('should call syncRadioGroupChildrenProps() with correct parameters', () => {
-    const spy = jest.spyOn(radioGroupUtils, 'syncRadioGroupChildrenProps');
+    const spy = vi.spyOn(radioGroupUtils, 'syncRadioGroupChildrenProps');
     const component = initComponent();
     component.render();
     expect(spy).toHaveBeenCalledWith(
@@ -79,27 +81,33 @@ describe('render', () => {
 });
 
 describe('formResetCallback', () => {
-  const component = initComponent();
-  const defaultValue = 'default-value';
-  component['defaultValue'] = defaultValue;
-  component.value = 'test';
-  component.formResetCallback();
-  expect(component.value).toBe(defaultValue);
+  it('should reset value to defaultValue', () => {
+    const component = initComponent();
+    const defaultValue = 'default-value';
+    component['defaultValue'] = defaultValue;
+    component.value = 'test';
+    component.formResetCallback();
+    expect(component.value).toBe(defaultValue);
+  });
 });
 
 describe('formDisabledCallback', () => {
-  const component = initComponent();
-  component.disabled = false;
-  component.formDisabledCallback(true);
-  expect(component.disabled).toBe(true);
+  it('should set disabled to true when called with true', () => {
+    const component = initComponent();
+    component.disabled = false;
+    component.formDisabledCallback(true);
+    expect(component.disabled).toBe(true);
+  });
 });
 
 describe('formStateRestoreCallback', () => {
-  const component = initComponent();
-  component.value = 'test';
-  const restoredValue = 'restored-value';
-  component.formStateRestoreCallback(restoredValue);
-  expect(component.value).toBe(restoredValue);
+  it('should restore value', () => {
+    const component = initComponent();
+    component.value = 'test';
+    const restoredValue = 'restored-value';
+    component.formStateRestoreCallback(restoredValue);
+    expect(component.value).toBe(restoredValue);
+  });
 });
 
 describe('updateTabStops', () => {
@@ -110,7 +118,7 @@ describe('updateTabStops', () => {
     input.checked = checked;
 
     const shadowRoot = {
-      querySelector: jest.fn().mockImplementation((sel: string) => {
+      querySelector: vi.fn().mockImplementation((sel: string) => {
         if (sel === 'input[type="radio"]') return input;
         return null;
       }),
@@ -132,8 +140,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b', { checked: true });
     const opt3 = createOption('c', { checked: false });
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(1);
-    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(0);
+    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(1);
+    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(0);
 
     (component as any).updateTabStops();
 
@@ -149,8 +157,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
-    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
+    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
+    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
 
     (component as any).updateTabStops();
 
@@ -166,8 +174,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('y', { disabled: true });
     const opt3 = createOption('z', { disabled: true });
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(-1);
-    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
+    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(-1);
+    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
 
     (component as any).updateTabStops();
 
@@ -189,8 +197,8 @@ describe('updateTabStops', () => {
     const opt2 = createOption('b');
     const opt3 = createOption('c');
     (component as any).radioGroupOptions = [opt1, opt2, opt3];
-    jest.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
-    jest.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
+    vi.spyOn(radioGroupUtils, 'getFirstEnabledOptionIndex').mockReturnValue(1);
+    vi.spyOn(radioGroupUtils, 'getCheckedOptionIndex').mockReturnValue(-1);
 
     (component as any).updateTabStops();
 

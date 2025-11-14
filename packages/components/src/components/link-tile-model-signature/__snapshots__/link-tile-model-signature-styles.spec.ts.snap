@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for aspectRatio: "1:1", weight: "regular", linkDirection: "column" and hasDescription: false 1`] = `
+exports[`getComponentCss() > should return correct css for aspectRatio: "1:1", weight: "regular", linkDirection: "column" and hasDescription: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -120,7 +120,7 @@ h1,h2,h3,h4,h5,h6 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "3:4", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
+exports[`getComponentCss() > should return correct css for aspectRatio: "3:4", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -249,7 +249,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "4:3", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
+exports[`getComponentCss() > should return correct css for aspectRatio: "4:3", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -378,7 +378,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "9:16", weight: "semi-bold", linkDirection: "row" and hasDescription: false 1`] = `
+exports[`getComponentCss() > should return correct css for aspectRatio: "9:16", weight: "semi-bold", linkDirection: "row" and hasDescription: false 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -498,7 +498,7 @@ h1,h2,h3,h4,h5,h6 {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: "16:9", weight: "regular", linkDirection: "column" and hasDescription: true 1`] = `
+exports[`getComponentCss() > should return correct css for aspectRatio: "16:9", weight: "regular", linkDirection: "column" and hasDescription: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;
@@ -627,7 +627,7 @@ p {
 "
 `;
 
-exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, linkDirection: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} and hasDescription: true 1`] = `
+exports[`getComponentCss() > should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, linkDirection: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} and hasDescription: true 1`] = `
 ":host {
   display: flex;
   align-items: stretch;

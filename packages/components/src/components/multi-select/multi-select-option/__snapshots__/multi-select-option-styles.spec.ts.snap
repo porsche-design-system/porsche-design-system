@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -21,7 +21,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #AFB0B3;
   cursor: pointer;
   text-align: start;
@@ -78,7 +78,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -99,7 +99,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #AFB0B3;
   cursor: pointer;
   text-align: start;
@@ -159,7 +159,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -180,7 +180,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #AFB0B3;
   cursor: pointer;
   text-align: start;
@@ -237,7 +237,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -258,7 +258,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #AFB0B3;
   cursor: pointer;
   text-align: start;
@@ -318,7 +318,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -339,7 +339,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #535457;
   cursor: pointer;
   text-align: start;
@@ -396,7 +396,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -417,7 +417,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #535457;
   cursor: pointer;
   text-align: start;
@@ -477,7 +477,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -498,7 +498,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #535457;
   cursor: pointer;
   text-align: start;
@@ -555,7 +555,7 @@ slot {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
+exports[`getComponentCss() > should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
@@ -576,7 +576,7 @@ slot {
   min-height: calc(6px + 2.125ex);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #535457;
   cursor: pointer;
   text-align: start;

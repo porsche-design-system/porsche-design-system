@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getHighContrastColors() should return correct high contrast mode scheme colors 1`] = `
+exports[`getHighContrastColors() > should return correct high contrast mode scheme colors 1`] = `
 {
   "canvasColor": "Canvas",
   "canvasTextColor": "CanvasText",
@@ -9,7 +9,7 @@ exports[`getHighContrastColors() should return correct high contrast mode scheme
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
+exports[`getThemedColors() > should return correct colors for theme: dark 1`] = `
 {
   "activeColor": "rgba(126, 127, 130, 0.20)",
   "backgroundColor": "#0E0E12",
@@ -52,7 +52,7 @@ exports[`getThemedColors() should return correct colors for theme: dark 1`] = `
 }
 `;
 
-exports[`getThemedColors() should return correct colors for theme: light 1`] = `
+exports[`getThemedColors() > should return correct colors for theme: light 1`] = `
 {
   "activeColor": "rgba(148, 149, 152, 0.20)",
   "backgroundColor": "#FFF",
@@ -95,7 +95,7 @@ exports[`getThemedColors() should return correct colors for theme: light 1`] = `
 }
 `;
 
-exports[`getThemedColors() should return correct merged high contrast mode scheme colors for theme: dark 1`] = `
+exports[`getThemedColors() > should return correct merged high contrast mode scheme colors for theme: dark 1`] = `
 {
   "activeColor": "rgba(126, 127, 130, 0.20)",
   "backgroundColor": "#0E0E12",
@@ -138,7 +138,7 @@ exports[`getThemedColors() should return correct merged high contrast mode schem
 }
 `;
 
-exports[`getThemedColors() should return correct merged high contrast mode scheme colors for theme: light 1`] = `
+exports[`getThemedColors() > should return correct merged high contrast mode scheme colors for theme: light 1`] = `
 {
   "activeColor": "rgba(148, 149, 152, 0.20)",
   "backgroundColor": "#FFF",

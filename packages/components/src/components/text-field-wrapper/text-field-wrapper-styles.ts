@@ -23,9 +23,9 @@ import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
-  type TextFieldWrapperUnitPosition,
   isType,
   showCustomCalendarOrTimeIndicator,
+  type TextFieldWrapperUnitPosition,
 } from './text-field-wrapper-utils';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
@@ -33,6 +33,10 @@ export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding
 
 export const cssVarInternalTextFieldScaling = '--p-internal-text-field-scaling';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   isDisabled: boolean,
   isReadonly: boolean,

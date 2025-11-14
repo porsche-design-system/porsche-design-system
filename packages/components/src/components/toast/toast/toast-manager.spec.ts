@@ -1,8 +1,9 @@
-import { type ToastManager, ToastManagerClass } from './toast-manager';
 import * as stencilCore from '@stencil/core';
+import { vi } from 'vitest';
+import { type ToastManager, ToastManagerClass } from './toast-manager';
 
 let toastManager: ToastManager;
-const dismissCallbackFunction = jest.fn();
+const dismissCallbackFunction = vi.fn();
 
 beforeEach(() => {
   toastManager = new ToastManagerClass();
@@ -18,7 +19,7 @@ describe('register()', () => {
 
     expect(() => {
       toastManager.register(toastElement, dismissCallbackFunction);
-    }).toThrowErrorMatchingInlineSnapshot(`"[Porsche Design System] p-toast was rendered multiple times."`);
+    }).toThrowErrorMatchingInlineSnapshot(`[Error: [Porsche Design System] p-toast was rendered multiple times.]`);
   });
 
   it('should set private members', () => {
@@ -38,13 +39,15 @@ describe('addMessage()', () => {
     toastManager.unregister();
     expect(() => {
       toastManager.addMessage({ text: 'Some Message' });
-    }).toThrowErrorMatchingInlineSnapshot(`"[Porsche Design System] missing p-toast element."`);
+    }).toThrowErrorMatchingInlineSnapshot(`[Error: [Porsche Design System] missing p-toast element.]`);
   });
 
   it('should throw if no text was provided', () => {
     expect(() => {
       toastManager.addMessage({ text: '' });
-    }).toThrowErrorMatchingInlineSnapshot(`"[Porsche Design System] p-toast empty text provided to addMessage()."`);
+    }).toThrowErrorMatchingInlineSnapshot(
+      `[Error: [Porsche Design System] p-toast empty text provided to addMessage().]`
+    );
   });
 
   it('should set message state to info if none was provided', () => {
@@ -63,7 +66,7 @@ describe('addMessage()', () => {
   });
 
   it('should force update if first element was added to messages array', () => {
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
     toastManager.addMessage({ text: 'Some Message One' });
     expect(spy).toHaveBeenCalledWith(toastElement);
 
@@ -89,10 +92,15 @@ describe('addMessage()', () => {
 
 describe('dismissToastItem()', () => {
   const toastElement = document.createElement('p-toast');
-  const dismissCallbackFunction = jest.fn();
+  const dismissCallbackFunction = vi.fn();
 
   beforeEach(() => {
     toastManager.register(toastElement, dismissCallbackFunction);
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   it('should remove timeout', () => {
@@ -115,8 +123,11 @@ describe('dismissToastItem()', () => {
 
   it('should trigger force update', () => {
     toastManager.addMessage({ text: 'Some Message' });
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
+    const spy = vi.spyOn(stencilCore, 'forceUpdate');
+
     toastManager.dismissToastItem();
+
+    vi.runAllTimers();
 
     expect(spy).toHaveBeenCalledWith(toastElement);
   });
@@ -144,7 +155,7 @@ describe('getToast()', () => {
   });
 
   it('should call startTimeout()', () => {
-    const spy = jest.spyOn(toastManager, 'startTimeout');
+    const spy = vi.spyOn(toastManager, 'startTimeout');
     toastManager.getToast();
 
     expect(spy).toHaveBeenCalledTimes(1);

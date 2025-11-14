@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"underline":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"underline":true,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -61,7 +61,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: underline;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: space-between;
   align-items: center;
@@ -231,7 +231,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -255,7 +255,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -405,7 +405,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -429,7 +429,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -504,7 +504,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":true,"theme":"dark"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":true,"theme":"dark"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -528,7 +528,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: underline;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -603,7 +603,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"left","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"left","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -627,7 +627,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -702,7 +702,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"right","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -726,7 +726,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -801,7 +801,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -825,7 +825,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -900,7 +900,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"theme":"light"} 2`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":true,"alignLabel":"end","underline":false,"theme":"light"} 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -924,7 +924,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -999,7 +999,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1023,7 +1023,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1090,7 +1090,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 2`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 2`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1114,7 +1114,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1181,7 +1181,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"theme":"dark"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1204,7 +1204,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: space-between;
   align-items: center;
@@ -1282,7 +1282,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":false,"stretch":true,"size":"x-large","hideLabel":false,"alignLabel":"start","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1305,7 +1305,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: space-between;
   align-items: center;
@@ -1383,7 +1383,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-right","iconSource":"","active":true,"isLoading":false,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1407,7 +1407,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1477,7 +1477,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"inherit","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1501,7 +1501,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1559,7 +1559,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1583,7 +1583,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1641,7 +1641,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":false,"isDisabledOrLoading":false,"stretch":false,"size":{"base":"x-small","xs":"small","s":"medium","m":"large","l":"x-large","xl":"inherit"},"hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1665,7 +1665,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1753,7 +1753,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 "
 `;
 
-exports[`getComponentCss() should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":true,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"icon":"none","iconSource":"","active":false,"isLoading":true,"isDisabledOrLoading":true,"stretch":false,"size":"small","hideLabel":false,"alignLabel":"end","underline":false,"theme":"light"} 1`] = `
 ":host {
   transform: translate3d(0,0,0) !important;
   outline: 0 !important;
@@ -1777,7 +1777,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;

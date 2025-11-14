@@ -1,22 +1,23 @@
 // global alternative to using the following in every component test
 //
-// jest.mock('@stencil/core', () => ({
-//   Component: jest.fn(),
-//   Element: jest.fn(),
-//   State: jest.fn(),
-//   Prop: jest.fn(),
+// vi.mock('@stencil/core', () => ({
+//   Component: vi.fn(),
+//   Element: vi.fn(),
+//   State: vi.fn(),
+//   Prop: vi.fn(),
 // }));
+import { vi } from 'vitest';
 
-export const Component = jest.fn();
-export const Element = jest.fn();
-export const Event = jest.fn();
-export const Listen = jest.fn();
-export const Prop = jest.fn();
-export const Method = jest.fn();
-export const State = jest.fn();
-export const Watch = jest.fn();
-export const h = jest.fn();
+export const Component = vi.fn();
+export const Element = vi.fn();
+export const Event = vi.fn();
+export const Listen = vi.fn();
+export const Prop = vi.fn();
+export const Method = vi.fn();
+export const State = vi.fn();
+export const Watch = vi.fn();
+export const h = vi.fn();
 
-export const forceUpdate = jest.fn();
+export const forceUpdate = vi.fn();
 
-export const AttachInternals = jest.fn();
+export const AttachInternals = vi.fn();
