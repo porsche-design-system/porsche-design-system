@@ -5,6 +5,7 @@ import {
   Element,
   Event,
   type EventEmitter,
+  Fragment,
   h,
   type JSX,
   Listen,
@@ -79,6 +80,7 @@ const propTypes: PropTypes<typeof Select> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected option display in the button area. If not provided, the component will render the selected option as it is." }
  * @slot {"name": "", "description": "Default slot for the `p-select-option` tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
@@ -301,6 +303,7 @@ export class Select {
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
+    const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
@@ -330,10 +333,16 @@ export class Select {
           onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
-          {this.selectedOption?.querySelector?.('img') && (
-            <img src={this.selectedOption.querySelector('img').src} alt="" />
+          {hasCustomSelectedSlot ? (
+            <slot name="selected"></slot>
+          ) : (
+            <Fragment>
+              {this.selectedOption?.querySelector?.('img') && (
+                <img src={this.selectedOption.querySelector('img').src} alt="" />
+              )}
+              <span>{this.selectedOption?.textContent ?? ''}</span>
+            </Fragment>
           )}
-          <span>{this.selectedOption?.textContent ?? ''}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
