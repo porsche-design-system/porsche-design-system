@@ -1,4 +1,5 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { disabled } from 'happy-dom/lib/PropertySymbol';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -40,7 +41,7 @@ export class SelectOption {
     validateProps(this, propTypes);
     const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.disabled);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
