@@ -1,3 +1,5 @@
+import { MockInstance } from 'vitest';
+import * as reactUtils from '../../../src/utils/convertToReact';
 import {
   convertToReact,
   transformBooleanDigitAndUndefinedValues,
@@ -10,7 +12,6 @@ import {
   transformStyleAttribute,
   transformToSelfClosingTags,
 } from '../../../src/utils/convertToReact';
-import * as reactUtils from '../../../src/utils/convertToReact';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
@@ -270,9 +271,9 @@ describe('transformStyleAttribute()', () => {
 
 // TODO: Make this work again
 describe.skip('convertToReact()', () => {
-  afterEach(() => jest.clearAllMocks());
+  afterEach(() => vi.clearAllMocks());
 
-  let previousSpy: jest.SpyInstance;
+  let previousSpy: MockInstance;
   const transformFunctions: (keyof typeof reactUtils)[] = [
     'transformObjectValues',
     'transformStandardAttributes',
@@ -286,11 +287,11 @@ describe.skip('convertToReact()', () => {
   ];
 
   it.each(transformFunctions)('should call %s()', (fn) => {
-    const spy = jest.spyOn(reactUtils, fn as any);
+    const spy = vi.spyOn(reactUtils, fn as any);
 
     const i = transformFunctions.indexOf(fn);
     if (i) {
-      previousSpy = jest.spyOn(reactUtils, transformFunctions[i - 1] as any);
+      previousSpy = vi.spyOn(reactUtils, transformFunctions[i - 1] as any);
     }
 
     convertToReact(markup);
