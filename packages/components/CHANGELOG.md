@@ -30,7 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Scroller
 - ⌛Stepper Horizontal
 - ⌛Table
-- ⌛Tag
+- ✅Tag
 - ⌛Tag Dismissible
 - ⌛Text List
 
@@ -95,32 +95,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
+  class, e.g. `<p-input-text name="some-name"></p-input-text>` inside `<div class="dark">…</div>` will render the dark
+  theme.
+- Remove **slotted** Anchor Styles entirely from all components.
 - `Heading`: Uses a regular instead of semi-bold font-weight
 - `Text` and `Icon`:
   - value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop `color`
     (use `'success', 'warning', 'error', 'info'` instead)
-- `Icon`
+- `Icon`:
+  - when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
+    `p-icon { color: deeppink; }`) can be applied directly
   - value `'state-disabled'` of prop color is removed
-
-### Removed (deprecated in v3 already)
-
-- Components:
-  - Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
-    class
-  - Remove slotted Anchor Styles entirely from all components. Use `Link Pure` instead or define an anchor style
+- `Tag`:
+  - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
+    `error`, `info`
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
   only
-- Tailwind CSS:
-  - e.g. `border-contrast-low` => `border-contrast-20`
-  - e.g. `border-contrast-medium` => `border-contrast-50`
-  - e.g. `border-contrast-high` => `border-contrast-80`
-  - e.g. `bg-base` => `bg-canvas`
-  - e.g. `bg-shading` => `bg-scrim`
-  - e.g. `--color-hover` => ?
-  - e.g. `--color-active` => ?
-  - e.g. `--color-disabled` => `bg-contrast-40`, `border-contrast-40` or `text-contrast-40`
+
+### Removed (deprecated in v3 already)
 
 - `Accordion`:
   - `tag` (use `heading-tag` instead)

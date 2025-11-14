@@ -8,11 +8,11 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
-import { TAG_COLORS, type TagColor, type TagIcon } from './tag-utils';
+import { TAG_VARIANTS, type TagIcon, type TagVariant } from './tag-utils';
 
 const propTypes: PropTypes<typeof Tag> = {
-  color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
-  icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
+  variant: AllowedTypes.oneOf<TagVariant>(TAG_VARIANTS),
+  icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   compact: AllowedTypes.boolean,
 };
@@ -27,11 +27,11 @@ const propTypes: PropTypes<typeof Tag> = {
 export class Tag {
   @Element() public host!: HTMLElement;
 
-  /** Background color variations depending on theme property. */
-  @Prop() public color?: TagColor = 'background-surface';
+  /** Background color variations. */
+  @Prop() public variant?: TagVariant = 'primary';
 
   /** The icon shown. */
-  @Prop() public icon?: TagIcon; // TODO: shouldn't the default be 'none' to be in sync with e.g. button, link, button-pure and link-pure?
+  @Prop() public icon?: TagIcon = 'none';
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
@@ -45,7 +45,7 @@ export class Tag {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.color,
+      this.variant,
       this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       hasIcon
@@ -59,7 +59,7 @@ export class Tag {
             class="icon"
             name={this.icon}
             source={this.iconSource}
-            color="primary"
+            color="inherit"
             size="x-small"
             aria-hidden="true"
           />

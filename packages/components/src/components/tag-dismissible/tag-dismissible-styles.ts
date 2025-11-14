@@ -11,14 +11,10 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getCss } from '../../utils';
-import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
-import type { TagDismissibleColor } from './tag-dismissible-utils';
 
 const { primaryColor, frostedColor, contrastHighColor } = colors;
 
-export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): string => {
-  const backgroundColor = getThemedBackgroundColor(color);
-
+export const getComponentCss = (hasLabel: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -42,7 +38,7 @@ export const getComponentCss = (color: TagDismissibleColor, hasLabel: boolean): 
         borderRadius: borderRadiusSmall,
         border: 0,
         cursor: 'pointer',
-        background: backgroundColor,
+        background: frostedColor,
         color: primaryColor,
         textAlign: 'start',
         ...textSmallStyle,

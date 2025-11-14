@@ -7,37 +7,84 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle,
+  colors,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss, isHighContrastMode } from '../../utils';
-import { getThemedBackgroundColor, getThemedBackgroundHoverColor2, getThemedTextColor } from './tag-shared-utils';
-import type { TagColor } from './tag-utils';
+import { getCss } from '../../utils';
+import type { TagVariant } from './tag-utils';
+
+const {
+  canvasColor,
+  frostedColor,
+  frostedSoftColor,
+  primaryColor,
+  infoFrostedColor,
+  contrastHighColor,
+  infoFrostedSoftColor,
+  successFrostedColor,
+  successFrostedSoftColor,
+  errorFrostedColor,
+  errorFrostedSoftColor,
+  warningFrostedColor,
+  warningFrostedSoftColor,
+  infoColor,
+  successColor,
+  warningColor,
+  errorColor,
+} = colors;
+
+const colorTextMap: Record<TagVariant, string> = {
+  primary: canvasColor,
+  secondary: primaryColor,
+  info: infoColor,
+  success: successColor,
+  warning: warningColor,
+  error: errorColor,
+};
+
+const colorBackgroundMap: Record<TagVariant, string> = {
+  primary: primaryColor,
+  secondary: frostedColor,
+  info: infoFrostedColor,
+  success: successFrostedColor,
+  warning: warningFrostedColor,
+  error: errorFrostedColor,
+};
+
+const colorBackgroundHoverMap: Record<TagVariant, string> = {
+  primary: contrastHighColor,
+  secondary: frostedSoftColor,
+  info: infoFrostedSoftColor,
+  success: successFrostedSoftColor,
+  warning: warningFrostedSoftColor,
+  error: errorFrostedSoftColor,
+};
 
 export const getColors = (
-  tagColor: TagColor
+  variant: TagVariant
 ): {
   textColor: string;
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
   return {
-    textColor: getThemedTextColor(tagColor),
-    backgroundColor: getThemedBackgroundColor(tagColor),
-    backgroundHoverColor: getThemedBackgroundHoverColor2(tagColor),
+    textColor: colorTextMap[variant],
+    backgroundColor: colorBackgroundMap[variant],
+    backgroundHoverColor: colorBackgroundHoverMap[variant],
   };
 };
 
 export const getComponentCss = (
-  tagColor: TagColor,
+  variant: TagVariant,
   compact: boolean,
   isFocusable: boolean,
   hasIcon: boolean
 ): string => {
-  const { textColor, backgroundColor, backgroundHoverColor } = getColors(tagColor);
+  const { textColor, backgroundColor, backgroundHoverColor } = getColors(variant);
 
   return getCss({
     '@global': {
@@ -81,10 +128,9 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           inset: 0,
-          borderRadius: '4px',
+          borderRadius: borderRadiusSmall,
         },
-        ...getFocusJssStyle({ slotted: 'a', pseudo: true }),
-        ...getFocusJssStyle({ slotted: 'button', pseudo: true }),
+        '&(a:focus-visible)::before,&(button:focus-visible)::before': getFocusBaseStyles(),
         '&(br)': {
           display: 'none',
         },
@@ -93,10 +139,6 @@ export const getComponentCss = (
     ...(hasIcon && {
       icon: {
         marginInlineStart: '-2px', // compensate white space of svg icon and optimize visual alignment
-        ...(!isHighContrastMode &&
-          tagColor === 'primary' && {
-            filter: 'invert(1)',
-          }),
       },
     }),
   });

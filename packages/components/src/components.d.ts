@@ -57,7 +57,7 @@ import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/s
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 import { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
-import { TagColor, TagIcon } from "./components/tag/tag-utils";
+import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
@@ -117,7 +117,7 @@ export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/s
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 export { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 export { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
-export { TagColor, TagIcon } from "./components/tag/tag-utils";
+export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
@@ -2242,10 +2242,6 @@ export namespace Components {
     }
     interface PTag {
         /**
-          * Background color variations depending on theme property.
-         */
-        "color"?: TagColor;
-        /**
           * Displays as compact version.
          */
         "compact"?: boolean;
@@ -2257,6 +2253,10 @@ export namespace Components {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
+        /**
+          * Background color variations.
+         */
+        "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**
@@ -5891,10 +5891,6 @@ declare namespace LocalJSX {
     }
     interface PTag {
         /**
-          * Background color variations depending on theme property.
-         */
-        "color"?: TagColor;
-        /**
           * Displays as compact version.
          */
         "compact"?: boolean;
@@ -5906,6 +5902,10 @@ declare namespace LocalJSX {
           * A URL path to a custom icon.
          */
         "iconSource"?: string;
+        /**
+          * Background color variations.
+         */
+        "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**

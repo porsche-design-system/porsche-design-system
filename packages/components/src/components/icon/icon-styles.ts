@@ -13,8 +13,6 @@ import type { IconName, TextSize } from '../../types';
 import { getCss } from '../../utils';
 import { buildIconUrl, type IconColor } from './icon-utils';
 
-const cssVarColor = '--p-icon-color';
-
 const {
   primaryColor,
   contrastLowColor,
@@ -35,7 +33,7 @@ const colorMap: Record<IconColor, string> = {
   warning: warningColor,
   error: errorColor,
   info: infoColor,
-  inherit: 'currentcolor',
+  inherit: 'inherit',
 };
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
@@ -88,7 +86,8 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
         ...addImportantToEachRule({
           mask: `url(${buildIconUrl(source || name)}) no-repeat left top / contain`,
           aspectRatio: '1/1',
-          background: `var(${cssVarColor}, ${colorMap[color]})`,
+          color: colorMap[color],
+          background: 'currentcolor', // necessary for proper color inheritance
           ...(isFlippableIcon(name, source) && {
             '&:dir(rtl)': {
               transform: 'scaleX(-1)',
