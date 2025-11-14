@@ -102,11 +102,13 @@ export class Switch {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
+    const id = 'x';
+
     return (
       <Host>
         <button
           {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-          id="switch"
+          id={id}
           type="button"
           role="switch"
           aria-labelledby="label" // only relevant for axe-core because of https://github.com/dequelabs/axe-core/issues/1393
@@ -118,7 +120,7 @@ export class Switch {
             {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
           </span>
         </button>
-        <label id="label" htmlFor="switch">
+        <label id="label" htmlFor={id}>
           <slot />
         </label>
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />

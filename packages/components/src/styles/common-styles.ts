@@ -95,17 +95,17 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
 
 const { focusColor } = colors;
 
-export const getFocusBaseStyles = (): JssStyle => {
+export const getFocusBaseStyles = () => {
   return {
     outline: `${borderWidthBase} solid ${focusColor}`,
     outlineOffset: '2px',
-  };
+  } as const;
 };
 
-export const getDisabledBaseStyles = (): JssStyle => {
+export const getDisabledBaseStyles = () => {
   return {
     opacity: alphaDisabled,
-  };
+  } as const;
 };
 
 type Options = {

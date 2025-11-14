@@ -241,6 +241,14 @@
           </p-select>
         </div>
         <div class="grid gap-fluid-sm">
+          <p-switch>Some label</p-switch>
+          <p-switch checked="true">Some label</p-switch>
+          <p-switch loading="true">Some label</p-switch>
+          <p-switch checked="true" loading="true">Some label</p-switch>
+          <p-switch disabled="true">Some label</p-switch>
+          <p-switch checked="true" disabled="true">Some label</p-switch>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h2" size="medium">Textarea</p-heading>
           <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100"></p-textarea>
           <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
