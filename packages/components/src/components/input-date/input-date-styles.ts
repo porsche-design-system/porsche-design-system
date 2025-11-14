@@ -25,8 +25,6 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
       '&::-webkit-calendar-picker-indicator': {
         display: 'none',
       },

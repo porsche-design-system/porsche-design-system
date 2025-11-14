@@ -51,6 +51,15 @@
       <h1 class="col-span-full my-fluid-lg prose-display-lg text-center">Playground</h1>
       <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-canvas">
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h2" size="medium">Input Date</p-heading>
+          <p-input-date label="Some label" name="some-name" value="1931-04-25"></p-input-date>
+          <p-input-date label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
+          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
+          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
+          <p-input-date label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
+          <p-input-date label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h2" size="medium">Input E-Mail</p-heading>
           <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
           <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>

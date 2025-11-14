@@ -26,6 +26,7 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
+      MozAppearance: 'textfield',
       '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
         display: 'none',
       },
