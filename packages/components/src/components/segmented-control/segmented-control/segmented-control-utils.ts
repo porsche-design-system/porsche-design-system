@@ -2,6 +2,7 @@ import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
 import { forceUpdate } from '@stencil/core';
 import type { Theme } from '../../../types';
 import { hasDocument } from '../../../utils';
+import type { FormState } from '../../../utils/form/form-state';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
   BUTTON_FONT,
@@ -23,6 +24,8 @@ export type SegmentedControlChangeEventDetail = SegmentedControlUpdateEventDetai
 
 export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
+
+export type SegmentedControlState = FormState;
 
 // Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
 const tempFont = 'Porsche Next, sans-serif';
@@ -59,21 +62,23 @@ export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: 
     compact
   );
 
-  const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
-    tempDiv.innerHTML = item.innerHTML;
-    tempDiv.style.minWidth = dimension;
-    tempDiv.style.padding = padding;
+  const widths = Array.from(host.children)
+    .filter((el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description')
+    .map((item: HTMLElement & SegmentedControlItem) => {
+      tempDiv.innerHTML = item.innerHTML;
+      tempDiv.style.minWidth = dimension;
+      tempDiv.style.padding = padding;
 
-    if (item.icon || item.iconSource) {
-      tempDiv.prepend(tempIcon);
-    }
-    if (item.label) {
-      tempLabel.innerHTML = item.label;
-      tempDiv.prepend(tempLabel);
-    }
+      if (item.icon || item.iconSource) {
+        tempDiv.prepend(tempIcon);
+      }
+      if (item.label) {
+        tempLabel.innerHTML = item.label;
+        tempDiv.prepend(tempLabel);
+      }
 
-    return Number.parseFloat(getComputedStyle(tempDiv).width);
-  });
+      return Number.parseFloat(getComputedStyle(tempDiv).width);
+    });
 
   tempDiv.remove();
 
@@ -86,12 +91,18 @@ export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
   value: string | number,
   disabled: boolean,
+  state: SegmentedControlState,
+  message: string,
   compact: boolean,
   theme: Theme
 ): void => {
-  for (const item of Array.from(host.children)) {
+  for (const item of Array.from(host.children).filter(
+    (el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description'
+  )) {
     (item as Item).selected = (item as Item).value === value;
     (item as Item).theme = theme;
+    (item as Item).state = state;
+    (item as Item).message = message;
     (item as Item).compact = compact;
     (item as Item).disabledParent = disabled;
     forceUpdate(item);

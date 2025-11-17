@@ -9322,13 +9322,13 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
-    "hostAttributes": {
-      "role": "group",
-    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "propsMeta": {
       "backgroundColor": {
         "allowedValues": [
@@ -9381,6 +9381,12 @@ exports[`should match snapshot 1`] = `
         "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
         "type": "boolean",
       },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the segmented-control.",
+        "type": "string",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9399,6 +9405,25 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -9407,6 +9432,22 @@ exports[`should match snapshot 1`] = `
           "reflect": true,
         },
         "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the component.",
+        "type": "SegmentedControlState",
       },
       "theme": {
         "allowedValues": [
@@ -9435,6 +9476,15 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the \`p-segmented-control-item\` tags.",
       },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
     },
     "styling": "jss",
   },
@@ -9454,6 +9504,7 @@ exports[`should match snapshot 1`] = `
     "internalProps": {
       "compact": null,
       "selected": null,
+      "state": null,
       "theme": "light",
     },
     "isChunked": false,
@@ -11919,6 +11970,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the textarea as a compact version.",
+        "type": "boolean",
       },
       "counter": {
         "allowedValues": "boolean",
