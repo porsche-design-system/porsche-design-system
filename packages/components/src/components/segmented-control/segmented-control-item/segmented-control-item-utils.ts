@@ -1,9 +1,12 @@
 import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes, Theme } from '../../../types';
 import { getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../../utils';
 import type { IconColor } from '../../icon/icon-utils';
+import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
 export type SegmentedControlItemInternalHTMLProps = {
   selected: boolean;
+  state: SegmentedControlState;
+  message: string;
   compact: boolean;
   disabledParent: boolean;
   theme: Theme;
@@ -18,9 +21,12 @@ export type SegmentedControlItemAriaAttribute = (typeof SEGMENTED_CONTROL_ITEM_A
 export const getSegmentedControlItemAriaAttributes = (
   isSelected: boolean,
   isDisabled: boolean,
+  state: SegmentedControlState,
+  message: string,
   ariaProp?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>
 ): AriaAttributes => ({
   ...getButtonBaseAriaAttributes(isDisabled, false),
+  ...(state !== 'none' && parseAndGetAriaAttributes({ 'aria-description': message })),
   ...parseAndGetAriaAttributes({ 'aria-pressed': isSelected }),
   ...parseAndGetAriaAttributes(ariaProp),
 });

@@ -124,6 +124,8 @@ describe('syncSegmentedControlItemsProps()', () => {
 
   const value = 'a';
   const disabled = true;
+  const state = 'none';
+  const message = 'Some message';
   const compact = true;
   const theme: Theme = 'light';
 
@@ -133,23 +135,31 @@ describe('syncSegmentedControlItemsProps()', () => {
 
     expect(child1.selected).toBeUndefined();
     expect(child1.theme).toBeUndefined();
+    expect(child1.state).toBeUndefined();
+    expect(child1.message).toBeUndefined();
 
     expect(child2.selected).toBeUndefined();
     expect(child2.theme).toBeUndefined();
+    expect(child2.state).toBeUndefined();
+    expect(child2.message).toBeUndefined();
 
-    syncSegmentedControlItemsProps(host, value, disabled, compact, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact, theme);
 
     expect(child1.selected).toBe(true);
     expect(child1.theme).toBe(theme);
+    expect(child1.state).toBe('none');
+    expect(child1.message).toBe('Some message');
 
     expect(child2.selected).toBe(false);
     expect(child2.theme).toBe(theme);
+    expect(child2.state).toBe('none');
+    expect(child2.message).toBe('Some message');
   });
 
   it('should call forceUpdate() on every item', () => {
     const spy = vi.spyOn(stencilCore, 'forceUpdate');
 
-    syncSegmentedControlItemsProps(host, value, disabled, compact, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact, theme);
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
