@@ -135,6 +135,7 @@ export class LinkPure {
           <PrefixedTagNames.pIcon
             class="icon"
             size="inherit"
+            color="inherit"
             name={this.icon}
             source={this.iconSource}
             aria-hidden="true"

@@ -38,7 +38,7 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
 export const offsetVertical = '-2px';
 export const offsetHorizontal = '-4px';
 
-const { primaryColor, disabledColor, frostedColor } = colors;
+const { primaryColor, frostedColor } = colors;
 
 export const getLinkButtonPureStyles = (
   icon: LinkButtonIconName,
@@ -59,7 +59,6 @@ export const getLinkButtonPureStyles = (
       ':host': {
         ...addImportantToEachRule({
           transform: 'translate3d(0,0,0)', // creates new stacking context
-          outline: 0, // custom element is able to delegate the focus
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -72,11 +71,11 @@ export const getLinkButtonPureStyles = (
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
+      all: 'unset',
       display: 'flex',
       width: '100%',
-      padding: 0,
-      margin: 0, // Removes default button margin on safari 15
-      color: isDisabledOrLoading ? disabledColor : primaryColor,
+      cursor: 'pointer',
+      color: primaryColor,
       textDecoration: underline ? 'underline' : 'none',
       ...textSmallStyle,
       ...mergeDeep(
@@ -121,6 +120,7 @@ export const getLinkButtonPureStyles = (
           icon: {
             position: 'relative',
             flexShrink: '0',
+            fontSize: 'inherit', // inherit font size from root
             width: fontLineHeight,
             height: fontLineHeight,
             // workaround for Safari to optimize vertical alignment of icons
