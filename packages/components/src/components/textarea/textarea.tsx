@@ -48,6 +48,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -69,6 +70,9 @@ export class Textarea {
 
   /** Supplementary text providing more context or explanation for the textarea. */
   @Prop() public description?: string = '';
+
+  /** A boolean value that, if present, renders the textarea as a compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** The name of the textarea, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
@@ -190,6 +194,7 @@ export class Textarea {
       this.readOnly,
       this.hideLabel,
       this.state,
+      this.compact,
       this.counter,
       this.resize,
       this.theme
