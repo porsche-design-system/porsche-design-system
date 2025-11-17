@@ -1,4 +1,5 @@
 import { fontLineHeight } from '@porsche-design-system/styles';
+import { colors } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
@@ -12,6 +13,7 @@ export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
   active: boolean,
+  isDisabled: boolean,
   isLoading: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
@@ -38,12 +40,12 @@ export const getComponentCss = (
       ),
       {
         root: {
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          background: 'transparent',
-          textAlign: 'start',
-          border: 0,
-          cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+          ...(isDisabled && {
+            color: colors.contrastLowColor,
+          }),
+          ...(isDisabledOrLoading && {
+            cursor: 'not-allowed',
+          }),
         },
         ...(!hasIcon &&
           isLoading && {

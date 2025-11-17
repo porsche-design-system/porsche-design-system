@@ -20,7 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - ⌛️Accordion
 - ✅Button
-- ⌛Button Pure
+- ✅Button Pure
 - ⌛Button Tile
 - ⌛Canvas
 - ⌛Carousel

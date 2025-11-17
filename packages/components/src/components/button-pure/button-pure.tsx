@@ -178,6 +178,7 @@ export class ButtonPure {
       this.icon,
       this.iconSource,
       this.active,
+      this.disabled,
       this.loading,
       this.isDisabledOrLoading,
       this.stretch,
@@ -214,7 +215,7 @@ export class ButtonPure {
                 {...iconProps}
                 name={this.icon}
                 source={this.iconSource}
-                color="primary"
+                color="inherit"
                 aria-hidden="true"
               />
             )
