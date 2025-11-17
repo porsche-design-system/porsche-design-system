@@ -2529,6 +2529,14 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FBFCFF);
@@ -3226,9 +3234,7 @@ slot {
             class="checkbox"
           />
         </span>
-        <slot
-          slot="label"
-        />
+        <slot />
       </div>
     </template>
     Option A
@@ -3329,9 +3335,7 @@ slot {
             class="checkbox"
           />
         </span>
-        <slot
-          slot="label"
-        />
+        <slot />
       </div>
     </template>
     Option B
@@ -3432,9 +3436,7 @@ slot {
             class="checkbox"
           />
         </span>
-        <slot
-          slot="label"
-        />
+        <slot />
       </div>
     </template>
     Option C
@@ -3535,9 +3537,7 @@ slot {
             class="checkbox"
           />
         </span>
-        <slot
-          slot="label"
-        />
+        <slot />
       </div>
     </template>
     Option D
@@ -3638,9 +3638,7 @@ slot {
             class="checkbox"
           />
         </span>
-        <slot
-          slot="label"
-        />
+        <slot />
       </div>
     </template>
     Option E
@@ -3741,9 +3739,7 @@ slot {
             class="checkbox"
           />
         </span>
-        <slot
-          slot="label"
-        />
+        <slot />
       </div>
     </template>
     Option F
@@ -16982,6 +16978,14 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -17684,9 +17688,7 @@ slot {
           class="checkbox"
         />
       </span>
-      <slot
-        slot="label"
-      />
+      <slot />
     </div>
   </template>
   Some child
@@ -19478,6 +19480,14 @@ exports[`should render dsr component for PSelect 1`] = `
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {

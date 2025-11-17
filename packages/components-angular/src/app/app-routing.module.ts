@@ -447,6 +447,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.MultiSelectExampleReactiveFormComponent,
   },
   {
+    name: 'Multi Select Example Async',
+    path: 'multi-select-example-async-filter',
+    component: fromExamples.MultiSelectExampleAsyncFilterComponent,
+  },
+  {
     name: 'Pin Code Example',
     path: 'pin-code-example',
     component: fromExamples.PinCodeExampleComponent,
@@ -540,6 +545,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Select Example Required',
     path: 'select-example-required',
     component: fromExamples.SelectExampleRequiredComponent,
+  },
+  {
+    name: 'Select Example Async',
+    path: 'select-example-async-filter',
+    component: fromExamples.SelectExampleAsyncFilterComponent,
   },
   {
     name: 'Stepper Horizontal Example',
