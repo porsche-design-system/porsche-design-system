@@ -15,22 +15,24 @@ const {
   errorColor,
   primaryColor,
   errorFrostedSoftColor,
-  frostedSoftColor,
-  successMediumColor,
-  errorMediumColor,
-  contrastMediumColor,
+  successLowColor,
+  errorLowColor,
+  contrastLowColor,
+  successFrostedColor,
+  errorFrostedColor,
+  frostedColor,
 } = colors;
 
 const colorBackgroundMap: Record<FormState, string> = {
-  success: successFrostedSoftColor,
-  error: errorFrostedSoftColor,
-  none: frostedSoftColor,
+  success: successFrostedColor,
+  error: errorFrostedColor,
+  none: frostedColor,
 };
 
 const colorBorderMap: Record<FormState, string> = {
-  success: successMediumColor,
-  error: errorMediumColor,
-  none: contrastMediumColor,
+  success: successLowColor,
+  error: errorLowColor,
+  none: contrastLowColor,
 };
 
 const colorBorderHoverMap: Record<FormState, string> = {
