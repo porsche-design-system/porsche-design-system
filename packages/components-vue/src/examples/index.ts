@@ -67,6 +67,7 @@ export { default as LinkTileExampleHyphens } from './LinkTileExampleHyphens.vue'
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
 export { default as ModalExampleAccessibility } from './ModalExample.vue';
 export { default as MultiSelectExample } from './MultiSelectExample.vue';
+export { default as MultiSelectExampleAsyncFilter } from './MultiSelectExampleAsyncFilter.vue';
 export { default as MultiSelectExampleControlled } from './MultiSelectExampleControlled.vue';
 export { default as MultiSelectExampleControlledModel } from './MultiSelectExampleControlledModel.vue';
 export { default as MultiSelectExampleDynamic } from './MultiSelectExampleDynamic.vue';
@@ -87,6 +88,7 @@ export { default as SegmentedControlExampleControlled } from './SegmentedControl
 export { default as SegmentedControlExampleControlledModel } from './SegmentedControlExampleControlledModel.vue';
 export { default as SegmentedControlExampleForm } from './SegmentedControlExampleForm.vue';
 export { default as SelectExample } from './SelectExample.vue';
+export { default as SelectExampleAsyncFilter } from './SelectExampleAsyncFilter.vue';
 export { default as SelectExampleControlled } from './SelectExampleControlled.vue';
 export { default as SelectExampleControlledModel } from './SelectExampleControlledModel.vue';
 export { default as SelectExampleDynamic } from './SelectExampleDynamic.vue';

@@ -14,8 +14,10 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
+import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
 export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
 export const getScalingVar = (compact: boolean) =>
@@ -32,18 +34,29 @@ const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = c
 
 export const getColors = (
   isDisabled: boolean,
-  isSelected: boolean
+  isSelected: boolean,
+  state: SegmentedControlState
 ): {
   buttonColor: string;
   labelColor: string;
   borderColor: string;
   hoverBorderColor: string;
 } => {
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
+
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected ? (isDisabled ? disabledColor : primaryColor) : contrastLowColor,
-    hoverBorderColor: primaryColor,
+    borderColor: isSelected
+      ? isDisabled
+        ? disabledColor
+        : state === 'success'
+          ? formStateColor
+          : primaryColor
+      : state === 'error'
+        ? formStateColor
+        : contrastLowColor,
+    hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
   };
 };
 
@@ -65,15 +78,20 @@ export const getScalableItemStyles = (
   return { padding, dimension };
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   compact: boolean,
   isDisabled: boolean,
   isSelected: boolean,
+  state: SegmentedControlState,
   hasIcon: boolean,
   hasSlottedContent: boolean
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected);
-  const scalableItemStyles = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
+  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, state);
+  const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
     '@global': {
@@ -90,9 +108,10 @@ export const getComponentCss = (
         position: 'relative',
         display: 'block',
         height: '100%',
-        minHeight: scalableItemStyles.dimension,
         width: '100%',
-        padding: scalableItemStyles.padding,
+        minHeight: dimension,
+        minWidth: dimension,
+        padding: padding,
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,

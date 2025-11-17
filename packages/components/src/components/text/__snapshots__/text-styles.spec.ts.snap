@@ -16,7 +16,7 @@ exports[`getComponentCss() > should return correct css for size: "large", weight
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #2762EC;
   text-align: start;
   letter-spacing: normal;
@@ -46,7 +46,7 @@ exports[`getComponentCss() > should return correct css for size: "medium", weigh
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #AFB0B3;
   text-align: end;
   letter-spacing: normal;
@@ -76,7 +76,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #010205;
   text-align: inherit;
   letter-spacing: normal;
@@ -103,7 +103,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #010205;
   text-align: left;
   letter-spacing: normal;
@@ -130,7 +130,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #010205;
   text-align: right;
   letter-spacing: normal;
@@ -157,7 +157,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #010205;
   text-align: start;
   letter-spacing: normal;
@@ -184,7 +184,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
   padding: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   text-align: center;
   letter-spacing: normal;

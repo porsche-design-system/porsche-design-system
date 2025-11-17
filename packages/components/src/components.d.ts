@@ -40,15 +40,15 @@ import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBack
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-import { SegmentedControlChangeEventDetail, SegmentedControlColumns } from "./components/segmented-control/segmented-control/segmented-control-utils";
+import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectChangeEventDetail, SelectDropdownDirection, SelectState } from "./components/select/select/select-utils";
+import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
 import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
@@ -100,15 +100,15 @@ export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileBack
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
-export { SegmentedControlChangeEventDetail, SegmentedControlColumns } from "./components/segmented-control/segmented-control/segmented-control-utils";
+export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectChangeEventDetail, SelectDropdownDirection, SelectState } from "./components/select/select/select-utils";
+export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
 export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
@@ -1969,6 +1969,10 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
+          * Supplementary text providing more context or explanation for the segmented-control.
+         */
+        "description"?: string;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -1977,9 +1981,29 @@ export namespace Components {
          */
         "form"?: string;
         /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
           * The name of the segmented-control.
          */
         "name"?: string;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the component.
+         */
+        "state"?: SegmentedControlState;
         /**
           * Sets the initial value of the segmented-control.
          */
@@ -2032,7 +2056,7 @@ export namespace Components {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered.
+          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
          */
         "filter"?: boolean;
         /**
@@ -3034,6 +3058,7 @@ declare global {
     interface HTMLPMultiSelectElementEventMap {
         "blur": void;
         "change": MultiSelectChangeEventDetail;
+        "toggle": MultiSelectToggleEventDetail;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -3171,6 +3196,7 @@ declare global {
     interface HTMLPSelectElementEventMap {
         "blur": void;
         "change": SelectChangeEventDetail;
+        "toggle": SelectToggleEventDetail;
     }
     /**
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
@@ -5315,6 +5341,10 @@ declare namespace LocalJSX {
          */
         "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
         /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
+        /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */
         "required"?: boolean;
@@ -5570,6 +5600,10 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
+          * Supplementary text providing more context or explanation for the segmented-control.
+         */
+        "description"?: string;
+        /**
           * Disables the segmented-control.
          */
         "disabled"?: boolean;
@@ -5577,6 +5611,18 @@ declare namespace LocalJSX {
           * The id of a form element the segmented-control should be associated with.
          */
         "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
         /**
           * The name of the segmented-control.
          */
@@ -5589,6 +5635,14 @@ declare namespace LocalJSX {
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEventDetail>) => void;
+        /**
+          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the component.
+         */
+        "state"?: SegmentedControlState;
         /**
           * Sets the initial value of the segmented-control.
          */
@@ -5641,7 +5695,7 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered.
+          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
          */
         "filter"?: boolean;
         /**
@@ -5672,6 +5726,10 @@ declare namespace LocalJSX {
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
          */

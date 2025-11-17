@@ -61,6 +61,11 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
 
 const { primaryColor, canvasColor, frostedColor, disabledColor } = colors;
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+
 export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean): string => {
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;

@@ -58,7 +58,7 @@ export class MultiSelectOption {
           }}
         >
           <span class="checkbox" aria-hidden="true" />
-          <slot slot="label" />
+          <slot />
         </div>
       </Host>
     );

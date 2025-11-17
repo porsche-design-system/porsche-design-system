@@ -4,6 +4,10 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize }
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,

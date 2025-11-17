@@ -61,7 +61,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: space-between;
   align-items: center;
@@ -239,7 +239,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -397,7 +397,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -480,7 +480,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -593,7 +593,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -663,7 +663,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: underline;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -746,7 +746,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -829,7 +829,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -912,7 +912,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -995,7 +995,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1108,7 +1108,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1177,7 +1177,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: space-between;
   align-items: center;
@@ -1262,7 +1262,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"arrow-head-r
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: space-between;
   align-items: center;
@@ -1348,7 +1348,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1414,7 +1414,7 @@ exports[`getComponentCss() > should return correct css for {"icon":"none","iconS
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: var(--p-hyphens, auto);
   gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;

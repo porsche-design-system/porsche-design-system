@@ -5,7 +5,6 @@ import {
   Event,
   type EventEmitter,
   forceUpdate,
-  Host,
   h,
   type JSX,
   Listen,
@@ -16,33 +15,45 @@ import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../..
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   hasPropValueChanged,
   observeChildren,
-  throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
 } from '../../../utils';
+import { Label } from '../../common/label/label';
+import { StateMessage } from '../../common/state-message/state-message';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
-  getItemMaxWidth,
+  getItemWidths,
   SEGMENTED_CONTROL_COLUMNS,
   type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
+  type SegmentedControlState,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
   form: AllowedTypes.string,
   compact: AllowedTypes.boolean,
+  required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
+  state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
 };
 
 /**
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  *
  * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
  */
@@ -54,6 +65,12 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
+  /** Text content for a user-facing label. */
+  @Prop() public label?: string = '';
+
+  /** Supplementary text providing more context or explanation for the segmented-control. */
+  @Prop() public description?: string = '';
+
   /** Sets the initial value of the segmented-control. */
   @Prop({ mutable: true }) public value?: string | number;
 
@@ -62,6 +79,18 @@ export class SegmentedControl {
 
   /** A boolean value that, if present, renders the segmented-control as a compact version. */
   @Prop() public compact?: boolean = false;
+
+  /** Indicates the validation or overall status of the component. */
+  @Prop() public state?: SegmentedControlState = 'none';
+
+  /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
+  @Prop() public required?: boolean = false;
+
+  /** Dynamic feedback text for validation or status. */
+  @Prop() public message?: string = '';
+
+  /** Controls the visibility of the label. */
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
@@ -102,12 +131,9 @@ export class SegmentedControl {
   }
 
   public connectedCallback(): void {
-    throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
-
     // child property changes to label or icon are detected via prop watchers within child
     // here we take care of dom changes like adding/removing a child or changing its content
     observeChildren(this.host, () => {
-      throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
       forceUpdate(this.host);
     });
   }
@@ -144,19 +170,33 @@ export class SegmentedControl {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
+    const { minWidth, maxWidth } = getItemWidths(this.host, this.compact);
+
     attachComponentCss(
       this.host,
       getComponentCss,
-      getItemMaxWidth(this.host, this.compact),
+      minWidth,
+      maxWidth,
       this.columns,
-      this.compact
+      this.disabled,
+      this.hideLabel,
+      this.state
     );
-    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact);
+    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.state, this.message, this.compact);
 
     return (
-      <Host role="group" inert={this.disabled}>
+      <fieldset inert={this.disabled} aria-invalid={this.state === 'error' ? 'true' : null} class="root">
+        <Label
+          host={this.host}
+          tag="legend"
+          label={this.label}
+          description={this.description}
+          isRequired={this.required}
+          isDisabled={this.disabled}
+        />
         <slot />
-      </Host>
+        <StateMessage state={this.state} message={this.message} host={this.host} />
+      </fieldset>
     );
   }
 

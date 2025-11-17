@@ -8,13 +8,10 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  colors,
   getHiddenTextJssStyle,
   hostHiddenStyles,
-  hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
@@ -41,8 +38,10 @@ const getRadioGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDi
   return groupRadioGroupDirectionJssStyles[direction];
 };
 
-const { primaryColor } = colors;
-
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   disabled: boolean,
   loading: boolean,
@@ -53,11 +52,6 @@ export const getComponentCss = (
 ): string => {
   const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
 
-  const { formStateHoverColor } = getThemedFormStateColors(state);
-
-  const hoverStyles = {
-    borderColor: formStateHoverColor || primaryColor,
-  };
   const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
   const columnGap = `max(${spacingStaticSmall}, ${scalingVar} * ${spacingStaticMedium})`;
   const rowGap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
@@ -99,21 +93,12 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled,
-      hideLabel,
-      !disabled && {
-        ...hoverMediaQuery({
-          '&:hover~.wrapper': hoverStyles,
-        }),
-        cursor: 'inherit', // the label is not clickable
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
+      cursor: 'inherit',
+      '&:is(legend)': {
+        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       },
-      {
-        '&:is(legend)': {
-          marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-        },
-      }
-    ),
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

@@ -33,6 +33,11 @@ const getCheckedSVGBackgroundImage = (fill: string): string => {
 };
 const { primaryColor, canvasColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = colors;
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+
 export const getComponentCss = (disabled: boolean, loading: boolean, state: RadioGroupState): string => {
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
