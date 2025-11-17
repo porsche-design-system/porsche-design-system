@@ -182,7 +182,7 @@ export class Button {
               size="inherit"
               name={this.iconSource ? undefined : this.icon}
               source={this.iconSource}
-              color="primary"
+              color="inherit"
               aria-hidden="true"
             />
           )}

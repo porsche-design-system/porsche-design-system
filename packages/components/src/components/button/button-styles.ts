@@ -1,36 +1,13 @@
-import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
+import { fontLineHeight } from '@porsche-design-system/styles';
 import { colors, getTransition } from '../../styles';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
-import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant } from '../../types';
-import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName } from '../../types';
+import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
 
-type Colors = {
-  textColor: string;
-  borderColor: string;
-  backgroundColor: string;
-};
-const { frostedColor, disabledColor, contrastHighColor } = colors;
-const getDisabledColors = (variant: LinkButtonVariant, loading: boolean): Colors => {
-  const colors: {
-    [v in LinkButtonVariant]: Colors;
-  } = {
-    primary: {
-      textColor: contrastHighColor,
-      borderColor: loading ? contrastHighColor : disabledColor,
-      backgroundColor: loading ? contrastHighColor : disabledColor,
-    },
-    secondary: {
-      textColor: disabledColor,
-      borderColor: frostedColor,
-      backgroundColor: frostedColor,
-    },
-  };
-
-  return colors[variant];
-};
+const { frostedSoftColor, contrastLowColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -46,8 +23,6 @@ export const getComponentCss = (
   compact: BreakpointCustomizable<boolean>
 ): string => {
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
-  const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading);
-  const isPrimary = variant === 'primary';
 
   return getCss(
     mergeDeep(
@@ -63,14 +38,12 @@ export const getComponentCss = (
       ),
       {
         root: {
-          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
           ...(disabledOrLoading && {
-            backgroundColor,
-            borderColor,
-            color: textColor,
+            cursor: 'not-allowed',
+            backgroundColor: frostedSoftColor,
+            borderColor: frostedSoftColor,
+            color: contrastLowColor,
           }),
-          ...(loading && !isPrimary && frostedGlassStyle),
-          margin: 0, // Removes default button margin on safari 15
         },
         ...(loading && {
           spinner: {
@@ -81,7 +54,6 @@ export const getComponentCss = (
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            ...(isPrimary && !isHighContrastMode && { filter: 'invert(1)' }),
           },
         }),
         label: {
@@ -92,11 +64,6 @@ export const getComponentCss = (
         },
         icon: {
           transition: getTransition('opacity'),
-          ...(!disabled &&
-            isPrimary &&
-            !isHighContrastMode && {
-              filter: 'invert(1)',
-            }),
           ...(loading && {
             opacity: 0, // use opacity for smooth transition between states
           }),

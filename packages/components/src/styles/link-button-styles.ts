@@ -6,7 +6,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -68,9 +68,8 @@ export const getLinkButtonStyles = (
     '@global': {
       ':host': {
         display: 'inline-block',
+        verticalAlign: 'top',
         ...addImportantToEachRule({
-          verticalAlign: 'top',
-          outline: 0, // custom element is able to delegate the focus
           borderRadius: borderRadiusSmall,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -79,23 +78,19 @@ export const getLinkButtonStyles = (
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
-      border: 'none',
+      all: 'unset',
       display: 'flex',
-      alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%', // Allows for setting a width on the host
       minWidth: 'min-content', // Do not shrink beyond icon size + padding + border + label
       boxSizing: 'border-box',
-      textAlign: 'start',
-      WebkitAppearance: 'none', // iOS safari
-      appearance: 'none',
-      textDecoration: 'none',
       ...frostedGlassStyle,
       ...textSmallStyle,
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
       color: textColor,
+      cursor: 'pointer',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         '--p-internal-scaling-factor': compactValue ? 'calc(4 / 13)' : 1, // Compact mode needs to have 4px paddingBlock thus this scaling factor
       })),
@@ -104,7 +99,9 @@ export const getLinkButtonStyles = (
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
         gap: hideLabelValue ? 0 : gap,
       })),
-      ...(!hasSlottedAnchor && getFocusJssStyle()),
+      ...(!hasSlottedAnchor && {
+        '&:focus-visible': getFocusBaseStyles(),
+      }),
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover': {
