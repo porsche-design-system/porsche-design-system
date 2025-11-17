@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Checkbox`: supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
+  custom label ([#4112](https://github.com/porsche-design-system/porsche-design-system/pull/4112))
 - `Multi Select, Select`:
   - `filter` slot to allow custom asynchronous filtering
   - `toggle` event when opening/closing the dropdown
