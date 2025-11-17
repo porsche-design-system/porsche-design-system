@@ -26,14 +26,13 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, 
       },
       ...preventFoucOfNestedElementsStyles,
       fieldset: {
-        margin: 0,
-        padding: 0,
-        border: 'none',
+        all: 'unset',
+        display: 'block',
       },
       ...(hasLabel && {
         legend: {
-          margin: `0 0 ${spacingStaticMedium}`,
-          padding: 0,
+          all: 'unset',
+          marginBottom: spacingStaticMedium,
           color: primaryColor,
           ...(labelSize === 'small' ? headingSmallStyle : headingMediumStyle),
         },
