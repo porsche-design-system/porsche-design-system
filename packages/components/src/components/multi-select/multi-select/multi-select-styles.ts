@@ -60,6 +60,11 @@ export const getComponentCss = (
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
       '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
+      'slot[name="selected"]': {
+        display: 'block',
+        flex: 1,
+        overflow: 'hidden',
+      },
     },
     root: {
       display: 'grid',
