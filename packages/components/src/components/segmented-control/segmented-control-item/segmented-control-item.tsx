@@ -13,7 +13,6 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import {
-  getIconColor,
   getSegmentedControlItemAriaAttributes,
   SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
   type SegmentedControlItemAriaAttribute,
@@ -114,7 +113,7 @@ export class SegmentedControlItem {
               size="inherit"
               name={this.icon}
               source={this.iconSource}
-              color={getIconColor(this.disabled)}
+              color="inherit"
               aria-hidden="true"
             />
           )}

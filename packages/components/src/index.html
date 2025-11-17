@@ -410,6 +410,27 @@
           <p-pin-code label="Some label" disabled="true"></p-pin-code>
         </div>
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h3" size="medium">Segmented Control</p-heading>
+          <p-segmented-control>
+            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+            <p-segmented-control-item value="2">2</p-segmented-control-item>
+            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
+          </p-segmented-control>
+          <p-segmented-control disabled="true">
+            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+            <p-segmented-control-item value="2">2</p-segmented-control-item>
+            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
+          </p-segmented-control>
+          <p-segmented-control>
+            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+            <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
+            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+            <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
+          </p-segmented-control>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h3" size="medium">Select</p-heading>
           <p-select label="Some label" name="some-name" filter="true">
             <p-select-option value="a">Option A</p-select-option>

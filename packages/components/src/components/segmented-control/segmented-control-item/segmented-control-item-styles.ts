@@ -1,6 +1,7 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
+  borderWidthThin,
   fontLineHeight,
   textSmallStyle,
   textXSmallStyle,
@@ -8,6 +9,7 @@ import {
 import {
   addImportantToEachRule,
   colors,
+  getDisabledBaseStyles,
   getFocusJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -30,35 +32,7 @@ export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
 export const ICON_MARGIN = '.25rem';
 
-const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = colors;
-
-export const getColors = (
-  isDisabled: boolean,
-  isSelected: boolean,
-  state: SegmentedControlState
-): {
-  buttonColor: string;
-  labelColor: string;
-  borderColor: string;
-  hoverBorderColor: string;
-} => {
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
-
-  return {
-    buttonColor: isDisabled ? disabledColor : primaryColor,
-    labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected
-      ? isDisabled
-        ? disabledColor
-        : state === 'success'
-          ? formStateColor
-          : primaryColor
-      : state === 'error'
-        ? formStateColor
-        : contrastLowColor,
-    hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
-  };
-};
+const { primaryColor, contrastMediumColor } = colors;
 
 export const getScalableItemStyles = (
   hasIconAndSlottedContent: boolean,
@@ -90,7 +64,8 @@ export const getComponentCss = (
   hasIcon: boolean,
   hasSlottedContent: boolean
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, state);
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
+
   const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
@@ -98,7 +73,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          outline: 0,
+          ...(isDisabled && getDisabledBaseStyles()),
           ...hostHiddenStyles,
         }),
       },
@@ -112,11 +87,10 @@ export const getComponentCss = (
         minHeight: dimension,
         minWidth: dimension,
         padding: padding,
-        margin: 0, // Removes default button margin on safari 15
-        border: `${borderWidthBase} solid ${borderColor}`,
+        border: `${borderWidthThin} solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
         borderRadius: borderRadiusSmall,
-        background: 'transparent',
-        color: buttonColor,
+        background: formStateBackgroundColor,
+        color: primaryColor,
         ...textSmallStyle,
         ...(isDisabled
           ? {
@@ -128,7 +102,7 @@ export const getComponentCss = (
                 hoverMediaQuery({
                   transition: getTransition('border-color'),
                   '&:hover': {
-                    borderColor: hoverBorderColor,
+                    borderColor: formStateBorderHoverColor,
                   },
                 })),
             }),
@@ -139,7 +113,7 @@ export const getComponentCss = (
         display: 'block',
         ...textXSmallStyle,
         overflowWrap: 'normal',
-        color: labelColor,
+        color: contrastMediumColor,
       },
     },
     ...(hasIcon && {
