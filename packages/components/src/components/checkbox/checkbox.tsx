@@ -290,19 +290,20 @@ export class Checkbox {
   };
 
   private onExternalLabelClick = (e: MouseEvent): void => {
+    if (e.target === this.host) {
+      return;
+    }
+
+    const target = e.target as HTMLElement;
+    const isInteractiveElement = target.tagName === 'A' || target.tagName === 'BUTTON';
+
+    if (isInteractiveElement) {
+      return;
+    }
+
+    e.preventDefault();
+
     if (!isDisabledOrLoading(this.disabled, this.loading)) {
-      if (e.target === this.host) {
-        return;
-      }
-
-      const target = e.target as HTMLElement;
-      const isInteractiveElement = target.tagName === 'A' || target.tagName === 'BUTTON';
-
-      if (isInteractiveElement) {
-        return;
-      }
-
-      e.preventDefault();
       this.checkboxInputElement.click();
     }
   };
