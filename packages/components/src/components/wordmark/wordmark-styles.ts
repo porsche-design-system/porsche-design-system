@@ -1,4 +1,10 @@
-import { addImportantToEachRule, colorSchemeStyles, colors, getFocusJssStyle, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  colors,
+  hostHiddenStyles,
+  getFocusBaseStyles
+} from '../../styles';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
 
@@ -12,7 +18,6 @@ export const getComponentCss = (size: WordmarkSize): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          outline: 0,
           maxWidth: '100%',
           maxHeight: '100%',
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
@@ -34,7 +39,8 @@ export const getComponentCss = (size: WordmarkSize): string => {
         height: 'inherit',
       },
       a: {
-        textDecoration: 'none',
+        all: 'unset',
+        cursor: 'pointer',
         '&::before': {
           // needs to be defined always to have correct custom click area
           content: '""',
@@ -42,7 +48,7 @@ export const getComponentCss = (size: WordmarkSize): string => {
           inset: 0,
           borderRadius: '1px',
         },
-        ...getFocusJssStyle({ pseudo: true }),
+        '&:focus-visible::before': getFocusBaseStyles(),
       },
       svg: {
         fill: primaryColor,
