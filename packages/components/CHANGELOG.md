@@ -38,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - ✅Crest
 - ✅Wordmark
-- ⌛Model Signature
+- ✅Model Signature
 
 #### Feedback
 
@@ -107,6 +107,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
     `p-icon { color: deeppink; }`) can be applied directly
   - value `'state-disabled'` of prop color is removed
+- `Model Signature`:
+  - when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly
 - `Tag`:
   - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
     `error`, `info`

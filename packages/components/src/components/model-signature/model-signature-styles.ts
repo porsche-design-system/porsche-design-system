@@ -16,10 +16,10 @@ const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor }
 
 const colorMap: Record<ModelSignatureColor, string> = {
   primary: primaryColor,
-  inherit: 'black',
   'contrast-low': contrastLowColor,
   'contrast-medium': contrastMediumColor,
   'contrast-high': contrastHighColor,
+  inherit: 'inherit',
 };
 
 export const getComponentCss = (
@@ -41,10 +41,11 @@ export const getComponentCss = (
         // width + height style can't be !important atm to be backwards compatible with e.g. `<p-model-signature size="inherit" style="height: 50px"/>`
         width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : `${width}px`})`,
         height: `var(${cssVariableHeight},auto)`,
+        color: `var(${cssVariableColor},${colorMap[color]})`,
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
-          background: `var(${cssVariableColor},${colorMap[color]})`,
+          background: 'currentcolor', // necessary for proper color inheritance
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
