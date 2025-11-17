@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
 - `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
 
 ## [3.31.0] - 2025-11-13
 
