@@ -177,7 +177,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
           .replace(
-            /this\.(?:input|select|textarea)(?!Elements)/g,
+            /this\.(?:input|select|textarea)(?!Elements|edOption|edOptions)/g,
             "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
           ); // fallback for undefined input, select and textarea reference
 
@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -230,7 +230,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onKeyDown|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
@@ -263,10 +263,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (!newFileContent.includes('export const InputBase:')) {
         // radio-group-option uses a label component without allowing slots
         if (tagName === 'p-radio-group-option') {
-          newFileContent = newFileContent.replace(
-            /(<Label(?!Props))([\s\S]*?\/>)/,
-            '$1 hasLabel={this.props.label} hasDescription={false}$2'
-          );
+          newFileContent = newFileContent
+            .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
+            .replace(/e\.stopImmediatePropagation\(\);/, '');
         } else {
           newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,
@@ -296,10 +295,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
-        .replace(
-          /(getSegmentedControlCss)\(\s*getItemMaxWidth\(\s*this\.props\s*,\s*this\.props\.compact\s*\)/,
-          '$1(100'
-        )
+        .replace(/getItemWidths\(this.props, this.props.compact\)/g, '{ minWidth: 100, maxWidth: 100 }')
         .replace(/this\.props\.getAttribute\('tabindex'\)/g, 'null') // button
         .replace(/(const\s+TagType)(\s+=)/, '$1: any$2') // fix typing for display, heading, headline, text,
         .replace(
@@ -564,15 +560,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          .replace(
-            /getSelectedOptionValues\(this\.props\.multiSelectOptions\);/,
-            'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
-          )
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(
-            /getSelectedOptionsString\(this\.props\.multiSelectOptions\)/,
-            'getSelectedOptionsString(otherChildren)'
-          )
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')

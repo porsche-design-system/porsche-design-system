@@ -5,7 +5,7 @@ import {
   getSelectedOptionValues,
   type MultiSelectOption,
   resetSelectedOptions,
-  setSelectedOptions,
+  selectOptionsByValue,
   syncMultiSelectChildrenProps,
 } from './multi-select-utils';
 
@@ -86,11 +86,12 @@ describe('getSelectedOptionsString', () => {
 
 describe('setSelectedOptions', () => {
   it('should update the selected state of options not fitting the value', () => {
+    const host = document.createElement('p-multi-select');
     const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const options = generateMultiSelectOptions({ amount: 5, selectedIndices: [0, 2, 3] });
     const value1 = ['Value 1', 'Value 2'];
 
-    setSelectedOptions(options, value1);
+    selectOptionsByValue(host, options, value1);
     expect(options[0].selected).toBeFalsy();
     expect(options[1].selected).toBeTruthy();
     expect(options[2].selected).toBeTruthy();
@@ -99,7 +100,7 @@ describe('setSelectedOptions', () => {
 
     const value2 = ['Value 0', 'Value 4'];
 
-    setSelectedOptions(options, value2);
+    selectOptionsByValue(host, options, value2);
     expect(options[0].selected).toBeTruthy();
     expect(options[1].selected).toBeFalsy();
     expect(options[2].selected).toBeFalsy();
@@ -108,7 +109,7 @@ describe('setSelectedOptions', () => {
 
     const value3 = ['Value 2', '3', 'test'];
 
-    setSelectedOptions(options, value3);
+    selectOptionsByValue(host, options, value3);
     expect(options[0].selected).toBeFalsy();
     expect(options[1].selected).toBeFalsy();
     expect(options[2].selected).toBeTruthy();
@@ -117,8 +118,8 @@ describe('setSelectedOptions', () => {
 
     expect(consoleWarnMock).toHaveBeenCalledWith(
       '[Porsche Design System]',
-      'The following values are not included in the options of the p-multi-select:',
-      '3, test'
+      'The provided value: 3, test is not included in the options of the p-multi-select:',
+      host
     );
   });
 });

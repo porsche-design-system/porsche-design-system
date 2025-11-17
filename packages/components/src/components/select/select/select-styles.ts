@@ -27,6 +27,10 @@ import { cssVarInternalSelectOptionScaling } from '../select-option/select-optio
 
 export const cssVarInternalSelectScaling = '--p-internal-select-scaling';
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   isOpen: boolean,
   isDisabled: boolean,
@@ -57,6 +61,7 @@ export const getComponentCss = (
         '& span': getButtonLabelJssStyle,
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
     },
     root: {
       display: 'grid',

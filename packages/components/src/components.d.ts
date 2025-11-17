@@ -53,7 +53,7 @@ import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -62,7 +62,7 @@ import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } fro
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -130,7 +130,7 @@ export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/m
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
-export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
+export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
 export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
@@ -139,7 +139,7 @@ export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } fro
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -2627,7 +2627,7 @@ export namespace Components {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered.
+          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
          */
         "filter"?: boolean;
         /**
@@ -3980,6 +3980,7 @@ declare global {
     interface HTMLPMultiSelectElementEventMap {
         "blur": void;
         "change": MultiSelectChangeEventDetail;
+        "toggle": MultiSelectToggleEventDetail;
         "update": MultiSelectUpdateEventDetail;
     }
     /**
@@ -4131,6 +4132,7 @@ declare global {
     interface HTMLPSelectElementEventMap {
         "blur": void;
         "change": SelectChangeEventDetail;
+        "toggle": SelectToggleEventDetail;
         "update": SelectUpdateEventDetail;
     }
     /**
@@ -6826,6 +6828,10 @@ declare namespace LocalJSX {
          */
         "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
         /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
+        /**
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
@@ -7266,7 +7272,7 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered.
+          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
          */
         "filter"?: boolean;
         /**
@@ -7297,6 +7303,10 @@ declare namespace LocalJSX {
           * Emitted when the selection is changed.
          */
         "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
+        /**
+          * Emitted when the dropdown is toggled.
+         */
+        "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
           * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
          */

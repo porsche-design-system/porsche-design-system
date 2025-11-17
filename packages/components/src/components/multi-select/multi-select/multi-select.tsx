@@ -26,6 +26,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasMessage,
+  hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
@@ -47,17 +48,16 @@ import { messageId, StateMessage } from '../../common/state-message/state-messag
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './multi-select-styles';
 import {
-  getSelectedOptionsString,
-  getSelectedOptionValues,
   type MultiSelectChangeEventDetail,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
   type MultiSelectOption,
   type MultiSelectState,
+  type MultiSelectToggleEventDetail,
   type MultiSelectUpdateEventDetail,
   resetSelectedOptions,
+  selectOptionsByValue,
   setSelectedMultiSelectOption,
-  setSelectedOptions,
   syncMultiSelectChildrenProps,
 } from './multi-select-utils';
 
@@ -82,6 +82,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "", "description": "Default slot for the p-multi-select-option tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
  * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
  */
@@ -140,6 +141,9 @@ export class MultiSelect {
   /** Emitted when the selection is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<MultiSelectChangeEventDetail>;
 
+  /** Emitted when the dropdown is toggled. */
+  @Event({ bubbles: false }) public toggle: EventEmitter<MultiSelectToggleEventDetail>;
+
   /**
    * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
    */
@@ -147,6 +151,7 @@ export class MultiSelect {
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
+  @State() private selectedOptions: MultiSelectOption[] = [];
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -155,7 +160,7 @@ export class MultiSelect {
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private buttonElement: HTMLButtonElement;
   private inputSearchElement: HTMLPInputSearchElement;
-  private inputSearchInputElement: HTMLInputElement;
+  private filterSlot: HTMLSlotElement;
   private listboxElement: HTMLDivElement;
   private resetButtonElement: HTMLElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -165,8 +170,9 @@ export class MultiSelect {
 
   private currentlyHighlightedOption: Option | null = null;
 
-  private get currentValue(): string[] {
-    return getSelectedOptionValues(this.multiSelectOptions);
+  @Listen('keydown')
+  public onKeyDown(e: KeyboardEvent): void {
+    this.onComboKeyDown(e);
   }
 
   @Listen('internalOptionUpdate')
@@ -181,7 +187,7 @@ export class MultiSelect {
     // When setting initial value the watcher gets called before the options are defined
     if (this.multiSelectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
-        setSelectedOptions(this.multiSelectOptions, this.value);
+        this.selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value, !!this.filterSlot);
       }
       this.preventOptionUpdate = false;
     }
@@ -213,7 +219,10 @@ export class MultiSelect {
         setHighlightedSelectOption(this.currentlyHighlightedOption, false);
         this.currentlyHighlightedOption = null;
       }
-      this.resetFilter();
+      // Reset filter on close, slotted filter has to implement this itself if needed
+      if (!this.filterSlot) {
+        this.resetFilter();
+      }
     }
   }
 
@@ -242,16 +251,20 @@ export class MultiSelect {
     this.setFormValue(this.value);
     this.updateOptions();
     // Use initial value to set options
-    setSelectedOptions(this.multiSelectOptions, this.value);
+    this.selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value);
   }
 
   public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
-    this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+    getShadowRootHTMLElement(this.host, 'slot:not([name])').addEventListener('slotchange', this.onSlotchange);
+    this.inputSearchElement = this.filterSlot
+      ? (this.filterSlot.assignedElements()[0] as HTMLPInputSearchElement)
+      : this.inputSearchElement;
+    const nativeInput = this.inputSearchElement.shadowRoot.querySelector('input');
     // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
-    if (this.inputSearchInputElement) {
-      // @ts-expect-error typings missing
-      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+    if (nativeInput) {
+      (nativeInput as HTMLInputElement & { ariaControlsElements: HTMLElement[] }).ariaControlsElements = [
+        this.listboxElement,
+      ];
     }
   }
 
@@ -286,6 +299,8 @@ export class MultiSelect {
     );
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
+    const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
     const popoverId = 'list';
@@ -311,12 +326,11 @@ export class MultiSelect {
           {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
           disabled={this.disabled}
           onClick={this.onComboClick}
-          onKeyDown={this.onComboKeyDown}
           onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
-          <span>{getSelectedOptionsString(this.multiSelectOptions)}</span>
-          {this.currentValue.length > 0 && (
+          <span>{this.selectedOptions.map((option) => option.textContent).join(', ')}</span>
+          {this.value.length > 0 && (
             <PrefixedTagNames.pButtonPure
               type="button"
               class="button"
@@ -350,22 +364,25 @@ export class MultiSelect {
           aria-hidden={this.isOpen ? null : 'true'}
           ref={(el) => (this.popoverElement = el)}
         >
-          <PrefixedTagNames.pInputSearch
-            class="filter"
-            name="filter"
-            label="Filter options"
-            hideLabel={true}
-            autoComplete="off"
-            clear={true}
-            indicator={true}
-            compact={true}
-            theme={this.theme}
-            onInput={this.onFilterInput}
-            onKeyDown={this.onComboKeyDown}
-            onBlur={(e: any) => e.stopPropagation()}
-            onChange={(e: any) => e.stopPropagation()}
-            ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
-          />
+          {hasCustomFilterSlot ? (
+            <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>
+          ) : (
+            <PrefixedTagNames.pInputSearch
+              class="filter"
+              name="filter"
+              label="Filter options"
+              hideLabel={true}
+              autoComplete="off"
+              clear={true}
+              indicator={true}
+              compact={true}
+              theme={this.theme}
+              onInput={this.onFilterInput}
+              onBlur={(e: any) => e.stopPropagation()}
+              onChange={(e: any) => e.stopPropagation()}
+              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
+            />
+          )}
           <div
             class="options"
             role="listbox"
@@ -397,9 +414,14 @@ export class MultiSelect {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    setSelectedOptions(this.multiSelectOptions, this.value);
-    // Necessary to update selected options in placeholder
-    forceUpdate(this.host);
+    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
+    const selectedOptions = selectOptionsByValue(this.host, this.multiSelectOptions, this.value, !!this.filterSlot);
+    // Add new matching options if there is any but still keep the old ones as selected
+    selectedOptions.forEach((option) => {
+      if (!this.selectedOptions.some((o) => o.value === option.value)) {
+        this.selectedOptions = [...this.selectedOptions, option];
+      }
+    });
   };
 
   private onComboClick = (_: MouseEvent): void => {
@@ -459,8 +481,12 @@ export class MultiSelect {
           this.currentlyHighlightedOption,
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
-        // @ts-expect-error - HTMLCombobox type is missing
-        this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
+        const targetElement = (
+          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+        ) as
+          | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
+          | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
+        targetElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
         break;
       }
       case 'Select': {
@@ -489,8 +515,13 @@ export class MultiSelect {
       const selectedOption = getLastSelectedOption(this.multiSelectOptions);
       if (selectedOption && isUsableOption(selectedOption)) {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
-        // @ts-expect-error - HTMLCombobox type is missing
-        this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
+
+        const targetElement = (
+          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+        ) as
+          | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
+          | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
+        targetElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
       }
     }
   };
@@ -500,10 +531,13 @@ export class MultiSelect {
     this.multiSelectOptgroups = [];
 
     for (const child of Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      (el) =>
+        el.tagName !== 'SELECT' &&
+        el.slot !== 'label' &&
+        el.slot !== 'description' &&
+        el.slot !== 'message' &&
+        el.slot !== 'filter'
     )) {
-      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-multi-select-option', 'p-optgroup']);
-
       if (isElementOfKind(child as HTMLElement, 'p-multi-select-option')) {
         this.multiSelectOptions.push(child as MultiSelectOption);
       } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
@@ -528,7 +562,13 @@ export class MultiSelect {
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
       setSelectedMultiSelectOption(selectedOption);
-      this.value = this.currentValue;
+      if (selectedOption.selected) {
+        this.selectedOptions = [...this.selectedOptions, selectedOption];
+        this.value = [...this.value, selectedOption.value];
+      } else {
+        this.selectedOptions = this.selectedOptions.filter((option) => option.value !== selectedOption.value);
+        this.value = this.value.filter((val) => val !== selectedOption.value);
+      }
       this.emitUpdateEvent();
     }
   };
@@ -536,7 +576,8 @@ export class MultiSelect {
   private onResetClick = (e: MouseEvent): void => {
     e.stopPropagation(); // Prevent parent click event from closing the dropdown
     resetSelectedOptions(this.multiSelectOptions);
-    this.value = this.currentValue;
+    this.selectedOptions = [];
+    this.value = [];
     this.buttonElement.focus();
     this.emitUpdateEvent();
     forceUpdate(this.host);
@@ -544,11 +585,11 @@ export class MultiSelect {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.currentValue,
+      value: this.value,
       name: this.name,
     });
     this.update.emit({
-      value: this.currentValue,
+      value: this.value,
       name: this.name,
     });
   };
@@ -565,6 +606,7 @@ export class MultiSelect {
   };
 
   private onToggle = (): void => {
+    this.toggle.emit({ open: this.isOpen });
     if (this.isOpen) {
       // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
       requestAnimationFrame(() => {

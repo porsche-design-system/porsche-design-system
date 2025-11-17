@@ -50,20 +50,19 @@ if (tempIcon) {
   tempIcon.style.marginRight = ICON_MARGIN;
 }
 
-export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => {
+export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: number | string; maxWidth: number } => {
   tempDiv.innerHTML = '';
   host.shadowRoot.append(tempDiv);
 
+  const { dimension, padding } = getScalableItemStyles(
+    false /* Uses the largest possible padding of the item */,
+    compact
+  );
+
   const widths = Array.from(host.children, (item: HTMLElement & SegmentedControlItem) => {
     tempDiv.innerHTML = item.innerHTML;
-    tempDiv.style.minWidth = getScalableItemStyles(
-      false /* Uses the largest possible padding of the item */,
-      compact
-    ).dimension;
-    tempDiv.style.padding = getScalableItemStyles(
-      false /* Uses the largest possible padding of the item */,
-      compact
-    ).padding;
+    tempDiv.style.minWidth = dimension;
+    tempDiv.style.padding = padding;
 
     if (item.icon || item.iconSource) {
       tempDiv.prepend(tempIcon);
@@ -78,7 +77,7 @@ export const getItemMaxWidth = (host: HTMLElement, compact: boolean): number => 
 
   tempDiv.remove();
 
-  return Math.max(...widths);
+  return { minWidth: dimension, maxWidth: Math.max(...widths) };
 };
 
 type Item = HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps;

@@ -1,6 +1,12 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
-import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,28 +19,26 @@ import {
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../styles';
-import {
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
