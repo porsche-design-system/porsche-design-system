@@ -121,6 +121,7 @@ export class Link {
             size="inherit"
             name={this.iconSource ? undefined : this.icon}
             source={this.iconSource}
+            color="inherit"
             aria-hidden="true"
           />
         )}
