@@ -86,7 +86,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Input Url
 - ✅Multi Select
 - ✅Optgroup
-- ⌛Pin Code
+- ✅Pin Code
 - ⌛Radio Group
 - ⌛Segmented Control
 - ✅Select
