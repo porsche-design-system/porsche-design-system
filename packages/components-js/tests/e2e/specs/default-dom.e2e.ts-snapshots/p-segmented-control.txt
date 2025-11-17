@@ -1,1 +1,4 @@
-<slot> </slot>
+<fieldset class="root">
+  <slot> </slot>
+  <span id="message" class="message" role="alert"> </span>
+</fieldset>

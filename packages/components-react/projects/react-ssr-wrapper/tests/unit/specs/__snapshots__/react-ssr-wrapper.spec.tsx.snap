@@ -2656,11 +2656,6 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="button"
-        id="label"
-      />
       <button
         aria-controls="list"
         aria-expanded="false"
@@ -3872,11 +3867,6 @@ input:disabled {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="current-input"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -4362,7 +4352,6 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 exports[`manual test cases > should pass internal props correctly to p-segmented-control-item 1`] = `
 <p-segmented-control
   data-ssr=""
-  role="group"
 >
   <template
     shadowroot="open"
@@ -4370,17 +4359,80 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
   >
     <style>
       :host {
-  display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 6px;
+}
+.root {
+  all: unset;
+  display: grid;
+  gap: 4px;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: inherit;
+  justify-self: flex-start;
+  color: #FBFCFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #AFB0B3;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
     </style>
-    <slot />
+    <fieldset
+      class="root"
+    >
+      <slot />
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+    </fieldset>
   </template>
   <p-segmented-control-item
     backgroundcolor="background-surface"
@@ -10962,11 +11014,6 @@ input:focus-visible {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="checkbox"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -13698,11 +13745,6 @@ input::-webkit-calendar-picker-indicator {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-date"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -13863,11 +13905,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-email"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14018,11 +14055,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-number"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14172,11 +14204,6 @@ input[type="text"] {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-password"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14326,11 +14353,6 @@ input[type="search"]::-webkit-search-cancel-button {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-search"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14491,11 +14513,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-tel"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14656,11 +14673,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-text"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14815,11 +14827,6 @@ input::-webkit-calendar-picker-indicator {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-time"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -14980,11 +14987,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="input-url"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -17105,11 +17107,6 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="button"
-        id="label"
-      />
       <button
         aria-controls="list"
         aria-expanded="false"
@@ -18110,11 +18107,6 @@ input:disabled {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="current-input"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -18556,9 +18548,6 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   clip: auto;
   white-space: normal;
 }
-.label:is(legend) {
-  margin-bottom: 4px;
-}
 .label:empty {
   display: none;
 }
@@ -18567,6 +18556,9 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
 }
 .required {
   user-select: none;
@@ -18603,22 +18595,12 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media(hover:hover) {
-  .label:hover~.wrapper {
-    border-color: #010205;
-  }
-}
-
     </style>
     <fieldset
       aria-describedby="description message"
       class="root"
       role="radiogroup"
     >
-      <legend
-        class="label"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -18779,11 +18761,6 @@ input:focus-visible {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="radio-group-option"
-        id="label"
-      />
       <div
         class="wrapper"
       >
@@ -19291,7 +19268,6 @@ img:dir(rtl) {
 exports[`should render dsr component for PSegmentedControl 1`] = `
 <p-segmented-control
   data-ssr=""
-  role="group"
 >
   <template
     shadowroot="open"
@@ -19299,17 +19275,80 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
   >
     <style>
       :host {
-  display: grid;
-  grid-auto-rows: 1fr !important;
-  grid-template-columns: repeat(auto-fit, 100px) !important;
-  gap: max(4px, var(--p-internal-segmented-control-scaling, 1) * 6px) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot:not([name]) {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, 100px);
+  gap: 6px;
+}
+.root {
+  all: unset;
+  display: grid;
+  gap: 4px;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: inherit;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.label:is(legend) {
+  margin-bottom: 4px;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
     </style>
-    <slot />
+    <fieldset
+      class="root"
+    >
+      <slot />
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+    </fieldset>
   </template>
   Some child
 </p-segmented-control>
@@ -19608,11 +19647,6 @@ exports[`should render dsr component for PSelect 1`] = `
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="button"
-        id="label"
-      />
       <button
         aria-controls="list"
         aria-expanded="false"
@@ -23913,11 +23947,6 @@ textarea[readonly] {
     <div
       class="root"
     >
-      <label
-        class="label"
-        for="textarea"
-        id="label"
-      />
       <div
         class="wrapper"
       >

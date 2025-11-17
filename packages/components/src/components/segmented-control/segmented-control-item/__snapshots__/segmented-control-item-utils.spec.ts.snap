@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getButtonAttributes() > should return correct css for isSelected: false and isDisabled: false 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isSelected: false and isDisabled: false 1`] = `
 {
   "aria-disabled": null,
   "aria-label": "Some label",
@@ -8,14 +8,22 @@ exports[`getButtonAttributes() > should return correct css for isSelected: false
 }
 `;
 
-exports[`getButtonAttributes() > should return correct css for isSelected: false and isDisabled: true 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isSelected: false and isDisabled: false 2`] = `
+{
+  "aria-description": "Some error message",
+  "aria-disabled": null,
+  "aria-pressed": "false",
+}
+`;
+
+exports[`getButtonAttributes() > should return correct aria attributes for isSelected: false and isDisabled: true 1`] = `
 {
   "aria-disabled": "true",
   "aria-pressed": "false",
 }
 `;
 
-exports[`getButtonAttributes() > should return correct css for isSelected: true and isDisabled: false 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isSelected: true and isDisabled: false 1`] = `
 {
   "aria-disabled": null,
   "aria-label": "Some label",
@@ -23,7 +31,15 @@ exports[`getButtonAttributes() > should return correct css for isSelected: true 
 }
 `;
 
-exports[`getButtonAttributes() > should return correct css for isSelected: true and isDisabled: true 1`] = `
+exports[`getButtonAttributes() > should return correct aria attributes for isSelected: true and isDisabled: false 2`] = `
+{
+  "aria-description": "Some success message",
+  "aria-disabled": null,
+  "aria-pressed": "true",
+}
+`;
+
+exports[`getButtonAttributes() > should return correct aria attributes for isSelected: true and isDisabled: true 1`] = `
 {
   "aria-disabled": "true",
   "aria-pressed": "true",
