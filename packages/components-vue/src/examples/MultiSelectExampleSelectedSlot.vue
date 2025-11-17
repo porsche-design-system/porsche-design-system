@@ -5,8 +5,8 @@
     :value="value"
     @change="onChange"
   >
-    <span slot="selected" class="flex items-center gap-fluid-sm overflow-scroll">
-      <span v-for="option in selectedOptions" :key="option.value" class="h-full flex items-center gap-fluid-xs bg-surface rounded-sm px-static-md py-static-sm">
+    <span slot="selected" class="h-full flex items-center gap-fluid-sm overflow-scroll">
+      <span v-for="option in selectedOptions" :key="option.value" class="h-full flex items-center gap-fluid-xs bg-surface rounded-sm px-static-md">
         <img :src="option.imgSrc" alt="" class="h-[25px] w-auto" />
         <p class="prose-text-sm truncate m-0">{{ option.label }}</p>
       </span>
