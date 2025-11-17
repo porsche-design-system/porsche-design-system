@@ -61,3 +61,52 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
     },
   ],
 };
+
+export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
+  state: {
+    properties: {
+      state: 'error',
+      name: 'some-name',
+    } as any,
+  },
+  generator: () => [
+    {
+      tag: 'label',
+      properties: { className: 'inline-flex flex-col gap-static-xs prose-text-sm cursor-pointer' },
+      children: [
+        'Some wrapped custom label',
+        {
+          tag: 'p-checkbox',
+          properties: { className: 'cursor-default' },
+        },
+      ],
+    },
+    {
+      tag: 'p-divider',
+      properties: { className: 'my-static-lg' },
+    },
+    {
+      tag: 'div',
+      properties: { className: 'flex gap-static-xs items-center' },
+      children: [
+        {
+          tag: 'label',
+          properties: { className: 'flex gap-static-sm items-center prose-text-sm cursor-pointer' },
+          children: [
+            {
+              tag: 'p-checkbox',
+            },
+            {
+              tag: 'span',
+              children: ['Some wrapped custom label besides an popover'],
+            },
+          ],
+        },
+        {
+          tag: 'p-popover',
+          children: ['Some additional content.'],
+        },
+      ],
+    },
+  ],
+};

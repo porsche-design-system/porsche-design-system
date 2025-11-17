@@ -2,7 +2,11 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import { checkboxExampleForm } from '@porsche-design-system/shared/examples';
-import { checkboxStoryIndeterminate, checkboxStorySlots } from '@/app/components/checkbox/checkbox.stories';
+import {
+  checkboxStoryIndeterminate,
+  checkboxStorySlots,
+  checkboxStoryWrappedLabel,
+} from '@/app/components/checkbox/checkbox.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
@@ -12,7 +16,7 @@ export const metadata = {
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Indeterminate', 'Slots']} />
+<TableOfContents headings={['Form', 'Indeterminate', 'Slots', 'Custom wrapped label']} />
 
 ## Form
 
@@ -54,3 +58,11 @@ can be used. Make sure **not** to define the corresponding property on the host 
 allowed.
 
 <ComponentStory story={checkboxStorySlots} />
+
+## Custom wrapped label
+
+You can also use a custom wrapped label by just wrapping the `p-checkbox` component within a label tag. In this case,
+make sure **not** to define the `label` property on the host element or use the named slot `label`. Be aware that by
+using this approach, the **styling** of the `label` **must be controlled by the integrating team**.
+
+<ComponentStory story={checkboxStoryWrappedLabel} />
