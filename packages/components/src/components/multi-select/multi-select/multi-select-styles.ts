@@ -59,6 +59,7 @@ export const getComponentCss = (
         '& span': getButtonLabelJssStyle,
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
     },
     root: {
       display: 'grid',

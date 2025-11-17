@@ -382,6 +382,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.MultiSelectExampleFormPage />,
   },
   {
+    name: 'Multi Select Example Async',
+    path: '/multi-select-example-async-filter',
+    element: <fromExamples.MultiSelectExampleAsyncFilter />,
+  },
+  {
     name: 'Pin Code Example',
     path: '/pin-code-example',
     element: <fromExamples.PinCodeExamplePage />,
@@ -455,6 +460,11 @@ export const routes: RouteType[] = [
     name: 'Select Example Required',
     path: '/select-example-required',
     element: <fromExamples.SelectExampleRequiredPage />,
+  },
+  {
+    name: 'Select Example Async',
+    path: '/select-example-async-filter',
+    element: <fromExamples.SelectExampleAsyncFilter />,
   },
   {
     name: 'Stepper Horizontal Example',

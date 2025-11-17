@@ -76,6 +76,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -268,6 +276,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -463,6 +479,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FB0404);
@@ -657,6 +681,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #0E4809);
@@ -842,6 +874,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -1020,6 +1060,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -1196,6 +1244,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
   }
   .root {
     display: grid;
@@ -1374,6 +1430,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 4px);
@@ -1550,6 +1614,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
   }
   .root {
     display: grid;
@@ -1729,6 +1801,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -1907,6 +1987,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -2083,6 +2171,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
   }
   .root {
     display: grid;
@@ -2270,6 +2366,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -2465,6 +2569,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FBFCFF);
@@ -2657,6 +2769,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -2851,6 +2971,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -3043,6 +3171,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -3238,6 +3374,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -3430,6 +3574,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -3625,6 +3777,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -3810,6 +3970,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -3988,6 +4156,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -4164,6 +4340,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
   }
   .root {
     display: grid;
@@ -4343,6 +4527,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 4px);
@@ -4521,6 +4713,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   [popover]:not(:popover-open) {
     display: none;
   }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #212225 !important;
+    z-index: 1 !important;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -4698,6 +4898,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   [popover]:not(:popover-open) {
     display: none;
+  }
+  ::slotted([slot="filter"]) {
+    position: sticky !important;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) !important;
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
+    background: #FFF !important;
+    z-index: 1 !important;
   }
   .root {
     display: grid;

@@ -16,10 +16,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Multi Select, Select`:
+  - `filter` slot to allow custom asynchronous filtering
+  - `toggle` event when opening/closing the dropdown
+    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
 - `Segmented Control`: add `state` and `message` props to enable visual validation states
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
 - `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+
+## [3.31.0] - 2025-11-13
 
 ## [3.31.0-rc.0] - 2025-11-11
 
