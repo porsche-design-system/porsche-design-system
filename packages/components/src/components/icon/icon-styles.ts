@@ -83,10 +83,10 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
         width: fontLineHeight,
         height: fontLineHeight,
         font: `${isSizeInherit ? sizeMap['small'] : sizeMap[size]} ${fontFamily}`,
+        color: colorMap[color],
         ...addImportantToEachRule({
           mask: `url(${buildIconUrl(source || name)}) no-repeat left top / contain`,
           aspectRatio: '1/1',
-          color: colorMap[color],
           background: 'currentcolor', // necessary for proper color inheritance
           ...(isFlippableIcon(name, source) && {
             '&:dir(rtl)': {
