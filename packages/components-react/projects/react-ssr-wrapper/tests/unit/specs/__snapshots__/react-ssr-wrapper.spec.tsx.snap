@@ -3129,6 +3129,9 @@ img {
               No results found
             </span>
           </div>
+          <slot
+            name="options-status"
+          />
           <slot />
         </div>
       </div>
@@ -17586,6 +17589,9 @@ img {
               No results found
             </span>
           </div>
+          <slot
+            name="options-status"
+          />
           <slot />
         </div>
       </div>
@@ -19737,6 +19743,9 @@ img {
           class="options"
           role="listbox"
         >
+          <slot
+            name="options-status"
+          />
           <slot />
         </div>
       </div>
