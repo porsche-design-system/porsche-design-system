@@ -80,7 +80,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected options display in the button area. If not provided, the component will render the selected option as it is." }
+ * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected options display in the button area." }
  * @slot {"name": "", "description": "Default slot for the p-multi-select-option tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
