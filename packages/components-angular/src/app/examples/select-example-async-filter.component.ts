@@ -34,7 +34,7 @@ import {
       <!-- Initial skeleton loading -->
       @if (initialLoading && !error) {
         @for (_ of [1,2,3,4,5,6,7,8,9]; track $index) {
-          <div class="skeleton h-[40px]"></div>
+          <div slot="options-status" class="skeleton h-[40px]"></div>
         }
       }
 
@@ -48,9 +48,9 @@ import {
       <!-- No filter results -->
       @if (!initialLoading && options.length === 0 && !error) {
         <div
+          slot="options-status"
           class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-          aria-live="polite"
-          role="option"
+          role="alert"
         >
           <span aria-hidden="true">–</span>
           <span class="sr-only">No results found</span>
@@ -60,8 +60,8 @@ import {
       <!-- Error state -->
       @if (error) {
         <div
+          slot="options-status"
           class="flex gap-static-sm py-static-sm px-[12px]"
-          aria-live="polite"
           role="alert"
         >
           <p-icon name="information" color="notification-error"></p-icon>
