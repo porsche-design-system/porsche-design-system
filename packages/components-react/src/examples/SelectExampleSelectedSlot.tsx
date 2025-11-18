@@ -77,7 +77,7 @@ export const SelectExampleSelectedSlot = () => {
             <div className="flex flex-col">
               <div className="flex items-center gap-fluid-sm">
                 <p className="prose-text-md m-0">{option.label}</p>
-                {selectedOption?.tags.map((tag) => (
+                {option.tags.map((tag) => (
                   <PTag key={tag} color="notification-info-soft" compact={true}>
                     {tag}
                   </PTag>

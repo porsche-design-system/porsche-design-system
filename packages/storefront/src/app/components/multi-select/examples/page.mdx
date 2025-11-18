@@ -8,6 +8,7 @@ import {
   multiSelectExampleForm,
   multiSelectExampleDynamic,
   multiSelectExampleAsyncFilter,
+  multiSelectExampleSelectedSlot,
 } from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
@@ -70,3 +71,15 @@ option fetching manually to control filtering behavior. Be sure to include custo
 as these are not provided automatically when using the controlled filtering approach.
 
 <ComponentExample codeSample={multiSelectExampleAsyncFilter} />
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+<ComponentExample codeSample={multiSelectExampleSelectedSlot} />
