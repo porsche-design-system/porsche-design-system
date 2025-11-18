@@ -62,7 +62,8 @@ allowed.
 ## Custom wrapped label
 
 The `p-checkbox` component also supports a custom wrapped `label` by just wrapping the component within a `label` tag.
-This approach can be used if the `label` must be placed individually or besides other UI elements (e.g. `popover`). Be
-aware that by using this approach, the **styling of the `label` must be controlled by the integrating team**.
+This approach can be used if the `label` must be placed individually or besides other UI elements (e.g. `popover`). The
+contents of the wrapping `label` must only contain raw text and optionally `a` or `button` elements. Be aware that by
+using this approach, the **styling of the `label` must be controlled by the integrating team**.
 
 <ComponentStory story={checkboxStoryWrappedLabel} />

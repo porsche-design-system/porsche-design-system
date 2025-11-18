@@ -86,6 +86,31 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
       properties: { className: 'my-static-lg' },
     },
     {
+      tag: 'label',
+      properties: { className: 'inline-flex flex-col gap-static-xs prose-text-sm cursor-pointer' },
+      children: [
+        {
+          tag: 'span',
+          children: [
+            'Some wrapped custom label with a ',
+            {
+              tag: 'a',
+              properties: { href: 'https://www.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
+            {
+              tag: 'p-checkbox',
+              properties: { className: 'cursor-default' },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      tag: 'p-divider',
+      properties: { className: 'my-static-lg' },
+    },
+    {
       tag: 'div',
       properties: { className: 'flex gap-static-xs items-center' },
       children: [
