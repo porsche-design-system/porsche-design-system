@@ -290,14 +290,10 @@ export class Checkbox {
   };
 
   private onExternalLabelClick = (e: MouseEvent): void => {
-    if (e.target === this.host) {
-      return;
-    }
-
     const target = e.target as HTMLElement;
-    const isInteractiveElement = target.tagName === 'A' || target.tagName === 'BUTTON';
+    const excludedChildElements = target.tagName === 'A' || target.tagName === 'BUTTON' || target === this.host;
 
-    if (isInteractiveElement) {
+    if (excludedChildElements) {
       return;
     }
 
