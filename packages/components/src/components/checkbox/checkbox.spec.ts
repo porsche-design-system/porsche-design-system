@@ -1,15 +1,6 @@
 import { vi } from 'vitest';
 import { Checkbox } from './checkbox';
 
-// Mock the utils/dom module but preserve isDisabledOrLoading
-vi.mock('../../utils/dom', async () => {
-  const actual = await vi.importActual('../../utils/dom');
-  return {
-    ...actual,
-    // Keep the actual isDisabledOrLoading implementation
-  };
-});
-
 class MockElementInternals {
   setValidity = vi.fn();
   setFormValue = vi.fn();
