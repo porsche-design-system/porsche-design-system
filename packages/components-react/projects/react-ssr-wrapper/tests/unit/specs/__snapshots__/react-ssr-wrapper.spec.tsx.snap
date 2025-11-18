@@ -2537,6 +2537,12 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FBFCFF);
@@ -16988,6 +16994,12 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -19527,6 +19539,12 @@ exports[`should render dsr component for PSelect 1`] = `
     margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1) !important;
     background: #FFF !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
