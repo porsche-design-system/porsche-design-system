@@ -1,5 +1,5 @@
 <p-multi-select name="selected-slot-select" label="Selected Slot">
-  <span slot="selected" class="h-full flex items-center gap-fluid-sm overflow-scroll"></span>
+  <span slot="selected" class="h-full flex items-center"></span>
 </p-multi-select>
 
 <script>
@@ -53,13 +53,7 @@
 
   multiSelect.addEventListener('change', (e) => {
     const selectedOptions = options.filter((option) => e.target.value.includes(option.value))
-    selectedSlot.innerHTML = `
-      ${selectedOptions.map((option) => `<span class="h-full flex items-center gap-fluid-xs bg-surface rounded-sm px-static-md">
-        <img src="${option.imgSrc}" alt="" class="h-[25px] w-auto" />
-        <p class="prose-text-sm truncate m-0">${option.label}</p>
-      </span>
-      `).join('')}
-    `;
+    selectedSlot.innerHTML = `<span class="truncate">${selectedOptions.map((option) => option.label).join(', ')}</span>`;
   });
 
   const renderOptions = () => {
