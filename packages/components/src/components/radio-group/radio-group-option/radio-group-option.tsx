@@ -77,14 +77,6 @@ export class RadioGroupOption {
       <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
         {/* wrapped in host for programmatic selection via radio-group-option */}
         <div class="root">
-          <Label
-            host={this.host}
-            label={this.label}
-            htmlFor={id}
-            isDisabled={isDisabled}
-            isLoading={isLoading}
-            stopClickPropagation={true}
-          />
           <div class="wrapper">
             <input
               id={id}
@@ -109,6 +101,14 @@ export class RadioGroupOption {
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />
             )}
           </div>
+          <Label
+            host={this.host}
+            label={this.label}
+            htmlFor={id}
+            isDisabled={isDisabled}
+            isLoading={isLoading}
+            stopClickPropagation={true}
+          />
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
           )}

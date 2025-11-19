@@ -244,18 +244,10 @@ export class Checkbox {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     const id = 'checkbox';
+
     return (
       <div class="root">
-        <Label
-          host={this.host}
-          htmlFor={id}
-          label={this.label}
-          isLoading={this.loading}
-          isDisabled={this.disabled}
-          isRequired={this.required}
-        />
         <div class="wrapper">
           <input
             type="checkbox"
@@ -277,6 +269,14 @@ export class Checkbox {
             <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
           )}
         </div>
+        <Label
+          host={this.host}
+          htmlFor={id}
+          label={this.label}
+          isLoading={this.loading}
+          isDisabled={this.disabled}
+          isRequired={this.required}
+        />
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
@@ -291,7 +291,11 @@ export class Checkbox {
 
   private onExternalLabelClick = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
-    const excludedChildElements = target.tagName === 'A' || target.tagName === 'BUTTON' || target === this.host;
+    const excludedChildElements =
+      target.tagName === 'A' ||
+      target.tagName === 'BUTTON' ||
+      target === this.host ||
+      target.shadowRoot?.querySelector('a, button');
 
     if (excludedChildElements) {
       return;

@@ -19,6 +19,10 @@ type LabelProps = {
   stopClickPropagation?: boolean;
 };
 
+const composedPathIncludesButton = (event: MouseEvent): boolean => {
+  return event.composedPath().some((node): node is HTMLButtonElement => node instanceof HTMLButtonElement);
+};
+
 export const Label: FunctionalComponent<LabelProps> = ({
   host,
   label,
@@ -33,6 +37,10 @@ export const Label: FunctionalComponent<LabelProps> = ({
   const handleClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
       e.stopPropagation();
+    }
+
+    if (composedPathIncludesButton(e)) {
+      e.preventDefault();
     }
   };
 
