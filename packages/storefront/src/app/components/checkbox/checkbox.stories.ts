@@ -32,8 +32,6 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
     properties: {
       state: 'error',
       name: 'some-name',
-      'aria-labelledby': 'some-label-id',
-      'aria-describedby': 'some-message-id',
     } as any,
   },
   generator: ({ properties } = {}) => [
@@ -43,7 +41,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label', id: 'some-label-id' },
+          properties: { slot: 'label' },
           children: [
             'Some label with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
@@ -51,7 +49,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'message', id: 'some-message-id' },
+          properties: { slot: 'message' },
           children: [
             'Some error message with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },

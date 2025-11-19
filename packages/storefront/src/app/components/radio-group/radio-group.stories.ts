@@ -5,7 +5,24 @@ import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/genera
 
 const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
   { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
-  { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
+  {
+    tag: 'p-radio-group-option',
+    properties: { value: 'b' },
+    children: [
+      {
+        tag: 'span',
+        properties: { slot: 'label' },
+        children: [
+          'Option B with slotted label and ',
+          {
+            tag: 'a',
+            properties: { href: 'https://www.porsche.com', className: 'underline' },
+            children: ['link'],
+          },
+        ],
+      },
+    ],
+  },
   { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
   { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
   { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
@@ -37,28 +54,40 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label', id: 'some-label-id' },
+          properties: { slot: 'label' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
         {
           tag: 'span',
-          properties: { slot: 'description', id: 'some-description-id' },
+          properties: { slot: 'description' },
           children: [
             'Some description with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
         {
           tag: 'span',
-          properties: { slot: 'message', id: 'some-message-id' },
+          properties: { slot: 'message' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
