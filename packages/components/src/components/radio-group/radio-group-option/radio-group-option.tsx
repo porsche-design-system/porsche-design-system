@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasNamedSlot,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -23,6 +24,7 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "end", "description": "Places additional content at the end of the label text. Is best to be used with the `Popover` component." }
  */
 @Component({
   tag: 'p-radio-group-option',
@@ -109,6 +111,7 @@ export class RadioGroupOption {
             isLoading={isLoading}
             stopClickPropagation={true}
           />
+          {hasNamedSlot(this.host, 'end') && <slot name="end" />}
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
           )}
@@ -138,7 +141,18 @@ export class RadioGroupOption {
     );
   };
 
-  private onHostClick = (): void => {
+  private onHostClick = (e: MouseEvent): void => {
+    const target = e.target as HTMLElement;
+    const excludedChildElements =
+      target.tagName === 'A' ||
+      target.tagName === 'BUTTON' ||
+      target === this.host ||
+      target.shadowRoot?.querySelector('a, button');
+
+    if (excludedChildElements) {
+      return;
+    }
+
     this.inputElement.focus();
     this.inputElement.click();
   };

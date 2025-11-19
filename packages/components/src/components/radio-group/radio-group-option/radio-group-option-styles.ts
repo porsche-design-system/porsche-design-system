@@ -83,7 +83,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the radio button full size.
   const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
-  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  const columnGap = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
   const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
   const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
@@ -99,6 +99,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           ...hostHiddenStyles,
         }),
         display: 'block',
+      },
+      'slot[name="end"]': {
+        display: 'block',
+        gridArea: '1/3',
+        alignSelf: 'center',
       },
       input: {
         gridArea: '1/1',
@@ -198,6 +203,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
+      columnGap: columnGap,
     },
     wrapper: {
       ...textSmallStyle,
@@ -234,7 +240,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       },
       {
         paddingTop,
-        paddingInlineStart,
       }
     ),
     // .loading

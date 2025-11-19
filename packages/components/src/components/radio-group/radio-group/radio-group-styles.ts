@@ -26,7 +26,7 @@ export const cssVarInternalRadioGroupScaling = '--p-internal-radio-group-scaling
 const groupRadioGroupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
   column: {
     flexFlow: 'column nowrap',
-    alignItems: 'stretch',
+    alignItems: 'start',
   },
   row: {
     flexFlow: 'row wrap',

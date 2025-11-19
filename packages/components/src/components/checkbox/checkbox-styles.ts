@@ -93,7 +93,7 @@ export const getComponentCss = (
   const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
-  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  const columnGap = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
   const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the checkbox, whichever is larger.
 
@@ -105,6 +105,11 @@ export const getComponentCss = (
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
+      },
+      'slot[name="end"]': {
+        display: 'block',
+        gridArea: '1/3',
+        alignSelf: 'center',
       },
       ...preventFoucOfNestedElementsStyles,
       input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
@@ -196,6 +201,8 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
+      columnGap: columnGap,
+      width: 'fit-content',
       ...(disabledOrLoading && {
         cursor: 'not-allowed',
       }),
@@ -233,7 +240,6 @@ export const getComponentCss = (
       },
       {
         paddingTop,
-        paddingInlineStart,
       }
     ),
     // .message

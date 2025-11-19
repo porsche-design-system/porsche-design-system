@@ -17,6 +17,7 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasLabel,
+  hasNamedSlot,
   hasPropValueChanged,
   isDisabledOrLoading,
   THEMES,
@@ -53,6 +54,7 @@ const propTypes: PropTypes<typeof Checkbox> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "end", "description": "Places additional content at the end of the label text. Is best to be used with the `Popover` component." }
  */
 @Component({
   tag: 'p-checkbox',
@@ -277,6 +279,7 @@ export class Checkbox {
           isDisabled={this.disabled}
           isRequired={this.required}
         />
+        {hasNamedSlot(this.host, 'end') && <slot name="end" />}
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
