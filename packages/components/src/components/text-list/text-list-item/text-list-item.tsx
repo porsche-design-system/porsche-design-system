@@ -21,9 +21,7 @@ export class TextListItem {
 
     return (
       <Host role="listitem">
-        <span>
-          <slot />
-        </span>
+        <slot />
       </Host>
     );
   }
