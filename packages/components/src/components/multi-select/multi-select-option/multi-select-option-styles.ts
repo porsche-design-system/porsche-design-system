@@ -24,9 +24,6 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
           [`${cssVarInternalCheckboxScaling}`]: `var(${cssVarInternalMultiSelectOptionScaling})`,
         }),
       },
-      slot: {
-        display: 'block',
-      },
     },
     option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`, theme),
     'checkbox-wrapper': {
