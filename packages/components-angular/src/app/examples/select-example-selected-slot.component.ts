@@ -1,51 +1,74 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { PorscheDesignSystemModule, type SelectChangeEventDetail } from '@porsche-design-system/components-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  type FlagName,
+  PorscheDesignSystemModule,
+  type SelectChangeEventDetail,
+} from '@porsche-design-system/components-angular';
 
-type Option = { value: string; label: string; description: string; tags: string[]; imgSrc: string };
+type Option = { label: string; code: FlagName; continent: string };
 
 const optionsData: Option[] = [
   {
-    value: '718',
-    label: '718',
-    description: 'Präziser Sportwagen mit Mittelmotor',
-    tags: ['Benzin'],
-    imgSrc: 'http://localhost:3002/718.png',
+    label: 'China',
+    code: 'cn',
+    continent: 'Asia',
   },
   {
-    value: '911',
-    label: '911',
-    description: 'Ikonischer Sportwagen mit Heckmotor',
-    tags: ['Benzin'],
-    imgSrc: 'http://localhost:3002/911.png',
+    label: 'Japan',
+    code: 'jp',
+    continent: 'Asia',
   },
   {
-    value: 'taycan',
-    label: 'Taycan',
-    description: 'Elektrischer Sportwagen',
-    tags: ['Elektro'],
-    imgSrc: 'http://localhost:3002/taycan.png',
+    label: 'South Korea',
+    code: 'kr',
+    continent: 'Asia',
   },
   {
-    value: 'macan',
-    label: 'Macan',
-    tags: ['Elektro'],
-    description: 'Sportlicher Kompakt-SUV',
-    imgSrc: 'http://localhost:3002/macan.png',
+    label: 'Austria',
+    code: 'at',
+    continent: 'Europe',
   },
   {
-    value: 'cayenne',
-    label: 'Cayenne',
-    tags: ['Hybrid', 'Benzin'],
-    description: 'Vielseitiger SUV',
-    imgSrc: 'http://localhost:3002/cayenne.png',
+    label: 'France',
+    code: 'fr',
+    continent: 'Europe',
   },
   {
-    value: 'panamera',
-    label: 'Panamera',
-    tags: ['Hybrid', 'Benzin'],
-    description: 'Luxuslimousine mit hohem Komfort',
-    imgSrc: 'http://localhost:3002/panamera.png',
+    label: 'Germany',
+    code: 'de',
+    continent: 'Europe',
+  },
+  {
+    label: 'Great Britain',
+    code: 'gb',
+    continent: 'Europe',
+  },
+  {
+    label: 'Italy',
+    code: 'it',
+    continent: 'Europe',
+  },
+  {
+    label: 'Portugal',
+    code: 'pt',
+    continent: 'Europe',
+  },
+  {
+    label: 'Spain',
+    code: 'es',
+    continent: 'Europe',
+  },
+
+  {
+    label: 'Canada',
+    code: 'ca',
+    continent: 'North America',
+  },
+  {
+    label: 'USA',
+    code: 'us',
+    continent: 'North America',
   },
 ];
 
@@ -59,27 +82,22 @@ const optionsData: Option[] = [
       (change)="onChange($event)"
     >
     <span slot="selected" class="h-full flex items-center gap-fluid-sm grow">
-      <img [src]="selectedOption?.imgSrc" alt="" class="h-full w-auto" />
-      <p class="prose-text-md truncate m-0">{{ selectedOption?.label }}</p>
-      @for (tag of selectedOption?.tags; track tag) {
-        <p-tag color="notification-info-soft" [compact]="true">{{ tag }}</p-tag>
+      @if (selectedOption) {
+        <p-flag [name]="selectedOption.code"></p-flag>
+        <p class="prose-text-sm truncate m-0">{{ selectedOption.label }}</p>
       }
     </span>
-      @for (option of options; track option.value) {
-        <p-select-option [value]="option.value">
-          <div class="flex items-center gap-fluid-sm">
-            <img [src]="option.imgSrc" alt="" class="h-[34px] w-auto" />
-            <div class="flex flex-col">
-              <div class="flex items-center gap-fluid-sm">
-                <p class="prose-text-md m-0">{{ option.label }}</p>
-                @for (tag of option.tags; track tag) {
-                  <p-tag color="notification-info-soft" [compact]="true">{{ tag }}</p-tag>
-                }
+      @for (entry of optgroups; track entry[0]) {
+        <p-optgroup [label]="entry[0]">
+          @for (option of entry[1]; track option.code) {
+            <p-select-option [value]="option.code">
+              <div class="w-full flex items-center gap-fluid-sm">
+                <p-flag [name]="option.code"></p-flag>
+                <p class="prose-text-sm m-0">{{ option.label }}</p>
               </div>
-              <p class="prose-text-2xs m-0">{{ option.description }}</p>
-            </div>
-          </div>
-        </p-select-option>
+            </p-select-option>
+          }
+        </p-optgroup>
       }
     </p-select>
   `,
@@ -92,9 +110,21 @@ export class SelectExampleSelectedSlotComponent {
   options: Option[] = optionsData;
   selectedOption?: Option;
 
+  optgroups: [string, Option[]][] = Object.entries(
+    this.options.reduce(
+      (acc, item) => {
+        const key = item.continent;
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+      },
+      {} as Record<string, Option[]>
+    )
+  );
+
   onChange(event: CustomEvent<SelectChangeEventDetail>) {
     const value = (event.target as HTMLElement & { value: string }).value;
     this.value = value;
-    this.selectedOption = this.options.find((option) => option.value === value);
+    this.selectedOption = this.options.find((option) => option.code === value);
   }
 }

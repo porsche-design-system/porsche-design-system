@@ -1,50 +1,76 @@
-import { PSelect, PSelectOption, PTag, type SelectChangeEventDetail } from '@porsche-design-system/components-react';
+import {
+  PFlag,
+  PFlagProps,
+  POptgroup,
+  PSelect,
+  PSelectOption,
+  type SelectChangeEventDetail,
+} from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
-type Option = { value: string; label: string; description: string; tags: string[]; imgSrc: string };
+type Option = { label: string; code: PFlagProps['name']; continent: string };
 
 const optionsData: Option[] = [
   {
-    value: '718',
-    label: '718',
-    description: 'Präziser Sportwagen mit Mittelmotor',
-    tags: ['Benzin'],
-    imgSrc: 'http://localhost:3002/718.png',
+    label: 'China',
+    code: 'cn',
+    continent: 'Asia',
   },
   {
-    value: '911',
-    label: '911',
-    description: 'Ikonischer Sportwagen mit Heckmotor',
-    tags: ['Benzin'],
-    imgSrc: 'http://localhost:3002/911.png',
+    label: 'Japan',
+    code: 'jp',
+    continent: 'Asia',
   },
   {
-    value: 'taycan',
-    label: 'Taycan',
-    description: 'Elektrischer Sportwagen',
-    tags: ['Elektro'],
-    imgSrc: 'http://localhost:3002/taycan.png',
+    label: 'South Korea',
+    code: 'kr',
+    continent: 'Asia',
   },
   {
-    value: 'macan',
-    label: 'Macan',
-    tags: ['Elektro'],
-    description: 'Sportlicher Kompakt-SUV',
-    imgSrc: 'http://localhost:3002/macan.png',
+    label: 'Austria',
+    code: 'at',
+    continent: 'Europe',
   },
   {
-    value: 'cayenne',
-    label: 'Cayenne',
-    tags: ['Hybrid', 'Benzin'],
-    description: 'Vielseitiger SUV',
-    imgSrc: 'http://localhost:3002/cayenne.png',
+    label: 'France',
+    code: 'fr',
+    continent: 'Europe',
   },
   {
-    value: 'panamera',
-    label: 'Panamera',
-    tags: ['Hybrid', 'Benzin'],
-    description: 'Luxuslimousine mit hohem Komfort',
-    imgSrc: 'http://localhost:3002/panamera.png',
+    label: 'Germany',
+    code: 'de',
+    continent: 'Europe',
+  },
+  {
+    label: 'Great Britain',
+    code: 'gb',
+    continent: 'Europe',
+  },
+  {
+    label: 'Italy',
+    code: 'it',
+    continent: 'Europe',
+  },
+  {
+    label: 'Portugal',
+    code: 'pt',
+    continent: 'Europe',
+  },
+  {
+    label: 'Spain',
+    code: 'es',
+    continent: 'Europe',
+  },
+
+  {
+    label: 'Canada',
+    code: 'ca',
+    continent: 'North America',
+  },
+  {
+    label: 'USA',
+    code: 'us',
+    continent: 'North America',
   },
 ];
 
@@ -53,40 +79,43 @@ export const SelectExampleSelectedSlot = () => {
   const [options] = useState<Option[]>(optionsData);
   const [selectedOption, setSelectedOption] = useState<Option | undefined>(undefined);
 
+  const optgroups: Record<string, Option[]> = options.reduce(
+    (acc, item) => {
+      const key = item.continent;
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(item);
+      return acc;
+    },
+    {} as Record<string, Option[]>
+  );
+
   const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
     const value = (e.target as HTMLElement & { value: string }).value;
     setValue(value);
-    setSelectedOption(options.find((option) => option.value === value));
+    setSelectedOption(options.find((option) => option.code === value));
   };
 
   return (
     <PSelect name="selected-slot-select" label="Selected Slot" value={value} onChange={onChange}>
       <span slot="selected" className="h-full flex items-center gap-fluid-sm grow">
-        <img src={selectedOption?.imgSrc} alt="" className="h-full w-auto" />
-        <p className="prose-text-md truncate m-0">{selectedOption?.label}</p>
-        {selectedOption?.tags.map((tag) => (
-          <PTag key={tag} color="notification-info-soft" compact={true}>
-            {tag}
-          </PTag>
-        ))}
+        {selectedOption && (
+          <>
+            <PFlag name={selectedOption.code}></PFlag>
+            <p className="prose-text-sm truncate m-0">{selectedOption.label}</p>
+          </>
+        )}
       </span>
-      {options.map((option) => (
-        <PSelectOption key={option.value} value={option.value}>
-          <div className="flex items-center gap-fluid-sm">
-            <img src={option.imgSrc} alt="" className="h-[34px] w-auto" />
-            <div className="flex flex-col">
-              <div className="flex items-center gap-fluid-sm">
-                <p className="prose-text-md m-0">{option.label}</p>
-                {option.tags.map((tag) => (
-                  <PTag key={tag} color="notification-info-soft" compact={true}>
-                    {tag}
-                  </PTag>
-                ))}
+      {Object.entries(optgroups).map(([continent, options]) => (
+        <POptgroup key={continent} label={continent}>
+          {options.map((option) => (
+            <PSelectOption key={option.code} value={option.code}>
+              <div className="w-full flex items-center gap-fluid-sm">
+                <PFlag name={option.code}></PFlag>
+                <p className="prose-text-sm m-0">{option.label}</p>
               </div>
-              <p className="prose-text-2xs m-0">{option.description}</p>
-            </div>
-          </div>
-        </PSelectOption>
+            </PSelectOption>
+          ))}
+        </POptgroup>
       ))}
     </PSelect>
   );

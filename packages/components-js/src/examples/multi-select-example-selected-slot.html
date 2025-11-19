@@ -61,17 +61,19 @@
       const optionElement = document.createElement('p-multi-select-option');
       optionElement.value = option.value;
       optionElement.innerHTML = `
-      <div class="flex flex-col gap-fluid-xs">
-        <div class="flex items-center gap-fluid-sm">
-          <img src="${option.imgSrc}" alt="" class="h-[25px] w-auto" />
+      <div class="w-full flex gap-fluid-sm">
+        <img src="${option.imgSrc}" alt="" class="h-[34px] w-auto self-center" />
+        <div class="flex flex-col justify-center flex-1 min-w-0">
           <p class="prose-text-sm m-0">${option.label}</p>
-          ${option.tags.map(tag => `
-            <p-tag color="notification-info-soft" compact="true">
-              ${tag}
-            </p-tag>
-          `).join('')}
+          <p class="prose-text-2xs m-0">${option.description}</p>
         </div>
-        <p class="prose-text-2xs m-0">${option.description}</p>
+        <div class="self-center flex gap-fluid-sm">
+          ${option.tags.map(tag => `
+              <p-tag color="notification-info-soft" compact="true">
+                ${tag}
+              </p-tag>
+            `).join('')}
+        </div>
       </div>
     `;
       multiSelect.appendChild(optionElement);

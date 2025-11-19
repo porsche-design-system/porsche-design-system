@@ -71,17 +71,19 @@ export const MultiSelectExampleSelectedSlot = () => {
       </span>
       {options.map((option) => (
         <PMultiSelectOption key={option.value} value={option.value}>
-          <div className="flex flex-col gap-fluid-xs">
-            <div className="flex items-center gap-fluid-sm">
-              <img src={option.imgSrc} alt="" className="h-[25px] w-auto" />
+          <div className="w-full flex gap-fluid-sm">
+            <img src={option.imgSrc} alt="" className="h-[34px] w-auto self-center" />
+            <div className="flex flex-col justify-center flex-1 min-w-0">
               <p className="prose-text-sm m-0">{option.label}</p>
+              <p className="prose-text-2xs m-0">{option.description}</p>
+            </div>
+            <div className="self-center flex gap-fluid-sm">
               {option.tags.map((tag) => (
                 <PTag key={tag} color="notification-info-soft" compact={true}>
                   {tag}
                 </PTag>
               ))}
             </div>
-            <p className="prose-text-2xs m-0">{option.description}</p>
           </div>
         </PMultiSelectOption>
       ))}

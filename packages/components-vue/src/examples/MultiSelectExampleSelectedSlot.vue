@@ -9,15 +9,17 @@
       <span class="truncate">{{ selectedOptions.map(option => option.label).join(', ') }}</span>
     </span>
     <PMultiSelectOption v-for="option in options" :key="option.value" :value="option.value">
-      <div class="flex flex-col gap-fluid-xs">
-        <div class="flex items-center gap-fluid-sm">
-          <img :src="option.imgSrc" alt="" class="h-[25px] w-auto" />
+      <div class="w-full flex gap-fluid-sm">
+        <img :src="option.imgSrc" alt="" class="h-[34px] w-auto self-center" />
+        <div class="flex flex-col justify-center flex-1 min-w-0">
           <p class="prose-text-sm m-0">{{ option.label }}</p>
+          <p class="prose-text-2xs m-0">{{ option.description }}</p>
+        </div>
+        <div class="self-center flex gap-fluid-sm">
           <PTag v-for="tag in option.tags" :key="tag" color="notification-info-soft" :compact="true">
             {{ tag }}
           </PTag>
         </div>
-        <p class="prose-text-2xs m-0">{{ option.description }}</p>
       </div>
     </PMultiSelectOption>
   </PMultiSelect>
