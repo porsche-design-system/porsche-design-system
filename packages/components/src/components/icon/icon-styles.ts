@@ -72,6 +72,7 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
 
 export const getComponentCss = (name: IconName, source: string, color: IconColor, size: TextSize): string => {
   const isSizeInherit = size === 'inherit';
+  const dimension = isSizeInherit ? 'inherit' : fontLineHeight;
 
   return getCss({
     '@global': {
@@ -80,12 +81,13 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
         verticalAlign: 'top',
         maxWidth: '100%',
         maxHeight: '100%',
-        width: fontLineHeight,
-        height: fontLineHeight,
-        font: `${isSizeInherit ? sizeMap['small'] : sizeMap[size]} ${fontFamily}`,
+        width: dimension,
+        height: dimension,
+        font: `${isSizeInherit ? sizeMap.small : sizeMap[size]} ${fontFamily}`,
         color: colorMap[color],
         ...addImportantToEachRule({
-          mask: `url(${buildIconUrl(source || name)}) no-repeat left top / contain`,
+          WebkitMask: `url(${buildIconUrl(source || name)}) center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `url(${buildIconUrl(source || name)}) center/contain no-repeat`,
           aspectRatio: '1/1',
           background: 'currentcolor', // necessary for proper color inheritance
           ...(isFlippableIcon(name, source) && {

@@ -1,9 +1,10 @@
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -26,22 +27,20 @@ export const getComponentCss = (hasLabel: boolean): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          outline: 0,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
+        all: 'unset',
         display: 'flex',
         position: 'relative',
         alignItems: 'center',
         gap: '12px',
         minHeight: '54px',
         padding: '4px 12px',
-        margin: 0, // Removes default button margin on safari 15
         borderRadius: borderRadiusSmall,
-        border: 0,
         cursor: 'pointer',
         background: frostedColor,
         color: primaryColor,
@@ -52,7 +51,7 @@ export const getComponentCss = (hasLabel: boolean): string => {
             backgroundColor: frostedColor,
           },
         }),
-        ...getFocusJssStyle(),
+        '&:focus-visible': getFocusBaseStyles(),
       },
     },
     ...(hasLabel && {
@@ -64,7 +63,7 @@ export const getComponentCss = (hasLabel: boolean): string => {
       },
     }),
     icon: {
-      padding: '4px',
+      padding: spacingStaticXs,
       marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,

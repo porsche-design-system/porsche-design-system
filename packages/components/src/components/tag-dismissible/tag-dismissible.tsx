@@ -57,7 +57,9 @@ export class TagDismissible {
           {this.label && <span class="label">{this.label}</span>}
           <slot />
         </span>
-        <PrefixedTagNames.pIcon class="icon" name="close" aria-hidden="true" />
+        <span class="icon">
+          <PrefixedTagNames.pIcon name="close" aria-hidden="true" />
+        </span>
       </button>
     );
   }

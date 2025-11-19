@@ -31,7 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Stepper Horizontal
 - ⌛Table
 - ✅Tag
-- ⌛Tag Dismissible
+- ✅Tag Dismissible
 - ⌛Text List
 
 #### Brand
