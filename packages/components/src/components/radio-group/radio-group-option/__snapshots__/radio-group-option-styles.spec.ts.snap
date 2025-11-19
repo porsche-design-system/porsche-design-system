@@ -8,6 +8,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -71,6 +76,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -102,7 +108,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -136,6 +141,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -200,6 +210,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -231,7 +242,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -265,6 +275,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -329,6 +344,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -360,7 +376,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -394,6 +409,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -458,6 +478,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -489,7 +510,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -523,6 +543,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -587,6 +612,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -618,7 +644,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -652,6 +677,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -716,6 +746,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -747,7 +778,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -782,6 +812,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -829,6 +864,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -870,7 +906,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -904,6 +939,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -951,6 +991,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -992,7 +1033,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1026,6 +1066,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1073,6 +1118,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1114,7 +1160,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1148,6 +1193,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1195,6 +1245,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1236,7 +1287,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1270,6 +1320,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1317,6 +1372,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1358,7 +1414,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1392,6 +1447,11 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1439,6 +1499,7 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1480,7 +1541,6 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1514,6 +1574,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1551,6 +1616,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1583,7 +1649,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1617,6 +1682,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1654,6 +1724,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1686,7 +1757,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1720,6 +1790,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1757,6 +1832,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1789,7 +1865,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1823,6 +1898,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1860,6 +1940,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1892,7 +1973,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -1926,6 +2006,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -1963,6 +2048,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1995,7 +2081,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2029,6 +2114,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -2066,6 +2156,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2098,7 +2189,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2132,6 +2222,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -2169,6 +2264,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2210,7 +2306,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2244,6 +2339,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -2281,6 +2381,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2322,7 +2423,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2356,6 +2456,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -2393,6 +2498,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2434,7 +2540,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2468,6 +2573,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
+}
 input {
   grid-area: 1/1;
   border-radius: 50%;
@@ -2505,6 +2615,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2546,7 +2657,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2579,6 +2689,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -2617,6 +2732,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2658,7 +2774,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
@@ -2691,6 +2806,11 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="end"] {
+  display: block;
+  grid-area: 1/3;
+  align-self: center;
 }
 input {
   grid-area: 1/1;
@@ -2729,6 +2849,7 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  column-gap: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2770,7 +2891,6 @@ input:checked {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {

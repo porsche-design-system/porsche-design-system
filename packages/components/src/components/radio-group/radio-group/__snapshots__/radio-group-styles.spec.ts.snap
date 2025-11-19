@@ -18,7 +18,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -110,7 +110,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -202,7 +202,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -293,7 +293,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -384,7 +384,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -475,7 +475,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -567,7 +567,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -659,7 +659,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -751,7 +751,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -843,7 +843,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -934,7 +934,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -1025,7 +1025,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -1117,7 +1117,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -1209,7 +1209,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -1374,7 +1374,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
@@ -1529,7 +1529,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   row-gap: 4px;
 }
 .wrapper {
-  align-items: stretch;
+  align-items: start;
   position: relative;
   display: flex;
   flex-flow: column nowrap;
