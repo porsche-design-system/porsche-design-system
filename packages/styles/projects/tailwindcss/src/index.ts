@@ -530,19 +530,19 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 /* Typography: Heading */
 @utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-semibold text-sm text-primary;
+  @apply font-porsche-next not-italic font-normal text-sm text-primary;
 }
 @utility prose-heading-md {
-  @apply font-porsche-next not-italic font-semibold text-md text-primary;
+  @apply font-porsche-next not-italic font-normal text-md text-primary;
 }
 @utility prose-heading-lg {
-  @apply font-porsche-next not-italic font-semibold text-lg text-primary;
+  @apply font-porsche-next not-italic font-normal text-lg text-primary;
 }
 @utility prose-heading-xl {
-  @apply font-porsche-next not-italic font-semibold text-xl text-primary;
+  @apply font-porsche-next not-italic font-normal text-xl text-primary;
 }
 @utility prose-heading-2xl {
-  @apply font-porsche-next not-italic font-semibold text-2xl text-primary;
+  @apply font-porsche-next not-italic font-normal text-2xl text-primary;
 }
 
 /* Typography: Display */

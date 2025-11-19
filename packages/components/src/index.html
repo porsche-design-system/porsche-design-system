@@ -110,6 +110,13 @@
           <p-button-pure size="xx-small">Some label</p-button-pure>
         </div>
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h3" size="medium">Divider</p-heading>
+          <p-divider color="contrast-high"></p-divider>
+          <p-divider color="contrast-medium"></p-divider>
+          <p-divider color="contrast-low"></p-divider>
+          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h3" size="medium">Flag</p-heading>
           <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
           <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
@@ -553,6 +560,13 @@
           <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
           <p-button-pure size="x-small">Some label</p-button-pure>
           <p-button-pure size="xx-small">Some label</p-button-pure>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h3" size="medium">Divider</p-heading>
+          <p-divider color="contrast-high"></p-divider>
+          <p-divider color="contrast-medium"></p-divider>
+          <p-divider color="contrast-low"></p-divider>
+          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
         </div>
         <div class="grid gap-fluid-sm">
           <p-heading tag="h3" size="medium">Flag</p-heading>
@@ -1000,6 +1014,13 @@
           <p-button-pure size="xx-small">Some label</p-button-pure>
         </div>
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h3" size="medium">Divider</p-heading>
+          <p-divider color="contrast-high"></p-divider>
+          <p-divider color="contrast-medium"></p-divider>
+          <p-divider color="contrast-low"></p-divider>
+          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h3" size="medium">Flag</p-heading>
           <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
           <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
@@ -1443,6 +1464,13 @@
           <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
           <p-button-pure size="x-small">Some label</p-button-pure>
           <p-button-pure size="xx-small">Some label</p-button-pure>
+        </div>
+        <div class="grid gap-fluid-sm">
+          <p-heading tag="h3" size="medium">Divider</p-heading>
+          <p-divider color="contrast-high"></p-divider>
+          <p-divider color="contrast-medium"></p-divider>
+          <p-divider color="contrast-low"></p-divider>
+          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
         </div>
         <div class="grid gap-fluid-sm">
           <p-heading tag="h3" size="medium">Flag</p-heading>
@@ -1897,6 +1925,10 @@
     <script>
       for (const el of document.querySelectorAll("p-switch")) {
         el.addEventListener('update', (e) => e.target.checked = e.detail.checked);
+      }
+
+      for (const el of document.querySelectorAll("p-accordion")) {
+        el.addEventListener('update', (e) => e.target.open = e.detail.open);
       }
     </script>
 

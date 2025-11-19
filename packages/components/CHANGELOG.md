@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Button Tile
 - ⌛Canvas
 - ⌛Carousel
-- ⌛Divider
+- ✅Divider
 - ✅Flag
 - ✅Icon
 - ⌛Scroller
@@ -95,6 +95,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- In general all headings use regular as font-weight
 - Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
   class, e.g. `<p-input-text name="some-name"></p-input-text>` inside `<div class="dark">…</div>` will render the dark
   theme.

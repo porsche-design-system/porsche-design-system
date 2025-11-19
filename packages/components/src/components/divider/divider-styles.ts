@@ -21,10 +21,8 @@ export const getComponentCss = (color: DividerColor, orientation: BreakpointCust
         }),
       },
       hr: {
-        margin: 0,
-        padding: 0,
-        border: 'none',
-        textAlign: 'start',
+        all: 'unset',
+        display: 'block',
         background: colorMap[color],
         ...buildResponsiveStyles(orientation, (o: DividerDirection) =>
           o === 'horizontal' ? { height: '1px', width: '100%' } : { height: '100%', width: '1px' }

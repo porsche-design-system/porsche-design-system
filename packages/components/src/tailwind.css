@@ -8,7 +8,9 @@
 }
 
 @theme {
-  --animate-gradient: gradient-rotate calc(var(--transition-duration-moderate) * 50) linear infinite, gradient-blur calc(var(--transition-duration-moderate) * 25) var(--ease-in-out) infinite;
+  --animate-gradient:
+    gradient-rotate calc(var(--transition-duration-moderate) * 50) linear infinite, gradient-blur
+    calc(var(--transition-duration-moderate) * 25) var(--ease-in-out) infinite;
 
   @keyframes gradient-rotate {
     from {
