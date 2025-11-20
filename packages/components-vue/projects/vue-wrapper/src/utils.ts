@@ -1,9 +1,8 @@
-import { inject } from 'vue';
 import type { InjectionKey, Ref } from 'vue';
-import type { Theme, ToastMessage } from './lib/types';
+import { inject } from 'vue';
+import type { ToastMessage } from './lib/types';
 
 export const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<string>;
-export const themeInjectionKey = Symbol('pdsTheme') as InjectionKey<Ref<Theme>>;
 
 export const usePrefix = (tagName: string): string => {
   const prefix = inject(prefixInjectionKey);
