@@ -1,9 +1,9 @@
 import {
   borderRadiusSmall,
+  fontFamily,
   fontLineHeight,
   fontSizeTextMedium,
   fontSizeTextSmall,
-  fontSizeTextXXSmall,
   fontWeightSemiBold,
   frostedGlassStyle,
   motionDurationShort,
@@ -15,7 +15,7 @@ import {
   colorSchemeStyles,
   colors,
   cssVariableTransitionDuration,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -57,18 +57,14 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
+        all: 'unset',
         display: 'flex',
         position: 'relative',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        textDecoration: 'none',
-        border: 0,
-        margin: 0, // Removes default button margin on safari 15
         gap: '24px',
-        background: 'transparent',
         cursor: 'pointer',
-        textAlign: 'start',
         zIndex: 0,
         color: primaryColor,
         ...textSmallStyle,
@@ -85,8 +81,7 @@ export const getComponentCss = (
               zIndex: -1,
               position: 'absolute',
               borderRadius: borderRadiusSmall,
-              left: '-4px',
-              right: '-4px',
+              insetInline: '-4px',
               ...(compact
                 ? {
                     top: '2px',
@@ -108,7 +103,7 @@ export const getComponentCss = (
             },
           })
         ),
-        ...getFocusJssStyle({ pseudo: true, offset: '-2px' }),
+        '&:focus-visible::before': getFocusBaseStyles(),
       },
     },
     heading: {
@@ -117,20 +112,18 @@ export const getComponentCss = (
         position: 'sticky',
         top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
         zIndex: 1, // to be on top of the collapsible
-        backgroundColor: canvasColor,
+        background: canvasColor,
       }),
     },
     'icon-container': {
       height: fontLineHeight,
       width: fontLineHeight,
+      font: `inherit ${fontFamily}`, // needed for correct calculations based on ex-unit
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
     icon: {
-      width: fontLineHeight,
-      height: fontLineHeight,
-      fontSize: fontSizeTextXXSmall,
       transform: open ? 'rotate3d(0)' : 'rotate3d(0,0,1,90deg)',
       transition: getTransition('transform'),
     },
