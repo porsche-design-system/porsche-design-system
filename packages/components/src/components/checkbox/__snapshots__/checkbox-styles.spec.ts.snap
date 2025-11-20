@@ -10,7 +10,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -53,13 +53,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -108,7 +111,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -204,7 +206,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -278,12 +280,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -335,7 +340,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -363,7 +367,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -437,12 +441,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -494,7 +501,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -522,7 +528,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -565,13 +571,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -622,7 +631,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -650,7 +658,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -693,13 +701,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -750,7 +761,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -778,7 +788,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -852,12 +862,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -908,7 +921,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -936,7 +948,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1010,12 +1022,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1066,7 +1081,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1094,7 +1108,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1137,13 +1151,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1193,7 +1210,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1221,7 +1237,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1264,13 +1280,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1320,7 +1339,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1348,7 +1366,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1422,12 +1440,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1479,7 +1500,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1507,7 +1527,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1581,12 +1601,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1638,7 +1661,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1666,7 +1688,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1709,13 +1731,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1766,7 +1791,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1794,7 +1818,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1837,13 +1861,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1894,7 +1921,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -1922,7 +1948,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -1996,12 +2022,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2052,7 +2081,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2080,7 +2108,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2154,12 +2182,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2210,7 +2241,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2238,7 +2268,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2281,13 +2311,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2337,7 +2370,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2365,7 +2397,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2408,13 +2440,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2464,7 +2499,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2492,7 +2526,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2566,12 +2600,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2621,7 +2658,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2649,7 +2685,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2723,12 +2759,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2778,7 +2817,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2806,7 +2844,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2853,13 +2891,16 @@ input:focus-visible {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -2918,7 +2959,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -2946,7 +2986,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -2993,13 +3033,16 @@ input:focus-visible {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3058,7 +3101,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3086,7 +3128,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3129,13 +3171,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3184,7 +3229,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3212,7 +3256,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3255,13 +3299,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3310,7 +3357,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3338,7 +3384,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3375,13 +3421,16 @@ input:checked {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3440,7 +3489,6 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3468,7 +3516,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3505,13 +3553,16 @@ input:checked {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3570,7 +3621,6 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3598,7 +3648,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3672,12 +3722,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3728,7 +3781,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3756,7 +3808,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3830,12 +3882,15 @@ input:focus-visible {
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   width: fit-content;
 }
-.wrapper {
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -3886,7 +3941,6 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -3914,7 +3968,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -3957,13 +4011,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -4013,7 +4070,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;
@@ -4041,7 +4097,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 }
 slot[name="end"] {
   display: block;
-  grid-area: 1/3;
+  grid-area: 1/-1;
   align-self: center;
 }
 :not(:defined,[data-ssr]) {
@@ -4084,13 +4140,16 @@ input:indeterminate {
 }
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
   cursor: not-allowed;
 }
 .wrapper {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  width: fit-content;
+}
+.input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -4140,7 +4199,6 @@ input:indeterminate {
   hyphens: var(--p-hyphens, auto);
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
 }
 .message:empty {
   opacity: 0;

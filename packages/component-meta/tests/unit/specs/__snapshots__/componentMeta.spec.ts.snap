@@ -2118,6 +2118,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "slotsMeta": {
+      "end": {
+        "description": "Places additional content at the end of the label text. Is best to be used with the \`Popover\` component.",
+      },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -9141,7 +9144,7 @@ exports[`should match snapshot 1`] = `
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
-    "hasSlot": false,
+    "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
@@ -9179,6 +9182,14 @@ exports[`should match snapshot 1`] = `
     "requiredParent": [
       "p-radio-group",
     ],
+    "slotsMeta": {
+      "end": {
+        "description": "Places additional content at the end of the label text. Is best to be used with the \`Popover\` component.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-scroller": {
