@@ -101,7 +101,7 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
       {/* Initial skeleton loading */}
       {initialLoading &&
         !error &&
-        Array.from({ length: 9 }).map((_, i) => <div key={i} className="skeleton h-[40px]" />)}
+        Array.from({ length: 9 }).map((_, i) => <div key={i} slot="options-status" className="skeleton h-[40px]" />)}
 
       {/* Options */}
       {options.map((opt) => (
@@ -113,9 +113,9 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
       {/* No filter results */}
       {!initialLoading && options.length === 0 && !error && (
         <div
+          slot="options-status"
           className="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-          aria-live="polite"
-          role="option"
+          role="alert"
         >
           <span aria-hidden="true">–</span>
           <span className="sr-only">No results found</span>
@@ -124,7 +124,7 @@ export const MultiSelectExampleAsyncFilter = (): JSX.Element => {
 
       {/* Error state */}
       {error && (
-        <div className="flex gap-static-sm py-static-sm px-[12px]" aria-live="polite" role="alert">
+        <div slot="options-status" className="flex gap-static-sm py-static-sm px-[12px]" role="alert">
           <PIcon name="information" color="notification-error" />
           <span className="text-error">{error}</span>
         </div>

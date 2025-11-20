@@ -452,6 +452,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.MultiSelectExampleAsyncFilterComponent,
   },
   {
+    name: 'Multi Select Example Selected Slot',
+    path: 'multi-select-example-selected-slot',
+    component: fromExamples.MultiSelectExampleSelectedSlotComponent,
+  },
+  {
     name: 'Pin Code Example',
     path: 'pin-code-example',
     component: fromExamples.PinCodeExampleComponent,
@@ -550,6 +555,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Select Example Async',
     path: 'select-example-async-filter',
     component: fromExamples.SelectExampleAsyncFilterComponent,
+  },
+  {
+    name: 'Select Example Selected Slot',
+    path: 'select-example-selected-slot',
+    component: fromExamples.SelectExampleSelectedSlotComponent,
   },
   {
     name: 'Stepper Horizontal Example',

@@ -8,6 +8,7 @@ import {
   selectExampleDynamic,
   selectExampleRequired,
   selectExampleAsyncFilter,
+  selectExampleSelectedSlot,
 } from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { Notification } from '@/components/common/Notification';
@@ -27,6 +28,7 @@ export const metadata = {
     'Set Value',
     'With optgroups',
     'Custom asynchronous filtering',
+    'Custom option rendering',
   ]}
 />
 
@@ -101,3 +103,15 @@ option fetching manually to control filtering behavior. Be sure to include custo
 as these are not provided automatically when using the controlled filtering approach.
 
 <ComponentExample codeSample={selectExampleAsyncFilter} />
+
+## Custom option rendering
+
+By default, `p-select-option` only allows `#text` and `img` nodes. To customize option rendering further, implement a
+custom selection renderer using the `selected` slot. This allows you to render different content in the selected area
+versus the dropdown options, enabling more complex option layouts.
+
+When using the `filter` option, the default behavior filters against all `textContent` within the options. For more
+granular control over filtering, implement custom filtering logic as shown in the
+[previous example](/components/select/examples#custom-asynchronous-filtering).
+
+<ComponentExample codeSample={selectExampleSelectedSlot} />

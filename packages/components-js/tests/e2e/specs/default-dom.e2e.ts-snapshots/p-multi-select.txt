@@ -27,6 +27,7 @@
       aria-label=""
       aria-multiselectable="true"
     >
+      <slot name="options-status"> </slot>
       <slot> </slot>
     </div>
   </div>
