@@ -108,7 +108,7 @@ export const getComponentCss = (
       },
       'slot[name="end"]': {
         display: 'block',
-        gridArea: '1/3',
+        gridArea: '1/-1',
         alignSelf: 'center',
       },
       ...preventFoucOfNestedElementsStyles,
@@ -199,15 +199,18 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
-      columnGap: columnGap,
-      width: 'fit-content',
       ...(disabledOrLoading && {
         cursor: 'not-allowed',
       }),
     },
     wrapper: {
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr)',
+      columnGap: columnGap,
+      width: 'fit-content',
+    },
+    'input-wrapper': {
       ...textSmallStyle,
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
@@ -243,9 +246,7 @@ export const getComponentCss = (
       }
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state, {
-      gridColumn: '1/3',
-    }),
+    ...getFunctionalComponentStateMessageStyles(theme, state, {}),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

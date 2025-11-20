@@ -251,35 +251,37 @@ export class Checkbox {
     return (
       <div class="root">
         <div class="wrapper">
-          <input
-            type="checkbox"
-            id={id}
-            aria-describedby={`${descriptionId} ${messageId}`}
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            aria-disabled={this.loading || this.disabled ? 'true' : null}
-            checked={this.checked}
-            form={this.form}
-            value={this.value}
-            name={this.name}
-            onChange={this.onChange}
-            onBlur={this.onBlur}
-            required={this.required}
-            disabled={this.disabled}
-            ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
+          <div class="input-wrapper">
+            <input
+              type="checkbox"
+              id={id}
+              aria-describedby={`${descriptionId} ${messageId}`}
+              aria-invalid={this.state === 'error' ? 'true' : null}
+              aria-disabled={this.loading || this.disabled ? 'true' : null}
+              checked={this.checked}
+              form={this.form}
+              value={this.value}
+              name={this.name}
+              onChange={this.onChange}
+              onBlur={this.onBlur}
+              required={this.required}
+              disabled={this.disabled}
+              ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
+            />
+            {this.loading && (
+              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
+            )}
+          </div>
+          <Label
+            host={this.host}
+            htmlFor={id}
+            label={this.label}
+            isLoading={this.loading}
+            isDisabled={this.disabled}
+            isRequired={this.required}
           />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {hasNamedSlot(this.host, 'end') && <slot name="end" />}
         </div>
-        <Label
-          host={this.host}
-          htmlFor={id}
-          label={this.label}
-          isLoading={this.loading}
-          isDisabled={this.disabled}
-          isRequired={this.required}
-        />
-        {hasNamedSlot(this.host, 'end') && <slot name="end" />}
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
