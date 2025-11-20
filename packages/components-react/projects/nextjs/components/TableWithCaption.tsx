@@ -8,15 +8,14 @@ import {
   PTableHeadRow,
   PTableRow,
   type TableHeadCellSort,
-  type Theme,
 } from '@porsche-design-system/components-react/ssr';
 import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared';
 import Image from 'next/image';
 
 // NOTE: this component is duplicated and adjusted from react
-export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
+export const TableWithCaption = (): JSX.Element => {
   return (
-    <PTable caption="Some caption" theme={theme}>
+    <PTable caption="Some caption">
       <PTableHead>
         <PTableHeadRow>
           {head.map((item, i) => (
@@ -50,10 +49,10 @@ export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
             <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>
-              <PButtonPure theme={theme} icon="edit" style={{ padding: '.5rem' }}>
+              <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
                 Edit
               </PButtonPure>
-              <PButtonPure theme={theme} icon="delete" style={{ padding: '.5rem' }}>
+              <PButtonPure icon="delete" style={{ padding: '.5rem' }}>
                 Delete
               </PButtonPure>
             </PTableCell>

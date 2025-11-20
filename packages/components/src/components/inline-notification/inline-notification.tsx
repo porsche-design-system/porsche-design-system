@@ -116,7 +116,7 @@ export class InlineNotification {
           <PrefixedTagNames.pButton
             class="close"
             type="button"
-            variant="ghost"
+           variant="secondary"
             icon="close"
             hideLabel={true}
             aria-controls={bannerId}

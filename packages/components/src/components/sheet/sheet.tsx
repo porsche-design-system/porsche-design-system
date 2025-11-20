@@ -119,7 +119,7 @@ export class Sheet {
           <div class="sheet">
             {this.dismissButton && (
               <PrefixedTagNames.pButton
-                variant="ghost"
+               variant="secondary"
                 class="dismiss"
                 type="button"
                 hideLabel={true}

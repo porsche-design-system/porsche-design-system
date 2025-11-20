@@ -171,7 +171,7 @@ export class Flyout {
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">
             <PrefixedTagNames.pButton
-              variant="ghost"
+             variant="secondary"
               class="dismiss"
               type="button"
               hideLabel={true}

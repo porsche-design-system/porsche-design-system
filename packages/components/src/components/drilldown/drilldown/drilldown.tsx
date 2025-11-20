@@ -150,7 +150,7 @@ export class Drilldown {
           <PrefixedTagNames.pButton
             class="dismiss-mobile"
             type="button"
-            variant="ghost"
+           variant="secondary"
             hideLabel={true}
             icon="close"
             onClick={this.dismissDialog}

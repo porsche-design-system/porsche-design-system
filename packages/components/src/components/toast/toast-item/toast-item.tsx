@@ -61,7 +61,7 @@ export class ToastItem {
         />
         <p innerHTML={this.text} />
         <PrefixedTagNames.pButton
-          variant="ghost"
+         variant="secondary"
           class="close"
           type="button"
           icon="close"

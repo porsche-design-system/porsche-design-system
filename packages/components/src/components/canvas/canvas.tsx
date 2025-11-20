@@ -122,7 +122,7 @@ export class Canvas {
               {!this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
                   icon="sidebar"
-                  variant="ghost"
+                  variant="secondary"
                   compact={true}
                   hide-label="true"
                   aria={{ 'aria-expanded': this.sidebarStartOpen }}
@@ -150,7 +150,7 @@ export class Canvas {
                 <div class="sidebar__header sidebar__header--start">
                   <PrefixedTagNames.pButton
                     icon="sidebar"
-                    variant="ghost"
+                    variant="secondary"
                     compact={true}
                     hide-label="true"
                     aria={{ 'aria-expanded': this.sidebarStartOpen }}
@@ -185,7 +185,7 @@ export class Canvas {
                   <slot name="sidebar-end-header" />
                   <PrefixedTagNames.pButton
                     icon="close"
-                    variant="ghost"
+                    variant="secondary"
                     compact={true}
                     hide-label="true"
                     aria={{ 'aria-expanded': this.sidebarEndOpen }}
