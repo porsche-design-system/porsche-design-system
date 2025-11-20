@@ -34,8 +34,10 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
         CSS Variables
         {amountOfConfiguredCssVariables > 0 && (
           <>
-            <PTag compact={true}>{amountOfConfiguredCssVariables}</PTag>
-            <PTag compact={true}>
+            <PTag variant="secondary" compact={true}>
+              {amountOfConfiguredCssVariables}
+            </PTag>
+            <PTag variant="secondary" compact={true}>
               {/*// TODO: Implement */}
               <button type="button">Reset all</button>
             </PTag>
@@ -64,7 +66,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
                 {getFlags(cssVariableMeta)}
                 {/* TODO: Fix typing */}
                 {cssVariables[cssVariableName] !== (defaultCssVariables as any)?.[cssVariableName] && (
-                  <PTag compact={true}>
+                  <PTag variant="secondary" compact={true}>
                     <button type="button" onClick={() => onUpdateCssVariables(cssVariableName, undefined)}>
                       Reset
                     </button>
