@@ -28,7 +28,7 @@ export class Tag {
   @Element() public host!: HTMLElement;
 
   /** Background color variations. */
-  @Prop() public variant?: TagVariant = 'primary';
+  @Prop() public variant?: TagVariant = 'secondary';
 
   /** The icon shown. */
   @Prop() public icon?: TagIcon = 'none';
@@ -41,7 +41,7 @@ export class Tag {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const hasIcon = !!(this.icon || this.iconSource);
+    const hasIcon = this.icon !== 'none' || !!this.iconSource;
     attachComponentCss(
       this.host,
       getComponentCss,
