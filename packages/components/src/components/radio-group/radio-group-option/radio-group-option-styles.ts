@@ -101,9 +101,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         display: 'block',
       },
       'slot[name="end"]': {
-        display: 'block',
-        gridArea: '1/3',
-        alignSelf: 'center',
+        display: 'inline',
       },
       input: {
         gridArea: '1/1',
@@ -208,16 +206,15 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     wrapper: {
       ...textSmallStyle,
       display: 'grid',
-      gridArea: '1/1',
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignSelf: 'flex-start', // in case label becomes multiline
       ...(isDisabledOrLoading(disabled, loading) && {
         cursor: 'not-allowed',
       }),
       height,
+    },
+    'label-wrapper': {
+      paddingTop,
     },
     ...(loading && {
       spinner: {
@@ -231,17 +228,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled || loading,
-      false,
-      theme,
-      {
-        gridArea: '1/2',
-      },
-      {
-        paddingTop,
-      }
-    ),
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, {
+      display: 'inline',
+    }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

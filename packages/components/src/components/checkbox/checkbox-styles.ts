@@ -107,9 +107,7 @@ export const getComponentCss = (
         }),
       },
       'slot[name="end"]': {
-        display: 'block',
-        gridArea: '1/-1',
-        alignSelf: 'center',
+        display: 'inline',
       },
       ...preventFoucOfNestedElementsStyles,
       input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
@@ -208,17 +206,13 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       columnGap: columnGap,
-      width: 'fit-content',
     },
     'input-wrapper': {
       ...textSmallStyle,
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
-      justifyContent: 'center',
-      alignItems: 'center',
       display: 'grid',
       gridArea: '1/1',
-      alignSelf: 'flex-start', // in case label becomes multiline
       height,
     },
     ...(isLoading && {
@@ -232,17 +226,19 @@ export const getComponentCss = (
         pointerEvents: 'none',
       },
     }),
+    'label-wrapper': {
+      paddingTop,
+    },
     // .label / .required
     ...getFunctionalComponentLabelStyles(
       isDisabled || isLoading,
       hideLabel,
       theme,
       {
-        gridArea: '1/2',
         ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
       {
-        paddingTop,
+        display: 'inline',
       }
     ),
     // .message

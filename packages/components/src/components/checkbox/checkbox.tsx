@@ -272,15 +272,17 @@ export class Checkbox {
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
             )}
           </div>
-          <Label
-            host={this.host}
-            htmlFor={id}
-            label={this.label}
-            isLoading={this.loading}
-            isDisabled={this.disabled}
-            isRequired={this.required}
-          />
-          {hasNamedSlot(this.host, 'end') && <slot name="end" />}
+          <div class="label-wrapper">
+            <Label
+              host={this.host}
+              htmlFor={id}
+              label={this.label}
+              isLoading={this.loading}
+              isDisabled={this.disabled}
+              isRequired={this.required}
+            />
+            {hasNamedSlot(this.host, 'end') && <slot name="end" />}
+          </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
