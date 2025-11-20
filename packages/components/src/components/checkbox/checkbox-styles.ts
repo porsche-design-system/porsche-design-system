@@ -93,7 +93,7 @@ export const getComponentCss = (
   const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
-  const columnGap = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
   const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the checkbox, whichever is larger.
 
@@ -107,7 +107,8 @@ export const getComponentCss = (
         }),
       },
       'slot[name="end"]': {
-        display: 'inline',
+        display: 'inline-block',
+        verticalAlign: 'top',
       },
       ...preventFoucOfNestedElementsStyles,
       input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
@@ -205,12 +206,14 @@ export const getComponentCss = (
     wrapper: {
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
-      columnGap: columnGap,
     },
     'input-wrapper': {
       ...textSmallStyle,
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'flex-start', // in case label becomes multiline
       display: 'grid',
       gridArea: '1/1',
       height,
@@ -226,21 +229,17 @@ export const getComponentCss = (
         pointerEvents: 'none',
       },
     }),
-    'label-wrapper': {
-      paddingTop,
-    },
-    // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      isDisabled || isLoading,
-      hideLabel,
-      theme,
-      {
-        ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
+    ...(!hideLabel && {
+      'label-wrapper': {
+        paddingTop,
+        paddingInlineStart,
       },
-      {
-        display: 'inline',
-      }
-    ),
+    }),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, theme, {
+      ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
+      display: 'inline',
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state, {}),
     // .loading

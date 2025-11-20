@@ -83,7 +83,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the radio button full size.
   const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
-  const columnGap = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
   const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
   const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
@@ -101,7 +101,8 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         display: 'block',
       },
       'slot[name="end"]': {
-        display: 'inline',
+        display: 'inline-block',
+        verticalAlign: 'top',
       },
       input: {
         gridArea: '1/1',
@@ -201,13 +202,15 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
-      columnGap: columnGap,
     },
     wrapper: {
       ...textSmallStyle,
       display: 'grid',
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'flex-start', // in case label becomes multiline
       ...(isDisabledOrLoading(disabled, loading) && {
         cursor: 'not-allowed',
       }),
@@ -215,6 +218,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     },
     'label-wrapper': {
       paddingTop,
+      paddingInlineStart,
     },
     ...(loading && {
       spinner: {
