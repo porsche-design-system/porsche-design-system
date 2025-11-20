@@ -107,7 +107,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PLinkPure>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-fluid-sm ps-static-md border-s-4 border-solid border-contrast-20">
+      <blockquote className="my-fluid-sm ps-static-md border-s-4 border-solid border-contrast-low">
         {children as React.ReactNode}
       </blockquote>
     ),

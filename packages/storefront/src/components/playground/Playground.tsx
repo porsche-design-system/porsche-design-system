@@ -23,9 +23,9 @@ export const Playground = ({
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
   return (
-    <div className="playground mt-fluid-md border-thin border-contrast-20 rounded-lg">
+    <div className="playground mt-fluid-md border-thin border-contrast-low rounded-lg">
       <div
-        className={`demo p-static-lg border-b-thin border-contrast-20 bg-${backgroundColor} rounded-t-lg`}
+        className={`demo p-static-lg border-b-thin border-contrast-low bg-${backgroundColor} rounded-t-lg`}
         style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
       >
         {children}
