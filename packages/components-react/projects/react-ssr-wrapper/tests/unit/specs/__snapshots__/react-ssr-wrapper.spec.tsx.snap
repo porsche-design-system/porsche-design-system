@@ -10869,9 +10869,7 @@ exports[`should render dsr component for PCheckbox 1`] = `
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/-1;
-  align-self: center;
+  display: inline;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -10950,7 +10948,6 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   column-gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
-  width: fit-content;
 }
 .input-wrapper {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -10958,12 +10955,12 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
   display: grid;
   grid-area: 1/1;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -10981,8 +10978,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -11036,6 +11032,9 @@ input:focus-visible {
             value="on"
           />
         </div>
+        <div
+          class="label-wrapper"
+        />
       </div>
       <span
         class="message"
@@ -18651,9 +18650,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -18725,13 +18722,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -18749,8 +18745,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -18787,6 +18782,9 @@ input:focus-visible {
           type="radio"
         />
       </div>
+      <div
+        class="label-wrapper"
+      />
       <span
         class="loading"
         id="loading"

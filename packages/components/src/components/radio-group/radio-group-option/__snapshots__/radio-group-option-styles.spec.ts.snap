@@ -9,9 +9,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -83,13 +81,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -107,8 +104,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -143,9 +139,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -217,13 +211,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -241,8 +234,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -277,9 +269,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -351,13 +341,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -375,8 +364,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -411,9 +399,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -485,13 +471,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -509,8 +494,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -545,9 +529,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -619,13 +601,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -643,8 +624,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -679,9 +659,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -753,13 +731,12 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -777,8 +754,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -813,9 +789,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -871,14 +845,13 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -905,8 +878,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -940,9 +912,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -998,14 +968,13 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -1032,8 +1001,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1067,9 +1035,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1125,14 +1091,13 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -1159,8 +1124,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1194,9 +1158,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1252,14 +1214,13 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -1286,8 +1247,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1321,9 +1281,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1379,14 +1337,13 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -1413,8 +1370,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1448,9 +1404,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1506,14 +1460,13 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -1540,8 +1493,7 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1575,9 +1527,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1623,14 +1573,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1648,8 +1597,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1683,9 +1631,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1731,14 +1677,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1756,8 +1701,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1791,9 +1735,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1839,14 +1781,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1864,8 +1805,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -1899,9 +1839,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -1947,14 +1885,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1972,8 +1909,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2007,9 +1943,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2055,14 +1989,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2080,8 +2013,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2115,9 +2047,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2163,14 +2093,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2188,8 +2117,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2223,9 +2151,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2271,14 +2197,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -2305,8 +2230,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2340,9 +2264,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2388,14 +2310,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -2422,8 +2343,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2457,9 +2377,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2505,14 +2423,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -2539,8 +2456,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2574,9 +2490,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2622,14 +2536,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -2656,8 +2569,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2691,9 +2603,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2739,14 +2649,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -2773,8 +2682,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
@@ -2808,9 +2716,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   display: none !important;
 }
 slot[name="end"] {
-  display: block;
-  grid-area: 1/3;
-  align-self: center;
+  display: inline;
 }
 input {
   grid-area: 1/1;
@@ -2856,14 +2762,13 @@ input:checked {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   display: grid;
-  grid-area: 1/1;
   min-width: 24px;
   min-height: 24px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
   cursor: not-allowed;
   height: calc(max(calc(6px + 2.125ex), calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2)));
+}
+.label-wrapper {
+  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .spinner {
   position: relative;
@@ -2890,8 +2795,7 @@ input:checked {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(max(calc(16px * 0.75), var(--p-internal-radio-group-option-scaling, 1) * (calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  grid-area: 1/2;
+  display: inline;
 }
 .label:empty {
   display: none;
