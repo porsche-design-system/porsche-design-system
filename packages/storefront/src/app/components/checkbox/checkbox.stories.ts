@@ -44,7 +44,23 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
           properties: { slot: 'label' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
+          ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'end' },
+          children: [
+            'Some label with a ',
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
           ],
         },
         {
@@ -52,7 +68,11 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
           properties: { slot: 'message' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
           ],
         },
       ],
@@ -96,11 +116,11 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
               properties: { href: 'https://www.porsche.com', className: 'underline' },
               children: ['link'],
             },
-            {
-              tag: 'p-checkbox',
-              properties: { className: 'cursor-default' },
-            },
           ],
+        },
+        {
+          tag: 'p-checkbox',
+          properties: { className: 'cursor-default' },
         },
       ],
     },
@@ -110,11 +130,11 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
     },
     {
       tag: 'div',
-      properties: { className: 'flex gap-static-xs items-center' },
+      properties: { className: 'flex items-center' },
       children: [
         {
           tag: 'label',
-          properties: { className: 'flex gap-static-sm items-center prose-text-sm cursor-pointer' },
+          properties: { className: 'flex items-center prose-text-sm cursor-pointer' },
           children: [
             {
               tag: 'p-checkbox',

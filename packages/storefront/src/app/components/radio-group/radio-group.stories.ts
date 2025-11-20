@@ -23,7 +23,22 @@ const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
       },
     ],
   },
-  { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
+  {
+    tag: 'p-radio-group-option',
+    properties: { value: 'c' },
+    children: [
+      {
+        tag: 'span',
+        properties: { slot: 'label' },
+        children: ['Option C with slotted label and a popover '],
+      },
+      {
+        tag: 'p-popover',
+        properties: { slot: 'end' },
+        children: ['Option C with slotted label and a popover '],
+      },
+    ],
+  },
   { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
   { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
   { tag: 'p-radio-group-option', properties: { value: 'f', label: 'Option F' } },
