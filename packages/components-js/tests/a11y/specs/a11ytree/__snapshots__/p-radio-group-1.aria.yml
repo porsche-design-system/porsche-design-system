@@ -1,5 +1,5 @@
 - radiogroup "Some label":
-  - text: Some label Some description Some label A
+  - text: Some label Some description
   - radio "Some label A"
   - status
   - radio "Some label B" [checked]
