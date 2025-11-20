@@ -7,6 +7,7 @@
   initial-value: 90deg;
 }
 
+/* biome-ignore lint/suspicious/noUnknownAtRules: Tailwind CSS */
 @theme {
   --animate-gradient:
     gradient-rotate calc(var(--transition-duration-moderate) * 50) linear infinite, gradient-blur

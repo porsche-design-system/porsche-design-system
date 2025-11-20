@@ -34,6 +34,7 @@ export const P = ({ children }: PropsWithChildren) => (
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     wrapper: ({ children }) => (
+      // biome-ignore lint/correctness/useUniqueElementIds: ok
       <article id="main-content" className="col-span-full xs:col-start-2 xs:col-end-12">
         {children as React.ReactNode}
       </article>
