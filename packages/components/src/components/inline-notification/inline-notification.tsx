@@ -8,7 +8,6 @@ import {
   hasHeading,
   validateProps,
 } from '../../utils';
-import type { IconColor } from '../icon/icon-utils';
 import { getComponentCss } from './inline-notification-styles';
 import {
   getContentAriaAttributes,
@@ -86,7 +85,7 @@ export class InlineNotification {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(this.state)}
-          color={`notification-${this.state}` as IconColor}
+          color={this.state}
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
@@ -116,7 +115,7 @@ export class InlineNotification {
           <PrefixedTagNames.pButton
             class="close"
             type="button"
-           variant="secondary"
+            variant="secondary"
             icon="close"
             hideLabel={true}
             aria-controls={bannerId}
