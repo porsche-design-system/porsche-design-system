@@ -1,3 +1,24 @@
+<style>
+  .scaling-0 {
+    --p-internal-tag-dismissible-scaling: 0;
+  }
+  .scaling-0-3 {
+    --p-internal-tag-dismissible-scaling: 0.3;
+  }
+  .scaling-0-5 {
+    --p-internal-tag-dismissible-scaling: 0.5;
+  }
+  .scaling-1 {
+    --p-internal-tag-dismissible-scaling: 1;
+  }
+  .scaling-2 {
+    --p-internal-tag-dismissible-scaling: 2;
+  }
+  .w-0 {
+    width: 0px;
+  }
+</style>
+
 <div class="playground light auto-layout-inline" title="should show different background colors">
   <p-tag-dismissible>Default</p-tag-dismissible>
   <p-tag-dismissible color="background-default">Color background-default</p-tag-dismissible>
@@ -34,8 +55,68 @@
   </p-tag-dismissible>
 </div>
 
-<div class="playground light auto-layout-inline" title="should show different multiline tags" style="max-width: 300px">
-  <p-tag-dismissible>Text that is very long and will break into the next line</p-tag-dismissible>
-  <p-tag-dismissible label="Some label">Text that is very long and will break into the next line</p-tag-dismissible>
-  <p-tag-dismissible label="Label that is very long and will break into the next line">Short Text</p-tag-dismissible>
+<div class="playground light auto-layout-inline" title="should render tag dismissible in compact mode">
+  <p-tag-dismissible compact="true">Default</p-tag-dismissible>
+  <p-tag-dismissible compact="true" label="Some label">Default</p-tag-dismissible>
+  <p-tag-dismissible compact="true" label="Some label"
+    >Text that is very long and will break into the next line</p-tag-dismissible
+  >
+  <p-tag-dismissible compact="true" label="Label that is very long and will break into the next line"
+    >Short Text</p-tag-dismissible
+  >
+</div>
+
+<div class="playground light auto-layout-inline" title="should render tag dismissible with scaling 0">
+  <p-tag-dismissible class="scaling-0">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-0" label="Some label">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-0" label="Some label"
+    >Text that is very long and will break into the next line</p-tag-dismissible
+  >
+  <p-tag-dismissible class="scaling-0" label="Label that is very long and will break into the next line"
+    >Short Text</p-tag-dismissible
+  >
+</div>
+
+<div class="playground light auto-layout-inline" title="should render tag dismissible with scaling 0.3">
+  <p-tag-dismissible class="scaling-0-3">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-0-3" label="Some label">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-0-3" label="Some label"
+    >Text that is very long and will break into the next line</p-tag-dismissible
+  >
+  <p-tag-dismissible class="scaling-0-3" label="Label that is very long and will break into the next line"
+    >Short Text</p-tag-dismissible
+  >
+</div>
+
+<div class="playground light auto-layout-inline" title="should render tag dismissible with scaling 0.5">
+  <p-tag-dismissible class="scaling-0-5">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-0-5" label="Some label">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-0-5" label="Some label"
+    >Text that is very long and will break into the next line</p-tag-dismissible
+  >
+  <p-tag-dismissible class="scaling-0-5" label="Label that is very long and will break into the next line"
+    >Short Text</p-tag-dismissible
+  >
+</div>
+
+<div class="playground light auto-layout-inline" title="should render tag dismissible with scaling 1">
+  <p-tag-dismissible class="scaling-1">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-1" label="Some label">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-1" label="Some label"
+    >Text that is very long and will break into the next line</p-tag-dismissible
+  >
+  <p-tag-dismissible class="scaling-1" label="Label that is very long and will break into the next line"
+    >Short Text</p-tag-dismissible
+  >
+</div>
+
+<div class="playground light auto-layout-inline" title="should render tag dismissible with scaling 2">
+  <p-tag-dismissible class="scaling-2">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-2" label="Some label">Default</p-tag-dismissible>
+  <p-tag-dismissible class="scaling-2" label="Some label"
+    >Text that is very long and will break into the next line</p-tag-dismissible
+  >
+  <p-tag-dismissible class="scaling-2" label="Label that is very long and will break into the next line"
+    >Short Text</p-tag-dismissible
+  >
 </div>

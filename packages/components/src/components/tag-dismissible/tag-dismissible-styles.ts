@@ -10,11 +10,16 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
+  SCALING_BASE_VALUE,
 } from '../../styles';
 import type { Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
+
+export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
+export const getScalingVar = (compact: boolean) =>
+  `var(${cssVarInternalTagDismissibleScaling}, ${compact ? 'calc(4 / 13)' : 1})`;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -23,8 +28,16 @@ import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-d
 export const getComponentCss = (
   color: Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
   hasLabel: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
+  const scalingVar = getScalingVar(compact);
+
+  const iconPadding = '4px';
+  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - ${iconPadding}/2)`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
+  const paddingInline = `max(calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - 1px), 4px)`;
+  const gap = `max(calc(${scalingVar} * 0.75 * ${SCALING_BASE_VALUE}), 2px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 12px
+
   const themedColors = getThemedColors(theme);
   const themedColorsDark = getThemedColors('dark');
   const { primaryColor, hoverColor, contrastHighColor } = themedColors;
@@ -52,9 +65,8 @@ export const getComponentCss = (
         display: 'flex',
         position: 'relative',
         alignItems: 'center',
-        gap: '12px',
-        minHeight: '54px',
-        padding: '4px 12px',
+        gap,
+        padding: `${hasLabel ? `calc(${paddingBlock} - 6px)` : paddingBlock} ${paddingInline}`,
         margin: 0, // Removes default button margin on safari 15
         borderRadius: borderRadiusSmall,
         border: 0,
@@ -94,7 +106,7 @@ export const getComponentCss = (
       },
     }),
     icon: {
-      padding: '4px',
+      padding: iconPadding,
       marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,

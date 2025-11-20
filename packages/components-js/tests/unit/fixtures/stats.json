@@ -41,8 +41,8 @@
   },
   {
     "chunkShortName": "checkbox",
-    "size": 14441,
-    "gzipSize": 5298
+    "size": 13494,
+    "gzipSize": 5076
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -201,7 +201,7 @@
   },
   {
     "chunkShortName": "main",
-    "size": 89844,
+    "size": 89858,
     "gzipSize": 28371
   },
   {
@@ -321,8 +321,8 @@
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 4214,
-    "gzipSize": 1961
+    "size": 4473,
+    "gzipSize": 2086
   },
   {
     "chunkShortName": "text",
