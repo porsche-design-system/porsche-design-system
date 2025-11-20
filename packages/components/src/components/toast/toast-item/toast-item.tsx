@@ -56,12 +56,12 @@ export class ToastItem {
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(this.state)}
-          color={`notification-${this.state}` as IconColor}
+          color={this.state}
           aria-hidden="true"
         />
         <p innerHTML={this.text} />
         <PrefixedTagNames.pButton
-         variant="secondary"
+          variant="secondary"
           class="close"
           type="button"
           icon="close"
