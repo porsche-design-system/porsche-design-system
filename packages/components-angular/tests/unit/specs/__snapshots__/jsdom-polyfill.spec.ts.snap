@@ -1,5 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`jsdom-polyfill > should match snapshot 1`] = `[]`;
-
-exports[`jsdom-polyfill > should match snapshot 2`] = `[]`;
