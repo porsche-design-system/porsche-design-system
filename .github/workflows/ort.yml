@@ -3,46 +3,69 @@ name: 'OSS Review Toolkit'
 on:
   schedule:
     - cron: "0 0 1 * *" # at 00:00 on day-of-month 1
-  workflow_dispatch: # enables manual run, - before manual run is triggered ensure step "Send ORT Analyzer Result to OSO" is disabled / commented out
+  workflow_dispatch: # enables manual run (it won't send the ORT result to OSO Jenkins)
+
+permissions:
+  contents: read
 
 env:
   OSO_PROJECT_NAME: porsche_design_system
-  OSO_AWS_ECR_REGISTRY: 936427553375.dkr.ecr.eu-central-1.amazonaws.com
 
 jobs:
   ort:
     name: 'ORT'
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.56.0-jammy
-      options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Production Builds'
         run: yarn build-prod
-      - name: "Login to AWS ECR"
+      - name: "Login"
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.OSO_AWS_ECR_REGISTRY }}
+          registry: ${{ vars.OSO_AWS_ECR_REGISTRY }}
           username: ${{ secrets.OSO_AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.OSO_AWS_SECRET_ACCESS_KEY }}
-      - name: "Run ORT"
+      - name: "Analyze"
         run: |
-          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest analyze -i /project -o /project/ort
-          docker run --user root -v "$PWD":/project ${{ env.OSO_AWS_ECR_REGISTRY }}/ort:latest report -i /project/ort/analyzer-result.yml -o /project/ort -f StaticHtml
+          docker run \
+            --user root \
+            -v "$PWD":/project \
+            ${{ vars.OSO_AWS_ECR_REGISTRY }}/ort:latest \
+            analyze \
+            -i /project \
+            -o /project/ort
         shell: bash
-      - name: 'Store ORT Analysis'
+      - name: "Report"
+        run: |
+          docker run \
+            --user root \
+            -v "$PWD":/project \
+            ${{ vars.OSO_AWS_ECR_REGISTRY }}/ort:latest \
+            report \
+            -i /project/ort/analyzer-result.yml \
+            -o /project/ort \
+            -f StaticHtml
+        shell: bash
+      - name: 'Upload'
         uses: actions/upload-artifact@v4
         with:
           name: ort-analysis
           path: ./ort
-      - name: "Send ORT Analyzer Result to OSO"
+      - name: "Send"
+        if: github.event_name == 'schedule'
         run: |
-          zip -j analyzer-result.zip ort/analyzer-result.yml
-          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@scanning-environment.opensourceofficeprod.aws.platform.porsche.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=${{ env.OSO_PROJECT_NAME }} --fail
+          zip \
+            -j analyzer-result.zip ort/analyzer-result.yml
+          curl \
+            -u "${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}" \
+            -X POST \
+            ${{ vars.OSO_JENKINS_URL }} \
+            --form ort/analyzer-result.zip=@analyzer-result.zip \
+            --form ProjectName=${{ env.OSO_PROJECT_NAME }} \
+            --fail
         shell: bash
         env:
           OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
