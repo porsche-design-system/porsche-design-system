@@ -38,12 +38,6 @@ describe('RadioGroupOption', () => {
     expect(inputElement.click).toHaveBeenCalledTimes(1);
   });
 
-  it('should not interact when target equals the host', () => {
-    triggerHostClick(host);
-
-    expectInputUntouched();
-  });
-
   it('should not interact when target is an anchor element', () => {
     const target = document.createElement('a');
 

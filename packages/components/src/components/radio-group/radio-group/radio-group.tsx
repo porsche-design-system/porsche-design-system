@@ -290,7 +290,7 @@ export class RadioGroup {
     this.radioGroupOptions = [];
 
     for (const child of Array.from(this.host.children).filter(
-      (el) => el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      (el) => el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message' && el.slot !== 'end'
     )) {
       throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-radio-group-option']);
       this.radioGroupOptions.push(child as RadioGroupOption);

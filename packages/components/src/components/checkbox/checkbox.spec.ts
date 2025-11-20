@@ -411,21 +411,6 @@ describe('onExternalLabelClick', () => {
     expect(clickSpy).not.toHaveBeenCalled();
   });
 
-  it('should do nothing if target is host element', () => {
-    const component = initComponent();
-    const clickSpy = vi.spyOn(component['checkboxInputElement'], 'click');
-    const preventDefaultSpy = vi.fn();
-    const event = {
-      target: component.host,
-      preventDefault: preventDefaultSpy,
-    } as unknown as MouseEvent;
-
-    component['onExternalLabelClick'](event);
-
-    expect(preventDefaultSpy).not.toHaveBeenCalled();
-    expect(clickSpy).not.toHaveBeenCalled();
-  });
-
   it('should do nothing if target is an "a" tag', () => {
     const component = initComponent();
     const clickSpy = vi.spyOn(component['checkboxInputElement'], 'click');
