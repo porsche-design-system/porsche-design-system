@@ -3,13 +3,9 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   resolve: {
-    alias: [
-      {
-        find: /^@porsche-design-system\/shared\/testing$/,
-        replacement: resolve(__dirname, '../../../../shared/dist/testing/esm/index.mjs'),
-      },
-    ],
-    conditions: ['import', 'module', 'browser', 'default'],
+    alias: {
+      '@porsche-design-system/shared/testing': resolve(__dirname, '../../../../shared/dist/testing/esm/index.mjs'),
+    },
   },
   test: {
     root: resolve(__dirname, '../../../'),
