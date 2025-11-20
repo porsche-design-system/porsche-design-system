@@ -2994,6 +2994,10 @@ export namespace Components {
          */
         "color"?: TagDismissibleColor;
         /**
+          * A boolean value that, if present, renders the tag dismissible as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -7734,6 +7738,10 @@ declare namespace LocalJSX {
           * Background color variations
          */
         "color"?: TagDismissibleColor;
+        /**
+          * A boolean value that, if present, renders the tag dismissible as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * The label text.
          */

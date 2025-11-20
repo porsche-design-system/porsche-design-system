@@ -28,6 +28,7 @@ const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   label: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
 };
 
@@ -53,6 +54,9 @@ export class TagDismissible {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
+  /** A boolean value that, if present, renders the tag dismissible as a compact version. */
+  @Prop() public compact?: boolean = false;
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -75,6 +79,7 @@ export class TagDismissible {
         TagDismissibleColorDeprecated
       >,
       !!this.label,
+      this.compact,
       this.theme
     );
 
