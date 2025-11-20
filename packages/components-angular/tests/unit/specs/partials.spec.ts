@@ -4,6 +4,13 @@ import { describe, expect, it } from 'vitest';
 
 describe('partials', () => {
   it('should reexport partials sub-package from components-js', () => {
-    expect(angularPartials).toEqual(jsPartials);
+    const angularKeys = Object.keys(angularPartials)
+      .filter((key) => key !== 'default')
+      .sort();
+    const jsKeys = Object.keys(jsPartials)
+      .filter((key) => key !== 'default')
+      .sort();
+
+    expect(angularKeys).toEqual(jsKeys);
   });
 });

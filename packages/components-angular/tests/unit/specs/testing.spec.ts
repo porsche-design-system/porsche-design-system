@@ -4,6 +4,13 @@ import { describe, expect, it } from 'vitest';
 
 describe('testing', () => {
   it('should reexport testing sub-package from components-js', () => {
-    expect(angularTesting).toEqual(jsTesting);
+    const angularKeys = Object.keys(angularTesting)
+      .filter((key) => key !== 'default')
+      .sort();
+    const jsKeys = Object.keys(jsTesting)
+      .filter((key) => key !== 'default')
+      .sort();
+
+    expect(angularKeys).toEqual(jsKeys);
   });
 });

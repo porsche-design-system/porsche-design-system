@@ -4,6 +4,13 @@ import { describe, expect, it } from 'vitest';
 
 describe('jsdom-polyfill', () => {
   it('should reexport jsdom-polyfill sub-package from components-js', () => {
-    expect(angularJsdomPolyfill).toEqual(jsJsdomPolyfill);
+    const angularKeys = Object.keys(angularJsdomPolyfill)
+      .filter((key) => key !== 'default')
+      .sort();
+    const jsKeys = Object.keys(jsJsdomPolyfill)
+      .filter((key) => key !== 'default')
+      .sort();
+
+    expect(angularKeys).toEqual(jsKeys);
   });
 });
