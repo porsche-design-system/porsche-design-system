@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
-      '@porsche-design-system/shared/testing': resolve(__dirname, '../../../../shared/testing'),
+      '@porsche-design-system/shared/testing': resolve(__dirname, '../../../../shared/src/testing'),
     },
   },
   test: {
