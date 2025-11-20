@@ -118,9 +118,11 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Reset */
-  --*: initial;
+  --color-*: initial;
 
   /* Color */
+  --color-black: #000;
+  --color-white: #fff;
 
   /* a11y */
   --color-focus: ${colorFocusLight};
@@ -164,6 +166,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
   /* Typography */
   --font-porsche-next: ${fontFamily};
+  --font-sans: var(--font-porsche-next);
 
   --font-weight-normal: ${fontWeightRegular};
   --font-weight-semibold: ${fontWeightSemiBold};
@@ -382,7 +385,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
       --color-info-medium: ${colorInfoMediumDark};
       --color-info-frosted: ${colorInfoFrostedDark};
       --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
-        /* special */
+      /* special */
       --color-skeleton: #1a1b1e;
     }
   }

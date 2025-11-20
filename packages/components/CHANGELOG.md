@@ -114,7 +114,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
     `error`, `info`
 
-- Tailwind CSS: Reset all default Tailwind color tokens and all other predefined Tailwind presets
+- Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
   only
 
