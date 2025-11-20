@@ -36,7 +36,7 @@ export const Playground = ({
             className="w-fit"
             type="button"
             iconSource="assets/icon-stackblitz.svg"
-            variant="ghost"
+            variant="secondary"
             compact={true}
             onClick={onOpenInStackblitz}
           >

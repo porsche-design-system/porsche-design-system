@@ -6,5 +6,5 @@ type A11yIconProps = {
 };
 
 export const A11yIcon = ({ size = 'large' }: A11yIconProps) => {
-  return <PIcon name="accessibility" size={size} color="notification-info" aria-hidden="true" />;
+  return <PIcon name="accessibility" size={size} color="info" aria-hidden="true" />;
 };

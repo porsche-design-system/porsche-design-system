@@ -93,7 +93,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PButton
         slot="header-end"
         icon="search"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
@@ -104,7 +104,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PLink
         slot="header-end"
         iconSource="assets/github.svg"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
@@ -115,7 +115,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <PButton
         slot="header-end"
         icon="configurate"
-        variant="ghost"
+        variant="secondary"
         compact={true}
         hideLabel={true}
         onClick={onSidebarEndOpen}
