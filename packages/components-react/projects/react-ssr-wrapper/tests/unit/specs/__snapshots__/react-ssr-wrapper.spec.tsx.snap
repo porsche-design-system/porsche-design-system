@@ -2537,6 +2537,12 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FBFCFF);
@@ -3123,6 +3129,9 @@ img {
               No results found
             </span>
           </div>
+          <slot
+            name="options-status"
+          />
           <slot />
         </div>
       </div>
@@ -3149,9 +3158,6 @@ img {
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -3251,9 +3257,6 @@ slot {
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -3351,9 +3354,6 @@ slot {
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -3453,9 +3453,6 @@ slot {
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -3554,9 +3551,6 @@ slot {
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -3654,9 +3648,6 @@ slot {
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -16988,6 +16979,12 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -17574,6 +17571,9 @@ img {
               No results found
             </span>
           </div>
+          <slot
+            name="options-status"
+          />
           <slot />
         </div>
       </div>
@@ -17605,9 +17605,6 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -19528,6 +19525,12 @@ exports[`should render dsr component for PSelect 1`] = `
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, #010205);
@@ -19719,6 +19722,9 @@ img {
           class="options"
           role="listbox"
         >
+          <slot
+            name="options-status"
+          />
           <slot />
         </div>
       </div>

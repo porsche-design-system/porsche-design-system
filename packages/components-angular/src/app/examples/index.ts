@@ -69,6 +69,7 @@ import { MultiSelectExampleControlledComponent } from './multi-select-example-co
 import { MultiSelectExampleDynamicComponent } from './multi-select-example-dynamic.component';
 import { MultiSelectExampleFormComponent } from './multi-select-example-form.component';
 import { MultiSelectExampleReactiveFormComponent } from './multi-select-example-reactive-form.component';
+import { MultiSelectExampleSelectedSlotComponent } from './multi-select-example-selected-slot.component';
 import { PinCodeExampleComponent } from './pin-code-example.component';
 import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { PinCodeExampleFormComponent } from './pin-code-example-form.component';
@@ -89,6 +90,7 @@ import { SelectExampleDynamicComponent } from './select-example-dynamic.componen
 import { SelectExampleFormComponent } from './select-example-form.component';
 import { SelectExampleReactiveFormComponent } from './select-example-reactive-form.component';
 import { SelectExampleRequiredComponent } from './select-example-required.component';
+import { SelectExampleSelectedSlotComponent } from './select-example-selected-slot.component';
 import { SheetExampleComponent } from './sheet-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { StepperHorizontalNavigationExampleSecondComponent } from './stepper-horizontal-navigation-example-second.component';
@@ -178,6 +180,7 @@ export const examples = [
   MultiSelectExampleFormComponent,
   MultiSelectExampleReactiveFormComponent,
   MultiSelectExampleAsyncFilterComponent,
+  MultiSelectExampleSelectedSlotComponent,
   PinCodeExampleComponent,
   PinCodeExampleControlledComponent,
   PinCodeExampleFormComponent,
@@ -198,6 +201,7 @@ export const examples = [
   SelectExampleReactiveFormComponent,
   SelectExampleRequiredComponent,
   SelectExampleAsyncFilterComponent,
+  SelectExampleSelectedSlotComponent,
   StepperHorizontalExampleComponent,
   StepperHorizontalNavigationExampleStartComponent,
   StepperHorizontalNavigationExampleSecondComponent,
@@ -285,6 +289,7 @@ export * from './multi-select-example-controlled.component';
 export * from './multi-select-example-dynamic.component';
 export * from './multi-select-example-form.component';
 export * from './multi-select-example-reactive-form.component';
+export * from './multi-select-example-selected-slot.component';
 export * from './pin-code-example.component';
 export * from './pin-code-example-controlled.component';
 export * from './pin-code-example-form.component';
@@ -305,6 +310,7 @@ export * from './select-example-dynamic.component';
 export * from './select-example-form.component';
 export * from './select-example-reactive-form.component';
 export * from './select-example-required.component';
+export * from './select-example-selected-slot.component';
 export * from './sheet-example.component';
 export * from './stepper-horizontal-example.component';
 export * from './stepper-horizontal-navigation-example-second.component';

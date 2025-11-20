@@ -1,0 +1,36 @@
+<style>
+  p-select {
+    margin: 16px;
+  }
+</style>
+
+<p-select name="options" value="a" label="Selected Slot" filter="true">
+  <span slot="selected" style="height: 100%; display: flex; align-items: center">Some custom selection</span>
+  <p-select-option value="a">
+    <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+    <div style="display: flex; flex-direction: column;">
+      <p-text>Some complex option A</p-text>
+      <p-text size="xx-small">Some complex option description</p-text>
+    </div>
+  </p-select-option>
+  <p-select-option value="b">
+    <img src="http://localhost:3002/911.png" alt="Some alt text" width="271" height="96" />
+    <div style="display: flex; flex-direction: column;">
+      <p-text>Some complex option B</p-text>
+      <p-text size="xx-small">Some complex option description</p-text>
+    </div>
+  </p-select-option>
+  <p-select-option value="c">
+    <img src="http://localhost:3002/taycan.png" alt="Some alt text" width="271" height="96" />
+    <div style="display: flex; flex-direction: column;">
+      <p-text>Some complex option C</p-text>
+      <p-text size="xx-small">Some complex option description</p-text>
+    </div>
+  </p-select-option>
+</p-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('label').click();
+  });
+</script>

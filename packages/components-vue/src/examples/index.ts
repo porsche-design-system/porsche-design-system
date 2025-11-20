@@ -68,6 +68,7 @@ export { default as MultiSelectExampleControlled } from './MultiSelectExampleCon
 export { default as MultiSelectExampleControlledModel } from './MultiSelectExampleControlledModel.vue';
 export { default as MultiSelectExampleDynamic } from './MultiSelectExampleDynamic.vue';
 export { default as MultiSelectExampleForm } from './MultiSelectExampleForm.vue';
+export { default as MultiSelectExampleSelectedSlot } from './MultiSelectExampleSelectedSlot.vue';
 export { default as PinCodeExample } from './PinCodeExample.vue';
 export { default as PinCodeExampleControlled } from './PinCodeExampleControlled.vue';
 export { default as PinCodeExampleControlledModel } from './PinCodeExampleControlledModel.vue';
@@ -88,6 +89,7 @@ export { default as SelectExampleControlledModel } from './SelectExampleControll
 export { default as SelectExampleDynamic } from './SelectExampleDynamic.vue';
 export { default as SelectExampleForm } from './SelectExampleForm.vue';
 export { default as SelectExampleRequired } from './SelectExampleRequired.vue';
+export { default as SelectExampleSelectedSlot } from './SelectExampleSelectedSlot.vue';
 export { default as SheetExample } from './SheetExample.vue';
 export { default as StepperHorizontalExample } from './StepperHorizontalExample.vue';
 export { default as TableExampleAdvanced } from './TableExampleAdvanced.vue';

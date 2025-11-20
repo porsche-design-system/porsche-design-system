@@ -6,3 +6,4 @@ export { getIconJssStyle } from './icon';
 export { getOptionJssStyle } from './option';
 export { getOptionsJssStyle } from './options';
 export { getPopoverJssStyle, getPopoverKeyframesStyles } from './popover';
+export { getSelectedSlotJssStyle } from './selected';
