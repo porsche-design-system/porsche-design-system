@@ -36,7 +36,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </video>
 
         <PDisplay
-          className="z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-3xl"
+          className="z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-[768px]"
           size="medium"
           tag="h1"
         >
@@ -44,8 +44,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </PDisplay>
         <div className="block w-full h-full relative">
           <div
-            className="bg-surface max-w-lg bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
-            style={{ marginBottom: '5%', marginLeft: '5%' }}
+            className="mb-[5%] ms-[5%] bg-frosted backdrop-blur-frosted max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
           >
             <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
             <div className="flex flex-col">
@@ -267,7 +266,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             aspectRatio="16/9"
-            className="bg-surface-dark rounded-lg"
+            className="bg-surface dark rounded-lg"
           >
             <Image src="assets/accessibility.png" alt="" width={2036} height={1144} />
           </PLinkTile>
@@ -307,7 +306,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </div>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Short & Longterm Efficiency">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -319,7 +318,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Brand Fit">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -331,7 +330,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Accessibility">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -343,7 +342,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Framework Agnostic">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -354,7 +353,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Fluid & Responsive">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -366,7 +365,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Compliant Quality">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -378,7 +377,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Updated Capability">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -390,7 +389,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Open-Source Code">
-          <div className="relative rounded-3xl bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">

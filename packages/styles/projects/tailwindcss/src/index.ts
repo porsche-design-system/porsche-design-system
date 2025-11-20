@@ -118,7 +118,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Reset */
-  --color-*: initial;
+  --*: initial;
 
   /* Color */
 
@@ -218,7 +218,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --radius-md: ${borderRadiusMd};
   --radius-lg: ${borderRadiusLg};
 
-  --default-border-width: ${borderWidthRegular};
+  --default-border-width: ${borderWidthThin};
   --border-width-regular: ${borderWidthRegular};
   --border-width-thin: ${borderWidthThin};
 

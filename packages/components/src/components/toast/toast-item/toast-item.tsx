@@ -8,7 +8,6 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
 } from '../../../utils';
-import type { IconColor } from '../../icon/icon-utils';
 import { getInlineNotificationIconName } from '../../inline-notification/inline-notification-utils';
 import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
 import { getComponentCss } from './toast-item-styles';

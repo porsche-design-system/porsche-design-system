@@ -20,11 +20,11 @@ import {
 import { getCss } from '../../utils';
 
 // public css classes
-const cssClassGrid = '-p-canvasColor-grid';
+const cssClassGrid = '-p-canvas-grid';
 
 // public css variables
-const cssVarSidebarStartWidth = '--p-canvasColor-sidebar-start-width';
-const cssVarSidebarEndWidth = '--p-canvasColor-sidebar-end-width';
+const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
+const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
 
 // default values for public css variables
 const sidebarStartWidth = `var(${cssVarSidebarStartWidth},320px)`;

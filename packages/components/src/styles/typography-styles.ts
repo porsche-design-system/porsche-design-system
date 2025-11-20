@@ -13,6 +13,7 @@ export const getTypographyRootJssStyle = (
 ): JssStyle => {
   return {
     all: 'unset',
+    display: 'block',
     ...baseTextStyle,
     color: getThemedTypographyColor(color),
     textAlign: align,
