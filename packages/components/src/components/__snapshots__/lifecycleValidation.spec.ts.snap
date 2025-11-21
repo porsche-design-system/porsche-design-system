@@ -1008,6 +1008,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 {
   "aria": "aria",
   "color": "oneOf",
+  "compact": "boolean",
   "label": "string",
   "theme": "oneOf",
 }

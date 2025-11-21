@@ -101,7 +101,7 @@ export class Textarea {
   @Prop() public required?: boolean = false;
 
   /** A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
   @Prop() public maxLength?: number;
@@ -162,6 +162,7 @@ export class Textarea {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -177,11 +178,13 @@ export class Textarea {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(
-      this.textAreaElement.validity,
-      this.textAreaElement.validationMessage,
-      this.textAreaElement
-    );
+    if (!this.disabled) {
+      this.internals?.setValidity(
+        this.textAreaElement.validity,
+        this.textAreaElement.validationMessage,
+        this.textAreaElement
+      );
+    }
   }
 
   public render(): JSX.Element {

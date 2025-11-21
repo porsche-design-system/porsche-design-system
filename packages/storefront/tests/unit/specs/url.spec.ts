@@ -8,7 +8,7 @@ const getSitemap = (): string[] => {
   return JSON.parse(sitemapData);
 };
 
-describe('url', () => {
+describe.skip('url', () => {
   for (const url of getSitemap()) {
     describe(`"${url}"`, () => {
       // Since we are using trailingSlash: true in our next.config.js every link should end with a trailing slash

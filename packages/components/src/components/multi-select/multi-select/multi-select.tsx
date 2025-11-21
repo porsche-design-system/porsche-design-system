@@ -80,7 +80,9 @@ const propTypes: PropTypes<typeof MultiSelect> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected options display in the button area." }
  * @slot {"name": "", "description": "Default slot for the p-multi-select-option tags." }
+ * @slot {"name": "options-status", "description": "When implementing a custom filter with the `filter` slot, use this slot for loading, error and no results status." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
@@ -118,7 +120,7 @@ export class MultiSelect {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Disables the multi-select */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;
@@ -273,6 +275,7 @@ export class MultiSelect {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -300,6 +303,7 @@ export class MultiSelect {
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
+    const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
@@ -329,7 +333,11 @@ export class MultiSelect {
           onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
-          <span>{this.selectedOptions.map((option) => option.textContent).join(', ')}</span>
+          {hasCustomSelectedSlot ? (
+            <slot name="selected"></slot>
+          ) : (
+            <span>{this.selectedOptions.map((option) => option.textContent).join(', ')}</span>
+          )}
           {this.value.length > 0 && (
             <PrefixedTagNames.pButtonPure
               type="button"
@@ -392,6 +400,7 @@ export class MultiSelect {
             ref={(el) => (this.listboxElement = el)}
           >
             {!this.hasFilterResults && <NoResultsOption />}
+            <slot name="options-status" />
             <slot />
           </div>
         </div>

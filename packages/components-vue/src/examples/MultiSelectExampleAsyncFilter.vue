@@ -22,7 +22,7 @@
 
     <!-- Initial skeleton loading -->
     <template v-if="initialLoading && !error">
-      <div v-for="i in 9" :key="i" class="skeleton h-[40px]" />
+      <div v-for="i in 9" :key="i" slot="options-status" class="skeleton h-[40px]" />
     </template>
 
     <!-- Options -->
@@ -33,9 +33,9 @@
     <!-- No filter results -->
     <div
       v-if="!initialLoading && options.length === 0 && !error"
+      slot="options-status"
       class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-      aria-live="polite"
-      role="option"
+      role="alert"
     >
       <span aria-hidden="true">–</span>
       <span class="sr-only">No results found</span>
@@ -44,8 +44,8 @@
     <!-- Error state -->
     <div
       v-if="error"
+      slot="options-status"
       class="flex gap-static-sm py-static-sm px-[12px]"
-      aria-live="polite"
       role="alert"
     >
       <PIcon name="information" color="notification-error" />

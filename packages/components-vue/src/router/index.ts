@@ -433,6 +433,11 @@ export const routes: RouteType[] = [
     component: fromExamples.MultiSelectExampleAsyncFilter,
   },
   {
+    path: '/multi-select-example-selected-slot',
+    name: 'Multi Select Example Selected Slot',
+    component: fromExamples.MultiSelectExampleSelectedSlot,
+  },
+  {
     path: '/pin-code-example',
     name: 'Pin Code Example',
     component: fromExamples.PinCodeExample,
@@ -531,6 +536,11 @@ export const routes: RouteType[] = [
     path: '/select-example-async-filter',
     name: 'Select Example Async',
     component: fromExamples.SelectExampleAsyncFilter,
+  },
+  {
+    path: '/select-example-selected-slot',
+    name: 'Select Example Selected Slot',
+    component: fromExamples.SelectExampleSelectedSlot,
   },
   {
     path: '/stepper-horizontal-example',

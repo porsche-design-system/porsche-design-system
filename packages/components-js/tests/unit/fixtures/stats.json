@@ -201,7 +201,7 @@
   },
   {
     "chunkShortName": "main",
-    "size": 89844,
+    "size": 89858,
     "gzipSize": 28372
   },
   {
@@ -221,8 +221,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 49462,
-    "gzipSize": 17322
+    "size": 49649,
+    "gzipSize": 17403
   },
   {
     "chunkShortName": "optgroup",
@@ -271,18 +271,18 @@
   },
   {
     "chunkShortName": "select",
-    "size": 47209,
-    "gzipSize": 16708
+    "size": 47571,
+    "gzipSize": 16828
   },
   {
     "chunkShortName": "select-wrapper",
     "size": 45728,
-    "gzipSize": 16231
+    "gzipSize": 16234
   },
   {
     "chunkShortName": "sheet",
     "size": 7355,
-    "gzipSize": 3092
+    "gzipSize": 3094
   },
   {
     "chunkShortName": "spinner",
@@ -292,12 +292,12 @@
   {
     "chunkShortName": "stepper-horizontal",
     "size": 12015,
-    "gzipSize": 5006
+    "gzipSize": 5005
   },
   {
     "chunkShortName": "switch",
     "size": 7971,
-    "gzipSize": 3305
+    "gzipSize": 3308
   },
   {
     "chunkShortName": "table",
@@ -307,7 +307,7 @@
   {
     "chunkShortName": "tabs",
     "size": 7098,
-    "gzipSize": 2959
+    "gzipSize": 2958
   },
   {
     "chunkShortName": "tabs-bar",
@@ -317,37 +317,37 @@
   {
     "chunkShortName": "tag",
     "size": 5883,
-    "gzipSize": 2441
+    "gzipSize": 2444
   },
   {
     "chunkShortName": "tag-dismissible",
-    "size": 4214,
-    "gzipSize": 1961
+    "size": 4473,
+    "gzipSize": 2083
   },
   {
     "chunkShortName": "text",
     "size": 5939,
-    "gzipSize": 2504
+    "gzipSize": 2505
   },
   {
     "chunkShortName": "text-field-wrapper",
     "size": 19088,
-    "gzipSize": 7186
+    "gzipSize": 7185
   },
   {
     "chunkShortName": "text-list",
     "size": 4944,
-    "gzipSize": 2224
+    "gzipSize": 2226
   },
   {
     "chunkShortName": "textarea",
     "size": 12190,
-    "gzipSize": 4487
+    "gzipSize": 4485
   },
   {
     "chunkShortName": "textarea-wrapper",
     "size": 12534,
-    "gzipSize": 4950
+    "gzipSize": 4949
   },
   {
     "chunkShortName": "toast",
@@ -357,6 +357,6 @@
   {
     "chunkShortName": "wordmark",
     "size": 3025,
-    "gzipSize": 1539
+    "gzipSize": 1537
   }
 ]

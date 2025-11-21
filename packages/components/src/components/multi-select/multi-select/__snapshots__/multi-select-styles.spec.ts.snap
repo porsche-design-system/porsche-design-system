@@ -84,6 +84,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -284,6 +290,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #212225 !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -487,6 +499,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FB0404);
@@ -689,6 +707,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #0E4809);
@@ -882,6 +906,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -1068,6 +1098,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -1252,6 +1288,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #FFF !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
   .root {
     display: grid;
@@ -1438,6 +1480,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 4px);
@@ -1622,6 +1670,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #FFF !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
   .root {
     display: grid;
@@ -1809,6 +1863,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -1995,6 +2055,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -2179,6 +2245,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #212225 !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
   .root {
     display: grid;
@@ -2374,6 +2446,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #212225 !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -2577,6 +2655,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #FBFCFF);
@@ -2777,6 +2861,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #FFF !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -2979,6 +3069,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -3179,6 +3275,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #212225 !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -3382,6 +3484,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -3582,6 +3690,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #212225 !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
 @media(hover:hover) {
     button:hover, label:hover~button {
@@ -3785,6 +3899,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-multi-select-border-color, #010205);
@@ -3978,6 +4098,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -4164,6 +4290,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #FFF !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -4348,6 +4480,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #212225 !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
   .root {
     display: grid;
@@ -4535,6 +4673,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 4px);
@@ -4721,6 +4865,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     background: #212225 !important;
     z-index: 1 !important;
   }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+  }
   .root {
     display: grid;
     gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
@@ -4906,6 +5056,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1) !important;
     background: #FFF !important;
     z-index: 1 !important;
+  }
+  slot[name="selected"] {
+    display: block;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
   }
   .root {
     display: grid;

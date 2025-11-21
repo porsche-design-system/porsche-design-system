@@ -1,16 +1,16 @@
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
-import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
-
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getClosestHTMLElement,
   getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './select-option-styles';
+import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
   value: AllowedTypes.string,
@@ -83,6 +83,11 @@ export class SelectOption {
   };
 
   private onSlotChange = (e: Event & { target: HTMLSlotElement }): void => {
-    validateSelectOption(e.target, this.host);
+    const hasSelectedSlot = Array.from(
+      getClosestHTMLElement(this.host, getPrefixedTagNames(this.host).pSelect).children
+    ).find((el) => el.slot === 'selected');
+    if (!hasSelectedSlot) {
+      validateSelectOption(e.target, this.host);
+    }
   };
 }

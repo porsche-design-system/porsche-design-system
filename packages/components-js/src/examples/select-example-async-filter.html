@@ -9,7 +9,7 @@
   ></p-input-search>
 
   <!-- Initial skeleton loading -->
-  <div class="skeleton-container contents">
+  <div slot="options-status" class="skeleton-container contents">
     <div class="skeleton h-[40px]"></div>
     <div class="skeleton h-[40px]"></div>
     <div class="skeleton h-[40px]"></div>
@@ -22,13 +22,13 @@
   </div>
 
   <!-- No filter results -->
-  <div class="no-results hidden text-contrast-medium cursor-not-allowed py-static-sm px-[12px]" aria-live="polite" role="option">
+  <div slot="options-status" class="no-results hidden text-contrast-medium cursor-not-allowed py-static-sm px-[12px]" role="alert">
     <span aria-hidden="true">–</span>
     <span class="sr-only">No results found</span>
   </div>
 
   <!-- Error state -->
-  <div class="error hidden flex gap-static-sm py-static-sm px-[12px]" aria-live="polite" role="alert">
+  <div slot="options-status" class="error hidden flex gap-static-sm py-static-sm px-[12px]" role="alert">
     <p-icon name="information" color="notification-error"></p-icon>
     <span class="text-error"></span>
   </div>
