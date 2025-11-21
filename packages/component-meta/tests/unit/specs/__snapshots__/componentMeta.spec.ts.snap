@@ -2032,6 +2032,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Marks the checkbox as disabled.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4523,6 +4526,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4715,6 +4721,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4931,6 +4940,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5129,6 +5141,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5334,6 +5349,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5520,6 +5538,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5727,6 +5748,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5925,6 +5949,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -6117,6 +6144,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -8319,6 +8349,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the multi-select",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "dropdownDirection": {
@@ -8421,6 +8454,12 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "options-status": {
+        "description": "When implementing a custom filter with the \`filter\` slot, use this slot for loading, error and no results status.",
+      },
+      "selected": {
+        "description": "Use this slot to provide custom markup for the selected options display in the button area.",
       },
     },
     "styling": "jss",
@@ -8697,6 +8736,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the Pin Code. No events will be triggered while disabled state is active.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -9030,6 +9072,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -10033,6 +10078,12 @@ exports[`should match snapshot 1`] = `
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "options-status": {
+        "description": "When implementing a custom filter with the \`filter\` slot, use this slot for loading, error and no results status.",
+      },
+      "selected": {
+        "description": "Use this slot to provide custom markup for the selected option display in the button area.",
       },
     },
     "styling": "jss",
@@ -11999,6 +12050,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {

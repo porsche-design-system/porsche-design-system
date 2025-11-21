@@ -564,6 +564,10 @@ const generatedRoutes = {
     "path": "/multi-select-opened-scroll-context",
     "name": "MultiSelectOpenedScrollContext"
   },
+  "multiSelectOpenedSelectedSlot": {
+    "path": "/multi-select-opened-selected-slot",
+    "name": "MultiSelectOpenedSelectedSlot"
+  },
   "multiSelectOpenedTop": {
     "path": "/multi-select-opened-top",
     "name": "MultiSelectOpenedTop"
@@ -707,6 +711,10 @@ const generatedRoutes = {
   "selectOpenedScrollContext": {
     "path": "/select-opened-scroll-context",
     "name": "SelectOpenedScrollContext"
+  },
+  "selectOpenedSelectedSlot": {
+    "path": "/select-opened-selected-slot",
+    "name": "SelectOpenedSelectedSlot"
   },
   "selectOpenedTop": {
     "path": "/select-opened-top",

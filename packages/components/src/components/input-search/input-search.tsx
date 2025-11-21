@@ -102,7 +102,7 @@ export class InputSearch {
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
@@ -166,6 +166,7 @@ export class InputSearch {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -182,7 +183,9 @@ export class InputSearch {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    if (!this.disabled) {
+      this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    }
   }
 
   public render(): JSX.Element {

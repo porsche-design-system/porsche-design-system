@@ -435,6 +435,15 @@ const codeExamples: CodeSample[] = [
           vue: '/MultiSelectExampleAsyncFilter.vue',
         },
       },
+      {
+        name: 'MultiSelectExampleSelectedSlot',
+        paths: {
+          'vanilla-js': '/multi-select-example-selected-slot.html',
+          angular: '/multi-select-example-selected-slot.component.ts',
+          react: '/MultiSelectExampleSelectedSlot.tsx',
+          vue: '/MultiSelectExampleSelectedSlot.vue',
+        },
+      },
     ],
   },
   {
@@ -530,6 +539,15 @@ const codeExamples: CodeSample[] = [
           angular: '/select-example-async-filter.component.ts',
           react: '/SelectExampleAsyncFilter.tsx',
           vue: '/SelectExampleAsyncFilter.vue',
+        },
+      },
+      {
+        name: 'SelectExampleSelectedSlot',
+        paths: {
+          'vanilla-js': '/select-example-selected-slot.html',
+          angular: '/select-example-selected-slot.component.ts',
+          react: '/SelectExampleSelectedSlot.tsx',
+          vue: '/SelectExampleSelectedSlot.vue',
         },
       },
     ],
