@@ -159,6 +159,7 @@ export class InputTel {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -175,7 +176,9 @@ export class InputTel {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    if (!this.disabled) {
+      this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    }
   }
 
   public render(): JSX.Element {

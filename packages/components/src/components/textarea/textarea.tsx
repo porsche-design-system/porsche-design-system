@@ -162,6 +162,7 @@ export class Textarea {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -177,11 +178,13 @@ export class Textarea {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(
-      this.textAreaElement.validity,
-      this.textAreaElement.validationMessage,
-      this.textAreaElement
-    );
+    if (!this.disabled) {
+      this.internals?.setValidity(
+        this.textAreaElement.validity,
+        this.textAreaElement.validationMessage,
+        this.textAreaElement
+      );
+    }
   }
 
   public render(): JSX.Element {
