@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorSurfaceDark = palette.dark.grey['50'];
+export const colorSurfaceDark = palette.dark.grey['100'];

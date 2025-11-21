@@ -1,5 +1,4 @@
 import { PSelect, PSelectOption, type SelectChangeEventDetail } from '@porsche-design-system/components-react/ssr';
-import type { CSSProperties } from 'react';
 
 type Version = {
   name: string;
@@ -33,7 +32,6 @@ export const VersionSelect = () => {
       onChange={onVersionChange}
       label="Switch version"
       compact={true}
-      style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
     >
       {versions.map(({ name, path }) => (
         <PSelectOption key={path} value={path}>

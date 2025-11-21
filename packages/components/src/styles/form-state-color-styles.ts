@@ -17,7 +17,7 @@ const {
   errorFrostedSoftColor,
   successLowColor,
   errorLowColor,
-  contrastLowColor,
+  contrastLowerColor,
   successFrostedColor,
   errorFrostedColor,
   frostedColor,
@@ -32,7 +32,7 @@ const colorBackgroundMap: Record<FormState, string> = {
 const colorBorderMap: Record<FormState, string> = {
   success: successLowColor,
   error: errorLowColor,
-  none: contrastLowColor,
+  none: contrastLowerColor,
 };
 
 const colorBorderHoverMap: Record<FormState, string> = {
