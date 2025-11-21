@@ -174,10 +174,10 @@ export class Textarea {
   }
 
   public componentDidRender(): void {
-    if (!this.disabled) {
+    if (!this.disabled && !this.readOnly) {
       this.internals?.setValidity(
         this.textAreaElement.validity,
-        this.textAreaElement.validationMessage,
+        this.textAreaElement.validationMessage || ' ',
         this.textAreaElement
       );
     }

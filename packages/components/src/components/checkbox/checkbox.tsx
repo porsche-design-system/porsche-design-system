@@ -181,7 +181,7 @@ export class Checkbox {
     if (!this.disabled) {
       this.internals?.setValidity(
         this.checkboxInputElement.validity,
-        this.checkboxInputElement.validationMessage,
+        this.checkboxInputElement.validationMessage || ' ',
         this.checkboxInputElement
       );
     }
