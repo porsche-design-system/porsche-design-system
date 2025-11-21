@@ -7,7 +7,7 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
+  colorSchemeStyles, getDisabledBaseStyles,
   getHiddenTextJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -64,6 +64,9 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
+      },
+      '::slotted(*)': {
+        ...(loading && getDisabledBaseStyles())
       },
       ...preventFoucOfNestedElementsStyles,
     },

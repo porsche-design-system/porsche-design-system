@@ -471,6 +471,44 @@
           <p-pin-code label="Some label" disabled="true"></p-pin-code>
         </div>
         <div class="grid gap-fluid-sm">
+          <p-heading tag="h3" size="medium">Radio Group</p-heading>
+          <p-radio-group name="options" value="b" label="Some Label">
+            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+          </p-radio-group>
+          <p-radio-group name="options" value="b" label="Some Label" loading="true">
+            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+          </p-radio-group>
+          <p-radio-group name="options" value="b" label="Some Label" state="success" message="Some message.">
+            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+          </p-radio-group>
+          <p-radio-group name="options" value="b" label="Some Label" state="error" message="Some error.">
+            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+          </p-radio-group>
+          <p-radio-group name="options" value="b" label="Some Label" disabled="true">
+            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+          </p-radio-group>
+        </div>
+        <div class="grid gap-fluid-sm">
           <p-heading tag="h3" size="medium">Segmented Control</p-heading>
           <p-segmented-control>
             <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>

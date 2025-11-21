@@ -1,26 +1,23 @@
 import {
-  borderWidthBase,
+  borderWidthBase, borderWidthThin,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
   spacingStaticSmall,
   spacingStaticXSmall,
-  textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getSchemedHighContrastMediaQuery,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
+  SCALING_BASE_VALUE, getFocusBaseStyles, getDisabledBaseStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../../utils';
-import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
+import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
@@ -28,10 +25,11 @@ import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
 export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-option-scaling';
 
-const getCheckedSVGBackgroundImage = (fill: string): string => {
-  return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
-};
-const { primaryColor, canvasColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = colors;
+const checkedIcon = getInlineSVGBackgroundImage(
+  `<circle cx="12" cy="12" r="6"/>`
+);
+
+const { primaryColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -39,14 +37,8 @@ const { primaryColor, canvasColor, contrastMediumColor, contrastHighColor, disab
  */
 
 export const getComponentCss = (disabled: boolean, loading: boolean, state: RadioGroupState): string => {
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(state);
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
-
-  // TODO: needs to be extracted into a color function
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const checkedColor = disabledOrLoading ? disabledColor : formStateColor || primaryColor;
-  const checkedHoverColor = formStateHoverColor || contrastHighColor;
 
   const minDimension = `calc(${SCALING_BASE_VALUE} * 0.75)`;
   const scalingVar = `var(${cssVarInternalRadioGroupOptionScaling}, 1)`;
@@ -58,95 +50,52 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
-  const checkedIconColor = escapeHashCharacter(canvasColor);
-
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
-  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the radio-group, whichever is larger.
 
   return getCss({
     '@global': {
       ':host': {
+        display: 'block',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          ...(disabled && getDisabledBaseStyles()),
         }),
-        display: 'block',
       },
+      ...preventFoucOfNestedElementsStyles,
       input: {
-        gridArea: '1/1',
-        borderRadius: '50%',
-        position: 'relative',
+        all: 'unset',
+        display: 'grid', // ensures the pseudo-element can be positioned correctly
         width: dimension,
         height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-        display: 'block',
-        margin: 0,
-        padding: 0,
-        WebkitAppearance: 'none', // iOS safari
-        appearance: 'none',
-        boxSizing: 'content-box',
-        background: `transparent 0% 0% / ${fontLineHeight}`,
+        background: formStateBackgroundColor,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        border: `${borderWidthBase} solid ${uncheckedColor}`,
-        outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
-        ...(disabledOrLoading
-          ? {
-              pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
-            }
-          : {
-              cursor: 'pointer',
-            }),
-        '&::before': {
-          // Ensures the touch target is at least '24px', even if the radio button is smaller than the minimum touch target size.
-          // This pseudo-element expands the clickable area without affecting the visual size of the radio button itself.
-          content: '""',
-          position: 'absolute',
-          inset,
-        },
-      },
-      'input:checked': {
-        borderColor: checkedColor,
-        backgroundColor: checkedColor,
-        backgroundSize: dimension,
-        backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
-        // This is a workaround for Blink-based browsers, which do not reflect the high semantic system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
-        ...(isHighContrastMode &&
-          getSchemedHighContrastMediaQuery(
-            {
-              backgroundImage: getCheckedSVGBackgroundImage('white'),
+        border: `${borderWidthThin} solid ${formStateBorderColor}`,
+        borderRadius: '50%',
+        ...(disabledOrLoading && {
+          pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+        }),
+        '&:focus-visible': getFocusBaseStyles(),
+        ...(!disabledOrLoading &&
+          hoverMediaQuery({
+            '&:hover,label:hover~.wrapper>&': {
+              borderColor: formStateBorderHoverColor,
             },
-            {
-              backgroundImage: getCheckedSVGBackgroundImage('black'),
-            }
-          )),
+          })),
+        '&::before': {
+          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
+          // In addition, it is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.
+          content: '""',
+          margin: inset,
+        },
+        '&:checked::before': {
+          WebkitMask: `${checkedIcon} center/24px 24px no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${checkedIcon} center/24px 24px no-repeat`,
+          backgroundColor: primaryColor,
+        },
       },
-      ...(!disabledOrLoading &&
-        !isHighContrastMode &&
-        hoverMediaQuery({
-          'input:hover,label:hover~.wrapper input': {
-            borderColor: uncheckedHoverColor,
-          },
-          'input:checked:hover,label:hover~.wrapper input:checked': {
-            borderColor: checkedHoverColor,
-            backgroundColor: checkedHoverColor,
-          },
-          'label:hover~.wrapper input': supportsChromiumMediaQuery({
-            transition: 'unset', // Fixes a chrome bug where transition properties are stuck on hover
-          }),
-        })),
-      ...(!disabled && {
-        'input::-moz-focus-inner': {
-          border: 0, // reset ua-style (for FF)
-        },
-        'input:focus': {
-          outline: 0, // reset ua-style (for older browsers)
-        },
-        'input:focus-visible': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          outlineOffset: '2px',
-        },
-      }),
-      ...preventFoucOfNestedElementsStyles,
     },
     root: {
       display: 'grid',
@@ -154,28 +103,18 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       rowGap: spacingStaticXSmall,
     },
     wrapper: {
-      ...textSmallStyle,
-      display: 'grid',
-      gridArea: '1/1',
-      minWidth: minimumTouchTargetSize,
-      minHeight: minimumTouchTargetSize,
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignSelf: 'flex-start', // in case label becomes multiline
-      ...(isDisabledOrLoading(disabled, loading) && {
-        cursor: 'not-allowed',
-      }),
-      height,
+      position: 'relative',
+      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
     },
     ...(loading && {
       spinner: {
-        position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
-        gridArea: '1/1',
-        placeSelf: 'center',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%,-50%)',
         width: dimension,
         height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-        pointerEvents: 'none',
       },
     }),
     // .label / .required
