@@ -1,45 +1,40 @@
-import { PSelect, PSelectOption, type SelectUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+import { PSelect, PSelectOption, PButton } from '@porsche-design-system/components-react/ssr';
 import type { CSSProperties } from 'react';
+import { getCurrentPdsVersion } from '@/utils/getCurrentPdsVersion';
 
-type Version = {
-  name: string;
-  path: string;
+type VersionSelectProps = {
+  pdsVersions: string[];
 };
 
-const versions: Version[] = [
-  {
-    name: 'v3',
-    path: 'v3',
-  },
-  {
-    name: 'v2',
-    path: 'v2',
-  },
-  {
-    name: 'v1',
-    path: 'v1',
-  },
-];
-
-export const VersionSelect = () => {
-  const onVersionChange = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    window.location.href = `https://designsystem.porsche.com/${e.detail.value}`;
+export const VersionSelect = ({ pdsVersions }: VersionSelectProps) => {
+  const onVersionChange = (version: string) => {
+    window.location.href = `https://designsystem.porsche.com/v${version}`;
   };
+  const currentPdsVersion = getCurrentPdsVersion();
+
+  const latestVersion = pdsVersions[0];
 
   return (
-    <PSelect
-      name="versions"
-      value={versions[0].path}
-      onUpdate={onVersionChange}
-      label="Switch version"
-      compact={true}
-      style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
-    >
-      {versions.map(({ name, path }) => (
-        <PSelectOption key={path} value={path}>
-          {name}
-        </PSelectOption>
-      ))}
-    </PSelect>
+    <div className="flex gap-2 flex-col">
+      <PSelect
+        name="versions"
+        value={latestVersion}
+        onChange={(e) => onVersionChange(e.detail.value)}
+        label="Switch version"
+        compact={true}
+        style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
+      >
+        {pdsVersions.map((version) => (
+          <PSelectOption key={version} value={version}>
+            {version !== latestVersion ? version : `${version} (latest)`}
+          </PSelectOption>
+        ))}
+      </PSelect>
+      {currentPdsVersion !== null && currentPdsVersion !== latestVersion && (
+        <PButton compact={true} variant="ghost" icon="arrow-right" onClick={() => onVersionChange(latestVersion)}>
+          Use Latest Version
+        </PButton>
+      )}
+    </div>
   );
 };

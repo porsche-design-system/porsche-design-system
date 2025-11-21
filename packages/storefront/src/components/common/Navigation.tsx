@@ -17,7 +17,11 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
   return acc;
 }, {});
 
-export const Navigation = () => {
+type NavigationProps = {
+  pdsVersions: string[];
+};
+
+export const Navigation = ({ pdsVersions }: NavigationProps) => {
   const pathname = usePathname();
   const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
 
@@ -75,7 +79,7 @@ export const Navigation = () => {
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
-        <VersionSelect />
+        <VersionSelect pdsVersions={pdsVersions} />
         <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
           brand.porsche.com
         </PLinkPure>

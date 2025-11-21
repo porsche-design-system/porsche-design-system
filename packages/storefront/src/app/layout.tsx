@@ -9,6 +9,7 @@ import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeP
 import { HeaderPartials } from '@/partials/HeaderPartials';
 import { getBasePath } from '@/utils/getBasePath';
 import { isDevEnvironment } from '@/utils/isDev';
+import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
 const title = 'Porsche Design System';
 
@@ -57,12 +58,14 @@ const getCSPMetaTag = (): ReactNode => {
   );
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const basePath = getBasePath();
+  const pdsVersions = await fetchPdsVersions(false);
+
   return (
     <html lang="en" className="auto">
       <head>
@@ -88,7 +91,7 @@ export default function RootLayout({
       <body>
         <StorefrontThemeProvider>
           <Providers>
-            <Canvas>{children}</Canvas>
+            <Canvas pdsVersions={pdsVersions}>{children}</Canvas>
           </Providers>
         </StorefrontThemeProvider>
         {/* Framebuster script see: https://en.wikipedia.org/wiki/Framekiller?utm_source=chatgpt.com */}
