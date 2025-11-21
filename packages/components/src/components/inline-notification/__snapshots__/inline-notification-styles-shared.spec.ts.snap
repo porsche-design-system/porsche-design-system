@@ -30,7 +30,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -44,7 +44,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -58,7 +58,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -72,7 +72,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr) auto",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -86,7 +86,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -100,7 +100,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -114,7 +114,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr) auto",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -128,7 +128,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -142,7 +142,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -156,7 +156,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -170,7 +170,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -184,7 +184,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
@@ -198,7 +198,7 @@ exports[`getNotificationRootJssStyles() > should return correct JssStyle for sta
   "borderRadius": "4px",
   "gap": "16px",
   "gridTemplateColumns": "minmax(auto, 1fr)",
-  "padding": "16px",
+  "padding": "var(--p-internal-notification-padding, 16px)",
   "placeItems": "start",
 }
 `;
