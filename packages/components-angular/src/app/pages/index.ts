@@ -159,6 +159,7 @@ import { MultiSelectOpenedFilterNoResultsCompactComponent } from './generated/mu
 import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
 import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
 import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
+import { MultiSelectOpenedSelectedSlotComponent } from './generated/multi-select-opened-selected-slot.component';
 import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
 import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/multi-select-opened-with-disabled-highlighted-selected.component';
@@ -194,6 +195,7 @@ import { SelectOpenedFilterNoResultsCompactComponent } from './generated/select-
 import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
 import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
+import { SelectOpenedSelectedSlotComponent } from './generated/select-opened-selected-slot.component';
 import { SelectOpenedTopComponent } from './generated/select-opened-top.component';
 import { SelectOpenedWithAndWithoutOptgroupsComponent } from './generated/select-opened-with-and-without-optgroups.component';
 import { SelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/select-opened-with-disabled-highlighted-selected.component';
@@ -369,6 +371,7 @@ export const generatedPages = [
   MultiSelectOpenedMaxHeightComponent,
   MultiSelectOpenedMinHeightComponent,
   MultiSelectOpenedScrollContextComponent,
+  MultiSelectOpenedSelectedSlotComponent,
   MultiSelectOpenedTopComponent,
   MultiSelectOpenedWithAndWithoutOptgroupsComponent,
   MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
@@ -404,6 +407,7 @@ export const generatedPages = [
   SelectOpenedMaxHeightComponent,
   SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
+  SelectOpenedSelectedSlotComponent,
   SelectOpenedTopComponent,
   SelectOpenedWithAndWithoutOptgroupsComponent,
   SelectOpenedWithDisabledHighlightedSelectedComponent,
@@ -1088,6 +1092,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectOpenedScrollContextComponent,
   },
   {
+    name: 'Multi Select Opened Selected Slot',
+    path: 'multi-select-opened-selected-slot',
+    component: MultiSelectOpenedSelectedSlotComponent,
+  },
+  {
     name: 'Multi Select Opened Top',
     path: 'multi-select-opened-top',
     component: MultiSelectOpenedTopComponent,
@@ -1256,6 +1265,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Scroll Context',
     path: 'select-opened-scroll-context',
     component: SelectOpenedScrollContextComponent,
+  },
+  {
+    name: 'Select Opened Selected Slot',
+    path: 'select-opened-selected-slot',
+    component: SelectOpenedSelectedSlotComponent,
   },
   {
     name: 'Select Opened Top',

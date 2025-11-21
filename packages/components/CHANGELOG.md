@@ -252,6 +252,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Added
 
 - `Multi Select, Select`:
+  - `selected` slot for custom selection rendering and enabling complex options
+  - `options-status` slot for loading, error and no results states when using custom filtering
+    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
+- `Multi Select, Select`:
   - `filter` slot to allow custom asynchronous filtering
   - `toggle` event when opening/closing the dropdown
     ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
@@ -259,6 +263,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
 - `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
+- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+
+### Fixed
+
+- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
+- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
+  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
 
 ## [3.31.0] - 2025-11-13
 

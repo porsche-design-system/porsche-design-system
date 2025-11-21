@@ -1008,6 +1008,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 {
   "aria": "aria",
   "color": "oneOf",
+  "compact": "boolean",
   "label": "string",
   "theme": "oneOf",
 }
@@ -1056,6 +1057,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
 exports[`should call validateProps() with correct parameters via render for p-textarea > propTypes with ValidatorFunctions 1`] = `
 {
   "autoComplete": "string",
+  "compact": "boolean",
   "counter": "boolean",
   "description": "string",
   "disabled": "boolean",

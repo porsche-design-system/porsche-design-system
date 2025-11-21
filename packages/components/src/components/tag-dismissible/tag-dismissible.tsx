@@ -19,6 +19,7 @@ import {
 const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
   label: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
 };
 
@@ -41,13 +42,16 @@ export class TagDismissible {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
+  /** A boolean value that, if present, renders the tag dismissible as a compact version. */
+  @Prop() public compact?: boolean = false;
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, !!this.label);
+    attachComponentCss(this.host, getComponentCss, !!this.label, this.compact);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (

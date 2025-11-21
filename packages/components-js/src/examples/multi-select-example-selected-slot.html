@@ -1,0 +1,84 @@
+<p-multi-select name="selected-slot-select" label="Selected Slot">
+  <span slot="selected" class="h-full flex items-center"></span>
+</p-multi-select>
+
+<script>
+  const options = [
+    {
+      value: '718',
+      label: '718',
+      description: 'Präziser Sportwagen mit Mittelmotor',
+      tags: ['Benzin'],
+      imgSrc: 'http://localhost:3002/718.png',
+    },
+    {
+      value: '911',
+      label: '911',
+      description: 'Ikonischer Sportwagen mit Heckmotor',
+      tags: ['Benzin'],
+      imgSrc: 'http://localhost:3002/911.png',
+    },
+    {
+      value: 'taycan',
+      label: 'Taycan',
+      description: 'Elektrischer Sportwagen',
+      tags: ['Elektro'],
+      imgSrc: 'http://localhost:3002/taycan.png',
+    },
+    {
+      value: 'macan',
+      label: 'Macan',
+      tags: ['Elektro'],
+      description: 'Sportlicher Kompakt-SUV',
+      imgSrc: 'http://localhost:3002/macan.png',
+    },
+    {
+      value: 'cayenne',
+      label: 'Cayenne',
+      tags: ['Hybrid', 'Benzin'],
+      description: 'Vielseitiger SUV',
+      imgSrc: 'http://localhost:3002/cayenne.png',
+    },
+    {
+      value: 'panamera',
+      label: 'Panamera',
+      tags: ['Hybrid', 'Benzin'],
+      description: 'Luxuslimousine mit hohem Komfort',
+      imgSrc: 'http://localhost:3002/panamera.png',
+    },
+  ];
+
+  const multiSelect = document.querySelector('p-multi-select');
+  const selectedSlot = multiSelect.querySelector('[slot="selected"]');
+
+  multiSelect.addEventListener('change', (e) => {
+    const selectedOptions = options.filter((option) => e.target.value.includes(option.value))
+    selectedSlot.innerHTML = `<span class="truncate">${selectedOptions.map((option) => option.label).join(', ')}</span>`;
+  });
+
+  const renderOptions = () => {
+    options.forEach(option => {
+      const optionElement = document.createElement('p-multi-select-option');
+      optionElement.value = option.value;
+      optionElement.innerHTML = `
+      <div class="w-full flex gap-fluid-sm">
+        <img src="${option.imgSrc}" alt="" class="h-[34px] w-auto self-center" />
+        <div class="flex flex-col justify-center flex-1 min-w-0">
+          <p class="prose-text-sm m-0">${option.label}</p>
+          <p class="prose-text-2xs m-0">${option.description}</p>
+        </div>
+        <div class="self-center flex gap-fluid-sm">
+          ${option.tags.map(tag => `
+              <p-tag color="notification-info-soft" compact="true">
+                ${tag}
+              </p-tag>
+            `).join('')}
+        </div>
+      </div>
+    `;
+      multiSelect.appendChild(optionElement);
+    });
+  };
+
+  renderOptions();
+</script>

@@ -3,6 +3,7 @@ import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  getClosestHTMLElement,
   getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
@@ -74,6 +75,11 @@ export class SelectOption {
   };
 
   private onSlotChange = (e: Event & { target: HTMLSlotElement }): void => {
-    validateSelectOption(e.target, this.host);
+    const hasSelectedSlot = Array.from(
+      getClosestHTMLElement(this.host, getPrefixedTagNames(this.host).pSelect).children
+    ).find((el) => el.slot === 'selected');
+    if (!hasSelectedSlot) {
+      validateSelectOption(e.target, this.host);
+    }
   };
 }

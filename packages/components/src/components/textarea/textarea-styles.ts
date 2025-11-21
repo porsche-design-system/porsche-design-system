@@ -1,8 +1,8 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
+  fontLineHeight,
   borderWidthThin,
-  spacingStaticLarge,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
@@ -28,6 +28,9 @@ import type { TextareaResize } from './textarea-utils';
 
 const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
+export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
+export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
+
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
@@ -38,9 +41,23 @@ export const getComponentCss = (
   isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  compact: boolean,
   counter: boolean,
   resize: TextareaResize
 ): string => {
+  const scalingVar = getScalingVar(compact);
+
+  const minPadding = '2px';
+  const minCounterPadding = '12px';
+
+  const basePaddingInline = `max(${minPadding}, calc(${formElementPaddingHorizontal} * ${scalingVar}))`;
+  const basePaddingBlock = `max(${minPadding}, calc(12px * ${scalingVar}))`;
+
+  const counterPaddingInline = `max(${minCounterPadding}, calc((${formElementPaddingHorizontal} + ${borderWidthBase}) * ${scalingVar}))`;
+  const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
+
+  const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
+
   const { formStateBorderColor, formStateBackgroundColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   return getCss({
@@ -68,8 +85,8 @@ export const getComponentCss = (
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         font: textSmallStyle.font,
         padding: counter
-          ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
-          : `12px ${formElementPaddingHorizontal}`,
+          ? `${basePaddingBlock} ${basePaddingInline} ${paddingBottom}`
+          : `${basePaddingBlock} ${basePaddingInline}`,
         '&:focus': {
           borderColor: formStateBorderHoverColor,
         },
@@ -100,7 +117,7 @@ export const getComponentCss = (
         ...getUnitCounterJssStyle(),
         gridArea: '1/1',
         placeSelf: 'flex-end',
-        padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
+        padding: `${counterPaddingBlock} ${counterPaddingInline}`,
       },
       'sr-only': getHiddenTextJssStyle(),
     }),

@@ -15,6 +15,7 @@ import {
   getOptionsJssStyle,
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
+  getSelectedSlotJssStyle,
 } from '../../../styles/select';
 import type { BreakpointCustomizable } from '../../../types';
 import { getCss } from '../../../utils';
@@ -61,6 +62,7 @@ export const getComponentCss = (
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40),
       '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar)),
+      'slot[name="selected"]': getSelectedSlotJssStyle,
     },
     root: {
       display: 'grid',

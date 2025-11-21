@@ -5,6 +5,7 @@ import {
   Element,
   Event,
   type EventEmitter,
+  Fragment,
   h,
   type JSX,
   Listen,
@@ -75,7 +76,9 @@ const propTypes: PropTypes<typeof Select> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected option display in the button area." }
  * @slot {"name": "", "description": "Default slot for the `p-select-option` tags." }
+ * @slot {"name": "options-status", "description": "When implementing a custom filter with the `filter` slot, use this slot for loading, error and no results status." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
@@ -262,6 +265,7 @@ export class Select {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -287,6 +291,7 @@ export class Select {
     );
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
+    const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'button';
@@ -316,11 +321,22 @@ export class Select {
           onBlur={this.onComboBlur}
           ref={(el) => (this.buttonElement = el)}
         >
-          {this.selectedOption?.querySelector?.('img') && (
-            <img src={this.selectedOption.querySelector('img').src} alt="" />
+          {hasCustomSelectedSlot ? (
+            <slot name="selected"></slot>
+          ) : (
+            <Fragment>
+              {this.selectedOption?.querySelector?.('img') && (
+                <img src={this.selectedOption.querySelector('img').src} alt="" />
+              )}
+              <span>{this.selectedOption?.textContent ?? ''}</span>
+            </Fragment>
           )}
-          <span>{this.selectedOption?.textContent ?? ''}</span>
-          <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
+          <PrefixedTagNames.pIcon
+            class="icon"
+            name="arrow-head-down"
+            color="primary"
+            aria-hidden="true"
+          />
         </button>
         <div
           id={popoverId}
@@ -358,6 +374,7 @@ export class Select {
             ref={(el) => (this.listboxElement = el)}
           >
             {this.filter && !this.hasFilterResults && <NoResultsOption />}
+            <slot name="options-status" />
             <slot />
           </div>
         </div>

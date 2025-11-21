@@ -48,6 +48,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
 };
 
 /**
@@ -68,6 +69,9 @@ export class Textarea {
 
   /** Supplementary text providing more context or explanation for the textarea. */
   @Prop() public description?: string = '';
+
+  /** A boolean value that, if present, renders the textarea as a compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** The name of the textarea, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
@@ -96,7 +100,7 @@ export class Textarea {
   @Prop() public required?: boolean = false;
 
   /** A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
   @Prop() public maxLength?: number;
@@ -154,6 +158,7 @@ export class Textarea {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -169,11 +174,13 @@ export class Textarea {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(
-      this.textAreaElement.validity,
-      this.textAreaElement.validationMessage,
-      this.textAreaElement
-    );
+    if (!this.disabled) {
+      this.internals?.setValidity(
+        this.textAreaElement.validity,
+        this.textAreaElement.validationMessage,
+        this.textAreaElement
+      );
+    }
   }
 
   public render(): JSX.Element {
@@ -186,6 +193,7 @@ export class Textarea {
       this.readOnly,
       this.hideLabel,
       this.state,
+      this.compact,
       this.counter,
       this.resize
     );

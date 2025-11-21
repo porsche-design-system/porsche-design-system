@@ -94,7 +94,7 @@ export class RadioGroup {
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
   @Prop() public required?: boolean = false;
@@ -179,6 +179,7 @@ export class RadioGroup {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 

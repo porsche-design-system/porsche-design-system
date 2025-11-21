@@ -140,6 +140,7 @@ import { MultiSelectOpenedFilterNoResultsCompactPage } from './generated/MultiSe
 import { MultiSelectOpenedMaxHeightPage } from './generated/MultiSelectOpenedMaxHeight';
 import { MultiSelectOpenedMinHeightPage } from './generated/MultiSelectOpenedMinHeight';
 import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
+import { MultiSelectOpenedSelectedSlotPage } from './generated/MultiSelectOpenedSelectedSlot';
 import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
 import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generated/MultiSelectOpenedWithDisabledHighlightedSelected';
@@ -174,6 +175,7 @@ import { SelectOpenedFilterNoResultsCompactPage } from './generated/SelectOpened
 import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
 import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
 import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
+import { SelectOpenedSelectedSlotPage } from './generated/SelectOpenedSelectedSlot';
 import { SelectOpenedTopPage } from './generated/SelectOpenedTop';
 import { SelectOpenedWithAndWithoutOptgroupsPage } from './generated/SelectOpenedWithAndWithoutOptgroups';
 import { SelectOpenedWithDisabledHighlightedSelectedPage } from './generated/SelectOpenedWithDisabledHighlightedSelected';
@@ -857,6 +859,11 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectOpenedScrollContextPage />,
   },
   {
+    name: 'Multi Select Opened Selected Slot',
+    path: '/multi-select-opened-selected-slot',
+    element: <MultiSelectOpenedSelectedSlotPage />,
+  },
+  {
     name: 'Multi Select Opened Top',
     path: '/multi-select-opened-top',
     element: <MultiSelectOpenedTopPage />,
@@ -1025,6 +1032,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Scroll Context',
     path: '/select-opened-scroll-context',
     element: <SelectOpenedScrollContextPage />,
+  },
+  {
+    name: 'Select Opened Selected Slot',
+    path: '/select-opened-selected-slot',
+    element: <SelectOpenedSelectedSlotPage />,
   },
   {
     name: 'Select Opened Top',

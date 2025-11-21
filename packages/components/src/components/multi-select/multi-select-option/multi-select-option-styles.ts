@@ -24,9 +24,6 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
           [`${cssVarInternalCheckboxScaling}`]: `var(${cssVarInternalMultiSelectOptionScaling})`,
         }),
       },
-      slot: {
-        display: 'block',
-      },
     },
     option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`),
     checkbox: mergeDeep(

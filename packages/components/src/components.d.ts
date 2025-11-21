@@ -2292,6 +2292,10 @@ export namespace Components {
          */
         "color"?: TagDismissibleColor;
         /**
+          * A boolean value that, if present, renders the tag dismissible as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -2335,6 +2339,10 @@ export namespace Components {
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the textarea as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * Show or hide the character counter.
          */
@@ -5975,6 +5983,10 @@ declare namespace LocalJSX {
          */
         "color"?: TagDismissibleColor;
         /**
+          * A boolean value that, if present, renders the tag dismissible as a compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The label text.
          */
         "label"?: string;
@@ -6018,6 +6030,10 @@ declare namespace LocalJSX {
           * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the textarea as a compact version.
+         */
+        "compact"?: boolean;
         /**
           * Show or hide the character counter.
          */

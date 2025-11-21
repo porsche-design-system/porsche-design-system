@@ -2,12 +2,14 @@ import { expect, type Locator, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -442,6 +444,23 @@ test.describe('form', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(0);
+  });
+
+  test('should not set validity when disabled and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initPinCode(page, {
+      options: {
+        isWithinForm: true,
+      },
+      props: {
+        name: 'some-name',
+        required: true,
+        disabled: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 
