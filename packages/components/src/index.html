@@ -14,7 +14,7 @@
   <body class="grid-template before:fixed before:z-1 before:inset-[0_0_auto] before:h-[100px] before:bg-linear-[to_bottom,var(--color-surface)_20%,transparent_100%] before:pointer-events-none">
 
     <header dir="ltr" class="col-extended sticky top-fluid-sm mt-fluid-sm z-2 p-fluid-sm overflow-x-auto rounded-lg shadow-medium bg-frosted backdrop-blur-frosted">
-      <form class="flex gap-fluid-sm justify-center items-center" onreset="updateRoute({theme: 'light', dir: 'ltr', zoom: '100%', transition: 'transitioned', animation: 'animated', accent: '#3400f0'})">
+      <form class="flex gap-fluid-sm justify-center items-center" onreset="updateRoute({theme: 'light', dir: 'ltr', zoom: '100%', compact: 'false', transition: 'transitioned', animation: 'animated', accent: '#3400f0'})">
         <p-select name="theme" value="light" label="Theme" hide-label="true" compact="true" onchange="updateRoute({theme: this.value})">
           <p-select-option value="light">Light</p-select-option>
           <p-select-option value="dark">Dark</p-select-option>
@@ -30,6 +30,10 @@
           <p-select-option value="130%">130%</p-select-option>
           <p-select-option value="150%">150%</p-select-option>
           <p-select-option value="200%">200%</p-select-option>
+        </p-select>
+        <p-select name="compact" value="false" label="Compact" hide-label="true" compact="true" onchange="updateRoute({compact: this.value})">
+          <p-select-option value="true">Compact</p-select-option>
+          <p-select-option value="false">Normal</p-select-option>
         </p-select>
         <p-select name="transition" value="transitioned" label="Transition" hide-label="true" compact="true" onchange="updateRoute({transition: this.value})">
           <p-select-option value="transitioned">Transitioned</p-select-option>
@@ -2128,6 +2132,7 @@
       const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
       const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
+      const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
       const getTransition = () => new URL(document.location).searchParams.get('transition') || 'transitioned';
       const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'animated';
       const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
@@ -2146,6 +2151,7 @@
         const theme = getTheme();
         const dir = getDir();
         const zoom = getZoom();
+        const compact = getCompact();
         const transition = getTransition();
         const animation = getAnimation();
         const accent = getAccent();
@@ -2157,6 +2163,10 @@
         document.documentElement.setAttribute('dir', dir);
         // Zoom
         document.documentElement.style.setProperty('font-size', zoom);
+        // Compact
+        for(const el of [...document.querySelectorAll('main *')].filter(el => el.tagName.startsWith('P-') && !el.tagName.endsWith('-ITEM') && !el.tagName.endsWith('-OPTION'))) {
+          el.setAttribute('compact', compact);
+        }
         // Transition
         document.documentElement.style.setProperty('--p-transition-duration', transition === 'none' ? '0s' : '');
         // Animation
@@ -2170,6 +2180,7 @@
       updateInput('theme', getTheme());
       updateInput('dir', getDir());
       updateInput('zoom', getZoom());
+      updateInput('compact', getCompact());
       updateInput('animation', getAnimation());
       updateInput('transition', getTransition());
       updateInput('accent', getAccent());
