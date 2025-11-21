@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import {
-  type CanvasSidebarStartUpdateEventDetail,
-  PButton,
-  PCanvas,
-  PHeading,
-  PText,
-} from '@porsche-design-system/components-vue';
-import { breakpointS } from '@porsche-design-system/components-vue/styles';
-import { ref } from 'vue';
+  import {
+    type CanvasSidebarStartUpdateEventDetail,
+    PButton,
+    PCanvas,
+    PHeading,
+    PText,
+  } from '@porsche-design-system/components-vue';
+  import { breakpointS } from '@porsche-design-system/components-vue/styles';
+  import { ref } from 'vue';
 
-// initially, sidebar should be closed on mobile and opened on desktop
-const isSidebarStartOpen = ref(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
-const isSidebarEndOpen = ref(false);
+  // initially, sidebar should be closed on mobile and opened on desktop
+  const isSidebarStartOpen = ref(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
+  const isSidebarEndOpen = ref(false);
 
-const onSidebarStartUpdate = (e: CanvasSidebarStartUpdateEventDetail): void => {
-  isSidebarStartOpen.value = e.open;
-};
+  const onSidebarStartUpdate = (e: CanvasSidebarStartUpdateEventDetail): void => {
+    isSidebarStartOpen.value = e.open;
+  };
 
-const onSidebarEndOpen = (): void => {
-  isSidebarEndOpen.value = true;
-};
+  const onSidebarEndOpen = (): void => {
+    isSidebarEndOpen.value = true;
+  };
 
-const onSidebarEndDismiss = (): void => {
-  isSidebarEndOpen.value = false;
-};
+  const onSidebarEndDismiss = (): void => {
+    isSidebarEndOpen.value = false;
+  };
 </script>
 
 <template>
@@ -34,6 +34,7 @@ const onSidebarEndDismiss = (): void => {
     @sidebarEndDismiss="onSidebarEndDismiss"
   >
     <a slot="title" href="#">App Name</a>
+    <div slot="header-banner" class="banner">Banner</div>
 
     <PButton
       slot="header-end"
@@ -67,9 +68,7 @@ const onSidebarEndDismiss = (): void => {
       <PText>Sidebar Start</PText>
     </div>
 
-    <PHeading slot="sidebar-end-header" tag="h2" size="small">
-      Sidebar End Header
-    </PHeading>
+    <PHeading slot="sidebar-end-header" tag="h2" size="small"> Sidebar End Header </PHeading>
 
     <div slot="sidebar-end">
       <PText>Sidebar End</PText>

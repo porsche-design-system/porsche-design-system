@@ -43,6 +43,7 @@ import { breakpointS } from '@porsche-design-system/components-angular/styles';
       (sidebarEndDismiss)="onSidebarEndDismiss()"
     >
       <a slot="title" href="#">App Name</a>
+      <div slot="header-banner" class="banner">Banner</div>
 
       <p-button
         slot="header-end"
@@ -75,9 +76,7 @@ import { breakpointS } from '@porsche-design-system/components-angular/styles';
         <p-text>Sidebar Start</p-text>
       </div>
 
-      <p-heading slot="sidebar-end-header" tag="h2" size="small">
-        Sidebar End Header
-      </p-heading>
+      <p-heading slot="sidebar-end-header" tag="h2" size="small"> Sidebar End Header </p-heading>
 
       <div slot="sidebar-end">
         <p-text>Sidebar End</p-text>

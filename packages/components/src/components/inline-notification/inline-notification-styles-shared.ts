@@ -39,7 +39,7 @@ export const getNotificationRootJssStyle = (
     gridTemplateColumns: `minmax(auto, 1fr)${hasClose ? ' auto' : ''}`,
     gap: spacingStaticMedium,
     placeItems: 'start',
-    padding: spacingStaticMedium,
+    padding: `var(--p-internal-notification-padding, ${spacingStaticMedium})`,
     background: getBackgroundColor(state, theme),
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: getBackgroundColor(state, 'dark'),
