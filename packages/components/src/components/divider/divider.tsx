@@ -17,7 +17,7 @@ export class Divider {
   @Element() public host!: HTMLElement;
 
   /** Defines color depending on theme. */
-  @Prop() public color?: DividerColor = 'contrast-low';
+  @Prop() public color?: DividerColor = 'contrast-lower';
 
   /** Defines direction. */
   @Prop() public direction?: BreakpointCustomizable<DividerDirection> = 'horizontal';

@@ -3,8 +3,9 @@ import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { DividerColor, DividerDirection } from './divider-utils';
 
-const { contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
+const { contrastLowerColor, contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
 const colorMap: Record<DividerColor, string> = {
+  'contrast-lower': contrastLowerColor,
   'contrast-low': contrastLowColor,
   'contrast-medium': contrastMediumColor,
   'contrast-high': contrastHighColor,
