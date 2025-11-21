@@ -44,7 +44,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </PDisplay>
         <div className="block w-full h-full relative">
           <div
-            className="mb-[5%] ms-[5%] bg-frosted-soft backdrop-blur-frosted max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-medium flex justify-between items-center gap-4"
+            className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-medium flex justify-between items-center gap-4"
           >
             <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
             <div className="flex flex-col">
