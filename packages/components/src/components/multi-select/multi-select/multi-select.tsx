@@ -120,7 +120,7 @@ export class MultiSelect {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Disables the multi-select */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;

@@ -70,7 +70,7 @@ export class Checkbox {
   @Prop() public required?: boolean = false;
 
   /** Marks the checkbox as disabled. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** Marks the checkbox as indeterminate. */
   @Prop() public indeterminate?: boolean = false;

@@ -101,7 +101,7 @@ export class Textarea {
   @Prop() public required?: boolean = false;
 
   /** A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
   @Prop() public maxLength?: number;
