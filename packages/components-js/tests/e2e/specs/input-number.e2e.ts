@@ -492,6 +492,21 @@ test.describe('form', () => {
     await waitForStencilLifecycle(page);
     expect(getConsoleErrorsAmount()).toBe(0);
   });
+
+  test('should not set validity when readonly and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initInputNumber(page, {
+      isWithinForm: true,
+      props: {
+        name: 'some-name',
+        required: true,
+        readOnly: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
+  });
 });
 
 test.describe('focus state', () => {
