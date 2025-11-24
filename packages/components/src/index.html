@@ -11,2117 +11,636 @@
     <script src="/build/porsche-design-system.esm.js" type="module"></script>
     <link rel="stylesheet" href="/assets/tailwind.css">
   </head>
-  <body class="grid-template before:fixed before:z-1 before:inset-[0_0_auto] before:h-[100px] before:bg-linear-[to_bottom,var(--color-surface)_20%,transparent_100%] before:pointer-events-none">
+  <body>
 
-    <header dir="ltr" class="col-extended sticky top-fluid-sm mt-fluid-sm z-2 p-fluid-sm overflow-x-auto rounded-lg shadow-medium bg-frosted backdrop-blur-frosted">
-      <form class="flex gap-fluid-sm justify-center items-center" onreset="updateRoute({theme: 'light', dir: 'ltr', zoom: '100%', compact: 'false', transition: 'transitioned', animation: 'animated', accent: '#3400f0'})">
-        <p-select name="theme" value="light" label="Theme" hide-label="true" compact="true" onchange="updateRoute({theme: this.value})">
-          <p-select-option value="light">Light</p-select-option>
-          <p-select-option value="dark">Dark</p-select-option>
-          <p-select-option value="auto">Auto</p-select-option>
-        </p-select>
-        <p-select name="dir" value="ltr" label="Direction" hide-label="true" compact="true" onchange="updateRoute({dir: this.value})">
-          <p-select-option value="ltr">LTR (left-to-right)</p-select-option>
-          <p-select-option value="rtl">RTL (right-to-left)</p-select-option>
-          <p-select-option value="auto">Auto</p-select-option>
-        </p-select>
-        <p-select name="zoom" value="100%" label="Zoom" hide-label="true" compact="true" onchange="updateRoute({zoom: this.value})">
-          <p-select-option value="100%">100%</p-select-option>
-          <p-select-option value="130%">130%</p-select-option>
-          <p-select-option value="150%">150%</p-select-option>
-          <p-select-option value="200%">200%</p-select-option>
-        </p-select>
-        <p-select name="compact" value="false" label="Compact" hide-label="true" compact="true" onchange="updateRoute({compact: this.value})">
-          <p-select-option value="true">Compact</p-select-option>
-          <p-select-option value="false">Normal</p-select-option>
-        </p-select>
-        <p-select name="transition" value="transitioned" label="Transition" hide-label="true" compact="true" onchange="updateRoute({transition: this.value})">
-          <p-select-option value="transitioned">Transitioned</p-select-option>
-          <p-select-option value="none">No Transition</p-select-option>
-        </p-select>
-        <p-select name="animation" value="animated" label="Animation" hide-label="true" compact="true" onchange="updateRoute({animation: this.value})">
-          <p-select-option value="animated">Animated</p-select-option>
-          <p-select-option value="none">No Animation</p-select-option>
-        </p-select>
-        <label>
-          <span class="sr-only">Accent Color</span>
-          <input name="accent" value="#3400f0" type="color" oninput="updateRoute({accent: this.value})" />
-        </label>
-        <p-button type="reset" variant="secondary" compact="true">Reset</p-button>
-      </form>
-    </header>
+  <p-canvas sidebar-start-open="true" sidebar-end-open="true">
+    <a slot="title" href="#">Playground</a>
 
-    <main class="col-wide grid grid-cols-subgrid gap-y-fluid-md">
-      <h1 class="col-span-full my-fluid-lg prose-display-lg text-center">Playground</h1>
-      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-canvas">
-        <p-heading tag="h2" size="xx-large">Brand</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Crest</p-heading>
-          <p-crest href="#"></p-crest>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Wordmark</p-heading>
-          <p-wordmark href="#"></p-wordmark>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Model Signature</p-heading>
-          <p-model-signature model="718" color="primary"></p-model-signature>
-          <p-model-signature model="911" color="contrast-high"></p-model-signature>
-          <p-model-signature model="boxster" color="contrast-medium"></p-model-signature>
-          <p-model-signature model="cayenne" color="contrast-low"></p-model-signature>
-          <p-model-signature model="cayman" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3-rs" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gts" color="contrast-low"></p-model-signature>
-          <p-model-signature model="macan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="panamera" color="contrast-low"></p-model-signature>
-          <p-model-signature model="taycan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
-        </div>
-        <p-heading tag="h2" size="xx-large">Common</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Accordion</p-heading>
-          <p-accordion heading="Some Heading">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium" sticky="true">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button</p-heading>
-          <p-button variant="primary">Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
-          <p-button variant="primary" icon="car">Some label</p-button>
-          <p-button variant="secondary" icon="car">Some label</p-button>
-          <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="primary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button Pure</p-heading>
-          <p-button-pure size="x-large">Some label</p-button-pure>
-          <p-button-pure size="large">Some label</p-button-pure>
-          <p-button-pure size="medium">Some label</p-button-pure>
-          <p-button-pure size="small">Some label</p-button-pure>
-          <p-button-pure size="small" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="x-small">Some label</p-button-pure>
-          <p-button-pure size="xx-small">Some label</p-button-pure>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Divider</p-heading>
-          <p-divider color="contrast-high"></p-divider>
-          <p-divider color="contrast-medium"></p-divider>
-          <p-divider color="contrast-low"></p-divider>
-          <p-divider color="contrast-lower"></p-divider>
-          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Flag</p-heading>
-          <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="medium" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag</p-heading>
-          <p-tag icon="car" variant="primary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="secondary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="info">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="success">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="warning">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="error">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag Dismissible</p-heading>
-          <p-tag-dismissible>Some label</p-tag-dismissible>
-          <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text List</p-heading>
-          <p-text-list type="unordered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="numbered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="alphabetically">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Navigation</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link</p-heading>
-          <p-link variant="primary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link Pure</p-heading>
-          <p-link-pure size="x-large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="medium" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="x-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="xx-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Typography</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Icon</p-heading>
-          <p-icon name="car" size="x-large" color="primary"></p-icon>
-          <p-icon name="car" size="large" color="contrast-high"></p-icon>
-          <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
-          <p-icon name="car" size="small" color="contrast-low"></p-icon>
-          <p-icon name="car" size="x-small" color="success"></p-icon>
-          <p-icon name="car" size="xx-small" color="warning"></p-icon>
-          <p-icon name="car" size="xx-small" color="error"></p-icon>
-          <p-icon name="car" size="xx-small" color="info"></p-icon>
-          <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Display</p-heading>
-          <p-display tag="h3" size="large">ABC</p-display>
-          <p-display tag="h3" size="medium">ABC</p-display>
-          <p-display tag="h3" size="small">ABC</p-display>
-          <p-display tag="h3" size="small" color="inherit" class="text-[deeppink]">ABC</p-display>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Heading</p-heading>
-          <p-heading tag="h3" size="xx-large">ABC</p-heading>
-          <p-heading tag="h3" size="x-large">ABC</p-heading>
-          <p-heading tag="h3" size="large">ABC</p-heading>
-          <p-heading tag="h3" size="medium">ABC</p-heading>
-          <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text</p-heading>
-          <p-text color="primary" size="x-large">ABC</p-text>
-          <p-text color="contrast-high" size="large">ABC</p-text>
-          <p-text color="contrast-medium" size="medium">ABC</p-text>
-          <p-text color="contrast-low" size="small">ABC</p-text>
-          <p-text color="contrast-low" size="x-small">ABC</p-text>
-          <p-text color="success" size="xx-small">ABC</p-text>
-          <p-text color="warning" size="xx-small">ABC</p-text>
-          <p-text color="error" size="xx-small">ABC</p-text>
-          <p-text color="info" size="xx-small">ABC</p-text>
-          <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Form</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Checkbox</p-heading>
-          <p-checkbox label="Some label" name="some-name"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Fieldset</p-heading>
-          <p-fieldset label="Some legend label">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" label-size="small">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="success" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="error" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Date</p-heading>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input E-Mail</p-heading>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-email>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Text</p-heading>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" loading="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" disabled="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" read-only="true"></p-input-text>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Tel</p-heading>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" loading="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="success" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="error" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" disabled="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" read-only="true"></p-input-tel>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Number</p-heading>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" loading="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="success" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="error" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" disabled="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" read-only="true"></p-input-number>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Password</p-heading>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" loading="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="success" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="error" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" disabled="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" read-only="true"></p-input-password>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Search</p-heading>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" loading="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="success" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="error" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" disabled="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" read-only="true"></p-input-search>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Time</p-heading>
-          <p-input-time label="Some label" name="some-name" value="09:11"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="success" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="error" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" disabled="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" read-only="true"></p-input-time>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input URL</p-heading>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Multi Select</p-heading>
-          <p-multi-select label="Some label" name="some-name">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="success" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="error" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" disabled="true">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Pin Code</p-heading>
-          <p-pin-code label="Some label"></p-pin-code>
-          <p-pin-code label="Some label" loading="true"></p-pin-code>
-          <p-pin-code label="Some label" state="success" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" state="error" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" disabled="true"></p-pin-code>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Radio Group</p-heading>
-          <p-radio-group name="options" value="b" label="Some Label">
-            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
-            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
-            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
-            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
-            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
-          </p-radio-group>
-          <p-radio-group name="options" value="b" label="Some Label" loading="true">
-            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
-            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
-            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
-            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
-            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
-          </p-radio-group>
-          <p-radio-group name="options" value="b" label="Some Label" state="success" message="Some message.">
-            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
-            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
-            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
-            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
-            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
-          </p-radio-group>
-          <p-radio-group name="options" value="b" label="Some Label" state="error" message="Some error.">
-            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
-            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
-            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
-            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
-            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
-          </p-radio-group>
-          <p-radio-group name="options" value="b" label="Some Label" disabled="true">
-            <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
-            <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
-            <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
-            <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
-            <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
-          </p-radio-group>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Segmented Control</p-heading>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control disabled="true">
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
-          </p-segmented-control>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Select</p-heading>
-          <p-select label="Some label" name="some-name" filter="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="success" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="error" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" disabled="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-switch>Some label</p-switch>
-          <p-switch checked="true">Some label</p-switch>
-          <p-switch loading="true">Some label</p-switch>
-          <p-switch checked="true" loading="true">Some label</p-switch>
-          <p-switch disabled="true">Some label</p-switch>
-          <p-switch checked="true" disabled="true">Some label</p-switch>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Textarea</p-heading>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="error" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" disabled="true"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" read-only="true"></p-textarea>
-        </div>
-      </div>
-      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-surface">
-        <p-heading tag="h2" size="xx-large">Brand</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Crest</p-heading>
-          <p-crest href="#"></p-crest>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Wordmark</p-heading>
-          <p-wordmark href="#"></p-wordmark>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Model Signature</p-heading>
-          <p-model-signature model="718" color="primary"></p-model-signature>
-          <p-model-signature model="911" color="contrast-high"></p-model-signature>
-          <p-model-signature model="boxster" color="contrast-medium"></p-model-signature>
-          <p-model-signature model="cayenne" color="contrast-low"></p-model-signature>
-          <p-model-signature model="cayman" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3-rs" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gts" color="contrast-low"></p-model-signature>
-          <p-model-signature model="macan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="panamera" color="contrast-low"></p-model-signature>
-          <p-model-signature model="taycan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
-        </div>
-        <p-heading tag="h2" size="xx-large">Common</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Accordion</p-heading>
-          <p-accordion heading="Some Heading">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium" sticky="true">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button</p-heading>
-          <p-button variant="primary">Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
-          <p-button variant="primary" icon="car">Some label</p-button>
-          <p-button variant="secondary" icon="car">Some label</p-button>
-          <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="primary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button Pure</p-heading>
-          <p-button-pure size="x-large">Some label</p-button-pure>
-          <p-button-pure size="large">Some label</p-button-pure>
-          <p-button-pure size="medium">Some label</p-button-pure>
-          <p-button-pure size="small">Some label</p-button-pure>
-          <p-button-pure size="small" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="x-small">Some label</p-button-pure>
-          <p-button-pure size="xx-small">Some label</p-button-pure>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Divider</p-heading>
-          <p-divider color="contrast-high"></p-divider>
-          <p-divider color="contrast-medium"></p-divider>
-          <p-divider color="contrast-low"></p-divider>
-          <p-divider color="contrast-lower"></p-divider>
-          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Flag</p-heading>
-          <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="medium" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag</p-heading>
-          <p-tag icon="car" variant="primary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="secondary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="info">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="success">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="warning">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="error">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag Dismissible</p-heading>
-          <p-tag-dismissible>Some label</p-tag-dismissible>
-          <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text List</p-heading>
-          <p-text-list type="unordered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="numbered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="alphabetically">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Navigation</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link</p-heading>
-          <p-link variant="primary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link Pure</p-heading>
-          <p-link-pure size="x-large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="medium" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="x-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="xx-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Typography</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Icon</p-heading>
-          <p-icon name="car" size="x-large" color="primary"></p-icon>
-          <p-icon name="car" size="large" color="contrast-high"></p-icon>
-          <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
-          <p-icon name="car" size="small" color="contrast-low"></p-icon>
-          <p-icon name="car" size="x-small" color="success"></p-icon>
-          <p-icon name="car" size="xx-small" color="warning"></p-icon>
-          <p-icon name="car" size="xx-small" color="error"></p-icon>
-          <p-icon name="car" size="xx-small" color="info"></p-icon>
-          <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Display</p-heading>
-          <p-display tag="h3" size="large">ABC</p-display>
-          <p-display tag="h3" size="medium">ABC</p-display>
-          <p-display tag="h3" size="small">ABC</p-display>
-          <p-display tag="h3" size="small" color="inherit" class="text-[deeppink]">ABC</p-display>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Heading</p-heading>
-          <p-heading tag="h3" size="xx-large">ABC</p-heading>
-          <p-heading tag="h3" size="x-large">ABC</p-heading>
-          <p-heading tag="h3" size="large">ABC</p-heading>
-          <p-heading tag="h3" size="medium">ABC</p-heading>
-          <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text</p-heading>
-          <p-text color="primary" size="x-large">ABC</p-text>
-          <p-text color="contrast-high" size="large">ABC</p-text>
-          <p-text color="contrast-medium" size="medium">ABC</p-text>
-          <p-text color="contrast-low" size="small">ABC</p-text>
-          <p-text color="contrast-low" size="x-small">ABC</p-text>
-          <p-text color="success" size="xx-small">ABC</p-text>
-          <p-text color="warning" size="xx-small">ABC</p-text>
-          <p-text color="error" size="xx-small">ABC</p-text>
-          <p-text color="info" size="xx-small">ABC</p-text>
-          <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Form</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Checkbox</p-heading>
-          <p-checkbox label="Some label" name="some-name"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Fieldset</p-heading>
-          <p-fieldset label="Some legend label">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" label-size="small">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="success" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="error" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Date</p-heading>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input E-Mail</p-heading>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-email>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Text</p-heading>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" loading="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" disabled="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" read-only="true"></p-input-text>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Tel</p-heading>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" loading="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="success" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="error" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" disabled="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" read-only="true"></p-input-tel>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Number</p-heading>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" loading="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="success" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="error" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" disabled="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" read-only="true"></p-input-number>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Password</p-heading>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" loading="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="success" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="error" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" disabled="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" read-only="true"></p-input-password>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Search</p-heading>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" loading="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="success" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="error" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" disabled="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" read-only="true"></p-input-search>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Time</p-heading>
-          <p-input-time label="Some label" name="some-name" value="09:11"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="success" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="error" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" disabled="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" read-only="true"></p-input-time>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input URL</p-heading>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Multi Select</p-heading>
-          <p-multi-select label="Some label" name="some-name">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="success" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="error" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" disabled="true">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Pin Code</p-heading>
-          <p-pin-code label="Some label"></p-pin-code>
-          <p-pin-code label="Some label" loading="true"></p-pin-code>
-          <p-pin-code label="Some label" state="success" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" state="error" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" disabled="true"></p-pin-code>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Segmented Control</p-heading>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control disabled="true">
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
-          </p-segmented-control>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Select</p-heading>
-          <p-select label="Some label" name="some-name" filter="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="success" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="error" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" disabled="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-switch>Some label</p-switch>
-          <p-switch checked="true">Some label</p-switch>
-          <p-switch loading="true">Some label</p-switch>
-          <p-switch checked="true" loading="true">Some label</p-switch>
-          <p-switch disabled="true">Some label</p-switch>
-          <p-switch checked="true" disabled="true">Some label</p-switch>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Textarea</p-heading>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="error" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" disabled="true"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" read-only="true"></p-textarea>
-        </div>
-      </div>
-      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-canvas))] before:bg-fixed">
-        <p-heading tag="h2" size="xx-large">Brand</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Crest</p-heading>
-          <p-crest href="#"></p-crest>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Wordmark</p-heading>
-          <p-wordmark href="#"></p-wordmark>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Model Signature</p-heading>
-          <p-model-signature model="718" color="primary"></p-model-signature>
-          <p-model-signature model="911" color="contrast-high"></p-model-signature>
-          <p-model-signature model="boxster" color="contrast-medium"></p-model-signature>
-          <p-model-signature model="cayenne" color="contrast-low"></p-model-signature>
-          <p-model-signature model="cayman" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3-rs" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gts" color="contrast-low"></p-model-signature>
-          <p-model-signature model="macan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="panamera" color="contrast-low"></p-model-signature>
-          <p-model-signature model="taycan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
-        </div>
-        <p-heading tag="h2" size="xx-large">Common</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Accordion</p-heading>
-          <p-accordion heading="Some Heading">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium" sticky="true">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button</p-heading>
-          <p-button variant="primary">Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
-          <p-button variant="primary" icon="car">Some label</p-button>
-          <p-button variant="secondary" icon="car">Some label</p-button>
-          <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="primary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button Pure</p-heading>
-          <p-button-pure size="x-large">Some label</p-button-pure>
-          <p-button-pure size="large">Some label</p-button-pure>
-          <p-button-pure size="medium">Some label</p-button-pure>
-          <p-button-pure size="small">Some label</p-button-pure>
-          <p-button-pure size="small" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="x-small">Some label</p-button-pure>
-          <p-button-pure size="xx-small">Some label</p-button-pure>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Divider</p-heading>
-          <p-divider color="contrast-high"></p-divider>
-          <p-divider color="contrast-medium"></p-divider>
-          <p-divider color="contrast-low"></p-divider>
-          <p-divider color="contrast-lower"></p-divider>
-          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Flag</p-heading>
-          <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="medium" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag</p-heading>
-          <p-tag icon="car" variant="primary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="secondary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="info">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="success">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="warning">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="error">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag Dismissible</p-heading>
-          <p-tag-dismissible>Some label</p-tag-dismissible>
-          <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text List</p-heading>
-          <p-text-list type="unordered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="numbered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="alphabetically">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Navigation</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link</p-heading>
-          <p-link variant="primary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link Pure</p-heading>
-          <p-link-pure size="x-large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="medium" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="x-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="xx-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Typography</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Icon</p-heading>
-          <p-icon name="car" size="x-large" color="primary"></p-icon>
-          <p-icon name="car" size="large" color="contrast-high"></p-icon>
-          <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
-          <p-icon name="car" size="small" color="contrast-low"></p-icon>
-          <p-icon name="car" size="x-small" color="success"></p-icon>
-          <p-icon name="car" size="xx-small" color="warning"></p-icon>
-          <p-icon name="car" size="xx-small" color="error"></p-icon>
-          <p-icon name="car" size="xx-small" color="info"></p-icon>
-          <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Display</p-heading>
-          <p-display tag="h3" size="large">ABC</p-display>
-          <p-display tag="h3" size="medium">ABC</p-display>
-          <p-display tag="h3" size="small">ABC</p-display>
-          <p-display tag="h3" size="small" color="inherit" class="text-[deeppink]">ABC</p-display>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Heading</p-heading>
-          <p-heading tag="h3" size="xx-large">ABC</p-heading>
-          <p-heading tag="h3" size="x-large">ABC</p-heading>
-          <p-heading tag="h3" size="large">ABC</p-heading>
-          <p-heading tag="h3" size="medium">ABC</p-heading>
-          <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text</p-heading>
-          <p-text color="primary" size="x-large">ABC</p-text>
-          <p-text color="contrast-high" size="large">ABC</p-text>
-          <p-text color="contrast-medium" size="medium">ABC</p-text>
-          <p-text color="contrast-low" size="small">ABC</p-text>
-          <p-text color="contrast-low" size="x-small">ABC</p-text>
-          <p-text color="success" size="xx-small">ABC</p-text>
-          <p-text color="warning" size="xx-small">ABC</p-text>
-          <p-text color="error" size="xx-small">ABC</p-text>
-          <p-text color="info" size="xx-small">ABC</p-text>
-          <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Form</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Checkbox</p-heading>
-          <p-checkbox label="Some label" name="some-name"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Fieldset</p-heading>
-          <p-fieldset label="Some legend label">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" label-size="small">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="success" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="error" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Date</p-heading>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input E-Mail</p-heading>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-email>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Text</p-heading>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" loading="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" disabled="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" read-only="true"></p-input-text>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Tel</p-heading>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" loading="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="success" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="error" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" disabled="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" read-only="true"></p-input-tel>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Number</p-heading>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" loading="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="success" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="error" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" disabled="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" read-only="true"></p-input-number>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Password</p-heading>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" loading="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="success" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="error" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" disabled="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" read-only="true"></p-input-password>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Search</p-heading>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" loading="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="success" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="error" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" disabled="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" read-only="true"></p-input-search>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Time</p-heading>
-          <p-input-time label="Some label" name="some-name" value="09:11"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="success" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="error" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" disabled="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" read-only="true"></p-input-time>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input URL</p-heading>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Multi Select</p-heading>
-          <p-multi-select label="Some label" name="some-name">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="success" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="error" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" disabled="true">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Pin Code</p-heading>
-          <p-pin-code label="Some label"></p-pin-code>
-          <p-pin-code label="Some label" loading="true"></p-pin-code>
-          <p-pin-code label="Some label" state="success" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" state="error" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" disabled="true"></p-pin-code>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Segmented Control</p-heading>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control disabled="true">
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
-          </p-segmented-control>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Select</p-heading>
-          <p-select label="Some label" name="some-name" filter="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="success" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="error" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" disabled="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-switch>Some label</p-switch>
-          <p-switch checked="true">Some label</p-switch>
-          <p-switch loading="true">Some label</p-switch>
-          <p-switch checked="true" loading="true">Some label</p-switch>
-          <p-switch disabled="true">Some label</p-switch>
-          <p-switch checked="true" disabled="true">Some label</p-switch>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Textarea</p-heading>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="error" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" disabled="true"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" read-only="true"></p-textarea>
-        </div>
-      </div>
-      <div class="col-span-6 sm:col-span-8 lg:col-span-4 p-fluid-sm rounded-lg grid gap-fluid-md bg-[url(/assets/cabin.webp)] bg-fixed bg-cover bg-center">
-        <p-heading tag="h2" size="xx-large">Brand</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Crest</p-heading>
-          <p-crest href="#"></p-crest>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Wordmark</p-heading>
-          <p-wordmark href="#"></p-wordmark>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Model Signature</p-heading>
-          <p-model-signature model="718" color="primary"></p-model-signature>
-          <p-model-signature model="911" color="contrast-high"></p-model-signature>
-          <p-model-signature model="boxster" color="contrast-medium"></p-model-signature>
-          <p-model-signature model="cayenne" color="contrast-low"></p-model-signature>
-          <p-model-signature model="cayman" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3-rs" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gt3" color="contrast-low"></p-model-signature>
-          <p-model-signature model="gts" color="contrast-low"></p-model-signature>
-          <p-model-signature model="macan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="panamera" color="contrast-low"></p-model-signature>
-          <p-model-signature model="taycan" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
-          <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
-        </div>
-        <p-heading tag="h2" size="xx-large">Common</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Accordion</p-heading>
-          <p-accordion heading="Some Heading">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-          <p-accordion heading="Some Heading" size="medium" sticky="true">
-            <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
-          </p-accordion>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button</p-heading>
-          <p-button variant="primary">Some label</p-button>
-          <p-button variant="secondary">Some label</p-button>
-          <p-button variant="primary" icon="car">Some label</p-button>
-          <p-button variant="secondary" icon="car">Some label</p-button>
-          <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
-          <p-button variant="primary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
-          <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
-          <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Button Pure</p-heading>
-          <p-button-pure size="x-large">Some label</p-button-pure>
-          <p-button-pure size="large">Some label</p-button-pure>
-          <p-button-pure size="medium">Some label</p-button-pure>
-          <p-button-pure size="small">Some label</p-button-pure>
-          <p-button-pure size="small" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" icon="copy" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" align-label="start" stretch="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" loading="true">Some label</p-button-pure>
-          <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
-          <p-button-pure size="x-small">Some label</p-button-pure>
-          <p-button-pure size="xx-small">Some label</p-button-pure>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Divider</p-heading>
-          <p-divider color="contrast-high"></p-divider>
-          <p-divider color="contrast-medium"></p-divider>
-          <p-divider color="contrast-low"></p-divider>
-          <p-divider color="contrast-lower"></p-divider>
-          <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Flag</p-heading>
-          <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="medium" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-          <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag</p-heading>
-          <p-tag icon="car" variant="primary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="secondary">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="info">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="success">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="warning">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-          <p-tag icon="car" variant="error">
-            <button type="button">
-              Some label
-            </button>
-          </p-tag>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Tag Dismissible</p-heading>
-          <p-tag-dismissible>Some label</p-tag-dismissible>
-          <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text List</p-heading>
-          <p-text-list type="unordered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="numbered">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-          <p-text-list type="alphabetically">
-            <p-text-list-item>ABC</p-text-list-item>
-            <p-text-list-item>
-              ABC
-              <p-text-list>
-                <p-text-list-item>ABC</p-text-list-item>
-                <p-text-list-item>ABC</p-text-list-item>
-              </p-text-list>
-            </p-text-list-item>
-            <p-text-list-item>ABC</p-text-list-item>
-          </p-text-list>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Navigation</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link</p-heading>
-          <p-link variant="primary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="primary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-          <p-link variant="secondary" icon="car" hide-label="true">
-            <a href="#">Some label</a>
-          </p-link>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Link Pure</p-heading>
-          <p-link-pure size="x-large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="large" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="medium" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="x-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-          <p-link-pure size="xx-small" underline="true">
-            <a href="#">Some label</a>
-          </p-link-pure>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Typography</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Icon</p-heading>
-          <p-icon name="car" size="x-large" color="primary"></p-icon>
-          <p-icon name="car" size="large" color="contrast-high"></p-icon>
-          <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
-          <p-icon name="car" size="small" color="contrast-low"></p-icon>
-          <p-icon name="car" size="x-small" color="success"></p-icon>
-          <p-icon name="car" size="xx-small" color="warning"></p-icon>
-          <p-icon name="car" size="xx-small" color="error"></p-icon>
-          <p-icon name="car" size="xx-small" color="info"></p-icon>
-          <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Display</p-heading>
-          <p-display tag="h3" size="large">ABC</p-display>
-          <p-display tag="h3" size="medium">ABC</p-display>
-          <p-display tag="h3" size="small">ABC</p-display>
-          <p-display tag="h3" size="small" color="inherit" class="text-[deeppink]">ABC</p-display>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Heading</p-heading>
-          <p-heading tag="h3" size="xx-large">ABC</p-heading>
-          <p-heading tag="h3" size="x-large">ABC</p-heading>
-          <p-heading tag="h3" size="large">ABC</p-heading>
-          <p-heading tag="h3" size="medium">ABC</p-heading>
-          <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Text</p-heading>
-          <p-text color="primary" size="x-large">ABC</p-text>
-          <p-text color="contrast-high" size="large">ABC</p-text>
-          <p-text color="contrast-medium" size="medium">ABC</p-text>
-          <p-text color="contrast-low" size="small">ABC</p-text>
-          <p-text color="contrast-low" size="x-small">ABC</p-text>
-          <p-text color="success" size="xx-small">ABC</p-text>
-          <p-text color="warning" size="xx-small">ABC</p-text>
-          <p-text color="error" size="xx-small">ABC</p-text>
-          <p-text color="info" size="xx-small">ABC</p-text>
-          <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
-        </div>
-        <p-divider></p-divider>
-        <p-heading tag="h2" size="xx-large">Form</p-heading>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Checkbox</p-heading>
-          <p-checkbox label="Some label" name="some-name"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
-          <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Fieldset</p-heading>
-          <p-fieldset label="Some legend label">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" label-size="small">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="success" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-          <p-fieldset label="Some legend label" state="error" message="Some message.">
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-            <p-input-text label="Some label" name="some-name"></p-input-text>
-          </p-fieldset>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Date</p-heading>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
-          <p-input-date label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input E-Mail</p-heading>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-email>
-          <p-input-email label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-email>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Text</p-heading>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" loading="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" disabled="true"></p-input-text>
-          <p-input-text label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" read-only="true"></p-input-text>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Tel</p-heading>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" loading="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="success" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="error" message="Some message."></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" disabled="true"></p-input-tel>
-          <p-input-tel label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" read-only="true"></p-input-tel>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Number</p-heading>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" loading="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="success" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="error" message="Some message."></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" disabled="true"></p-input-number>
-          <p-input-number label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" read-only="true"></p-input-number>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Password</p-heading>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" loading="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="success" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="error" message="Some message."></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" disabled="true"></p-input-password>
-          <p-input-password label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" read-only="true"></p-input-password>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Search</p-heading>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" loading="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="success" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="error" message="Some message."></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" disabled="true"></p-input-search>
-          <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" read-only="true"></p-input-search>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input Time</p-heading>
-          <p-input-time label="Some label" name="some-name" value="09:11"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="success" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" state="error" message="Some message."></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" disabled="true"></p-input-time>
-          <p-input-time label="Some label" name="some-name" value="09:11" read-only="true"></p-input-time>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Input URL</p-heading>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-url>
-          <p-input-url label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Multi Select</p-heading>
-          <p-multi-select label="Some label" name="some-name">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="success" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" state="error" message="Some message.">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-          <p-multi-select label="Some label" name="some-name" disabled="true">
-            <p-multi-select-option value="a">Option A</p-multi-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
-              <p-multi-select-option value="c">Option C</p-multi-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-multi-select-option value="b">Option D</p-multi-select-option>
-              <p-multi-select-option value="c">Option E</p-multi-select-option>
-            </p-optgroup>
-          </p-multi-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Pin Code</p-heading>
-          <p-pin-code label="Some label"></p-pin-code>
-          <p-pin-code label="Some label" loading="true"></p-pin-code>
-          <p-pin-code label="Some label" state="success" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" state="error" message="Some message."></p-pin-code>
-          <p-pin-code label="Some label" disabled="true"></p-pin-code>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Segmented Control</p-heading>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control disabled="true">
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
-          </p-segmented-control>
-          <p-segmented-control>
-            <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
-            <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
-            <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
-            <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
-          </p-segmented-control>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Select</p-heading>
-          <p-select label="Some label" name="some-name" filter="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="success" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" state="error" message="Some message.">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-          <p-select label="Some label" name="some-name" filter="true" disabled="true">
-            <p-select-option value="a">Option A</p-select-option>
-            <p-optgroup label="Some optgroup">
-              <p-select-option value="b" disabled="true">Option B</p-select-option>
-              <p-select-option value="c">Option C</p-select-option>
-            </p-optgroup>
-            <p-optgroup label="Some optgroup" disabled="true">
-              <p-select-option value="b">Option D</p-select-option>
-              <p-select-option value="c">Option E</p-select-option>
-            </p-optgroup>
-          </p-select>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-switch>Some label</p-switch>
-          <p-switch checked="true">Some label</p-switch>
-          <p-switch loading="true">Some label</p-switch>
-          <p-switch checked="true" loading="true">Some label</p-switch>
-          <p-switch disabled="true">Some label</p-switch>
-          <p-switch checked="true" disabled="true">Some label</p-switch>
-        </div>
-        <div class="grid gap-fluid-sm">
-          <p-heading tag="h3" size="medium">Textarea</p-heading>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="error" message="Some message."></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" disabled="true"></p-textarea>
-          <p-textarea label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" read-only="true"></p-textarea>
-        </div>
-      </div>
-    </main>
+    <p-button
+      slot="header-end"
+      icon="configurate"
+      variant="secondary"
+      compact="true"
+      hide-label="true"
+      onclick="document.querySelector('p-canvas').sidebarEndOpen = true;"
+    >Open sidebar
+    </p-button>
 
-    <footer class="col-extended flex justify-center">
-      <p-wordmark class="my-fluid-lg"></p-wordmark>
-    </footer>
+    <form slot="sidebar-start" class="grid gap-fluid-sm" onreset="resetComponentVisibility()">
+      <p-checkbox label="Crest" name="crest"></p-checkbox>
+      <p-checkbox label="Wordmark" name="wordmark"></p-checkbox>
+      <p-checkbox label="Model Signature" name="model-signature"></p-checkbox>
+      <p-checkbox label="Accordion" name="accordion"></p-checkbox>
+      <p-checkbox label="Button" name="button"></p-checkbox>
+      <p-checkbox label="Button Pure" name="button-pure"></p-checkbox>
+      <p-checkbox label="Divider" name="divider"></p-checkbox>
+      <p-checkbox label="Flag" name="flag"></p-checkbox>
+      <p-checkbox label="Tag" name="tag"></p-checkbox>
+      <p-checkbox label="Tag Dismissible" name="tag-dismissible"></p-checkbox>
+      <p-checkbox label="Text List" name="text-list"></p-checkbox>
+      <p-checkbox label="Link" name="link"></p-checkbox>
+      <p-checkbox label="Link Pure" name="link-pure"></p-checkbox>
+      <p-checkbox label="Icon" name="icon"></p-checkbox>
+      <p-checkbox label="Display" name="display"></p-checkbox>
+      <p-checkbox label="Heading" name="heading"></p-checkbox>
+      <p-checkbox label="Text" name="text"></p-checkbox>
+      <p-checkbox label="Checkbox" name="checkbox"></p-checkbox>
+      <p-checkbox label="Fieldset" name="fieldset"></p-checkbox>
+      <p-checkbox label="Input Date" name="input-date"></p-checkbox>
+      <p-checkbox label="Input Email" name="input-email"></p-checkbox>
+      <p-checkbox label="Input Text" name="input-text"></p-checkbox>
+      <p-checkbox label="Input Tel" name="input-tel"></p-checkbox>
+      <p-checkbox label="Input Number" name="input-number"></p-checkbox>
+      <p-checkbox label="Input Password" name="input-password"></p-checkbox>
+      <p-checkbox label="Input Search" name="input-search"></p-checkbox>
+      <p-checkbox label="Input Time" name="input-time"></p-checkbox>
+      <p-checkbox label="Input URL" name="input-url"></p-checkbox>
+      <p-checkbox label="Multi Select" name="multi-select"></p-checkbox>
+      <p-checkbox label="Pin Code" name="pin-code"></p-checkbox>
+      <p-checkbox label="Radio Group" name="radio-group"></p-checkbox>
+      <p-checkbox label="Segmented Control" name="segmented-control"></p-checkbox>
+      <p-checkbox label="Select" name="select"></p-checkbox>
+      <p-checkbox label="Switch" name="switch"></p-checkbox>
+      <p-checkbox label="Textarea" name="textarea"></p-checkbox>
+      <p-button type="reset" variant="secondary">Reset</p-button>
+    </form>
+
+    <div class="grid gap-fluid-md grid-cols-3">
+      <div data-card="crest">
+        <p-crest href="#"></p-crest>
+      </div>
+      <div data-card="wordmark">
+        <p-wordmark class="w-full" href="#"></p-wordmark>
+      </div>
+      <div data-card="model-signature">
+        <p-model-signature model="718" color="primary"></p-model-signature>
+        <p-model-signature model="911" color="contrast-high"></p-model-signature>
+        <p-model-signature model="boxster" color="contrast-medium"></p-model-signature>
+        <p-model-signature model="cayenne" color="contrast-low"></p-model-signature>
+        <p-model-signature model="cayman" color="contrast-low"></p-model-signature>
+        <p-model-signature model="gt3-rs" color="contrast-low"></p-model-signature>
+        <p-model-signature model="gt3" color="contrast-low"></p-model-signature>
+        <p-model-signature model="gts" color="contrast-low"></p-model-signature>
+        <p-model-signature model="macan" color="contrast-low"></p-model-signature>
+        <p-model-signature model="panamera" color="contrast-low"></p-model-signature>
+        <p-model-signature model="taycan" color="contrast-low"></p-model-signature>
+        <p-model-signature model="turbo-s" color="contrast-low"></p-model-signature>
+        <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
+      </div>
+      <div data-card="accordion">
+        <p-accordion heading="Some Heading">
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion heading="Some Heading" size="medium">
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+        <p-accordion heading="Some Heading" size="medium" sticky="true">
+          <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-accordion>
+      </div>
+      <div data-card="button">
+        <p-button variant="primary">Some label</p-button>
+        <p-button variant="secondary">Some label</p-button>
+        <p-button variant="primary" icon="car">Some label</p-button>
+        <p-button variant="secondary" icon="car">Some label</p-button>
+        <p-button variant="primary" icon="car" hide-label="true">Some label</p-button>
+        <p-button variant="secondary" icon="car" hide-label="true">Some label</p-button>
+        <p-button variant="primary" icon="car" loading="true">Some label</p-button>
+        <p-button variant="secondary" icon="car" loading="true">Some label</p-button>
+        <p-button variant="primary" icon="car" disabled="true">Some label</p-button>
+        <p-button variant="secondary" icon="car" disabled="true">Some label</p-button>
+      </div>
+      <div data-card="button-pure">
+        <p-button-pure size="x-large">Some label</p-button-pure>
+        <p-button-pure size="large">Some label</p-button-pure>
+        <p-button-pure size="medium">Some label</p-button-pure>
+        <p-button-pure size="small">Some label</p-button-pure>
+        <p-button-pure size="small" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" icon="copy">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" icon="copy" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" icon="copy" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" stretch="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" stretch="true" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" align-label="start" stretch="true" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="small" icon="like" hide-label="true">Some label</p-button-pure>
+        <p-button-pure size="small" icon="like" hide-label="true" loading="true">Some label</p-button-pure>
+        <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
+        <p-button-pure size="x-small">Some label</p-button-pure>
+        <p-button-pure size="xx-small">Some label</p-button-pure>
+      </div>
+      <div data-card="divider">
+        <p-divider class="w-full" color="contrast-high"></p-divider>
+        <p-divider class="w-full" color="contrast-medium"></p-divider>
+        <p-divider class="w-full" color="contrast-low"></p-divider>
+        <p-divider class="w-full" color="contrast-lower"></p-divider>
+        <p-divider color="contrast-low" direction="vertical" class="h-[1rem]"></p-divider>
+      </div>
+      <div data-card="flag">
+        <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="medium" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+      </div>
+      <div data-card="tag">
+        <p-tag icon="car" variant="primary">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="secondary">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="info">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="success">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="warning">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+        <p-tag icon="car" variant="error">
+          <button type="button">
+            Some label
+          </button>
+        </p-tag>
+      </div>
+      <div data-card="tag-dismissible">
+        <p-tag-dismissible>Some label</p-tag-dismissible>
+        <p-tag-dismissible label="Some label">Some label</p-tag-dismissible>
+      </div>
+      <div data-card="text-list">
+        <p-text-list type="unordered">
+          <p-text-list-item>ABC</p-text-list-item>
+          <p-text-list-item>
+            ABC
+            <p-text-list>
+              <p-text-list-item>ABC</p-text-list-item>
+              <p-text-list-item>ABC</p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+          <p-text-list-item>ABC</p-text-list-item>
+        </p-text-list>
+        <p-text-list type="numbered">
+          <p-text-list-item>ABC</p-text-list-item>
+          <p-text-list-item>
+            ABC
+            <p-text-list>
+              <p-text-list-item>ABC</p-text-list-item>
+              <p-text-list-item>ABC</p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+          <p-text-list-item>ABC</p-text-list-item>
+        </p-text-list>
+        <p-text-list type="alphabetically">
+          <p-text-list-item>ABC</p-text-list-item>
+          <p-text-list-item>
+            ABC
+            <p-text-list>
+              <p-text-list-item>ABC</p-text-list-item>
+              <p-text-list-item>ABC</p-text-list-item>
+            </p-text-list>
+          </p-text-list-item>
+          <p-text-list-item>ABC</p-text-list-item>
+        </p-text-list>
+      </div>
+      <div data-card="link">
+        <p-link variant="primary">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="secondary">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="primary" icon="car">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="secondary" icon="car">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="primary" icon="car" hide-label="true">
+          <a href="#">Some label</a>
+        </p-link>
+        <p-link variant="secondary" icon="car" hide-label="true">
+          <a href="#">Some label</a>
+        </p-link>
+      </div>
+      <div data-card="link-pure">
+        <p-link-pure size="x-large" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="large" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="medium" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="small" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="x-small" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+        <p-link-pure size="xx-small" underline="true">
+          <a href="#">Some label</a>
+        </p-link-pure>
+      </div>
+      <div data-card="icon">
+        <p-icon name="car" size="x-large" color="primary"></p-icon>
+        <p-icon name="car" size="large" color="contrast-high"></p-icon>
+        <p-icon name="car" size="medium" color="contrast-medium"></p-icon>
+        <p-icon name="car" size="small" color="contrast-low"></p-icon>
+        <p-icon name="car" size="x-small" color="success"></p-icon>
+        <p-icon name="car" size="xx-small" color="warning"></p-icon>
+        <p-icon name="car" size="xx-small" color="error"></p-icon>
+        <p-icon name="car" size="xx-small" color="info"></p-icon>
+        <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
+      </div>
+      <div data-card="display">
+        <p-display tag="h3" size="large">ABC</p-display>
+        <p-display tag="h3" size="medium">ABC</p-display>
+        <p-display tag="h3" size="small">ABC</p-display>
+        <p-display tag="h3" size="small" color="inherit" class="text-[deeppink]">ABC</p-display>
+      </div>
+      <div data-card="heading">
+        <p-heading tag="h3" size="xx-large">ABC</p-heading>
+        <p-heading tag="h3" size="x-large">ABC</p-heading>
+        <p-heading tag="h3" size="large">ABC</p-heading>
+        <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
+      </div>
+      <div data-card="text">
+        <p-text color="primary" size="x-large">ABC</p-text>
+        <p-text color="contrast-high" size="large">ABC</p-text>
+        <p-text color="contrast-medium" size="medium">ABC</p-text>
+        <p-text color="contrast-low" size="small">ABC</p-text>
+        <p-text color="contrast-low" size="x-small">ABC</p-text>
+        <p-text color="success" size="xx-small">ABC</p-text>
+        <p-text color="warning" size="xx-small">ABC</p-text>
+        <p-text color="error" size="xx-small">ABC</p-text>
+        <p-text color="info" size="xx-small">ABC</p-text>
+        <p-text color="inherit" size="xx-small" class="text-[deeppink]">ABC</p-text>
+      </div>
+      <div data-card="checkbox">
+        <p-checkbox class="self-start" label="Some label" name="some-name"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" indeterminate="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" loading="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" loading="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" indeterminate="true" loading="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" state="success" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" state="success" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" state="error" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" disabled="true"></p-checkbox>
+        <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
+      </div>
+      <div data-card="fieldset">
+        <p-fieldset class="w-full" label="Some legend label">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+        <p-fieldset class="w-full" label="Some legend label" label-size="small">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+        <p-fieldset class="w-full" label="Some legend label" state="success" message="Some message.">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+        <p-fieldset class="w-full" label="Some legend label" state="error" message="Some message.">
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+          <p-input-text label="Some label" name="some-name"></p-input-text>
+        </p-fieldset>
+      </div>
+      <div data-card="input-date">
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25"></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" loading="true"></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" state="success" message="Some message."></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" state="error" message="Some message."></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" disabled="true"></p-input-date>
+        <p-input-date class="w-full" label="Some label" name="some-name" value="1931-04-25" read-only="true"></p-input-date>
+      </div>
+      <div data-card="input-email">
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-email>
+        <p-input-email class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-email>
+      </div>
+      <div data-card="input-text">
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100"></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" loading="true"></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="success" message="Some message."></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" state="error" message="Some message."></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" disabled="true"></p-input-text>
+        <p-input-text class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" counter="true" max-length="100" read-only="true"></p-input-text>
+      </div>
+      <div data-card="input-tel">
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value"></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" loading="true"></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="success" message="Some message."></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" state="error" message="Some message."></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" disabled="true"></p-input-tel>
+        <p-input-tel class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" read-only="true"></p-input-tel>
+      </div>
+      <div data-card="input-number">
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true"></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" loading="true"></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="success" message="Some message."></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" state="error" message="Some message."></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" disabled="true"></p-input-number>
+        <p-input-number class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="123" controls="true" read-only="true"></p-input-number>
+      </div>
+      <div data-card="input-password">
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true"></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" loading="true"></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="success" message="Some message."></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" state="error" message="Some message."></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" disabled="true"></p-input-password>
+        <p-input-password class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" toggle="true" read-only="true"></p-input-password>
+      </div>
+      <div data-card="input-search">
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true"></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" loading="true"></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="success" message="Some message."></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" state="error" message="Some message."></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" disabled="true"></p-input-search>
+        <p-input-search label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" clear="true" read-only="true"></p-input-search>
+      </div>
+      <div data-card="input-time">
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11"></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" state="success" message="Some message."></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" state="error" message="Some message."></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" disabled="true"></p-input-time>
+        <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" read-only="true"></p-input-time>
+      </div>
+      <div data-card="input-url">
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true"></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" loading="true"></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="success" message="Some message."></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" state="error" message="Some message."></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" disabled="true"></p-input-url>
+        <p-input-url class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" indicator="true" read-only="true"></p-input-url>
+      </div>
+      <div data-card="multi-select">
+        <p-multi-select class="w-full" label="Some label" name="some-name">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+        <p-multi-select class="w-full" label="Some label" name="some-name" state="success" message="Some message.">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+        <p-multi-select class="w-full" label="Some label" name="some-name" state="error" message="Some message.">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+        <p-multi-select class="w-full" label="Some label" name="some-name" disabled="true">
+          <p-multi-select-option value="a">Option A</p-multi-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-multi-select-option value="b" disabled="true">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-multi-select-option value="b">Option D</p-multi-select-option>
+            <p-multi-select-option value="c">Option E</p-multi-select-option>
+          </p-optgroup>
+        </p-multi-select>
+      </div>
+      <div data-card="pin-code">
+        <p-pin-code class="w-full" label="Some label"></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" loading="true"></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" state="success" message="Some message."></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" state="error" message="Some message."></p-pin-code>
+        <p-pin-code class="w-full" label="Some label" disabled="true"></p-pin-code>
+      </div>
+      <div data-card="radio-group">
+        <p-radio-group class="self-start" name="options" value="b" label="Some Label">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some Label" loading="true">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some Label" state="success" message="Some message.">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some Label" state="error" message="Some error.">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options" value="b" label="Some Label" disabled="true">
+          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+      </div>
+      <div data-card="segmented-control">
+        <p-segmented-control class="w-full">
+          <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+          <p-segmented-control-item value="2">2</p-segmented-control-item>
+          <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+          <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
+        </p-segmented-control>
+        <p-segmented-control class="w-full" disabled="true">
+          <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+          <p-segmented-control-item value="2">2</p-segmented-control-item>
+          <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+          <p-segmented-control-item value="4" icon="like">4</p-segmented-control-item>
+        </p-segmented-control>
+        <p-segmented-control class="w-full">
+          <p-segmented-control-item value="1" label="Model">1</p-segmented-control-item>
+          <p-segmented-control-item value="2" disabled="true">2</p-segmented-control-item>
+          <p-segmented-control-item value="3" label="Model" icon="car">3</p-segmented-control-item>
+          <p-segmented-control-item value="4" icon="like" disabled="true">4</p-segmented-control-item>
+        </p-segmented-control>
+      </div>
+      <div data-card="select">
+        <p-select class="w-full" label="Some label" name="some-name" filter="true">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+        <p-select class="w-full" label="Some label" name="some-name" filter="true" state="success" message="Some message.">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+        <p-select class="w-full" label="Some label" name="some-name" filter="true" state="error" message="Some message.">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+        <p-select class="w-full" label="Some label" name="some-name" filter="true" disabled="true">
+          <p-select-option value="a">Option A</p-select-option>
+          <p-optgroup label="Some optgroup">
+            <p-select-option value="b" disabled="true">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+          </p-optgroup>
+          <p-optgroup label="Some optgroup" disabled="true">
+            <p-select-option value="b">Option D</p-select-option>
+            <p-select-option value="c">Option E</p-select-option>
+          </p-optgroup>
+        </p-select>
+      </div>
+      <div data-card="switch">
+        <p-switch class="self-start">Some label</p-switch>
+        <p-switch class="self-start" checked="true">Some label</p-switch>
+        <p-switch class="self-start" loading="true">Some label</p-switch>
+        <p-switch class="self-start" checked="true" loading="true">Some label</p-switch>
+        <p-switch class="self-start" disabled="true">Some label</p-switch>
+        <p-switch class="self-start" checked="true" disabled="true">Some label</p-switch>
+      </div>
+      <div data-card="textarea">
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100"></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="success" message="Some message."></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" state="error" message="Some message."></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" disabled="true"></p-textarea>
+        <p-textarea class="w-full" label="Some label" name="some-name" placeholder="Some placeholder" value="Some value" rows="2" counter="true" max-length="100" read-only="true"></p-textarea>
+      </div>
+    </div>
+
+    <p-text slot="footer" size="xx-small" align="center">© 2025 Dr. Ing. h.c. F. Porsche AG</p-text>
+
+    <p-heading slot="sidebar-end-header" tag="h2" size="medium">Settings</p-heading>
+
+    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'light', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', background: 'mountain', accent: '#3400f0'})">
+      <p-select name="theme" value="light" label="Theme" compact="true" onchange="updateRoute({theme: this.value})">
+        <p-select-option value="light">Light</p-select-option>
+        <p-select-option value="dark">Dark</p-select-option>
+        <p-select-option value="auto">Auto</p-select-option>
+      </p-select>
+      <p-select name="dir" value="ltr" label="Direction" compact="true" onchange="updateRoute({dir: this.value})">
+        <p-select-option value="ltr">LTR (left-to-right)</p-select-option>
+        <p-select-option value="rtl">RTL (right-to-left)</p-select-option>
+        <p-select-option value="auto">Auto</p-select-option>
+      </p-select>
+      <p-select name="zoom" value="100%" label="Zoom" compact="true" onchange="updateRoute({zoom: this.value})">
+        <p-select-option value="100%">100%</p-select-option>
+        <p-select-option value="130%">130%</p-select-option>
+        <p-select-option value="150%">150%</p-select-option>
+        <p-select-option value="200%">200%</p-select-option>
+      </p-select>
+      <p-select name="compact" value="false" label="Compact" compact="true" onchange="updateRoute({compact: this.value})">
+        <p-select-option value="true">Compact</p-select-option>
+        <p-select-option value="false">Normal</p-select-option>
+      </p-select>
+      <p-select name="animation" value="animated" label="Animation" compact="true" onchange="updateRoute({animation: this.value})">
+        <p-select-option value="animated">Animated</p-select-option>
+        <p-select-option value="none">No Animation</p-select-option>
+      </p-select>
+      <p-select name="background" value="mountain" label="Background" compact="true" onchange="updateRoute({'background': this.value})">
+        <p-optgroup label="Colors">
+          <p-select-option value="canvas">Canvas</p-select-option>
+          <p-select-option value="surface">Surface</p-select-option>
+        </p-optgroup>
+        <p-optgroup label="Gradients">
+          <p-select-option value="gradient">Gradient</p-select-option>
+        </p-optgroup>
+        <p-optgroup label="Images">
+          <p-select-option value="mountain">Mountain</p-select-option>
+        </p-optgroup>
+      </p-select>
+      <label>
+        <span class="sr-only">Accent Color</span>
+        <input name="accent" value="#3400f0" type="color" oninput="updateRoute({accent: this.value})" />
+      </label>
+      <p-button type="reset" variant="secondary" compact="true">Reset</p-button>
+    </form>
+
+    <div slot="background"></div>
+  </p-canvas>
 
     <script>
+      const toggleCard = (cardName, isVisible) => {
+        const currentComponents = getComponents();
+        let updatedComponents;
+
+        if (isVisible) {
+          // Add component if not already in the list
+          updatedComponents = currentComponents.includes(cardName)
+            ? currentComponents
+            : [...currentComponents, cardName];
+        } else {
+          // Remove component from the list
+          updatedComponents = currentComponents.filter(c => c !== cardName);
+        }
+
+        updateRoute({ components: updatedComponents.join(',') });
+      };
+
+      const resetComponentVisibility = () => {
+        const allComponents = [...document.querySelectorAll('[data-card]')].map(el => el.getAttribute('data-card'));
+        updateRoute({ components: allComponents.join(',') });
+      };
+
       // ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
       //   window.addEventListener(`stencil_${x}`, (e) => {
       //     const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
@@ -2133,15 +652,23 @@
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
       const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
       const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
-      const getTransition = () => new URL(document.location).searchParams.get('transition') || 'transitioned';
       const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'animated';
+      const getBackground = () => new URL(document.location).searchParams.get('background') || 'mountain';
       const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
+      const getComponents = () => {
+        const components = new URL(document.location).searchParams.get('components');
+        // Default: all components visible (empty string means all)
+        if (!components) {
+          return [...document.querySelectorAll('[data-card]')].map(el => el.getAttribute('data-card'));
+        }
+        return components.split(',').filter(Boolean);
+      };
 
       const updateRoute = (opts) => {
         if (opts) {
           const url = new URL(location);
           for (const [key, value] of Object.entries(opts)) {
-            if (value) {
+            if (value !== undefined && value !== null) {
               url.searchParams.set(key, value);
             }
           }
@@ -2152,9 +679,10 @@
         const dir = getDir();
         const zoom = getZoom();
         const compact = getCompact();
-        const transition = getTransition();
         const animation = getAnimation();
+        const background = getBackground();
         const accent = getAccent();
+        const components = getComponents();
 
         // Theme
         document.documentElement.classList.remove('light', 'dark', 'auto');
@@ -2167,24 +695,61 @@
         for(const el of [...document.querySelectorAll('main *')].filter(el => el.tagName.startsWith('P-') && !el.tagName.endsWith('-ITEM') && !el.tagName.endsWith('-OPTION'))) {
           el.setAttribute('compact', compact);
         }
-        // Transition
-        document.documentElement.style.setProperty('--p-transition-duration', transition === 'none' ? '0s' : '');
         // Animation
+        document.documentElement.style.setProperty('--p-transition-duration', animation === 'none' ? '0s' : '');
         document.documentElement.style.setProperty('--p-animation-duration', animation === 'none' ? '0s' : '');
+        // Background
+        const backgroundMap = {
+          canvas: {
+            app: 'w-full h-full bg-canvas',
+            card: 'bg-surface rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+          surface: {
+            app: 'w-full h-full bg-surface',
+            card: 'bg-canvas rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+          gradient: {
+            app: 'w-full h-full relative overflow-hidden before:absolute before:-inset-static-lg before:-z-1 before:pointer-events-none before:animate-gradient before:bg-[conic-gradient(from_var(--gradient-rotate-angle)_at_50%_50%,var(--accent),var(--color-canvas))] before:bg-fixed',
+            card: 'bg-frosted backdrop-blur-frosted rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+          mountain: {
+            app: 'w-full h-full bg-[url(/assets/cabin.webp)] bg-fixed bg-cover bg-center',
+            card: 'bg-frosted backdrop-blur-frosted rounded-lg p-fluid-md flex flex-col gap-fluid-sm justify-center items-center',
+          },
+        };
+        document.querySelector('[slot="background"]').setAttribute('class', backgroundMap[background].app);
+        for (const el of document.querySelectorAll('[data-card]')) {
+          el.setAttribute('class', backgroundMap[background].card);
+        }
         // Accent
         document.documentElement.style.setProperty('--accent', accent);
+        // Components visibility
+        for (const card of document.querySelectorAll('[data-card]')) {
+          const cardName = card.getAttribute('data-card');
+          card.style.display = components.includes(cardName) ? '' : 'none';
+        }
       };
 
       const updateInput = (name, value) => document.querySelector(`[name="${name}"]`).value = value;
 
-      updateInput('theme', getTheme());
-      updateInput('dir', getDir());
-      updateInput('zoom', getZoom());
-      updateInput('compact', getCompact());
-      updateInput('animation', getAnimation());
-      updateInput('transition', getTransition());
-      updateInput('accent', getAccent());
-      updateRoute();
+      Promise.all([
+        customElements.whenDefined('p-checkbox'),
+        customElements.whenDefined('p-select')
+      ]).then(() => {
+        updateInput('theme', getTheme());
+        updateInput('dir', getDir());
+        updateInput('zoom', getZoom());
+        updateInput('compact', getCompact());
+        updateInput('animation', getAnimation());
+        updateInput('background', getBackground());
+        updateInput('accent', getAccent());
+
+        for (const checkbox of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
+          checkbox.checked = getComponents().includes(checkbox.name);
+        }
+
+        updateRoute();
+      });
     </script>
 
     <script>
@@ -2195,6 +760,19 @@
       for (const el of document.querySelectorAll("p-accordion")) {
         el.addEventListener('update', (e) => e.target.open = e.detail.open);
       }
+
+      for (const el of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
+        el.addEventListener('change', (e) => {
+          toggleCard(e.target.name, e.target.checked);
+        });
+      }
+
+      document.querySelector('p-canvas').addEventListener('sidebarStartUpdate', (e) => {
+        e.target.sidebarStartOpen = e.detail.open;
+      });
+      document.querySelector('p-canvas').addEventListener('sidebarEndDismiss', (e) => {
+        e.target.sidebarEndOpen = false;
+      });
     </script>
 
   </body>
