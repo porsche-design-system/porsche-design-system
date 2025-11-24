@@ -3,12 +3,14 @@ import type { CheckboxState } from '@porsche-design-system/components';
 import {
   addEventListener,
   getActiveElementTagName,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValue,
   getLifecycleStatus,
   getProperty,
   hasFocus,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -775,6 +777,18 @@ test.describe('form', () => {
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
     await expect(checkbox).toHaveJSProperty('disabled', false);
+  });
+
+  test('should not set validity when disabled and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initCheckbox(page, {
+      isWithinForm: true,
+      required: true,
+      disabled: true,
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

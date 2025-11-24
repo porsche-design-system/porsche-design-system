@@ -73,7 +73,7 @@ export class Checkbox {
   @Prop() public required?: boolean = false;
 
   /** Marks the checkbox as disabled. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** Marks the checkbox as indeterminate. */
   @Prop() public indeterminate?: boolean = false;
@@ -196,6 +196,7 @@ export class Checkbox {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -209,7 +210,7 @@ export class Checkbox {
     if (!this.disabled) {
       this.internals?.setValidity(
         this.checkboxInputElement.validity,
-        this.checkboxInputElement.validationMessage,
+        this.checkboxInputElement.validationMessage || ' ',
         this.checkboxInputElement
       );
     }

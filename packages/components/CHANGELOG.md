@@ -37,6 +37,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
 
+### Fixed
+
+- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
+- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
+  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
+  ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
 ## [3.31.0] - 2025-11-13
 
 ## [3.31.0-rc.0] - 2025-11-11

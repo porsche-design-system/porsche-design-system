@@ -3,12 +3,14 @@ import type { Components } from '@porsche-design-system/components/src/component
 import type { Page } from 'playwright';
 import {
   addEventListener,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValues,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -2619,5 +2621,22 @@ test.describe('form', () => {
 
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
+  });
+
+  test('should not set validity when disabled and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initMultiSelect(page, {
+      options: {
+        isWithinForm: true,
+      },
+      props: {
+        name: 'some-name',
+        required: true,
+        disabled: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
