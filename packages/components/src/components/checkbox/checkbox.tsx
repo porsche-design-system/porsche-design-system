@@ -299,7 +299,10 @@ export class Checkbox {
   private onExternalLabelClick = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
     const excludedChildElements =
-      target.tagName === 'A' || target.tagName === 'BUTTON' || target.shadowRoot?.querySelector('a, button');
+      target.tagName === 'A' ||
+      target.tagName === 'BUTTON' ||
+      e.target === this.host ||
+      target.shadowRoot?.querySelector('a, button');
 
     if (excludedChildElements) {
       return;
