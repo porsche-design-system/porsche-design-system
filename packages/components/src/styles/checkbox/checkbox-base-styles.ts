@@ -11,10 +11,11 @@ import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition, SCALING_BASE_VALUE } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
-
-export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
-export const cssVarCheckboxBorderColor = '--__checkbox-border-color'; // internal for now
-export const cssVarCheckboxBackgroundColor = '--__checkbox-background-color'; // internal for now
+import {
+  cssVarInternalCheckboxBackgroundColor,
+  cssVarInternalCheckboxBorderColor,
+  cssVarInternalCheckboxScaling,
+} from './checkbox-css-vars';
 
 export const getCheckboxBaseStyles = (
   isDisabled: boolean,
@@ -45,9 +46,9 @@ export const getCheckboxBaseStyles = (
     width: dimension,
     height: dimension,
     font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-    background: `var(${cssVarCheckboxBackgroundColor},${formStateBackgroundColor})`,
+    background: `var(${cssVarInternalCheckboxBackgroundColor},${formStateBackgroundColor})`,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-    border: `${borderWidthThin} solid var(${cssVarCheckboxBorderColor},${formStateBorderColor})`,
+    border: `${borderWidthThin} solid var(${cssVarInternalCheckboxBorderColor},${formStateBorderColor})`,
     borderRadius: borderRadiusSmall,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
