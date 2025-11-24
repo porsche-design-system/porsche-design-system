@@ -34,7 +34,6 @@
     @sidebarEndDismiss="onSidebarEndDismiss"
   >
     <a slot="title" href="#">App Name</a>
-    <div slot="header-banner" class="banner">Banner</div>
 
     <PButton
       slot="header-end"

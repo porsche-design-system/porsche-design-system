@@ -64,9 +64,6 @@ export const CanvasExamplePage = (): JSX.Element => {
         <a slot="title" href="#">
           App Name
         </a>
-        <div slot="header-banner" className="banner">
-          Banner
-        </div>
 
         <PButton
           slot="header-end"

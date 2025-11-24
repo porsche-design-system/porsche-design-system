@@ -43,7 +43,6 @@ import { breakpointS } from '@porsche-design-system/components-angular/styles';
       (sidebarEndDismiss)="onSidebarEndDismiss()"
     >
       <a slot="title" href="#">App Name</a>
-      <div slot="header-banner" class="banner">Banner</div>
 
       <p-button
         slot="header-end"
