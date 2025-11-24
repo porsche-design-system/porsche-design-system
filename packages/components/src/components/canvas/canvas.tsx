@@ -20,7 +20,6 @@ const propTypes: PropTypes<typeof Canvas> = {
 
 /**
  * @slot {"name": "title", "description": "Renders the application name in the header section of the sidebar start area." }
- * @slot {"name": "header-banner", "description": "Renders a full-width banner above the header for global notices such as version warnings or announcements." }
  * @slot {"name": "header-start", "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode)." }
  * @slot {"name": "header-end", "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode)." }
  * @slot {"name": "", "description": "Default slot for the main content." }
@@ -61,7 +60,6 @@ export class Canvas {
   private matchMediaQueryM = window.matchMedia(`(min-width: ${breakpointM}px)`);
 
   private hasTitle: boolean;
-  private hasHeaderBanner: boolean;
   private hasSidebarEnd: boolean;
   private hasSidebarEndHeader: boolean;
   private hasFooter: boolean;
@@ -108,7 +106,6 @@ export class Canvas {
     validateProps(this, propTypes);
 
     this.hasTitle = hasNamedSlot(this.host, 'title');
-    this.hasHeaderBanner = hasNamedSlot(this.host, 'header-banner');
     this.hasSidebarEnd = hasNamedSlot(this.host, 'sidebar-end');
     this.hasSidebarEndHeader = hasNamedSlot(this.host, 'sidebar-end-header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
@@ -122,43 +119,36 @@ export class Canvas {
       <Host>
         <div class="root">
           <header class="header" tabIndex={-1}>
-            {this.hasHeaderBanner && (
-              <div class="header__banner">
-                <slot name="header-banner" />
-              </div>
-            )}
-            <div class="header__inner">
-              <div class="blur">
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-              </div>
-              <div class="header__area header__area--start">
-                {!this.sidebarStartOpen && (
-                  <PrefixedTagNames.pButton
-                    theme={this.theme}
-                    icon="sidebar"
-                    variant="ghost"
-                    compact={true}
-                    hide-label="true"
-                    aria={{ 'aria-expanded': this.sidebarStartOpen }}
-                    onClick={this.toggleSidebarStart}
-                  >
-                    {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
-                  </PrefixedTagNames.pButton>
-                )}
-                <slot name="header-start" />
-              </div>
-              <PrefixedTagNames.pCrest class="header__crest" />
-              <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
-              <div class="header__area header__area--end">
-                <slot name="header-end" />
-              </div>
+            <div class="blur">
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+            </div>
+            <div class="header__area header__area--start">
+              {!this.sidebarStartOpen && (
+                <PrefixedTagNames.pButton
+                  theme={this.theme}
+                  icon="sidebar"
+                  variant="ghost"
+                  compact={true}
+                  hide-label="true"
+                  aria={{ 'aria-expanded': this.sidebarStartOpen }}
+                  onClick={this.toggleSidebarStart}
+                >
+                  {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+                </PrefixedTagNames.pButton>
+              )}
+              <slot name="header-start" />
+            </div>
+            <PrefixedTagNames.pCrest class="header__crest" />
+            <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
+            <div class="header__area header__area--end">
+              <slot name="header-end" />
             </div>
           </header>
           {this.isMediaQueryS && (
