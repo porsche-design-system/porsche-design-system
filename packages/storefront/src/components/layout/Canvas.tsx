@@ -29,6 +29,7 @@ import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { PDSVersionGroup, Semver, MAJOR_PDS_VERSIONS } from '@/models/pdsVersion';
 import { getCurrentPdsVersion } from '@/utils/pdsVersion';
+import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
 declare global {
   interface Window {
@@ -40,11 +41,18 @@ if (global?.window) {
   window.componentsReady = componentsReady; // for testing
 }
 
-type CanvasProps = {
-  stablePdsReleases: string[];
-} & PropsWithChildren;
+export const Canvas = ({ children }: PropsWithChildren) => {
+  const [stablePdsReleases, setStablePdsReleases] = useState<string[]>([]);
 
-export const Canvas = ({ children, stablePdsReleases }: CanvasProps) => {
+  useEffect(() => {
+    async function load() {
+      const list = await fetchPdsVersions();
+      setStablePdsReleases(list);
+    }
+
+    load();
+  }, []);
+
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();

@@ -80,7 +80,7 @@ export const Navigation = ({ pdsVersion }: NavigationProps) => {
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
-        <VersionSelect pdsVersion={pdsVersion} />
+        {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
         <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
           brand.porsche.com
         </PLinkPure>

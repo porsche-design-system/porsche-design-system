@@ -5,13 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import AppearAnimation from './appearAnimation';
+import { useEffect, useState } from 'react';
+import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
-type HomeProps = {
-  latestPdsVersion: string;
-};
-
-export const Home = ({ latestPdsVersion }: HomeProps) => {
+export const Home = () => {
+  const [latestPdsVersion, setLatestPdsVersion] = useState<string>();
   const { isDark } = useStorefrontTheme();
+
+  useEffect(() => {
+    async function load() {
+      const list = await fetchPdsVersions();
+      setLatestPdsVersion(list[0]);
+    }
+
+    load();
+  }, []);
   return (
     <>
       <div
@@ -42,28 +50,30 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         >
           Welcome to the Porsche Design System
         </PDisplay>
-        <div className="block w-full h-full relative">
-          <div
-            className="bg-surface max-w-lg bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
-            style={{ marginBottom: '5%', marginLeft: '5%' }}
-          >
-            <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
-            <div className="flex flex-col">
-              <PText size="small" weight="semi-bold">
-                Release Note
-              </PText>
-              <PText size="small" color="contrast-medium">
-                Checkout the latest release {latestPdsVersion}
-              </PText>
+        {latestPdsVersion && (
+          <div className="block w-full h-full relative">
+            <div
+              className="bg-surface max-w-lg bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
+              style={{ marginBottom: '5%', marginLeft: '5%' }}
+            >
+              <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
+              <div className="flex flex-col">
+                <PText size="small" weight="semi-bold">
+                  Release Note
+                </PText>
+                <PText size="small" color="contrast-medium">
+                  Checkout the latest release {latestPdsVersion}
+                </PText>
+              </div>
+              <PLinkPure hideLabel={true}>
+                <Link
+                  href="/news/changelog/"
+                  aria-label={`Release Note: Checkout the latest release ${latestPdsVersion}`}
+                />
+              </PLinkPure>
             </div>
-            <PLinkPure hideLabel={true}>
-              <Link
-                href="/news/changelog/"
-                aria-label={`Release Note: Checkout the latest release ${latestPdsVersion}`}
-              />
-            </PLinkPure>
           </div>
-        </div>
+        )}
       </div>
 
       <article className="mt-fluid-2xl col-span-full xs:col-start-4 xs:col-end-10" aria-label="Introduction">
