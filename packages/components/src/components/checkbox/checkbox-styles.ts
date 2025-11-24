@@ -21,7 +21,7 @@ import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-che
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
-import { getCss, isDisabledOrLoading } from '../../utils';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
@@ -59,6 +59,10 @@ export const getComponentCss = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
+      'slot[name="start"], slot[name="end"]': {
+        display: 'inline-block',
+        verticalAlign: 'top',
+      },
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, state, compact),
@@ -75,12 +79,15 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
     },
     wrapper: {
-      position: 'relative',
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr)',
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+    },
+    'input-wrapper': {
+      position: 'relative',
     },
     ...(isLoading && {
       spinner: {
@@ -93,22 +100,22 @@ export const getComponentCss = (
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
+    'label-wrapper': {
+      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+        paddingTop: hideLabelValue ? 0 : paddingTop,
+        paddingInlineStart: hideLabelValue ? 0 : paddingInlineStart,
+      })),
+    },
     // .label / .required
     ...getFunctionalComponentLabelStyles(
       isDisabled || isLoading,
       hideLabel,
       {
-        gridArea: '1/2',
-      },
-      {
-        paddingTop,
-        paddingInlineStart,
+        display: 'inline',
       }
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(state, {
-      gridColumn: '1/-1',
-    }),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });
