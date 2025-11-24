@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-banner|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -793,11 +793,11 @@ $&`
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(
-            /this\.props\.(hasTitle|hasHeaderBanner|hasSidebarStart|hasSidebarEnd|hasSidebarEndHeader|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground)/g,
+            /this\.props\.(hasTitle|hasSidebarStart|hasSidebarEnd|hasSidebarEndHeader|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground)/g,
             '$1'
           )
           .replace(
-            /(?:hasTitle|hasHeaderBanner|hasSidebarStart|hasSidebarEnd|hasSidebarEndHeader|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground) =/g,
+            /(?:hasTitle|hasSidebarStart|hasSidebarEnd|hasSidebarEndHeader|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground) =/g,
             'const $&'
           );
       } else if (tagName === 'p-checkbox') {
