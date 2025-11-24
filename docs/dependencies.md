@@ -37,9 +37,9 @@ reflected in the configuration file under `.github/dependabot.yml` and must be k
 
 |         | Monorepo | Sample Integrations   |
 | ------- | -------- | --------------------- |
-| Angular | 20.1.2   | 19.0.5                |
-| React   | 19.1.0   | 19.0.0                |
-| Next.js | 15.1.3   | 15.1.4 (React 19.0.0) |
+| Angular | 20.3.5   | 20.0.5                |
+| React   | 19.2.0   | 19.2.0                |
+| Next.js | 15.4.0   | 15.4.0 (React 19.0.0) |
 
 ---
 
@@ -76,3 +76,38 @@ there's no stable way of using it with Node or TS-Node.
 - `change-case`
 
 ---
+
+## Nextjs
+
+Currently fixed to `15.4.0` since it causes issues with build process. Error:
+
+```
+TypeError: Cannot read properties of undefined (reading 'props')
+    at l.render (.next/server/chunks/9863.js:10:1822) {
+  digest: '1042952660'
+}
+Export encountered an error on /link-tile-model-signature/page: /link-tile-model-signature, exiting the build.
+```
+
+The canary release `15.3.0-canary.98` is the last version where this error does not occur, `15.3.0-canary.99` is where
+this problem starts. [Here](https://github.com/vercel/next.js/compare/v15.4.0-canary.98...v15.4.0-canary.99) are the
+changes between these two versions.
+
+After starting with `next dev`, the following error is shown in the console:
+
+```
+[nextjs]  ⨯ TypeError: Cannot read properties of undefined (reading 'props')
+[nextjs]     at DSRLinkTileModelSignature.render (../../dist/react-wrapper/ssr/esm/components-react/projects/react-ssr-wrapper/src/lib/dsr-components/link-tile-model-signature.mjs:25:35)
+[nextjs]   23 |             : child);
+[nextjs]   24 |         const primaryLink = manipulatedChildren.find((child) => typeof child === 'object' && 'props' in child && child.props.variant === 'primary');
+[nextjs] > 25 |         const linkEl = primaryLink.props.href
+[nextjs]      |                                   ^
+[nextjs]   26 |             ? primaryLink.props
+[nextjs]   27 |             : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find((child) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
+[nextjs]   28 |             ).props; // support for slotted a tag within p-link {
+[nextjs]   digest: '3656165356'
+[nextjs] }
+[nextjs]  GET /link-tile-model-signature 500 in 2268ms
+```
+
+When `'use client';` is added from the top of the file, the error disappears.
