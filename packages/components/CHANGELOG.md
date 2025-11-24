@@ -22,7 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Button
 - ✅Button Pure
 - ⌛Button Tile (might be removed in favour of generic p-card)
-- ⌛Canvas
+- ✅Canvas
 - ⌛Carousel
 - ✅Divider
 - ✅Flag

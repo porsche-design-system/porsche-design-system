@@ -31,7 +31,6 @@ const sidebarStartWidth = `var(${cssVarSidebarStartWidth},320px)`;
 const sidebarEndWidth = `var(${cssVarSidebarEndWidth},320px)`;
 
 // private css variables
-const cssVarFooterGradientColor = '--_e';
 const cssVarTemplateSidebarStartWidth = '--_f';
 const cssVarTemplateSidebarEndWidth = '--_g';
 
@@ -42,7 +41,7 @@ const mediaQueryM = getMediaQueryMin('m');
 // others
 const spacingBase = gridGap.replace('36px', '24px');
 
-const { primaryColor, canvasColor, surfaceColor, contrastLowColor } = colors;
+const { primaryColor, canvasColor, surfaceColor, contrastLowerColor } = colors;
 
 export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
   return getCss({
@@ -110,7 +109,6 @@ export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: b
       },
     },
     root: {
-      [cssVarFooterGradientColor]: '0,0%,100%',
       [cssVarTemplateSidebarStartWidth]: isSidebarStartOpen ? sidebarStartWidth : '0px',
       [cssVarTemplateSidebarEndWidth]: isSidebarEndOpen ? sidebarEndWidth : '0px',
       display: 'grid',
@@ -136,11 +134,16 @@ export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: b
           content: '""',
           zIndex: 2,
           gridArea: '1/2/-1/3',
-          boxShadow: `1px 0 0 0 ${contrastLowColor}`,
+          boxShadow: `1px 0 0 0 ${contrastLowerColor}`,
           background: canvasColor,
           pointerEvents: 'none',
         },
       },
+      '&:dir(rtl)::after': {
+        [mediaQueryM]: {
+          boxShadow: `-1px 0 0 0 ${contrastLowerColor}`,
+        },
+      }
     },
     header: {
       zIndex: 6,
@@ -277,7 +280,7 @@ export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: b
         position: 'absolute',
         inset: '-140px 0 0',
         pointerEvents: 'none',
-        background: `linear-gradient(to bottom,hsla(var(${cssVarFooterGradientColor}),0) 0%,hsla(var(${cssVarFooterGradientColor}),0.013) 8.1%,hsla(var(${cssVarFooterGradientColor}),0.049) 15.5%,hsla(var(${cssVarFooterGradientColor}),0.104) 22.5%,hsla(var(${cssVarFooterGradientColor}),0.175) 29%,hsla(var(${cssVarFooterGradientColor}),0.259) 35.3%,hsla(var(${cssVarFooterGradientColor}),0.352) 41.2%,hsla(var(${cssVarFooterGradientColor}),0.45) 47.1%,hsla(var(${cssVarFooterGradientColor}),0.55) 52.9%,hsla(var(${cssVarFooterGradientColor}),0.648) 58.8%,hsla(var(${cssVarFooterGradientColor}),0.741) 64.7%,hsla(var(${cssVarFooterGradientColor}),0.825) 71%,hsla(var(${cssVarFooterGradientColor}),0.896) 77.5%,hsla(var(${cssVarFooterGradientColor}),0.951) 84.5%,hsla(var(${cssVarFooterGradientColor}),0.987) 91.9%,hsl(var(${cssVarFooterGradientColor})) 100%)`,
+        background: `linear-gradient(to bottom,hsl(from ${canvasColor} h s l / 0) 0%,hsl(from ${canvasColor} h s l / 0.013) 8.1%,hsl(from ${canvasColor} h s l / 0.049) 15.5%,hsl(from ${canvasColor} h s l / 0.104) 22.5%,hsl(from ${canvasColor} h s l / 0.175) 29%,hsl(from ${canvasColor} h s l / 0.259) 35.3%,hsl(from ${canvasColor} h s l / 0.352) 41.2%,hsl(from ${canvasColor} h s l / 0.45) 47.1%,hsl(from ${canvasColor} h s l / 0.55) 52.9%,hsl(from ${canvasColor} h s l / 0.648) 58.8%,hsl(from ${canvasColor} h s l / 0.741) 64.7%,hsl(from ${canvasColor} h s l / 0.825) 71%,hsl(from ${canvasColor} h s l / 0.896) 77.5%,hsl(from ${canvasColor} h s l / 0.951) 84.5%,hsl(from ${canvasColor} h s l / 0.987) 91.9%,${canvasColor} 100%)`,
       },
     },
     sidebar: {
