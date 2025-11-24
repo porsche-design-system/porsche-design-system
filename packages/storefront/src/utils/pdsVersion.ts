@@ -1,5 +1,12 @@
-export const getCurrentPdsVersion = () =>
-  typeof window !== 'undefined' ? window.location.pathname.split('/')[1] || null : null;
+export const getCurrentPdsVersion = () => {
+  if (typeof window === 'undefined') return null;
+
+  const segment = window.location.pathname.split('/')[1] || null;
+
+  const semverRegex = /^v?\d+(?:\.\d+){0,2}$/;
+
+  return segment && semverRegex.test(segment) ? segment.replace('v', '') : null;
+};
 
 function parse(version: string): number[] {
   return version.replace(/^v/, '').split('.').map(Number);

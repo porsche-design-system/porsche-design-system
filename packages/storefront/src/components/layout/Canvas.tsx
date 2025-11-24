@@ -61,12 +61,15 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const [isBannerOpen, setIsBannerOpen] = useState(false);
 
   const currentPdsVersion = getCurrentPdsVersion();
 
-  const [isBannerOpen, setIsBannerOpen] = useState(
-    currentPdsVersion !== null && currentPdsVersion !== stablePdsReleases[0]
-  );
+  useEffect(() => {
+    if (stablePdsReleases.length && currentPdsVersion !== null && currentPdsVersion !== stablePdsReleases[0]) {
+      setIsBannerOpen(true);
+    }
+  }, [currentPdsVersion, stablePdsReleases]);
 
   const pdsVersion: PDSVersionGroup = {
     all: [...stablePdsReleases, ...MAJOR_PDS_VERSIONS],
