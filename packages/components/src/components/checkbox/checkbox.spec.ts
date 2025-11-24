@@ -98,7 +98,7 @@ describe('componentDidRender', () => {
     expect(setValiditySpy).toHaveBeenCalledTimes(1);
     expect(setValiditySpy).toHaveBeenCalledWith(
       component['checkboxInputElement'].validity,
-      component['checkboxInputElement'].validationMessage,
+      component['checkboxInputElement'].validationMessage || ' ',
       component['checkboxInputElement']
     );
   });

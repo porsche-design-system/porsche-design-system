@@ -176,8 +176,12 @@ export class InputUrl {
   }
 
   public componentDidRender(): void {
-    if (!this.disabled) {
-      this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    if (!this.disabled && !this.readOnly) {
+      this.internals?.setValidity(
+        this.inputElement.validity,
+        this.inputElement.validationMessage || ' ',
+        this.inputElement
+      );
     }
   }
 
