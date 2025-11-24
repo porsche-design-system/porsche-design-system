@@ -109,6 +109,46 @@ describe('componentDidRender', () => {
     component.componentDidRender();
     expect(setValiditySpy).toHaveBeenCalledTimes(0);
   });
+  it('should set ariaLabelledByElements when external label exists and no internal label is provided', () => {
+    const component = initComponent();
+    const externalLabel = document.createElement('label');
+    document.body.appendChild(externalLabel);
+    externalLabel.appendChild(component.host);
+
+    component['externalLabel'] = externalLabel;
+    component.label = '';
+
+    // Mock ariaLabelledByElements support
+    Object.defineProperty(component['checkboxInputElement'], 'ariaLabelledByElements', {
+      writable: true,
+      value: null,
+    });
+
+    component.componentDidRender();
+
+    expect(component['checkboxInputElement'].ariaLabelledByElements).toEqual([externalLabel]);
+
+    // Cleanup
+    document.body.removeChild(externalLabel);
+  });
+
+  it('should set aria-label as fallback when ariaLabelledByElements is not supported', () => {
+    const component = initComponent();
+    const externalLabel = document.createElement('label');
+    externalLabel.textContent = 'External Label Text';
+    document.body.appendChild(externalLabel);
+    externalLabel.appendChild(component.host);
+
+    component['externalLabel'] = externalLabel;
+    component.label = '';
+
+    component.componentDidRender();
+
+    expect(component['checkboxInputElement'].ariaLabel).toBe('External Label Text');
+
+    // Cleanup
+    document.body.removeChild(externalLabel);
+  });
 });
 
 describe('componentWillUpdate()', () => {
