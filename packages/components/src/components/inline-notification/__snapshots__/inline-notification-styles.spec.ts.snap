@@ -6,7 +6,7 @@ exports[`getComponentCss() > should return correct css for state: error, hasActi
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #3A0F0F !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -76,7 +76,7 @@ exports[`getComponentCss() > should return correct css for state: error, hasActi
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #FFE2E4 !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -146,7 +146,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -216,7 +216,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -286,7 +286,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -356,7 +356,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -426,7 +426,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -502,7 +502,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -578,7 +578,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -654,7 +654,7 @@ exports[`getComponentCss() > should return correct css for state: info, hasActio
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -730,7 +730,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -800,7 +800,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -870,7 +870,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -940,7 +940,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1010,7 +1010,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1086,7 +1086,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1162,7 +1162,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #04294E !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1238,7 +1238,7 @@ exports[`getComponentCss() > should return correct css for state: neutral, hasAc
   grid-template-columns: minmax(auto, 1fr) auto !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #D3E1FF !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1314,7 +1314,7 @@ exports[`getComponentCss() > should return correct css for state: success, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #003320 !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1384,7 +1384,7 @@ exports[`getComponentCss() > should return correct css for state: success, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #E4FFEC !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1454,7 +1454,7 @@ exports[`getComponentCss() > should return correct css for state: warning, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #362B0A !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;
@@ -1524,7 +1524,7 @@ exports[`getComponentCss() > should return correct css for state: warning, hasAc
   grid-template-columns: minmax(auto, 1fr) !important;
   gap: 16px !important;
   place-items: start !important;
-  padding: var(--p-internal-notification-padding, 16px) !important;
+  padding: 16px !important;
   background: #FFF4D2 !important;
   border-radius: 4px !important;
   color-scheme: light dark !important;

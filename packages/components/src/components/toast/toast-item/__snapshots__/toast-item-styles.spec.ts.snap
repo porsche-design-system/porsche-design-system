@@ -16,7 +16,7 @@ exports[`getComponentCss() > should return correct css for state: info and theme
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
-  padding: var(--p-internal-notification-padding, 16px);
+  padding: 16px;
   background: #04294E;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
@@ -78,7 +78,7 @@ exports[`getComponentCss() > should return correct css for state: info and theme
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
-  padding: var(--p-internal-notification-padding, 16px);
+  padding: 16px;
   background: #D3E1FF;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
@@ -140,7 +140,7 @@ exports[`getComponentCss() > should return correct css for state: neutral and th
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
-  padding: var(--p-internal-notification-padding, 16px);
+  padding: 16px;
   background: #04294E;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
@@ -202,7 +202,7 @@ exports[`getComponentCss() > should return correct css for state: neutral and th
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
-  padding: var(--p-internal-notification-padding, 16px);
+  padding: 16px;
   background: #D3E1FF;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
@@ -264,7 +264,7 @@ exports[`getComponentCss() > should return correct css for state: success and th
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
-  padding: var(--p-internal-notification-padding, 16px);
+  padding: 16px;
   background: #003320;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
@@ -326,7 +326,7 @@ exports[`getComponentCss() > should return correct css for state: success and th
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
-  padding: var(--p-internal-notification-padding, 16px);
+  padding: 16px;
   background: #E4FFEC;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
