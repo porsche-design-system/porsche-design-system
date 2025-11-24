@@ -1,4 +1,15 @@
-export const fetchPdsVersions = async (filterStable: boolean = true): Promise<string[]> => {
+import { STARTING_PDS_VERSION } from '@/models/pdsVersion';
+import { isGte } from '@/utils/pdsVersion';
+
+export type FetchPdsVersionsOptions = {
+  filterStable?: boolean;
+  startingVersion?: string;
+};
+
+export const fetchPdsVersions = async ({
+  filterStable = true,
+  startingVersion = STARTING_PDS_VERSION,
+}: FetchPdsVersionsOptions = {}): Promise<string[]> => {
   const response = await fetch('https://registry.npmjs.org/@porsche-design-system/components-js', {
     headers: {
       accept: 'application/vnd.npm.install-v1+json',
@@ -14,6 +25,10 @@ export const fetchPdsVersions = async (filterStable: boolean = true): Promise<st
 
   if (filterStable) {
     versions = versions.filter((version) => /^\d+\.\d+\.\d+$/.test(version));
+  }
+
+  if (startingVersion) {
+    versions = versions.filter((v: string) => isGte(v, startingVersion));
   }
 
   return versions.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));

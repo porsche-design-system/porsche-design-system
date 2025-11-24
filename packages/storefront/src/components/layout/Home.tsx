@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import AppearAnimation from './appearAnimation';
-import { getCurrentPdsVersion } from '@/utils/getCurrentPdsVersion';
 
 type HomeProps = {
   latestPdsVersion: string;
@@ -13,16 +12,11 @@ type HomeProps = {
 
 export const Home = ({ latestPdsVersion }: HomeProps) => {
   const { isDark } = useStorefrontTheme();
-  const currentPdsVersion = getCurrentPdsVersion();
-
   return (
     <>
       <div
         className="col-span-full grid h-[90vh] grid-cols-full grid-rows-[minmax(0,1fr)_auto] overflow-hidden "
-        style={{
-          marginBlockStart: currentPdsVersion === latestPdsVersion ? '-70px' : '-90px',
-          marginInline: 'calc(clamp(16px, 12px + 1.25vw, 24px) * -1)',
-        }}
+        style={{ marginBlockStart: '-70px', marginInline: 'calc(clamp(16px, 12px + 1.25vw, 24px) * -1)' }}
       >
         <video
           key={isDark ? 'dark' : 'light'}

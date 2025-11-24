@@ -18,7 +18,7 @@ import {
   PCanvas,
   PHeading,
   PLink,
-  PInlineNotification,
+  PBanner,
 } from '@porsche-design-system/components-react/ssr';
 import { componentsReady } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
@@ -27,7 +27,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { getCurrentPdsVersion } from '@/utils/getCurrentPdsVersion';
+import { PDSVersionGroup, Semver, MAJOR_PDS_VERSIONS } from '@/models/pdsVersion';
+import { getCurrentPdsVersion } from '@/utils/pdsVersion';
 
 declare global {
   interface Window {
@@ -40,10 +41,10 @@ if (global?.window) {
 }
 
 type CanvasProps = {
-  pdsVersions: string[];
+  stablePdsReleases: string[];
 } & PropsWithChildren;
 
-export const Canvas = ({ children, pdsVersions }: CanvasProps) => {
+export const Canvas = ({ children, stablePdsReleases }: CanvasProps) => {
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
@@ -54,6 +55,16 @@ export const Canvas = ({ children, pdsVersions }: CanvasProps) => {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   const currentPdsVersion = getCurrentPdsVersion();
+
+  const [isBannerOpen, setIsBannerOpen] = useState(
+    currentPdsVersion !== null && currentPdsVersion !== stablePdsReleases[0]
+  );
+
+  const pdsVersion: PDSVersionGroup = {
+    all: [...stablePdsReleases, ...MAJOR_PDS_VERSIONS],
+    current: currentPdsVersion as Semver,
+    latest: stablePdsReleases[0] as Semver,
+  };
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
@@ -87,8 +98,6 @@ export const Canvas = ({ children, pdsVersions }: CanvasProps) => {
     );
   }, [pathname]);
 
-  const filteredVersions = pdsVersions.filter((version) => !/-(rc|alpha|beta)/i.test(version));
-
   return (
     <PCanvas
       sidebarStartOpen={isSidebarStartOpen}
@@ -100,21 +109,12 @@ export const Canvas = ({ children, pdsVersions }: CanvasProps) => {
         Porsche Design System
       </Link>
 
-      {currentPdsVersion !== null && currentPdsVersion !== filteredVersions[0] && (
-        <div slot="header-banner" className="p-3 flex justify-center">
-          <PInlineNotification
-            className="max-w-3xl w-full"
-            heading-tag="h2"
-            state="warning"
-            dismissButton={false}
-            actionLabel="Switch to latest release"
-            // @ts-ignore
-            style={{ '--spacing-fluid-md': '0px', '--p-internal-notification-padding': '8px 12px 10px 12px' }}
-          >
-            You are currently viewing version <code>{currentPdsVersion}</code> of the Porsche Design System
-          </PInlineNotification>
-        </div>
-      )}
+      <PBanner
+        description="You are currently viewing an earlier release of the Porsche Design System. Please switch to the latest
+          version."
+        open={isBannerOpen}
+        onDismiss={() => setIsBannerOpen(false)}
+      />
 
       <PButton
         slot="header-end"
@@ -154,9 +154,8 @@ export const Canvas = ({ children, pdsVersions }: CanvasProps) => {
         <Tabs />
         {children}
       </div>
-
       <div slot="sidebar-start">
-        <Navigation pdsVersions={filteredVersions} />
+        <Navigation pdsVersion={pdsVersion} />
       </div>
       <div slot="sidebar-end">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">

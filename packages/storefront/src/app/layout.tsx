@@ -64,7 +64,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const basePath = getBasePath();
-  const pdsVersions = await fetchPdsVersions(false);
+  const stablePdsReleases = await fetchPdsVersions();
 
   return (
     <html lang="en" className="auto">
@@ -91,7 +91,7 @@ export default async function RootLayout({
       <body>
         <StorefrontThemeProvider>
           <Providers>
-            <Canvas pdsVersions={pdsVersions}>{children}</Canvas>
+            <Canvas stablePdsReleases={stablePdsReleases}>{children}</Canvas>
           </Providers>
         </StorefrontThemeProvider>
         {/* Framebuster script see: https://en.wikipedia.org/wiki/Framekiller?utm_source=chatgpt.com */}
