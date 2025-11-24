@@ -1,8 +1,9 @@
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../../styles';
-import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
+import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
 import { getOptionJssStyle } from '../../../styles/select';
 import { getCss, mergeDeep } from '../../../utils';
+import { cssVarInternalCheckboxScaling } from '../../../styles/checkbox/checkbox-css-vars';
 
 export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
 
