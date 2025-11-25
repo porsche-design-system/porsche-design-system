@@ -30,12 +30,20 @@ describe('RadioGroupOption', () => {
   });
 
   it('should focus and click the internal input for allowed targets', () => {
-    const target = document.createElement('span');
+    const target = component['host'];
 
     triggerHostClick(target);
 
     expect(inputElement.focus).toHaveBeenCalledTimes(1);
     expect(inputElement.click).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not interact when target is an span element', () => {
+    const target = document.createElement('span');
+
+    triggerHostClick(target);
+
+    expectInputUntouched();
   });
 
   it('should not interact when target is an anchor element', () => {

@@ -41,7 +41,7 @@ async function performBoundaryClicks(host: Locator, page: Page) {
   await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // Center center
 }
 
-const getBackgroundImage = (input: Locator) => getElementStyle(input, 'backgroundImage');
+const getMaskImage = (page: Page) =>  page.evaluate("window.getComputedStyle(document.querySelector('p-checkbox').shadowRoot?.querySelector('input'), '::before')['mask']")
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
@@ -141,19 +141,19 @@ test('should toggle checkbox when input is clicked', async ({ page }) => {
   const host = getHost(page);
   const input = getInput(page);
 
-  expect(await getBackgroundImage(input)).toBe('none');
+  expect(await getMaskImage(page)).toBe('none');
 
   await input.click();
 
-  const checkedImage = await getBackgroundImage(input);
+  const checkedImage = await getMaskImage(page);
   expect(checkedImage).toContain(backgroundURL);
 
   await input.click();
-  expect(await getBackgroundImage(input)).toBe('none');
+  expect(await getMaskImage(page)).toBe('none');
 
   // ensure that checked and indeterminate use different images
   await setProperty(host, 'indeterminate', true);
-  expect(checkedImage).not.toBe(await getBackgroundImage(input));
+  expect(checkedImage).not.toBe(await getMaskImage(page));
 });
 
 test('should not toggle checkbox on click in loading state', async ({ page }) => {
@@ -304,13 +304,13 @@ test('should check/uncheck checkbox when checkbox property is changed programmat
   await initCheckbox(page);
   const input = getInput(page);
 
-  expect(await getBackgroundImage(input)).toBe('none');
+  expect(await getMaskImage(page)).toBe('none');
 
   await setProperty(input, 'checked', true);
-  expect(await getBackgroundImage(input)).toContain(backgroundURL);
+  expect(await getMaskImage(page)).toContain(backgroundURL);
 
   await setProperty(input, 'checked', false);
-  expect(await getBackgroundImage(input)).toBe('none');
+  expect(await getMaskImage(page)).toBe('none');
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {
@@ -320,19 +320,19 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     const input = getInput(page);
     const wrapper = getWrapper(page);
 
-    await expect(wrapper).toHaveCSS('cursor', 'auto');
+    await expect(wrapper).toHaveCSS('cursor', 'pointer');
     await expect(input).toHaveCSS('cursor', 'pointer');
     await expect(input).toHaveCSS('pointer-events', 'auto');
 
     await setProperty(host, 'disabled', true);
 
     await expect(wrapper).toHaveCSS('cursor', 'not-allowed');
-    await expect(input).toHaveCSS('cursor', 'default');
+    await expect(input).toHaveCSS('cursor', 'not-allowed');
     await expect(input).toHaveCSS('pointer-events', 'none'); // prevents checkbox from being toggleable in disabled and especially loading state
 
     await setProperty(host, 'disabled', false);
 
-    await expect(wrapper).toHaveCSS('cursor', 'auto');
+    await expect(wrapper).toHaveCSS('cursor', 'pointer');
     await expect(input).toHaveCSS('cursor', 'pointer');
 
     await expect(input).toHaveCSS('pointer-events', 'auto');
@@ -340,7 +340,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     await setProperty(host, 'loading', true);
 
     await expect(wrapper).toHaveCSS('cursor', 'not-allowed');
-    await expect(input).toHaveCSS('cursor', 'default');
+    await expect(input).toHaveCSS('cursor', 'not-allowed');
 
     await expect(input).toHaveCSS('pointer-events', 'none'); // prevents checkbox from being toggleable in disabled and especially loading state
   });
@@ -354,14 +354,14 @@ test.describe('indeterminate state', () => {
     const host = getHost(page);
     const input = getInput(page);
 
-    expect(await getBackgroundImage(input)).toBe('none');
+    expect(await getMaskImage(page)).toBe('none');
 
     await setProperty(host, 'indeterminate', true);
 
-    expect(await getBackgroundImage(input)).toContain(backgroundURL);
+    expect(await getMaskImage(page)).toContain(backgroundURL);
 
     await setProperty(host, 'indeterminate', false);
-    expect(await getBackgroundImage(input)).toBe('none');
+    expect(await getMaskImage(page)).toBe('none');
   });
 
   test('should remove indeterminate state when checkbox value is changed by the user', async ({ page }) => {
@@ -370,20 +370,20 @@ test.describe('indeterminate state', () => {
     const input = getInput(page);
 
     await setProperty(host, 'indeterminate', true);
-    const indeterminateImage = await getBackgroundImage(input);
+    const indeterminateImage = await getMaskImage(page);
     expect(indeterminateImage, 'first indeterminate set').toContain(backgroundURL);
 
     // checked Image is set
     await input.click();
-    const checkedImage = await getBackgroundImage(input);
+    const checkedImage = await getMaskImage(page);
     expect(checkedImage, 'first click').toContain(backgroundURL);
     expect(indeterminateImage).not.toBe(checkedImage);
 
     await setProperty(host, 'indeterminate', true);
-    expect(await getBackgroundImage(input), 'second indeterminate set').toContain(backgroundURL);
+    expect(await getMaskImage(page), 'second indeterminate set').toContain(backgroundURL);
 
     await input.click();
-    expect(await getBackgroundImage(input), 'second click').toBe('none');
+    expect(await getMaskImage(page), 'second click').toBe('none');
   });
 
   test('should keep indeterminate state when checkbox value is changed programmatically', async ({ page }) => {
@@ -392,13 +392,13 @@ test.describe('indeterminate state', () => {
     const input = getInput(page);
 
     await setProperty(host, 'indeterminate', true);
-    expect(await getBackgroundImage(input)).toContain(backgroundURL);
+    expect(await getMaskImage(page)).toContain(backgroundURL);
 
     await setChecked(input, true);
-    expect(await getBackgroundImage(input)).toContain(backgroundURL);
+    expect(await getMaskImage(page)).toContain(backgroundURL);
 
     await setChecked(input, false);
-    expect(await getBackgroundImage(input)).toContain(backgroundURL);
+    expect(await getMaskImage(page)).toContain(backgroundURL);
   });
 });
 
