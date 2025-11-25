@@ -2,7 +2,11 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import { checkboxExampleForm } from '@porsche-design-system/shared/examples';
-import { checkboxStoryIndeterminate, checkboxStorySlots } from '@/app/components/checkbox/checkbox.stories';
+import {
+  checkboxStoryIndeterminate,
+  checkboxStorySlots,
+  checkboxStoryWrappedLabel,
+} from '@/app/components/checkbox/checkbox.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
@@ -12,7 +16,7 @@ export const metadata = {
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Indeterminate', 'Slots']} />
+<TableOfContents headings={['Form', 'Indeterminate', 'Slots', 'Custom wrapped label']} />
 
 ## Form
 
@@ -47,10 +51,20 @@ but the checkbox still keeps it's `checked` state. You can find more details in
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore, a named slot
-can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used
-(because a property definition is preferred over a named slot). For named slots only
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message` **or** adding additional
+markup (e.g. `popover`) at the start/end of a `label`. Therefore, a named slot can be used. Make sure **not** to define
+the corresponding property on the host element when a named slot is used (because a property definition is preferred
+over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
 
 <ComponentStory story={checkboxStorySlots} />
+
+## Custom wrapped label
+
+The `p-checkbox` component also supports a custom wrapped `label` by just wrapping the component within a `label` tag.
+This approach can be used if the `label` must be placed individually. The contents of the wrapping `label` must only
+contain raw text elements. If using this approach, the **styling and click functionality of the `label` must be
+controlled by the integrating team**.
+
+<ComponentStory story={checkboxStoryWrappedLabel} />

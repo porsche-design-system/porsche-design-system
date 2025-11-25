@@ -32,8 +32,6 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
     properties: {
       state: 'error',
       name: 'some-name',
-      'aria-labelledby': 'some-label-id',
-      'aria-describedby': 'some-message-id',
     } as any,
   },
   generator: ({ properties } = {}) => [
@@ -42,20 +40,84 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
       properties,
       children: [
         {
+          tag: 'div',
+          properties: { slot: 'start', className: 'w-[24px] h-[24px] bg-[deeppink] mr-static-sm rounded-full' },
+        },
+        {
           tag: 'span',
-          properties: { slot: 'label', id: 'some-label-id' },
+          properties: { slot: 'label' },
+          children: [
+            'Some slotted label with a "start" and "end" slot',
+          ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'end' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
           ],
         },
         {
           tag: 'span',
-          properties: { slot: 'message', id: 'some-message-id' },
+          properties: { slot: 'message' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
           ],
+        },
+      ],
+    },
+  ],
+};
+
+export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
+  state: {
+    properties: {
+      checked: false,
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'div',
+      properties: {
+        className:
+          'flex items-start w-64 p-fluid-xs border-2 border-contrast-lower rounded-md hover:[--__checkbox-border-color:var(--color-primary)] hover:border-primary transition-colors',
+      },
+      children: [
+        {
+          tag: 'label',
+          properties: { className: 'inline-flex flex-col gap-static-xs prose-text-sm cursor-pointer' },
+          children: [
+            {
+              tag: 'span',
+              children: ['Some wrapped custom label besides an popover'],
+            },
+            {
+              tag: 'p-checkbox',
+              properties,
+            },
+          ],
+          events: {
+            onClick: {
+              target: 'p-checkbox',
+              prop: 'checked',
+              value: true,
+              preventDefault: true,
+            },
+          },
+        },
+        {
+          tag: 'p-popover',
+          children: ['Some additional content.'],
         },
       ],
     },
