@@ -45,10 +45,10 @@ const propTypes: PropTypes<typeof Checkbox> = {
   compact: AllowedTypes.boolean,
 };
 /**
- * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "start", "description": "Places additional content at the start of the label text (for content that should not be part of the label, e.g. links or ´p-popover).`" }
- * @slot {"name": "end", "description": "Places additional content at the end of the label text (for content that should not be part of the label, e.g. links or ´p-popover).`" }
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "start", "description": "Places additional content at the start of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
+ * @slot {"name": "end", "description": "Places additional content at the end of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
  */
 @Component({
   tag: 'p-checkbox',
