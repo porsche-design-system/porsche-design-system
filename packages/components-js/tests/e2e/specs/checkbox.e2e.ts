@@ -169,7 +169,6 @@ test('should not toggle checkbox on click in loading state', async ({ page }) =>
 
   await performBoundaryClicks(host, page);
 
-  expect((await getEventSummary(host, 'update')).counter).toBe(0);
   expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
   await setProperty(host, 'loading', false);
@@ -178,7 +177,6 @@ test('should not toggle checkbox on click in loading state', async ({ page }) =>
   await input.click();
   await expect(host).toHaveJSProperty('checked', true);
 
-  expect((await getEventSummary(host, 'update')).counter).toBe(1);
   expect((await getEventSummary(host, 'change')).counter).toBe(1);
 });
 
@@ -195,7 +193,6 @@ test('should not toggle checkbox on click in disabled state', async ({ page }) =
 
   await performBoundaryClicks(host, page);
 
-  expect((await getEventSummary(host, 'update')).counter).toBe(0);
   expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
   await setProperty(host, 'disabled', false);
@@ -204,7 +201,6 @@ test('should not toggle checkbox on click in disabled state', async ({ page }) =
   await input.click();
   await expect(host).toHaveJSProperty('checked', true);
 
-  expect((await getEventSummary(host, 'update')).counter).toBe(1);
   expect((await getEventSummary(host, 'change')).counter).toBe(1);
 });
 
@@ -792,22 +788,17 @@ test.describe('form', () => {
 
 test.describe('Event', () => {
   skipInBrowsers(['firefox', 'webkit'], () => {
-    test('should trigger a update event when checkbox checked state has changed', async ({ page }) => {
+    test('should trigger a change event when checkbox checked state has changed', async ({ page }) => {
       const value = 'some-value';
       await initCheckbox(page, { value });
       const host = getHost(page);
       const input = getInput(page);
 
-      await addEventListener(host, 'update');
       await addEventListener(host, 'change');
-      expect((await getEventSummary(host, 'update')).counter).toBe(0);
       expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
       await input.click();
       await waitForStencilLifecycle(page);
-
-      expect((await getEventSummary(host, 'update')).counter).toBe(1);
-      expect((await getEventSummary(host, 'update')).details).toEqual([{ checked: true, name: 'some-name', value }]);
 
       expect((await getEventSummary(host, 'change')).counter).toBe(1);
       expect((await getEventSummary(host, 'change')).details).toEqual([{ isTrusted: true }]);
