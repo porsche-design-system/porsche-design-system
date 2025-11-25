@@ -295,6 +295,8 @@
         <p-heading tag="h3" size="xx-large">ABC</p-heading>
         <p-heading tag="h3" size="x-large">ABC</p-heading>
         <p-heading tag="h3" size="large">ABC</p-heading>
+        <p-heading tag="h3" size="medium">ABC</p-heading>
+        <p-heading tag="h3" size="small">ABC</p-heading>
         <p-heading color="inherit" tag="h3" size="small" class="text-[deeppink]">ABC</p-heading>
       </div>
       <div data-card="text">
@@ -601,8 +603,8 @@
 
     <p-heading slot="sidebar-end-header" tag="h2" size="medium">Settings</p-heading>
 
-    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'light', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', background: 'mountain', accent: '#3400f0'})">
-      <p-select name="theme" value="light" label="Theme" onchange="updateRoute({theme: this.value})">
+    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', background: 'gradient', accent: '#3400f0'})">
+      <p-select name="theme" value="auto" label="Theme" onchange="updateRoute({theme: this.value})">
         <p-select-option value="light">Light</p-select-option>
         <p-select-option value="dark">Dark</p-select-option>
         <p-select-option value="auto">Auto</p-select-option>
@@ -626,7 +628,7 @@
         <p-select-option value="animated">Animated</p-select-option>
         <p-select-option value="none">No Animation</p-select-option>
       </p-select>
-      <p-select name="background" value="mountain" label="Background" onchange="updateRoute({'background': this.value})">
+      <p-select name="background" value="gradient" label="Background" onchange="updateRoute({'background': this.value})">
         <p-optgroup label="Colors">
           <p-select-option value="canvas">Canvas</p-select-option>
           <p-select-option value="surface">Surface</p-select-option>
@@ -718,12 +720,12 @@
       //   })
       // );
 
-      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'auto';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
       const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
       const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
       const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'animated';
-      const getBackground = () => new URL(document.location).searchParams.get('background') || 'mountain';
+      const getBackground = () => new URL(document.location).searchParams.get('background') || 'gradient';
       const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
       const getComponents = () => {
         const urlParams = new URL(document.location).searchParams;
