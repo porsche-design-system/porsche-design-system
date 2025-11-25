@@ -62,6 +62,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           ...(disabled && getDisabledBaseStyles()),
         }),
       },
+      'slot[name="start"], slot[name="end"]': {
+        display: 'inline-block',
+        verticalAlign: 'top',
+      },
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -117,18 +121,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
+    'label-wrapper': {
+      paddingTop,
+      paddingInlineStart,
+    },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled || loading,
-      false,
-      {
-        gridArea: '1/2',
-      },
-      {
-        paddingTop,
-        paddingInlineStart,
-      }
-    ),
+    ...getFunctionalComponentLabelStyles(disabled || loading,false, {
+        display: 'inline',
+      }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

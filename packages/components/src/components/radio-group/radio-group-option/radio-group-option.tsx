@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasNamedSlot,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -21,6 +22,11 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
   loading: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "start", "description": "Places additional content at the start of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
+ * @slot {"name": "end", "description": "Places additional content at the start of the label text (for content that should not be part of the label, e.g. links or `p-popover`)." }
+ */
 @Component({
   tag: 'p-radio-group-option',
   shadow: true,
@@ -74,14 +80,6 @@ export class RadioGroupOption {
       <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
         {/* wrapped in host for programmatic selection via radio-group-option */}
         <div class="root">
-          <Label
-            host={this.host}
-            label={this.label}
-            htmlFor={id}
-            isDisabled={isDisabled}
-            isLoading={isLoading}
-            stopClickPropagation={true}
-          />
           <div class="wrapper">
             <input
               id={id}
@@ -105,6 +103,18 @@ export class RadioGroupOption {
             {isOptionLoading && !this.host.loadingParent && (
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
             )}
+          </div>
+          <div class="label-wrapper">
+            {hasNamedSlot(this.host, 'start') && <slot name="start" />}
+            <Label
+              host={this.host}
+              label={this.label}
+              htmlFor={id}
+              isDisabled={isDisabled}
+              isLoading={isLoading}
+              stopClickPropagation={true}
+            />
+            {hasNamedSlot(this.host, 'end') && <slot name="end" />}
           </div>
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
@@ -135,7 +145,14 @@ export class RadioGroupOption {
     );
   };
 
-  private onHostClick = (): void => {
+  private onHostClick = (e: MouseEvent): void => {
+    const target = e.target as HTMLElement;
+    const excludedChildElements =
+      target.tagName === 'A' || target.tagName === 'BUTTON' || target.shadowRoot?.querySelector('a, button');
+
+    if (excludedChildElements) {
+      return;
+    }
     this.inputElement.focus();
     this.inputElement.click();
   };
