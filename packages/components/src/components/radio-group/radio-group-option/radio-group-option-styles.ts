@@ -65,6 +65,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       'slot[name="start"], slot[name="end"]': {
         display: 'inline-block',
         verticalAlign: 'top',
+        cursor: disabledOrLoading ? 'not-allowed' : 'initial',
       },
       ...preventFoucOfNestedElementsStyles,
       input: {

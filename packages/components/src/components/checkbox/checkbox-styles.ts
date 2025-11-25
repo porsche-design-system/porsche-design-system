@@ -63,6 +63,7 @@ export const getComponentCss = (
       'slot[name="start"], slot[name="end"]': {
         display: 'inline-block',
         verticalAlign: 'top',
+        cursor: disabledOrLoading ? 'not-allowed' : 'initial',
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
