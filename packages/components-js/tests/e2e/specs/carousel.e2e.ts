@@ -771,13 +771,13 @@ test.describe('focus behavior', () => {
 });
 
 test.describe('events', () => {
-  test('should not emit carouselChange event initially', async ({ page }) => {
+  test('should not emit update event initially', async ({ page }) => {
     await setContentWithDesignSystem(page, '');
     await page.evaluate(() => {
       (document as any).eventCounter = 0;
       const carousel = document.createElement('p-carousel');
       carousel.innerHTML = '<div>Slide 1</div><div>Slide 2</div>';
-      carousel.addEventListener('carouselChange', () => (document as any).eventCounter++);
+      carousel.addEventListener('update', () => (document as any).eventCounter++);
       document.body.append(carousel);
     });
 
@@ -789,53 +789,38 @@ test.describe('events', () => {
     expect(await page.evaluate(() => (document as any).eventCounter)).toBe(1);
   });
 
-  test('should emit carouselChange event on slide change', async ({ page }) => {
+  test('should emit update event on slide change', async ({ page }) => {
     await initCarousel(page);
     const host = getHost(page);
     const prevButton = getButtonPrev(page);
     const nextButton = getButtonNext(page);
 
-    await addEventListener(host, 'carouselChange');
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
-
-    await nextButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
-
-    await prevButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
-  });
-
-  test('should correctly emit carouselChange event after reconnect', async ({ page }) => {
-    await initCarousel(page);
-    const host = getHost(page);
-    const prevButton = getButtonPrev(page);
-    const nextButton = getButtonNext(page);
-
-    await addEventListener(host, 'carouselChange');
-
-    await reattachElement(host);
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
-
-    await nextButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
-
-    await prevButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(2);
-  });
-
-  test('should emit both carouselChange and update event', async ({ page }) => {
-    await initCarousel(page);
-    const host = getHost(page);
-
-    await addEventListener(host, 'carouselChange');
     await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const nextButton = getButtonNext(page);
     await nextButton.click();
-    expect((await getEventSummary(host, 'carouselChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
+
+    await prevButton.click();
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
+  });
+
+  test('should correctly emit update event after reconnect', async ({ page }) => {
+    await initCarousel(page);
+    const host = getHost(page);
+    const prevButton = getButtonPrev(page);
+    const nextButton = getButtonNext(page);
+
+    await addEventListener(host, 'update');
+
+    await reattachElement(host);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+    await nextButton.click();
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
+
+    await prevButton.click();
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
   });
 
   // TODO: find a way to test native click behaviour
