@@ -59,6 +59,17 @@
       <p-checkbox label="Link" name="link" data-section="navigation"></p-checkbox>
       <p-checkbox label="Link Pure" name="link-pure" data-section="navigation"></p-checkbox>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Dialog</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'dialog')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Drilldown" name="drilldown" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Modal" name="modal" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Flyout" name="flyout" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Sheet" name="sheet" data-section="dialog"></p-checkbox>
+      <p-checkbox label="Popover" name="popover" data-section="dialog"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
         <p-heading tag="h3" size="medium">Typography</p-heading>
         <p-tag variant="secondary" compact="true">
           <button type="button" onclick="toggleSection(this, 'typography')">Deselect all</button>
@@ -284,6 +295,53 @@
         <p-link-pure size="xx-small" underline="true">
           <a href="#">Some label</a>
         </p-link-pure>
+      </div>
+      <div data-card="modal">
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
+        <p-modal aria="{'aria-label': 'Some Heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text>Some Content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+        </p-modal>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
+        <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some Heading'}">
+          <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
+            <img class="w-full h-full object-cover rounded-md" src="/assets/interior.jpg" alt="" />
+          </div>
+        </p-modal>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
+        <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some Heading'}" backdrop="shading">
+          <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+            <img class="w-full h-full object-cover rounded-t-md" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+        </p-modal>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
+        <p-modal aria="{'aria-label': 'Some Heading'}" fullscreen="true">
+          <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+            <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+        </p-modal>
       </div>
       <div data-card="display">
         <p-display tag="h3" size="large">ABC</p-display>
@@ -698,7 +756,7 @@
       };
 
       const updateSectionButtons = () => {
-        const sections = ['brand', 'common', 'navigation', 'typography', 'form'];
+        const sections = ['brand', 'common', 'navigation', 'dialog', 'typography', 'form'];
         const currentComponents = getComponents();
 
         sections.forEach(sectionName => {
@@ -772,7 +830,7 @@
         // Zoom
         document.documentElement.style.setProperty('font-size', zoom);
         // Compact
-        for(const el of [...document.querySelectorAll('#main *')].filter(el => el.tagName.startsWith('P-') && !el.tagName.endsWith('-ITEM') && !el.tagName.endsWith('-OPTION'))) {
+        for(const el of [...document.querySelectorAll('*')].filter(el => el.tagName.startsWith('P-') && !el.tagName.endsWith('-ITEM') && !el.tagName.endsWith('-OPTION'))) {
           el.setAttribute('compact', compact);
         }
         // Animation
@@ -862,6 +920,15 @@
       document.querySelector('p-canvas').addEventListener('sidebarEndDismiss', (e) => {
         e.target.sidebarEndOpen = false;
       });
+
+      for (const el of document.querySelectorAll("p-button[aria=\"{'aria-haspopup': 'dialog'}\"]")) {
+        el.addEventListener('click', () => {
+          el.nextElementSibling.open = true;
+        });
+        el.nextElementSibling.addEventListener('dismiss', (e) => {
+          e.target.open = false;
+        })
+      }
     </script>
 
   </body>
