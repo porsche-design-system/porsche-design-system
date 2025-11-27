@@ -1,4 +1,5 @@
 import {
+  borderRadiusLarge,
   frostedGlassStyle,
   gridGap,
   spacingFluidLarge,
@@ -46,7 +47,7 @@ const dialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-const { backdropColor, primaryColor, canvasColor } = colors;
+const { backdropColor, primaryColor, canvasColor, frostedColor } = colors;
 
 const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
@@ -171,6 +172,27 @@ export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer'): JssStyle
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
       boxShadow: `${scrollShadowColor} ${boxShadowDimension}`,
+    },
+  };
+};
+
+export const getDialogStickyFooterJssStyle = (): JssStyle => {
+  return {
+    gridColumn: '1/-1',
+    zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    position: 'sticky',
+    bottom: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
+    marginBlock: `calc(-2 * ${spacingStaticMedium})`,
+    padding: `calc(2 * ${spacingStaticMedium}) ${spacingFluidLarge}`,
+    background: `linear-gradient(0deg,hsla(from ${canvasColor} h s l / 1) 0%,hsla(from ${canvasColor} h s l / 1) 20%,hsla(from ${canvasColor} h s l / 0) 80%)`,
+    '&[data-stuck]::after': {
+      content: '""',
+      zIndex: -1,
+      position: 'absolute',
+      inset: `${spacingStaticMedium} calc(${spacingFluidLarge} - ${spacingStaticMedium})`,
+      borderRadius: borderRadiusLarge,
+      background: frostedColor,
+      ...frostedGlassStyle,
     },
   };
 };
