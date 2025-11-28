@@ -61,6 +61,11 @@ export const buildSitemap = async (page: Page): Promise<string[]> => {
     if (isInternalUrl(url)) {
       console.log(`Crawling url ${index + 1}/${sitemapUrls.length}...`);
 
+      // TODO: remove workaround for sheet configurator once we find a suitable solution
+      if (sitemapUrls[index] === 'http://localhost:8080/components/sheet/configurator/') {
+        continue;
+      }
+
       await page.goto(url);
 
       // add new links found on the page, they will be iterated also
