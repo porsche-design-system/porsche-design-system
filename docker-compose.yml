@@ -13,7 +13,7 @@ services:
       - "8575:8575"
     environment:
       - HOME=/home/design-system
-      - NODE_OPTIONS=--max-old-space-size=4096
+      - NODE_OPTIONS=--max-old-space-size=5120
     volumes:
       - ./:/opt/repository:cached
       - home:/home/design-system

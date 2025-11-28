@@ -1,0 +1,8 @@
+{
+  "extends": ["./tsconfig.json"],
+  "compilerOptions": {
+    "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
+  },
+  "exclude": ["node_modules", "projects/stackblitz"],
+  "include": ["**/*.spec.ts"]
+}

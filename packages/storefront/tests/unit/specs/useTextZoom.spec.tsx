@@ -1,8 +1,8 @@
-import { StorefrontTextZoomProvider } from '@/components/providers/StorefrontTextZoomProvider';
-import { useTextZoom } from '@/hooks/useTextZoom';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { StorefrontTextZoomProvider } from '@/components/providers/StorefrontTextZoomProvider';
+import { useTextZoom } from '@/hooks/useTextZoom';
 
 vi.stubGlobal('localStorage', {
   getItem: vi.fn(),

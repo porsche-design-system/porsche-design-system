@@ -3,6 +3,8 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 import { getByRoleShadowed } from '@porsche-design-system/components-angular/testing';
 import { fireEvent, render } from '@testing-library/angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
+import { TestBed } from '@angular/core/testing';
+import { afterEach, beforeAll, expect, it } from 'vitest';
 
 if (!HTMLElement.prototype.attachInternals) {
   Object.defineProperty(HTMLElement.prototype, 'attachInternals', {
@@ -39,6 +41,10 @@ const replaceHtmlComments = (input: string): string => input.replace(/<!--[\s\S]
 
 beforeAll(() => {
   (window as any).PDS_SKIP_FETCH = true;
+});
+
+afterEach(() => {
+  TestBed.resetTestingModule();
 });
 
 it('should return 0 when nothing is rendered', async () => {
