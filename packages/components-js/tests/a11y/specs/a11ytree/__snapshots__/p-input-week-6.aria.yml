@@ -1,0 +1,6 @@
+- text: Success with message
+- textbox "Success with message"
+- button "Open date picker"
+- status
+- status: Success message
+- status
