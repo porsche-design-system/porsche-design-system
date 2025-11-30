@@ -17,7 +17,7 @@ test.describe('form', () => {
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-week, p-text, 2 p-button
 
     const name = 'name';
-    const newValue = '2018-01-01';
+    const newValue = '2025-W26';
     const host = getHost(page);
     const inputWeek = getInputWeek(page);
     const form = getForm(page);
@@ -47,7 +47,7 @@ test.describe('form', () => {
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-week, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
-    const testValue = '2018-01-01';
+    const testValue = '2025-W26';
     await setProperty(host, 'value', testValue);
     await expect(host).toHaveJSProperty('value', testValue);
 

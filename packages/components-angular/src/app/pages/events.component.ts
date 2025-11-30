@@ -10,6 +10,12 @@ import type {
   InputDateInputEventDetail,
   InputDateBlurEventDetail,
   InputDateChangeEventDetail,
+  InputMonthInputEventDetail,
+  InputMonthBlurEventDetail,
+  InputMonthChangeEventDetail,
+  InputWeekInputEventDetail,
+  InputWeekBlurEventDetail,
+  InputWeekChangeEventDetail,
   InputEmailInputEventDetail,
   InputEmailBlurEventDetail,
   InputEmailChangeEventDetail,
@@ -134,6 +140,34 @@ import type {
       <p>Value: {{ inputDateValue }}</p>
       <p>Blur: {{ inputDateBlurCounter }}</p>
       <p>Change: {{ inputDateChangeCounter }}</p>
+    </div>
+
+    <div class="playground light">
+      <p-input-month
+        [value]="inputMonthValue"
+        (input)="onInputMonthInput($event)"
+        (blur)="onInputMonthBlur($event)"
+        (change)="onInputMonthChange($event)"
+        name="month"
+        label="Month Input"
+      ></p-input-month>
+      <p>Value: {{ inputMonthValue }}</p>
+      <p>Blur: {{ inputMonthBlurCounter }}</p>
+      <p>Change: {{ inputMonthChangeCounter }}</p>
+    </div>
+
+    <div class="playground light">
+      <p-input-week
+        [value]="inputWeekValue"
+        (input)="onInputWeekInput($event)"
+        (blur)="onInputWeekBlur($event)"
+        (change)="onInputWeekChange($event)"
+        name="week"
+        label="Week Input"
+      ></p-input-week>
+      <p>Value: {{ inputWeekValue }}</p>
+      <p>Blur: {{ inputWeekBlurCounter }}</p>
+      <p>Change: {{ inputWeekChangeCounter }}</p>
     </div>
 
     <div class="playground light">
@@ -288,6 +322,14 @@ export class EventsComponent {
   public inputDateBlurCounter = 0;
   public inputDateChangeCounter = 0;
 
+  public inputMonthValue = '';
+  public inputMonthBlurCounter = 0;
+  public inputMonthChangeCounter = 0;
+
+  public inputWeekValue = '';
+  public inputWeekBlurCounter = 0;
+  public inputWeekChangeCounter = 0;
+
   public inputEmailValue = '';
   public inputEmailBlurCounter = 0;
   public inputEmailChangeCounter = 0;
@@ -386,6 +428,28 @@ export class EventsComponent {
   }
   public onInputDateChange(e: CustomEvent<InputDateChangeEventDetail>) {
     this.inputDateChangeCounter++;
+  }
+
+  // PInputMonth
+  public onInputMonthInput(e: CustomEvent<InputMonthInputEventDetail>) {
+    this.inputMonthValue = (e.detail.target as HTMLInputElement).value;
+  }
+  public onInputMonthBlur(e: CustomEvent<InputMonthBlurEventDetail>) {
+    this.inputMonthBlurCounter++;
+  }
+  public onInputMonthChange(e: CustomEvent<InputMonthChangeEventDetail>) {
+    this.inputMonthChangeCounter++;
+  }
+
+  // PInputWeek
+  public onInputWeekInput(e: CustomEvent<InputWeekInputEventDetail>) {
+    this.inputWeekValue = (e.detail.target as HTMLInputElement).value;
+  }
+  public onInputWeekBlur(e: CustomEvent<InputWeekBlurEventDetail>) {
+    this.inputWeekBlurCounter++;
+  }
+  public onInputWeekChange(e: CustomEvent<InputWeekChangeEventDetail>) {
+    this.inputWeekChangeCounter++;
   }
 
   // PInputEmail
