@@ -59,7 +59,7 @@ export class InputMonth {
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** Defines the granularity of the date input. This value is given in days. The default is 1 (one day). */
+  /** Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month. */
   @Prop() public step?: number = 1;
 
   /** Supplementary text providing more context or explanation for the input. */
@@ -73,10 +73,10 @@ export class InputMonth {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default week value for the input, in YYYY-Www format (e.g., value='2025-W27') */
+  /** The default month value for the input, in YYYY-MM format (e.g., value='2025-07'). */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features. */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
@@ -85,10 +85,10 @@ export class InputMonth {
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52'). */
+  /** Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12'). */
   @Prop() public max?: string;
 
-  /** Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01'). */
+  /** Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01'). */
   @Prop() public min?: string;
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */

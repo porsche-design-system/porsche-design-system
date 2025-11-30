@@ -59,7 +59,7 @@ export class InputWeek {
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** Defines the granularity of the date input. This value is given in days. The default is 1 (one day). */
+  /** Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month. */
   @Prop() public step?: number = 1;
 
   /** Supplementary text providing more context or explanation for the input. */
@@ -76,7 +76,7 @@ export class InputWeek {
   /** The default week value for the input, in YYYY-Www format (e.g., value='2025-W27') */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features. */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */

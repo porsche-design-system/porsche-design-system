@@ -1261,7 +1261,7 @@ export namespace Components {
     }
     interface PInputMonth {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
          */
         "autoComplete"?: string;
         /**
@@ -1293,7 +1293,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').
          */
         "max"?: string;
         /**
@@ -1301,7 +1301,7 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
          */
         "min"?: string;
         /**
@@ -1321,7 +1321,7 @@ export namespace Components {
          */
         "state"?: InputMonthState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
          */
         "step"?: number;
         /**
@@ -1329,7 +1329,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
+          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
          */
         "value"?: string;
     }
@@ -1889,7 +1889,7 @@ export namespace Components {
     }
     interface PInputWeek {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
          */
         "autoComplete"?: string;
         /**
@@ -1949,7 +1949,7 @@ export namespace Components {
          */
         "state"?: InputWeekState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
          */
         "step"?: number;
         /**
@@ -5970,7 +5970,7 @@ declare namespace LocalJSX {
     }
     interface PInputMonth {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
          */
         "autoComplete"?: string;
         /**
@@ -6002,7 +6002,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').
          */
         "max"?: string;
         /**
@@ -6010,7 +6010,7 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
          */
         "min"?: string;
         /**
@@ -6042,7 +6042,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputMonthState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
          */
         "step"?: number;
         /**
@@ -6050,7 +6050,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
+          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
          */
         "value"?: string;
     }
@@ -6694,7 +6694,7 @@ declare namespace LocalJSX {
     }
     interface PInputWeek {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
          */
         "autoComplete"?: string;
         /**
@@ -6766,7 +6766,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputWeekState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
          */
         "step"?: number;
         /**
