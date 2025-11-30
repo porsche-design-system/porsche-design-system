@@ -1,12 +1,13 @@
+import { render } from '@testing-library/react';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as sass from 'sass';
 import { format } from 'prettier';
+import * as sass from 'sass';
 import styled, { StyleSheetManager } from 'styled-components';
-import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { getFocusStyle, headingMediumStyle } from '../../../src/js';
+import type { JSX } from 'react';
 import { createUseStyles } from 'react-jss';
+import { getFocusStyle, headingMediumStyle } from '../../../src/js';
 
 const formatAndNeutralizeStyle = async (style: string): Promise<string> => {
   const STYLED_COMPONENTS_AUTO_GENERATED_CLASS_NAME: string = 'kKdgGY';

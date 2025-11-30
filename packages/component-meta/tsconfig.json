@@ -1,8 +1,9 @@
 {
   "extends": "@porsche-design-system/shared/tsconfig.json",
   "compilerOptions": {
-    "strict": false,
+    "strict": false, // 🙈 too many issues
+    "verbatimModuleSyntax": false,
     "moduleResolution": "node"
   },
-  "include": ["./src", "./scripts"]
+  "exclude": ["**/*.spec.ts"]
 }

@@ -1,4 +1,5 @@
 {
   "extends": "@porsche-design-system/shared/tsconfig.json",
-  "include": ["src"]
+  "include": ["./src"],
+  "exclude": ["**/*.spec.ts"]
 }

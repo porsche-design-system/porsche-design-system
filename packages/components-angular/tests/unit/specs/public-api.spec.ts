@@ -1,9 +1,10 @@
+import { expect, it } from 'vitest';
 import {
+  componentsReady,
   IconName,
   PorscheDesignSystemModule,
   TabsUpdateEvent,
   ToastManager,
-  componentsReady,
 } from '../../../projects/angular-wrapper/src/public-api';
 
 it('should expose componentsReady()', () => {

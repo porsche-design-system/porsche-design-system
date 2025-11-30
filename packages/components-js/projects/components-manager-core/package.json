@@ -9,12 +9,11 @@
   "scripts": {
     "build": "yarn clean:build && tsc --build tsconfig.json && tsc --project tsconfig.json --module CommonJS --outDir ./dist",
     "test": "yarn test:unit",
-    "test:unit": "jest",
+    "test:unit": "vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "peerDependencies": {
-    "jest": "*",
-    "ts-jest": "*",
+    "vitest": "*",
     "typescript": "*"
   },
   "volta": {

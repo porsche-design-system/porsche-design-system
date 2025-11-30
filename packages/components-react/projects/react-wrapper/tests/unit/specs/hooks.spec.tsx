@@ -1,24 +1,29 @@
 import { render } from '@testing-library/react';
-import { PButton, useToastManager, type ToastMessage } from '../../../src/public-api';
+import * as React from 'react';
+import { useLayoutEffect } from 'react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
 import {
+  internalHooks,
   skipCheckForPorscheDesignSystemProviderDuringTests,
   useBrowserLayoutEffect,
   usePrefix,
 } from '../../../src/hooks';
-import { useLayoutEffect } from 'react';
-import * as React from 'react';
 import { PorscheDesignSystemContext } from '../../../src/provider';
+import { PButton, type ToastMessage, useToastManager } from '../../../src/public-api';
 
 // mock useContext() for the whole test-suite
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useContext: jest.fn(),
-}));
+vi.mock('react', async () => {
+  const actual = await vi.importActual('react');
+  return {
+    ...actual,
+    useContext: vi.fn(),
+  };
+});
 
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() to throw exception', () => {
-    const spy = jest.spyOn(global.console, 'error').mockImplementation();
+    const spy = vi.spyOn(global.console, 'error').mockImplementation(() => {});
     let error1, error2;
 
     try {
@@ -69,7 +74,7 @@ describe('usePrefix()', () => {
     });
 
     it('should call useContext() with correct parameter', () => {
-      jest.spyOn(React, 'useContext').mockReturnValue({ prefix: '' });
+      vi.spyOn(React, 'useContext').mockReturnValue({ prefix: '' });
       usePrefix('p-text');
 
       expect(React.useContext).toHaveBeenCalledWith(PorscheDesignSystemContext);
@@ -77,15 +82,15 @@ describe('usePrefix()', () => {
 
     it('should return prefixed tagName', () => {
       const prefix = 'my-prefix';
-      jest.spyOn(React, 'useContext').mockReturnValue({ prefix });
+      vi.spyOn(React, 'useContext').mockReturnValue({ prefix });
       const tagName = 'p-text';
 
       expect(usePrefix(tagName)).toBe(prefix + '-' + tagName);
     });
 
     it('should throw error if useContext() returns undefined', () => {
-      jest.spyOn(global.console, 'error').mockImplementation();
-      jest.spyOn(React, 'useContext').mockReturnValue(undefined);
+      vi.spyOn(global.console, 'error').mockImplementation(() => {});
+      vi.spyOn(React, 'useContext').mockReturnValue(undefined);
 
       expect(() => usePrefix('p-text')).toThrow();
     });
@@ -102,7 +107,7 @@ describe('useBrowserLayoutEffect()', () => {
 
 describe('useToastManager()', () => {
   it('should call usePrefix()', () => {
-    const spy = jest.spyOn(hooks, 'usePrefix');
+    const spy = vi.spyOn(hooks.internalHooks, 'usePrefix');
     useToastManager();
     expect(spy).toHaveBeenCalledWith('p-toast');
   });
@@ -116,7 +121,7 @@ describe('useToastManager()', () => {
       const toastElement = document.createElement('p-toast') as HTMLElement & {
         addMessage(message: ToastMessage): void;
       };
-      const addMessageMock = jest.fn();
+      const addMessageMock = vi.fn();
       toastElement.addMessage = addMessageMock;
       document.body.appendChild(toastElement);
       customElements.define('p-toast', class PToast extends HTMLElement {});
