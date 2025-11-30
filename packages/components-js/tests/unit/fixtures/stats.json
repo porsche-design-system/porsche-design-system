@@ -137,7 +137,7 @@
   {
     "chunkShortName": "input-month",
     "size": 14255,
-    "gzipSize": 5220
+    "gzipSize": 5219
   },
   {
     "chunkShortName": "input-number",
@@ -177,7 +177,7 @@
   {
     "chunkShortName": "input-week",
     "size": 14251,
-    "gzipSize": 5204
+    "gzipSize": 5205
   },
   {
     "chunkShortName": "link",
@@ -212,7 +212,7 @@
   {
     "chunkShortName": "main",
     "size": 90832,
-    "gzipSize": 28481
+    "gzipSize": 28478
   },
   {
     "chunkShortName": "marque",
