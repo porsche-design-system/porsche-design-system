@@ -92,6 +92,8 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-inline-notification>`,
   'p-input-number': `<p-input-number name="some-name" label="Some label"></p-input-number>`,
   'p-input-date': `<p-input-date name="some-name" label="Some label"></p-input-date>`,
+  'p-input-month': `<p-input-month name="some-name" label="Some label"></p-input-month>`,
+  'p-input-week': `<p-input-week name="some-name" label="Some label"></p-input-week>`,
   'p-input-time': `<p-input-time name="some-name" label="Some label"></p-input-time>`,
   'p-input-text': `<p-input-text name="some-name" label="Some label"></p-input-text>`,
   'p-input-email': `<p-input-email name="some-name" label="Some label"></p-input-email>`,
