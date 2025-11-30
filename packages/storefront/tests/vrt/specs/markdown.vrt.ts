@@ -22,7 +22,7 @@ test.describe('markdown', async () => {
       );
 
       await page.evaluate(() => {
-        const select = document.querySelector('footer p-select');
+        const select = document.querySelector('div[slot="sidebar-start"] footer p-select');
         if (select) {
           // Hide version switch to avoid VRT update when new versions are released
           (select as HTMLSelectElement).style.display = 'none';
