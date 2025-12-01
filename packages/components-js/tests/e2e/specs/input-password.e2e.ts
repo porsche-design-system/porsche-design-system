@@ -2,7 +2,6 @@ import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
-  getActiveElementTagNameInShadowRoot,
   getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
@@ -455,28 +454,11 @@ test.describe('focus state', () => {
     const label = getLabel(page);
     const inputPassword = getInputPassword(page);
 
-    await addEventListener(inputPassword, 'focus');
-    expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(0);
+    await expect(inputPassword).not.toBeFocused();
 
     await label.click();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(1);
-  });
-
-  test('should focus input-password when host is focused', async ({ page }) => {
-    await initInputPassword(page);
-    const host = getHost(page);
-    const inputPassword = getInputPassword(page);
-    const inputPasswordWrapper = getInputPasswordWrapper(page);
-
-    await addEventListener(inputPassword, 'focus');
-    expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(0);
-    await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
-
-    await host.focus();
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(1);
-    await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+    await expect(inputPassword).toBeFocused();
   });
 
   test('should focus input-password when host is focused', async ({ page }) => {
@@ -484,16 +466,14 @@ test.describe('focus state', () => {
     const host = getHost(page);
     const inputPassword = getInputPassword(page);
 
-    await addEventListener(inputPassword, 'focus');
-    expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(0);
+    await expect(inputPassword).not.toBeFocused();
 
     // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
     // await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(1);
-    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
+    await expect(inputPassword).toBeFocused();
     // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
     // await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
