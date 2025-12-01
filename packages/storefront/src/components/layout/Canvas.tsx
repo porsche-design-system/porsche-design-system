@@ -27,8 +27,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { PDSVersionGroup, Semver, MAJOR_PDS_VERSIONS } from '@/models/pdsVersion';
-import { getCurrentPdsVersion } from '@/utils/pdsVersion';
+import { PDSVersionGroup, Semver, LEGACY_PDS_VERSIONS } from '@/models/pdsVersion';
+import { getCurrentPdsVersion, isMajorOnly } from '@/utils/pdsVersion';
 import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
 declare global {
@@ -63,18 +63,23 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [isBannerOpen, setIsBannerOpen] = useState(false);
 
-  const currentPdsVersion = getCurrentPdsVersion();
+  const rawPdsVersion = getCurrentPdsVersion();
+  const latestPdsVersion = stablePdsReleases[0] as Semver;
+
+  // Normalize: if only a major (e.g. "3"), uses the latest full semver
+  const currentPdsVersion = rawPdsVersion && isMajorOnly(rawPdsVersion) ? latestPdsVersion : rawPdsVersion;
 
   useEffect(() => {
-    if (stablePdsReleases.length && currentPdsVersion !== null && currentPdsVersion !== stablePdsReleases[0]) {
+    if (!latestPdsVersion || !currentPdsVersion) return;
+    if (currentPdsVersion !== latestPdsVersion) {
       setIsBannerOpen(true);
     }
-  }, [currentPdsVersion, stablePdsReleases]);
+  }, [currentPdsVersion, latestPdsVersion]);
 
   const pdsVersion: PDSVersionGroup = {
-    all: [...stablePdsReleases, ...MAJOR_PDS_VERSIONS],
+    all: [...stablePdsReleases, ...LEGACY_PDS_VERSIONS],
     current: currentPdsVersion as Semver,
-    latest: stablePdsReleases[0] as Semver,
+    latest: latestPdsVersion,
   };
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
