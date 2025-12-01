@@ -53,12 +53,6 @@ test('should render close button with type of "button"', async ({ page }) => {
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
-test('should render without button when persistent prop true', async ({ page }) => {
-  await initInlineNotification(page, { persistent: true });
-  const el = getCloseButton(page);
-  await expect(el).toHaveCount(0);
-});
-
 test('should render without button when dismissButton prop false', async ({ page }) => {
   await initInlineNotification(page, { dismissButton: false });
   console.log(await getProperty(getHost(page), 'dismissButton'));

@@ -70,8 +70,8 @@ export const flyoutTestConfig: [ElementConfig<'p-button'>, ElementConfig<'p-flyo
       { tag: 'p-text', children: ['Some Content End'] },
 
       {
-        tag: 'p-button-group',
-        properties: { slot: 'footer' },
+        tag: 'div',
+        properties: { slot: 'footer', role: 'group', className: 'flex flex-wrap gap-fluid-sm max-xs:flex-col' },
         children: [
           { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
           { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },

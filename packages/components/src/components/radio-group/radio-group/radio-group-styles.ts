@@ -7,13 +7,13 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
+  colorSchemeStyles, getDisabledBaseStyles,
   getHiddenTextJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
@@ -48,8 +48,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
-  direction: BreakpointCustomizable<GroupDirection>,
-  theme: Theme
+  direction: BreakpointCustomizable<GroupDirection>
 ): string => {
   const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
 
@@ -65,6 +64,9 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
+      },
+      '::slotted(*)': {
+        ...(loading && getDisabledBaseStyles())
       },
       ...preventFoucOfNestedElementsStyles,
     },
@@ -94,14 +96,14 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
       cursor: 'inherit',
       '&:is(legend)': {
         marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       },
     }),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
     'sr-only': getHiddenTextJssStyle(),

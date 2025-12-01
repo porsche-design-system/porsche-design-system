@@ -1,4 +1,4 @@
-import { Component, Element, Host, type JSX, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX } from '@stencil/core';
 import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../utils';
 import { getComponentCss } from './table-row-styles';
 

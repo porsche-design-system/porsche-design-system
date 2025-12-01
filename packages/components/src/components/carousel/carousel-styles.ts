@@ -19,17 +19,15 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import type {
   CarouselAlignControls,
   CarouselAlignHeader,
@@ -99,8 +97,8 @@ const gradientColorMap: Record<Theme, Record<CarouselGradientColor, string>> = {
   dark: gradientColorDark,
 };
 
-const getGradient = (theme: Theme, gradientColorTheme: CarouselGradientColor): string => {
-  const gradientColor = gradientColorMap[theme][gradientColorTheme];
+const getGradient = (gradientColorTheme: CarouselGradientColor): string => {
+  const gradientColor = gradientColorMap.light[gradientColorTheme];
 
   return (
     `rgba(${gradientColor},1) 20%,` +
@@ -110,10 +108,13 @@ const getGradient = (theme: Theme, gradientColorTheme: CarouselGradientColor): s
   );
 };
 
+const { primaryColor, contrastMediumColor } = colors;
+
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
+
 export const getComponentCss = (
   gradientColor: CarouselGradientColor,
   hasHeading: boolean,
@@ -124,23 +125,16 @@ export const getComponentCss = (
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
-  theme: Theme,
   hasNavigation: boolean,
   alignControls: CarouselAlignControls
 ): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
-  const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
   const getGradientStyles = (direction: 'left' | 'right'): JssStyle =>
     gradientColor
       ? {
           [direction === 'left' ? 'right' : 'left']: 0,
-          background: `linear-gradient(to ${direction}, ${getGradient(theme, gradientColor)} 100%)`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: `linear-gradient(to ${direction}, ${getGradient('dark', gradientColor)} 100%)`,
-          }),
+          background: `linear-gradient(to ${direction}, ${getGradient(gradientColor)} 100%)`,
         }
       : {};
 
@@ -186,9 +180,6 @@ export const getComponentCss = (
             ...(isHeaderAlignCenter && {
               textAlign: 'center', // relevant in case heading or description becomes multiline
               justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
-            }),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: primaryColorDark,
             }),
           },
         }),
@@ -291,7 +282,7 @@ export const getComponentCss = (
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
         borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
-        ...getFocusJssStyle(theme),
+        ...getFocusJssStyle(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
       ...(isHeaderAlignCenter && {
@@ -341,16 +332,7 @@ export const getComponentCss = (
           position: 'relative',
         },
         borderRadius: borderRadiusSmall,
-        ...(isHighContrastMode
-          ? {
-              background: canvasTextColor,
-            }
-          : {
-              background: contrastMediumColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: contrastMediumColorDark,
-              }),
-            }),
+        background: contrastMediumColor,
         ...(isInfinitePagination
           ? {
               width: '0px',
@@ -390,16 +372,7 @@ export const getComponentCss = (
         },
       }),
       [bulletActiveClass]: {
-        ...(isHighContrastMode
-          ? {
-              background: canvasTextColor,
-            }
-          : {
-              background: primaryColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: primaryColorDark,
-              }),
-            }),
+        background: primaryColor,
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {

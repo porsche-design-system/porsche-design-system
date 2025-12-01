@@ -9,7 +9,7 @@ export const TablePage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should render table on dark background">
-        <TableWithCaption theme="dark" />
+        <TableWithCaption />
       </div>
 
       <div className="playground light" title="should render table with unstyled slotted caption on light background">

@@ -1,12 +1,11 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -27,7 +26,6 @@ import {
   type PinCodeLength,
   type PinCodeState,
   type PinCodeType,
-  type PinCodeUpdateEventDetail,
   removeWhiteSpaces,
 } from './pin-code-utils';
 
@@ -46,7 +44,6 @@ const propTypes: PropTypes<typeof PinCode> = {
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   value: AllowedTypes.string,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -105,9 +102,6 @@ export class PinCode {
   /** A boolean value that, if present, renders the pin-code as a compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** The id of a form element the pin-code should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
@@ -116,11 +110,6 @@ export class PinCode {
 
   /** Emitted when the input is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -191,8 +180,7 @@ export class PinCode {
       this.disabled,
       this.loading,
       this.length,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -236,11 +224,9 @@ export class PinCode {
               ref={(el) => this.inputElements.push(el)}
             />
           ))}
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
@@ -310,7 +296,6 @@ export class PinCode {
     this.internals?.setFormValue(this.value);
     const details = { value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length };
     this.change.emit(details);
-    this.update.emit(details);
   };
 
   private focusFirstEmptyOrLastInput = (sanitisedValue: string): void => {

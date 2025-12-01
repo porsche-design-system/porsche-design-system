@@ -13,34 +13,25 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   cssVariableAnimationDuration,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
+import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
-
-const { canvasTextColor } = getHighContrastColors();
 
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-export const getComponentCss = (theme: Theme): string => {
-  const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    hoverColor: hoverColorDark,
-    primaryColor: primaryColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
+
+export const getComponentCss = (): string => {
+  const { frostedColor, canvasColor, primaryColor } = colors;
 
   const shadowColor = 'rgba(0,0,0,0.3)';
 
@@ -83,13 +74,10 @@ export const getComponentCss = (theme: Theme): string => {
           transition: getTransition('background-color'),
           '&:hover': {
             ...frostedGlassStyle,
-            backgroundColor: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: hoverColorDark,
-            }),
+            backgroundColor: frostedColor,
           },
         }),
-        ...getFocusJssStyle(theme, { offset: 0 }),
+        ...getFocusJssStyle({ offset: 0 }),
       },
       '[popover]': {
         all: 'unset',
@@ -112,16 +100,7 @@ export const getComponentCss = (theme: Theme): string => {
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      ...(isHighContrastMode
-        ? {
-            background: canvasTextColor,
-          }
-        : {
-            background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundSurfaceColorDark,
-            }),
-          }),
+      background: canvasColor,
     },
     content: {
       maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
@@ -130,16 +109,9 @@ export const getComponentCss = (theme: Theme): string => {
       padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
       pointerEvents: 'auto',
       borderRadius: borderRadiusSmall,
-      ...(isHighContrastMode && {
-        outline: `1px solid ${canvasTextColor}`,
-      }),
       ...textSmallStyle,
-      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
+      background: canvasColor,
       color: primaryColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundSurfaceColorDark,
-        color: primaryColorDark,
-      }),
     },
   });
 };

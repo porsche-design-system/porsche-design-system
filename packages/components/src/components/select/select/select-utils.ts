@@ -1,10 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import {
-  consoleWarn,
-  getTagNameWithoutPrefix,
-  type SelectComponentsDropdownDirection,
-  type Theme,
-} from '../../../utils';
+import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
@@ -14,22 +9,11 @@ export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLPr
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
-/** @deprecated */
-export type SelectUpdateEventDetail = {
+export type SelectChangeEventDetail = {
   name: string;
   value: string;
 };
-
-export type SelectChangeEventDetail = SelectUpdateEventDetail;
 export type SelectToggleEventDetail = { open: boolean };
-
-// TODO: share between select & multi-select
-export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
-  for (const child of children.filter((child) => child.theme !== theme)) {
-    child.theme = theme;
-    forceUpdate(child);
-  }
-};
 
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';

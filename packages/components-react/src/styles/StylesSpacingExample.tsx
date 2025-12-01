@@ -1,13 +1,12 @@
-import styled from 'styled-components';
 import {
   gridGap,
   headingMediumStyle,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
-  spacingFluidXXLarge,
   spacingFluidXLarge,
   spacingFluidXSmall,
+  spacingFluidXXLarge,
   spacingStaticLarge,
   spacingStaticMedium,
   spacingStaticSmall,
@@ -18,6 +17,7 @@ import {
   themeLightContrastLow,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
+import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

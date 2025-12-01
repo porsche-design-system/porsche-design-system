@@ -25,6 +25,8 @@ export { default as InlineNotificationExampleActionButton } from './InlineNotifi
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as InputDateExample } from './InputDateExample.vue';
 export { default as InputDateExampleControlled } from './InputDateExampleControlled.vue';
+export { default as InputDateExample } from './InputDateExample.vue';
+export { default as InputDateExampleControlled } from './InputDateExampleControlled.vue';
 export { default as InputDateExampleControlledModel } from './InputDateExampleControlledModel.vue';
 export { default as InputDateExampleForm } from './InputDateExampleForm.vue';
 export { default as InputEmailExample } from './InputEmailExample.vue';
@@ -49,6 +51,8 @@ export { default as InputTelExampleControlledModel } from './InputTelExampleCont
 export { default as InputTelExampleForm } from './InputTelExampleForm.vue';
 export { default as InputTextExample } from './InputTextExample.vue';
 export { default as InputTextExampleControlled } from './InputTextExampleControlled.vue';
+export { default as InputTimeExample } from './InputTimeExample.vue';
+export { default as InputTimeExampleControlled } from './InputTimeExampleControlled.vue';
 export { default as InputTextExampleControlledModel } from './InputTextExampleControlledModel.vue';
 export { default as InputTextExampleForm } from './InputTextExampleForm.vue';
 export { default as InputTimeExample } from './InputTimeExample.vue';
@@ -71,6 +75,8 @@ export { default as MultiSelectExampleForm } from './MultiSelectExampleForm.vue'
 export { default as MultiSelectExampleSelectedSlot } from './MultiSelectExampleSelectedSlot.vue';
 export { default as PinCodeExample } from './PinCodeExample.vue';
 export { default as PinCodeExampleControlled } from './PinCodeExampleControlled.vue';
+export { default as RadioGroupExample } from './RadioGroupExample.vue';
+export { default as RadioGroupExampleControlled } from './RadioGroupExampleControlled.vue';
 export { default as PinCodeExampleControlledModel } from './PinCodeExampleControlledModel.vue';
 export { default as PinCodeExampleForm } from './PinCodeExampleForm.vue';
 export { default as RadioGroupExample } from './RadioGroupExample.vue';

@@ -7,13 +7,12 @@ import {
   PTableHeadCell,
   PTableHeadRow,
   PTableRow,
-  type Theme,
 } from '@porsche-design-system/components-react';
-import { headVrt as head, dataVrt as data } from '@porsche-design-system/shared';
+import { dataVrt as data, headVrt as head } from '@porsche-design-system/shared';
 
-export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
+export const TableWithCaption = (): JSX.Element => {
   return (
-    <PTable caption="Some caption" theme={theme}>
+    <PTable caption="Some caption">
       <PTableHead>
         <PTableHeadRow>
           {head.map((item, i) => (
@@ -46,10 +45,10 @@ export const TableWithCaption = ({ theme }: { theme?: Theme }): JSX.Element => {
             <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>{item.shortText}</PTableCell>
             <PTableCell>
-              <PButtonPure theme={theme} icon="edit" style={{ padding: '.5rem' }}>
+              <PButtonPure icon="edit" style={{ padding: '.5rem' }}>
                 Edit
               </PButtonPure>
-              <PButtonPure theme={theme} icon="delete" style={{ padding: '.5rem' }}>
+              <PButtonPure icon="delete" style={{ padding: '.5rem' }}>
                 Delete
               </PButtonPure>
             </PTableCell>

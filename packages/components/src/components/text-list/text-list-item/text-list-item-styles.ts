@@ -1,12 +1,12 @@
-import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { spacingStaticMedium } from '@porsche-design-system/styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { getCss } from '../../../utils';
 import {
-  cssVariableUnorderedPseudoContent,
   cssVariableOrderedGridColumn,
-  cssVariablePseudoSpace,
   cssVariableOrderedPseudoSuffix,
+  cssVariablePseudoSpace,
   cssVariableUnorderedGridColumn,
+  cssVariableUnorderedPseudoContent,
 } from '../text-list/text-list-styles';
 
 export const getComponentCss = (): string => {

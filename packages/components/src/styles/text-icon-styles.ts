@@ -1,30 +1,31 @@
-import type { Theme } from '@porsche-design-system/styles';
-import type { TypographyTextColor, TypographyTextColorDeprecated } from '../types';
-import type { HeadingColor } from '../components/heading/heading-utils';
-import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayColor } from '../components/display/display-utils';
-import { getThemedColors } from './colors';
+import type { HeadingColor } from '../components/heading/heading-utils';
+import type { TypographyTextColor } from '../types';
+import { colors } from './colors';
 
-export const getThemedTypographyColor = (
-  theme: Theme,
-  textColor: Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-): string => {
-  const themedColors = getThemedColors(theme);
+const {
+  primaryColor,
+  contrastLowColor,
+  contrastMediumColor,
+  contrastHighColor,
+  successColor,
+  warningColor,
+  errorColor,
+  infoColor,
+} = colors;
 
-  const colorMap: Record<
-    Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-    string
-  > = {
-    primary: themedColors.primaryColor,
-    default: themedColors.primaryColor, // deprecated but part of HeadlineColor
-    'contrast-low': themedColors.contrastLowColor,
-    'contrast-medium': themedColors.contrastMediumColor,
-    'contrast-high': themedColors.contrastHighColor,
-    'notification-success': themedColors.successColor,
-    'notification-warning': themedColors.warningColor,
-    'notification-error': themedColors.errorColor,
-    'notification-info': themedColors.infoColor,
-    inherit: 'currentColor',
-  };
+const colorMap: Record<TypographyTextColor | HeadingColor | DisplayColor, string> = {
+  primary: primaryColor,
+  'contrast-high': contrastHighColor,
+  'contrast-medium': contrastMediumColor,
+  'contrast-low': contrastLowColor,
+  success: successColor,
+  warning: warningColor,
+  error: errorColor,
+  info: infoColor,
+  inherit: 'currentColor',
+};
+
+export const getThemedTypographyColor = (textColor: TypographyTextColor | HeadingColor | DisplayColor): string => {
   return colorMap[textColor];
 };

@@ -51,14 +51,14 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
               </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect
-                  className="[--p-select-background-color:bg-shading]"
+                  className="[--p-select-background-color:bg-scrim]"
                   name={slotName}
                   value={configuredSlots?.slots?.[slotName]?.name}
                   disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   hideLabel={true}
                   label="Select slot to be configured"
                   compact={true}
-                  onUpdate={(e) =>
+                  onChange={(e) =>
                     onUpdateSlots(
                       slotName,
                       Object.values(slotExamples).find((slot) => slot.name === e.detail.value)

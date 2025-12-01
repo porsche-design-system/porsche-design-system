@@ -1,18 +1,16 @@
+import { motionDurationVeryLong } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import type { SpinnerSize } from './spinner-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   cssVariableAnimationDuration,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { motionDurationVeryLong } from '@porsche-design-system/styles';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { SpinnerSize } from './spinner-utils';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';
@@ -25,15 +23,12 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   inherit: { height: 'inherit', width: 'inherit' },
 };
 
-export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme: Theme): string => {
+const { primaryColor, contrastMediumColor } = colors;
+
+export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
   const strokeDasharray = '57'; // C = 2πR
   const animationDuration = `var(${cssVariableAnimationDuration}, ${motionDurationVeryLong})`;
   const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
-  const { canvasColor, canvasTextColor } = getHighContrastColors();
-  const firstHighContrastStrokeColor = isHighContrastMode && canvasTextColor;
-  const lastHighContrastStrokeColor = isHighContrastMode && canvasColor;
 
   return getCss({
     '@global': {
@@ -52,19 +47,11 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>, theme
       },
       circle: {
         '&:first-child': {
-          // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: firstHighContrastStrokeColor || contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: firstHighContrastStrokeColor || contrastMediumColorDark,
-          }),
+          stroke: contrastMediumColor,
         },
         '&:last-child': {
           animation: `$dash ${animationDuration} steps(50) infinite`,
-          // TODO: High Contrast Mode should be handled within a local color helper function
-          stroke: lastHighContrastStrokeColor || primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            stroke: lastHighContrastStrokeColor || primaryColorDark,
-          }),
+          stroke: primaryColor,
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray

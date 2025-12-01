@@ -8,17 +8,14 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getInvertedThemedColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -62,18 +59,14 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
   return svgNumberedCirclePaths[stepCount];
 };
 
+const { primaryColor, canvasColor, frostedColor, disabledColor } = colors;
+
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean, theme: Theme): string => {
-  const { primaryColor, hoverColor, disabledColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    disabledColor: disabledColorDark,
-  } = getThemedColors('dark');
 
+export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean): string => {
   const isStateCurrent = state === 'current';
   const isStateCurrentOrUndefined = !state || isStateCurrent;
   const isDisabled = !state || disabled;
@@ -91,25 +84,12 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
                     i,
                     {
                       primaryColor,
-                      invertedBaseColor: getInvertedThemedColors(theme).primaryColor,
+                      invertedBaseColor: canvasColor,
                       disabledColor,
                     },
                     isStateCurrent
                   )
                 ),
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  backgroundImage: getInlineSVGBackgroundImage(
-                    getSVGPath(
-                      i,
-                      {
-                        primaryColor: primaryColorDark,
-                        invertedBaseColor: getInvertedThemedColors('dark').primaryColor,
-                        disabledColor: disabledColorDark,
-                      },
-                      isStateCurrent
-                    )
-                  ),
-                }),
               },
             }),
             {} as JssStyle
@@ -139,23 +119,14 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         borderRadius: borderRadiusSmall,
         ...(isStateCurrent && {
           ...frostedGlassStyle,
-          background: hoverColor,
-        }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: isDisabled ? disabledColorDark : primaryColorDark,
-          ...(isStateCurrent && {
-            background: hoverColorDark,
-          }),
+          background: frostedColor,
         }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
               ...frostedGlassStyle,
-              background: hoverColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: hoverColorDark,
-              }),
+              background: frostedColor,
             },
           })),
         ...(isStateCurrentOrUndefined && {
@@ -167,7 +138,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
             width: fontLineHeight,
           },
         }),
-        ...getFocusJssStyle(theme, { offset: '-2px' }),
+        ...getFocusJssStyle({ offset: '-2px' }),
       },
     },
     ...(!isStateCurrentOrUndefined && {

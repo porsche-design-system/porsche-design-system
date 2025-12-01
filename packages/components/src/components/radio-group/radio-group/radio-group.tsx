@@ -11,14 +11,13 @@ import {
   Watch,
 } from '@stencil/core';
 import { GROUP_DIRECTIONS } from '../../../styles/group-direction-styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
-  THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -55,7 +54,6 @@ const propTypes: PropTypes<typeof RadioGroup> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -112,9 +110,6 @@ export class RadioGroup {
 
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the radio-group has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
@@ -211,10 +206,9 @@ export class RadioGroup {
       this.hideLabel,
       this.state,
       this.compact,
-      this.direction,
-      this.theme
+      this.direction
     );
-    syncRadioGroupChildrenProps(this.radioGroupOptions, this.theme, this.disabled, this.loading, this.state, this.name);
+    syncRadioGroupChildrenProps(this.radioGroupOptions, this.disabled, this.loading, this.state, this.name);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -239,11 +233,9 @@ export class RadioGroup {
         />
         <div class="wrapper">
           <slot onSlotchange={this.onSlotChange} />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </fieldset>
     );

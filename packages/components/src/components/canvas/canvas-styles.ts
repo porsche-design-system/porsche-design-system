@@ -11,14 +11,13 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss, isThemeDark, type Theme } from '../../utils';
+import { getCss } from '../../utils';
 
 // public css classes
 const cssClassGrid = '-p-canvas-grid';
@@ -32,11 +31,6 @@ const sidebarStartWidth = `var(${cssVarSidebarStartWidth},320px)`;
 const sidebarEndWidth = `var(${cssVarSidebarEndWidth},320px)`;
 
 // private css variables
-const cssVarColorPrimary = '--_a';
-const cssVarColorBackgroundBase = '--_b';
-const cssVarColorBackgroundSurface = '--_c';
-const cssVarColorContrastLow = '--_d';
-const cssVarColorFooterGradient = '--_e';
 const cssVarTemplateSidebarStartWidth = '--_f';
 const cssVarTemplateSidebarEndWidth = '--_g';
 
@@ -47,15 +41,9 @@ const mediaQueryM = getMediaQueryMin('m');
 // others
 const spacingBase = gridGap.replace('36px', '24px');
 
-export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    contrastLowColor: contrastLowColorDark,
-  } = getThemedColors('dark');
+const { primaryColor, canvasColor, surfaceColor, contrastLowerColor } = colors;
 
+export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -82,7 +70,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
             color: 'inherit',
             borderRadius: borderRadiusSmall,
           },
-          ...getFocusJssStyle(theme, { slotted: 'a' }),
+          ...getFocusJssStyle({ slotted: 'a' }),
         },
         '&[name="sidebar-end-header"]': {
           display: 'block', // ensures header section of sidebar-end area is aligned correctly
@@ -121,11 +109,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
     },
     root: {
-      [cssVarColorPrimary]: primaryColor,
-      [cssVarColorBackgroundBase]: backgroundColor,
-      [cssVarColorBackgroundSurface]: backgroundSurfaceColor,
-      [cssVarColorContrastLow]: contrastLowColor,
-      [cssVarColorFooterGradient]: `0,0%,${isThemeDark(theme) ? '0%' : '100%'}`,
       [cssVarTemplateSidebarStartWidth]: isSidebarStartOpen ? sidebarStartWidth : '0px',
       [cssVarTemplateSidebarEndWidth]: isSidebarEndOpen ? sidebarEndWidth : '0px',
       display: 'grid',
@@ -134,16 +117,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       minWidth: '320px',
       minHeight: '100dvh',
       font: textSmallStyle.font,
-      color: `var(${cssVarColorPrimary})`,
-      background: `var(${cssVarColorBackgroundBase})`,
+      color: primaryColor,
+      background: canvasColor,
       transition: getTransition('grid-template-columns'),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        [cssVarColorPrimary]: primaryColorDark,
-        [cssVarColorBackgroundBase]: backgroundColorDark,
-        [cssVarColorBackgroundSurface]: backgroundSurfaceColorDark,
-        [cssVarColorContrastLow]: contrastLowColorDark,
-        [cssVarColorFooterGradient]: '0,0%,0%',
-      }),
       [mediaQueryS]: {
         gridTemplateColumns: `var(${cssVarTemplateSidebarStartWidth}) minmax(0,1fr)`,
         gridTemplateAreas: '"sidebar-start header" "sidebar-start main" "sidebar-start footer"',
@@ -158,11 +134,16 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           content: '""',
           zIndex: 2,
           gridArea: '1/2/-1/3',
-          boxShadow: `1px 0 0 0 var(${cssVarColorContrastLow})`,
-          background: `var(${cssVarColorBackgroundBase})`,
+          boxShadow: `1px 0 0 0 ${contrastLowerColor}`,
+          background: canvasColor,
           pointerEvents: 'none',
         },
       },
+      '&:dir(rtl)::after': {
+        [mediaQueryM]: {
+          boxShadow: `-1px 0 0 0 ${contrastLowerColor}`,
+        },
+      }
     },
     header: {
       zIndex: 6,
@@ -299,7 +280,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         position: 'absolute',
         inset: '-140px 0 0',
         pointerEvents: 'none',
-        background: `linear-gradient(to bottom,hsla(var(${cssVarColorFooterGradient}),0) 0%,hsla(var(${cssVarColorFooterGradient}),0.013) 8.1%,hsla(var(${cssVarColorFooterGradient}),0.049) 15.5%,hsla(var(${cssVarColorFooterGradient}),0.104) 22.5%,hsla(var(${cssVarColorFooterGradient}),0.175) 29%,hsla(var(${cssVarColorFooterGradient}),0.259) 35.3%,hsla(var(${cssVarColorFooterGradient}),0.352) 41.2%,hsla(var(${cssVarColorFooterGradient}),0.45) 47.1%,hsla(var(${cssVarColorFooterGradient}),0.55) 52.9%,hsla(var(${cssVarColorFooterGradient}),0.648) 58.8%,hsla(var(${cssVarColorFooterGradient}),0.741) 64.7%,hsla(var(${cssVarColorFooterGradient}),0.825) 71%,hsla(var(${cssVarColorFooterGradient}),0.896) 77.5%,hsla(var(${cssVarColorFooterGradient}),0.951) 84.5%,hsla(var(${cssVarColorFooterGradient}),0.987) 91.9%,hsl(var(${cssVarColorFooterGradient})) 100%)`,
+        background: `linear-gradient(to bottom,hsl(from ${canvasColor} h s l / 0) 0%,hsl(from ${canvasColor} h s l / 0.013) 8.1%,hsl(from ${canvasColor} h s l / 0.049) 15.5%,hsl(from ${canvasColor} h s l / 0.104) 22.5%,hsl(from ${canvasColor} h s l / 0.175) 29%,hsl(from ${canvasColor} h s l / 0.259) 35.3%,hsl(from ${canvasColor} h s l / 0.352) 41.2%,hsl(from ${canvasColor} h s l / 0.45) 47.1%,hsl(from ${canvasColor} h s l / 0.55) 52.9%,hsl(from ${canvasColor} h s l / 0.648) 58.8%,hsl(from ${canvasColor} h s l / 0.741) 64.7%,hsl(from ${canvasColor} h s l / 0.825) 71%,hsl(from ${canvasColor} h s l / 0.896) 77.5%,hsl(from ${canvasColor} h s l / 0.951) 84.5%,hsl(from ${canvasColor} h s l / 0.987) 91.9%,${canvasColor} 100%)`,
       },
     },
     sidebar: {
@@ -311,19 +292,19 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         gridArea: 'sidebar-start',
         justifySelf: 'flex-end',
         width: sidebarStartWidth,
-        backgroundColor: `var(${cssVarColorBackgroundSurface})`,
+        background: surfaceColor,
         '&::before': {
           content: '""',
           zIndex: -1,
           position: 'absolute',
-          backgroundColor: 'transparent',
+          canvasColor: 'transparent',
           right: '-16px',
           height: '32px',
           width: '16px',
           pointerEvents: 'none',
           top: 0,
           borderTopLeftRadius: '16px',
-          boxShadow: `0 -16px 0 0 var(${cssVarColorBackgroundSurface})`,
+          boxShadow: `0 -16px 0 0 ${surfaceColor}`,
         },
       },
       '&--end': {
@@ -331,7 +312,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         gridArea: 'sidebar-end',
         justifySelf: 'flex-end',
         width: sidebarEndWidth,
-        backgroundColor: `var(${cssVarColorBackgroundBase})`,
+        background: canvasColor,
       },
       '&__scroller': {
         position: 'absolute',
@@ -353,13 +334,13 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         '&--start': {
           justifyContent: 'flex-start',
           '&::before': {
-            background: `linear-gradient(180deg,var(${cssVarColorBackgroundSurface}) 0%,var(${cssVarColorBackgroundSurface}) 65%,transparent 100%)`,
+            background: `linear-gradient(180deg,${surfaceColor} 0%,${surfaceColor} 65%,transparent 100%)`,
           },
         },
         '&--end': {
           justifyContent: 'space-between',
           '&::before': {
-            background: `linear-gradient(180deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 65%,transparent 100%)`,
+            background: `linear-gradient(180deg,${canvasColor} 0%,${canvasColor} 65%,transparent 100%)`,
           },
         },
         '&::before': {

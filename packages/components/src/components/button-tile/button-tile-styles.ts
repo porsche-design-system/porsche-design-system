@@ -10,8 +10,6 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  forcedColorsMediaQuery,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -24,7 +22,6 @@ import {
   getCss,
   isThemeDark,
   mergeDeep,
-  type Theme,
   type TileAlign,
   type TileAspectRatio,
   type TileBackground,
@@ -104,13 +101,10 @@ export const getComponentCss = (
         hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (sizeValue: TileSize) => ({
-            fontSize: getFontSizeText(sizeValue === 'default' ? 'medium' : sizeValue), // mapping of the deprecated size 'default'
+            fontSize: getFontSizeText(sizeValue),
           })),
           buildResponsiveStyles(weight, (weightValue: TileWeight) => ({
             fontWeight: getFontWeight(weightValue),
-          })),
-          buildResponsiveStyles(background, (backgroundValue: Theme) => ({
-            color: getThemedColors(backgroundValue).primaryColor,
           }))
         ),
       },
@@ -147,9 +141,6 @@ export const getComponentCss = (
                   borderEndStartRadius: borderRadiusLarge,
                   borderEndEndRadius: borderRadiusLarge,
                 }),
-            ...forcedColorsMediaQuery({
-              background: 'rgba(0,0,0,0.7)',
-            }),
           },
         }),
       ...(!isDisabled &&

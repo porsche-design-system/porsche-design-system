@@ -39,9 +39,9 @@ export class SelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
-    attachComponentCss(this.host, getComponentCss, theme);
+    attachComponentCss(this.host, getComponentCss, this.disabled);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -60,15 +60,7 @@ export class SelectOption {
           }}
         >
           <slot onSlotchange={this.onSlotChange} />
-          {isSelected && (
-            <PrefixedTagNames.pIcon
-              class="icon"
-              aria-hidden="true"
-              name="check"
-              color={isDisabled ? 'state-disabled' : 'primary'}
-              theme={theme}
-            />
-          )}
+          {isSelected && <PrefixedTagNames.pIcon class="icon" aria-hidden="true" name="check" color="primary" />}
         </div>
       </Host>
     );

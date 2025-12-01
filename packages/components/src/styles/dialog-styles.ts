@@ -1,5 +1,5 @@
-import type { JssStyle } from 'jss';
 import {
+  borderRadiusLarge,
   frostedGlassStyle,
   gridGap,
   spacingFluidLarge,
@@ -7,14 +7,8 @@ import {
   spacingFluidSmall,
   spacingStaticMedium,
 } from '@porsche-design-system/styles';
-import {
-  cssVariableTransitionDuration,
-  getThemedColors,
-  getTransition,
-  motionDurationMap,
-  prefersColorSchemeDarkMediaQuery,
-} from './';
-import { isThemeDark, type Theme } from '../utils';
+import type { JssStyle } from 'jss';
+import { colors, cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -28,10 +22,10 @@ export const dialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-width-max': 'none',
 };
 
-export const getDialogJssStyle = (isVisible: boolean, theme: Theme, backdrop: Backdrop = 'blur'): JssStyle => {
+export const getDialogJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   return {
     ...dialogBackdropResetJssStyle,
-    ...getDialogBackdropTransitionJssStyle(isVisible, theme, backdrop),
+    ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
   };
 };
 
@@ -53,14 +47,10 @@ const dialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-const getDialogBackdropTransitionJssStyle = (
-  isVisible: boolean,
-  theme: Theme,
-  backdrop: Backdrop = 'blur'
-): JssStyle => {
+const { backdropColor, primaryColor, canvasColor, frostedColor } = colors;
+
+const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
-  const { backgroundShadingColor } = getThemedColors(theme);
-  const { backgroundShadingColor: backgroundShadingColorDark } = getThemedColors('dark');
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
@@ -77,11 +67,8 @@ const getDialogBackdropTransitionJssStyle = (
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          background: backgroundShadingColor,
+          background: backdropColor,
           ...(isBackdropBlur && frostedGlassStyle),
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundShadingColorDark,
-          }),
         }
       : {
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
@@ -97,11 +84,11 @@ const getDialogBackdropTransitionJssStyle = (
   };
 };
 
-export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
+export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): JssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
-  const background: { [K in Theme]: string } = {
+  const background = {
     light: backgroundLight,
     dark: backgroundDark,
     auto: backgroundLight,
@@ -122,10 +109,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
-    background: background[theme],
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: background.dark,
-    }),
+    background: background.light,
   };
 };
 
@@ -139,17 +123,10 @@ export const dialogGridJssStyle: JssStyle = {
   alignContent: 'flex-start',
 };
 
-export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-
+export const getDialogColorJssStyle = (): JssStyle => {
   return {
     color: primaryColor, // enables color inheritance for slots
-    background: backgroundColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: primaryColorDark,
-      background: backgroundColorDark,
-    }),
+    background: canvasColor,
   };
 };
 
@@ -176,11 +153,9 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
-  const { backgroundColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
+export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer'): JssStyle => {
   const scrollShadowColor = 'rgba(204, 204, 204, 0.35)';
-  const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
+  // const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
   const isAreaHeader = area === 'header';
   const boxShadowDimension = `0 ${isAreaHeader ? 5 : -5}px 10px`;
 
@@ -192,17 +167,32 @@ export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Th
     marginBlock: `${
       isAreaHeader ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)` : `-${spacingStaticMedium}`
     } -${spacingStaticMedium}`,
-    background: backgroundColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: backgroundColorDark,
-    }),
+    background: canvasColor,
     clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
-      boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} ${boxShadowDimension}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        boxShadow: `${scrollShadowColorDark} ${boxShadowDimension}`,
-      }),
+      boxShadow: `${scrollShadowColor} ${boxShadowDimension}`,
+    },
+  };
+};
+
+export const getDialogStickyFooterJssStyle = (): JssStyle => {
+  return {
+    gridColumn: '1/-1',
+    zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    position: 'sticky',
+    bottom: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
+    marginBlock: `calc(-2 * ${spacingStaticMedium})`,
+    padding: `calc(2 * ${spacingStaticMedium}) ${spacingFluidLarge}`,
+    background: `linear-gradient(0deg,hsla(from ${canvasColor} h s l / 1) 0%,hsla(from ${canvasColor} h s l / 1) 20%,hsla(from ${canvasColor} h s l / 0) 80%)`,
+    '&[data-stuck]::after': {
+      content: '""',
+      zIndex: -1,
+      position: 'absolute',
+      inset: `${spacingStaticMedium} calc(${spacingFluidLarge} - ${spacingStaticMedium})`,
+      borderRadius: borderRadiusLarge,
+      background: frostedColor,
+      ...frostedGlassStyle,
     },
   };
 };

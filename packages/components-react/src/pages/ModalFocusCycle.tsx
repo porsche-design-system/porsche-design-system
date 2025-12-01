@@ -1,5 +1,5 @@
+import { PHeading, PModal } from '@porsche-design-system/components-react';
 import { useEffect, useState } from 'react';
-import { PModal } from '@porsche-design-system/components-react';
 import { TableWithCaption } from '../components';
 
 export const ModalFocusCyclePage = (): JSX.Element => {
@@ -23,7 +23,10 @@ export const ModalFocusCyclePage = (): JSX.Element => {
         Open
       </button>
 
-      <PModal heading="Some Heading" open={isOpen} onDismiss={() => setIsOpen(false)}>
+      <PModal open={isOpen} onDismiss={() => setIsOpen(false)}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
         {isLoading ? (
           <div id="loading">Loading...</div>
         ) : (

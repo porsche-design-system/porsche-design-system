@@ -1,15 +1,12 @@
-import { spacingFluidMedium, textSmallStyle, spacingStaticSmall } from '@porsche-design-system/styles';
+import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  doGetThemedColors,
-  getSchemedHighContrastMediaQuery,
+  colors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { Theme } from '../../../types';
-import { getCss, isHighContrastMode, isThemeDark } from '../../../utils';
+import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
 export const cssVariableTablePadding = '--p-internal-table-padding';
@@ -18,14 +15,9 @@ export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const cssVariableTableBorderWidth = '--p-internal-table-border-width';
 export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
 
-export const getComponentCss = (compact: boolean, layout: TableLayout, theme: Theme): string => {
-  const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
-    contrastLowColor: contrastLowColorDark,
-  } = doGetThemedColors('dark');
+const { primaryColor, frostedColor, contrastLowColor } = colors;
 
+export const getComponentCss = (compact: boolean, layout: TableLayout): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -36,31 +28,13 @@ export const getComponentCss = (compact: boolean, layout: TableLayout, theme: Th
           textAlign: 'start',
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       '::slotted(*)': addImportantToEachRule({
         ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
-        [cssVariableTableHoverColor]: hoverColor,
+        [cssVariableTableHoverColor]: frostedColor,
         [cssVariableTableBorderColor]: contrastLowColor,
-        [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          [cssVariableTableHoverColor]: hoverColorDark,
-          [cssVariableTableBorderColor]: contrastLowColorDark,
-          [cssVariableTableHeadCellIconFilter]: 'invert(100%)',
-        }),
-        ...(isHighContrastMode &&
-          getSchemedHighContrastMediaQuery(
-            {
-              [cssVariableTableHeadCellIconFilter]: 'none',
-            },
-            {
-              [cssVariableTableHeadCellIconFilter]: 'invert(100%)',
-            }
-          )),
       }),
     },
     caption: {

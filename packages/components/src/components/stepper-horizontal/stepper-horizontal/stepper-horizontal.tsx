@@ -1,5 +1,5 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -9,26 +9,23 @@ import {
   hasPropValueChanged,
   observeBreakpointChange,
   parseJSON,
-  THEMES,
   throwIfChildCountIsExceeded,
   throwIfChildrenAreNotOfKind,
   unobserveBreakpointChange,
   validateProps,
 } from '../../../utils';
+import { getClickedItem } from '../../../utils/dom/getClickedItem';
 import { getComponentCss } from './stepper-horizontal-styles';
 import {
-  type StepperHorizontalSize,
-  type StepperHorizontalUpdateEventDetail,
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
-  syncStepperHorizontalItemsProps,
+  type StepperHorizontalSize,
+  type StepperHorizontalUpdateEventDetail,
   throwIfMultipleCurrentStates,
 } from './stepper-horizontal-utils';
-import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
 const propTypes: PropTypes<typeof StepperHorizontal> = {
   size: AllowedTypes.breakpoint<StepperHorizontalSize>(STEPPER_HORIZONTAL_SIZES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -43,14 +40,6 @@ export class StepperHorizontal {
 
   /** The text size. */
   @Prop() public size?: BreakpointCustomizable<StepperHorizontalSize> = 'small';
-
-  /** Adapts the tag color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when active step is changed. */
-  @Event({ bubbles: false }) public stepChange: EventEmitter<StepperHorizontalUpdateEventDetail>;
 
   /** Emitted when active step is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<StepperHorizontalUpdateEventDetail>;
@@ -108,7 +97,6 @@ export class StepperHorizontal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size);
-    syncStepperHorizontalItemsProps(this.host, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -117,7 +105,6 @@ export class StepperHorizontal {
         <PrefixedTagNames.pScroller
           class="scroller"
           aria={{ role: 'list' }}
-          theme={this.theme}
           onClick={this.onClickScroller}
           ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         >
@@ -138,7 +125,6 @@ export class StepperHorizontal {
       const clickedStepIndex = this.stepperHorizontalItems.indexOf(target);
 
       this.update.emit({ activeStepIndex: clickedStepIndex });
-      this.stepChange.emit({ activeStepIndex: clickedStepIndex });
     }
   };
 

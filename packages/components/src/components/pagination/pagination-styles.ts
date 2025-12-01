@@ -13,15 +13,13 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -38,13 +36,8 @@ const disabledCursorStyle: JssStyle = {
 
 const hiddenStyle: JssStyle = { display: 'none' };
 
-export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    hoverColor: hoverColorDark,
-  } = getThemedColors('dark');
+export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean): string => {
+  const { primaryColor, disabledColor, frostedColor } = colors;
 
   return getCss({
     '@global': {
@@ -128,36 +121,23 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
-            background: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
-            }),
+            background: frostedColor,
           },
         }),
         '&[aria-current]': {
           ...disabledCursorStyle,
           color: primaryColor,
           border: `${borderWidthBase} solid ${primaryColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-            borderColor: primaryColorDark,
-          }),
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
           color: disabledColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-          }),
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
-        '&:not(.ellipsis)': getFocusJssStyle(theme),
+        '&:not(.ellipsis)': getFocusJssStyle(),
       },
     },
     ellipsis: {

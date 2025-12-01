@@ -1,5 +1,6 @@
 import {
   borderWidthBase,
+  borderWidthThin,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -10,64 +11,46 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle,
+  colors,
+  getDisabledBaseStyles,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../styles';
-import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import type { AlignLabel, BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
+const {
+  primaryColor,
+  contrastMediumColor,
+  successColor,
+  frostedSoftColor,
+  successFrostedSoftColor,
+  successMediumColor,
+} = colors;
 const getColors = (
   checked: boolean,
-  disabled: boolean,
-  loading: boolean,
-  theme: Theme
+  loading: boolean
 ): {
   buttonBorderColor: string;
   buttonBorderColorHover: string;
   buttonBackgroundColor: string;
-  buttonBackgroundColorHover: string;
   toggleBackgroundColor: string;
-  toggleBackgroundColorHover: string;
   textColor: string;
 } => {
-  const { primaryColor, contrastMediumColor, successColor, successColorDarken, disabledColor } = getThemedColors(theme);
-  const { backgroundColor: lightThemeBackgroundColor } = getThemedColors('light');
-  const { canvasColor, canvasTextColor } = getHighContrastColors();
-  const checkedColor = isHighContrastMode ? canvasTextColor : successColor;
-  const disabledOrLoadingColor = isDisabledOrLoading(disabled, loading) && disabledColor;
-
   return {
-    buttonBorderColor: disabledOrLoadingColor || (checked ? checkedColor : contrastMediumColor),
-    buttonBorderColorHover: checked ? (isHighContrastMode ? primaryColor : successColorDarken) : primaryColor,
-    buttonBackgroundColor: checked ? disabledOrLoadingColor || checkedColor : 'transparent',
-    buttonBackgroundColorHover: checked ? (isHighContrastMode ? checkedColor : successColorDarken) : 'transparent',
-    toggleBackgroundColor:
-      (loading && 'transparent') ||
-      (disabled && !checked && disabledColor) ||
-      (checked
-        ? isHighContrastMode
-          ? canvasColor
-          : lightThemeBackgroundColor
-        : isHighContrastMode
-          ? canvasTextColor
-          : primaryColor),
-    toggleBackgroundColorHover: checked
-      ? lightThemeBackgroundColor
-      : isHighContrastMode
-        ? canvasTextColor
-        : primaryColor,
-    textColor: disabledOrLoadingColor || primaryColor,
+    buttonBorderColor: checked ? successMediumColor : contrastMediumColor,
+    buttonBorderColorHover: checked ? successColor : primaryColor,
+    buttonBackgroundColor: checked ? successFrostedSoftColor : frostedSoftColor,
+    toggleBackgroundColor: loading ? 'transparent' : checked ? successColor : primaryColor,
+    textColor: primaryColor,
   };
 };
 
@@ -82,27 +65,10 @@ export const getComponentCss = (
   checked: boolean,
   disabled: boolean,
   loading: boolean,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): string => {
-  const {
-    buttonBorderColor,
-    buttonBorderColorHover,
-    buttonBackgroundColor,
-    buttonBackgroundColorHover,
-    toggleBackgroundColor,
-    toggleBackgroundColorHover,
-    textColor,
-  } = getColors(checked, disabled, loading, theme);
-  const {
-    buttonBorderColor: buttonBorderColorDark,
-    buttonBorderColorHover: buttonBorderColorHoverDark,
-    buttonBackgroundColor: buttonBackgroundColorDark,
-    buttonBackgroundColorHover: buttonBackgroundColorHoverDark,
-    toggleBackgroundColor: toggleBackgroundColorDark,
-    toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
-    textColor: textColorDark,
-  } = getColors(checked, disabled, loading, 'dark');
+  const { buttonBorderColor, buttonBorderColorHover, buttonBackgroundColor, toggleBackgroundColor, textColor } =
+    getColors(checked, loading);
 
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
 
@@ -132,6 +98,7 @@ export const getComponentCss = (
           display: stretchValue ? 'flex' : 'inline-flex',
         })),
         ...addImportantToEachRule({
+          ...(disabled && getDisabledBaseStyles()),
           outline: 0, // custom element is able to delegate the focus
           font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct gap definition based on ex-unit
           gap,
@@ -146,6 +113,7 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
+        all: 'unset',
         position: 'relative', // ensures relative positioning for ::before pseudo element
         display: 'flex',
         alignItems: 'center',
@@ -153,39 +121,19 @@ export const getComponentCss = (
         width: `calc(${dimension} * 2 - ${borderWidthBase} * 2)`,
         height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-        boxSizing: 'content-box',
-        border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: `calc((${dimension} + ${borderWidthBase} * 2) / 2)`,
+        border: `${borderWidthThin} solid ${buttonBorderColor}`,
+        borderRadius: `calc((${dimension} + ${borderWidthThin} * 2) / 2)`,
         backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: buttonBorderColorDark,
-          backgroundColor: buttonBackgroundColorDark,
-        }),
-        margin: 0, // Removes default button margin on safari 15
-        padding: 0,
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         marginTop,
-        WebkitAppearance: 'none', // iOS safari
-        appearance: 'none',
         ...(!isDisabledOrLoading(disabled, loading) &&
           hoverMediaQuery({
             '&:hover': {
               borderColor: buttonBorderColorHover,
-              backgroundColor: buttonBackgroundColorHover,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: buttonBorderColorHoverDark,
-                backgroundColor: buttonBackgroundColorHoverDark,
-              }),
-              '& .toggle': {
-                backgroundColor: toggleBackgroundColorHover,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  backgroundColor: toggleBackgroundColorHoverDark,
-                }),
-              },
             },
           })),
-        ...getFocusJssStyle(theme),
+        '&:focus-visible': getFocusBaseStyles(),
         '&::before': {
           // Ensures the touch target is at least 24px, even if the switch is smaller than the minimum touch target size.
           // This pseudo-element expands the clickable area without affecting the visual size of the switch itself.
@@ -200,13 +148,9 @@ export const getComponentCss = (
         minHeight: 0, // prevents flex child to overflow max available parent size
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         color: textColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: textColorDark,
-        }),
         ...mergeDeep(
           buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-            // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-            order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+            order: alignLabelValue === 'start' ? -1 : 0,
           })),
           buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
             getHiddenTextJssStyle(isHidden, {
@@ -224,14 +168,11 @@ export const getComponentCss = (
       height: `calc(${dimension} - ${borderWidthBase} * 2)`,
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
-      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
+      transition: getTransition('transform'),
       transform: `translate3d(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase}, 0, 0)`,
       '&:dir(rtl)': {
         transform: `translate3d(calc(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase} * -1), 0, 0)`,
       },
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: toggleBackgroundColorDark,
-      }),
     },
     ...(loading && {
       spinner: {

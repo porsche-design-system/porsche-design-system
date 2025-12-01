@@ -155,38 +155,24 @@ test.describe('events', () => {
     await initAccordion(page, { otherPostMarkup: clickHandlerScript });
     const host = getHost(page);
     const button = getButton(page);
-    await addEventListener(host, 'accordionChange');
-    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await button.click();
-    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 
-  test('should emit accordionChange event on enter press', async ({ page }) => {
+  test('should emit update event on enter press', async ({ page }) => {
     await initAccordion(page, { otherPostMarkup: clickHandlerScript });
     const host = getHost(page);
-    await addEventListener(host, 'accordionChange');
-    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
+    await addEventListener(host, 'update');
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
-    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
-  });
-
-  test('should emit both accordionChange and update event', async ({ page }) => {
-    await initAccordion(page);
-    const host = getHost(page);
-
-    await addEventListener(host, 'accordionChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const button = getButton(page);
-    await button.click();
-    expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
+
 });
 
 test.describe('focus', () => {

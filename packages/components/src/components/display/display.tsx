@@ -1,30 +1,17 @@
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, TYPOGRAPHY_ALIGNS, validateProps } from '../../utils';
+import { getComponentCss } from './display-styles';
 import {
-  type DisplayAlign,
-  type DisplayAlignDeprecated,
-  type DisplayColor,
-  type DisplaySize,
-  type DisplayTag,
   DISPLAY_COLORS,
   DISPLAY_SIZES,
   DISPLAY_TAGS,
+  type DisplayAlign,
+  type DisplayColor,
+  type DisplaySize,
+  type DisplayTag,
   getDisplayTagType,
 } from './display-utils';
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  hasPropValueChanged,
-  THEMES,
-  TYPOGRAPHY_ALIGNS,
-  validateProps,
-  warnIfDeprecatedPropValueIsUsed,
-} from '../../utils';
-import { getComponentCss } from './display-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type AlignDeprecationMapType = Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>>;
 
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
@@ -32,7 +19,6 @@ const propTypes: PropTypes<typeof Display> = {
   align: AllowedTypes.oneOf<DisplayAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<DisplayColor>(DISPLAY_COLORS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -60,42 +46,13 @@ export class Display {
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
 
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Display, DisplayAlignDeprecated, DisplayAlign>(
-      this,
-      'align',
-      alignDeprecationMap
-    );
-
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        DisplayAlign,
-        DisplayAlignDeprecated
-      >,
-      this.color,
-      this.ellipsis,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis);
 
     const TagType = getDisplayTagType(this.host, this.size, this.tag);
 

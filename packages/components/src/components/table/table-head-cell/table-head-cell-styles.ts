@@ -1,25 +1,25 @@
-import type { Direction } from '../table/table-utils';
-import { getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getFocusJssStyle,
-  getHiddenTextJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
 import {
   borderRadiusSmall,
   frostedGlassStyle,
   spacingFluidSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
-import { isDirectionAsc, isSortable } from './table-head-cell-utils';
+import {
+  addImportantToEachRule,
+  colors,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
+import { getCss } from '../../../utils';
 import { cssVariableTableHeadCellIconFilter, cssVariableTablePadding } from '../table/table-styles';
+import type { Direction } from '../table/table-utils';
+import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
-const { hoverColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
+const { frostedColor } = colors;
 
 const buttonBeforeOffsetVertical = '-2px';
 const buttonBeforeOffsetHorizontal = '-4px';
@@ -80,11 +80,10 @@ export const getComponentCss = (
                 },
                 '&:hover::before': {
                   ...frostedGlassStyle,
-                  backgroundColor: hoverColor,
+                  backgroundColor: frostedColor,
                 },
               }),
-              // TODO: to be future proof, we need to pass theme parameter
-              ...getFocusJssStyle('light', { pseudo: true, offset: '-2px' }),
+              ...getFocusJssStyle({ pseudo: true, offset: '-2px' }),
             },
           }
         : hideLabel && {

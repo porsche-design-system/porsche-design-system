@@ -14,16 +14,15 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getFocusJssStyle,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
 
@@ -54,16 +53,9 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   hasPriceOriginal: boolean,
   hasDescription: boolean,
-  aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
-  theme: Theme
+  aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>
 ): string => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastHighColor: contrastHighColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-  } = getThemedColors('dark');
+  const { primaryColor, contrastHighColor, contrastMediumColor, surfaceColor } = colors;
 
   return getCss({
     '@global': {
@@ -86,7 +78,7 @@ export const getComponentCss = (
               ...anchorJssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
-            ...getFocusJssStyle(theme, { slotted: slottedAnchorSelector }),
+            ...getFocusJssStyle({ slotted: slottedAnchorSelector }),
           }),
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
@@ -106,9 +98,6 @@ export const getComponentCss = (
       ...(hasPriceOriginal && {
         s: {
           color: contrastMediumColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: contrastMediumColorDark,
-          }),
         },
       }),
     },
@@ -121,19 +110,15 @@ export const getComponentCss = (
       borderRadius: borderRadiusMedium,
       padding: spacingFluidSmall,
       color: primaryColor,
-      backgroundColor: backgroundSurfaceColor,
+      backgroundColor: surfaceColor,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
-        aspectRatio: ratio.replace(':', '/'),
+        aspectRatio: ratio,
       })),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-        backgroundColor: backgroundSurfaceColorDark,
-      }),
     },
     ...(!hasSlottedAnchor && {
       anchor: {
         ...anchorJssStyle,
-        ...getFocusJssStyle(theme),
+        ...getFocusJssStyle(),
       },
     }),
     header: {
@@ -190,9 +175,6 @@ export const getComponentCss = (
         ...textXXSmallStyle,
         ...getMultilineEllipsis(2),
         color: contrastHighColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
-        }),
       },
     }),
     ...(hasPriceOriginal && {

@@ -33,8 +33,8 @@ export const getComponentCss = (size: FlagSize): string => {
         }),
       },
       img: {
+        all: 'unset',
         display: 'block', // without display, img tag gets some extra spacing
-        margin: 0,
         padding: '1px', // add safe-zone to be visually in sync with <p-icon />
         boxSizing: 'border-box',
         pointerEvents: 'none', // disable dragging/ghosting of images

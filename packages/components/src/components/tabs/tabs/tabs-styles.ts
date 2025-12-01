@@ -1,10 +1,10 @@
-import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getCss } from '../../../utils';
 
 export const getComponentCss = (): string => {
   return getCss({

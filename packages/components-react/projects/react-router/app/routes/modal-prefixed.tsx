@@ -6,7 +6,7 @@ const ModalPrefixedPage = (): JSX.Element => {
     <>
       <PorscheDesignSystemProvider prefix="my-prefix">
         <div>
-          <PModal heading="Heading" open={true}>Some Content</PModal>
+          <PModal open={true}>Some Content</PModal>
         </div>
       </PorscheDesignSystemProvider>
     </>

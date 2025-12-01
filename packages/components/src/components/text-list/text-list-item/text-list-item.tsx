@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, type JSX } from '@stencil/core';
+import { Component, Element, Host, h, type JSX } from '@stencil/core';
 import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../utils';
 import { getComponentCss } from './text-list-item-styles';
 
@@ -21,9 +21,7 @@ export class TextListItem {
 
     return (
       <Host role="listitem">
-        <span>
-          <slot />
-        </span>
+        <slot />
       </Host>
     );
   }

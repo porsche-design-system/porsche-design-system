@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Host, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
@@ -6,20 +6,18 @@ import type {
   ButtonVariant,
   PropTypes,
   SelectedAriaAttributes,
-  Theme,
 } from '../../types';
 import {
   AllowedTypes,
+  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  LINK_BUTTON_VARIANTS,
-  THEMES,
-  attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  LINK_BUTTON_VARIANTS,
   validateProps,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
@@ -37,7 +35,6 @@ const propTypes: PropTypes<typeof Button> = {
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   compact: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
   form: AllowedTypes.string,
 };
@@ -82,9 +79,6 @@ export class Button {
 
   /** Displays as compact version. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
-
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
@@ -166,8 +160,7 @@ export class Button {
       this.hideLabel,
       this.disabled,
       this.loading,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -182,17 +175,14 @@ export class Button {
           value={this.value}
           aria-describedby={this.loading ? loadingId : undefined}
         >
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
           {hasVisibleIcon(this.icon, this.iconSource) && (
             <PrefixedTagNames.pIcon
               class="icon"
               size="inherit"
               name={this.iconSource ? undefined : this.icon}
               source={this.iconSource}
-              color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
-              theme={this.theme}
+              color="inherit"
               aria-hidden="true"
             />
           )}

@@ -1,12 +1,5 @@
 import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../../styles';
-import type { Theme } from '../../../types';
+import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
@@ -19,7 +12,9 @@ export const cssVariableOrderedGridColumn = '--p-internal-text-list-ordered-grid
 export const cssVariableOrderedPseudoSuffix = '--p-internal-text-list-ordered-pseudo-suffix';
 const counter = 'p-text-list-counter';
 
-export const getComponentCss = (type: TextListType, theme: Theme): string => {
+const { primaryColor } = colors;
+
+export const getComponentCss = (type: TextListType): string => {
   const isOrderedList = isListTypeOrdered(type);
 
   return getCss({
@@ -37,10 +32,7 @@ export const getComponentCss = (type: TextListType, theme: Theme): string => {
         margin: 0,
         padding: `var(${cssVariablePaddingTop},0) 0 var(${cssVariablePaddingBottom},0) 0`,
         listStyleType: 'none',
-        color: getThemedColors(theme).primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: getThemedColors('dark').primaryColor,
-        }),
+        color: primaryColor,
       },
       // css selector for text-list-item
       '::slotted(*)': addImportantToEachRule({

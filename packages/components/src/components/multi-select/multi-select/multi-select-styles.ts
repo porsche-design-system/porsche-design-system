@@ -2,6 +2,7 @@ import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/sty
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
@@ -16,7 +17,7 @@ import {
   getPopoverKeyframesStyles,
   getSelectedSlotJssStyle,
 } from '../../../styles/select';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
@@ -36,8 +37,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean,
-  theme: Theme
+  compact: boolean
 ): string => {
   const scalingVar = `var(${cssVarInternalMultiSelectScaling}, ${compact ? 0.5 : 1})`;
 
@@ -48,19 +48,20 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
           [`${cssVarInternalMultiSelectOptionScaling}`]: scalingVar,
           [`${cssVarInternalOptgroupScaling}`]: scalingVar,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar, theme),
+        ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar),
         '& span': getButtonLabelJssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
-      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
+      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar)),
       'slot[name="selected"]': getSelectedSlotJssStyle,
     },
     root: {
@@ -69,14 +70,14 @@ export const getComponentCss = (
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(2)})`,
     },
-    filter: getFilterJssStyle(scalingVar, theme),
+    filter: getFilterJssStyle(scalingVar),
     options: getOptionsJssStyle(scalingVar),
-    icon: getIconJssStyle('multi-select', isOpen),
+    icon: getIconJssStyle(isOpen),
     // .no-results / .sr-only
-    ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', scalingVar, theme),
+    ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', scalingVar),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
   });
 };

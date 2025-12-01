@@ -11,7 +11,7 @@ type ColumnDefs = DataAdvanced & {
   active: boolean;
 };
 
-const ImageUrlRendererer = ({ value }: { value: string }) => {
+const ImageUrlRenderer = ({ value }: { value: string }) => {
   return (
     <span
       style={{
@@ -67,7 +67,7 @@ const columnDefs: ColDef<ColumnDefs>[] = [
   {
     field: 'imageUrl',
     headerName: 'Image',
-    cellRenderer: ImageUrlRendererer,
+    cellRenderer: ImageUrlRenderer,
     editable: false,
     filter: false,
     sortable: false,

@@ -1,25 +1,20 @@
-import type { Theme } from '../../types';
-import type { FieldsetLabelSize } from './fieldset-utils';
-import type { FormState } from '../../utils/form/form-state';
-import { getCss, mergeDeep } from '../../utils';
+import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getThemedColors,
+  colors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/styles';
+import { getCss, mergeDeep } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import type { FieldsetLabelSize } from './fieldset-utils';
 
-export const getComponentCss = (
-  state: FormState,
-  labelSize: FieldsetLabelSize,
-  hasLabel: boolean,
-  theme: Theme
-): string => {
+const { primaryColor } = colors;
+
+export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, hasLabel: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -31,24 +26,20 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       fieldset: {
-        margin: 0,
-        padding: 0,
-        border: 'none',
+        all: 'unset',
+        display: 'block',
       },
       ...(hasLabel && {
         legend: {
-          margin: `0 0 ${spacingStaticMedium}`,
-          padding: 0,
-          color: getThemedColors(theme).primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: getThemedColors('dark').primaryColor,
-          }),
+          all: 'unset',
+          marginBottom: spacingStaticMedium,
+          color: primaryColor,
           ...(labelSize === 'small' ? headingSmallStyle : headingMediumStyle),
         },
       }),
     },
     ...getFunctionalComponentRequiredStyles(),
-    ...mergeDeep(getFunctionalComponentStateMessageStyles(theme, state), {
+    ...mergeDeep(getFunctionalComponentStateMessageStyles(state), {
       message: {
         marginTop: spacingStaticMedium,
       },

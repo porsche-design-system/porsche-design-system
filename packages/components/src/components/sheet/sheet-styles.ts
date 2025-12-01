@@ -19,10 +19,9 @@ import {
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
-import type { Theme } from '../../types';
 import { getCss } from '../../utils';
 
-export const getComponentCss = (isOpen: boolean, hasDismissButton: boolean, theme: Theme): string => {
+export const getComponentCss = (isOpen: boolean, hasDismissButton: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -39,12 +38,12 @@ export const getComponentCss = (isOpen: boolean, hasDismissButton: boolean, them
         gridColumn: '2/3',
         zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
       },
-      dialog: getDialogJssStyle(isOpen, theme, 'shading'),
+      dialog: getDialogJssStyle(isOpen, 'shading'),
     },
-    scroller: getScrollerJssStyle('fullscreen', theme),
+    scroller: getScrollerJssStyle('fullscreen'),
     sheet: {
       ...dialogGridJssStyle,
-      ...getDialogColorJssStyle(theme),
+      ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',

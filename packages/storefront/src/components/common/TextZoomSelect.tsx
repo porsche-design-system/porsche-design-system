@@ -5,7 +5,7 @@ import {
   PSelect,
   PSelectOption,
   type PSelectProps,
-  type SelectUpdateEventDetail,
+  type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { StorefrontTextZoom } from '@/models/textZoom';
 
@@ -13,17 +13,17 @@ type TextZoomSelectProps = {
   value: StorefrontTextZoom;
   label?: PSelectProps['label'];
   hideLabel?: PSelectProps['hideLabel'];
-  onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
+  onTextZoomChange: (event: CustomEvent<SelectChangeEventDetail>) => void;
 };
 
 export const TextZoomSelect = ({
   value = '100%',
   label = 'Text Zoom',
   hideLabel = false,
-  onUpdate,
+  onTextZoomChange,
 }: TextZoomSelectProps) => {
   return (
-    <PSelect name="text-zoom" value={value} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
+    <PSelect name="text-zoom" value={value} hideLabel={hideLabel} compact={true} onChange={onTextZoomChange}>
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>

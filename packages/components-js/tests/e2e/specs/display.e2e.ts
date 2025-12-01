@@ -118,24 +118,4 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
-  test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {
-    await initDisplay(page, { size: 'large-title' });
-    const host = getHost(page);
-
-    expect(await getProperty(host, 'theme')).toBe('light');
-
-    await setProperty(host, 'theme', 'dark');
-    await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
-    expect(status.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(await getProperty(host, 'theme')).toBe('dark');
-
-    await setProperty(host, 'theme', 'light');
-    await waitForStencilLifecycle(page);
-    const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
-    expect(await getProperty(host, 'theme')).toBe('light');
-  });
 });

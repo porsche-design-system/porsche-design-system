@@ -115,8 +115,8 @@ export const sheetStoryGrid: Story<'p-sheet'> = {
         },
         visualizeGridConfig,
         {
-          tag: 'p-button-group',
-          properties: { slot: 'footer' },
+          tag: 'div',
+          properties: { slot: 'footer', role: 'group', className: 'flex flex-wrap gap-fluid-sm max-xs:flex-col' },
           children: [
             { tag: 'p-button', children: ['Accept'] },
             { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Deny'] },

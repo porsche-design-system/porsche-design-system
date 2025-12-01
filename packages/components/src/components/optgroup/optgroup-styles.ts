@@ -2,28 +2,27 @@ import { fontWeightSemiBold, spacingStaticSmall, textXSmallStyle } from '@porsch
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getThemedColors,
+  colors,
+  getDisabledBaseStyles,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import type { Theme } from '../../types';
 import { getCss } from '../../utils';
 
 export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
+
 const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
+const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
+const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
 
-export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
+const { primaryColor } = colors;
 
-  const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
-  const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
-
+export const getComponentCss = (isDisabled: boolean): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
         ...colorSchemeStyles,
         ...hostHiddenStyles,
+        ...(isDisabled && getDisabledBaseStyles()),
       }),
       '::slotted(*)': {
         '--p-internal-select-option-padding-left': '28px',
@@ -38,15 +37,6 @@ export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {
         padding,
         font: textXSmallStyle.font.replace(' 400 ', ` ${fontWeightSemiBold} `),
         color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-        ...(isDisabled && {
-          color: disabledColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-          }),
-        }),
       },
     },
   });

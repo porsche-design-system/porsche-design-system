@@ -1,27 +1,21 @@
 import type { JssStyle } from 'jss';
-import type { TypographyTextColor, TypographyTextColorDeprecated, Theme, TypographyAlign } from '../types';
-import type { HeadingColor } from '../components/heading/heading-utils';
-import type { HeadlineColor } from '../components/headline/headline-utils';
 import type { DisplayColor } from '../components/display/display-utils';
+import type { HeadingColor } from '../components/heading/heading-utils';
+import type { TypographyAlign, TypographyTextColor } from '../types';
 import { getThemedTypographyColor } from './text-icon-styles';
-import { prefersColorSchemeDarkMediaQuery } from './prefers-color-scheme-dark-media-query';
 
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
   responsiveStyle: JssStyle,
   align: TypographyAlign, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-  color: Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-  ellipsis: boolean,
-  theme: Theme
+  color: TypographyTextColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
+  ellipsis: boolean
 ): JssStyle => {
   return {
-    margin: 0,
-    padding: 0,
+    all: 'unset',
+    display: 'block',
     ...baseTextStyle,
-    color: getThemedTypographyColor(theme, color),
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: getThemedTypographyColor('dark', color),
-    }),
+    color: getThemedTypographyColor(color),
     textAlign: align,
     letterSpacing: 'normal',
     listStyleType: 'none',

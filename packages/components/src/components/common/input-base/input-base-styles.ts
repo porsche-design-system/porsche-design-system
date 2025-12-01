@@ -1,6 +1,6 @@
 import {
   borderRadiusSmall,
-  borderWidthBase,
+  borderWidthThin,
   fontLineHeight,
   spacingStaticMedium,
   spacingStaticXSmall,
@@ -10,16 +10,16 @@ import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getThemedColors,
+  colors,
+  getDisabledBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
@@ -39,6 +39,8 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
+const { primaryColor, contrastMediumColor, frostedColor } = colors;
+
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
   loading: boolean,
@@ -46,7 +48,6 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  theme: Theme,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
   const scalingVar = getScalingVar(compact);
@@ -61,35 +62,18 @@ export const getFunctionalComponentInputBaseStyles = (
   // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
   const buttonCompensation = `clamp(0, 6.42 * pow(calc(${scalingVar} - 0.5), 0.6826), 12)`;
 
-  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
-
-  const hoverStyles = {
-    borderColor: formStateHoverColor || primaryColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      borderColor: formStateHoverColorDark || primaryColorDark,
-    }),
-  };
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
   return {
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
           [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
           [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+          ...(disabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -97,22 +81,12 @@ export const getFunctionalComponentInputBaseStyles = (
         all: 'unset',
         flex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        color: 'inherit', // relies on wrapper color
         height,
         paddingBlock,
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
         width: '100%',
-        minWidth: '2rem',
-        ...(disabled && {
-          color: disabledColor,
-          WebkitTextFillColor: disabledColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-            WebkitTextFillColor: disabledColorDark,
-          }),
-        }),
+        minWidth: '2ch', // to show at least 2 characters in very narrow containers
+        textOverflow: 'ellipsis', // TODO: do we need this style?
         ...additionalInputJssStyle,
       },
     },
@@ -121,44 +95,34 @@ export const getFunctionalComponentInputBaseStyles = (
       gap: spacingStaticXSmall,
     },
     wrapper: {
-      border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
-      borderRadius: borderRadiusSmall,
-      paddingInline,
       display: 'flex',
       alignItems: 'center',
       gap,
-      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: formStateColorDark || contrastMediumColorDark,
-      }),
-      ...(!disabled &&
-        !readOnly && {
-          '&:has(input:focus)': {
-            borderColor: primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: primaryColorDark,
-            }),
-          },
-          ...hoverMediaQuery({
-            '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
-          }),
-        }),
-      ...(disabled && {
-        cursor: 'not-allowed',
-        borderColor: disabledColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: disabledColorDark,
-        }),
-      }),
+      height,
+      paddingBlock,
+      paddingInline,
+      border: `${borderWidthThin} solid ${formStateBorderColor}`,
+      borderRadius: borderRadiusSmall,
+      background: formStateBackgroundColor,
+      color: primaryColor,
+      transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
+      cursor: disabled ? 'not-allowed' : 'text',
       ...(readOnly && {
-        cursor: 'text',
-        borderColor: contrastLowColor,
-        background: contrastLowColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrastLowColorDark,
-          background: contrastLowColorDark,
-        }),
+        borderColor: 'transparent',
+        background: frostedColor,
+        color: contrastMediumColor,
       }),
+      '&:focus-within': {
+        borderColor: formStateBorderHoverColor,
+      },
+      ...(!disabled &&
+        !readOnly &&
+        !loading &&
+        hoverMediaQuery({
+          '&:hover:not(.button:hover),label:hover~&': {
+            borderColor: formStateBorderHoverColor,
+          },
+        })),
     },
     ...(loading && {
       spinner: {
@@ -168,18 +132,9 @@ export const getFunctionalComponentInputBaseStyles = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled,
-      hideLabel,
-      theme,
-      !disabled &&
-        !readOnly &&
-        hoverMediaQuery({
-          '&:hover~.wrapper': hoverStyles,
-        })
-    ),
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   };

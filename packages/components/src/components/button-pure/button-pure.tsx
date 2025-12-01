@@ -1,32 +1,27 @@
-import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, Watch, h } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { AttachInternals, Component, Element, Host, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
+  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  TEXT_SIZES,
-  THEMES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
-  attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
+  TEXT_SIZES,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-pure-styles';
 import {
   type ButtonPureAlignLabel,
-  type ButtonPureAlignLabelDeprecated,
   type ButtonPureAriaAttribute,
   type ButtonPureIcon,
   type ButtonPureSize,
   type ButtonPureType,
-  type ButtonPureWeight,
   getButtonPureAriaAttributes,
   warnIfIsLoadingAndIconIsNone,
 } from './button-pure-utils';
@@ -38,7 +33,6 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<ButtonPureSize>(TEXT_SIZES),
-  weight: AllowedTypes.oneOf<ButtonPureWeight>(TYPOGRAPHY_TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   underline: AllowedTypes.boolean,
@@ -46,7 +40,6 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   alignLabel: AllowedTypes.breakpoint<ButtonPureAlignLabel>(ALIGN_LABELS),
   stretch: AllowedTypes.breakpoint('boolean'),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonPureAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
   form: AllowedTypes.string,
 };
@@ -80,12 +73,6 @@ export class ButtonPure {
   /** Size of the button. */
   @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'small';
 
-  /**
-   * The weight of the text (only has effect with visible label).
-   * @deprecated since v3.0.0, will be removed with next major release
-   */
-  @Prop() public weight?: ButtonPureWeight = 'regular';
-
   /** The icon shown. */
   @Prop() public icon?: ButtonPureIcon = 'arrow-right';
 
@@ -106,9 +93,6 @@ export class ButtonPure {
 
   /** Stretches the area between icon and label to max available space. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
-
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
@@ -188,33 +172,20 @@ export class ButtonPure {
     validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
 
-    const alignLabelDeprecationMap: Record<
-      ButtonPureAlignLabelDeprecated,
-      Exclude<ButtonPureAlignLabel, ButtonPureAlignLabelDeprecated>
-    > = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof ButtonPure, ButtonPureAlignLabelDeprecated, ButtonPureAlignLabel>(
-      this,
-      'alignLabel',
-      alignLabelDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
       this.icon,
       this.iconSource,
       this.active,
+      this.disabled,
       this.loading,
       this.isDisabledOrLoading,
       this.stretch,
       this.size,
       this.hideLabel,
       this.alignLabel,
-      this.underline,
-      this.theme
+      this.underline
     );
 
     const hasIcon = hasVisibleIcon(this.icon, this.iconSource);
@@ -222,7 +193,6 @@ export class ButtonPure {
     const iconProps = {
       class: 'icon',
       size: 'inherit',
-      theme: this.theme,
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -245,8 +215,7 @@ export class ButtonPure {
                 {...iconProps}
                 name={this.icon}
                 source={this.iconSource}
-                color={this.isDisabledOrLoading ? 'state-disabled' : 'primary'}
-                theme={this.theme}
+                color="inherit"
                 aria-hidden="true"
               />
             )

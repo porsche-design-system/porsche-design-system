@@ -1,21 +1,21 @@
-import styled from 'styled-components';
 import {
+  breakpointBase,
+  breakpointL,
+  breakpointM,
+  breakpointS,
+  breakpointXL,
+  breakpointXS,
+  breakpointXXL,
   getMediaQueryMax,
   getMediaQueryMin,
   getMediaQueryMinMax,
   gridGap,
-  textSmallStyle,
-  themeLightPrimary,
-  breakpointBase,
-  breakpointXS,
-  breakpointS,
-  breakpointM,
-  breakpointL,
-  breakpointXL,
-  breakpointXXL,
   headingMediumStyle,
   spacingFluidMedium,
+  textSmallStyle,
+  themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
+import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

@@ -5,6 +5,7 @@ import { dataAdvanced } from '@porsche-design-system/shared';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridVue } from 'ag-grid-vue3';
 import { inject } from 'vue';
+
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const theme = inject<Theme>(themeInjectionKey, 'light');

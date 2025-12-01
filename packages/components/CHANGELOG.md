@@ -12,6 +12,247 @@ All notable changes to this project will be documented in this file and publishe
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4]
+
+### Re-design components (early alpha)
+
+#### Common
+
+- ✅️Accordion
+- ✅Button
+- ✅Button Pure
+- ⌛Button Tile (might be removed in favour of generic p-card)
+- ✅Canvas
+- ⌛Carousel
+- ✅Divider
+- ✅Flag
+- ✅Icon
+- ⌛Scroller
+- ⌛Stepper Horizontal
+- ⌛Table
+- ✅Tag
+- ✅Tag Dismissible
+- ✅Text List
+
+#### Brand
+
+- ✅Crest
+- ✅Wordmark
+- ✅Model Signature
+
+#### Feedback
+
+- ⌛Banner
+- ⌛Toast
+- ⌛Inline Notification
+- ⌛Spinner
+
+#### Navigation
+
+- ✅Link
+- ✅Link Pure
+- ⌛Link Tile (might be removed in favour of generic p-card)
+- ⌛Link Tile Product (might be removed in favour of generic p-card)
+- ⌛Pagination
+- ⌛Tabs
+- ⌛Tabs Bar
+
+#### Dialog
+
+- ⌛Drilldown
+- ✅Modal
+- ⌛Flyout
+- ⌛Sheet
+- ⌛Popover
+
+#### Typography:
+
+- ✅Display
+- ✅Heading
+- ✅Text
+
+#### Form:
+
+- ✅Checkbox
+- ✅Fieldset
+- ✅Input Date
+- ✅Input Email
+- ✅Input Number
+- ✅Input Password
+- ✅Input Search
+- ✅Input Tel
+- ✅Input Text
+- ✅Input Time
+- ✅Input Url
+- ✅Multi Select
+- ✅Optgroup
+- ✅Pin Code
+- ✅Radio Group
+- ✅Segmented Control
+- ✅Select
+- ✅Switch
+- ✅Textarea
+
+### Added
+
+- `Divider`: value `contrast-lower` for prop `color`
+
+### Changed
+
+- In general all headings use regular as font-weight
+- Remove theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
+  class, e.g. `<p-input-text name="some-name"></p-input-text>` inside `<div class="dark">…</div>` will render the dark
+  theme.
+- Remove **slotted** Anchor Styles entirely from all components.
+- `Heading`: Uses a regular instead of semi-bold font-weight
+- `Text` and `Icon`:
+  - value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop `color`
+    (use `'success', 'warning', 'error', 'info'` instead)
+- `Icon`:
+  - when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
+    `p-icon { color: deeppink; }`) can be applied directly
+  - value `'state-disabled'` of prop color is removed
+- `Model Signature`:
+  - when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly
+- `Tag`:
+  - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
+    `error`, `info`
+- `Button`, `Link`:
+  - removed prop value `ghost`, use `secondary` instead
+- `Modal`
+  - visually changed footer slot: becomes frosted when it's sticky
+  - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) --ref-p-modal-pb` instead
+  - added css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
+
+- Tailwind CSS: Reset all default Tailwind color tokens
+- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
+  only
+
+### Removed (deprecated in v3 already)
+
+- `Accordion`:
+  - `tag` (use `heading-tag` instead)
+  - `accordionChange`
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Banner`:
+  - `slot="title"` (use `slot="heading"` instead)
+  - prop `persistent` (use `dismissButton` instead)
+  - prop `width`
+  - value `neutral` of prop `state` (use `info` instead)
+- `Button Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Carousel`:
+  - prop `wrapContent` (has no effect anyway)
+  - prop `disablePagination` (use `pagination` instead)
+  - value `left` of prop `alignHeader` (use `start` instead)
+  - event `carouselChange` use `update` instead
+- `Checkbox`:
+  - event `update` (use `change` instead)
+- `Display`:
+  - value `left | right` of prop `align` (use `start | end` instead)
+- `Divider`:
+  - prop `orientation` (use `direction` instead)
+  - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
+- `Flyout`:
+  - value `left | right` of prop `position` (use `start | end` instead)
+- `Heading`:
+  - value `left | right` of prop `align` (use `start | end` instead)
+- `Icon`:
+  - prop: `lazy`
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+- `Inline Notification`:
+  - prop `persistent` (use `dismissButton` instead)
+  - value `neutral` of prop `state` (use `info` instead)
+- `Link Pure`:
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
+  - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` (use `1/1 | 4/3 | 3/4 | 16/9 | 9/16` instead)
+- `Link Tile`, `Button Tile`:
+  - Value `default` of prop `size` (use `medium` instead)
+  - Value `semibold` of prop `weight` (use `semi-bold` instead)
+- `Modal`:
+  - prop `disableCloseButton` (use `dismissButton` instead)
+  - prop `heading` (use `slot="header"` instead)
+  - slot `heading` (use `slot="header"` instead)
+  - event `close` (use `dismiss` instead)
+- `Multi Select`:
+  - event `update` (use `change` instead)
+- `Pagination`:
+  - prop `allyLabel` (use `intl.root` instead)
+  - prop `allyLabelPrev` (use `intl.prev` instead)
+  - prop `allyLabelPage` (use `intl.page` instead)
+  - prop `allyLabelNext` (use `intl.next` instead)
+  - prop `maxNumberOfPageLinks` (has no effect anyway)
+  - event `pageChange` (use `update` instead)
+- `Pin Code`:
+  - event `update` (use `change` instead)
+- `Scroller`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
+- `Segmented Control`:
+  - prop `backgroundColor` (has no effect anyway)
+  - event `segmentedControlChange` (use `change` instead)
+  - event `update` (use `change` instead)
+- `Select`:
+  - event `update` (use `change` instead)
+- `Stepper Horizontal`:
+  - event `stepChange` (use `update` instead)
+- `Switch`:
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+  - event `switchChange` (use `update` instead)
+- `Table`:
+  - event `sortingChange` (use `update` instead)
+- `Tabs`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - event `tabChange` (use `update` instead)
+- `Tabs Bar`:
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - event `tabChange` (use `update` instead)
+- `Tag`:
+  - value
+    `background-default | neutral-contrast-high | notification-neutral | notification-warning | notification-error | notification-success`
+    of prop `color` (use
+    `background-base | primary | notification-info-soft | notification-warning-soft | notification-error-soft | notification-success-soft`
+    instead)
+- `Tag Dismissible`:
+  - value `background-default` of prop `color` (use `background-base` instead)
+- `Text`
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+- `Text List`
+  - prop `listType` (use `type` instead)
+  - prop `orderType` (use `type` instead)
+  - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
+- `Toast`:
+  - value `neutral` of prop `state` (use `info` instead)
+- Components:
+  - `Button Group` (use Tailwind CSS instead,
+    `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
+  - `Checkbox Wrapper` (use `Checkbox` instead)
+  - `Radio Button Wrapper` (use `radio-group` instead)
+  - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
+  - `Link Tile Model Signature`
+  - `Fieldset Wrapper` (use `Fieldset` instead)
+  - `Flex` (use CSS Flex instead, Tailwind CSS is recommended)
+  - `Grid` (use CSS Grid instead, Tailwind CSS is recommended)
+  - `Headline` (use `Heading` instead)
+  - `Link Social`
+  - `Marque` (use `Wordmark` (recommended) or `Crest` instead)
+  - `Select Wrapper` (use `Select` instead)
+  - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
+  - `Textarea Wrapper` (use `Textarea` instead)
+
 ## [Unreleased]
 
 ### Added

@@ -1,26 +1,17 @@
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Listen, Prop, h } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
-  THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './switch-styles';
-import {
-  type SwitchAlignLabel,
-  type SwitchAlignLabelDeprecated,
-  type SwitchUpdateEventDetail,
-  getSwitchButtonAriaAttributes,
-} from './switch-utils';
+import { getSwitchButtonAriaAttributes, type SwitchAlignLabel, type SwitchUpdateEventDetail } from './switch-utils';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -30,7 +21,6 @@ const propTypes: PropTypes<typeof Switch> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -66,14 +56,6 @@ export class Switch {
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the switch color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
-   * Emitted when checked status is changed. */
-  @Event({ bubbles: false }) public switchChange: EventEmitter<SwitchUpdateEventDetail>;
-
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
@@ -88,7 +70,6 @@ export class Switch {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
@@ -107,20 +88,6 @@ export class Switch {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignLabelDeprecationMap: Record<
-      SwitchAlignLabelDeprecated,
-      Exclude<SwitchAlignLabel, SwitchAlignLabelDeprecated>
-    > = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Switch, SwitchAlignLabelDeprecated, SwitchAlignLabel>(
-      this,
-      'alignLabel',
-      alignLabelDeprecationMap
-    );
-
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -130,17 +97,18 @@ export class Switch {
       this.checked,
       this.disabled,
       this.loading,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+
+    const id = 'x';
 
     return (
       <Host>
         <button
           {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-          id="switch"
+          id={id}
           type="button"
           role="switch"
           aria-labelledby="label" // only relevant for axe-core because of https://github.com/dequelabs/axe-core/issues/1393
@@ -149,12 +117,10 @@ export class Switch {
         >
           {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
           <span class="toggle">
-            {this.loading && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-            )}
+            {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
           </span>
         </button>
-        <label id="label" htmlFor="switch">
+        <label id="label" htmlFor={id}>
           <slot />
         </label>
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
@@ -164,6 +130,5 @@ export class Switch {
 
   private onSwitchClick = (): void => {
     this.update.emit({ checked: !this.checked });
-    this.switchChange.emit({ checked: !this.checked });
   };
 }

@@ -43,11 +43,11 @@ export const BrowserSupport = ({ support }: BrowserSupportProps) => {
               {' '}
               {typeof status === 'string' ? (
                 <>
-                  {`>= ${status}`} <PIcon name="success" color="notification-success" />
+                  {`>= ${status}`} <PIcon name="success" color="success" />
                 </>
               ) : (
                 <>
-                  {`>= ${status.version}`} <PIcon name="warning" color="notification-warning" />
+                  {`>= ${status.version}`} <PIcon name="warning" color="warning" />
                   <PPopover description={status.message} />
                 </>
               )}

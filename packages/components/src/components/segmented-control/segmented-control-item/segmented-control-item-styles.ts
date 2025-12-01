@@ -1,25 +1,24 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
+  borderWidthThin,
   fontLineHeight,
   textSmallStyle,
   textXSmallStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  colors,
+  getDisabledBaseStyles,
   getFocusJssStyle,
-  getHighContrastColors,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import type { Theme } from '../../../types';
-import { getCss, isHighContrastMode } from '../../../utils';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
+import { getCss } from '../../../utils';
 import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
 export const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
@@ -33,39 +32,7 @@ export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
 export const ICON_MARGIN = '.25rem';
 
-export const getColors = (
-  isDisabled: boolean,
-  isSelected: boolean,
-  state: SegmentedControlState,
-  theme: Theme
-): {
-  buttonColor: string;
-  labelColor: string;
-  borderColor: string;
-  hoverBorderColor: string;
-} => {
-  const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
-  const { highlightColor } = getHighContrastColors();
-
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-
-  return {
-    buttonColor: isDisabled ? disabledColor : primaryColor,
-    labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected
-      ? isDisabled
-        ? disabledColor
-        : isHighContrastMode
-          ? highlightColor
-          : state === 'success'
-            ? formStateColor
-            : primaryColor
-      : state === 'error'
-        ? formStateColor
-        : contrastLowColor,
-    hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
-  };
-};
+const { primaryColor, contrastMediumColor } = colors;
 
 export const getScalableItemStyles = (
   hasIconAndSlottedContent: boolean,
@@ -95,16 +62,10 @@ export const getComponentCss = (
   isSelected: boolean,
   state: SegmentedControlState,
   hasIcon: boolean,
-  hasSlottedContent: boolean,
-  theme: Theme
+  hasSlottedContent: boolean
 ): string => {
-  const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, state, theme);
-  const {
-    buttonColor: buttonColorDark,
-    labelColor: labelColorDark,
-    borderColor: borderColorDark,
-    hoverBorderColor: hoverBorderColorDark,
-  } = getColors(isDisabled, isSelected, state, 'dark');
+  const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
+
   const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
 
   return getCss({
@@ -112,7 +73,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          outline: 0,
+          ...(isDisabled && getDisabledBaseStyles()),
           ...hostHiddenStyles,
         }),
       },
@@ -126,11 +87,10 @@ export const getComponentCss = (
         minHeight: dimension,
         minWidth: dimension,
         padding: padding,
-        margin: 0, // Removes default button margin on safari 15
-        border: `${borderWidthBase} solid ${borderColor}`,
+        border: `${borderWidthThin} solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
         borderRadius: borderRadiusSmall,
-        background: 'transparent',
-        color: buttonColor,
+        background: formStateBackgroundColor,
+        color: primaryColor,
         ...textSmallStyle,
         ...(isDisabled
           ? {
@@ -142,28 +102,18 @@ export const getComponentCss = (
                 hoverMediaQuery({
                   transition: getTransition('border-color'),
                   '&:hover': {
-                    borderColor: hoverBorderColor,
-                    ...prefersColorSchemeDarkMediaQuery(theme, {
-                      borderColor: hoverBorderColorDark,
-                    }),
+                    borderColor: formStateBorderHoverColor,
                   },
                 })),
             }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: borderColorDark,
-          color: buttonColorDark,
-        }),
-        ...getFocusJssStyle(theme),
+        ...getFocusJssStyle(),
       },
       // label
       span: {
         display: 'block',
         ...textXSmallStyle,
         overflowWrap: 'normal',
-        color: labelColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: labelColorDark,
-        }),
+        color: contrastMediumColor,
       },
     },
     ...(hasIcon && {
