@@ -1,0 +1,3 @@
+:is(*):not(:defined, .ssr, [data-ssr]) {
+  visibility: hidden;
+}
