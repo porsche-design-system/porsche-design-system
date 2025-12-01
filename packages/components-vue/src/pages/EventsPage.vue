@@ -335,7 +335,7 @@
     <PInputMonth
       v-model="inputMonthValue"
       @input="onInputMonthInput"
-      @blur="onInputDateBlur"
+      @blur="onInputMonthBlur"
       @change="onInputMonthChange"
       name="month"
       label="Month Input"

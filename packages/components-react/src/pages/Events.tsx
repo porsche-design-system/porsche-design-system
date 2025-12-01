@@ -479,20 +479,6 @@ export const EventsPage = (): JSX.Element => {
       </div>
 
       <div className="playground light">
-        <PInputDate
-          value={inputDateValue}
-          onInput={(e) => onInputDateInput(e as CustomEvent<InputDateInputEventDetail>)}
-          onBlur={(e) => onInputDateBlur(e as CustomEvent<InputDateBlurEventDetail>)}
-          onChange={(e) => onInputDateChange(e as CustomEvent<InputDateChangeEventDetail>)}
-          name="date"
-          label="Date Input"
-        />
-        <p>Value: {inputDateValue}</p>
-        <p>Blur: {inputDateBlurCounter}</p>
-        <p>Change: {inputDateChangeCounter}</p>
-      </div>
-
-      <div className="playground light">
         <PInputEmail
           value={inputEmailValue}
           onInput={(e) => onInputEmailInput(e as CustomEvent<InputEmailInputEventDetail>)}

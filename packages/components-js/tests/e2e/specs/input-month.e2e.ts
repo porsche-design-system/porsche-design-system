@@ -59,7 +59,7 @@ const initInputMonth = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.describe('value', () => {
   test('should sync value with input value', async ({ page }) => {
-    const testValue = '2018-07-22';
+    const testValue = '2025-05';
     await initInputMonth(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);
     const inputMonth = getInputMonth(page);
@@ -76,7 +76,7 @@ test.describe('value', () => {
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputMonth).toHaveJSProperty('value', '');
 
-    const testInput = '2018-07-22';
+    const testInput = '2025-05';
 
     await inputMonth.fill(testInput);
     await waitForStencilLifecycle(page);
@@ -92,7 +92,7 @@ test.describe('value', () => {
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputMonth).toHaveJSProperty('value', '');
 
-    const testInput = '2018-07-22';
+    const testInput = '2025-05';
 
     await setProperty(host, 'value', testInput);
     await waitForStencilLifecycle(page);
@@ -106,7 +106,7 @@ test.describe('value', () => {
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '2025-05';
     await initInputMonth(page, {
       props: { name, value },
       isWithinForm: true,
@@ -125,7 +125,7 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '2025-05';
     const formId = 'myForm';
     await initInputMonth(page, {
       props: { name, value, form: formId },
@@ -186,7 +186,7 @@ test.describe('form', () => {
 
   test('should submit form after reset if the required input was initially not empty', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '2025-05';
     const required = true;
     await initInputMonth(page, {
       props: { name, value, required },
@@ -230,7 +230,7 @@ test.describe('form', () => {
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputMonth.fill('2018-07-22');
+    await inputMonth.fill('2025-05');
     await waitForStencilLifecycle(page);
 
     await page.locator('button[type="reset"]').click();
@@ -240,8 +240,8 @@ test.describe('form', () => {
 
   test('should reset input-month value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
-    const newValue = '2020-03-12';
+    const value = '2025-05';
+    const newValue = '2025-10';
     const host = getHost(page);
     const inputMonth = getInputMonth(page);
     await initInputMonth(page, {
@@ -277,7 +277,7 @@ test.describe('form', () => {
 
   test('should disable input-month if within disabled fieldset', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '2025-05';
     const host = getHost(page);
     await initInputMonth(page, {
       props: { name, value },
@@ -508,7 +508,7 @@ test.describe('Event', () => {
       await addEventListener(host, 'change');
       expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
-      await inputMonth.fill('2018-07-22');
+      await inputMonth.fill('2025-05');
       await inputMonth.press('Tab');
       await waitForStencilLifecycle(page);
 
@@ -542,7 +542,7 @@ test.describe('Event', () => {
     await addEventListener(host, 'input');
     expect((await getEventSummary(host, 'input')).counter).toBe(0);
 
-    await inputMonth.fill('2018-07-22');
+    await inputMonth.fill('2025-05');
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
@@ -619,7 +619,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-input-month'], 'componentDidLoad: input-month').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
 
-    await setProperty(host, 'value', '2018-07-22');
+    await setProperty(host, 'value', '2025-05');
     await waitForStencilLifecycle(page);
     const statusAfterChange = await getLifecycleStatus(page);
 
@@ -663,7 +663,6 @@ test.describe('Picker', () => {
       const inputMonthShowPickerButton = getInputMonthShowPickerButton(page);
       await inputMonth.click();
 
-      await inputMonth.press('Tab');
       await inputMonth.press('Tab');
       await inputMonth.press('Tab');
       await expect(inputMonthShowPickerButton).toBeFocused();
