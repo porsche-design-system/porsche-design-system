@@ -90,16 +90,16 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
       tag: 'div',
       properties: {
         className:
-          'flex items-start w-64 p-fluid-xs border-2 border-contrast-lower rounded-md hover:[--__checkbox-border-color:var(--color-primary)] hover:border-primary transition-colors',
+          'flex items-start w-64 border-2 border-contrast-lower rounded-md hover:border-primary transition-colors',
       },
       children: [
         {
           tag: 'label',
-          properties: { className: 'inline-flex flex-col gap-static-xs prose-text-sm cursor-pointer' },
+          properties: { className: 'inline-flex flex-col p-fluid-xs gap-static-xs prose-text-sm cursor-pointer hover:[--__p-checkbox-border-color:var(--color-primary)]' },
           children: [
             {
               tag: 'span',
-              children: ['Some wrapped custom label besides an popover'],
+              children: ['Some wrapped custom label besides a popover'],
             },
             {
               tag: 'p-checkbox',
