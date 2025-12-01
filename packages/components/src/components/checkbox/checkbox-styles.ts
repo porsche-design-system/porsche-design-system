@@ -26,7 +26,10 @@ import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
+import {
+  cssVarInternalCheckboxBorderColor,
+  cssVarInternalCheckboxScaling,
+} from '../../styles/checkbox/checkbox-css-vars';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -74,7 +77,7 @@ export const getComponentCss = (
         ...(!disabledOrLoading &&
           hoverMediaQuery({
             '&:hover,label:hover~.wrapper>&': {
-              borderColor: formStateBorderHoverColor,
+              borderColor: `var(${cssVarInternalCheckboxBorderColor}, ${formStateBorderHoverColor})`,
             },
           })),
       },
