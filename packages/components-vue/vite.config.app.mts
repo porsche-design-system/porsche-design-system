@@ -24,9 +24,6 @@ export default defineConfig({
           ]
             .join('\n')
             .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
-          bodyPartials: [partials.getBrowserSupportFallbackScript(), partials.getCookiesFallbackScript()]
-            .join('\n')
-            .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
         },
       },
     }),

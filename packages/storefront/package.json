@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.31.0",
-    "@porsche-design-system/fallbacks": "0.0.0",
     "react-syntax-highlighter": "^15.6.6",
     "next": "15.4.2",
     "algoliasearch": "^5.40.0",

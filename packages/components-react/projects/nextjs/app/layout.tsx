@@ -20,7 +20,7 @@ export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Ele
           <div id="app">{children}</div>
         </Providers>
         <NextScript />
-        <FooterPartials cdn={cdn} />
+        <FooterPartials />
       </body>
     </html>
   );

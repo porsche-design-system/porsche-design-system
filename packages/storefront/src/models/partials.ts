@@ -1,7 +1,5 @@
 export type Partials =
-  | 'getBrowserSupportFallbackScript'
   | 'getComponentChunkLinks'
-  | 'getCookiesFallbackScript'
   | 'getDSRPonyfill'
   | 'getFontFaceStyles'
   | 'getFontFaceStylesheet'

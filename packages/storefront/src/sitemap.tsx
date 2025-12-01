@@ -487,19 +487,9 @@ export const sitemap: Routes = {
         path: '/partials/introduction',
         type: 'PAGE',
       },
-      'browser-support-fallback-script': {
-        name: 'Browser Support Fallback Script',
-        path: '/partials/browser-support-fallback-script',
-        type: 'PAGE',
-      },
       'component-chunk-links': {
         name: 'Component Chunk Links',
         path: '/partials/component-chunk-links',
-        type: 'PAGE',
-      },
-      'cookies-fallback-script': {
-        name: 'Cookies Fallback Script',
-        path: '/partials/cookies-fallback-script',
         type: 'PAGE',
       },
       'dsr-ponyfill': {

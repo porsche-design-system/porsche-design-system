@@ -7,44 +7,6 @@ export const getNextPartialExample = (name: Partials) => {
 const nextExamples: {
   [partial in Partials]: string;
 } = {
-  getBrowserSupportFallbackScript: `/* ./app/layout.tsx */
-import React from 'react';
-import { preload } from 'react-dom';
-import { getBrowserSupportFallbackScript } from '@porsche-design-system/components-react/partials';
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <>
-      {children}
-      {getBrowserSupportFallbackScript({ format: 'jsx' })}
-      <!-- Alternative: Force using China CDN -->
-      {getBrowserSupportFallbackScript({ format: 'jsx', cdn: 'cn' })}
-    </>
-  );
-}`,
-  getCookiesFallbackScript: `/* ./app/layout.tsx */
-import React from 'react';
-import { preload } from 'react-dom';
-import { getCookiesFallbackScript } from '@porsche-design-system/components-react/partials';
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <>
-      {children}
-      {getCookiesFallbackScript({ format: 'jsx' })}
-      <!-- Alternative: Force using China CDN -->
-      {getCookiesFallbackScript({ format: 'jsx', cdn: 'cn' })}
-    </>
-  );
-}`,
   getDSRPonyfill: `/* ./app/layout.tsx */
 import React from 'react';
 import { preload } from 'react-dom';

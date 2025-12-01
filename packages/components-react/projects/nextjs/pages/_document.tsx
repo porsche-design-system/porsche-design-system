@@ -13,7 +13,7 @@ const Document = (): JSX.Element => {
       <body>
         <Main />
         <NextScript />
-        <FooterPartials cdn={cdn} />
+        <FooterPartials />
       </body>
     </Html>
   );
