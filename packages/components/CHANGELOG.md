@@ -60,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Dialog
 
 - ⌛Drilldown
-- ⌛Modal
+- ✅Modal
 - ⌛Flyout
 - ⌛Sheet
 - ⌛Popover
@@ -121,6 +121,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tag`:
   - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
     `error`, `info`
+- `Button`, `Link`:
+  - removed prop value `ghost`, use `secondary` instead
+- `Modal`
+  - visually changed footer slot: becomes frosted when it's sticky
+  - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) --ref-p-modal-pb` instead
+  - added css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class

@@ -15,14 +15,15 @@ import {
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,
+  dialogPaddingBlock,
   getDialogColorJssStyle,
   getDialogJssStyle,
-  getDialogStickyAreaJssStyle,
+  getDialogStickyFooterJssStyle,
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
 import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import type { ModalBackdrop } from './modal-utils';
 
 /**
@@ -34,9 +35,18 @@ const cssVariableWidth = '--p-modal-width';
 const cssVariableSpacingTop = '--p-modal-spacing-top'; // TODO: maybe --p-modal-spacing-block-start would be more precise?
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom'; // TODO: maybe --p-modal-spacing-block-end would be more precise?
 
-const safeZoneVertical = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
-const safeZoneHorizontal = `${spacingFluidLarge}`;
-export const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
+/**
+ * @css-variable {"name": "--ref-p-modal-pt", "description": "Exposes the internally used padding-top of the Modal as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Modal."}
+ */
+export const cssVarRefPaddingTop = '--ref-p-modal-pt';
+/**
+ * @css-variable {"name": "--ref-p-modal-pb", "description": "Exposes the internally used padding-bottom of the Modal as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the bottom of the Modal."}
+ */
+export const cssVarRefPaddingBottom = '--ref-p-modal-pb';
+/**
+ * @css-variable {"name": "--ref-p-modal-px", "description": "Exposes the internally used padding-inline of the Modal as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Modal."}
+ */
+export const cssVarRefPaddingInline = '--ref-p-modal-px';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -49,47 +59,17 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'contents',
         ...addImportantToEachRule({
+          [`${cssVarRefPaddingTop}`]: dialogPaddingBlock,
+          [`${cssVarRefPaddingBottom}`]: dialogPaddingBlock,
+          [`${cssVarRefPaddingInline}`]: spacingFluidLarge,
           ...dialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      // TODO: why not available to Flyout too?
-      // TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
-      '::slotted': addImportantToEachRule(
-        mergeDeep(
-          {
-            [`&(.${cssClassNameStretchToFullModalWidth})`]: {
-              display: 'block',
-              margin: `0 calc(${safeZoneHorizontal} * -1)`,
-              width: `calc(100% + calc(${safeZoneHorizontal} * 2))`,
-            },
-            ...(!hasHeader && {
-              [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-                marginBlockStart: `calc(${safeZoneVertical} * -1)`,
-              },
-            }),
-            ...(!hasFooter && {
-              [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-                marginBlockEnd: `calc(${safeZoneVertical} * -1)`,
-              },
-            }),
-          },
-          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-              borderTopLeftRadius: fullscreenValue ? 0 : borderRadiusMedium,
-              borderTopRightRadius: fullscreenValue ? 0 : borderRadiusMedium,
-            },
-            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-              borderBottomLeftRadius: fullscreenValue ? 0 : borderRadiusMedium,
-              borderBottomRightRadius: fullscreenValue ? 0 : borderRadiusMedium,
-            },
-          }))
-        )
-      ),
       slot: {
         display: 'block',
         '&:first-of-type': {
@@ -106,11 +86,7 @@ export const getComponentCss = (
           },
         }),
         ...(hasFooter && {
-          '&[name=footer]': {
-            ...getDialogStickyAreaJssStyle('footer'),
-            gridColumn: '1/-1',
-            zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-          },
+          '&[name=footer]': getDialogStickyFooterJssStyle(),
         }),
       },
       dialog: getDialogJssStyle(isOpen, backdrop),
@@ -120,7 +96,6 @@ export const getComponentCss = (
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
-      // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
