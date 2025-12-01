@@ -125,12 +125,14 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
-      <PBanner
-        description="You are currently viewing an earlier release of the Porsche Design System. Please switch to the latest
-          version."
-        open={isBannerOpen}
-        onDismiss={() => setIsBannerOpen(false)}
-      />
+      <PBanner open={isBannerOpen} onDismiss={() => setIsBannerOpen(false)}>
+        <div slot="description" className="flex flex-col gap-fluid-xs">
+          You are currently viewing an earlier release of the Porsche Design System.
+          <Link href={`https://designsystem.porsche.com/`}>
+            Switch to the latest Porsche Design System documentation.
+          </Link>
+        </div>
+      </PBanner>
 
       <PButton
         slot="header-end"
