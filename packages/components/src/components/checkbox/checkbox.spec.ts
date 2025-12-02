@@ -22,7 +22,6 @@ const initComponent = (): Checkbox => {
 
   mockEmit = vi.fn();
 
-  component.update = { emit: mockEmit } as any;
   component.change = { emit: mockEmit } as any;
   component.blur = { emit: mockEmit } as any;
   return component;
