@@ -130,6 +130,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Removed (deprecated in v3 already)
 
+- `Partials`:
+  - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
+    `@porsche-design-system/fallbacks`
+  - Removed `getDSRPonyfill()` partial
 - `Accordion`:
   - `tag` (use `heading-tag` instead)
   - `accordionChange`

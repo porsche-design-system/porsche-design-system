@@ -108,7 +108,6 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
             ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error
   build-production:
@@ -196,6 +195,5 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
             ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error

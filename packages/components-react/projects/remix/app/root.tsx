@@ -1,9 +1,8 @@
-import { type JSX, useState } from 'react';
+import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
 import type { MetaFunction } from '@remix-run/node';
 import { LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLocation, useNavigate } from '@remix-run/react';
-import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import { type JSX, useState } from 'react';
 import { HeadPartials } from '~/head-partials.server';
-import { BodyPartials } from '~/body-partials.server';
 import { routes } from '~/routes';
 
 export const meta: MetaFunction = () => [
@@ -50,7 +49,6 @@ export default function App(): JSX.Element {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
-        {BodyPartials && <BodyPartials />}
       </body>
     </html>
   );

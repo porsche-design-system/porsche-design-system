@@ -492,11 +492,6 @@ export const sitemap: Routes = {
         path: '/partials/component-chunk-links',
         type: 'PAGE',
       },
-      'dsr-ponyfill': {
-        name: 'DSR Ponyfill',
-        path: '/partials/dsr-ponyfill',
-        type: 'PAGE',
-      },
       'font-face-styles': {
         name: 'Font Face Styles',
         path: '/partials/font-face-styles',

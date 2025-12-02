@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
-import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
 import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
 import { generateFontFaceStylesPartial } from './generateFontFaceStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
@@ -67,7 +66,6 @@ const generatePartials = async (): Promise<void> => {
     generateMetaTagsAndIconLinksPartial(),
     generateIconLinksPartial(),
     generateLoaderScriptPartial(),
-    generateDSRPonyfillPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });

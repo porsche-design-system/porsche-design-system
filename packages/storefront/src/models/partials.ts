@@ -1,6 +1,5 @@
 export type Partials =
   | 'getComponentChunkLinks'
-  | 'getDSRPonyfill'
   | 'getFontFaceStyles'
   | 'getFontFaceStylesheet'
   | 'getFontLinks'
