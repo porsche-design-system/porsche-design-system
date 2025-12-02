@@ -1,0 +1,52 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { inputWeekStorySlots } from '@/app/components/input-week/input-week.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { inputWeekExampleForm } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Input Week - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Week component.',
+};
+
+# Input Week <ComponentStatus tagName="p-input-week"></ComponentStatus>
+
+<TableOfContents headings={['Form', 'Slots']} />
+
+## Form
+
+The `p-input-week` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similar to a native `<input type="week" />`, automatically managing
+its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
+
+<ComponentExample codeSample={inputWeekExampleForm} />
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
+example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
+to avoid being mistaken for a button.
+
+If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
+`--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+<ComponentStory story={inputWeekStorySlots} />

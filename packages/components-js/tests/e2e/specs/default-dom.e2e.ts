@@ -15,7 +15,8 @@ for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) 
   test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {
     test.fixme(browserName === 'firefox' && tagName === 'p-carousel');
     test.skip(
-      ['firefox', 'webkit'].includes(browserName) && ['p-input-date', 'p-input-time'].includes(tagName),
+      ['firefox', 'webkit'].includes(browserName) &&
+        ['p-input-date', 'p-input-month', 'p-input-week', 'p-input-time'].includes(tagName),
       'Skipping due to differing native date/time picker rendering in Firefox and Safari'
     );
 

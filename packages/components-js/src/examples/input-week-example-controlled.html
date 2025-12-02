@@ -1,0 +1,17 @@
+<p-input-week name="some-name" label="Some Label"></p-input-week>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const inputWeek = document.querySelector('p-input-week');
+
+  inputWeek.addEventListener('input', (e) => {
+    e.target.value = e.detail.target.value;
+    setDebugText(e.detail.target.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>

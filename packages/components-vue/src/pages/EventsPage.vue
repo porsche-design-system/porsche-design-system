@@ -16,6 +16,8 @@
     PTabsItem,
     PTextFieldWrapper,
     PInputDate,
+    PInputMonth,
+    PInputWeek,
     PInputEmail,
     PInputNumber,
     PInputPassword,
@@ -38,6 +40,12 @@
     InputDateInputEventDetail,
     InputDateBlurEventDetail,
     InputDateChangeEventDetail,
+    InputMonthInputEventDetail,
+    InputMonthBlurEventDetail,
+    InputMonthChangeEventDetail,
+    InputWeekInputEventDetail,
+    InputWeekBlurEventDetail,
+    InputWeekChangeEventDetail,
     InputEmailInputEventDetail,
     InputEmailBlurEventDetail,
     InputEmailChangeEventDetail,
@@ -83,6 +91,14 @@
   const inputDateValue = ref('');
   const inputDateBlurCounter = ref(0);
   const inputDateChangeCounter = ref(0);
+
+  const inputMonthValue = ref('');
+  const inputMonthBlurCounter = ref(0);
+  const inputMonthChangeCounter = ref(0);
+
+  const inputWeekValue = ref('');
+  const inputWeekBlurCounter = ref(0);
+  const inputWeekChangeCounter = ref(0);
 
   const inputEmailValue = ref('');
   const inputEmailBlurCounter = ref(0);
@@ -147,6 +163,20 @@
   };
   const onInputDateBlur = (_: InputDateBlurEventDetail) => inputDateBlurCounter.value++;
   const onInputDateChange = (_: InputDateChangeEventDetail) => inputDateChangeCounter.value++;
+
+  // PInputMonth
+  const onInputMonthInput = (e: InputMonthInputEventDetail) => {
+    inputMonthValue.value = (e.target as HTMLInputElement).value;
+  };
+  const onInputMonthBlur = (_: InputMonthBlurEventDetail) => inputMonthBlurCounter.value++;
+  const onInputMonthChange = (_: InputMonthChangeEventDetail) => inputMonthChangeCounter.value++;
+
+  // PInputWeek
+  const onInputWeekInput = (e: InputWeekInputEventDetail) => {
+    inputWeekValue.value = (e.target as HTMLInputElement).value;
+  };
+  const onInputWeekBlur = (_: InputWeekBlurEventDetail) => inputWeekBlurCounter.value++;
+  const onInputWeekChange = (_: InputWeekChangeEventDetail) => inputWeekChangeCounter.value++;
 
   // PInputEmail
   const onInputEmailInput = (e: InputEmailInputEventDetail) => {
@@ -299,6 +329,34 @@
     <p>Value: {{ inputDateValue }}</p>
     <p>Blur: {{ inputDateBlurCounter }}</p>
     <p>Change: {{ inputDateChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputMonth
+      v-model="inputMonthValue"
+      @input="onInputMonthInput"
+      @blur="onInputMonthBlur"
+      @change="onInputMonthChange"
+      name="month"
+      label="Month Input"
+    />
+    <p>Value: {{ inputMonthValue }}</p>
+    <p>Blur: {{ inputMonthBlurCounter }}</p>
+    <p>Change: {{ inputMonthChangeCounter }}</p>
+  </div>
+
+  <div class="playground light">
+    <PInputWeek
+      v-model="inputWeekValue"
+      @input="onInputWeekInput"
+      @blur="onInputWeekBlur"
+      @change="onInputWeekChange"
+      name="week"
+      label="Week Input"
+    />
+    <p>Value: {{ inputWeekValue }}</p>
+    <p>Blur: {{ inputWeekBlurCounter }}</p>
+    <p>Change: {{ inputWeekChangeCounter }}</p>
   </div>
 
   <div class="playground light">
