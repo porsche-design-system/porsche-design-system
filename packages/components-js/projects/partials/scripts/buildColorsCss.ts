@@ -1,3 +1,4 @@
+import * as fs from 'node:fs';
 import {
   colorBackdropLight,
   colorCanvasLight,
@@ -33,7 +34,6 @@ import {
   colorWarningLowLight,
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
-import fs from 'fs';
 
 // TODO: Share this from one place and also use in tailwindcss theme
 const colors = `/* a11y */
@@ -78,6 +78,8 @@ const colors = `/* a11y */
 
 export const buildColorsCss = () => {
   const styles = `
+${colors}
+
 .light {
   ${colors}
 }
@@ -90,26 +92,11 @@ export const buildColorsCss = () => {
   }
 }`;
 
-  const stylesPrefixed = `
-.p-light {
-  ${colors}
-}
-.p-dark {
-  ${colors}
-}
-.p-auto {
-  @media (prefers-color-scheme: dark) {
-    ${colors}
-  }
-}`;
-
   const targetPath = './dist';
   const targetFile = 'colors.css';
-  const targetFilePrefixed = 'colors-prefixed.css';
 
   fs.mkdirSync(targetPath, { recursive: true });
   fs.writeFileSync(`./${targetPath}/${targetFile}`, styles);
-  fs.writeFileSync(`./${targetPath}/${targetFilePrefixed}`, stylesPrefixed);
 };
 
 buildColorsCss();

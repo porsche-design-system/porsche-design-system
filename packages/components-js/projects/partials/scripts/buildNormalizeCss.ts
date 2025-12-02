@@ -1,9 +1,10 @@
+import * as fs from 'node:fs';
 import { getMinifiedCss } from '@porsche-design-system/shared';
 import { fontFamily, fontLineHeight } from '@porsche-design-system/styles';
-import fs from 'fs';
 import type { Styles } from 'jss';
 
-export const buildNormalizeCss = (): string => {
+// TODO: Change to plain css template string
+export const buildNormalizeCss = () => {
   const normalizeStyles: Styles = {
     '@global': {
       'html, body': {

@@ -1,8 +1,9 @@
 // TODO: Export this from assets package correctly
-import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/assets/projects/font-face/scripts/fontFaceStyles';
-import fs from 'fs';
 
-export const buildFontFaceCss = (): string => {
+import * as fs from 'node:fs';
+import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/assets/projects/font-face/scripts/fontFaceStyles';
+
+export const buildFontFaceCss = () => {
   const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: 'com' });
   const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: 'cn' });
 
