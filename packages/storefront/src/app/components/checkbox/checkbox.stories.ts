@@ -95,7 +95,7 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
       children: [
         {
           tag: 'label',
-          properties: { className: 'inline-flex flex-col p-fluid-xs gap-static-xs prose-text-sm cursor-pointer hover:[--__p-checkbox-border-color:var(--color-primary)]' },
+          properties: { className: 'inline-flex flex-col p-fluid-xs gap-static-xs prose-text-sm cursor-pointer hover:[--p-checkbox-border-color:var(--color-primary)]' },
           children: [
             {
               tag: 'span',
