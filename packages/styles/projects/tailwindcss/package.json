@@ -18,14 +18,16 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:package",
+    "build": "yarn clean:build && yarn build:package && yarn build:package:cn",
     "build:package": "tsx scripts/build.ts",
+    "build:package:cn": "tsx scripts/buildCn.ts",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/tokens": "0.0.0"
+    "@porsche-design-system/tokens": "0.0.0",
+    "@porsche-design-system/global-styles": "0.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"

@@ -8,7 +8,8 @@
   "exports": {
     ".": {
       "style": "./dist/index.css"
-    }
+    },
+    "./*": "./dist/*"
   },
   "sideEffects": false,
   "files": [

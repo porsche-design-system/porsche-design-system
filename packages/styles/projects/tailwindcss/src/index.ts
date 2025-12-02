@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import {
   blurFrosted,
   borderRadiusLg,
@@ -114,7 +115,17 @@ import {
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
 
-export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
+const foucCssPath = require.resolve('@porsche-design-system/global-styles/fouc.css');
+const fontFaceCssPath = require.resolve('@porsche-design-system/global-styles/font-face.css');
+const fontFaceCnCssPath = require.resolve('@porsche-design-system/global-styles/font-face.cn.css');
+const foucCss = fs.readFileSync(foucCssPath, 'utf-8');
+const fontFaceCss = fs.readFileSync(fontFaceCssPath, 'utf-8');
+const fontFaceCnCss = fs.readFileSync(fontFaceCnCssPath, 'utf-8');
+
+export const getTailwindcssTheme = (cdn: 'auto' | 'cn' = 'auto') => `${foucCss}
+${cdn === 'cn' ? fontFaceCnCss : fontFaceCss}
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Reset */

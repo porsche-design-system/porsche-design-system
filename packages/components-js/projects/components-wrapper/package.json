@@ -68,13 +68,12 @@
       "import": "./ag-grid/esm/index.mjs",
       "default": "./ag-grid/cjs/index.cjs"
     },
-    "./tailwindcss": {
-      "style": "./tailwindcss/index.css"
-    },
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
     },
+    "./tailwindcss": "./tailwindcss/index.css",
+    "./tailwindcss/cn": "./tailwindcss/cn/index.css",
     "./index.css": "./global-styles/index.css",
     "./index": "./global-styles/index.css",
     "./cn": "./global-styles/cn/index.css",
