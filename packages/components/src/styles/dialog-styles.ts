@@ -8,12 +8,10 @@ import {
   spacingStaticMedium,
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { colors, cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
+import { colors, cssVariableTransitionDuration, dismissButtonJssStyle, getTransition, motionDurationMap } from './';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
-
-export const headingTags = 'h1,h2,h3,h4,h5,h6';
 
 export const dialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
@@ -113,13 +111,17 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
   };
 };
 
-export const dialogPaddingBlock = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+export const dialogBorderRadius = borderRadiusLarge;
+export const dialogPaddingTop = spacingFluidMedium;
+export const dialogPaddingBottom = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+export const dialogPaddingInline = spacingFluidLarge;
 
 export const dialogGridJssStyle: JssStyle = {
   display: 'grid',
   gridTemplate: `auto/${spacingFluidSmall} minmax(0,1fr) ${spacingFluidSmall}`,
   gap: `${spacingFluidMedium} calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
-  paddingBlock: dialogPaddingBlock,
+  paddingTop: dialogPaddingTop,
+  paddingBottom: dialogPaddingBottom,
   alignContent: 'flex-start',
 };
 
@@ -153,46 +155,79 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer'): JssStyle => {
-  const scrollShadowColor = 'rgba(204, 204, 204, 0.35)';
-  // const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
-  const isAreaHeader = area === 'header';
-  const boxShadowDimension = `0 ${isAreaHeader ? 5 : -5}px 10px`;
-
+export const getDialogDismissButtonJssStyle = (): JssStyle => {
   return {
+    ...dismissButtonJssStyle,
+    gridArea: '1/3',
+    zIndex: 4, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
-    [isAreaHeader ? 'top' : 'bottom']: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
-    transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers (e.g. Firefox) caused by float value of sticky top position
-    padding: `${spacingStaticMedium} ${spacingFluidLarge}`,
-    marginBlock: `${
-      isAreaHeader ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)` : `-${spacingStaticMedium}`
-    } -${spacingStaticMedium}`,
-    background: canvasColor,
-    clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
-    transition: `${getTransition('box-shadow')}`,
-    '&[data-stuck]': {
-      boxShadow: `${scrollShadowColor} ${boxShadowDimension}`,
+    top: spacingFluidSmall,
+    marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSmall})`,
+    marginInlineEnd: spacingFluidSmall,
+    placeSelf: 'flex-start flex-end',
+  };
+};
+
+export const getSlotJssStyle = (): JssStyle => {
+  return {
+    display: 'block',
+    '&:first-of-type': {
+      gridRowStart: 1,
     },
   };
 };
 
-export const getDialogStickyFooterJssStyle = (): JssStyle => {
+export const getSlotHeaderJssStyle = (): JssStyle => {
+  const paddingTop = dialogPaddingTop;
+  const paddingBottom = spacingStaticMedium;
+
   return {
     gridColumn: '1/-1',
     zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
+    top: 0, // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
+    marginBlock: `calc(-1 * ${paddingTop}) calc(-1 * ${paddingBottom})`,
+    padding: `${paddingTop} ${dialogPaddingInline} ${paddingBottom}`,
+    background: `linear-gradient(180deg,${canvasColor} 0%,${canvasColor} 80%,transparent 100%)`,
+  };
+};
+
+export const getSlotMainJssStyle = (): JssStyle => {
+  return {
+    gridColumn: '2/3',
+    zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+  };
+};
+
+export const getSlotFooterJssStyle = (): JssStyle => {
+  const paddingBlock = `calc(${dialogPaddingBottom} - ${dialogBorderRadius})`;
+  const offset = `calc(${paddingBlock} / 2)`;
+
+  return {
+    gridColumn: '1/-1',
+    zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    position: 'sticky',
     bottom: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
-    marginBlock: `calc(-2 * ${spacingStaticMedium})`,
-    padding: `calc(2 * ${spacingStaticMedium}) ${spacingFluidLarge}`,
-    background: `linear-gradient(0deg,hsla(from ${canvasColor} h s l / 1) 0%,hsla(from ${canvasColor} h s l / 1) 20%,hsla(from ${canvasColor} h s l / 0) 80%)`,
+    marginBlock: `calc(-1 * ${paddingBlock})`,
+    padding: `${paddingBlock} ${dialogPaddingInline}`,
+    background: `linear-gradient(0deg,${canvasColor} 0%,${canvasColor} 20%,transparent 80%)`,
     '&[data-stuck]::after': {
       content: '""',
       zIndex: -1,
       position: 'absolute',
-      inset: `${spacingStaticMedium} calc(${spacingFluidLarge} - ${spacingStaticMedium})`,
-      borderRadius: borderRadiusLarge,
+      inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
       background: frostedColor,
+      borderRadius: borderRadiusLarge,
       ...frostedGlassStyle,
     },
+  };
+};
+
+export const getSlotSubFooterJssStyle = (): JssStyle => {
+  return {
+    gridColumn: '1/-1',
+    zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    paddingInline: dialogPaddingInline,
+    backgroundColor: canvasColor,
   };
 };

@@ -146,7 +146,6 @@ export class Modal {
       this.open,
       this.backdrop,
       this.fullscreen,
-      this.dismissButton,
       this.hasHeader,
       this.hasFooter
     );

@@ -1,20 +1,26 @@
-import { spacingFluidLarge, spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
+  dialogBorderRadius,
   dialogGridJssStyle,
   dialogHostJssStyle,
-  dialogPaddingBlock,
+  dialogPaddingBottom,
+  dialogPaddingInline,
+  dialogPaddingTop,
   getDialogColorJssStyle,
+  getDialogDismissButtonJssStyle,
   getDialogJssStyle,
-  getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
+  getSlotFooterJssStyle,
+  getSlotHeaderJssStyle,
+  getSlotJssStyle,
+  getSlotMainJssStyle,
+  getSlotSubFooterJssStyle,
 } from '../../styles/dialog-styles';
 import { getCss } from '../../utils';
 import type { FlyoutBackdrop, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
@@ -28,12 +34,13 @@ const cssVariableWidth = '--p-flyout-width';
  */
 export const cssVarRefPaddingTop = '--ref-p-flyout-pt';
 /**
+ * @css-variable {"name": "--ref-p-flyout-pb", "description": "Exposes the internally used padding-bottom of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the bottom of the Flyout."}
+ */
+export const cssVarRefPaddingBottom = '--ref-p-flyout-pb';
+/**
  * @css-variable {"name": "--ref-p-flyout-px", "description": "Exposes the internally used padding-inline of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Flyout."}
  */
 export const cssVarRefPaddingInline = '--ref-p-flyout-px';
-
-// TODO: we shouldn't expose --p-flyout-max-width
-const cssVariableMaxWidth = '--p-flyout-max-width';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -50,58 +57,37 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        display: 'contents',
         ...addImportantToEachRule({
+          [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
+          [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
+          [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
           ...dialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          [`${cssVarRefPaddingTop}`]: dialogPaddingBlock,
-          [`${cssVarRefPaddingInline}`]: spacingFluidLarge,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       slot: {
-        display: 'block',
-        '&:first-of-type': {
-          gridRowStart: 1,
-        },
-        '&:not([name])': {
-          gridColumn: '2/3',
-          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-          ...(isFooterFixed &&
-            hasHeader && {
-              gridRow: 2,
-            }),
-        },
+        ...getSlotJssStyle(),
+        '&:not([name])': getSlotMainJssStyle(),
         ...(hasHeader && {
           '&[name=header]': {
-            ...getDialogStickyAreaJssStyle('header'),
-            gridColumn: '1/-1',
-            zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-            ...(isFooterFixed && {
-              gridRow: 1,
-            }),
-            marginBlockStart: 0,
+            ...getSlotHeaderJssStyle(),
+            ...(isPositionStart
+              ? {
+                  borderStartEndRadius: dialogBorderRadius,
+                }
+              : {
+                  borderStartStartRadius: dialogBorderRadius,
+                }),
           },
         }),
         ...(hasFooter && {
-          '&[name=footer]': {
-            ...getDialogStickyAreaJssStyle('footer'),
-            gridColumn: '1/-1',
-            zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-            ...(isFooterFixed && {
-              gridRow: hasHeader ? 3 : 2,
-              ...(!hasSubFooter && {
-                marginBlockEnd: '.3px', // lets the footer shadow disappear when flyout is scrolled to the bottom
-              }),
-            }),
-          },
+          '&[name=footer]': getSlotFooterJssStyle(),
         }),
         ...(hasSubFooter && {
-          '&[name=sub-footer]': {
-            gridColumn: '2/3',
-            zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-          },
+          '&[name=sub-footer]': getSlotSubFooterJssStyle(),
         }),
       },
       dialog: getDialogJssStyle(isOpen, backdrop),
@@ -121,33 +107,20 @@ export const getComponentCss = (
       ...getDialogColorJssStyle(),
       width: `var(${cssVariableWidth},auto)`,
       minWidth: '320px',
-      maxWidth: `var(${cssVariableMaxWidth},1180px)`,
-      ...(hasHeader && {
-        paddingBlockStart: 0,
-      }),
-      ...(isFooterFixed &&
-        !hasSubFooter && {
-          paddingBlockEnd: 0,
-        }),
+      maxWidth: '100vw',
+      ...(isPositionStart
+        ? {
+            borderStartEndRadius: dialogBorderRadius,
+            borderEndEndRadius: dialogBorderRadius,
+          }
+        : {
+            borderStartStartRadius: dialogBorderRadius,
+            borderEndStartRadius: dialogBorderRadius,
+          }),
       ...(isFooterFixed && {
         gridTemplateRows: hasHeader ? 'auto 1fr auto' : '1fr',
-        '&::before': {
-          content: '""',
-          minHeight: hasHeader ? '100dvh' : `calc(100dvh - ${dialogPaddingBlock})`,
-          gridArea: `1/1/${hasHeader ? '4' : '3'}/-1`,
-          pointerEvents: 'none',
-        },
       }),
     },
-    dismiss: {
-      ...dismissButtonJssStyle,
-      gridArea: '1/3',
-      zIndex: 4, // ensures dismiss button is above everything
-      position: 'sticky',
-      insetBlockStart: spacingFluidSmall,
-      insetInlineEnd: spacingFluidSmall,
-      marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
-      placeSelf: 'flex-start flex-end',
-    },
+    dismiss: getDialogDismissButtonJssStyle(),
   });
 };
