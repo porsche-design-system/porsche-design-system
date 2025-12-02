@@ -63,6 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const basePath = getBasePath();
+
   return (
     <html lang="en" className="auto">
       <head>

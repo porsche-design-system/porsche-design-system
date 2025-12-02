@@ -20,6 +20,14 @@ test.describe('markdown', async () => {
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
       );
+
+      await page.evaluate(() => {
+        const select = document.querySelector('div[slot="sidebar-start"] footer p-select');
+        if (select) {
+          // Hide version switch to avoid VRT update when new versions are released
+          (select as HTMLSelectElement).style.display = 'none';
+        }
+      });
       const screenshot = await page.screenshot({ fullPage: true });
       expect(screenshot).toMatchSnapshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
     });
@@ -38,6 +46,13 @@ test.describe('markdown', async () => {
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
+        await page.evaluate(() => {
+          const select = document.querySelector('div[slot="sidebar-start"] footer p-select');
+          if (select) {
+            // Hide version switch to avoid VRT update when new versions are released
+            (select as HTMLSelectElement).style.display = 'none';
+          }
+        });
         await closeSidebars(page);
 
         const screenshot = await page.screenshot({ fullPage: true });
