@@ -1,7 +1,5 @@
-// TODO: Export this from assets package correctly
-
 import * as fs from 'node:fs';
-import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/assets/projects/font-face/scripts/fontFaceStyles';
+import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/font-face/scripts/fontFaceStyles';
 
 export const buildFontFaceCss = () => {
   const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: 'com' });

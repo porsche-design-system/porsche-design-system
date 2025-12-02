@@ -1,0 +1,38 @@
+{
+  "name": "@porsche-design-system/css-variables",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn build:lib",
+    "build:lib": "tsup ./src/index.ts --format esm,cjs --dts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "*",
+    "tsup": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}
