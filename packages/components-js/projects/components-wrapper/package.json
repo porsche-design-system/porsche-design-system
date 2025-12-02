@@ -39,6 +39,7 @@
     "./package.json": "./package.json",
     ".": {
       "types": "./esm/index.d.ts",
+      "style": "./global-styles/index.css",
       "import": "./esm/index.mjs",
       "default": "./cjs/index.cjs"
     },
@@ -73,6 +74,21 @@
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
-    }
-  }
+    },
+    "./index.css": "./global-styles/index.css",
+    "./index": "./global-styles/index.css",
+    "./cn/index.css": "./global-styles/cn/index.css",
+    "./cn/index": "./global-styles/cn/index.css",
+    "./font-face.css": "./global-styles/font-face.css",
+    "./font-face": "./global-styles/font-face.css",
+    "./font-face.cn.css": "./global-styles/font-face.cn.css",
+    "./font-face.cn": "./global-styles/font-face.cn.css",
+    "./fouc.css": "./global-styles/fouc.css",
+    "./fouc": "./global-styles/fouc.css",
+    "./normalize.css": "./global-styles/normalize.css",
+    "./normalize": "./global-styles/normalize.css",
+    "./variables.css": "./global-styles/variables.css",
+    "./variables": "./global-styles/variables.css"
+  },
+  "style": "./global-styles/index.css"
 }

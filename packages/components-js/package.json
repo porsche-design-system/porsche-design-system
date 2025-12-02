@@ -29,6 +29,7 @@
     "build:styles": "TARGET=./dist/components-wrapper/styles && rm -rf $TARGET && cp -r ../utilities/projects/utilities/dist $TARGET",
     "build:ag-grid": "TARGET=./dist/components-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build:tailwindcss": "TARGET=./dist/components-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
+    "build:global-styles": "TARGET=./dist/components-wrapper/global-styles && rm -rf $TARGET && cp -r ../styles/projects/global-styles/dist $TARGET",
     "generateVRTPages": "tsx scripts/generateVRTPages.ts",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
     "test:unit": "yarn test:unit:components-manager-cli && yarn test:unit:components-manager-core && yarn test:unit:components-js && yarn test:unit:jsdom-polyfill && yarn test:unit:partials",
