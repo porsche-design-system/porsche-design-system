@@ -1,10 +1,7 @@
 export type Partials =
   | 'getComponentChunkLinks'
-  | 'getFontFaceStyles'
-  | 'getFontFaceStylesheet'
   | 'getFontLinks'
   | 'getIconLinks'
-  | 'getInitialStyles'
   | 'getLoaderScript'
   | 'getMetaTagsAndIconLinks';
 export type PartialLocation = 'head' | 'body';

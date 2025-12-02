@@ -16,10 +16,6 @@ export default defineConfig({
       inject: {
         data: {
           headPartials: [
-            partials.getInitialStyles({ prefix: ['', 'my-prefix'] }),
-            partials
-              .getFontFaceStyles()
-              .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
             partials.getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
           ]
             .join('\n')

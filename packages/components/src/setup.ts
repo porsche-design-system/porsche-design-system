@@ -1,6 +1,5 @@
-import { validatePartialUsage } from './utils/validation/partials/validatePartialUsage';
-import { injectGlobalStyle, validateVersions } from './utils';
 import type { PorscheDesignSystem } from './types';
+import { validateVersions } from './utils';
 
 export default (): void => {
   if (process.env.NODE_ENV !== 'development') {
@@ -8,7 +7,5 @@ export default (): void => {
     (document.porscheDesignSystem[ROLLUP_REPLACE_VERSION as keyof PorscheDesignSystem] as any).readyResolve(); // provided via load() of components-js package
   }
 
-  injectGlobalStyle();
-  validatePartialUsage();
   validateVersions();
 };

@@ -12,13 +12,7 @@ import {
 
 import type { Route } from './+types/root';
 import './app.css';
-import {
-  getFontFaceStyles,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
+import { getFontLinks, getIconLinks, getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
 import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
 import { useState } from 'react';
 import { routes } from '~/routes';
@@ -28,8 +22,6 @@ export async function loader() {
     headPartials: (
       <>
         {getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'React Router' })}
-        {getInitialStyles({ format: 'jsx' })}
-        {getFontFaceStyles({ format: 'jsx' })}
         {getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold', 'bold'] })}
         {getIconLinks({ format: 'jsx', icons: ['arrow-head-right', 'arrow-head-left'] })}
         {/*{getComponentChunkLinks({ format: 'jsx', components: ['button', 'link'] })}*/}

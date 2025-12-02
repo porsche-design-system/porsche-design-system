@@ -1,12 +1,7 @@
 import { type Page } from '@playwright/test';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  getComponentChunkLinks,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-} from '@porsche-design-system/components-js/partials';
+import { getComponentChunkLinks, getFontLinks, getIconLinks } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import { type Theme } from '@porsche-design-system/styles';
@@ -200,11 +195,8 @@ export const setContentWithDesignSystem = async (
 
   const localhost = 'http://localhost:3001';
   const headPartials = [
-    getInitialStyles(),
     getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
     getIconLinks({ icons: [...ICON_NAMES] }),
-    // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
-    // getFontFaceStylesheet(),
     '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">',
     getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
   ]

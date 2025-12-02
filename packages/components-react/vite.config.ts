@@ -1,4 +1,4 @@
-import { getFontFaceStyles, getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
+import { getFontLinks } from '@porsche-design-system/components-react/partials';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
@@ -10,14 +10,7 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {
-          headPartials: [
-            getInitialStyles({ prefix: ['', 'my-prefix'] }),
-            getFontFaceStyles().replace(
-              /https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g,
-              'http://localhost:3001'
-            ),
-            getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
-          ]
+          headPartials: [getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] })]
             .join('\n')
             .replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
         },
