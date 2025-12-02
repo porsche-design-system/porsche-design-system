@@ -261,11 +261,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       }
 
       if (!newFileContent.includes('export const InputBase:')) {
-        // radio-group-option uses a label component without allowing slots
+        // radio-group-option uses a label component
         if (tagName === 'p-radio-group-option') {
           newFileContent = newFileContent
             .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
-            .replace(/e\.stopImmediatePropagation\(\);/, '');
+            .replace(/e\.stopImmediatePropagation\(\);/, '')
+            .replace(
+              /hasNamedSlot\(this\.props\.host, '(start|end)'\)/g,
+              `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+            );
         } else {
           newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,
