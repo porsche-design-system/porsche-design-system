@@ -2,7 +2,6 @@ import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
-  getActiveElementTagNameInShadowRoot,
   getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
@@ -451,14 +450,13 @@ test.describe('focus state', () => {
   test('should focus input-tel when label is clicked', async ({ page }) => {
     await initInputTel(page, { props: { name: 'some-name', label: 'Some label' } });
     const label = getLabel(page);
-    const inputEmail = getInputTel(page);
+    const inputTel = getInputTel(page);
 
-    await addEventListener(inputEmail, 'focus');
-    await expect(inputEmail).not.toBeFocused();
+    await expect(inputTel).not.toBeFocused();
 
     await label.click();
     await waitForStencilLifecycle(page);
-    await expect(inputEmail).toBeFocused();
+    await expect(inputTel).toBeFocused();
   });
 
   test('should focus input-tel when host is focused', async ({ page }) => {
@@ -466,16 +464,13 @@ test.describe('focus state', () => {
     const host = getHost(page);
     const inputTel = getInputTel(page);
 
-    await addEventListener(inputTel, 'focus');
-    expect((await getEventSummary(inputTel, 'focus')).counter).toBe(0);
-
+    await expect(inputTel).not.toBeFocused();
     // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
     // await expect(inputTelWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputTel, 'focus')).counter).toBe(1);
-    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
+    await expect(inputTel).toBeFocused();
     // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
     // await expect(inputTelWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
@@ -483,20 +478,20 @@ test.describe('focus state', () => {
   test('should keep focus when switching to loading state', async ({ page }) => {
     await initInputTel(page, { props: { name: 'Some name', label: 'Some label' } });
     const host = getHost(page);
-    const inputEmail = getInputTel(page);
+    const inputTel = getInputTel(page);
 
     await expect(host).not.toBeFocused();
-    await expect(inputEmail).not.toBeFocused();
+    await expect(inputTel).not.toBeFocused();
 
     await page.keyboard.press('Tab');
 
     await expect(host).toBeFocused();
-    await expect(inputEmail).toBeFocused();
+    await expect(inputTel).toBeFocused();
 
     await setProperty(host, 'loading', true);
 
     await expect(host).toBeFocused();
-    await expect(inputEmail).toBeFocused();
+    await expect(inputTel).toBeFocused();
   });
 });
 
