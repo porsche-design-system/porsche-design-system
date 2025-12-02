@@ -2,7 +2,6 @@ import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
-  getActiveElementTagNameInShadowRoot,
   getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
@@ -455,12 +454,10 @@ test.describe('focus state', () => {
     const label = getLabel(page);
     const inputDate = getInputDate(page);
 
-    await addEventListener(inputDate, 'focus');
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(0);
+    await expect(inputDate).not.toBeFocused();
 
     await label.click();
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(1);
+    await expect(inputDate).toBeFocused();
   });
 
   test('should focus input-date when host is focused', async ({ page }) => {
@@ -468,16 +465,13 @@ test.describe('focus state', () => {
     const host = getHost(page);
     const inputDate = getInputDate(page);
 
-    await addEventListener(inputDate, 'focus');
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(0);
-
+    await expect(inputDate).not.toBeFocused();
     // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
     // await expect(inputDateWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(1);
-    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
+    await expect(inputDate).toBeFocused();
     // Test skipped because Playwright can only evaluate RGB colors, not RGBA.
     // await expect(inputDateWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });

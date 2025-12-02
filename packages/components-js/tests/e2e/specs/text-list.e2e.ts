@@ -30,23 +30,15 @@ const initTextList = (page: Page): Promise<void> => {
 const getHost = (page: Page) => page.locator('p-text-list').first();
 
 test.describe('lifecycle', () => {
-  test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {
+  test('should change prop without any unnecessary round trips', async ({ page }) => {
     await initTextList(page);
     const host = getHost(page);
-    expect(await getProperty(host, 'theme')).toBe('light');
 
-    await setProperty(host, 'theme', 'dark');
+    await setProperty(host, 'type', 'numbered');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
     expect(status.componentDidUpdate['p-text-list'], 'componentDidUpdate: p-text-list').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(await getProperty(host, 'theme')).toBe('dark');
-
-    await setProperty(host, 'theme', 'light');
-    await waitForStencilLifecycle(page);
-    const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-text-list'], 'componentDidUpdate: p-text-list').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
-    expect(await getProperty(host, 'theme')).toBe('light');
+    expect(await getProperty(host, 'type')).toBe('numbered');
   });
 });
