@@ -95,7 +95,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Divider`: value `contrast-lower` for prop `color`
+- `Divider`: Value `contrast-lower` for prop `color`
+- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
+  custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Checkbox`, `Radio Button Group`: New slots `start` and `end` to add custom content (e.g. `Popover`) at the start/end of the `label`
+  element ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 
 ### Changed
 
