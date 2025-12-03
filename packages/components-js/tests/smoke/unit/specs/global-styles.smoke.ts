@@ -66,4 +66,36 @@ describe('global styles package content', () => {
       expect(content).toMatchSnapshot();
     });
   }
+
+  test('index files contain all individual parts', () => {
+    const mainIndexPath = requireNode.resolve('@porsche-design-system/components-js/index.css');
+    const mainIndexContent = fs.readFileSync(mainIndexPath, 'utf8');
+
+    const cnIndexPath = requireNode.resolve('@porsche-design-system/components-js/cn/index.css');
+    const cnIndexContent = fs.readFileSync(cnIndexPath, 'utf8');
+
+    // Check / index
+    [
+      '@porsche-design-system/components-js/font-face.css',
+      '@porsche-design-system/components-js/fouc.css',
+      '@porsche-design-system/components-js/normalize.css',
+      '@porsche-design-system/components-js/variables.css',
+    ].forEach((path) => {
+      const resolved = requireNode.resolve(path);
+      const content = fs.readFileSync(resolved, 'utf8');
+      expect(mainIndexContent).toContain(content);
+    });
+
+    // Check /cn index
+    [
+      '@porsche-design-system/components-js/cn/font-face.css',
+      '@porsche-design-system/components-js/fouc.css',
+      '@porsche-design-system/components-js/normalize.css',
+      '@porsche-design-system/components-js/variables.css',
+    ].forEach((path) => {
+      const resolved = requireNode.resolve(path);
+      const content = fs.readFileSync(resolved, 'utf8');
+      expect(cnIndexContent).toContain(content);
+    });
+  });
 });
