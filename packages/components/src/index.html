@@ -489,6 +489,121 @@
           <p-text>Some content</p-text>
         </p-popover>
       </div>
+      <div data-card="drilldown">
+        <nav aria-label="Main">
+          <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Basic)</p-button>
+          <p-drilldown>
+            <p-drilldown-item identifier="id-1" label="Some Label (1)">
+              <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
+                <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+                <p-drilldown-link>
+                  <a href="#">Some anchor (1-1)</a>
+                </p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-1-2" label="Some Label (1-2)">
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-item identifier="id-1-2-1" label="Some Label (1-2-1)">
+                  <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
+                  <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
+                </p-drilldown-item>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2" label="Some Label (2)">
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-3" label="Some Label (3)">
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-4" label="Some Label (4)">
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-5" label="Some Label (5)">
+              <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
+            </p-drilldown-item>
+          </p-drilldown>
+        </nav>
+
+        <nav aria-label="Main">
+          <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Custom Layout)</p-button>
+          <p-drilldown class="[--p-drilldown-grid-template:repeat(5,auto)_minmax(0,1fr)/auto]" active-identifier="id-1">
+            <p-drilldown-item identifier="id-1" label="Motorsport" class="[--p-drilldown-grid-template:auto/repeat(2,minmax(0,1fr))] [--p-drilldown-gap:0px_16px]">
+              <p-drilldown-item identifier="id-1-1" label="718">
+                <p-model-signature slot="header" model="718"></p-model-signature>
+                <p-button-tile slot="button" label="Some label" description="718" weight="semi-bold" compact="true" aspectRatio="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                  <img src="/assets/interior.jpg" alt="" />
+                </p-button-tile>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-1-2" label="911">
+                <p-model-signature slot="header" model="911"></p-model-signature>
+                <p-button-tile slot="button" label="Some label" description="911" weight="semi-bold" compact="true" aspectRatio="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                  <img src="/assets/interior.jpg" alt="" />
+                </p-button-tile>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#" aria-current="page">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2" label="Some label">
+              <p-drilldown-item identifier="id-2-1" label="Some label">
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-2-2" label="Some label">
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-3" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-4" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-5" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-link href="#" variant="secondary" icon="external" class="self-end">Some external anchor</p-link>
+          </p-drilldown>
+        </nav>
+      </div>
       <div data-card="display">
         <p-display tag="h3" size="large">ABC</p-display>
         <p-display tag="h3" size="medium">ABC</p-display>
@@ -1075,6 +1190,11 @@
           e.target.open = false;
         })
       }
+
+      for (const el of document.querySelectorAll("p-drilldown")) {
+        el.addEventListener('update', (e) => e.target.activeIdentifier = e.detail.activeIdentifier);
+      }
+
     </script>
 
   </body>
