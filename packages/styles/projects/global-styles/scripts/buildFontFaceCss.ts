@@ -6,12 +6,13 @@ export const buildFontFaceCss = () => {
   const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: 'cn' });
 
   const targetPath = './dist';
-  const targetFileCom = 'font-face.css';
-  const targetFileCn = 'font-face.cn.css';
+  const targetPathCn = './dist/cn';
+  const targetFile = 'font-face.css';
 
   fs.mkdirSync(targetPath, { recursive: true });
-  fs.writeFileSync(`./${targetPath}/${targetFileCom}`, stylesCom);
-  fs.writeFileSync(`./${targetPath}/${targetFileCn}`, stylesCn);
+  fs.mkdirSync(targetPathCn, { recursive: true });
+  fs.writeFileSync(`./${targetPath}/${targetFile}`, stylesCom);
+  fs.writeFileSync(`./${targetPathCn}/${targetFile}`, stylesCn);
 };
 
 buildFontFaceCss();

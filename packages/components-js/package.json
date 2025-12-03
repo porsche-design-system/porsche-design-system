@@ -74,7 +74,7 @@
     "test:vrt:prepare-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/results --mode prepare",
     "test:vrt:update-regression-snapshots": "prepare-vrt-snapshots --source tests/vrt/results --output tests/vrt/specs/__screenshots__ --mode update",
     "test:smoke": "yarn test:smoke:unit && yarn test:smoke:e2e",
-    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",
+    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts global-styles",
     "test:smoke:e2e": "playwright test --config=tests/smoke/e2e/config/playwright.config.ts",
     "clean:build": "yarn clean:app:build && yarn clean:components-wrapper:build && yarn clean:components-manager-core:build && yarn clean:components-manager-cli:build && yarn clean:jsdom-polyfill:build && yarn clean:partials:build",
     "clean:app:build": "rm -rf ./dist/demo-app",
