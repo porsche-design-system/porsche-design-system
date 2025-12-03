@@ -23,8 +23,10 @@ import { observeStickyArea } from '../../utils/dialog/observer';
 import { getComponentCss } from './modal-styles';
 import {
   MODAL_ARIA_ATTRIBUTES,
+  MODAL_BACKGROUNDS,
   type ModalAriaAttribute,
   type ModalBackdrop,
+  type ModalBackground,
   type ModalMotionHiddenEndEventDetail,
   type ModalMotionVisibleEndEventDetail,
 } from './modal-utils';
@@ -33,6 +35,7 @@ const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<ModalBackground>(MODAL_BACKGROUNDS),
   backdrop: AllowedTypes.oneOf<ModalBackdrop>(BACKDROPS),
   fullscreen: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ModalAriaAttribute>(MODAL_ARIA_ATTRIBUTES),
@@ -63,6 +66,9 @@ export class Modal {
 
   /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
   @Prop() public backdrop?: ModalBackdrop = 'blur';
+
+  /** Defines the background color */
+  @Prop() public background?: ModalBackground = 'canvas';
 
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
@@ -144,8 +150,10 @@ export class Modal {
       this.host,
       getComponentCss,
       this.open,
+      this.background,
       this.backdrop,
       this.fullscreen,
+      this.dismissButton,
       this.hasHeader,
       this.hasFooter
     );

@@ -304,6 +304,13 @@
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
+        <p-modal background="surface" aria="{'aria-label': 'Some Heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+        </p-modal>
+
         <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
         <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some Heading'}">
           <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
@@ -348,6 +355,14 @@
         <p-flyout aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text>Some Content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
+        <p-flyout background="surface" aria="{'aria-label': 'Some Heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
           <p-text slot="footer">Some Footer</p-text>
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
@@ -430,6 +445,31 @@
           </div>
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
+      </div>
+      <div data-card="sheet">
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
+        <p-sheet aria="{'aria-label': 'Some Heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+          <p-text>Some Content</p-text>
+        </p-sheet>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
+        <p-sheet background="surface" aria="{'aria-label': 'Some Heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+        </p-sheet>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
+        <p-sheet aria="{'aria-label': 'Some Heading'}">
+          <div slot="header" class="-mt-(--ref-p-sheet-pt) -mx-(--ref-p-sheet-px) h-[320px]">
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-sheet>
       </div>
       <div data-card="display">
         <p-display tag="h3" size="large">ABC</p-display>

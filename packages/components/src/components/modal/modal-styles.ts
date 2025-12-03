@@ -23,7 +23,7 @@ import {
 } from '../../styles/dialog-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import type { ModalBackdrop } from './modal-utils';
+import type { ModalBackdrop, ModalBackground } from './modal-utils';
 
 /**
  * @css-variable {"name": "--p-modal-width", "description": "Width of the modal.", "defaultValue": "auto"}
@@ -49,8 +49,10 @@ export const cssVarRefPaddingInline = '--ref-p-modal-px';
 
 export const getComponentCss = (
   isOpen: boolean,
+  background: ModalBackground,
   backdrop: ModalBackdrop,
   fullscreen: BreakpointCustomizable<boolean>,
+  hasDismissButton: boolean,
   hasHeader: boolean,
   hasFooter: boolean
 ): string => {
@@ -62,7 +64,7 @@ export const getComponentCss = (
           [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
-          ...dialogHostJssStyle,
+          ...dialogHostJssStyle(background),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -85,7 +87,7 @@ export const getComponentCss = (
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
-      ...dialogGridJssStyle,
+      ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
@@ -108,6 +110,8 @@ export const getComponentCss = (
             }
       ),
     },
-    dismiss: getDialogDismissButtonJssStyle(),
+    ...(hasDismissButton && {
+      dismiss: getDialogDismissButtonJssStyle(),
+    }),
   });
 };

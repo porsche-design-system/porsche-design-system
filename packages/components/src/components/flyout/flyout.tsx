@@ -23,10 +23,12 @@ import { getComponentCss } from './flyout-styles';
 import {
   addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
+  FLYOUT_BACKGROUNDS,
   FLYOUT_FOOTER_BEHAVIOR,
   FLYOUT_POSITIONS,
   type FlyoutAriaAttribute,
   type FlyoutBackdrop,
+  type FlyoutBackground,
   type FlyoutFooterBehavior,
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
@@ -36,6 +38,7 @@ import {
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<FlyoutBackground>(FLYOUT_BACKGROUNDS),
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
   disableBackdropClick: AllowedTypes.boolean,
   backdrop: AllowedTypes.oneOf<FlyoutBackdrop>(BACKDROPS),
@@ -66,6 +69,9 @@ export class Flyout {
 
   /** If true, the flyout will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
+
+  /** Defines the background color */
+  @Prop() public background?: FlyoutBackground = 'canvas';
 
   /** Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content). */
   @Prop() public backdrop?: FlyoutBackdrop = 'blur';
@@ -144,6 +150,7 @@ export class Flyout {
       this.host,
       getComponentCss,
       this.open,
+      this.background,
       this.backdrop,
       this.position,
       this.hasHeader,
@@ -171,7 +178,7 @@ export class Flyout {
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">
             <PrefixedTagNames.pButton
-             variant="secondary"
+              variant="secondary"
               class="dismiss"
               type="button"
               hideLabel={true}

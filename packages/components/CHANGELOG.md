@@ -62,7 +62,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Drilldown
 - ✅Modal
 - ✅Flyout
-- ⌛Sheet
+- ✅Sheet
 - ⌛Popover
 
 #### Typography:
@@ -124,11 +124,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
     instead
   - added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
+  - added prop `background` with value `canvas | surface`
 - `Flyout`
   - removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
     `clamp()` instead)
   - visually changed footer slot: becomes frosted when it's sticky
   - added read only css variables `--ref-p-flyout-pb`
+  - added prop `background` with value `canvas | surface`
+- `Sheet`:
+  - added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
+  - added prop `background` with value `canvas | surface`
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
