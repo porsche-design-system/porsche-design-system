@@ -72,6 +72,8 @@ jobs:
             ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
@@ -160,6 +162,8 @@ jobs:
             ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/

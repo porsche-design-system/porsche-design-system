@@ -58,6 +58,8 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+      - name: 'Global Styles Unit'
+        run: yarn test:unit:styles:global-styles
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
   components-unit:
