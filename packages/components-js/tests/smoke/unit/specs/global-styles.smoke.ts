@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import { describe, expect, test } from 'vitest';
+import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
 
 const requireNode = createRequire(import.meta.url);
 
@@ -84,6 +85,8 @@ describe('global styles package content', () => {
       const resolved = requireNode.resolve(path);
       const content = fs.readFileSync(resolved, 'utf8');
       expect(mainIndexContent).toContain(content);
+      expect(mainIndexContent).toContain(CDN_BASE_URL_COM);
+      expect(mainIndexContent).not.toContain(CDN_BASE_URL_CN);
     });
 
     // Check /cn index
@@ -96,6 +99,8 @@ describe('global styles package content', () => {
       const resolved = requireNode.resolve(path);
       const content = fs.readFileSync(resolved, 'utf8');
       expect(cnIndexContent).toContain(content);
+      expect(cnIndexContent).toContain(CDN_BASE_URL_CN);
+      expect(cnIndexContent).not.toContain(CDN_BASE_URL_COM);
     });
   });
 });
