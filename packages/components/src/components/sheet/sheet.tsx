@@ -19,7 +19,9 @@ import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { getComponentCss } from './sheet-styles';
 import {
   SHEET_ARIA_ATTRIBUTES,
+  SHEET_BACKGROUNDS,
   type SheetAriaAttribute,
+  type SheetBackground,
   type SheetMotionHiddenEndEventDetail,
   type SheetMotionVisibleEndEventDetail,
 } from './sheet-utils';
@@ -28,6 +30,7 @@ const propTypes: PropTypes<typeof Sheet> = {
   open: AllowedTypes.boolean,
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<SheetBackground>(SHEET_BACKGROUNDS),
   aria: AllowedTypes.aria<SheetAriaAttribute>(SHEET_ARIA_ATTRIBUTES),
 };
 
@@ -52,6 +55,9 @@ export class Sheet {
 
   /** If true, the sheet will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
+
+  /** Defines the background color */
+  @Prop() public background?: SheetBackground = 'canvas';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
@@ -94,7 +100,7 @@ export class Sheet {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
     }
 
-    attachComponentCss(this.host, getComponentCss, this.open, this.dismissButton);
+    attachComponentCss(this.host, getComponentCss, this.open, this.background, this.dismissButton);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -119,7 +125,7 @@ export class Sheet {
           <div class="sheet">
             {this.dismissButton && (
               <PrefixedTagNames.pButton
-               variant="secondary"
+                variant="secondary"
                 class="dismiss"
                 type="button"
                 hideLabel={true}

@@ -304,17 +304,24 @@
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
+        <p-modal background="surface" aria="{'aria-label': 'Some Heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+        </p-modal>
+
         <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
         <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some Heading'}">
           <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
-            <img class="w-full h-full object-cover rounded-md" src="/assets/interior.jpg" alt="" />
+            <img class="w-full h-full object-cover rounded-lg" src="/assets/interior.jpg" alt="" />
           </div>
         </p-modal>
 
         <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
         <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some Heading'}" backdrop="shading">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
-            <img class="w-full h-full object-cover rounded-t-md" src="/assets/interior.jpg" alt="" />
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
           </div>
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
@@ -342,6 +349,127 @@
             <p-button type="button" variant="secondary">Cancel</p-button>
           </div>
         </p-modal>
+      </div>
+      <div data-card="flyout">
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
+        <p-flyout aria="{'aria-label': 'Some Heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text>Some Content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
+        <p-flyout background="surface" aria="{'aria-label': 'Some Heading'}">
+          <p-text slot="header">Some Header</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+          <p-text slot="footer">Some Footer</p-text>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
+        <p-flyout class="[--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" backdrop="shading" aria="{'aria-label': 'Some Heading'}">
+          <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[320px]">
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+          <p-heading slot="header" tag="h2">Some Header</p-heading>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" position="start" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+          <p-heading slot="header" tag="h2">Some Header</p-heading>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+        </p-flyout>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
+        <p-flyout aria="{'aria-label': 'Some Heading'}" fullscreen="true">
+          <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[max(240px,40vh)]">
+            <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+            <p-button type="button">Proceed</p-button>
+            <p-button type="button" variant="secondary">Cancel</p-button>
+          </div>
+          <p-text slot="sub-footer">Some Sub Footer</p-text>
+        </p-flyout>
+      </div>
+      <div data-card="sheet">
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
+        <p-sheet aria="{'aria-label': 'Some Heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+          <p-text>Some Content</p-text>
+        </p-sheet>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
+        <p-sheet background="surface" aria="{'aria-label': 'Some Heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+        </p-sheet>
+
+        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
+        <p-sheet aria="{'aria-label': 'Some Heading'}">
+          <div slot="header" class="-mt-(--ref-p-sheet-pt) -mx-(--ref-p-sheet-px) h-[320px]">
+            <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
+          </div>
+          <p-text color="contrast-medium">ABC</p-text>
+          <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+          <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
+        </p-sheet>
       </div>
       <div data-card="display">
         <p-display tag="h3" size="large">ABC</p-display>

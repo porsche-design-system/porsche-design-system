@@ -1,30 +1,29 @@
-import {
-  borderRadiusMedium,
-  gridExtendedOffsetBase,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-} from '@porsche-design-system/styles';
+import { gridExtendedOffsetBase } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
+  dialogBorderRadius,
   dialogGridJssStyle,
   dialogHostJssStyle,
-  dialogPaddingBlock,
+  dialogPaddingBottom,
+  dialogPaddingInline,
+  dialogPaddingTop,
   getDialogColorJssStyle,
+  getDialogDismissButtonJssStyle,
   getDialogJssStyle,
-  getDialogStickyFooterJssStyle,
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
+  getSlotFooterJssStyle,
+  getSlotJssStyle,
+  getSlotMainJssStyle,
 } from '../../styles/dialog-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import type { ModalBackdrop } from './modal-utils';
+import type { ModalBackdrop, ModalBackground } from './modal-utils';
 
 /**
  * @css-variable {"name": "--p-modal-width", "description": "Width of the modal.", "defaultValue": "auto"}
@@ -50,6 +49,7 @@ export const cssVarRefPaddingInline = '--ref-p-modal-px';
 
 export const getComponentCss = (
   isOpen: boolean,
+  background: ModalBackground,
   backdrop: ModalBackdrop,
   fullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
@@ -61,24 +61,18 @@ export const getComponentCss = (
       ':host': {
         display: 'contents',
         ...addImportantToEachRule({
-          [`${cssVarRefPaddingTop}`]: dialogPaddingBlock,
-          [`${cssVarRefPaddingBottom}`]: dialogPaddingBlock,
-          [`${cssVarRefPaddingInline}`]: spacingFluidLarge,
-          ...dialogHostJssStyle,
+          [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
+          [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
+          [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
+          ...dialogHostJssStyle(background),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       slot: {
-        display: 'block',
-        '&:first-of-type': {
-          gridRowStart: 1,
-        },
-        '&:not([name])': {
-          gridColumn: '2/3',
-          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-        },
+        ...getSlotJssStyle(),
+        '&:not([name])': getSlotMainJssStyle(),
         ...(hasHeader && {
           '&[name=header]': {
             gridColumn: '2/3',
@@ -86,14 +80,14 @@ export const getComponentCss = (
           },
         }),
         ...(hasFooter && {
-          '&[name=footer]': getDialogStickyFooterJssStyle(),
+          '&[name=footer]': getSlotFooterJssStyle(),
         }),
       },
       dialog: getDialogJssStyle(isOpen, backdrop),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
-      ...dialogGridJssStyle,
+      ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
@@ -112,21 +106,12 @@ export const getComponentCss = (
               maxWidth: '1535.5px', // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
               placeSelf: 'center',
               margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
-              borderRadius: borderRadiusMedium,
+              borderRadius: dialogBorderRadius,
             }
       ),
     },
     ...(hasDismissButton && {
-      dismiss: {
-        ...dismissButtonJssStyle,
-        gridArea: '1/3',
-        zIndex: 2, // ensures dismiss button is above sticky footer, header and content
-        position: 'sticky',
-        insetBlockStart: spacingFluidSmall,
-        marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
-        marginInlineEnd: spacingFluidSmall,
-        placeSelf: 'flex-start flex-end',
-      },
+      dismiss: getDialogDismissButtonJssStyle(),
     }),
   });
 };
