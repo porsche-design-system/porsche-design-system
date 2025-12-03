@@ -1,5 +1,5 @@
 import * as fs from 'node:fs';
-import { colorVariablesDark, colorVariablesLight } from '@porsche-design-system/css-variables';
+import { colorVariablesDark, colorVariablesLight } from '@porsche-design-system/shared-styles';
 
 export const buildVariablesCss = () => {
   const styles = `:root {

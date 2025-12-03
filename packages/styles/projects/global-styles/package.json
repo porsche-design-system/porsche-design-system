@@ -22,7 +22,7 @@
     "build:variables": "tsx scripts/buildVariablesCss.ts",
     "build:normalize": "tsx scripts/buildNormalizeCss.ts",
     "build:font-face": "tsx scripts/buildFontFaceCss.ts",
-    "build:fouc": "cp src/fouc.css dist/fouc.css",
+    "build:fouc": "tsx scripts/buildFoucCss.ts",
     "build:index": "yarn build:index:default && yarn build:index:cdn",
     "build:index:default": "cat dist/normalize.css dist/fouc.css dist/variables.css dist/font-face.css > dist/index.css",
     "build:index:cdn": "mkdir -p dist/cn && cat dist/normalize.css dist/fouc.css dist/variables.css dist/font-face.cn.css > dist/cn/index.css",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@porsche-design-system/tokens": "0.0.0",
+    "@porsche-design-system/shared-styles": "0.0.0",
     "@porsche-design-system/font-face": "0.0.0"
   },
   "devDependencies": {
