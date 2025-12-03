@@ -23,7 +23,7 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   inherit: { height: 'inherit', width: 'inherit' },
 };
 
-const { primaryColor, contrastMediumColor } = colors;
+const { primaryColor, contrastLowerColor } = colors;
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
   const strokeDasharray = '57'; // C = 2πR
@@ -32,33 +32,6 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
 
   return getCss({
     '@global': {
-      ':host': {
-        display: 'inline-flex',
-        ...addImportantToEachRule({
-          verticalAlign: 'top',
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
-        }),
-      },
-      svg: {
-        display: 'block', // for correct vertical alignment
-        fill: 'none',
-        animation: `$rotate ${animationDuration} steps(50) infinite`,
-      },
-      circle: {
-        '&:first-child': {
-          stroke: contrastMediumColor,
-        },
-        '&:last-child': {
-          animation: `$dash ${animationDuration} steps(50) infinite`,
-          stroke: primaryColor,
-          strokeDasharray:
-            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-              ? strokeDasharray
-              : strokeDasharrayVar,
-          strokeLinecap: 'round',
-        },
-      },
       '@keyframes rotate': {
         '0%': {
           transform: 'rotateZ(0deg)',
@@ -80,6 +53,33 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
         '100%': {
           strokeDashoffset: 57,
           transform: 'rotateZ(360deg)',
+        },
+      },
+      ':host': {
+        display: 'inline-flex',
+        ...addImportantToEachRule({
+          verticalAlign: 'top',
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
+      svg: {
+        display: 'block', // for correct vertical alignment
+        fill: 'none',
+        animation: `$rotate ${animationDuration} steps(50) infinite`,
+      },
+      circle: {
+        '&:first-child': {
+          stroke: contrastLowerColor,
+        },
+        '&:last-child': {
+          animation: `$dash ${animationDuration} steps(50) infinite`,
+          stroke: primaryColor,
+          strokeDasharray:
+            ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
+              ? strokeDasharray
+              : strokeDasharrayVar,
+          strokeLinecap: 'round',
         },
       },
     },

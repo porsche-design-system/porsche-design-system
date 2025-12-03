@@ -51,6 +51,13 @@
       <p-checkbox label="Tag Dismissible" name="tag-dismissible" data-section="common"></p-checkbox>
       <p-checkbox label="Text List" name="text-list" data-section="common"></p-checkbox>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Feedback</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'feedback')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Spinner" name="spinner" data-section="feedback"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
         <p-heading tag="h3" size="medium">Navigation</p-heading>
         <p-tag variant="secondary" compact="true">
           <button type="button" onclick="toggleSection(this, 'navigation')">Deselect all</button>
@@ -255,6 +262,12 @@
           </p-text-list-item>
           <p-text-list-item>ABC</p-text-list-item>
         </p-text-list>
+      </div>
+      <div data-card="spinner">
+        <p-spinner aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="medium" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="w-[24px] h-[24px]" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
       </div>
       <div data-card="link">
         <p-link variant="primary">
