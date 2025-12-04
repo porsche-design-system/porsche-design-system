@@ -47,7 +47,7 @@ import { breakpointS } from '@porsche-design-system/components-angular/styles';
       <p-button
         slot="header-end"
         icon="configurate"
-        variant="ghost"
+        variant="secondary"
         [compact]="true"
         [hideLabel]="true"
         (click)="onSidebarEndOpen()"
