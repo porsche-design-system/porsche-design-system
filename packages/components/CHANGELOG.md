@@ -27,7 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Divider
 - ✅Flag
 - ✅Icon
-- ⌛Scroller
+- ✅Scroller
 - ⌛Stepper Horizontal
 - ✅Table
 - ✅Tag

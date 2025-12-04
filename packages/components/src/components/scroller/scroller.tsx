@@ -119,13 +119,12 @@ export class Scroller {
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <PrefixedTagNames.pButton
             class="action-button"
-           variant="secondary"
+            variant="secondary"
             hide-label="true"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
-            dir="ltr" // Otherwise icon will be flipped which doesn't make sense in this use case
           >
             {direction}
           </PrefixedTagNames.pButton>
