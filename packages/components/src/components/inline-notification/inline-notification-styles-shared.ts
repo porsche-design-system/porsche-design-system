@@ -58,7 +58,6 @@ export const getNotificationIconJssStyle = (): JssStyle => ({
 export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
   gap: spacingStaticXSmall,
-  maxWidth: '50rem',
   marginTop: '2px', // To be center aligned with close button
   [mediaQueryMinS]: {
     marginLeft: `-${spacingStaticSmall}`,

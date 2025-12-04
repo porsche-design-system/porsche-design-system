@@ -304,32 +304,39 @@
         </p-inline-notification>
       </div>
       <div data-card="banner">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Banner (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (Basic)</p-button>
         <p-banner heading="Some Heading" heading-tag="h3" description="Some Content"></p-banner>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Banner (without dismiss button)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (without dismiss button)</p-button>
         <p-banner dismiss-button="false">
           <p-heading slot="heading" tag="h2" size="large">Some heading</p-heading>
           <p-text slot="description">Some content</p-text>
         </p-banner>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Banner (with success)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with success)</p-button>
         <p-banner state="success">
           <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
           <p-text slot="description">Some content</p-text>
         </p-banner>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Banner (with warning)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with warning)</p-button>
         <p-banner state="warning">
           <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
           <p-text slot="description">Some content</p-text>
         </p-banner>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Banner (with error)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with error)</p-button>
         <p-banner state="error">
           <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
           <p-text slot="description">Some content</p-text>
         </p-banner>
+      </div>
+      <div data-card="toast">
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content' })">Open Toast (Basic)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'success' })">Open Toast (Success)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'warning' })">Open Toast (Warning)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'error' })">Open Toast (Error)</p-button>
+        <p-toast></p-toast>
       </div>
       <div data-card="link">
         <p-link variant="primary">
@@ -372,28 +379,28 @@
         </p-link-pure>
       </div>
       <div data-card="modal">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
         <p-modal aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text>Some Content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
         <p-modal background="surface" aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
         <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some Heading'}">
           <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
             <img class="w-full h-full object-cover rounded-lg" src="/assets/interior.jpg" alt="" />
           </div>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
         <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some Heading'}" backdrop="shading">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
@@ -409,7 +416,7 @@
           </div>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
         <p-modal aria="{'aria-label': 'Some Heading'}" fullscreen="true">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
             <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
@@ -426,7 +433,7 @@
         </p-modal>
       </div>
       <div data-card="flyout">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
         <p-flyout aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text>Some Content</p-text>
@@ -434,7 +441,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
         <p-flyout background="surface" aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
@@ -442,7 +449,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
         <p-flyout class="[--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" backdrop="shading" aria="{'aria-label': 'Some Heading'}">
           <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[320px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
@@ -459,7 +466,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" tag="h2">Some Header</p-heading>
           <p-text color="contrast-medium">ABC</p-text>
@@ -472,7 +479,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" position="start" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" tag="h2">Some Header</p-heading>
           <p-text color="contrast-medium">ABC</p-text>
@@ -485,7 +492,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
@@ -497,14 +504,14 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
           <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
         <p-flyout aria="{'aria-label': 'Some Heading'}" fullscreen="true">
           <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[max(240px,40vh)]">
             <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
@@ -522,19 +529,19 @@
         </p-flyout>
       </div>
       <div data-card="sheet">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
         <p-sheet aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
           <p-text>Some Content</p-text>
         </p-sheet>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
         <p-sheet background="surface" aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
           <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
         </p-sheet>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
         <p-sheet aria="{'aria-label': 'Some Heading'}">
           <div slot="header" class="-mt-(--ref-p-sheet-pt) -mx-(--ref-p-sheet-px) h-[320px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
@@ -566,7 +573,7 @@
       </div>
       <div data-card="drilldown">
         <nav aria-label="Main">
-          <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Basic)</p-button>
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Basic)</p-button>
           <p-drilldown>
             <p-drilldown-item identifier="id-1" label="Some Label (1)">
               <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
@@ -613,7 +620,7 @@
         </nav>
 
         <nav aria-label="Main">
-          <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Custom Layout)</p-button>
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Custom Layout)</p-button>
           <p-drilldown class="[--p-drilldown-grid-template:repeat(5,auto)_minmax(0,1fr)/auto]" active-identifier="id-1">
             <p-drilldown-item identifier="id-1" label="Motorsport" class="[--p-drilldown-grid-template:auto/repeat(2,minmax(0,1fr))] [--p-drilldown-gap:0px_16px]">
               <p-drilldown-item identifier="id-1-1" label="718">
