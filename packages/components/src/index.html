@@ -45,8 +45,12 @@
       <p-checkbox label="Accordion" name="accordion" data-section="common"></p-checkbox>
       <p-checkbox label="Button" name="button" data-section="common"></p-checkbox>
       <p-checkbox label="Button Pure" name="button-pure" data-section="common"></p-checkbox>
+      <p-checkbox label="Carousel" name="carousel" data-section="common"></p-checkbox>
       <p-checkbox label="Divider" name="divider" data-section="common"></p-checkbox>
       <p-checkbox label="Flag" name="flag" data-section="common"></p-checkbox>
+      <p-checkbox label="Scroller" name="scroller" data-section="common"></p-checkbox>
+      <p-checkbox label="Stepper Horizontal" name="stepper-horizontal" data-section="common"></p-checkbox>
+      <p-checkbox label="Table" name="table" data-section="common"></p-checkbox>
       <p-checkbox label="Tag" name="tag" data-section="common"></p-checkbox>
       <p-checkbox label="Tag Dismissible" name="tag-dismissible" data-section="common"></p-checkbox>
       <p-checkbox label="Text List" name="text-list" data-section="common"></p-checkbox>
@@ -183,6 +187,9 @@
         <p-button-pure size="x-small">Some label</p-button-pure>
         <p-button-pure size="xx-small">Some label</p-button-pure>
       </div>
+      <div data-card="carousel">
+
+      </div>
       <div data-card="divider">
         <p-divider class="w-full" color="contrast-high"></p-divider>
         <p-divider class="w-full" color="contrast-medium"></p-divider>
@@ -197,6 +204,69 @@
         <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
         <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
         <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+      </div>
+      <div data-card="scroller">
+
+      </div>
+      <div data-card="stepper-horizontal">
+
+      </div>
+      <div data-card="table">
+        <p-table caption="Some caption">
+          <p-table-head>
+            <p-table-head-row>
+              <p-table-head-cell>Model</p-table-head-cell>
+              <p-table-head-cell>Date</p-table-head-cell>
+              <p-table-head-cell>Purchase Intention</p-table-head-cell>
+              <p-table-head-cell>Status</p-table-head-cell>
+              <p-table-head-cell>Lead ID</p-table-head-cell>
+            </p-table-head-row>
+          </p-table-head>
+          <p-table-body>
+            <p-table-row>
+              <p-table-cell>718 Cayman</p-table-cell>
+              <p-table-cell>23.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Won</p-table-cell>
+              <p-table-cell>0000824402</p-table-cell>
+            </p-table-row>
+            <p-table-row>
+              <p-table-cell>Panamera 4S</p-table-cell>
+              <p-table-cell>19.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Lost</p-table-cell>
+              <p-table-cell>0000824409</p-table-cell>
+            </p-table-row>
+          </p-table-body>
+        </p-table>
+        <p-table>
+          <p-heading slot="caption" size="large">Some caption</p-heading>
+          <p-table-head>
+            <p-table-head-row>
+              <p-table-head-cell>Model</p-table-head-cell>
+              <p-table-head-cell>Date</p-table-head-cell>
+              <p-table-head-cell>Purchase Intention</p-table-head-cell>
+              <p-table-head-cell>Status</p-table-head-cell>
+              <p-table-head-cell>Lead ID</p-table-head-cell>
+            </p-table-head-row>
+          </p-table-head>
+          <p-table-body>
+            <p-table-row>
+              <p-table-cell>718 Cayman</p-table-cell>
+              <p-table-cell>23.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Won</p-table-cell>
+              <p-table-cell>0000824402</p-table-cell>
+            </p-table-row>
+            <p-table-row>
+              <p-table-cell>Panamera 4S</p-table-cell>
+              <p-table-cell>19.06.2021</p-table-cell>
+              <p-table-cell>New Car</p-table-cell>
+              <p-table-cell>Lost</p-table-cell>
+              <p-table-cell>0000824409</p-table-cell>
+            </p-table-row>
+          </p-table-body>
+        </p-table>
       </div>
       <div data-card="tag">
         <p-tag icon="car" variant="primary">
@@ -421,7 +491,21 @@
         </p-tabs>
       </div>
       <div data-card="tabs-bar">
-
+        <p-tabs-bar>
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+        </p-tabs-bar>
+        <p-tabs-bar size="medium">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+        </p-tabs-bar>
+        <p-tabs-bar size="medium" weight="semi-bold">
+          <button type="button">Some label (1)</button>
+          <button type="button">Some label (2)</button>
+          <button type="button">Some label (3)</button>
+        </p-tabs-bar>
       </div>
       <div data-card="modal">
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>

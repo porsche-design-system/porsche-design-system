@@ -6,6 +6,7 @@ import {
   spacingStaticMedium,
   textSmallStyle,
 } from '@porsche-design-system/styles';
+import { spacingStaticXs } from '@porsche-design-system/tokens';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -14,8 +15,7 @@ import {
   colors,
   cssVariableAnimationDuration,
   cssVariableTransitionDuration,
-  getFocusJssStyle,
-  getResetInitialStylesForSlottedAnchor,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -54,39 +54,23 @@ export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weigh
       },
       ...preventFoucOfNestedElementsStyles,
       ...addImportantToEachRule({
-        '::slotted': {
-          // TODO: produces duplicated css code in SSR context, we should try to make use of multiple selector like
-          //  `::slotted(:is(a,button))`.
-          ...getFocusJssStyle({ slotted: 'a', offset: '1px' }),
-          ...getFocusJssStyle({ slotted: 'button', offset: '1px' }),
-        },
+        '::slotted(:is(a,button):focus-visible)': getFocusBaseStyles(),
         // would be nice to use shared selector like '::slotted([role])'
         // but this doesn't work reliably when rendering in browser
+        // TODO: might work with ::slotted(:is(a,button)) in the meantime?
         [transformSelector('::slotted([role])')]: {
-          ...getResetInitialStylesForSlottedAnchor,
+          all: 'unset',
           display: 'inline-block',
           position: 'relative',
-          margin: '0 0 4px 0',
+          margin: `0 0 ${spacingStaticXs} 0`,
           verticalAlign: 'top',
-          // TODO: can we use `all: 'inherit'` instead?
-          fontFamily: 'inherit',
-          fontStyle: 'inherit',
-          fontVariant: 'inherit',
-          fontWeight: 'inherit',
-          fontSize: 'inherit',
-          lineHeight: 'inherit',
           whiteSpace: 'nowrap',
           boxSizing: 'border-box',
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          outlineOffset: '1px',
-          textDecoration: 'none',
           textAlign: 'start',
-          border: 0,
           color: primaryColor,
           cursor: 'pointer',
           borderRadius: borderRadiusSmall,
-          zIndex: 0, // needed for ::before pseudo element to be visible
+          zIndex: 0, // needed for ::before pseudo-element to be visible
           ...hoverMediaQuery({
             '&::before': {
               content: '""',

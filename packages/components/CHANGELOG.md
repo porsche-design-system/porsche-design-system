@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Icon
 - ⌛Scroller
 - ⌛Stepper Horizontal
-- ⌛Table
+- ✅Table
 - ✅Tag
 - ✅Tag Dismissible
 - ✅Text List
@@ -55,7 +55,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Link Tile Product (might be removed in favour of generic p-card)
 - ✅Pagination
 - ✅Tabs
-- ⌛Tabs Bar
+- ✅Tabs Bar
 
 #### Dialog
 
