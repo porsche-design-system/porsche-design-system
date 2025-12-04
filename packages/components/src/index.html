@@ -68,6 +68,9 @@
       </div>
       <p-checkbox label="Link" name="link" data-section="navigation"></p-checkbox>
       <p-checkbox label="Link Pure" name="link-pure" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Pagination" name="pagination" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Tabs" name="tabs" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Tabs Bar" name="tabs-bar" data-section="navigation"></p-checkbox>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
         <p-heading tag="h3" size="medium">Dialog</p-heading>
         <p-tag variant="secondary" compact="true">
@@ -377,6 +380,16 @@
         <p-link-pure size="xx-small" underline="true">
           <a href="#">Some label</a>
         </p-link-pure>
+      </div>
+      <div data-card="pagination">
+        <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+        <p-pagination total-items-count="500" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
+      </div>
+      <div data-card="tabs">
+
+      </div>
+      <div data-card="tabs-bar">
+
       </div>
       <div data-card="modal">
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>

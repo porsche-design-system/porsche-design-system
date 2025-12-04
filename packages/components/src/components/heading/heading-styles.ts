@@ -3,7 +3,7 @@ import {
   fontSizeHeadingMedium,
   fontSizeHeadingSmall,
   fontSizeHeadingXLarge,
-  fontSizeHeadingXXLarge,
+  fontSizeHeadingXXLarge, fontWeightRegular, fontWeightSemiBold,
   headingXXLargeStyle,
 } from '@porsche-design-system/styles';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
@@ -41,6 +41,7 @@ export const getComponentCss = (
       headingXXLargeStyle,
       buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+        fontWeight: sizeValue === 'small' ? fontWeightSemiBold : fontWeightRegular
       })),
       align,
       color,
