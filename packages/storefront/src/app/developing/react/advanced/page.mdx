@@ -11,28 +11,23 @@ export const metadata = {
 
 ## Global Theme
 
-**Since v3.9.0** you can set the `theme` property for all child components by setting the prop on
-`PorscheDesignSystemProvider`.
+The Porsche Design System global theme uses CSS variables defined in the main CSS file
+`@porsche-design-system/components-react`.
 
-Possible values for `theme` are: `'auto' | 'dark' | 'light'` Local overrides on a per component basis are still possible
-as usual.
+To switch themes, simply apply one of the theme classes `light`, `dark`, or `auto` to any HTML element. All child
+elements will automatically inherit the selected theme:
 
-```tsx
-// index.tsx
-
-import ReactDOM from 'react-dom';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import { App } from './App';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <PorscheDesignSystemProvider theme="dark">
-      <App />
-    </PorscheDesignSystemProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+```html
+<html className="dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+  </body>
+</html>
 ```
+
+- `.light` — Light theme
+- `.dark` — Dark theme
+- `.auto` — Automatically follows the user’s system preference
 
 ## Prefixing
 
@@ -69,4 +64,23 @@ In the following example the `PHeading` component will render as `<sample-prefix
 import { PHeading } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Element => <PHeading>Some heading</PHeading>;
+```
+
+## China CDN
+
+If your website is going to be used primarily in China, you can use the `/cn` import in order to use the china based CDN
+for the Font-face definitions.
+
+```diff
+/* src/index.css */
+- @import '@porsche-design-system/components-react';
++ @import '@porsche-design-system/components-react/cn';
+```
+
+When using `tailwindcss`
+
+```diff
+/* src/index.css */
+- @import '@porsche-design-system/components-react/tailwindcss';
++ @import '@porsche-design-system/components-react/tailwindcss/cn';
 ```

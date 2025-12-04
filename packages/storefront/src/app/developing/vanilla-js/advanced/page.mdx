@@ -1,9 +1,9 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Vanilla JS: Advanced - Porsche Design System',
-  description: 'Explore advanced Porsche Design System techniques in Vanilla JS.'
-}
+  description: 'Explore advanced Porsche Design System techniques in Vanilla JS.',
+};
 
 # Vanilla Js
 
@@ -30,4 +30,23 @@ parameter to the `load` method.
     <sample-prefix-p-heading size="xx-large">Some heading</sample-prefix-p-heading>
   </body>
 </html>
+```
+
+## China CDN
+
+If your website is going to be used primarily in China, you can use the `/cn` import in order to use the china based CDN
+for the Font-face definitions.
+
+```diff
+/* src/style.css */
+- @import '@porsche-design-system/components-js';
++ @import '@porsche-design-system/components-js/cn';
+```
+
+When using `tailwindcss`
+
+```diff
+/* src/style.css */
+- @import '@porsche-design-system/components-js/tailwindcss';
++ @import '@porsche-design-system/components-js/tailwindcss/cn';
 ```

@@ -69,11 +69,28 @@ export default defineConfig({
 });
 ```
 
-### Step 3 (recommended)
+### Step 3
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
+recommended styles, such as:
+
+- CSS color variables
+- Font-face definitions
+- FOUC (Flash of Unstyled Content) handling
+- Normalize styles
+
+```diff
+/* src/style.css */
++ @import '@porsche-design-system/components-js';
+```
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/developing/vanilla-js/advanced#china-cdn) for more details.
+
+### Step 4 (recommended)
+
+To boost your web application's performance, you can integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML.
 
 ```tsx
 // vite.config.ts
@@ -82,10 +99,8 @@ import { defineConfig } from 'vite';
 import {
   getLoaderScript,
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
-  getInitialStyles,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
 
@@ -94,10 +109,6 @@ const transformIndexHtmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml(html: string) {
       const headPartials = [
-        // injects stylesheet which defines visibility of pre-hydrated PDS components
-        getInitialStyles(),
-        // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
-        getFontFaceStyles(),
         // preloads Porsche Next font (=> minimize FOUT)
         getFontLinks(),
         // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
@@ -120,7 +131,7 @@ export default defineConfig({
 });
 ```
 
-### Step 4 (recommended)
+### Step 5 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
@@ -157,16 +168,20 @@ export default defineConfig({
 });
 ```
 
-Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+When using Tailwind, use the Tailwind-specific import instead of the default:
 
-```css
+```diff
 /* src/style.css */
+- @import '@porsche-design-system/components-js';
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-js/tailwindcss';
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-js/tailwindcss';
 ```
 
-### Step 5
+This import includes the Tailwind theme, color variables, fonts, and base styles (like FOUC handling). The default CSS
+file `@porsche-design-system/components-js` is not needed with Tailwind.
+
+### Step 6
 
 Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
 `npm run dev` and verify that the component and styles display correctly.

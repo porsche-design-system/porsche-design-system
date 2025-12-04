@@ -109,7 +109,25 @@ export default function App() {
 }
 ```
 
-### Step 4 (recommended)
+### Step 4
+
+Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
+recommended styles, such as:
+
+- CSS color variables
+- Font-face definitions
+- FOUC (Flash of Unstyled Content) handling
+- Normalize styles
+
+```diff
+/* app/app.css */
++ @import '@porsche-design-system/components-react';
+```
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/developing/react/advanced#china-cdn) for more details.
+
+### Step 5 (recommended)
 
 To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
 Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
@@ -127,10 +145,8 @@ import {
 } from 'react-router';
 import {
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
-  getInitialStyles,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-react/partials';
 
@@ -138,10 +154,6 @@ export async function loader() {
   return {
     headPartials: (
       <>
-        {/* necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components */}
-        {getInitialStyles({ format: 'jsx' })}
-        {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
-        {getFontFaceStyles({ format: 'jsx' })}
         {/* preloads Porsche Next font (=> minimize FOUT) */}
         {getFontLinks({ format: 'jsx' })}
         {/* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */}
@@ -177,7 +189,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Step 5 (recommended)
+### Step 6 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
@@ -193,14 +205,20 @@ Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design Syste
 > now use and customize the provided [Patterns](/patterns) and [Templates](/templates), which are all written in
 > Tailwind CSS, to build applications quickly and efficiently.
 
-```css
-/* app/app.css */
+When using Tailwind, use the Tailwind-specific import instead of the default:
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-react/tailwindcss';
+```diff
+/* app/app.css */
+- @import '@porsche-design-system/components-react';
+
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-react/tailwindcss';
 ```
 
-### Step 6
+This import includes the Tailwind theme, color variables, fonts, and base styles (like FOUC handling). The default CSS
+file `@porsche-design-system/components-react` is not needed with Tailwind.
+
+### Step 7
 
 Add a Porsche Design System component (e.g., `<PWordmark />`) with some Tailwind CSS styles. Then, run `npm run dev` and
 verify that the component and styles display correctly.
