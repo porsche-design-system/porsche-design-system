@@ -188,7 +188,66 @@
         <p-button-pure size="xx-small">Some label</p-button-pure>
       </div>
       <div data-card="carousel">
-
+        <button class="bg-frosted backdrop-blur-frosted p-fluid-sm rounded-sm transition-colors  cursor-pointer hover:bg-frosted-soft focus-visible:outline outline-focus outline-offset-2" popovertarget="popover-carousel">Show Carousel</button>
+        <div popover id="popover-carousel" class="w-screen h-screen bg-frosted backdrop-blur-frosted space-y-fluid-lg py-fluid-lg">
+          <p-carousel heading="Some heading" description="Some description" pagination="true">
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+          </p-carousel>
+          <p-carousel slides-per-page="2" pagination="true">
+            <p-heading slot="heading" tag="h2" size="x-large">Some heading</p-heading>
+            <p-scroller slot="controls" class="space-x-fluid-sm">
+              <p-tag variant="primary">Some content</p-tag>
+              <p-tag variant="secondary">Some content</p-tag>
+              <p-tag variant="info">Some content</p-tag>
+              <p-tag variant="success">Some content</p-tag>
+              <p-tag variant="warning">Some content</p-tag>
+              <p-tag variant="error">Some content</p-tag>
+            </p-scroller>
+            <p-text slot="description">Some description</p-text>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+          </p-carousel>
+          <p-carousel slides-per-page="3" width="extended" rewind="false" align-header="center" align-controls="center">
+            <p-heading slot="heading" tag="h2" size="x-large">Some heading</p-heading>
+            <p-scroller slot="controls" class="space-x-fluid-sm">
+              <p-tag variant="primary">Some content</p-tag>
+              <p-tag variant="secondary">Some content</p-tag>
+              <p-tag variant="info">Some content</p-tag>
+              <p-tag variant="success">Some content</p-tag>
+              <p-tag variant="warning">Some content</p-tag>
+              <p-tag variant="error">Some content</p-tag>
+            </p-scroller>
+            <p-text slot="description">Some description</p-text>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+          </p-carousel>
+          <p-carousel slides-per-page="4" focus-on-center-slide="true" gradient="true" rewind="true" pagination="true">
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 4</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 5</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 6</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 7</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 8</div>
+            <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 9</div>
+          </p-carousel>
+          <p-carousel slides-per-page="auto" pagination="true" trim-space="true">
+            <div class="grid place-content-center w-[10vw] h-[150px] bg-surface prose-text-sm">Slide 1</div>
+            <div class="grid place-content-center w-[200px] h-[150px] bg-surface prose-text-sm">Slide 2</div>
+            <div class="grid place-content-center w-[100px] h-[150px] bg-surface prose-text-sm">Slide 3</div>
+            <div class="grid place-content-center w-[40vw] h-[150px] bg-surface prose-text-sm">Slide 4</div>
+            <div class="grid place-content-center w-[150px] h-[150px] bg-surface prose-text-sm">Slide 5</div>
+            <div class="grid place-content-center w-[50vw] h-[150px] bg-surface prose-text-sm">Slide 6</div>
+          </p-carousel>
+        </div>
       </div>
       <div data-card="divider">
         <p-divider class="w-full" color="contrast-high"></p-divider>

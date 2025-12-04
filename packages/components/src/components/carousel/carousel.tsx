@@ -26,13 +26,11 @@ import {
   CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_GRADIENT_COLORS,
   CAROUSEL_SLIDES_PER_PAGE,
   CAROUSEL_WIDTHS,
   type CarouselAlignControls,
   type CarouselAlignHeader,
   type CarouselAriaAttribute,
-  type CarouselGradientColor,
   type CarouselHeadingSize,
   type CarouselInternationalization,
   type CarouselSlidesPerPage,
@@ -60,7 +58,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
     AllowedTypes.breakpoint<CarouselSlidesPerPage>(CAROUSEL_SLIDES_PER_PAGE),
   ]),
-  gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(CAROUSEL_GRADIENT_COLORS),
+  gradient: AllowedTypes.boolean,
   focusOnCenterSlide: AllowedTypes.boolean,
   trimSpace: AllowedTypes.boolean,
   pagination: AllowedTypes.breakpoint('boolean'),
@@ -109,7 +107,7 @@ export class Carousel {
   @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
   /** Whether the slides should rewind from last to first slide and vice versa. */
-  @Prop() public rewind?: boolean = true;
+  @Prop() public rewind?: boolean = false;
 
   /** Defines the outer spacings between the carousel and the left and right screen sides. */
   @Prop() public width?: CarouselWidth = 'basic';
@@ -118,7 +116,7 @@ export class Carousel {
   @Prop() public slidesPerPage?: BreakpointCustomizable<CarouselSlidesPerPage> = 1;
 
   /** If false, the carousel will not show pagination bullets at the bottom. */
-  @Prop() public pagination?: BreakpointCustomizable<boolean> = true;
+  @Prop() public pagination?: BreakpointCustomizable<boolean> = false;
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
@@ -138,11 +136,11 @@ export class Carousel {
    */
   @Prop() public focusOnCenterSlide?: boolean = false;
 
-  /** Adapts the background gradient for the left and right edge. */
-  @Prop() public gradientColor?: CarouselGradientColor = 'none';
+  /** Fades the slides out. */
+  @Prop() public gradient?: boolean = false;
 
   /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
-  @Prop() public trimSpace?: boolean = true;
+  @Prop() public trimSpace?: boolean = false;
 
   /** Emitted when carousel's content slides. */
   @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
@@ -254,7 +252,7 @@ export class Carousel {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.gradientColor,
+      this.gradient,
       hasHeadingPropOrSlot,
       hasDescriptionPropOrSlot,
       hasControlsSlot,

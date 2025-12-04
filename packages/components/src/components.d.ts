@@ -12,7 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
-import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
@@ -72,7 +72,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
-export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
@@ -400,9 +400,9 @@ export namespace Components {
          */
         "focusOnCenterSlide"?: boolean;
         /**
-          * Adapts the background gradient for the left and right edge.
+          * Fades the slides out.
          */
-        "gradientColor"?: CarouselGradientColor;
+        "gradient"?: boolean;
         /**
           * Defines the heading used in the carousel.
          */
@@ -3855,9 +3855,9 @@ declare namespace LocalJSX {
          */
         "focusOnCenterSlide"?: boolean;
         /**
-          * Adapts the background gradient for the left and right edge.
+          * Fades the slides out.
          */
-        "gradientColor"?: CarouselGradientColor;
+        "gradient"?: boolean;
         /**
           * Defines the heading used in the carousel.
          */
