@@ -142,13 +142,13 @@
         <p-model-signature model="turbo" color="inherit" class="text-[deeppink]"></p-model-signature>
       </div>
       <div data-card="accordion">
-        <p-accordion heading="Some Heading">
+        <p-accordion heading="Some heading">
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some Heading" size="medium">
+        <p-accordion heading="Some heading" size="medium">
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
-        <p-accordion heading="Some Heading" size="medium" sticky="true">
+        <p-accordion heading="Some heading" size="medium" sticky="true">
           <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-accordion>
       </div>
@@ -308,7 +308,7 @@
       </div>
       <div data-card="banner">
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (Basic)</p-button>
-        <p-banner heading="Some Heading" heading-tag="h3" description="Some Content"></p-banner>
+        <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (without dismiss button)</p-button>
         <p-banner dismiss-button="false">
@@ -386,35 +386,67 @@
         <p-pagination total-items-count="500" items-per-page="25" active-page="1" show-last-page="false"></p-pagination>
       </div>
       <div data-card="tabs">
-
+        <p-tabs>
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs size="medium">
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
+        <p-tabs size="medium" weight="semi-bold">
+          <p-tabs-item label="Some label (1)">
+            <p-text>Some content (1)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (2)">
+            <p-text>Some content (2)</p-text>
+          </p-tabs-item>
+          <p-tabs-item label="Some label (3)">
+            <p-text>Some content (3)</p-text>
+          </p-tabs-item>
+        </p-tabs>
       </div>
       <div data-card="tabs-bar">
 
       </div>
       <div data-card="modal">
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
-        <p-modal aria="{'aria-label': 'Some Heading'}">
+        <p-modal aria="{'aria-label': 'Some heading'}">
           <p-text slot="header">Some Header</p-text>
-          <p-text>Some Content</p-text>
+          <p-text>Some content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
-        <p-modal background="surface" aria="{'aria-label': 'Some Heading'}">
+        <p-modal background="surface" aria="{'aria-label': 'Some heading'}">
           <p-text slot="header">Some Header</p-text>
-          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
-        <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some Heading'}">
+        <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some heading'}">
           <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
             <img class="w-full h-full object-cover rounded-lg" src="/assets/interior.jpg" alt="" />
           </div>
         </p-modal>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
-        <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some Heading'}" backdrop="shading">
+        <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some heading'}" backdrop="shading">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
           </div>
@@ -430,7 +462,7 @@
         </p-modal>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
-        <p-modal aria="{'aria-label': 'Some Heading'}" fullscreen="true">
+        <p-modal aria="{'aria-label': 'Some heading'}" fullscreen="true">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
             <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
           </div>
@@ -447,23 +479,23 @@
       </div>
       <div data-card="flyout">
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
-        <p-flyout aria="{'aria-label': 'Some Heading'}">
+        <p-flyout aria="{'aria-label': 'Some heading'}">
           <p-text slot="header">Some Header</p-text>
-          <p-text>Some Content</p-text>
+          <p-text>Some content</p-text>
           <p-text slot="footer">Some Footer</p-text>
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
-        <p-flyout background="surface" aria="{'aria-label': 'Some Heading'}">
+        <p-flyout background="surface" aria="{'aria-label': 'Some heading'}">
           <p-text slot="header">Some Header</p-text>
-          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some content</p-text>
           <p-text slot="footer">Some Footer</p-text>
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
-        <p-flyout class="[--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" backdrop="shading" aria="{'aria-label': 'Some Heading'}">
+        <p-flyout class="[--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" backdrop="shading" aria="{'aria-label': 'Some heading'}">
           <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[320px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
           </div>
@@ -480,7 +512,7 @@
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
-        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
           <p-heading slot="header" tag="h2">Some Header</p-heading>
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
@@ -493,7 +525,7 @@
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
-        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" position="start" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" position="start" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
           <p-heading slot="header" tag="h2">Some Header</p-heading>
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
@@ -506,7 +538,7 @@
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
-        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
           <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
@@ -518,14 +550,14 @@
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
-        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
+        <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some heading'}">
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
           <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
         </p-flyout>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
-        <p-flyout aria="{'aria-label': 'Some Heading'}" fullscreen="true">
+        <p-flyout aria="{'aria-label': 'Some heading'}" fullscreen="true">
           <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[max(240px,40vh)]">
             <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
           </div>
@@ -543,19 +575,19 @@
       </div>
       <div data-card="sheet">
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
-        <p-sheet aria="{'aria-label': 'Some Heading'}">
-          <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
-          <p-text>Some Content</p-text>
+        <p-sheet aria="{'aria-label': 'Some heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
+          <p-text>Some content</p-text>
         </p-sheet>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
-        <p-sheet background="surface" aria="{'aria-label': 'Some Heading'}">
-          <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
-          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
+        <p-sheet background="surface" aria="{'aria-label': 'Some heading'}">
+          <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
+          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some content</p-text>
         </p-sheet>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
-        <p-sheet aria="{'aria-label': 'Some Heading'}">
+        <p-sheet aria="{'aria-label': 'Some heading'}">
           <div slot="header" class="-mt-(--ref-p-sheet-pt) -mx-(--ref-p-sheet-px) h-[320px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
           </div>
@@ -588,18 +620,18 @@
         <nav aria-label="Main">
           <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Basic)</p-button>
           <p-drilldown>
-            <p-drilldown-item identifier="id-1" label="Some Label (1)">
-              <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
+            <p-drilldown-item identifier="id-1" label="Some label (1)">
+              <p-drilldown-item identifier="id-1-1" label="Some label (1-1)">
                 <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
                 <p-drilldown-link>
                   <a href="#">Some anchor (1-1)</a>
                 </p-drilldown-link>
               </p-drilldown-item>
-              <p-drilldown-item identifier="id-1-2" label="Some Label (1-2)">
+              <p-drilldown-item identifier="id-1-2" label="Some label (1-2)">
                 <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
                 <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
                 <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
-                <p-drilldown-item identifier="id-1-2-1" label="Some Label (1-2-1)">
+                <p-drilldown-item identifier="id-1-2-1" label="Some label (1-2-1)">
                   <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
                   <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
                 </p-drilldown-item>
@@ -609,23 +641,23 @@
               <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
             </p-drilldown-item>
-            <p-drilldown-item identifier="id-2" label="Some Label (2)">
+            <p-drilldown-item identifier="id-2" label="Some label (2)">
               <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
             </p-drilldown-item>
-            <p-drilldown-item identifier="id-3" label="Some Label (3)">
+            <p-drilldown-item identifier="id-3" label="Some label (3)">
               <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
             </p-drilldown-item>
-            <p-drilldown-item identifier="id-4" label="Some Label (4)">
+            <p-drilldown-item identifier="id-4" label="Some label (4)">
               <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
             </p-drilldown-item>
-            <p-drilldown-item identifier="id-5" label="Some Label (5)">
+            <p-drilldown-item identifier="id-5" label="Some label (5)">
               <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
               <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
             </p-drilldown-item>
@@ -894,35 +926,35 @@
         <p-pin-code class="w-full" label="Some label" disabled="true"></p-pin-code>
       </div>
       <div data-card="radio-group">
-        <p-radio-group class="self-start" name="options" value="b" label="Some Label">
+        <p-radio-group class="self-start" name="options" value="b" label="Some label">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some Label" loading="true">
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" loading="true">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some Label" state="success" message="Some message.">
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" state="success" message="Some message.">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some Label" state="error" message="Some error.">
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" state="error" message="Some error.">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some Label" disabled="true">
+        <p-radio-group class="self-start" name="options" value="b" label="Some label" disabled="true">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>

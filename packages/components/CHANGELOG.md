@@ -54,7 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ⌛Link Tile (might be removed in favour of generic p-card)
 - ⌛Link Tile Product (might be removed in favour of generic p-card)
 - ✅Pagination
-- ⌛Tabs
+- ✅Tabs
 - ⌛Tabs Bar
 
 #### Dialog

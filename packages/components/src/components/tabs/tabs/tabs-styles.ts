@@ -1,3 +1,4 @@
+import { spacingStaticSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -19,7 +20,7 @@ export const getComponentCss = (): string => {
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
-      marginBottom: '8px',
+      marginBottom: spacingStaticSmall,
     },
   });
 };
