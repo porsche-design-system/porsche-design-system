@@ -58,6 +58,8 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
       - name: 'Global Styles Unit'
         run: yarn test:unit:styles:global-styles
       - name: 'Tailwind CSS Unit'
