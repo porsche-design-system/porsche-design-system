@@ -19,9 +19,11 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:variables && yarn build:normalize && yarn build:font-face && yarn build:fouc && yarn build:index",
+    "build-prod": "yarn clean:build && yarn build:variables && yarn build:normalize && yarn build-prod:font-face && yarn build:fouc && yarn build:index",
     "build:variables": "tsx scripts/buildVariablesCss.ts",
     "build:normalize": "tsx scripts/buildNormalizeCss.ts",
-    "build:font-face": "tsx scripts/buildFontFaceCss.ts",
+    "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
+    "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
     "build:fouc": "tsx scripts/buildFoucCss.ts",
     "build:index": "yarn build:index:default && yarn build:index:cdn",
     "build:index:default": "cat dist/normalize.css dist/fouc.css dist/variables.css dist/font-face.css > dist/index.css",

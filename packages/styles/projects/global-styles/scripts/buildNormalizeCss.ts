@@ -7,6 +7,8 @@ export const buildNormalizeCss = () => {
 
   fs.mkdirSync(targetPath, { recursive: true });
   fs.writeFileSync(`./${targetPath}/${targetFile}`, normalizeStyles);
+
+  console.log(`Built Normalize CSS`);
 };
 
 buildNormalizeCss();

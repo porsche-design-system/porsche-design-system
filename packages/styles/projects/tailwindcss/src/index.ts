@@ -50,11 +50,13 @@ import {
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
 
-const fontFaceCss = getMinifiedPorscheNextFontFaceCss({ cdn: 'com' });
-const fontFaceCnCss = getMinifiedPorscheNextFontFaceCss({ cdn: 'cn' });
+type Cdn = 'com' | 'cn' | 'localhost';
 
-export const getTailwindcssTheme = (cdn: 'auto' | 'cn' = 'auto') => `${foucStyles}
-${cdn === 'cn' ? fontFaceCnCss : fontFaceCss}
+export const getTailwindcssTheme = (cdn: Cdn = 'com') => {
+  const fontFaceCss = getMinifiedPorscheNextFontFaceCss({ cdn });
+
+  return `${foucStyles}
+${fontFaceCss}
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -348,3 +350,4 @@ ${cdn === 'cn' ? fontFaceCnCss : fontFaceCss}
 @utility prose-display-lg {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
 }`;
+}

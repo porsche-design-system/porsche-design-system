@@ -2,8 +2,10 @@ import * as fs from 'node:fs';
 import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/font-face/scripts/fontFaceStyles';
 
 export const buildFontFaceCss = () => {
-  const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: 'com' });
-  const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: 'cn' });
+  const isDev = process.env.NODE_ENV === 'development';
+
+  const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: isDev ? 'localhost' : 'com' });
+  const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: isDev ? 'localhost' : 'cn' });
 
   const targetPath = './dist';
   const targetPathCn = './dist/cn';
@@ -13,6 +15,8 @@ export const buildFontFaceCss = () => {
   fs.mkdirSync(targetPathCn, { recursive: true });
   fs.writeFileSync(`./${targetPath}/${targetFile}`, stylesCom);
   fs.writeFileSync(`./${targetPathCn}/${targetFile}`, stylesCn);
+
+  console.log(`Built Font Face CSS in ${isDev ? 'development' : 'production'} mode`);
 };
 
 buildFontFaceCss();

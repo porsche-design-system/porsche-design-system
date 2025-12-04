@@ -22,6 +22,8 @@ export const buildVariablesCss = () => {
 
   fs.mkdirSync(targetPath, { recursive: true });
   fs.writeFileSync(`./${targetPath}/${targetFile}`, styles);
+
+  console.log(`Built Variables CSS`);
 };
 
 buildVariablesCss();

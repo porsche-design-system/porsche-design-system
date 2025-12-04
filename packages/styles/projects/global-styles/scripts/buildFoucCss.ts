@@ -7,6 +7,8 @@ export const buildFoucCss = () => {
 
   fs.mkdirSync(targetPath, { recursive: true });
   fs.writeFileSync(`./${targetPath}/${targetFile}`, foucStyles);
+
+  console.log(`Built FOUC CSS`);
 };
 
 buildFoucCss();
