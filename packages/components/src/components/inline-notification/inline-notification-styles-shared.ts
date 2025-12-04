@@ -1,5 +1,5 @@
 import {
-  borderRadiusSmall,
+  borderRadiusMedium,
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
@@ -40,7 +40,7 @@ export const getNotificationRootJssStyle = (
     padding: spacingStaticMedium,
     ...frostedGlassStyle,
     background: getBackgroundColor(state),
-    borderRadius: borderRadiusSmall,
+    borderRadius: borderRadiusMedium,
     [mediaQueryMinS]: {
       // 4 columns are for icon, content, optional action button and optional close button
       gridTemplateColumns: `auto minmax(auto, 1fr)${hasAction ? ' auto' : ''}${hasClose ? ' auto' : ''}`,
