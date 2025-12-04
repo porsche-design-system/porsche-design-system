@@ -51,6 +51,16 @@
       <p-checkbox label="Tag Dismissible" name="tag-dismissible" data-section="common"></p-checkbox>
       <p-checkbox label="Text List" name="text-list" data-section="common"></p-checkbox>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
+        <p-heading tag="h3" size="medium">Feedback</p-heading>
+        <p-tag variant="secondary" compact="true">
+          <button type="button" onclick="toggleSection(this, 'feedback')">Deselect all</button>
+        </p-tag>
+      </div>
+      <p-checkbox label="Spinner" name="spinner" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Inline Notification" name="inline-notification" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Toast" name="toast" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Banner" name="banner" data-section="feedback"></p-checkbox>
+      <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
         <p-heading tag="h3" size="medium">Navigation</p-heading>
         <p-tag variant="secondary" compact="true">
           <button type="button" onclick="toggleSection(this, 'navigation')">Deselect all</button>
@@ -256,6 +266,78 @@
           <p-text-list-item>ABC</p-text-list-item>
         </p-text-list>
       </div>
+      <div data-card="spinner">
+        <p-spinner aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="medium" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner size="large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+        <p-spinner class="w-[24px] h-[24px]" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+      </div>
+      <div data-card="inline-notification">
+        <p-inline-notification heading="Some heading" heading-tag="h2" description="Some content"></p-inline-notification>
+        <p-inline-notification dismiss-button="false">
+          <p-heading slot="heading" tag="h2" size="large">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification>
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="success">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="warning">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="error">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car" action-loading="true">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+      </div>
+      <div data-card="banner">
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (Basic)</p-button>
+        <p-banner heading="Some Heading" heading-tag="h3" description="Some Content"></p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (without dismiss button)</p-button>
+        <p-banner dismiss-button="false">
+          <p-heading slot="heading" tag="h2" size="large">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with success)</p-button>
+        <p-banner state="success">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with warning)</p-button>
+        <p-banner state="warning">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Banner (with error)</p-button>
+        <p-banner state="error">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text slot="description">Some content</p-text>
+        </p-banner>
+      </div>
+      <div data-card="toast">
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content' })">Open Toast (Basic)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'success' })">Open Toast (Success)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'warning' })">Open Toast (Warning)</p-button>
+        <p-button type="button" variant="secondary" onclick="document.querySelector('p-toast').addMessage({ text: 'Some content', state: 'error' })">Open Toast (Error)</p-button>
+        <p-toast></p-toast>
+      </div>
       <div data-card="link">
         <p-link variant="primary">
           <a href="#">Some label</a>
@@ -297,28 +379,28 @@
         </p-link-pure>
       </div>
       <div data-card="modal">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Basic)</p-button>
         <p-modal aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text>Some Content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
         <p-modal background="surface" aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
         <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some Heading'}">
           <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
             <img class="w-full h-full object-cover rounded-lg" src="/assets/interior.jpg" alt="" />
           </div>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Shading)</p-button>
         <p-modal class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]" aria="{'aria-label': 'Some Heading'}" backdrop="shading">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
@@ -334,7 +416,7 @@
           </div>
         </p-modal>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Fullscreen)</p-button>
         <p-modal aria="{'aria-label': 'Some Heading'}" fullscreen="true">
           <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
             <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
@@ -351,7 +433,7 @@
         </p-modal>
       </div>
       <div data-card="flyout">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Basic)</p-button>
         <p-flyout aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text>Some Content</p-text>
@@ -359,7 +441,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
         <p-flyout background="surface" aria="{'aria-label': 'Some Heading'}">
           <p-text slot="header">Some Header</p-text>
           <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
@@ -367,7 +449,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Shading)</p-button>
         <p-flyout class="[--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" backdrop="shading" aria="{'aria-label': 'Some Heading'}">
           <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[320px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
@@ -384,7 +466,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" tag="h2">Some Header</p-heading>
           <p-text color="contrast-medium">ABC</p-text>
@@ -397,7 +479,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fixed Footer, Position Start)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" position="start" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" tag="h2">Some Header</p-heading>
           <p-text color="contrast-medium">ABC</p-text>
@@ -410,7 +492,7 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Without header)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
@@ -422,14 +504,14 @@
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Content only)</p-button>
         <p-flyout class="[--p-flyout-background-color:deeppink] [--p-flyout-width:clamp(276px,45.25vw+131px,1000px)]" footer-behavior="fixed" aria="{'aria-label': 'Some Heading'}">
           <p-text color="contrast-medium">ABC</p-text>
           <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
           <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text>
         </p-flyout>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Fullscreen)</p-button>
         <p-flyout aria="{'aria-label': 'Some Heading'}" fullscreen="true">
           <div slot="header" class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[max(240px,40vh)]">
             <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="" />
@@ -447,19 +529,19 @@
         </p-flyout>
       </div>
       <div data-card="sheet">
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Basic)</p-button>
         <p-sheet aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
           <p-text>Some Content</p-text>
         </p-sheet>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
         <p-sheet background="surface" aria="{'aria-label': 'Some Heading'}">
           <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
           <p-text class="p-fluid-sm bg-canvas rounded-lg">Some Content</p-text>
         </p-sheet>
 
-        <p-button type="button" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
+        <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
         <p-sheet aria="{'aria-label': 'Some Heading'}">
           <div slot="header" class="-mt-(--ref-p-sheet-pt) -mx-(--ref-p-sheet-px) h-[320px]">
             <img class="w-full h-full object-cover rounded-t-lg" src="/assets/interior.jpg" alt="" />
@@ -470,6 +552,139 @@
           <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
           <p-text class="mt-fluid-md">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p-text>
         </p-sheet>
+      </div>
+      <div data-card="popover">
+        <p-popover title="bottom">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover title="top" direction="top">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover title="right" direction="right">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover title="left" direction="left">
+          <p-text>Some content</p-text>
+        </p-popover>
+        <p-popover>
+          <p-button slot="button" variant="secondary" hide-label="true" icon="car">More information</p-button>
+          <p-text>Some content</p-text>
+        </p-popover>
+      </div>
+      <div data-card="drilldown">
+        <nav aria-label="Main">
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Basic)</p-button>
+          <p-drilldown>
+            <p-drilldown-item identifier="id-1" label="Some Label (1)">
+              <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
+                <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+                <p-drilldown-link>
+                  <a href="#">Some anchor (1-1)</a>
+                </p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-1-2" label="Some Label (1-2)">
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+                <p-drilldown-item identifier="id-1-2-1" label="Some Label (1-2-1)">
+                  <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
+                  <p-drilldown-link href="#">Some anchor (1-2-1)</p-drilldown-link>
+                </p-drilldown-item>
+                <p-drilldown-link href="#">Some anchor (1-2)</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (1-1)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2" label="Some Label (2)">
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (2)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-3" label="Some Label (3)">
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (3)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-4" label="Some Label (4)">
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (4)</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-5" label="Some Label (5)">
+              <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor (5)</p-drilldown-link>
+            </p-drilldown-item>
+          </p-drilldown>
+        </nav>
+
+        <nav aria-label="Main">
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Drilldown (Custom Layout)</p-button>
+          <p-drilldown class="[--p-drilldown-grid-template:repeat(5,auto)_minmax(0,1fr)/auto]" active-identifier="id-1">
+            <p-drilldown-item identifier="id-1" label="Motorsport" class="[--p-drilldown-grid-template:auto/repeat(2,minmax(0,1fr))] [--p-drilldown-gap:0px_16px]">
+              <p-drilldown-item identifier="id-1-1" label="718">
+                <p-model-signature slot="header" model="718"></p-model-signature>
+                <p-button-tile slot="button" label="Some label" description="718" weight="semi-bold" compact="true" aspectRatio="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                  <img src="/assets/interior.jpg" alt="" />
+                </p-button-tile>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-1-2" label="911">
+                <p-model-signature slot="header" model="911"></p-model-signature>
+                <p-button-tile slot="button" label="Some label" description="911" weight="semi-bold" compact="true" aspectRatio="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                  <img src="/assets/interior.jpg" alt="" />
+                </p-button-tile>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#" aria-current="page">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2" label="Some label">
+              <p-drilldown-item identifier="id-2-1" label="Some label">
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-item identifier="id-2-2" label="Some label">
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+                <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-3" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-4" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-5" label="Some label">
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+              <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            </p-drilldown-item>
+            <p-link href="#" variant="secondary" icon="external" class="self-end">Some external anchor</p-link>
+          </p-drilldown>
+        </nav>
       </div>
       <div data-card="display">
         <p-display tag="h3" size="large">ABC</p-display>
@@ -1057,6 +1272,11 @@
           e.target.open = false;
         })
       }
+
+      for (const el of document.querySelectorAll("p-drilldown")) {
+        el.addEventListener('update', (e) => e.target.activeIdentifier = e.detail.activeIdentifier);
+      }
+
     </script>
 
   </body>

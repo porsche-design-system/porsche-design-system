@@ -1,5 +1,5 @@
 import {
-  borderRadiusSmall,
+  borderRadiusMedium,
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
@@ -9,7 +9,6 @@ import {
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import { colors } from '../../styles';
-import { isHighContrastMode } from '../../utils';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -41,10 +40,7 @@ export const getNotificationRootJssStyle = (
     padding: spacingStaticMedium,
     ...frostedGlassStyle,
     background: getBackgroundColor(state),
-    borderRadius: borderRadiusSmall,
-    ...(isHighContrastMode && {
-      outline: '1px solid transparent',
-    }),
+    borderRadius: borderRadiusMedium,
     [mediaQueryMinS]: {
       // 4 columns are for icon, content, optional action button and optional close button
       gridTemplateColumns: `auto minmax(auto, 1fr)${hasAction ? ' auto' : ''}${hasClose ? ' auto' : ''}`,
@@ -62,7 +58,6 @@ export const getNotificationIconJssStyle = (): JssStyle => ({
 export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
   gap: spacingStaticXSmall,
-  maxWidth: '50rem',
   marginTop: '2px', // To be center aligned with close button
   [mediaQueryMinS]: {
     marginLeft: `-${spacingStaticSmall}`,

@@ -42,10 +42,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Feedback
 
-- ⌛Banner
-- ⌛Toast
-- ⌛Inline Notification
-- ⌛Spinner
+- ✅Banner
+- ✅Toast
+- ✅Inline Notification
+- ✅Spinner
 
 #### Navigation
 
@@ -59,11 +59,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Dialog
 
-- ⌛Drilldown
+- ✅Drilldown
 - ✅Modal
 - ✅Flyout
 - ✅Sheet
-- ⌛Popover
+- ✅Popover
 
 #### Typography:
 
@@ -154,6 +154,13 @@ When using tailwind:
 - `Sheet`:
   - added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
   - added prop `background` with value `canvas | surface`
+- `Inline Notification`:
+  - removed max-width limitation for content
+- `Banner`:
+  - added `state="success"`
+  - removed max-width limitation for content
+- `Toast`:
+  - added `state="warning | error"`
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
