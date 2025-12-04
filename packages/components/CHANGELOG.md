@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
 - `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
 
 ### Fixed
 
