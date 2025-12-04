@@ -57,6 +57,9 @@
         </p-tag>
       </div>
       <p-checkbox label="Spinner" name="spinner" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Inline Notification" name="inline-notification" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Toast" name="toast" data-section="feedback"></p-checkbox>
+      <p-checkbox label="Banner" name="banner" data-section="feedback"></p-checkbox>
       <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
         <p-heading tag="h3" size="medium">Navigation</p-heading>
         <p-tag variant="secondary" compact="true">
@@ -268,6 +271,37 @@
         <p-spinner size="medium" aria="{'aria-label': 'Loading page content'}"></p-spinner>
         <p-spinner size="large" aria="{'aria-label': 'Loading page content'}"></p-spinner>
         <p-spinner class="w-[24px] h-[24px]" size="inherit" aria="{'aria-label': 'Loading page content'}"></p-spinner>
+      </div>
+      <div data-card="inline-notification">
+        <p-inline-notification heading="Some heading" heading-tag="h2" description="Some content"></p-inline-notification>
+        <p-inline-notification dismiss-button="false">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification>
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="success">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="warning">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification state="error">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
+        <p-inline-notification dismiss-button="false" action-label="Some action" action-icon="car" action-loading="true">
+          <p-heading slot="heading" tag="h2" size="small">Some heading</p-heading>
+          <p-text>Some content</p-text>
+        </p-inline-notification>
       </div>
       <div data-card="link">
         <p-link variant="primary">
