@@ -45,6 +45,7 @@
       <p-checkbox label="Accordion" name="accordion" data-section="common"></p-checkbox>
       <p-checkbox label="Button" name="button" data-section="common"></p-checkbox>
       <p-checkbox label="Button Pure" name="button-pure" data-section="common"></p-checkbox>
+      <p-checkbox label="Button Tile" name="button-tile" data-section="common"></p-checkbox>
       <p-checkbox label="Carousel" name="carousel" data-section="common"></p-checkbox>
       <p-checkbox label="Divider" name="divider" data-section="common"></p-checkbox>
       <p-checkbox label="Flag" name="flag" data-section="common"></p-checkbox>
@@ -188,6 +189,31 @@
         <p-button-pure size="small" icon="like" hide-label="true" disabled="true">Some label</p-button-pure>
         <p-button-pure size="x-small">Some label</p-button-pure>
         <p-button-pure size="xx-small">Some label</p-button-pure>
+      </div>
+      <div data-card="button-tile">
+        <p-button-tile aspect-ratio="3/4" label="Some label" description="Some description">
+          <img src="/assets/cayenne.png" alt="Some image description" />
+        </p-button-tile>
+        <p-button-tile weight="regular" size="large" gradient="true" align="top" aspect-ratio="9/16" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-dark.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+        <p-button-tile gradient="true" aspect-ratio="auto" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+        <p-button-tile disabled="true" gradient="true" aspect-ratio="3/4" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
+        <p-button-tile loading="true" gradient="true" aspect-ratio="3/4" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-button-tile>
       </div>
       <div data-card="carousel">
         <button class="bg-frosted backdrop-blur-frosted p-fluid-sm rounded-sm transition-colors  cursor-pointer hover:bg-frosted-soft focus-visible:outline outline-focus outline-offset-2" popovertarget="popover-carousel">Show Carousel</button>

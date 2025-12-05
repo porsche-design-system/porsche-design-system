@@ -76,7 +76,7 @@ export class ButtonTile implements ITileProps {
   @Prop() public align?: ButtonTileAlign = 'bottom';
 
   /** Show gradient. */
-  @Prop() public gradient?: boolean = true;
+  @Prop() public gradient?: boolean = false;
 
   /** Displays the button-tile as compact version with description and button icon only. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;

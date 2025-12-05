@@ -28,7 +28,6 @@ import {
   type TileWeight,
 } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
-import type { LinkTileWeight } from './link-tile-utils';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -40,7 +39,7 @@ const { canvasColor, primaryColor } = colors;
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   size: BreakpointCustomizable<TileSize>,
-  weight: BreakpointCustomizable<TileWeight | LinkTileWeight>, // to get deprecated semibold typed
+  weight: BreakpointCustomizable<TileWeight>,
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
@@ -105,7 +104,7 @@ export const getComponentCss = (
           buildResponsiveStyles(size, (sizeValue: TileSize) => ({
             fontSize: getFontSizeText(sizeValue),
           })),
-          buildResponsiveStyles(weight, (weightValue: TileWeight | LinkTileWeight) => ({
+          buildResponsiveStyles(weight, (weightValue: TileWeight) => ({
             fontWeight: getFontWeight(weightValue),
           }))
         ),

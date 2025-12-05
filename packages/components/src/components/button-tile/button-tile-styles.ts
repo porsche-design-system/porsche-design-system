@@ -10,6 +10,7 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  colors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -32,6 +33,9 @@ import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
+
+const { canvasColor, primaryColor } = colors;
+
 export const getComponentCss = (
   isDisabledOrLoading: boolean,
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
@@ -77,7 +81,7 @@ export const getComponentCss = (
           zIndex: 3,
         },
       },
-      '::slotted(:is(img,picture,video))': addImportantToEachRule({
+      '::slotted(:is(img,video,picture))': addImportantToEachRule({
         display: 'block',
         width: '100%',
         height: '100%',
@@ -91,10 +95,11 @@ export const getComponentCss = (
         outline: 0, // reset focus style since this element is used to improve mouse interaction only
       },
       p: {
-        ...textMediumStyle,
+        all: 'unset',
         zIndex: 3,
-        margin: 0, // reset ua-style
         maxWidth: '34.375rem',
+        ...textMediumStyle,
+        color: primaryColor,
         hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (sizeValue: TileSize) => ({
@@ -107,17 +112,18 @@ export const getComponentCss = (
       },
     },
     root: {
-      ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
-        aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
-      })),
-      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+      display: 'grid',
+      gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
       width: '100%', // necessary in case tile content overflows in grid or flex context
       // Safari workaround to scale the tile properly
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      display: 'grid',
-      gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
+      borderRadius: borderRadiusLarge,
+      ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
+        aspectRatio: aspectRatioValue,
+      })),
+      cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       ...(hasGradient && {
         '&::after': {
           content: '""',
@@ -125,17 +131,17 @@ export const getComponentCss = (
           ...(isTopAligned
             ? {
                 gridArea: '1/1/3/-1',
-                ...gradientToBottomStyle,
+                background: gradientToBottomStyle.background.replaceAll('0, 0%, 0%,', `from ${canvasColor} h s l / `),
                 marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
-                borderStartStartRadius: borderRadiusLarge,
-                borderStartEndRadius: borderRadiusLarge,
+                borderStartStartRadius: 'inherit',
+                borderStartEndRadius: 'inherit',
               }
             : {
                 gridArea: '4/1/6/-1',
-                ...gradientToTopStyle,
+                background: gradientToTopStyle.background.replaceAll('0, 0%, 0%,', `from ${canvasColor} h s l / `),
                 marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
-                borderEndStartRadius: borderRadiusLarge,
-                borderEndEndRadius: borderRadiusLarge,
+                borderEndStartRadius: 'inherit',
+                borderEndEndRadius: 'inherit',
               }),
         },
       }),
@@ -151,7 +157,7 @@ export const getComponentCss = (
       gridArea: '1/1/-1 /-1',
       zIndex: 1,
       overflow: 'hidden', // relevant for scaling of nested image
-      borderRadius: borderRadiusLarge,
+      borderRadius: 'inherit',
     },
     footer: {
       gridArea: `${isTopAligned ? 2 : 4}/2`,
@@ -159,7 +165,7 @@ export const getComponentCss = (
         compactValue
           ? {
               display: 'grid',
-              gridTemplateColumns: '1fr auto',
+              gridTemplateColumns: 'minmax(0,1fr) auto',
               columnGap: spacingStaticMedium,
             }
           : {
