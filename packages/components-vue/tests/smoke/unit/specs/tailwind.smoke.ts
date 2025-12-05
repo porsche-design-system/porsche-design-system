@@ -16,17 +16,6 @@ const groupsToCheck = [
       '@porsche-design-system/components-js/tailwindcss/index',
     ],
   },
-  {
-    name: '/tailwindcss/cn',
-    paths: [
-      '@porsche-design-system/components-vue/tailwindcss/cn',
-      '@porsche-design-system/components-vue/tailwindcss/cn/index.css',
-      '@porsche-design-system/components-vue/tailwindcss/cn/index',
-      '@porsche-design-system/components-js/tailwindcss/cn',
-      '@porsche-design-system/components-js/tailwindcss/cn/index.css',
-      '@porsche-design-system/components-js/tailwindcss/cn/index',
-    ],
-  },
 ];
 
 describe('tailwind package content', () => {

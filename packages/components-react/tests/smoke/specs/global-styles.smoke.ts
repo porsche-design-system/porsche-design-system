@@ -27,15 +27,6 @@ const groupsToCheck = [
     ],
   },
   {
-    name: '/fouc',
-    paths: [
-      '@porsche-design-system/components-react/fouc.css',
-      '@porsche-design-system/components-react/fouc',
-      '@porsche-design-system/components-js/fouc.css',
-      '@porsche-design-system/components-js/fouc',
-    ],
-  },
-  {
     name: '/normalize',
     paths: [
       '@porsche-design-system/components-react/normalize.css',
@@ -105,7 +96,6 @@ describe('global styles package content', () => {
     // Check / index
     [
       '@porsche-design-system/components-react/font-face.css',
-      '@porsche-design-system/components-react/fouc.css',
       '@porsche-design-system/components-react/normalize.css',
       '@porsche-design-system/components-react/variables.css',
     ].forEach((path) => {
@@ -119,7 +109,6 @@ describe('global styles package content', () => {
     // Check /cn index
     [
       '@porsche-design-system/components-react/cn/font-face.css',
-      '@porsche-design-system/components-react/fouc.css',
       '@porsche-design-system/components-react/normalize.css',
       '@porsche-design-system/components-react/variables.css',
     ].forEach((path) => {

@@ -18,12 +18,8 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:package:com && yarn build:package:cn",
-    "build-prod": "yarn clean:build && yarn build-prod:package:com && yarn build-prod:package:cn",
-    "build:package:com": "NODE_ENV=development tsx scripts/build.ts",
-    "build:package:cn": "NODE_ENV=development tsx scripts/buildCn.ts",
-    "build-prod:package:com": "tsx scripts/build.ts",
-    "build-prod:package:cn": "tsx scripts/buildCn.ts",
+    "build": "yarn clean:build && yarn build:package",
+    "build:package": "NODE_ENV=development tsx scripts/build.ts",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"

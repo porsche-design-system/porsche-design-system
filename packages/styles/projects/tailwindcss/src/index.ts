@@ -1,5 +1,4 @@
-import { getMinifiedPorscheNextFontFaceCss } from '@porsche-design-system/font-face/scripts/fontFaceStyles';
-import { colorVariablesDark, colorVariablesLight, foucStyles } from '@porsche-design-system/shared-styles';
+import { colorVariablesDark, colorVariablesLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
   borderRadiusLg,
@@ -50,15 +49,8 @@ import {
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
 
-type Cdn = 'com' | 'cn' | 'localhost';
-
-export const getTailwindcssTheme = (cdn: Cdn = 'com') => {
-  const fontFaceCss = getMinifiedPorscheNextFontFaceCss({ cdn });
-
-  return `${foucStyles}
-${fontFaceCss}
-
-@custom-variant dark (&:where(.dark, .dark *));
+export const getTailwindcssTheme = () => {
+  return `@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Reset */
@@ -350,4 +342,4 @@ ${fontFaceCss}
 @utility prose-display-lg {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
 }`;
-}
+};
