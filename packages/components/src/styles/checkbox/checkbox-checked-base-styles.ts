@@ -15,8 +15,8 @@ export const getCheckboxCheckedBaseStyles = (isLoading: boolean): JssStyle => {
 
   return {
     '&::before': {
-      WebkitMask: `${checkedIcon} center/24px 24px no-repeat`, // necessary for Sogou browser support :-)
-      mask: `${checkedIcon} center/24px 24px no-repeat`,
+      WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
+      mask: `${checkedIcon} center/contain no-repeat`,
       backgroundColor: primaryColor,
     },
   };

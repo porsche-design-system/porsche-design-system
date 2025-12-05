@@ -1,5 +1,6 @@
 import {
-  borderWidthBase, borderWidthThin,
+  borderWidthBase,
+  borderWidthThin,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -10,11 +11,13 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
+  getDisabledBaseStyles,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE, getFocusBaseStyles, getDisabledBaseStyles,
+  SCALING_BASE_VALUE,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
@@ -25,9 +28,7 @@ import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
 export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-option-scaling';
 
-const checkedIcon = getInlineSVGBackgroundImage(
-  `<circle cx="12" cy="12" r="6"/>`
-);
+const checkedIcon = getInlineSVGBackgroundImage(`<circle cx="12" cy="12" r="6"/>`);
 
 const { primaryColor } = colors;
 
@@ -47,7 +48,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
 
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the radio button full size.
-  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
+  const margin = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
 
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
@@ -84,16 +85,21 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
             },
           })),
         '&::before': {
-          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
-          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
-          // In addition, it is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.
+          // This pseudo-element is used to render the checked icon.
           content: '""',
-          margin: inset,
+          gridArea: '1/1',
         },
         '&:checked::before': {
-          WebkitMask: `${checkedIcon} center/24px 24px no-repeat`, // necessary for Sogou browser support :-)
-          mask: `${checkedIcon} center/24px 24px no-repeat`,
+          WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${checkedIcon} center/contain no-repeat`,
           backgroundColor: primaryColor,
+        },
+        '&::after': {
+          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
+          content: '""',
+          margin,
+          gridArea: '1/1',
         },
       },
     },
@@ -104,6 +110,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     },
     wrapper: {
       position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
     },
     ...(loading && {

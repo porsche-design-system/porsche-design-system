@@ -80,6 +80,10 @@ export const getComponentCss = (
     },
     wrapper: {
       position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
     },
     ...(isLoading && {
