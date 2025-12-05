@@ -28,7 +28,6 @@ import type {
   ButtonTileAlign,
   ButtonTileAriaAttribute,
   ButtonTileAspectRatio,
-  ButtonTileBackground,
   ButtonTileIcon,
   ButtonTileSize,
   ButtonTileType,
@@ -63,9 +62,6 @@ export class ButtonTile implements ITileProps {
 
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
-
-  /** Adapts the description and button theme when used on light background image. */
-  @Prop() public background?: ButtonTileBackground = 'dark';
 
   /** Aspect ratio of the button-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4/3';
@@ -134,7 +130,6 @@ export class ButtonTile implements ITileProps {
       this.aspectRatio,
       this.size,
       this.weight,
-      this.background,
       this.align,
       this.compact,
       this.gradient,
@@ -145,7 +140,6 @@ export class ButtonTile implements ITileProps {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     const buttonProps = {
-      theme: this.background,
       variant: 'secondary',
       iconSource: this.iconSource,
       type: this.type,

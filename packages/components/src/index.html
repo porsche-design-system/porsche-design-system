@@ -72,6 +72,8 @@
       </div>
       <p-checkbox label="Link" name="link" data-section="navigation"></p-checkbox>
       <p-checkbox label="Link Pure" name="link-pure" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Link Tile" name="link-tile" data-section="navigation"></p-checkbox>
+      <p-checkbox label="Link Tile Product" name="link-tile-product" data-section="navigation"></p-checkbox>
       <p-checkbox label="Pagination" name="pagination" data-section="navigation"></p-checkbox>
       <p-checkbox label="Tabs" name="tabs" data-section="navigation"></p-checkbox>
       <p-checkbox label="Tabs Bar" name="tabs-bar" data-section="navigation"></p-checkbox>
@@ -258,11 +260,11 @@
       </div>
       <div data-card="flag">
         <p-flag size="x-large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        <p-flag size="large" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        <p-flag size="medium" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        <p-flag size="small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        <p-flag size="x-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
-        <p-flag size="xx-small" aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+        <p-flag size="large" name="ch" aria="{'aria-label': 'Flag of Switzerland'}"></p-flag>
+        <p-flag size="medium" name="mc" aria="{'aria-label': 'Flag of Monaco'}"></p-flag>
+        <p-flag size="small" name="es" aria="{'aria-label': 'Flag of Spain'}"></p-flag>
+        <p-flag size="x-small" name="pt" aria="{'aria-label': 'Flag of Portugal'}"></p-flag>
+        <p-flag size="xx-small" name="it" aria="{'aria-label': 'Flag of Italy'}"></p-flag>
       </div>
       <div data-card="scroller">
         <p-scroller class="space-x-fluid-sm">
@@ -543,6 +545,24 @@
         <p-link-pure size="xx-small" underline="true">
           <a href="#">Some label</a>
         </p-link-pure>
+      </div>
+      <div data-card="link-tile">
+        <p-link-tile aspect-ratio="3/4" href="https://porsche.com" target="_blank" label="Some label" description="Some description">
+          <img src="/assets/cayenne.png" alt="Some image description" />
+        </p-link-tile>
+        <p-link-tile weight="regular" size="large" gradient="true" align="top" aspect-ratio="9/16" href="https://porsche.com" target="_blank" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-dark.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-link-tile>
+        <p-link-tile gradient="true" aspect-ratio="auto" href="https://porsche.com" target="_blank" label="Some label" description="Some description">
+          <p-tag slot="header">Some tag</p-tag>
+          <img src="/assets/cayenne-light.png" alt="Some image description" />
+          <p-text slot="footer">Some footer</p-text>
+        </p-link-tile>
+      </div>
+      <div data-card="link-tile-product">
+
       </div>
       <div data-card="pagination">
         <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>

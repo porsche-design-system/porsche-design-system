@@ -20,11 +20,9 @@ import { getFontWeight } from '../../styles/font-weight-styles';
 import {
   buildResponsiveStyles,
   getCss,
-  isThemeDark,
   mergeDeep,
   type TileAlign,
   type TileAspectRatio,
-  type TileBackground,
   type TileSize,
   type TileWeight,
 } from '../../utils';
@@ -39,7 +37,6 @@ export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   size: BreakpointCustomizable<TileSize>,
   weight: BreakpointCustomizable<TileWeight>,
-  background: TileBackground,
   align: TileAlign,
   compact: BreakpointCustomizable<boolean>,
   hasGradient: boolean,
@@ -121,28 +118,27 @@ export const getComponentCss = (
       },
       display: 'grid',
       gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
-      ...(hasGradient &&
-        isThemeDark(background) && {
-          '&::after': {
-            content: '""',
-            zIndex: 2,
-            ...(isTopAligned
-              ? {
-                  gridArea: '1/1/3/-1',
-                  ...gradientToBottomStyle,
-                  marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
-                  borderStartStartRadius: borderRadiusLarge,
-                  borderStartEndRadius: borderRadiusLarge,
-                }
-              : {
-                  gridArea: '4/1/6/-1',
-                  ...gradientToTopStyle,
-                  marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
-                  borderEndStartRadius: borderRadiusLarge,
-                  borderEndEndRadius: borderRadiusLarge,
-                }),
-          },
-        }),
+      ...(hasGradient && {
+        '&::after': {
+          content: '""',
+          zIndex: 2,
+          ...(isTopAligned
+            ? {
+                gridArea: '1/1/3/-1',
+                ...gradientToBottomStyle,
+                marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
+                borderStartStartRadius: borderRadiusLarge,
+                borderStartEndRadius: borderRadiusLarge,
+              }
+            : {
+                gridArea: '4/1/6/-1',
+                ...gradientToTopStyle,
+                marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
+                borderEndStartRadius: borderRadiusLarge,
+                borderEndEndRadius: borderRadiusLarge,
+              }),
+        },
+      }),
       ...(!isDisabled &&
         hoverMediaQuery({
           '&:hover slot:not([name])': {

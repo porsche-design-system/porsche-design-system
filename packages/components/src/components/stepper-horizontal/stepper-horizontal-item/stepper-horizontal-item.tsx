@@ -14,7 +14,6 @@ import {
   isItemClickable,
   isStateCompleteOrWarning,
   STEPPER_ITEM_STATES,
-  type StepperHorizontalItemInternalHTMLProps,
   type StepperHorizontalItemState,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
@@ -32,7 +31,7 @@ const propTypes: PropTypes<typeof StepperHorizontalItem> = {
   shadow: { delegatesFocus: true },
 })
 export class StepperHorizontalItem {
-  @Element() public host!: HTMLElement & StepperHorizontalItemInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** The validation state. */
   @Prop() public state?: StepperHorizontalItemState;

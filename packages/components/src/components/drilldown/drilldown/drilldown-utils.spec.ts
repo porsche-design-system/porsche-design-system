@@ -1,9 +1,8 @@
 import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
-import type { DrilldownItemInternalHTMLProps } from '../drilldown-item/drilldown-item-utils';
 import * as drilldownUtils from './drilldown-utils';
 
-const createChild = (identifier: string = undefined): HTMLPDrilldownItemElement & DrilldownItemInternalHTMLProps => {
+const createChild = (identifier: string = undefined): HTMLPDrilldownItemElement => {
   const el = document.createElement('div') as any;
   el.identifier = identifier;
   return el;
