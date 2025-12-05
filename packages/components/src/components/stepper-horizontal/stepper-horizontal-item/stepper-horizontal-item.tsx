@@ -70,7 +70,7 @@ export class StepperHorizontalItem {
           aria-disabled={!this.state || this.disabled ? 'true' : null}
           aria-current={this.state === 'current' ? 'step' : null}
         >
-          {isStateCompleteOrWarning(this.state) && (
+          {isStateCompleteOrWarning(this.state) ? (
             <PrefixedTagNames.pIcon
               class="icon"
               name={getStepperHorizontalIconName(this.state)}
@@ -78,6 +78,8 @@ export class StepperHorizontalItem {
               color={getStepperHorizontalIconName(this.state)}
               aria-hidden="true"
             />
+          ) : (
+            <span class="icon" aria-hidden="true" />
           )}
           {this.state && <span class="sr-only">{this.state}: </span>}
           <slot />

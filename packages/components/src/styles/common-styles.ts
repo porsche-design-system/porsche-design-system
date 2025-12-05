@@ -136,15 +136,6 @@ export const getFocusJssStyle = (opts?: Options): JssStyle => {
   };
 };
 
-// reset initial styles, e.g. in case link-pure is used with slotted anchor and nested within e.g. an accordion
-export const getResetInitialStylesForSlottedAnchor: JssStyle = {
-  margin: 0,
-  padding: 0,
-  outline: 0, // reset native blue outline
-  borderRadius: 0,
-  background: 'transparent',
-};
-
 /**
  * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
  * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.

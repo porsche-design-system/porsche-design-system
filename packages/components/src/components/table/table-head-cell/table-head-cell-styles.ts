@@ -15,7 +15,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getCss } from '../../../utils';
-import { cssVariableTableHeadCellIconFilter, cssVariableTablePadding } from '../table/table-styles';
+import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 
@@ -100,7 +100,6 @@ export const getComponentCss = (
         opacity: active ? 1 : 0,
         transform: `rotate3d(0,0,1,${isDirectionAsc(direction) ? 0 : 180}deg)`,
         transformOrigin: '50% 50%', // for iOS
-        filter: `var(${cssVariableTableHeadCellIconFilter})`,
       },
     }),
   });

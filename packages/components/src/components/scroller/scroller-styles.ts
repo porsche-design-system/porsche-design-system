@@ -82,8 +82,7 @@ export const getComponentCss = (
     },
     trigger: {
       position: 'absolute',
-      top: 0,
-      bottom: 0,
+      inset: '0 auto',
       width: '1px',
       visibility: 'hidden',
       '&:first-of-type': {

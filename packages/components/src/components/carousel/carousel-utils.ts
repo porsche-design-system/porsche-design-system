@@ -14,9 +14,6 @@ export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 export const CAROUSEL_SLIDES_PER_PAGE = ['auto', ...Array.from(new Array(10), (_, i) => i + 1)];
 export type CarouselSlidesPerPage = (typeof CAROUSEL_SLIDES_PER_PAGE)[number];
 
-export const CAROUSEL_GRADIENT_COLORS = ['background-base', 'background-surface', 'none'] as const;
-export type CarouselGradientColor = (typeof CAROUSEL_GRADIENT_COLORS)[number];
-
 export const CAROUSEL_ALIGN_HEADERS = ['start', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 

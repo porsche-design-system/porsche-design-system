@@ -23,13 +23,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Button Pure
 - ⌛Button Tile (might be removed in favour of generic p-card)
 - ✅Canvas
-- ⌛Carousel
+- ✅Carousel
 - ✅Divider
 - ✅Flag
 - ✅Icon
-- ⌛Scroller
-- ⌛Stepper Horizontal
-- ⌛Table
+- ✅Scroller
+- ✅Stepper Horizontal
+- ✅Table
 - ✅Tag
 - ✅Tag Dismissible
 - ✅Text List
@@ -53,9 +53,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅Link Pure
 - ⌛Link Tile (might be removed in favour of generic p-card)
 - ⌛Link Tile Product (might be removed in favour of generic p-card)
-- ⌛Pagination
-- ⌛Tabs
-- ⌛Tabs Bar
+- ✅Pagination
+- ✅Tabs
+- ✅Tabs Bar
 
 #### Dialog
 
@@ -161,6 +161,15 @@ When using tailwind:
   - removed max-width limitation for content
 - `Toast`:
   - added `state="warning | error"`
+- `Carousel`:
+  - removed CSS variable `--p-carousel-prev-next-filter`
+  - removed prop `gradient-color` (use `gradient="true"` instead)
+  - changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
+    to enable trimming)
+  - changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
+    to enable pagination)
+  - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
+    enable rewind)
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
