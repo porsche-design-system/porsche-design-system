@@ -588,7 +588,14 @@
         </p-link-tile>
       </div>
       <div data-card="link-tile-product">
-
+        <p-link-tile-product heading="Some heading" price="718,00 €" liked="true" href="https://porsche.com" target="_blank">
+          <img src="/assets/cayenne.png" alt="Some alt text" />
+        </p-link-tile-product>
+        <p-link-tile-product aspect-ratio="9/16" heading="Some heading" price="718,00 €" price-original="911,00 €" description="Some description">
+          <a slot="anchor" href="https://porsche.com" target="_blank">Some label</a>
+          <p-tag slot="header">New</p-tag>
+          <img src="/assets/cayenne.png" alt="Some alt text" />
+        </p-link-tile-product>
       </div>
       <div data-card="pagination">
         <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
