@@ -2,48 +2,55 @@
 import type {
   AccordionUpdateEventDetail,
   CarouselUpdateEventDetail,
+  InputDateBlurEventDetail,
+  InputDateChangeEventDetail,
+  InputDateInputEventDetail,
+  InputEmailBlurEventDetail,
+  InputEmailChangeEventDetail,
+  InputEmailInputEventDetail,
+  InputNumberBlurEventDetail,
+  InputNumberChangeEventDetail,
+  InputNumberInputEventDetail,
+  InputPasswordBlurEventDetail,
+  InputPasswordChangeEventDetail,
+  InputPasswordInputEventDetail,
+  InputSearchBlurEventDetail,
+  InputSearchChangeEventDetail,
+  InputSearchInputEventDetail,
+  InputTelBlurEventDetail,
+  InputTelChangeEventDetail,
+  InputTelInputEventDetail,
+  InputTextBlurEventDetail,
+  InputTextChangeEventDetail,
   InputTextInputEventDetail,
+  InputTimeBlurEventDetail,
+  InputTimeChangeEventDetail,
+  InputTimeInputEventDetail,
+  InputUrlBlurEventDetail,
+  InputUrlChangeEventDetail,
+  InputUrlInputEventDetail,
   PaginationUpdateEventDetail,
   SwitchUpdateEventDetail,
   TableUpdateEventDetail,
   TabsBarUpdateEventDetail,
   TabsUpdateEventDetail,
-  InputDateInputEventDetail,
-  InputDateBlurEventDetail,
-  InputDateChangeEventDetail,
-  InputEmailInputEventDetail,
-  InputEmailBlurEventDetail,
-  InputEmailChangeEventDetail,
-  InputNumberInputEventDetail,
-  InputNumberBlurEventDetail,
-  InputNumberChangeEventDetail,
-  InputPasswordInputEventDetail,
-  InputPasswordBlurEventDetail,
-  InputPasswordChangeEventDetail,
-  InputSearchInputEventDetail,
-  InputSearchBlurEventDetail,
-  InputSearchChangeEventDetail,
-  InputTelInputEventDetail,
-  InputTelBlurEventDetail,
-  InputTelChangeEventDetail,
-  InputTextInputEventDetail,
-  InputTextBlurEventDetail,
-  InputTextChangeEventDetail,
-  InputTimeInputEventDetail,
-  InputTimeBlurEventDetail,
-  InputTimeChangeEventDetail,
-  InputUrlInputEventDetail,
-  InputUrlBlurEventDetail,
-  InputUrlChangeEventDetail,
-  TextareaInputEventDetail,
   TextareaBlurEventDetail,
   TextareaChangeEventDetail,
+  TextareaInputEventDetail,
 } from '@porsche-design-system/components-vue';
 import {
   PAccordion,
   PBanner,
   PCarousel,
+  PInputDate,
+  PInputEmail,
+  PInputNumber,
+  PInputPassword,
+  PInputSearch,
+  PInputTel,
   PInputText,
+  PInputTime,
+  PInputUrl,
   PModal,
   PPagination,
   PSwitch,
@@ -54,73 +61,64 @@ import {
   PTabs,
   PTabsBar,
   PTabsItem,
-  PInputDate,
-  PInputEmail,
-  PInputNumber,
-  PInputPassword,
-  PInputSearch,
-  PInputTel,
-  PInputText,
-  PInputTime,
-  PInputUrl,
   PTextarea,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-  const accordionUpdateEventCounter = ref(0);
-  const paginationUpdateEventCounter = ref(0);
-  const tabsBarUpdateEventCounter = ref(0);
-  const tabsUpdateEventCounter = ref(0);
-  const textFieldSearchValue = ref('');
-  const switchUpdateEventCounter = ref(0);
-  const bannerDismissEventCounter = ref(0);
-  const isBannerOpen = ref(false);
-  const modalDismissEventCounter = ref(0);
-  const isModalOpen = ref(false);
-  const tableUpdateEventCounter = ref(0);
-  const carouselUpdateEventCounter = ref(0);
+const accordionUpdateEventCounter = ref(0);
+const paginationUpdateEventCounter = ref(0);
+const tabsBarUpdateEventCounter = ref(0);
+const tabsUpdateEventCounter = ref(0);
+const textFieldSearchValue = ref('');
+const switchUpdateEventCounter = ref(0);
+const bannerDismissEventCounter = ref(0);
+const isBannerOpen = ref(false);
+const modalDismissEventCounter = ref(0);
+const isModalOpen = ref(false);
+const tableUpdateEventCounter = ref(0);
+const carouselUpdateEventCounter = ref(0);
 
-  const inputDateValue = ref('');
-  const inputDateBlurCounter = ref(0);
-  const inputDateChangeCounter = ref(0);
+const inputDateValue = ref('');
+const inputDateBlurCounter = ref(0);
+const inputDateChangeCounter = ref(0);
 
-  const inputEmailValue = ref('');
-  const inputEmailBlurCounter = ref(0);
-  const inputEmailChangeCounter = ref(0);
+const inputEmailValue = ref('');
+const inputEmailBlurCounter = ref(0);
+const inputEmailChangeCounter = ref(0);
 
-  const inputNumberValue = ref('');
-  const inputNumberBlurCounter = ref(0);
-  const inputNumberChangeCounter = ref(0);
+const inputNumberValue = ref('');
+const inputNumberBlurCounter = ref(0);
+const inputNumberChangeCounter = ref(0);
 
-  const inputPasswordValue = ref('');
-  const inputPasswordBlurCounter = ref(0);
-  const inputPasswordChangeCounter = ref(0);
+const inputPasswordValue = ref('');
+const inputPasswordBlurCounter = ref(0);
+const inputPasswordChangeCounter = ref(0);
 
-  const inputSearchValue = ref('');
-  const inputSearchBlurCounter = ref(0);
-  const inputSearchChangeCounter = ref(0);
+const inputSearchValue = ref('');
+const inputSearchBlurCounter = ref(0);
+const inputSearchChangeCounter = ref(0);
 
-  const inputTelValue = ref('');
-  const inputTelBlurCounter = ref(0);
-  const inputTelChangeCounter = ref(0);
+const inputTelValue = ref('');
+const inputTelBlurCounter = ref(0);
+const inputTelChangeCounter = ref(0);
 
-  const inputTextValue = ref('');
-  const inputTextBlurCounter = ref(0);
-  const inputTextChangeCounter = ref(0);
+const inputTextValue = ref('');
+const inputTextBlurCounter = ref(0);
+const inputTextChangeCounter = ref(0);
 
-  const inputTimeValue = ref('');
-  const inputTimeBlurCounter = ref(0);
-  const inputTimeChangeCounter = ref(0);
+const inputTimeValue = ref('');
+const inputTimeBlurCounter = ref(0);
+const inputTimeChangeCounter = ref(0);
 
-  const inputUrlValue = ref('');
-  const inputUrlBlurCounter = ref(0);
-  const inputUrlChangeCounter = ref(0);
+const inputUrlValue = ref('');
+const inputUrlBlurCounter = ref(0);
+const inputUrlChangeCounter = ref(0);
 
-  const textareaValue = ref('');
-  const textareaBlurCounter = ref(0);
-  const textareaChangeCounter = ref(0);
+const textareaValue = ref('');
+const textareaBlurCounter = ref(0);
+const textareaChangeCounter = ref(0);
 
-  // TODO: inline-notification, segmented-control and stepper-horizontal are missing
+// TODO: inline-notification, segmented-control and stepper-horizontal are missing
 
 // unused event parameters are used to verify that types can be imported from package root
 /* eslint-disable @typescript-eslint/no-unused-vars */
