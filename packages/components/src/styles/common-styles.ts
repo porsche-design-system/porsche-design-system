@@ -103,41 +103,13 @@ export const getDisabledBaseStyles = () => {
   } as const;
 };
 
-type Options = {
-  offset?: string | 0;
-  slotted?: true | string;
-  pseudo?: boolean;
-};
-export const getFocusJssStyle = (opts?: Options): JssStyle => {
-  const { offset = '2px', slotted = '', pseudo = false } = opts || {};
-  const slottedSelector = slotted && slotted !== true ? slotted : '';
-
-  return {
-    [`&${slotted ? '(' : ''}${slottedSelector}::-moz-focus-inner${slotted ? ')' : ''}`]: {
-      border: 0, // reset ua-style (for FF)
-    },
-    [`&${slotted ? '(' : ''}${slottedSelector}:focus${slotted ? ')' : ''}`]: {
-      outline: 0, // reset ua-style (for older browsers)
-    },
-    ...(pseudo && {
-      [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}`]: {
-        outline: 0, // reset ua-style (for modern browsers)
-      },
-    }),
-    [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
-      outline: `${borderWidthBase} solid ${focusColor}`,
-      outlineOffset: offset,
-    },
-  };
-};
-
 /**
  * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
  * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.
  * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
  * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
  */
-export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle => {
+export const getHiddenTextJssStyle = (isHidden: boolean = true, isShownJssStyle?: JssStyle): JssStyle => {
   return isHidden
     ? {
         position: 'absolute',

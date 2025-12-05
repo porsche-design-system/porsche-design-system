@@ -12,7 +12,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -70,7 +70,7 @@ export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: b
             color: 'inherit',
             borderRadius: borderRadiusSmall,
           },
-          ...getFocusJssStyle({ slotted: 'a' }),
+          '&(a:focus-visible)': getFocusBaseStyles(),
         },
         '&[name="sidebar-end-header"]': {
           display: 'block', // ensures header section of sidebar-end area is aligned correctly
@@ -143,7 +143,7 @@ export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: b
         [mediaQueryM]: {
           boxShadow: `-1px 0 0 0 ${contrastLowerColor}`,
         },
-      }
+      },
     },
     header: {
       zIndex: 6,

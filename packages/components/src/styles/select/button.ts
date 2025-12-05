@@ -2,7 +2,7 @@ import { borderRadiusSmall, borderWidthThin, fontLineHeight, textSmallStyle } fr
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
 import { colors } from '../colors';
-import { getFocusJssStyle, getTransition } from '../common-styles';
+import { getFocusBaseStyles, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../form-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
@@ -44,7 +44,7 @@ export const getButtonJssStyle = (
           borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateBorderHoverColor})`,
         },
       }),
-      ...getFocusJssStyle(),
+      '&:focus-visible': getFocusBaseStyles(),
     }),
   };
 };

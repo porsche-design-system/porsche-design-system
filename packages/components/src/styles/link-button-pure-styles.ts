@@ -12,7 +12,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -113,7 +113,9 @@ export const getLinkButtonPureStyles = (
             backgroundColor: frostedColor,
           },
         })),
-      ...(!hasSlottedAnchor && getFocusJssStyle({ pseudo: true, offset: '-2px' })),
+      ...(!hasSlottedAnchor && {
+        '&:focus-visible::before': getFocusBaseStyles(),
+      }),
     },
     ...(hasIcon
       ? {

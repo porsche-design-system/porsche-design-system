@@ -20,7 +20,7 @@ import {
   addImportantToRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -227,7 +227,7 @@ export const getComponentCss = (
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
         borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
-        ...getFocusJssStyle(),
+        '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
       ...(isHeaderAlignCenter && {
