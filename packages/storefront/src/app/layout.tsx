@@ -1,12 +1,17 @@
 import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
-import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
+import {
+  getComponentChunkLinks,
+  getFontLinks,
+  getIconLinks,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-react/partials';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
+import { prefetchDNS, preload } from 'react-dom';
 import { Canvas } from '@/components/layout/Canvas';
 import { Providers } from '@/components/providers/Providers';
 import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
-import { HeaderPartials } from '@/partials/HeaderPartials';
 import { getBasePath } from '@/utils/getBasePath';
 import { isDevEnvironment } from '@/utils/isDev';
 
@@ -63,6 +68,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const basePath = getBasePath();
+
+  const getHref = (href: string) => {
+    return isDevEnvironment
+      ? href.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001')
+      : href;
+  };
+  /* preloads Porsche Next font (=> minimize FOUT) */
+  getFontLinks({ format: 'js', weights: ['regular', 'semi-bold', 'bold'] }).forEach(({ href, options }) => {
+    preload(getHref(href), options);
+  });
+
+  /* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */
+  getComponentChunkLinks({
+    components: ['accordion', 'button', 'canvas', 'icon', 'select'],
+    format: 'js',
+  }).forEach(({ href, options }) => {
+    preload(getHref(href), options);
+  });
+  /* preloads Porsche icons (=> minimize FOUC) */
+  getIconLinks({ format: 'js', icons: ['search', 'configurate', 'sidebar', 'external'] }).forEach(
+    ({ href }: { href: string }) => {
+      prefetchDNS(getHref(href));
+    }
+  );
+
   return (
     <html lang="en" className="auto">
       <head>
@@ -83,7 +113,6 @@ export default function RootLayout({
           content="Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products."
         />
         <meta name="twitter:image" content="/assets/og-image.png" />
-        <HeaderPartials />
       </head>
       <body>
         <StorefrontThemeProvider>

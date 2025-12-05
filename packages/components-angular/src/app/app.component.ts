@@ -1,8 +1,11 @@
-import { ChangeDetectionStrategy, Component, Pipe, PipeTransform, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, InjectionToken, inject, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { THEME_TOKEN, type Theme } from '@porsche-design-system/components-angular';
+import { BehaviorSubject } from 'rxjs';
 import { routes } from './app-routing.module';
+
+export type Theme = 'light' | 'dark' | 'auto';
+export const THEME_TOKEN = new InjectionToken<BehaviorSubject<Theme>>('pdsTheme');
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {

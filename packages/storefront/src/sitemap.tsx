@@ -487,34 +487,9 @@ export const sitemap: Routes = {
         path: '/partials/introduction',
         type: 'PAGE',
       },
-      'browser-support-fallback-script': {
-        name: 'Browser Support Fallback Script',
-        path: '/partials/browser-support-fallback-script',
-        type: 'PAGE',
-      },
       'component-chunk-links': {
         name: 'Component Chunk Links',
         path: '/partials/component-chunk-links',
-        type: 'PAGE',
-      },
-      'cookies-fallback-script': {
-        name: 'Cookies Fallback Script',
-        path: '/partials/cookies-fallback-script',
-        type: 'PAGE',
-      },
-      'dsr-ponyfill': {
-        name: 'DSR Ponyfill',
-        path: '/partials/dsr-ponyfill',
-        type: 'PAGE',
-      },
-      'font-face-styles': {
-        name: 'Font Face Styles',
-        path: '/partials/font-face-styles',
-        type: 'PAGE',
-      },
-      'font-face-stylesheet': {
-        name: 'Font Face Stylesheet',
-        path: '/partials/font-face-stylesheet',
         type: 'PAGE',
       },
       'font-links': {
@@ -525,11 +500,6 @@ export const sitemap: Routes = {
       'icon-links': {
         name: 'Icon Links',
         path: '/partials/icon-links',
-        type: 'PAGE',
-      },
-      'initial-styles': {
-        name: 'Initial Styles',
-        path: '/partials/initial-styles',
         type: 'PAGE',
       },
       'loader-script': {

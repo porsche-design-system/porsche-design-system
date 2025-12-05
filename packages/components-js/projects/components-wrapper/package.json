@@ -39,6 +39,7 @@
     "./package.json": "./package.json",
     ".": {
       "types": "./esm/index.d.ts",
+      "style": "./global-styles/index.css",
       "import": "./esm/index.mjs",
       "default": "./cjs/index.cjs"
     },
@@ -67,12 +68,26 @@
       "import": "./ag-grid/esm/index.mjs",
       "default": "./ag-grid/cjs/index.cjs"
     },
-    "./tailwindcss": {
-      "style": "./tailwindcss/index.css"
-    },
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
-    }
-  }
+    },
+    "./tailwindcss": "./tailwindcss/index.css",
+    "./tailwindcss/index.css": "./tailwindcss/index.css",
+    "./tailwindcss/index": "./tailwindcss/index.css",
+    "./index.css": "./global-styles/index.css",
+    "./index": "./global-styles/index.css",
+    "./font-face.css": "./global-styles/font-face.css",
+    "./font-face": "./global-styles/font-face.css",
+    "./normalize.css": "./global-styles/normalize.css",
+    "./normalize": "./global-styles/normalize.css",
+    "./variables.css": "./global-styles/variables.css",
+    "./variables": "./global-styles/variables.css",
+    "./cn": "./global-styles/cn/index.css",
+    "./cn/index.css": "./global-styles/cn/index.css",
+    "./cn/index": "./global-styles/cn/index.css",
+    "./cn/font-face.css": "./global-styles/cn/font-face.css",
+    "./cn/font-face": "./global-styles/cn/font-face.css"
+  },
+  "style": "./global-styles/index.css"
 }

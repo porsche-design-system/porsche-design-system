@@ -1,6 +1,6 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AgGridAngular, type ICellRendererAngularComp } from 'ag-grid-angular';
@@ -11,6 +11,7 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
+import { THEME_TOKEN } from '../app.component';
 
 ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
@@ -58,10 +59,9 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
   selector: 'app-company-button-renderer',
   standalone: true,
   template: `
-    <span class="cell-centered'">
+    <span class="cell-centered'" [ngClass]="(theme$ | async) ?? undefined">
       <p-link-pure
         [underline]="true"
-        [theme]="(theme$ | async) ?? undefined"
         target="_blank"
         [href]="'https://www.porsche.com/germany/models/' + data.model.toLowerCase()"
       >
@@ -81,7 +81,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
-  imports: [PorscheDesignSystemModule, AsyncPipe],
+  imports: [PorscheDesignSystemModule, AsyncPipe, NgClass],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
