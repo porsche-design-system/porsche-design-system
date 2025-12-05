@@ -68,16 +68,30 @@ recommended styles, such as:
 
 - CSS color variables
 - Font-face definitions
-- FOUC (Flash of Unstyled Content) handling
 - Normalize styles
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/developing/react/advanced#china-cdn) for more details.
 
 ```diff
 /* src/index.css */
 + @import '@porsche-design-system/components-react';
 ```
 
-If your website will be used primarily in China, use the `/cn` import. See
-[China CDN](/developing/react/advanced#china-cdn) for more details.
+To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
+`:defined` pseudo-class, consider applying the style only to the relevant tags (`:is(p-button...)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/index.css */
+@import '@porsche-design-system/components-react';
+
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
 
 ### Step 4 (recommended)
 
@@ -160,18 +174,15 @@ export default defineConfig({
 });
 ```
 
-When using Tailwind, use the Tailwind-specific import instead of the default:
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
 ```diff
 /* src/index.css */
-- @import '@porsche-design-system/components-react';
+@import '@porsche-design-system/components-react';
 
 + @import 'tailwindcss';
 + @import '@porsche-design-system/components-react/tailwindcss';
 ```
-
-This import includes the Tailwind theme, color variables, fonts, and base styles (like FOUC handling). The default CSS
-file `@porsche-design-system/components-react` is not needed with Tailwind.
 
 ### Step 6
 
