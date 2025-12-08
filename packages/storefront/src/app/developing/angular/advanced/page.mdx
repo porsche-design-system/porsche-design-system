@@ -125,22 +125,3 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 ```
-
-## China CDN
-
-If your website is going to be used primarily in China, you can use the `/cn` import in order to use the china based CDN
-for the Font-face definitions.
-
-```diff
-/* src/styles.css */
-- @import '@porsche-design-system/components-angular/index.css';
-+ @import '@porsche-design-system/components-angular/cn/index.css';
-```
-
-When using `tailwindcss`
-
-```diff
-/* src/styles.css */
-- @import '@porsche-design-system/components-angular/tailwindcss';
-+ @import '@porsche-design-system/components-angular/tailwindcss/cn';
-```

@@ -68,22 +68,3 @@ import { PHeading } from '@porsche-design-system/components-react';
 
 export const App = (): JSX.Element => <PHeading>Some heading</PHeading>;
 ```
-
-## China CDN
-
-If your website is going to be used primarily in China, you can use the `/cn` import in order to use the china based CDN
-for the Font-face definitions.
-
-```diff
-/* src/index.css */
-- @import '@porsche-design-system/components-react';
-+ @import '@porsche-design-system/components-react/cn';
-```
-
-When using `tailwindcss`
-
-```diff
-/* src/index.css */
-- @import '@porsche-design-system/components-react/tailwindcss';
-+ @import '@porsche-design-system/components-react/tailwindcss/cn';
-```

@@ -80,17 +80,8 @@ By default, the network traffic looks something like this.
 - starts with the `index.html`
 - then continues with the `runtime.js`, `polyfills.js` and `main.js` bundle of the Angular app
 - which then loads the **core chunk**
-- that injects both the **font-face.css** and the **component chunk**
+- that injects the **component chunk**
 - and last the **font file** after the styles within the component's Shadow DOM are applied
-
-### Preloading font-face.css
-
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
-asset.
-
-![Loading Behavior Angular 02](assets/loading-behavior-angular-02.jpg)
-
-As we can see, this happens in parallel with the Angular bundles.
 
 ### Preloading font files
 
