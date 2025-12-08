@@ -47,8 +47,8 @@ const propTypes: PropTypes<typeof Checkbox> = {
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "start", "description": "Places additional content at the start of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
- * @slot {"name": "end", "description": "Places additional content at the end of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
+ * @slot {"name": "label-start", "description": "Places additional content at the start of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
+ * @slot {"name": "label-end", "description": "Places additional content at the end of the label text (for content that should not be part of the label, e.g. links or `p-popover`)."}
  */
 @Component({
   tag: 'p-checkbox',
@@ -245,7 +245,7 @@ export class Checkbox {
             )}
           </div>
           <div class="label-wrapper">
-            {hasNamedSlot(this.host, 'start') && <slot name="start" />}
+            {hasNamedSlot(this.host, 'label-start') && <slot name="label-start" />}
             <Label
               host={this.host}
               htmlFor={id}
@@ -254,7 +254,7 @@ export class Checkbox {
               isDisabled={this.disabled}
               isRequired={this.required}
             />
-            {hasNamedSlot(this.host, 'end') && <slot name="end" />}
+            {hasNamedSlot(this.host, 'label-end') && <slot name="label-end" />}
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />

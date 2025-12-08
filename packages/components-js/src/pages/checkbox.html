@@ -260,14 +260,14 @@
   </div>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with label and start + end slot">
+<div class="playground light auto-layout-inline" title="should render with label and label-start + label-end slot">
   <p-checkbox label="Some label" name="some-name">
-    <a href="#" slot="start">Link</a>
-    <p-popover slot="end">Some popover content</p-popover>
+    <a href="#" slot="label-start">Link</a>
+    <p-popover slot="label-end">Some popover content</p-popover>
   </p-checkbox>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with multiline label, error message and start + end slot">
+<div class="playground light auto-layout-inline" title="should render with multiline label, error message and label-start + label-end slot">
   <p-checkbox
     label="Lorem ipsum dolor sit amet, consetetur"
     state="error"
@@ -275,7 +275,7 @@
     name="some-name"
     style="width: 15rem"
   >
-    <a href="#" slot="start">Link</a>
-    <p-popover slot="end">Some popover content</p-popover>
+    <a href="#" slot="label-start">Link</a>
+    <p-popover slot="label-end">Some popover content</p-popover>
   </p-checkbox>
 </div>

@@ -29,16 +29,16 @@ const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
     children: [
       {
         tag: 'div',
-        properties: { slot: 'start', className: 'w-[24px] h-[24px] bg-[deeppink] mr-static-sm rounded-full' },
+        properties: { slot: 'label-start', className: 'w-[24px] h-[24px] bg-[deeppink] mr-static-sm rounded-full' },
       },
       {
         tag: 'span',
         properties: { slot: 'label' },
-        children: ['Some slotted label with a "start" and "end" slot'],
+        children: ['Some slotted label with a "label-start" and "label-end" slot'],
       },
       {
         tag: 'p-popover',
-        properties: { slot: 'end' },
+        properties: { slot: 'label-end' },
         children: ['Option C with slotted label and a popover '],
       },
     ],

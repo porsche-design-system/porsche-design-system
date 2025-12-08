@@ -69,7 +69,7 @@ export const getComponentCss = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
-      'slot[name="start"], slot[name="end"]': {
+      'slot[name="label-start"], slot[name="label-end"]': {
         display: 'inline-block',
         verticalAlign: 'top',
         cursor: disabledOrLoading ? 'not-allowed' : 'initial',
