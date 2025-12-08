@@ -2,7 +2,7 @@ import { Component, Element, Host, h, type JSX, Prop, Watch } from '@stencil/cor
 import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../utils';
 import { getComponentCss } from './optgroup-styles';
-import { type OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
+import { updateOptionsDisabled } from './optgroup-utils';
 
 const propTypes: PropTypes<typeof Optgroup> = {
   label: AllowedTypes.string,
@@ -17,7 +17,7 @@ const propTypes: PropTypes<typeof Optgroup> = {
   shadow: true,
 })
 export class Optgroup {
-  @Element() public host!: HTMLElement & OptgroupInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** The optgroup label. */
   @Prop() public label?: string;

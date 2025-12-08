@@ -10,7 +10,7 @@ import {
   addImportantToEachRule,
   colors,
   getDisabledBaseStyles,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -106,7 +106,7 @@ export const getComponentCss = (
                   },
                 })),
             }),
-        ...getFocusJssStyle(),
+        '&:focus-visible': getFocusBaseStyles(),
       },
       // label
       span: {

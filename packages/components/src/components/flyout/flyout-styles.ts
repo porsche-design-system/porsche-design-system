@@ -23,7 +23,7 @@ import {
   getSlotSubFooterJssStyle,
 } from '../../styles/dialog-styles';
 import { getCss } from '../../utils';
-import type { FlyoutBackdrop, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
+import type { FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
 /**
  * @css-variable {"name": "--p-flyout-width", "description": "Width of the flyout.", "defaultValue": "auto"}
@@ -44,6 +44,7 @@ export const cssVarRefPaddingInline = '--ref-p-flyout-px';
 
 export const getComponentCss = (
   isOpen: boolean,
+  background: FlyoutBackground,
   backdrop: FlyoutBackdrop,
   position: FlyoutPosition,
   hasHeader: boolean,
@@ -62,7 +63,7 @@ export const getComponentCss = (
           [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
-          ...dialogHostJssStyle,
+          ...dialogHostJssStyle(background),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -103,7 +104,7 @@ export const getComponentCss = (
       },
     },
     flyout: {
-      ...dialogGridJssStyle,
+      ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
       width: `var(${cssVariableWidth},auto)`,
       minWidth: '320px',

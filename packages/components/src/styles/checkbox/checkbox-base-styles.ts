@@ -38,7 +38,7 @@ export const getCheckboxBaseStyles = (
 
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
-  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
+  const margin = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
 
   return {
     all: 'unset',
@@ -54,11 +54,16 @@ export const getCheckboxBaseStyles = (
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
     }),
     '&::before': {
+      // This pseudo-element is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.
+      content: '""',
+      gridArea: '1/1',
+    },
+    '&::after': {
       // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
       // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
-      // In addition, it is used to render the checkmark or indeterminate icon when the checkbox is checked or indeterminate.
       content: '""',
-      margin: inset,
+      margin,
+      gridArea: '1/1',
     },
   };
 };

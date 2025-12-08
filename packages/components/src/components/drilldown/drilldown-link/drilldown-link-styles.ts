@@ -3,7 +3,7 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -11,6 +11,10 @@ import {
 } from '../../../styles';
 import { getCss } from '../../../utils';
 import { cssVarColorPrimary } from '../drilldown/drilldown-styles';
+
+const anchorHoverJssStyle: JssStyle = {
+  textDecorationColor: 'inherit',
+};
 
 export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): string => {
   const anchorJssStyle: JssStyle = {
@@ -41,22 +45,18 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
             '::slotted': addImportantToEachRule({
               '&(a)': anchorJssStyle,
               ...hoverMediaQuery({
-                '&(a:hover)': {
-                  textDecorationColor: 'inherit',
-                },
+                '&(a:hover)': anchorHoverJssStyle,
               }),
-              ...getFocusJssStyle({ slotted: 'a', offset: '-2px' }),
+              '&(a:focus-visible)': getFocusBaseStyles(),
             }),
           }
         : {
             a: {
               ...anchorJssStyle,
               ...hoverMediaQuery({
-                '&:hover': {
-                  textDecorationColor: 'inherit',
-                },
+                '&:hover': anchorHoverJssStyle,
               }),
-              ...getFocusJssStyle({ offset: '-2px' }),
+              '&:focus-visible': getFocusBaseStyles(),
             },
           }),
     },

@@ -15,7 +15,7 @@ import {
   colorSchemeStyles,
   colors,
   cssVariableAnimationDuration,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -31,7 +31,7 @@ import { POPOVER_SAFE_ZONE } from './popover-utils';
  */
 
 export const getComponentCss = (): string => {
-  const { frostedColor, canvasColor, primaryColor } = colors;
+  const { frostedSoftColor, frostedColor, canvasColor, primaryColor } = colors;
 
   const shadowColor = 'rgba(0,0,0,0.3)';
 
@@ -70,14 +70,15 @@ export const getComponentCss = (): string => {
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: '50%',
         cursor: 'pointer',
+        backgroundColor: frostedColor,
+        transition: getTransition('background-color'),
+        ...frostedGlassStyle,
         ...hoverMediaQuery({
-          transition: getTransition('background-color'),
           '&:hover': {
-            ...frostedGlassStyle,
-            backgroundColor: frostedColor,
+            backgroundColor: frostedSoftColor,
           },
         }),
-        ...getFocusJssStyle({ offset: 0 }),
+        '&:focus-visible': getFocusBaseStyles(),
       },
       '[popover]': {
         all: 'unset',

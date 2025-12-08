@@ -14,7 +14,6 @@ import {
   isItemClickable,
   isStateCompleteOrWarning,
   STEPPER_ITEM_STATES,
-  type StepperHorizontalItemInternalHTMLProps,
   type StepperHorizontalItemState,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
@@ -32,7 +31,7 @@ const propTypes: PropTypes<typeof StepperHorizontalItem> = {
   shadow: { delegatesFocus: true },
 })
 export class StepperHorizontalItem {
-  @Element() public host!: HTMLElement & StepperHorizontalItemInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** The validation state. */
   @Prop() public state?: StepperHorizontalItemState;
@@ -70,7 +69,7 @@ export class StepperHorizontalItem {
           aria-disabled={!this.state || this.disabled ? 'true' : null}
           aria-current={this.state === 'current' ? 'step' : null}
         >
-          {isStateCompleteOrWarning(this.state) && (
+          {isStateCompleteOrWarning(this.state) ? (
             <PrefixedTagNames.pIcon
               class="icon"
               name={getStepperHorizontalIconName(this.state)}
@@ -78,6 +77,8 @@ export class StepperHorizontalItem {
               color={getStepperHorizontalIconName(this.state)}
               aria-hidden="true"
             />
+          ) : (
+            <span class="icon" aria-hidden="true" />
           )}
           {this.state && <span class="sr-only">{this.state}: </span>}
           <slot />

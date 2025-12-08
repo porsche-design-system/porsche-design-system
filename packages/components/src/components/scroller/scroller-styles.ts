@@ -3,7 +3,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   dismissButtonJssStyle,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
@@ -78,12 +78,11 @@ export const getComponentCss = (
       minWidth: '100%',
       verticalAlign: 'top',
       borderRadius: borderRadiusSmall,
-      ...getFocusJssStyle(),
+      '&:focus-visible': getFocusBaseStyles(),
     },
     trigger: {
       position: 'absolute',
-      top: 0,
-      bottom: 0,
+      inset: '0 auto',
       width: '1px',
       visibility: 'hidden',
       '&:first-of-type': {

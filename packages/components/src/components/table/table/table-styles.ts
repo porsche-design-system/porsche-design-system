@@ -9,11 +9,10 @@ import {
 import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
-export const cssVariableTablePadding = '--p-internal-table-padding';
-export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
-export const cssVariableTableBorderColor = '--p-internal-table-border-color';
-export const cssVariableTableBorderWidth = '--p-internal-table-border-width';
-export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
+export const cssVariableTablePadding = '--_a';
+export const cssVariableTableHoverColor = '--_b';
+export const cssVariableTableBorderColor = '--_c';
+export const cssVariableTableBorderWidth = '--_d';
 
 const { primaryColor, frostedColor, contrastLowColor } = colors;
 
@@ -23,19 +22,17 @@ export const getComponentCss = (compact: boolean, layout: TableLayout): string =
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          [cssVariableTableHoverColor]: frostedColor,
+          [cssVariableTableBorderColor]: contrastLowColor,
+          ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
           ...textSmallStyle,
           color: primaryColor,
           textAlign: 'start',
-          ...colorSchemeStyles,
-          ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      '::slotted(*)': addImportantToEachRule({
-        ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
-        [cssVariableTableHoverColor]: frostedColor,
-        [cssVariableTableBorderColor]: contrastLowColor,
-      }),
     },
     caption: {
       marginBottom: spacingFluidMedium,

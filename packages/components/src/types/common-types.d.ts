@@ -5,7 +5,6 @@ export type { FlagName } from '@porsche-design-system/flags';
 export type { IconName } from '@porsche-design-system/icons';
 export type { ButtonAriaAttribute, LinkAriaAttribute } from '../utils';
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
-export type { Theme } from '../utils/theme';
 export type { HeadingSize } from '../utils/typography/heading-size';
 export type { HeadingTag } from '../utils/typography/heading-tag';
 export type { TextSize } from '../utils/typography/text-size';

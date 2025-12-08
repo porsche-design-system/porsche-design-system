@@ -47,9 +47,6 @@ export const getComponentCss = (state: ToastState): string => {
       },
     },
     icon: getNotificationIconJssStyle(),
-    close: {
-      ...dismissButtonJssStyle,
-      mixBlendMode: 'multiply',
-    },
+    close: dismissButtonJssStyle,
   });
 };

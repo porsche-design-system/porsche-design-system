@@ -1,5 +1,5 @@
 import {
-  borderRadiusSmall,
+  borderRadiusMedium,
   dropShadowHighStyle,
   getMediaQueryMin,
   gridExtendedOffsetBase,
@@ -38,12 +38,10 @@ export const getComponentCss = (isOpen: boolean): string => {
         display: 'block',
         ...addImportantToEachRule({
           ...getBannerPopoverResetStyles(),
-          bottom: `var(${cssVariableBottom},${topBottomFallback})`,
-          left: gridExtendedOffsetBase,
-          right: gridExtendedOffsetBase,
+          inset: `auto ${gridExtendedOffsetBase} var(${cssVariableBottom},${topBottomFallback})`,
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           ...dropShadowHighStyle,
-          borderRadius: borderRadiusSmall, // needed for rounded box-shadow
+          borderRadius: borderRadiusMedium, // needed for rounded box-shadow
           '&::backdrop': {
             display: 'none',
           },
@@ -69,16 +67,11 @@ export const getComponentCss = (isOpen: boolean): string => {
                 },
               }),
           [getMediaQueryMin('s')]: {
-            top: `var(${cssVariableTop},${topBottomFallback})`,
-            bottom: 'auto',
-            left: gridExtendedOffsetS,
-            right: gridExtendedOffsetS,
-            // space before and after "-" is crucial)
+            inset: `var(${cssVariableTop},${topBottomFallback}) ${gridExtendedOffsetS} auto`,
             ...(!isOpen && { transform: `translate3d(0,calc(-100% - var(${cssVariableTop},${topBottomFallback})),0)` }),
           },
           [getMediaQueryMin('xxl')]: {
-            left: gridExtendedOffsetXXL,
-            right: gridExtendedOffsetXXL,
+            insetInline: gridExtendedOffsetXXL,
           },
           ...colorSchemeStyles,
           ...hostHiddenStyles,

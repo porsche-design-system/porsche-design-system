@@ -65,9 +65,6 @@ export const getComponentCss = (state: InlineNotificationState, hasAction: boole
         },
       },
     }),
-    close: {
-      ...dismissButtonJssStyle,
-      mixBlendMode: 'multiply',
-    },
+    close: dismissButtonJssStyle,
   });
 };

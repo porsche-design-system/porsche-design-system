@@ -31,19 +31,15 @@ const {
   errorFrostedSoftColor,
   warningFrostedColor,
   warningFrostedSoftColor,
-  infoColor,
-  successColor,
-  warningColor,
-  errorColor,
 } = colors;
 
 const colorTextMap: Record<TagVariant, string> = {
   primary: canvasColor,
   secondary: primaryColor,
-  info: infoColor,
-  success: successColor,
-  warning: warningColor,
-  error: errorColor,
+  info: primaryColor,
+  success: primaryColor,
+  warning: primaryColor,
+  error: primaryColor,
 };
 
 const colorBackgroundMap: Record<TagVariant, string> = {

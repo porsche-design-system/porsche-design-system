@@ -21,15 +21,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅️Accordion
 - ✅Button
 - ✅Button Pure
-- ⌛Button Tile (might be removed in favour of generic p-card)
+- ✅Button Tile (might be removed in favour of generic p-card)
 - ✅Canvas
-- ⌛Carousel
+- ✅Carousel
 - ✅Divider
 - ✅Flag
 - ✅Icon
-- ⌛Scroller
-- ⌛Stepper Horizontal
-- ⌛Table
+- ✅Scroller
+- ✅Stepper Horizontal
+- ✅Table
 - ✅Tag
 - ✅Tag Dismissible
 - ✅Text List
@@ -42,28 +42,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Feedback
 
-- ⌛Banner
-- ⌛Toast
-- ⌛Inline Notification
-- ⌛Spinner
+- ✅Banner
+- ✅Toast
+- ✅Inline Notification
+- ✅Spinner
 
 #### Navigation
 
 - ✅Link
 - ✅Link Pure
-- ⌛Link Tile (might be removed in favour of generic p-card)
-- ⌛Link Tile Product (might be removed in favour of generic p-card)
-- ⌛Pagination
-- ⌛Tabs
-- ⌛Tabs Bar
+- ✅Link Tile (might be removed in favour of generic p-card)
+- ✅Link Tile Product (might be removed in favour of generic p-card)
+- ✅Pagination
+- ✅Tabs
+- ✅Tabs Bar
 
 #### Dialog
 
-- ⌛Drilldown
+- ✅Drilldown
 - ✅Modal
 - ✅Flyout
-- ⌛Sheet
-- ⌛Popover
+- ✅Sheet
+- ✅Popover
 
 #### Typography:
 
@@ -128,11 +128,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
     instead
   - added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
+  - added prop `background` with value `canvas | surface`
 - `Flyout`
   - removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
     `clamp()` instead)
   - visually changed footer slot: becomes frosted when it's sticky
   - added read only css variables `--ref-p-flyout-pb`
+  - added prop `background` with value `canvas | surface`
+- `Sheet`:
+  - added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
+  - added prop `background` with value `canvas | surface`
+- `Inline Notification`:
+  - removed max-width limitation for content
+- `Banner`:
+  - added `state="success"`
+  - removed max-width limitation for content
+- `Toast`:
+  - added `state="warning | error"`
+- `Carousel`:
+  - removed CSS variable `--p-carousel-prev-next-filter`
+  - removed prop `gradient-color` (use `gradient="true"` instead)
+  - changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
+    to enable trimming)
+  - changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
+    to enable pagination)
+  - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
+    enable rewind)
+- `Link Tile`:
+  - changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>`
+    to enable gradient)
+  - removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
+  - added an optional light gradient when used in light mode and gradient is enabled
+  - added value `auto` for prop `aspect-ratio`
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class

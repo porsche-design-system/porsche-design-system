@@ -10,14 +10,21 @@ import {
 import type { JssStyle } from 'jss';
 import { colors, cssVariableTransitionDuration, dismissButtonJssStyle, getTransition, motionDurationMap } from './';
 
+const { backdropColor, primaryColor, canvasColor, surfaceColor, frostedColor } = colors;
+
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
 
-export const dialogHostJssStyle: JssStyle = {
-  '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-  '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-  '--pds-internal-grid-width-min': 'auto',
-  '--pds-internal-grid-width-max': 'none',
+const cssVarBackgroundColor = '--_a';
+
+export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle => {
+  return {
+    '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
+    '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+    '--pds-internal-grid-width-min': 'auto',
+    '--pds-internal-grid-width-max': 'none',
+    [cssVarBackgroundColor]: background === 'surface' ? surfaceColor : canvasColor,
+  };
 };
 
 export const getDialogJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
@@ -44,8 +51,6 @@ const dialogBackdropResetJssStyle: JssStyle = {
     display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
   },
 };
-
-const { backdropColor, primaryColor, canvasColor, frostedColor } = colors;
 
 const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
@@ -116,19 +121,22 @@ export const dialogPaddingTop = spacingFluidMedium;
 export const dialogPaddingBottom = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
 export const dialogPaddingInline = spacingFluidLarge;
 
-export const dialogGridJssStyle: JssStyle = {
-  display: 'grid',
-  gridTemplate: `auto/${spacingFluidSmall} minmax(0,1fr) ${spacingFluidSmall}`,
-  gap: `${spacingFluidMedium} calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
-  paddingTop: dialogPaddingTop,
-  paddingBottom: dialogPaddingBottom,
-  alignContent: 'flex-start',
+export const dialogGridJssStyle = (): JssStyle => {
+  return {
+    position: 'relative',
+    display: 'grid',
+    gridTemplate: `auto/${spacingFluidSmall} minmax(0,1fr) ${spacingFluidSmall}`,
+    gap: `${spacingFluidMedium} calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
+    paddingTop: dialogPaddingTop,
+    paddingBottom: dialogPaddingBottom,
+    alignContent: 'flex-start',
+  };
 };
 
 export const getDialogColorJssStyle = (): JssStyle => {
   return {
     color: primaryColor, // enables color inheritance for slots
-    background: canvasColor,
+    background: `var(${cssVarBackgroundColor})`,
   };
 };
 
@@ -159,12 +167,22 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
   return {
     ...dismissButtonJssStyle,
     gridArea: '1/3',
-    zIndex: 4, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+    zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
     top: spacingFluidSmall,
     marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSmall})`,
     marginInlineEnd: spacingFluidSmall,
     placeSelf: 'flex-start flex-end',
+    '&::after': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      inset: `calc(-1 * ${spacingFluidSmall}) calc(-1 * ${spacingFluidSmall}) -50px -50px`,
+      pointerEvents: 'none',
+      zIndex: -1,
+      borderRadius: dialogBorderRadius,
+      background: `radial-gradient(circle at top right, hsla(from var(${cssVarBackgroundColor}) h s l / 0.35) 0%, transparent 70%)`,
+    },
   };
 };
 
@@ -188,7 +206,7 @@ export const getSlotHeaderJssStyle = (): JssStyle => {
     top: 0, // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
     marginBlock: `calc(-1 * ${paddingTop}) calc(-1 * ${paddingBottom})`,
     padding: `${paddingTop} ${dialogPaddingInline} ${paddingBottom}`,
-    background: `linear-gradient(180deg,${canvasColor} 0%,${canvasColor} 80%,transparent 100%)`,
+    background: `linear-gradient(180deg,var(${cssVarBackgroundColor}) 0%,var(${cssVarBackgroundColor}) 80%,transparent 100%)`,
   };
 };
 
@@ -210,7 +228,7 @@ export const getSlotFooterJssStyle = (): JssStyle => {
     bottom: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
     marginBlock: `calc(-1 * ${paddingBlock})`,
     padding: `${paddingBlock} ${dialogPaddingInline}`,
-    background: `linear-gradient(0deg,${canvasColor} 0%,${canvasColor} 20%,transparent 80%)`,
+    background: `linear-gradient(0deg,var(${cssVarBackgroundColor}) 0%,var(${cssVarBackgroundColor}) 20%,transparent 80%)`,
     '&[data-stuck]::after': {
       content: '""',
       zIndex: -1,
@@ -228,6 +246,6 @@ export const getSlotSubFooterJssStyle = (): JssStyle => {
     gridColumn: '1/-1',
     zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     paddingInline: dialogPaddingInline,
-    backgroundColor: canvasColor,
+    backgroundColor: `var(${cssVarBackgroundColor})`,
   };
 };

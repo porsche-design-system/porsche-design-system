@@ -20,26 +20,16 @@ import {
   addImportantToRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import type {
-  CarouselAlignControls,
-  CarouselAlignHeader,
-  CarouselGradientColor,
-  CarouselHeadingSize,
-  CarouselWidth,
-} from './carousel-utils';
+import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 
-/**
- * @css-variable {"name": "--p-carousel-prev-next-filter", "description": "CSS Filter applied to the navigation (prev/next buttons)", "defaultValue": "none"}
- */
-const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 export const carouselTransitionDuration = motionDurationModerate;
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
@@ -79,36 +69,9 @@ const backfaceVisibilityJssStyle: JssStyle = {
   WebkitBackfaceVisibility: 'hidden',
 };
 
-const gradientColorLight: Record<CarouselGradientColor, string> = {
-  'background-base': '255,255,255',
-  'background-surface': '238,239,242',
-  none: '',
-};
-
-const gradientColorDark: Record<CarouselGradientColor, string> = {
-  'background-base': '14,14,18',
-  'background-surface': '33,34,37',
-  none: '',
-};
-
-const gradientColorMap: Record<Theme, Record<CarouselGradientColor, string>> = {
-  auto: gradientColorLight,
-  light: gradientColorLight,
-  dark: gradientColorDark,
-};
-
-const getGradient = (gradientColorTheme: CarouselGradientColor): string => {
-  const gradientColor = gradientColorMap.light[gradientColorTheme];
-
-  return (
-    `rgba(${gradientColor},1) 20%,` +
-    `rgba(${gradientColor},0.6) 48%,` +
-    `rgba(${gradientColor},0.3) 68%,` +
-    `rgba(${gradientColor},0)`
-  );
-};
-
 const { primaryColor, contrastMediumColor } = colors;
+
+const gradientMask = `linear-gradient(90deg,transparent 20%,#000 var(${cssVariableGradientColorWidth},33%) calc(100% - var(${cssVariableGradientColorWidth},33%)),transparent 80%)`;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -116,7 +79,7 @@ const { primaryColor, contrastMediumColor } = colors;
  */
 
 export const getComponentCss = (
-  gradientColor: CarouselGradientColor,
+  gradient: boolean,
   hasHeading: boolean,
   hasDescription: boolean,
   hasControlsSlot: boolean,
@@ -129,14 +92,6 @@ export const getComponentCss = (
   alignControls: CarouselAlignControls
 ): string => {
   const isHeaderAlignCenter = alignHeader === 'center';
-
-  const getGradientStyles = (direction: 'left' | 'right'): JssStyle =>
-    gradientColor
-      ? {
-          [direction === 'left' ? 'right' : 'left']: 0,
-          background: `linear-gradient(to ${direction}, ${getGradient(gradientColor)} 100%)`,
-        }
-      : {};
 
   return getCss({
     '@global': {
@@ -225,7 +180,6 @@ export const getComponentCss = (
         gap: spacingStaticXSmall,
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
-      filter: `var(${cssVariablePrevNextFilter}, none)`,
     },
     btn: {
       padding: spacingStaticSmall,
@@ -243,6 +197,10 @@ export const getComponentCss = (
       margin: '-4px 0', // for slide focus outline
       '&__track': {
         position: 'relative',
+        ...(gradient && {
+          WebkitMask: gradientMask,
+          mask: gradientMask,
+        }),
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           padding: `0 ${spacingMap[width].base}`,
@@ -259,19 +217,6 @@ export const getComponentCss = (
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
         },
-        ...(gradientColor &&
-          gradientColor !== 'none' && {
-            '&::before, &::after': {
-              content: '""',
-              position: 'absolute',
-              zIndex: 1,
-              top: 0,
-              height: '100%',
-              width: `var(${cssVariableGradientColorWidth}, 33%)`,
-            },
-            '&::before': getGradientStyles('right'),
-            '&::after': getGradientStyles('left'),
-          }),
       },
       '&__list': {
         ...backfaceVisibilityJssStyle,
@@ -282,7 +227,7 @@ export const getComponentCss = (
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
         borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
-        ...getFocusJssStyle(),
+        '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
       ...(isHeaderAlignCenter && {

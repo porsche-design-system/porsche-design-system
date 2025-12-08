@@ -19,7 +19,6 @@ import {
   type LinkTileAlign,
   type LinkTileAriaAttribute,
   type LinkTileAspectRatio,
-  type LinkTileBackground,
   type LinkTileSize,
   type LinkTileTarget,
   type LinkTileWeight,
@@ -54,9 +53,6 @@ export class LinkTile implements ITileProps {
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
-  /** Adapts the description and link theme when used on light background image. */
-  @Prop() public background?: LinkTileBackground = 'dark';
-
   /** Aspect ratio of the link-tile. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4/3';
 
@@ -70,7 +66,7 @@ export class LinkTile implements ITileProps {
   @Prop() public align?: LinkTileAlign = 'bottom';
 
   /** Show gradient. */
-  @Prop() public gradient?: boolean = true;
+  @Prop() public gradient?: boolean = false;
 
   /** Displays the link-tile as compact version with description and link icon only. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
@@ -113,7 +109,6 @@ export class LinkTile implements ITileProps {
       this.aspectRatio,
       this.size,
       this.weight,
-      this.background,
       this.align,
       this.compact,
       this.gradient,

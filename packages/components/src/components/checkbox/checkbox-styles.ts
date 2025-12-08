@@ -93,8 +93,11 @@ export const getComponentCss = (
       rowGap: spacingStaticXSmall,
     },
     wrapper: {
-      display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr)',
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
     },
     'input-wrapper': {

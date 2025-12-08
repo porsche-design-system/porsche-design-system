@@ -8,6 +8,7 @@ import {
   spacingFluidXSmall,
   spacingStaticSmall,
 } from '@porsche-design-system/styles';
+import { colorFrostedDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -260,7 +261,9 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
         display: 'none',
       },
       [mediaQueryDesktop]: {
-        '--p-internal-icon-filter': 'invert(1)',
+        // TODO: we need to expose color variables for button-pure to be able to use the correct colors in drilldown
+        '--color-primary': colorPrimaryDark,
+        '--color-frosted': colorFrostedDark,
         position: 'absolute',
         insetInlineStart: `calc(100% + ${spacingFluidSmall})`,
         insetBlockStart: spacingFluidSmall,

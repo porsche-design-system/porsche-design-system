@@ -14,7 +14,6 @@ import {
 } from '../../../utils';
 import { type DrilldownUpdateEventDetail, INTERNAL_UPDATE_EVENT_NAME } from '../drilldown/drilldown-utils';
 import { getComponentCss } from './drilldown-item-styles';
-import type { DrilldownItemInternalHTMLProps } from './drilldown-item-utils';
 
 const propTypes: PropTypes<typeof DrilldownItem> = {
   identifier: AllowedTypes.string,
@@ -35,7 +34,7 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
   shadow: true,
 })
 export class DrilldownItem {
-  @Element() public host!: HTMLElement & DrilldownItemInternalHTMLProps;
+  @Element() public host!: HTMLElement;
 
   /** Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure. */
   @Prop() public label?: string;

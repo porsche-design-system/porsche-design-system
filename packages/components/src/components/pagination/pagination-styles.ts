@@ -14,11 +14,10 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
+  preventFoucOfNestedElementsStyles, getFocusBaseStyles,
 } from '../../styles';
 import { getCss } from '../../utils';
 
@@ -137,7 +136,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
           color: disabledColor,
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
-        '&:not(.ellipsis)': getFocusJssStyle(),
+        '&:not(.ellipsis):focus-visible': getFocusBaseStyles(),
       },
     },
     ellipsis: {
