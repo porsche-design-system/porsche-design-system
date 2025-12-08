@@ -68,7 +68,7 @@ export const CanvasExamplePage = (): JSX.Element => {
         <PButton
           slot="header-end"
           icon="configurate"
-          variant="ghost"
+          variant="secondary"
           compact={true}
           hideLabel={true}
           onClick={onSidebarEndOpen}

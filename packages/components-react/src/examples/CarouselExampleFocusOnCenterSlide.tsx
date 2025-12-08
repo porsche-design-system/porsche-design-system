@@ -41,7 +41,7 @@ export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
       onUpdate={(e) => onCarouselUpdate(e.detail.activeIndex)}
       focusOnCenterSlide
       trimSpace={false}
-      gradientColor="background-surface"
+      gradient={true}
       // @ts-expect-error: ignore unknown property (TS2353)
       style={{ '--p-gradient-color-width': '25%' }}
     >

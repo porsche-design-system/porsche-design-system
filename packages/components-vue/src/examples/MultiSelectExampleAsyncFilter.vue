@@ -48,7 +48,7 @@
       class="flex gap-static-sm py-static-sm px-[12px]"
       role="alert"
     >
-      <PIcon name="information" color="notification-error" />
+      <PIcon name="information" color="error" />
       <span class="text-error">{{ error }}</span>
     </div>
   </PMultiSelect>
