@@ -5,12 +5,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import '@porsche-design-system/shared/css/styles.css';
 import '@porsche-design-system/components-react/index.css';
 import { App } from './App';
+import { Providers } from './Providers.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Providers>
+      <Router>
+        <App />
+      </Router>
+    </Providers>
   </StrictMode>
 );
 
