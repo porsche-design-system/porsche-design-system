@@ -20,6 +20,6 @@ export class InputWeekExampleControlledComponent {
   }
 
   onInput(e: CustomEvent<InputWeekInputEventDetail>) {
-    this.value = (e.detail.target as HTMLInputElement).value;
+    this.value = (e.target as HTMLElement & { value: string }).value;
   }
 }

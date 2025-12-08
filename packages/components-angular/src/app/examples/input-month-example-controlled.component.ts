@@ -20,6 +20,6 @@ export class InputMonthExampleControlledComponent {
   }
 
   onInput(e: CustomEvent<InputMonthInputEventDetail>) {
-    this.value = (e.detail.target as HTMLInputElement).value;
+    this.value = (e.target as HTMLElement & { value: string }).value;
   }
 }
