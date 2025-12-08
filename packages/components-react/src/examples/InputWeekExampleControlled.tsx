@@ -10,7 +10,7 @@ export const InputWeekControlledExamplePage = (): JSX.Element => {
   const [value, setValue] = useState<PInputWeekProps['value']>('');
 
   const onInput = (e: CustomEvent<InputWeekInputEventDetail>) => {
-    setValue((e.target as HTMLElement & PInputWeekProps).value);
+    setValue((e.target as HTMLElement & { value: PInputWeekProps['value'] }).value);
   };
 
   return (

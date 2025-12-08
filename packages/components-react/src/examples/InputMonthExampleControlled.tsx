@@ -10,7 +10,7 @@ export const InputMonthControlledExamplePage = (): JSX.Element => {
   const [value, setValue] = useState<PInputMonthProps['value']>('');
 
   const onInput = (e: CustomEvent<InputMonthInputEventDetail>) => {
-    setValue((e.target as HTMLElement & PInputMonthProps).value);
+    setValue((e.target as HTMLElement & { value: PInputMonthProps['value'] }).value);
   };
 
   return (
