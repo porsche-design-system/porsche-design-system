@@ -46,7 +46,6 @@ const ButtonRenderer = ({ data }: { data: any }) => {
     >
       <PLinkPure
         underline={true}
-        theme={theme}
         target="_blank"
         href={'https://www.porsche.com/germany/models/' + data.model.toLowerCase()}
       >

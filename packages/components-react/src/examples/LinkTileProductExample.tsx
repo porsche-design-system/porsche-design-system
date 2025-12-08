@@ -17,7 +17,7 @@ export const LinkTileProductExamplePage = (): JSX.Element => {
       liked={liked}
       onLike={handleLike}
     >
-      <PTag slot="tags" color="background-base">
+      <PTag slot="tags" variant="primary">
         New
       </PTag>
       <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />

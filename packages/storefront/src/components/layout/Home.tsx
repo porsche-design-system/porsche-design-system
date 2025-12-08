@@ -43,9 +43,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           Welcome to the Porsche Design System
         </PDisplay>
         <div className="block w-full h-full relative">
-          <div
-            className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-medium flex justify-between items-center gap-4"
-          >
+          <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-medium flex justify-between items-center gap-4">
             <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
             <div className="flex flex-col">
               <PText size="small" weight="semi-bold">
@@ -169,8 +167,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             weight="regular"
             compact={true}
             gradient={false}
-            background={isDark ? 'dark' : 'light'}
-            className="bg-surface rounded-lg"
+            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/styles-tokens.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -184,8 +181,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             weight="regular"
             compact={true}
             gradient={false}
-            background={isDark ? 'dark' : 'light'}
-            className="bg-surface rounded-lg"
+            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/components.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -199,8 +195,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             weight="regular"
             compact={true}
             gradient={false}
-            background={isDark ? 'dark' : 'light'}
-            className="bg-surface rounded-lg"
+            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/assets.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -214,8 +209,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             weight="regular"
             compact={true}
             gradient={false}
-            background={isDark ? 'dark' : 'light'}
-            className="bg-surface rounded-lg"
+            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/templates.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -229,8 +223,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             weight="regular"
             compact={true}
             gradient={false}
-            background={isDark ? 'dark' : 'light'}
-            className="bg-surface rounded-lg"
+            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/release-notes.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -244,8 +237,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             weight="regular"
             compact={true}
             gradient={false}
-            background={isDark ? 'dark' : 'light'}
-            className="bg-surface rounded-lg"
+            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/feedback.png" alt="" width={1024} height={576} />
           </PLinkTile>
