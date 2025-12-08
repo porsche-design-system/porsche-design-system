@@ -2,14 +2,12 @@ import {
   AllowedTypes,
   type LinkAriaAttribute,
   type LinkTarget,
-  THEMES,
   TILE_ALIGNS,
   TILE_ASPECT_RATIOS,
   TILE_SIZES,
   type TILE_WEIGHTS,
   type TileAlign,
   type TileAspectRatio,
-  type TileBackground,
   type TileSize,
 } from '../../utils';
 import type { PropTypes } from '../../utils/validation/validateProps';
@@ -20,7 +18,6 @@ export type LinkTileTarget = LinkTarget;
 export type LinkTileAriaAttribute = LinkAriaAttribute;
 export type LinkTileAspectRatio = TileAspectRatio;
 export type LinkTileSize = TileSize;
-export type LinkTileBackground = TileBackground;
 export type LinkTileAlign = TileAlign;
 export type LinkTileWeight = (typeof TILE_WEIGHTS)[number];
 
@@ -32,7 +29,6 @@ type CommonButtonAndLinkTileProps = {
 
 export const sharedTilePropTypes: Omit<CommonButtonAndLinkTileProps, 'aria' | 'weight'> = {
   size: AllowedTypes.breakpoint<TileSize>(TILE_SIZES),
-  background: AllowedTypes.oneOf<TileBackground>(THEMES),
   aspectRatio: AllowedTypes.breakpoint<TileAspectRatio>(TILE_ASPECT_RATIOS),
   label: AllowedTypes.string,
   description: AllowedTypes.string,

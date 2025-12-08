@@ -7,7 +7,7 @@ import {
 import {
   addImportantToEachRule,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -83,7 +83,7 @@ export const getComponentCss = (
                   backgroundColor: frostedColor,
                 },
               }),
-              ...getFocusJssStyle({ pseudo: true, offset: '-2px' }),
+              '&:focus-visible::before': getFocusBaseStyles(),
             },
           }
         : hideLabel && {

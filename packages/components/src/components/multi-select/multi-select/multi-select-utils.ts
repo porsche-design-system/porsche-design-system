@@ -1,13 +1,12 @@
 import { forceUpdate } from '@stencil/core';
 import { consoleWarn, getTagNameWithoutPrefix, type SelectComponentsDropdownDirection } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
-export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
+export type MultiSelectOptgroup = HTMLPOptgroupElement;
 
 export type MultiSelectChangeEventDetail = {
   name: string;

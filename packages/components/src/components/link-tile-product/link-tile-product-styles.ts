@@ -1,6 +1,5 @@
 import {
   borderRadiusLarge,
-  borderRadiusMedium,
   fontHyphenationStyle,
   getMediaQueryMin,
   headingSmallStyle,
@@ -15,7 +14,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
-  getFocusJssStyle,
+  getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
@@ -32,7 +31,7 @@ const anchorJssStyle: JssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
-  borderRadius: borderRadiusMedium,
+  borderRadius: borderRadiusLarge,
 };
 
 const getMultilineEllipsis = (lineClamp: number): JssStyle => {
@@ -48,6 +47,9 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
+
+const { primaryColor, contrastHighColor, contrastMediumColor, surfaceColor } = colors;
+
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
@@ -55,8 +57,6 @@ export const getComponentCss = (
   hasDescription: boolean,
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>
 ): string => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, surfaceColor } = colors;
-
   return getCss({
     '@global': {
       ':host': {
@@ -78,21 +78,21 @@ export const getComponentCss = (
               ...anchorJssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
-            ...getFocusJssStyle({ slotted: slottedAnchorSelector }),
+            [`&(${slottedAnchorSelector}:focus-visible)`]: getFocusBaseStyles(),
           }),
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
             flexWrap: 'wrap',
             gap: spacingFluidXSmall,
           },
-          '&(img), &(picture)': {
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            borderRadius: borderRadiusLarge,
-            overflow: 'hidden', // needed for picture > img to have correct border-radius
-          },
+        },
+        '::slotted(:is(img,picture))': {
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          borderRadius: borderRadiusLarge,
+          overflow: 'hidden', // needed for picture > img to have correct border-radius
         },
       }),
       ...(hasPriceOriginal && {
@@ -107,7 +107,7 @@ export const getComponentCss = (
       aspectRatio: '3/4',
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
-      borderRadius: borderRadiusMedium,
+      borderRadius: borderRadiusLarge,
       padding: spacingFluidSmall,
       color: primaryColor,
       backgroundColor: surfaceColor,
@@ -118,7 +118,7 @@ export const getComponentCss = (
     ...(!hasSlottedAnchor && {
       anchor: {
         ...anchorJssStyle,
-        ...getFocusJssStyle(),
+        '&:focus-visible': getFocusBaseStyles(),
       },
     }),
     header: {

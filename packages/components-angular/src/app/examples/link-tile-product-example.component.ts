@@ -12,7 +12,7 @@ import { LinkTileProductLikeEventDetail, PorscheDesignSystemModule } from '@pors
       [liked]="liked"
       (like)="handleLike($event)"
     >
-      <p-tag slot="header" [variant]="'secondary'">New</p-tag>
+      <p-tag slot="header" [variant]="'primary'">New</p-tag>
       <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
     </p-link-tile-product>
   `,

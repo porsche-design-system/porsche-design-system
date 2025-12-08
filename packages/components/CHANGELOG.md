@@ -21,7 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - ✅️Accordion
 - ✅Button
 - ✅Button Pure
-- ⌛Button Tile (might be removed in favour of generic p-card)
+- ✅Button Tile (might be removed in favour of generic p-card)
 - ✅Canvas
 - ✅Carousel
 - ✅Divider
@@ -51,8 +51,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - ✅Link
 - ✅Link Pure
-- ⌛Link Tile (might be removed in favour of generic p-card)
-- ⌛Link Tile Product (might be removed in favour of generic p-card)
+- ✅Link Tile (might be removed in favour of generic p-card)
+- ✅Link Tile Product (might be removed in favour of generic p-card)
 - ✅Pagination
 - ✅Tabs
 - ✅Tabs Bar
@@ -170,6 +170,12 @@ When using tailwind:
     to enable pagination)
   - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
     enable rewind)
+- `Link Tile`:
+  - changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>`
+    to enable gradient)
+  - removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
+  - added an optional light gradient when used in light mode and gradient is enabled
+  - added value `auto` for prop `aspect-ratio`
 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
