@@ -1,464 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should match compiled tailwindcss cn theme 1`] = `
-":is(*):not(:defined, [data-ssr]) {
-  visibility: hidden;
-}
-@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-arabic-bold.1796b39.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-arabic-regular.413b375.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-bold.4cb90bb.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-regular.b845952.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-cyril-semi-bold.378f7d5.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-bold.d2546b1.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-regular.0b3d9b3.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-greek-semi-bold.f3a9ae0.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-bold.0fbdc6d.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-pashto-bold.f30f194.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-pashto-regular.3989814.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-bold.b9e9f23.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-regular.ac04c30.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-thai-semi-bold.8d53572.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-urdu-bold.49a86a4.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-urdu-regular.ad23819.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-  /* Reset */
-  --color-*: initial;
-
-  /* Color */
-  --color-black: #000;
-  --color-white: #fff;
-
-  /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
-/* background */
---color-canvas: #fff;
---color-surface: hsl(0, 0%, 97.6%);
---color-frosted: hsla(240, 13%, 9%, 0.080);
---color-frosted-soft: hsla(230, 2.9%, 60%, 0.060);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
---color-contrast-low: hsla(240, 14.3%, 15.1%, 0.500);
---color-contrast-medium: hsla(240, 13.4%, 11%, 0.600);
---color-contrast-high: hsla(240, 14.3%, 11%, 0.700);
---color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.800);
---color-primary: #000;
-/* semantic */
---color-success: hsl(127, 29.1%, 37.1%);
---color-success-low: hsla(125, 59.8%, 63.9%, 0.900);
---color-success-medium: hsla(126, 39.3%, 54.1%, 0.920);
---color-success-frosted: hsla(125, 60%, 83.3%, 0.540);
---color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.420);
---color-warning: hsl(44, 80.5%, 30.2%);
---color-warning-low: hsla(47, 90%, 47.1%, 0.900);
---color-warning-medium: hsla(46, 90.3%, 40.4%, 0.920);
---color-warning-frosted: hsla(47, 83%, 70%, 0.540);
---color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.420);
---color-error: hsl(357, 51.8%, 33.3%);
---color-error-low: hsla(357, 74.4%, 54.1%, 0.900);
---color-error-medium: hsla(357, 61.9%, 46.3%, 0.920);
---color-error-frosted: hsla(357, 80%, 74.5%, 0.540);
---color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.420);
---color-info: hsl(212, 87.3%, 31%);
---color-info-low: hsla(212, 100%, 47.6%, 0.900);
---color-info-medium: hsla(212, 100%, 41.2%, 0.920);
---color-info-frosted: hsla(212, 93.2%, 71.2%, 0.540);
---color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.420);
-/* special */
---color-skeleton: #f7f7f7;
-
-  /* Typography */
-  --font-porsche-next: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  --font-sans: var(--font-porsche-next);
-
-  --font-weight-normal: 400;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  --leading-normal: calc(6px + 2.125ex);
-
-  --text-2xs: .75rem;
-  --text-2xs--line-height: calc(6px + 2.125ex);
-  --text-xs: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  --text-xs--line-height: calc(6px + 2.125ex);
-  --text-base: 1rem;
-  --text-base--line-height: calc(6px + 2.125ex);
-  --text-sm: 1rem;
-  --text-sm--line-height: calc(6px + 2.125ex);
-  --text-md: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  --text-md--line-height: calc(6px + 2.125ex);
-  --text-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-  --text-lg--line-height: calc(6px + 2.125ex);
-  --text-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-  --text-xl--line-height: calc(6px + 2.125ex);
-  --text-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
-  --text-2xl--line-height: calc(6px + 2.125ex);
-
-  /* Breakpoint */
-  --breakpoint-xs: 480px;
-  --breakpoint-sm: 760px;
-  --breakpoint-md: 1000px;
-  --breakpoint-lg: 1300px;
-  --breakpoint-xl: 1760px;
-  --breakpoint-2xl: 1920px;
-
-  /* Spacing */
-  --spacing: .25rem;
-
-  --spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
-  --spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
-  --spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
-  --spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
-  --spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
-  --spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
-
-  --spacing-static-xs: 4px;
-  --spacing-static-sm: 8px;
-  --spacing-static-md: 16px;
-  --spacing-static-lg: 32px;
-  --spacing-static-xl: 48px;
-  --spacing-static-2xl: 80px;
-
-  /* Border */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-
-  --default-border-width: 1px;
-  --border-width-regular: 2px;
-  --border-width-thin: 1px;
-
-  /* Blur */
-  --blur-frosted: 32px;
-
-  /* Shadow */
-  --shadow-low: 0px 3px 8px rgba(0,0,0,.16);
-  --shadow-medium: 0px 4px 16px rgba(0,0,0,.16);
-  --shadow-high: 0px 8px 40px rgba(0,0,0,.16);
-
-  /* Outline */
-  --default-outline-width: 2px;
-
-  /* Motion */
-  --default-transition-timing-function: cubic-bezier(.25,.1,.25,1);
-  --ease-in-out: cubic-bezier(.25,.1,.25,1);
-  --ease-in: cubic-bezier(0,0,.2,1);
-  --ease-out: cubic-bezier(.4,0,.5,1);
-
-  --default-transition-duration: .25s;
-  --transition-duration-short: .25s;
-  --transition-duration-moderate: .4s;
-  --transition-duration-long: .6s;
-  --transition-duration-very-long: 1.2s;
-
-  /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
-
-  @keyframes skeleton {
-    from {
-      background-position-x: 100%;
-    }
-    to {
-      background-position-x: -100%;
-    }
-  }
-}
-
-@layer theme {
-  .light {
-    /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
-/* background */
---color-canvas: #fff;
---color-surface: hsl(0, 0%, 97.6%);
---color-frosted: hsla(240, 13%, 9%, 0.080);
---color-frosted-soft: hsla(230, 2.9%, 60%, 0.060);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
---color-contrast-low: hsla(240, 14.3%, 15.1%, 0.500);
---color-contrast-medium: hsla(240, 13.4%, 11%, 0.600);
---color-contrast-high: hsla(240, 14.3%, 11%, 0.700);
---color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.800);
---color-primary: #000;
-/* semantic */
---color-success: hsl(127, 29.1%, 37.1%);
---color-success-low: hsla(125, 59.8%, 63.9%, 0.900);
---color-success-medium: hsla(126, 39.3%, 54.1%, 0.920);
---color-success-frosted: hsla(125, 60%, 83.3%, 0.540);
---color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.420);
---color-warning: hsl(44, 80.5%, 30.2%);
---color-warning-low: hsla(47, 90%, 47.1%, 0.900);
---color-warning-medium: hsla(46, 90.3%, 40.4%, 0.920);
---color-warning-frosted: hsla(47, 83%, 70%, 0.540);
---color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.420);
---color-error: hsl(357, 51.8%, 33.3%);
---color-error-low: hsla(357, 74.4%, 54.1%, 0.900);
---color-error-medium: hsla(357, 61.9%, 46.3%, 0.920);
---color-error-frosted: hsla(357, 80%, 74.5%, 0.540);
---color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.420);
---color-info: hsl(212, 87.3%, 31%);
---color-info-low: hsla(212, 100%, 47.6%, 0.900);
---color-info-medium: hsla(212, 100%, 41.2%, 0.920);
---color-info-frosted: hsla(212, 93.2%, 71.2%, 0.540);
---color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.420);
-/* special */
---color-skeleton: #f7f7f7;
-  }
-
-  .dark {
-    /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
-/* background */
---color-canvas: hsl(240, 2.7%, 7.3%);
---color-surface: hsl(240, 2%, 10%);
---color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
---color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
---color-contrast-low: hsla(240, 12.5%, 96.9%, 0.450);
---color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.560);
---color-contrast-high: hsla(240, 12.5%, 96.9%, 0.670);
---color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.780);
---color-primary: hsl(240, 12.5%, 96.9%);
-/* semantic */
---color-success: hsl(125, 37.4%, 64.9%);
---color-success-low: hsla(125, 81.1%, 29%, 0.900);
---color-success-medium: hsla(125, 48.4%, 41.8%, 0.920);
---color-success-frosted: hsla(125, 87.5%, 18.8%, 0.540);
---color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.420);
---color-warning: hsl(44, 50.5%, 64.3%);
---color-warning-low: hsla(41, 68.8%, 39%, 0.900);
---color-warning-medium: hsla(42, 50.2%, 48%, 0.920);
---color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.540);
---color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.420);
---color-error: hsl(358, 37.1%, 61.4%);
---color-error-low: hsla(357, 76.8%, 27.1%, 0.900);
---color-error-medium: hsla(357, 48%, 39.2%, 0.920);
---color-error-frosted: hsla(356, 64%, 19.6%, 0.540);
---color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.420);
---color-info: hsl(211, 49.5%, 62%);
---color-info-low: hsla(212, 97.4%, 30%, 0.900);
---color-info-medium: hsla(212, 63%, 41.4%, 0.920);
---color-info-frosted: hsla(212, 98.1%, 21.2%, 0.540);
---color-info-frosted-soft: hsla(211, 100%, 18%, 0.420);
-/* special */
---color-skeleton: #1a1b1e;
-  }
-
-  .auto {
-    @media (prefers-color-scheme: dark) {
-      /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
-/* background */
---color-canvas: hsl(240, 2.7%, 7.3%);
---color-surface: hsl(240, 2%, 10%);
---color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
---color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
---color-contrast-low: hsla(240, 12.5%, 96.9%, 0.450);
---color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.560);
---color-contrast-high: hsla(240, 12.5%, 96.9%, 0.670);
---color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.780);
---color-primary: hsl(240, 12.5%, 96.9%);
-/* semantic */
---color-success: hsl(125, 37.4%, 64.9%);
---color-success-low: hsla(125, 81.1%, 29%, 0.900);
---color-success-medium: hsla(125, 48.4%, 41.8%, 0.920);
---color-success-frosted: hsla(125, 87.5%, 18.8%, 0.540);
---color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.420);
---color-warning: hsl(44, 50.5%, 64.3%);
---color-warning-low: hsla(41, 68.8%, 39%, 0.900);
---color-warning-medium: hsla(42, 50.2%, 48%, 0.920);
---color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.540);
---color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.420);
---color-error: hsl(358, 37.1%, 61.4%);
---color-error-low: hsla(357, 76.8%, 27.1%, 0.900);
---color-error-medium: hsla(357, 48%, 39.2%, 0.920);
---color-error-frosted: hsla(356, 64%, 19.6%, 0.540);
---color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.420);
---color-info: hsl(211, 49.5%, 62%);
---color-info-low: hsla(212, 97.4%, 30%, 0.900);
---color-info-medium: hsla(212, 63%, 41.4%, 0.920);
---color-info-frosted: hsla(212, 98.1%, 21.2%, 0.540);
---color-info-frosted-soft: hsla(211, 100%, 18%, 0.420);
-/* special */
---color-skeleton: #1a1b1e;
-    }
-  }
-}
-
-/* Gradient */
-@utility bg-fade-to-t {
-  @apply bg-linear-[to_top,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
-}
-
-@utility bg-fade-to-r {
-  @apply bg-linear-[to_right,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
-}
-
-@utility bg-fade-to-b {
-  @apply bg-linear-[to_bottom,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
-}
-
-@utility bg-fade-to-l {
-  @apply bg-linear-[to_left,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
-}
-
-/* Grid */
-@utility grid-template {
-  @apply
-    [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
-    [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--spacing-fluid-md))))]
-    grid
-    grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start_extended-start_basic-start_narrow-start]_repeat(6,minmax(0,1fr))_[narrow-end_basic-end_extended-end_wide-end]_var(--_pds-grid-col)_[full-end]]
-    gap-(--spacing-fluid-md)
-    min-w-[var(--pds-internal-grid-width-min,320px)]
-    max-w-[var(--pds-internal-grid-width-max,2560px)]
-    box-content
-    mx-(--pds-internal-grid-margin,0)
-    px-[calc(50%-var(--pds-internal-grid-margin,0px)-2560px/2)]
-    sm:[--pds-internal-grid-safe-zone:calc(5vw-16px)]
-    sm:grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start]_minmax(0,1fr)_[extended-start]_minmax(0,1fr)_[basic-start]_repeat(2,minmax(0,1fr))_[narrow-start]_repeat(8,minmax(0,1fr))_[narrow-end]_repeat(2,minmax(0,1fr))_[basic-end]_minmax(0,1fr)_[extended-end]_minmax(0,1fr)_[wide-end]_var(--_pds-grid-col)[full-end]]
-    2xl:[--pds-internal-grid-safe-zone:min(50vw-880px,400px)];
-}
-
-/* Grid: Area Narrow */
-@utility col-narrow {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-[narrow];
-}
-
-@utility col-start-narrow {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-start-[narrow-start];
-}
-
-@utility col-end-narrow {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-end-[narrow-end];
-}
-
-/* Grid: Area Basic */
-@utility col-basic {
-  @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-[basic];
-}
-
-@utility col-start-basic {
-  @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-start-[basic-start];
-}
-
-@utility col-end-basic {
-  @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-end-[basic-end];
-}
-
-/* Grid: Area Extended */
-@utility col-extended {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-[extended];
-}
-
-@utility col-start-extended {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-start-[extended-start];
-}
-
-@utility col-end-extended {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-end-[extended-end];
-}
-
-/* Grid: Area Wide */
-@utility col-wide {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-[wide];
-}
-
-@utility col-start-wide {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-start-[wide-start];
-}
-
-@utility col-end-wide {
-  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-end-[wide-end];
-}
-
-/* Grid: Area Full */
-@utility col-full {
-  @apply col-[full];
-}
-
-@utility col-start-full {
-  @apply col-start-[full-start];
-}
-
-@utility col-end-full {
-  @apply col-end-[full-end];
-}
-
-/* Grid: Division */
-@utility col-span-one-half {
-  @apply col-span-(--_pds-grid-one-half,1);
-}
-
-@utility col-span-one-third {
-  @apply col-span-(--_pds-grid-one-third,1);
-}
-
-@utility col-span-two-thirds {
-  @apply col-span-(--_pds-grid-two-thirds,1);
-}
-
-/* Skeleton */
-@utility skeleton {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
-
-/* Typography: Text */
-@utility prose-text-2xs {
-  @apply font-porsche-next not-italic font-normal text-2xs text-primary;
-}
-@utility prose-text-xs {
-  @apply font-porsche-next not-italic font-normal text-xs text-primary;
-}
-@utility prose-text-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
-}
-@utility prose-text-md {
-  @apply font-porsche-next not-italic font-normal text-md text-primary;
-}
-@utility prose-text-lg {
-  @apply font-porsche-next not-italic font-normal text-lg text-primary;
-}
-@utility prose-text-xl {
-  @apply font-porsche-next not-italic font-normal text-xl text-primary;
-}
-
-/* Typography: Heading */
-@utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-normal text-sm text-primary;
-}
-@utility prose-heading-md {
-  @apply font-porsche-next not-italic font-normal text-md text-primary;
-}
-@utility prose-heading-lg {
-  @apply font-porsche-next not-italic font-normal text-lg text-primary;
-}
-@utility prose-heading-xl {
-  @apply font-porsche-next not-italic font-normal text-xl text-primary;
-}
-@utility prose-heading-2xl {
-  @apply font-porsche-next not-italic font-normal text-2xl text-primary;
-}
-
-/* Typography: Display */
-@utility prose-display-sm {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(1.8rem,2.41vw+1.32rem,4.21rem)];
-}
-@utility prose-display-md {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.03rem,3.58vw+1.31rem,5.61rem)];
-}
-@utility prose-display-lg {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
-}"
-`;
-
 exports[`should match compiled tailwindcss theme 1`] = `
-":is(*):not(:defined, [data-ssr]) {
-  visibility: hidden;
-}
-@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-arabic-bold.1796b39.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-arabic-regular.413b375.woff2') format('woff2');unicode-range:U+0600-0671,U+06A1,U+06A4,U+06BA,U+06CC,U+06D5,U+06F8,U+06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-bold.4cb90bb.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-regular.b845952.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-cyril-semi-bold.378f7d5.woff2') format('woff2');unicode-range:U+0400-04FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-bold.d2546b1.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-regular.0b3d9b3.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-greek-semi-bold.f3a9ae0.woff2') format('woff2');unicode-range:U+0370-03FF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-bold.0fbdc6d.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2') format('woff2');unicode-range:U+0020-007F,U+0080-00FF,U+0100-017F,U+0180-024F,U+0250-02AF,U+02B0-02FF,U+0300-036F,U+1E00-1EFF,U+2000-206F,U+2070-209F,U+20A0-20CF,U+2100-214F,U+2150-218F,U+2190-21FF,U+2200-22FF,U+25A0-25FF,U+2600-26FF,U+FB00-FB4F,U+FE70-FEFF;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-pashto-bold.f30f194.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-pashto-regular.3989814.woff2') format('woff2');unicode-range:U+067C,U+067E,U+0681,U+0682,U+0685,U+0686,U+0689,U+067C,U+0693,U+0696,U+0698,U+069A,U+06A9,U+06AB,U+06AF,U+06BC,U+06CD,U+06D0;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-bold.b9e9f23.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-regular.ac04c30.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:600;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-thai-semi-bold.8d53572.woff2') format('woff2');unicode-range:U+0E00-0E7F;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:700;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-urdu-bold.49a86a4.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}@font-face{font-family:Porsche Next;font-style:normal;font-weight:400;src:url('https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-urdu-regular.ad23819.woff2') format('woff2');unicode-range:U+0679,U+0688,U+0691,U+06BE,U+06C0-06C3,U+06D2-06D5,U+06F0-06F9;font-display:swap}
-
-@custom-variant dark (&:where(.dark, .dark *));
+"@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Reset */
@@ -468,48 +11,44 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --color-black: #000;
   --color-white: #fff;
 
-  /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
-/* background */
---color-canvas: #fff;
---color-surface: hsl(0, 0%, 97.6%);
---color-frosted: hsla(240, 13%, 9%, 0.080);
---color-frosted-soft: hsla(230, 2.9%, 60%, 0.060);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
---color-contrast-low: hsla(240, 14.3%, 15.1%, 0.500);
---color-contrast-medium: hsla(240, 13.4%, 11%, 0.600);
---color-contrast-high: hsla(240, 14.3%, 11%, 0.700);
---color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.800);
---color-primary: #000;
-/* semantic */
---color-success: hsl(127, 29.1%, 37.1%);
---color-success-low: hsla(125, 59.8%, 63.9%, 0.900);
---color-success-medium: hsla(126, 39.3%, 54.1%, 0.920);
---color-success-frosted: hsla(125, 60%, 83.3%, 0.540);
---color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.420);
---color-warning: hsl(44, 80.5%, 30.2%);
---color-warning-low: hsla(47, 90%, 47.1%, 0.900);
---color-warning-medium: hsla(46, 90.3%, 40.4%, 0.920);
---color-warning-frosted: hsla(47, 83%, 70%, 0.540);
---color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.420);
---color-error: hsl(357, 51.8%, 33.3%);
---color-error-low: hsla(357, 74.4%, 54.1%, 0.900);
---color-error-medium: hsla(357, 61.9%, 46.3%, 0.920);
---color-error-frosted: hsla(357, 80%, 74.5%, 0.540);
---color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.420);
---color-info: hsl(212, 87.3%, 31%);
---color-info-low: hsla(212, 100%, 47.6%, 0.900);
---color-info-medium: hsla(212, 100%, 41.2%, 0.920);
---color-info-frosted: hsla(212, 93.2%, 71.2%, 0.540);
---color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.420);
-/* special */
---color-skeleton: #f7f7f7;
+  --color-focus: #1a44ea;
+  --color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
+  --color-canvas: #fff;
+  --color-surface: hsl(0, 0%, 97.6%);
+  --color-frosted: hsla(240, 13%, 9%, 0.08);
+  --color-frosted-soft: hsla(230, 2.9%, 60%, 0.06);
+  --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
+  --color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
+  --color-contrast-low: hsla(240, 14.3%, 15.1%, 0.5);
+  --color-contrast-medium: hsla(240, 13.4%, 11%, 0.6);
+  --color-contrast-high: hsla(240, 14.3%, 11%, 0.7);
+  --color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.8);
+  --color-primary: #000;
+  --color-success: hsl(127, 29.1%, 37.1%);
+  --color-success-low: hsla(125, 59.8%, 63.9%, 0.9);
+  --color-success-medium: hsla(126, 39.3%, 54.1%, 0.92);
+  --color-success-frosted: hsla(125, 60%, 83.3%, 0.54);
+  --color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.42);
+  --color-warning: hsl(44, 80.5%, 30.2%);
+  --color-warning-low: hsla(47, 90%, 47.1%, 0.9);
+  --color-warning-medium: hsla(46, 90.3%, 40.4%, 0.92);
+  --color-warning-frosted: hsla(47, 83%, 70%, 0.54);
+  --color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.42);
+  --color-error: hsl(357, 51.8%, 33.3%);
+  --color-error-low: hsla(357, 74.4%, 54.1%, 0.9);
+  --color-error-medium: hsla(357, 61.9%, 46.3%, 0.92);
+  --color-error-frosted: hsla(357, 80%, 74.5%, 0.54);
+  --color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.42);
+  --color-info: hsl(212, 87.3%, 31%);
+  --color-info-low: hsla(212, 100%, 47.6%, 0.9);
+  --color-info-medium: hsla(212, 100%, 41.2%, 0.92);
+  --color-info-frosted: hsla(212, 93.2%, 71.2%, 0.54);
+  --color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.42);
+  --color-skeleton: #f7f7f7;
 
   /* Typography */
-  --font-porsche-next: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  --font-porsche-next:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   --font-sans: var(--font-porsche-next);
 
   --font-weight-normal: 400;
@@ -518,7 +57,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
   --leading-normal: calc(6px + 2.125ex);
 
-  --text-2xs: .75rem;
+  --text-2xs: 0.75rem;
   --text-2xs--line-height: calc(6px + 2.125ex);
   --text-xs: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   --text-xs--line-height: calc(6px + 2.125ex);
@@ -544,7 +83,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --breakpoint-2xl: 1920px;
 
   /* Spacing */
-  --spacing: .25rem;
+  --spacing: 0.25rem;
 
   --spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
   --spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
@@ -573,27 +112,28 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --blur-frosted: 32px;
 
   /* Shadow */
-  --shadow-low: 0px 3px 8px rgba(0,0,0,.16);
-  --shadow-medium: 0px 4px 16px rgba(0,0,0,.16);
-  --shadow-high: 0px 8px 40px rgba(0,0,0,.16);
+  --shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  --shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16);
 
   /* Outline */
   --default-outline-width: 2px;
 
   /* Motion */
-  --default-transition-timing-function: cubic-bezier(.25,.1,.25,1);
-  --ease-in-out: cubic-bezier(.25,.1,.25,1);
-  --ease-in: cubic-bezier(0,0,.2,1);
-  --ease-out: cubic-bezier(.4,0,.5,1);
+  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-in: cubic-bezier(0, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
 
-  --default-transition-duration: .25s;
-  --transition-duration-short: .25s;
-  --transition-duration-moderate: .4s;
-  --transition-duration-long: .6s;
+  --default-transition-duration: 0.25s;
+  --transition-duration-short: 0.25s;
+  --transition-duration-moderate: 0.4s;
+  --transition-duration-long: 0.6s;
   --transition-duration-very-long: 1.2s;
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
+  --animate-skeleton: skeleton var(--transition-duration-long)
+    var(--ease-in-out) infinite;
 
   @keyframes skeleton {
     from {
@@ -607,130 +147,115 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
 @layer theme {
   .light {
-    /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
-/* background */
---color-canvas: #fff;
---color-surface: hsl(0, 0%, 97.6%);
---color-frosted: hsla(240, 13%, 9%, 0.080);
---color-frosted-soft: hsla(230, 2.9%, 60%, 0.060);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
---color-contrast-low: hsla(240, 14.3%, 15.1%, 0.500);
---color-contrast-medium: hsla(240, 13.4%, 11%, 0.600);
---color-contrast-high: hsla(240, 14.3%, 11%, 0.700);
---color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.800);
---color-primary: #000;
-/* semantic */
---color-success: hsl(127, 29.1%, 37.1%);
---color-success-low: hsla(125, 59.8%, 63.9%, 0.900);
---color-success-medium: hsla(126, 39.3%, 54.1%, 0.920);
---color-success-frosted: hsla(125, 60%, 83.3%, 0.540);
---color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.420);
---color-warning: hsl(44, 80.5%, 30.2%);
---color-warning-low: hsla(47, 90%, 47.1%, 0.900);
---color-warning-medium: hsla(46, 90.3%, 40.4%, 0.920);
---color-warning-frosted: hsla(47, 83%, 70%, 0.540);
---color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.420);
---color-error: hsl(357, 51.8%, 33.3%);
---color-error-low: hsla(357, 74.4%, 54.1%, 0.900);
---color-error-medium: hsla(357, 61.9%, 46.3%, 0.920);
---color-error-frosted: hsla(357, 80%, 74.5%, 0.540);
---color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.420);
---color-info: hsl(212, 87.3%, 31%);
---color-info-low: hsla(212, 100%, 47.6%, 0.900);
---color-info-medium: hsla(212, 100%, 41.2%, 0.920);
---color-info-frosted: hsla(212, 93.2%, 71.2%, 0.540);
---color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.420);
-/* special */
---color-skeleton: #f7f7f7;
+    --color-focus: #1a44ea;
+    --color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
+    --color-canvas: #fff;
+    --color-surface: hsl(0, 0%, 97.6%);
+    --color-frosted: hsla(240, 13%, 9%, 0.08);
+    --color-frosted-soft: hsla(230, 2.9%, 60%, 0.06);
+    --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
+    --color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
+    --color-contrast-low: hsla(240, 14.3%, 15.1%, 0.5);
+    --color-contrast-medium: hsla(240, 13.4%, 11%, 0.6);
+    --color-contrast-high: hsla(240, 14.3%, 11%, 0.7);
+    --color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.8);
+    --color-primary: #000;
+    --color-success: hsl(127, 29.1%, 37.1%);
+    --color-success-low: hsla(125, 59.8%, 63.9%, 0.9);
+    --color-success-medium: hsla(126, 39.3%, 54.1%, 0.92);
+    --color-success-frosted: hsla(125, 60%, 83.3%, 0.54);
+    --color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.42);
+    --color-warning: hsl(44, 80.5%, 30.2%);
+    --color-warning-low: hsla(47, 90%, 47.1%, 0.9);
+    --color-warning-medium: hsla(46, 90.3%, 40.4%, 0.92);
+    --color-warning-frosted: hsla(47, 83%, 70%, 0.54);
+    --color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.42);
+    --color-error: hsl(357, 51.8%, 33.3%);
+    --color-error-low: hsla(357, 74.4%, 54.1%, 0.9);
+    --color-error-medium: hsla(357, 61.9%, 46.3%, 0.92);
+    --color-error-frosted: hsla(357, 80%, 74.5%, 0.54);
+    --color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.42);
+    --color-info: hsl(212, 87.3%, 31%);
+    --color-info-low: hsla(212, 100%, 47.6%, 0.9);
+    --color-info-medium: hsla(212, 100%, 41.2%, 0.92);
+    --color-info-frosted: hsla(212, 93.2%, 71.2%, 0.54);
+    --color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.42);
+    --color-skeleton: #f7f7f7;
   }
 
   .dark {
-    /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
-/* background */
---color-canvas: hsl(240, 2.7%, 7.3%);
---color-surface: hsl(240, 2%, 10%);
---color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
---color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
---color-contrast-low: hsla(240, 12.5%, 96.9%, 0.450);
---color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.560);
---color-contrast-high: hsla(240, 12.5%, 96.9%, 0.670);
---color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.780);
---color-primary: hsl(240, 12.5%, 96.9%);
-/* semantic */
---color-success: hsl(125, 37.4%, 64.9%);
---color-success-low: hsla(125, 81.1%, 29%, 0.900);
---color-success-medium: hsla(125, 48.4%, 41.8%, 0.920);
---color-success-frosted: hsla(125, 87.5%, 18.8%, 0.540);
---color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.420);
---color-warning: hsl(44, 50.5%, 64.3%);
---color-warning-low: hsla(41, 68.8%, 39%, 0.900);
---color-warning-medium: hsla(42, 50.2%, 48%, 0.920);
---color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.540);
---color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.420);
---color-error: hsl(358, 37.1%, 61.4%);
---color-error-low: hsla(357, 76.8%, 27.1%, 0.900);
---color-error-medium: hsla(357, 48%, 39.2%, 0.920);
---color-error-frosted: hsla(356, 64%, 19.6%, 0.540);
---color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.420);
---color-info: hsl(211, 49.5%, 62%);
---color-info-low: hsla(212, 97.4%, 30%, 0.900);
---color-info-medium: hsla(212, 63%, 41.4%, 0.920);
---color-info-frosted: hsla(212, 98.1%, 21.2%, 0.540);
---color-info-frosted-soft: hsla(211, 100%, 18%, 0.420);
-/* special */
---color-skeleton: #1a1b1e;
+    --color-focus: #1a44ea;
+    --color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
+    --color-canvas: hsl(240, 2.7%, 7.3%);
+    --color-surface: hsl(240, 2%, 10%);
+    --color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
+    --color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+    --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
+    --color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+    --color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+    --color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+    --color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+    --color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+    --color-primary: hsl(240, 12.5%, 96.9%);
+    --color-success: hsl(125, 37.4%, 64.9%);
+    --color-success-low: hsla(125, 81.1%, 29%, 0.9);
+    --color-success-medium: hsla(125, 48.4%, 41.8%, 0.92);
+    --color-success-frosted: hsla(125, 87.5%, 18.8%, 0.54);
+    --color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.42);
+    --color-warning: hsl(44, 50.5%, 64.3%);
+    --color-warning-low: hsla(41, 68.8%, 39%, 0.9);
+    --color-warning-medium: hsla(42, 50.2%, 48%, 0.92);
+    --color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.54);
+    --color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.42);
+    --color-error: hsl(358, 37.1%, 61.4%);
+    --color-error-low: hsla(357, 76.8%, 27.1%, 0.9);
+    --color-error-medium: hsla(357, 48%, 39.2%, 0.92);
+    --color-error-frosted: hsla(356, 64%, 19.6%, 0.54);
+    --color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.42);
+    --color-info: hsl(211, 49.5%, 62%);
+    --color-info-low: hsla(212, 97.4%, 30%, 0.9);
+    --color-info-medium: hsla(212, 63%, 41.4%, 0.92);
+    --color-info-frosted: hsla(212, 98.1%, 21.2%, 0.54);
+    --color-info-frosted-soft: hsla(211, 100%, 18%, 0.42);
+    --color-skeleton: #1a1b1e;
   }
 
   .auto {
     @media (prefers-color-scheme: dark) {
-      /* a11y */
---color-focus: #1A44EA;
---color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
-/* background */
---color-canvas: hsl(240, 2.7%, 7.3%);
---color-surface: hsl(240, 2%, 10%);
---color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
---color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
---color-backdrop: hsla(240, 14.9%, 9.2%, 0.800);
-/* foreground */
---color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
---color-contrast-low: hsla(240, 12.5%, 96.9%, 0.450);
---color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.560);
---color-contrast-high: hsla(240, 12.5%, 96.9%, 0.670);
---color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.780);
---color-primary: hsl(240, 12.5%, 96.9%);
-/* semantic */
---color-success: hsl(125, 37.4%, 64.9%);
---color-success-low: hsla(125, 81.1%, 29%, 0.900);
---color-success-medium: hsla(125, 48.4%, 41.8%, 0.920);
---color-success-frosted: hsla(125, 87.5%, 18.8%, 0.540);
---color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.420);
---color-warning: hsl(44, 50.5%, 64.3%);
---color-warning-low: hsla(41, 68.8%, 39%, 0.900);
---color-warning-medium: hsla(42, 50.2%, 48%, 0.920);
---color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.540);
---color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.420);
---color-error: hsl(358, 37.1%, 61.4%);
---color-error-low: hsla(357, 76.8%, 27.1%, 0.900);
---color-error-medium: hsla(357, 48%, 39.2%, 0.920);
---color-error-frosted: hsla(356, 64%, 19.6%, 0.540);
---color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.420);
---color-info: hsl(211, 49.5%, 62%);
---color-info-low: hsla(212, 97.4%, 30%, 0.900);
---color-info-medium: hsla(212, 63%, 41.4%, 0.920);
---color-info-frosted: hsla(212, 98.1%, 21.2%, 0.540);
---color-info-frosted-soft: hsla(211, 100%, 18%, 0.420);
-/* special */
---color-skeleton: #1a1b1e;
+      --color-focus: #1a44ea;
+      --color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
+      --color-canvas: hsl(240, 2.7%, 7.3%);
+      --color-surface: hsl(240, 2%, 10%);
+      --color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
+      --color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
+      --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
+      --color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
+      --color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+      --color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+      --color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+      --color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
+      --color-primary: hsl(240, 12.5%, 96.9%);
+      --color-success: hsl(125, 37.4%, 64.9%);
+      --color-success-low: hsla(125, 81.1%, 29%, 0.9);
+      --color-success-medium: hsla(125, 48.4%, 41.8%, 0.92);
+      --color-success-frosted: hsla(125, 87.5%, 18.8%, 0.54);
+      --color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.42);
+      --color-warning: hsl(44, 50.5%, 64.3%);
+      --color-warning-low: hsla(41, 68.8%, 39%, 0.9);
+      --color-warning-medium: hsla(42, 50.2%, 48%, 0.92);
+      --color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.54);
+      --color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.42);
+      --color-error: hsl(358, 37.1%, 61.4%);
+      --color-error-low: hsla(357, 76.8%, 27.1%, 0.9);
+      --color-error-medium: hsla(357, 48%, 39.2%, 0.92);
+      --color-error-frosted: hsla(356, 64%, 19.6%, 0.54);
+      --color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.42);
+      --color-info: hsl(211, 49.5%, 62%);
+      --color-info-low: hsla(212, 97.4%, 30%, 0.9);
+      --color-info-medium: hsla(212, 63%, 41.4%, 0.92);
+      --color-info-frosted: hsla(212, 98.1%, 21.2%, 0.54);
+      --color-info-frosted-soft: hsla(211, 100%, 18%, 0.42);
+      --color-skeleton: #1a1b1e;
     }
   }
 }
@@ -754,8 +279,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
 /* Grid */
 @utility grid-template {
-  @apply
-    [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
+  @apply [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
     [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--spacing-fluid-md))))]
     grid
     grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start_extended-start_basic-start_narrow-start]_repeat(6,minmax(0,1fr))_[narrow-end_basic-end_extended-end_wide-end]_var(--_pds-grid-col)_[full-end]]
@@ -901,5 +425,6 @@ exports[`should match compiled tailwindcss theme 1`] = `
 }
 @utility prose-display-lg {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
-}"
+}
+"
 `;

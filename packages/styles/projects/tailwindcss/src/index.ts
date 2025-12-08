@@ -1,4 +1,4 @@
-import { colorVariablesDark, colorVariablesLight } from '@porsche-design-system/shared-styles';
+import { cssVariableDefinitionDark, cssVariableDefinitionLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
   borderRadiusLg,
@@ -60,7 +60,7 @@ export const getTailwindcssTheme = () => {
   --color-black: #000;
   --color-white: #fff;
 
-  ${colorVariablesLight}
+  ${cssVariableDefinitionLight}
 
   /* Typography */
   --font-porsche-next: ${fontFamily};
@@ -161,16 +161,16 @@ export const getTailwindcssTheme = () => {
 
 @layer theme {
   .light {
-    ${colorVariablesLight}
+    ${cssVariableDefinitionLight}
   }
 
   .dark {
-    ${colorVariablesDark}
+    ${cssVariableDefinitionDark}
   }
 
   .auto {
     @media (prefers-color-scheme: dark) {
-      ${colorVariablesDark}
+      ${cssVariableDefinitionDark}
     }
   }
 }

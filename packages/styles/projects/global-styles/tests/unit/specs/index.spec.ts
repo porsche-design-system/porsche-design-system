@@ -12,7 +12,6 @@ const indexCss = readFile('index.css');
 const fontFaceCss = readFile('font-face.css');
 const normalizeCss = readFile('normalize.css');
 const variablesCss = readFile('variables.css');
-const foucCss = readFile('fouc.css');
 
 const indexCnCss = readFile('cn/index.css');
 const fontFaceCnCss = readFile('cn/font-face.css');
@@ -29,7 +28,6 @@ it('should contain all parts in index css', () => {
   expect(indexCss).toContain(fontFaceCss);
   expect(indexCss).toContain(normalizeCss);
   expect(indexCss).toContain(variablesCss);
-  expect(indexCss).toContain(foucCss);
   expect(indexCss).toContain(CDN_BASE_URL_COM);
   expect(indexCss).not.toContain(CDN_BASE_URL_CN);
 });
@@ -38,7 +36,6 @@ it('should contain all parts in index cn css', () => {
   expect(indexCnCss).toContain(fontFaceCnCss);
   expect(indexCnCss).toContain(normalizeCss);
   expect(indexCnCss).toContain(variablesCss);
-  expect(indexCnCss).toContain(foucCss);
   expect(indexCnCss).toContain(CDN_BASE_URL_CN);
   expect(indexCnCss).not.toContain(CDN_BASE_URL_COM);
 });

@@ -1,27 +1,32 @@
 import * as fs from 'node:fs';
-import { colorVariablesDark, colorVariablesLight } from '@porsche-design-system/shared-styles';
+import {
+  prefixedCssVariableDefinitionDark,
+  prefixedCssVariableDefinitionLight,
+} from '@porsche-design-system/shared-styles';
+import * as prettier from 'prettier';
 
-export const buildVariablesCss = () => {
+export const buildVariablesCss = async () => {
   const styles = `:root {
-  ${colorVariablesLight}
+  ${prefixedCssVariableDefinitionLight}
 }
 .light {
-  ${colorVariablesLight}
+  ${prefixedCssVariableDefinitionLight}
 }
 .dark {
-  ${colorVariablesDark}
+  ${prefixedCssVariableDefinitionDark}
 }
 .auto {
   @media (prefers-color-scheme: dark) {
-    ${colorVariablesDark}
+    ${prefixedCssVariableDefinitionDark}
   }
 }`;
 
   const targetPath = './dist';
   const targetFile = 'variables.css';
+  const variables = await prettier.format(styles, { parser: 'css' });
 
   fs.mkdirSync(targetPath, { recursive: true });
-  fs.writeFileSync(`./${targetPath}/${targetFile}`, styles);
+  fs.writeFileSync(`./${targetPath}/${targetFile}`, variables);
 
   console.log(`Built Variables CSS`);
 };

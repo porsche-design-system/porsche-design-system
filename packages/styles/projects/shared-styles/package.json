@@ -5,12 +5,12 @@
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "./dist/index.js",
-  "module": "./dist/esm/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/esm/index.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
   },
@@ -21,8 +21,11 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn build:lib",
+    "build": "yarn build:cssVariables && yarn build:lib",
     "build:lib": "tsup ./src/index.ts --format esm,cjs --dts",
+    "build:cssVariables": "tsx scripts/buildCssVariables.ts",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
