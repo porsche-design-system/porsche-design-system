@@ -13,7 +13,7 @@ import {
 import type { Route } from './+types/root';
 import './app.css';
 import { getFontLinks, getIconLinks, getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
-import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { useState } from 'react';
 import { routes } from '~/routes';
 
@@ -51,6 +51,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+export type Theme = 'light' | 'dark' | 'auto';
+
 export default function App() {
   const navigate = useNavigate();
   const [theme, setTheme] = useState<Theme>('light');
@@ -73,8 +75,8 @@ export default function App() {
         ))}
       </select>
 
-      <PorscheDesignSystemProvider theme={theme}>
-        <div id="app">
+      <PorscheDesignSystemProvider>
+        <div id="app" className={theme}>
           <Outlet />
         </div>
       </PorscheDesignSystemProvider>

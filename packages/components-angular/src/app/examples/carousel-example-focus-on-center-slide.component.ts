@@ -11,7 +11,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       [focusOnCenterSlide]="true"
       [trimSpace]="false"
       [heading]="'Some Heading'"
-      [gradientColor]="'background-surface'"
+      [gradient]="true"
       (update)="onCarouselUpdate($event)"
     >
       <div *ngFor="let slide of slides; let i = index" [ngClass]="getSlideClass(i)">

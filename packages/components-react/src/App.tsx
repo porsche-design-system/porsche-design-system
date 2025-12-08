@@ -1,7 +1,9 @@
-import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 import { type JSX, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { routes } from './routes';
+
+export type Theme = 'light' | 'dark' | 'auto';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
@@ -31,8 +33,8 @@ export const App = (): JSX.Element => {
         </>
       )}
 
-      <div id="app">
-        <PorscheDesignSystemProvider cdn="auto" theme={theme}>
+      <div id="app" className={theme}>
+        <PorscheDesignSystemProvider cdn="auto">
           <Routes>
             {routes
               .filter((route) => !route.isDisabled)
