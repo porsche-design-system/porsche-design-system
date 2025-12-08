@@ -94,14 +94,16 @@ export const getComponentCss = (
     },
     wrapper: {
       position: 'relative',
-      display: 'flex',
-      alignItems: 'center',
-      alignSelf: 'flex-start',
-      minHeight: fontLineHeight, // necessary for compact mode
-      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr)',
     },
     'input-wrapper': {
       position: 'relative',
+      alignItems: 'center',
+      display: 'grid',
+      alignSelf: 'flex-start',
+      minHeight: fontLineHeight, // necessary for compact mode
+      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
     },
     ...(isLoading && {
       spinner: {
@@ -126,6 +128,7 @@ export const getComponentCss = (
       hideLabel,
       {
         display: 'inline',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       }
     ),
     // .message
