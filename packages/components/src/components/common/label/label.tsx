@@ -19,6 +19,11 @@ type LabelProps = {
   stopClickPropagation?: boolean;
 };
 
+// fixes issue where clicking a button inside a label causes double events
+const composedPathIncludesButton = (event: MouseEvent): boolean => {
+  return event.composedPath().some((node): node is HTMLButtonElement => node instanceof HTMLButtonElement);
+};
+
 export const Label: FunctionalComponent<LabelProps> = ({
   host,
   label,
@@ -33,6 +38,9 @@ export const Label: FunctionalComponent<LabelProps> = ({
   const handleClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
       e.stopPropagation();
+    }
+    if (composedPathIncludesButton(e)) {
+     e.preventDefault();
     }
   };
 
