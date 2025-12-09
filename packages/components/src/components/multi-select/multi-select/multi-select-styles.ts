@@ -37,7 +37,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean
+  isCompact: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -46,9 +46,9 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [`${cssVarInternalMultiSelectScaling}`]: compact ? 0.64285714 : 1,
-          [`${cssVarInternalMultiSelectOptionScaling}`]: compact ? 0.64285714 : 1,
-          [`${cssVarInternalOptgroupScaling}`]: compact ? 0.64285714 : 1,
+          [`${cssVarInternalMultiSelectScaling}`]: isCompact ? 0.64285714 : 1,
+          [`${cssVarInternalMultiSelectOptionScaling}`]: isCompact ? 0.64285714 : 1,
+          [`${cssVarInternalOptgroupScaling}`]: isCompact ? 0.64285714 : 1,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
