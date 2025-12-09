@@ -19,7 +19,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:package",
-    "build:package": "NODE_ENV=development tsx scripts/build.ts",
+    "build:package": "tsx scripts/build.ts",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
