@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected|start|end)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected|label-start|label-end)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -267,7 +267,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
             .replace(/e\.stopImmediatePropagation\(\);/, '')
             .replace(
-              /hasNamedSlot\(this\.props\.host, '(start|end)'\)/g,
+              /hasNamedSlot\(this\.props\.host, '(label-start|label-end)'\)/g,
               `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
             );
         } else {
