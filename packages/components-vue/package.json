@@ -26,7 +26,7 @@
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:smoke": "yarn test:smoke:unit && yarn test:smoke:vue-wrapper",
-    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts global-styles",
+    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",
     "test:smoke:vue-wrapper": "vitest --config projects/vue-wrapper/tests/smoke/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
