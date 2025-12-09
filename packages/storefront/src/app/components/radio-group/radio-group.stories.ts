@@ -29,7 +29,7 @@ const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
     children: [
       {
         tag: 'div',
-        properties: { slot: 'label-start', className: 'w-[24px] h-[24px] bg-[deeppink] mr-static-sm rounded-full' },
+        properties: { slot: 'label-start', className: 'w-[22px] h-[22px] bg-[deeppink] mr-static-sm rounded-full' },
       },
       {
         tag: 'span',

@@ -41,7 +41,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
       children: [
         {
           tag: 'div',
-          properties: { slot: 'label-start', className: 'w-[24px] h-[24px] bg-[deeppink] mr-static-sm rounded-full' },
+          properties: { slot: 'label-start', className: 'w-[22px] h-[22px] bg-[deeppink] mr-static-sm rounded-full' },
         },
         {
           tag: 'span',
@@ -52,7 +52,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-end' },
+          properties: { slot: 'label-end', className: 'ml-static-xs' },
           children: [
             'Some label with a ',
             {
@@ -117,6 +117,7 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
         },
         {
           tag: 'p-popover',
+          properties: { className: 'mr-static-xs mt-static-xs' },
           children: ['Some additional content.'],
         },
       ],
