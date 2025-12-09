@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, fieldSizing: content, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -13,6 +13,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: content;
   display: block;
   width: 100%;
   height: auto;
@@ -166,7 +167,7 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, theme: vertical 2`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, fieldSizing: fixed, theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -179,6 +180,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -332,7 +334,7 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, resize: vertical, fieldSizing: content, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -345,6 +347,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: content;
   display: block;
   width: 100%;
   height: auto;
@@ -434,7 +437,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -447,6 +450,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -536,7 +540,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -549,6 +553,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -660,7 +665,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -673,6 +678,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -784,7 +790,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -797,6 +803,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -886,7 +893,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -899,6 +906,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -1011,7 +1019,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, fieldSizing: content, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1024,6 +1032,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: content;
   display: block;
   width: 100%;
   height: auto;
@@ -1113,7 +1122,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1126,6 +1135,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -1215,7 +1225,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1228,6 +1238,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -1339,7 +1350,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1352,6 +1363,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -1463,7 +1475,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, resize: vertical, fieldSizing: content, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1476,6 +1488,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: content;
   display: block;
   width: 100%;
   height: auto;
@@ -1565,7 +1578,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, resize: vertical, fieldSizing: content, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1578,6 +1591,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: content;
   display: block;
   width: 100%;
   height: auto;
@@ -1667,7 +1681,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1680,6 +1694,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;
@@ -1791,7 +1806,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, fieldSizing: fixed, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1804,6 +1819,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;

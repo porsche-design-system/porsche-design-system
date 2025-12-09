@@ -12460,6 +12460,15 @@ exports[`should match snapshot 1`] = `
         },
         "type": "boolean",
       },
+      "fieldSizing": {
+        "allowedValues": [
+          "fixed",
+          "content",
+        ],
+        "defaultValue": "fixed",
+        "description": "Controls the intrinsic sizing behavior of the textarea field. Overrides rows when set to 'content'.",
+        "type": "TextareaFieldSizing",
+      },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -12544,7 +12553,7 @@ exports[`should match snapshot 1`] = `
       "rows": {
         "allowedValues": "number",
         "defaultValue": 7,
-        "description": "The number of rows of the textarea.",
+        "description": "The number of rows. Has no effect when fieldSizing='content'.",
         "type": "number",
       },
       "spellCheck": {

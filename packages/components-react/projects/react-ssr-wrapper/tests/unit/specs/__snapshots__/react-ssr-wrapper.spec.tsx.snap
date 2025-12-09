@@ -24170,6 +24170,7 @@ exports[`should render dsr component for PTextarea 1`] = `
 }
 textarea {
   resize: vertical;
+  field-sizing: fixed;
   display: block;
   width: 100%;
   height: auto;

@@ -79,7 +79,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaFieldSizing, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -158,7 +158,7 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaFieldSizing, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -3299,6 +3299,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Controls the intrinsic sizing behavior of the textarea field. Overrides rows when set to 'content'.
+         */
+        "fieldSizing"?: TextareaFieldSizing;
+        /**
           * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
          */
         "form"?: string;
@@ -3343,7 +3347,7 @@ export namespace Components {
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows of the textarea.
+          * The number of rows. Has no effect when fieldSizing='content'.
          */
         "rows"?: number;
         /**
@@ -8276,6 +8280,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Controls the intrinsic sizing behavior of the textarea field. Overrides rows when set to 'content'.
+         */
+        "fieldSizing"?: TextareaFieldSizing;
+        /**
           * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
          */
         "form"?: string;
@@ -8332,7 +8340,7 @@ declare namespace LocalJSX {
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows of the textarea.
+          * The number of rows. Has no effect when fieldSizing='content'.
          */
         "rows"?: number;
         /**

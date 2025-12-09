@@ -24,7 +24,7 @@ import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { TextareaResize } from './textarea-utils';
+import type { TextareaFieldSizing, TextareaResize } from './textarea-utils';
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
 export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
@@ -41,6 +41,7 @@ export const getComponentCss = (
   compact: boolean,
   counter: boolean,
   resize: TextareaResize,
+  fieldSizing: TextareaFieldSizing,
   theme: Theme
 ): string => {
   const scalingVar = getScalingVar(compact);
@@ -80,6 +81,7 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         resize,
+        fieldSizing,
         display: 'block',
         width: '100%',
         height: 'auto',
