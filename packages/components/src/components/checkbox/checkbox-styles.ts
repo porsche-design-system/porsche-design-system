@@ -1,11 +1,4 @@
-import {
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
+import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -14,7 +7,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
 } from '../../styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
@@ -36,18 +28,14 @@ export const getComponentCss = (
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
-  compact: boolean
+  isCompact: boolean
 ): string => {
   const { formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
-  const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
-  const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
-  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
-  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
-  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
-  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
-  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
+  const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
+  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingInlineStart = `calc(11.2px * (var(${cssVarInternalCheckboxScaling}) - 0.64285714) + 4px)`;
 
   return getCss({
     '@global': {
@@ -58,10 +46,11 @@ export const getComponentCss = (
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),
+        [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
-        ...getCheckboxBaseStyles(isDisabled, isLoading, state, compact),
+        ...getCheckboxBaseStyles(isDisabled, isLoading, state),
         '&:checked': getCheckboxCheckedBaseStyles(isLoading),
         '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading),
         '&:focus-visible': getFocusBaseStyles(),
@@ -92,8 +81,8 @@ export const getComponentCss = (
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: dimension,
-        height: dimension,
+        width: checkboxDimension,
+        height: checkboxDimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
@@ -105,8 +94,8 @@ export const getComponentCss = (
         gridArea: '1/2',
       },
       {
-        paddingTop,
-        paddingInlineStart,
+        paddingTop: labelPaddingTop,
+        paddingInlineStart: labelPaddingInlineStart,
       }
     ),
     // .message

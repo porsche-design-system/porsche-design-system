@@ -6,15 +6,12 @@ type ThemedFormStateColors = {
   formStateBorderColor: string;
   formStateBorderHoverColor: string;
   formStateColor: string | undefined;
-  formStateHoverColor: string | undefined;
 };
 
 const {
   successColor,
-  successFrostedSoftColor,
   errorColor,
   primaryColor,
-  errorFrostedSoftColor,
   successLowColor,
   errorLowColor,
   contrastLowerColor,
@@ -47,18 +44,11 @@ const colorMap: Record<FormState, string> = {
   none: undefined,
 };
 
-const colorHoverMap: Record<FormState, string> = {
-  success: successFrostedSoftColor,
-  error: errorFrostedSoftColor,
-  none: undefined,
-};
-
 export const getThemedFormStateColors = (state: FormState): ThemedFormStateColors => {
   return {
     formStateBackgroundColor: colorBackgroundMap[state],
     formStateBorderColor: colorBorderMap[state],
     formStateBorderHoverColor: colorBorderHoverMap[state],
     formStateColor: colorMap[state],
-    formStateHoverColor: colorHoverMap[state],
   };
 };
