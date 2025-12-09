@@ -5587,11 +5587,23 @@ exports[`should match snapshot 1`] = `
         "isExperimental": true,
         "type": "boolean",
       },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
         "description": "Dynamic feedback text for validation or status.",
         "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
       },
       "name": {
         "allowedValues": "string",
