@@ -72,6 +72,8 @@ jobs:
             ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
@@ -84,7 +86,6 @@ jobs:
             ./packages/assets/projects/crest/dist/
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
-            ./packages/assets/projects/fallbacks/dist/
             ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
@@ -109,7 +110,6 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
             ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error
   build-production:
@@ -162,6 +162,8 @@ jobs:
             ./packages/utilities/projects/utilities/dist/
             ./packages/utilities/projects/ag-grid/dist/
             ./packages/styles/dist/
+            ./packages/styles/projects/shared-styles/dist/
+            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
@@ -174,7 +176,6 @@ jobs:
             ./packages/assets/projects/crest/dist/
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
-            ./packages/assets/projects/fallbacks/dist/
             ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
@@ -198,6 +199,5 @@ jobs:
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
-            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
             ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error

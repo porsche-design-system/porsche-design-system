@@ -1,6 +1,5 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
-import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -10,6 +9,8 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
+import { THEME_TOKEN } from "../app.component";
+import { PorscheDesignSystemModule } from "@porsche-design-system/components-angular";
 
 ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 

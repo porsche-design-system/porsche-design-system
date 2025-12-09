@@ -71,17 +71,8 @@ By default, the network traffic looks something like this.
 - starts with the `index.html`
 - then continues with several `*.js` bundles of the Remix app
 - which then load the **core chunk**
-- that injects both the **font-face.css** and the **component chunk**
+- that injects the **component chunk**
 - and last the **font file** after the styles within the component's Shadow DOM are applied
-
-### Preloading font-face.css
-
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
-asset.
-
-![Loading Behavior Remix 02](assets/loading-behavior-remix-03.jpg)
-
-As we can see, this happens in parallel with the `*.js` bundles.
 
 ### Preloading font files
 

@@ -68,7 +68,40 @@ export class App {
 }
 ```
 
-### Step 3 (recommended)
+### Step 3
+
+Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
+recommended styles, such as:
+
+- CSS color variables
+- Font-face definitions
+- Normalize styles
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
+
+See [Global Styles](/global-styles/introduction/) for more details.
+
+```diff
+/* src/styles.css */
++ @import '@porsche-design-system/components-angular/index.css';
+```
+
+To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). Include the tag names of the components you
+want to target. See [Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/styles.css */
+@import '@porsche-design-system/components-angular/index.css';
+
++ :is(p-accordion, p-banner, p-button...):not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
 
 To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
 Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
@@ -109,20 +142,14 @@ Create a `index-html-transform.js` file in your project root directory.
 
 import {
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
-  getInitialStyles,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-angular/partials';
 
 // https://github.com/just-jeb/angular-builders/blob/fdd7c8ed00b7eb7e1761aaa6cb5bda41693ceb5d/packages/custom-webpack/README.md#index-transform
 export default (_, html) => {
   const headPartials = [
-    // injects stylesheet which defines visibility of pre-hydrated PDS components
-    getInitialStyles(),
-    // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
-    getFontFaceStyles(),
     // preloads Porsche Next font (=> minimize FOUT)
     getFontLinks(),
     // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
@@ -137,7 +164,7 @@ export default (_, html) => {
 };
 ```
 
-### Step 4 (recommended)
+### Step 5 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
@@ -173,14 +200,15 @@ Create a `.postcssrc.json` file in your project root directory.
 
 Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
-```css
+```diff
 /* src/styles.css */
+@import '@porsche-design-system/components-angular/index.css';
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-react/tailwindcss';
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-angular/tailwindcss';
 ```
 
-### Step 5
+### Step 6
 
 Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
 `npm run start` and verify that the component and styles display correctly.

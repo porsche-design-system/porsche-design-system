@@ -1,9 +1,9 @@
-import { PLinkPure, PorscheDesignSystemContext } from '@porsche-design-system/components-react';
+import { PLinkPure } from '@porsche-design-system/components-react';
 import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { useContext } from 'react';
+import { useTheme } from '../contexts/ThemeContext.tsx';
 
 ModuleRegistry.registerModules([AllEnterpriseModule]);
 
@@ -34,8 +34,6 @@ const ImageUrlRenderer = ({ value }: { value: string }) => {
 };
 
 const ButtonRenderer = ({ data }: { data: any }) => {
-  const { theme } = useContext(PorscheDesignSystemContext);
-
   return (
     <span
       style={{
@@ -119,7 +117,7 @@ const defaultColDef = {
 };
 
 export const AGGridExamplePage = (): JSX.Element => {
-  const { theme } = useContext(PorscheDesignSystemContext);
+  const { theme } = useTheme();
 
   return (
     <div data-ag-theme-mode={theme === 'light' ? null : 'dark'} style={{ height: '80vh' }}>

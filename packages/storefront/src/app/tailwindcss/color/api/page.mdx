@@ -12,12 +12,16 @@ import {
   colorBackdropDark,
   colorPrimaryLight,
   colorPrimaryDark,
+  colorContrastHigherLight,
+  colorContrastHigherDark,
   colorContrastHighLight,
   colorContrastHighDark,
   colorContrastMediumLight,
   colorContrastMediumDark,
   colorContrastLowLight,
   colorContrastLowDark,
+  colorContrastLowerLight,
+  colorContrastLowerDark,
   colorInfoLight,
   colorInfoMediumLight,
   colorInfoLowLight,
@@ -85,12 +89,14 @@ export const metadata = {
 
 ### Foreground
 
-| Color                                                                                      | Tailwind CSS variable     | Tailwind CSS class      | Description                                                                                                      | Value (light)              | Value (dark)              |
-| ------------------------------------------------------------------------------------------ | ------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------- |
-| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-primary`         | `.text-primary`         | Applies the **primary** color, typically used for text.                                                          | {colorPrimaryLight}        | {colorPrimaryDark}        |
-| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-contrast-high`   | `.text-contrast-high`   | Applies the **contrast-high** color, typically used for text.                                                    | {colorContrastHighLight}   | {colorContrastHighDark}   |
-| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-contrast-medium` | `.text-contrast-medium` | Applies the **contrast-medium** color, typically used for text.                                                  | {colorContrastMediumLight} | {colorContrastMediumDark} |
-| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-contrast-low`    | `.border-contrast-low`  | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant. | {colorContrastLowLight}    | {colorContrastLowDark}    |
+| Color                                                                                      | Tailwind CSS variable     | Tailwind CSS class       | Description                                                                                                        | Value (light)              | Value (dark)              |
+| ------------------------------------------------------------------------------------------ | ------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------ | -------------------------- | ------------------------- |
+| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-primary`         | `.text-primary`          | Applies the **primary** color, typically used for text.                                                            | {colorPrimaryLight}        | {colorPrimaryDark}        |
+| <div className="bg-contrast-higher w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-contrast-higher` | `.text-contrast-higher`  | Applies the **contrast-higher** color, typically used for text.                                                    | {colorContrastHigherLight} | {colorContrastHigherDark} |
+| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-contrast-high`   | `.text-contrast-high`    | Applies the **contrast-high** color, typically used for text.                                                      | {colorContrastHighLight}   | {colorContrastHighDark}   |
+| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-contrast-medium` | `.text-contrast-medium`  | Applies the **contrast-medium** color, typically used for text.                                                    | {colorContrastMediumLight} | {colorContrastMediumDark} |
+| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-contrast-low`    | `.border-contrast-low`   | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | {colorContrastLowLight}    | {colorContrastLowDark}    |
+| <div className="bg-contrast-lower w-10 h-10 rounded-md border border-contrast-low"></div>  | `--color-contrast-lower`  | `.border-contrast-lower` | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | {colorContrastLowerLight}  | {colorContrastLowerDark}  |
 
 ### Semantic
 

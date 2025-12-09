@@ -41,8 +41,6 @@ The ones affected are:
 - [getInitialStyles()](/partials/initial-styles) **required since v3.7.0**
 - [getLoaderScript()](/partials/loader-script)
 - [getDSRPonyfill()](/partials/dsr-ponyfill)
-- [getBrowserSupportFallbackScript()](/partials/browser-support-fallback-script)
-- [getCookiesFallbackScript()](/partials/cookies-fallback-script)
 
 To allow their result being executed by the browser there are two options:
 
@@ -58,7 +56,7 @@ Our recommendation is to go with the 2nd option. To make integration easy, the a
 tag.
 
 <Notification heading="Important note" headingTag="h3" state="success">
-  The returned string from calling a partial, e.g. `getInitialStyles({ format: 'sha256' })` is already wrapped in single
+  The returned string from calling a partial, e.g. `getLoaderScript({ format: 'sha256' })` is already wrapped in single
   quotes so it can be used directly in your policy.
 </Notification>
 
