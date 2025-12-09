@@ -107,6 +107,7 @@
     "lint:storefront": "biome lint",
     "test:unit:tokens": "yarn --cwd ./packages/tokens test:unit",
     "test:unit:styles": "yarn --cwd ./packages/styles test:unit",
+    "test:unit:styles:shared-styles": "yarn --cwd ./packages/styles test:unit:shared-styles",
     "test:unit:styles:global-styles": "yarn --cwd ./packages/styles test:unit:global-styles",
     "test:unit:styles:tailwindcss": "yarn --cwd ./packages/styles test:unit:tailwindcss",
     "test:unit:assets": "yarn --cwd ./packages/assets test:unit",
