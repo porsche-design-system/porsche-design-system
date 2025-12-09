@@ -97,24 +97,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Divider`: value `contrast-lower` for prop `color`
 
-- Mandatory CSS global styles (includes FOUC handling, normalize, font-face and color variables):
+- Mandatory CSS global styles (normalize, font-face and color variables):
 
 ```diff
 /* src/style.css */
-+ @import '@porsche-design-system/components-js';
++ @import '@porsche-design-system/components-{js|angular|react|vue}';
 /* Alternative with fonts from China CDN */
-+ @import '@porsche-design-system/components-js/cn';
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
 ```
 
-When using tailwind:
+- Add FOUC styles
 
 ```diff
-/* src/style.css */
-- @import '@porsche-design-system/components-js';
-
-+ @import '@porsche-design-system/components-js/tailwindcss';
-/* Alternative with fonts from China CDN */
-+ @import '@porsche-design-system/components-js/tailwindcss/cn';
++ :not(:defined) {
++   visibility: hidden;
++ }
 ```
 
 ### Changed
@@ -181,7 +178,7 @@ When using tailwind:
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
   only
 
-### Removed (deprecated in v3 already)
+### Removed
 
 - `Partials`:
   - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
@@ -190,6 +187,9 @@ When using tailwind:
   - Removed `getFontFaceStyles()`, `getFontFaceStylesheet()` and `getInitialStyles()` partial in favor of CSS imports
     from `@porsche-design-system/components-{js|angular|react|vue}`
   - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now
+  - Automatic FOUC handling in `getInitialStyles()`, must be implemented manually now
+
+### Removed (deprecated in v3 already)
 
 - `Accordion`:
   - `tag` (use `heading-tag` instead)
