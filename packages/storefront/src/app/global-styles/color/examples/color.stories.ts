@@ -12,68 +12,68 @@ export const colorStoryTextColor: Story<'div'> = {
       children: [
         {
           tag: 'li',
-          properties: { className: 'text-primary' },
-          children: ['.text-primary'],
+          properties: { className: 'text-(--p-color-primary)' },
+          children: ['--p-color-primary'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-higher' },
-          children: ['.text-contrast-higher'],
+          properties: { className: 'text-(--p-color-contrast-higher)' },
+          children: ['--p-color-contrast-higher'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-high' },
-          children: ['.text-contrast-high'],
+          properties: { className: 'text-(--p-color-contrast-high)' },
+          children: ['--p-color-contrast-high'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-medium' },
-          children: ['.text-contrast-medium'],
+          properties: { className: 'text-(--p-color-contrast-medium)' },
+          children: ['--p-color-contrast-medium'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-low' },
-          children: ['.text-contrast-low'],
+          properties: { className: 'text-(--p-color-contrast-low)' },
+          children: ['--p-color-contrast-low'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-success' },
-          children: ['.text-success'],
+          properties: { className: 'text-(--p-color-success)' },
+          children: ['--p-color-success'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-success-medium' },
-          children: ['.text-success-medium'],
+          properties: { className: 'text-(--p-color-success-medium)' },
+          children: ['--p-color-success-medium'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-warning' },
-          children: ['.text-warning'],
+          properties: { className: 'text-(--p-color-warning)' },
+          children: ['--p-color-warning'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-warning-medium' },
-          children: ['.text-warning-medium'],
+          properties: { className: 'text-(--p-color-warning-medium)' },
+          children: ['--p-color-warning-medium'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-error' },
-          children: ['.text-error'],
+          properties: { className: 'text-(--p-color-error)' },
+          children: ['--p-color-error'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-error-medium' },
-          children: ['.text-error-medium'],
+          properties: { className: 'text-(--p-color-error-medium)' },
+          children: ['--p-color-error-medium'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-info' },
-          children: ['.text-info'],
+          properties: { className: 'text-(--p-color-info)' },
+          children: ['--p-color-info'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-info-medium' },
-          children: ['.text-info-medium'],
+          properties: { className: 'text-(--p-color-info-medium)' },
+          children: ['--p-color-info-medium'],
         },
       ],
     },
@@ -96,9 +96,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-canvas w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-canvas) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-canvas',
+            '--p-color-canvas',
           ],
         },
         {
@@ -109,9 +109,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-surface) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-surface',
+            '--p-color-surface',
           ],
         },
         {
@@ -122,9 +122,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-frosted w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-frosted) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-frosted',
+            '--p-color-frosted',
           ],
         },
         {
@@ -135,9 +135,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-frosted-soft) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-frosted-soft',
+            '--p-color-frosted-soft',
           ],
         },
         {
@@ -148,9 +148,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-backdrop w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-backdrop) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-backdrop',
+            '--p-color-backdrop',
           ],
         },
         {
@@ -161,9 +161,11 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-success-frosted w-10 h-10 rounded-md border border-contrast-low' },
+              properties: {
+                className: 'bg-(--p-color-success-frosted) w-10 h-10 rounded-md border border-contrast-low',
+              },
             },
-            '.bg-success-frosted',
+            '--p-color-success-frosted',
           ],
         },
         {
@@ -174,9 +176,11 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: {
+                className: 'bg-(--p-color-success-frosted-soft) w-10 h-10 rounded-md border border-contrast-low',
+              },
             },
-            '.bg-success-frosted-soft',
+            '--p-color-success-frosted-soft',
           ],
         },
         {
@@ -187,9 +191,11 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low' },
+              properties: {
+                className: 'bg-(--p-color-warning-frosted) w-10 h-10 rounded-md border border-contrast-low',
+              },
             },
-            '.bg-warning-frosted',
+            '--p-color-warning-frosted',
           ],
         },
         {
@@ -200,9 +206,11 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: {
+                className: 'bg-(--p-color-warning-frosted-soft) w-10 h-10 rounded-md border border-contrast-low',
+              },
             },
-            '.bg-warning-frosted-soft',
+            '--p-color-warning-frosted-soft',
           ],
         },
         {
@@ -213,9 +221,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-error-frosted w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-error-frosted) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-error-frosted',
+            '--p-color-error-frosted',
           ],
         },
         {
@@ -226,9 +234,11 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: {
+                className: 'bg-(--p-color-error-frosted-soft) w-10 h-10 rounded-md border border-contrast-low',
+              },
             },
-            '.bg-error-frosted-soft',
+            '--p-color-error-frosted-soft',
           ],
         },
         {
@@ -239,9 +249,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-info-frosted w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-(--p-color-info-frosted) w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-info-frosted',
+            '--p-color-info-frosted',
           ],
         },
         {
@@ -252,9 +262,11 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: {
+                className: 'bg-(--p-color-info-frosted-soft) w-10 h-10 rounded-md border border-contrast-low',
+              },
             },
-            '.bg-info-frosted-soft',
+            '--p-color-info-frosted-soft',
           ],
         },
       ],
@@ -278,9 +290,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-primary w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-primary) w-10 h-10 rounded-md border' },
             },
-            '.border-primary',
+            '--p-color-primary',
           ],
         },
         {
@@ -291,9 +303,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-contrast-higher w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-contrast-higher) w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-higher',
+            '--p-color-contrast-higher',
           ],
         },
         {
@@ -304,9 +316,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-contrast-high w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-contrast-high) w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-high',
+            '--p-color-contrast-high',
           ],
         },
         {
@@ -317,9 +329,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-contrast-medium w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-contrast-medium) w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-medium',
+            '--p-color-contrast-medium',
           ],
         },
         {
@@ -330,9 +342,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-contrast-low w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-contrast-low) w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-low',
+            '--p-color-contrast-low',
           ],
         },
         {
@@ -343,9 +355,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-contrast-lower w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-contrast-lower) w-10 h-10 rounded-md border' },
             },
-            '.border-contrast-lower',
+            '--p-color-contrast-lower',
           ],
         },
         {
@@ -356,9 +368,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-info-medium w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-info-medium) w-10 h-10 rounded-md border' },
             },
-            '.border-info-medium',
+            '--p-color-info-medium',
           ],
         },
         {
@@ -369,9 +381,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-info-low w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-info-low) w-10 h-10 rounded-md border' },
             },
-            '.border-info-low',
+            '--p-color-info-low',
           ],
         },
         {
@@ -382,9 +394,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-success-medium w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-success-medium) w-10 h-10 rounded-md border' },
             },
-            '.border-success-medium',
+            '--p-color-success-medium',
           ],
         },
         {
@@ -395,9 +407,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-success-low w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-success-low) w-10 h-10 rounded-md border' },
             },
-            '.border-success-low',
+            '--p-color-success-low',
           ],
         },
         {
@@ -408,9 +420,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-warning-medium w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-warning-medium) w-10 h-10 rounded-md border' },
             },
-            '.border-warning-medium',
+            '--p-color-warning-medium',
           ],
         },
         {
@@ -421,9 +433,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-warning-low w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-warning-low) w-10 h-10 rounded-md border' },
             },
-            '.border-warning-low',
+            '--p-color-warning-low',
           ],
         },
         {
@@ -434,9 +446,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-error-medium w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-error-medium) w-10 h-10 rounded-md border' },
             },
-            '.border-error-medium',
+            '--p-color-error-medium',
           ],
         },
         {
@@ -447,9 +459,9 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'border-error-low w-10 h-10 rounded-md border' },
+              properties: { className: 'border-(--p-color-error-low) w-10 h-10 rounded-md border' },
             },
-            '.border-error-low',
+            '--p-color-error-low',
           ],
         },
       ],

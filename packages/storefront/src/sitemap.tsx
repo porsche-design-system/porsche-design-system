@@ -387,6 +387,50 @@ export const sitemap: Routes = {
       },
     },
   },
+  'global-styles': {
+    name: 'Global Styles',
+    path: '/global-styles',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/global-styles/introduction',
+        type: 'PAGE',
+      },
+      color: {
+        name: 'Color',
+        path: '/global-styles/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/global-styles/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/global-styles/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/global-styles/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'font-face': {
+        name: 'Font Face',
+        path: '/global-styles/font-face',
+        type: 'PAGE',
+      },
+      normalize: {
+        name: 'Normalize',
+        path: '/global-styles/normalize',
+        type: 'PAGE',
+      },
+    },
+  },
   components: {
     name: 'Components',
     path: '/components',
