@@ -37,7 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
   enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 - `Textarea`: `fieldSizing` prop to control the intrinsic sizing behavior
-  ([#TODO](https://github.com/porsche-design-system/porsche-design-system/pull/TODO))
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ### Fixed
 
@@ -48,7 +48,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
-  ([#TODO](https://github.com/porsche-design-system/porsche-design-system/pull/TODO))
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ## [3.31.0] - 2025-11-13
 
