@@ -1535,9 +1535,17 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
           * Dynamic feedback text for validation or status.
          */
         "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
         /**
           * The name of the input field, used when submitting the form data.
          */
@@ -6280,9 +6288,17 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
           * Dynamic feedback text for validation or status.
          */
         "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
         /**
           * The name of the input field, used when submitting the form data.
          */
