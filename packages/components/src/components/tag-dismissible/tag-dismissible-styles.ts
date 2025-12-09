@@ -22,7 +22,9 @@ export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible
  */
 
 export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string => {
-  const buttonPaddingBlock = `calc(28px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 6px)`;
+  const buttonPaddingBlock = hasLabel
+    ? `calc(16.8px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`
+    : `calc(28px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 6px)`;
   const buttonPaddingInline = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
   const buttonGap = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
   const iconPadding = `calc(11.2px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`;
@@ -46,7 +48,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         position: 'relative',
         alignItems: 'center',
         gap: buttonGap,
-        padding: `${hasLabel ? buttonPaddingBlock : buttonPaddingBlock} ${buttonPaddingInline}`,
+        padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
         borderRadius: borderRadiusSmall,
         cursor: 'pointer',
         background: frostedColor,
