@@ -131,6 +131,7 @@ import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
 import { InputDateComponent } from './generated/input-date.component';
 import { InputEmailComponent } from './generated/input-email.component';
+import { InputMonthComponent } from './generated/input-month.component';
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
@@ -138,6 +139,7 @@ import { InputTelComponent } from './generated/input-tel.component';
 import { InputTextComponent } from './generated/input-text.component';
 import { InputTimeComponent } from './generated/input-time.component';
 import { InputUrlComponent } from './generated/input-url.component';
+import { InputWeekComponent } from './generated/input-week.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
@@ -361,6 +363,7 @@ export const generatedPages = [
   InlineNotificationComponent,
   InputDateComponent,
   InputEmailComponent,
+  InputMonthComponent,
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
@@ -368,6 +371,7 @@ export const generatedPages = [
   InputTextComponent,
   InputTimeComponent,
   InputUrlComponent,
+  InputWeekComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -988,6 +992,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InputEmailComponent,
   },
   {
+    name: 'Input Month',
+    path: 'input-month',
+    component: InputMonthComponent,
+  },
+  {
     name: 'Input Number',
     path: 'input-number',
     component: InputNumberComponent,
@@ -1021,6 +1030,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Url',
     path: 'input-url',
     component: InputUrlComponent,
+  },
+  {
+    name: 'Input Week',
+    path: 'input-week',
+    component: InputWeekComponent,
   },
   {
     name: 'Link',

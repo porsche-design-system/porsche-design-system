@@ -112,6 +112,7 @@ import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
 import { InputDatePage } from './generated/InputDate';
 import { InputEmailPage } from './generated/InputEmail';
+import { InputMonthPage } from './generated/InputMonth';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
@@ -119,6 +120,7 @@ import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
 import { InputTimePage } from './generated/InputTime';
 import { InputUrlPage } from './generated/InputUrl';
+import { InputWeekPage } from './generated/InputWeek';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -737,6 +739,11 @@ export const generatedRoutes: RouteType[] = [
     element: <InputEmailPage />,
   },
   {
+    name: 'Input Month',
+    path: '/input-month',
+    element: <InputMonthPage />,
+  },
+  {
     name: 'Input Number',
     path: '/input-number',
     element: <InputNumberPage />,
@@ -770,6 +777,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Url',
     path: '/input-url',
     element: <InputUrlPage />,
+  },
+  {
+    name: 'Input Week',
+    path: '/input-week',
+    element: <InputWeekPage />,
   },
   {
     name: 'Link',

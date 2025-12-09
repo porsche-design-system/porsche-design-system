@@ -400,6 +400,10 @@ const generatedRoutes = {
     "path": "/input-email",
     "name": "InputEmail"
   },
+  "inputMonth": {
+    "path": "/input-month",
+    "name": "InputMonth"
+  },
   "inputNumber": {
     "path": "/input-number",
     "name": "InputNumber"
@@ -427,6 +431,10 @@ const generatedRoutes = {
   "inputUrl": {
     "path": "/input-url",
     "name": "InputUrl"
+  },
+  "inputWeek": {
+    "path": "/input-week",
+    "name": "InputWeek"
   },
   "link": {
     "path": "/link",
