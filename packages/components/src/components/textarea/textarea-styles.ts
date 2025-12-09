@@ -1,8 +1,7 @@
 import {
   borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
   borderWidthThin,
+  fontLineHeight,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
@@ -18,7 +17,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styles/form-styles';
+import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -29,7 +28,6 @@ import type { TextareaResize } from './textarea-utils';
 const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
-export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -41,22 +39,15 @@ export const getComponentCss = (
   isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean,
-  counter: boolean,
+  isCompact: boolean,
+  hasCounter: boolean,
   resize: TextareaResize
 ): string => {
-  const scalingVar = getScalingVar(compact);
-
-  const minPadding = '2px';
-  const minCounterPadding = '12px';
-
-  const basePaddingInline = `max(${minPadding}, calc(${formElementPaddingHorizontal} * ${scalingVar}))`;
-  const basePaddingBlock = `max(${minPadding}, calc(12px * ${scalingVar}))`;
-
-  const counterPaddingInline = `max(${minCounterPadding}, calc((${formElementPaddingHorizontal} + ${borderWidthBase}) * ${scalingVar}))`;
-  const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
-
-  const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
+  const textareaMinHeight = `calc(var(${cssVarInternalTextareaScaling}) * 3.5rem)`;
+  const textareaPaddingBlock = `calc(28px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 5px)`;
+  const textareaPaddingInline = `calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 8px)`;
+  const textareaPaddingBottom = `calc(${fontLineHeight} + calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px))`;
+  const counterMarginBottom = `calc(11.2px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px)`;
 
   const { formStateBorderColor, formStateBackgroundColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
@@ -64,6 +55,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
+        [`${cssVarInternalTextareaScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -82,11 +74,13 @@ export const getComponentCss = (
         color: primaryColor,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
         minWidth: '2ch', // to show at least 2 characters in very narrow containers
+        minHeight: textareaMinHeight,
+        boxSizing: 'border-box',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         font: textSmallStyle.font,
-        padding: counter
-          ? `${basePaddingBlock} ${basePaddingInline} ${paddingBottom}`
-          : `${basePaddingBlock} ${basePaddingInline}`,
+        padding: hasCounter
+          ? `${textareaPaddingBlock} ${textareaPaddingInline} ${textareaPaddingBottom}`
+          : `${textareaPaddingBlock} ${textareaPaddingInline}`,
         '&:focus': {
           borderColor: formStateBorderHoverColor,
         },
@@ -112,12 +106,13 @@ export const getComponentCss = (
     wrapper: {
       display: 'grid',
     },
-    ...(counter && {
+    ...(hasCounter && {
       counter: {
         ...getUnitCounterJssStyle(),
         gridArea: '1/1',
         placeSelf: 'flex-end',
-        padding: `${counterPaddingBlock} ${counterPaddingInline}`,
+        marginInlineEnd: textareaPaddingInline,
+        marginBottom: counterMarginBottom,
       },
       'sr-only': getHiddenTextJssStyle(),
     }),
