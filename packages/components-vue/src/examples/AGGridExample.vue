@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { PLinkPure, type Theme, themeInjectionKey } from '@porsche-design-system/components-vue';
+import { PLinkPure } from '@porsche-design-system/components-vue';
 import { pdsTheme } from '@porsche-design-system/components-vue/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridVue } from 'ag-grid-vue3';
 import { inject } from 'vue';
+import { type Theme, themeInjectionKey } from '../main';
 
 ModuleRegistry.registerModules([AllEnterpriseModule]);
 

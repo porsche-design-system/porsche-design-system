@@ -58,11 +58,22 @@ In the example from above we didn't render any component, yet, so let's add a si
 <p-button>Hello</p-button>
 ```
 
-For now, this is just a "dead" html tag without any appearance or functionality. You can't see it because it is hidden
-via CSS by the mandatory [getInitialStyles()](/partials/initial-styles) partial which outputs something like
+For now, this is just a "dead" html tag without any appearance or functionality. To prevent Flash of Unstyled Content
+(FOUC), the element needs to be hidden until it is registered or fully rendered. This can be done in multiple ways
+depending on your setup and requirements.
+
+Using the [`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined) CSS pseudo-class
+which will match once the component has been successfully defined:
 
 ```html
-p-button { visibility: hidden; } .hydrated { visibility: inherit; }
+p-button:not(:defined) { visibility: hidden; }
+```
+
+Using the Stencil [`hydrated`](https://stenciljs.com/docs/config#hydratedflag) class which will automatically be added
+by Stencil once the component is fully rendered:
+
+```html
+p-button:not(.hydrated) { visibility: hidden; }
 ```
 
 The **core chunk** detects the newly added tag and knows from its checklist that this component was not used and loaded
@@ -163,17 +174,8 @@ A classic waterfall like loading behavior that
 - starts with the `index.html`
 - then continues with the `index.js` of `@porsche-design-system/components-js`
 - which then loads the **core chunk**
-- that injects both the **font-face.css** and the **component chunk**
+- that injects the **component chunk**
 - and last the **font file** after the styles within the component's Shadow DOM are applied
-
-### Preloading font-face.css
-
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
-asset.
-
-![Loading Behavior Vanilla Js 02](assets/loading-behavior-vanilla-js-02.jpg)
-
-As we can see, this happens in parallel with the `index.js` file.
 
 ### Preloading font files
 

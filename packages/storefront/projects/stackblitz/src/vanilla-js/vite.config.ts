@@ -1,9 +1,7 @@
 import {
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
-  getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
@@ -17,8 +15,6 @@ const transformIndexHtmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml(html) {
       const headPartials = [
-        getInitialStyles(),
-        getFontFaceStyles(),
         getFontLinks(),
         getComponentChunkLinks(),
         getIconLinks(),

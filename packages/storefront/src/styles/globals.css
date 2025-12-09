@@ -1,3 +1,4 @@
+@import '@porsche-design-system/components-react';
 @import 'tailwindcss';
 @import '@porsche-design-system/components-react/tailwindcss';
 @source "../../../../node_modules/@porsche-design-system/shared/examples/*.tsx";
