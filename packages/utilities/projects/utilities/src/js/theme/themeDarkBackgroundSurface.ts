@@ -1,1 +1,3 @@
-export const themeDarkBackgroundSurface = '#212225';
+import { colorSurfaceDark } from '@porsche-design-system/tokens';
+
+export const themeDarkBackgroundSurface = colorSurfaceDark;

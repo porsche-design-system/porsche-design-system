@@ -19,6 +19,7 @@ const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
+  '@porsche-design-system/components-js/tokens',
   '@porsche-design-system/components-js/styles',
   '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/styles/vanilla-extract',
@@ -109,6 +110,11 @@ export default [
               types: './ssr/esm/public-api.d.ts',
               import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
               default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
+            },
+            './tokens': {
+              types: './tokens/esm/index.d.ts',
+              import: './tokens/esm/index.mjs',
+              default: './tokens/cjs/index.cjs',
             },
             './styles': {
               sass: './styles/_index.scss',
@@ -236,6 +242,33 @@ export default [
       typescript(typescriptOpts),
       generatePackageJson({
         outputFolder: `${outputDir}/ag-grid`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/tokens/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/tokens/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/tokens/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/tokens`,
         baseContents: {
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',

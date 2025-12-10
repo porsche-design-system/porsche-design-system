@@ -1,1 +1,3 @@
-export const themeDarkNotificationInfoSoft = '#04294E';
+import { colorInfoFrostedDark } from '@porsche-design-system/tokens';
+
+export const themeDarkNotificationInfoSoft = colorInfoFrostedDark;

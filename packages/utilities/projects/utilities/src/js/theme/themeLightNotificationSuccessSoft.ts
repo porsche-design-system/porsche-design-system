@@ -1,1 +1,3 @@
-export const themeLightNotificationSuccessSoft = '#E4FFEC';
+import { colorSuccessFrostedLight } from '@porsche-design-system/tokens';
+
+export const themeLightNotificationSuccessSoft = colorSuccessFrostedLight;

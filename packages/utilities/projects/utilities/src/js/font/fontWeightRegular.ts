@@ -1,1 +1,1 @@
-export const fontWeightRegular = 400;
+export { fontWeightRegular } from '@porsche-design-system/tokens';

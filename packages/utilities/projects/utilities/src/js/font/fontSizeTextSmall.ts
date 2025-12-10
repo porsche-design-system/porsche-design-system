@@ -1,1 +1,1 @@
-export const fontSizeTextSmall = '1rem';
+export { fontSizeSm as fontSizeTextSmall } from '@porsche-design-system/tokens';

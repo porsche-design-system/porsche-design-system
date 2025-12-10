@@ -1,3 +1,4 @@
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
@@ -6,6 +7,13 @@ const input = 'src/js/index.ts';
 const inputVanillaExtract = 'src/vanilla-extract/index.ts';
 const outputDir = 'dist';
 const outputDirVanillaExtract = `${outputDir}/vanilla-extract`;
+
+const commonPlugins = [
+  resolve({
+    // Resolve tokens package to inline the values
+    resolveOnly: [/^@porsche-design-system\/tokens$/],
+  }),
+];
 
 export default [
   // Default JS Build - CJS
@@ -16,8 +24,9 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs',
       preserveModules: true,
+      preserveModulesRoot: 'src/js',
     },
-    plugins: [typescript()],
+    plugins: [...commonPlugins, typescript()],
   },
   // Default JS Build - ESM
   {
@@ -27,8 +36,10 @@ export default [
       format: 'esm',
       entryFileNames: '[name].mjs',
       preserveModules: true,
+      preserveModulesRoot: 'src/js',
     },
     plugins: [
+      ...commonPlugins,
       typescript({
         declaration: true,
         declarationDir: `${outputDir}/esm`,

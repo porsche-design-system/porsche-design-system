@@ -1,1 +1,1 @@
-export const borderRadiusLarge = '12px';
+export { borderRadiusLg as borderRadiusLarge } from '@porsche-design-system/tokens';

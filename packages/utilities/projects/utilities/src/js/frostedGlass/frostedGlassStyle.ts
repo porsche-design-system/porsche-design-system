@@ -1,5 +1,6 @@
-const backdropFilter = 'blur(32px)';
+import { blurFrosted } from '@porsche-design-system/tokens';
+
 export const frostedGlassStyle = {
-  WebkitBackdropFilter: backdropFilter,
-  backdropFilter,
+  WebkitBackdropFilter: blurFrosted,
+  backdropFilter: blurFrosted,
 } as const;

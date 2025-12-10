@@ -1,1 +1,3 @@
-export const themeDarkStateDisabled = '#7E7F82';
+import { colorDisabledDark } from '@porsche-design-system/tokens';
+
+export const themeDarkStateDisabled = colorDisabledDark;

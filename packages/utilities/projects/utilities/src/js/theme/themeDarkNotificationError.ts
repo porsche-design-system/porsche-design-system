@@ -1,1 +1,3 @@
-export const themeDarkNotificationError = '#FC4040';
+import { colorErrorDark } from '@porsche-design-system/tokens';
+
+export const themeDarkNotificationError = colorErrorDark;

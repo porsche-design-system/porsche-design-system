@@ -1,1 +1,1 @@
-export const fontWeightSemiBold = 600;
+export { fontWeightSemiBold } from '@porsche-design-system/tokens';
