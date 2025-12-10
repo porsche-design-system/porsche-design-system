@@ -1109,7 +1109,6 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "counter": "boolean",
   "description": "string",
   "disabled": "boolean",
-  "fieldSizing": "oneOf",
   "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",

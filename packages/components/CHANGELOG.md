@@ -36,7 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
 - `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
   enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
-- `Textarea`: `fieldSizing` prop to control the intrinsic sizing behavior
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the intrinsic sizing behavior
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ### Fixed

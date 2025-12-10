@@ -17,12 +17,10 @@ import { descriptionId } from '../common/label/label-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './textarea-styles';
 import {
-  TEXTAREA_FIELD_SIZING,
   TEXTAREA_RESIZE,
   TEXTAREA_WRAPS,
   type TextareaBlurEventDetail,
   type TextareaChangeEventDetail,
-  TextareaFieldSizing,
   type TextareaInputEventDetail,
   type TextareaResize,
   type TextareaState,
@@ -51,7 +49,6 @@ const propTypes: PropTypes<typeof Textarea> = {
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  fieldSizing: AllowedTypes.oneOf<TextareaFieldSizing>(TEXTAREA_FIELD_SIZING),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -115,7 +112,7 @@ export class Textarea {
   /** Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The number of rows. Has no effect when fieldSizing='content'. */
+  /** The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'. */
   @Prop() public rows?: number = 7;
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
@@ -129,9 +126,6 @@ export class Textarea {
 
   /** Controls whether the textarea is resizable and in which direction. */
   @Prop() public resize?: TextareaResize = 'vertical';
-
-  /** Controls the intrinsic sizing behavior of the textarea field. Overrides rows when set to 'content'. */
-  @Prop() public fieldSizing?: TextareaFieldSizing = 'fixed';
 
   /** A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
@@ -206,7 +200,6 @@ export class Textarea {
       this.compact,
       this.counter,
       this.resize,
-      this.fieldSizing,
       this.theme
     );
 

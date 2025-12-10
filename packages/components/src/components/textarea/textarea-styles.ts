@@ -24,14 +24,18 @@ import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { TextareaFieldSizing, TextareaResize } from './textarea-utils';
+import type { TextareaResize } from './textarea-utils';
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
 export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
 
-// CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"none"}
+ * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
+ * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"none"}
+ * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"0"}
+ * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"none"}
  */
 export const getComponentCss = (
   isDisabled: boolean,
@@ -41,7 +45,6 @@ export const getComponentCss = (
   compact: boolean,
   counter: boolean,
   resize: TextareaResize,
-  fieldSizing: TextareaFieldSizing,
   theme: Theme
 ): string => {
   const scalingVar = getScalingVar(compact);
@@ -56,6 +59,9 @@ export const getComponentCss = (
   const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
 
   const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
+
+  // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
+  const minWidth = `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
@@ -81,7 +87,11 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         resize,
-        fieldSizing,
+        fieldSizing: 'var(--p-textarea-field-sizing, unset)',
+        minWidth: `var(--p-textarea-min-width, ${minWidth})`,
+        maxWidth: 'var(--p-textarea-max-width, unset)',
+        minHeight: 'var(--p-textarea-min-height, unset)',
+        maxHeight: 'var(--p-textarea-max-height, unset)',
         display: 'block',
         width: '100%',
         height: 'auto',
@@ -95,8 +105,6 @@ export const getComponentCss = (
         background: 'transparent',
         textIndent: 0,
         color: primaryColor,
-        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-        minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: formStateColorDark || contrastMediumColorDark,

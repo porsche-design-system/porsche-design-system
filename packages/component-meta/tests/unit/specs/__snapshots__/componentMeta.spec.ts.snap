@@ -12395,6 +12395,26 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
       },
+      "--p-textarea-field-sizing": {
+        "defaultValue": "none",
+        "description": "Controls CSS \`field-sizing\` for textarea.",
+      },
+      "--p-textarea-max-height": {
+        "defaultValue": "none",
+        "description": "Maximum height of the textarea.",
+      },
+      "--p-textarea-max-width": {
+        "defaultValue": "none",
+        "description": "Maximum width of the textarea.",
+      },
+      "--p-textarea-min-height": {
+        "defaultValue": "0",
+        "description": "Minimum height of the textarea.",
+      },
+      "--p-textarea-min-width": {
+        "defaultValue": "52px",
+        "description": "Minimum width of the textarea.",
+      },
     },
     "eventsMeta": {
       "blur": {
@@ -12459,15 +12479,6 @@ exports[`should match snapshot 1`] = `
           "mutable": true,
         },
         "type": "boolean",
-      },
-      "fieldSizing": {
-        "allowedValues": [
-          "fixed",
-          "content",
-        ],
-        "defaultValue": "fixed",
-        "description": "Controls the intrinsic sizing behavior of the textarea field. Overrides rows when set to 'content'.",
-        "type": "TextareaFieldSizing",
       },
       "form": {
         "allowedValues": "string",
@@ -12553,7 +12564,7 @@ exports[`should match snapshot 1`] = `
       "rows": {
         "allowedValues": "number",
         "defaultValue": 7,
-        "description": "The number of rows. Has no effect when fieldSizing='content'.",
+        "description": "The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.",
         "type": "number",
       },
       "spellCheck": {
