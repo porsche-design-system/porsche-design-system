@@ -73,7 +73,175 @@ which shows all component information including deprecated components/props/valu
 - import { getDSRPonyfill } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
 ```
 
+### Theme
+
+- Removed theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
+  class.
+
+```diff
+- <p-input-text name="some-name" theme="dark"></p-input-text>
++ <div class="dark">
++   <p-input-text name="some-name"></p-input-text>
++ </div>
+```
+
+```diff
+// Accordingly for other JS frameworks, e.g. React example:
+- <body>
++ <body className="dark">
+-   <PorscheDesignSystemProvider theme="dark">
++   <PorscheDesignSystemProvider>
+-     <App />
+-   </PorscheDesignSystemProvider>
+</body>
+```
+
 ## 👹Breaking Changes
+
+- In general all headings use regular as font-weight
+
+- Remove **slotted** Anchor Styles entirely from all components.
+
+```diff
+// You can still use <a> inside components, but the default styling for anchors has been removed.
+<p-accordion heading="Some Heading">
+-  <a href="/https://porsche.com">Some label</a>
++  <p-link-pure href="https://porsche.com">Some label</p-link-pure>
+// TODO: Show tailwind alternative with <a>
+</p-accordion>
+```
+
+### Heading:
+
+- Uses a regular instead of semi-bold font-weight
+
+### Text, Icon:
+
+- Changed value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop
+  `color`, use `'success', 'warning', 'error', 'info'` instead.
+
+```diff
+- <p-text color="notification-success">Some text</p-text>
++ <p-text color="success">Some text</p-text>
+
+- <p-text color="notification-warning">Some text</p-text>
++ <p-text color="warning">Some text</p-text>
+
+- <p-text color="notification-error">Some text</p-text>
++ <p-text color="error">Some text</p-text>
+
+- <p-text color="notification-info">Some text</p-text>
++ <p-text color="info">Some text</p-text>
+
+- <p-icon color="notification-success">Some text</p-icon>
++ <p-icon color="success">Some text</p-icon>
+
+- <p-icon color="notification-warning">Some text</p-icon>
++ <p-icon color="warning">Some text</p-icon>
+
+- <p-icon color="notification-error">Some text</p-icon>
++ <p-icon color="error">Some text</p-icon>
+
+- <p-icon color="notification-info">Some text</p-icon>
++ <p-icon color="info">Some text</p-icon>
+```
+
+### Icon:
+
+- when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
+  `p-icon { color: deeppink; }`) can be applied directly // TODO: Add diff?
+
+- Removed value `'state-disabled'` of prop color // TODO: Explain, adjust example?
+
+```diff
+- <p-icon color="state-disabled"></p-icon>
++ <p-icon color="contrast-low"></p-icon>
+```
+
+### Model Signature:
+
+- when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly //
+  TODO: Add diff?
+
+### Tag:
+
+- removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`, `error`,
+  `info`
+
+```diff
+// TODO: Add diff
+```
+
+### Button, Link:
+
+- Removed value `ghost` of prop `variant`, use `secondary` instead
+
+```diff
+- <p-button variant="ghost">Some label</p-button>
++ <p-button variant="secondary">Some label</p-button>
+
+- <p-link variant="ghost" href="https://porsche.com">Some label</p-link>
++ <p-link variant="secondary" href="https://porsche.com">Some label</p-link>
+```
+
+### Modal:
+
+- visually changed footer slot: becomes frosted when it's sticky
+- removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
+  instead
+- added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
+- added prop `background` with value `canvas | surface`
+
+### Flyout:
+
+- removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
+  `clamp()` instead)
+- visually changed footer slot: becomes frosted when it's sticky
+- added read only css variables `--ref-p-flyout-pb`
+- added prop `background` with value `canvas | surface`
+
+### Sheet:
+
+- added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
+- added prop `background` with value `canvas | surface`
+
+### Inline Notification:
+
+- removed max-width limitation for content
+
+### Banner:
+
+- added `state="success"`
+- removed max-width limitation for content
+
+### Toast:
+
+- added `state="warning | error"`
+
+### Carousel:
+
+- removed CSS variable `--p-carousel-prev-next-filter`
+- removed prop `gradient-color` (use `gradient="true"` instead)
+- changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
+  to enable trimming)
+- changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
+  to enable pagination)
+- changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to enable
+  rewind)
+
+### Link Tile:
+
+- changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>` to
+  enable gradient)
+- removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
+- added an optional light gradient when used in light mode and gradient is enabled
+- added value `auto` for prop `aspect-ratio`
+
+### Tailwind CSS
+
+- Tailwind CSS: Reset all default Tailwind color tokens
+- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
+  only
 
 ## ❌ Removed Props, Slots and Events (deprecated in v3 already)
 
