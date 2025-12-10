@@ -1,1 +1,1 @@
-export const borderRadiusMedium = '8px';
+export { borderRadiusMd as borderRadiusMedium } from '@porsche-design-system/tokens';

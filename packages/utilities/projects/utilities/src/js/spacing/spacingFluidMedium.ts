@@ -1,1 +1,1 @@
-export const spacingFluidMedium = 'clamp(16px, 1.25vw + 12px, 36px)';
+export { spacingFluidMd as spacingFluidMedium } from '@porsche-design-system/tokens';

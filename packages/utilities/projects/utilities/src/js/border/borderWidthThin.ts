@@ -1,1 +1,1 @@
-export const borderWidthThin = '1px';
+export { borderWidthThin } from '@porsche-design-system/tokens';

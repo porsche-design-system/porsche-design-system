@@ -1,5 +1,5 @@
-import { _dropShadowBackgroundColor } from './dropShadowShared';
+import { shadowMedium } from '@porsche-design-system/tokens';
 
 export const dropShadowMediumStyle = {
-  boxShadow: `0px 4px 16px ${_dropShadowBackgroundColor}`, // filter: drop-shadow() causes visual glitches in Firefox in combination with frostedGlassStyle
+  boxShadow: shadowMedium,
 } as const;

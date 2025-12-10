@@ -1,5 +1,5 @@
-import { _gradient } from './gradientShared';
+import { gradientFade } from '@porsche-design-system/tokens';
 
 export const gradientToLeftStyle = {
-  background: `linear-gradient(to left, ${_gradient} 100%);`,
+  background: `linear-gradient(to left, ${gradientFade} 100%);`,
 } as const;
