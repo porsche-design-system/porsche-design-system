@@ -1,3 +1,4 @@
+import { fontLineHeight } from '@porsche-design-system/styles';
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../../styles';
 import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
@@ -13,6 +14,9 @@ export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select
  */
 
 export const getComponentCss = (isDisabled: boolean, selected: boolean): string => {
+  const checkboxDimension = `calc(var(${cssVarInternalCheckboxScaling}) * 1.75rem)`;
+  const labelPaddingTop = `max(0px, calc((${checkboxDimension} - ${fontLineHeight}) / 2))`;
+
   return getCss({
     '@global': {
       ':host': {
@@ -25,8 +29,12 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
           [`${cssVarInternalCheckboxScaling}`]: `var(${cssVarInternalMultiSelectOptionScaling})`,
         }),
       },
+      slot: {
+        display: 'block',
+        paddingTop: labelPaddingTop,
+      },
     },
-    option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`),
+    option: getOptionJssStyle('multi-select-option', cssVarInternalMultiSelectOptionScaling),
     checkbox: mergeDeep(
       getCheckboxBaseStyles(isDisabled, false, 'none'),
       selected ? getCheckboxCheckedBaseStyles(false) : {}

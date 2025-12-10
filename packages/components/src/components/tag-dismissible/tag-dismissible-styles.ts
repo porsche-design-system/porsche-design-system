@@ -9,32 +9,31 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
 } from '../../styles';
 import { getCss } from '../../utils';
 
 const { primaryColor, frostedColor, contrastHighColor } = colors;
 
 export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
-export const getScalingVar = (compact: boolean) =>
-  `var(${cssVarInternalTagDismissibleScaling}, ${compact ? 'calc(4 / 13)' : 1})`;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
 
-export const getComponentCss = (hasLabel: boolean, compact: boolean): string => {
-  const scalingVar = getScalingVar(compact);
-
-  const iconPadding = '4px';
-  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - ${iconPadding}/2)`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
-  const paddingInline = `max(calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - 1px), 4px)`;
-  const gap = `max(calc(${scalingVar} * 0.75 * ${SCALING_BASE_VALUE}), 2px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 12px
+export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string => {
+  const buttonPaddingBlock = hasLabel
+    ? `calc(16.8px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`
+    : `calc(28px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 6px)`;
+  const buttonPaddingInline = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
+  const buttonGap = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
+  const iconPadding = `calc(11.2px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`;
+  const iconMargin = `calc(-1 * ${iconPadding})`;
 
   return getCss({
     '@global': {
       ':host': {
+        [`${cssVarInternalTagDismissibleScaling}`]: isCompact ? 0.64285714 : 1,
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
@@ -48,8 +47,8 @@ export const getComponentCss = (hasLabel: boolean, compact: boolean): string => 
         display: 'flex',
         position: 'relative',
         alignItems: 'center',
-        gap,
-        padding: `${hasLabel ? `calc(${paddingBlock} - 6px)` : paddingBlock} ${paddingInline}`,
+        gap: buttonGap,
+        padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
         borderRadius: borderRadiusSmall,
         cursor: 'pointer',
         background: frostedColor,
@@ -74,7 +73,7 @@ export const getComponentCss = (hasLabel: boolean, compact: boolean): string => 
     }),
     icon: {
       padding: iconPadding,
-      marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
+      margin: iconMargin,
       transition: getTransition('background-color'),
       borderRadius: borderRadiusSmall,
     },

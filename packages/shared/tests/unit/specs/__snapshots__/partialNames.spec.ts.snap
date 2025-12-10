@@ -2,9 +2,7 @@
 
 exports[`should match snapshot 1`] = `
 [
-  "getBrowserSupportFallbackScript",
   "getComponentChunkLinks",
-  "getCookiesFallbackScript",
   "getDSRPonyfill",
   "getFontFaceStyles",
   "getFontFaceStylesheet",

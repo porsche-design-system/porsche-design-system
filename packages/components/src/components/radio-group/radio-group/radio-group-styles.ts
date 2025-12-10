@@ -1,13 +1,9 @@
-import {
-  fontLineHeight,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
+import { spacingStaticXSmall } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles, getDisabledBaseStyles,
+  colorSchemeStyles,
+  getDisabledBaseStyles,
   getHiddenTextJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -43,18 +39,16 @@ const getRadioGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDi
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
 export const getComponentCss = (
-  disabled: boolean,
-  loading: boolean,
+  isDisabled: boolean,
+  isLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean,
+  isCompact: boolean,
   direction: BreakpointCustomizable<GroupDirection>
 ): string => {
-  const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
-
-  const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
-  const columnGap = `max(${spacingStaticSmall}, ${scalingVar} * ${spacingStaticMedium})`;
-  const rowGap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
+  const radioDimension = `calc(var(${cssVarInternalRadioGroupScaling}) * 1.75rem)`;
+  const columnGap = `calc(22.4px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 8px)`;
+  const rowGap = `calc(11.2px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 4px)`;
 
   return getCss({
     '@global': {
@@ -63,10 +57,11 @@ export const getComponentCss = (
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
-        [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
+        [`${cssVarInternalRadioGroupScaling}`]: isCompact ? 0.64285714 : 1,
+        [`${cssVarInternalRadioGroupOptionScaling}`]: isCompact ? 0.64285714 : 1,
       },
       '::slotted(*)': {
-        ...(loading && getDisabledBaseStyles())
+        ...(isLoading && getDisabledBaseStyles()),
       },
       ...preventFoucOfNestedElementsStyles,
     },
@@ -84,19 +79,19 @@ export const getComponentCss = (
       columnGap,
       rowGap,
     },
-    ...(loading && {
+    ...(isLoading && {
       spinner: {
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: dimension,
-        height: dimension,
+        width: radioDimension,
+        height: radioDimension,
         pointerEvents: 'none',
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, {
       cursor: 'inherit',
       '&:is(legend)': {
         marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container

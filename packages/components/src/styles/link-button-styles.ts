@@ -12,7 +12,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
 } from './';
 
 type Colors = {
@@ -49,24 +48,24 @@ export const getLinkButtonStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
-  compact: BreakpointCustomizable<boolean>,
+  isCompact: BreakpointCustomizable<boolean>,
   cssVariableInternalScaling: string
 ): Styles => {
   const { textColor, backgroundColor, backgroundColorHover } = getVariantColors(variant);
 
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
-  const isSecondary = variant === 'secondary';
 
-  const scalingVar = `var(${cssVariableInternalScaling}, var(--p-internal-scaling-factor))`;
-
-  const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE})`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
-  const paddingInline = `max(calc(${scalingVar} * 1.625 * ${SCALING_BASE_VALUE}), ${isSecondary ? '6px' : '4px'})`; // 1.625 * SCALING_BASE_VALUE corresponds to 26px
-  const gap = `clamp(2px, calc(${scalingVar} * 0.5 * ${SCALING_BASE_VALUE}), 16px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 8px
-  const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * -0.5 * ${SCALING_BASE_VALUE}), -2px)`; // -0.5 * SCALING_BASE_VALUE corresponds to -8px
+  const paddingBlock = `calc(28px * (var(${cssVariableInternalScaling}) - 0.64285714) + 6px)`;
+  const paddingInline = `calc(33.6px * (var(${cssVariableInternalScaling}) - 0.64285714) + 16px)`;
+  const gap = `calc(11.2px * (var(${cssVariableInternalScaling}) - 0.64285714) + 4px)`;
+  const iconMarginInlineStart = `calc(-1 * (11.2px * (var(${cssVariableInternalScaling}) - 0.64285714) + 4px))`;
 
   return {
     '@global': {
       ':host': {
+        ...buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+          [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
+        })),
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
@@ -91,9 +90,6 @@ export const getLinkButtonStyles = (
       backgroundColor,
       color: textColor,
       cursor: 'pointer',
-      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
-        '--p-internal-scaling-factor': compactValue ? 'calc(4 / 13)' : 1, // Compact mode needs to have 4px paddingBlock thus this scaling factor
-      })),
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,

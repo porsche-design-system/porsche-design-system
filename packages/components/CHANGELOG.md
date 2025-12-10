@@ -101,6 +101,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Checkbox`, `Radio Button Group`: New slots `start` and `end` to add custom content (e.g. `Popover`) at the start/end of the `label`
   element ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 
+- Mandatory CSS global styles (normalize, font-face and color variables):
+
+```diff
+/* src/style.css */
++ @import '@porsche-design-system/components-{js|angular|react|vue}';
+/* Alternative with fonts from China CDN */
++ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
+```
+
+- Add FOUC styles
+
+```diff
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
+
 ### Changed
 
 - In general all headings use regular as font-weight
@@ -164,6 +181,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Tailwind CSS: Reset all default Tailwind color tokens
 - Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
   only
+
+### Removed
+
+- `Partials`:
+  - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
+    `@porsche-design-system/fallbacks`
+  - Removed `getDSRPonyfill()` partial
+  - Removed `getFontFaceStyles()`, `getFontFaceStylesheet()` and `getInitialStyles()` partial in favor of CSS imports
+    from `@porsche-design-system/components-{js|angular|react|vue}`
+  - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now
+  - Automatic FOUC handling in `getInitialStyles()`, must be implemented manually now
 
 ### Removed (deprecated in v3 already)
 

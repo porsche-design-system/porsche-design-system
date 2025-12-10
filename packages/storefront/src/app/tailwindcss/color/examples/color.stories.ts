@@ -17,6 +17,11 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
+          properties: { className: 'text-contrast-higher' },
+          children: ['.text-contrast-higher'],
+        },
+        {
+          tag: 'li',
           properties: { className: 'text-contrast-high' },
           children: ['.text-contrast-high'],
         },
@@ -286,6 +291,19 @@ export const colorStoryBorderColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
+              properties: { className: 'border-contrast-higher w-10 h-10 rounded-md border' },
+            },
+            '.border-contrast-higher',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
               properties: { className: 'border-contrast-high w-10 h-10 rounded-md border' },
             },
             '.border-contrast-high',
@@ -315,6 +333,19 @@ export const colorStoryBorderColor: Story<'div'> = {
               properties: { className: 'border-contrast-low w-10 h-10 rounded-md border' },
             },
             '.border-contrast-low',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-contrast-lower w-10 h-10 rounded-md border' },
+            },
+            '.border-contrast-lower',
           ],
         },
         {

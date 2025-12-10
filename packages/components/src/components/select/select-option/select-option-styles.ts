@@ -31,7 +31,7 @@ export const getComponentCss = (isDisabled: boolean): string => {
       }),
       ...preventFoucOfNestedElementsStyles,
     },
-    option: getOptionJssStyle('select-option', `var(${cssVarInternalSelectOptionScaling}, 1)`),
+    option: getOptionJssStyle('select-option', cssVarInternalSelectOptionScaling),
     icon: {
       marginInlineStart: 'auto',
     },

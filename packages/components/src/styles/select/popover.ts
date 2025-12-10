@@ -1,9 +1,4 @@
-import {
-  borderRadiusMedium,
-  motionDurationShort,
-  motionEasingBase,
-  spacingStaticSmall,
-} from '@porsche-design-system/styles';
+import { borderRadiusMedium, motionDurationShort, motionEasingBase } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
 import { colors } from '../colors';
@@ -24,21 +19,20 @@ export const getPopoverKeyframesStyles: Styles = {
 
 const { contrastLowColor, canvasColor } = colors;
 
-export const getPopoverJssStyle = (
-  isOpen: boolean,
-  cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
-  optionHeight: 40 | 44
-): JssStyle => {
+export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, optionHeight: 40 | 44): JssStyle => {
   const minHeightOptionList = `calc(${4.5 * (optionHeight + 8) + 6 + 2}px)`; // 4.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
+
+  const padding = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
+  const gap = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
 
   return {
     all: 'unset',
     position: 'absolute',
     zIndex: 99, // needed for backwards compatibility, to enable browsers not supporting #top-layer
-    padding: `max(2px, ${cssVarScaling} * 6px)`,
+    padding,
     display: isOpen ? 'flex' : 'none', // needed for backwards compatibility, otherwise 'flex' would be enough
     flexDirection: 'column',
-    gap: `max(2px, ${cssVarScaling} * ${spacingStaticSmall})`,
+    gap,
     maxHeight: `max(${minHeightOptionList}, calc(50vh - 54px / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
     boxSizing: 'border-box',
     overflow: 'hidden auto',

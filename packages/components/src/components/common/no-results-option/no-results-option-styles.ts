@@ -6,11 +6,11 @@ const { contrastMediumColor } = colors;
 
 export const getFunctionalComponentNoResultsOptionStyles = (
   componentName: 'select-option' | 'multi-select-option',
-  cssVarScaling: string | 1 // "1" is needed for components not yet supporting compact mode
+  cssVarScalingName: string
 ): Styles => {
   return {
     'no-results': {
-      ...getOptionJssStyle(componentName, cssVarScaling),
+      ...getOptionJssStyle(componentName, cssVarScalingName),
       '&[role=option]': {
         cursor: 'not-allowed',
       },

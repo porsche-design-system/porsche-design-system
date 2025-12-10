@@ -38,7 +38,7 @@ const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
       },
       {
         tag: 'p-popover',
-        properties: { slot: 'label-end' },
+        properties: { slot: 'label-end', className: 'ml-static-xs' },
         children: ['Option C with slotted label and a popover '],
       },
     ],

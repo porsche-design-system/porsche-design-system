@@ -1,13 +1,32 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Vanilla JS: Advanced - Porsche Design System',
-  description: 'Explore advanced Porsche Design System techniques in Vanilla JS.'
-}
+  description: 'Explore advanced Porsche Design System techniques in Vanilla JS.',
+};
 
 # Vanilla Js
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Global Theme', 'Prefixing']} />
+
+## Global Theme
+
+The Porsche Design System global theme uses CSS variables defined in the main CSS file
+`@porsche-design-system/components-js`.
+
+To switch themes, simply apply one of the theme classes `light`, `dark`, or `auto` to any HTML element. All child
+elements will automatically inherit the selected theme:
+
+```html
+<html class="dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+    <div class="light">
+      <!-- All components inside will use the light theme -->
+    </div>
+  </body>
+</html>
+```
 
 ## Prefixing
 

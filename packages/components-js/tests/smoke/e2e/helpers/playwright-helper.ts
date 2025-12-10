@@ -1,5 +1,4 @@
 import { type Page } from '@playwright/test';
-import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import * as fs from 'fs';
 
 export const setContentWithDesignSystem = async (
@@ -17,7 +16,6 @@ export const setContentWithDesignSystem = async (
 <html>
   <head>
     <base href="https://porsche.com"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
-    ${getInitialStyles()}
     <script type="text/javascript">${indexJsCode || ''}</script>
     ${headContent || ''}
   </head>

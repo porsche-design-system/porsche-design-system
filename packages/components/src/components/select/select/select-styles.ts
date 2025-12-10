@@ -37,10 +37,8 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean
+  isCompact: boolean
 ): string => {
-  const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
-
   return getCss({
     '@global': {
       // @keyframes fade-in
@@ -48,33 +46,34 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          [`${cssVarInternalSelectScaling}`]: isCompact ? 0.64285714 : 1,
+          [`${cssVarInternalSelectOptionScaling}`]: isCompact ? 0.64285714 : 1,
+          [`${cssVarInternalOptgroupScaling}`]: isCompact ? 0.64285714 : 1,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          [`${cssVarInternalSelectOptionScaling}`]: scalingVar,
-          [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar),
+        ...getButtonJssStyle('select', isOpen, isDisabled, state, cssVarInternalSelectScaling),
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40),
-      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar)),
+      '[popover]': getPopoverJssStyle(isOpen, cssVarInternalSelectScaling, 40),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(cssVarInternalSelectScaling)),
       'slot[name="selected"]': getSelectedSlotJssStyle,
     },
     root: {
       display: 'grid',
-      gap: `max(2px, ${scalingVar} * ${spacingStaticXSmall})`,
+      gap: spacingStaticXSmall,
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
-    filter: getFilterJssStyle(scalingVar),
-    options: getOptionsJssStyle(scalingVar),
+    filter: getFilterJssStyle(cssVarInternalSelectScaling),
+    options: getOptionsJssStyle(cssVarInternalSelectScaling),
     icon: getIconJssStyle(isOpen),
     // .no-results / .sr-only
-    ...getFunctionalComponentNoResultsOptionStyles('select-option', scalingVar),
+    ...getFunctionalComponentNoResultsOptionStyles('select-option', cssVarInternalSelectScaling),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
     // .message

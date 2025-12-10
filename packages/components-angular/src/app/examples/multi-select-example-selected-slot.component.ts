@@ -74,7 +74,7 @@ const optionsData: Option[] = [
           </div>
           <div class="self-center flex gap-fluid-sm">
             @for (tag of option.tags; track tag) {
-              <p-tag color="notification-info-soft" [compact]="true">{{ tag }}</p-tag>
+              <p-tag color="info-soft" [compact]="true">{{ tag }}</p-tag>
             }
           </div>
         </div>

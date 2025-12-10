@@ -1,10 +1,8 @@
 import {
-  borderWidthBase,
   borderWidthThin,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
-  spacingStaticSmall,
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
 import {
@@ -17,7 +15,6 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
-  SCALING_BASE_VALUE,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
@@ -41,17 +38,12 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
 
-  const minDimension = `calc(${SCALING_BASE_VALUE} * 0.75)`;
-  const scalingVar = `var(${cssVarInternalRadioGroupOptionScaling}, 1)`;
-  const dimension = `max(${minDimension}, ${scalingVar} * (${fontLineHeight}))`;
-  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
-
-  const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
-  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the radio button full size.
-  const margin = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
-  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
-
-  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
+  const radioBorderWidth = borderWidthThin;
+  const radioDimension = `calc(var(${cssVarInternalRadioGroupOptionScaling}) * 1.75rem)`;
+  const radioMarginBlock = `max(0px, calc((${fontLineHeight} - ${radioDimension}) / 2))`;
+  const radioTouchInset = `calc(-${radioBorderWidth} - max(0px, calc(24px - ${radioDimension}) / 2))`;
+  const labelPaddingTop = `max(0px, calc((${radioDimension} - ${fontLineHeight}) / 2))`;
+  const labelPaddingInlineStart = `calc(11.2px * (var(${cssVarInternalRadioGroupOptionScaling}) - 0.64285714) + 4px)`;
 
   return getCss({
     '@global': {
@@ -72,12 +64,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       input: {
         all: 'unset',
         display: 'grid', // ensures the pseudo-element can be positioned correctly
-        width: dimension,
-        height: dimension,
+        width: radioDimension,
+        height: radioDimension,
+        marginBlock: radioMarginBlock,
+        boxSizing: 'border-box',
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         background: formStateBackgroundColor,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        border: `${borderWidthThin} solid ${formStateBorderColor}`,
+        border: `${radioBorderWidth} solid ${formStateBorderColor}`,
         borderRadius: '50%',
         ...(disabledOrLoading && {
           pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
@@ -103,7 +97,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
           // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
           content: '""',
-          margin,
+          margin: radioTouchInset,
           gridArea: '1/1',
         },
       },
@@ -127,14 +121,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         top: '50%',
         left: '50%',
         transform: 'translate(-50%,-50%)',
-        width: dimension,
-        height: dimension,
+        width: radioDimension,
+        height: radioDimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
     'label-wrapper': {
-      paddingTop,
-      paddingInlineStart,
+      paddingTop: labelPaddingTop,
+      paddingInlineStart: labelPaddingInlineStart,
     },
     // .label / .required
     ...getFunctionalComponentLabelStyles(disabled || loading,false, {

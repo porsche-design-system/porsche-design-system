@@ -69,11 +69,44 @@ export default defineConfig({
 });
 ```
 
-### Step 3 (recommended)
+### Step 3
 
-To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
-Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
-section of your HTML.
+Add the Porsche Design System stylesheet to your main CSS file. This single import already includes all required and
+recommended styles, such as:
+
+- CSS color variables
+- Font-face definitions
+- Normalize styles
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
+
+See [Global Styles](/global-styles/introduction/) for more details.
+
+```diff
+/* src/style.css */
++ @import '@porsche-design-system/components-js';
+```
+
+To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
+`:defined` pseudo-class, consider applying the style only to the relevant tags (`:is(p-button...)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/style.css */
+@import '@porsche-design-system/components-js';
+
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
+
+To boost your web application's performance, you can integrate [Partials](/partials/introduction) from the Porsche
+Design System into the `<head>` section of your HTML.
 
 ```tsx
 // vite.config.ts
@@ -82,10 +115,8 @@ import { defineConfig } from 'vite';
 import {
   getLoaderScript,
   getComponentChunkLinks,
-  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
-  getInitialStyles,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
 
@@ -94,10 +125,6 @@ const transformIndexHtmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml(html: string) {
       const headPartials = [
-        // injects stylesheet which defines visibility of pre-hydrated PDS components
-        getInitialStyles(),
-        // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
-        getFontFaceStyles(),
         // preloads Porsche Next font (=> minimize FOUT)
         getFontLinks(),
         // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
@@ -120,7 +147,7 @@ export default defineConfig({
 });
 ```
 
-### Step 4 (recommended)
+### Step 5 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
@@ -159,14 +186,15 @@ export default defineConfig({
 
 Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
-```css
+```diff
 /* src/style.css */
+@import '@porsche-design-system/components-js';
 
-@import 'tailwindcss';
-@import '@porsche-design-system/components-js/tailwindcss';
++ @import 'tailwindcss';
++ @import '@porsche-design-system/components-js/tailwindcss';
 ```
 
-### Step 5
+### Step 6
 
 Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
 `npm run dev` and verify that the component and styles display correctly.

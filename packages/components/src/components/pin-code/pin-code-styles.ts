@@ -1,12 +1,4 @@
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  borderWidthThin,
-  fontLineHeight,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { borderRadiusSmall, borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -18,7 +10,6 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { formElementPaddingVertical } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -28,7 +19,6 @@ import { getFunctionalComponentStateMessageStyles } from '../common/state-messag
 import type { PinCodeLength } from './pin-code-utils';
 
 export const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
-export const getScalingVar = (compact: boolean) => `var(${cssVarInternalPinCodeScaling}, ${compact ? 0.5 : 1})`;
 
 const { primaryColor } = colors;
 
@@ -43,22 +33,21 @@ export const getComponentCss = (
   isDisabled: boolean,
   isLoading: boolean,
   length: PinCodeLength,
-  compact: boolean
+  isCompact: boolean
 ): string => {
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
-  const scalingVar = getScalingVar(compact);
-
-  const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
-  const gap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
-  const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
-  // Min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
-  const minWidth = `max(1rem, calc(${dimension} - ${borderWidthBase}*2 - ${paddingBlock}*2))`;
+  const gap = `calc(11.2px * (var(${cssVarInternalPinCodeScaling}) - 0.64285714) + 4px)`;
+  const inputBorderWidth = borderWidthThin;
+  const inputDimension = `calc(var(${cssVarInternalPinCodeScaling}) * 3.5rem)`;
+  const inputPadding = `calc(11.2px * (var(${cssVarInternalPinCodeScaling}) - 0.64285714) + 4px)`;
+  const inputMinWidth = `calc(1ch + ${inputPadding} * 2 + ${inputBorderWidth} * 2)`;
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
+        [`${cssVarInternalPinCodeScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -70,13 +59,17 @@ export const getComponentCss = (
         all: 'unset',
         display: 'block',
         width: 'auto',
-        height: dimension,
-        border: `${borderWidthThin} solid ${formStateBorderColor}`,
+        minWidth: inputMinWidth,
+        maxWidth: inputDimension,
+        height: inputDimension,
+        padding: inputPadding,
+        boxSizing: 'border-box',
+        border: `${inputBorderWidth} solid ${formStateBorderColor}`,
         borderRadius: borderRadiusSmall,
         background: formStateBackgroundColor,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         color: primaryColor,
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         textOverflow: 'ellipsis',
         cursor: isDisabled ? 'not-allowed' : 'text',
         textAlign: 'center',
@@ -84,10 +77,6 @@ export const getComponentCss = (
           opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
           cursor: 'not-allowed',
         }),
-        minWidth,
-        maxWidth: dimension,
-        padding: paddingBlock,
-        boxSizing: 'content-box',
         '&:focus-visible': {
           borderColor: formStateBorderHoverColor,
         },
@@ -117,8 +106,8 @@ export const getComponentCss = (
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: dimension,
-        height: dimension,
+        width: inputDimension,
+        height: inputDimension,
         pointerEvents: 'none',
       },
     }),

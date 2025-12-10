@@ -2,7 +2,6 @@ import {
   borderRadiusSmall,
   borderWidthThin,
   fontLineHeight,
-  spacingStaticMedium,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
@@ -18,7 +17,6 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
@@ -26,9 +24,6 @@ import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/l
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 
 export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
-// Determines the scaling factor for the input-number size. In "compact" mode, it uses 0.5 to achieve a 36px input-number (compact size).
-// Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputBaseScaling`.
-export const getScalingVar = (compact: boolean) => `var(${cssVarInternalInputBaseScaling}, ${compact ? 0.5 : 1})`;
 
 /**
  * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
@@ -42,25 +37,20 @@ export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
 export const getFunctionalComponentInputBaseStyles = (
-  disabled: boolean,
-  loading: boolean,
+  isDisabled: boolean,
+  isLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean,
+  isCompact: boolean,
   readOnly: boolean,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
-  const scalingVar = getScalingVar(compact);
-
-  const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
-  const paddingInline = `max(2px, ${formElementPaddingHorizontal} * ${scalingVar})`;
-
-  const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
-
-  const gap = `max(4px, calc(${spacingStaticMedium} * ${scalingVar}))`;
-
-  // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
-  const buttonCompensation = `clamp(0, 6.42 * pow(calc(${scalingVar} - 0.5), 0.6826), 12)`;
+  const wrapperBorderWidth = borderWidthThin;
+  const wrapperHeight = `calc(var(${cssVarInternalInputBaseScaling}) * 3.5rem)`;
+  const wrapperPaddingInline = `calc(22.4px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714) + 8px)`;
+  const wrapperGap = `calc(22.4px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714) + 4px)`;
+  const buttonPadding = `calc(11.2px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714))`;
+  const buttonMargin = `calc(-1 * ${buttonPadding})`;
 
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
@@ -68,25 +58,23 @@ export const getFunctionalComponentInputBaseStyles = (
     '@global': {
       ':host': {
         display: 'block',
+        [`${cssVarInternalInputBaseScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
-          [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
-          [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
+          [`${cssVarButtonPurePadding}`]: buttonPadding,
+          [`${cssVarButtonPureMargin}`]: buttonMargin,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...(disabled && getDisabledBaseStyles()),
+          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
         flex: 1,
+        width: 'max(100%, 2ch)', // show at least 2 characters in very narrow containers
+        height: '100%',
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
-        color: 'inherit', // relies on wrapper color
-        height,
-        paddingBlock,
-        width: '100%',
-        minWidth: '2ch', // to show at least 2 characters in very narrow containers
-        textOverflow: 'ellipsis', // TODO: do we need this style?
+        textOverflow: 'ellipsis',
         ...additionalInputJssStyle,
       },
     },
@@ -97,16 +85,16 @@ export const getFunctionalComponentInputBaseStyles = (
     wrapper: {
       display: 'flex',
       alignItems: 'center',
-      gap,
-      height,
-      paddingBlock,
-      paddingInline,
-      border: `${borderWidthThin} solid ${formStateBorderColor}`,
+      gap: wrapperGap,
+      height: wrapperHeight,
+      boxSizing: 'border-box',
+      paddingInline: wrapperPaddingInline,
+      border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
       borderRadius: borderRadiusSmall,
       background: formStateBackgroundColor,
       color: primaryColor,
+      cursor: isDisabled ? 'not-allowed' : 'text',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-      cursor: disabled ? 'not-allowed' : 'text',
       ...(readOnly && {
         borderColor: 'transparent',
         background: frostedColor,
@@ -115,16 +103,16 @@ export const getFunctionalComponentInputBaseStyles = (
       '&:focus-within': {
         borderColor: formStateBorderHoverColor,
       },
-      ...(!disabled &&
+      ...(!isDisabled &&
         !readOnly &&
-        !loading &&
+        !isLoading &&
         hoverMediaQuery({
           '&:hover:not(.button:hover),label:hover~&': {
             borderColor: formStateBorderHoverColor,
           },
         })),
     },
-    ...(loading && {
+    ...(isLoading && {
       spinner: {
         font: textSmallStyle.font,
         width: fontLineHeight,
@@ -132,7 +120,7 @@ export const getFunctionalComponentInputBaseStyles = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

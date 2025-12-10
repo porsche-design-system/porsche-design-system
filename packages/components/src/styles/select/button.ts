@@ -1,10 +1,9 @@
-import { borderRadiusSmall, borderWidthThin, fontLineHeight, textSmallStyle } from '@porsche-design-system/styles';
+import { borderRadiusSmall, borderWidthThin, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
 import { colors } from '../colors';
 import { getFocusBaseStyles, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
-import { formElementPaddingHorizontal, formElementPaddingVertical } from '../form-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
 
 const { primaryColor } = colors;
@@ -14,7 +13,7 @@ export const getButtonJssStyle = (
   isOpen: boolean,
   isDisabled: boolean,
   state: FormState,
-  cssVarScaling: string
+  cssVarScalingName: string
 ): JssStyle => {
   const cssVarBackgroundColor = `--p-${componentName}-background-color`;
   const cssVarTextColor = `--p-${componentName}-text-color`;
@@ -22,22 +21,27 @@ export const getButtonJssStyle = (
 
   const { formStateBorderColor, formStateBorderHoverColor, formStateBackgroundColor } = getThemedFormStateColors(state);
 
+  const borderWidth = borderWidthThin;
+  const height = `calc(var(${cssVarScalingName}) * 3.5rem)`;
+  const paddingInline = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 8px)`;
+  const gap = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
+
   return {
     all: 'unset',
     display: 'flex',
     alignItems: 'center',
-    gap: `max(4px, ${cssVarScaling} * 12px)`,
-    padding: `max(2px, ${cssVarScaling} * ${formElementPaddingVertical}) max(4px, ${cssVarScaling} * ${formElementPaddingHorizontal})`,
+    gap,
+    height,
+    boxSizing: 'border-box',
     minWidth: 0,
-    height: `max(${fontLineHeight}, ${cssVarScaling} * (${fontLineHeight} + 10px))`,
-    boxSizing: 'content-box', // ensures height calculation is based on content, not including padding
+    paddingInline,
+    border: `${borderWidth} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateBorderColor})`,
+    borderRadius: borderRadiusSmall,
+    background: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
     font: textSmallStyle.font,
+    color: `var(${cssVarTextColor}, ${primaryColor})`,
     cursor: isDisabled ? 'not-allowed' : 'pointer',
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
-    color: `var(${cssVarTextColor}, ${primaryColor})`,
-    backgroundColor: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
-    border: `${borderWidthThin} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateBorderColor})`,
-    borderRadius: borderRadiusSmall,
     ...(!isDisabled && {
       ...hoverMediaQuery({
         '&:hover,label:hover~&': {

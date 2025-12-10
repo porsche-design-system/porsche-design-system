@@ -16,10 +16,14 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }
-    }
+    },
+    "./scripts/fontFaceStyles": "./scripts/fontFaceStyles.js"
   },
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/",
+    "./scripts/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {

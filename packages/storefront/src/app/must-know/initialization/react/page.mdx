@@ -73,17 +73,8 @@ By default, the network traffic looks something like this.
 - starts with the `index.html`
 - then continues with the `main.js` bundle of the React app
 - which then loads the **core chunk**
-- that injects both the **font-face.css** and the **component chunk**
+- that injects the **component chunk**
 - and last the **font file** after the styles within the component's Shadow DOM are applied
-
-### Preloading font-face.css
-
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
-asset.
-
-![Loading Behavior React 02](assets/loading-behavior-react-02.jpg)
-
-As we can see, this happens in parallel with the `main.js` bundle.
 
 ### Preloading font files
 
