@@ -1759,7 +1759,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel-pure align-header="start"></p-carousel>
++ <p-carousel align-header="start"></p-carousel>
 ```
 
 ### Fixed
