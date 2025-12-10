@@ -2,15 +2,17 @@
   "name": "@porsche-design-system/tokens",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
     }
   },
   "files": [
