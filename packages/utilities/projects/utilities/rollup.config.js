@@ -24,6 +24,7 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs',
       preserveModules: true,
+      preserveModulesRoot: 'src/js',
     },
     plugins: [...commonPlugins, typescript()],
   },

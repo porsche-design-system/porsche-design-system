@@ -1,1 +1,3 @@
-export const themeLightNotificationSuccess = '#197E10';
+import { colorSuccessLight } from '@porsche-design-system/tokens';
+
+export const themeLightNotificationSuccess = colorSuccessLight;

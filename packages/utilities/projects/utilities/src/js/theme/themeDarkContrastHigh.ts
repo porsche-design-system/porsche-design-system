@@ -1,1 +1,3 @@
-export const themeDarkContrastHigh = '#AFB0B3';
+import { colorContrastHighDark } from '@porsche-design-system/tokens';
+
+export const themeDarkContrastHigh = colorContrastHighDark;

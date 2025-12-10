@@ -1,1 +1,3 @@
-export const themeLightStateHover = 'rgba(148, 149, 152, .18)';
+import { colorFrostedLight } from '@porsche-design-system/tokens';
+
+export const themeLightStateHover = colorFrostedLight;

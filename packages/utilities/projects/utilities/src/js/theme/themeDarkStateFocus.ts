@@ -1,3 +1,3 @@
-import { themeLightStateFocus } from './themeLightStateFocus';
+import { colorFocusDark } from '@porsche-design-system/tokens';
 
-export const themeDarkStateFocus = themeLightStateFocus; // it's important that focus color is the same for light and dark theme
+export const themeDarkStateFocus = colorFocusDark; // it's important that focus color is the same for light and dark theme

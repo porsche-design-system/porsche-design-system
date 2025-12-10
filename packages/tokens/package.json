@@ -2,7 +2,7 @@
   "name": "@porsche-design-system/tokens",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "./dist/cjs/index.cjs",

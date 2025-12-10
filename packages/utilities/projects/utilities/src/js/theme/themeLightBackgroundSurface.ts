@@ -1,1 +1,3 @@
-export const themeLightBackgroundSurface = '#EEEFF2';
+import { colorSurfaceLight } from '@porsche-design-system/tokens';
+
+export const themeLightBackgroundSurface = colorSurfaceLight;

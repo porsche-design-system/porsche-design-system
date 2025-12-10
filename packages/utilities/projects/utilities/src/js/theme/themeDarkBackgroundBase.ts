@@ -1,1 +1,3 @@
-export const themeDarkBackgroundBase = '#0E0E12';
+import { colorCanvasDark } from '@porsche-design-system/tokens';
+
+export const themeDarkBackgroundBase = colorCanvasDark;

@@ -1,1 +1,3 @@
-export const themeLightBackgroundShading = 'rgba(1, 2, 5, 0.67)';
+import { colorBackdropLight } from '@porsche-design-system/tokens';
+
+export const themeLightBackgroundShading = colorBackdropLight;

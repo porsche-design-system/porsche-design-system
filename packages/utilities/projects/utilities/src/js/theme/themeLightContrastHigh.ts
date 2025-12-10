@@ -1,1 +1,3 @@
-export const themeLightContrastHigh = '#535457';
+import { colorContrastHighLight } from '@porsche-design-system/tokens';
+
+export const themeLightContrastHigh = colorContrastHighLight;
