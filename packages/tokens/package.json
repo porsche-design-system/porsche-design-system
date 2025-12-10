@@ -6,12 +6,12 @@
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.js",
+  "module": "./dist/esm/index.mjs",
   "types": "./dist/esm/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
-      "import": "./dist/esm/index.js",
+      "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     }
   },

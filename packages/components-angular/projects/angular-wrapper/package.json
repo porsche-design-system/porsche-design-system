@@ -49,6 +49,11 @@
       "module": "./partials/esm/index.mjs",
       "default": "./partials/cjs/index.cjs"
     },
+    "./tokens": {
+      "types": "./tokens/esm/index.d.ts",
+      "import": "./tokens/esm/index.mjs",
+      "default": "./tokens/cjs/index.cjs"
+    },
     "./styles": {
       "sass": "./styles/_index.scss",
       "types": "./styles/esm/index.d.ts",
