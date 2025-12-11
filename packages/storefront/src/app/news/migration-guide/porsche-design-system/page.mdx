@@ -594,6 +594,15 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-banner state="info"></p-banner>
 ```
 
+### Button
+
+- Removed deprecated prop `tertiary`
+
+```diff
++ <p-button variant="tertiary">Some label</p-button>
++ <p-button variant="ghost">Some label</p-button>
+```
+
 ### Button Pure
 
 - Removed deprecated prop `weight`, only regular font weight will be applied.
@@ -643,7 +652,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEventDetail>) => {}} />
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselUpdateEventDetail>) => {}} />
 + <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEventDetail>) => {}} />
 ```
 
@@ -659,7 +668,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Display:
 
-- Removed deprecated value `left | right` of prop `align`, use `start | end` instead.
+- Removed deprecated values `left | right` of prop `align`, use `start | end` instead.
 
 ```diff
 - <p-display align="left"></p-display>
@@ -760,6 +769,15 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```diff
 - <p-inline-notification state="neutral"></p-inline-notification>
 + <p-inline-notification state="info"></p-inline-notification>
+```
+
+### Link
+
+- Removed deprecated prop `tertiary`
+
+```diff
++ <p-link variant="tertiary">Some label</p-link>
++ <p-link variant="ghost">Some label</p-link>
 ```
 
 ### Link Pure:
@@ -889,7 +907,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
+- <PPagination onPageChange={(e: CustomEvent<PaginationUpdateEventDetail>) => {}} />
 + <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEventDetail>) => {}} />
 ```
 
@@ -942,7 +960,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
 - <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
 + <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
 ```
@@ -963,7 +981,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepperHorizontalUpdateEventDetail>) => {}} />
 + <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEventDetail>) => {}} />
 ```
 
@@ -983,7 +1001,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchUpdateEventDetail>) => {}} />
 + <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEventDetail>) => {}} />
 ```
 
@@ -993,7 +1011,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
+- <PTable onSortingChange={(e: CustomEvent<TableUpdateEventDetail>) => {}} />
 + <PTable onUpdate={(e: CustomEvent<TableUpdateEventDetail>) => {}} />
 ```
 
@@ -1013,11 +1031,18 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-tabs></p-tabs>
 ```
 
+- Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
+
+```diff
+- <p-tabs weight="semibold"></p-tabs>
++ <p-tabs weight="semi-bold"></p-tabs>
+```
+
 - Removed deprecated event `tabChange`, use `update` instead.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
+- <PTabs onTabChange={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
 + <PTabs onUpdate={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
 ```
 
@@ -1040,16 +1065,16 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 - Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
 
 ```diff
-- <p-tabs-bar weight="semibold"></p-tabs>
-+ <p-tabs-bar weight="semi-bold"></p-tabs>
+- <p-tabs-bar weight="semibold"></p-tabs-bar>
++ <p-tabs-bar weight="semi-bold"></p-tabs-bar>
 ```
 
 - Removed deprecated event `tabChange`, use `update` instead.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
-+ <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
+- <PTabsBar onTabChange={(e: CustomEvent<TabsBarUpdateEventDetail>) => {}} />
++ <PTabsBar onUpdate={(e: CustomEvent<TabsBarUpdateEventDetail>) => {}} />
 ```
 
 ### Text:
