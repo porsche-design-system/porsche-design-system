@@ -14,6 +14,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [v4]
 
+### Styles
+
+#### Tokens
+
+##### Added
+
+- `borderRadiusFull`, `borderRadiusXs (2px)`, `borderRadiusXl (12px)`, `borderRadius2Xl (16px)`,
+  `borderRadius3Xl (24px)`, `borderRadius4Xl (32px)`
+
+##### Changed
+
+- `borderRadiusMd ('8px')` => `6px`
+- `borderRadiusLg ('12px')` => `8px`
+
 ### Re-design components (early alpha)
 
 #### Common
