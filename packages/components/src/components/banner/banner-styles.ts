@@ -37,6 +37,7 @@ export const getComponentCss = (isOpen: boolean): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          all: 'unset',
           ...getBannerPopoverResetStyles(),
           inset: `auto ${gridExtendedOffsetBase} var(${cssVariableBottom},${topBottomFallback})`,
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,

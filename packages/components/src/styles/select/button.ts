@@ -35,7 +35,7 @@ export const getButtonJssStyle = (
     boxSizing: 'border-box',
     minWidth: 0,
     paddingInline,
-    border: `${borderWidth} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateBorderColor})`,
+    border: `${borderWidth} solid var(${cssVarBorderColor}, ${isOpen ? formStateBorderHoverColor : formStateBorderColor})`,
     borderRadius: borderRadiusSmall,
     background: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
     font: textSmallStyle.font,
@@ -45,7 +45,7 @@ export const getButtonJssStyle = (
     ...(!isDisabled && {
       ...hoverMediaQuery({
         '&:hover,label:hover~&': {
-          borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateBorderHoverColor})`,
+          borderColor: `var(${cssVarBorderColor}, ${formStateBorderHoverColor})`,
         },
       }),
       '&:focus-visible': getFocusBaseStyles(),

@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorInfoDark = palette.dark.blue["800"];
+export const colorInfoDark = palette.dark.blue['950'];

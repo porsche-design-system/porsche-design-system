@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorErrorDark = palette.dark.red["800"];
+export const colorErrorDark = palette.dark.red['950'];

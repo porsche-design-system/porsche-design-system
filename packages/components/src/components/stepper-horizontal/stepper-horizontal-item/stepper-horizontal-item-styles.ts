@@ -66,10 +66,11 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         gap: spacingStaticXs,
         color: primaryColor,
         paddingInline: `${spacingStaticSm} 12px`,
-        paddingBlock: spacingStaticXs,
+        paddingBlock: '6px',
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
-        ...textSmallStyle,
+        font: textSmallStyle.font,
+        fontSize: 'inherit', // necessary because of all: unset
         borderRadius: borderRadiusSmall,
         ...(isStateCurrent && {
           ...frostedGlassStyle,
@@ -87,6 +88,8 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
       },
     },
     icon: {
+      font: textSmallStyle.font,
+      fontSize: 'inherit', // necessary because of all: unset
       width: fontLineHeight,
       height: fontLineHeight,
       ...(isStateCurrentOrUndefined && {

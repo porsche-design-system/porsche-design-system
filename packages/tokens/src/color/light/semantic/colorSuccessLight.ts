@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorSuccessLight = palette.light.green["800"];
+export const colorSuccessLight = palette.light.green['950'];

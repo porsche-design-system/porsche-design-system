@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorErrorLight = palette.light.red["800"];
+export const colorErrorLight = palette.light.red['950'];

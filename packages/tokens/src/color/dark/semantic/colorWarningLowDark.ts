@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorWarningLowDark = palette.dark.yellow['500a'];
+export const colorWarningLowDark = palette.dark.yellow['100a'];
