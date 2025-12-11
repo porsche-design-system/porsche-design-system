@@ -8,31 +8,45 @@ export const metadata = {
 
 # Migration Guide
 
-<TableOfContents headings={[]} />
+<TableOfContents
+  headings={[
+    'Migrate from Porsche Design System v3 to v4',
+    'Notable New Features',
+    '🛠️ Setup Changes',
+    '👹Breaking Changes',
+    '❌ Removed Props, Slots and Events (deprecated in v3 already)',
+    '❌ Removed Components (deprecated in v3 already)',
+  ]}
+/>
 
 ## Migrate from Porsche Design System v3 to v4
 
-With the new **Porsche Design Language** comes a lot of changes regarding layout and design principles. To keep
-refactoring efforts as low as possible when upgrading from `v3` to `v4`, **breaking changes** were avoided as far as
-possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
-
-Please follow the migration guide on this page. In addition, we offer a [components overview](/components/introduction)
-which shows all component information including deprecated components/props/values.
-
-<Notification heading="Deprecation hint" headingTag="h3" state="error">
-  Porsche Design System **v3** support will end on **TBD** (until EOL date only critical bug fixing takes place).
-
-**Please make sure that upgrading to Porsche Design System v4 is feasible before the EOL date.**
-
-</Notification>
+With the new **Porsche Design Language** comes some changes regarding layout and design principles. To keep refactoring
+efforts as low as possible when upgrading from `v3` to `v4`, **breaking changes** were avoided as far as possible.
+Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
 
 ## Notable New Features
 
 - New design language for all components
-- All components use CSS Custom Properties
-- Theming now works by adding a `light`, `dark` or `auto` class to any HTML element
+  - New color palette
+  - Redesigned form elements and buttons
+  - Redesigned footer of dialog elements
+  - All headings use regular as font-weight
+- Theming now works by adding a `light`, `dark` or `auto` CSS class to any HTML element
+
+## Planned upcoming changes in next alpha release
+
+- Redesign `p-accordion`, `p-tabs`, `p-tabs-bar` and `p-pagination`
+- Replace the current styles package with `scss`, `vanilla-extract` and `emotion` (the styles package will be
+  deprecated). **Tailwind CSS** is the preferred and fully supported styling solution, providing standardized patterns,
+  templates, and examples.
+- Document tokens package `@porsche-design-system/tokens`
+- Overhaul storefront documentation and examples
+- Introduce design language guidelines (Brand Guide)
 
 ## 🛠️ Setup Changes
+
+### Partials
 
 - Removed `getInitialStyles()`, `getFontFaceStyles()` and `getFontFaceStylesheet()` partial in favor of CSS imports from
   `@porsche-design-system/components-{js|angular|react|vue}`.
@@ -55,7 +69,18 @@ which shows all component information including deprecated components/props/valu
   Started in the [Development](/developing/introduction/) section for more information.
 
 ```diff
+// Vanilla Js, React, Vue
 + :not(:defined) {
++   visibility: hidden;
++ }
+
+// Angular
++ :is(p-accordion, p-banner, p-button, prefixed-p-button,...):not(:defined) {
++   visibility: hidden;
++ }
+
+// Next.js, React Router
++ :not(:defined,[data-ssr]) {
 +   visibility: hidden;
 + }
 ```
@@ -78,15 +103,24 @@ which shows all component information including deprecated components/props/valu
 - Removed theme prop since it's handled by CSS variables which can be controlled by `.light`, `.dark` or `.auto` CSS
   class.
 
-```diff
-- <p-input-text name="some-name" theme="dark"></p-input-text>
-+ <div class="dark">
-+   <p-input-text name="some-name"></p-input-text>
-+ </div>
+```html
+<html class="dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+    <div class="light">
+      <!-- All components inside will use the light theme -->
+    </div>
+  </body>
+</html>
 ```
 
 ```diff
-// Accordingly for other JS frameworks, e.g. React example:
+- <p-input-text theme="dark" name="some-name"></p-input-text>
++ <p-input-text class="dark" name="some-name"></p-input-text>
+```
+
+```diff
+// React
 - <body>
 + <body className="dark">
 -   <PorscheDesignSystemProvider theme="dark">
@@ -94,30 +128,50 @@ which shows all component information including deprecated components/props/valu
 -     <App />
 -   </PorscheDesignSystemProvider>
 </body>
+
+// Angular
+@NgModule({
+  declarations: [AppComponent],
+-  imports: [BrowserModule, PorscheDesignSystemModule.load({ theme: 'dark' })],
++  imports: [BrowserModule, PorscheDesignSystemModule.load()],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+
++ <body class="dark">
+  <app-root></app-root>
+</body>
+
+// Vue
+<template>
+-  <PorscheDesignSystemProvider theme="dark">
++  <PorscheDesignSystemProvider>
+    <AppComponent />
+  </PorscheDesignSystemProvider>
+</template>
+
+// Next.js
+// React Router
 ```
 
 ## 👹Breaking Changes
 
-- In general all headings use regular as font-weight
+### Common
 
-- Remove **slotted** Anchor Styles entirely from all components.
+- Remove **slotted** Anchor Styles entirely from `p-accordion` // TODO: Add components components.
 
 ```diff
 // You can still use <a> inside components, but the default styling for anchors has been removed.
 <p-accordion heading="Some Heading">
 -  <a href="/https://porsche.com">Some label</a>
 +  <p-link-pure href="https://porsche.com">Some label</p-link-pure>
-// TODO: Show tailwind alternative with <a>
 </p-accordion>
 ```
 
-### Heading:
-
-- Uses a regular instead of semi-bold font-weight
-
 ### Text, Icon:
 
-- Changed value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop
+- Changed values `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop
   `color`, use `'success', 'warning', 'error', 'info'` instead.
 
 ```diff
@@ -148,10 +202,14 @@ which shows all component information including deprecated components/props/valu
 
 ### Icon:
 
-- when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
-  `p-icon { color: deeppink; }`) can be applied directly // TODO: Add diff?
+- When `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color can be applied directly.
 
-- Removed value `'state-disabled'` of prop color // TODO: Explain, adjust example?
+```diff
+- <p-icon color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-icon>
++ <p-icon color="inherit" class="color: deeppink;"></p-icon>
+```
+
+- Removed value `'state-disabled'` of prop `color`.
 
 ```diff
 - <p-icon color="state-disabled"></p-icon>
@@ -160,21 +218,60 @@ which shows all component information including deprecated components/props/valu
 
 ### Model Signature:
 
-- when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly //
-  TODO: Add diff?
+- When `color="inherit"` is used a CSS color can be applied directly.
+
+```diff
+- <p-model-signature color="inherit" style="filter: brightness(0) saturate(100%) invert(18%) sepia(93%) saturate(3017%) hue-rotate(314deg) brightness(110%) contrast(105%);"></p-model-signature>
++ <p-model-signature color="inherit" class="color: deeppink;"></p-model-signature>
+```
 
 ### Tag:
 
-- removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`, `error`,
-  `info`
+- Removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`, `error`,
+  `info`.
 
 ```diff
-// TODO: Add diff
+- <p-tag color="neutral-contrast-high">Color label</p-tag>
+- <p-tag color="primary">Some label</p-tag>
++ <p-tag variant="primary">Some label</p-tag>
+
+- <p-tag color="background-default">Color label</p-tag>
+- <p-tag color="background-base">Some label</p-tag>
+- <p-tag color="background-surface">Some label</p-tag>
+- <p-tag color="background-frosted">Some label</p-tag>
++ <p-tag variant="secondary">Some label</p-tag>
+
+- <p-tag color="notification-neutral">Color label</p-tag>
+- <p-tag color="notification-info-soft">Some label</p-tag>
++ <p-tag variant="info">Some label</p-tag>
+
+- <p-tag color="notification-warning">Color label</p-tag>
+- <p-tag color="notification-warning-soft">Some label</p-tag>
++ <p-tag variant="warning">Some label</p-tag>
+
+- <p-tag color="notification-error">Color label</p-tag>
+- <p-tag color="notification-error-soft">Some label</p-tag>
++ <p-tag variant="error">Some label</p-tag>
+
+- <p-tag color="notification-success">Color label</p-tag>
+- <p-tag color="notification-success-soft">Some label</p-tag>
++ <p-tag variant="success">Some label</p-tag>
+```
+
+### Tag Dismissible:
+
+- Removed prop `color`.
+
+```diff
+- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
+- <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
+- <p-tag-dismissible color="background-surface">Color label</p-tag-dismissible>
++ <p-tag-dismissible>Color label</p-tag-dismissible>
 ```
 
 ### Button, Link:
 
-- Removed value `ghost` of prop `variant`, use `secondary` instead
+- Removed value `ghost` of prop `variant`, use `secondary` instead.
 
 ```diff
 - <p-button variant="ghost">Some label</p-button>
@@ -186,62 +283,165 @@ which shows all component information including deprecated components/props/valu
 
 ### Modal:
 
-- visually changed footer slot: becomes frosted when it's sticky
-- removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
-  instead
-- added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
-- added prop `background` with value `canvas | surface`
+- Removed `.stretch-to-full-modal-width`, use read only CSS variables `--ref-p-modal-pt`, `--ref-p-modal-px` and
+  `--ref-p-modal-pb` instead.
+
+```diff
+// Example using Tailwind CSS:
+<p-modal>
+-  <img src="assets/porsche-992-carrera-s.jpg" class="stretch-to-full-modal-width" />
++  <img src="assets/porsche-992-carrera-s.jpg" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)" />
+</p-modal>
+
+// Example using CSS:
+<p-modal>
+-  <img src="assets/porsche-992-carrera-s.jpg" class="stretch-to-full-modal-width" />
++  <img src="assets/porsche-992-carrera-s.jpg" style="margin-top: calc(-1 * var(--ref-p-modal-pt)); margin-inline: calc(-1 * var(--ref-p-modal-px)); margin-bottom: calc(-1 * var(--ref-p-modal-pb));" />
+</p-modal>
+```
 
 ### Flyout:
 
-- removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
-  `clamp()` instead)
-- visually changed footer slot: becomes frosted when it's sticky
-- added read only css variables `--ref-p-flyout-pb`
-- added prop `background` with value `canvas | surface`
+- Removed CSS variable `--p-flyout-max-width`, use `--p-flyout-width` with a static value or `min()`, `max()` or
+  `clamp()` instead.
 
-### Sheet:
+```diff
+// Example using Tailwind CSS:
+- <p-flyout class="[--p-flyout-width:800px] [--p-flyout-max-width:90vw]"></p-flyout>
++ <p-flyout class="[--p-flyout-width:min(800px,90vw)]"></p-flyout>
 
-- added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
-- added prop `background` with value `canvas | surface`
+// Example CSS:
+- <p-flyout style="--p-flyout-width: 800px; --p-flyout-max-width: 90vw"></p-flyout>
++ <p-flyout style="--p-flyout-width: min(800px, 90vw)"></p-flyout>
+```
 
 ### Inline Notification:
 
-- removed max-width limitation for content
+- Removed `max-width` limitation for content.
+
+```diff
+// Example using Tailwind CSS:
+<p-inline-notification>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span>Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" class="max-w-[50rem]">Some heading</p-heading>
++  <span class="max-w-[50rem]">Some description</span>
+</p-inline-notification>
+
+// Example using CSS:
+<p-inline-notification>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span>Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" style="max-width: 50rem;">Some heading</p-heading>
++  <span style="max-width: 50rem;">Some description</span>
+</p-inline-notification>
+```
 
 ### Banner:
 
-- added `state="success"`
-- removed max-width limitation for content
+- Removed `max-width` limitation for content.
 
-### Toast:
+```diff
+// Example using Tailwind CSS:
+<p-banner>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span slot="description">Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" class="max-w-[50rem]">Some heading</p-heading>
++  <span slot="description" class="max-w-[50rem]">Some description</span>
+</p-banner>
 
-- added `state="warning | error"`
+// Example using CSS:
+<p-banner>
+-  <p-heading size="small" tag="h2" slot="heading">Some heading</p-heading>
+-  <span slot="description">Some description</span>
++  <p-heading size="small" tag="h2" slot="heading" style="max-width: 50rem;">Some heading</p-heading>
++  <span slot="description" style="max-width: 50rem;">Some description</span>
+</p-banner>
+```
 
 ### Carousel:
 
-- removed CSS variable `--p-carousel-prev-next-filter`
-- removed prop `gradient-color` (use `gradient="true"` instead)
-- changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
-  to enable trimming)
-- changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
-  to enable pagination)
-- changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to enable
-  rewind)
+- Removed prop `gradient-color`, use `gradient="true"` instead.
 
-### Link Tile:
+```diff
+- <p-carousel gradient-color="background-surface">
++ <p-carousel gradient="true"></p-carousel>
+```
 
-- changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>` to
-  enable gradient)
-- removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
-- added an optional light gradient when used in light mode and gradient is enabled
-- added value `auto` for prop `aspect-ratio`
+- Changed default value of prop `trim-space` from `true` to `false`.
+
+```diff
+- <p-carousel></p-carousel>
++ <p-carousel trim-space="true"></p-carousel>
+```
+
+- Changed default value of prop `pagination` from `true` to `false`.
+
+```diff
+- <p-carousel></p-carousel>
++ <p-carousel pagination="true"></p-carousel>
+```
+
+- Changed default value of prop `rewind` from `true` to `false`.
+
+```diff
+- <p-carousel></p-carousel>
++ <p-carousel rewind="true"></p-carousel>
+```
+
+### Button Tile, Link Tile:
+
+- Changed default value of prop `gradient` from `true` to `false`.
+
+```diff
+- <p-link-tile></p-link-tile>
++ <p-link-tile gradient="true"></p-link-tile>
+
+- <p-button-tile></p-button-tile>
++ <p-button-tile gradient="true"></p-button-tile>
+```
+
+- Removed prop `background`, use CSS class `.light | .dark | .auto` on :host element instead.
+
+```diff
+// dark was the default before
+- <p-link-tile></p-link-tile>
++ <p-link-tile class="dark"></p-link-tile>
+
+- <p-link-tile background="light"></p-link-tile>
++ <p-link-tile class="light"></p-link-tile>
+
+- <p-link-tile background="dark"></p-link-tile>
++ <p-link-tile class="dark"></p-link-tile>
+
+- <p-link-tile background="auto"></p-link-tile>
++ <p-link-tile class="auto"></p-link-tile>
+
+// dark was the default before
+- <p-button-tile></p-button-tile>
++ <p-button-tile class="dark"></p-button-tile>
+
+- <p-button-tile background="light"></p-button-tile>
++ <p-button-tile class="light"></p-button-tile>
+
+- <p-button-tile background="dark"></p-button-tile>
++ <p-button-tile class="dark"></p-button-tile>
+
+- <p-button-tile background="auto"></p-button-tile>
++ <p-button-tile class="auto"></p-button-tile>
+```
+
+### Link Tile Model Signature:
+
+- Removed component `p-link-tile-model-signature`, use `p-link-tile` instead.
 
 ### Tailwind CSS
 
-- Tailwind CSS: Reset all default Tailwind color tokens
-- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
-  only
+When using Tailwind CSS with the Porsche Design System Tailwind Theme
+(`@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';`)
+
+- Reset all default Tailwind color tokens.
+- Removed `-light` and `-dark` color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only.
 
 ## ❌ Removed Props, Slots and Events (deprecated in v3 already)
 
@@ -262,16 +462,6 @@ which shows all component information including deprecated components/props/valu
 + <PAccordion onUpdate={(e: CustomEvent<AccordionUpdateEventDetail>) => {}} />
 ```
 
-- Removed slotted anchor `<a>` styling, use `Link Pure` instead or define an anchor style.
-
-```diff
-// You can still use <a> inside components, but the default styling for anchors has been removed.
-<p-accordion heading="Some Heading">
--  <a href="/https://porsche.com">Some label</a>
-+  <p-link-pure href="https://porsche.com">Some label</p-link-pure>
-</p-accordion>
-```
-
 ### Banner
 
 - Removed deprecated named `slot="title"`, use new slot or prop `heading`.
@@ -281,12 +471,6 @@ which shows all component information including deprecated components/props/valu
 - <span slot="title">Some heading</span>
 + <span slot="heading">Some heading</span>
   <span slot="description">Some notification description.</span>
-</p-banner>
-
-- <p-banner>
-+ <p-banner heading="Some heading" description="Some notification description.">
--   <span slot="title">Some heading</span>
--   <span slot="description">Some notification description.</span>
 </p-banner>
 ```
 
@@ -656,20 +840,13 @@ which shows all component information including deprecated components/props/valu
 </p-segmented-control>
 ```
 
-- Removed deprecated event `segmentedControlChange`, use `change` instead.
+- Removed deprecated events `segmentedControlChange` and `update` use `change` instead.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
 - <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
-+ <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
-```
-
-- Removed deprecated event `update`, use `change` instead.
-
-```diff
-// Accordingly for other JS frameworks, e.g. React example:
-- <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
-+ <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
+- <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
++ <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
 ```
 
 ### Select:
@@ -777,43 +954,6 @@ which shows all component information including deprecated components/props/valu
 + <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
 ```
 
-### Tag:
-
-- Removed deprecated values
-  `background-default | neutral-contrast-high | notification-neutral | notification-warning | notification-error | notification-success`
-  of prop `color`, use
-  `background-base | primary | notification-info-soft | notification-warning-soft | notification-error-soft | notification-success-soft`
-  instead.
-
-```diff
-- <p-tag color="notification-neutral">Color label</p-tag>
-+ <p-tag color="notification-info-soft">Color label</p-tag>
-
-- <p-tag color="notification-error">Color label</p-tag>
-+ <p-tag color="notification-error-soft">Color label</p-tag>
-
-- <p-tag color="notification-success">Color label</p-tag>
-+ <p-tag color="notification-success-soft">Color label</p-tag>
-
-- <p-tag color="notification-warning">Color label</p-tag>
-+ <p-tag color="notification-warning-soft">Color label</p-tag>
-
-- <p-tag color="neutral-contrast-high">Color label</p-tag>
-+ <p-tag color="primary">Color label</p-tag>
-
-- <p-tag color="background-default">Color label</p-tag>
-+ <p-tag color="background-base">Color label</p-tag>
-```
-
-### Tag Dismissible:
-
-- Removed deprecated value `background-default` of prop `color`, use `background-base` instead.
-
-```diff
-- <p-tag-dismissible color="background-default">Color label</p-tag-dismissible>
-+ <p-tag-dismissible color="background-base">Color label</p-tag-dismissible>
-```
-
 ### Text:
 
 - Removed deprecated values `left | right` of prop `align`, use `start | end` instead.
@@ -847,7 +987,8 @@ which shows all component information including deprecated components/props/valu
 + <p-text color="contrast-high">Some text</p-text>
 
 - <p-text color="notification-neutral">Some text</p-text>
-+ <p-text color="notification-info">Some text</p-text>
+- <p-text color="notification-info">Some text</p-text>
++ <p-text color="info">Some text</p-text>
 ```
 
 - Removed deprecated values `thin | semibold` of prop `weight`, use `semi-bold` instead. `thin` is mapped to `regular`
@@ -874,18 +1015,6 @@ which shows all component information including deprecated components/props/valu
 
 - <p-text-list list-type="ordered" order-type="alphabetically"></p-text-list>
 + <p-text-list type="alphabetically"></p-text-list>
-```
-
-- Removed slotted anchor `<a>` styling, use `Link Pure` instead or define an anchor style.
-
-```diff
-// You can still use <a> inside components, but the default styling for anchors has been removed.
-<p-text-list heading="Some Heading">
-  <p-text-list-item>
-    -  <a href="/https://porsche.com">Some label</a>
-    +  <p-link-pure href="https://porsche.com">Some label</p-link-pure>
-  </p-text-list-item>
-</p-text-list>
 ```
 
 ### Toast:
@@ -954,19 +1083,19 @@ which shows all component information including deprecated components/props/valu
 
 ```diff
 - <p-content-wrapper>
--   <div class="example-content">
--     Some content
--   </div>
+    <div class="example-content">
+      Some content
+    </div>
 - </p-content-wrapper>
-// TODO: Provide diff example?
-```
 
-### Link Tile Model Signature:
-
-- Removed deprecated component `p-link-tile-model-signature`, use `p-link-tile` instead.
-
-```diff
-// TODO: Provide diff example
+// Example using Tailwind CSS:
++ <div class="grid-template">
++   <div class="col-extended">
+      <div class="example-content">
+        Some content
+      </div>
++   </div>
++ </div>
 ```
 
 ### Fieldset Wrapper
@@ -998,6 +1127,18 @@ which shows all component information including deprecated components/props/valu
 +   <div>2</div>
 +   <div>3</div>
 + </div>
+
+// Example using CSS:
+- <p-flex>
+-   <p-flex-item>1</p-flex-item>
+-   <p-flex-item>2</p-flex-item>
+-   <p-flex-item>3</p-flex-item>
+- </p-flex>
++ <div class="display: flex">
++   <div>1</div>
++   <div>2</div>
++   <div>3</div>
++ </div>
 ```
 
 ### Grid
@@ -1012,6 +1153,18 @@ which shows all component information including deprecated components/props/valu
 -   <p-grid-item size="4">3</p-grid-item>
 - </p-grid>
 + <div class="grid grid-cols-3">
++   <div>1</div>
++   <div>2</div>
++   <div>3</div>
++ </div>
+
+// Example using CSS:
+- <p-grid>
+-   <p-grid-item size="4">1</p-grid-item>
+-   <p-grid-item size="4">2</p-grid-item>
+-   <p-grid-item size="4">3</p-grid-item>
+- </p-grid>
++ <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));">
 +   <div>1</div>
 +   <div>2</div>
 +   <div>3</div>
@@ -1046,7 +1199,7 @@ which shows all component information including deprecated components/props/valu
 
 ```diff
 - <p-marque></p-marque>
-+ <p-wordmark></p-wordmark>
++ <p-wordmark></p-wordmark> // preferred over crest
 // or
 + <p-crest></p-crest>
 ```
@@ -1081,6 +1234,16 @@ which shows all component information including deprecated components/props/valu
 
 + <p-input-text label="Some label" name="some-name"></p-input-text>
 ```
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="text" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-text label="Some label" name="some-name"></p-input-text>
+```
+
+// Add all
 
 ### Textarea Wrapper
 
