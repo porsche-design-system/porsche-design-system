@@ -7,6 +7,7 @@ import {
   PCanvas,
   PHeading,
   PLink,
+  PBanner,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import { breakpointM } from '@porsche-design-system/styles/src/js';
@@ -14,18 +15,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { DirectionSelect } from '@/components/common/DirectionSelect';
-import { Navigation } from '@/components/common/Navigation';
-import Tabs from '@/components/common/Tabs';
-import { TextZoomSelect } from '@/components/common/TextZoomSelect';
-import { ThemeSelect } from '@/components/common/ThemeSelect';
-import { Search } from '@/components/search/Search';
-import { useDirection } from '@/hooks/useDirection';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
-import { useTextZoom } from '@/hooks/useTextZoom';
-import type { StorefrontDirection } from '@/models/dir';
-import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontTheme } from '@/models/theme';
+import { PDSVersionGroup, Semver, LEGACY_PDS_VERSIONS } from '@/models/pdsVersion';
+import { getCurrentPdsVersion, isMajorOnly } from '@/utils/pdsVersion';
+import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
 declare global {
   interface Window {
@@ -38,6 +30,17 @@ if (global?.window) {
 }
 
 export const Canvas = ({ children }: PropsWithChildren) => {
+  const [stablePdsReleases, setStablePdsReleases] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function load() {
+      const list = await fetchPdsVersions();
+      setStablePdsReleases(list);
+    }
+
+    load();
+  }, []);
+
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
@@ -46,6 +49,26 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const [isBannerOpen, setIsBannerOpen] = useState(false);
+
+  const rawPdsVersion = getCurrentPdsVersion();
+  const latestPdsVersion = stablePdsReleases[0] as Semver;
+
+  // Normalize: if only a major (e.g. "3"), uses the latest full semver
+  const currentPdsVersion = rawPdsVersion && isMajorOnly(rawPdsVersion) ? latestPdsVersion : rawPdsVersion;
+
+  useEffect(() => {
+    if (!latestPdsVersion || !currentPdsVersion) return;
+    if (currentPdsVersion !== latestPdsVersion) {
+      setIsBannerOpen(true);
+    }
+  }, [currentPdsVersion, latestPdsVersion]);
+
+  const pdsVersion: PDSVersionGroup = {
+    all: [...stablePdsReleases, ...LEGACY_PDS_VERSIONS],
+    current: currentPdsVersion as Semver,
+    latest: latestPdsVersion,
+  };
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
@@ -90,6 +113,15 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
+      <PBanner open={isBannerOpen} onDismiss={() => setIsBannerOpen(false)}>
+        <div slot="description" className="flex flex-col gap-fluid-xs">
+          You are currently viewing an earlier release of the Porsche Design System.
+          <Link href={`https://designsystem.porsche.com/`}>
+            Switch to the latest Porsche Design System documentation.
+          </Link>
+        </div>
+      </PBanner>
+
       <PButton
         slot="header-end"
         icon="search"
@@ -128,9 +160,8 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         <Tabs />
         {children}
       </div>
-
       <div slot="sidebar-start">
-        <Navigation />
+        <Navigation pdsVersion={pdsVersion} />
       </div>
       <div slot="sidebar-end">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">

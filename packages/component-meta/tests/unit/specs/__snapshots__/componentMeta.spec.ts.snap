@@ -2372,12 +2372,14 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "ad",
           "ae",
+          "al",
           "am",
           "ar",
           "at",
           "au",
           "az",
           "ba",
+          "bd",
           "be",
           "bg",
           "bh",
@@ -2462,6 +2464,7 @@ exports[`should match snapshot 1`] = `
           "pt",
           "py",
           "qa",
+          "re",
           "ro",
           "rs",
           "ru",
@@ -3840,6 +3843,201 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-input-month": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputMonthBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputMonthChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputMonthInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputMonthState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default month value for the input, in YYYY-MM format (e.g., value='2025-07').",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
   "p-input-number": {
     "cssVariablesMeta": {
       "--p-hyphens": {
@@ -4341,11 +4539,23 @@ exports[`should match snapshot 1`] = `
         "isExperimental": true,
         "type": "boolean",
       },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
         "description": "Dynamic feedback text for validation or status.",
         "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
       },
       "name": {
         "allowedValues": "string",
@@ -5162,6 +5372,201 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": "",
         "description": "The url input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-week": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputWeekBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputWeekChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputWeekInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputWeekState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')",
         "propOptions": {
           "mutable": true,
         },

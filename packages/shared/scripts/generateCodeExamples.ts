@@ -293,6 +293,34 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-month',
+    examples: [
+      {
+        name: 'InputMonthExampleForm',
+        paths: {
+          'vanilla-js': '/input-month-example-form.html',
+          angular: '/input-month-example-form.component.ts',
+          react: '/InputMonthExampleForm.tsx',
+          vue: '/InputMonthExampleForm.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-week',
+    examples: [
+      {
+        name: 'InputWeekExampleForm',
+        paths: {
+          'vanilla-js': '/input-week-example-form.html',
+          angular: '/input-week-example-form.component.ts',
+          react: '/InputWeekExampleForm.tsx',
+          vue: '/InputWeekExampleForm.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-time',
     examples: [
       {

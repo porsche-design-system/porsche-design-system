@@ -252,6 +252,36 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputDateExampleFormPage />,
   },
   {
+    name: 'Input Month Example',
+    path: '/input-month-example',
+    element: <fromExamples.InputMonthExamplePage />,
+  },
+  {
+    name: 'Input Month Example Controlled',
+    path: '/input-month-example-controlled',
+    element: <fromExamples.InputMonthControlledExamplePage />,
+  },
+  {
+    name: 'Input Month Example Form',
+    path: '/input-month-example-form',
+    element: <fromExamples.InputMonthExampleFormPage />,
+  },
+  {
+    name: 'Input Week Example',
+    path: '/input-week-example',
+    element: <fromExamples.InputWeekExamplePage />,
+  },
+  {
+    name: 'Input Week Example Controlled',
+    path: '/input-week-example-controlled',
+    element: <fromExamples.InputWeekControlledExamplePage />,
+  },
+  {
+    name: 'Input Week Example Form',
+    path: '/input-week-example-form',
+    element: <fromExamples.InputWeekExampleFormPage />,
+  },
+  {
     name: 'Input Time Example',
     path: '/input-time-example',
     element: <fromExamples.InputTimeExamplePage />,

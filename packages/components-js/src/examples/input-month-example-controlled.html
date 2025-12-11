@@ -1,0 +1,17 @@
+<p-input-month name="some-name" label="Some Label"></p-input-month>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const inputMonth = document.querySelector('p-input-month');
+
+  inputMonth.addEventListener('input', (e) => {
+    e.target.value = e.detail.target.value;
+    setDebugText(e.detail.target.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>

@@ -328,6 +328,11 @@ and migration steps.
   ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
 - `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can enter
+  ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
+
 
 ### Fixed
 

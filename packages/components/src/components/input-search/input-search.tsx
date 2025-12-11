@@ -38,6 +38,8 @@ const propTypes: PropTypes<typeof InputSearch> = {
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
+  maxLength: AllowedTypes.number,
+  minLength: AllowedTypes.number,
   form: AllowedTypes.string,
   autoComplete: AllowedTypes.string,
   state: AllowedTypes.oneOf<InputSearchState>(FORM_STATES),
@@ -95,6 +97,12 @@ export class InputSearch {
 
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
+
+  /** A non-negative integer specifying the maximum number of characters the user can enter into the input. */
+  @Prop() public maxLength?: number;
+
+  /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
+  @Prop() public minLength?: number;
 
   /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
@@ -220,6 +228,8 @@ export class InputSearch {
         type="search"
         required={this.required}
         placeholder={this.placeholder}
+        maxLength={this.maxLength}
+        minLength={this.minLength}
         value={this.value}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}

@@ -26,6 +26,14 @@ for (const [name, url] of Object.entries(urls)) {
         await page.goto(url);
         await resetAnimations(page);
 
+        await page.evaluate(() => {
+          const select = document.querySelector('div[slot="sidebar-start"] footer p-select');
+          if (select) {
+            // Hide version switch to avoid VRT update when new versions are released
+            (select as HTMLSelectElement).style.display = 'none';
+          }
+        });
+
         // Modify video height if on the homepage
         if (url === '/') {
           await page.evaluate(() => {
@@ -66,6 +74,14 @@ for (const [name, url] of Object.entries(urls)) {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
         await resetAnimations(page);
+
+        await page.evaluate(() => {
+          const select = document.querySelector('div[slot="sidebar-start"] footer p-select');
+          if (select) {
+            // Hide version switch to avoid VRT update when new versions are released
+            (select as HTMLSelectElement).style.display = 'none';
+          }
+        });
 
         // Modify video height if on the homepage
         if (url === '/') {
