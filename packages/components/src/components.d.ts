@@ -58,7 +58,7 @@ import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./compon
 import { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagIcon, TagVariant } from "./components/tag/tag-utils";
-import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
+import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextListType } from "./components/text-list/text-list/text-list-utils";
 import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
@@ -118,7 +118,7 @@ export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./compon
 export { TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 export { TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagIcon, TagVariant } from "./components/tag/tag-utils";
-export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/tag-dismissible/tag-dismissible-utils";
+export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextListType } from "./components/text-list/text-list/text-list-utils";
 export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
@@ -2291,10 +2291,6 @@ export namespace Components {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
-        /**
-          * Background color variations
-         */
-        "color"?: TagDismissibleColor;
         /**
           * A boolean value that, if present, renders the tag dismissible as a compact version.
          */
@@ -5986,10 +5982,6 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
-        /**
-          * Background color variations
-         */
-        "color"?: TagDismissibleColor;
         /**
           * A boolean value that, if present, renders the tag dismissible as a compact version.
          */
