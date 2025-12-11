@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [v4]
 
+See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
+and migration steps.
+
 ### Re-design components (early alpha)
 
 #### Common
