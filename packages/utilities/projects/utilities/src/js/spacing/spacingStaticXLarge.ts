@@ -1,1 +1,1 @@
-export const spacingStaticXLarge = '48px';
+export { spacingStaticXl as spacingStaticXLarge } from '@porsche-design-system/tokens';

@@ -1,3 +1,1 @@
-import { fontSizeTextLarge } from './fontSizeTextLarge';
-
-export const fontSizeHeadingLarge = fontSizeTextLarge;
+export { fontSizeLg as fontSizeHeadingLarge } from '@porsche-design-system/tokens';

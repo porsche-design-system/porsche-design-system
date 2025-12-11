@@ -1,1 +1,3 @@
-export const themeLightNotificationError = '#CC1922';
+import { colorErrorLight } from '@porsche-design-system/tokens';
+
+export const themeLightNotificationError = colorErrorLight;

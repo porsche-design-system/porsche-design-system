@@ -1,1 +1,1 @@
-export const spacingStaticMedium = '16px';
+export { spacingStaticMd as spacingStaticMedium } from '@porsche-design-system/tokens';

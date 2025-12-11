@@ -1,1 +1,3 @@
-export const themeDarkBackgroundShading = 'rgba(38, 38, 41, 0.67)';
+import { colorBackdropDark } from '@porsche-design-system/tokens';
+
+export const themeDarkBackgroundShading = colorBackdropDark;

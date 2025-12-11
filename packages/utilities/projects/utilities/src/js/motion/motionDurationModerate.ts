@@ -1,1 +1,1 @@
-export const motionDurationModerate = '0.4s';
+export { motionDurationModerate } from '@porsche-design-system/tokens';

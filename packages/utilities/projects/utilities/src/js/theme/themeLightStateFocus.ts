@@ -1,1 +1,3 @@
-export const themeLightStateFocus = '#1A44EA';
+import { colorFocusLight } from '@porsche-design-system/tokens';
+
+export const themeLightStateFocus = colorFocusLight;

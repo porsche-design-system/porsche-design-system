@@ -1,1 +1,3 @@
-export const themeDarkStateActive = 'rgba(126, 127, 130, 0.20)';
+import { colorFrostedDark } from '@porsche-design-system/tokens';
+
+export const themeDarkStateActive = colorFrostedDark;

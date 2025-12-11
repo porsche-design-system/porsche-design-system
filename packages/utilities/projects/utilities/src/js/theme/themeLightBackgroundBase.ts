@@ -1,1 +1,3 @@
-export const themeLightBackgroundBase = '#FFF';
+import { colorCanvasLight } from '@porsche-design-system/tokens';
+
+export const themeLightBackgroundBase = colorCanvasLight;

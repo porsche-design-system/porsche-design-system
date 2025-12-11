@@ -1,1 +1,3 @@
-export const themeLightContrastLow = '#D8D8DB';
+import { colorContrastLowLight } from '@porsche-design-system/tokens';
+
+export const themeLightContrastLow = colorContrastLowLight;

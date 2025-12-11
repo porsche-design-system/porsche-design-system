@@ -1,1 +1,3 @@
-export const themeLightBackgroundFrosted = 'hsl(240 4% 85%/35%)';
+import { colorFrostedLight } from '@porsche-design-system/tokens';
+
+export const themeLightBackgroundFrosted = colorFrostedLight;

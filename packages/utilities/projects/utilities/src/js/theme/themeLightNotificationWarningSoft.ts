@@ -1,1 +1,3 @@
-export const themeLightNotificationWarningSoft = '#FFF4D2';
+import { colorWarningFrostedLight } from '@porsche-design-system/tokens';
+
+export const themeLightNotificationWarningSoft = colorWarningFrostedLight;

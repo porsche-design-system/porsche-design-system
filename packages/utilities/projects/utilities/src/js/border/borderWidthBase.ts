@@ -1,1 +1,1 @@
-export const borderWidthBase = '2px';
+export { borderWidthRegular as borderWidthBase } from '@porsche-design-system/tokens';

@@ -1,1 +1,1 @@
-export const breakpointXXL = 1920;
+export { breakpoint2Xl as breakpointXXL } from '@porsche-design-system/tokens';

@@ -1,1 +1,3 @@
-export const themeDarkPrimary = '#FBFCFF';
+import { colorPrimaryDark } from '@porsche-design-system/tokens';
+
+export const themeDarkPrimary = colorPrimaryDark;

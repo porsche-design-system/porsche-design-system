@@ -1,23 +1,49 @@
 // @ts-check
 import typescript from '@rollup/plugin-typescript';
-import { defineConfig } from 'rollup';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-/** @type {import('rollup').RollupOptions} */
-export default defineConfig({
-  input: 'src/index.ts',
-  output: {
-    dir: 'dist',
-    format: 'esm',
-    entryFileNames: '[name].js',
-    preserveModules: true,
-    preserveModulesRoot: 'src',
+const input = 'src/index.ts';
+const outputDir = 'dist';
+
+export default [
+  {
+    input,
+    output: {
+      dir: `${outputDir}/cjs`,
+      format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
+    },
+    plugins: [typescript()],
   },
-  plugins: [
-    typescript({
-      declaration: true,
-      declarationDir: 'dist',
-      rootDir: 'src',
-      exclude: ['**/*.spec.ts'],
-    }),
-  ],
-});
+  {
+    input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+    },
+    plugins: [
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['**/*.spec.ts'] }),
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+          exports: {
+            // Default export (JS)
+            '.': {
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+          },
+        },
+      }),
+    ],
+  },
+];

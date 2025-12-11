@@ -1,1 +1,1 @@
-export const motionDurationVeryLong = '1.2s';
+export { motionDurationVeryLong } from '@porsche-design-system/tokens';

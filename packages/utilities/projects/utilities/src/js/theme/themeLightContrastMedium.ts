@@ -1,1 +1,3 @@
-export const themeLightContrastMedium = '#6B6D70';
+import { colorContrastMediumLight } from '@porsche-design-system/tokens';
+
+export const themeLightContrastMedium = colorContrastMediumLight;

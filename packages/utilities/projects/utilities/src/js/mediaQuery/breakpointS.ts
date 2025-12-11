@@ -1,1 +1,1 @@
-export const breakpointS = 760;
+export { breakpointSm as breakpointS } from '@porsche-design-system/tokens';
