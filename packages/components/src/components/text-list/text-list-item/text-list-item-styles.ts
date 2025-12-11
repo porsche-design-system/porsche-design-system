@@ -21,9 +21,9 @@ export const getComponentCss = (): string => {
           color: 'inherit', // ensures style can't be overwritten from outside
           ...hostHiddenStyles,
         }),
-        slot: {
-          display: 'inline',
-        },
+      },
+      slot: {
+        display: 'inline',
       },
       ...addImportantToEachRule({
         '::slotted(*)': {
