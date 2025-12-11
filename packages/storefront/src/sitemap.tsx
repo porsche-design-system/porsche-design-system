@@ -115,11 +115,6 @@ export const sitemap: Routes = {
             path: '/news/migration-guide/porsche-design-system',
             type: 'TAB',
           },
-          utilities: {
-            name: 'Utilities',
-            path: '/news/migration-guide/utilities',
-            type: 'TAB',
-          },
         },
       },
       changelog: {
