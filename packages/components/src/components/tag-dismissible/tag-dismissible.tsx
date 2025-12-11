@@ -9,15 +9,9 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import {
-  TAG_DISMISSIBLE_ARIA_ATTRIBUTES,
-  TAG_DISMISSIBLE_COLORS,
-  type TagDismissibleAriaAttribute,
-  type TagDismissibleColor,
-} from './tag-dismissible-utils';
+import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, type TagDismissibleAriaAttribute } from './tag-dismissible-utils';
 
 const propTypes: PropTypes<typeof TagDismissible> = {
-  color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
   label: AllowedTypes.string,
   compact: AllowedTypes.boolean,
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
@@ -32,9 +26,6 @@ const propTypes: PropTypes<typeof TagDismissible> = {
 })
 export class TagDismissible {
   @Element() public host!: HTMLElement;
-
-  /** Background color variations */
-  @Prop() public color?: TagDismissibleColor = 'background-surface';
 
   /** The label text. */
   @Prop() public label?: string;
