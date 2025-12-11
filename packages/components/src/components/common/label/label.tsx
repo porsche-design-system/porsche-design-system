@@ -40,7 +40,15 @@ export const Label: FunctionalComponent<LabelProps> = ({
       e.stopPropagation();
     }
     if (composedPathIncludesButton(e)) {
-     e.preventDefault();
+      e.preventDefault();
+    }
+  };
+
+  // fixes issue where pressing space or enter on e.g. popover when nested inside label which propagates a keydown event to e.g. select
+  const handleKeyDown = (e: KeyboardEvent) => {
+    const { key, code } = e;
+    if (key === ' ' || code === 'Space' || key === 'Enter') {
+      e.stopPropagation();
     }
   };
 
@@ -55,6 +63,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
           aria-disabled={isLoading || isDisabled ? 'true' : null}
           htmlFor={htmlFor}
           onClick={handleClick}
+          onKeyDown={handleKeyDown}
         >
           <Fragment>
             {label || <slot name="label" />}
