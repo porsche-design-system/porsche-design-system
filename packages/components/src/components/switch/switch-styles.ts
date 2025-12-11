@@ -142,7 +142,7 @@ export const getComponentCss = (
           })),
           buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
             getHiddenTextJssStyle(isHidden, {
-              labelPaddingTop,
+              paddingTop: labelPaddingTop,
             })
           )
         ),

@@ -1,3 +1,3 @@
 import { palette } from '../../palette';
 
-export const colorInfoLight = palette.light.blue["800"];
+export const colorInfoLight = palette.light.blue['950'];
