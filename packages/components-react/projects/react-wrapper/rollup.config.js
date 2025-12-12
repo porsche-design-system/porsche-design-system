@@ -152,6 +152,8 @@ export default [
             './cn/index': './global-styles/cn/index.css',
             './cn/font-face.css': './global-styles/cn/font-face.css',
             './cn/font-face': './global-styles/cn/font-face.css',
+            './legacy-radius.css': './global-styles/legacy-radius.css',
+            './legacy-radius': './global-styles/legacy-radius.css',
           },
           style: './global-styles/index.css',
         }),
