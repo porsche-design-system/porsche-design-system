@@ -1,1 +1,3 @@
-export { breakpointMd as breakpointM } from '@porsche-design-system/tokens';
+import { breakpointMd } from '@porsche-design-system/tokens';
+
+export const breakpointM = breakpointMd;

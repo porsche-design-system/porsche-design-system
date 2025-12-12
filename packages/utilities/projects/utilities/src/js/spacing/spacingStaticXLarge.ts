@@ -1,1 +1,3 @@
-export { spacingStaticXl as spacingStaticXLarge } from '@porsche-design-system/tokens';
+import { spacingStaticXl } from '@porsche-design-system/tokens';
+
+export const spacingStaticXLarge = spacingStaticXl;

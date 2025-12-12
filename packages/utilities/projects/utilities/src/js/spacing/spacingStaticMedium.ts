@@ -1,1 +1,3 @@
-export { spacingStaticMd as spacingStaticMedium } from '@porsche-design-system/tokens';
+import { spacingStaticMd } from '@porsche-design-system/tokens';
+
+export const spacingStaticMedium = spacingStaticMd;

@@ -1,1 +1,3 @@
-export { spacingFluidMd as spacingFluidMedium } from '@porsche-design-system/tokens';
+import { spacingFluidMd } from '@porsche-design-system/tokens';
+
+export const spacingFluidMedium = spacingFluidMd;

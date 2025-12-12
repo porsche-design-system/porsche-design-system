@@ -1,1 +1,3 @@
-export { fontSizeXs as fontSizeTextXSmall } from '@porsche-design-system/tokens';
+import { fontSizeXs } from '@porsche-design-system/tokens';
+
+export const fontSizeTextXSmall = fontSizeXs;

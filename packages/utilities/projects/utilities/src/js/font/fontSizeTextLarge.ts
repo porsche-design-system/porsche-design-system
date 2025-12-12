@@ -1,1 +1,3 @@
-export { fontSizeLg as fontSizeTextLarge } from '@porsche-design-system/tokens';
+import { fontSizeLg } from '@porsche-design-system/tokens';
+
+export const fontSizeTextLarge = fontSizeLg;

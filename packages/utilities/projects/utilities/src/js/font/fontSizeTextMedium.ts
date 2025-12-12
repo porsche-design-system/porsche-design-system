@@ -1,1 +1,3 @@
-export { fontSizeMd as fontSizeTextMedium } from '@porsche-design-system/tokens';
+import { fontSizeMd } from '@porsche-design-system/tokens';
+
+export const fontSizeTextMedium = fontSizeMd;

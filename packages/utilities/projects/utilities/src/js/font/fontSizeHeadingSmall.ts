@@ -1,1 +1,3 @@
-export { fontSizeSm as fontSizeHeadingSmall } from '@porsche-design-system/tokens';
+import { fontSizeSm } from '@porsche-design-system/tokens';
+
+export const fontSizeHeadingSmall = fontSizeSm;

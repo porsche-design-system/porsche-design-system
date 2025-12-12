@@ -1,1 +1,3 @@
-export { motionEaseInOut as motionEasingBase } from '@porsche-design-system/tokens';
+import { motionEaseInOut } from '@porsche-design-system/tokens';
+
+export const motionEasingBase = motionEaseInOut;

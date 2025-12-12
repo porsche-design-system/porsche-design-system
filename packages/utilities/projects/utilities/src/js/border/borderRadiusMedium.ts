@@ -1,1 +1,3 @@
-export { borderRadiusMd as borderRadiusMedium } from '@porsche-design-system/tokens';
+import { borderRadiusMd } from '@porsche-design-system/tokens';
+
+export const borderRadiusMedium = borderRadiusMd;

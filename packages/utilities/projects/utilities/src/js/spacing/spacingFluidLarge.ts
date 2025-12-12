@@ -1,1 +1,3 @@
-export { spacingFluidLg as spacingFluidLarge } from '@porsche-design-system/tokens';
+import { spacingFluidLg } from '@porsche-design-system/tokens';
+
+export const spacingFluidLarge = spacingFluidLg;
