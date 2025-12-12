@@ -31,9 +31,9 @@ const packageJsonExports = {
     default: './styles/cjs/index.cjs',
   },
   './styles/vanilla-extract': {
-    types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
-    import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
-    default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
+    types: './styles/vanilla-extract/esm/index.d.ts',
+    import: './styles/vanilla-extract/esm/index.mjs',
+    default: './styles/vanilla-extract/cjs/index.cjs',
   },
   './tailwindcss': {
     style: './tailwindcss/index.css',

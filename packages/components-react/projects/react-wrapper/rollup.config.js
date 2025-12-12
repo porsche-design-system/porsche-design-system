@@ -320,9 +320,9 @@ export default [
             },
             // Vanilla-Extract export
             './vanilla-extract': {
-              types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
-              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
-              default: './vanilla-extract/cjs/vanilla-extract/index.cjs',
+              types: './vanilla-extract/esm/index.d.ts',
+              import: './vanilla-extract/esm/index.mjs',
+              default: './vanilla-extract/cjs/index.cjs',
             },
           },
         },
@@ -334,11 +334,11 @@ export default [
     external,
     output: [
       {
-        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        file: `${outputDir}/styles/vanilla-extract/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        file: `${outputDir}/styles/vanilla-extract/esm/index.mjs`,
         format: 'esm',
       },
     ],
