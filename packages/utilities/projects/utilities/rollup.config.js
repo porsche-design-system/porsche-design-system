@@ -83,8 +83,9 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs',
       preserveModules: true,
+      preserveModulesRoot: 'src/vanilla-extract',
     },
-    plugins: [typescript()],
+    plugins: [...commonPlugins, typescript()],
   },
   // Vanilla-Extract Build - ESM
   {
@@ -94,12 +95,15 @@ export default [
       format: 'esm',
       entryFileNames: '[name].mjs',
       preserveModules: true,
+      preserveModulesRoot: 'src/vanilla-extract',
     },
     plugins: [
+      ...commonPlugins,
       typescript({
         declaration: true,
         declarationDir: `${outputDirVanillaExtract}/esm`,
         exclude: '**.spec.ts',
+        rootDir: 'src/vanilla-extract',
       }),
       generatePackageJson({
         outputFolder: outputDirVanillaExtract,

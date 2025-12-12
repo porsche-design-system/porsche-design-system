@@ -33,11 +33,11 @@ exports[`should match compiled getHoverStyle() with jss (styles package) 1`] = `
   margin-right: -2px;
   padding-left: 2px;
   padding-right: 2px;
-  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media(hover:hover) {
   .test:hover {
-    background: rgba(148, 149, 152, .18);
+    background: hsla(236, 6.4%, 51%, 0.148);
   }
 }
 "
@@ -50,11 +50,11 @@ exports[`should match compiled getHoverStyle() with vanilla-extract (styles/vani
   margin-right: -2px;
   padding-left: 2px;
   padding-right: 2px;
-  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 @media (hover:hover) {
   .test:hover {
-    background: rgba(148, 149, 152, .18);
+    background: hsla(236, 6.4%, 51%, 0.148);
   }
 }"
 `;
@@ -124,8 +124,8 @@ exports[`should match compiled getSkeletonStyle() with vanilla-extract (styles/v
 }
 .test {
   display: block;
-  background: #EEEFF2 linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%;
+  background: hsl(240, 7.7%, 97.5%) linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%;
   border-radius: 4px;
-  animation: test 0.6s cubic-bezier(0.25,0.1,0.25,1) infinite;
+  animation: test .6s cubic-bezier(.25,.1,.25,1) infinite;
 }"
 `;

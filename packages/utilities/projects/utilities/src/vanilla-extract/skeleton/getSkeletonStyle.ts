@@ -1,6 +1,6 @@
-import { borderRadiusSmall } from '../../js';
-import { motionDurationLong, motionEasingBase } from '../../js';
-import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../../js';
+import { borderRadiusSmall } from '../border';
+import { motionDurationLong, motionEasingBase } from '../motion';
+import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../theme';
 
 type Options = {
   theme?: Exclude<Theme, 'auto'>;
