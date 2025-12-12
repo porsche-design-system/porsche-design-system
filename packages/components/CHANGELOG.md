@@ -12,7 +12,9 @@ All notable changes to this project will be documented in this file and publishe
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v4]
+## [Unreleased]
+
+## [4.0.0-alpha.0] - 2025-12-12
 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
 and migration steps.
@@ -26,6 +28,27 @@ and migration steps.
     `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
 
 - `Divider`: value `contrast-lower` for prop `color`
+
+- `Multi Select, Select`:
+  - `selected` slot for custom selection rendering and enabling complex options
+  - `options-status` slot for loading, error and no results states when using custom filtering
+    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
+- `Multi Select, Select`:
+  - `filter` slot to allow custom asynchronous filtering
+  - `toggle` event when opening/closing the dropdown
+    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
+- `Segmented Control`: add `state` and `message` props to enable visual validation states
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
+- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
+  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
+- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
+- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 
 ### Changed
 
@@ -230,31 +253,6 @@ and migration steps.
   - `Select Wrapper` (use `Select` instead)
   - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
   - `Textarea Wrapper` (use `Textarea` instead)
-
-## [Unreleased]
-
-### Added
-
-- `Multi Select, Select`:
-  - `selected` slot for custom selection rendering and enabling complex options
-  - `options-status` slot for loading, error and no results states when using custom filtering
-    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
-- `Multi Select, Select`:
-  - `filter` slot to allow custom asynchronous filtering
-  - `toggle` event when opening/closing the dropdown
-    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
-- `Segmented Control`: add `state` and `message` props to enable visual validation states
-  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
-- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
-  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
-- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
-  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
-- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
-  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
-- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
-- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
-- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
-  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 
 ### Fixed
 
