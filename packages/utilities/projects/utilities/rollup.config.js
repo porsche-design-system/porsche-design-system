@@ -108,9 +108,9 @@ export default [
       generatePackageJson({
         outputFolder: outputDirVanillaExtract,
         baseContents: {
-          main: 'cjs/vanilla-extract/index.cjs',
-          module: 'esm/vanilla-extract/index.mjs',
-          types: 'esm/vanilla-extract/index.d.ts',
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
         },
       }),
