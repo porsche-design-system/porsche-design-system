@@ -130,7 +130,7 @@ jobs:
       - name: 'Assets'
         run: yarn build:assets
       - name: 'Styles'
-        run: yarn build:styles
+        run: yarn build:styles-prod
       - name: 'Utilities'
         run: yarn build:utilities
       - name: 'Component Meta'
