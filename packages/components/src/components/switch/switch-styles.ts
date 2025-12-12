@@ -17,20 +17,15 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { radiusFull } from '../../styles/css-variables';
 import type { AlignLabel, BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
-const {
-  primaryColor,
-  contrastMediumColor,
-  successColor,
-  frostedSoftColor,
-  successFrostedSoftColor,
-  successMediumColor,
-} = colors;
+const { primaryColor, contrastLowColor, successColor, frostedSoftColor, successFrostedSoftColor, successLowColor } =
+  colors;
 const getColors = (
   checked: boolean,
   loading: boolean
@@ -42,7 +37,7 @@ const getColors = (
   textColor: string;
 } => {
   return {
-    buttonBorderColor: checked ? successMediumColor : contrastMediumColor,
+    buttonBorderColor: checked ? successLowColor : contrastLowColor,
     buttonBorderColorHover: checked ? successColor : primaryColor,
     buttonBackgroundColor: checked ? successFrostedSoftColor : frostedSoftColor,
     toggleBackgroundColor: loading ? 'transparent' : checked ? successColor : primaryColor,
@@ -111,7 +106,7 @@ export const getComponentCss = (
         marginBlock: buttonMarginBlock,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         border: `${buttonBorderWidth} solid ${buttonBorderColor}`,
-        borderRadius: 'calc(infinity * 1px)',
+        borderRadius: radiusFull,
         background: buttonBackgroundColor,
         cursor: isDisabledOrLoading(isDisabled, isLoading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
@@ -154,7 +149,7 @@ export const getComponentCss = (
       placeContent: 'center',
       width: toggleDimension,
       height: toggleDimension,
-      borderRadius: 'calc(infinity * 1px)',
+      borderRadius: radiusFull,
       background: toggleBackgroundColor,
       transition: getTransition('transform'),
       transform: `translate3d(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX}, 0, 0)`,

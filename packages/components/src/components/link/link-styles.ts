@@ -1,8 +1,8 @@
-import { borderRadiusSmall } from '@porsche-design-system/styles';
 import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
+import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
-import { getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 
 const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
 
@@ -16,7 +16,7 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
-  compact: BreakpointCustomizable<boolean>
+  isCompact: BreakpointCustomizable<boolean>
 ): string => {
   return getCss(
     mergeDeep(
@@ -27,7 +27,7 @@ export const getComponentCss = (
         hideLabel,
         false,
         hasSlottedAnchor,
-        compact,
+        isCompact,
         cssVariableInternalLinkScaling
       ),
       {
@@ -45,7 +45,16 @@ export const getComponentCss = (
               content: '""',
               position: 'fixed',
               inset: 0,
-              borderRadius: borderRadiusSmall,
+              ...mergeDeep(
+                buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+                  borderRadius: `var(${legacyRadiusSmall}, ${compactValue ? radiusLg : radiusXl})`,
+                })),
+                buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+                  ...(hideLabelValue && {
+                    borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+                  }),
+                }))
+              ),
             },
             '&(a:focus-visible)::before': getFocusBaseStyles(),
           },

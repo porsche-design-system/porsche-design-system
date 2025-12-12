@@ -1,8 +1,9 @@
-import { borderRadiusMedium, motionDurationShort, motionEasingBase } from '@porsche-design-system/styles';
+import { motionDurationShort, motionEasingBase } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
 import { colors } from '../colors';
 import { cssVariableAnimationDuration } from '../common-styles';
+import { legacyRadiusMedium, radiusXl } from '../css-variables';
 
 const keyframesName = 'fade-in';
 
@@ -42,7 +43,7 @@ export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, o
     filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
     background: canvasColor,
     border: `1px solid ${contrastLowColor}`,
-    borderRadius: borderRadiusMedium,
+    borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`,
     '&:not(:popover-open)': {
       display: 'none',
     },

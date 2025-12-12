@@ -1,4 +1,4 @@
-import { borderRadiusSmall, borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -9,6 +9,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
@@ -65,7 +66,7 @@ export const getComponentCss = (
         padding: inputPadding,
         boxSizing: 'border-box',
         border: `${inputBorderWidth} solid ${formStateBorderColor}`,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         color: primaryColor,

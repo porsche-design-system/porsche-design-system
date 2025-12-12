@@ -1,10 +1,4 @@
-import {
-  borderRadiusSmall,
-  borderWidthThin,
-  fontLineHeight,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
@@ -16,14 +10,13 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { legacyRadiusSmall, radiusLg, radiusXl } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
-
-export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 
 /**
  * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
@@ -33,6 +26,8 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
+
+export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 
 const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
@@ -90,7 +85,7 @@ export const getFunctionalComponentInputBaseStyles = (
       boxSizing: 'border-box',
       paddingInline: wrapperPaddingInline,
       border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
-      borderRadius: borderRadiusSmall,
+      borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
       background: formStateBackgroundColor,
       color: primaryColor,
       cursor: isDisabled ? 'not-allowed' : 'text',

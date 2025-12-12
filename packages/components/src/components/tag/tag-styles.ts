@@ -1,9 +1,4 @@
-import {
-  borderRadiusSmall,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textXSmallStyle,
-} from '@porsche-design-system/styles';
+import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -14,6 +9,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusFull } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { TagVariant } from './tag-utils';
 
@@ -99,7 +95,7 @@ export const getComponentCss = (
         display: 'flex',
         gap: '2px',
         padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         font: textXSmallStyle.font,
         ...frostedGlassStyle,
         color: textColor,
@@ -124,7 +120,7 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           inset: 0,
-          borderRadius: borderRadiusSmall,
+          borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         },
         '&(a:focus-visible)::before,&(button:focus-visible)::before': getFocusBaseStyles(),
         '&(br)': {

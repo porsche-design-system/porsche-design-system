@@ -1,10 +1,4 @@
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { fontLineHeight, frostedGlassStyle, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
@@ -18,6 +12,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
+import { legacyRadiusSmall, radiusLg } from './css-variables';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -99,7 +94,7 @@ export const getLinkButtonPureStyles = (
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
         })),
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
         transition: getTransition('background-color'),
         ...(active && {
           ...frostedGlassStyle,

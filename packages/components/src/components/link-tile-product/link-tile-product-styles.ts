@@ -1,5 +1,4 @@
 import {
-  borderRadiusLarge,
   fontHyphenationStyle,
   getMediaQueryMin,
   headingSmallStyle,
@@ -21,6 +20,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusLarge, radius2Xl, radius4Xl } from '../../styles/css-variables';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
@@ -31,7 +31,7 @@ const anchorJssStyle: JssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
-  borderRadius: borderRadiusLarge,
+  borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
 };
 
 const getMultilineEllipsis = (lineClamp: number): JssStyle => {
@@ -91,7 +91,7 @@ export const getComponentCss = (
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          borderRadius: borderRadiusLarge,
+          borderRadius: `var(${legacyRadiusLarge}, ${radius2Xl})`,
           overflow: 'hidden', // needed for picture > img to have correct border-radius
         },
       }),
@@ -107,7 +107,7 @@ export const getComponentCss = (
       aspectRatio: '3/4',
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
-      borderRadius: borderRadiusLarge,
+      borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
       padding: spacingFluidSmall,
       color: primaryColor,
       backgroundColor: surfaceColor,

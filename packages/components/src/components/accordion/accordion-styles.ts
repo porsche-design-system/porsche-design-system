@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   fontFamily,
   fontLineHeight,
   fontSizeTextMedium,
@@ -21,6 +20,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import type { AccordionSize } from './accordion-utils';
@@ -80,7 +80,7 @@ export const getComponentCss = (
               content: '""',
               zIndex: -1,
               position: 'absolute',
-              borderRadius: borderRadiusSmall,
+              borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
               insetInline: '-4px',
               ...(compact
                 ? {

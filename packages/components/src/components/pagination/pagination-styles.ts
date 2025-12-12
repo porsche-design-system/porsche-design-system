@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
@@ -14,11 +13,13 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles, getFocusBaseStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -117,7 +118,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: primaryColor,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({

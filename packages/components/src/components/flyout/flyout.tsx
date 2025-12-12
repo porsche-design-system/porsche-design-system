@@ -178,8 +178,9 @@ export class Flyout {
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">
             <PrefixedTagNames.pButton
-              variant="secondary"
               class="dismiss"
+              variant="secondary"
+              compact={true}
               type="button"
               hideLabel={true}
               icon="close"

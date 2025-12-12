@@ -18,11 +18,11 @@ export const getComponentCss = (
   iconSource: string,
   variant: ButtonVariant,
   hideLabel: BreakpointCustomizable<boolean>,
-  disabled: boolean,
-  loading: boolean,
-  compact: BreakpointCustomizable<boolean>
+  isDisabled: boolean,
+  isLoading: boolean,
+  isCompact: BreakpointCustomizable<boolean>
 ): string => {
-  const disabledOrLoading = isDisabledOrLoading(disabled, loading);
+  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
 
   return getCss(
     mergeDeep(
@@ -33,7 +33,7 @@ export const getComponentCss = (
         hideLabel,
         disabledOrLoading,
         false,
-        compact,
+        isCompact,
         cssVariableInternalButtonScaling
       ),
       {
@@ -45,7 +45,7 @@ export const getComponentCss = (
             color: contrastLowColor,
           }),
         },
-        ...(loading && {
+        ...(isLoading && {
           spinner: {
             width: fontLineHeight,
             height: fontLineHeight,
@@ -58,13 +58,13 @@ export const getComponentCss = (
         }),
         label: {
           transition: getTransition('opacity'),
-          ...(loading && {
+          ...(isLoading && {
             opacity: 0, // use opacity for smooth transition between states
           }),
         },
         icon: {
           transition: getTransition('opacity'),
-          ...(loading && {
+          ...(isLoading && {
             opacity: 0, // use opacity for smooth transition between states
           }),
         },

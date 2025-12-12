@@ -1,5 +1,5 @@
 /* Auto Generated Start */
-export const borderRadiusMedium = "8px";
+export const borderRadiusMedium = "6px";
 export const borderRadiusSmall = "4px";
 export const fontFamily = "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif";
 export const fontSizeTextSmall = "1rem";
