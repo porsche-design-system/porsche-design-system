@@ -77,6 +77,14 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 + @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
 ```
 
+- If you need to keep the border-radius aligned with the Porsche App, you can enable it by importing a separate CSS
+  file.
+
+```diff
+/* src/style.css */
++ @import '@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css';
+```
+
 - Automatic FOUC handling, previously defined in `getInitialStyles()`, must be implemented manually now. See Getting
   Started for more information:
   - [Vanilla JS](/developing/vanilla-js/getting-started/#integration)

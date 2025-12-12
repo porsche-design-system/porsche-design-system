@@ -22,6 +22,8 @@ and migration steps.
 - Global Styles: mandatory CSS styles (normalize, font-face and color variables)
   - `@porsche-design-system/components-{js|angular|react|vue}/index.css`
   - `@porsche-design-system/components-{js|angular|react|vue}/cn/index.css`
+  - to enable legacy radius styles (aligned with app) import
+    `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
 
 - `Divider`: value `contrast-lower` for prop `color`
 
