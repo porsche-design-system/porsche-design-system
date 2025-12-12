@@ -982,10 +982,6 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
          */
         "value"?: string;
@@ -1589,10 +1585,6 @@ export namespace Components {
           * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
          */
         "step"?: number;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
          */
@@ -4705,10 +4697,6 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
-        /**
           * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
          */
         "value"?: string;
@@ -5408,10 +5396,6 @@ declare namespace LocalJSX {
           * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.
          */
         "step"?: number;
-        /**
-          * Controls the visual appearance of the component.
-         */
-        "theme"?: Theme;
         /**
           * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')
          */

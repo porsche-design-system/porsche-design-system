@@ -17,85 +17,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
 and migration steps.
 
-### Re-design components (early alpha)
-
-#### Common
-
-- ✅️Accordion
-- ✅Button
-- ✅Button Pure
-- ✅Button Tile (might be removed in favour of generic p-card)
-- ✅Canvas
-- ✅Carousel
-- ✅Divider
-- ✅Flag
-- ✅Icon
-- ✅Scroller
-- ✅Stepper Horizontal
-- ✅Table
-- ✅Tag
-- ✅Tag Dismissible
-- ✅Text List
-
-#### Brand
-
-- ✅Crest
-- ✅Wordmark
-- ✅Model Signature
-
-#### Feedback
-
-- ✅Banner
-- ✅Toast
-- ✅Inline Notification
-- ✅Spinner
-
-#### Navigation
-
-- ✅Link
-- ✅Link Pure
-- ✅Link Tile (might be removed in favour of generic p-card)
-- ✅Link Tile Product (might be removed in favour of generic p-card)
-- ✅Pagination
-- ✅Tabs
-- ✅Tabs Bar
-
-#### Dialog
-
-- ✅Drilldown
-- ✅Modal
-- ✅Flyout
-- ✅Sheet
-- ✅Popover
-
-#### Typography:
-
-- ✅Display
-- ✅Heading
-- ✅Text
-
-#### Form:
-
-- ✅Checkbox
-- ✅Fieldset
-- ✅Input Date
-- ✅Input Email
-- ✅Input Number
-- ✅Input Password
-- ✅Input Search
-- ✅Input Tel
-- ✅Input Text
-- ✅Input Time
-- ✅Input Url
-- ✅Multi Select
-- ✅Optgroup
-- ✅Pin Code
-- ✅Radio Group
-- ✅Segmented Control
-- ✅Select
-- ✅Switch
-- ✅Textarea
-
 ### Added
 
 - Global Styles: mandatory CSS styles (normalize, font-face and color variables)
@@ -330,9 +251,8 @@ and migration steps.
   ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
 - Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
 - `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
-- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can enter
-  ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
-
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 
 ### Fixed
 

@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,7 +8,6 @@ import {
   hasPropValueChanged,
   hasShowPickerSupport,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -38,7 +37,6 @@ const propTypes: PropTypes<typeof InputMonth> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -108,9 +106,6 @@ export class InputMonth {
 
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the number input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputMonthChangeEventDetail>;
@@ -189,8 +184,7 @@ export class InputMonth {
       this.hideLabel,
       this.state,
       this.compact,
-      this.readOnly,
-      this.theme
+      this.readOnly
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -218,7 +212,6 @@ export class InputMonth {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
@@ -226,7 +219,6 @@ export class InputMonth {
           end: (
             <PrefixedTagNames.pButtonPure
               hideLabel={true}
-              theme={this.theme}
               class="button"
               type="button"
               icon="calendar"

@@ -3,11 +3,11 @@
 import {
   type CanvasSidebarStartUpdateEventDetail,
   componentsReady,
+  PBanner,
   PButton,
   PCanvas,
   PHeading,
   PLink,
-  PBanner,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import { breakpointM } from '@porsche-design-system/styles/src/js';
@@ -15,9 +15,21 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { PDSVersionGroup, Semver, LEGACY_PDS_VERSIONS } from '@/models/pdsVersion';
-import { getCurrentPdsVersion, isMajorOnly } from '@/utils/pdsVersion';
+import { DirectionSelect } from '@/components/common/DirectionSelect';
+import { Navigation } from '@/components/common/Navigation';
+import Tabs from '@/components/common/Tabs';
+import { TextZoomSelect } from '@/components/common/TextZoomSelect';
+import { ThemeSelect } from '@/components/common/ThemeSelect';
+import { Search } from '@/components/search/Search';
+import { useDirection } from '@/hooks/useDirection';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { useTextZoom } from '@/hooks/useTextZoom';
+import type { StorefrontDirection } from '@/models/dir';
+import { LEGACY_PDS_VERSIONS, type PDSVersionGroup, type Semver } from '@/models/pdsVersion';
+import type { StorefrontTextZoom } from '@/models/textZoom';
+import type { StorefrontTheme } from '@/models/theme';
 import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
+import { getCurrentPdsVersion, isMajorOnly } from '@/utils/pdsVersion';
 
 declare global {
   interface Window {
