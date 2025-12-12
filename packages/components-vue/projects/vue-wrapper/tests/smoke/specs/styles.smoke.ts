@@ -1,5 +1,5 @@
-import * as fs from 'fs';
 import { createRequire } from 'node:module';
+import * as fs from 'fs';
 import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 
@@ -7,7 +7,7 @@ const nodeRequire = createRequire(import.meta.url);
 const ESMBuildDirStyles = path.resolve(__dirname, './../../../../../dist/vue-wrapper/styles/esm');
 const ESMBuildDirVanillaExtract = path.resolve(
   __dirname,
-  './../../../../../dist/vue-wrapper/styles/vanilla-extract/esm/vanilla-extract'
+  './../../../../../dist/vue-wrapper/styles/vanilla-extract/esm'
 );
 
 describe('style package content', () => {

@@ -19,7 +19,7 @@
     "build:subPackages:typings:partials": "tsc projects/angular-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/partials/esm --types node --skipLibCheck true",
     "build:subPackages:typings:testing": "tsc projects/angular-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/testing --types node",
     "build:subPackages:typings:tokens": "tsc projects/angular-wrapper/src/tokens/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/tokens/esm --types node",
-    "build:subPackages:typings:styles": "tsc projects/angular-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/styles/esm --types node && tsc projects/angular-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/styles/vanilla-extract/esm/vanilla-extract --types node",
+    "build:subPackages:typings:styles": "tsc projects/angular-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/styles/esm --types node && tsc projects/angular-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/styles/vanilla-extract/esm --types node",
     "build:subPackages:typings:ag-grid": "tsc projects/angular-wrapper/src/ag-grid/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/ag-grid/esm --types node",
     "build-app": "ng build demo-app --configuration=production && yarn build-app:injectPartials",
     "build-app:injectPartials": "tsx scripts/inject-partials.ts",
