@@ -1,7 +1,8 @@
-import type { ToastMessage } from '../../../projects/angular-wrapper/src/public-api';
 /**
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
+import { describe, expect, it, vi } from 'vitest';
+import type { ToastMessage } from '../../../projects/angular-wrapper/src/public-api';
 import { ToastManager } from '../../../projects/angular-wrapper/src/toast-manager';
 
 it('should instantiate a new ToastManager', () => {
@@ -17,7 +18,7 @@ describe('addMessage()', () => {
       addMessage(message: ToastMessage): void;
     };
 
-    const addMessageMock = jest.fn();
+    const addMessageMock = vi.fn();
     toastElement.addMessage = addMessageMock;
     document.body.appendChild(toastElement);
     customElements.define('p-toast', class PToast extends HTMLElement {});

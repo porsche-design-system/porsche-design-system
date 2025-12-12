@@ -14,119 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [v4]
 
-### Styles
-
-#### Tokens
-
-##### Added
-
-- `borderRadiusFull`, `borderRadiusXs (2px)`, `borderRadiusXl (12px)`, `borderRadius2Xl (16px)`,
-  `borderRadius3Xl (24px)`, `borderRadius4Xl (32px)`
-
-##### Changed
-
-- `borderRadiusMd ('8px')` => `6px`
-- `borderRadiusLg ('12px')` => `8px`
-
-### Re-design components (early alpha)
-
-#### Common
-
-- ✅️Accordion
-- ✅Button
-- ✅Button Pure
-- ✅Button Tile (might be removed in favour of generic p-card)
-- ✅Canvas
-- ✅Carousel
-- ✅Divider
-- ✅Flag
-- ✅Icon
-- ✅Scroller
-- ✅Stepper Horizontal
-- ✅Table
-- ✅Tag
-- ✅Tag Dismissible
-- ✅Text List
-
-#### Brand
-
-- ✅Crest
-- ✅Wordmark
-- ✅Model Signature
-
-#### Feedback
-
-- ✅Banner
-- ✅Toast
-- ✅Inline Notification
-- ✅Spinner
-
-#### Navigation
-
-- ✅Link
-- ✅Link Pure
-- ✅Link Tile (might be removed in favour of generic p-card)
-- ✅Link Tile Product (might be removed in favour of generic p-card)
-- ✅Pagination
-- ✅Tabs
-- ✅Tabs Bar
-
-#### Dialog
-
-- ✅Drilldown
-- ✅Modal
-- ✅Flyout
-- ✅Sheet
-- ✅Popover
-
-#### Typography:
-
-- ✅Display
-- ✅Heading
-- ✅Text
-
-#### Form:
-
-- ✅Checkbox
-- ✅Fieldset
-- ✅Input Date
-- ✅Input Email
-- ✅Input Number
-- ✅Input Password
-- ✅Input Search
-- ✅Input Tel
-- ✅Input Text
-- ✅Input Time
-- ✅Input Url
-- ✅Multi Select
-- ✅Optgroup
-- ✅Pin Code
-- ✅Radio Group
-- ✅Segmented Control
-- ✅Select
-- ✅Switch
-- ✅Textarea
+See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
+and migration steps.
 
 ### Added
 
+- Global Styles: mandatory CSS styles (normalize, font-face and color variables)
+  - `@porsche-design-system/components-{js|angular|react|vue}/index.css`
+  - `@porsche-design-system/components-{js|angular|react|vue}/cn/index.css`
+
 - `Divider`: value `contrast-lower` for prop `color`
-
-- Mandatory CSS global styles (normalize, font-face and color variables):
-
-```diff
-/* src/style.css */
-+ @import '@porsche-design-system/components-{js|angular|react|vue}';
-/* Alternative with fonts from China CDN */
-+ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
-```
-
-- Add FOUC styles
-
-```diff
-+ :not(:defined) {
-+   visibility: hidden;
-+ }
-```
 
 ### Changed
 
@@ -181,16 +78,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     to enable pagination)
   - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
     enable rewind)
-- `Link Tile`:
+- `Link Tile`, `Button Tile`:
   - changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>`
     to enable gradient)
   - removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
   - added an optional light gradient when used in light mode and gradient is enabled
   - added value `auto` for prop `aspect-ratio`
+- `Link Tile Product`:
+  - Values `3:4 | 9:16` of prop `aspect-ratio` (use `3/4 | 9/16` instead)
 
-- Tailwind CSS: Reset all default Tailwind color tokens
-- Tailwind CSS: Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class
-  only
+- Tailwind CSS:
+  - Reset all default Tailwind color tokens
+  - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
 
 ### Removed
 
@@ -203,17 +102,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now
   - Automatic FOUC handling in `getInitialStyles()`, must be implemented manually now
 
-### Removed (deprecated in v3 already)
-
 - `Accordion`:
-  - `tag` (use `heading-tag` instead)
-  - `accordionChange`
+  - prop `tag` (use `heading-tag` instead)
+  - event `accordionChange` (use `update` instead)
   - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Banner`:
   - `slot="title"` (use `slot="heading"` instead)
   - prop `persistent` (use `dismissButton` instead)
   - prop `width`
   - value `neutral` of prop `state` (use `info` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Button`, `Link`:
+  - prop `tertiary`
 - `Button Pure`:
   - prop `weight` (can't be configured anymore)
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
@@ -221,11 +121,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - prop `wrapContent` (has no effect anyway)
   - prop `disablePagination` (use `pagination` instead)
   - value `left` of prop `alignHeader` (use `start` instead)
-  - event `carouselChange` use `update` instead
+  - event `carouselChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Checkbox`:
   - event `update` (use `change` instead)
 - `Display`:
   - value `left | right` of prop `align` (use `start | end` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Divider`:
   - prop `orientation` (use `direction` instead)
   - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
@@ -233,6 +135,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - value `left | right` of prop `position` (use `start | end` instead)
 - `Heading`:
   - value `left | right` of prop `align` (use `start | end` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Icon`:
   - prop: `lazy`
   - value
@@ -241,6 +144,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Inline Notification`:
   - prop `persistent` (use `dismissButton` instead)
   - value `neutral` of prop `state` (use `info` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Link Pure`:
   - prop `weight` (can't be configured anymore)
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
@@ -280,42 +184,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Switch`:
   - value `left | right` of prop `alignLabel` (use `start | end` instead)
   - event `switchChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Table`:
   - event `sortingChange` (use `update` instead)
-- `Tabs`:
-  - prop `gradientColorScheme` (has no effect anyway)
-  - prop `gradientColor` (has no effect anyway)
-  - event `tabChange` (use `update` instead)
-- `Tabs Bar`:
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+- `Tabs`, `Tabs Bar`:
   - prop `gradientColorScheme` (has no effect anyway)
   - prop `gradientColor` (has no effect anyway)
   - value `semibold` of prop `weight` (use `semi-bold` instead)
   - event `tabChange` (use `update` instead)
+- `Tabs`
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Tag`:
-  - value
-    `background-default | neutral-contrast-high | notification-neutral | notification-warning | notification-error | notification-success`
-    of prop `color` (use
-    `background-base | primary | notification-info-soft | notification-warning-soft | notification-error-soft | notification-success-soft`
-    instead)
+  - prop `color` (use `variant` instead)
 - `Tag Dismissible`:
-  - value `background-default` of prop `color` (use `background-base` instead)
+  - prop `color`
 - `Text`
   - value `left | right` of prop `align` (use `start | end` instead)
   - value
     `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
     prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
   - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Text List`
   - prop `listType` (use `type` instead)
   - prop `orderType` (use `type` instead)
   - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
 - `Toast`:
   - value `neutral` of prop `state` (use `info` instead)
-- Components:
+- Removed Components:
   - `Button Group` (use Tailwind CSS instead,
     `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
   - `Checkbox Wrapper` (use `Checkbox` instead)
-  - `Radio Button Wrapper` (use `radio-group` instead)
+  - `Radio Button Wrapper` (use `Radio Group` instead)
   - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
   - `Link Tile Model Signature`
   - `Fieldset Wrapper` (use `Fieldset` instead)
@@ -348,6 +249,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
 - `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 
 ### Fixed
 

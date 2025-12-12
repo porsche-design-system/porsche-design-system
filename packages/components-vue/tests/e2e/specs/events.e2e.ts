@@ -253,6 +253,46 @@ test.describe('input-date', () => {
   });
 });
 
+test.describe('input-week', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-week');
+    const inputValue = page.locator('p-input-week + p');
+    const blurValue = page.locator('p-input-week + p + p');
+    const changeValue = page.locator('p-input-week + p + p + p');
+
+    await input.focus();
+    await page.locator('p-input-week input').fill('2025-W26');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: 2025-W26');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
+test.describe('input-month', () => {
+  test('should have working input, blur and change functionality', async ({ page }) => {
+    await goto(page, 'events');
+
+    const input = page.locator('p-input-month');
+    const inputValue = page.locator('p-input-month + p');
+    const blurValue = page.locator('p-input-month + p + p');
+    const changeValue = page.locator('p-input-month + p + p + p');
+
+    await input.focus();
+    await page.locator('p-input-month input').fill('2025-05');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: 2025-05');
+
+    await input.blur();
+    await expect.poll(async () => await getCounterValue(blurValue)).toBe('Blur: 1');
+
+    await expect.poll(async () => await getCounterValue(changeValue)).toBe('Change: 1');
+  });
+});
+
 test.describe('input-email', () => {
   test('should have working input, blur and change functionality', async ({ page }) => {
     await goto(page, 'events');

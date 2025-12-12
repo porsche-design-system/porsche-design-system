@@ -8,6 +8,12 @@ import type {
   InputDateInputEventDetail,
   InputDateBlurEventDetail,
   InputDateChangeEventDetail,
+  InputMonthInputEventDetail,
+  InputMonthBlurEventDetail,
+  InputMonthChangeEventDetail,
+  InputWeekInputEventDetail,
+  InputWeekBlurEventDetail,
+  InputWeekChangeEventDetail,
   InputEmailInputEventDetail,
   InputEmailBlurEventDetail,
   InputEmailChangeEventDetail,
@@ -52,6 +58,8 @@ import {
   PTabsItem,
   PTextFieldWrapper,
   PInputDate,
+  PInputMonth,
+  PInputWeek,
   PInputEmail,
   PInputNumber,
   PInputPassword,
@@ -81,6 +89,16 @@ export const EventsPage = (): JSX.Element => {
   const [inputDateValue, setInputDateValue] = useState('');
   const [inputDateBlurCounter, setInputDateBlurCounter] = useState(0);
   const [inputDateChangeCounter, setInputDateChangeCounter] = useState(0);
+
+  // PInputMonth
+  const [inputMonthValue, setInputMonthValue] = useState('');
+  const [inputMonthBlurCounter, setInputMonthBlurCounter] = useState(0);
+  const [inputMonthChangeCounter, setInputMonthChangeCounter] = useState(0);
+
+  // PInputWeek
+  const [inputWeekValue, setInputWeekValue] = useState('');
+  const [inputWeekBlurCounter, setInputWeekBlurCounter] = useState(0);
+  const [inputWeekChangeCounter, setInputWeekChangeCounter] = useState(0);
 
   // PInputEmail
   const [inputEmailValue, setInputEmailValue] = useState('');
@@ -178,6 +196,34 @@ export const EventsPage = (): JSX.Element => {
   );
   const onInputDateChange = useCallback(
     (_: CustomEvent<InputDateChangeEventDetail>) => setInputDateChangeCounter((prev) => prev + 1),
+    []
+  );
+
+  // PInputMonth
+  const onInputMonthInput = useCallback(
+    (e: CustomEvent<InputMonthInputEventDetail>) => setInputMonthValue((e.detail.target as HTMLInputElement).value),
+    []
+  );
+  const onInputMonthBlur = useCallback(
+    (_: CustomEvent<InputMonthBlurEventDetail>) => setInputMonthBlurCounter((prev) => prev + 1),
+    []
+  );
+  const onInputMonthChange = useCallback(
+    (_: CustomEvent<InputMonthChangeEventDetail>) => setInputMonthChangeCounter((prev) => prev + 1),
+    []
+  );
+
+  // PInputWeek
+  const onInputWeekInput = useCallback(
+    (e: CustomEvent<InputWeekInputEventDetail>) => setInputWeekValue((e.detail.target as HTMLInputElement).value),
+    []
+  );
+  const onInputWeekBlur = useCallback(
+    (_: CustomEvent<InputWeekBlurEventDetail>) => setInputWeekBlurCounter((prev) => prev + 1),
+    []
+  );
+  const onInputWeekChange = useCallback(
+    (_: CustomEvent<InputWeekChangeEventDetail>) => setInputWeekChangeCounter((prev) => prev + 1),
     []
   );
 
@@ -389,6 +435,34 @@ export const EventsPage = (): JSX.Element => {
         <p>Value: {inputDateValue}</p>
         <p>Blur: {inputDateBlurCounter}</p>
         <p>Change: {inputDateChangeCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PInputMonth
+          value={inputMonthValue}
+          onInput={(e) => onInputMonthInput(e as CustomEvent<InputMonthInputEventDetail>)}
+          onBlur={(e) => onInputMonthBlur(e as CustomEvent<InputMonthBlurEventDetail>)}
+          onChange={(e) => onInputMonthChange(e as CustomEvent<InputMonthChangeEventDetail>)}
+          name="month"
+          label="Month Input"
+        />
+        <p>Value: {inputMonthValue}</p>
+        <p>Blur: {inputMonthBlurCounter}</p>
+        <p>Change: {inputMonthChangeCounter}</p>
+      </div>
+
+      <div className="playground light">
+        <PInputWeek
+          value={inputWeekValue}
+          onInput={(e) => onInputWeekInput(e as CustomEvent<InputWeekInputEventDetail>)}
+          onBlur={(e) => onInputWeekBlur(e as CustomEvent<InputWeekBlurEventDetail>)}
+          onChange={(e) => onInputWeekChange(e as CustomEvent<InputWeekChangeEventDetail>)}
+          name="week"
+          label="Week Input"
+        />
+        <p>Value: {inputWeekValue}</p>
+        <p>Blur: {inputWeekBlurCounter}</p>
+        <p>Change: {inputWeekChangeCounter}</p>
       </div>
 
       <div className="playground light">

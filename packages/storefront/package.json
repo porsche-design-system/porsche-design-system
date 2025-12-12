@@ -60,7 +60,8 @@
     "@types/react-dom": "^19.2.2",
     "autoprefixer": "^10.4.21",
     "remark-gfm": "^4.0.1",
-    "cheerio": "^1.1.2"
+    "cheerio": "^1.1.2",
+    "@testing-library/jest-dom": "^6.9.1"
   },
   "peerDependencies": {
     "@axe-core/playwright": "*",

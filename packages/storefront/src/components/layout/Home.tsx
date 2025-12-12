@@ -5,13 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import AppearAnimation from './appearAnimation';
+import { useEffect, useState } from 'react';
+import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
-type HomeProps = {
-  latestPdsVersion: string;
-};
-
-export const Home = ({ latestPdsVersion }: HomeProps) => {
+export const Home = () => {
+  const [latestPdsVersion, setLatestPdsVersion] = useState<string>();
   const { isDark } = useStorefrontTheme();
+
+  useEffect(() => {
+    async function load() {
+      const list = await fetchPdsVersions();
+      setLatestPdsVersion(list[0]);
+    }
+
+    load();
+  }, []);
   return (
     <>
       <div
@@ -42,6 +50,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         >
           Welcome to the Porsche Design System
         </PDisplay>
+        {latestPdsVersion && (
         <div className="block w-full h-full relative">
           <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-medium flex justify-between items-center gap-4">
             <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
@@ -61,6 +70,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             </PLinkPure>
           </div>
         </div>
+          )}
       </div>
 
       <article className="mt-fluid-2xl col-span-full xs:col-start-4 xs:col-end-10" aria-label="Introduction">

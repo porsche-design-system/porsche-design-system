@@ -115,11 +115,6 @@ export const sitemap: Routes = {
             path: '/news/migration-guide/porsche-design-system',
             type: 'TAB',
           },
-          utilities: {
-            name: 'Utilities',
-            path: '/news/migration-guide/utilities',
-            type: 'TAB',
-          },
         },
       },
       changelog: {
@@ -240,6 +235,11 @@ export const sitemap: Routes = {
             path: '/developing/next-js/testing',
             type: 'TAB',
           },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/next-js/advanced',
+            type: 'TAB',
+          },
           faq: {
             name: 'FAQ',
             path: '/developing/next-js/faq',
@@ -302,6 +302,11 @@ export const sitemap: Routes = {
           form: {
             name: 'Form',
             path: '/developing/react-router/form',
+            type: 'TAB',
+          },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/react-router/advanced',
             type: 'TAB',
           },
           faq: {

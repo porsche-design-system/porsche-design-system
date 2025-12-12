@@ -4,9 +4,9 @@
 
 <script>
   const debugElement = document.querySelector('p-text');
-  const inputNumber = document.querySelector('p-input-date');
+  const inputDate = document.querySelector('p-input-date');
 
-  inputNumber.addEventListener('input', (e) => {
+  inputDate.addEventListener('input', (e) => {
     e.target.value = e.detail.target.value;
     setDebugText(e.detail.target.value);
   });

@@ -11,7 +11,7 @@
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/cm.js",
     "build:lib": "tsc --build tsconfig.library-entry.json",
     "test": "yarn test:unit",
-    "test:unit": "jest",
+    "test:unit": "vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
@@ -19,8 +19,7 @@
     "globby": "^11.1.0"
   },
   "peerDependencies": {
-    "jest": "*",
-    "ts-jest": "*",
+    "vitest": "*",
     "typescript": "*",
     "webpack": "*"
   },

@@ -1,0 +1,6 @@
+- text: Required and insanely super long label across multiple lines
+- textbox "Required and insanely super long label across multiple lines"
+- button "Open date picker"
+- status
+- alert
+- status

@@ -43,6 +43,8 @@ import {
   type PInputDateProps,
   PInputEmail,
   type PInputEmailProps,
+  PInputMonth,
+  type PInputMonthProps,
   PInputNumber,
   type PInputNumberProps,
   PInputPassword,
@@ -57,6 +59,8 @@ import {
   type PInputTimeProps,
   PInputUrl,
   type PInputUrlProps,
+  PInputWeek,
+  type PInputWeekProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -257,6 +261,8 @@ export type PropTypeMapping = {
   'p-input-password': PInputPasswordProps;
   'p-input-number': PInputNumberProps;
   'p-input-date': PInputDateProps;
+  'p-input-month': PInputMonthProps;
+  'p-input-week': PInputWeekProps;
   'p-input-time': PInputTimeProps;
   'p-input-search': PInputSearchProps;
   'p-input-text': PInputTextProps;
@@ -331,6 +337,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-input-password': PInputPassword,
   'p-input-number': PInputNumber,
   'p-input-date': PInputDate,
+  'p-input-month': PInputMonth,
+  'p-input-week': PInputWeek,
   'p-input-time': PInputTime,
   'p-input-search': PInputSearch,
   'p-input-text': PInputText,

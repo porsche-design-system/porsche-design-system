@@ -28,6 +28,14 @@ import { InputDateExampleComponent } from './input-date-example.component';
 import { InputDateExampleControlledComponent } from './input-date-example-controlled.component';
 import { InputDateExampleFormComponent } from './input-date-example-form.component';
 import { InputDateExampleReactiveFormComponent } from './input-date-example-reactive-form.component';
+import { InputMonthExampleComponent } from './input-month-example.component';
+import { InputMonthExampleControlledComponent } from './input-month-example-controlled.component';
+import { InputMonthExampleFormComponent } from './input-month-example-form.component';
+import { InputMonthExampleReactiveFormComponent } from './input-month-example-reactive-form.component';
+import { InputWeekExampleComponent } from './input-week-example.component';
+import { InputWeekExampleControlledComponent } from './input-week-example-controlled.component';
+import { InputWeekExampleFormComponent } from './input-week-example-form.component';
+import { InputWeekExampleReactiveFormComponent } from './input-week-example-reactive-form.component';
 import { InputEmailExampleComponent } from './input-email-example.component';
 import { InputEmailExampleControlledComponent } from './input-email-example-controlled.component';
 import { InputEmailExampleFormComponent } from './input-email-example-form.component';
@@ -146,6 +154,14 @@ export const examples = [
   InputDateExampleComponent,
   InputDateExampleFormComponent,
   InputDateExampleReactiveFormComponent,
+  InputMonthExampleControlledComponent,
+  InputMonthExampleComponent,
+  InputMonthExampleFormComponent,
+  InputMonthExampleReactiveFormComponent,
+  InputWeekExampleControlledComponent,
+  InputWeekExampleComponent,
+  InputWeekExampleFormComponent,
+  InputWeekExampleReactiveFormComponent,
   InputTimeExampleControlledComponent,
   InputTimeExampleComponent,
   InputTimeExampleReactiveFormComponent,
@@ -246,6 +262,14 @@ export * from './input-date-example.component';
 export * from './input-date-example-controlled.component';
 export * from './input-date-example-form.component';
 export * from './input-date-example-reactive-form.component';
+export * from './input-month-example.component';
+export * from './input-month-example-controlled.component';
+export * from './input-month-example-form.component';
+export * from './input-month-example-reactive-form.component';
+export * from './input-week-example.component';
+export * from './input-week-example-controlled.component';
+export * from './input-week-example-form.component';
+export * from './input-week-example-reactive-form.component';
 export * from './input-email-example.component';
 export * from './input-email-example-controlled.component';
 export * from './input-email-example-form.component';
