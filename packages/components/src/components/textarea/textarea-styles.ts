@@ -31,11 +31,11 @@ export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextarea
 
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
- * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"none"}
+ * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
  * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
- * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"none"}
- * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"0"}
- * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"none"}
+ * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"unset"}
  */
 export const getComponentCss = (
   isDisabled: boolean,

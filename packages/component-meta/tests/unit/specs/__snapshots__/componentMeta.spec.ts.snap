@@ -12396,19 +12396,19 @@ exports[`should match snapshot 1`] = `
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
       },
       "--p-textarea-field-sizing": {
-        "defaultValue": "none",
+        "defaultValue": "unset",
         "description": "Controls CSS \`field-sizing\` for textarea.",
       },
       "--p-textarea-max-height": {
-        "defaultValue": "none",
+        "defaultValue": "unset",
         "description": "Maximum height of the textarea.",
       },
       "--p-textarea-max-width": {
-        "defaultValue": "none",
+        "defaultValue": "unset",
         "description": "Maximum width of the textarea.",
       },
       "--p-textarea-min-height": {
-        "defaultValue": "0",
+        "defaultValue": "unset",
         "description": "Minimum height of the textarea.",
       },
       "--p-textarea-min-width": {

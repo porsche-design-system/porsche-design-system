@@ -20,6 +20,7 @@
   }
 
   .min-width-10rem {
+    width: min-content;
     --p-textarea-min-width: 10rem;
   }
 
@@ -447,12 +448,14 @@ Fusce commodo ipsum erat, in scelerisque nunc aliquam ut. In a sagittis nunc, in
 Ut tristique neque leo, id semper purus porttitor et. Cras gravida gravida dolor, sed fringilla elit euismod eget. Donec aliquam in velit vel vehicula. Cras semper sollicitudin tortor, ac porttitor lectus pretium eget. Vivamus massa lectus, condimentum at scelerisque vitae, venenatis eu nunc. In lectus nisi, pellentesque a vulputate tincidunt, interdum quis urna. Nam lacinia dolor felis, et ultricies ligula eleifend non. In sit amet facilisis nunc, ac sagittis purus. Donec bibendum tempus massa ut aliquet. Nunc purus risus, vulputate vel sagittis ut, accumsan nec nunc."
   ></p-textarea>
 
-  <p-textarea
-    class="field-sizing-content min-width-10rem"
-    name="some-name"
-    label="field-sizing-content min-width-10rem"
-    value="Lorem ipsum"
-  ></p-textarea>
+  <div>
+    <p-textarea
+      class="field-sizing-content min-width-10rem"
+      name="some-name"
+      label="field-sizing-content min-width-10rem"
+      value="Lorem ipsum"
+    ></p-textarea>
+  </div>
 
   <p-textarea
     class="field-sizing-content max-width-20rem"
