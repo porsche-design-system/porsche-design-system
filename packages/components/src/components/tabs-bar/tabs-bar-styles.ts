@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   fontSizeText,
   frostedGlassStyle,
   motionDurationModerate,
@@ -21,6 +20,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
@@ -69,14 +69,14 @@ export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weigh
           textAlign: 'start',
           color: primaryColor,
           cursor: 'pointer',
-          borderRadius: borderRadiusSmall,
+          borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
           zIndex: 0, // needed for ::before pseudo-element to be visible
           ...hoverMediaQuery({
             '&::before': {
               content: '""',
               position: 'absolute',
               inset: '-2px -4px',
-              borderRadius: borderRadiusSmall,
+              borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
               zIndex: -1, // Stack the pseudo-element behind the button to avoid overlay of frosted-glass effect with label text
               transition: getTransition('background-color'),
             },

@@ -1,9 +1,4 @@
-import {
-  borderRadiusSmall,
-  frostedGlassStyle,
-  spacingFluidSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
+import { frostedGlassStyle, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colors,
@@ -14,6 +9,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
@@ -68,7 +64,7 @@ export const getComponentCss = (
                 content: '""',
                 position: 'absolute',
                 inset: `${buttonBeforeOffsetVertical} ${buttonBeforeOffsetHorizontal}`,
-                borderRadius: borderRadiusSmall,
+                borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
                 transition: getTransition('background-color'),
               },

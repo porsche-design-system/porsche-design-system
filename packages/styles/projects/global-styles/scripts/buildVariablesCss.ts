@@ -3,11 +3,32 @@ import {
   prefixedCssVariableDefinitionDark,
   prefixedCssVariableDefinitionLight,
 } from '@porsche-design-system/shared-styles';
+import {
+  borderRadius2Xl,
+  borderRadius3Xl,
+  borderRadius4Xl,
+  borderRadiusFull,
+  borderRadiusLg,
+  borderRadiusMd,
+  borderRadiusSm,
+  borderRadiusXl,
+  borderRadiusXs,
+} from '@porsche-design-system/tokens';
 import * as prettier from 'prettier';
 
 export const buildVariablesCss = async () => {
   const styles = `:root {
   ${prefixedCssVariableDefinitionLight}
+
+  --p-radius-xs: ${borderRadiusXs};
+  --p-radius-sm: ${borderRadiusSm};
+  --p-radius-md: ${borderRadiusMd};
+  --p-radius-lg: ${borderRadiusLg};
+  --p-radius-xl: ${borderRadiusXl};
+  --p-radius-2xl: ${borderRadius2Xl};
+  --p-radius-3xl: ${borderRadius3Xl};
+  --p-radius-4xl: ${borderRadius4Xl};
+  --p-radius-full: ${borderRadiusFull};
 }
 .light {
   ${prefixedCssVariableDefinitionLight}

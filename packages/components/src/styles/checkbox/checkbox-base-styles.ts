@@ -1,19 +1,19 @@
-import {
-  borderRadiusSmall,
-  borderWidthThin,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-} from '@porsche-design-system/styles';
+import { borderWidthThin, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
+import { legacyRadiusSmall, radiusLg, radiusMd } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
-export const getCheckboxBaseStyles = (isDisabled: boolean, isLoading: boolean, state: FormState): JssStyle => {
+export const getCheckboxBaseStyles = (
+  isDisabled: boolean,
+  isLoading: boolean,
+  isCompact: boolean,
+  state: FormState
+): JssStyle => {
   const { formStateBackgroundColor, formStateBorderColor } = getThemedFormStateColors(state);
 
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
@@ -34,7 +34,7 @@ export const getCheckboxBaseStyles = (isDisabled: boolean, isLoading: boolean, s
     background: formStateBackgroundColor,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${checkboxBorderWidth} solid ${formStateBorderColor}`,
-    borderRadius: borderRadiusSmall,
+    borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusMd : radiusLg})`,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
     }),

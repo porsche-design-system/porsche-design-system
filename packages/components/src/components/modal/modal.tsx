@@ -179,8 +179,9 @@ export class Modal {
           <div class="modal">
             {this.dismissButton && (
               <PrefixedTagNames.pButton
-                variant="secondary"
                 class="dismiss"
+                variant="secondary"
+                compact={true}
                 type="button"
                 hideLabel={true}
                 icon="close"

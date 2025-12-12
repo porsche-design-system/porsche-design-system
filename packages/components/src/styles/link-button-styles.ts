@@ -1,9 +1,10 @@
-import { borderRadiusSmall, fontLineHeight, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/styles';
+import { fontLineHeight, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
-import { buildResponsiveStyles, hasVisibleIcon } from '../utils';
+import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   colorSchemeStyles,
   colors,
   getFocusBaseStyles,
@@ -13,6 +14,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
+import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from './css-variables';
 
 type Colors = {
   textColor: string;
@@ -63,13 +65,20 @@ export const getLinkButtonStyles = (
   return {
     '@global': {
       ':host': {
-        ...buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
-          [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
-        })),
         display: 'inline-block',
         verticalAlign: 'top',
+        ...mergeDeep(
+          buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
+            [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
+            borderRadius: addImportantToRule(`var(${legacyRadiusSmall}, ${compactValue ? radiusLg : radiusXl})`),
+          })),
+          buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+            ...(hideLabelValue && {
+              borderRadius: addImportantToRule(`var(${legacyRadiusSmall}, ${radiusFull})`),
+            }),
+          }))
+        ),
         ...addImportantToEachRule({
-          borderRadius: borderRadiusSmall,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -85,7 +94,7 @@ export const getLinkButtonStyles = (
       boxSizing: 'border-box',
       ...frostedGlassStyle,
       ...textSmallStyle,
-      borderRadius: borderRadiusSmall,
+      borderRadius: 'inherit',
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
       color: textColor,

@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   fontFamily,
   fontLineHeight,
   fontSizeTextSmall,
@@ -22,6 +21,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusFull, radiusLg } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
@@ -68,7 +68,7 @@ export const getComponentCss = (): string => {
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width/height definition based on ex-unit
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
-        borderRadius: '50%',
+        borderRadius: radiusFull,
         cursor: 'pointer',
         backgroundColor: frostedColor,
         transition: getTransition('background-color'),
@@ -109,7 +109,7 @@ export const getComponentCss = (): string => {
       boxSizing: 'border-box',
       padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
       pointerEvents: 'auto',
-      borderRadius: borderRadiusSmall,
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
       ...textSmallStyle,
       background: canvasColor,
       color: primaryColor,

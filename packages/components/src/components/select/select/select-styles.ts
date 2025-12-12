@@ -55,7 +55,7 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, cssVarInternalSelectScaling),
+        ...getButtonJssStyle('select', isOpen, isDisabled, state, isCompact, cssVarInternalSelectScaling),
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },

@@ -16,6 +16,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -67,7 +68,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         background: formStateBackgroundColor,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         border: `${radioBorderWidth} solid ${formStateBorderColor}`,
-        borderRadius: '50%',
+        borderRadius: radiusFull,
         ...(disabledOrLoading && {
           pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
         }),

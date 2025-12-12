@@ -10,6 +10,13 @@
     <script nomodule src="/build/porsche-design-system.js"></script>
     <script src="/build/porsche-design-system.esm.js" type="module"></script>
     <link rel="stylesheet" href="/assets/tailwind.css">
+    <style>
+      .legacy {
+        --_p-legacy-radius-small: 4px;
+        --_p-legacy-radius-medium: 8px;
+        --_p-legacy-radius-large: 12px;
+      }
+    </style>
   </head>
   <body>
 
@@ -218,7 +225,7 @@
         </p-button-tile>
       </div>
       <div data-card="carousel">
-        <button class="bg-frosted backdrop-blur-frosted p-fluid-sm rounded-sm transition-colors  cursor-pointer hover:bg-frosted-soft focus-visible:outline outline-focus outline-offset-2" popovertarget="popover-carousel">Show Carousel</button>
+        <button class="bg-frosted backdrop-blur-frosted p-fluid-sm rounded-xl transition-colors  cursor-pointer hover:bg-frosted-soft focus-visible:outline outline-focus outline-offset-2" popovertarget="popover-carousel">Show Carousel</button>
         <div popover id="popover-carousel" class="w-screen h-screen bg-frosted backdrop-blur-frosted space-y-fluid-lg py-fluid-lg">
           <p-carousel heading="Some heading" description="Some description" pagination="true">
             <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">Slide 1</div>
@@ -666,14 +673,14 @@
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Background Surface)</p-button>
         <p-modal background="surface" aria="{'aria-label': 'Some heading'}">
           <p-text slot="header">Some Header</p-text>
-          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some content</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-xl">Some content</p-text>
           <p-text slot="footer">Some Footer</p-text>
         </p-modal>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal (Image with Spacing)</p-button>
         <p-modal class="[--p-modal-spacing-top:300px] [--p-modal-spacing-bottom:20px]" aria="{'aria-label': 'Some heading'}">
           <div class="-mt-(--ref-p-modal-pt) -mb-(--ref-p-modal-pb) -mx-(--ref-p-modal-px)">
-            <img class="w-full h-full object-cover rounded-lg" src="/assets/interior.jpg" alt="" />
+            <img class="w-full h-full object-cover rounded-xl" src="/assets/interior.jpg" alt="" />
           </div>
         </p-modal>
 
@@ -721,7 +728,7 @@
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Background Surface)</p-button>
         <p-flyout background="surface" aria="{'aria-label': 'Some heading'}">
           <p-text slot="header">Some Header</p-text>
-          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some content</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-xl">Some content</p-text>
           <p-text slot="footer">Some Footer</p-text>
           <p-text slot="sub-footer">Some Sub Footer</p-text>
         </p-flyout>
@@ -815,7 +822,7 @@
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (Background Surface)</p-button>
         <p-sheet background="surface" aria="{'aria-label': 'Some heading'}">
           <p-heading slot="header" size="large" tag="h2">Some heading</p-heading>
-          <p-text class="p-fluid-sm bg-canvas rounded-lg">Some content</p-text>
+          <p-text class="p-fluid-sm bg-canvas rounded-xl">Some content</p-text>
         </p-sheet>
 
         <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Sheet (with image)</p-button>
@@ -1297,7 +1304,7 @@
 
     <p-heading slot="sidebar-end-header" tag="h2" size="medium">Settings</p-heading>
 
-    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', background: 'gradient', accent: '#3400f0'})">
+    <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', legacy: 'modern', background: 'gradient', accent: '#3400f0'})">
       <p-select name="theme" value="auto" label="Theme" onchange="updateRoute({theme: this.value})">
         <p-select-option value="light">Light</p-select-option>
         <p-select-option value="dark">Dark</p-select-option>
@@ -1321,6 +1328,10 @@
       <p-select name="animation" value="animated" label="Animation" onchange="updateRoute({animation: this.value})">
         <p-select-option value="animated">Animated</p-select-option>
         <p-select-option value="none">No Animation</p-select-option>
+      </p-select>
+      <p-select name="legacy" value="modern" label="Legacy" onchange="updateRoute({legacy: this.value})">
+        <p-select-option value="modern">Modern</p-select-option>
+        <p-select-option value="legacy">Legacy</p-select-option>
       </p-select>
       <p-select name="background" value="gradient" label="Background" onchange="updateRoute({'background': this.value})">
         <p-optgroup label="Colors">
@@ -1419,6 +1430,7 @@
       const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
       const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
       const getAnimation = () => new URL(document.location).searchParams.get('animation') || 'animated';
+      const getLegacy = () => new URL(document.location).searchParams.get('legacy') || 'modern';
       const getBackground = () => new URL(document.location).searchParams.get('background') || 'gradient';
       const getAccent = () => new URL(document.location).searchParams.get('accent') || '#3400f0';
       const getComponents = () => {
@@ -1454,6 +1466,7 @@
         const zoom = getZoom();
         const compact = getCompact();
         const animation = getAnimation();
+        const legacy = getLegacy();
         const background = getBackground();
         const accent = getAccent();
         const components = getComponents();
@@ -1472,6 +1485,12 @@
         // Animation
         document.documentElement.style.setProperty('--p-transition-duration', animation === 'none' ? '0s' : '');
         document.documentElement.style.setProperty('--p-animation-duration', animation === 'none' ? '0s' : '');
+        // Legacy
+        if (legacy === 'legacy') {
+          document.documentElement.classList.add('legacy');
+        } else {
+          document.documentElement.classList.remove('legacy');
+        }
         // Background
         const backgroundMap = {
           canvas: {
@@ -1523,6 +1542,7 @@
         updateInput('zoom', getZoom());
         updateInput('compact', getCompact());
         updateInput('animation', getAnimation());
+        updateInput('legacy', getLegacy());
         updateInput('background', getBackground());
         updateInput('accent', getAccent());
 

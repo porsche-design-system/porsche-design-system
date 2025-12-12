@@ -1,3 +1,9 @@
+export { borderRadius2Xl } from './borderRadius2Xl';
+export { borderRadius3Xl } from './borderRadius3Xl';
+export { borderRadius4Xl } from './borderRadius4Xl';
+export { borderRadiusFull } from './borderRadiusFull';
 export { borderRadiusLg } from './borderRadiusLg';
 export { borderRadiusMd } from './borderRadiusMd';
 export { borderRadiusSm } from './borderRadiusSm';
+export { borderRadiusXl } from './borderRadiusXl';
+export { borderRadiusXs } from './borderRadiusXs';

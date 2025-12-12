@@ -1,7 +1,8 @@
-import { borderRadiusSmall, fontLineHeight, textSmallStyle } from '@porsche-design-system/styles';
+import { fontLineHeight, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import { colors } from '../colors';
 import { getTransition } from '../common-styles';
+import { legacyRadiusSmall, radiusSm } from '../css-variables';
 
 const { primaryColor, frostedSoftColor, contrastHighColor } = colors;
 
@@ -25,7 +26,7 @@ export const getOptionJssStyle = (
     textAlign: 'start',
     wordBreak: 'break-word',
     boxSizing: 'content-box',
-    borderRadius: borderRadiusSmall,
+    borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
       background: frostedSoftColor,

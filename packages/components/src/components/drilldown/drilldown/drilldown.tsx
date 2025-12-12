@@ -150,23 +150,24 @@ export class Drilldown {
           <PrefixedTagNames.pButton
             class="dismiss-mobile"
             type="button"
-           variant="secondary"
-            hideLabel={true}
             icon="close"
+            compact={true}
+            variant="secondary"
+            hideLabel={true}
             onClick={this.dismissDialog}
           >
             Dismiss drilldown
           </PrefixedTagNames.pButton>
-          <PrefixedTagNames.pButtonPure
+          <PrefixedTagNames.pButton
             class="dismiss-desktop"
             type="button"
-            size="medium"
             icon="close"
+            variant="secondary"
             hideLabel={true}
             onClick={this.dismissDialog}
           >
             Dismiss drilldown
-          </PrefixedTagNames.pButtonPure>
+          </PrefixedTagNames.pButton>
           <div class="scroller">
             <slot />
           </div>
