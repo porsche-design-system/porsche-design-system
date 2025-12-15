@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
+  custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Checkbox`, `Radio Button Group`: New slots `start` and `end` to add custom content (e.g. `Popover`) at the start/end of the `label`
+  element ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+
 ## [4.0.0-alpha.0] - 2025-12-12
 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
@@ -28,11 +35,6 @@ and migration steps.
     `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
 
 - `Divider`: value `contrast-lower` for prop `color`
-- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
-  custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
-- `Checkbox`, `Radio Button Group`: New slots `start` and `end` to add custom content (e.g. `Popover`) at the start/end of the `label`
-  element ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
-
 - `Multi Select, Select`:
   - `selected` slot for custom selection rendering and enabling complex options
   - `options-status` slot for loading, error and no results states when using custom filtering
