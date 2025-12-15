@@ -1,0 +1,6 @@
+- text: Required
+- textbox "Required"
+- button "Open date picker"
+- status
+- alert
+- status

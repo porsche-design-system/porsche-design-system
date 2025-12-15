@@ -1,4 +1,4 @@
-import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,6 +10,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 const { primaryColor, frostedColor, contrastHighColor } = colors;
@@ -49,7 +50,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         alignItems: 'center',
         gap: buttonGap,
         padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         cursor: 'pointer',
         background: frostedColor,
         color: primaryColor,
@@ -75,7 +76,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
       padding: iconPadding,
       margin: iconMargin,
       transition: getTransition('background-color'),
-      borderRadius: borderRadiusSmall,
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
     },
     'sr-only': getHiddenTextJssStyle(),
   });

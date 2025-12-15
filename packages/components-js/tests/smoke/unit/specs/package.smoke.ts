@@ -24,6 +24,11 @@ const packageJsonExports = {
     module: './partials/esm/index.mjs',
     default: './partials/cjs/index.cjs',
   },
+  './tokens': {
+    types: './tokens/esm/index.d.ts',
+    import: './tokens/esm/index.mjs',
+    default: './tokens/cjs/index.cjs',
+  },
   './styles': {
     sass: './styles/_index.scss',
     types: './styles/esm/index.d.ts',
@@ -31,17 +36,32 @@ const packageJsonExports = {
     default: './styles/cjs/index.cjs',
   },
   './styles/vanilla-extract': {
-    types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
-    import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
-    default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
-  },
-  './tailwindcss': {
-    style: './tailwindcss/index.css',
+    types: './styles/vanilla-extract/esm/index.d.ts',
+    import: './styles/vanilla-extract/esm/index.mjs',
+    default: './styles/vanilla-extract/cjs/index.cjs',
   },
   './testing': {
     types: './testing/index.d.ts',
     default: './testing/index.cjs',
   },
+  './tailwindcss': './tailwindcss/index.css',
+  './tailwindcss/index.css': './tailwindcss/index.css',
+  './tailwindcss/index': './tailwindcss/index.css',
+  './index.css': './global-styles/index.css',
+  './index': './global-styles/index.css',
+  './font-face.css': './global-styles/font-face.css',
+  './font-face': './global-styles/font-face.css',
+  './normalize.css': './global-styles/normalize.css',
+  './normalize': './global-styles/normalize.css',
+  './variables.css': './global-styles/variables.css',
+  './variables': './global-styles/variables.css',
+  './cn': './global-styles/cn/index.css',
+  './cn/index.css': './global-styles/cn/index.css',
+  './cn/index': './global-styles/cn/index.css',
+  './cn/font-face.css': './global-styles/cn/font-face.css',
+  './cn/font-face': './global-styles/cn/font-face.css',
+  './legacy-radius.css': './global-styles/legacy-radius.css',
+  './legacy-radius': './global-styles/legacy-radius.css',
 };
 
 describe('package content', () => {
@@ -99,6 +119,7 @@ describe('package.json files', () => {
         expect(pkgJson.exports).toEqual({
           './package.json': './package.json',
           '.': {
+            style: './global-styles/index.css',
             types: './esm/index.d.ts',
             import: './esm/index.mjs',
             default: './cjs/index.cjs',
@@ -135,8 +156,14 @@ describe('package.json files', () => {
                 prob.entrypoint === '.' ||
                 prob.entrypoint === './styles' ||
                 prob.entrypoint === './styles/vanilla-extract' ||
-                prob.entrypoint === './tailwindcss' ||
-                prob.entrypoint === './ssr'))
+                prob.entrypoint === './ssr' ||
+                prob.entrypoint.includes('tailwindcss') ||
+                prob.entrypoint.includes('font-face') ||
+                prob.entrypoint.includes('normalize') ||
+                prob.entrypoint.includes('legacy-radius') ||
+                prob.entrypoint.includes('variables') ||
+                prob.entrypoint.includes('cn') ||
+                prob.entrypoint.includes('index')))
           )
       );
 

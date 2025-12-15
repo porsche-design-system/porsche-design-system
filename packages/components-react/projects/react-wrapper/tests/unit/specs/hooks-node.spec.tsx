@@ -1,9 +1,8 @@
-/**
- * @jest-environment node
- */
+// @vitest-environment node
 
-import { useBrowserLayoutEffect } from '../../../src/hooks';
 import { useEffect } from 'react';
+import { describe, expect, it } from 'vitest';
+import { useBrowserLayoutEffect } from '../../../src/hooks';
 
 describe('useBrowserLayoutEffect()', () => {
   it('should be an alias for useEffect in node', () => {

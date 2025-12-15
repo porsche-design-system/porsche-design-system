@@ -1,5 +1,4 @@
 import {
-  borderRadiusLarge,
   frostedGlassStyle,
   gridGap,
   spacingFluidLarge,
@@ -8,7 +7,8 @@ import {
   spacingStaticMedium,
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { colors, cssVariableTransitionDuration, dismissButtonJssStyle, getTransition, motionDurationMap } from './';
+import { colors, cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
+import { legacyRadiusLarge, radius3Xl, radiusXl } from './css-variables';
 
 const { backdropColor, primaryColor, canvasColor, surfaceColor, frostedColor } = colors;
 
@@ -116,7 +116,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
   };
 };
 
-export const dialogBorderRadius = borderRadiusLarge;
+export const dialogBorderRadius = `var(${legacyRadiusLarge}, ${radiusXl})`;
 export const dialogPaddingTop = spacingFluidMedium;
 export const dialogPaddingBottom = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
 export const dialogPaddingInline = spacingFluidLarge;
@@ -165,7 +165,6 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
 
 export const getDialogDismissButtonJssStyle = (): JssStyle => {
   return {
-    ...dismissButtonJssStyle,
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
@@ -235,7 +234,7 @@ export const getSlotFooterJssStyle = (): JssStyle => {
       position: 'absolute',
       inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
       background: frostedColor,
-      borderRadius: borderRadiusLarge,
+      borderRadius: radius3Xl,
       ...frostedGlassStyle,
     },
   };

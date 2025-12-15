@@ -35,10 +35,10 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Shared'
         run: yarn build:shared
-      - name: 'Assets'
-        run: yarn build:assets
       - name: 'Tokens'
         run: yarn build:tokens
+      - name: 'Assets'
+        run: yarn build:assets
       - name: 'Styles'
         run: yarn build:styles
       - name: 'Utilities'
@@ -125,12 +125,12 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Shared'
         run: yarn build:shared
-      - name: 'Assets'
-        run: yarn build:assets
       - name: 'Tokens'
         run: yarn build:tokens
+      - name: 'Assets'
+        run: yarn build:assets
       - name: 'Styles'
-        run: yarn build:styles
+        run: yarn build:styles-prod
       - name: 'Utilities'
         run: yarn build:utilities
       - name: 'Component Meta'

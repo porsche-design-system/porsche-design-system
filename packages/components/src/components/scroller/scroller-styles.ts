@@ -1,4 +1,4 @@
-import { borderRadiusSmall, dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
+import { dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -8,6 +8,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { ScrollerAlignScrollIndicator } from './scroller-utils';
 
@@ -77,7 +78,7 @@ export const getComponentCss = (
       minHeight: '28px',
       minWidth: '100%',
       verticalAlign: 'top',
-      borderRadius: borderRadiusSmall,
+      borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
       '&:focus-visible': getFocusBaseStyles(),
     },
     trigger: {

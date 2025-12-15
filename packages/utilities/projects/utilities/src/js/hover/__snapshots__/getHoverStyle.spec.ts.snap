@@ -4,7 +4,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
 {
   "@media(hover:hover)": {
     "&:hover": {
-      "background": "rgba(148, 149, 152, .18)",
+      "background": "hsla(236, 6.4%, 51%, 0.148)",
     },
   },
   "borderRadius": "6px",
@@ -12,7 +12,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+  "transition": "background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1)",
 }
 `;
 
@@ -20,7 +20,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
 {
   "@media(hover:hover)": {
     "&:hover": {
-      "background": "rgba(148, 149, 152, .18)",
+      "background": "hsla(236, 6.4%, 51%, 0.148)",
     },
   },
   "borderRadius": "8px",
@@ -28,7 +28,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+  "transition": "background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1)",
 }
 `;
 
@@ -36,7 +36,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
 {
   "@media(hover:hover)": {
     "&:hover": {
-      "background": "rgba(148, 149, 152, .18)",
+      "background": "hsla(236, 6.4%, 51%, 0.148)",
     },
   },
   "borderRadius": "4px",
@@ -44,7 +44,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+  "transition": "background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1)",
 }
 `;
 
@@ -52,7 +52,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: u
 {
   "@media(hover:hover)": {
     "&:hover": {
-      "background": "rgba(148, 149, 152, .18)",
+      "background": "hsla(236, 6.4%, 51%, 0.148)",
     },
   },
   "borderRadius": "4px",
@@ -60,6 +60,6 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: u
   "marginRight": "-2px",
   "paddingLeft": "2px",
   "paddingRight": "2px",
-  "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1)",
+  "transition": "background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1)",
 }
 `;

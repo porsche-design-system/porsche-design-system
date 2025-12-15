@@ -1,9 +1,10 @@
-import { useState } from 'react';
 import { componentsReady, PButton } from '@porsche-design-system/components-react';
-import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+import { cleanup, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
 import '@porsche-design-system/components-react/jsdom-polyfill';
+import { afterEach, beforeAll, beforeEach, expect, it } from 'vitest';
 
 const Sample = (): JSX.Element => {
   const [active, setActive] = useState(false);
@@ -18,6 +19,10 @@ const Sample = (): JSX.Element => {
 
 beforeAll(() => {
   (window as any).PDS_SKIP_FETCH = true;
+});
+
+afterEach(() => {
+  cleanup();
 });
 
 it('should return 0 when nothing is rendered', async () => {

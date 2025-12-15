@@ -649,6 +649,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (
         tagName === 'p-input-number' ||
         tagName === 'p-input-date' ||
+        tagName === 'p-input-week' ||
+        tagName === 'p-input-month' ||
         tagName === 'p-input-time' ||
         tagName === 'p-input-search' ||
         tagName === 'p-input-text' ||

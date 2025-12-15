@@ -12,6 +12,7 @@ export const metadata = {
   headings={[
     'Migrate from Porsche Design System v3 to v4',
     'Notable New Features',
+    'Planned upcoming changes in next alpha release',
     '🛠️ Setup Changes',
     '👹Breaking Changes',
     '❌ Removed Props, Slots and Events (deprecated in v3 already)',
@@ -32,7 +33,15 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
   - Redesigned form elements and buttons
   - Redesigned footer of dialog elements
   - All headings use regular as font-weight
+- Design Tokens are exposed as CSS variables (currently colors only).
+  - [Colors](/global-styles/color/examples/)
 - Theming now works by adding a `light`, `dark` or `auto` CSS class to any HTML element
+  - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
+  - [Angular](/developing/angular/advanced/#global-theme)
+  - [React](/developing/react/advanced/#global-theme)
+  - [Vue](/developing/vue/advanced/#global-theme)
+  - [Next.js](developing/next-js/advanced/#global-theme)
+  - [React Router](/developing/react-router/advanced/#global-theme)
 
 ## Planned upcoming changes in next alpha release
 
@@ -43,6 +52,9 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 - Document tokens package `@porsche-design-system/tokens`
 - Overhaul storefront documentation and examples
 - Introduce design language guidelines (Brand Guide)
+- Expose more design tokens as CSS variables (e.g. spacing, typography, shadows, etc.)
+- Review `light-dark()` and `color-scheme` and refine the theming strategy as appropriate
+- Evaluate support for streaming React Server Components using suspense
 
 ## 🛠️ Setup Changes
 
@@ -65,8 +77,22 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 + @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
 ```
 
+- If you need to keep the border-radius aligned with the Porsche App, you can enable it by importing a separate CSS
+  file.
+
+```diff
+/* src/style.css */
++ @import '@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css';
+```
+
 - Automatic FOUC handling, previously defined in `getInitialStyles()`, must be implemented manually now. See Getting
-  Started in the [Development](/developing/introduction/) section for more information.
+  Started for more information:
+  - [Vanilla JS](/developing/vanilla-js/getting-started/#integration)
+  - [Angular](/developing/angular/getting-started/#integration)
+  - [React](/developing/react/getting-started/#integration)
+  - [Vue](/developing/vue/getting-started/#integration)
+  - [Next.js](developing/next-js/getting-started/#integration)
+  - [React Router](/developing/react-router/getting-started/#integration)
 
 ```diff
 // Vanilla Js, React, Vue
@@ -74,7 +100,7 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 +   visibility: hidden;
 + }
 
-// Angular
+// Angular (Uses custom elements which are never defined like app-root, so we need to manually list the components)
 + :is(p-accordion, p-banner, p-button, prefixed-p-button,...):not(:defined) {
 +   visibility: hidden;
 + }
@@ -115,21 +141,20 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 ```
 
 ```diff
+- <p-input-text theme="light" name="some-name"></p-input-text>
++ <p-input-text class="light" name="some-name"></p-input-text>
+
 - <p-input-text theme="dark" name="some-name"></p-input-text>
 + <p-input-text class="dark" name="some-name"></p-input-text>
+
+- <p-input-text theme="auto" name="some-name"></p-input-text>
++ <p-input-text class="auto" name="some-name"></p-input-text>
 ```
 
-```diff
-// React
-- <body>
-+ <body className="dark">
--   <PorscheDesignSystemProvider theme="dark">
-+   <PorscheDesignSystemProvider>
--     <App />
--   </PorscheDesignSystemProvider>
-</body>
+#### Angular
 
-// Angular
+```diff
+// app.module.ts
 @NgModule({
   declarations: [AppComponent],
 -  imports: [BrowserModule, PorscheDesignSystemModule.load({ theme: 'dark' })],
@@ -138,31 +163,95 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+```
 
-+ <body class="dark">
+```diff
+// index.html
+- <body>
++ <body class="auto">
   <app-root></app-root>
 </body>
+```
 
-// Vue
+#### React
+
+```diff
+// src/main.tsx
+- <PorscheDesignSystemProvider theme="auto">
++ <PorscheDesignSystemProvider>
+  <App />
+</PorscheDesignSystemProvider>
+```
+
+```diff
+// index.html
+- <body>
++ <body class="auto">
+  <div id="app"></div>
+</body>
+```
+
+#### Vue
+
+```diff
+// pages/App.vue
 <template>
--  <PorscheDesignSystemProvider theme="dark">
+-  <PorscheDesignSystemProvider theme="auto">
 +  <PorscheDesignSystemProvider>
     <AppComponent />
   </PorscheDesignSystemProvider>
 </template>
+```
 
-// Next.js
-// React Router
+```diff
+// index.html
+- <body>
++ <body class="auto">
+  <div id="app"></div>
+</body>
+```
+
+#### Next.js
+
+```diff
+// app/layout.tsx
+- <body>
++ <body className="auto">
+-  <PorscheDesignSystemProvider theme="auto">
++  <PorscheDesignSystemProvider>
+    {children}
+  </PorscheDesignSystemProvider>
+</body>
+```
+
+#### React Router
+
+```diff
+// root.tsx
+
+- <body>
++ <body className="auto">
+  {children}
+  <ScrollRestoration />
+  <Scripts />
+</body>
+
+-  <PorscheDesignSystemProvider theme="auto">
++  <PorscheDesignSystemProvider>
+  <Outlet />
+</PorscheDesignSystemProvider>
 ```
 
 ## 👹Breaking Changes
 
 ### Common
 
-- Remove **slotted** Anchor Styles entirely from `p-accordion` // TODO: Add components components.
+- Removed **slotted** Anchor Styles entirely from `p-accordion`, `p-banner`, `p-carousel`, `p-display`, `p-headline`,
+  `p-inline-notification`, `p-switch`, `p-table`, `p-tabs`, `p-text` and `p-text-list`, use `p-link-pure` instead or an
+  anchor `<a>` with correct styling.
 
 ```diff
-// You can still use <a> inside components, but the default styling for anchors has been removed.
+// You can still use <a> inside components, but the default styling for anchors <a> has been removed.
 <p-accordion heading="Some Heading">
 -  <a href="/https://porsche.com">Some label</a>
 +  <p-link-pure href="https://porsche.com">Some label</p-link-pure>
@@ -279,6 +368,24 @@ export class AppModule {}
 
 - <p-link variant="ghost" href="https://porsche.com">Some label</p-link>
 + <p-link variant="secondary" href="https://porsche.com">Some label</p-link>
+```
+
+### Button Group:
+
+- Removed component `p-button-group`, use simple styles instead.
+
+```diff
+// Example using Tailwind CSS:
+- <p-button-group>
++ <div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+  <p-button variant="primary">
+    Some label
+  </p-button>
+  <p-button variant="secondary">
+    Some label
+  </p-button>
+- </p-button-group>
++ </div>
 ```
 
 ### Modal:
@@ -496,6 +603,15 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-banner state="info"></p-banner>
 ```
 
+### Button
+
+- Removed deprecated prop `tertiary`
+
+```diff
++ <p-button variant="tertiary">Some label</p-button>
++ <p-button variant="ghost">Some label</p-button>
+```
+
 ### Button Pure
 
 - Removed deprecated prop `weight`, only regular font weight will be applied.
@@ -545,7 +661,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PCarousel onCarouselChange={(e: CustomEvent<CarouselChangeEventDetail>) => {}} />
+- <PCarousel onCarouselChange={(e: CustomEvent<CarouselUpdateEventDetail>) => {}} />
 + <PCarousel onUpdate={(e: CustomEvent<CarouselUpdateEventDetail>) => {}} />
 ```
 
@@ -561,7 +677,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ### Display:
 
-- Removed deprecated value `left | right` of prop `align`, use `start | end` instead.
+- Removed deprecated values `left | right` of prop `align`, use `start | end` instead.
 
 ```diff
 - <p-display align="left"></p-display>
@@ -662,6 +778,15 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```diff
 - <p-inline-notification state="neutral"></p-inline-notification>
 + <p-inline-notification state="info"></p-inline-notification>
+```
+
+### Link
+
+- Removed deprecated prop `tertiary`
+
+```diff
++ <p-link variant="tertiary">Some label</p-link>
++ <p-link variant="ghost">Some label</p-link>
 ```
 
 ### Link Pure:
@@ -791,7 +916,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PPagination onPageChange={(e: CustomEvent<PageChangeEvent>) => {}} />
+- <PPagination onPageChange={(e: CustomEvent<PaginationUpdateEventDetail>) => {}} />
 + <PPagination onUpdate={(e: CustomEvent<PaginationUpdateEventDetail>) => {}} />
 ```
 
@@ -844,7 +969,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlChangeEvent>) => {}} />
+- <PSegmentedControl onSegmentedControlChange={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
 - <PSegmentedControl onUpdate={(e: CustomEvent<SegmentedControlUpdateEventDetail>) => {}} />
 + <PSegmentedControl onChange={(e: CustomEvent<SegmentedControlChangeEventDetail>) => {}} />
 ```
@@ -865,7 +990,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PStepperHorizontal onStepChange={(e: CustomEvent<StepChangeEvent>) => {}} />
+- <PStepperHorizontal onStepChange={(e: CustomEvent<StepperHorizontalUpdateEventDetail>) => {}} />
 + <PStepperHorizontal onUpdate={(e: CustomEvent<StepperHorizontalUpdateEventDetail>) => {}} />
 ```
 
@@ -885,7 +1010,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PSwitch onSwitchChange={(e: CustomEvent<SwitchChangeEvent>) => {}} />
+- <PSwitch onSwitchChange={(e: CustomEvent<SwitchUpdateEventDetail>) => {}} />
 + <PSwitch onUpdate={(e: CustomEvent<SwitchUpdateEventDetail>) => {}} />
 ```
 
@@ -895,7 +1020,7 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PTable onSortingChange={(e: CustomEvent<SortingChangeEvent>) => {}} />
+- <PTable onSortingChange={(e: CustomEvent<TableUpdateEventDetail>) => {}} />
 + <PTable onUpdate={(e: CustomEvent<TableUpdateEventDetail>) => {}} />
 ```
 
@@ -915,11 +1040,18 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-tabs></p-tabs>
 ```
 
+- Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
+
+```diff
+- <p-tabs weight="semibold"></p-tabs>
++ <p-tabs weight="semi-bold"></p-tabs>
+```
+
 - Removed deprecated event `tabChange`, use `update` instead.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PTabs onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
+- <PTabs onTabChange={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
 + <PTabs onUpdate={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
 ```
 
@@ -942,16 +1074,16 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 - Removed deprecated value `semibold` of prop `weight`, use `semi-bold` instead.
 
 ```diff
-- <p-tabs-bar weight="semibold"></p-tabs>
-+ <p-tabs-bar weight="semi-bold"></p-tabs>
+- <p-tabs-bar weight="semibold"></p-tabs-bar>
++ <p-tabs-bar weight="semi-bold"></p-tabs-bar>
 ```
 
 - Removed deprecated event `tabChange`, use `update` instead.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
-- <PTabsBar onTabChange={(e: CustomEvent<TabChangeEvent>) => {}} />
-+ <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEventDetail>) => {}} />
+- <PTabsBar onTabChange={(e: CustomEvent<TabsBarUpdateEventDetail>) => {}} />
++ <PTabsBar onUpdate={(e: CustomEvent<TabsBarUpdateEventDetail>) => {}} />
 ```
 
 ### Text:
@@ -1027,24 +1159,6 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 ```
 
 ## ❌ Removed Components (deprecated in v3 already)
-
-### Button Group:
-
-- Removed component `p-button-group`, use simple styles instead.
-
-```diff
-// Example using Tailwind CSS:
-- <p-button-group>
-+ <div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
-  <p-button variant="primary">
-    Some label
-  </p-button>
-  <p-button variant="secondary">
-    Some label
-  </p-button>
-- </p-button-group>
-+ </div>
-```
 
 ### Checkbox Wrapper:
 
@@ -1227,6 +1341,78 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
   `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time`, `p-input-url`
   or `p-input-week` depending on `type`.
 
+#### type="date"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="date" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-date label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="email"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="email" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-email label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="month"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="month" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-month label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="number"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="number" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-number label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="password"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="password" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-password label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="search"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="search" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-search label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="tel"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="tel" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-tel label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="text"
+
 ```diff
 - <p-text-field-wrapper label="Some label">
 -   <input type="text" name="some-name" />
@@ -1235,15 +1421,35 @@ When using Tailwind CSS with the Porsche Design System Tailwind Theme
 + <p-input-text label="Some label" name="some-name"></p-input-text>
 ```
 
+#### type="time"
+
 ```diff
 - <p-text-field-wrapper label="Some label">
--   <input type="text" name="some-name" />
+-   <input type="time" name="some-name" />
 - </p-text-field-wrapper>
 
-+ <p-input-text label="Some label" name="some-name"></p-input-text>
++ <p-input-time label="Some label" name="some-name"></p-input-text>
 ```
 
-// Add all
+#### type="url"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="url" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-url label="Some label" name="some-name"></p-input-text>
+```
+
+#### type="week"
+
+```diff
+- <p-text-field-wrapper label="Some label">
+-   <input type="week" name="some-name" />
+- </p-text-field-wrapper>
+
++ <p-input-week label="Some label" name="some-name"></p-input-text>
+```
 
 ### Textarea Wrapper
 

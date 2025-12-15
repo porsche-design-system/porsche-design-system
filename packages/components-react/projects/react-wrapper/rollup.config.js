@@ -123,9 +123,9 @@ export default [
               default: './styles/cjs/index.cjs',
             },
             './styles/vanilla-extract': {
-              types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
-              import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
-              default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
+              types: './styles/vanilla-extract/esm/index.d.ts',
+              import: './styles/vanilla-extract/esm/index.mjs',
+              default: './styles/vanilla-extract/cjs/index.cjs',
             },
             './ag-grid': {
               types: './ag-grid/esm/index.d.ts',
@@ -152,6 +152,8 @@ export default [
             './cn/index': './global-styles/cn/index.css',
             './cn/font-face.css': './global-styles/cn/font-face.css',
             './cn/font-face': './global-styles/cn/font-face.css',
+            './legacy-radius.css': './global-styles/legacy-radius.css',
+            './legacy-radius': './global-styles/legacy-radius.css',
           },
           style: './global-styles/index.css',
         }),
@@ -318,9 +320,9 @@ export default [
             },
             // Vanilla-Extract export
             './vanilla-extract': {
-              types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
-              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
-              default: './vanilla-extract/cjs/vanilla-extract/index.cjs',
+              types: './vanilla-extract/esm/index.d.ts',
+              import: './vanilla-extract/esm/index.mjs',
+              default: './vanilla-extract/cjs/index.cjs',
             },
           },
         },
@@ -332,11 +334,11 @@ export default [
     external,
     output: [
       {
-        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        file: `${outputDir}/styles/vanilla-extract/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        file: `${outputDir}/styles/vanilla-extract/esm/index.mjs`,
         format: 'esm',
       },
     ],

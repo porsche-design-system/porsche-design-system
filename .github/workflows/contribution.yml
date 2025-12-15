@@ -36,7 +36,7 @@ jobs:
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
   release:
-    if: github.ref == 'refs/heads/main'
+#    if: github.ref == 'refs/heads/main'
     name: 'Release'
     uses: ./.github/workflows/release.yml
     with:

@@ -5,7 +5,7 @@ import { TAG_NAMES } from '@porsche-design-system/shared';
  * Reflecting 'form' and 'name' as an attribute ensures it is properly handled in the form submission process when using ElementInternals API.
  */
 describe('Element Internals', () => {
-  const amountOfComponentsUsingElementInternalsApi = 18;
+  const amountOfComponentsUsingElementInternalsApi = 20;
   const componentsWithElementInternals = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasElementInternals);
 
   it('should have certain amount of components', () => {

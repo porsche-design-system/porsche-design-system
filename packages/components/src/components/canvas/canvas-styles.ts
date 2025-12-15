@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   breakpointS,
   getMediaQueryMin,
   gridGap,
@@ -17,6 +16,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 // public css classes
@@ -68,7 +68,7 @@ export const getComponentCss = (isSidebarStartOpen: boolean, isSidebarEndOpen: b
           '&(a)': {
             textDecoration: 'none',
             color: 'inherit',
-            borderRadius: borderRadiusSmall,
+            borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
           },
           '&(a:focus-visible)': getFocusBaseStyles(),
         },

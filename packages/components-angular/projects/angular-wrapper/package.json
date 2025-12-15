@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "3.31.0",
+  "version": "4.0.0-alpha.0",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "keywords": [
     "porsche",
@@ -17,7 +17,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
-    "@porsche-design-system/components-js": "3.31.0",
+    "@porsche-design-system/components-js": "4.0.0-alpha.0",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
@@ -61,9 +61,9 @@
       "default": "./styles/cjs/index.cjs"
     },
     "./styles/vanilla-extract": {
-      "types": "./styles/vanilla-extract/esm/vanilla-extract/index.d.ts",
-      "import": "./styles/vanilla-extract/esm/vanilla-extract/index.mjs",
-      "default": "./styles/vanilla-extract/cjs/vanilla-extract/index.cjs"
+      "types": "./styles/vanilla-extract/esm/index.d.ts",
+      "import": "./styles/vanilla-extract/esm/index.mjs",
+      "default": "./styles/vanilla-extract/cjs/index.cjs"
     },
     "./ag-grid": {
       "types": "./ag-grid/esm/index.d.ts",
@@ -89,7 +89,9 @@
     "./cn/index.css": "./global-styles/cn/index.css",
     "./cn/index": "./global-styles/cn/index.css",
     "./cn/font-face.css": "./global-styles/cn/font-face.css",
-    "./cn/font-face": "./global-styles/cn/font-face.css"
+    "./cn/font-face": "./global-styles/cn/font-face.css",
+    "./legacy-radius.css": "./global-styles/legacy-radius.css",
+    "./legacy-radius": "./global-styles/legacy-radius.css"
   },
   "style": "./global-styles/index.css"
 }

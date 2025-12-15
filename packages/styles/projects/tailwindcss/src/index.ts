@@ -1,9 +1,15 @@
 import { cssVariableDefinitionDark, cssVariableDefinitionLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
+  borderRadius2Xl,
+  borderRadius3Xl,
+  borderRadius4Xl,
+  borderRadiusFull,
   borderRadiusLg,
   borderRadiusMd,
   borderRadiusSm,
+  borderRadiusXl,
+  borderRadiusXs,
   borderWidthRegular,
   borderWidthThin,
   breakpoint2Xl,
@@ -115,9 +121,15 @@ export const getTailwindcssTheme = () => {
   --spacing-static-2xl: ${spacingStatic2Xl};
 
   /* Border */
+  --radius-xs: ${borderRadiusXs};
   --radius-sm: ${borderRadiusSm};
   --radius-md: ${borderRadiusMd};
   --radius-lg: ${borderRadiusLg};
+  --radius-xl: ${borderRadiusXl};
+  --radius-2xl: ${borderRadius2Xl};
+  --radius-3xl: ${borderRadius3Xl};
+  --radius-4xl: ${borderRadius4Xl};
+  --radius-full: ${borderRadiusFull};
 
   --default-border-width: ${borderWidthThin};
   --border-width-regular: ${borderWidthRegular};

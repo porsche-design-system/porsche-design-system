@@ -8,13 +8,12 @@ import {
   spacingFluidXSmall,
   spacingStaticSmall,
 } from '@porsche-design-system/styles';
-import { colorFrostedDark, colorPrimaryDark } from '@porsche-design-system/tokens';
+import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   colors,
   cssVariableTransitionDuration,
-  dismissButtonJssStyle,
   getAnimation,
   getTransition,
   hostHiddenStyles,
@@ -244,7 +243,6 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
     },
     'dismiss-mobile': {
       [mediaQueryMobile]: {
-        ...dismissButtonJssStyle,
         width: 'fit-content',
         height: 'fit-content',
         placeSelf: 'start end',
@@ -262,8 +260,9 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
       },
       [mediaQueryDesktop]: {
         // TODO: we need to expose color variables for button-pure to be able to use the correct colors in drilldown
-        '--color-primary': colorPrimaryDark,
-        '--color-frosted': colorFrostedDark,
+        '--p-color-primary': colorPrimaryDark,
+        '--p-color-frosted': colorFrostedDark,
+        '--p-color-frosted-soft': colorFrostedSoftDark,
         position: 'absolute',
         insetInlineStart: `calc(100% + ${spacingFluidSmall})`,
         insetBlockStart: spacingFluidSmall,

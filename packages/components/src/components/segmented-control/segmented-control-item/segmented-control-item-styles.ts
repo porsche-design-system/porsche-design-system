@@ -1,5 +1,4 @@
 import {
-  borderRadiusSmall,
   borderWidthBase,
   borderWidthThin,
   fontLineHeight,
@@ -16,6 +15,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { legacyRadiusSmall, radiusLg, radiusXl } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
@@ -57,7 +57,7 @@ export const getScalableItemStyles = (
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
 export const getComponentCss = (
-  compact: boolean,
+  isCompact: boolean,
   isDisabled: boolean,
   isSelected: boolean,
   state: SegmentedControlState,
@@ -66,7 +66,7 @@ export const getComponentCss = (
 ): string => {
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
-  const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
+  const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, isCompact);
 
   return getCss({
     '@global': {
@@ -88,7 +88,7 @@ export const getComponentCss = (
         minWidth: dimension,
         padding: padding,
         border: `${borderWidthThin} solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: primaryColor,
         ...textSmallStyle,

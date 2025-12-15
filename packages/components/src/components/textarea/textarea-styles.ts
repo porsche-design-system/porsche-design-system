@@ -1,10 +1,4 @@
-import {
-  borderRadiusSmall,
-  borderWidthThin,
-  fontLineHeight,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -16,6 +10,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusSmall, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
@@ -69,7 +64,7 @@ export const getComponentCss = (
         display: 'block',
         resize,
         border: `${borderWidthThin} solid ${formStateBorderColor}`,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: primaryColor,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.

@@ -18,7 +18,7 @@
     "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials/esm --types node --skipLibCheck true",
     "build:subPackages:typings:testing": "tsc projects/vue-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
     "build:subPackages:typings:tokens": "tsc projects/vue-wrapper/src/tokens/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/tokens/esm --types node",
-    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node && tsc projects/vue-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/vanilla-extract/esm/vanilla-extract --types node",
+    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node && tsc projects/vue-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/vanilla-extract/esm --types node",
     "build:subPackages:typings:ag-grid": "tsc projects/vue-wrapper/src/ag-grid/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/ag-grid/esm --types node",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.mts",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
@@ -32,7 +32,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.31.0",
+    "@porsche-design-system/components-vue": "4.0.0-alpha.0",
     "vue": "^3.5.22",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.1"
@@ -45,7 +45,6 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.1.1",
     "@vue/tsconfig": "0.8.1",
-    "@vue/vue3-jest": "29.2.6",
     "ag-grid-community": "34.2.0",
     "ag-grid-enterprise": "34.2.0",
     "ag-grid-vue3": "34.2.0",

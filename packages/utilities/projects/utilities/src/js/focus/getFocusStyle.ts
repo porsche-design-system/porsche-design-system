@@ -9,7 +9,7 @@ export type Options = {
   borderRadius?: BorderRadius | string;
 };
 
-export const getFocusStyles = (borderRadius: Options['borderRadius'] = 'small') => {
+const getFocusStyles = (borderRadius: Options['borderRadius'] = 'small') => {
   const borderRadiusValue =
     borderRadius === 'small'
       ? borderRadiusSmall
@@ -23,7 +23,7 @@ export const getFocusStyles = (borderRadius: Options['borderRadius'] = 'small') 
   };
 };
 
-export const getFocusNestedStyles = (offset: Options['offset'] = '2px') => {
+const getFocusNestedStyles = (offset: Options['offset'] = '2px') => {
   const outlineOffset = offset === 'small' ? '2px' : offset === 'none' ? 0 : offset || '2px';
   return {
     '&:focus': {

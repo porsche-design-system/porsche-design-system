@@ -65,7 +65,7 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
-        ...getCheckboxBaseStyles(isDisabled, isLoading, state),
+        ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
         '&:checked': getCheckboxCheckedBaseStyles(isLoading),
         '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading),
         '&:focus-visible': getFocusBaseStyles(),

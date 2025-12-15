@@ -1,5 +1,4 @@
 import {
-  borderRadiusLarge,
   gradientToBottomStyle,
   gradientToTopStyle,
   spacingFluidLarge,
@@ -16,6 +15,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusLarge, radius4Xl } from '../../styles/css-variables';
 import { getFontSizeText } from '../../styles/font-size-text-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -119,7 +119,7 @@ export const getComponentCss = (
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      borderRadius: borderRadiusLarge,
+      borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue,
       })),
@@ -131,14 +131,14 @@ export const getComponentCss = (
           ...(isTopAligned
             ? {
                 gridArea: '1/1/3/-1',
-                background: gradientToBottomStyle.background.replaceAll('0, 0%, 0%,', `from ${canvasColor} h s l / `),
+                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${canvasColor} h s l / `),
                 marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderStartStartRadius: 'inherit',
                 borderStartEndRadius: 'inherit',
               }
             : {
                 gridArea: '4/1/6/-1',
-                background: gradientToTopStyle.background.replaceAll('0, 0%, 0%,', `from ${canvasColor} h s l / `),
+                background: gradientToTopStyle.background.replaceAll('0,0%,0%,', `from ${canvasColor} h s l / `),
                 marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderEndStartRadius: 'inherit',
                 borderEndEndRadius: 'inherit',

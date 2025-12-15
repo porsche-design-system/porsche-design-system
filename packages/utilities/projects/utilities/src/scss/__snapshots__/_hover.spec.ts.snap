@@ -11,7 +11,7 @@ exports[`pds-hover() > should return correct css for opts: { borderRadius: '6px'
 }
 @media (hover: hover) {
   div:hover {
-    background: rgba(148, 149, 152, 0.18);
+    background: hsla(236, 6.4%, 51%, 0.148);
   }
 }"
 `;
@@ -27,7 +27,7 @@ exports[`pds-hover() > should return correct css for opts: { borderRadius: 'medi
 }
 @media (hover: hover) {
   div:hover {
-    background: rgba(148, 149, 152, 0.18);
+    background: hsla(236, 6.4%, 51%, 0.148);
   }
 }"
 `;
@@ -43,7 +43,7 @@ exports[`pds-hover() > should return correct css for opts: { borderRadius: 'smal
 }
 @media (hover: hover) {
   div:hover {
-    background: rgba(148, 149, 152, 0.18);
+    background: hsla(236, 6.4%, 51%, 0.148);
   }
 }"
 `;
@@ -59,7 +59,7 @@ exports[`pds-hover() > should return correct css for opts: {} 1`] = `
 }
 @media (hover: hover) {
   div:hover {
-    background: rgba(148, 149, 152, 0.18);
+    background: hsla(236, 6.4%, 51%, 0.148);
   }
 }"
 `;

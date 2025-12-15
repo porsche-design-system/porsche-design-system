@@ -1,6 +1,4 @@
 import {
-  borderRadiusLarge,
-  borderRadiusSmall,
   getMediaQueryMin,
   gridBasicOffset,
   gridExtendedOffset,
@@ -26,6 +24,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { legacyRadiusLarge, radius4Xl, radiusFull } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
@@ -123,7 +122,7 @@ export const getComponentCss = (
       ...addImportantToEachRule({
         '::slotted': {
           '&(*)': {
-            borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+            borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
           },
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
@@ -226,7 +225,7 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+        borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
         '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
@@ -276,7 +275,7 @@ export const getComponentCss = (
           },
           position: 'relative',
         },
-        borderRadius: borderRadiusSmall,
+        borderRadius: radiusFull,
         background: contrastMediumColor,
         ...(isInfinitePagination
           ? {

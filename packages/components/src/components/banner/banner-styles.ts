@@ -1,5 +1,4 @@
 import {
-  borderRadiusMedium,
   dropShadowHighStyle,
   getMediaQueryMin,
   gridExtendedOffsetBase,
@@ -19,6 +18,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getBannerPopoverResetStyles } from '../../styles/banner-popover-reset-styles';
+import { legacyRadiusMedium, radiusXl } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 /**
@@ -42,7 +42,7 @@ export const getComponentCss = (isOpen: boolean): string => {
           inset: `auto ${gridExtendedOffsetBase} var(${cssVariableBottom},${topBottomFallback})`,
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           ...dropShadowHighStyle,
-          borderRadius: borderRadiusMedium, // needed for rounded box-shadow
+          borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`, // needed for rounded box-shadow
           '&::backdrop': {
             display: 'none',
           },

@@ -1,10 +1,4 @@
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingFluidXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { fontLineHeight, frostedGlassStyle, spacingFluidXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens';
 import type { JssStyle } from 'jss';
 import {
@@ -18,6 +12,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { legacyRadiusSmall, radiusFull } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
@@ -71,7 +66,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         font: textSmallStyle.font,
         fontSize: 'inherit', // necessary because of all: unset
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         ...(isStateCurrent && {
           ...frostedGlassStyle,
           background: frostedColor,

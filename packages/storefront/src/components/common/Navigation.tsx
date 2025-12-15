@@ -11,13 +11,18 @@ import React, { useEffect, useState } from 'react';
 import { VersionSelect } from '@/components/common/VersionSelect';
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
+import { PDSVersionGroup } from '@/models/pdsVersion';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
   acc[section] = false;
   return acc;
 }, {});
 
-export const Navigation = () => {
+type NavigationProps = {
+  readonly pdsVersion: PDSVersionGroup;
+};
+
+export const Navigation = ({ pdsVersion }: NavigationProps) => {
   const pathname = usePathname();
   const [openSections, setOpenSections] = useState<{ [key: keyof typeof sitemap]: boolean }>(initialAccordionState);
 
@@ -75,7 +80,7 @@ export const Navigation = () => {
       </nav>
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
-        <VersionSelect />
+        {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
         <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
           brand.porsche.com
         </PLinkPure>
