@@ -61,8 +61,6 @@ test.describe('bootstrapping with .com and .cn domains', () => {
     const cdnDomain = 'cdn.ui.porsche.com';
     const baseUrl = `https://${cdnDomain}/porsche-design-system`;
 
-    console.log(responses);
-
     expect(requests.length).toBe(responses.length);
     expect(responses.filter(isStatusNot200).length).toBe(0);
     expect(responses.filter(urlIncludes(cdnDomain)).length).toBe(responses.length);
