@@ -42,7 +42,7 @@ jobs:
     with:
       image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
-      - deploy
+      - build
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
