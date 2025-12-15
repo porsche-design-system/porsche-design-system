@@ -1,5 +1,9 @@
 name: 'Release'
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 on:
   workflow_call:
     inputs:
@@ -100,7 +104,7 @@ jobs:
       - name: 'Publish'
         run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          # NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-angular:
     name: 'NPM (Components Angular)'

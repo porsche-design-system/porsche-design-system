@@ -16,10 +16,10 @@ publish_npmjs() {
   echo "task: [$(date)] \"publish_npmjs\" (${PACKAGE_LOCATION})"
 
   if [[ ${NPM_TAG_NAME} ]]; then
-    result=$(yarn publish --tag ${NPM_TAG_NAME} --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
+    result=$(npm publish --tag ${NPM_TAG_NAME} --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
   else
     # tagged with "latest"
-    result=$(yarn publish --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
+    result=$(npm publish --non-interactive --registry=https://registry.npmjs.org/ --access public "${PACKAGE_LOCATION}")
   fi
 
   if [[ ${result} == *"Done"* ]]; then
