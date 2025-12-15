@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       image:
-        description: 'Docker image to be used in workflow.'
+        description: 'Docker image to be used in workflow'
         required: true
         type: string
     secrets:
