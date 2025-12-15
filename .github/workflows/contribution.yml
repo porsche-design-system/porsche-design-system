@@ -9,6 +9,10 @@ on:
       - housekeeping/*
       - release/*
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   build:
     name: 'Build'
