@@ -253,7 +253,7 @@ export const Home = () => {
             compact={true}
             gradient={false}
             aspectRatio="16/9"
-            className="dark bg-surface rounded-lg"
+            className="dark bg-surface rounded-4xl"
           >
             <Image src="assets/accessibility.png" alt="" width={2036} height={1144} />
           </PLinkTile>
