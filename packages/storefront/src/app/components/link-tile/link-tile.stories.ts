@@ -32,7 +32,7 @@ export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
 
 export const linkTileStory: Story<'p-link-tile'> = {
   state: {
-    properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+    properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description', gradient: true },
     slots: {
       header: linkTileSlotStory.header.basic,
       footer: linkTileSlotStory.footer.basic,
