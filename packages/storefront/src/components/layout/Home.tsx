@@ -4,7 +4,10 @@ import { PHeading, PLink, PLinkPure, PLinkTile, PText } from '@porsche-design-sy
 import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
-import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
+import {
+  localPorscheDesignSystemMajorVersion,
+  localPorscheDesignSystemVersion,
+} from '@/utils/porscheDesignSystemVersion';
 import AppearAnimation from './appearAnimation';
 
 export const Home = () => {
@@ -34,7 +37,7 @@ export const Home = () => {
         </video>
 
         <h1 className="dark opacity-70 prose-display-md text-primary z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-[768px]">
-          Welcome to the Porsche Design System <b>v4</b>
+          Welcome to the Porsche Design System <b>v{localPorscheDesignSystemMajorVersion}</b>
         </h1>
         <div className="block w-full h-full relative dark">
           <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-4xl shadow-medium flex justify-between items-center gap-4">
