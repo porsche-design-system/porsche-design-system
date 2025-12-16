@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PLinkPure } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
+import { majorVersion } from '@/utils/majorVersion';
 
 export const metadata = {
   title: 'Patterns: AI-Tag - Porsche Design System',
@@ -19,16 +20,16 @@ the presence of **"AI-generated"** or **"AI-modified"** contents within the appl
 <div className="flex flex-wrap gap-static-md">
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://github.com/porsche-design-system/examples/tree/v3/patterns/src/ai-tag/1">Source Code</Link>
+    <Link href={`https://github.com/porsche-design-system/examples/tree/${majorVersion}/patterns/src/ai-tag/1`}>Source Code</Link>
   </PLinkPure>
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://porsche-design-system.github.io/examples/v3/patterns/ai-tag/1">View Fullscreen</Link>
+    <Link href={`https://porsche-design-system.github.io/examples/${majorVersion}/patterns/ai-tag/1`}>View Fullscreen</Link>
   </PLinkPure>
 </div>
 
 <iframe
   className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
   title="AI-Tag Variant 1"
-  src="https://porsche-design-system.github.io/examples/v3/patterns/ai-tag/1"
+  src={`https://porsche-design-system.github.io/examples/${majorVersion}/patterns/ai-tag/1`}
 />

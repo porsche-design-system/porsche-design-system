@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PLinkPure } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
+import { majorVersion } from '@/utils/majorVersion';
 
 export const metadata = {
   title: 'React: Form - Porsche Design System',
@@ -30,17 +31,17 @@ A complete example of how to integrate form components with React can be explore
 <div className="flex flex-wrap gap-static-md mt-fluid-lg">
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://github.com/porsche-design-system/examples/tree/v3/frameworks/react">Source Code</Link>
+    <Link href={`https://github.com/porsche-design-system/examples/tree/${majorVersion}/frameworks/react`}>Source Code</Link>
   </PLinkPure>
   <PLinkPure icon="external">
-    <Link href="https://porsche-design-system.github.io/examples/v3/react">View Fullscreen</Link>
+    <Link href={`https://porsche-design-system.github.io/examples/${majorVersion}/react`}>View Fullscreen</Link>
   </PLinkPure>
 </div>
 
 <iframe
   className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
   title="React: Demo application"
-  src="https://porsche-design-system.github.io/examples/v3/react"
+  src={`https://porsche-design-system.github.io/examples/${majorVersion}/react`}
 />
 
 ## Manual State Management (Preferred)
