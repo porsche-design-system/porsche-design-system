@@ -4,7 +4,7 @@ import { PHeading, PLink, PLinkPure, PLinkTile, PText } from '@porsche-design-sy
 import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
-import { fullVersion } from '@/utils/majorVersion';
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 import AppearAnimation from './appearAnimation';
 
 export const Home = () => {
@@ -42,11 +42,14 @@ export const Home = () => {
             <div className="flex flex-col prose-text-sm">
               <b>Release Note</b>
               <span className="text-contrast-medium">
-                Checkout the release <code className="bg-frosted">{fullVersion}</code>
+                Checkout the release <code className="bg-frosted">{localPorscheDesignSystemVersion}</code>
               </span>
             </div>
             <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-              <Link href="/news/changelog/" aria-label={`Release Note: Checkout the release ${fullVersion}`} />
+              <Link
+                href="/news/changelog/"
+                aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
+              />
             </PLink>
           </div>
         </div>
