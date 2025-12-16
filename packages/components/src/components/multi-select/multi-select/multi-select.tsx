@@ -319,7 +319,7 @@ export class MultiSelect {
           {hasCustomSelectedSlot ? (
             <slot name="selected"></slot>
           ) : (
-            <span>{this.selectedOptions.map((option) => option.textContent).join(', ')}</span>
+            <span>{this.selectedOptions.map((option) => (option.textContent ?? '').toString().trim()).join(', ')}</span>
           )}
           {this.value.length > 0 && (
             <PrefixedTagNames.pButtonPure

@@ -111,7 +111,7 @@ export class Textarea {
   /** Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The number of rows of the textarea. */
+  /** The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'. */
   @Prop() public rows?: number = 7;
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */

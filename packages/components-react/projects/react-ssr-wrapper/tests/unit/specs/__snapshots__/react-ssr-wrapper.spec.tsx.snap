@@ -24170,6 +24170,11 @@ exports[`should render dsr component for PTextarea 1`] = `
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -24183,7 +24188,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

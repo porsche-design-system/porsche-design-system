@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -13,172 +13,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
-}
-textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
-}
-@media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
-  }
-}
-
-.root {
-  display: grid;
-  gap: 4px;
-}
-.wrapper {
-  display: grid;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}
-@media(min-width:480px) {
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-}
-
-@media(min-width:760px) {
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-}
-
-@media(min-width:1000px) {
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-}
-
-@media(min-width:1300px) {
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-}
-
-@media(min-width:1760px) {
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, theme: vertical 2`] = `
-":host {
-  display: block;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-textarea {
-  resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -192,7 +31,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #FBFCFF;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -332,7 +170,7 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -345,6 +183,181 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
+}
+textarea:focus {
+  border-color: #010205;
+}
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
+}
+@media(hover:hover) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
+  }
+}
+
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  display: grid;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+@media(min-width:480px) {
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+@media(min-width:760px) {
+  .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+}
+
+@media(min-width:1000px) {
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+@media(min-width:1300px) {
+  .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+}
+
+@media(min-width:1760px) {
+  .label {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, resize: vertical, theme: light 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+textarea {
+  resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -358,7 +371,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -434,7 +446,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -447,6 +459,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -460,7 +477,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -536,7 +552,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -549,6 +565,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -562,7 +583,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -660,7 +680,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -673,6 +693,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -686,7 +711,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -784,7 +808,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -797,6 +821,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -810,7 +839,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -886,7 +914,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -899,6 +927,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -912,7 +945,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1011,7 +1043,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1024,6 +1056,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1037,7 +1074,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1113,7 +1149,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1126,6 +1162,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1139,7 +1180,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1215,7 +1255,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1228,6 +1268,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1241,7 +1286,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1339,7 +1383,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1352,6 +1396,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1365,7 +1414,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1463,7 +1511,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1476,6 +1524,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1489,7 +1542,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1565,7 +1617,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1578,6 +1630,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1591,7 +1648,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1667,7 +1723,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1680,6 +1736,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1693,7 +1754,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1791,7 +1851,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, theme: vertical 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1804,6 +1864,11 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -1817,7 +1882,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
