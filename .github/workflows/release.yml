@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       image:
-        description: 'Docker image to be used in workflow.'
+        description: 'Docker image to be used in workflow'
         required: true
         type: string
     secrets:
@@ -107,7 +107,7 @@ jobs:
     name: 'NPM (Components Angular)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
     container:
@@ -137,7 +137,7 @@ jobs:
     name: 'NPM (Components React)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
     container:
@@ -167,7 +167,7 @@ jobs:
     name: 'NPM (Components Vue)'
     needs:
       - check-publication-status
-      - npm-components-js
+      # - npm-components-js
     if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
     container:
