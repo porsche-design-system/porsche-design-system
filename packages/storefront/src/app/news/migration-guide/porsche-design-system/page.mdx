@@ -168,7 +168,7 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="auto">
++ <body class="dark">
   <app-root></app-root>
 </body>
 ```
@@ -177,7 +177,7 @@ export class AppModule {}
 
 ```diff
 // src/main.tsx
-- <PorscheDesignSystemProvider theme="auto">
+- <PorscheDesignSystemProvider theme="dark">
 + <PorscheDesignSystemProvider>
   <App />
 </PorscheDesignSystemProvider>
@@ -186,7 +186,7 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="auto">
++ <body class="dark">
   <div id="app"></div>
 </body>
 ```
@@ -196,7 +196,7 @@ export class AppModule {}
 ```diff
 // pages/App.vue
 <template>
--  <PorscheDesignSystemProvider theme="auto">
+-  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
     <AppComponent />
   </PorscheDesignSystemProvider>
@@ -206,7 +206,7 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="auto">
++ <body class="dark">
   <div id="app"></div>
 </body>
 ```
@@ -216,8 +216,8 @@ export class AppModule {}
 ```diff
 // app/layout.tsx
 - <body>
-+ <body className="auto">
--  <PorscheDesignSystemProvider theme="auto">
++ <body className="dark">
+-  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
     {children}
   </PorscheDesignSystemProvider>
@@ -230,13 +230,13 @@ export class AppModule {}
 // root.tsx
 
 - <body>
-+ <body className="auto">
++ <body className="dark">
   {children}
   <ScrollRestoration />
   <Scripts />
 </body>
 
--  <PorscheDesignSystemProvider theme="auto">
+-  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
   <Outlet />
 </PorscheDesignSystemProvider>
