@@ -69,17 +69,15 @@ export const getComponentCss = (
         display: 'block',
         resize,
         fieldSizing: 'var(--p-textarea-field-sizing, unset)',
-        minWidth: `var(--p-textarea-min-width, 2ch)`,
+        minWidth: `var(--p-textarea-min-width, 2ch)`, // to show at least 2 characters in very narrow containers
         maxWidth: 'var(--p-textarea-max-width, unset)',
-        minHeight: 'var(--p-textarea-min-height, unset)',
+        minHeight: `var(--p-textarea-min-height, ${textareaMinHeight})`,
         maxHeight: 'var(--p-textarea-max-height, unset)',
         border: `${borderWidthThin} solid ${formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: primaryColor,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-        minWidth: '2ch', // to show at least 2 characters in very narrow containers
-        minHeight: textareaMinHeight,
         boxSizing: 'border-box',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         font: textSmallStyle.font,
