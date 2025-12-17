@@ -1,6 +1,7 @@
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Next.js: Getting started - Porsche Design System',
@@ -24,7 +25,7 @@ System, follow these steps. This guide is based on the following dependencies:
   {/* prettier-ignore */}
   <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-react@3</PTag>
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-react@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash

@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Angular: Getting started - Porsche Design System',
@@ -21,7 +22,7 @@ This guide is based on the following dependencies:
   {/* prettier-ignore */}
   <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-angular@3</PTag>
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-angular@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash
