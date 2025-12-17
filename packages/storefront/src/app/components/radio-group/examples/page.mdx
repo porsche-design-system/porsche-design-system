@@ -39,9 +39,10 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
-Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
-named slot is used (because a property definition is preferred over a named slot). For named slots only
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message` **or**
+adding additional markup (e.g. `popover`) at the start/end of a `label`. Therefore, a named slot can be used. Make sure
+**not** to define the corresponding property on the host element when a named slot is used (because a property
+definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
 

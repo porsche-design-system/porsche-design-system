@@ -1,6 +1,7 @@
 import type { JssStyle } from 'jss';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { colors } from '../colors';
+import { cssVarCheckboxIconColor } from './checkbox-css-vars';
 
 const { primaryColor } = colors;
 
@@ -17,7 +18,7 @@ export const getCheckboxCheckedBaseStyles = (isLoading: boolean): JssStyle => {
     '&::before': {
       WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
       mask: `${checkedIcon} center/contain no-repeat`,
-      backgroundColor: primaryColor,
+      backgroundColor: `var(${cssVarCheckboxIconColor}, ${primaryColor})`,
     },
   };
 };
