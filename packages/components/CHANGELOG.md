@@ -20,6 +20,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 - `Checkbox`, `Radio Button Group`: New slots `start` and `end` to add custom content (e.g. `Popover`) at the start/end of the `label`
   element ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the intrinsic sizing behavior
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+### Fixed
+
+- `Multi Select`: trim whitespace of selected options text
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ## [4.0.0-alpha.0] - 2025-12-12
 

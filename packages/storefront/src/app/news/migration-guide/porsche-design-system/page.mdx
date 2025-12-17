@@ -40,7 +40,7 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
   - [Angular](/developing/angular/advanced/#global-theme)
   - [React](/developing/react/advanced/#global-theme)
   - [Vue](/developing/vue/advanced/#global-theme)
-  - [Next.js](developing/next-js/advanced/#global-theme)
+  - [Next.js](/developing/next-js/advanced/#global-theme)
   - [React Router](/developing/react-router/advanced/#global-theme)
 
 ## Planned upcoming changes in next alpha release
@@ -91,7 +91,7 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
   - [Angular](/developing/angular/getting-started/#integration)
   - [React](/developing/react/getting-started/#integration)
   - [Vue](/developing/vue/getting-started/#integration)
-  - [Next.js](developing/next-js/getting-started/#integration)
+  - [Next.js](/developing/next-js/getting-started/#integration)
   - [React Router](/developing/react-router/getting-started/#integration)
 
 ```diff
@@ -168,7 +168,7 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="auto">
++ <body class="dark">
   <app-root></app-root>
 </body>
 ```
@@ -177,7 +177,7 @@ export class AppModule {}
 
 ```diff
 // src/main.tsx
-- <PorscheDesignSystemProvider theme="auto">
+- <PorscheDesignSystemProvider theme="dark">
 + <PorscheDesignSystemProvider>
   <App />
 </PorscheDesignSystemProvider>
@@ -186,7 +186,7 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="auto">
++ <body class="dark">
   <div id="app"></div>
 </body>
 ```
@@ -196,7 +196,7 @@ export class AppModule {}
 ```diff
 // pages/App.vue
 <template>
--  <PorscheDesignSystemProvider theme="auto">
+-  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
     <AppComponent />
   </PorscheDesignSystemProvider>
@@ -206,7 +206,7 @@ export class AppModule {}
 ```diff
 // index.html
 - <body>
-+ <body class="auto">
++ <body class="dark">
   <div id="app"></div>
 </body>
 ```
@@ -216,8 +216,8 @@ export class AppModule {}
 ```diff
 // app/layout.tsx
 - <body>
-+ <body className="auto">
--  <PorscheDesignSystemProvider theme="auto">
++ <body className="dark">
+-  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
     {children}
   </PorscheDesignSystemProvider>
@@ -230,13 +230,13 @@ export class AppModule {}
 // root.tsx
 
 - <body>
-+ <body className="auto">
++ <body className="dark">
   {children}
   <ScrollRestoration />
   <Scripts />
 </body>
 
--  <PorscheDesignSystemProvider theme="auto">
+-  <PorscheDesignSystemProvider theme="dark">
 +  <PorscheDesignSystemProvider>
   <Outlet />
 </PorscheDesignSystemProvider>

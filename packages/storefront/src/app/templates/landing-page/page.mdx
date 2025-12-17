@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PLinkPure } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Templates: Landing Page - Porsche Design System',
@@ -20,16 +21,16 @@ or registering for an event.
 <div className="flex flex-wrap gap-static-md mt-fluid-lg">
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://github.com/porsche-design-system/examples/tree/main/templates/src/landing-page/1">Source Code</Link>
+    <Link href={`https://github.com/porsche-design-system/examples/tree/v${localPorscheDesignSystemMajorVersion}/templates/src/landing-page/1`}>Source Code</Link>
   </PLinkPure>
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://porsche-design-system.github.io/examples/templates/landing-page/1">View Fullscreen</Link>
+    <Link href={`https://porsche-design-system.github.io/examples/v${localPorscheDesignSystemMajorVersion}/templates/landing-page/1`}>View Fullscreen</Link>
   </PLinkPure>
 </div>
 
 <iframe
   className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
   title="Template: Landing Page - Variant 1"
-  src="https://porsche-design-system.github.io/examples/templates/landing-page/1"
+  src={`https://porsche-design-system.github.io/examples/v${localPorscheDesignSystemMajorVersion}/templates/landing-page/1`}
 />

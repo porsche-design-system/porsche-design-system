@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PLinkPure } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Patterns: Header - Porsche Design System',
@@ -22,18 +23,18 @@ efficient user journey.
 <div className="flex flex-wrap gap-static-md">
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://github.com/porsche-design-system/examples/tree/main/patterns/src/header/1">Source Code</Link>
+    <Link href={`https://github.com/porsche-design-system/examples/tree/v${localPorscheDesignSystemMajorVersion}/patterns/src/header/1`}>Source Code</Link>
   </PLinkPure>
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://porsche-design-system.github.io/examples/patterns/header/1">View Fullscreen</Link>
+    <Link href={`https://porsche-design-system.github.io/examples/v${localPorscheDesignSystemMajorVersion}/patterns/header/1`}>View Fullscreen</Link>
   </PLinkPure>
 </div>
 
 <iframe
   className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
   title="Header Variant 1"
-  src="https://porsche-design-system.github.io/examples/patterns/header/1"
+  src={`https://porsche-design-system.github.io/examples/v${localPorscheDesignSystemMajorVersion}/patterns/header/1`}
 />
 
 ## Variant 2
@@ -41,16 +42,16 @@ efficient user journey.
 <div className="flex flex-wrap gap-static-md">
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://github.com/porsche-design-system/examples/tree/main/patterns/src/header/2">Source Code</Link>
+    <Link href={`https://github.com/porsche-design-system/examples/tree/v${localPorscheDesignSystemMajorVersion}/patterns/src/header/2`}>Source Code</Link>
   </PLinkPure>
   <PLinkPure icon="external">
     {/* prettier-ignore */}
-    <Link href="https://porsche-design-system.github.io/examples/patterns/header/2">View Fullscreen</Link>
+    <Link href={`https://porsche-design-system.github.io/examples/v${localPorscheDesignSystemMajorVersion}/patterns/header/2`}>View Fullscreen</Link>
   </PLinkPure>
 </div>
 
 <iframe
   className="my-fluid-md w-full aspect-3/2  rounded-lg shadow-high"
   title="Header Variant 2"
-  src="https://porsche-design-system.github.io/examples/patterns/header/2"
+  src={`https://porsche-design-system.github.io/examples/v${localPorscheDesignSystemMajorVersion}/patterns/header/2`}
 />

@@ -27,6 +27,11 @@ export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
+ * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"unset"}
  */
 
 export const getComponentCss = (
@@ -63,13 +68,16 @@ export const getComponentCss = (
         gridArea: '1/1',
         display: 'block',
         resize,
+        fieldSizing: 'var(--p-textarea-field-sizing, unset)',
+        minWidth: `var(--p-textarea-min-width, 2ch)`, // to show at least 2 characters in very narrow containers
+        maxWidth: 'var(--p-textarea-max-width, unset)',
+        minHeight: `var(--p-textarea-min-height, ${textareaMinHeight})`,
+        maxHeight: 'var(--p-textarea-max-height, unset)',
         border: `${borderWidthThin} solid ${formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         color: primaryColor,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-        minWidth: '2ch', // to show at least 2 characters in very narrow containers
-        minHeight: textareaMinHeight,
         boxSizing: 'border-box',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         font: textSmallStyle.font,

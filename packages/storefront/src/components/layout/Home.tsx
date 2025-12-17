@@ -1,29 +1,22 @@
 'use client';
 
-import { PDisplay, PHeading, PLinkPure, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PLink, PLinkPure, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import {
+  localPorscheDesignSystemMajorVersion,
+  localPorscheDesignSystemVersion,
+} from '@/utils/porscheDesignSystemVersion';
 import AppearAnimation from './appearAnimation';
-import { useEffect, useState } from 'react';
-import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 
 export const Home = () => {
-  const [latestPdsVersion, setLatestPdsVersion] = useState<string>();
   const { isDark } = useStorefrontTheme();
 
-  useEffect(() => {
-    async function load() {
-      const list = await fetchPdsVersions();
-      setLatestPdsVersion(list[0]);
-    }
-
-    load();
-  }, []);
   return (
     <>
       <div
-        className="col-span-full grid h-[90vh] grid-cols-full grid-rows-[minmax(0,1fr)_auto] overflow-hidden "
+        className="col-span-full grid h-[90vh] grid-cols-full grid-rows-[minmax(0,1fr)_auto] overflow-hidden"
         style={{ marginBlockStart: '-70px', marginInline: 'calc(clamp(16px, 12px + 1.25vw, 24px) * -1)' }}
       >
         <video
@@ -43,34 +36,26 @@ export const Home = () => {
           Your browser does not support the video tag.
         </video>
 
-        <PDisplay
-          className="z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-[768px]"
-          size="medium"
-          tag="h1"
-        >
-          Welcome to the Porsche Design System
-        </PDisplay>
-        {latestPdsVersion && (
-        <div className="block w-full h-full relative">
-          <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-lg shadow-medium flex justify-between items-center gap-4">
-            <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
-            <div className="flex flex-col">
-              <PText size="small" weight="semi-bold">
-                Release Note
-              </PText>
-              <PText size="small" color="contrast-medium">
-                Checkout the latest release {latestPdsVersion}
-              </PText>
+        <h1 className="dark opacity-70 prose-display-md text-primary z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-[768px]">
+          Welcome to the Porsche Design System <b>v{localPorscheDesignSystemMajorVersion}</b>
+        </h1>
+        <div className="block w-full h-full relative dark">
+          <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-4xl shadow-medium flex justify-between items-center gap-4">
+            <Link href="/news/changelog/" className="absolute inset-0 rounded-4xl" tabIndex={-1} aria-hidden="true" />
+            <div className="flex flex-col prose-text-sm">
+              <b>Release Note</b>
+              <span className="text-contrast-medium">
+                Checkout the release <code className="bg-frosted">{localPorscheDesignSystemVersion}</code>
+              </span>
             </div>
-            <PLinkPure hideLabel={true}>
+            <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
               <Link
                 href="/news/changelog/"
-                aria-label={`Release Note: Checkout the latest release ${latestPdsVersion}`}
+                aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
               />
-            </PLinkPure>
+            </PLink>
           </div>
         </div>
-          )}
       </div>
 
       <article className="mt-fluid-2xl col-span-full xs:col-start-4 xs:col-end-10" aria-label="Introduction">
@@ -99,10 +84,10 @@ export const Home = () => {
         aria-label="Getting started"
       >
         <AppearAnimation animation="fade-in-up">
-          <div className="relative bg-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
+          <div className="relative bg-surface rounded-4xl overflow-hidden group flex items-center gap-4 p-4">
             <Link
               href="/designing/introduction/"
-              className="absolute z-10 inset-0 rounded-l"
+              className="absolute z-10 inset-0 rounded-4xl"
               tabIndex={-1}
               aria-hidden="true"
             />
@@ -131,10 +116,10 @@ export const Home = () => {
           </div>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
-          <div className="relative bg-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-hover">
+          <div className="relative bg-surface rounded-4xl overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-hover">
             <Link
               href="/developing/introduction/"
-              className="absolute z-10 inset-0 rounded-l"
+              className="absolute z-10 inset-0 rounded-4xl"
               tabIndex={-1}
               aria-hidden="true"
             />
@@ -177,7 +162,7 @@ export const Home = () => {
             weight="regular"
             compact={true}
             gradient={false}
-            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
+            className={`bg-surface rounded-4xl ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/styles-tokens.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -191,7 +176,7 @@ export const Home = () => {
             weight="regular"
             compact={true}
             gradient={false}
-            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
+            className={`bg-surface rounded-4xl ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/components.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -205,7 +190,7 @@ export const Home = () => {
             weight="regular"
             compact={true}
             gradient={false}
-            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
+            className={`bg-surface rounded-4xl ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/assets.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -219,7 +204,7 @@ export const Home = () => {
             weight="regular"
             compact={true}
             gradient={false}
-            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
+            className={`bg-surface rounded-4xl ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/templates.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -233,7 +218,7 @@ export const Home = () => {
             weight="regular"
             compact={true}
             gradient={false}
-            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
+            className={`bg-surface rounded-4xl ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/release-notes.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -247,7 +232,7 @@ export const Home = () => {
             weight="regular"
             compact={true}
             gradient={false}
-            className={`bg-surface rounded-lg ${isDark ? 'dark' : 'light'}`}
+            className={`bg-surface rounded-4xl ${isDark ? 'dark' : 'light'}`}
           >
             <Image src="assets/feedback.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -268,7 +253,7 @@ export const Home = () => {
             compact={true}
             gradient={false}
             aspectRatio="16/9"
-            className="bg-surface dark rounded-lg"
+            className="dark bg-surface rounded-4xl"
           >
             <Image src="assets/accessibility.png" alt="" width={2036} height={1144} />
           </PLinkTile>
@@ -294,7 +279,7 @@ export const Home = () => {
       </section>
 
       <section
-        className="bg-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12"
+        className="bg-surface rounded-4xl mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12"
         aria-label="Benefits"
       >
         <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-(--max-width-prose) mx-auto">
@@ -308,7 +293,7 @@ export const Home = () => {
           </PText>
         </div>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Short & Longterm Efficiency">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -320,7 +305,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Brand Fit">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -332,7 +317,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Accessibility">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -344,7 +329,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Framework Agnostic">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -355,7 +340,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Fluid & Responsive">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -367,7 +352,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Compliant Quality">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -379,7 +364,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Updated Capability">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -391,7 +376,7 @@ export const Home = () => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Open-Source Code">
-          <div className="relative rounded-lg bg-canvas w-20 h-20 m-auto">
+          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
             <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">

@@ -2552,7 +2552,7 @@ export namespace Components {
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows of the textarea.
+          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
          */
         "rows"?: number;
         /**
@@ -6475,7 +6475,7 @@ declare namespace LocalJSX {
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows of the textarea.
+          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
          */
         "rows"?: number;
         /**

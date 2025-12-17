@@ -6,37 +6,37 @@ import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/genera
 export const buttonTileSlotStory: SlotStories<'p-button-tile'> = {
   header: {
     basic: {
-      name: "Basic header",
+      name: 'Basic header',
       generator: () => [
         {
           tag: 'p-tag',
           properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
           children: ['Some tag'],
-        }
-      ]
-    }
+        },
+      ],
+    },
   },
   footer: {
     basic: {
-      name: "Basic footer",
+      name: 'Basic footer',
       generator: () => [
         {
           tag: 'p-text',
           properties: { slot: 'footer', theme: 'dark' },
           children: ['Some footer text'],
-        }
-      ]
-    }
-  }
-}
+        },
+      ],
+    },
+  },
+};
 
 export const buttonTileStory: Story<'p-button-tile'> = {
   state: {
-    properties: { label: 'Some label', description: 'Some Description' },
+    properties: { label: 'Some label', description: 'Some Description', gradient: true },
     slots: {
       header: buttonTileSlotStory.header.basic,
       footer: buttonTileSlotStory.footer.basic,
-    }
+    },
   },
   generator: ({ properties, slots } = {}) => [
     {
