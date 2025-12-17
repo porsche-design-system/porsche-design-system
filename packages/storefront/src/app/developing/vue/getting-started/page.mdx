@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Vue: Getting started - Porsche Design System',
@@ -17,11 +18,11 @@ steps. This guide is based on the following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">vue@3</PTag>
+  <PTag compact={true} variant="info">vue@3</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  <PTag compact={true} variant="info">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-vue@3</PTag>
+  <PTag compact={true} variant="info">@porsche-design-system/components-vue@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash
