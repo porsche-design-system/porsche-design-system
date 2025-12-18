@@ -135,17 +135,18 @@ export class LinkTile implements ITileProps {
       </PrefixedTagNames.pLink>
     );
 
-    const linkPure: JSX.Element = (
-      <PrefixedTagNames.pLinkPure
+    const linkCompact: JSX.Element = (
+      <PrefixedTagNames.pLink
         {...sharedLinkProps}
         {...linkProps}
-        key="link-or-button-pure"
-        class="link-or-button-pure"
         hideLabel={true}
         icon="arrow-right"
+        key="link-or-button-pure"
+        compact={true}
+        class="link-or-button-pure"
       >
         {this.label}
-      </PrefixedTagNames.pLinkPure>
+      </PrefixedTagNames.pLink>
     );
 
     return (
@@ -158,7 +159,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
+          {typeof this.compact === 'boolean' ? (this.compact ? linkCompact : link) : [linkCompact, link]}
         </div>
       </div>
     );

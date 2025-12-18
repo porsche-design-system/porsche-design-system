@@ -178,8 +178,8 @@ export const getComponentCss = (
     'link-or-button-pure': {
       zIndex: 5,
       gridColumn: 2,
-      gridRow: hasFooterSlot && !isTopAligned ? 2 : 1,
-      alignSelf: 'center',
+      gridRow: `1/${hasFooterSlot ? 3 : 2}`,
+      alignSelf: isTopAligned ? 'flex-start' : 'flex-end',
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'inline-block' : 'none',
       })),
