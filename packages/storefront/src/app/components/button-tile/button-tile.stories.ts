@@ -32,7 +32,7 @@ export const buttonTileSlotStory: SlotStories<'p-button-tile'> = {
 
 export const buttonTileStory: Story<'p-button-tile'> = {
   state: {
-    properties: { label: 'Some label', description: 'Some Description', gradient: true },
+    properties: { label: 'Some label', description: 'Some Description', gradient: true, className: 'dark' },
     slots: {
       header: buttonTileSlotStory.header.basic,
       footer: buttonTileSlotStory.footer.basic,
