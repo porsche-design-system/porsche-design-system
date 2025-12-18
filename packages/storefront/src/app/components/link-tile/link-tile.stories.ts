@@ -10,7 +10,7 @@ export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
       generator: () => [
         {
           tag: 'p-tag',
-          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+          properties: { slot: 'header', className: 'dark', color: 'background-frosted', compact: true },
           children: ['Some tag'],
         },
       ],
@@ -22,7 +22,7 @@ export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
       generator: () => [
         {
           tag: 'p-text',
-          properties: { slot: 'footer', theme: 'dark' },
+          properties: { slot: 'footer', className: 'dark' },
           children: ['Some footer text'],
         },
       ],
@@ -110,7 +110,7 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
               tag: 'p-tag',
               properties: {
                 slot: 'header',
-                theme: 'dark',
+                className: 'dark',
                 color: 'background-frosted',
                 compact: true,
               },
@@ -138,7 +138,7 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
               tag: 'p-tag',
               properties: {
                 slot: 'header',
-                theme: 'dark',
+                className: 'dark',
                 color: 'background-frosted',
                 compact: 'true',
               },
@@ -175,11 +175,11 @@ export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', className: 'dark', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer', className: 'dark' }, children: ['Some footer text'] },
           ],
         },
         {
@@ -188,11 +188,11 @@ export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', className: 'dark', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer', className: 'dark' }, children: ['Some footer text'] },
           ],
         },
       ],

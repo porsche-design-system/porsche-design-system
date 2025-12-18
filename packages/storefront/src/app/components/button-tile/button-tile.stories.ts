@@ -10,7 +10,7 @@ export const buttonTileSlotStory: SlotStories<'p-button-tile'> = {
       generator: () => [
         {
           tag: 'p-tag',
-          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+          properties: { slot: 'header', className: 'dark', color: 'background-frosted', compact: true },
           children: ['Some tag'],
         },
       ],
@@ -22,7 +22,7 @@ export const buttonTileSlotStory: SlotStories<'p-button-tile'> = {
       generator: () => [
         {
           tag: 'p-text',
-          properties: { slot: 'footer', theme: 'dark' },
+          properties: { slot: 'footer', className: 'dark' },
           children: ['Some footer text'],
         },
       ],
@@ -75,7 +75,7 @@ export const buttonTileStoryGrid: Story<'p-button-tile'> = {
               tag: 'p-tag',
               properties: {
                 slot: 'header',
-                theme: 'dark',
+                className: 'dark',
                 color: 'background-frosted',
                 compact: 'true',
               },
@@ -112,11 +112,11 @@ export const buttonTileStoryFooterSlot: Story<'p-button-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', className: 'dark', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer', className: 'dark' }, children: ['Some footer text'] },
           ],
         },
         {
@@ -125,11 +125,11 @@ export const buttonTileStoryFooterSlot: Story<'p-button-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', className: 'dark', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer', className: 'dark' }, children: ['Some footer text'] },
           ],
         },
       ],
