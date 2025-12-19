@@ -55,10 +55,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   };
 
   const getCurrentValue = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta): string | undefined => {
-    if (propName === 'theme') {
-      return configuredProps?.[propName];
-    }
-
     const value = configuredProps?.[propName] ?? (propMeta.defaultValue === null ? undefined : propMeta.defaultValue);
 
     if (typeof value === 'string') {
@@ -233,19 +229,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
               label: option,
             };
           });
-      } else if (propName === 'theme') {
-        options = [
-          {
-            value: undefined,
-            label: '',
-          },
-          ...propMeta.allowedValues.map((option) => {
-            return {
-              value: option,
-              label: option,
-            };
-          }),
-        ];
       } else {
         options = propMeta.allowedValues
           .filter((prop) => !propMeta?.deprecatedValues?.includes(prop))
@@ -258,8 +241,8 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
       }
 
       return options.map((option) => {
-        const sanitizedOptionValue = propName === 'theme' ? option.value : getSanitizedArrayValue(option.value);
-        const sanitizedOptionLabel = propName === 'theme' ? option.label : getSanitizedArrayValue(option.label);
+        const sanitizedOptionValue = getSanitizedArrayValue(option.value);
+        const sanitizedOptionLabel = getSanitizedArrayValue(option.label);
         return (
           <PSelectOption key={option.value === undefined ? 'default' : option.value} value={sanitizedOptionValue}>
             {sanitizedOptionLabel}

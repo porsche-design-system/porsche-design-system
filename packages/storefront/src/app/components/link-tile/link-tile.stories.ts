@@ -10,7 +10,7 @@ export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
       generator: () => [
         {
           tag: 'p-tag',
-          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+          properties: { slot: 'header', color: 'background-frosted', compact: true },
           children: ['Some tag'],
         },
       ],
@@ -22,7 +22,7 @@ export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
       generator: () => [
         {
           tag: 'p-text',
-          properties: { slot: 'footer', theme: 'dark' },
+          properties: { slot: 'footer' },
           children: ['Some footer text'],
         },
       ],
@@ -32,7 +32,13 @@ export const linkTileSlotStory: SlotStories<'p-link-tile'> = {
 
 export const linkTileStory: Story<'p-link-tile'> = {
   state: {
-    properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description', gradient: true },
+    properties: {
+      href: 'https://porsche.com',
+      label: 'Some label',
+      description: 'Some Description',
+      gradient: true,
+      className: 'dark',
+    },
     slots: {
       header: linkTileSlotStory.header.basic,
       footer: linkTileSlotStory.footer.basic,
@@ -92,6 +98,7 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
         {
           tag: 'p-link-tile',
           properties: {
+            className: 'dark',
             aspectRatio: '4/3',
             href: '#',
             label: 'Some Label',
@@ -104,7 +111,6 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
               tag: 'p-tag',
               properties: {
                 slot: 'header',
-                theme: 'dark',
                 color: 'background-frosted',
                 compact: true,
               },
@@ -132,7 +138,6 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
               tag: 'p-tag',
               properties: {
                 slot: 'header',
-                theme: 'dark',
                 color: 'background-frosted',
                 compact: 'true',
               },
@@ -154,7 +159,12 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
 
 export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
   state: {
-    properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+    properties: {
+      href: 'https://porsche.com',
+      label: 'Some label',
+      description: 'Some Description',
+      className: 'dark',
+    },
   },
   generator: ({ properties } = {}) => [
     {
@@ -169,24 +179,24 @@ export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer' }, children: ['Some footer text'] },
           ],
         },
         {
           tag: 'p-link-tile',
-          properties: { ...properties, compact: true },
+          properties: { ...properties, compact: true, className: 'dark' },
           children: [
             {
               tag: 'p-tag',
-              properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
+              properties: { slot: 'header', color: 'background-frosted', compact: true },
               children: ['Some tag'],
             },
             { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-            { tag: 'p-text', properties: { slot: 'footer', theme: 'dark' }, children: ['Some footer text'] },
+            { tag: 'p-text', properties: { slot: 'footer' }, children: ['Some footer text'] },
           ],
         },
       ],

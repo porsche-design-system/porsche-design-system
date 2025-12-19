@@ -5,6 +5,7 @@ import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-sys
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ConfigureCssClasses } from '@/components/playground/ConfigureCssClasses';
 import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
@@ -125,6 +126,19 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     });
   };
 
+  const handleUpdateCssClasses = (cssClass: string) => {
+    setStoryState((prev) => {
+      // TODO: Currently only works for theme classes, change when more classes are supported
+      const cleanedClassName = (prev.properties?.className ?? '')
+        .replace(/\b(light|dark|auto)\b/g, '')
+        .trim()
+        .replace(/\s+/g, ' ');
+      const updatedClassName = cssClass ? `${cleanedClassName} ${cssClass}`.trim() : cleanedClassName;
+      const updatedProperties = { ...prev.properties, className: updatedClassName };
+      return { ...prev, properties: updatedProperties as PropTypeMapping[typeof tagName] };
+    });
+  };
+
   useEffect(() => {
     requestAnimationFrame(() => setDomReady(true));
   }, []);
@@ -161,6 +175,10 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         }}
       />
     ),
+    <ConfigureCssClasses
+      cssClasses={storyState.properties?.className ?? ''}
+      onUpdateCssClasses={handleUpdateCssClasses}
+    />,
   ];
 
   return (
