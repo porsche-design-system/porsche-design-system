@@ -167,11 +167,12 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Open sidebar
       </PButton>
 
-      <div className="-p-canvas-grid">
+      <div className="@container grid grid-cols-12 gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
         <Tabs />
         {children}
       </div>
+
       <div slot="sidebar-start">
         <Navigation pdsVersion={pdsVersion} />
       </div>
