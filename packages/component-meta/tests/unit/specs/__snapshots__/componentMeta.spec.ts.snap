@@ -33,7 +33,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -134,7 +133,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-inline-notification",
     ],
@@ -217,7 +215,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -628,7 +625,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -1067,7 +1063,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
       "p-button-pure",
@@ -1514,7 +1509,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
       "p-crest",
@@ -1598,7 +1592,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-link-pure",
       "p-button-pure",
@@ -1782,7 +1775,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -1905,7 +1897,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -1950,7 +1941,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "align": {
         "allowedValues": [
@@ -2022,7 +2012,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "color": {
         "allowedValues": [
@@ -2084,7 +2073,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
       "p-button",
@@ -2130,7 +2118,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -2210,7 +2197,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "active": {
         "allowedValues": "boolean",
@@ -2282,7 +2268,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -2357,7 +2342,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -2558,7 +2542,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
     ],
@@ -2648,7 +2631,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "align": {
         "allowedValues": [
@@ -2722,7 +2704,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -3090,7 +3071,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
@@ -3494,7 +3474,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -3679,7 +3658,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -3882,7 +3860,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -3999,16 +3976,6 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4077,7 +4044,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -4274,7 +4240,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -4465,7 +4430,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
@@ -4663,7 +4627,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -4860,7 +4823,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "autoComplete": {
         "allowedValues": "string",
@@ -5054,7 +5016,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -5239,7 +5200,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -5436,7 +5396,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -5553,16 +5512,6 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.",
         "type": "number",
       },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Controls the visual appearance of the component.",
-        "type": "Theme",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -5608,7 +5557,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -6001,7 +5949,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -6422,7 +6369,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-link",
       "p-link-pure",
@@ -6588,7 +6534,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": true,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -6736,7 +6681,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
     ],
@@ -6819,7 +6763,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "color": {
         "allowedValues": [
@@ -6933,7 +6876,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button-pure",
       "p-icon",
@@ -7077,7 +7019,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "disabled": {
         "allowedValues": "boolean",
@@ -7114,7 +7055,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "disabled": {
         "allowedValues": "boolean",
@@ -7166,7 +7106,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -7255,7 +7194,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -7402,7 +7340,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -7471,7 +7408,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -7611,7 +7547,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
     ],
@@ -7657,7 +7592,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
     ],
@@ -7736,7 +7670,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -7899,7 +7832,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -8284,7 +8216,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
       "p-input-search",
@@ -8432,7 +8363,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -8506,7 +8436,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-button",
     ],
@@ -8570,7 +8499,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -8613,7 +8541,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-scroller",
     ],
@@ -8655,7 +8582,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -8717,7 +8643,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-spinner",
     ],
@@ -8795,7 +8720,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-scroller",
     ],
@@ -8845,7 +8769,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-table",
     "slotsMeta": {
       "": {
@@ -8867,7 +8790,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "multiline": {
         "allowedValues": "boolean",
@@ -8897,7 +8819,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-table",
     "slotsMeta": {
       "": {
@@ -8920,7 +8841,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -8976,7 +8896,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-table-head",
     "slotsMeta": {
       "": {
@@ -8998,7 +8917,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": [
       "p-table-body",
       "p-table-head",
@@ -9036,7 +8954,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-tabs-bar",
     ],
@@ -9102,7 +9019,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-scroller",
     ],
@@ -9150,7 +9066,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "label": {
         "allowedValues": "string",
@@ -9178,7 +9093,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -9525,7 +9439,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -9575,7 +9488,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "align": {
         "allowedValues": [
@@ -9669,7 +9581,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "type": {
         "allowedValues": [
@@ -9702,7 +9613,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "requiredParent": "p-text-list",
     "slotsMeta": {
       "": {
@@ -9764,7 +9674,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
     ],
@@ -9961,7 +9870,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "isThemeable": false,
     "nestedComponents": [
       "p-toast-item",
     ],
@@ -9986,7 +9894,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": true,
-    "isThemeable": false,
     "nestedComponents": [
       "p-icon",
       "p-button",
@@ -10018,7 +9925,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
-    "isThemeable": false,
     "propsMeta": {
       "aria": {
         "allowedValues": {

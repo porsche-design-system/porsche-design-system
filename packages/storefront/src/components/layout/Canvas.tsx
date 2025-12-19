@@ -62,6 +62,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [isBannerOpen, setIsBannerOpen] = useState(false);
+  const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointM}px)`).matches;
 
   const rawPdsVersion = getCurrentPdsVersion();
   const latestPdsVersion = stablePdsReleases[0] as Semver;
@@ -109,10 +110,14 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    setIsSidebarEndOpen(
-      (window.matchMedia(`(min-width: ${breakpointM}px)`).matches && pathname?.includes('configurator')) ?? false
-    );
-  }, [pathname]);
+    setIsSidebarEndOpen((isDesktop && pathname?.includes('configurator')) ?? false);
+  }, [pathname, isDesktop]);
+
+  const onNavigationChange = () => {
+    if (!isDesktop && isSidebarStartOpen) {
+      setIsSidebarStartOpen(false);
+    }
+  };
 
   return (
     <PCanvas
@@ -174,7 +179,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
 
       <div slot="sidebar-start">
-        <Navigation pdsVersion={pdsVersion} />
+        <Navigation pdsVersion={pdsVersion} onNavigate={onNavigationChange} />
       </div>
       <div slot="sidebar-end">
         <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
