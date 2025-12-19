@@ -1,9 +1,7 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
-
-import { AsyncPipe } from '@angular/common';
-import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
 import { AgGridAngular } from 'ag-grid-angular';
 import {
   AllCommunityModule,
@@ -11,6 +9,9 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
+import { THEME_TOKEN } from "../app.component";
+import { PorscheDesignSystemModule } from "@porsche-design-system/components-angular";
+
 ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
 type ColumnDefs = DataAdvanced & {

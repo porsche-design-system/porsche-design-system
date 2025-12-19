@@ -1,1 +1,1 @@
-export const borderRadiusMd = '8px';
+export const borderRadiusMd = '6px';

@@ -1,8 +1,7 @@
-import styled from 'styled-components';
 import {
-  displaySmallStyle,
   displayLargeStyle,
   displayMediumStyle,
+  displaySmallStyle,
   gridGap,
   headingLargeStyle,
   headingMediumStyle,
@@ -18,6 +17,7 @@ import {
   textXXSmallStyle,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
+import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

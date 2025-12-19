@@ -1,10 +1,10 @@
 'use client';
 
-import { CodeBlock } from '@/components/playground/CodeBlock';
-import type { BackgroundColor } from '@/models/backgroundColor';
 import { PButton } from '@porsche-design-system/components-react/ssr';
 import type { FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type PropsWithChildren } from 'react';
+import { CodeBlock } from '@/components/playground/CodeBlock';
+import type { BackgroundColor } from '@/models/backgroundColor';
 
 type PlaygroundProps = {
   frameworkMarkup: FrameworkMarkup;
@@ -36,7 +36,7 @@ export const Playground = ({
             className="w-fit"
             type="button"
             iconSource="assets/icon-stackblitz.svg"
-            variant="ghost"
+            variant="secondary"
             compact={true}
             onClick={onOpenInStackblitz}
           >

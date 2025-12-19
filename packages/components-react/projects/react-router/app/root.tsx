@@ -12,16 +12,8 @@ import {
 
 import type { Route } from './+types/root';
 import './app.css';
-import {
-  getBrowserSupportFallbackScript,
-  getCookiesFallbackScript,
-  getFontFaceStyles,
-  getFontLinks,
-  getIconLinks,
-  getInitialStyles,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
-import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import { getFontLinks, getIconLinks, getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { useState } from 'react';
 import { routes } from '~/routes';
 
@@ -30,17 +22,9 @@ export async function loader() {
     headPartials: (
       <>
         {getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'React Router' })}
-        {getInitialStyles({ format: 'jsx' })}
-        {getFontFaceStyles({ format: 'jsx' })}
         {getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold', 'bold'] })}
         {getIconLinks({ format: 'jsx', icons: ['arrow-head-right', 'arrow-head-left'] })}
         {/*{getComponentChunkLinks({ format: 'jsx', components: ['button', 'link'] })}*/}
-      </>
-    ),
-    bodyPartials: (
-      <>
-        {getBrowserSupportFallbackScript({ format: 'jsx' })}
-        {getCookiesFallbackScript({ format: 'jsx' })}
       </>
     ),
   };
@@ -62,11 +46,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        {partials?.bodyPartials}
       </body>
     </html>
   );
 }
+
+export type Theme = 'light' | 'dark' | 'auto';
 
 export default function App() {
   const navigate = useNavigate();
@@ -90,8 +75,8 @@ export default function App() {
         ))}
       </select>
 
-      <PorscheDesignSystemProvider theme={theme}>
-        <div id="app">
+      <PorscheDesignSystemProvider>
+        <div id="app" className={theme}>
           <Outlet />
         </div>
       </PorscheDesignSystemProvider>

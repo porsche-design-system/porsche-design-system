@@ -1,6 +1,6 @@
-import { PSelect, PSelectOption, PButton } from '@porsche-design-system/components-react/ssr';
+import { PButton, PSelect, PSelectOption } from '@porsche-design-system/components-react/ssr';
 import type { CSSProperties } from 'react';
-import { PDSVersionGroup } from '@/models/pdsVersion';
+import type { PDSVersionGroup } from '@/models/pdsVersion';
 import { getMajor } from '@/utils/pdsVersion';
 
 type VersionSelectProps = {
@@ -33,7 +33,12 @@ export const VersionSelect = ({ pdsVersion }: VersionSelectProps) => {
         })}
       </PSelect>
       {pdsVersion.current !== null && pdsVersion.current !== pdsVersion.latest && (
-        <PButton compact={true} variant="ghost" icon="arrow-right" onClick={() => onVersionChange(pdsVersion.latest)}>
+        <PButton
+          compact={true}
+          variant="secondary"
+          icon="arrow-right"
+          onClick={() => onVersionChange(pdsVersion.latest)}
+        >
           Use Latest Release
         </PButton>
       )}

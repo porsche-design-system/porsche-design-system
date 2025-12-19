@@ -34,7 +34,7 @@ export const P = ({ children }: PropsWithChildren) => (
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     wrapper: ({ children }) => (
-      // biome-ignore lint/correctness/useUniqueElementIds: <Needed>
+      // biome-ignore lint/correctness/useUniqueElementIds: ok
       <article id="main-content" className="col-span-full xs:col-start-2 xs:col-end-12">
         {children as React.ReactNode}
       </article>
@@ -123,7 +123,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <>
           {hasLang ? (
             <code
-              className="my-fluid-md max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-0"
+              className="my-fluid-md p-fluid-md max-h-96 overflow-auto rounded-4xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2"
               tabIndex={0}
             >
               {/* @ts-expect-error */}

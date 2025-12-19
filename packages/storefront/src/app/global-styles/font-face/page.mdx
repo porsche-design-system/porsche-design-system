@@ -1,0 +1,43 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Global Styles: Introduction - Porsche Design System',
+  description: 'Learn about the global styles and how to use them.',
+};
+
+# Font Face Styles
+
+<TableOfContents headings={['Setup', 'China CDN', 'Optimizing Font Loading']} />
+
+## Setup
+
+The Porsche Design System uses the **Porsche Next** font family. The `@font-face` definitions must be included as global
+styles.
+
+They are included in the main CSS file:
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+```
+
+Alternatively, you can import only the font-face definitions:
+
+```css
+@import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
+```
+
+## China CDN
+
+By default, fonts are loaded from the Porsche Design System CDN. If your website is primarily accessed from China, use
+the `/cn` imports to load fonts from a China-based CDN:
+
+```css
+<!-- For global import -->
+@import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
+<!-- For font-face only -->
+@import '@porsche-design-system/components-{js|angular|react|vue}/cn/font-face.css';
+```
+
+## Optimizing Font Loading
+
+To speed up font loading, you can use the [`getFontLinks()`](/partials/font-links/) partial to preload font assets.

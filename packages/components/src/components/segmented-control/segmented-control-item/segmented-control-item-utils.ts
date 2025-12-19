@@ -1,4 +1,4 @@
-import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes, Theme } from '../../../types';
+import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes } from '../../../types';
 import { getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../../utils';
 import type { IconColor } from '../../icon/icon-utils';
 import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
@@ -9,7 +9,6 @@ export type SegmentedControlItemInternalHTMLProps = {
   message: string;
   compact: boolean;
   disabledParent: boolean;
-  theme: Theme;
 };
 
 export type SegmentedControlItemIcon = LinkButtonIconName;

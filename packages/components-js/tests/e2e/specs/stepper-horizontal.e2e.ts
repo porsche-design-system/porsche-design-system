@@ -263,54 +263,54 @@ test.describe('scrolling', () => {
 });
 
 test.describe('events', () => {
-  test('should trigger event on step click', async ({ page }) => {
+  test('should trigger update event on step click', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
     const host = getHost(page);
     const [item1, item2] = await getStepItems(page);
 
-    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'update');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
     await reattachElement(host);
 
     await item1.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
 
     await item2.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(2);
+    expect((await getEventSummary(host, 'update')).counter).toBe(2);
   });
 
-  test('should not trigger event when clicked in between steps', async ({ page }) => {
+  test('should not trigger update event when clicked in between steps', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
     const host = getHost(page);
     const [item1] = await getStepItems(page);
 
-    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'update');
 
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await page.mouse.click((await getOffsetWidth(item1)) + 3, 18);
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await item1.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 
-  test('should not trigger event if click on current', async ({ page }) => {
+  test('should not trigger update event if click on current', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
     const host = getHost(page);
     const [item1, , item3] = await getStepItems(page);
 
-    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'update');
 
     await item3.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await item1.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 
-  test('should not trigger event if item is disabled', async ({ page }) => {
+  test('should not trigger update event if item is disabled', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
     const host = getHost(page);
     const [item1, item2] = await getStepItems(page);
@@ -318,43 +318,29 @@ test.describe('events', () => {
     await setProperty(item2, 'disabled', true);
     await waitForStencilLifecycle(page);
 
-    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'update');
 
     await item2.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
+    expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     await item1.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 
-  test('should not trigger event if item without state', async ({ page }) => {
+  test('should not trigger update event if item without state', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 1 });
     const host = getHost(page);
     const [item1, , item3] = await getStepItems(page);
 
-    await addEventListener(host, 'stepChange');
+    await addEventListener(host, 'update');
 
     await item3.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
-
-    await item1.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
-  });
-
-  test('should emit both stepChange and update event', async ({ page }) => {
-    await initStepperHorizontal(page, { currentStep: 2 });
-    const host = getHost(page);
-
-    await addEventListener(host, 'stepChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const [item1] = await getStepItems(page);
     await item1.click();
-    expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
+
 });
 
 test.describe('lifecycle', () => {

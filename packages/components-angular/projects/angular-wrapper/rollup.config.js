@@ -14,6 +14,7 @@ const external = [
   '@porsche-design-system/components-js',
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
+  '@porsche-design-system/components-js/tokens',
   '@porsche-design-system/components-js/styles',
   '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/styles/vanilla-extract',
@@ -75,13 +76,39 @@ export default [
     external,
     output: [
       {
-        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        file: `${outputDir}/styles/vanilla-extract/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        file: `${outputDir}/styles/vanilla-extract/esm/index.mjs`,
         format: 'esm',
       },
+    ],
+  },
+  {
+    input: `${projectDir}/src/tokens/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/tokens/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/tokens/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/tokens`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
   {

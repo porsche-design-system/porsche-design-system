@@ -1,13 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { it, expect } from 'vitest';
+import { expect, it } from 'vitest';
 
-const readTheme = () => {
-  const themePath = path.resolve(__dirname, '../../../dist/index.css');
+const readFile = (file: string) => {
+  const themePath = path.resolve(__dirname, `../../../dist/${file}`);
   return fs.readFileSync(themePath, 'utf-8');
 };
 
-const tailwindTheme = readTheme();
+const tailwindTheme = readFile('index.css');
 
 it('should match compiled tailwindcss theme', () => {
   expect(tailwindTheme).toMatchSnapshot();

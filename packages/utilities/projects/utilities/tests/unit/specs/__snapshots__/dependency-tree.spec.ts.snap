@@ -11,34 +11,47 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "border/borderRadiusMedium.cjs",
     "border/borderRadiusSmall.cjs",
   ],
-  "border/borderRadiusLarge.cjs": [],
-  "border/borderRadiusMedium.cjs": [],
-  "border/borderRadiusSmall.cjs": [],
+  "border/borderRadiusLarge.cjs": [
+    "tokens/dist/esm/border/radius/borderRadiusLg.cjs",
+  ],
+  "border/borderRadiusMedium.cjs": [
+    "tokens/dist/esm/border/radius/borderRadiusMd.cjs",
+  ],
+  "border/borderRadiusSmall.cjs": [
+    "tokens/dist/esm/border/radius/borderRadiusSm.cjs",
+  ],
   "border/borderWidth.cjs": [
     "border/borderWidthBase.cjs",
     "border/borderWidthThin.cjs",
   ],
-  "border/borderWidthBase.cjs": [],
-  "border/borderWidthThin.cjs": [],
+  "border/borderWidthBase.cjs": [
+    "tokens/dist/esm/border/width/borderWidthRegular.cjs",
+  ],
+  "border/borderWidthThin.cjs": [
+    "tokens/dist/esm/border/width/borderWidthThin.cjs",
+  ],
   "dropShadow/dropShadowHighStyle.cjs": [
-    "dropShadow/dropShadowShared.cjs",
+    "tokens/dist/esm/shadow/shadowHigh.cjs",
   ],
   "dropShadow/dropShadowLowStyle.cjs": [
-    "dropShadow/dropShadowShared.cjs",
+    "tokens/dist/esm/shadow/shadowLow.cjs",
   ],
   "dropShadow/dropShadowMediumStyle.cjs": [
-    "dropShadow/dropShadowShared.cjs",
+    "tokens/dist/esm/shadow/shadowMedium.cjs",
   ],
-  "dropShadow/dropShadowShared.cjs": [],
   "focus/getFocusStyle.cjs": [
     "border/borderRadiusMedium.cjs",
     "border/borderRadiusSmall.cjs",
     "border/borderWidthBase.cjs",
     "theme/themeLightStateFocus.cjs",
   ],
-  "font/fontFamily.cjs": [],
+  "font/fontFamily.cjs": [
+    "tokens/dist/esm/font/family/fontFamily.cjs",
+  ],
   "font/fontHyphenationStyle.cjs": [],
-  "font/fontLineHeight.cjs": [],
+  "font/fontLineHeight.cjs": [
+    "tokens/dist/esm/font/lineHeight/fontLineHeight.cjs",
+  ],
   "font/fontSize.cjs": [
     "font/fontSizeDisplay.cjs",
     "font/fontSizeHeading.cjs",
@@ -60,18 +73,20 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontSizeHeadingXXLarge.cjs",
   ],
   "font/fontSizeHeadingLarge.cjs": [
-    "font/fontSizeTextLarge.cjs",
+    "tokens/dist/esm/font/size/fontSizeLg.cjs",
   ],
   "font/fontSizeHeadingMedium.cjs": [
-    "font/fontSizeTextMedium.cjs",
+    "tokens/dist/esm/font/size/fontSizeMd.cjs",
   ],
   "font/fontSizeHeadingSmall.cjs": [
-    "font/fontSizeTextSmall.cjs",
+    "tokens/dist/esm/font/size/fontSizeSm.cjs",
   ],
   "font/fontSizeHeadingXLarge.cjs": [
-    "font/fontSizeTextXLarge.cjs",
+    "tokens/dist/esm/font/size/fontSizeXl.cjs",
   ],
-  "font/fontSizeHeadingXXLarge.cjs": [],
+  "font/fontSizeHeadingXXLarge.cjs": [
+    "tokens/dist/esm/font/size/fontSize2Xl.cjs",
+  ],
   "font/fontSizeText.cjs": [
     "font/fontSizeTextLarge.cjs",
     "font/fontSizeTextMedium.cjs",
@@ -80,12 +95,24 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontSizeTextXSmall.cjs",
     "font/fontSizeTextXXSmall.cjs",
   ],
-  "font/fontSizeTextLarge.cjs": [],
-  "font/fontSizeTextMedium.cjs": [],
-  "font/fontSizeTextSmall.cjs": [],
-  "font/fontSizeTextXLarge.cjs": [],
-  "font/fontSizeTextXSmall.cjs": [],
-  "font/fontSizeTextXXSmall.cjs": [],
+  "font/fontSizeTextLarge.cjs": [
+    "tokens/dist/esm/font/size/fontSizeLg.cjs",
+  ],
+  "font/fontSizeTextMedium.cjs": [
+    "tokens/dist/esm/font/size/fontSizeMd.cjs",
+  ],
+  "font/fontSizeTextSmall.cjs": [
+    "tokens/dist/esm/font/size/fontSizeSm.cjs",
+  ],
+  "font/fontSizeTextXLarge.cjs": [
+    "tokens/dist/esm/font/size/fontSizeXl.cjs",
+  ],
+  "font/fontSizeTextXSmall.cjs": [
+    "tokens/dist/esm/font/size/fontSizeXs.cjs",
+  ],
+  "font/fontSizeTextXXSmall.cjs": [
+    "tokens/dist/esm/font/size/fontSize2Xs.cjs",
+  ],
   "font/fontStyle.cjs": [
     "font/fontStyleItalic.cjs",
     "font/fontStyleNormal.cjs",
@@ -98,22 +125,29 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontWeightRegular.cjs",
     "font/fontWeightSemiBold.cjs",
   ],
-  "font/fontWeightBold.cjs": [],
-  "font/fontWeightRegular.cjs": [],
-  "font/fontWeightSemiBold.cjs": [],
-  "frostedGlass/frostedGlassStyle.cjs": [],
-  "gradient/gradientShared.cjs": [],
+  "font/fontWeightBold.cjs": [
+    "tokens/dist/esm/font/weight/fontWeightBold.cjs",
+  ],
+  "font/fontWeightRegular.cjs": [
+    "tokens/dist/esm/font/weight/fontWeightRegular.cjs",
+  ],
+  "font/fontWeightSemiBold.cjs": [
+    "tokens/dist/esm/font/weight/fontWeightSemiBold.cjs",
+  ],
+  "frostedGlass/frostedGlassStyle.cjs": [
+    "tokens/dist/esm/blur/blurFrosted.cjs",
+  ],
   "gradient/gradientToBottomStyle.cjs": [
-    "gradient/gradientShared.cjs",
+    "tokens/dist/esm/gradient/gradientFade.cjs",
   ],
   "gradient/gradientToLeftStyle.cjs": [
-    "gradient/gradientShared.cjs",
+    "tokens/dist/esm/gradient/gradientFade.cjs",
   ],
   "gradient/gradientToRightStyle.cjs": [
-    "gradient/gradientShared.cjs",
+    "tokens/dist/esm/gradient/gradientFade.cjs",
   ],
   "gradient/gradientToTopStyle.cjs": [
-    "gradient/gradientShared.cjs",
+    "tokens/dist/esm/gradient/gradientFade.cjs",
   ],
   "grid/gridBasic.cjs": [
     "grid/gridBasicColumnEnd.cjs",
@@ -445,13 +479,25 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "mediaQuery/breakpointXXL.cjs",
   ],
   "mediaQuery/breakpointBase.cjs": [],
-  "mediaQuery/breakpointL.cjs": [],
-  "mediaQuery/breakpointM.cjs": [],
-  "mediaQuery/breakpointS.cjs": [],
+  "mediaQuery/breakpointL.cjs": [
+    "tokens/dist/esm/breakpoint/breakpointLg.cjs",
+  ],
+  "mediaQuery/breakpointM.cjs": [
+    "tokens/dist/esm/breakpoint/breakpointMd.cjs",
+  ],
+  "mediaQuery/breakpointS.cjs": [
+    "tokens/dist/esm/breakpoint/breakpointSm.cjs",
+  ],
   "mediaQuery/breakpointShared.cjs": [],
-  "mediaQuery/breakpointXL.cjs": [],
-  "mediaQuery/breakpointXS.cjs": [],
-  "mediaQuery/breakpointXXL.cjs": [],
+  "mediaQuery/breakpointXL.cjs": [
+    "tokens/dist/esm/breakpoint/breakpointXl.cjs",
+  ],
+  "mediaQuery/breakpointXS.cjs": [
+    "tokens/dist/esm/breakpoint/breakpointXs.cjs",
+  ],
+  "mediaQuery/breakpointXXL.cjs": [
+    "tokens/dist/esm/breakpoint/breakpoint2Xl.cjs",
+  ],
   "mediaQuery/getMediaQueryMax.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
@@ -461,13 +507,27 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "mediaQuery/getMediaQueryMinMax.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
-  "motion/motionDurationLong.cjs": [],
-  "motion/motionDurationModerate.cjs": [],
-  "motion/motionDurationShort.cjs": [],
-  "motion/motionDurationVeryLong.cjs": [],
-  "motion/motionEasingBase.cjs": [],
-  "motion/motionEasingIn.cjs": [],
-  "motion/motionEasingOut.cjs": [],
+  "motion/motionDurationLong.cjs": [
+    "tokens/dist/esm/motion/duration/motionDurationLong.cjs",
+  ],
+  "motion/motionDurationModerate.cjs": [
+    "tokens/dist/esm/motion/duration/motionDurationModerate.cjs",
+  ],
+  "motion/motionDurationShort.cjs": [
+    "tokens/dist/esm/motion/duration/motionDurationShort.cjs",
+  ],
+  "motion/motionDurationVeryLong.cjs": [
+    "tokens/dist/esm/motion/duration/motionDurationVeryLong.cjs",
+  ],
+  "motion/motionEasingBase.cjs": [
+    "tokens/dist/esm/motion/ease/motionEaseInOut.cjs",
+  ],
+  "motion/motionEasingIn.cjs": [
+    "tokens/dist/esm/motion/ease/motionEaseIn.cjs",
+  ],
+  "motion/motionEasingOut.cjs": [
+    "tokens/dist/esm/motion/ease/motionEaseOut.cjs",
+  ],
   "skeleton/getSkeletonStyle.cjs": [
     "border/borderRadiusSmall.cjs",
     "motion/motionDurationLong.cjs",
@@ -487,12 +547,24 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "spacing/spacingFluidXSmall.cjs",
     "spacing/spacingFluidXXLarge.cjs",
   ],
-  "spacing/spacingFluidLarge.cjs": [],
-  "spacing/spacingFluidMedium.cjs": [],
-  "spacing/spacingFluidSmall.cjs": [],
-  "spacing/spacingFluidXLarge.cjs": [],
-  "spacing/spacingFluidXSmall.cjs": [],
-  "spacing/spacingFluidXXLarge.cjs": [],
+  "spacing/spacingFluidLarge.cjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidLg.cjs",
+  ],
+  "spacing/spacingFluidMedium.cjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidMd.cjs",
+  ],
+  "spacing/spacingFluidSmall.cjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidSm.cjs",
+  ],
+  "spacing/spacingFluidXLarge.cjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidXl.cjs",
+  ],
+  "spacing/spacingFluidXSmall.cjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidXs.cjs",
+  ],
+  "spacing/spacingFluidXXLarge.cjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluid2Xl.cjs",
+  ],
   "spacing/spacingStatic.cjs": [
     "spacing/spacingStaticLarge.cjs",
     "spacing/spacingStaticMedium.cjs",
@@ -501,12 +573,24 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "spacing/spacingStaticXSmall.cjs",
     "spacing/spacingStaticXXLarge.cjs",
   ],
-  "spacing/spacingStaticLarge.cjs": [],
-  "spacing/spacingStaticMedium.cjs": [],
-  "spacing/spacingStaticSmall.cjs": [],
-  "spacing/spacingStaticXLarge.cjs": [],
-  "spacing/spacingStaticXSmall.cjs": [],
-  "spacing/spacingStaticXXLarge.cjs": [],
+  "spacing/spacingStaticLarge.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticLg.cjs",
+  ],
+  "spacing/spacingStaticMedium.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticMd.cjs",
+  ],
+  "spacing/spacingStaticSmall.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticSm.cjs",
+  ],
+  "spacing/spacingStaticXLarge.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticXl.cjs",
+  ],
+  "spacing/spacingStaticXSmall.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticXs.cjs",
+  ],
+  "spacing/spacingStaticXXLarge.cjs": [
+    "tokens/dist/esm/spacing/static/spacingStatic2Xl.cjs",
+  ],
   "theme/theme.cjs": [
     "theme/themeDark.cjs",
     "theme/themeLight.cjs",
@@ -533,29 +617,65 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "theme/themeDarkStateFocus.cjs",
     "theme/themeDarkStateHover.cjs",
   ],
-  "theme/themeDarkBackgroundBase.cjs": [],
-  "theme/themeDarkBackgroundFrosted.cjs": [],
-  "theme/themeDarkBackgroundShading.cjs": [],
-  "theme/themeDarkBackgroundSurface.cjs": [],
-  "theme/themeDarkContrastHigh.cjs": [],
-  "theme/themeDarkContrastLow.cjs": [],
-  "theme/themeDarkContrastMedium.cjs": [],
-  "theme/themeDarkNotificationError.cjs": [],
-  "theme/themeDarkNotificationErrorSoft.cjs": [],
-  "theme/themeDarkNotificationInfo.cjs": [],
-  "theme/themeDarkNotificationInfoSoft.cjs": [],
-  "theme/themeDarkNotificationSuccess.cjs": [],
-  "theme/themeDarkNotificationSuccessSoft.cjs": [],
-  "theme/themeDarkNotificationWarning.cjs": [],
-  "theme/themeDarkNotificationWarningSoft.cjs": [],
-  "theme/themeDarkPrimary.cjs": [],
-  "theme/themeDarkStateActive.cjs": [],
-  "theme/themeDarkStateDisabled.cjs": [],
+  "theme/themeDarkBackgroundBase.cjs": [
+    "tokens/dist/esm/color/dark/background/colorCanvasDark.cjs",
+  ],
+  "theme/themeDarkBackgroundFrosted.cjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedDark.cjs",
+  ],
+  "theme/themeDarkBackgroundShading.cjs": [
+    "tokens/dist/esm/color/dark/background/colorBackdropDark.cjs",
+  ],
+  "theme/themeDarkBackgroundSurface.cjs": [
+    "tokens/dist/esm/color/dark/background/colorSurfaceDark.cjs",
+  ],
+  "theme/themeDarkContrastHigh.cjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.cjs",
+  ],
+  "theme/themeDarkContrastLow.cjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.cjs",
+  ],
+  "theme/themeDarkContrastMedium.cjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.cjs",
+  ],
+  "theme/themeDarkNotificationError.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorErrorDark.cjs",
+  ],
+  "theme/themeDarkNotificationErrorSoft.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.cjs",
+  ],
+  "theme/themeDarkNotificationInfo.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorInfoDark.cjs",
+  ],
+  "theme/themeDarkNotificationInfoSoft.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.cjs",
+  ],
+  "theme/themeDarkNotificationSuccess.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorSuccessDark.cjs",
+  ],
+  "theme/themeDarkNotificationSuccessSoft.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.cjs",
+  ],
+  "theme/themeDarkNotificationWarning.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorWarningDark.cjs",
+  ],
+  "theme/themeDarkNotificationWarningSoft.cjs": [
+    "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.cjs",
+  ],
+  "theme/themeDarkPrimary.cjs": [
+    "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.cjs",
+  ],
+  "theme/themeDarkStateActive.cjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedDark.cjs",
+  ],
+  "theme/themeDarkStateDisabled.cjs": [
+    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.cjs",
+  ],
   "theme/themeDarkStateFocus.cjs": [
-    "theme/themeLightStateFocus.cjs",
+    "tokens/dist/esm/color/dark/a11y/colorFocusDark.cjs",
   ],
   "theme/themeDarkStateHover.cjs": [
-    "theme/themeLightStateHover.cjs",
+    "tokens/dist/esm/color/dark/background/colorFrostedDark.cjs",
   ],
   "theme/themeLight.cjs": [
     "theme/themeLightBackgroundBase.cjs",
@@ -579,26 +699,216 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "theme/themeLightStateFocus.cjs",
     "theme/themeLightStateHover.cjs",
   ],
-  "theme/themeLightBackgroundBase.cjs": [],
-  "theme/themeLightBackgroundFrosted.cjs": [],
-  "theme/themeLightBackgroundShading.cjs": [],
-  "theme/themeLightBackgroundSurface.cjs": [],
-  "theme/themeLightContrastHigh.cjs": [],
-  "theme/themeLightContrastLow.cjs": [],
-  "theme/themeLightContrastMedium.cjs": [],
-  "theme/themeLightNotificationError.cjs": [],
-  "theme/themeLightNotificationErrorSoft.cjs": [],
-  "theme/themeLightNotificationInfo.cjs": [],
-  "theme/themeLightNotificationInfoSoft.cjs": [],
-  "theme/themeLightNotificationSuccess.cjs": [],
-  "theme/themeLightNotificationSuccessSoft.cjs": [],
-  "theme/themeLightNotificationWarning.cjs": [],
-  "theme/themeLightNotificationWarningSoft.cjs": [],
-  "theme/themeLightPrimary.cjs": [],
-  "theme/themeLightStateActive.cjs": [],
-  "theme/themeLightStateDisabled.cjs": [],
-  "theme/themeLightStateFocus.cjs": [],
-  "theme/themeLightStateHover.cjs": [],
+  "theme/themeLightBackgroundBase.cjs": [
+    "tokens/dist/esm/color/light/background/colorCanvasLight.cjs",
+  ],
+  "theme/themeLightBackgroundFrosted.cjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
+  ],
+  "theme/themeLightBackgroundShading.cjs": [
+    "tokens/dist/esm/color/light/background/colorBackdropLight.cjs",
+  ],
+  "theme/themeLightBackgroundSurface.cjs": [
+    "tokens/dist/esm/color/light/background/colorSurfaceLight.cjs",
+  ],
+  "theme/themeLightContrastHigh.cjs": [
+    "tokens/dist/esm/color/light/foreground/colorContrastHighLight.cjs",
+  ],
+  "theme/themeLightContrastLow.cjs": [
+    "tokens/dist/esm/color/light/foreground/colorContrastLowLight.cjs",
+  ],
+  "theme/themeLightContrastMedium.cjs": [
+    "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.cjs",
+  ],
+  "theme/themeLightNotificationError.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorErrorLight.cjs",
+  ],
+  "theme/themeLightNotificationErrorSoft.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.cjs",
+  ],
+  "theme/themeLightNotificationInfo.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorInfoLight.cjs",
+  ],
+  "theme/themeLightNotificationInfoSoft.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.cjs",
+  ],
+  "theme/themeLightNotificationSuccess.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorSuccessLight.cjs",
+  ],
+  "theme/themeLightNotificationSuccessSoft.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.cjs",
+  ],
+  "theme/themeLightNotificationWarning.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorWarningLight.cjs",
+  ],
+  "theme/themeLightNotificationWarningSoft.cjs": [
+    "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.cjs",
+  ],
+  "theme/themeLightPrimary.cjs": [
+    "tokens/dist/esm/color/light/foreground/colorPrimaryLight.cjs",
+  ],
+  "theme/themeLightStateActive.cjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
+  ],
+  "theme/themeLightStateDisabled.cjs": [
+    "tokens/dist/esm/color/light/a11y/colorDisabledLight.cjs",
+  ],
+  "theme/themeLightStateFocus.cjs": [
+    "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs",
+  ],
+  "theme/themeLightStateHover.cjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
+  ],
+  "tokens/dist/esm/blur/blurFrosted.cjs": [],
+  "tokens/dist/esm/border/radius/borderRadiusLg.cjs": [],
+  "tokens/dist/esm/border/radius/borderRadiusMd.cjs": [],
+  "tokens/dist/esm/border/radius/borderRadiusSm.cjs": [],
+  "tokens/dist/esm/border/width/borderWidthRegular.cjs": [],
+  "tokens/dist/esm/border/width/borderWidthThin.cjs": [],
+  "tokens/dist/esm/breakpoint/breakpoint2Xl.cjs": [],
+  "tokens/dist/esm/breakpoint/breakpointLg.cjs": [],
+  "tokens/dist/esm/breakpoint/breakpointMd.cjs": [],
+  "tokens/dist/esm/breakpoint/breakpointSm.cjs": [],
+  "tokens/dist/esm/breakpoint/breakpointXl.cjs": [],
+  "tokens/dist/esm/breakpoint/breakpointXs.cjs": [],
+  "tokens/dist/esm/color/dark/a11y/colorDisabledDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/a11y/colorFocusDark.cjs": [],
+  "tokens/dist/esm/color/dark/background/colorBackdropDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorCanvasDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorFrostedDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorSurfaceDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorErrorDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorInfoDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorSuccessDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorWarningDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/a11y/colorDisabledLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs": [],
+  "tokens/dist/esm/color/light/background/colorBackdropLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/background/colorCanvasLight.cjs": [],
+  "tokens/dist/esm/color/light/background/colorFrostedLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/background/colorSurfaceLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorContrastHighLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorContrastLowLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorPrimaryLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorErrorLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorInfoLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorSuccessLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorWarningLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/palette.cjs": [],
+  "tokens/dist/esm/font/family/fontFamily.cjs": [],
+  "tokens/dist/esm/font/lineHeight/fontLineHeight.cjs": [],
+  "tokens/dist/esm/font/size/fontSize2Xl.cjs": [],
+  "tokens/dist/esm/font/size/fontSize2Xs.cjs": [],
+  "tokens/dist/esm/font/size/fontSizeLg.cjs": [],
+  "tokens/dist/esm/font/size/fontSizeMd.cjs": [],
+  "tokens/dist/esm/font/size/fontSizeSm.cjs": [],
+  "tokens/dist/esm/font/size/fontSizeXl.cjs": [],
+  "tokens/dist/esm/font/size/fontSizeXs.cjs": [],
+  "tokens/dist/esm/font/weight/fontWeightBold.cjs": [],
+  "tokens/dist/esm/font/weight/fontWeightRegular.cjs": [],
+  "tokens/dist/esm/font/weight/fontWeightSemiBold.cjs": [],
+  "tokens/dist/esm/gradient/gradientFade.cjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationLong.cjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationModerate.cjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationShort.cjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationVeryLong.cjs": [],
+  "tokens/dist/esm/motion/ease/motionEaseIn.cjs": [],
+  "tokens/dist/esm/motion/ease/motionEaseInOut.cjs": [],
+  "tokens/dist/esm/motion/ease/motionEaseOut.cjs": [],
+  "tokens/dist/esm/shadow/shadowHigh.cjs": [],
+  "tokens/dist/esm/shadow/shadowLow.cjs": [],
+  "tokens/dist/esm/shadow/shadowMedium.cjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluid2Xl.cjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidLg.cjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidMd.cjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidSm.cjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidXl.cjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidXs.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStatic2Xl.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticLg.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticMd.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticSm.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticXl.cjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticXs.cjs": [],
   "typography/display/displayLargeStyle.cjs": [
     "font/fontSizeDisplayLarge.cjs",
     "typography/display/displayShared.cjs",
@@ -631,7 +941,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontLineHeight.cjs",
     "font/fontStyleNormal.cjs",
     "font/fontVariant.cjs",
-    "font/fontWeightSemiBold.cjs",
+    "font/fontWeightRegular.cjs",
   ],
   "typography/heading/headingSmallStyle.cjs": [
     "font/fontSizeHeadingSmall.cjs",
@@ -696,34 +1006,47 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "border/borderRadiusMedium.mjs",
     "border/borderRadiusSmall.mjs",
   ],
-  "border/borderRadiusLarge.mjs": [],
-  "border/borderRadiusMedium.mjs": [],
-  "border/borderRadiusSmall.mjs": [],
+  "border/borderRadiusLarge.mjs": [
+    "tokens/dist/esm/border/radius/borderRadiusLg.mjs",
+  ],
+  "border/borderRadiusMedium.mjs": [
+    "tokens/dist/esm/border/radius/borderRadiusMd.mjs",
+  ],
+  "border/borderRadiusSmall.mjs": [
+    "tokens/dist/esm/border/radius/borderRadiusSm.mjs",
+  ],
   "border/borderWidth.mjs": [
     "border/borderWidthBase.mjs",
     "border/borderWidthThin.mjs",
   ],
-  "border/borderWidthBase.mjs": [],
-  "border/borderWidthThin.mjs": [],
+  "border/borderWidthBase.mjs": [
+    "tokens/dist/esm/border/width/borderWidthRegular.mjs",
+  ],
+  "border/borderWidthThin.mjs": [
+    "tokens/dist/esm/border/width/borderWidthThin.mjs",
+  ],
   "dropShadow/dropShadowHighStyle.mjs": [
-    "dropShadow/dropShadowShared.mjs",
+    "tokens/dist/esm/shadow/shadowHigh.mjs",
   ],
   "dropShadow/dropShadowLowStyle.mjs": [
-    "dropShadow/dropShadowShared.mjs",
+    "tokens/dist/esm/shadow/shadowLow.mjs",
   ],
   "dropShadow/dropShadowMediumStyle.mjs": [
-    "dropShadow/dropShadowShared.mjs",
+    "tokens/dist/esm/shadow/shadowMedium.mjs",
   ],
-  "dropShadow/dropShadowShared.mjs": [],
   "focus/getFocusStyle.mjs": [
     "border/borderRadiusMedium.mjs",
     "border/borderRadiusSmall.mjs",
     "border/borderWidthBase.mjs",
     "theme/themeLightStateFocus.mjs",
   ],
-  "font/fontFamily.mjs": [],
+  "font/fontFamily.mjs": [
+    "tokens/dist/esm/font/family/fontFamily.mjs",
+  ],
   "font/fontHyphenationStyle.mjs": [],
-  "font/fontLineHeight.mjs": [],
+  "font/fontLineHeight.mjs": [
+    "tokens/dist/esm/font/lineHeight/fontLineHeight.mjs",
+  ],
   "font/fontSize.mjs": [
     "font/fontSizeDisplay.mjs",
     "font/fontSizeHeading.mjs",
@@ -745,18 +1068,20 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontSizeHeadingXXLarge.mjs",
   ],
   "font/fontSizeHeadingLarge.mjs": [
-    "font/fontSizeTextLarge.mjs",
+    "tokens/dist/esm/font/size/fontSizeLg.mjs",
   ],
   "font/fontSizeHeadingMedium.mjs": [
-    "font/fontSizeTextMedium.mjs",
+    "tokens/dist/esm/font/size/fontSizeMd.mjs",
   ],
   "font/fontSizeHeadingSmall.mjs": [
-    "font/fontSizeTextSmall.mjs",
+    "tokens/dist/esm/font/size/fontSizeSm.mjs",
   ],
   "font/fontSizeHeadingXLarge.mjs": [
-    "font/fontSizeTextXLarge.mjs",
+    "tokens/dist/esm/font/size/fontSizeXl.mjs",
   ],
-  "font/fontSizeHeadingXXLarge.mjs": [],
+  "font/fontSizeHeadingXXLarge.mjs": [
+    "tokens/dist/esm/font/size/fontSize2Xl.mjs",
+  ],
   "font/fontSizeText.mjs": [
     "font/fontSizeTextLarge.mjs",
     "font/fontSizeTextMedium.mjs",
@@ -765,12 +1090,24 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontSizeTextXSmall.mjs",
     "font/fontSizeTextXXSmall.mjs",
   ],
-  "font/fontSizeTextLarge.mjs": [],
-  "font/fontSizeTextMedium.mjs": [],
-  "font/fontSizeTextSmall.mjs": [],
-  "font/fontSizeTextXLarge.mjs": [],
-  "font/fontSizeTextXSmall.mjs": [],
-  "font/fontSizeTextXXSmall.mjs": [],
+  "font/fontSizeTextLarge.mjs": [
+    "tokens/dist/esm/font/size/fontSizeLg.mjs",
+  ],
+  "font/fontSizeTextMedium.mjs": [
+    "tokens/dist/esm/font/size/fontSizeMd.mjs",
+  ],
+  "font/fontSizeTextSmall.mjs": [
+    "tokens/dist/esm/font/size/fontSizeSm.mjs",
+  ],
+  "font/fontSizeTextXLarge.mjs": [
+    "tokens/dist/esm/font/size/fontSizeXl.mjs",
+  ],
+  "font/fontSizeTextXSmall.mjs": [
+    "tokens/dist/esm/font/size/fontSizeXs.mjs",
+  ],
+  "font/fontSizeTextXXSmall.mjs": [
+    "tokens/dist/esm/font/size/fontSize2Xs.mjs",
+  ],
   "font/fontStyle.mjs": [
     "font/fontStyleItalic.mjs",
     "font/fontStyleNormal.mjs",
@@ -783,22 +1120,29 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontWeightRegular.mjs",
     "font/fontWeightSemiBold.mjs",
   ],
-  "font/fontWeightBold.mjs": [],
-  "font/fontWeightRegular.mjs": [],
-  "font/fontWeightSemiBold.mjs": [],
-  "frostedGlass/frostedGlassStyle.mjs": [],
-  "gradient/gradientShared.mjs": [],
+  "font/fontWeightBold.mjs": [
+    "tokens/dist/esm/font/weight/fontWeightBold.mjs",
+  ],
+  "font/fontWeightRegular.mjs": [
+    "tokens/dist/esm/font/weight/fontWeightRegular.mjs",
+  ],
+  "font/fontWeightSemiBold.mjs": [
+    "tokens/dist/esm/font/weight/fontWeightSemiBold.mjs",
+  ],
+  "frostedGlass/frostedGlassStyle.mjs": [
+    "tokens/dist/esm/blur/blurFrosted.mjs",
+  ],
   "gradient/gradientToBottomStyle.mjs": [
-    "gradient/gradientShared.mjs",
+    "tokens/dist/esm/gradient/gradientFade.mjs",
   ],
   "gradient/gradientToLeftStyle.mjs": [
-    "gradient/gradientShared.mjs",
+    "tokens/dist/esm/gradient/gradientFade.mjs",
   ],
   "gradient/gradientToRightStyle.mjs": [
-    "gradient/gradientShared.mjs",
+    "tokens/dist/esm/gradient/gradientFade.mjs",
   ],
   "gradient/gradientToTopStyle.mjs": [
-    "gradient/gradientShared.mjs",
+    "tokens/dist/esm/gradient/gradientFade.mjs",
   ],
   "grid/gridBasic.mjs": [
     "grid/gridBasicColumnEnd.mjs",
@@ -1130,13 +1474,25 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "mediaQuery/breakpointXXL.mjs",
   ],
   "mediaQuery/breakpointBase.mjs": [],
-  "mediaQuery/breakpointL.mjs": [],
-  "mediaQuery/breakpointM.mjs": [],
-  "mediaQuery/breakpointS.mjs": [],
+  "mediaQuery/breakpointL.mjs": [
+    "tokens/dist/esm/breakpoint/breakpointLg.mjs",
+  ],
+  "mediaQuery/breakpointM.mjs": [
+    "tokens/dist/esm/breakpoint/breakpointMd.mjs",
+  ],
+  "mediaQuery/breakpointS.mjs": [
+    "tokens/dist/esm/breakpoint/breakpointSm.mjs",
+  ],
   "mediaQuery/breakpointShared.mjs": [],
-  "mediaQuery/breakpointXL.mjs": [],
-  "mediaQuery/breakpointXS.mjs": [],
-  "mediaQuery/breakpointXXL.mjs": [],
+  "mediaQuery/breakpointXL.mjs": [
+    "tokens/dist/esm/breakpoint/breakpointXl.mjs",
+  ],
+  "mediaQuery/breakpointXS.mjs": [
+    "tokens/dist/esm/breakpoint/breakpointXs.mjs",
+  ],
+  "mediaQuery/breakpointXXL.mjs": [
+    "tokens/dist/esm/breakpoint/breakpoint2Xl.mjs",
+  ],
   "mediaQuery/getMediaQueryMax.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
@@ -1146,13 +1502,27 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "mediaQuery/getMediaQueryMinMax.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
-  "motion/motionDurationLong.mjs": [],
-  "motion/motionDurationModerate.mjs": [],
-  "motion/motionDurationShort.mjs": [],
-  "motion/motionDurationVeryLong.mjs": [],
-  "motion/motionEasingBase.mjs": [],
-  "motion/motionEasingIn.mjs": [],
-  "motion/motionEasingOut.mjs": [],
+  "motion/motionDurationLong.mjs": [
+    "tokens/dist/esm/motion/duration/motionDurationLong.mjs",
+  ],
+  "motion/motionDurationModerate.mjs": [
+    "tokens/dist/esm/motion/duration/motionDurationModerate.mjs",
+  ],
+  "motion/motionDurationShort.mjs": [
+    "tokens/dist/esm/motion/duration/motionDurationShort.mjs",
+  ],
+  "motion/motionDurationVeryLong.mjs": [
+    "tokens/dist/esm/motion/duration/motionDurationVeryLong.mjs",
+  ],
+  "motion/motionEasingBase.mjs": [
+    "tokens/dist/esm/motion/ease/motionEaseInOut.mjs",
+  ],
+  "motion/motionEasingIn.mjs": [
+    "tokens/dist/esm/motion/ease/motionEaseIn.mjs",
+  ],
+  "motion/motionEasingOut.mjs": [
+    "tokens/dist/esm/motion/ease/motionEaseOut.mjs",
+  ],
   "skeleton/getSkeletonStyle.mjs": [
     "border/borderRadiusSmall.mjs",
     "motion/motionDurationLong.mjs",
@@ -1172,12 +1542,24 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "spacing/spacingFluidXSmall.mjs",
     "spacing/spacingFluidXXLarge.mjs",
   ],
-  "spacing/spacingFluidLarge.mjs": [],
-  "spacing/spacingFluidMedium.mjs": [],
-  "spacing/spacingFluidSmall.mjs": [],
-  "spacing/spacingFluidXLarge.mjs": [],
-  "spacing/spacingFluidXSmall.mjs": [],
-  "spacing/spacingFluidXXLarge.mjs": [],
+  "spacing/spacingFluidLarge.mjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidLg.mjs",
+  ],
+  "spacing/spacingFluidMedium.mjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidMd.mjs",
+  ],
+  "spacing/spacingFluidSmall.mjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidSm.mjs",
+  ],
+  "spacing/spacingFluidXLarge.mjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidXl.mjs",
+  ],
+  "spacing/spacingFluidXSmall.mjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluidXs.mjs",
+  ],
+  "spacing/spacingFluidXXLarge.mjs": [
+    "tokens/dist/esm/spacing/fluid/spacingFluid2Xl.mjs",
+  ],
   "spacing/spacingStatic.mjs": [
     "spacing/spacingStaticLarge.mjs",
     "spacing/spacingStaticMedium.mjs",
@@ -1186,12 +1568,24 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "spacing/spacingStaticXSmall.mjs",
     "spacing/spacingStaticXXLarge.mjs",
   ],
-  "spacing/spacingStaticLarge.mjs": [],
-  "spacing/spacingStaticMedium.mjs": [],
-  "spacing/spacingStaticSmall.mjs": [],
-  "spacing/spacingStaticXLarge.mjs": [],
-  "spacing/spacingStaticXSmall.mjs": [],
-  "spacing/spacingStaticXXLarge.mjs": [],
+  "spacing/spacingStaticLarge.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticLg.mjs",
+  ],
+  "spacing/spacingStaticMedium.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticMd.mjs",
+  ],
+  "spacing/spacingStaticSmall.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticSm.mjs",
+  ],
+  "spacing/spacingStaticXLarge.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticXl.mjs",
+  ],
+  "spacing/spacingStaticXSmall.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStaticXs.mjs",
+  ],
+  "spacing/spacingStaticXXLarge.mjs": [
+    "tokens/dist/esm/spacing/static/spacingStatic2Xl.mjs",
+  ],
   "theme/theme.mjs": [
     "theme/themeDark.mjs",
     "theme/themeLight.mjs",
@@ -1218,29 +1612,65 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "theme/themeDarkStateFocus.mjs",
     "theme/themeDarkStateHover.mjs",
   ],
-  "theme/themeDarkBackgroundBase.mjs": [],
-  "theme/themeDarkBackgroundFrosted.mjs": [],
-  "theme/themeDarkBackgroundShading.mjs": [],
-  "theme/themeDarkBackgroundSurface.mjs": [],
-  "theme/themeDarkContrastHigh.mjs": [],
-  "theme/themeDarkContrastLow.mjs": [],
-  "theme/themeDarkContrastMedium.mjs": [],
-  "theme/themeDarkNotificationError.mjs": [],
-  "theme/themeDarkNotificationErrorSoft.mjs": [],
-  "theme/themeDarkNotificationInfo.mjs": [],
-  "theme/themeDarkNotificationInfoSoft.mjs": [],
-  "theme/themeDarkNotificationSuccess.mjs": [],
-  "theme/themeDarkNotificationSuccessSoft.mjs": [],
-  "theme/themeDarkNotificationWarning.mjs": [],
-  "theme/themeDarkNotificationWarningSoft.mjs": [],
-  "theme/themeDarkPrimary.mjs": [],
-  "theme/themeDarkStateActive.mjs": [],
-  "theme/themeDarkStateDisabled.mjs": [],
+  "theme/themeDarkBackgroundBase.mjs": [
+    "tokens/dist/esm/color/dark/background/colorCanvasDark.mjs",
+  ],
+  "theme/themeDarkBackgroundFrosted.mjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedDark.mjs",
+  ],
+  "theme/themeDarkBackgroundShading.mjs": [
+    "tokens/dist/esm/color/dark/background/colorBackdropDark.mjs",
+  ],
+  "theme/themeDarkBackgroundSurface.mjs": [
+    "tokens/dist/esm/color/dark/background/colorSurfaceDark.mjs",
+  ],
+  "theme/themeDarkContrastHigh.mjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.mjs",
+  ],
+  "theme/themeDarkContrastLow.mjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.mjs",
+  ],
+  "theme/themeDarkContrastMedium.mjs": [
+    "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.mjs",
+  ],
+  "theme/themeDarkNotificationError.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorErrorDark.mjs",
+  ],
+  "theme/themeDarkNotificationErrorSoft.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.mjs",
+  ],
+  "theme/themeDarkNotificationInfo.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorInfoDark.mjs",
+  ],
+  "theme/themeDarkNotificationInfoSoft.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.mjs",
+  ],
+  "theme/themeDarkNotificationSuccess.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorSuccessDark.mjs",
+  ],
+  "theme/themeDarkNotificationSuccessSoft.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.mjs",
+  ],
+  "theme/themeDarkNotificationWarning.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorWarningDark.mjs",
+  ],
+  "theme/themeDarkNotificationWarningSoft.mjs": [
+    "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.mjs",
+  ],
+  "theme/themeDarkPrimary.mjs": [
+    "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.mjs",
+  ],
+  "theme/themeDarkStateActive.mjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedDark.mjs",
+  ],
+  "theme/themeDarkStateDisabled.mjs": [
+    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.mjs",
+  ],
   "theme/themeDarkStateFocus.mjs": [
-    "theme/themeLightStateFocus.mjs",
+    "tokens/dist/esm/color/dark/a11y/colorFocusDark.mjs",
   ],
   "theme/themeDarkStateHover.mjs": [
-    "theme/themeLightStateHover.mjs",
+    "tokens/dist/esm/color/dark/background/colorFrostedDark.mjs",
   ],
   "theme/themeLight.mjs": [
     "theme/themeLightBackgroundBase.mjs",
@@ -1264,26 +1694,216 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "theme/themeLightStateFocus.mjs",
     "theme/themeLightStateHover.mjs",
   ],
-  "theme/themeLightBackgroundBase.mjs": [],
-  "theme/themeLightBackgroundFrosted.mjs": [],
-  "theme/themeLightBackgroundShading.mjs": [],
-  "theme/themeLightBackgroundSurface.mjs": [],
-  "theme/themeLightContrastHigh.mjs": [],
-  "theme/themeLightContrastLow.mjs": [],
-  "theme/themeLightContrastMedium.mjs": [],
-  "theme/themeLightNotificationError.mjs": [],
-  "theme/themeLightNotificationErrorSoft.mjs": [],
-  "theme/themeLightNotificationInfo.mjs": [],
-  "theme/themeLightNotificationInfoSoft.mjs": [],
-  "theme/themeLightNotificationSuccess.mjs": [],
-  "theme/themeLightNotificationSuccessSoft.mjs": [],
-  "theme/themeLightNotificationWarning.mjs": [],
-  "theme/themeLightNotificationWarningSoft.mjs": [],
-  "theme/themeLightPrimary.mjs": [],
-  "theme/themeLightStateActive.mjs": [],
-  "theme/themeLightStateDisabled.mjs": [],
-  "theme/themeLightStateFocus.mjs": [],
-  "theme/themeLightStateHover.mjs": [],
+  "theme/themeLightBackgroundBase.mjs": [
+    "tokens/dist/esm/color/light/background/colorCanvasLight.mjs",
+  ],
+  "theme/themeLightBackgroundFrosted.mjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
+  ],
+  "theme/themeLightBackgroundShading.mjs": [
+    "tokens/dist/esm/color/light/background/colorBackdropLight.mjs",
+  ],
+  "theme/themeLightBackgroundSurface.mjs": [
+    "tokens/dist/esm/color/light/background/colorSurfaceLight.mjs",
+  ],
+  "theme/themeLightContrastHigh.mjs": [
+    "tokens/dist/esm/color/light/foreground/colorContrastHighLight.mjs",
+  ],
+  "theme/themeLightContrastLow.mjs": [
+    "tokens/dist/esm/color/light/foreground/colorContrastLowLight.mjs",
+  ],
+  "theme/themeLightContrastMedium.mjs": [
+    "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.mjs",
+  ],
+  "theme/themeLightNotificationError.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorErrorLight.mjs",
+  ],
+  "theme/themeLightNotificationErrorSoft.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.mjs",
+  ],
+  "theme/themeLightNotificationInfo.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorInfoLight.mjs",
+  ],
+  "theme/themeLightNotificationInfoSoft.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.mjs",
+  ],
+  "theme/themeLightNotificationSuccess.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorSuccessLight.mjs",
+  ],
+  "theme/themeLightNotificationSuccessSoft.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.mjs",
+  ],
+  "theme/themeLightNotificationWarning.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorWarningLight.mjs",
+  ],
+  "theme/themeLightNotificationWarningSoft.mjs": [
+    "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.mjs",
+  ],
+  "theme/themeLightPrimary.mjs": [
+    "tokens/dist/esm/color/light/foreground/colorPrimaryLight.mjs",
+  ],
+  "theme/themeLightStateActive.mjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
+  ],
+  "theme/themeLightStateDisabled.mjs": [
+    "tokens/dist/esm/color/light/a11y/colorDisabledLight.mjs",
+  ],
+  "theme/themeLightStateFocus.mjs": [
+    "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs",
+  ],
+  "theme/themeLightStateHover.mjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
+  ],
+  "tokens/dist/esm/blur/blurFrosted.mjs": [],
+  "tokens/dist/esm/border/radius/borderRadiusLg.mjs": [],
+  "tokens/dist/esm/border/radius/borderRadiusMd.mjs": [],
+  "tokens/dist/esm/border/radius/borderRadiusSm.mjs": [],
+  "tokens/dist/esm/border/width/borderWidthRegular.mjs": [],
+  "tokens/dist/esm/border/width/borderWidthThin.mjs": [],
+  "tokens/dist/esm/breakpoint/breakpoint2Xl.mjs": [],
+  "tokens/dist/esm/breakpoint/breakpointLg.mjs": [],
+  "tokens/dist/esm/breakpoint/breakpointMd.mjs": [],
+  "tokens/dist/esm/breakpoint/breakpointSm.mjs": [],
+  "tokens/dist/esm/breakpoint/breakpointXl.mjs": [],
+  "tokens/dist/esm/breakpoint/breakpointXs.mjs": [],
+  "tokens/dist/esm/color/dark/a11y/colorDisabledDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/a11y/colorFocusDark.mjs": [],
+  "tokens/dist/esm/color/dark/background/colorBackdropDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorCanvasDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorFrostedDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorSurfaceDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorContrastHighDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorContrastLowDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/foreground/colorPrimaryDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorErrorDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorErrorFrostedDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorInfoDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorInfoFrostedDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorSuccessDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorSuccessFrostedDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorWarningDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/semantic/colorWarningFrostedDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/a11y/colorDisabledLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs": [],
+  "tokens/dist/esm/color/light/background/colorBackdropLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/background/colorCanvasLight.mjs": [],
+  "tokens/dist/esm/color/light/background/colorFrostedLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/background/colorSurfaceLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorContrastHighLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorContrastLowLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/foreground/colorPrimaryLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorErrorLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorInfoLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorSuccessFrostedLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorSuccessLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorWarningFrostedLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/semantic/colorWarningLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/palette.mjs": [],
+  "tokens/dist/esm/font/family/fontFamily.mjs": [],
+  "tokens/dist/esm/font/lineHeight/fontLineHeight.mjs": [],
+  "tokens/dist/esm/font/size/fontSize2Xl.mjs": [],
+  "tokens/dist/esm/font/size/fontSize2Xs.mjs": [],
+  "tokens/dist/esm/font/size/fontSizeLg.mjs": [],
+  "tokens/dist/esm/font/size/fontSizeMd.mjs": [],
+  "tokens/dist/esm/font/size/fontSizeSm.mjs": [],
+  "tokens/dist/esm/font/size/fontSizeXl.mjs": [],
+  "tokens/dist/esm/font/size/fontSizeXs.mjs": [],
+  "tokens/dist/esm/font/weight/fontWeightBold.mjs": [],
+  "tokens/dist/esm/font/weight/fontWeightRegular.mjs": [],
+  "tokens/dist/esm/font/weight/fontWeightSemiBold.mjs": [],
+  "tokens/dist/esm/gradient/gradientFade.mjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationLong.mjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationModerate.mjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationShort.mjs": [],
+  "tokens/dist/esm/motion/duration/motionDurationVeryLong.mjs": [],
+  "tokens/dist/esm/motion/ease/motionEaseIn.mjs": [],
+  "tokens/dist/esm/motion/ease/motionEaseInOut.mjs": [],
+  "tokens/dist/esm/motion/ease/motionEaseOut.mjs": [],
+  "tokens/dist/esm/shadow/shadowHigh.mjs": [],
+  "tokens/dist/esm/shadow/shadowLow.mjs": [],
+  "tokens/dist/esm/shadow/shadowMedium.mjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluid2Xl.mjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidLg.mjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidMd.mjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidSm.mjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidXl.mjs": [],
+  "tokens/dist/esm/spacing/fluid/spacingFluidXs.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStatic2Xl.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticLg.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticMd.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticSm.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticXl.mjs": [],
+  "tokens/dist/esm/spacing/static/spacingStaticXs.mjs": [],
   "typography/display/displayLargeStyle.mjs": [
     "font/fontSizeDisplayLarge.mjs",
     "typography/display/displayShared.mjs",
@@ -1316,7 +1936,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontLineHeight.mjs",
     "font/fontStyleNormal.mjs",
     "font/fontVariant.mjs",
-    "font/fontWeightSemiBold.mjs",
+    "font/fontWeightRegular.mjs",
   ],
   "typography/heading/headingSmallStyle.mjs": [
     "font/fontSizeHeadingSmall.mjs",

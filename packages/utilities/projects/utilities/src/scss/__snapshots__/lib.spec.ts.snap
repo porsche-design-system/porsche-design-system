@@ -374,7 +374,7 @@ $pds-grid-wide-offset-xxl: calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 40
 exports[`should contain correct content for auto generated file ./src/scss/lib/_heading.scss 1`] = `
 "@mixin pds-heading-large {
   font:
-    normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) "Porsche Next",
+    normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
     Arial,
     "Heiti SC",
@@ -384,7 +384,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 
 @mixin pds-heading-medium {
   font:
-    normal normal 600 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) "Porsche Next",
+    normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
     Arial,
     "Heiti SC",
@@ -394,7 +394,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 
 @mixin pds-heading-small {
   font:
-    normal normal 600 1rem/calc(6px + 2.125ex) "Porsche Next",
+    normal normal 400 1rem/calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
     Arial,
     "Heiti SC",
@@ -404,7 +404,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 
 @mixin pds-heading-x-large {
   font:
-    normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) "Porsche Next",
+    normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
     Arial,
     "Heiti SC",
@@ -414,7 +414,7 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 
 @mixin pds-heading-xx-large {
   font:
-    normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) "Porsche Next",
+    normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
     Arial,
     "Heiti SC",
@@ -527,45 +527,45 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
 `;
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_theme.scss 1`] = `
-"$pds-theme-light-primary: #010205;
+"$pds-theme-light-primary: hsl(225, 66.7%, 1.2%);
 $pds-theme-light-background-base: #fff;
-$pds-theme-light-background-surface: #eeeff2;
-$pds-theme-light-background-shading: rgba(1, 2, 5, 0.67);
-$pds-theme-light-background-frosted: hsl(240 4% 85%/35%);
-$pds-theme-light-contrast-low: #d8d8db;
-$pds-theme-light-contrast-medium: #6b6d70;
-$pds-theme-light-contrast-high: #535457;
-$pds-theme-light-notification-success: #197e10;
-$pds-theme-light-notification-success-soft: #e4ffec;
-$pds-theme-light-notification-warning: #f3be00;
-$pds-theme-light-notification-warning-soft: #fff4d2;
-$pds-theme-light-notification-error: #cc1922;
-$pds-theme-light-notification-error-soft: #ffe2e4;
-$pds-theme-light-notification-info: #2762ec;
-$pds-theme-light-notification-info-soft: #d3e1ff;
-$pds-theme-light-state-hover: rgba(148, 149, 152, 0.18);
-$pds-theme-light-state-active: rgba(148, 149, 152, 0.2);
+$pds-theme-light-background-surface: hsl(240, 7.7%, 97.5%);
+$pds-theme-light-background-shading: hsla(240, 5.3%, 14.9%, 0.5);
+$pds-theme-light-background-frosted: hsla(236, 6.4%, 51%, 0.148);
+$pds-theme-light-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
+$pds-theme-light-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
+$pds-theme-light-contrast-high: hsla(240, 7.1%, 11%, 0.7);
+$pds-theme-light-notification-success: hsl(115, 77.5%, 27.8%);
+$pds-theme-light-notification-success-soft: hsla(115, 77.5%, 27.8%, 0.18);
+$pds-theme-light-notification-warning: hsl(28, 97.7%, 34.1%);
+$pds-theme-light-notification-warning-soft: hsla(28, 97.7%, 34.1%, 0.18);
+$pds-theme-light-notification-error: hsl(357, 78%, 41%);
+$pds-theme-light-notification-error-soft: hsla(357, 78%, 41%, 0.18);
+$pds-theme-light-notification-info: hsl(228, 83.2%, 51%);
+$pds-theme-light-notification-info-soft: hsla(228, 83.2%, 51%, 0.18);
+$pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148);
+$pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148);
 $pds-theme-light-state-focus: #1a44ea;
-$pds-theme-light-state-disabled: #949598;
-$pds-theme-dark-primary: #fbfcff;
-$pds-theme-dark-background-base: #0e0e12;
-$pds-theme-dark-background-surface: #212225;
-$pds-theme-dark-background-shading: rgba(38, 38, 41, 0.67);
-$pds-theme-dark-background-frosted: hsl(240 3% 26%/35%);
-$pds-theme-dark-contrast-low: #404044;
-$pds-theme-dark-contrast-medium: #88898c;
-$pds-theme-dark-contrast-high: #afb0b3;
-$pds-theme-dark-notification-success: #09d087;
-$pds-theme-dark-notification-success-soft: #003320;
-$pds-theme-dark-notification-warning: #f7cb47;
-$pds-theme-dark-notification-warning-soft: #362b0a;
-$pds-theme-dark-notification-error: #fc4040;
-$pds-theme-dark-notification-error-soft: #3a0f0f;
-$pds-theme-dark-notification-info: #178bff;
-$pds-theme-dark-notification-info-soft: #04294e;
-$pds-theme-dark-state-hover: rgba(148, 149, 152, 0.18);
-$pds-theme-dark-state-active: rgba(126, 127, 130, 0.2);
+$pds-theme-light-state-disabled: hsla(233, 6.6%, 23.9%, 0.412);
+$pds-theme-dark-primary: hsl(240, 12.5%, 96.9%);
+$pds-theme-dark-background-base: hsl(225, 66.7%, 1.2%);
+$pds-theme-dark-background-surface: hsl(240, 2%, 10%);
+$pds-theme-dark-background-shading: hsla(240, 5.3%, 14.9%, 0.5);
+$pds-theme-dark-background-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+$pds-theme-dark-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+$pds-theme-dark-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+$pds-theme-dark-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+$pds-theme-dark-notification-success: hsl(157, 84.9%, 41.6%);
+$pds-theme-dark-notification-success-soft: hsla(157, 84.9%, 41.6%, 0.18);
+$pds-theme-dark-notification-warning: hsl(28, 90.2%, 56.1%);
+$pds-theme-dark-notification-warning-soft: hsla(28, 90.2%, 56.1%, 0.18);
+$pds-theme-dark-notification-error: hsl(0, 96.9%, 62%);
+$pds-theme-dark-notification-error-soft: hsla(0, 96.9%, 62%, 0.18);
+$pds-theme-dark-notification-info: hsl(210, 100%, 54.5%);
+$pds-theme-dark-notification-info-soft: hsla(210, 100%, 54.5%, 0.18);
+$pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228);
+$pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228);
 $pds-theme-dark-state-focus: #1a44ea;
-$pds-theme-dark-state-disabled: #7e7f82;
+$pds-theme-dark-state-disabled: hsla(240, 1.5%, 61.8%, 0.302);
 "
 `;

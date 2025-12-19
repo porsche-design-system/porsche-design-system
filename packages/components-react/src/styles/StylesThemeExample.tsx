@@ -1,13 +1,12 @@
-import styled from 'styled-components';
 import {
   borderRadiusSmall,
   gridGap,
   headingMediumStyle,
   spacingFluidMedium,
   themeDarkBackgroundBase,
-  themeDarkBackgroundSurface,
-  themeDarkBackgroundShading,
   themeDarkBackgroundFrosted,
+  themeDarkBackgroundShading,
+  themeDarkBackgroundSurface,
   themeDarkContrastHigh,
   themeDarkContrastLow,
   themeDarkContrastMedium,
@@ -25,9 +24,9 @@ import {
   themeDarkStateFocus,
   themeDarkStateHover,
   themeLightBackgroundBase,
-  themeLightBackgroundSurface,
-  themeLightBackgroundShading,
   themeLightBackgroundFrosted,
+  themeLightBackgroundShading,
+  themeLightBackgroundSurface,
   themeLightContrastHigh,
   themeLightContrastLow,
   themeLightContrastMedium,
@@ -45,6 +44,7 @@ import {
   themeLightStateFocus,
   themeLightStateHover,
 } from '@porsche-design-system/components-react/styles';
+import styled from 'styled-components';
 
 // Wrapper
 const wrapperStyle = {

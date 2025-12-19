@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import {
@@ -25,13 +25,11 @@ export const getComponentCss = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  theme: Theme,
   clear: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
-      textOverflow: 'ellipsis',
-      '&[type="search"]::-webkit-search-cancel-button': {
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
+      '&::-webkit-search-cancel-button': {
         display: 'none',
       },
     }),

@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,7 +18,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -26,12 +25,7 @@ import { descriptionId } from '../common/label/label-utils';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
-import type {
-  CheckboxBlurEventDetail,
-  CheckboxChangeEventDetail,
-  CheckboxState,
-  CheckboxUpdateEventDetail,
-} from './checkbox-utils';
+import type { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from './checkbox-utils';
 
 const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
@@ -47,7 +41,6 @@ const propTypes: PropTypes<typeof Checkbox> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   loading: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
@@ -104,15 +97,6 @@ export class Checkbox {
 
   /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
-
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
-  /**
-   * Emitted when checkbox checked property is changed.
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
 
   /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
@@ -213,13 +197,12 @@ export class Checkbox {
       this.state,
       this.disabled,
       this.loading,
-      this.compact,
-      this.theme
+      this.compact
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const id = 'checkbox';
+    const id = 'x';
     return (
       <div class="root">
         <Label
@@ -247,11 +230,9 @@ export class Checkbox {
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
           />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
@@ -270,11 +251,5 @@ export class Checkbox {
     this.checked = checked;
     this.internals?.setFormValue(checked ? this.value : undefined);
     this.change.emit(e);
-
-    this.update.emit({
-      value: this.value,
-      name: this.name,
-      checked,
-    });
   };
 }

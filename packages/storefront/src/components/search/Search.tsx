@@ -1,14 +1,14 @@
 'use client';
 
-import { SearchInput } from '@/components/search/SearchInput';
-import { SearchResults } from '@/components/search/SearchResults';
-import { algoliaClient } from '@/lib/algolia/client';
-import { getBasePath } from '@/utils/getBasePath';
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
 import { InstantSearch } from 'react-instantsearch';
+import { SearchInput } from '@/components/search/SearchInput';
+import { SearchResults } from '@/components/search/SearchResults';
+import { algoliaClient } from '@/lib/algolia/client';
+import { getBasePath } from '@/utils/getBasePath';
 
 export type AlgoliaRecord = {
   objectID: string;

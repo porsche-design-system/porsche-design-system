@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,15 +10,10 @@ import {
   parseJSONAttribute,
   scrollAreaClass,
   scrollElementTo,
-  THEMES,
   validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
 import {
-  GRADIENT_COLOR_SCHEMES,
-  GRADIENT_COLORS,
   getScrollPositionAfterPrevNextClick,
   isScrollable,
   SCROLL_INDICATOR_POSITIONS,
@@ -26,26 +21,16 @@ import {
   type ScrollerAlignScrollIndicator,
   type ScrollerAriaAttribute,
   type ScrollerDirection,
-  type ScrollerGradientColor,
-  type ScrollerGradientColorScheme,
-  type ScrollerScrollIndicatorPosition,
   type ScrollerScrollToPosition,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
-  gradientColorScheme: AllowedTypes.oneOf<ScrollerGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<ScrollerGradientColor>([undefined, ...GRADIENT_COLORS]),
   scrollToPosition: AllowedTypes.shape<ScrollerScrollToPosition>({
     scrollPosition: AllowedTypes.number,
     isSmooth: AllowedTypes.boolean,
   }),
-  scrollIndicatorPosition: AllowedTypes.oneOf<ScrollerScrollIndicatorPosition>([
-    undefined,
-    ...SCROLL_INDICATOR_POSITIONS,
-  ]),
   alignScrollIndicator: AllowedTypes.oneOf<ScrollerAlignScrollIndicator>(SCROLL_INDICATOR_POSITIONS),
   scrollbar: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
 };
 
@@ -59,29 +44,11 @@ const propTypes: PropTypes<typeof Scroller> = {
 export class Scroller {
   @Element() public host!: HTMLElement;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release.
-   * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColorScheme?: ScrollerGradientColorScheme;
-
-  /**
-   * @deprecated since v3.29.0, will be removed with next major release.
-   * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: ScrollerGradientColor;
-
   /** Scrolls the scroll area to the left either smooth or immediately. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
 
-  /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `alignScrollIndicator` instead.
-   * Sets the vertical position of scroll indicator */
-  @Prop() public scrollIndicatorPosition?: ScrollerScrollIndicatorPosition;
-
   /** Sets the vertical position of scroll indicator. */
   @Prop() public alignScrollIndicator?: ScrollerAlignScrollIndicator = 'center';
-
-  /** Adapts the color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Specifies if scrollbar should be shown. */
   @Prop() public scrollbar?: boolean = false;
@@ -137,34 +104,13 @@ export class Scroller {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
-    warnIfDeprecatedPropIsUsed<typeof Scroller>(
-      this,
-      'gradientColor',
-      'Prop can be omitted, gradient handling is managed internally.'
-    );
-    warnIfDeprecatedPropIsUsed<typeof Scroller>(
-      this,
-      'scrollIndicatorPosition',
-      'Please use alignScrollIndicator prop instead.'
-    );
-    const deprecationMap: Record<ScrollerGradientColorScheme, ScrollerGradientColor> = {
-      default: 'background-base',
-      surface: 'background-surface',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Scroller, ScrollerGradientColorScheme, ScrollerGradientColor>(
-      this,
-      'gradientColorScheme',
-      deprecationMap
-    );
     attachComponentCss(
       this.host,
       getComponentCss,
       this.isNextHidden,
       this.isPrevHidden,
-      this.scrollIndicatorPosition || this.alignScrollIndicator,
-      this.scrollbar,
-      this.theme
+      this.alignScrollIndicator,
+      this.scrollbar
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -173,14 +119,12 @@ export class Scroller {
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <PrefixedTagNames.pButton
             class="action-button"
-            variant="ghost"
+            variant="secondary"
             hide-label="true"
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
-            theme={this.theme}
-            dir="ltr" // Otherwise icon will be flipped which doesn't make sense in this use case
           >
             {direction}
           </PrefixedTagNames.pButton>

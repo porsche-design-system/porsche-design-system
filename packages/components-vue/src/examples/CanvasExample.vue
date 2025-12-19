@@ -38,7 +38,7 @@
     <PButton
       slot="header-end"
       icon="configurate"
-      variant="ghost"
+      variant="secondary"
       :compact="true"
       :hideLabel="true"
       @click="onSidebarEndOpen"

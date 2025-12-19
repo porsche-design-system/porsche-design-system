@@ -10,16 +10,9 @@ import {
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { BreakpointCustomizable, TextSize, Theme } from '../../types';
+import type { BreakpointCustomizable, TextSize } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import {
-  TEXT_TAGS,
-  type TextAlign,
-  type TextColor,
-  type TextColorDeprecated,
-  type TextWeight,
-  type TextWeightDeprecated,
-} from './text-utils';
+import { TEXT_TAGS, type TextAlign, type TextColor, type TextWeight } from './text-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
@@ -36,11 +29,10 @@ const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
  */
 export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
-  weight: Exclude<TextWeight, TextWeightDeprecated>,
+  weight: TextWeight,
   align: TextAlign,
-  color: Exclude<TextColor, TextColorDeprecated>,
-  ellipsis: boolean,
-  theme: Theme
+  color: TextColor,
+  ellipsis: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -61,8 +53,7 @@ export const getComponentCss = (
       })),
       align,
       color,
-      ellipsis,
-      theme
+      ellipsis
     ),
   });
 };

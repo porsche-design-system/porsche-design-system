@@ -1,37 +1,17 @@
-import type { DividerColor, DividerDirection, DividerColorDeprecated } from './divider-utils';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getHighContrastColors,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
+import type { DividerColor, DividerDirection } from './divider-utils';
 
-export const getComponentCss = (
-  color: Exclude<DividerColor, DividerColorDeprecated>,
-  orientation: BreakpointCustomizable<DividerDirection>,
-  theme: Theme
-): string => {
-  const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
-  const {
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    contrastHighColor: contrastHighColorDark,
-  } = getThemedColors('dark');
-  const colorMap: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
-    'contrast-low': contrastLowColor,
-    'contrast-medium': contrastMediumColor,
-    'contrast-high': contrastHighColor,
-  };
-  const colorMapDark: Record<Exclude<DividerColor, DividerColorDeprecated>, string> = {
-    'contrast-low': contrastLowColorDark,
-    'contrast-medium': contrastMediumColorDark,
-    'contrast-high': contrastHighColorDark,
-  };
+const { contrastLowerColor, contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
+const colorMap: Record<DividerColor, string> = {
+  'contrast-lower': contrastLowerColor,
+  'contrast-low': contrastLowColor,
+  'contrast-medium': contrastMediumColor,
+  'contrast-high': contrastHighColor,
+};
 
+export const getComponentCss = (color: DividerColor, orientation: BreakpointCustomizable<DividerDirection>): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -42,20 +22,9 @@ export const getComponentCss = (
         }),
       },
       hr: {
-        margin: 0,
-        padding: 0,
-        border: 'none',
-        textAlign: 'start',
-        ...(isHighContrastMode
-          ? {
-              background: getHighContrastColors().canvasTextColor,
-            }
-          : {
-              background: colorMap[color],
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: colorMapDark[color],
-              }),
-            }),
+        all: 'unset',
+        display: 'block',
+        background: colorMap[color],
         ...buildResponsiveStyles(orientation, (o: DividerDirection) =>
           o === 'horizontal' ? { height: '1px', width: '100%' } : { height: '100%', width: '1px' }
         ),

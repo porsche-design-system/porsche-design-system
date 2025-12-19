@@ -1,17 +1,16 @@
-import type { WordmarkSize } from './wordmark-utils';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle,
-  getHighContrastColors,
-  getThemedColors,
+  colors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
+  getFocusBaseStyles
 } from '../../styles';
+import { getCss } from '../../utils';
+import type { WordmarkSize } from './wordmark-utils';
 
-export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
+const { primaryColor } = colors;
+
+export const getComponentCss = (size: WordmarkSize): string => {
   return getCss({
     '@global': {
       ':host': {
@@ -19,7 +18,6 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          outline: 0,
           maxWidth: '100%',
           maxHeight: '100%',
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
@@ -41,7 +39,8 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
         height: 'inherit',
       },
       a: {
-        textDecoration: 'none',
+        all: 'unset',
+        cursor: 'pointer',
         '&::before': {
           // needs to be defined always to have correct custom click area
           content: '""',
@@ -49,18 +48,11 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
           inset: 0,
           borderRadius: '1px',
         },
-        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
+        '&:focus-visible::before': getFocusBaseStyles(),
       },
-      svg: isHighContrastMode
-        ? {
-            fill: getHighContrastColors().canvasTextColor,
-          }
-        : {
-            fill: getThemedColors(theme).primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              fill: getThemedColors('dark').primaryColor,
-            }),
-          },
+      svg: {
+        fill: primaryColor,
+      },
     },
   });
 };

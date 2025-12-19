@@ -13,7 +13,7 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -35,7 +35,6 @@ import {
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   setHighlightedSelectOption,
-  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
   updateHighlightedOption,
@@ -54,10 +53,8 @@ import {
   type SelectOption,
   type SelectState,
   type SelectToggleEventDetail,
-  type SelectUpdateEventDetail,
   selectOptionByValue,
   setSelectedOption,
-  syncSelectChildrenProps,
 } from './select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
@@ -74,7 +71,6 @@ const propTypes: PropTypes<typeof Select> = {
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -134,9 +130,6 @@ export class Select {
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** Adapts the select color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** The id of a form element the select should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
@@ -148,11 +141,6 @@ export class Select {
 
   /** Emitted when the dropdown is toggled. */
   @Event({ bubbles: false }) public toggle: EventEmitter<SelectToggleEventDetail>;
-
-  /**
-   * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
-   */
-  @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
@@ -295,10 +283,8 @@ export class Select {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.compact,
-      this.theme
+      this.compact
     );
-    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const hasCustomFilterSlot = hasNamedSlot(this.host, 'filter');
     const hasCustomSelectedSlot = hasNamedSlot(this.host, 'selected');
@@ -345,8 +331,7 @@ export class Select {
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
-            theme={this.theme}
-            color={this.disabled ? 'state-disabled' : 'primary'}
+            color="primary"
             aria-hidden="true"
           />
         </button>
@@ -371,7 +356,6 @@ export class Select {
               clear={true}
               indicator={true}
               compact={true}
-              theme={this.theme}
               onInput={this.onFilterInput}
               onBlur={(e: any) => e.stopPropagation()}
               onChange={(e: any) => e.stopPropagation()}
@@ -392,7 +376,7 @@ export class Select {
             <slot />
           </div>
         </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <StateMessage state={this.state} message={this.message} host={this.host} />
       </div>
     );
   }
@@ -411,7 +395,6 @@ export class Select {
 
   private onSlotchange = (): void => {
     this.updateOptions();
-    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
     const selectedOption = selectOptionByValue(this.host, this.selectOptions, this.value, !!this.filterSlot);
     // Keep selectedOption state even if value does not match any options
     if (selectedOption !== null && selectedOption !== this.selectedOption) {
@@ -591,10 +574,6 @@ export class Select {
 
   private emitUpdateEvent = (): void => {
     this.change.emit({
-      value: this.value,
-      name: this.name,
-    });
-    this.update.emit({
       value: this.value,
       name: this.name,
     });

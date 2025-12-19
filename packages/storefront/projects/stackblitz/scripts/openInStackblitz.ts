@@ -28,10 +28,7 @@ export const openInStackblitz = (framework: Framework, markup: string, theme: St
             '<html lang="en">',
             `<html lang="en" class="${theme}">`
           ),
-          'src/main.ts': frameworkBundleMap[framework]['src/main.ts'].replace(
-            /(PorscheDesignSystemModule\.load\(\{ theme: ')auto(' }\))/,
-            `$1${theme}$2`
-          ),
+          'src/main.ts': frameworkBundleMap[framework]['src/main.ts'],
         };
       case 'react':
         return {
@@ -40,10 +37,7 @@ export const openInStackblitz = (framework: Framework, markup: string, theme: St
             '<html lang="en">',
             `<html lang="en" class="${theme}">`
           ),
-          'src/main.tsx': frameworkBundleMap[framework]['src/main.tsx'].replace(
-            /(<PorscheDesignSystemProvider theme=\{')auto('}>)/,
-            `$1${theme}$2`
-          ),
+          'src/main.tsx': frameworkBundleMap[framework]['src/main.tsx'],
         };
       case 'vue':
         return {
@@ -52,10 +46,7 @@ export const openInStackblitz = (framework: Framework, markup: string, theme: St
             '<html lang="en">',
             `<html lang="en" class="${theme}">`
           ),
-          'src/App.vue': frameworkBundleMap[framework]['src/App.vue'].replace(
-            /(<PorscheDesignSystemProvider :theme="')auto('">)/,
-            `$1${theme}$2`
-          ),
+          'src/App.vue': frameworkBundleMap[framework]['src/App.vue'],
         };
       case 'vanilla-js':
         return frameworkBundleMap[framework];

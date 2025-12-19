@@ -1,10 +1,11 @@
-import { getCss } from '../../../utils';
+import { spacingStaticSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getCss } from '../../../utils';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -19,7 +20,7 @@ export const getComponentCss = (): string => {
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
-      marginBottom: '8px',
+      marginBottom: spacingStaticSmall,
     },
   });
 };

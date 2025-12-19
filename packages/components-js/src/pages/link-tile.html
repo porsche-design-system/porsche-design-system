@@ -105,14 +105,6 @@
       alt="Some alt text"
     />
   </p-link-tile>
-  <p-link-tile href="#" label="Some label" description="semibold" weight="semibold">
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-link-tile>
   <p-link-tile
     href="#"
     label="Some label"
@@ -129,7 +121,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render background='light'">
-  <p-link-tile href="#" label="Some label" description="Background light" background="light">
+  <p-link-tile href="#" label="Some label" description="Background light">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -148,23 +140,7 @@
       alt="Some alt text"
     />
   </p-link-tile>
-  <p-link-tile href="#" label="Some label" description="16:9" aspect-ratio="16:9">
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-link-tile>
   <p-link-tile label="Some label" description="1/1" href="#" aspect-ratio="1/1">
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-link-tile>
-  <p-link-tile label="Some label" description="1:1" href="#" aspect-ratio="1:1">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -180,23 +156,7 @@
       alt="Some alt text"
     />
   </p-link-tile>
-  <p-link-tile href="#" label="Some label" description="3:4" aspect-ratio="3:4">
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-link-tile>
   <p-link-tile href="#" label="Some label" description="9/16" aspect-ratio="9/16">
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-link-tile>
-  <p-link-tile href="#" label="Some label" description="9:16" aspect-ratio="9:16">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -314,7 +274,7 @@
 <div class="playground light" title="should render with max width description text">
   <p-link-tile
     style="max-width: 50rem"
-    aspect-ratio="16:9"
+    aspect-ratio="16/9"
     href="#"
     label="Some label"
     description="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
@@ -341,7 +301,7 @@
       size="large"
       description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
     >
-      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <p-tag slot="header" variant="secondary" compact="true">1/1</p-tag>
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
@@ -350,7 +310,7 @@
       />
     </p-link-tile>
     <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
-      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <p-tag slot="header" variant="secondary" compact="true">1/1</p-tag>
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
@@ -359,7 +319,7 @@
       />
     </p-link-tile>
     <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
-      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <p-tag slot="header" variant="secondary" compact="true">1/1</p-tag>
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
@@ -368,7 +328,7 @@
       />
     </p-link-tile>
     <p-link-tile aspect-ratio="9/16" href="#" label="Some Label" description="Some description">
-      <p-tag slot="header" color="background-frosted" compact="true">9/16</p-tag>
+      <p-tag slot="header" variant="secondary" compact="true">9/16</p-tag>
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
@@ -377,7 +337,7 @@
       />
     </p-link-tile>
     <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
-      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <p-tag slot="header" variant="secondary" compact="true">1/1</p-tag>
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"

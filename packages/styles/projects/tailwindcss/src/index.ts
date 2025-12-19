@@ -1,8 +1,15 @@
+import { cssVariableDefinitionDark, cssVariableDefinitionLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
+  borderRadius2Xl,
+  borderRadius3Xl,
+  borderRadius4Xl,
+  borderRadiusFull,
   borderRadiusLg,
   borderRadiusMd,
   borderRadiusSm,
+  borderRadiusXl,
+  borderRadiusXs,
   borderWidthRegular,
   borderWidthThin,
   breakpoint2Xl,
@@ -11,46 +18,6 @@ import {
   breakpointSm,
   breakpointXl,
   breakpointXs,
-  colorActiveDark,
-  colorActiveLight,
-  colorCanvasDark,
-  colorCanvasLight,
-  colorContrastHighDark,
-  colorContrastHighLight,
-  colorContrastLowDark,
-  colorContrastLowLight,
-  colorContrastMediumDark,
-  colorContrastMediumLight,
-  colorDisabledDark,
-  colorDisabledLight,
-  colorErrorDark,
-  colorErrorLight,
-  colorErrorSoftDark,
-  colorErrorSoftLight,
-  colorFocusDark,
-  colorFocusLight,
-  colorFrostedDark,
-  colorFrostedLight,
-  colorHoverDark,
-  colorHoverLight,
-  colorInfoDark,
-  colorInfoLight,
-  colorInfoSoftDark,
-  colorInfoSoftLight,
-  colorPrimaryDark,
-  colorPrimaryLight,
-  colorShadingDark,
-  colorShadingLight,
-  colorSuccessDark,
-  colorSuccessLight,
-  colorSuccessSoftDark,
-  colorSuccessSoftLight,
-  colorSurfaceDark,
-  colorSurfaceLight,
-  colorWarningDark,
-  colorWarningLight,
-  colorWarningSoftDark,
-  colorWarningSoftLight,
   fontFamily,
   fontLineHeight,
   fontSize2Xl,
@@ -88,78 +55,22 @@ import {
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
 
-export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
+export const getTailwindcssTheme = () => {
+  return `@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  /* Reset */
+  --color-*: initial;
+
   /* Color */
-  --color-primary: ${colorPrimaryLight};
-  --color-canvas: ${colorCanvasLight};
-  --color-surface: ${colorSurfaceLight};
-  --color-shading: ${colorShadingLight};
-  --color-frosted: ${colorFrostedLight};
-  --color-contrast-low: ${colorContrastLowLight};
-  --color-contrast-medium: ${colorContrastMediumLight};
-  --color-contrast-high: ${colorContrastHighLight};
-  --color-success: ${colorSuccessLight};
-  --color-success-soft: ${colorSuccessSoftLight};
-  --color-warning: ${colorWarningLight};
-  --color-warning-soft: ${colorWarningSoftLight};
-  --color-error: ${colorErrorLight};
-  --color-error-soft: ${colorErrorSoftLight};
-  --color-info: ${colorInfoLight};
-  --color-info-soft: ${colorInfoSoftLight};
-  --color-hover: ${colorHoverLight};
-  --color-active: ${colorActiveLight};
-  --color-focus: ${colorFocusLight};
-  --color-disabled: ${colorDisabledLight};
-  --color-skeleton: #f7f7f7;
+  --color-black: #000;
+  --color-white: #fff;
 
-  --color-primary-light: ${colorPrimaryLight};
-  --color-canvas-light: ${colorCanvasLight};
-  --color-surface-light: ${colorSurfaceLight};
-  --color-shading-light: ${colorShadingLight};
-  --color-frosted-light: ${colorFrostedLight};
-  --color-contrast-low-light: ${colorContrastLowLight};
-  --color-contrast-medium-light: ${colorContrastMediumLight};
-  --color-contrast-high-light: ${colorContrastHighLight};
-  --color-success-light: ${colorSuccessLight};
-  --color-success-soft-light: ${colorSuccessSoftLight};
-  --color-warning-light: ${colorWarningLight};
-  --color-warning-soft-light: ${colorWarningSoftLight};
-  --color-error-light: ${colorErrorLight};
-  --color-error-soft-light: ${colorErrorSoftLight};
-  --color-info-light: ${colorInfoLight};
-  --color-info-soft-light: ${colorInfoSoftLight};
-  --color-hover-light: ${colorHoverLight};
-  --color-active-light: ${colorActiveLight};
-  --color-focus-light: ${colorFocusLight};
-  --color-disabled-light: ${colorDisabledLight};
-  --color-skeleton-light: #f7f7f7;
-
-  --color-primary-dark: ${colorPrimaryDark};
-  --color-canvas-dark: ${colorCanvasDark};
-  --color-surface-dark: ${colorSurfaceDark};
-  --color-shading-dark: ${colorShadingDark};
-  --color-frosted-dark: ${colorFrostedDark};
-  --color-contrast-low-dark: ${colorContrastLowDark};
-  --color-contrast-medium-dark: ${colorContrastMediumDark};
-  --color-contrast-high-dark: ${colorContrastHighDark};
-  --color-success-dark: ${colorSuccessDark};
-  --color-success-soft-dark: ${colorSuccessSoftDark};
-  --color-warning-dark: ${colorWarningDark};
-  --color-warning-soft-dark: ${colorWarningSoftDark};
-  --color-error-dark: ${colorErrorDark};
-  --color-error-soft-dark: ${colorErrorSoftDark};
-  --color-info-dark: ${colorInfoDark};
-  --color-info-soft-dark: ${colorInfoSoftDark};
-  --color-hover-dark: ${colorHoverDark};
-  --color-active-dark: ${colorActiveDark};
-  --color-focus-dark: ${colorFocusDark};
-  --color-disabled-dark: ${colorDisabledDark};
-  --color-skeleton-dark: #1a1b1e;
+  ${cssVariableDefinitionLight}
 
   /* Typography */
   --font-porsche-next: ${fontFamily};
+  --font-sans: var(--font-porsche-next);
 
   --font-weight-normal: ${fontWeightRegular};
   --font-weight-semibold: ${fontWeightSemiBold};
@@ -210,11 +121,17 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --spacing-static-2xl: ${spacingStatic2Xl};
 
   /* Border */
+  --radius-xs: ${borderRadiusXs};
   --radius-sm: ${borderRadiusSm};
   --radius-md: ${borderRadiusMd};
   --radius-lg: ${borderRadiusLg};
+  --radius-xl: ${borderRadiusXl};
+  --radius-2xl: ${borderRadius2Xl};
+  --radius-3xl: ${borderRadius3Xl};
+  --radius-4xl: ${borderRadius4Xl};
+  --radius-full: ${borderRadiusFull};
 
-  --default-border-width: ${borderWidthRegular};
+  --default-border-width: ${borderWidthThin};
   --border-width-regular: ${borderWidthRegular};
   --border-width-thin: ${borderWidthThin};
 
@@ -256,76 +173,16 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 @layer theme {
   .light {
-    --color-primary: ${colorPrimaryLight};
-    --color-canvas: ${colorCanvasLight};
-    --color-surface: ${colorSurfaceLight};
-    --color-shading: ${colorShadingLight};
-    --color-frosted: ${colorFrostedLight};
-    --color-contrast-low: ${colorContrastLowLight};
-    --color-contrast-medium: ${colorContrastMediumLight};
-    --color-contrast-high: ${colorContrastHighLight};
-    --color-success: ${colorSuccessLight};
-    --color-success-soft: ${colorSuccessSoftLight};
-    --color-warning: ${colorWarningLight};
-    --color-warning-soft: ${colorWarningSoftLight};
-    --color-error: ${colorErrorLight};
-    --color-error-soft: ${colorErrorSoftLight};
-    --color-info: ${colorInfoLight};
-    --color-info-soft: ${colorInfoSoftLight};
-    --color-hover: ${colorHoverLight};
-    --color-active: ${colorActiveLight};
-    --color-focus: ${colorFocusLight};
-    --color-disabled: ${colorDisabledLight};
-    --color-skeleton: #f7f7f7;
+    ${cssVariableDefinitionLight}
   }
 
   .dark {
-    --color-primary: ${colorPrimaryDark};
-    --color-canvas: ${colorCanvasDark};
-    --color-surface: ${colorSurfaceDark};
-    --color-shading: ${colorShadingDark};
-    --color-frosted: ${colorFrostedDark};
-    --color-contrast-low: ${colorContrastLowDark};
-    --color-contrast-medium: ${colorContrastMediumDark};
-    --color-contrast-high: ${colorContrastHighDark};
-    --color-success: ${colorSuccessDark};
-    --color-success-soft: ${colorSuccessSoftDark};
-    --color-warning: ${colorWarningDark};
-    --color-warning-soft: ${colorWarningSoftDark};
-    --color-error: ${colorErrorDark};
-    --color-error-soft: ${colorErrorSoftDark};
-    --color-info: ${colorInfoDark};
-    --color-info-soft: ${colorInfoSoftDark};
-    --color-hover: ${colorHoverDark};
-    --color-active: ${colorActiveDark};
-    --color-focus: ${colorFocusDark};
-    --color-disabled: ${colorDisabledDark};
-    --color-skeleton: #1a1b1e;
+    ${cssVariableDefinitionDark}
   }
 
   .auto {
     @media (prefers-color-scheme: dark) {
-      --color-primary: ${colorPrimaryDark};
-      --color-canvas: ${colorCanvasDark};
-      --color-surface: ${colorSurfaceDark};
-      --color-shading: ${colorShadingDark};
-      --color-frosted: ${colorFrostedDark};
-      --color-contrast-low: ${colorContrastLowDark};
-      --color-contrast-medium: ${colorContrastMediumDark};
-      --color-contrast-high: ${colorContrastHighDark};
-      --color-success: ${colorSuccessDark};
-      --color-success-soft: ${colorSuccessSoftDark};
-      --color-warning: ${colorWarningDark};
-      --color-warning-soft: ${colorWarningSoftDark};
-      --color-error: ${colorErrorDark};
-      --color-error-soft: ${colorErrorSoftDark};
-      --color-info: ${colorInfoDark};
-      --color-info-soft: ${colorInfoSoftDark};
-      --color-hover: ${colorHoverDark};
-      --color-active: ${colorActiveDark};
-      --color-focus: ${colorFocusDark};
-      --color-disabled: ${colorDisabledDark};
-      --color-skeleton: #1a1b1e;
+      ${cssVariableDefinitionDark}
     }
   }
 }
@@ -472,19 +329,19 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 
 /* Typography: Heading */
 @utility prose-heading-sm {
-  @apply font-porsche-next not-italic font-semibold text-sm text-primary;
+  @apply font-porsche-next not-italic font-normal text-sm text-primary;
 }
 @utility prose-heading-md {
-  @apply font-porsche-next not-italic font-semibold text-md text-primary;
+  @apply font-porsche-next not-italic font-normal text-md text-primary;
 }
 @utility prose-heading-lg {
-  @apply font-porsche-next not-italic font-semibold text-lg text-primary;
+  @apply font-porsche-next not-italic font-normal text-lg text-primary;
 }
 @utility prose-heading-xl {
-  @apply font-porsche-next not-italic font-semibold text-xl text-primary;
+  @apply font-porsche-next not-italic font-normal text-xl text-primary;
 }
 @utility prose-heading-2xl {
-  @apply font-porsche-next not-italic font-semibold text-2xl text-primary;
+  @apply font-porsche-next not-italic font-normal text-2xl text-primary;
 }
 
 /* Typography: Display */
@@ -497,3 +354,4 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
 @utility prose-display-lg {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
 }`;
+};

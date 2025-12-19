@@ -12,45 +12,45 @@
   }
 
   @media screen and (min-width: 760px) and (max-width: 999px) {
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(1) {
-          width: 10vw;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(2) {
-          width: 200px;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(3) {
-          width: 100px;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(4) {
-          width: 40vw;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(5) {
-          width: 150px;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(6) {
-          width: 50vw;
-      }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(1) {
+      width: 10vw;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(2) {
+      width: 200px;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(3) {
+      width: 100px;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(4) {
+      width: 40vw;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(5) {
+      width: 150px;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(6) {
+      width: 50vw;
+    }
   }
 
   @media screen and (min-width: 1300px) and (max-width: 1759px) {
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(1) {
-          width: 10vw;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(2) {
-          width: 200px;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(3) {
-          width: 100px;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(4) {
-          width: 40vw;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(5) {
-          width: 150px;
-      }
-      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(6) {
-          width: 50vw;
-      }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(1) {
+      width: 10vw;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(2) {
+      width: 200px;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(3) {
+      width: 100px;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(4) {
+      width: 40vw;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(5) {
+      width: 150px;
+    }
+    p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(6) {
+      width: 50vw;
+    }
   }
 
   .is-active {
@@ -186,7 +186,10 @@
   </p-carousel>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render carousel with heading, description and slotted controls">
+<div
+  class="playground light a11ytree-snapshot-test"
+  title="should render carousel with heading, description and slotted controls"
+>
   <p-carousel heading="Heading" description="Description">
     <p-tabs-bar slot="controls" active-tab-index="0">
       <button type="button">Tab One</button>
@@ -516,13 +519,6 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with disablePagination=true">
-  <p-carousel heading="disablePagination=true" disable-pagination="true">
-    <div>Slide 1</div>
-    <div>Slide 2</div>
-    <div>Slide 3</div>
-  </p-carousel>
-</div>
 <div class="playground light" title="should render carousel with pagination=false">
   <p-carousel heading="pagination=false" pagination="false">
     <div>Slide 1</div>
@@ -531,13 +527,6 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with responsive disablePagination">
-  <p-carousel heading="disablePagination={base: false, m: true}" disable-pagination="{base: false, m: true}">
-    <div>Slide 1</div>
-    <div>Slide 2</div>
-    <div>Slide 3</div>
-  </p-carousel>
-</div>
 <div class="playground light" title="should render carousel with responsive pagination">
   <p-carousel heading="pagination={base: true, m: false}" pagination="{base: true, m: false}">
     <div>Slide 1</div>
@@ -625,7 +614,7 @@
 </div>
 
 <div class="playground light" title="should render carousel with gradient background">
-  <p-carousel heading="Background gradient" gradient-color="background-base" slides-per-page="3" active-slide-index="2">
+  <p-carousel heading="Background gradient" gradient="true" slides-per-page="3" active-slide-index="2">
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>
@@ -638,7 +627,7 @@
 <div class="playground light" title="should render carousel with gradient background with custom width">
   <p-carousel
     heading="Background gradient with custom width"
-    gradient-color="background-base"
+    gradient="true"
     slides-per-page="3"
     active-slide-index="2"
     class="change-gradient-color-width"
@@ -754,11 +743,7 @@
   class="playground light"
   title="should render carousel with heading, description and slotted controls align-controls=center"
 >
-  <p-carousel
-    heading="Heading"
-    description="Description"
-    align-controls="center"
-  >
+  <p-carousel heading="Heading" description="Description" align-controls="center">
     <p-tabs-bar slot="controls" active-tab-index="0">
       <button type="button">Tab One</button>
       <button type="button">Tab Two</button>

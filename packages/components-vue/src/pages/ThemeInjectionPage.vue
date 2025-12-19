@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { PButton } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
 const isVisible = ref(false);
 </script>

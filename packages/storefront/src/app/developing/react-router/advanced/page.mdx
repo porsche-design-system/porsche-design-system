@@ -1,0 +1,67 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'React Router: Advanced - Porsche Design System',
+  description: 'Explore advanced Porsche Design System techniques in React.',
+};
+
+# React Router
+
+<TableOfContents headings={['Global Theme', 'Prefixing']} />
+
+## Global Theme
+
+The Porsche Design System global theme uses CSS variables defined in the main CSS file
+`@porsche-design-system/components-react`.
+
+To switch themes, simply apply one of the theme classes `light`, `dark`, or `auto` to any HTML element. All child
+elements will automatically inherit the selected theme:
+
+```html
+<html className="dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+    <div className="light">
+      <!-- All components inside will use the light theme -->
+    </div>
+  </body>
+</html>
+```
+
+- `.light` — Light theme
+- `.dark` — Dark theme
+- `.auto` — Automatically follows the user’s system preference
+
+## Prefixing
+
+In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in
+a final application. This could cause conflicts due to the way how custom webcomponents are registered in the browser.
+During the bootstrap phase of the Porsche Design System, custom elements are defined. If a second application wants to
+register Porsche Design System again it will cause issues especially when different versions are used.
+
+A way of preventing those conflicts is by using a unique custom prefix for the components. Simply pass your desired
+prefix to the `prefix` property of `PorscheDesignSystemProvider`.
+
+```tsx
+// root.tsx
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+
+export default function App() {
+  return (
+    <PorscheDesignSystemProvider prefix="sample-prefix">
+      <Outlet />
+    </PorscheDesignSystemProvider>
+  );
+}
+```
+
+In the following example the `PHeading` component will render as `<sample-prefix-p-heading>`.
+
+```tsx
+// routes/home.tsx
+import { PHeading } from '@porsche-design-system/components-react/ssr';
+
+export default function Home() {
+  return <PHeading>Some heading</PHeading>;
+}
+```

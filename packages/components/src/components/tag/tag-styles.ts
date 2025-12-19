@@ -1,58 +1,82 @@
-import {
-  borderRadiusSmall,
-  frostedGlassStyle,
-  spacingStaticXSmall,
-  textXSmallStyle,
-} from '@porsche-design-system/styles';
+import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle,
-  getInvertedThemedColors,
-  getThemedColors,
+  colors,
+  getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { Theme } from '../../types';
-import { getCss, isHighContrastMode } from '../../utils';
-import { getThemedBackgroundColor } from './tag-shared-utils';
-import { getThemedBackgroundHoverColor, type TagColor, type TagColorDeprecated } from './tag-utils';
+import { legacyRadiusSmall, radiusFull } from '../../styles/css-variables';
+import { getCss } from '../../utils';
+import type { TagVariant } from './tag-utils';
+
+const {
+  canvasColor,
+  frostedColor,
+  frostedSoftColor,
+  primaryColor,
+  infoFrostedColor,
+  contrastHighColor,
+  infoFrostedSoftColor,
+  successFrostedColor,
+  successFrostedSoftColor,
+  errorFrostedColor,
+  errorFrostedSoftColor,
+  warningFrostedColor,
+  warningFrostedSoftColor,
+} = colors;
+
+const colorTextMap: Record<TagVariant, string> = {
+  primary: canvasColor,
+  secondary: primaryColor,
+  info: primaryColor,
+  success: primaryColor,
+  warning: primaryColor,
+  error: primaryColor,
+};
+
+const colorBackgroundMap: Record<TagVariant, string> = {
+  primary: primaryColor,
+  secondary: frostedColor,
+  info: infoFrostedColor,
+  success: successFrostedColor,
+  warning: warningFrostedColor,
+  error: errorFrostedColor,
+};
+
+const colorBackgroundHoverMap: Record<TagVariant, string> = {
+  primary: contrastHighColor,
+  secondary: frostedSoftColor,
+  info: infoFrostedSoftColor,
+  success: successFrostedSoftColor,
+  warning: warningFrostedSoftColor,
+  error: errorFrostedSoftColor,
+};
 
 export const getColors = (
-  tagColor: Exclude<TagColor, TagColorDeprecated>,
-  theme: Theme
+  variant: TagVariant
 ): {
   textColor: string;
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
-  const themedColors = getThemedColors(theme);
-  const { primaryColor } = tagColor === 'primary' ? getInvertedThemedColors(theme) : themedColors;
-
   return {
-    textColor: primaryColor,
-    backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
-    backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
+    textColor: colorTextMap[variant],
+    backgroundColor: colorBackgroundMap[variant],
+    backgroundHoverColor: colorBackgroundHoverMap[variant],
   };
 };
 
 export const getComponentCss = (
-  tagColor: Exclude<TagColor, TagColorDeprecated>,
+  variant: TagVariant,
   compact: boolean,
   isFocusable: boolean,
-  hasIcon: boolean,
-  theme: Theme
+  hasIcon: boolean
 ): string => {
-  const { textColor, backgroundColor, backgroundHoverColor } = getColors(tagColor, theme);
-  const {
-    textColor: textColorDark,
-    backgroundColor: backgroundColorDark,
-    backgroundHoverColor: backgroundHoverColorDark,
-  } = getColors(tagColor, 'dark');
-  const isBackgroundFrosted = tagColor === 'background-frosted';
+  const { textColor, backgroundColor, backgroundHoverColor } = getColors(variant);
 
   return getCss({
     '@global': {
@@ -71,26 +95,16 @@ export const getComponentCss = (
         display: 'flex',
         gap: '2px',
         padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
-        borderRadius: borderRadiusSmall,
+        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         font: textXSmallStyle.font,
+        ...frostedGlassStyle,
         color: textColor,
         background: backgroundColor,
-        ...(isBackgroundFrosted && frostedGlassStyle),
-        ...(isHighContrastMode && {
-          outline: '1px solid transparent',
-        }),
         transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`, // transition style should always be applied to have a smooth color change in case color prop gets updated during runtime
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: textColorDark,
-          background: backgroundColorDark,
-        }),
         ...(isFocusable &&
           hoverMediaQuery({
             '&:hover': {
               background: backgroundHoverColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: backgroundHoverColorDark,
-              }),
             },
           })),
       },
@@ -106,10 +120,9 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           inset: 0,
-          borderRadius: '4px',
+          borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         },
-        ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
-        ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
+        '&(a:focus-visible)::before,&(button:focus-visible)::before': getFocusBaseStyles(),
         '&(br)': {
           display: 'none',
         },
@@ -118,10 +131,6 @@ export const getComponentCss = (
     ...(hasIcon && {
       icon: {
         marginInlineStart: '-2px', // compensate white space of svg icon and optimize visual alignment
-        ...(!isHighContrastMode &&
-          tagColor === 'primary' && {
-            filter: 'invert(1)',
-          }),
       },
     }),
   });

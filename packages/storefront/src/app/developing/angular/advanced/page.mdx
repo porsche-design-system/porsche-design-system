@@ -11,58 +11,26 @@ export const metadata = {
 
 ## Global Theme
 
-**Since v3.9.0** you can set the `theme` property for all child components by passing an option to
-`PorscheDesignSystemModule.load()`.
+The Porsche Design System global theme uses CSS variables defined in the main CSS file
+`@porsche-design-system/components-angular/index.css`.
 
-Possible values for `theme` are: `'auto' | 'dark' | 'light'` Local overrides on a per component basis are still possible
-as usual.
+To switch themes, simply apply one of the theme classes `light`, `dark`, or `auto` to any HTML element. All child
+elements will automatically inherit the selected theme:
 
-```ts
-// app.module.ts
-
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PorscheDesignSystemModule, WEB_COMPONENTS_PREFIX } from '@porsche-design-system/components-angular';
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, PorscheDesignSystemModule.load({ theme: 'dark' })],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+```html
+<html class="dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+    <div class="light">
+      <!-- All components inside will use the light theme -->
+    </div>
+  </body>
+</html>
 ```
 
-In case you want to dynamically change the `theme` at runtime, you can use the injectable `THEME_TOKEN` like:
-
-```ts
-import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
-import { type Theme, THEME_TOKEN } from '@porsche-design-system/components-angular';
-import { BehaviorSubject } from 'rxjs';
-
-@Component({
-  selector: 'app-root',
-  template: `
-    <select [ngModel]="theme$ | async" (ngModelChange)="theme$.next($event)">
-      <option *ngFor="let item of themes" [value]="item">{{ item }}</option>
-    </select>
-
-    <router-outlet />
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class AppComponent {
-  public themes: Theme[] = ['light', 'dark', 'auto'];
-  // like this
-  public theme$ = inject(THEME_TOKEN);
-
-  // or via constructor dependency injection
-  constructor(@Inject(THEME_TOKEN) theme$: BehaviorSubject<Theme>) {
-    theme$.next('light');
-  }
-}
-```
+- `.light` — Light theme
+- `.dark` — Dark theme
+- `.auto` — Automatically follows the user’s system preference
 
 ### Using Standalone Components
 

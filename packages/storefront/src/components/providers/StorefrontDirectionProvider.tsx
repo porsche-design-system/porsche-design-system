@@ -1,7 +1,7 @@
 'use client';
 
-import type { StorefrontDirection } from '@/models/dir';
 import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
+import type { StorefrontDirection } from '@/models/dir';
 
 interface StorefrontDirectionContextProps {
   storefrontDirection: StorefrontDirection;

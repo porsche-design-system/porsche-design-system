@@ -1,8 +1,6 @@
 import {
   CRESTS_CDN_BASE_PATH,
   CRESTS_MANIFEST,
-  FALLBACKS_CDN_BASE_PATH,
-  FALLBACKS_MANIFEST,
   FLAGS_CDN_BASE_PATH,
   FLAGS_MANIFEST,
   FONT_FACE_CDN_BASE_PATH,
@@ -70,11 +68,6 @@ describe('cdn', () => {
   describe('crest', () => {
     const crests = objectToFlatArray(CRESTS_MANIFEST);
     bulkRequestItems(crests, `${CDN_BASE_URL_COM}${CRESTS_CDN_BASE_PATH}`);
-  });
-
-  describe('fallbacks', () => {
-    const fallbacks = objectToFlatArray(FALLBACKS_MANIFEST);
-    bulkRequestItems(fallbacks, `${CDN_BASE_URL_COM}${FALLBACKS_CDN_BASE_PATH}`);
   });
 
   describe('fonts', () => {

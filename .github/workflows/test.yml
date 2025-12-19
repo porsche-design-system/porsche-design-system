@@ -24,22 +24,12 @@ jobs:
         uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:assets:assets
-      - name: 'Fallbacks Unit'
-        run: yarn test:unit:assets:fallbacks
       - name: 'Flags Unit'
         run: yarn test:unit:assets:flags
       - name: 'Icons Unit'
         run: yarn test:unit:assets:icons
       - name: 'Font Face Unit'
         run: yarn test:unit:assets:font-face
-      - name: 'Fallbacks VRT'
-        run: yarn test:vrt:assets:fallbacks
-      - name: 'Fallbacks VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: regression-fallbacks-vrt
-          path: ./packages/assets/projects/fallbacks/tests/vrt/results
   tokens:
     name: 'Tokens'
     runs-on: ubuntu-latest
@@ -68,6 +58,12 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Shared Styles Unit'
+        run: yarn test:unit:styles:shared-styles
+      - name: 'Global Styles Unit'
+        run: yarn test:unit:styles:global-styles
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
   components-unit:

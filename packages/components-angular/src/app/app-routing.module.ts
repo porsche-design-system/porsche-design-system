@@ -662,11 +662,6 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TextareaExampleReactiveFormComponent,
   },
   {
-    name: 'Text Field Wrapper Example Search',
-    path: 'text-field-wrapper-example-search',
-    component: fromExamples.TextFieldWrapperExampleSearchComponent,
-  },
-  {
     name: 'Toast Example',
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,

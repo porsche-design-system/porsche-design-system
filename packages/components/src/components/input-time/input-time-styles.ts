@@ -1,4 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
+import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import {
@@ -24,13 +24,10 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
-  readOnly: boolean,
-  theme: Theme
+  readOnly: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
-      textOverflow: 'ellipsis',
-      MozAppearance: 'textfield',
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, {
       '&::-webkit-calendar-picker-indicator': {
         display: 'none',
       },

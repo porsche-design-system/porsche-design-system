@@ -1,13 +1,13 @@
-import { PSelect, PSelectOption, type SelectUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+import { PSelect, PSelectOption, type SelectChangeEventDetail } from '@porsche-design-system/components-react/ssr';
 
 type PdsVersionSelectProps = {
   pdsVersions: string[];
-  onUpdate: (e: CustomEvent<SelectUpdateEventDetail>) => void;
+  onVersionChange: (e: CustomEvent<SelectChangeEventDetail>) => void;
 };
 
-export const PdsVersionSelect = ({ pdsVersions, onUpdate }: PdsVersionSelectProps) => {
+export const PdsVersionSelect = ({ pdsVersions, onVersionChange }: PdsVersionSelectProps) => {
   return (
-    <PSelect name="pds-versions" label="Choose your Porsche Design System version:" onUpdate={onUpdate}>
+    <PSelect name="pds-versions" label="Choose your Porsche Design System version:" onChange={onVersionChange}>
       {pdsVersions.map((pdsVersion, index) => (
         <PSelectOption key={index} value={pdsVersion}>
           {pdsVersion}

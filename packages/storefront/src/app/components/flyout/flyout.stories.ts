@@ -35,7 +35,7 @@ export const flyoutSlotStories: SlotStories<'p-flyout'> = {
       name: 'Two Button Footer',
       generator: () => [
         {
-          tag: 'p-button-group',
+          tag: 'div',
           properties: { slot: 'footer' },
           children: [
             { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
@@ -212,8 +212,8 @@ export const flyoutStoryGrid: Story<'p-flyout'> = {
         },
         visualizeGridConfig,
         {
-          tag: 'p-button-group',
-          properties: { slot: 'footer' },
+          tag: 'div',
+          properties: { slot: 'footer', role: 'group', className: 'flex flex-wrap gap-fluid-sm max-xs:flex-col' },
           children: [
             { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
             { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },

@@ -1,6 +1,3 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { darkenColor } from '@porsche-design-system/shared';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -37,6 +34,8 @@ import {
   themeLightStateFocus,
   themeLightStateHover,
 } from '@porsche-design-system/styles';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const styles = {
   borderRadiusMedium,
@@ -73,10 +72,10 @@ const styles = {
   spacingStaticXSmall,
   themeDarkNotificationSuccess,
   themeLightNotificationSuccess,
-  themeLightBackgroundSurfaceDarken: darkenColor(themeLightBackgroundSurface),
-  themeDarkBackgroundSurfaceDarken: darkenColor(themeDarkBackgroundSurface),
-  themeLightSuccessColorDarken: darkenColor(themeLightNotificationSuccess),
-  themeDarkSuccessColorDarken: darkenColor(themeDarkNotificationSuccess),
+  themeLightBackgroundSurfaceDarken: themeLightBackgroundSurface,
+  themeDarkBackgroundSurfaceDarken: themeDarkBackgroundSurface,
+  themeLightSuccessColorDarken: themeLightNotificationSuccess,
+  themeDarkSuccessColorDarken: themeDarkNotificationSuccess,
 };
 
 const generateThemesObject = (): void => {

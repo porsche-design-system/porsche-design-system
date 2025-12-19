@@ -14,10 +14,6 @@ const getComponents = (): Routes => {
   // TODO: Maybe we could automatically generate this depending what routes/folders exist?
   const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
     'p-canvas',
-    'p-content-wrapper',
-    'p-flex',
-    'p-grid',
-    'p-marque',
     'p-pagination',
     'p-flag',
     'p-switch',
@@ -117,11 +113,6 @@ export const sitemap: Routes = {
           'porsche-design-system': {
             name: 'Porsche Design System',
             path: '/news/migration-guide/porsche-design-system',
-            type: 'TAB',
-          },
-          utilities: {
-            name: 'Utilities',
-            path: '/news/migration-guide/utilities',
             type: 'TAB',
           },
         },
@@ -244,6 +235,11 @@ export const sitemap: Routes = {
             path: '/developing/next-js/testing',
             type: 'TAB',
           },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/next-js/advanced',
+            type: 'TAB',
+          },
           faq: {
             name: 'FAQ',
             path: '/developing/next-js/faq',
@@ -306,6 +302,11 @@ export const sitemap: Routes = {
           form: {
             name: 'Form',
             path: '/developing/react-router/form',
+            type: 'TAB',
+          },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/react-router/advanced',
             type: 'TAB',
           },
           faq: {
@@ -387,6 +388,50 @@ export const sitemap: Routes = {
       'components-ready': {
         name: 'Components Ready',
         path: '/developing/components-ready',
+        type: 'PAGE',
+      },
+    },
+  },
+  'global-styles': {
+    name: 'Global Styles',
+    path: '/global-styles',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/global-styles/introduction',
+        type: 'PAGE',
+      },
+      color: {
+        name: 'Color',
+        path: '/global-styles/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/global-styles/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/global-styles/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/global-styles/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'font-face': {
+        name: 'Font Face',
+        path: '/global-styles/font-face',
+        type: 'PAGE',
+      },
+      normalize: {
+        name: 'Normalize',
+        path: '/global-styles/normalize',
         type: 'PAGE',
       },
     },
@@ -491,34 +536,9 @@ export const sitemap: Routes = {
         path: '/partials/introduction',
         type: 'PAGE',
       },
-      'browser-support-fallback-script': {
-        name: 'Browser Support Fallback Script',
-        path: '/partials/browser-support-fallback-script',
-        type: 'PAGE',
-      },
       'component-chunk-links': {
         name: 'Component Chunk Links',
         path: '/partials/component-chunk-links',
-        type: 'PAGE',
-      },
-      'cookies-fallback-script': {
-        name: 'Cookies Fallback Script',
-        path: '/partials/cookies-fallback-script',
-        type: 'PAGE',
-      },
-      'dsr-ponyfill': {
-        name: 'DSR Ponyfill',
-        path: '/partials/dsr-ponyfill',
-        type: 'PAGE',
-      },
-      'font-face-styles': {
-        name: 'Font Face Styles',
-        path: '/partials/font-face-styles',
-        type: 'PAGE',
-      },
-      'font-face-stylesheet': {
-        name: 'Font Face Stylesheet',
-        path: '/partials/font-face-stylesheet',
         type: 'PAGE',
       },
       'font-links': {
@@ -529,11 +549,6 @@ export const sitemap: Routes = {
       'icon-links': {
         name: 'Icon Links',
         path: '/partials/icon-links',
-        type: 'PAGE',
-      },
-      'initial-styles': {
-        name: 'Initial Styles',
-        path: '/partials/initial-styles',
         type: 'PAGE',
       },
       'loader-script': {

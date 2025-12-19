@@ -430,7 +430,6 @@ skipInBrowsers(['firefox', 'webkit'], () => {
         'p-button-pure',
         'p-link',
         'p-link-pure',
-        'p-link-social',
         'p-switch',
         'p-accordion',
         'input',

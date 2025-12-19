@@ -20,7 +20,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     const hasEventProps = extendedProps.some(({ isEvent }) => isEvent);
-    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
     const hasControlValueAccessor = this.hasControlValueAccessor(component);
 
     const angularImports = [
@@ -32,8 +31,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
 
     const importsFromComponentsWrapperModule = '';
 
-    const utilsImports = [hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent'].sort();
-    const importsFromUtils = `import { ${utilsImports.join(', ')} } from '../../utils';`;
+    const importsFromUtils = `import { BaseComponent } from '../../utils';`;
 
     const typesImports = nonPrimitiveTypes;
     const importsFromTypes = typesImports.length ? `import type { ${typesImports.join(', ')} } from '../types';` : '';
@@ -58,7 +56,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
-    const hasThemeProp = extendedProps.some(({ key }) => key === 'theme');
     const inputProps = extendedProps.filter(({ isEvent }) => !isEvent);
     const outputProps = extendedProps
       .filter(({ isEvent }) => isEvent)
@@ -100,8 +97,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     const classMembers = [
       ...inputProps.map(
         (x) =>
-          (x.isDeprecated ? '/** @deprecated */\n  ' : '') +
-          `${(x.key === 'theme' ? 'declare ' : '') + x.key}${x.isOptional ? '?' : ''}: ${x.rawValueType};`
+          (x.isDeprecated ? '/** @deprecated */\n  ' : '') + `${x.key}${x.isOptional ? '?' : ''}: ${x.rawValueType};`
       ),
       ...outputProps.map(
         (x) =>
@@ -111,7 +107,6 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     ].join('\n  ');
 
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
-    const baseClass = hasThemeProp ? 'BaseComponentWithTheme' : 'BaseComponent';
 
     const controlValueAccessor = hasControlValueAccessor ? ' implements ControlValueAccessor' : '';
     const controlValueAccessorImpl = hasControlValueAccessor
@@ -146,7 +141,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
     return `${this.inputParser.getDeprecationMessage(component)}@Component({
   ${componentOpts}
 })
-export class ${componentName}${genericType} extends ${baseClass}${controlValueAccessor} {
+export class ${componentName}${genericType} extends BaseComponent${controlValueAccessor} {
   ${classMembers}
   ${controlValueAccessorImpl}
 }`;

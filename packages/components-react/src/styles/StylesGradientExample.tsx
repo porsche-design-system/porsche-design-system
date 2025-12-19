@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
   borderRadiusLarge,
   gradientToBottomStyle,
@@ -10,6 +9,7 @@ import {
   textSmallStyle,
   themeDarkPrimary,
 } from '@porsche-design-system/components-react/styles';
+import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

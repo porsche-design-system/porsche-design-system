@@ -1,20 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
-import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
-import { generateFontFaceStylesPartial } from './generateFontFaceStylesPartial';
-import { generateInitialStylesPartial } from './generateInitialStylesPartial';
-import { generateFontLinksPartial } from './generateFontLinksPartial';
+import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
+import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateIconLinksPartial } from './generateIconLinksPartial';
-import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 import { generateLoaderScriptPartial } from './generateLoaderScriptPartial';
-import { generateBrowserSupportFallbackScriptPartial } from './generateBrowserSupportFallbackScriptPartial';
-import { generateCookiesFallbackScriptPartial } from './generateCookiesFallbackScriptPartial';
-import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
+import { generateMetaTagsAndIconLinksPartial } from './generateMetaTagsAndIconLinksPartial';
 
 const generateSharedCode = (): string => {
-  return `import type { Cdn, Format, FormatWithCSP, FormatWithJS } from '../shared';
+  return `import type { Cdn, FormatWithCSP, FormatWithJS } from '../shared';
 import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
@@ -61,17 +55,11 @@ const generatePartials = async (): Promise<void> => {
 
   const content = [
     generateSharedCode(),
-    generateFontFaceStylesheetPartial(),
-    generateFontFaceStylesPartial(),
-    generateInitialStylesPartial(),
     generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),
     generateMetaTagsAndIconLinksPartial(),
     generateIconLinksPartial(),
     generateLoaderScriptPartial(),
-    generateBrowserSupportFallbackScriptPartial(),
-    generateCookiesFallbackScriptPartial(),
-    generateDSRPonyfillPartial(),
   ].join('\n\n');
 
   fs.mkdirSync(targetDirectory, { recursive: true });

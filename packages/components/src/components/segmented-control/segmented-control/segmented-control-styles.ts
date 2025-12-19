@@ -2,10 +2,11 @@ import { spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { BreakpointCustomizable, Theme } from '../../../types';
+import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -20,14 +21,13 @@ export const getComponentCss = (
   columns: BreakpointCustomizable<SegmentedControlColumns>,
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
-  state: SegmentedControlState,
-  theme: Theme
+  state: SegmentedControlState
 ): string => {
   return getCss({
     '@global': {
       ':host': {
         ...addImportantToEachRule({
-          ...(disabled && { cursor: 'not-allowed' }),
+          ...(disabled && getDisabledBaseStyles()),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -51,13 +51,13 @@ export const getComponentCss = (
       gap: spacingStaticXSmall,
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
       cursor: 'inherit',
       '&:is(legend)': {
         marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       },
     }),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
   });
 };
