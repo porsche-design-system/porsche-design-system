@@ -154,16 +154,17 @@ export class ButtonTile implements ITileProps {
       </PrefixedTagNames.pButton>
     );
 
-    const buttonPure: JSX.Element = (
-      <PrefixedTagNames.pButtonPure
+    const buttonCompact: JSX.Element = (
+      <PrefixedTagNames.pButton
         {...buttonProps}
         key="link-or-button-pure"
         class="link-or-button-pure"
         hideLabel={true}
+        compact={true}
         icon={this.icon === 'none' ? 'arrow-right' : this.icon}
       >
         {this.label}
-      </PrefixedTagNames.pButtonPure>
+      </PrefixedTagNames.pButton>
     );
 
     return (
@@ -175,7 +176,7 @@ export class ButtonTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
+          {typeof this.compact === 'boolean' ? (this.compact ? buttonCompact : button) : [buttonCompact, button]}
         </div>
       </div>
     );
