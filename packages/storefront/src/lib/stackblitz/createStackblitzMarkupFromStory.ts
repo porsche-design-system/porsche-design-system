@@ -1,3 +1,4 @@
+import type { Framework } from '@porsche-design-system/shared';
 import type { Story, StoryState } from '@/models/story';
 import type { StorefrontTheme } from '@/models/theme';
 import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
@@ -6,7 +7,6 @@ import { generateReactMarkup, getReactCode } from '@/utils/generator/generateRea
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
 import type { HTMLTagOrComponent } from '@/utils/generator/generator';
-import type { Framework } from '@porsche-design-system/shared';
 
 /**
  * Generates the appropriate StackBlitz markup for a given story and framework.
@@ -24,12 +24,7 @@ export const createStackblitzMarkupFromStory = (
   storefrontFramework: Framework,
   storefrontTheme: StorefrontTheme
 ): string => {
-  // TODO: Only apply theme for themable PDS components
-  // Since vanilla-js doesn't have a provider we need to apply the global theme to the elements
-  const generatedStory =
-    storefrontFramework === 'vanilla-js' && storefrontTheme !== 'light'
-      ? applyPropertyRecursively(story.generator(storyState), 'theme', storefrontTheme)
-      : story.generator(storyState);
+  const generatedStory = story.generator(storyState);
 
   // Generate the markup from the story and get the code
   switch (storefrontFramework) {

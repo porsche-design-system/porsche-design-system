@@ -179,7 +179,6 @@ export const ComponentMetaOverview = () => {
         </PTableHead>
         <PTableBody>
           {renderBoolean('isDelegatingFocus')}
-          {renderBoolean('isThemeable')}
           {renderProps('props')}
           {renderProps('requiredProps', 'isRequired')}
           {renderComponentMeta('eventNames', (tagName) => Object.entries(componentMeta[tagName].eventsMeta ?? {}))}

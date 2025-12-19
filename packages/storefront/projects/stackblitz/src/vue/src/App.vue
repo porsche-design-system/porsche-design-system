@@ -4,7 +4,7 @@ import Example from './components/Example.vue';
 </script>
 
 <template>
-  <PorscheDesignSystemProvider :theme="'auto'">
+  <PorscheDesignSystemProvider>
     <Example />
   </PorscheDesignSystemProvider>
 </template>
