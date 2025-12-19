@@ -1,5 +1,6 @@
 import {
   breakpointS,
+  getMediaQueryMax,
   getMediaQueryMin,
   gridGap,
   spacingFluidSmall,
@@ -42,7 +43,8 @@ const sidebarStartWidthDesktop = `min(calc(100vw - ${minWidth}),var(${cssVarSide
 const sidebarEndWidthDesktop = `min(calc(100vw - ${minWidth}),var(${cssVarSidebarEndWidth},${minWidth}))`;
 
 // media queries
-const mediaQueryM = getMediaQueryMin('m');
+const mediaQueryMinM = getMediaQueryMin('m');
+const mediaQueryMaxM = getMediaQueryMax('m');
 
 // others
 const spacingBase = gridGap.replace('36px', '24px');
@@ -126,12 +128,16 @@ export const getComponentCss = (
       gridTemplateAreas:
         '"sidebar-start header sidebar-end" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end"',
       minHeight: '100lvh', // viewport when Safari's UI is completely hidden (maximum space)
-      transform: `translate3d(${isSidebarEndOpen ? `calc(-1 * ${sidebarStartWidthMobile} - ${sidebarEndWidthMobile})` : isSidebarStartOpen ? '0' : `calc(-1 * ${sidebarStartWidthMobile})`},0,0)`,
-      transition: getTransition('transform'),
-      [mediaQueryM]: {
-        gridTemplateColumns: `${isSidebarStartOpen ? sidebarStartWidthDesktop : '0px'} minmax(${minWidth},1fr) ${isSidebarEndOpen ? sidebarEndWidthDesktop : '0px'}`,
-        transform: 'unset',
+      [mediaQueryMaxM]: {
+        transition: getTransition('transform'),
+        transform: `translate3d(${isSidebarEndOpen ? `calc(-1 * ${sidebarStartWidthMobile} - ${sidebarEndWidthMobile})` : isSidebarStartOpen ? '0' : `calc(-1 * ${sidebarStartWidthMobile})`},0,0)`,
+        '&:dir(rtl)': {
+          transform: `translate3d(${isSidebarEndOpen ? `calc(${sidebarStartWidthMobile} + ${sidebarEndWidthMobile})` : isSidebarStartOpen ? '0' : sidebarEndWidthMobile},0,0)`,
+        },
+      },
+      [mediaQueryMinM]: {
         transition: getTransition('grid-template-columns'),
+        gridTemplateColumns: `${isSidebarStartOpen ? sidebarStartWidthDesktop : '0px'} minmax(${minWidth},1fr) ${isSidebarEndOpen ? sidebarEndWidthDesktop : '0px'}`,
       },
       '&::before': {
         content: '""',
@@ -302,7 +308,7 @@ export const getComponentCss = (
         justifySelf: 'flex-end',
         background: secondaryBackgroundColor,
         width: sidebarStartWidthMobile,
-        [mediaQueryM]: {
+        [mediaQueryMinM]: {
           width: sidebarStartWidthDesktop,
         },
       },
@@ -312,7 +318,7 @@ export const getComponentCss = (
         borderInlineStart: `1px solid ${contrastLowerColor}`,
         background: primaryBackgroundColor,
         width: sidebarEndWidthMobile,
-        [mediaQueryM]: {
+        [mediaQueryMinM]: {
           width: sidebarEndWidthDesktop,
         },
       },
