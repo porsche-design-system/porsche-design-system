@@ -236,6 +236,10 @@ const generatedRoutes = {
     "path": "/flyout-2",
     "name": "Flyout_2"
   },
+  "flyout_3": {
+    "path": "/flyout-3",
+    "name": "Flyout_3"
+  },
   "flyoutBackdropBlur": {
     "path": "/flyout-backdrop-blur",
     "name": "FlyoutBackdropBlur"
