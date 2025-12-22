@@ -137,7 +137,8 @@ and migration steps.
 - `Partials`:
   - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
     `@porsche-design-system/fallbacks`
-  - Removed `getDSRPonyfill()` partial
+  - Removed `getDSRPonyfill()` partial - no longer needed as all supported browsers now natively support Declarative
+    Shadow DOM. Previously required for SSR/SSG to polyfill Declarative Shadow DOM in browsers lacking native support.
   - Removed `getFontFaceStyles()`, `getFontFaceStylesheet()` and `getInitialStyles()` partial in favor of CSS imports
     from `@porsche-design-system/components-{js|angular|react|vue}`
   - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now

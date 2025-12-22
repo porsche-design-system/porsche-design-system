@@ -120,8 +120,30 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 
 - Removed `getDSRPonyfill()` partial as it is no longer needed.
 
+  **Why was it removed?**  
+  The `getDSRPonyfill()` partial was introduced in v2.18.0 to enable Server-Side Rendering (SSR) and Static Site
+  Generation (SSG) with [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom). This allowed components to be
+  pre-rendered on the server with their styles and structure intact, which modern browsers could then convert to real
+  Shadow DOM without JavaScript.
+
+  However, at that time, not all browsers natively supported Declarative Shadow DOM. The ponyfill provided JavaScript
+  code that would polyfill this functionality for browsers lacking native support, ensuring consistent rendering across
+  all platforms.
+
+  **Why is it no longer needed?**  
+  As of v4.0.0, all browsers within our
+  [supported browser matrix](/must-know/browser-compatibility/) (latest 2 versions of Chrome, Safari, Firefox, and Edge)
+  now natively support Declarative Shadow DOM. This means the ponyfill is no longer required, and removing it simplifies
+  the codebase while improving performance by eliminating unnecessary JavaScript.
+
+  If you were using SSR/SSG components from `@porsche-design-system/components-react/ssr` or similar packages, you can
+  safely remove the `getDSRPonyfill()` partial from your implementation:
+
 ```diff
 - import { getDSRPonyfill } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
+- 
+- // In your HTML template
+- <script dangerouslySetInnerHTML={{ __html: getDSRPonyfill() }} />
 ```
 
 ### Theme

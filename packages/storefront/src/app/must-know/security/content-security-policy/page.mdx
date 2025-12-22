@@ -38,9 +38,15 @@ innerHTML are **not**.
 
 The ones affected are:
 
-- [getInitialStyles()](/partials/initial-styles) **required since v3.7.0**
 - [getLoaderScript()](/partials/loader-script)
-- [getDSRPonyfill()](/partials/dsr-ponyfill)
+
+<Notification heading="Note" headingTag="h3" state="warning">
+  In v3, the following partials were also affected but have been removed in v4:
+
+- `getInitialStyles()` - Replaced by mandatory CSS imports in v4
+- `getDSRPonyfill()` - No longer needed as all supported browsers now natively support Declarative Shadow DOM
+
+</Notification>
 
 To allow their result being executed by the browser there are two options:
 

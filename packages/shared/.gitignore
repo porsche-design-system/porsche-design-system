@@ -1,2 +1,4 @@
 # Generated component samples
 /src/examples
+# Generated partialNames
+/src/lib/partialNames.ts
