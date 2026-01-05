@@ -1,6 +1,7 @@
 'use client';
 
 import { PHeading, PLink, PLinkPure, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
+import { kebabCase } from 'change-case';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
@@ -41,7 +42,12 @@ export const Home = () => {
         </h1>
         <div className="block w-full h-full relative dark">
           <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-4xl shadow-medium flex justify-between items-center gap-4">
-            <Link href="/news/changelog/" className="absolute inset-0 rounded-4xl" tabIndex={-1} aria-hidden="true" />
+            <a
+              href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
+              className="absolute inset-0 rounded-4xl"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
             <div className="flex flex-col prose-text-sm">
               <b>Release Note</b>
               <span className="text-contrast-medium">
@@ -49,8 +55,8 @@ export const Home = () => {
               </span>
             </div>
             <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-              <Link
-                href="/news/changelog/"
+              <a
+                href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
                 aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
               />
             </PLink>

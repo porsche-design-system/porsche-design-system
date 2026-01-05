@@ -44,24 +44,31 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children as React.ReactNode}
       </PDisplay>
     ),
-    h2: ({ children }) => (
-      <PHeading
-        tag="h2"
-        size="x-large"
-        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
-        id={kebabCase(children as string)}
-      >
-        {children as React.ReactNode}
-        <PLinkPure
-          className="ms-static-sm invisible group-hover:visible"
-          title="Link to this heading"
-          icon="none"
-          size="inherit"
+    h2: ({ children }) => {
+      const text = children as string;
+      // Extract version from changelog format like "## [3.31.0] - 2025-11-13" => "3.31.0"
+      const versionMatch = text.match(/^\[([^\]]+)]/);
+      const id = versionMatch ? kebabCase(versionMatch[1]) : kebabCase(text);
+
+      return (
+        <PHeading
+          tag="h2"
+          size="x-large"
+          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
+          id={id}
         >
-          <Link href={`#${kebabCase(children as string)}`}>#</Link>
-        </PLinkPure>
-      </PHeading>
-    ),
+          {children as React.ReactNode}
+          <PLinkPure
+            className="ms-static-sm invisible group-hover:visible"
+            title="Link to this heading"
+            icon="none"
+            size="inherit"
+          >
+            <Link href={`#${id}`}>#</Link>
+          </PLinkPure>
+        </PHeading>
+      );
+    },
     h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
     h4: ({ children }) => (
       <PHeading tag="h4" size="medium" className="my-fluid-md max-w-(--max-width-prose)">
