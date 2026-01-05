@@ -11,7 +11,7 @@ import { BannerHeadingTag, BannerState } from "./components/banner/banner-utils"
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
+import { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -73,7 +73,7 @@ export { BannerHeadingTag, BannerState } from "./components/banner/banner-utils"
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
+export { CanvasBackground, CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from "./components/checkbox/checkbox-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -362,6 +362,10 @@ export namespace Components {
      * @experimental 
      */
     interface PCanvas {
+        /**
+          * Defines the background color of the main section and auto adjust it for the sidebar
+         */
+        "background"?: CanvasBackground;
         /**
           * Open the sidebar on the end side
          */
@@ -3993,6 +3997,10 @@ declare namespace LocalJSX {
      * @experimental 
      */
     interface PCanvas {
+        /**
+          * Defines the background color of the main section and auto adjust it for the sidebar
+         */
+        "background"?: CanvasBackground;
         /**
           * Emitted when the sidebar end requests to be dismissed.
          */

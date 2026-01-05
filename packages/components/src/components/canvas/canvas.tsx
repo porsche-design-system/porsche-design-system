@@ -1,13 +1,13 @@
-import { breakpointM, breakpointS } from '@porsche-design-system/styles';
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, hasNamedSlot, validateProps } from '../../utils';
 import { getComponentCss } from './canvas-styles';
-import type { CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
+import { CANVAS_BACKGROUNDS, type CanvasBackground, type CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
   sidebarEndOpen: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<CanvasBackground>(CANVAS_BACKGROUNDS),
 };
 
 /**
@@ -36,224 +36,130 @@ export class Canvas {
   /** Open the sidebar on the end side */
   @Prop() public sidebarEndOpen?: boolean = false;
 
+  /** Defines the background color of the main section and auto adjust it for the sidebar */
+  @Prop() public background?: CanvasBackground = 'canvas';
+
   /** Emitted when the sidebar start requests to be opened or dismissed. */
   @Event({ bubbles: false }) public sidebarStartUpdate?: EventEmitter<CanvasSidebarStartUpdateEventDetail>;
 
   /** Emitted when the sidebar end requests to be dismissed. */
   @Event({ bubbles: false }) public sidebarEndDismiss?: EventEmitter<void>;
 
-  @State() private isMediaQueryS = false;
-  @State() private isMediaQueryM = false;
-
-  private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
-  private matchMediaQueryM = window.matchMedia(`(min-width: ${breakpointM}px)`);
-
   private hasTitle: boolean;
   private hasSidebarEnd: boolean;
-  private hasSidebarEndHeader: boolean;
   private hasFooter: boolean;
   private hasBackground: boolean;
-
-  // TODO: Produces bug when using text-field-wrapper which looses focus
-  // private sidebarStart: HTMLElement;
-  // private sidebarEnd: HTMLElement;
-  // private root: HTMLElement;
-  // private header: HTMLHeadElement;
-
-  // @Watch('sidebarStartOpen')
-  // public openChangeHandlerSidebarStart(isOpen: boolean): void {
-  //   if (this.isMediaQueryS) {
-  //     this.root.ontransitionend = (): void => {
-  //       this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
-  //     };
-  //   }
-  // }
-  //
-  // @Watch('sidebarEndOpen')
-  // public openChangeHandlerSidebarEnd(isOpen: boolean): void {
-  //   if (this.isMediaQueryM) {
-  //     this.root.ontransitionend = (): void => {
-  //       this[isOpen ? 'sidebarEnd' : 'header'].focus({ preventScroll: true });
-  //     };
-  //   }
-  // }
-
-  public connectedCallback(): void {
-    this.handleMediaQueryS(this.matchMediaQueryS);
-    this.handleMediaQueryM(this.matchMediaQueryM);
-
-    this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
-    this.matchMediaQueryM.addEventListener('change', this.handleMediaQueryM);
-  }
-
-  public disconnectedCallback(): void {
-    this.matchMediaQueryS.removeEventListener('change', this.handleMediaQueryS);
-    this.matchMediaQueryM.removeEventListener('change', this.handleMediaQueryM);
-  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
     this.hasTitle = hasNamedSlot(this.host, 'title');
     this.hasSidebarEnd = hasNamedSlot(this.host, 'sidebar-end');
-    this.hasSidebarEndHeader = hasNamedSlot(this.host, 'sidebar-end-header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasBackground = hasNamedSlot(this.host, 'background');
 
-    attachComponentCss(this.host, getComponentCss, this.sidebarStartOpen, this.sidebarEndOpen);
+    attachComponentCss(this.host, getComponentCss, this.sidebarStartOpen, this.sidebarEndOpen, this.background);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <div class="root">
-          <header class="header" tabIndex={-1}>
-            <div class="blur">
-              <div />
-              <div />
-              <div />
-              <div />
-              <div />
-              <div />
-              <div />
-              <div />
-            </div>
-            <div class="header__area header__area--start">
-              {!this.sidebarStartOpen && (
-                <PrefixedTagNames.pButton
-                  icon="sidebar"
-                  variant="secondary"
-                  compact={true}
-                  hide-label="true"
-                  aria={{ 'aria-expanded': this.sidebarStartOpen }}
-                  onClick={this.toggleSidebarStart}
-                >
-                  {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
-                </PrefixedTagNames.pButton>
-              )}
-              <slot name="header-start" />
-            </div>
-            <PrefixedTagNames.pCrest class="header__crest" />
-            <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" />
-            <div class="header__area header__area--end">
-              <slot name="header-end" />
-            </div>
-          </header>
-          {this.isMediaQueryS && (
-            <aside
-              class="sidebar sidebar--start"
-              inert={!this.sidebarStartOpen}
-              aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
-              tabIndex={-1}
+      <div class="root">
+        <header class="header" tabIndex={-1}>
+          <div class="blur">
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+          <div class="header__area header__area--start">
+            {!this.sidebarStartOpen && (
+              <PrefixedTagNames.pButton
+                icon="sidebar"
+                variant="secondary"
+                compact={true}
+                hide-label="true"
+                aria={{ 'aria-expanded': this.sidebarStartOpen }}
+                onClick={this.toggleSidebarStart}
+              >
+                {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+              </PrefixedTagNames.pButton>
+            )}
+            <slot name="header-start" />
+          </div>
+          <PrefixedTagNames.pCrest class="header__crest" />
+          <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" />
+          <div class="header__area header__area--end">
+            <slot name="header-end" />
+          </div>
+        </header>
+        <aside
+          class="sidebar sidebar--start"
+          inert={!this.sidebarStartOpen}
+          aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
+          tabIndex={-1}
+        >
+          <div class="sidebar__header sidebar__header--start">
+            <PrefixedTagNames.pButton
+              icon="sidebar"
+              variant="secondary"
+              compact={true}
+              hide-label="true"
+              aria={{ 'aria-expanded': this.sidebarStartOpen }}
+              onClick={this.toggleSidebarStart}
             >
-              <div class="sidebar__scroller">
-                <div class="sidebar__header sidebar__header--start">
-                  <PrefixedTagNames.pButton
-                    icon="sidebar"
-                    variant="secondary"
-                    compact={true}
-                    hide-label="true"
-                    aria={{ 'aria-expanded': this.sidebarStartOpen }}
-                    onClick={this.toggleSidebarStart}
-                  >
-                    {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
-                  </PrefixedTagNames.pButton>
-                  {this.hasTitle && (
-                    <h2>
-                      <slot name="title" />
-                    </h2>
-                  )}
-                </div>
-                <div class="sidebar__content">
-                  <slot name="sidebar-start" />
-                </div>
-              </div>
-            </aside>
-          )}
-          <main class="main">
-            <slot />
-          </main>
-          {this.hasSidebarEnd && this.isMediaQueryM && (
-            <aside
-              class="sidebar sidebar--end"
-              inert={!this.sidebarEndOpen}
-              aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
-              tabIndex={-1}
-            >
-              <div class="sidebar__scroller">
-                <div class="sidebar__header sidebar__header--end">
-                  <slot name="sidebar-end-header" />
-                  <PrefixedTagNames.pButton
-                    icon="close"
-                    variant="secondary"
-                    compact={true}
-                    hide-label="true"
-                    aria={{ 'aria-expanded': this.sidebarEndOpen }}
-                    onClick={this.onDismissSidebarEnd}
-                  >
-                    {this.sidebarEndOpen ? 'Close' : 'Open'} settings sidebar
-                  </PrefixedTagNames.pButton>
-                </div>
-                <div class="sidebar__content">
-                  <slot name="sidebar-end" />
-                </div>
-              </div>
-            </aside>
-          )}
-          {this.hasFooter && (
-            <footer class="footer">
-              <slot name="footer" />
-            </footer>
-          )}
-          {this.hasBackground && <slot name="background" />}
-        </div>
-        {!this.isMediaQueryS && (
-          <PrefixedTagNames.pFlyout
-            class="flyout-start"
-            open={this.sidebarStartOpen}
-            position="start"
-            onDismiss={this.onDismissSidebarStart}
-          >
+              {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+            </PrefixedTagNames.pButton>
             {this.hasTitle && (
-              <h2 slot="header">
+              <h2>
                 <slot name="title" />
               </h2>
             )}
-            <slot name="sidebar-start" />
-          </PrefixedTagNames.pFlyout>
-        )}
-        {this.hasSidebarEnd && !this.isMediaQueryM && (
-          <PrefixedTagNames.pFlyout
-            class="flyout-end"
-            open={this.sidebarEndOpen}
-            position="end"
-            onDismiss={this.onDismissSidebarEnd}
+          </div>
+          <slot name="sidebar-start" />
+        </aside>
+        <main class="main">
+          <slot />
+        </main>
+        {this.hasSidebarEnd && (
+          <aside
+            class="sidebar sidebar--end"
+            inert={!this.sidebarEndOpen}
+            aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
+            tabIndex={-1}
           >
-            {this.hasSidebarEndHeader && <slot slot="header" name="sidebar-end-header" />}
+            <div class="sidebar__header sidebar__header--end">
+              <slot name="sidebar-end-header" />
+              <PrefixedTagNames.pButton
+                icon="close"
+                variant="secondary"
+                compact={true}
+                hide-label="true"
+                aria={{ 'aria-expanded': this.sidebarEndOpen }}
+                onClick={this.onDismissSidebarEnd}
+              >
+                {this.sidebarEndOpen ? 'Close' : 'Open'} settings sidebar
+              </PrefixedTagNames.pButton>
+            </div>
             <slot name="sidebar-end" />
-          </PrefixedTagNames.pFlyout>
+          </aside>
         )}
-      </Host>
+        {this.hasFooter && (
+          <footer class="footer">
+            <slot name="footer" />
+          </footer>
+        )}
+        {this.hasBackground && <slot name="background" />}
+      </div>
     );
   }
-
-  private handleMediaQueryS = (e: MediaQueryList | MediaQueryListEvent): void => {
-    this.isMediaQueryS = !!e.matches;
-  };
-
-  private handleMediaQueryM = (e: MediaQueryList | MediaQueryListEvent): void => {
-    this.isMediaQueryM = !!e.matches;
-  };
 
   private toggleSidebarStart = (): void => {
     this.sidebarStartUpdate.emit({
       open: !this.sidebarStartOpen,
-    });
-  };
-
-  private onDismissSidebarStart = (): void => {
-    this.sidebarStartUpdate.emit({
-      open: false,
     });
   };
 

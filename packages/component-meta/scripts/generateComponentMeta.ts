@@ -91,7 +91,6 @@ const generateComponentMeta = (): void => {
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
-    const isThemeable = source.includes('public theme?: Theme');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
     const hasElementInternals = source.includes('@AttachInternals()');
@@ -577,7 +576,6 @@ const generateComponentMeta = (): void => {
       isDelegatingFocus,
       isInternal,
       isChunked,
-      isThemeable,
       requiredParent,
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?
       requiredChild,
