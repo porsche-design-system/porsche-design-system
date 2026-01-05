@@ -16,13 +16,10 @@ export const Home = () => {
 
   return (
     <>
-      <div
-        className="col-span-full grid h-[90vh] grid-cols-full grid-rows-[minmax(0,1fr)_auto] overflow-hidden"
-        style={{ marginBlockStart: '-70px', marginInline: 'calc(clamp(16px, 12px + 1.25vw, 24px) * -1)' }}
-      >
+      <div className="dark relative min-h-[90vh] p-fluid-xl -mx-[clamp(16px,12px+1.25vw,24px)] -mt-[70px] col-span-full grid grid-rows-[minmax(0,1fr)_auto] gap-fluid-xl">
         <video
           key={isDark ? 'dark' : 'light'}
-          className="row-start-1 col-start-1 w-full h-[90vh] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           poster={isDark ? 'assets/hero-dark.jpg' : 'assets/hero-light.jpg'}
           slot="background"
           loop={true}
@@ -36,35 +33,30 @@ export const Home = () => {
           <source src={isDark ? 'assets/hero-dark.webm' : 'assets/hero-light.webm'} type="video/webm" />
           Your browser does not support the video tag.
         </video>
-
-        <h1 className="dark opacity-70 prose-display-md text-primary z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-[768px]">
+        <h1 className="prose-display-md text-primary opacity-70 max-w-[min(50vw,40rem)]">
           Welcome to the Porsche Design System <b>v{localPorscheDesignSystemMajorVersion}</b>
         </h1>
-        <div className="block w-full h-full relative dark">
-          <div className="mb-[5%] ms-[5%] bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[512px] bottom-0 left-0 m-4 p-6 rounded-4xl shadow-medium flex justify-between items-center gap-4">
+        <div className="relative bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[30rem] p-fluid-md rounded-4xl shadow-medium flex justify-between items-center gap-static-sm">
+          <a href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`} className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
+          <div className="flex flex-col prose-text-sm">
+            <b>Release Note</b>
+            <span className="text-contrast-medium">
+              Checkout the release <code className="bg-frosted">{localPorscheDesignSystemVersion}</code>
+            </span>
+          </div>
+          <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
             <a
               href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
-              className="absolute inset-0 rounded-4xl"
-              tabIndex={-1}
-              aria-hidden="true"
+              aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
             />
-            <div className="flex flex-col prose-text-sm">
-              <b>Release Note</b>
-              <span className="text-contrast-medium">
-                Checkout the release <code className="bg-frosted">{localPorscheDesignSystemVersion}</code>
-              </span>
-            </div>
-            <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-              <a
-                href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
-                aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
-              />
-            </PLink>
-          </div>
+          </PLink>
         </div>
       </div>
 
-      <article className="mt-fluid-2xl col-span-full xs:col-start-4 xs:col-end-10" aria-label="Introduction">
+      <article
+        className="mt-fluid-2xl col-start-2 col-end-12 @md:col-start-3 @md:col-end-11 max-w-[45rem] mx-auto"
+        aria-label="Introduction"
+      >
         <PText size="large" align="center">
           This is your all-in-one toolkit for creating high-quality, visually stunning web applications. With intuitive
           Figma libraries, robust Web Components, and comprehensive guidelines, it’s built and tested to embody
@@ -86,7 +78,7 @@ export const Home = () => {
       </article>
 
       <section
-        className="mt-fluid-xl grid gap-fluid-md md:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-2xl grid gap-fluid-md col-span-full @md:col-start-2 @md:col-end-12 @2xl:grid-cols-2"
         aria-label="Getting started"
       >
         <AppearAnimation animation="fade-in-up">
@@ -156,7 +148,7 @@ export const Home = () => {
       </section>
 
       <section
-        className="mt-fluid-xl grid gap-fluid-md md:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md col-span-full @md:col-start-2 @md:col-end-12 @2xl:grid-cols-2"
         aria-label="Important links"
       >
         <AppearAnimation animation="fade-in-up">
@@ -246,7 +238,7 @@ export const Home = () => {
       </section>
 
       <section
-        className="mt-fluid-lg grid gap-fluid-md sm:grid-cols-1 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md col-span-full @md:col-start-2 @md:col-end-12"
         aria-label="Accessibility"
       >
         <AppearAnimation animation="fade-in-up">
@@ -267,7 +259,7 @@ export const Home = () => {
       </section>
 
       <section
-        className="mt-fluid-2xl mb-fluid-2xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-2xl grid gap-fluid-md col-span-full @md:col-start-2 @md:col-end-12 @2xl:grid-cols-2"
         aria-label="How to create a feature Request"
       >
         <PHeading tag="h2" size="x-large">
@@ -285,125 +277,125 @@ export const Home = () => {
       </section>
 
       <section
-        className="bg-surface rounded-4xl mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12"
+        className="mt-fluid-2xl pt-fluid-2xl pb-fluid-xl grid grid-cols-subgrid gap-y-fluid-xl col-span-full bg-surface rounded-4xl"
         aria-label="Benefits"
       >
-        <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-(--max-width-prose) mx-auto">
+        <div className="max-w-[27rem] mx-auto grid gap-fluid-md col-start-2 col-end-12">
           <PHeading size="x-large" align="center">
             Benefits
           </PHeading>
-          <PText size="medium" className="mt-fluid-md" color="contrast-medium" align="center">
+          <PText size="medium" color="contrast-medium" align="center">
             The design system offers a variety of benefits compared individual solutions: Saving time and effort while
             accelerating the development process through reusable components, consistent guidelines, and seamless
             integration.
           </PText>
         </div>
-        <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Short & Longterm Efficiency">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Short & Longterm Efficiency
-          </PText>
-          <PText align="center">
-            Speeds up design and development by reusing maintained components and patterns. Enables better collaboration
-            and delivers up to 31% faster implementation.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Brand Fit">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Brand Fit
-          </PText>
-          <PText align="center">
-            Built on Porsche's design principles, it aligns with the brand identity, delivering a cohesive and premium
-            digital experience.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Accessibility">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Accessibility Compliant
-          </PText>
-          <PText align="center">
-            WCAG compliant components ensure inclusivity and accessibility for all users, enhancing usability and user
-            experience.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Framework Agnostic">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Framework Agnostic
-          </PText>
-          <PText align="center">
-            Works seamlessly with any framework, offering flexibility, compatibility, and ease of use across platforms.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Fluid & Responsive">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Fluid & Responsive
-          </PText>
-          <PText align="center">
-            The system is fully responsive and adaptable, ensuring an optimal user experience across all devices and
-            screen sizes.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Compliant Quality">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Compliant Quality
-          </PText>
-          <PText align="center">
-            The system ensures flawless performance with automated tests, security checks, and smooth updates,
-            delivering reliable, high-quality results every time.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Updated Capability">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Updated Capability
-          </PText>
-          <PText align="center">
-            Styles, tokens, and components can be updated anytime, enabling flexibility, improvement, and alignment with
-            evolving design trends.
-          </PText>
-        </article>
-        <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Open-Source Code">
-          <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
-            <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
-          </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
-            Open-Source Code
-          </PText>
-          <PText align="center">
-            It fosters collaboration by allowing everyone to use the code, ensuring transparency, innovation, and
-            well-tested, dependable solutions.
-          </PText>
-        </article>
+        <div className="max-w-[20rem] mx-auto col-start-2 col-end-12 grid gap-fluid-lg @2xl:grid-cols-2 @2xl:max-w-[40rem]">
+          <article aria-label="Short & Longterm Efficiency">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Short & Longterm Efficiency
+            </PText>
+            <PText align="center">
+              Speeds up design and development by reusing maintained components and patterns. Enables better
+              collaboration and delivers up to 31% faster implementation.
+            </PText>
+          </article>
+          <article aria-label="Brand Fit">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Brand Fit
+            </PText>
+            <PText align="center">
+              Built on Porsche's design principles, it aligns with the brand identity, delivering a cohesive and premium
+              digital experience.
+            </PText>
+          </article>
+          <article aria-label="Accessibility">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Accessibility Compliant
+            </PText>
+            <PText align="center">
+              WCAG compliant components ensure inclusivity and accessibility for all users, enhancing usability and user
+              experience.
+            </PText>
+          </article>
+          <article aria-label="Framework Agnostic">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Framework Agnostic
+            </PText>
+            <PText align="center">
+              Works seamlessly with any framework, offering flexibility, compatibility, and ease of use across
+              platforms.
+            </PText>
+          </article>
+          <article aria-label="Fluid & Responsive">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Fluid & Responsive
+            </PText>
+            <PText align="center">
+              The system is fully responsive and adaptable, ensuring an optimal user experience across all devices and
+              screen sizes.
+            </PText>
+          </article>
+          <article aria-label="Compliant Quality">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Compliant Quality
+            </PText>
+            <PText align="center">
+              The system ensures flawless performance with automated tests, security checks, and smooth updates,
+              delivering reliable, high-quality results every time.
+            </PText>
+          </article>
+          <article aria-label="Updated Capability">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Updated Capability
+            </PText>
+            <PText align="center">
+              Styles, tokens, and components can be updated anytime, enabling flexibility, improvement, and alignment
+              with evolving design trends.
+            </PText>
+          </article>
+          <article aria-label="Open-Source Code">
+            <div className="relative rounded-full bg-canvas w-20 h-20 m-auto">
+              <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
+            </div>
+            <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
+              Open-Source Code
+            </PText>
+            <PText align="center">
+              It fosters collaboration by allowing everyone to use the code, ensuring transparency, innovation, and
+              well-tested, dependable solutions.
+            </PText>
+          </article>
+        </div>
       </section>
 
       <section
-        className="mt-fluid-xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md col-span-full @md:col-start-2 @md:col-end-12 @2xl:grid-cols-2"
         aria-label="Resources"
       >
-        <div>
-          <PHeading size="x-large">Resources</PHeading>
-        </div>
-
-        <div className="mt-fluid-md mb-fluid-xl flex flex-col gap-fluid-md items-start">
+        <PHeading size="x-large">Resources</PHeading>
+        <div className="mt-fluid-sm mb-fluid-xl flex flex-col gap-fluid-md items-start">
           <PLinkPure
             icon="external"
             size="medium"

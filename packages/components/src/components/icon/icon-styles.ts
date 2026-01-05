@@ -91,7 +91,7 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
           aspectRatio: '1/1',
           background: 'currentcolor', // necessary for proper color inheritance
           ...(isFlippableIcon(name, source) && {
-            '&:dir(rtl)': {
+            '&(:dir(rtl))': {
               transform: 'scaleX(-1)',
             },
           }),
