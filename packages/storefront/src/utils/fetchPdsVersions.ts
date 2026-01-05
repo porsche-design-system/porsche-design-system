@@ -1,5 +1,5 @@
 import { STARTING_PDS_VERSION } from '@/models/pdsVersion';
-import { isGte } from '@/utils/pdsVersion';
+import { isVersionAtLeast } from '@/utils/pdsVersion';
 
 export type FetchPdsVersionsOptions = {
   filterStable?: boolean;
@@ -28,7 +28,7 @@ export const fetchPdsVersions = async ({
   }
 
   if (startingVersion) {
-    versions = versions.filter((v: string) => isGte(v, startingVersion));
+    versions = versions.filter((v: string) => isVersionAtLeast(v, startingVersion));
   }
 
   return versions.sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));

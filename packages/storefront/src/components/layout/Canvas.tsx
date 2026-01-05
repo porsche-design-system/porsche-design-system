@@ -29,7 +29,8 @@ import { LEGACY_PDS_VERSIONS, type PDSVersionGroup, type Semver } from '@/models
 import type { StorefrontTextZoom } from '@/models/textZoom';
 import type { StorefrontTheme } from '@/models/theme';
 import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
-import { getCurrentPdsVersion, isMajorOnly } from '@/utils/pdsVersion';
+import { isDevEnvironment } from '@/utils/isDev';
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 declare global {
   interface Window {
@@ -64,22 +65,18 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isBannerOpen, setIsBannerOpen] = useState(false);
   const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointM}px)`).matches;
 
-  const rawPdsVersion = getCurrentPdsVersion();
   const latestPdsVersion = stablePdsReleases[0] as Semver;
 
-  // Normalize: if only a major (e.g. "3"), uses the latest full semver
-  const currentPdsVersion = rawPdsVersion && isMajorOnly(rawPdsVersion) ? latestPdsVersion : rawPdsVersion;
-
   useEffect(() => {
-    if (!latestPdsVersion || !currentPdsVersion) return;
-    if (currentPdsVersion !== latestPdsVersion) {
+    if (!latestPdsVersion) return;
+    if (!isDevEnvironment && localPorscheDesignSystemVersion !== latestPdsVersion) {
       setIsBannerOpen(true);
     }
-  }, [currentPdsVersion, latestPdsVersion]);
+  }, [latestPdsVersion]);
 
   const pdsVersion: PDSVersionGroup = {
     all: [...stablePdsReleases, ...LEGACY_PDS_VERSIONS],
-    current: currentPdsVersion as Semver,
+    current: localPorscheDesignSystemVersion as Semver,
     latest: latestPdsVersion,
   };
 
