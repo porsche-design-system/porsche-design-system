@@ -14,24 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-## [3.32.0-rc.0] - 2025-12-16
-
-### Added
-
-- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
-  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-- `Canvas`: prop `background` to set the background color to `canvas | surface`
-
-### Fixed
-
-- `Multi Select`: trim whitespace of selected options text
-  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
-
-### Changed
-
-- `Link Tile`, `Button Tile`: appearance in compact mode
-- `Canvas`: appearance on mobile view
-
 ## [4.0.0-alpha.0] - 2025-12-12
 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
@@ -280,6 +262,24 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
+## [3.32.0-rc.0] - 2025-12-16
+
+### Added
+
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
+  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
+
+### Fixed
+
+- `Multi Select`: trim whitespace of selected options text
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+### Changed
+
+- `Link Tile`, `Button Tile`: appearance in compact mode
+- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
