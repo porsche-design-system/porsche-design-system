@@ -257,7 +257,7 @@ export const flyoutStoryCustomStyling: Story<'p-flyout'> = {
       properties: {
         ...properties,
         footerBehavior: 'fixed',
-        className: '[--p-flyout-width:90vw] [--p-flyout-max-width:90vw]',
+        className: '[--p-flyout-width:90vw]',
       },
       events: {
         onDismiss: {
