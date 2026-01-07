@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.32.0-rc.0] - 2025-12-16
+
 ### Added
 
 - `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
