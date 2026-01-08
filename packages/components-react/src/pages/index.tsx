@@ -66,6 +66,7 @@ import { FieldsetPage } from './generated/Fieldset';
 import { FlagPage } from './generated/Flag';
 import { Flyout_1Page } from './generated/Flyout_1';
 import { Flyout_2Page } from './generated/Flyout_2';
+import { Flyout_3Page } from './generated/Flyout_3';
 import { FlyoutBackdropBlurPage } from './generated/FlyoutBackdropBlur';
 import { FlyoutBackdropShadingPage } from './generated/FlyoutBackdropShading';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
@@ -489,6 +490,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout 2',
     path: '/flyout-2',
     element: <Flyout_2Page />,
+  },
+  {
+    name: 'Flyout 3',
+    path: '/flyout-3',
+    element: <Flyout_3Page />,
   },
   {
     name: 'Flyout Backdrop Blur',

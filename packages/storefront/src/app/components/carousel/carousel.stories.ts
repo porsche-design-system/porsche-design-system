@@ -39,7 +39,7 @@ export const carouselStory: Story<'p-carousel'> = {
 
 export const carouselStoryFlexibleWidths: Story<'p-carousel'> = {
   state: {
-    properties: { heading: 'Some heading', slidesPerPage: 'auto' },
+    properties: { heading: 'Some heading', slidesPerPage: 'auto', trimSpace: true, pagination: true, rewind: true },
   },
   generator: ({ properties } = {}) => [
     {

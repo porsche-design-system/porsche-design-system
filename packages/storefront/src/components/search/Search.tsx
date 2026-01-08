@@ -31,6 +31,29 @@ type SearchProps = {
   onDismissSearch: () => void;
 };
 
+const searchClient = {
+  ...algoliaClient,
+  search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
+    if (requests.every(({ params }) => !params.query)) {
+      return Promise.resolve({
+        results: requests.map(() => ({
+          hits: [],
+          nbHits: 0,
+          nbPages: 0,
+          page: 0,
+          processingTimeMS: 0,
+          hitsPerPage: 0,
+          exhaustiveNbHits: false,
+          query: '',
+          params: '',
+        })),
+      });
+    }
+
+    return algoliaClient.search(requests);
+  },
+};
+
 export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -41,29 +64,6 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
       });
     }
   }, [isSearchOpen]);
-
-  const searchClient = {
-    ...algoliaClient,
-    search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
-      if (requests.every(({ params }) => !params.query)) {
-        return Promise.resolve({
-          results: requests.map(() => ({
-            hits: [],
-            nbHits: 0,
-            nbPages: 0,
-            page: 0,
-            processingTimeMS: 0,
-            hitsPerPage: 0,
-            exhaustiveNbHits: false,
-            query: '',
-            params: '',
-          })),
-        });
-      }
-
-      return algoliaClient.search(requests);
-    },
-  };
 
   const getAlgoliaIndexName = () => {
     const path = getBasePath();

@@ -85,6 +85,7 @@ import { FieldsetComponent } from './generated/fieldset.component';
 import { FlagComponent } from './generated/flag.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
+import { Flyout_3Component } from './generated/flyout-3.component';
 import { FlyoutBackdropBlurComponent } from './generated/flyout-backdrop-blur.component';
 import { FlyoutBackdropShadingComponent } from './generated/flyout-backdrop-shading.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
@@ -299,6 +300,7 @@ export const generatedPages = [
   FlagComponent,
   Flyout_1Component,
   Flyout_2Component,
+  Flyout_3Component,
   FlyoutBackdropBlurComponent,
   FlyoutBackdropShadingComponent,
   FlyoutBasicComponent,
@@ -724,6 +726,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout 2',
     path: 'flyout-2',
     component: Flyout_2Component,
+  },
+  {
+    name: 'Flyout 3',
+    path: 'flyout-3',
+    component: Flyout_3Component,
   },
   {
     name: 'Flyout Backdrop Blur',
