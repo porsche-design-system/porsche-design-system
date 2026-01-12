@@ -297,6 +297,9 @@ export namespace Components {
          */
         "variant"?: ButtonVariant;
     }
+    /**
+     * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+     */
     interface PButtonGroup {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
@@ -3640,6 +3643,9 @@ declare global {
         prototype: HTMLPButtonElement;
         new (): HTMLPButtonElement;
     };
+    /**
+     * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+     */
     interface HTMLPButtonGroupElement extends Components.PButtonGroup, HTMLStencilElement {
     }
     var HTMLPButtonGroupElement: {
@@ -4933,6 +4939,9 @@ declare namespace LocalJSX {
          */
         "variant"?: ButtonVariant;
     }
+    /**
+     * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+     */
     interface PButtonGroup {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
@@ -8546,6 +8555,9 @@ declare module "@stencil/core" {
              */
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
+            /**
+             * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
+             */
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;

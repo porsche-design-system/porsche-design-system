@@ -1,4 +1,4 @@
-import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
@@ -11,6 +11,7 @@ const propTypes: PropTypes<typeof ButtonGroup> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the buttons to group." }
+ * @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead.
  */
 @Component({
   tag: 'p-button-group',

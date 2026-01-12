@@ -690,6 +690,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-group": {
+    "deprecationMessage": "since v3.32.0, will be removed with next major release. Use simple styles instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -698,6 +699,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "propsMeta": {
