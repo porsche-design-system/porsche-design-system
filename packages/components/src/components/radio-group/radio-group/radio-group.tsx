@@ -127,37 +127,8 @@ export class RadioGroup {
   private initialLoading: boolean = false;
   private defaultValue: string;
 
-  private fieldsetElement: HTMLFieldSetElement;
   private radioGroupOptions: RadioGroupOption[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
-
-  @Listen('focusin')
-  public handleFocusIn(e: FocusEvent): void {
-    if (!this.radioGroupOptions.length) return;
-
-    const focusCameFromInside =
-      e.relatedTarget instanceof Node && (this.host.contains(e.relatedTarget) || this.host === e.relatedTarget);
-
-    if (focusCameFromInside) return;
-
-    const selectedIndex = getCheckedOptionIndex(this.radioGroupOptions);
-    const focusIndex = selectedIndex !== -1 ? selectedIndex : getFirstEnabledOptionIndex(this.radioGroupOptions);
-
-    if (focusIndex !== -1) {
-      this.fieldsetElement.tabIndex = -1; // Remove fieldset from tab order when focusing in to make next focus out possible
-      this.radioGroupOptions[focusIndex].focus();
-    }
-  }
-
-  @Listen('focusout')
-  public handleFocusOut(e: FocusEvent): void {
-    const focusLeavingComponent =
-      !e.relatedTarget || (e.relatedTarget instanceof Node && !this.host.contains(e.relatedTarget));
-
-    if (focusLeavingComponent) {
-      this.fieldsetElement.tabIndex = 0; // Add fieldset to tab order when focusing out in order to make next focus in possible
-    }
-  }
 
   @Listen('internalRadioGroupOptionChange')
   public updateOptionHandler(e: Event & { target: RadioGroupOption; detail: RadioGroupChangeEventDetail }): void {
@@ -256,8 +227,6 @@ export class RadioGroup {
         aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
         aria-invalid={this.state === 'error' ? 'true' : null}
         onKeyDown={this.onKeyDown}
-        tabIndex={0}
-        ref={(el) => (this.fieldsetElement = el)}
       >
         <Label
           host={this.host}
@@ -319,6 +288,8 @@ export class RadioGroup {
   };
 
   private updateOptions = (): void => {
+    this.radioGroupOptions = [];
+
     for (const child of Array.from(this.host.children).filter(
       (el) => el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
     )) {
