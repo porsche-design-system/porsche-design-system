@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
 ## [3.32.0-rc.0] - 2025-12-16
 
 ### Added
@@ -38,8 +43,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
 - `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
   enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
-- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the intrinsic sizing behavior
-  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
+  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ### Fixed
 
