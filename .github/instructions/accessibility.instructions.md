@@ -2,98 +2,98 @@
 applyTo: "**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx,md}"
 ---
 
-# Accessibility Instructions (Global)
+# Porsche Design System (PDS) – Accessibility Instructions
 
-These instructions apply to **all frontend code** generated for this repository.
+These instructions apply to **all frontend code** generated for this repository (Stencil components, wrappers, storefront, docs examples).
 
-## Non‑negotiable accessibility requirements
+## Non‑negotiable requirements (WCAG 2.2 AA)
 
-When generating or modifying any frontend code:
+When generating or modifying UI code:
 
-1. **Must comply with WCAG 2.2 AA.**
-2. **Must be fully keyboard accessible** (no mouse-only interactions, no keyboard traps).
-3. **Must provide visible focus** for all interactive elements.
-4. **Must support High Contrast Mode (HCM)** / forced-colors.
-5. **Must preserve Porsche Design System (PDS) focus styling** where PDS components/styles are used (do not invent new focus rings unless required).
+1. **Meet WCAG 2.2 AA**.
+2. **Full keyboard access**: no mouse-only interactions, no keyboard traps.
+3. **Visible focus** for all interactive elements.
+4. **High Contrast Mode** / `forced-colors` support.
+5. **Prefer PDS primitives** (web components + wrappers) over custom widgets.
 
 If a request conflicts with these requirements, prioritize accessibility and propose an accessible alternative.
 
-## Default implementation rules
+## Repository-specific guidance
+
+### Developing Core Components (Internal)
+
+- **Utils**: When building Stencil components, use helpers from `packages/components/src/utils/a11y/a11y.ts`.
+- **Styles**: Import shared focus styles from `styles/common-styles.ts` to maintain consistency.
+
+### Prefer PDS components
+
+- Use the existing PDS components (`p-` prefixed web components, wrappers in `@porsche-design-system/components-{react|angular|vue}`) whenever possible.
+- Don’t re-implement common patterns (button, link, tabs, accordion, modal, toast, form controls) with custom `div`/`span` widgets.
+
+### ARIA with PDS components
+
+- Use ARIA only when needed. Never add ARIA that conflicts with native semantics.
+- If a PDS component needs extra ARIA, pass it via the component’s **`aria` prop** (per PDS conventions/documentation).
+- Avoid placing `aria-*` attributes on a PDS component `:host` as a workaround.
+
+### Focus styling in this repo
+
+- **Do not remove focus indicators** (avoid global `outline: none`).
+- Preserve existing PDS focus styling. Only introduce custom focus rings when a non-PDS element requires it.
+- Prefer `:focus-visible` over `:focus`.
+
+### Overlays, dialogs, and popovers
+
+- When opening an overlay (modal/dialog/popover/menu), move focus into it.
+- When closing, restore focus to the trigger.
+- Avoid positive `tabindex`; keep tab order consistent with DOM order.
 
 ### Semantics first
 
-- Prefer **native HTML elements** (`button`, `a`, `input`, `select`, `details/summary`, `dialog`, etc.) over custom div/span widgets.
-- Use correct landmarks (`header`, `nav`, `main`, `footer`) and maintain a consistent heading order.
+- Prefer native elements (`button`, `a`, `input`, `select`, `details/summary`, `dialog`) over custom roles.
+- Use headings and landmarks correctly (`header`, `nav`, `main`, `footer`). Maintain heading order.
 
 ### Accessible name, role, value
 
-- Every interactive element **must have an accessible name** via one of:
-  - visible text content,
+- Every interactive element must have an accessible name via one of:
+  - visible text,
   - `<label>` (for form controls),
   - `aria-label`, or
   - `aria-labelledby`.
-- Use ARIA only when necessary; never add ARIA that conflicts with native semantics.
-- If a Porsche Design System component needs extra ARIA attributes, add them according to PDS documentation via the `aria` prop.
-- Ensure icons have accessible names if they convey meaning and are not followed by adjacent text.
+- Icons:
+  - If purely decorative, hide from assistive tech.
+  - If meaningful, provide an accessible name (or ensure adjacent text covers it).
 
-### Keyboard interactions
+### Forms: errors and status
 
-- Everything interactive must be reachable via **Tab** and operable via keyboard.
-- Use standard key mappings:
-  - `Enter` / `Space` activate buttons.
-  - Arrow keys for roving focus patterns (tabs, radio groups, menus) only when you truly implement that widget pattern.
-- Don't remove focus outlines globally; avoid `outline: none` unless replacing with a compliant focus indicator.
+- Errors must be visible and programmatically conveyed:
+  - `aria-invalid="true"` for invalid controls,
+  - connect messages via `aria-describedby` and/or `aria-errormessage`.
+- Use `aria-live` sparingly and only for truly dynamic announcements.
 
-### Focus management
+### High Contrast Mode / forced colors
 
-- Use `:focus-visible` (not `:focus`) for focus rings where possible.
-- Maintain logical tab order (DOM order) unless there is a strong reason; avoid positive `tabindex`.
-- When opening overlays/modals/menus, move focus into the region and return focus to the trigger on close.
-
-### High Contrast Mode / forced-colors
-
-- Ensure UI is usable with `@media (forced-colors: active)`.
-- Avoid relying solely on background images or subtle box-shadows for affordances.
-- Don't disable forced-color adjustments unless you are implementing a correct alternative.
-
-### Color contrast and non-color cues
-
-- Text and essential icons must meet contrast requirements for **AA**.
-- Don't convey meaning only via color (errors/success states must have text or icon + accessible name).
-
-### Form errors and status messages
-
-- Errors must be visible **and** programmatically conveyed:
-  - set `aria-invalid="true"` for invalid controls,
-  - connect messages via `aria-describedby` / `aria-errormessage`.
-- Use `aria-live` only when content truly changes dynamically and must be announced.
+- Ensure UI remains usable with `@media (forced-colors: active)`.
+- Don’t rely on subtle shadows or background images for affordances.
+- Don’t disable forced-color adjustments unless implementing a correct alternative.
 
 ### Motion and zoom
 
-- Respect reduced motion (`prefers-reduced-motion`) for non-essential animations.
-- Ensure layouts work at **200% text zoom** without losing content/function.
+- Respect `prefers-reduced-motion`.
+- Ensure content remains usable at **200% zoom**.
 
-## Porsche Design System (PDS) usage
+## Testing expectations (use existing repo tooling)
 
-When using Porsche Design System components:
+When you change UI behavior:
 
-- Use `@porsche-design-system/components-{react|angular|vue}` for UI primitives instead of building custom widgets.
-- If a PDS component needs extra ARIA, use the `aria` prop according to PDS documentation.
-- Preserve PDS focus styling; don't override focus rings unless absolutely required.
-- Never place `aria` attributes on PDS components `:host` elements directly.
-- Check PDS component documentation for accessibility best practices.
+- Add/adjust **unit tests (Vitest)** where available.
+- For user flows, prefer **Playwright e2e/a11y** checks used in this repo.
+- Keep tests minimal but meaningful (happy path + 1 accessibility edge).
 
-## Output expectations
+## Quick self-check before finishing
 
-When you generate UI code, also generate:
-
-- brief inline comments explaining ARIA/keyboard decisions (only where non-obvious),
-- minimal tests where the project already has patterns (e.g., axe checks / a11y tree snapshots / Playwright).
-
-## Quick self-check (before you finish)
-
-- Can I complete the task with **keyboard only**?
-- Is focus **clearly visible** at all times?
-- Does every control have a correct **accessible name**?
-- Does it still work in **forced-colors** / HCM?
-- Is any ARIA used correct for the implemented behavior?
+- Can this be done with **keyboard only**?
+- Is focus **always visible**?
+- Does every control have an **accessible name**?
+- Does it work in **forced-colors**?
+- Is any ARIA used **correct and necessary**?
