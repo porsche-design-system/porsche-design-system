@@ -67,7 +67,9 @@ test('should have certain amount of components', () => {
 });
 
 for (const component of components.filter((c) =>
-  [/*'accordion', 'banner', 'button', 'button-pure', 'button-tile', 'canvas', 'carousel', */ 'checkbox'].includes(c)
+  [
+    /*'accordion', 'banner', 'button', 'button-pure', 'button-tile', 'canvas', 'carousel', 'checkbox', */ 'crest',
+  ].includes(c)
 )) {
   // executed in Chrome + Safari
   test.describe(component, () => {
