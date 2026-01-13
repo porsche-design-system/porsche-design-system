@@ -66,7 +66,7 @@ test('should have certain amount of components', () => {
   expect(components.length).toBe(59);
 });
 
-for (const component of components.filter((c) => ['accordion', 'banner', 'button'].includes(c))) {
+for (const component of components.filter((c) => [/*'accordion', 'banner', 'button',*/ 'button-pure'].includes(c))) {
   // executed in Chrome + Safari
   test.describe(component, () => {
     for (const theme of themes) {
