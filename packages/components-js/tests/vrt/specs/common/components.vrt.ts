@@ -77,7 +77,8 @@ for (const component of components.filter((c) =>
     // 'carousel',
     // 'checkbox',
     // 'crest',
-    'display',
+    // 'display',
+    'divider',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
