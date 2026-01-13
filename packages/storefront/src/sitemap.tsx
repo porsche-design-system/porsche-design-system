@@ -449,6 +449,33 @@ export const sitemap: Routes = {
       ...getComponents(),
     }, // Assuming this is dynamically fetched or implemented elsewhere.
   },
+  tokens: {
+    name: 'Tokens',
+    path: '/tokens',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/tokens/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/tokens/blur',
+        type: 'PAGE',
+      },
+      border: {
+        name: 'Border',
+        path: '/tokens/border',
+        type: 'PAGE',
+      },
+      color: {
+        name: 'Color',
+        path: '/tokens/color',
+        type: 'PAGE',
+      },
+    },
+  },
   styles: {
     name: 'Styles',
     path: '/styles',
