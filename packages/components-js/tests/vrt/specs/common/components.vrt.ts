@@ -63,10 +63,10 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test('should have certain amount of components', () => {
-  expect(components.length).toBe(73);
+  expect(components.length).toBe(59);
 });
 
-for (const component of components.filter((c) => ['accordion', 'banner'].includes(c))) {
+for (const component of components.filter((c) => ['accordion', 'banner', 'button'].includes(c))) {
   // executed in Chrome + Safari
   test.describe(component, () => {
     for (const theme of themes) {
