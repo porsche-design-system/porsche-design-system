@@ -1,0 +1,170 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PLink } from '@porsche-design-system/components-react/ssr';
+
+export const metadata = {
+  title: 'Accessibility: AI Agent Setup - Porsche Design System',
+  description:
+    'Learn how to configure AI coding assistants like GitHub Copilot and Cursor to generate accessible code that follows WCAG 2.2 AA standards.',
+};
+
+# AI Agent Accessibility Setup
+
+<TableOfContents
+  headings={['GitHub Copilot setup', 'Cursor IDE setup', 'Accessibility rules template', 'Download instruction files']}
+/>
+
+AI coding assistants like **GitHub Copilot** and **Cursor** can significantly accelerate development, but without proper
+guidance they often generate code that lacks **semantic HTML**, **keyboard accessibility**, **focus management**, and
+proper **ARIA patterns**. By providing accessibility context to your AI agent, you ensure generated code follows **WCAG
+2.2 AA** standards from the start.
+
+## GitHub Copilot setup
+
+GitHub Copilot supports **custom instructions** through Markdown files in your repository. There are two approaches:
+
+### Global instructions
+
+Create a file at `.github/copilot-instructions.md` in your repository root. This file applies to **all** Copilot
+interactions in your project.
+
+```
+.github/
+└── copilot-instructions.md
+```
+
+### Scoped instructions (recommended)
+
+For more granular control, add instruction files to `.github/instructions/` and include frontmatter specifying the
+target files using glob patterns:
+
+```
+.github/
+└── instructions/
+    ├── accessibility.instructions.md    # Applies to all frontend files
+    └── project.instructions.md          # Project-specific rules
+```
+
+Each instruction file should include an `applyTo` frontmatter that uses glob patterns:
+
+The `applyTo` pattern determines which files these instructions apply to. For accessibility rules, we recommend applying
+them to **all frontend file types**.
+
+```markdown
+---
+applyTo: '**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx}'
+---
+
+# Accessibility Instructions
+
+Your accessibility rules here...
+```
+
+## Cursor IDE setup
+
+Cursor uses a `.cursor/rules/` directory structure for custom AI instructions:
+
+```
+.cursor/
+└── rules/
+    ├── accessibility.mdc    # Accessibility rules
+    └── project.mdc          # Project-specific rules
+```
+
+Cursor rule files use the `.mdc` extension (Markdown with Cursor metadata). The format is similar to GitHub Copilot
+instructions:
+
+```markdown
+---
+description: Accessibility rules for frontend code
+globs: ['**/*.{html,css,scss,js,ts,tsx,jsx,vue}']
+---
+
+# Accessibility Instructions
+
+Your accessibility rules here...
+```
+
+## Accessibility rules template
+
+Below is a comprehensive accessibility rules template you can use with either GitHub Copilot or Cursor. This template
+includes the Porsche Design System's internal accessibility guidelines and ensures compliance with **WCAG 2.2 AA**.
+
+As always, providing context to AI agents is not a one-time setup. Custom instruction files are **living documents**. Continuously refine and expand your instruction files
+based on the specific accessibility challenges you encounter in your project or if the AI agent is hallucinating and generates inaccessible code patterns.
+
+### Non-negotiable requirements
+
+1. **Must comply with WCAG 2.2 AA**
+2. **Must be fully keyboard accessible** (no mouse-only interactions, no keyboard traps)
+3. **Must provide visible focus** for all interactive elements
+4. **Must support High Contrast Mode** / forced-colors
+5. **Prefer Porsche Design System components** where available
+
+### Semantics first
+
+```markdown
+- Prefer **native HTML elements** (`button`, `a`, `input`, `select`, `details/summary`, `dialog`) over custom div/span
+  widgets
+- Use correct landmarks (`header`, `nav`, `main`, `footer`) and maintain consistent heading order
+- Every interactive element must have an **accessible name** via visible text, `<label>`, `aria-label`, or
+  `aria-labelledby`
+```
+
+### Keyboard interactions
+
+```markdown
+- Everything interactive must be reachable via **Tab** and operable via keyboard
+- Use standard key mappings: `Enter`/`Space` for buttons, arrow keys for roving focus patterns
+- Don't remove focus outlines globally; use `:focus-visible` for custom focus styling
+- When opening overlays/modals, move focus into the region and return focus to the trigger on close
+```
+
+### High Contrast Mode
+
+```markdown
+- Ensure UI is usable with `@media (forced-colors: active)`
+- Avoid relying solely on background images or subtle shadows for affordances
+- Don't disable forced-color adjustments unless implementing a correct alternative
+```
+
+### Porsche Design System (PDS) component usage
+
+When using Porsche Design System components, include these rules:
+
+```markdown
+- Use `@porsche-design-system/components-{react|angular|vue}` for UI primitives
+- If a PDS component needs extra ARIA, use the `aria` prop according to PDS documentation
+- Never place `aria` attributes on PDS components `:host` elements directly
+- Preserve PDS focus styling; don't override focus rings unless required
+- Check PDS component documentation for accessibility best practices
+```
+
+### Download instruction files
+
+Download ready-to-use instruction files for your project:
+
+<div className="flex gap-static-sm mt-fluid-sm mb-fluid-lg flex-wrap">
+  {/* prettier-ignore */}
+  <PLink variant="secondary" href="/assets/downloads/accessibility.instructions.md" download="accessibility.instructions.md" icon="download">Copilot (accessibility.instructions.md)</PLink>
+  {/* prettier-ignore */}
+  <PLink variant="secondary" href="/assets/downloads/accessibility.mdc" download="accessibility.mdc" icon="download">Cursor IDE (accessibility.mdc)</PLink>
+</div>
+
+### Installation steps
+
+**For GitHub Copilot:**
+
+1. Download `accessibility.instructions.md`
+2. Create `.github/instructions/` directory in your repository root
+3. Place the file in `.github/instructions/accessibility.instructions.md`
+4. Commit and push to your repository
+
+**For Cursor IDE:**
+
+1. Download `accessibility.mdc`
+2. Create `.cursor/rules/` directory in your project root
+3. Place the file in `.cursor/rules/accessibility.mdc`
+4. Restart Cursor or reload the workspace
+
+Once configured, your AI agent will automatically apply these accessibility rules when generating or modifying frontend
+code.
