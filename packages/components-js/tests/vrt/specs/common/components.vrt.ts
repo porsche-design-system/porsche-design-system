@@ -66,12 +66,13 @@ test('should have certain amount of components', () => {
   expect(components.length).toBe(59);
 });
 
-for (const component of components.filter((c) => [/*'accordion', 'banner', 'button', 'button-pure', 'button-tile',*/ 'canvas'].includes(c))) {
+for (const component of components.filter((c) =>
+  [/*'accordion', 'banner', 'button', 'button-pure', 'button-tile', 'canvas', */ 'carousel'].includes(c)
+)) {
   // executed in Chrome + Safari
   test.describe(component, () => {
     for (const theme of themes) {
       test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
-
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forceComponentTheme: theme,
         });
@@ -109,20 +110,21 @@ for (const component of components.filter((c) => [/*'accordion', 'banner', 'butt
       });
 
       // high contrast mode
-      test.fixme(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
-        page,
-      }) => {
-        // test.skip(component === 'select', 'This component is flaky in HC mode');
+      test.fixme(
+        `should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`,
+        async ({ page }) => {
+          // test.skip(component === 'select', 'This component is flaky in HC mode');
 
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forcedColorsEnabled: true,
-          prefersColorScheme: scheme,
-        });
-        await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(
-          `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
-        );
-      });
+          await setupScenario(page, `/${component}`, viewportWidthM, {
+            forcedColorsEnabled: true,
+            prefersColorScheme: scheme,
+          });
+          await revertAutoFocus(page, component);
+          await expect(page.locator('#app')).toHaveScreenshot(
+            `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
+          );
+        }
+      );
     }
 
     // 200% font scaling
