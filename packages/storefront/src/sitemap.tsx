@@ -469,9 +469,39 @@ export const sitemap: Routes = {
         path: '/tokens/border',
         type: 'PAGE',
       },
+      breakpoint: {
+        name: 'Breakpoint',
+        path: '/tokens/breakpoint',
+        type: 'PAGE',
+      },
       color: {
         name: 'Color',
         path: '/tokens/color',
+        type: 'PAGE',
+      },
+      font: {
+        name: 'Font',
+        path: '/tokens/font',
+        type: 'PAGE',
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/tokens/gradient',
+        type: 'PAGE',
+      },
+      motion: {
+        name: 'Motion',
+        path: '/tokens/motion',
+        type: 'PAGE',
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/tokens/shadow',
+        type: 'PAGE',
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/tokens/spacing',
         type: 'PAGE',
       },
     },
