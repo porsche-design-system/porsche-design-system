@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
+  to generate accessible code that follows WCAG 2.2 AA standards.
+
 ## [4.0.0-alpha.0] - 2025-12-12
 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
