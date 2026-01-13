@@ -1,21 +1,3 @@
-<style>
-  .scaling-0 {
-    --p-internal-checkbox-scaling: 0;
-  }
-  .scaling-0-5 {
-    --p-internal-checkbox-scaling: 0.5;
-  }
-  .scaling-0-8 {
-    --p-internal-checkbox-scaling: 0.8;
-  }
-  .scaling-1 {
-    --p-internal-checkbox-scaling: 1;
-  }
-  .scaling-2 {
-    --p-internal-checkbox-scaling: 2;
-  }
-</style>
-
 <div class="playground light auto-layout-inline" title="should render with label">
   <p-checkbox label="Some label" name="some-name" class="a11ytree-snapshot-test"></p-checkbox>
   <p-checkbox label="Some label" name="some-name" checked="true" class="a11ytree-snapshot-test"></p-checkbox>
@@ -92,60 +74,13 @@
     name="some-name"
     checked="true"
   ></p-checkbox>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-checkbox class="scaling-0" label="Some label" name="some-name"></p-checkbox>
-  <p-checkbox class="scaling-0" label="Some label" name="some-name" checked="true"></p-checkbox>
   <p-checkbox
-    class="scaling-0"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
+    compact="true"
+    label="Some label"
+    state="error"
+    message="Some error message."
     name="some-name"
-  ></p-checkbox>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-checkbox class="scaling-0-5" label="Some label" name="some-name"></p-checkbox>
-  <p-checkbox class="scaling-0-5" label="Some label" name="some-name" checked="true"></p-checkbox>
-  <p-checkbox
-    class="scaling-0-5"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-  ></p-checkbox>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-checkbox class="scaling-0-8" label="Some label" name="some-name"></p-checkbox>
-  <p-checkbox class="scaling-0-8" label="Some label" name="some-name" checked="true"></p-checkbox>
-  <p-checkbox
-    class="scaling-0-8"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-  ></p-checkbox>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-checkbox class="scaling-1" label="Some label" name="some-name"></p-checkbox>
-  <p-checkbox class="scaling-1" label="Some label" name="some-name" checked="true"></p-checkbox>
-  <p-checkbox
-    class="scaling-1"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-  ></p-checkbox>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-checkbox class="scaling-2" label="Some label" name="some-name"></p-checkbox>
-  <p-checkbox class="scaling-2" label="Some label" name="some-name" checked="true"></p-checkbox>
-  <p-checkbox
-    class="scaling-2"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
+    checked="true"
   ></p-checkbox>
 </div>
 
@@ -198,18 +133,8 @@
   title="should render with slotted content with error state and message"
 >
   <p-checkbox state="error" name="some-name" aria-labelledby="slotted-label-1">
-    <span slot="label" id="slotted-label-1">
-      <span>
-        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
-        <i>italic</i> text.
-      </span>
-    </span>
-    <span slot="message">
-      <span>
-        Slotted error message. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
-      </span>
-    </span>
+    <span slot="label" id="slotted-label-1">Slotted label.</span>
+    <span slot="message">Slotted message.</span>
   </p-checkbox>
 </div>
 
@@ -218,18 +143,8 @@
   title="should render with slotted content with success state and message"
 >
   <p-checkbox state="success" name="some-name" aria-labelledby="slotted-label-2">
-    <span slot="label" id="slotted-label-2">
-      <span>
-        Slotted label. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and
-        <i>italic</i> text.
-      </span>
-    </span>
-    <span slot="message">
-      <span>
-        Slotted success message. And some slotted and deeply nested <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
-      </span>
-    </span>
+    <span slot="label" id="slotted-label-2">Slotted label.</span>
+    <span slot="message">Slotted message.</span>
   </p-checkbox>
 </div>
 
@@ -256,6 +171,6 @@
 
 <div class="playground light" title="should render with min-width when viewport is too small">
   <div style="width: 0">
-    <p-checkbox label="X" name="some-name"></p-checkbox>
+    <p-checkbox label="Some label" name="some-name"></p-checkbox>
   </div>
 </div>
