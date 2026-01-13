@@ -16,13 +16,13 @@ export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
+import { BannerCssVariablesPage } from './generated/BannerCssVariables';
 import { BannerErrorPage } from './generated/BannerError';
 import { BannerInfoPage } from './generated/BannerInfo';
 import { BannerNoDismissPage } from './generated/BannerNoDismiss';
-import { BannerPersistentPage } from './generated/BannerPersistent';
 import { BannerPrefixedPage } from './generated/BannerPrefixed';
 import { BannerSlottedDescriptionHeadingPage } from './generated/BannerSlottedDescriptionHeading';
-import { BannerSlottedDescriptionTitlePage } from './generated/BannerSlottedDescriptionTitle';
+import { BannerSuccessPage } from './generated/BannerSuccess';
 import { BannerWarningPage } from './generated/BannerWarning';
 import { ButtonPage } from './generated/Button';
 import { ButtonPurePage } from './generated/ButtonPure';
@@ -242,6 +242,11 @@ export const generatedRoutes: RouteType[] = [
     element: <BannerBasicPage />,
   },
   {
+    name: 'Banner Css Variables',
+    path: '/banner-css-variables',
+    element: <BannerCssVariablesPage />,
+  },
+  {
     name: 'Banner Error',
     path: '/banner-error',
     element: <BannerErrorPage />,
@@ -257,11 +262,6 @@ export const generatedRoutes: RouteType[] = [
     element: <BannerNoDismissPage />,
   },
   {
-    name: 'Banner Persistent',
-    path: '/banner-persistent',
-    element: <BannerPersistentPage />,
-  },
-  {
     name: 'Banner Prefixed',
     path: '/banner-prefixed',
     element: <BannerPrefixedPage />,
@@ -272,9 +272,9 @@ export const generatedRoutes: RouteType[] = [
     element: <BannerSlottedDescriptionHeadingPage />,
   },
   {
-    name: 'Banner Slotted Description Title',
-    path: '/banner-slotted-description-title',
-    element: <BannerSlottedDescriptionTitlePage />,
+    name: 'Banner Success',
+    path: '/banner-success',
+    element: <BannerSuccessPage />,
   },
   {
     name: 'Banner Warning',

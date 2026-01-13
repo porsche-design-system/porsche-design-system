@@ -1,3 +1,10 @@
+<style>
+  p-banner {
+    --p-banner-position-top: 0px;
+    --p-banner-position-bottom: 0px;
+  }
+</style>
+
 <div class="visualize-grid">
   <span></span>
   <span></span>
@@ -19,12 +26,4 @@
   <span></span>
 </div>
 
-<p-banner open="true">
-  <span slot="title">Slotted title</span>
-  <span slot="description">
-    <span>
-      Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
-      <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
-    </span>
-  </span>
-</p-banner>
+<p-banner description="Description" heading="Heading" open="true"></p-banner>
