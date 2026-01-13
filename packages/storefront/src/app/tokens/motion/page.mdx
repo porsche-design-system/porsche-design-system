@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  motionDurationShort,
+  motionDurationLong,
+  motionDurationModerate,
+  motionDurationVeryLong,
+  motionEaseIn,
+  motionEaseInOut,
+  motionEaseOut,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'Tokens: Motion - Porsche Design System',
+  description: 'Detailed API reference for the motion tokens.',
+};
+
+# Motion
+
+<TableOfContents headings={[]} />
+
+## Tokens
+
+### Duration
+
+| Token                    | Description                                             | Value                    |
+| ------------------------ | ------------------------------------------------------- | ------------------------ |
+| `motionDurationShort`    | Holds a **short** motion/transition duration value.     | {motionDurationShort}    |
+| `motionDurationModerate` | Holds a **moderate** motion/transition duration value.  | {motionDurationModerate} |
+| `motionDurationLong`     | Holds a **long** motion/transition duration value.      | {motionDurationLong}     |
+| `motionDurationVeryLong` | Holds a **very long** motion/transition duration value. | {motionDurationVeryLong} |
+
+### Ease
+
+| Token             | Description                                       | Value             |
+| ----------------- | ------------------------------------------------- | ----------------- |
+| `motionEaseInOut` | Holds an **in-out** `transition-timing-function`. | {motionEaseInOut} |
+| `motionEaseIn`    | Holds an **in** `transition-timing-function`.     | {motionEaseIn}    |
+| `motionEaseOut`   | Holds an **out** `transition-timing-function`.    | {motionEaseOut}   |
