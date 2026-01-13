@@ -73,6 +73,16 @@ If a request conflicts with these requirements, prioritize accessibility and pro
 - Respect reduced motion (`prefers-reduced-motion`) for non-essential animations.
 - Ensure layouts work at **200% text zoom** without losing content/function.
 
+## Porsche Design System (PDS) usage
+
+When using Porsche Design System components:
+
+- Use `@porsche-design-system/components-{react|angular|vue}` for UI primitives instead of building custom widgets.
+- If a PDS component needs extra ARIA, use the `aria` prop according to PDS documentation.
+- Preserve PDS focus styling; don't override focus rings unless absolutely required.
+- Never place `aria` attributes on PDS components `:host` elements directly.
+- Check PDS component documentation for accessibility best practices.
+
 ## Output expectations
 
 When you generate UI code, also generate:

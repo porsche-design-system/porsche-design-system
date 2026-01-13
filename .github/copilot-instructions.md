@@ -139,7 +139,7 @@ packages/components/src/components/{name}/
 
 ## Accessibility (Critical)
 
-Accessibility instructions are in `instructions/accessibility.instructions.md`. Follow these guidelines strictly to ensure compliance with WCAG 2.1 AA standards.
+Accessibility instructions are in `instructions/accessibility.instructions.md`. Follow these guidelines strictly to ensure compliance with WCAG 2.2 AA standards.
 
 ## Quick Reference
 

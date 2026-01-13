@@ -6,8 +6,6 @@ applyTo: "packages/storefront/**"
 
 This package contains the **Next.js / React documentation site**. The storefront must demonstrate best-practice accessible usage of Porsche Design System components and comply with **WCAG 2.2 AA**.
 
----
-
 ## Primary reference inside this repo
 
 Follow the internal accessibility guidance page:
@@ -16,11 +14,8 @@ Follow the internal accessibility guidance page:
 
 It documents expected testing stages:
 - AXE-Core automated checks
-- A11y tree snapshots
 - High Contrast Mode (HCM) visual regression tests
 - 200% text zoom visual regression tests
-
----
 
 ## React/Next implementation rules
 
@@ -37,8 +32,6 @@ import { PButton, PLink } from '@porsche-design-system/components-react/ssr';
 - Use `@porsche-design-system/components-react` (or `/ssr` variant) when building UI primitives.
 - When you must use native HTML, maintain semantic correctness and match PDS behavior.
 
----
-
 ### Keyboard accessibility (mandatory)
 
 | Requirement | Implementation |
@@ -47,8 +40,6 @@ import { PButton, PLink } from '@porsche-design-system/components-react/ssr';
 | No traps | Users can always Tab out; overlays return focus to trigger on close. |
 | Route changes | Avoid focus loss on client-side navigation; consider moving focus to the main heading. |
 | Standard keys | `Enter`/`Space` for buttons; `Escape` to close dialogs. |
-
----
 
 ### Focus styling (mandatory)
 
@@ -68,14 +59,10 @@ button:focus-visible {
 }
 ```
 
----
-
 ### High Contrast Mode (mandatory)
 
 - UI must remain usable under `@media (forced-colors: active)`.
 - Avoid using `forced-color-adjust: none` unless implementing a correct alternative.
-
----
 
 ### MDX content
 
@@ -85,8 +72,6 @@ button:focus-visible {
 | **Images** | Images must have appropriate `alt` text; decorative images use `alt=""`. |
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior). |
 | **Headings** | Maintain logical heading order (no skipped levels). |
-
----
 
 ## Testing expectations
 
@@ -99,8 +84,6 @@ When you add new interactive examples or components:
 | **Keyboard test** | Manually verify Tab order and keyboard operability. |
 
 Keep regressions out of documentation examples.
-
----
 
 ## Done definition (quick checklist)
 
