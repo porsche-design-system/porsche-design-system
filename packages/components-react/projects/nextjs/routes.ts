@@ -12,6 +12,10 @@ const generatedRoutes = {
     "path": "/banner-basic",
     "name": "BannerBasic"
   },
+  "bannerCssVariables": {
+    "path": "/banner-css-variables",
+    "name": "BannerCssVariables"
+  },
   "bannerError": {
     "path": "/banner-error",
     "name": "BannerError"
@@ -24,10 +28,6 @@ const generatedRoutes = {
     "path": "/banner-no-dismiss",
     "name": "BannerNoDismiss"
   },
-  "bannerPersistent": {
-    "path": "/banner-persistent",
-    "name": "BannerPersistent"
-  },
   "bannerPrefixed": {
     "path": "/banner-prefixed",
     "name": "BannerPrefixed"
@@ -36,9 +36,9 @@ const generatedRoutes = {
     "path": "/banner-slotted-description-heading",
     "name": "BannerSlottedDescriptionHeading"
   },
-  "bannerSlottedDescriptionTitle": {
-    "path": "/banner-slotted-description-title",
-    "name": "BannerSlottedDescriptionTitle"
+  "bannerSuccess": {
+    "path": "/banner-success",
+    "name": "BannerSuccess"
   },
   "bannerWarning": {
     "path": "/banner-warning",

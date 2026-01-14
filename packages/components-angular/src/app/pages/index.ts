@@ -34,13 +34,13 @@ export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
+import { BannerCssVariablesComponent } from './generated/banner-css-variables.component';
 import { BannerErrorComponent } from './generated/banner-error.component';
 import { BannerInfoComponent } from './generated/banner-info.component';
 import { BannerNoDismissComponent } from './generated/banner-no-dismiss.component';
-import { BannerPersistentComponent } from './generated/banner-persistent.component';
 import { BannerPrefixedComponent } from './generated/banner-prefixed.component';
 import { BannerSlottedDescriptionHeadingComponent } from './generated/banner-slotted-description-heading.component';
-import { BannerSlottedDescriptionTitleComponent } from './generated/banner-slotted-description-title.component';
+import { BannerSuccessComponent } from './generated/banner-success.component';
 import { BannerWarningComponent } from './generated/banner-warning.component';
 import { ButtonComponent } from './generated/button.component';
 import { ButtonPureComponent } from './generated/button-pure.component';
@@ -249,13 +249,13 @@ export const generatedPages = [
   AccordionComponent,
   BannerComponent,
   BannerBasicComponent,
+  BannerCssVariablesComponent,
   BannerErrorComponent,
   BannerInfoComponent,
   BannerNoDismissComponent,
-  BannerPersistentComponent,
   BannerPrefixedComponent,
   BannerSlottedDescriptionHeadingComponent,
-  BannerSlottedDescriptionTitleComponent,
+  BannerSuccessComponent,
   BannerWarningComponent,
   ButtonComponent,
   ButtonPureComponent,
@@ -478,6 +478,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: BannerBasicComponent,
   },
   {
+    name: 'Banner Css Variables',
+    path: 'banner-css-variables',
+    component: BannerCssVariablesComponent,
+  },
+  {
     name: 'Banner Error',
     path: 'banner-error',
     component: BannerErrorComponent,
@@ -493,11 +498,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: BannerNoDismissComponent,
   },
   {
-    name: 'Banner Persistent',
-    path: 'banner-persistent',
-    component: BannerPersistentComponent,
-  },
-  {
     name: 'Banner Prefixed',
     path: 'banner-prefixed',
     component: BannerPrefixedComponent,
@@ -508,9 +508,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: BannerSlottedDescriptionHeadingComponent,
   },
   {
-    name: 'Banner Slotted Description Title',
-    path: 'banner-slotted-description-title',
-    component: BannerSlottedDescriptionTitleComponent,
+    name: 'Banner Success',
+    path: 'banner-success',
+    component: BannerSuccessComponent,
   },
   {
     name: 'Banner Warning',
