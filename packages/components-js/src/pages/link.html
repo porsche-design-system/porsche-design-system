@@ -1,19 +1,4 @@
 <style>
-  .scaling-0 {
-    --p-internal-link-scaling: 0;
-  }
-  .scaling-0-3 {
-    --p-internal-link-scaling: 0.3;
-  }
-  .scaling-0-5 {
-    --p-internal-link-scaling: 0.5;
-  }
-  .scaling-1 {
-    --p-internal-link-scaling: 1;
-  }
-  .scaling-2 {
-    --p-internal-link-scaling: 2;
-  }
   .w-0 {
     width: 0px;
   }
@@ -45,21 +30,6 @@
   </p-link>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render primary as default with label only">
-  <p-link href="https://porsche.com">Some label</p-link>
-  <p-link><a href="https://porsche.com">Some label</a></p-link>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render primary as default with label and icon">
-  <p-link href="https://porsche.com" icon="arrow-right">Some label</p-link>
-  <p-link icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render primary as default without label">
-  <p-link href="https://porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>
-  <p-link hide-label="true" icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
-</div>
-
 <div class="playground light auto-layout-inline" title="should render secondary with label only">
   <p-link variant="secondary" href="https://porsche.com">Some label</p-link>
   <p-link variant="secondary"><a href="https://porsche.com">Some label</a></p-link>
@@ -75,23 +45,6 @@
   <p-link variant="secondary" hide-label="true" icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render ghost with label only">
-  <p-link variant="secondary" href="https://porsche.com">Some label</p-link>
-  <p-link variant="secondary"><a href="https://porsche.com">Some label</a></p-link>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render ghost with label and icon">
-  <p-link variant="secondary" href="https://porsche.com" icon="arrow-right">Some label</p-link>
-  <p-link variant="secondary" icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render ghost without label">
-  <p-link variant="secondary" href="https://porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>
-  <p-link variant="secondary" hide-label="true" icon="arrow-right">
-    <a href="https://porsche.com">Some label</a>
-  </p-link>
-</div>
-
 <div class="playground light auto-layout-inline" title="should render primary with responsive label">
   <p-link
     variant="primary"
@@ -104,8 +57,6 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render link with specific icon">
-  <p-link icon="phone" href="https://porsche.com">Some label</p-link>
-  <p-link icon-source="http://localhost:3002/icon-custom-kaixin.svg" href="https://porsche.com">Some label</p-link>
   <p-link icon="phone" href="https://porsche.com">Some label</p-link>
   <p-link icon-source="http://localhost:3002/icon-custom-kaixin.svg" href="https://porsche.com">Some label</p-link>
   <p-link icon="phone" variant="secondary" href="https://porsche.com">Some label</p-link>
@@ -227,62 +178,14 @@
   >
 </div>
 
-<div class="playground light auto-layout-inline" title="should render link with scaling 0">
-  <p-link class="scaling-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 0</p-link>
-  <p-link class="scaling-0" href="https://porsche.com" variant="secondary">Scaling 0</p-link>
-  <p-link class="scaling-0" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 0</p-link>
-  <p-link class="scaling-0" variant="secondary" icon="arrow-right"><a href="https://porsche.com">Scaling 0</a></p-link>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render link with scaling 0.3">
-  <p-link class="scaling-0-3" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 0.3</p-link>
-  <p-link class="scaling-0-3" href="https://porsche.com" variant="secondary">Scaling 0.3</p-link>
-  <p-link class="scaling-0-3" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 0.3</p-link>
-  <p-link class="scaling-0-3" variant="secondary" icon="arrow-right"
-    ><a href="https://porsche.com">Scaling 0.3</a></p-link
-  >
-</div>
-
-<div class="playground light auto-layout-inline" title="should render link with scaling 0.5">
-  <p-link class="scaling-0-5" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 0.5</p-link>
-  <p-link class="scaling-0-5" href="https://porsche.com" variant="secondary">Scaling 0.5</p-link>
-  <p-link class="scaling-0-5" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 0.5</p-link>
-  <p-link class="scaling-0-5" variant="secondary" icon="arrow-right"
-    ><a href="https://porsche.com">Scaling 0.5</a></p-link
-  >
-</div>
-
-<div class="playground light auto-layout-inline" title="should render link with scaling 1">
-  <p-link class="scaling-1" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 1</p-link>
-  <p-link class="scaling-1" href="https://porsche.com" variant="secondary">Scaling 1</p-link>
-  <p-link class="scaling-1" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 1</p-link>
-  <p-link class="scaling-1" variant="secondary" icon="arrow-right"><a href="https://porsche.com">Scaling 1</a></p-link>
-  <p-link variant="secondary" icon="arrow-right" href="https://porsche.com">Default</p-link>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render link with scaling 2">
-  <p-link class="scaling-2" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 2</p-link>
-  <p-link class="scaling-2" href="https://porsche.com" variant="secondary">Scaling 2</p-link>
-  <p-link class="scaling-2" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 2</p-link>
-  <p-link class="scaling-2" variant="secondary" icon="arrow-right"><a href="https://porsche.com">Scaling 2</a></p-link>
-</div>
-
 <div
-  class="playground light auto-layout-inline"
+  class="playground light auto-layout-block"
   title="should not render link smaller than min-content if set to 0px width"
 >
-  <div style="width: 5rem">
-    <p-link class="scaling-0 w-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Some label</p-link>
-  </div>
-  <div style="width: 5rem">
-    <p-link class="scaling-0 w-0" href="https://porsche.com" variant="secondary">Some label</p-link>
-  </div>
-  <div style="width: 5rem">
-    <p-link class="scaling-0 w-0" href="https://porsche.com" variant="secondary" icon="arrow-right">Some label</p-link>
-  </div>
-  <div style="width: 5rem">
-    <p-link class="scaling-0 w-0" variant="secondary" icon="arrow-right"
+    <p-link class="w-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Some label</p-link>
+    <p-link class="w-0" href="https://porsche.com" variant="secondary">Some label</p-link>
+    <p-link class="w-0" href="https://porsche.com" variant="secondary" icon="arrow-right">Some label</p-link>
+    <p-link class="w-0" variant="secondary" icon="arrow-right"
       ><a href="https://porsche.com">Some label</a></p-link
     >
-  </div>
 </div>
