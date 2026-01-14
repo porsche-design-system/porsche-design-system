@@ -106,7 +106,8 @@ for (const component of components.filter((c) =>
     // 'modal',
     // 'model-signature',
     // 'multi-select',
-    'pagination',
+    // 'pagination',
+    'pin-code',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
