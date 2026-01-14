@@ -1,0 +1,32 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  colorScssStoryBackgroundColor,
+  colorScssStoryBorderColor,
+  colorScssStoryTextColor,
+} from '@/app/scss/color/examples/color.stories';
+
+export const metadata = {
+  title: 'SCSS: Color - Porsche Design System',
+  description: 'Learn about the SCSS styles of our design language and how to use them.',
+};
+
+# Color
+
+<TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
+
+The Porsche Design System provides multiple SCSS Variables for color styles.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+## Text Color
+
+<ComponentStory story={colorScssStoryTextColor} showCodeBlock={false} />
+
+## Background Color
+
+<ComponentStory story={colorScssStoryBackgroundColor} showCodeBlock={false} />
+
+## Border Color
+
+<ComponentStory story={colorScssStoryBorderColor} showCodeBlock={false} />

@@ -1,0 +1,24 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { motionScssStoryDuration, motionScssStoryEase } from '@/app/scss/motion/examples/motion.stories';
+
+export const metadata = {
+  title: 'SCSS: Motion - Porsche Design System',
+  description: 'Learn about the SCSS motion styles of our design language and how to use them.',
+};
+
+# Motion
+
+<TableOfContents headings={['Duration', 'Ease']} />
+
+The Porsche Design System provides multiple SCSS variables for duration and easing styles.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+## Duration
+
+<ComponentStory story={motionScssStoryDuration} showCodeBlock={false} />
+
+## Ease
+
+<ComponentStory story={motionScssStoryEase} showCodeBlock={false} />
