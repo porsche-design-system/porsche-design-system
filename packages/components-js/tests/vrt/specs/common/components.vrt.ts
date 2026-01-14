@@ -79,7 +79,8 @@ for (const component of components.filter((c) =>
     // 'crest',
     // 'display',
     // 'divider',
-    'fieldset',
+    // 'fieldset',
+    'flag',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
