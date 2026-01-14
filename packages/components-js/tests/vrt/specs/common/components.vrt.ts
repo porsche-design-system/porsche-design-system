@@ -87,7 +87,8 @@ for (const component of components.filter((c) =>
     // 'flyout-3',
     // 'heading',
     // 'icon',
-    'inline-notification',
+    // 'inline-notification',
+    'input-password',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
