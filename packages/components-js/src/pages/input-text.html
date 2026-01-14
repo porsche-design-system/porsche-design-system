@@ -1,19 +1,4 @@
 <style>
-  .scaling-0 {
-    --p-internal-input-base-scaling: 0;
-  }
-  .scaling-0-5 {
-    --p-internal-input-base-scaling: 0.5;
-  }
-  .scaling-0-8 {
-    --p-internal-input-base-scaling: 0.8;
-  }
-  .scaling-1 {
-    --p-internal-input-base-scaling: 1;
-  }
-  .scaling-2 {
-    --p-internal-input-base-scaling: 2;
-  }
   .input-button {
     padding: var(--ref-p-input-slotted-padding);
     margin: var(--ref-p-input-slotted-margin);
@@ -316,71 +301,6 @@
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-text>
   <p-input-text label="Some label" compact="true" name="some-name" loading="true"></p-input-text>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-input-text class="scaling-0" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
-  <p-input-text
-    class="scaling-0"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    counter="true"
-    max-length="20"
-  ></p-input-text>
-  <p-input-text class="scaling-0" label="Some label" name="some-name" loading="true"></p-input-text>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-input-text class="scaling-0-5" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
-  <p-input-text
-    class="scaling-0-5"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    counter="true"
-    max-length="20"
-  ></p-input-text>
-  <p-input-text class="scaling-0-5" label="Some label" name="some-name" loading="true"></p-input-text>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-input-text class="scaling-0-8" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
-  <p-input-text
-    class="scaling-0-8"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    counter="true"
-    max-length="20"
-  ></p-input-text>
-  <p-input-text class="scaling-0-8" label="Some label" name="some-name" loading="true"></p-input-text>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-input-text class="scaling-1" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
-  <p-input-text
-    class="scaling-1"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    counter="true"
-    max-length="20"
-  ></p-input-text>
-  <p-input-text class="scaling-1" label="Some label" name="some-name" loading="true"></p-input-text>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-input-text class="scaling-2" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
-  <p-input-text
-    class="scaling-2"
-    label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    style="width: 15rem"
-    name="some-name"
-    counter="true"
-    max-length="20"
-  ></p-input-text>
-  <p-input-text class="scaling-2" label="Some label" name="some-name" loading="true"></p-input-text>
 </div>
 
 <div class="playground light" title="should render with slot start">

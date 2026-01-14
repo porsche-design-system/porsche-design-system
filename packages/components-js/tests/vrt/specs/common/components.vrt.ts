@@ -88,7 +88,17 @@ for (const component of components.filter((c) =>
     // 'heading',
     // 'icon',
     // 'inline-notification',
-    'input-password',
+    // 'input-password',
+    'input-number',
+    'input-date',
+    'input-week',
+    'input-month',
+    'input-time',
+    'input-text',
+    'input-email',
+    'input-tel',
+    'input-url',
+    'input-search',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
