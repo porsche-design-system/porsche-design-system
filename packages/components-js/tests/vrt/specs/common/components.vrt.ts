@@ -103,7 +103,8 @@ for (const component of components.filter((c) =>
     // 'link-pure',
     // 'link-tile',
     // 'link-tile-product',
-    'modal',
+    // 'modal',
+    'model-signature',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
