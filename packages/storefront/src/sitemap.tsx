@@ -959,6 +959,282 @@ export const sitemap: Routes = {
       },
     },
   },
+  scss: {
+    name: 'SCSS',
+    path: '/scss',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/scss/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/scss/blur',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/blur/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/blur/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/blur/api',
+            type: 'TAB',
+          },
+        },
+      },
+      border: {
+        name: 'Border',
+        path: '/scss/border',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/border/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/border/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/border/api',
+            type: 'TAB',
+          },
+        },
+      },
+      color: {
+        name: 'Color',
+        path: '/scss/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/scss/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/focus/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/focus/api',
+            type: 'TAB',
+          },
+        },
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/scss/gradient',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/gradient/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/gradient/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/gradient/api',
+            type: 'TAB',
+          },
+        },
+      },
+      grid: {
+        name: 'Grid',
+        path: '/scss/grid',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/grid/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/grid/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/grid/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'media-query': {
+        name: 'Media Query',
+        path: '/scss/media-query',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/media-query/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/media-query/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/media-query/api',
+            type: 'TAB',
+          },
+        },
+      },
+      motion: {
+        name: 'Motion',
+        path: '/scss/motion',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/motion/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/motion/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/motion/api',
+            type: 'TAB',
+          },
+        },
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/scss/shadow',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/shadow/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/shadow/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/shadow/api',
+            type: 'TAB',
+          },
+        },
+      },
+      skeleton: {
+        name: 'Skeleton',
+        path: '/scss/skeleton',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/skeleton/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/skeleton/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/skeleton/api',
+            type: 'TAB',
+          },
+        },
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/scss/spacing',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/spacing/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/spacing/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/spacing/api',
+            type: 'TAB',
+          },
+        },
+      },
+      typography: {
+        name: 'Typography',
+        path: '/scss/typography',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/typography/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/typography/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/typography/api',
+            type: 'TAB',
+          },
+        },
+      },
+    },
+  },
   'must-know': {
     name: 'Must Know',
     path: '/must-know',

@@ -1,0 +1,37 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { mediaQueryScssStory } from '@/app/scss/media-query/examples/media-query.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+
+export const metadata = {
+  title: 'SCSS: Media Query - Porsche Design System',
+  description: 'Learn about the SCSS styles of our design language and how to use them.',
+};
+
+# Media Query
+
+The Porsche Design System provides SCSS Mixins for the media queries and SCSS Variables for breakpoints.
+
+- min-width: `@mixin pds-media-query-min('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- max-width: `@mixin pds-media-query-max('xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- min-width and max-width: `@mixin pds-media-query-min-max('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`.
+
+```scss
+// Usage example:
+@include pds-media-query-min('xs') {
+  // styles for min-width: xs
+}
+```
+
+All breakpoints are also available as SCSS Variables:
+
+- Base: `$pds-breakpoint-base`
+- xs: `$pds-breakpoint-xs`
+- s: `$pds-breakpoint-s`
+- m: `$pds-breakpoint-m`
+- l: `$pds-breakpoint-l`
+- xl: `$pds-breakpoint-xl`
+- xxl: `$pds-breakpoint-xxl`
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+<ComponentStory story={mediaQueryScssStory} showCodeBlock={false} />

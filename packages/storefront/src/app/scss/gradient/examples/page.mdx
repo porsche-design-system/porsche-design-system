@@ -1,0 +1,15 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { gradientScssStory } from '@/app/scss/gradient/examples/gradient.stories';
+
+export const metadata = {
+  title: 'SCSS: Gradient - Porsche Design System',
+  description: 'Learn about the SCSS styles of our design language and how to use them.',
+};
+
+# Gradient
+
+The Porsche Design System provides multiple SCSS Mixins for gradient styles.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+<ComponentStory story={gradientScssStory} backgroundColor="surface" showCodeBlock={false} />

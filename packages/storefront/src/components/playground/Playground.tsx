@@ -12,6 +12,7 @@ type PlaygroundProps = {
   disableOpenInStackblitz?: boolean;
   backgroundColor?: BackgroundColor;
   fixedBackgroundColor?: string;
+  showCodeBlock?: boolean;
 };
 
 export const Playground = ({
@@ -20,6 +21,7 @@ export const Playground = ({
   disableOpenInStackblitz = false,
   backgroundColor = 'base',
   fixedBackgroundColor,
+  showCodeBlock = true,
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
   return (
@@ -30,20 +32,22 @@ export const Playground = ({
       >
         {children}
       </div>
-      <CodeBlock frameworkMarkup={frameworkMarkup}>
-        {!disableOpenInStackblitz && (
-          <PButton
-            className="w-fit"
-            type="button"
-            iconSource="assets/icon-stackblitz.svg"
-            variant="secondary"
-            compact={true}
-            onClick={onOpenInStackblitz}
-          >
-            Open in Stackblitz
-          </PButton>
-        )}
-      </CodeBlock>
+      {showCodeBlock && (
+        <CodeBlock frameworkMarkup={frameworkMarkup}>
+          {!disableOpenInStackblitz && (
+            <PButton
+              className="w-fit"
+              type="button"
+              iconSource="assets/icon-stackblitz.svg"
+              variant="secondary"
+              compact={true}
+              onClick={onOpenInStackblitz}
+            >
+              Open in Stackblitz
+            </PButton>
+          )}
+        </CodeBlock>
+      )}
     </div>
   );
 };

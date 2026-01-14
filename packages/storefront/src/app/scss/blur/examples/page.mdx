@@ -1,0 +1,18 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { blurScssStory } from '@/app/scss/blur/examples/blur.stories';
+
+export const metadata = {
+  title: 'SCSS: Blur - Porsche Design System',
+  description: 'Learn about the SCSS styles of our design language and how to use them.',
+};
+
+# Blur
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides a SCSS Mixins for the blur style.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+<ComponentStory story={blurScssStory} showCodeBlock={false} />

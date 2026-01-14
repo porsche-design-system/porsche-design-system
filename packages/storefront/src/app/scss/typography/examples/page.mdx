@@ -1,0 +1,32 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  typographyScssStoryDisplay,
+  typographyScssStoryHeading,
+  typographyScssStoryText,
+} from '@/app/scss/typography/examples/typography.stories';
+
+export const metadata = {
+  title: 'SCSS: Typography - Porsche Design System',
+  description: 'Learn about the SCSS typography styles of our design language and how to use them.',
+};
+
+# Typography
+
+<TableOfContents headings={['Display', 'Heading', 'Text']} />
+
+The Porsche Design System provides multiple SCSS Mixins for the typography style.
+
+Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+## Display
+
+<ComponentStory story={typographyScssStoryDisplay} showCodeBlock={false} />
+
+## Heading
+
+<ComponentStory story={typographyScssStoryHeading} showCodeBlock={false} />
+
+## Text
+
+<ComponentStory story={typographyScssStoryText} showCodeBlock={false} />
