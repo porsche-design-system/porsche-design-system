@@ -104,7 +104,8 @@ for (const component of components.filter((c) =>
     // 'link-tile',
     // 'link-tile-product',
     // 'modal',
-    'model-signature',
+    // 'model-signature',
+    'multi-select',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
