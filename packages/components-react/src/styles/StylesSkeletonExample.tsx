@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import {
   fontLineHeight,
   fontSizeTextLarge,
@@ -12,7 +13,6 @@ import {
   themeLightBackgroundBase,
   themeLightPrimary,
 } from '@porsche-design-system/components-react/styles';
-import styled from 'styled-components';
 
 // Wrapper
 const Wrapper = styled.div({

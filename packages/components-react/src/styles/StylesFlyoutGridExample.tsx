@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
 import { gridGap, spacingFluidLarge } from '@porsche-design-system/components-react/styles';
-import styled from 'styled-components';
 import { GridLayout } from '../components';
 
 // Wrapper
