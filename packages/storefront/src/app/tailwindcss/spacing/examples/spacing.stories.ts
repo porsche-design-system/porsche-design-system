@@ -16,7 +16,7 @@ export const spacingFluidStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-xs h-fluid-xs bg-red-100' },
+              properties: { className: 'w-fluid-xs h-fluid-xs bg-info' },
             },
             '.w-fluid-xs .h-fluid-xs',
           ],
@@ -29,7 +29,7 @@ export const spacingFluidStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-sm h-fluid-sm bg-red-100' },
+              properties: { className: 'w-fluid-sm h-fluid-sm bg-info' },
             },
             '.w-fluid-sm .h-fluid-sm',
           ],
@@ -42,7 +42,7 @@ export const spacingFluidStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-md h-fluid-md bg-red-100' },
+              properties: { className: 'w-fluid-md h-fluid-md bg-info' },
             },
             '.w-fluid-md .h-fluid-md',
           ],
@@ -55,7 +55,7 @@ export const spacingFluidStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-lg h-fluid-lg bg-red-100' },
+              properties: { className: 'w-fluid-lg h-fluid-lg bg-info' },
             },
             '.w-fluid-lg .h-fluid-lg',
           ],
@@ -68,7 +68,7 @@ export const spacingFluidStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-xl h-fluid-xl bg-red-100' },
+              properties: { className: 'w-fluid-xl h-fluid-xl bg-info' },
             },
             '.w-fluid-xl .h-fluid-xl',
           ],
@@ -81,7 +81,7 @@ export const spacingFluidStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-fluid-2xl h-fluid-2xl bg-red-100' },
+              properties: { className: 'w-fluid-2xl h-fluid-2xl bg-info' },
             },
             '.w-fluid-2xl .h-fluid-2xl',
           ],
@@ -105,7 +105,7 @@ export const spacingStaticStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-xs h-static-xs bg-red-100' },
+              properties: { className: 'w-static-xs h-static-xs bg-error' },
             },
             '.w-static-xs .h-static-xs',
           ],
@@ -118,7 +118,7 @@ export const spacingStaticStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-sm h-static-sm bg-red-100' },
+              properties: { className: 'w-static-sm h-static-sm bg-error' },
             },
             '.w-static-sm .h-static-sm',
           ],
@@ -131,7 +131,7 @@ export const spacingStaticStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-md h-static-md bg-red-100' },
+              properties: { className: 'w-static-md h-static-md bg-error' },
             },
             '.w-static-md .h-static-md',
           ],
@@ -144,7 +144,7 @@ export const spacingStaticStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-lg h-static-lg bg-red-100' },
+              properties: { className: 'w-static-lg h-static-lg bg-error' },
             },
             '.w-static-lg .h-static-lg',
           ],
@@ -157,7 +157,7 @@ export const spacingStaticStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-xl h-static-xl bg-red-100' },
+              properties: { className: 'w-static-xl h-static-xl bg-error' },
             },
             '.w-static-xl .h-static-xl',
           ],
@@ -170,7 +170,7 @@ export const spacingStaticStory: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'w-static-2xl h-static-2xl bg-red-100' },
+              properties: { className: 'w-static-2xl h-static-2xl bg-error' },
             },
             '.w-static-2xl .h-static-2xl',
           ],

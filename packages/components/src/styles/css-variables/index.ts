@@ -1,3 +1,4 @@
+export { fontPorscheNext } from './fontPorscheNext';
 export { legacyRadiusLarge } from './legacy-radius-large';
 export { legacyRadiusMedium } from './legacy-radius-medium';
 export { legacyRadiusSmall } from './legacy-radius-small';

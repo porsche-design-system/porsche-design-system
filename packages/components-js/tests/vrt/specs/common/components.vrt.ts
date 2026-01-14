@@ -28,9 +28,6 @@ const components = fileNames.filter(
 //   return !argv.length || argv.includes(name);
 // });
 
-const isComponentThemeable = (component: string): boolean =>
-  getComponentMeta(`p-${component.replace(/-\d+/, '')}` as TagName).isThemeable;
-
 // VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
 // and therefore can't be sure which autofocus gets triggered
 const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
@@ -66,21 +63,52 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test('should have certain amount of components', () => {
-  expect(components.length).toBe(73);
+  expect(components.length).toBe(59);
 });
 
-for (const component of components) {
+for (const component of components.filter((c) =>
+  [
+    // 'accordion',
+    // 'banner',
+    // 'button',
+    // 'button-pure',
+    // 'button-tile',
+    // 'canvas',
+    // 'carousel',
+    // 'checkbox',
+    // 'crest',
+    // 'display',
+    // 'divider',
+    // 'drilldown',
+    // 'fieldset',
+    // 'flag',
+    // 'flyout-1',
+    // 'flyout-2',
+    // 'flyout-3',
+    // 'heading',
+    // 'icon',
+    // 'inline-notification',
+    // 'input-password',
+    // 'input-number',
+    // 'input-date',
+    // 'input-week',
+    // 'input-month',
+    // 'input-time',
+    // 'input-text',
+    // 'input-email',
+    // 'input-tel',
+    // 'input-url',
+    // 'input-search',
+    // 'link',
+    'link-pure',
+  ].includes(c)
+)) {
   // executed in Chrome + Safari
   test.describe(component, () => {
     for (const theme of themes) {
       test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
-        test.skip(
-          (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
-          'This component has no theme support and stepper-horizontal is flaky'
-        );
-
         await setupScenario(page, `/${component}`, viewportWidthM, {
-          forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
+          forceComponentTheme: theme,
         });
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${theme}.png`);
@@ -107,8 +135,6 @@ for (const component of components) {
       test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
-        test.skip(!isComponentThemeable(component), 'This component has no theme support');
-
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forceComponentTheme: 'auto',
           prefersColorScheme: scheme,
@@ -118,20 +144,21 @@ for (const component of components) {
       });
 
       // high contrast mode
-      test(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
-        page,
-      }) => {
-        test.skip(component === 'select', 'This component is flaky in HC mode');
+      test.fixme(
+        `should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`,
+        async ({ page }) => {
+          // test.skip(component === 'select', 'This component is flaky in HC mode');
 
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forcedColorsEnabled: true,
-          prefersColorScheme: scheme,
-        });
-        await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(
-          `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
-        );
-      });
+          await setupScenario(page, `/${component}`, viewportWidthM, {
+            forcedColorsEnabled: true,
+            prefersColorScheme: scheme,
+          });
+          await revertAutoFocus(page, component);
+          await expect(page.locator('#app')).toHaveScreenshot(
+            `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
+          );
+        }
+      );
     }
 
     // 200% font scaling

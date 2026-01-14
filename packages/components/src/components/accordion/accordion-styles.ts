@@ -28,7 +28,7 @@ import type { AccordionSize } from './accordion-utils';
 const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
 const positionStickyTopFallback = '0';
 
-const { contrastLowColor, primaryColor, frostedSoftColor, canvasColor } = colors;
+const { contrastLowerColor, primaryColor, frostedSoftColor, canvasColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -48,7 +48,7 @@ export const getComponentCss = (
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
             : {
-                borderBottom: `1px solid ${contrastLowColor}`,
+                borderBottom: `1px solid ${contrastLowerColor}`,
               }),
           '&(:only-of-type)': { borderBottom: 0 },
           ...colorSchemeStyles,
