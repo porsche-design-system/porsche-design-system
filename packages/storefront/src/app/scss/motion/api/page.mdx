@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  motionEaseIn,
+  motionEaseOut,
+  motionEaseInOut,
+  motionDurationVeryLong,
+  motionDurationShort,
+  motionDurationModerate,
+  motionDurationLong,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'SCSS: Motion - Porsche Design System',
+  description: 'Detailed API reference for the motion style.',
+};
+
+# Motion
+
+<TableOfContents headings={[]} />
+
+## SCSS Variables
+
+### Duration
+
+| SCSS variable                    | Description                                  | Value                    |
+| -------------------------------- | -------------------------------------------- | ------------------------ |
+| `$pds-motion-duration-short`     | Holds a **short** `transition-duration`.     | {motionDurationShort}    |
+| `$pds-motion-duration-moderate`  | Holds a **moderate** `transition-duration`.  | {motionDurationModerate} |
+| `$pds-motion-duration-long`      | Holds a **long** `transition-duration`.      | {motionDurationLong}     |
+| `$pds-motion-duration-very-long` | Holds a **very long** `transition-duration`. | {motionDurationVeryLong} |
+
+### Ease
+
+| SCSS variable             | Description                                       | Value             |
+| ------------------------- | ------------------------------------------------- | ----------------- |
+| `$pds-motion-easing-base` | Holds an **in-out** `transition-timing-function`. | {motionEaseInOut} |
+| `$pds-motion-easing-in`   | Holds an **in** `transition-timing-function`.     | {motionEaseIn}    |
+| `$pds-motion-easing-out`  | Holds an **out** `transition-timing-function`.    | {motionEaseOut}   |

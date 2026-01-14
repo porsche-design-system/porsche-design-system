@@ -15,9 +15,10 @@ import { createElements, type HTMLTagOrComponent } from '@/utils/generator/gener
 type ComponentExampleProps = {
   story: Story<HTMLTagOrComponent>;
   backgroundColor?: BackgroundColor;
+  showCodeBlock?: boolean;
 };
 
-export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps) => {
+export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }: ComponentExampleProps) => {
   const { storefrontTheme } = useStorefrontTheme();
   const { storefrontFramework } = useStorefrontFramework();
   // State needs to be updated for controlled components
@@ -49,6 +50,7 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
       frameworkMarkup={exampleMarkup}
       backgroundColor={backgroundColor}
       onOpenInStackblitz={onOpenInStackblitz}
+      showCodeBlock={showCodeBlock}
     >
       {exampleElement}
     </Playground>

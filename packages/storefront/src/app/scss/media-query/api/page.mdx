@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  breakpointMd,
+  breakpointLg,
+  breakpointSm,
+  breakpointXl,
+  breakpoint2Xl,
+  breakpointXs,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'SCSS: Media Query - Porsche Design System',
+  description: 'Detailed API reference for the Media Query style.',
+};
+
+# Media Query
+
+<TableOfContents headings={[]} />
+
+## SCSS Mixins
+
+| SCSS Mixins                                                                                           | Description                                                       |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `@mixin pds-media-query-min('base'\|'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')`                                | Applies a **min** media query with the specified breakpoint.      |
+| `@mixin pds-media-query-max('xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')`                                        | Applies a **max** media query with the specified breakpoint.      |
+| `@mixin pds-media-query-min-max('base'\|'xs'\|'s'\|'m'\|'l'\|'xl', 'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')` | Applies a **min-max** media query with the specified breakpoints. |
+
+## SCSS Variables
+
+| SCSS Variable          | Description                        | Value           |
+| ---------------------- | ---------------------------------- | --------------- |
+| `$pds-breakpoint-base` | Holds the `base` breakpoint value. | 0               |
+| `$pds-breakpoint-xs`   | Holds the `xs` breakpoint value.   | {breakpointXs}  |
+| `$pds-breakpoint-s`    | Holds the `sm` breakpoint value.   | {breakpointSm}  |
+| `$pds-breakpoint-m`    | Holds the `md` breakpoint value.   | {breakpointMd}  |
+| `$pds-breakpoint-l`    | Holds the `lg` breakpoint value.   | {breakpointLg}  |
+| `$pds-breakpoint-xl`   | Holds the `xl` breakpoint value.   | {breakpointXl}  |
+| `$pds-breakpoint-xxl`  | Holds the `2xl` breakpoint value.  | {breakpoint2Xl} |
