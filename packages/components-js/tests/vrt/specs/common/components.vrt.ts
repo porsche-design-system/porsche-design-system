@@ -81,9 +81,10 @@ for (const component of components.filter((c) =>
     // 'divider',
     // 'fieldset',
     // 'flag',
-    'flyout-1',
-    'flyout-2',
-    'flyout-3',
+    // 'flyout-1',
+    // 'flyout-2',
+    // 'flyout-3',
+    'drilldown',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
