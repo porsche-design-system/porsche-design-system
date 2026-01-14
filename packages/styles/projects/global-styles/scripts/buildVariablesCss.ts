@@ -13,12 +13,40 @@ import {
   borderRadiusSm,
   borderRadiusXl,
   borderRadiusXs,
+  fontFamily,
+  fontLineHeight,
+  fontSize2Xl,
+  fontSize2Xs,
+  fontSizeLg,
+  fontSizeMd,
+  fontSizeSm,
+  fontSizeXl,
+  fontSizeXs,
+  fontWeightBold,
+  fontWeightRegular,
+  fontWeightSemiBold,
 } from '@porsche-design-system/tokens';
 import * as prettier from 'prettier';
 
 export const buildVariablesCss = async () => {
   const styles = `:root {
   ${prefixedCssVariableDefinitionLight}
+
+  --p-font-porsche-next: ${fontFamily};
+
+  --p-font-weight-normal: ${fontWeightRegular};
+  --p-font-weight-semibold: ${fontWeightSemiBold};
+  --p-font-weight-bold: ${fontWeightBold};
+
+  --p-leading-normal: ${fontLineHeight};
+
+  --p-text-2xs: ${fontSize2Xs};
+  --p-text-xs: ${fontSizeXs};
+  --p-text-sm: ${fontSizeSm};
+  --p-text-md: ${fontSizeMd};
+  --p-text-lg: ${fontSizeLg};
+  --p-text-xl: ${fontSizeXl};
+  --p-text-2xl: ${fontSize2Xl};
 
   --p-radius-xs: ${borderRadiusXs};
   --p-radius-sm: ${borderRadiusSm};

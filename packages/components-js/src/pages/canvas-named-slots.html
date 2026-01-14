@@ -1,12 +1,4 @@
 <style>
-  body {
-    overflow-x: hidden;
-  }
-
-  p-canvas > div:not([slot]) {
-    grid-column: 1 / -1;
-  }
-
   span {
     display: block;
     height: 100dvh;
@@ -16,28 +8,26 @@
 
 <p-canvas sidebar-start-open="true" sidebar-end-open="true">
   <a slot="title" href="#">Title</a>
-  <div slot="header-start">A</div>
-  <div slot="header-start">B</div>
-  <div slot="header-end">C</div>
-  <div slot="header-end">D</div>
-  <div>
-    Content
-    <span></span>
-    Content
-  </div>
-  <div slot="footer">Footer</div>
-  <div slot="sidebar-start">
+  <p-text slot="header-start" class="light">A</p-text>
+  <p-text slot="header-start" class="light">B</p-text>
+  <p-text slot="header-end" class="light">C</p-text>
+  <p-text slot="header-end" class="light">D</p-text>
+  <p-text class="light">Content</p-text>
+  <span></span>
+  <p-text class="light">Content</p-text>
+  <p-text slot="footer">Footer</p-text>
+  <p-text slot="sidebar-start">
     Sidebar Start
     <span></span>
     Sidebar Start
-  </div>
-  <div slot="sidebar-end-header">
+  </p-text>
+  <p-text slot="sidebar-end-header">
     Sidebar End Header
-  </div>
-  <div slot="sidebar-end">
+  </p-text>
+  <p-text slot="sidebar-end">
     Sidebar End
     <span></span>
     Sidebar End
-  </div>
+  </p-text>
   <img slot="background" src="http://localhost:3002/gradient.png" width="2792" height="1450" alt="" />
 </p-canvas>
