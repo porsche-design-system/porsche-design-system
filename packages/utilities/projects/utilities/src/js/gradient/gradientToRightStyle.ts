@@ -1,5 +1,5 @@
-import { gradientFade } from '@porsche-design-system/tokens';
+import { gradientFadeDark } from '@porsche-design-system/tokens';
 
 export const gradientToRightStyle = {
-  background: `linear-gradient(to right, ${gradientFade});`,
+  background: `linear-gradient(to right, ${gradientFadeDark});`,
 } as const;

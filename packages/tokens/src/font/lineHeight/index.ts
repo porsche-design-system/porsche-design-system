@@ -1,1 +1,1 @@
-export { fontLineHeight } from './fontLineHeight';
+export { fontLineHeightNormal } from './fontLineHeightNormal';

@@ -1,4 +1,4 @@
-export const gradientFade =
+export const gradientFadeDark =
   'hsla(0,0%,0%,.8) 0%,' +
   'hsla(0,0%,0%,.8) 8.1%,' +
   'hsla(0,0%,0%,.8) 15.5%,' +

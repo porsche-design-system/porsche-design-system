@@ -1,5 +1,5 @@
-import { gradientFade } from '@porsche-design-system/tokens';
+import { gradientFadeDark } from '@porsche-design-system/tokens';
 
 export const gradientToTopStyle = {
-  background: `linear-gradient(to top, ${gradientFade});`,
+  background: `linear-gradient(to top, ${gradientFadeDark});`,
 } as const;

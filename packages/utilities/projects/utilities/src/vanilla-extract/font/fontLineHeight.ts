@@ -1,3 +1,3 @@
-import { fontLineHeight as _fontLineHeight } from '@porsche-design-system/tokens';
+import { fontLineHeightNormal as _fontLineHeight } from '@porsche-design-system/tokens';
 
 export const fontLineHeight = _fontLineHeight;

@@ -1,5 +1,5 @@
-import { shadowLow } from '@porsche-design-system/tokens';
+import { shadowSm } from '@porsche-design-system/tokens';
 
 export const dropShadowLowStyle = {
-  boxShadow: shadowLow,
+  boxShadow: shadowSm,
 } as const;
