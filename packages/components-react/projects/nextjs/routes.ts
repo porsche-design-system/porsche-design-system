@@ -552,26 +552,6 @@ const generatedRoutes = {
     "path": "/multi-select-opened-with-optgroups-disabled",
     "name": "MultiSelectOpenedWithOptgroupsDisabled"
   },
-  "multiSelectScaling_0": {
-    "path": "/multi-select-scaling-0",
-    "name": "MultiSelectScaling_0"
-  },
-  "multiSelectScaling_0_5": {
-    "path": "/multi-select-scaling-0-5",
-    "name": "MultiSelectScaling_0_5"
-  },
-  "multiSelectScaling_0_8": {
-    "path": "/multi-select-scaling-0-8",
-    "name": "MultiSelectScaling_0_8"
-  },
-  "multiSelectScaling_1": {
-    "path": "/multi-select-scaling-1",
-    "name": "MultiSelectScaling_1"
-  },
-  "multiSelectScaling_2": {
-    "path": "/multi-select-scaling-2",
-    "name": "MultiSelectScaling_2"
-  },
   "overview": {
     "path": "/overview",
     "name": "Overview"

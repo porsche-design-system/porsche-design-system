@@ -150,11 +150,6 @@ import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generate
 import { MultiSelectOpenedWithMultipleSelectedOptionsPage } from './generated/MultiSelectOpenedWithMultipleSelectedOptions';
 import { MultiSelectOpenedWithOptgroupsPage } from './generated/MultiSelectOpenedWithOptgroups';
 import { MultiSelectOpenedWithOptgroupsDisabledPage } from './generated/MultiSelectOpenedWithOptgroupsDisabled';
-import { MultiSelectScaling_0Page } from './generated/MultiSelectScaling_0';
-import { MultiSelectScaling_0_5Page } from './generated/MultiSelectScaling_0_5';
-import { MultiSelectScaling_0_8Page } from './generated/MultiSelectScaling_0_8';
-import { MultiSelectScaling_1Page } from './generated/MultiSelectScaling_1';
-import { MultiSelectScaling_2Page } from './generated/MultiSelectScaling_2';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
@@ -910,31 +905,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: '/multi-select-opened-with-optgroups-disabled',
     element: <MultiSelectOpenedWithOptgroupsDisabledPage />,
-  },
-  {
-    name: 'Multi Select Scaling 0',
-    path: '/multi-select-scaling-0',
-    element: <MultiSelectScaling_0Page />,
-  },
-  {
-    name: 'Multi Select Scaling 0 5',
-    path: '/multi-select-scaling-0-5',
-    element: <MultiSelectScaling_0_5Page />,
-  },
-  {
-    name: 'Multi Select Scaling 0 8',
-    path: '/multi-select-scaling-0-8',
-    element: <MultiSelectScaling_0_8Page />,
-  },
-  {
-    name: 'Multi Select Scaling 1',
-    path: '/multi-select-scaling-1',
-    element: <MultiSelectScaling_1Page />,
-  },
-  {
-    name: 'Multi Select Scaling 2',
-    path: '/multi-select-scaling-2',
-    element: <MultiSelectScaling_2Page />,
   },
   {
     name: 'Pagination',
