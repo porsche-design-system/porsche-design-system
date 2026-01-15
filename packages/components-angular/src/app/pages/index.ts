@@ -201,11 +201,6 @@ import { SelectOpenedWithOptgroupsComponent } from './generated/select-opened-wi
 import { SelectOpenedWithOptgroupsDisabledComponent } from './generated/select-opened-with-optgroups-disabled.component';
 import { SelectOpenedWithSelectedEmptyOptionComponent } from './generated/select-opened-with-selected-empty-option.component';
 import { SelectOpenedWithSlottedImagesComponent } from './generated/select-opened-with-slotted-images.component';
-import { SelectScaling_0Component } from './generated/select-scaling-0.component';
-import { SelectScaling_0_5Component } from './generated/select-scaling-0-5.component';
-import { SelectScaling_0_8Component } from './generated/select-scaling-0-8.component';
-import { SelectScaling_1Component } from './generated/select-scaling-1.component';
-import { SelectScaling_2Component } from './generated/select-scaling-2.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
@@ -411,11 +406,6 @@ export const generatedPages = [
   SelectOpenedWithOptgroupsDisabledComponent,
   SelectOpenedWithSelectedEmptyOptionComponent,
   SelectOpenedWithSlottedImagesComponent,
-  SelectScaling_0Component,
-  SelectScaling_0_5Component,
-  SelectScaling_0_8Component,
-  SelectScaling_1Component,
-  SelectScaling_2Component,
   SheetComponent,
   SheetBasicComponent,
   SheetGridComponent,
@@ -1291,31 +1281,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened With Slotted Images',
     path: 'select-opened-with-slotted-images',
     component: SelectOpenedWithSlottedImagesComponent,
-  },
-  {
-    name: 'Select Scaling 0',
-    path: 'select-scaling-0',
-    component: SelectScaling_0Component,
-  },
-  {
-    name: 'Select Scaling 0 5',
-    path: 'select-scaling-0-5',
-    component: SelectScaling_0_5Component,
-  },
-  {
-    name: 'Select Scaling 0 8',
-    path: 'select-scaling-0-8',
-    component: SelectScaling_0_8Component,
-  },
-  {
-    name: 'Select Scaling 1',
-    path: 'select-scaling-1',
-    component: SelectScaling_1Component,
-  },
-  {
-    name: 'Select Scaling 2',
-    path: 'select-scaling-2',
-    component: SelectScaling_2Component,
   },
   {
     name: 'Sheet',

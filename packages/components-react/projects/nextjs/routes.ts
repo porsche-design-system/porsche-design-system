@@ -680,26 +680,6 @@ const generatedRoutes = {
     "path": "/select-opened-with-slotted-images",
     "name": "SelectOpenedWithSlottedImages"
   },
-  "selectScaling_0": {
-    "path": "/select-scaling-0",
-    "name": "SelectScaling_0"
-  },
-  "selectScaling_0_5": {
-    "path": "/select-scaling-0-5",
-    "name": "SelectScaling_0_5"
-  },
-  "selectScaling_0_8": {
-    "path": "/select-scaling-0-8",
-    "name": "SelectScaling_0_8"
-  },
-  "selectScaling_1": {
-    "path": "/select-scaling-1",
-    "name": "SelectScaling_1"
-  },
-  "selectScaling_2": {
-    "path": "/select-scaling-2",
-    "name": "SelectScaling_2"
-  },
   "sheet": {
     "path": "/sheet",
     "name": "Sheet"

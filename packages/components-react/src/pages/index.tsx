@@ -181,11 +181,6 @@ import { SelectOpenedWithOptgroupsPage } from './generated/SelectOpenedWithOptgr
 import { SelectOpenedWithOptgroupsDisabledPage } from './generated/SelectOpenedWithOptgroupsDisabled';
 import { SelectOpenedWithSelectedEmptyOptionPage } from './generated/SelectOpenedWithSelectedEmptyOption';
 import { SelectOpenedWithSlottedImagesPage } from './generated/SelectOpenedWithSlottedImages';
-import { SelectScaling_0Page } from './generated/SelectScaling_0';
-import { SelectScaling_0_5Page } from './generated/SelectScaling_0_5';
-import { SelectScaling_0_8Page } from './generated/SelectScaling_0_8';
-import { SelectScaling_1Page } from './generated/SelectScaling_1';
-import { SelectScaling_2Page } from './generated/SelectScaling_2';
 import { SheetPage } from './generated/Sheet';
 import { SheetBasicPage } from './generated/SheetBasic';
 import { SheetGridPage } from './generated/SheetGrid';
@@ -1060,31 +1055,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened With Slotted Images',
     path: '/select-opened-with-slotted-images',
     element: <SelectOpenedWithSlottedImagesPage />,
-  },
-  {
-    name: 'Select Scaling 0',
-    path: '/select-scaling-0',
-    element: <SelectScaling_0Page />,
-  },
-  {
-    name: 'Select Scaling 0 5',
-    path: '/select-scaling-0-5',
-    element: <SelectScaling_0_5Page />,
-  },
-  {
-    name: 'Select Scaling 0 8',
-    path: '/select-scaling-0-8',
-    element: <SelectScaling_0_8Page />,
-  },
-  {
-    name: 'Select Scaling 1',
-    path: '/select-scaling-1',
-    element: <SelectScaling_1Page />,
-  },
-  {
-    name: 'Select Scaling 2',
-    path: '/select-scaling-2',
-    element: <SelectScaling_2Page />,
   },
   {
     name: 'Sheet',
