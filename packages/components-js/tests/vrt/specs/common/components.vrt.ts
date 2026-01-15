@@ -121,7 +121,8 @@ for (const component of components.filter((c) =>
     // 'tabs-bar',
     // 'tag',
     // 'tag-dismissible',
-    'text',
+    // 'text',
+    'text-list',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
