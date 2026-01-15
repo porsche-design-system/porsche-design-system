@@ -1511,6 +1511,282 @@ export const sitemap: Routes = {
   //     },
   //   },
   // },
+  // 'vanilla-extract': {
+  //   name: 'Vanilla Extract',
+  //   path: '/vanilla-extract',
+  //   type: 'CATEGORY',
+  //   subPaths: {
+  //     introduction: {
+  //       name: 'Introduction',
+  //       path: '/vanilla-extract/introduction',
+  //       type: 'PAGE',
+  //     },
+  //     blur: {
+  //       name: 'Blur',
+  //       path: '/vanilla-extract/blur',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/blur/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/blur/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/blur/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     border: {
+  //       name: 'Border',
+  //       path: '/vanilla-extract/border',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/border/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/border/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/border/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     color: {
+  //       name: 'Color',
+  //       path: '/vanilla-extract/color',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/color/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/color/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/color/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     focus: {
+  //       name: 'Focus',
+  //       path: '/vanilla-extract/focus',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/focus/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/focus/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/focus/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     gradient: {
+  //       name: 'Gradient',
+  //       path: '/vanilla-extract/gradient',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/gradient/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/gradient/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/gradient/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     grid: {
+  //       name: 'Grid',
+  //       path: '/vanilla-extract/grid',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/grid/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/grid/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/grid/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     'media-query': {
+  //       name: 'Media Query',
+  //       path: '/vanilla-extract/media-query',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/media-query/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/media-query/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/media-query/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     motion: {
+  //       name: 'Motion',
+  //       path: '/vanilla-extract/motion',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/motion/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/motion/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/motion/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     shadow: {
+  //       name: 'Shadow',
+  //       path: '/vanilla-extract/shadow',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/shadow/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/shadow/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/shadow/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     skeleton: {
+  //       name: 'Skeleton',
+  //       path: '/vanilla-extract/skeleton',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/skeleton/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/skeleton/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/skeleton/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     spacing: {
+  //       name: 'Spacing',
+  //       path: '/vanilla-extract/spacing',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/spacing/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/spacing/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/spacing/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //     typography: {
+  //       name: 'Typography',
+  //       path: '/vanilla-extract/typography',
+  //       type: 'PAGE',
+  //       subPaths: {
+  //         examples: {
+  //           name: 'Examples',
+  //           path: '/vanilla-extract/typography/examples',
+  //           type: 'TAB',
+  //         },
+  //         usage: {
+  //           name: 'Usage',
+  //           path: '/vanilla-extract/typography/usage',
+  //           type: 'TAB',
+  //         },
+  //         api: {
+  //           name: 'API',
+  //           path: '/vanilla-extract/typography/api',
+  //           type: 'TAB',
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
   'must-know': {
     name: 'Must Know',
     path: '/must-know',
