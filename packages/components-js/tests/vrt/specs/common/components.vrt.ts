@@ -123,7 +123,8 @@ for (const component of components.filter((c) =>
     // 'tag-dismissible',
     // 'text',
     // 'text-list',
-    'textarea',
+    // 'textarea',
+    'toast',
   ].includes(c)
 )) {
   // executed in Chrome + Safari

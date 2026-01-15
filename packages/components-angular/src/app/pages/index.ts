@@ -225,8 +225,10 @@ import { ToastBasicComponent } from './generated/toast-basic.component';
 import { ToastMultilineComponent } from './generated/toast-multiline.component';
 import { ToastOffsetComponent } from './generated/toast-offset.component';
 import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
+import { ToastStateErrorComponent } from './generated/toast-state-error.component';
 import { ToastStateInfoComponent } from './generated/toast-state-info.component';
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
+import { ToastStateWarningComponent } from './generated/toast-state-warning.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekCopticComponent } from './generated/typography-greek-coptic.component';
@@ -430,8 +432,10 @@ export const generatedPages = [
   ToastMultilineComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
+  ToastStateErrorComponent,
   ToastStateInfoComponent,
   ToastStateSuccessComponent,
+  ToastStateWarningComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
   TypographyGreekCopticComponent,
@@ -1403,6 +1407,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ToastPrefixedComponent,
   },
   {
+    name: 'Toast State Error',
+    path: 'toast-state-error',
+    component: ToastStateErrorComponent,
+  },
+  {
     name: 'Toast State Info',
     path: 'toast-state-info',
     component: ToastStateInfoComponent,
@@ -1411,6 +1420,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast State Success',
     path: 'toast-state-success',
     component: ToastStateSuccessComponent,
+  },
+  {
+    name: 'Toast State Warning',
+    path: 'toast-state-warning',
+    component: ToastStateWarningComponent,
   },
   {
     name: 'Typography Cyril',

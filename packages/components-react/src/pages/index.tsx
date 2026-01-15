@@ -205,8 +205,10 @@ import { ToastBasicPage } from './generated/ToastBasic';
 import { ToastMultilinePage } from './generated/ToastMultiline';
 import { ToastOffsetPage } from './generated/ToastOffset';
 import { ToastPrefixedPage } from './generated/ToastPrefixed';
+import { ToastStateErrorPage } from './generated/ToastStateError';
 import { ToastStateInfoPage } from './generated/ToastStateInfo';
 import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
+import { ToastStateWarningPage } from './generated/ToastStateWarning';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekCopticPage } from './generated/TypographyGreekCoptic';
@@ -1177,6 +1179,11 @@ export const generatedRoutes: RouteType[] = [
     element: <ToastPrefixedPage />,
   },
   {
+    name: 'Toast State Error',
+    path: '/toast-state-error',
+    element: <ToastStateErrorPage />,
+  },
+  {
     name: 'Toast State Info',
     path: '/toast-state-info',
     element: <ToastStateInfoPage />,
@@ -1185,6 +1192,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast State Success',
     path: '/toast-state-success',
     element: <ToastStateSuccessPage />,
+  },
+  {
+    name: 'Toast State Warning',
+    path: '/toast-state-warning',
+    element: <ToastStateWarningPage />,
   },
   {
     name: 'Typography Cyril',

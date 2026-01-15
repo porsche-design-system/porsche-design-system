@@ -776,6 +776,10 @@ const generatedRoutes = {
     "path": "/toast-prefixed",
     "name": "ToastPrefixed"
   },
+  "toastStateError": {
+    "path": "/toast-state-error",
+    "name": "ToastStateError"
+  },
   "toastStateInfo": {
     "path": "/toast-state-info",
     "name": "ToastStateInfo"
@@ -783,6 +787,10 @@ const generatedRoutes = {
   "toastStateSuccess": {
     "path": "/toast-state-success",
     "name": "ToastStateSuccess"
+  },
+  "toastStateWarning": {
+    "path": "/toast-state-warning",
+    "name": "ToastStateWarning"
   },
   "typographyCyril": {
     "path": "/typography-cyril",
