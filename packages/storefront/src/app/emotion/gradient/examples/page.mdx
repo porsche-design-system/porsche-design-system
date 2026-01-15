@@ -1,0 +1,16 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { gradientEmotionStory } from '@/app/emotion/gradient/examples/gradient.stories';
+
+export const metadata = {
+  title: 'Emotion: Gradient - Porsche Design System',
+  description: 'Learn about the Emotion styles of our design language and how to use them.',
+};
+
+# Gradient
+
+The Porsche Design System provides multiple JS Objects for the gradient style to be used in Emotion.
+
+Styles import:
+`import { gradientToTopStyle, gradientToRightStyle, gradientToBottomStyle, gradientToLeftStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+<ComponentStory story={gradientEmotionStory} backgroundColor="surface" showCodeBlock={false} />

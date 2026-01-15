@@ -1,0 +1,95 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  gridStyle,
+  gridBasic,
+  gridBasicOffset,
+  gridBasicColumnEnd,
+  gridBasicColumnStart,
+  gridBasicOffsetBase,
+  gridBasicOffsetS,
+  gridFull,
+  gridExtended,
+  gridBasicOffsetXXL,
+  gridGap,
+  gridBasicSpanOneHalf,
+  gridBasicSpanOneThird,
+  gridExtendedOffset,
+  gridBasicSpanTwoThirds,
+  gridExtendedColumnEnd,
+  gridExtendedColumnStart,
+  gridExtendedOffsetBase,
+  gridFullOffset,
+  gridNarrow,
+  gridExtendedSpanOneHalf,
+  gridWide,
+  gridNarrowColumnEnd,
+  gridFullColumnStart,
+  gridNarrowOffset,
+  gridWideOffset,
+  gridFullColumnEnd,
+  gridNarrowOffsetBase,
+  gridNarrowSpanOneHalf,
+  gridWideColumnEnd,
+  gridNarrowColumnStart,
+  gridNarrowOffsetXXL,
+  gridWideColumnStart,
+  gridWideOffsetXXL,
+  gridWideOffsetBase,
+  gridExtendedOffsetS,
+  gridExtendedOffsetXXL,
+  gridNarrowOffsetS,
+  gridWideOffsetS,
+} from '@porsche-design-system/components-react/styles';
+
+export const metadata = {
+  title: 'Emotion: Grid - Porsche Design System',
+  description: 'Detailed API reference for the Grid style.',
+};
+
+# Grid
+
+<TableOfContents headings={['Emotion Mixins', 'Emotion Variables']} />
+
+## JS
+
+| JS                        | Description                                                                                                                             | Value                                |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `gridStyle`               | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). | {JSON.stringify(gridStyle)}          |
+| `gridGap`                 | Holds the grid **gap** the Porsche Grid.                                                                                                | {gridGap}                            |
+| `gridNarrow`              | Object containting all `narrow` grid styles.                                                                                            | {JSON.stringify(gridNarrow)}         |
+| `gridNarrowColumnStart`   | Holds the **start** position of the `narrow` area within the Porsche Grid.                                                              | {gridNarrowColumnStart}              |
+| `gridNarrowColumnEnd`     | Holds the **end** position of the `narrow` area within the Porsche Grid.                                                                | {gridNarrowColumnEnd}                |
+| `gridNarrowSpanOneHalf`   | Holds a **one third** span within the `narrow` area of the Porsche Grid.                                                                | {gridNarrowSpanOneHalf}              |
+| `gridNarrowOffset`        | Object containting all `narrow` grid offset styles.                                                                                     | {JSON.stringify(gridNarrowOffset)}   |
+| `gridNarrowOffsetBase`    | Holds a **base** offset within the `narrow` area of the Porsche Grid.                                                                   | {gridNarrowOffsetBase}               |
+| `gridNarrowOffsetS`       | Holds a **small** offset within the `narrow` area of the Porsche Grid.                                                                  | {gridNarrowOffsetS}                  |
+| `gridNarrowOffsetXXL`     | Holds a **xxl** offset within the `narrow` area of the Porsche Grid.                                                                    | {gridNarrowOffsetXXL}                |
+| `gridBasic`               | Object containting all `basic` grid styles.                                                                                             | {JSON.stringify(gridBasic)}          |
+| `gridBasicColumnStart`    | Holds the **start** position of the `basic` area within the Porsche Grid.                                                               | {gridBasicColumnStart}               |
+| `gridBasicColumnEnd`      | Holds the **end** position of the `basic` area within the Porsche Grid.                                                                 | {gridBasicColumnEnd}                 |
+| `gridBasicSpanOneHalf`    | Holds a **half** span within the `basic` area of the Porsche Grid.                                                                      | {gridBasicSpanOneHalf}               |
+| `gridBasicSpanOneThird`   | Holds a **one third** span within the `basic` area of the Porsche Grid.                                                                 | {gridBasicSpanOneThird}              |
+| `gridBasicSpanTwoThirds`  | Holds a **two thirds** span within the `basic` area of the Porsche Grid.                                                                | {gridBasicSpanTwoThirds}             |
+| `gridBasicOffset`         | Object containting all `basic` grid offset styles.                                                                                      | {JSON.stringify(gridBasicOffset)}    |
+| `gridBasicOffsetBase`     | Holds a **base** offset within the `base` area of the Porsche Grid.                                                                     | {gridBasicOffsetBase}                |
+| `gridBasicOffsetS`        | Holds a **small** offset within the `base` area of the Porsche Grid.                                                                    | {gridBasicOffsetS}                   |
+| `gridBasicOffsetXXL`      | Holds a **xxl** offset within the `base` area of the Porsche Grid.                                                                      | {gridBasicOffsetXXL}                 |
+| `gridExtended`            | Object containting all `extended` grid styles.                                                                                          | {JSON.stringify(gridExtended)}       |
+| `gridExtendedColumnStart` | Holds the **start** position of the `extended` area within the Porsche Grid.                                                            | {gridExtendedColumnStart}            |
+| `gridExtendedColumnEnd`   | Holds the **end** position of the `extended` area within the Porsche Grid.                                                              | {gridExtendedColumnEnd}              |
+| `gridExtendedSpanOneHalf` | Holds a **half** span within the `extended` area of the Porsche Grid.                                                                   | {gridExtendedSpanOneHalf}            |
+| `gridExtendedOffset`      | Object containting all `extended` grid offset styles.                                                                                   | {JSON.stringify(gridExtendedOffset)} |
+| `gridExtendedOffsetBase`  | Holds a **base** offset within the `extended` area of the Porsche Grid.                                                                 | {gridExtendedOffsetBase}             |
+| `gridExtendedOffsetS`     | Holds a **small** offset within the `extended` area of the Porsche Grid.                                                                | {gridExtendedOffsetS}                |
+| `gridExtendedOffsetXXL`   | Holds a **xxl** offset within the `extended` area of the Porsche Grid.                                                                  | {gridExtendedOffsetXXL}              |
+| `gridWide`                | Object containting all `wide` grid styles.                                                                                              | {JSON.stringify(gridWide)}           |
+| `gridWideColumnStart`     | Holds the **start** position of the `wide` area within the Porsche Grid.                                                                | {gridWideColumnStart}                |
+| `gridWideColumnEnd`       | Holds the **end** position of the `wide` area within the Porsche Grid.                                                                  | {gridWideColumnEnd}                  |
+| `gridWideOffset`          | Object containting all `wide` grid offset styles.                                                                                       | {JSON.stringify(gridWideOffset)}     |
+| `gridWideOffsetBase`      | Holds a **base** offset within the `wide` area of the Porsche Grid.                                                                     | {gridWideOffsetBase}                 |
+| `gridWideOffsetS`         | Holds a **small** offset within the `wide` area of the Porsche Grid.                                                                    | {gridWideOffsetS}                    |
+| `gridWideOffsetXXL`       | Holds a **xxl** offset within the `wide` area of the Porsche Grid.                                                                      | {gridWideOffsetXXL}                  |
+| `gridFull`                | Object containting all `full` grid styles.                                                                                              | {JSON.stringify(gridFull)}           |
+| `gridFullColumnEnd`       | Holds the **start** position of the `full` area within the Porsche Grid.                                                                | {gridFullColumnStart}                |
+| `gridFullColumnStart`     | Holds the **end** position of the `full` area within the Porsche Grid.                                                                  | {gridFullColumnEnd}                  |
+| `gridFullOffset`          | Holds a **full** offset within the `full` area of the Porsche Grid.                                                                     | {gridFullOffset}                     |

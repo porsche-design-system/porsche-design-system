@@ -1,0 +1,125 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  colorCanvasLight,
+  colorCanvasDark,
+  colorSurfaceLight,
+  colorSurfaceDark,
+  colorFrostedLight,
+  colorFrostedDark,
+  colorFrostedSoftLight,
+  colorFrostedSoftDark,
+  colorBackdropLight,
+  colorBackdropDark,
+  colorPrimaryLight,
+  colorPrimaryDark,
+  colorContrastHigherLight,
+  colorContrastHigherDark,
+  colorContrastHighLight,
+  colorContrastHighDark,
+  colorContrastMediumLight,
+  colorContrastMediumDark,
+  colorContrastLowLight,
+  colorContrastLowDark,
+  colorContrastLowerLight,
+  colorContrastLowerDark,
+  colorInfoLight,
+  colorInfoMediumLight,
+  colorInfoLowLight,
+  colorInfoFrostedLight,
+  colorInfoFrostedSoftLight,
+  colorInfoDark,
+  colorInfoMediumDark,
+  colorInfoLowDark,
+  colorInfoFrostedDark,
+  colorInfoFrostedSoftDark,
+  colorSuccessLight,
+  colorSuccessMediumLight,
+  colorSuccessLowLight,
+  colorSuccessFrostedLight,
+  colorSuccessFrostedSoftLight,
+  colorSuccessDark,
+  colorSuccessMediumDark,
+  colorSuccessLowDark,
+  colorSuccessFrostedDark,
+  colorSuccessFrostedSoftDark,
+  colorWarningLight,
+  colorWarningMediumLight,
+  colorWarningLowLight,
+  colorWarningFrostedLight,
+  colorWarningFrostedSoftLight,
+  colorWarningDark,
+  colorWarningMediumDark,
+  colorWarningLowDark,
+  colorWarningFrostedDark,
+  colorWarningFrostedSoftDark,
+  colorErrorLight,
+  colorErrorMediumLight,
+  colorErrorLowLight,
+  colorErrorFrostedLight,
+  colorErrorFrostedSoftLight,
+  colorErrorDark,
+  colorErrorMediumDark,
+  colorErrorLowDark,
+  colorErrorFrostedDark,
+  colorErrorFrostedSoftDark,
+  colorFocusLight,
+  colorFocusDark,
+} from '@porsche-design-system/tokens';
+
+import { theme, themeDark, themeLight } from '@porsche-design-system/components-react/styles';
+
+export const metadata = {
+  title: 'Vanilla Extract: Color - Porsche Design System',
+  description: 'Detailed API reference for the Color style.',
+};
+
+# Color
+
+<TableOfContents headings={['JS', 'JS Objects']} />
+
+## JS
+
+### Background
+
+| Color                                                                               | JS                                                          | Description                                                                                    | Value (light)        | Value (dark)        |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------- | ------------------- |
+| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>   | `themeLightBackgroundBase`, `themeDarkBackgroundBase`       | Holds the **canvas** color, typically used for surfaces.                                       | {colorCanvasLight}   | {colorCanvasDark}   |
+| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>  | `themeLightBackgroundSurface`, `themeDarkBackgroundSurface` | Holds the **surface** color, typically used for surfaces.                                      | {colorSurfaceLight}  | {colorSurfaceDark}  |
+| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>  | `themeLightBackgroundFrosted`, `themeDarkBackgroundFrosted` | Holds the **frosted** color, typically used as a background in combination with a blur effect. | {colorFrostedLight}  | {colorFrostedDark}  |
+| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div> | `themeLightBackgroundShading`, `themeDarkBackgroundShading` | Holds the **backdrop** color, typically used for backdrops.                                    | {colorBackdropLight} | {colorBackdropDark} |
+
+### Foreground
+
+| Color                                                                                      | JS                                                    | Description                                                                                                    | Value (light)              | Value (dark)              |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------- |
+| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `themeLightPrimary`, `themeDarkPrimary`               | Holds the **primary** color, typically used for text.                                                          | {colorPrimaryLight}        | {colorPrimaryDark}        |
+| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `themeLightContrastHigh`, `themeDarkContrastHigh`     | Holds the **contrast-high** color, typically used for text.                                                    | {colorContrastHighLight}   | {colorContrastHighDark}   |
+| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `themeLightContrastMedium`, `themeDarkContrastMedium` | Holds the **contrast-medium** color, typically used for text.                                                  | {colorContrastMediumLight} | {colorContrastMediumDark} |
+| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `themeLightContrastLow`, `themeDarkContrastLow`       | Holds the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant. | {colorContrastLowLight}    | {colorContrastLowDark}    |
+
+### Semantic
+
+| Color                                                                                      | JS                                                                      | Description                                                                                          | Value (light)              | Value (dark)              |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------- |
+| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>            | `themeLightNotificationInfo`, `themeDarkNotificationInfo`               | Holds the **info** color, typically used for text.                                                   | {colorInfoLight}           | {colorInfoDark}           |
+| <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>    | `themeLightNotificationInfoSoft`, `themeDarkNotificationInfoSoft`       | Holds the **info-frosted** color, typically used as background in combination with a blur effect.    | {colorInfoFrostedLight}    | {colorInfoFrostedDark}    |
+| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>         | `themeLightNotificationSuccess`, `themeDarkNotificationSuccess`         | Holds the **success** color, typically used for text.                                                | {colorSuccessLight}        | {colorSuccessDark}        |
+| <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div> | `themeLightNotificationSuccessSoft`, `themeDarkNotificationSuccessSoft` | Holds the **success-frosted** color, typically used as background in combination with a blur effect. | {colorSuccessFrostedLight} | {colorSuccessFrostedDark} |
+| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>         | `themeLightNotificationWarning`, `themeDarkNotificationWarning`         | Holds the **warning** color, typically used for text.                                                | {colorWarningLight}        | {colorWarningDark}        |
+| <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div> | `themeLightNotificationWarningSoft`, `themeDarkNotificationWarningSoft` | Holds the **warning-frosted** color, typically used as background in combination with a blur effect. | {colorWarningFrostedLight} | {colorWarningFrostedDark} |
+| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>           | `themeLightNotificationError`, `themeDarkNotificationError`             | Holds the **error** color, typically used for text.                                                  | {colorErrorLight}          | {colorErrorDark}          |
+| <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>   | `themeLightNotificationErrorSoft`, `themeDarkNotificationErrorSoft`     | Holds the **error-frosted** color, typically used as background in combination with a blur effect.   | {colorErrorFrostedLight}   | {colorErrorFrostedDark}   |
+
+### A11y
+
+| Color                                                                            | JS                                            | Description                                                                           | Value (light)     | Value (dark)     |
+| -------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------- | ---------------- |
+| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div> | `themeLightStateFocus`, `themeDarkStateFocus` | Holds the **focus** color, typically used as the outline for `:focus-visible` states. | {colorFocusLight} | {colorFocusDark} |
+
+## JS Objects
+
+| JS           | Description                               | Value                        |
+| ------------ | ----------------------------------------- | ---------------------------- |
+| `theme`      | Object containing all color styles.       | {JSON.stringify(theme)}      |
+| `themeLight` | Object containing all light color styles. | {JSON.stringify(themeLight)} |
+| `themeDark`  | Object containing all dark color styles.  | {JSON.stringify(themeDark)}  |

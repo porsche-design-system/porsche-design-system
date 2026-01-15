@@ -1,0 +1,16 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { gradientVanillaExtractStory } from '@/app/vanilla-extract/gradient/examples/gradient.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Gradient - Porsche Design System',
+  description: 'Learn about the Vanilla Extract styles of our design language and how to use them.',
+};
+
+# Gradient
+
+The Porsche Design System provides multiple JS Objects for the gradient style to be used in Vanilla Extract.
+
+Styles import:
+`import { gradientToTopStyle, gradientToRightStyle, gradientToBottomStyle, gradientToLeftStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+<ComponentStory story={gradientVanillaExtractStory} backgroundColor="surface" showCodeBlock={false} />
