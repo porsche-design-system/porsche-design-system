@@ -1,0 +1,23 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { skeletonKeyframes } from '@porsche-design-system/components-react/styles/vanilla-extract';
+
+export const metadata = {
+  title: 'Vanilla Extract: Skeleton - Porsche Design System',
+  description: 'Detailed API reference for the skeleton style.',
+};
+
+# Skeleton
+
+<TableOfContents headings={['JS Functions', 'JS']} />
+
+## JS Functions
+
+| JS Function                                                             | Description                                                     |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `getSkeletonStyle(animationName: string, { theme: 'light' \| 'dark' })` | Applies a skeleton placeholder style to indicate loading state. |
+
+## JS
+
+| JS                  | Description                                                                      | Value                               |
+| ------------------- | -------------------------------------------------------------------------------- | ----------------------------------- |
+| `skeletonKeyframes` | Holds the **keyframes** to be used with the `keyframes` vanila-extract function. | {JSON.stringify(skeletonKeyframes)} |

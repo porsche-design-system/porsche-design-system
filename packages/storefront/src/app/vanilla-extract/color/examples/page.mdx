@@ -1,0 +1,33 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  colorVanillaExtractStoryBackgroundColor,
+  colorVanillaExtractStoryBorderColor,
+  colorVanillaExtractStoryTextColor,
+} from '@/app/vanilla-extract/color/examples/color.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Color - Porsche Design System',
+  description: 'Learn about the Vanilla Extract styles of our design language and how to use them.',
+};
+
+# Color
+
+<TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
+
+The Porsche Design System provides multiple JS Variables and Objects for color styles to be used in Vanilla Extract.
+
+Styles import:
+`import { themeLightPrimary, themeLightBackgroundFrosted, … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+## Text Color
+
+<ComponentStory story={colorVanillaExtractStoryTextColor} showCodeBlock={false} />
+
+## Background Color
+
+<ComponentStory story={colorVanillaExtractStoryBackgroundColor} showCodeBlock={false} />
+
+## Border Color
+
+<ComponentStory story={colorVanillaExtractStoryBorderColor} showCodeBlock={false} />

@@ -1,0 +1,33 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  colorEmotionStoryBackgroundColor,
+  colorEmotionStoryBorderColor,
+  colorEmotionStoryTextColor,
+} from '@/app/emotion/color/examples/color.stories';
+
+export const metadata = {
+  title: 'Emotion: Color - Porsche Design System',
+  description: 'Learn about the Emotion styles of our design language and how to use them.',
+};
+
+# Color
+
+<TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
+
+The Porsche Design System provides multiple JS Variables and Objects for color styles to be used in Emotion.
+
+Styles import:
+`import { themeLightPrimary, themeLightBackgroundFrosted, … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+## Text Color
+
+<ComponentStory story={colorEmotionStoryTextColor} showCodeBlock={false} />
+
+## Background Color
+
+<ComponentStory story={colorEmotionStoryBackgroundColor} showCodeBlock={false} />
+
+## Border Color
+
+<ComponentStory story={colorEmotionStoryBorderColor} showCodeBlock={false} />

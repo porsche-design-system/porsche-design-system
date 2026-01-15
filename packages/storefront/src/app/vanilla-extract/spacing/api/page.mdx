@@ -1,0 +1,59 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  spacing,
+  spacingFluid,
+  spacingFluidXSmall,
+  spacingFluidSmall,
+  spacingFluidMedium,
+  spacingFluidLarge,
+  spacingFluidXLarge,
+  spacingFluidXXLarge,
+  spacingStatic,
+  spacingStaticXSmall,
+  spacingStaticSmall,
+  spacingStaticMedium,
+  spacingStaticLarge,
+  spacingStaticXLarge,
+  spacingStaticXXLarge,
+} from '@porsche-design-system/components-react/styles';
+
+export const metadata = {
+  title: 'Vanilla Extract: Spacing - Porsche Design System',
+  description: 'Detailed API reference for the spacing style.',
+};
+
+# Spacing
+
+<TableOfContents headings={['Fluid', 'Static']} />
+
+## JS
+
+### Spacing
+
+| JS        | Description                                              | Value                     |
+| --------- | -------------------------------------------------------- | ------------------------- |
+| `spacing` | Object containing all **fluid** and **static** spacings. | {JSON.stringify(spacing)} |
+
+### Fluid
+
+| JS                    | Description                               | Value                          |
+| --------------------- | ----------------------------------------- | ------------------------------ |
+| `spacingFluid`        | Object containing all **fluid** spacings. | {JSON.stringify(spacingFluid)} |
+| `spacingFluidXSmall`  | Applies the **x-small fluid** spacing.    | {spacingFluidXSmall}           |
+| `spacingFluidSmall`   | Applies the **small fluid** spacing.      | {spacingFluidSmall}            |
+| `spacingFluidMedium`  | Applies the **medium fluid** spacing.     | {spacingFluidMedium}           |
+| `spacingFluidLarge`   | Applies the **large fluid** spacing.      | {spacingFluidLarge}            |
+| `spacingFluidXLarge`  | Applies the **x-large fluid** spacing.    | {spacingFluidXLarge}           |
+| `spacingFluidXXLarge` | Applies the **2x-large fluid** spacing.   | {spacingFluidXXLarge}          |
+
+### Static
+
+| JS                     | Description                                | Value                          |
+| ---------------------- | ------------------------------------------ | ------------------------------ |
+| `spacingStatic`        | Object containing all **static** spacings. | {JSON.stringify(spacingFluid)} |
+| `spacingStaticXSmall`  | Applies the **x-small static** spacing.    | {spacingStaticXSmall}          |
+| `spacingStaticSmall`   | Applies the **small static** spacing.      | {spacingStaticSmall}           |
+| `spacingStaticMedium`  | Applies the **medium static** spacing.     | {spacingStaticMedium}          |
+| `spacingStaticLarge`   | Applies the **large static** spacing.      | {spacingStaticLarge}           |
+| `spacingStaticXLarge`  | Applies the **x-large static** spacing.    | {spacingStaticXLarge}          |
+| `spacingStaticXXLarge` | Applies the **2x-large static** spacing.   | {spacingStaticXXLarge}         |
