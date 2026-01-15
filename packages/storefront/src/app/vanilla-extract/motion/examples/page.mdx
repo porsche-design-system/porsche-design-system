@@ -1,0 +1,28 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  motionVanillaExtractStoryDuration,
+  motionVanillaExtractStoryEase,
+} from '@/app/vanilla-extract/motion/examples/motion.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Motion - Porsche Design System',
+  description: 'Learn about the Vanilla Extract motion styles of our design language and how to use them.',
+};
+
+# Motion
+
+<TableOfContents headings={['Duration', 'Ease']} />
+
+The Porsche Design System provides multiple JS variables for duration and easing styles to be used in Vanilla Extract.
+
+Styles import:
+`import { motionDurationShort, motionEasingBase, … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+## Duration
+
+<ComponentStory story={motionVanillaExtractStoryDuration} showCodeBlock={false} />
+
+## Ease
+
+<ComponentStory story={motionVanillaExtractStoryEase} showCodeBlock={false} />

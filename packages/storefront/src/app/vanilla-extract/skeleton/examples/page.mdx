@@ -1,0 +1,19 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { skeletonVanillaExtractStory } from '@/app/vanilla-extract/skeleton/examples/skeleton.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Skeleton - Porsche Design System',
+  description: 'Learn about the Vanilla Extract skeleton style of our design language and how to use it.',
+};
+
+# Skeleton
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides a JS Function for the skeleton style to be used in Vanilla Extract.
+
+Styles import:
+`import { getSkeletonStyle, skeletonKeyframes } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+<ComponentStory story={skeletonVanillaExtractStory} showCodeBlock={false} />

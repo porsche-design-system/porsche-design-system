@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  motionEasingBase,
+  motionDurationVeryLong,
+  motionDurationLong,
+  motionDurationModerate,
+  motionDurationShort,
+  motionEasingIn,
+  motionEasingOut,
+} from '@porsche-design-system/components-react/styles';
+
+export const metadata = {
+  title: 'Vanilla Extract: Motion - Porsche Design System',
+  description: 'Detailed API reference for the motion style.',
+};
+
+# Motion
+
+<TableOfContents headings={[]} />
+
+## JS
+
+### Duration
+
+| JS                       | Description                                  | Value                    |
+| ------------------------ | -------------------------------------------- | ------------------------ |
+| `motionDurationShort`    | Holds a **short** `transition-duration`.     | {motionDurationShort}    |
+| `motionDurationModerate` | Holds a **moderate** `transition-duration`.  | {motionDurationModerate} |
+| `motionDurationLong`     | Holds a **long** `transition-duration`.      | {motionDurationLong}     |
+| `motionDurationVeryLong` | Holds a **very long** `transition-duration`. | {motionDurationVeryLong} |
+
+### Ease
+
+| JS                 | Description                                       | Value              |
+| ------------------ | ------------------------------------------------- | ------------------ |
+| `motionEasingBase` | Holds an **in-out** `transition-timing-function`. | {motionEasingBase} |
+| `motionEasingIn`   | Holds an **in** `transition-timing-function`.     | {motionEasingIn}   |
+| `motionEasingOut`  | Holds an **out** `transition-timing-function`.    | {motionEasingOut}  |
