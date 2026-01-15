@@ -181,11 +181,6 @@ import { SelectOpenedWithOptgroupsPage } from './generated/SelectOpenedWithOptgr
 import { SelectOpenedWithOptgroupsDisabledPage } from './generated/SelectOpenedWithOptgroupsDisabled';
 import { SelectOpenedWithSelectedEmptyOptionPage } from './generated/SelectOpenedWithSelectedEmptyOption';
 import { SelectOpenedWithSlottedImagesPage } from './generated/SelectOpenedWithSlottedImages';
-import { SelectScaling_0Page } from './generated/SelectScaling_0';
-import { SelectScaling_0_5Page } from './generated/SelectScaling_0_5';
-import { SelectScaling_0_8Page } from './generated/SelectScaling_0_8';
-import { SelectScaling_1Page } from './generated/SelectScaling_1';
-import { SelectScaling_2Page } from './generated/SelectScaling_2';
 import { SheetPage } from './generated/Sheet';
 import { SheetBasicPage } from './generated/SheetBasic';
 import { SheetGridPage } from './generated/SheetGrid';
@@ -210,8 +205,10 @@ import { ToastBasicPage } from './generated/ToastBasic';
 import { ToastMultilinePage } from './generated/ToastMultiline';
 import { ToastOffsetPage } from './generated/ToastOffset';
 import { ToastPrefixedPage } from './generated/ToastPrefixed';
+import { ToastStateErrorPage } from './generated/ToastStateError';
 import { ToastStateInfoPage } from './generated/ToastStateInfo';
 import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
+import { ToastStateWarningPage } from './generated/ToastStateWarning';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekCopticPage } from './generated/TypographyGreekCoptic';
@@ -1062,31 +1059,6 @@ export const generatedRoutes: RouteType[] = [
     element: <SelectOpenedWithSlottedImagesPage />,
   },
   {
-    name: 'Select Scaling 0',
-    path: '/select-scaling-0',
-    element: <SelectScaling_0Page />,
-  },
-  {
-    name: 'Select Scaling 0 5',
-    path: '/select-scaling-0-5',
-    element: <SelectScaling_0_5Page />,
-  },
-  {
-    name: 'Select Scaling 0 8',
-    path: '/select-scaling-0-8',
-    element: <SelectScaling_0_8Page />,
-  },
-  {
-    name: 'Select Scaling 1',
-    path: '/select-scaling-1',
-    element: <SelectScaling_1Page />,
-  },
-  {
-    name: 'Select Scaling 2',
-    path: '/select-scaling-2',
-    element: <SelectScaling_2Page />,
-  },
-  {
     name: 'Sheet',
     path: '/sheet',
     element: <SheetPage />,
@@ -1207,6 +1179,11 @@ export const generatedRoutes: RouteType[] = [
     element: <ToastPrefixedPage />,
   },
   {
+    name: 'Toast State Error',
+    path: '/toast-state-error',
+    element: <ToastStateErrorPage />,
+  },
+  {
     name: 'Toast State Info',
     path: '/toast-state-info',
     element: <ToastStateInfoPage />,
@@ -1215,6 +1192,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast State Success',
     path: '/toast-state-success',
     element: <ToastStateSuccessPage />,
+  },
+  {
+    name: 'Toast State Warning',
+    path: '/toast-state-warning',
+    element: <ToastStateWarningPage />,
   },
   {
     name: 'Typography Cyril',
