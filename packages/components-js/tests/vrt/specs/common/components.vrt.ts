@@ -118,7 +118,8 @@ for (const component of components.filter((c) =>
     // 'switch',
     // 'table',
     // 'tabs',
-    'tabs-bar',
+    // 'tabs-bar',
+    'tag',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
