@@ -56,7 +56,9 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
             heading={category.name as string}
             headingTag="h3"
             compact={true}
-            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
+            className={
+              ['Components', 'Tailwind CSS', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''
+            }
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
           >
