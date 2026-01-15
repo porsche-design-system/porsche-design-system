@@ -112,7 +112,8 @@ for (const component of components.filter((c) =>
     // 'radio-group',
     // 'scroller',
     // 'segmented-control',
-    'select',
+    // 'select',
+    'spinner',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
