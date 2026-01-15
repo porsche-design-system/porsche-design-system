@@ -37,7 +37,12 @@ export const Home = () => {
           Welcome to the Porsche Design System <b>v{localPorscheDesignSystemMajorVersion}</b>
         </h1>
         <div className="relative bg-frosted hover:bg-frosted-soft backdrop-blur-frosted transition-colors max-w-[30rem] p-fluid-md rounded-4xl shadow-medium flex justify-between items-center gap-static-sm">
-          <a href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`} className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
+          <a
+            href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
+            className="absolute inset-0"
+            tabIndex={-1}
+            aria-hidden="true"
+          />
           <div className="flex flex-col prose-text-sm">
             <b>Release Note</b>
             <span className="text-contrast-medium">
@@ -46,7 +51,7 @@ export const Home = () => {
           </div>
           <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
             <a
-              href={`/news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
+              href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
               aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
             />
           </PLink>

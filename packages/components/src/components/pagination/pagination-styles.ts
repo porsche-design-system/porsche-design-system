@@ -17,7 +17,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
+  preventFoucOfNestedElementsStyles, getDisabledBaseStyles,
 } from '../../styles';
 import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getCss } from '../../utils';
@@ -37,7 +37,7 @@ const disabledCursorStyle: JssStyle = {
 const hiddenStyle: JssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean): string => {
-  const { primaryColor, disabledColor, frostedColor } = colors;
+  const { primaryColor, frostedColor } = colors;
 
   return getCss({
     '@global': {
@@ -133,8 +133,8 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
           border: `${borderWidthBase} solid ${primaryColor}`,
         },
         '&[aria-disabled]': {
+          ...getDisabledBaseStyles(),
           ...disabledCursorStyle,
-          color: disabledColor,
         },
         // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
         '&:not(.ellipsis):focus-visible': getFocusBaseStyles(),
