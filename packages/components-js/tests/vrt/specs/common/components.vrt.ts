@@ -115,7 +115,8 @@ for (const component of components.filter((c) =>
     // 'select',
     // 'spinner',
     // 'stepper-horizontal',
-    'switch',
+    // 'switch',
+    'table',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
