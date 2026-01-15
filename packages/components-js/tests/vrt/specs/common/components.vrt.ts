@@ -108,7 +108,8 @@ for (const component of components.filter((c) =>
     // 'multi-select',
     // 'pagination',
     // 'pin-code',
-    'popover',
+    // 'popover',
+    'radio-group',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
