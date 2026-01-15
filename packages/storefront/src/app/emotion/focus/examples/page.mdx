@@ -1,0 +1,18 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { focusEmotionStory } from '@/app/emotion/focus/examples/focus.stories';
+
+export const metadata = {
+  title: 'Emotion: Focus - Porsche Design System',
+  description: 'Learn about the Emotion styles of our design language and how to use them.',
+};
+
+# Focus
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides a JS Object for the focus style to be used in Emotion.
+
+Styles import: `import { getFocusStyle } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+<ComponentStory story={focusEmotionStory} showCodeBlock={false} />

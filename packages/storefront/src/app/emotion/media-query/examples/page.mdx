@@ -1,0 +1,41 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { mediaQueryEmotionStory } from '@/app/emotion/media-query/examples/media-query.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+
+export const metadata = {
+  title: 'Emotion: Media Query - Porsche Design System',
+  description: 'Learn about the Emotion styles of our design language and how to use them.',
+};
+
+# Media Query
+
+The Porsche Design System provides JS Functions for the media queries and JS Variables for breakpoints to be used in
+Emotion.
+
+- min-width: `getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- max-width: `getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- min-width and max-width: `getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`.
+
+```js
+// Usage example:
+const MediaQueryMin = styled.p({
+  [getMediaQueryMin('xs')]: {
+    // styles for min-width: xs
+  },
+});
+```
+
+All breakpoints are also available as JS Variables:
+
+- Base: `breakpointBase`
+- xs: `breakpointXS`
+- s: `breakpointS`
+- m: `breakpointM`
+- l: `breakpointL`
+- xl: `breakpointXL`
+- xxl: `breakpointXXL`
+
+Styles import:
+`import { getMediaQueryMin, breakpointXS, … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`
+
+<ComponentStory story={mediaQueryEmotionStory} showCodeBlock={false} />

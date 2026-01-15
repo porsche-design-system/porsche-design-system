@@ -1,0 +1,40 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  borderRadiusLarge,
+  borderWidthBase,
+  borderRadiusSmall,
+  borderRadiusMedium,
+  borderWidthThin,
+  borderWidth,
+  border,
+  borderRadius,
+} from '@porsche-design-system/components-react/styles';
+
+export const metadata = {
+  title: 'Emotion: Border - Porsche Design System',
+  description: 'The Emotion border styles of the Porsche Design System.',
+};
+
+# Border
+
+<TableOfContents headings={[]} />
+
+## JS
+
+### Radius
+
+| JS                   | Description                                  | Value                          |
+| -------------------- | -------------------------------------------- | ------------------------------ |
+| `border`             | Object containting all border styles.        | {JSON.stringify(border)}       |
+| `borderRadius`       | Object containting all border radius styles. | {JSON.stringify(borderRadius)} |
+| `borderRadiusLarge`  | Holds a **small** `border-radius`.           | {borderRadiusSmall}            |
+| `borderRadiusMedium` | Holds a **medium** `border-radius`.          | {borderRadiusMedium}           |
+| `borderRadiusSmall`  | Holds a **large** `border-radius`.           | {borderRadiusLarge}            |
+
+### Width
+
+| JS                | Description                                 | Value                         |
+| ----------------- | ------------------------------------------- | ----------------------------- |
+| `borderWidth`     | Object containting all border width styles. | {JSON.stringify(borderWidth)} |
+| `borderWidthBase` | Holds a **thin** `border-width`.            | {borderWidthThin}             |
+| `borderWidthThin` | Holds a **regular** `border-width`.         | {borderWidthBase}             |
