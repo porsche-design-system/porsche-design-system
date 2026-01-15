@@ -122,7 +122,8 @@ for (const component of components.filter((c) =>
     // 'tag',
     // 'tag-dismissible',
     // 'text',
-    'text-list',
+    // 'text-list',
+    'textarea',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
