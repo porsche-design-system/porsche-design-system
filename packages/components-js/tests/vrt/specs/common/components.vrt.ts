@@ -110,7 +110,8 @@ for (const component of components.filter((c) =>
     // 'pin-code',
     // 'popover',
     // 'radio-group',
-    'scroller',
+    // 'scroller',
+    'segmented-control',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
