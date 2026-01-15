@@ -124,7 +124,8 @@ for (const component of components.filter((c) =>
     // 'text',
     // 'text-list',
     // 'textarea',
-    'toast',
+    // 'toast',
+    'wordmark',
   ].includes(c)
 )) {
   // executed in Chrome + Safari
