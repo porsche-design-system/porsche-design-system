@@ -100,7 +100,14 @@ for (const component of components.filter((c) =>
     // 'input-url',
     // 'input-search',
     // 'link',
-    'link-pure',
+    // 'link-pure',
+    // 'link-tile',
+    // 'link-tile-product',
+    // 'modal',
+    // 'model-signature',
+    // 'multi-select',
+    // 'pagination',
+    'pin-code',
   ].includes(c)
 )) {
   // executed in Chrome + Safari

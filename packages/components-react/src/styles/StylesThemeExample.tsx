@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import {
   borderRadiusSmall,
   gridGap,
@@ -44,7 +45,6 @@ import {
   themeLightStateFocus,
   themeLightStateHover,
 } from '@porsche-design-system/components-react/styles';
-import styled from 'styled-components';
 
 // Wrapper
 const wrapperStyle = {
