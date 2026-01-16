@@ -57,7 +57,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
   return (
     <Fragment>
       {hasLabel(host, label) && (
-        <Fragment>
+        <div class="label-wrapper">
           <TagType
             class="label"
             id={labelId}
@@ -72,7 +72,7 @@ export const Label: FunctionalComponent<LabelProps> = ({
             </Fragment>
           </TagType>
           {hasNamedSlot(host, 'label-after') && <slot name="label-after" />}
-        </Fragment>
+        </div>
       )}
       {hasDescription(host, description) && (
         <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>

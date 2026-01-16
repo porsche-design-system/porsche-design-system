@@ -102,16 +102,14 @@ export class RadioGroupOption {
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
             )}
           </div>
-          <div class="label-wrapper">
-            <Label
-              host={this.host}
-              label={this.label}
-              htmlFor={id}
-              isDisabled={isDisabled}
-              isLoading={isLoading}
-              stopClickPropagation={true}
-            />
-          </div>
+          <Label
+            host={this.host}
+            label={this.label}
+            htmlFor={id}
+            isDisabled={isDisabled}
+            isLoading={isLoading}
+            stopClickPropagation={true}
+          />
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
           )}

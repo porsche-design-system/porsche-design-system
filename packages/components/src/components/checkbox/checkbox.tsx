@@ -240,16 +240,14 @@ export class Checkbox {
             />
             {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
           </div>
-          <div class="label-wrapper">
-            <Label
-              host={this.host}
-              htmlFor={id}
-              label={this.label}
-              isLoading={this.loading}
-              isDisabled={this.disabled}
-              isRequired={this.required}
-            />
-          </div>
+          <Label
+            host={this.host}
+            htmlFor={id}
+            label={this.label}
+            isLoading={this.loading}
+            isDisabled={this.disabled}
+            isRequired={this.required}
+          />
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
