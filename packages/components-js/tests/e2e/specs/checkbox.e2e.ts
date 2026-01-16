@@ -21,6 +21,7 @@ const getHost = (page: Page) => page.locator('p-checkbox');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInput = (page: Page) => page.locator('p-checkbox input[type="checkbox"]');
 const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
+const getInputWrapper = (page: Page) => page.locator('p-checkbox .input-wrapper');
 const getLabel = (page: Page) => page.locator('p-checkbox label');
 const getMessage = (page: Page) => page.locator('p-checkbox .message');
 const getForm = (page: Page) => page.locator('form');
@@ -41,7 +42,10 @@ async function performBoundaryClicks(host: Locator, page: Page) {
   await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // Center center
 }
 
-const getMaskImage = (page: Page) =>  page.evaluate("window.getComputedStyle(document.querySelector('p-checkbox').shadowRoot?.querySelector('input'), '::before')['mask']")
+const getMaskImage = (page: Page) =>
+  page.evaluate(
+    "window.getComputedStyle(document.querySelector('p-checkbox').shadowRoot?.querySelector('input'), '::before')['mask']"
+  );
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
@@ -314,7 +318,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     await initCheckbox(page);
     const host = getHost(page);
     const input = getInput(page);
-    const wrapper = getWrapper(page);
+    const wrapper = getInputWrapper(page);
 
     await expect(wrapper).toHaveCSS('cursor', 'pointer');
     await expect(input).toHaveCSS('cursor', 'pointer');
