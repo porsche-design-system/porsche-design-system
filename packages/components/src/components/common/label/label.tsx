@@ -1,5 +1,5 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
-import { hasDescription, hasLabel, isParentFieldsetRequired } from '../../../utils';
+import { hasDescription, hasLabel, hasNamedSlot, isParentFieldsetRequired } from '../../../utils';
 import { Required } from '../required/required';
 import { descriptionId, type LabelTag, labelId } from './label-utils';
 
@@ -57,19 +57,22 @@ export const Label: FunctionalComponent<LabelProps> = ({
   return (
     <Fragment>
       {hasLabel(host, label) && (
-        <TagType
-          class="label"
-          id={labelId}
-          aria-disabled={isLoading || isDisabled ? 'true' : null}
-          htmlFor={htmlFor}
-          onClick={handleClick}
-          onKeyDown={handleKeyDown}
-        >
-          <Fragment>
-            {label || <slot name="label" />}
-            {isRequired && !isParentFieldsetRequired(host) && <Required />}
-          </Fragment>
-        </TagType>
+        <Fragment>
+          <TagType
+            class="label"
+            id={labelId}
+            aria-disabled={isLoading || isDisabled ? 'true' : null}
+            htmlFor={htmlFor}
+            onClick={handleClick}
+            onKeyDown={handleKeyDown}
+          >
+            <Fragment>
+              {label || <slot name="label" />}
+              {isRequired && !isParentFieldsetRequired(host) && <Required />}
+            </Fragment>
+          </TagType>
+          {hasNamedSlot(host, 'label-after') && <slot name="label-after" />}
+        </Fragment>
       )}
       {hasDescription(host, description) && (
         <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>

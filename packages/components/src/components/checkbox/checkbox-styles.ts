@@ -15,13 +15,13 @@ import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelGlobalStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import {
-  cssVarCheckboxBorderColor,
-  cssVarInternalCheckboxScaling,
-} from '../../styles/checkbox/checkbox-css-vars';
+import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -58,11 +58,7 @@ export const getComponentCss = (
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      'slot[name="label-start"], slot[name="label-end"]': {
-        display: 'inline-block',
-        verticalAlign: 'top',
-        cursor: disabledOrLoading ? 'not-allowed' : 'initial',
-      },
+      ...getFunctionalComponentLabelGlobalStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
@@ -112,14 +108,10 @@ export const getComponentCss = (
       })),
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      isDisabled || isLoading,
-      hideLabel,
-      {
-        display: 'inline',
-        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
-      }
-    ),
+    ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, {
+      display: 'inline',
+      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

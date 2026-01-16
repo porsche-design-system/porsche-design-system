@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected|label-start|label-end)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -209,14 +209,26 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(
+            /hasNamedSlot\(host, '(label-after)'\)/g,
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+          )
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
           newFileContent = newFileContent
+            .replace(/(type LabelProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 children, ')
             .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
-            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/}\) => \{/, `$& const { namedSlotChildren } = splitChildren(children);\n`)
+            .replace(
+              /^/,
+              `import { splitChildren } from '../../splitChildren';
+`
+            );
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
@@ -265,11 +277,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         if (tagName === 'p-radio-group-option') {
           newFileContent = newFileContent
             .replace(/(<Label(?!Props))([\s\S]*?\/>)/, '$1 hasLabel={this.props.label} hasDescription={false}$2')
-            .replace(/e\.stopImmediatePropagation\(\);/, '')
-            .replace(
-              /hasNamedSlot\(this\.props\.host, '(label-start|label-end)'\)/g,
-              `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
-            );
+            .replace(/e\.stopImmediatePropagation\(\);/, '');
         } else {
           newFileContent = newFileContent.replace(
             /(<Label(?!Props))([\s\S]*?\/>)/,

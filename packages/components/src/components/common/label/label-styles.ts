@@ -7,6 +7,18 @@ import { getFunctionalComponentRequiredStyles } from '../required/required-style
 
 const { primaryColor, contrastHighColor } = colors;
 
+export const getFunctionalComponentLabelGlobalStyles = (isDisabledOrLoading: boolean): Styles => {
+  return {
+    '@global': {
+      'slot[name="label-after"]': {
+        display: 'inline-block',
+        verticalAlign: 'top',
+        cursor: isDisabledOrLoading ? 'not-allowed' : 'inherit',
+      },
+    },
+  };
+};
+
 export const getFunctionalComponentLabelStyles = (
   isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,

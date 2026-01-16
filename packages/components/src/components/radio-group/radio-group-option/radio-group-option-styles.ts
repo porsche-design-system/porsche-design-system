@@ -20,7 +20,10 @@ import { radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelGlobalStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
@@ -56,11 +59,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           ...(disabled && getDisabledBaseStyles()),
         }),
       },
-      'slot[name="label-start"], slot[name="label-end"]': {
-        display: 'inline-block',
-        verticalAlign: 'top',
-        cursor: disabledOrLoading ? 'not-allowed' : 'initial',
-      },
+      ...getFunctionalComponentLabelGlobalStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -132,9 +131,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       paddingInlineStart: labelPaddingInlineStart,
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled || loading,false, {
-        display: 'inline',
-      }),
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, {
+      display: 'inline',
+    }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });
