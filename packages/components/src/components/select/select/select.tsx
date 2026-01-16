@@ -75,6 +75,7 @@ const propTypes: PropTypes<typeof Select> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected option display in the button area." }
  * @slot {"name": "", "description": "Default slot for the `p-select-option` tags." }
@@ -328,12 +329,7 @@ export class Select {
               <span>{this.selectedOption?.textContent ?? ''}</span>
             </Fragment>
           )}
-          <PrefixedTagNames.pIcon
-            class="icon"
-            name="arrow-head-down"
-            color="primary"
-            aria-hidden="true"
-          />
+          <PrefixedTagNames.pIcon class="icon" name="arrow-head-down" color="primary" aria-hidden="true" />
         </button>
         <div
           id={popoverId}
@@ -521,6 +517,7 @@ export class Select {
       (el) =>
         el.tagName !== 'SELECT' &&
         el.slot !== 'label' &&
+        el.slot !== 'label-after' &&
         el.slot !== 'description' &&
         el.slot !== 'message' &&
         el.slot !== 'filter'

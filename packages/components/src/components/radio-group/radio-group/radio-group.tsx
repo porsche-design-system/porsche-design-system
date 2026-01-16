@@ -58,6 +58,7 @@ const propTypes: PropTypes<typeof RadioGroup> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "", "description": "Default slot for the p-radio-group-option tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
@@ -283,7 +284,7 @@ export class RadioGroup {
     this.radioGroupOptions = [];
 
     for (const child of Array.from(this.host.children).filter(
-      (el) => el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'description' && el.slot !== 'message'
     )) {
       throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-radio-group-option']);
       this.radioGroupOptions.push(child as RadioGroupOption);
