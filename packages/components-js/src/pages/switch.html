@@ -1,25 +1,3 @@
-<style>
-  .scaling-0 {
-    --p-internal-switch-scaling: 0;
-  }
-
-  .scaling-0-5 {
-    --p-internal-switch-scaling: 0.5;
-  }
-
-  .scaling-0-8 {
-    --p-internal-switch-scaling: 0.8;
-  }
-
-  .scaling-1 {
-    --p-internal-switch-scaling: 1;
-  }
-
-  .scaling-2 {
-    --p-internal-switch-scaling: 2;
-  }
-</style>
-
 <div class="playground light auto-layout-inline" title="should render with defaults">
   <p-switch class="a11ytree-snapshot-test">Some label</p-switch>
 </div>
@@ -72,18 +50,9 @@
   </p-switch>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with slotted and deeply nested anchor">
-  <p-switch>
-    <span>
-      Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-      <em>emphasized</em> and <i>italic</i> text.
-    </span>
-  </p-switch>
-</div>
-
 <div class="playground light" title="should render with min-width when viewport is too small">
   <div style="width: 0">
-    <p-switch>X</p-switch>
+    <p-switch>Some label</p-switch>
   </div>
 </div>
 
@@ -93,34 +62,4 @@
   <p-switch compact="true" loading="true">Some label</p-switch>
   <p-switch compact="true" disabled="true">Some label</p-switch>
   <p-switch compact="true" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-switch class="scaling-0">Some label</p-switch>
-  <p-switch class="scaling-0" checked="true">Some label</p-switch>
-  <p-switch class="scaling-0" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-switch class="scaling-0-5">Some label</p-switch>
-  <p-switch class="scaling-0-5" checked="true">Some label</p-switch>
-  <p-switch class="scaling-0-5" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-switch class="scaling-0-8">Some label</p-switch>
-  <p-switch class="scaling-0-8" checked="true">Some label</p-switch>
-  <p-switch class="scaling-0-8" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-switch class="scaling-1">Some label</p-switch>
-  <p-switch class="scaling-1" checked="true">Some label</p-switch>
-  <p-switch class="scaling-1" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
-</div>
-
-<div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-switch class="scaling-2">Some label</p-switch>
-  <p-switch class="scaling-2" checked="true">Some label</p-switch>
-  <p-switch class="scaling-2" style="max-width: 15rem">Lorem ipsum dolor sit amet, consetetur sadipscing</p-switch>
 </div>

@@ -201,11 +201,6 @@ import { SelectOpenedWithOptgroupsComponent } from './generated/select-opened-wi
 import { SelectOpenedWithOptgroupsDisabledComponent } from './generated/select-opened-with-optgroups-disabled.component';
 import { SelectOpenedWithSelectedEmptyOptionComponent } from './generated/select-opened-with-selected-empty-option.component';
 import { SelectOpenedWithSlottedImagesComponent } from './generated/select-opened-with-slotted-images.component';
-import { SelectScaling_0Component } from './generated/select-scaling-0.component';
-import { SelectScaling_0_5Component } from './generated/select-scaling-0-5.component';
-import { SelectScaling_0_8Component } from './generated/select-scaling-0-8.component';
-import { SelectScaling_1Component } from './generated/select-scaling-1.component';
-import { SelectScaling_2Component } from './generated/select-scaling-2.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
@@ -230,8 +225,10 @@ import { ToastBasicComponent } from './generated/toast-basic.component';
 import { ToastMultilineComponent } from './generated/toast-multiline.component';
 import { ToastOffsetComponent } from './generated/toast-offset.component';
 import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
+import { ToastStateErrorComponent } from './generated/toast-state-error.component';
 import { ToastStateInfoComponent } from './generated/toast-state-info.component';
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
+import { ToastStateWarningComponent } from './generated/toast-state-warning.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekCopticComponent } from './generated/typography-greek-coptic.component';
@@ -411,11 +408,6 @@ export const generatedPages = [
   SelectOpenedWithOptgroupsDisabledComponent,
   SelectOpenedWithSelectedEmptyOptionComponent,
   SelectOpenedWithSlottedImagesComponent,
-  SelectScaling_0Component,
-  SelectScaling_0_5Component,
-  SelectScaling_0_8Component,
-  SelectScaling_1Component,
-  SelectScaling_2Component,
   SheetComponent,
   SheetBasicComponent,
   SheetGridComponent,
@@ -440,8 +432,10 @@ export const generatedPages = [
   ToastMultilineComponent,
   ToastOffsetComponent,
   ToastPrefixedComponent,
+  ToastStateErrorComponent,
   ToastStateInfoComponent,
   ToastStateSuccessComponent,
+  ToastStateWarningComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
   TypographyGreekCopticComponent,
@@ -1293,31 +1287,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: SelectOpenedWithSlottedImagesComponent,
   },
   {
-    name: 'Select Scaling 0',
-    path: 'select-scaling-0',
-    component: SelectScaling_0Component,
-  },
-  {
-    name: 'Select Scaling 0 5',
-    path: 'select-scaling-0-5',
-    component: SelectScaling_0_5Component,
-  },
-  {
-    name: 'Select Scaling 0 8',
-    path: 'select-scaling-0-8',
-    component: SelectScaling_0_8Component,
-  },
-  {
-    name: 'Select Scaling 1',
-    path: 'select-scaling-1',
-    component: SelectScaling_1Component,
-  },
-  {
-    name: 'Select Scaling 2',
-    path: 'select-scaling-2',
-    component: SelectScaling_2Component,
-  },
-  {
     name: 'Sheet',
     path: 'sheet',
     component: SheetComponent,
@@ -1438,6 +1407,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ToastPrefixedComponent,
   },
   {
+    name: 'Toast State Error',
+    path: 'toast-state-error',
+    component: ToastStateErrorComponent,
+  },
+  {
     name: 'Toast State Info',
     path: 'toast-state-info',
     component: ToastStateInfoComponent,
@@ -1446,6 +1420,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast State Success',
     path: 'toast-state-success',
     component: ToastStateSuccessComponent,
+  },
+  {
+    name: 'Toast State Warning',
+    path: 'toast-state-warning',
+    component: ToastStateWarningComponent,
   },
   {
     name: 'Typography Cyril',
