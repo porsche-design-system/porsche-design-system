@@ -1,0 +1,42 @@
+@use 'lib/breakpoint';
+@use 'sass:map';
+
+$pds-breakpoints: (
+  'base': breakpoint.$pds-breakpoint-base,
+  'xs': breakpoint.$pds-breakpoint-xs,
+  's': breakpoint.$pds-breakpoint-s,
+  'm': breakpoint.$pds-breakpoint-m,
+  'l': breakpoint.$pds-breakpoint-l,
+  'xl': breakpoint.$pds-breakpoint-xl,
+  'xxl': breakpoint.$pds-breakpoint-xxl,
+);
+
+@mixin pds-media-query-min($min: null) {
+  @if map.has-key($pds-breakpoints, $min) {
+    @media (min-width: #{map.get($pds-breakpoints, $min)}px) {
+      @content;
+    }
+  } @else {
+    @error "Passed #{$min} breakpoint is not available for used pds-media-query-min() mixin.";
+  }
+}
+
+@mixin pds-media-query-max($max: null) {
+  @if map.has-key($pds-breakpoints, $max) {
+    @media (max-width: #{map.get($pds-breakpoints, $max) - 1}px) {
+      @content;
+    }
+  } @else {
+    @error "Passed #{$max} breakpoint is not available for used pds-media-query-max() mixin.";
+  }
+}
+
+@mixin pds-media-query-min-max($min: null, $max: null) {
+  @if map.has-key($pds-breakpoints, $min) and map.has-key($pds-breakpoints, $max) {
+    @media (min-width: #{map.get($pds-breakpoints, $min)}px) and (max-width: #{map.get($pds-breakpoints, $max) - 1}px) {
+      @content;
+    }
+  } @else {
+    @error "Passed #{$min} and/or #{$max} breakpoint is not available for used pds-media-query-min-max() mixin.";
+  }
+}

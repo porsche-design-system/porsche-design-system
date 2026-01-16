@@ -1,0 +1,42 @@
+@use 'lib/border';
+@use 'lib/theme';
+@use 'sass:map';
+
+$pds-focus-offset-map: (
+  'small': 2px,
+  'none': 0,
+);
+
+$pds-focus-border-radius-map: (
+  'small': border.$pds-border-radius-small,
+  'medium': border.$pds-border-radius-medium,
+);
+
+@mixin pds-focus($offset: 'small', $border-radius: 'small') {
+  // it can easily be overwritten on purpose (when placed here) and visually reflected
+  @if map.has-key($pds-focus-border-radius-map, $border-radius) {
+    border-radius: map.get($pds-focus-border-radius-map, $border-radius);
+  } @else {
+    @if ($border-radius) {
+      border-radius: $border-radius;
+    } @else {
+      border-radius: map.get($pds-focus-border-radius-map, 'none');
+    }
+  }
+  &:focus {
+    outline: border.$pds-border-width-base solid theme.$pds-theme-light-state-focus;
+    @if map.has-key($pds-focus-offset-map, $offset) {
+      outline-offset: map.get($pds-focus-offset-map, $offset);
+    } @else {
+      @if ($offset) {
+        outline-offset: $offset;
+      } @else {
+        outline-offset: map.get($pds-focus-offset-map, 'small');
+      }
+    }
+  }
+  // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
+  &:focus:not(:focus-visible) {
+    outline-color: transparent;
+  }
+}

@@ -27,6 +27,7 @@
       "packages/components-react/projects/react-router",
       "packages/components-vue/dist/vue-wrapper",
       "packages/styles/projects/tailwindcss",
+      "packages/styles/projects/scss",
       "packages/styles/projects/vanilla-extract",
       "packages/styles/projects/global-styles",
       "packages/styles/projects/shared-styles",
