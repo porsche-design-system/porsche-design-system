@@ -5,44 +5,8 @@ import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/genera
 
 const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
   { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
-  {
-    tag: 'p-radio-group-option',
-    properties: { value: 'b' },
-    children: [
-      {
-        tag: 'span',
-        properties: { slot: 'label' },
-        children: [
-          'Option B with slotted label and ',
-          {
-            tag: 'a',
-            properties: { href: 'https://www.porsche.com', className: 'underline' },
-            children: ['link'],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    tag: 'p-radio-group-option',
-    properties: { value: 'c' },
-    children: [
-      {
-        tag: 'div',
-        properties: { slot: 'label-start', className: 'w-[22px] h-[22px] bg-[deeppink] mr-static-sm rounded-full' },
-      },
-      {
-        tag: 'span',
-        properties: { slot: 'label' },
-        children: ['Some slotted label with a "label-start" and "label-end" slot'],
-      },
-      {
-        tag: 'p-popover',
-        properties: { slot: 'label-end', className: 'ml-static-xs' },
-        children: ['Option C with slotted label and a popover '],
-      },
-    ],
-  },
+  { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
+  { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
   { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
   { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
   { tag: 'p-radio-group-option', properties: { value: 'f', label: 'Option F' } },
@@ -110,7 +74,71 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             '.',
           ],
         },
-        ...radioGroupOptions,
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'a' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                {
+                  tag: 'img',
+                  properties: {
+                    src: 'assets/911.png',
+                    alt: '',
+                    className: 'object-contain inline-block align-middle -mt-2 mr-static-sm w-[70px]',
+                  },
+                },
+                'Some slotted label and a "label-after" slot',
+              ],
+            },
+            {
+              tag: 'p-popover',
+              properties: { slot: 'label-after', className: 'ml-static-xs' },
+              children: ['Option A with slotted label and a popover '],
+            },
+          ],
+        },
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'b' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                {
+                  tag: 'span',
+                  properties: {
+                    slot: 'label-start',
+                    className:
+                      'w-[22px] h-[22px] inline-block align-top bg-[deeppink] mt-[2px] mr-static-sm rounded-full',
+                  },
+                },
+                'Option B with slotted label and custom content at the start ',
+              ],
+            },
+          ],
+        },
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'c' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                'Option C with slotted label and a nested ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://www.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],

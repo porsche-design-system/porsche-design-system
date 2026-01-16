@@ -36,41 +36,102 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
   },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-checkbox',
-      properties,
+      tag: 'div',
+      properties: { className: 'flex flex-col gap-static-sm' },
       children: [
         {
-          tag: 'div',
-          properties: { slot: 'label-start', className: 'w-[22px] h-[22px] bg-[deeppink] mr-static-sm rounded-full' },
-        },
-        {
-          tag: 'span',
-          properties: { slot: 'label' },
+          tag: 'p-checkbox',
+          properties,
           children: [
-            'Some slotted label with a "label-start" and "label-end" slot',
-          ],
-        },
-        {
-          tag: 'p-popover',
-          properties: { slot: 'label-end', className: 'ml-static-xs' },
-          children: [
-            'Some label with a ',
             {
-              tag: 'a',
-              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
-              children: ['link'],
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                {
+                  tag: 'img',
+                  properties: {
+                    src: 'assets/911.png',
+                    alt: '',
+                    className: 'object-contain inline-block align-middle -mt-2 mr-static-sm w-[70px]',
+                  },
+                },
+                'Some slotted label with a "label-after" slot',
+              ],
+            },
+            {
+              tag: 'p-popover',
+              properties: { slot: 'label-after', className: 'ml-static-xs' },
+              children: [
+                'Some label with a ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
             },
           ],
         },
         {
-          tag: 'span',
-          properties: { slot: 'message' },
+          tag: 'p-checkbox',
+          properties,
           children: [
-            'Some error message with a ',
             {
-              tag: 'a',
-              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
-              children: ['link'],
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                {
+                  tag: 'span',
+                  properties: {
+                    slot: 'label-start',
+                    className:
+                      'w-[22px] h-[22px] inline-block align-top bg-[deeppink] mt-[2px] mr-static-sm rounded-full',
+                  },
+                },
+                'Some slotted label with custom content at the start and a "label-after" slot',
+              ],
+            },
+            {
+              tag: 'p-popover',
+              properties: { slot: 'label-after', className: 'ml-static-xs' },
+              children: [
+                'Some label with a ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          tag: 'p-checkbox',
+          properties,
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                'Some slotted label with a nested ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://www.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
+            },
+            {
+              tag: 'span',
+              properties: { slot: 'message' },
+              children: [
+                'Some error message with a ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
             },
           ],
         },
@@ -95,7 +156,10 @@ export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
       children: [
         {
           tag: 'label',
-          properties: { className: 'inline-flex flex-col p-fluid-xs gap-static-xs prose-text-sm cursor-pointer hover:[--p-checkbox-border-color:var(--color-primary)]' },
+          properties: {
+            className:
+              'inline-flex flex-col p-fluid-xs gap-static-xs prose-text-sm cursor-pointer hover:[--p-checkbox-border-color:var(--color-primary)]',
+          },
           children: [
             {
               tag: 'span',

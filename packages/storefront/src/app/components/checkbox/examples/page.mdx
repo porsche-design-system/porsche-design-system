@@ -51,12 +51,15 @@ but the checkbox still keeps it's `checked` state. You can find more details in
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message` **or** adding additional
-markup (e.g. `popover`) at the start/end of a `label`. Therefore, a named slot can be used. Make sure **not** to define
-the corresponding property on the host element when a named slot is used (because a property definition is preferred
-over a named slot). For named slots only
+Sometimes it's useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
+**not** to define the corresponding property on the host element when a named slot is used (because a property
+definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
+
+In addition to the named slots `label` and `message`, there is also a `label-after` slot available. This slot must be
+used to render content after the label which is not directly part of it (e.g. an external link or a `popover`
+component).
 
 <ComponentStory story={checkboxStorySlots} />
 
