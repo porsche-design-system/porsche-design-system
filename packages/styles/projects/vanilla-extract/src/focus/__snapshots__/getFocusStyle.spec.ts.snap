@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getFocusStyle() > should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
+{
+  "borderRadius": "6px",
+  "selectors": {
+    "&:focus": {
+      "outline": "2px solid #1A44EA",
+      "outlineOffset": "3px",
+    },
+    "&:focus:not(:focus-visible)": {
+      "outlineColor": "transparent",
+    },
+  },
+}
+`;
+
+exports[`getFocusStyle() > should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
+{
+  "borderRadius": "6px",
+  "selectors": {
+    "&:focus": {
+      "outline": "2px solid #1A44EA",
+      "outlineOffset": 0,
+    },
+    "&:focus:not(:focus-visible)": {
+      "outlineColor": "transparent",
+    },
+  },
+}
+`;
+
+exports[`getFocusStyle() > should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
+{
+  "borderRadius": "4px",
+  "selectors": {
+    "&:focus": {
+      "outline": "2px solid #1A44EA",
+      "outlineOffset": "2px",
+    },
+    "&:focus:not(:focus-visible)": {
+      "outlineColor": "transparent",
+    },
+  },
+}
+`;
+
+exports[`getFocusStyle() > should return correct css for opts: { offset: undefined, borderRadius: undefined } 1`] = `
+{
+  "borderRadius": "4px",
+  "selectors": {
+    "&:focus": {
+      "outline": "2px solid #1A44EA",
+      "outlineOffset": "2px",
+    },
+    "&:focus:not(:focus-visible)": {
+      "outlineColor": "transparent",
+    },
+  },
+}
+`;

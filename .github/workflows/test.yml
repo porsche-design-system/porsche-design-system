@@ -66,6 +66,8 @@ jobs:
         run: yarn test:unit:styles:global-styles
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
+      - name: 'Vanilla Extract Unit'
+        run: yarn test:unit:styles:vanilla-extract
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest

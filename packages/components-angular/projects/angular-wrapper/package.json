@@ -60,10 +60,10 @@
       "import": "./styles/esm/index.mjs",
       "default": "./styles/cjs/index.cjs"
     },
-    "./styles/vanilla-extract": {
-      "types": "./styles/vanilla-extract/esm/index.d.ts",
-      "import": "./styles/vanilla-extract/esm/index.mjs",
-      "default": "./styles/vanilla-extract/cjs/index.cjs"
+    "./vanilla-extract": {
+      "types": "./vanilla-extract/esm/index.d.ts",
+      "import": "./vanilla-extract/esm/index.mjs",
+      "default": "./vanilla-extract/cjs/index.cjs"
     },
     "./ag-grid": {
       "types": "./ag-grid/esm/index.d.ts",

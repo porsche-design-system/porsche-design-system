@@ -1,5 +1,4 @@
 import { resolve } from 'node:path';
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -12,6 +11,4 @@ export default defineConfig({
       tsconfig: './tsconfig.test.json',
     },
   },
-  // @ts-ignore
-  plugins: [vanillaExtractPlugin()],
 });

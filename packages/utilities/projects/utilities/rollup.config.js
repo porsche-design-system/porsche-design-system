@@ -4,9 +4,7 @@ import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/js/index.ts';
-const inputVanillaExtract = 'src/vanilla-extract/index.ts';
 const outputDir = 'dist';
-const outputDirVanillaExtract = `${outputDir}/vanilla-extract`;
 
 const commonPlugins = [
   resolve({
@@ -64,54 +62,7 @@ export default [
               import: './esm/index.mjs',
               default: './cjs/index.cjs',
             },
-            // Vanilla-Extract export
-            './vanilla-extract': {
-              types: './vanilla-extract/esm/index.d.ts',
-              import: './vanilla-extract/esm/index.mjs',
-              default: './vanilla-extract/cjs/index.cjs',
-            },
           },
-        },
-      }),
-    ],
-  },
-  // Vanilla-Extract Build - CJS
-  {
-    input: inputVanillaExtract,
-    output: {
-      dir: `${outputDirVanillaExtract}/cjs`,
-      format: 'cjs',
-      entryFileNames: '[name].cjs',
-      preserveModules: true,
-      preserveModulesRoot: 'src/vanilla-extract',
-    },
-    plugins: [...commonPlugins, typescript()],
-  },
-  // Vanilla-Extract Build - ESM
-  {
-    input: inputVanillaExtract,
-    output: {
-      dir: `${outputDirVanillaExtract}/esm`,
-      format: 'esm',
-      entryFileNames: '[name].mjs',
-      preserveModules: true,
-      preserveModulesRoot: 'src/vanilla-extract',
-    },
-    plugins: [
-      ...commonPlugins,
-      typescript({
-        declaration: true,
-        declarationDir: `${outputDirVanillaExtract}/esm`,
-        exclude: '**.spec.ts',
-        rootDir: 'src/vanilla-extract',
-      }),
-      generatePackageJson({
-        outputFolder: outputDirVanillaExtract,
-        baseContents: {
-          main: 'cjs/index.cjs',
-          module: 'esm/index.mjs',
-          types: 'esm/index.d.ts',
-          sideEffects: false,
         },
       }),
     ],

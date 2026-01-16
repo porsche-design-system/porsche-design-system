@@ -75,6 +75,7 @@ jobs:
             ./packages/styles/projects/shared-styles/dist/
             ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/vanilla-extract/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
@@ -165,6 +166,7 @@ jobs:
             ./packages/styles/projects/shared-styles/dist/
             ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/vanilla-extract/dist/
             ./packages/components/dist/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
