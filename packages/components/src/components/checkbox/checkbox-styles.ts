@@ -16,7 +16,7 @@ import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import {
-  getFunctionalComponentLabelGlobalStyles,
+  getFunctionalComponentLabelAfterStyles,
   getFunctionalComponentLabelStyles,
 } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
@@ -58,7 +58,7 @@ export const getComponentCss = (
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      ...getFunctionalComponentLabelGlobalStyles(disabledOrLoading),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),

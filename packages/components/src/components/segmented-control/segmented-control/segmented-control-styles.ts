@@ -54,6 +54,7 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
       cursor: 'inherit',
       '&:is(legend)': {
+        float: 'left', // Workaround for placing contents after. legends can't be hardly styles and ignore display inline.
         marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
       },
     }),

@@ -21,7 +21,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import {
-  getFunctionalComponentLabelGlobalStyles,
+  getFunctionalComponentLabelAfterStyles,
   getFunctionalComponentLabelStyles,
 } from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
@@ -59,7 +59,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           ...(disabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelGlobalStyles(disabledOrLoading),
+      ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',

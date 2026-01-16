@@ -37,7 +37,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label' },
+          properties: { slot: 'label', className: 'ms-static-xs' },
           children: [
             'Some label with a ',
             {
@@ -47,6 +47,11 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             },
             '.',
           ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after' },
+          children: ['Some Popover description'],
         },
         {
           tag: 'span',
