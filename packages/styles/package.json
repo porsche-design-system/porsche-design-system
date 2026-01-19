@@ -41,10 +41,15 @@
   },
   "peerDependencies": {
     "typescript": "*",
+    "tailwindcss": "*",
     "@tailwindcss/vite": "*",
     "vite": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "sass": "*",
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/vite-plugin": "*",
+    "@emotion/styled": "*"
   },
   "volta": {
     "extends": "../../package.json"

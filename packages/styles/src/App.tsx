@@ -1,24 +1,15 @@
-import { useState } from 'react'
+import { EmotionHeading } from './Emotion.tsx';
+import { HeadingLargeStyle } from './typography.css.ts';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1 className="prose-heading-lg">Porsche Design System</h1>
+      <h1 className="heading-large">Porsche Design System</h1>
+      <h1 className={HeadingLargeStyle}>Porsche Design System</h1>
+      <EmotionHeading>Porsche Design System</EmotionHeading>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
