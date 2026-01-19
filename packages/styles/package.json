@@ -10,6 +10,7 @@
     "dev": "vite",
     "preview": "vite preview",
     "build": "yarn clean:build && yarn build:shared-styles && yarn build:global-styles && yarn build:tailwindcss && yarn build:scss && yarn build:emotion && yarn build:vanilla-extract && yarn build:app",
+    "build-app": "tsc -b && vite build",
     "build-prod": "yarn clean:build && yarn build:shared-styles && yarn build-prod:global-styles && yarn build:tailwindcss && yarn build:scss && yarn build:emotion && yarn build:vanilla-extract && yarn build:app",
     "build:app": "vite build",
     "build:shared-styles": "yarn --cwd projects/shared-styles build",
@@ -41,7 +42,9 @@
   "peerDependencies": {
     "typescript": "*",
     "@tailwindcss/vite": "*",
-    "vite": "*"
+    "vite": "*",
+    "react": "*",
+    "react-dom": "*"
   },
   "volta": {
     "extends": "../../package.json"
