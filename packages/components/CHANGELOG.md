@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `AG Grid`: Relaxed peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 - `Multi Select, Select`:
   - `selected` slot for custom selection rendering and enabling complex options
   - `options-status` slot for loading, error and no results states when using custom filtering
@@ -38,8 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
 - `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
   enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
-- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the intrinsic sizing behavior
-  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
+  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ### Fixed
 
