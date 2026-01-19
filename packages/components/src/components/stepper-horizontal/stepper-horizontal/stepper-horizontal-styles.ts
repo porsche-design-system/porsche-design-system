@@ -1,4 +1,4 @@
-import { fontSizeText, textSmallStyle } from '@porsche-design-system/styles';
+import { fontSizeText, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

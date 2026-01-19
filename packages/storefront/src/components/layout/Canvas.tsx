@@ -9,8 +9,7 @@ import {
   PHeading,
   PLink,
 } from '@porsche-design-system/components-react/ssr';
-import { breakpointS } from '@porsche-design-system/components-react/styles';
-import { breakpointM } from '@porsche-design-system/styles/src/js';
+import { breakpointM, breakpointS } from '@porsche-design-system/tokens';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';

@@ -1,4 +1,4 @@
-import { frostedGlassStyle, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
+import { frostedGlassStyle, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colors,

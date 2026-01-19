@@ -1,4 +1,4 @@
-import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,

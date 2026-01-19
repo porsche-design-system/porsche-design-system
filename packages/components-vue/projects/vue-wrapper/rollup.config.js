@@ -14,7 +14,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/tokens',
-  '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/emotion',
   '@porsche-design-system/components-js/scss',
   '@porsche-design-system/components-js/vanilla-extract',
   '@porsche-design-system/components-js/ag-grid',
@@ -57,7 +57,7 @@ const buildConfig = (packagePath) => {
 };
 
 export default [
-  buildConfig('styles'),
+  buildConfig('emotion'),
   {
     input: `${projectDir}/src/vanilla-extract/index.ts`,
     external,

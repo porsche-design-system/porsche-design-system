@@ -1,4 +1,4 @@
-import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';

@@ -3,9 +3,11 @@ import {
   fontSizeHeadingMedium,
   fontSizeHeadingSmall,
   fontSizeHeadingXLarge,
-  fontSizeHeadingXXLarge, fontWeightRegular, fontWeightSemiBold,
+  fontSizeHeadingXXLarge,
+  fontWeightRegular,
+  fontWeightSemiBold,
   headingXXLargeStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
@@ -41,7 +43,7 @@ export const getComponentCss = (
       headingXXLargeStyle,
       buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
-        fontWeight: sizeValue === 'small' ? fontWeightSemiBold : fontWeightRegular
+        fontWeight: sizeValue === 'small' ? fontWeightSemiBold : fontWeightRegular,
       })),
       align,
       color,

@@ -22,7 +22,7 @@ exports[`getFocusStyle() > should return correct css for opts: { offset: 'none',
   "&:focus:not(:focus-visible)": {
     "outlineColor": "transparent",
   },
-  "borderRadius": "8px",
+  "borderRadius": "6px",
 }
 `;
 

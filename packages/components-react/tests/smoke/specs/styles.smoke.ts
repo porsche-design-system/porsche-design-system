@@ -13,7 +13,7 @@ describe('style package content', () => {
   });
 
   test(`should match content`, () => {
-    const styles = nodeRequire('@porsche-design-system/components-react/styles');
+    const styles = nodeRequire('@porsche-design-system/components-react/emotion');
     expect(styles).toMatchSnapshot();
   });
 });

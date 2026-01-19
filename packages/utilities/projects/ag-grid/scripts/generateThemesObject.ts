@@ -33,7 +33,7 @@ import {
   themeLightStateDisabled,
   themeLightStateFocus,
   themeLightStateHover,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import * as fs from 'fs';
 import * as path from 'path';
 

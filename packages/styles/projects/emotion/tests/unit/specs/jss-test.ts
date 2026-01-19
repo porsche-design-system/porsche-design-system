@@ -1,9 +1,9 @@
-import { type Styles, create } from 'jss';
+import { create, type Styles } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { getFocusStyle, getHoverStyle, getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../../src/js';
+import { getFocusStyle, getHoverStyle, getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../../src';
 
 const jss = create({
   plugins: [

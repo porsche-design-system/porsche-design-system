@@ -10,7 +10,7 @@ import {
   textSmallStyle,
   themeLightBackgroundSurface,
   themeLightPrimary,
-} from '@porsche-design-system/components-react/styles';
+} from '@porsche-design-system/components-react/emotion';
 
 // Wrapper
 const Wrapper = styled.div({

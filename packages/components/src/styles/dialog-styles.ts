@@ -5,7 +5,7 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
   spacingStaticMedium,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { colors, cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
 import { legacyRadiusLarge, radius3Xl, radiusXl } from './css-variables';

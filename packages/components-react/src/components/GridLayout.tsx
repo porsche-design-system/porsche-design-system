@@ -35,7 +35,7 @@ import {
   textXSmallStyle,
   themeLightPrimary,
   themeLightStateHover,
-} from '@porsche-design-system/components-react/styles';
+} from '@porsche-design-system/components-react/emotion';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 

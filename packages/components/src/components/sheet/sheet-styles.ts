@@ -1,4 +1,4 @@
-import { spacingFluidLarge } from '@porsche-design-system/styles';
+import { spacingFluidLarge } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

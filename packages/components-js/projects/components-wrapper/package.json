@@ -57,13 +57,13 @@
       "import": "./tokens/esm/index.mjs",
       "default": "./tokens/cjs/index.cjs"
     },
-    "./styles": {
-      "types": "./styles/esm/index.d.ts",
-      "import": "./styles/esm/index.mjs",
-      "default": "./styles/cjs/index.cjs"
-    },
     "./scss": {
       "sass": "./scss/_index.scss"
+    },
+    "./emotion": {
+      "types": "./emotion/esm/index.d.ts",
+      "import": "./emotion/esm/index.mjs",
+      "default": "./emotion/cjs/index.cjs"
     },
     "./vanilla-extract": {
       "types": "./vanilla-extract/esm/index.d.ts",

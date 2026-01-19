@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/styles",
+  "name": "@porsche-design-system/emotion",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
@@ -13,22 +13,25 @@
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/scss/lib"
+    "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/styled-components": "^5.1.34",
-    "react-jss": "^10.10.0",
-    "styled-components": "^6.1.19"
+    "react-jss": "^10.10.0"
   },
   "peerDependencies": {
     "@types/madge": "*",
-    "change-case": "*",
     "prettier": "*",
     "madge": "*",
-    "sass": "*",
-    "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "@rollup/plugin-node-resolve": "*",
+    "@rollup/plugin-typescript": "*",
+    "rollup-plugin-generate-package-json": "*",
+    "jss": "*",
+    "jss-plugin-camel-case": "*",
+    "jss-plugin-global": "*",
+    "jss-plugin-nested": "*",
+    "jss-plugin-sort-css-media-queries": "*"
   },
   "volta": {
     "extends": "../../package.json"

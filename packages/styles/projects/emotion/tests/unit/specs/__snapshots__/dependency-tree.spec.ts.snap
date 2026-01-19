@@ -31,13 +31,13 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/border/width/borderWidthThin.cjs",
   ],
   "dropShadow/dropShadowHighStyle.cjs": [
-    "tokens/dist/esm/shadow/shadowHigh.cjs",
+    "tokens/dist/esm/shadow/shadowLg.cjs",
   ],
   "dropShadow/dropShadowLowStyle.cjs": [
-    "tokens/dist/esm/shadow/shadowLow.cjs",
+    "tokens/dist/esm/shadow/shadowSm.cjs",
   ],
   "dropShadow/dropShadowMediumStyle.cjs": [
-    "tokens/dist/esm/shadow/shadowMedium.cjs",
+    "tokens/dist/esm/shadow/shadowMd.cjs",
   ],
   "focus/getFocusStyle.cjs": [
     "border/borderRadiusMedium.cjs",
@@ -46,11 +46,11 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "theme/themeLightStateFocus.cjs",
   ],
   "font/fontFamily.cjs": [
-    "tokens/dist/esm/font/family/fontFamily.cjs",
+    "tokens/dist/esm/font/family/fontFamilyPorscheNext.cjs",
   ],
   "font/fontHyphenationStyle.cjs": [],
   "font/fontLineHeight.cjs": [
-    "tokens/dist/esm/font/lineHeight/fontLineHeight.cjs",
+    "tokens/dist/esm/font/lineHeight/fontLineHeightNormal.cjs",
   ],
   "font/fontSize.cjs": [
     "font/fontSizeDisplay.cjs",
@@ -129,7 +129,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/font/weight/fontWeightBold.cjs",
   ],
   "font/fontWeightRegular.cjs": [
-    "tokens/dist/esm/font/weight/fontWeightRegular.cjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
   ],
   "font/fontWeightSemiBold.cjs": [
     "tokens/dist/esm/font/weight/fontWeightSemiBold.cjs",
@@ -138,16 +138,16 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/blur/blurFrosted.cjs",
   ],
   "gradient/gradientToBottomStyle.cjs": [
-    "tokens/dist/esm/gradient/gradientFade.cjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.cjs",
   ],
   "gradient/gradientToLeftStyle.cjs": [
-    "tokens/dist/esm/gradient/gradientFade.cjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.cjs",
   ],
   "gradient/gradientToRightStyle.cjs": [
-    "tokens/dist/esm/gradient/gradientFade.cjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.cjs",
   ],
   "gradient/gradientToTopStyle.cjs": [
-    "tokens/dist/esm/gradient/gradientFade.cjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.cjs",
   ],
   "grid/gridBasic.cjs": [
     "grid/gridBasicColumnEnd.cjs",
@@ -874,8 +874,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/palette.cjs": [],
-  "tokens/dist/esm/font/family/fontFamily.cjs": [],
-  "tokens/dist/esm/font/lineHeight/fontLineHeight.cjs": [],
+  "tokens/dist/esm/font/family/fontFamilyPorscheNext.cjs": [],
+  "tokens/dist/esm/font/lineHeight/fontLineHeightNormal.cjs": [],
   "tokens/dist/esm/font/size/fontSize2Xl.cjs": [],
   "tokens/dist/esm/font/size/fontSize2Xs.cjs": [],
   "tokens/dist/esm/font/size/fontSizeLg.cjs": [],
@@ -884,9 +884,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/font/size/fontSizeXl.cjs": [],
   "tokens/dist/esm/font/size/fontSizeXs.cjs": [],
   "tokens/dist/esm/font/weight/fontWeightBold.cjs": [],
-  "tokens/dist/esm/font/weight/fontWeightRegular.cjs": [],
+  "tokens/dist/esm/font/weight/fontWeightNormal.cjs": [],
   "tokens/dist/esm/font/weight/fontWeightSemiBold.cjs": [],
-  "tokens/dist/esm/gradient/gradientFade.cjs": [],
+  "tokens/dist/esm/gradient/gradientFadeDark.cjs": [],
   "tokens/dist/esm/motion/duration/motionDurationLong.cjs": [],
   "tokens/dist/esm/motion/duration/motionDurationModerate.cjs": [],
   "tokens/dist/esm/motion/duration/motionDurationShort.cjs": [],
@@ -894,9 +894,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/motion/ease/motionEaseIn.cjs": [],
   "tokens/dist/esm/motion/ease/motionEaseInOut.cjs": [],
   "tokens/dist/esm/motion/ease/motionEaseOut.cjs": [],
-  "tokens/dist/esm/shadow/shadowHigh.cjs": [],
-  "tokens/dist/esm/shadow/shadowLow.cjs": [],
-  "tokens/dist/esm/shadow/shadowMedium.cjs": [],
+  "tokens/dist/esm/shadow/shadowLg.cjs": [],
+  "tokens/dist/esm/shadow/shadowMd.cjs": [],
+  "tokens/dist/esm/shadow/shadowSm.cjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluid2Xl.cjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluidLg.cjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluidMd.cjs": [],
@@ -1026,13 +1026,13 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/border/width/borderWidthThin.mjs",
   ],
   "dropShadow/dropShadowHighStyle.mjs": [
-    "tokens/dist/esm/shadow/shadowHigh.mjs",
+    "tokens/dist/esm/shadow/shadowLg.mjs",
   ],
   "dropShadow/dropShadowLowStyle.mjs": [
-    "tokens/dist/esm/shadow/shadowLow.mjs",
+    "tokens/dist/esm/shadow/shadowSm.mjs",
   ],
   "dropShadow/dropShadowMediumStyle.mjs": [
-    "tokens/dist/esm/shadow/shadowMedium.mjs",
+    "tokens/dist/esm/shadow/shadowMd.mjs",
   ],
   "focus/getFocusStyle.mjs": [
     "border/borderRadiusMedium.mjs",
@@ -1041,11 +1041,11 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "theme/themeLightStateFocus.mjs",
   ],
   "font/fontFamily.mjs": [
-    "tokens/dist/esm/font/family/fontFamily.mjs",
+    "tokens/dist/esm/font/family/fontFamilyPorscheNext.mjs",
   ],
   "font/fontHyphenationStyle.mjs": [],
   "font/fontLineHeight.mjs": [
-    "tokens/dist/esm/font/lineHeight/fontLineHeight.mjs",
+    "tokens/dist/esm/font/lineHeight/fontLineHeightNormal.mjs",
   ],
   "font/fontSize.mjs": [
     "font/fontSizeDisplay.mjs",
@@ -1124,7 +1124,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/font/weight/fontWeightBold.mjs",
   ],
   "font/fontWeightRegular.mjs": [
-    "tokens/dist/esm/font/weight/fontWeightRegular.mjs",
+    "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
   ],
   "font/fontWeightSemiBold.mjs": [
     "tokens/dist/esm/font/weight/fontWeightSemiBold.mjs",
@@ -1133,16 +1133,16 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/blur/blurFrosted.mjs",
   ],
   "gradient/gradientToBottomStyle.mjs": [
-    "tokens/dist/esm/gradient/gradientFade.mjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.mjs",
   ],
   "gradient/gradientToLeftStyle.mjs": [
-    "tokens/dist/esm/gradient/gradientFade.mjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.mjs",
   ],
   "gradient/gradientToRightStyle.mjs": [
-    "tokens/dist/esm/gradient/gradientFade.mjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.mjs",
   ],
   "gradient/gradientToTopStyle.mjs": [
-    "tokens/dist/esm/gradient/gradientFade.mjs",
+    "tokens/dist/esm/gradient/gradientFadeDark.mjs",
   ],
   "grid/gridBasic.mjs": [
     "grid/gridBasicColumnEnd.mjs",
@@ -1869,8 +1869,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/palette.mjs": [],
-  "tokens/dist/esm/font/family/fontFamily.mjs": [],
-  "tokens/dist/esm/font/lineHeight/fontLineHeight.mjs": [],
+  "tokens/dist/esm/font/family/fontFamilyPorscheNext.mjs": [],
+  "tokens/dist/esm/font/lineHeight/fontLineHeightNormal.mjs": [],
   "tokens/dist/esm/font/size/fontSize2Xl.mjs": [],
   "tokens/dist/esm/font/size/fontSize2Xs.mjs": [],
   "tokens/dist/esm/font/size/fontSizeLg.mjs": [],
@@ -1879,9 +1879,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/font/size/fontSizeXl.mjs": [],
   "tokens/dist/esm/font/size/fontSizeXs.mjs": [],
   "tokens/dist/esm/font/weight/fontWeightBold.mjs": [],
-  "tokens/dist/esm/font/weight/fontWeightRegular.mjs": [],
+  "tokens/dist/esm/font/weight/fontWeightNormal.mjs": [],
   "tokens/dist/esm/font/weight/fontWeightSemiBold.mjs": [],
-  "tokens/dist/esm/gradient/gradientFade.mjs": [],
+  "tokens/dist/esm/gradient/gradientFadeDark.mjs": [],
   "tokens/dist/esm/motion/duration/motionDurationLong.mjs": [],
   "tokens/dist/esm/motion/duration/motionDurationModerate.mjs": [],
   "tokens/dist/esm/motion/duration/motionDurationShort.mjs": [],
@@ -1889,9 +1889,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/motion/ease/motionEaseIn.mjs": [],
   "tokens/dist/esm/motion/ease/motionEaseInOut.mjs": [],
   "tokens/dist/esm/motion/ease/motionEaseOut.mjs": [],
-  "tokens/dist/esm/shadow/shadowHigh.mjs": [],
-  "tokens/dist/esm/shadow/shadowLow.mjs": [],
-  "tokens/dist/esm/shadow/shadowMedium.mjs": [],
+  "tokens/dist/esm/shadow/shadowLg.mjs": [],
+  "tokens/dist/esm/shadow/shadowMd.mjs": [],
+  "tokens/dist/esm/shadow/shadowSm.mjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluid2Xl.mjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluidLg.mjs": [],
   "tokens/dist/esm/spacing/fluid/spacingFluidMd.mjs": [],

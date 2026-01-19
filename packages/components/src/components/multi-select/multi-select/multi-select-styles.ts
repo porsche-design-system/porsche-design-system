@@ -1,4 +1,4 @@
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

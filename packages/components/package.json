@@ -44,7 +44,7 @@
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/styles": "0.0.0",
+    "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/shared-styles": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",

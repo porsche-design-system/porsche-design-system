@@ -1,9 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const input = 'src/js/index.ts';
+const input = 'src/index.ts';
 const outputDir = 'dist';
 
 const commonPlugins = [
@@ -22,7 +21,7 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs',
       preserveModules: true,
-      preserveModulesRoot: 'src/js',
+      preserveModulesRoot: 'src',
     },
     plugins: [...commonPlugins, typescript()],
   },
@@ -34,7 +33,7 @@ export default [
       format: 'esm',
       entryFileNames: '[name].mjs',
       preserveModules: true,
-      preserveModulesRoot: 'src/js',
+      preserveModulesRoot: 'src',
     },
     plugins: [
       ...commonPlugins,
@@ -42,11 +41,7 @@ export default [
         declaration: true,
         declarationDir: `${outputDir}/esm`,
         exclude: '**.spec.ts',
-        rootDir: 'src/js',
-      }),
-      copy({
-        targets: [{ src: ['src/scss/**/*.scss', 'src/_index.scss'], dest: outputDir }],
-        flatten: false,
+        rootDir: 'src',
       }),
       generatePackageJson({
         outputFolder: outputDir,

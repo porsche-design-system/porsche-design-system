@@ -1,4 +1,4 @@
-import { fontLineHeight } from '@porsche-design-system/styles';
+import { fontLineHeight } from '@porsche-design-system/emotion';
 import { colors } from '../../styles';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';

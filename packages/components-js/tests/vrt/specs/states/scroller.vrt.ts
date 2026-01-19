@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
-import { type Theme } from '@porsche-design-system/styles';
+import { typemThememgn-system/emotion';
+import { scemotion viewportWidschemes, themes,}viewportWidthM '@porsche-design-system/shared/shared/testing';
 import {
   forceFocusVisibleState,
   forceHoverState,

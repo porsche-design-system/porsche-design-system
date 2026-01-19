@@ -4,7 +4,7 @@ import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 
 const nodeRequire = createRequire(import.meta.url);
-const ESMBuildDirStyles = path.resolve(__dirname, './../../../../dist/vue-wrapper/styles/esm');
+const ESMBuildDirStyles = path.resolve(__dirname, './../../../../dist/vue-wrapper/emotion/esm');
 
 describe('style package content', () => {
   test('should contain typings', () => {
@@ -13,7 +13,7 @@ describe('style package content', () => {
   });
 
   test(`should match content`, () => {
-    const styles = nodeRequire('@porsche-design-system/components-vue/styles');
+    const styles = nodeRequire('@porsche-design-system/components-vue/emotion');
     expect(styles).toMatchSnapshot();
   });
 });

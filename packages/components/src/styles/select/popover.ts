@@ -1,4 +1,4 @@
-import { motionDurationShort, motionEasingBase } from '@porsche-design-system/styles';
+import { motionDurationShort, motionEasingBase } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
 import { colors } from '../colors';

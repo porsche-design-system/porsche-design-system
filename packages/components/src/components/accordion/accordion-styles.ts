@@ -8,7 +8,7 @@ import {
   motionDurationShort,
   spacingStaticSmall,
   textSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

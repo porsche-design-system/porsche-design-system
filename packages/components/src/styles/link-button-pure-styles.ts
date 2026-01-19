@@ -1,4 +1,4 @@
-import { fontLineHeight, frostedGlassStyle, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { fontLineHeight, frostedGlassStyle, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';

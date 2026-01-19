@@ -12,7 +12,7 @@ import {
   spacingFluidMedium,
   themeLightBackgroundSurface,
   themeLightPrimary,
-} from '@porsche-design-system/components-react/styles';
+} from '@porsche-design-system/components-react/emotion';
 import { useState } from 'react';
 
 // Wrapper

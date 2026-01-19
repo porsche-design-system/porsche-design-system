@@ -1,4 +1,4 @@
-import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/styles';
+import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

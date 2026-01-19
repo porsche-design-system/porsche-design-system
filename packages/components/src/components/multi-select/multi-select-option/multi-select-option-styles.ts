@@ -1,4 +1,4 @@
-import { fontLineHeight } from '@porsche-design-system/styles';
+import { fontLineHeight } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../../styles';
 import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';

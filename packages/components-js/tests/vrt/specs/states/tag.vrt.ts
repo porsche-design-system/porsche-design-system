@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import { TAG_COLORS } from '@porsche-design-system/components/src/components/tag/tag-utils';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
-import { type Theme } from '@porsche-design-system/styles';
+import { type Theme } from '@porsche-design-system/emotion';
 import {
   forceFocusVisibleState,
   forceHoverState,
