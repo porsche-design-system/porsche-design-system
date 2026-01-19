@@ -6,7 +6,7 @@ import {
   spacingFluidSmall,
   spacingStaticSmall,
   textXSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,

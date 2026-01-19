@@ -1,4 +1,4 @@
-import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoints } from '@porsche-design-system/emotion';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
 import { consoleError, getTagNameWithoutPrefix } from '..';
 import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';

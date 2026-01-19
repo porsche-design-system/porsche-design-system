@@ -1,0 +1,36 @@
+{
+  "name": "@porsche-design-system/scss",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "sideEffects": false,
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:package && yarn copy:scss",
+    "build:package": "tsx scripts/build.ts",
+    "copy:scss": "cp -r src/*.scss dist/",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "@biomejs/biome": "*",
+    "vitest": "*",
+    "tsx": "*",
+    "typescript": "*",
+    "prettier": "*",
+    "sass": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

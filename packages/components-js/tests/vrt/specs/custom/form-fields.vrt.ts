@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import type { TagName } from '@porsche-design-system/shared';
 import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing';
-import type { Theme } from '@porsche-design-system/styles';
+import type { Theme } from '@porsche-design-system/emotion';
 import {
   forceFocusHoverState,
   forceFocusState,

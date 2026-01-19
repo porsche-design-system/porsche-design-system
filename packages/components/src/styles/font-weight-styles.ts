@@ -1,4 +1,4 @@
-import { fontWeightBold, fontWeightRegular, fontWeightSemiBold } from '@porsche-design-system/styles';
+import { fontWeightBold, fontWeightRegular, fontWeightSemiBold } from '@porsche-design-system/emotion';
 import type { TypographyTextWeight } from '../types';
 
 const fontWeightMap: Record<TypographyTextWeight, number> = {

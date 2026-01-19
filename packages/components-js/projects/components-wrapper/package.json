@@ -57,16 +57,18 @@
       "import": "./tokens/esm/index.mjs",
       "default": "./tokens/cjs/index.cjs"
     },
-    "./styles": {
-      "sass": "./styles/_index.scss",
-      "types": "./styles/esm/index.d.ts",
-      "import": "./styles/esm/index.mjs",
-      "default": "./styles/cjs/index.cjs"
+    "./scss": {
+      "sass": "./scss/_index.scss"
     },
-    "./styles/vanilla-extract": {
-      "types": "./styles/vanilla-extract/esm/index.d.ts",
-      "import": "./styles/vanilla-extract/esm/index.mjs",
-      "default": "./styles/vanilla-extract/cjs/index.cjs"
+    "./emotion": {
+      "types": "./emotion/esm/index.d.ts",
+      "import": "./emotion/esm/index.mjs",
+      "default": "./emotion/cjs/index.cjs"
+    },
+    "./vanilla-extract": {
+      "types": "./vanilla-extract/esm/index.d.ts",
+      "import": "./vanilla-extract/esm/index.mjs",
+      "default": "./vanilla-extract/cjs/index.cjs"
     },
     "./ag-grid": {
       "types": "./ag-grid/esm/index.d.ts",

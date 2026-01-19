@@ -15,9 +15,10 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/tokens',
-  '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/emotion',
   '@porsche-design-system/components-js/ag-grid',
-  '@porsche-design-system/components-js/styles/vanilla-extract',
+  '@porsche-design-system/components-js/scss',
+  '@porsche-design-system/components-js/vanilla-extract',
   '@porsche-design-system/components-js/testing',
 ];
 
@@ -44,10 +45,6 @@ const buildConfig = (packagePath) => {
       // TODO: only copy stuff once when needed instead of twice (= for each sub package)
       copy({
         targets: [
-          {
-            src: `${projectDir}/src/styles/_index.scss`,
-            dest: `${outputDir}/styles`,
-          },
           // TODO: stop copying unrelated files into the root of the package when bundling sub packages
           {
             src: [`${rootDir}/LICENSE.md`, `${rootDir}/OSS_NOTICE`, `${rootDir}/packages/components/CHANGELOG.md`],
@@ -70,19 +67,40 @@ const buildConfig = (packagePath) => {
 };
 
 export default [
-  buildConfig('styles'),
+  buildConfig('emotion'),
   {
-    input: `${projectDir}/src/styles/vanilla-extract/index.ts`,
+    input: `${projectDir}/src/vanilla-extract/index.ts`,
     external,
     output: [
       {
-        file: `${outputDir}/styles/vanilla-extract/cjs/index.cjs`,
+        file: `${outputDir}/vanilla-extract/cjs/index.cjs`,
         format: 'cjs',
       },
       {
-        file: `${outputDir}/styles/vanilla-extract/esm/index.mjs`,
+        file: `${outputDir}/vanilla-extract/esm/index.mjs`,
         format: 'esm',
       },
+    ],
+    plugins: [
+      typescript(typescriptOpts),
+      // SCSS
+      copy({
+        targets: [
+          {
+            src: `${projectDir}/src/scss/_index.scss`,
+            dest: `${outputDir}/scss`,
+          },
+        ],
+      }),
+      generatePackageJson({
+        outputFolder: `${outputDir}/vanilla-extract`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
   {

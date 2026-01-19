@@ -4,7 +4,7 @@ import {
   motionDurationModerate,
   spacingStaticMedium,
   textSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { spacingStaticXs } from '@porsche-design-system/tokens';
 import type { JssStyle } from 'jss';
 import {

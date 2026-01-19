@@ -1,4 +1,4 @@
-import { borderWidthThin, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
+import { borderWidthThin, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';

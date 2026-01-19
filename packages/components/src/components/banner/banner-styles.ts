@@ -7,7 +7,7 @@ import {
   motionDurationLong,
   motionDurationModerate,
   motionEasingOut,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,

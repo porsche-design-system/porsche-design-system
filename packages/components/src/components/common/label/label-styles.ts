@@ -1,4 +1,4 @@
-import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import { colors, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { buildResponsiveStyles } from '../../../utils';

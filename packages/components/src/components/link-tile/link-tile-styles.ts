@@ -5,7 +5,7 @@ import {
   spacingFluidMedium,
   spacingStaticMedium,
   textMediumStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'page-styles-flyout-grid-example',
   styles: [
     `
-      @use '@porsche-design-system/components-angular/styles' as *;
+      @use '@porsche-design-system/components-angular/scss' as *;
 
       div.wrapper {
         opacity: 0;

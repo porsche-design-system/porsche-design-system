@@ -1,4 +1,4 @@
-import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
+import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

@@ -7,8 +7,8 @@ import {
   motionEasingBase,
   motionEasingIn,
   motionEasingOut,
-} from '@porsche-design-system/styles';
-import type * as fromMotionType from '@porsche-design-system/styles/dist/esm/motion';
+} from '@porsche-design-system/emotion';
+import type * as fromMotionType from '@porsche-design-system/emotion/dist/esm/motion';
 import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import { alphaDisabled } from './alpha-disabled';

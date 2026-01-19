@@ -1,4 +1,4 @@
-import { type Breakpoint, breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoint } from '@porsche-design-system/emotion';
 import type { Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import {

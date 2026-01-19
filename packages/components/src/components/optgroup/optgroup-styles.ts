@@ -1,4 +1,4 @@
-import { fontWeightSemiBold, textXSmallStyle } from '@porsche-design-system/styles';
+import { fontWeightSemiBold, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

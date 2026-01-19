@@ -1,4 +1,4 @@
-import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
+import { gridGap, motionEasingBase } from '@porsche-design-system/emotion';
 import { Splide } from '@splidejs/splide';
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../types';

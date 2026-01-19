@@ -1,4 +1,4 @@
-import { fontLineHeight, textSmallStyle } from '@porsche-design-system/styles';
+import { fontLineHeight, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { colors } from '../colors';
 import { getTransition } from '../common-styles';

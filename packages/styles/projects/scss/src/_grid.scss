@@ -1,0 +1,57 @@
+@mixin pds-grid {
+  margin: 0 var(--pds-internal-grid-margin, 0);
+  display: grid;
+  padding: 0 calc(50% - var(--pds-internal-grid-margin, 0px) - 2560px/2);
+  grid-gap: clamp(16px, 1.25vw + 12px, 36px);
+  max-width: var(--pds-internal-grid-width-max, 2560px);
+  min-width: var(--pds-internal-grid-width-min, 320px);
+  box-sizing: content-box;
+  grid-template-columns: [full-start] minmax(
+      0,
+      var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
+    ) [wide-start extended-start basic-start narrow-start] repeat(
+      6,
+      minmax(0, 1fr)
+    ) [narrow-end basic-end extended-end wide-end] minmax(
+      0,
+      var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
+    ) [full-end];
+  --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
+  --pds-grid-basic-span-one-half: span 3;
+  --pds-grid-basic-span-one-third: span 2;
+  --pds-grid-narrow-span-one-half: span 3;
+  --pds-grid-basic-span-two-thirds: span 4;
+  --pds-grid-extended-span-one-half: span 3;
+
+  @media (min-width: 760px) {
+    grid-template-columns: [full-start] minmax(
+        0,
+        var(
+          --pds-internal-grid-outer-column,
+          calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+        )
+      ) [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(
+        2,
+        minmax(0, 1fr)
+      ) [narrow-start] repeat(8, minmax(0, 1fr)) [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(
+        0,
+        1fr
+      ) [extended-end] minmax(0, 1fr) [wide-end] minmax(
+        0,
+        var(
+          --pds-internal-grid-outer-column,
+          calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
+        )
+      ) [full-end];
+    --pds-internal-grid-safe-zone: calc(5vw - 16px);
+    --pds-grid-basic-span-one-half: span 6;
+    --pds-grid-basic-span-one-third: span 4;
+    --pds-grid-narrow-span-one-half: span 4;
+    --pds-grid-basic-span-two-thirds: span 8;
+    --pds-grid-extended-span-one-half: span 7;
+  }
+
+  @media (min-width: 1920px) {
+    --pds-internal-grid-safe-zone: min(50vw - 880px, 400px);
+  }
+}

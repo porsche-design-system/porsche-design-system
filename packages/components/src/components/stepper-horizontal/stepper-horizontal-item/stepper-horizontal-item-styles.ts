@@ -1,4 +1,4 @@
-import { fontLineHeight, frostedGlassStyle, spacingFluidXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { fontLineHeight, frostedGlassStyle, spacingFluidXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens';
 import type { JssStyle } from 'jss';
 import {
