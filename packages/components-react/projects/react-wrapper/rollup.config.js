@@ -22,6 +22,7 @@ const external = [
   '@porsche-design-system/components-js/tokens',
   '@porsche-design-system/components-js/styles',
   '@porsche-design-system/components-js/ag-grid',
+  '@porsche-design-system/components-js/scss',
   '@porsche-design-system/components-js/vanilla-extract',
   '@porsche-design-system/components-js/testing',
   'react',
@@ -117,10 +118,12 @@ export default [
               default: './tokens/cjs/index.cjs',
             },
             './styles': {
-              sass: './styles/_index.scss',
               types: './styles/esm/index.d.ts',
               import: './styles/esm/index.mjs',
               default: './styles/cjs/index.cjs',
+            },
+            './scss': {
+              sass: './scss/_index.scss',
             },
             './vanilla-extract': {
               types: './vanilla-extract/esm/index.d.ts',
@@ -296,14 +299,6 @@ export default [
     plugins: [
       // typings are produced by main build
       typescript(typescriptOpts),
-      copy({
-        targets: [
-          {
-            src: `${projectDir}/src/styles/_index.scss`,
-            dest: `${outputDir}/styles`,
-          },
-        ],
-      }),
       generatePackageJson({
         outputFolder: `${outputDir}/styles`,
         baseContents: {
@@ -339,6 +334,15 @@ export default [
     plugins: [
       // typings are produced by main build
       typescript(typescriptOpts),
+      // SCSS
+      copy({
+        targets: [
+          {
+            src: `${projectDir}/src/scss/_index.scss`,
+            dest: `${outputDir}/scss`,
+          },
+        ],
+      }),
       generatePackageJson({
         outputFolder: `${outputDir}/vanilla-extract`,
         baseContents: {

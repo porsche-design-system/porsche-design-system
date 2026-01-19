@@ -55,10 +55,12 @@
       "default": "./tokens/cjs/index.cjs"
     },
     "./styles": {
-      "sass": "./styles/_index.scss",
       "types": "./styles/esm/index.d.ts",
       "import": "./styles/esm/index.mjs",
       "default": "./styles/cjs/index.cjs"
+    },
+    "./scss": {
+      "sass": "./scss/_index.scss"
     },
     "./vanilla-extract": {
       "types": "./vanilla-extract/esm/index.d.ts",

@@ -9,7 +9,7 @@ const motionVariables = fs.readFileSync(path.resolve('dist/_motion.scss'), 'utf8
 const themeVariables = fs.readFileSync(path.resolve('dist/_theme.scss'), 'utf8');
 const hoverMixin = fs
   .readFileSync(path.resolve('src/_hover.scss'), 'utf8')
-  .replace(/@use\s'lib.*;/g, '')
+  .replace(/@use\s+'[^']+';?\n?/g, '')
   .replace(/border\./g, '')
   .replace(/theme\./g, '')
   .replace(/motion\./g, '');
@@ -18,7 +18,8 @@ describe('pds-hover()', () => {
   it.each([{}, { borderRadius: 'small' }, { borderRadius: 'medium' }, { borderRadius: '6px' }])(
     'should return correct css for opts: %s',
     (opts) => {
-      const result = sass.compileString(`${borderVariables} ${motionVariables} ${themeVariables} ${hoverMixin} div {
+      const result =
+        sass.compileString(`@use 'sass:map'; ${borderVariables} ${motionVariables} ${themeVariables} ${hoverMixin} div {
       @include pds-hover(${opts ? Object.values(opts).join(', ') : ''});
     }`);
       expect(result.css).toMatchSnapshot();

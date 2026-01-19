@@ -1,6 +1,6 @@
-@use 'lib/border';
-@use 'lib/theme';
-@use 'lib/motion';
+@use 'border';
+@use 'theme';
+@use 'motion';
 
 @mixin pds-skeleton($theme: 'light') {
   @if ($theme == 'dark') {

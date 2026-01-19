@@ -7,9 +7,10 @@ const borderVariables = fs.readFileSync(path.resolve('dist/_border.scss'), 'utf8
 const themeVariables = fs.readFileSync(path.resolve('dist/_theme.scss'), 'utf8');
 const focusMixin = fs
   .readFileSync(path.resolve('src/_focus.scss'), 'utf8')
-  .replace(/@use\s'lib.*;/g, '')
+  .replace(/@use\s+'[^']+';?\n?/g, '')
   .replace(/border\./g, '')
-  .replace(/theme\./g, '');
+  .replace(/theme\./g, '')
+  .replace(/map\./g, 'map-');
 
 describe('pds-focus()', () => {
   it.each([
@@ -19,7 +20,7 @@ describe('pds-focus()', () => {
     { offset: '3px', borderRadius: '6px' },
   ])('should return correct css for opts: %s', (opts) => {
     const result = sass.compileString(`${borderVariables} ${themeVariables} ${focusMixin} div {
-      @include pds-focus(${opts ? Object.values(opts).join(', ') : ''});
+      @include pds-focus(${Object.keys(opts).length ? Object.values(opts).join(', ') : ''});
     }`);
     expect(result.css).toMatchSnapshot();
   });

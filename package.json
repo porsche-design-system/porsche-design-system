@@ -87,6 +87,7 @@
     "build:styles:shared-styles": "yarn --cwd ./packages/styles build:shared-styles",
     "build:styles:global-styles": "yarn --cwd ./packages/styles build:global-styles",
     "build:styles:tailwindcss": "yarn --cwd ./packages/styles build:tailwindcss",
+    "build:styles:scss": "yarn --cwd ./packages/styles build:scss",
     "build:styles:vanilla-extract": "yarn --cwd ./packages/styles build:vanilla-extract",
     "build:component-meta": "yarn --cwd ./packages/component-meta build",
     "build:components": "yarn --cwd ./packages/components build",

@@ -12,23 +12,23 @@ import {
 export const getHeadingScss = () => {
   return `
     @mixin pds-heading-large {
-      font: normal normal ${fontWeightNormal} ${fontSizeLg}/${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${fontSizeLg} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
 
     @mixin pds-heading-medium {
-      font: normal normal ${fontWeightNormal} ${fontSizeMd}/${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${fontSizeMd} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
 
     @mixin pds-heading-small {
-      font: normal normal ${fontWeightNormal} ${fontSizeSm}/${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${fontSizeSm} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
 
     @mixin pds-heading-x-large {
-      font: normal normal ${fontWeightNormal} ${fontSizeXl}/${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${fontSizeXl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
 
     @mixin pds-heading-xx-large {
-      font: normal normal ${fontWeightNormal} ${fontSize2Xl}/${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${fontSize2Xl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
 `;
 };

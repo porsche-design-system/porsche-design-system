@@ -1,7 +1,7 @@
-@use 'lib/border';
+@use 'border';
 // @use 'lib/frosted-glass';
-@use 'lib/theme';
-@use 'lib/motion';
+@use 'theme';
+@use 'motion';
 @use 'sass:map';
 
 $pds-hover-border-radius-map: (

@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 
 const breakpointVariables = fs.readFileSync(path.resolve('dist/_breakpoint.scss'), 'utf8');
 const mediaQueryMixin = fs.readFileSync(path.resolve('src/_media-query.scss'), 'utf8');
-const mixin = mediaQueryMixin.replace("@use 'lib/breakpoint';", breakpointVariables).replace(/breakpoint\./g, '');
+const mixin = mediaQueryMixin.replace("@use 'breakpoint';", breakpointVariables).replace(/breakpoint\./g, '');
 
 const getCss = (scenario: string): string => {
   return sass.compileString(`${mixin} ${scenario}`).css;

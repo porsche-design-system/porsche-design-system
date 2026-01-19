@@ -17,6 +17,7 @@ const external = [
   '@porsche-design-system/components-js/tokens',
   '@porsche-design-system/components-js/styles',
   '@porsche-design-system/components-js/ag-grid',
+  '@porsche-design-system/components-js/scss',
   '@porsche-design-system/components-js/vanilla-extract',
   '@porsche-design-system/components-js/testing',
 ];
@@ -44,10 +45,6 @@ const buildConfig = (packagePath) => {
       // TODO: only copy stuff once when needed instead of twice (= for each sub package)
       copy({
         targets: [
-          {
-            src: `${projectDir}/src/styles/_index.scss`,
-            dest: `${outputDir}/styles`,
-          },
           // TODO: stop copying unrelated files into the root of the package when bundling sub packages
           {
             src: [`${rootDir}/LICENSE.md`, `${rootDir}/OSS_NOTICE`, `${rootDir}/packages/components/CHANGELOG.md`],
@@ -86,6 +83,15 @@ export default [
     ],
     plugins: [
       typescript(typescriptOpts),
+      // SCSS
+      copy({
+        targets: [
+          {
+            src: `${projectDir}/src/scss/_index.scss`,
+            dest: `${outputDir}/scss`,
+          },
+        ],
+      }),
       generatePackageJson({
         outputFolder: `${outputDir}/vanilla-extract`,
         baseContents: {

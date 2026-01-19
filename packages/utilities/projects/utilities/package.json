@@ -9,8 +9,7 @@
   "types": "dist/esm/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:generateScss && yarn build:bundle",
-    "build:generateScss": "tsx scripts/generateScss.ts",
+    "build": "yarn clean:build && yarn build:bundle",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
