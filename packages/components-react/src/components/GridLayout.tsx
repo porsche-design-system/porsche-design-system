@@ -37,7 +37,7 @@ import {
   themeLightStateHover,
 } from '@porsche-design-system/components-react/emotion';
 import { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 // VisualizeGrid
 const VisualizeGrid = styled.div({

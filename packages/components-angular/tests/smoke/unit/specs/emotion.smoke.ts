@@ -4,16 +4,16 @@ import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 
 const nodeRequire = createRequire(import.meta.url);
-const ESMBuildDirStyles = path.resolve(__dirname, './../../../dist/react-wrapper/styles/esm');
+const ESMBuildDirStyles = path.resolve(__dirname, './../../../../dist/angular-wrapper/emotion/esm');
 
-describe('style package content', () => {
+describe('emotion package content', () => {
   test('should contain typings', () => {
     const exists = fs.existsSync(`${ESMBuildDirStyles}/index.d.ts`);
     expect(exists).toBe(true);
   });
 
   test(`should match content`, () => {
-    const styles = nodeRequire('@porsche-design-system/components-react/emotion');
+    const styles = nodeRequire('@porsche-design-system/components-angular/emotion');
     expect(styles).toMatchSnapshot();
   });
 });

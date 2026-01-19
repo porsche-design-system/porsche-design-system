@@ -6,7 +6,7 @@ import { describe, expect, test } from 'vitest';
 const nodeRequire = createRequire(import.meta.url);
 const ESMBuildDirStyles = path.resolve(__dirname, './../../../../dist/vue-wrapper/emotion/esm');
 
-describe('style package content', () => {
+describe('emotion package content', () => {
   test('should contain typings', () => {
     const exists = fs.existsSync(`${ESMBuildDirStyles}/index.d.ts`);
     expect(exists).toBe(true);
