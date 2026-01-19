@@ -46,10 +46,6 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 ## Planned upcoming changes in next alpha release
 
 - Redesign `p-accordion`, `p-tabs`, `p-tabs-bar` and `p-pagination`
-- Replace the current styles package with `scss`, `vanilla-extract` and `emotion` (the styles package will be
-  deprecated). **Tailwind CSS** is the preferred and fully supported styling solution, providing standardized patterns,
-  templates, and examples.
-- Document tokens package `@porsche-design-system/tokens`
 - Overhaul storefront documentation and examples
 - Introduce design language guidelines (Brand Guide)
 - Expose more design tokens as CSS variables (e.g. spacing, typography, shadows, etc.)
@@ -243,6 +239,31 @@ export class AppModule {}
 ```
 
 ## 👹Breaking Changes
+
+### Styles Package
+
+The styles work the same way as before, only the export paths have changed:
+
+#### Emotion, Styled Components
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
+
+#### Vanilla Extract
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+```
+
+#### SCSS
+
+```diff
+- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
 
 ### Common
 
