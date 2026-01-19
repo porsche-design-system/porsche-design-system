@@ -16,6 +16,11 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
+  "exports": {
+    ".": {
+      "sass": "./dist/_index.scss"
+    }
+  },
   "dependencies": {
     "@porsche-design-system/tokens": "0.0.0"
   },
