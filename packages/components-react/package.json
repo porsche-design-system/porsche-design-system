@@ -42,9 +42,9 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "ag-grid-community": "34.2.0",
-    "ag-grid-enterprise": "34.2.0",
-    "ag-grid-react": "34.2.0",
+    "ag-grid-community": "35.0.0",
+    "ag-grid-enterprise": "35.0.0",
+    "ag-grid-react": "35.0.0",
     "local-web-server": "^5.4.0",
     "@vitejs/plugin-react": "^5.0.4",
     "vite-plugin-html": "^3.2.2"

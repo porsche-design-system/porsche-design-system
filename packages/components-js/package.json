@@ -94,8 +94,8 @@
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.2",
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "34.2.0",
-    "ag-grid-enterprise": "34.2.0",
+    "ag-grid-community": "35.0.0",
+    "ag-grid-enterprise": "35.0.0",
     "devtools-protocol": "^0.0.1528500",
     "jsdom": "^24.1.0",
     "local-web-server": "^5.4.0",
@@ -107,8 +107,8 @@
   },
   "peerDependencies": {
     "@playwright/test": "*",
-    "ag-grid-enterprise": ">= 33.0.0 <35.0.0",
-    "ag-grid-react": ">= 33.0.0 <35.0.0",
+    "ag-grid-enterprise": ">= 33.0.0 <36.0.0",
+    "ag-grid-react": ">= 33.0.0 <36.0.0",
     "change-case": "*",
     "concurrently": "*",
     "globby": "*",

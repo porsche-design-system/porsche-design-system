@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `AG Grid`: Relaxed peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 - `Multi Select, Select`:
   - `selected` slot for custom selection rendering and enabling complex options
   - `options-status` slot for loading, error and no results states when using custom filtering

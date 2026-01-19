@@ -20,8 +20,8 @@
     "@porsche-design-system/components-js": "3.32.0-rc.1"
   },
   "peerDependencies": {
-    "ag-grid-enterprise": ">= 33.0.0 <35.0.0",
-    "ag-grid-vue3": ">= 33.0.0 <35.0.0",
+    "ag-grid-enterprise": ">= 33.0.0 <36.0.0",
+    "ag-grid-vue3": ">= 33.0.0 <36.0.0",
     "tailwindcss": ">= 4.0.0 <5.0.0",
     "vue": ">=3.0.0 <4.0.0"
   },
