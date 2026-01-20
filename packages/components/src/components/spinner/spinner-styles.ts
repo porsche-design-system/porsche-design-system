@@ -1,4 +1,4 @@
-import { motionDurationVeryLong } from '@porsche-design-system/styles';
+import { motionDurationVeryLong } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,

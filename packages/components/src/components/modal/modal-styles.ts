@@ -1,4 +1,4 @@
-import { gridExtendedOffsetBase } from '@porsche-design-system/styles';
+import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

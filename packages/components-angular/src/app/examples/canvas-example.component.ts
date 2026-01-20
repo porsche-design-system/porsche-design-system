@@ -3,7 +3,7 @@ import {
   CanvasSidebarStartUpdateEventDetail,
   PorscheDesignSystemModule,
 } from '@porsche-design-system/components-angular';
-import { breakpointS } from '@porsche-design-system/components-angular/styles';
+import { breakpointS } from '@porsche-design-system/components-angular/emotion';
 
 @Component({
   selector: 'page-canvas-example',

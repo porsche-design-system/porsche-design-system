@@ -7,7 +7,7 @@ import {
   fontSizeTextXLarge,
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
 import type { IconName, TextSize } from '../../types';
 import { getCss } from '../../utils';

@@ -1,4 +1,4 @@
-import { spacingStaticXSmall } from '@porsche-design-system/styles';
+import { spacingStaticXSmall } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,

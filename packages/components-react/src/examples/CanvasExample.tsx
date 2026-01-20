@@ -5,7 +5,7 @@ import {
   PHeading,
   PText,
 } from '@porsche-design-system/components-react';
-import { breakpointS } from '@porsche-design-system/components-react/styles';
+import { breakpointS } from '@porsche-design-system/components-react/emotion';
 import { useCallback, useState } from 'react';
 
 export const CanvasExamplePage = (): JSX.Element => {

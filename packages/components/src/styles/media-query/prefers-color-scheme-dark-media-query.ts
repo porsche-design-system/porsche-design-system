@@ -1,4 +1,4 @@
-import type { Theme } from '@porsche-design-system/styles';
+import type { Theme } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { isThemeAuto } from '../../utils';
 

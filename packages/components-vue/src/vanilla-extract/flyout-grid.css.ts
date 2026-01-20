@@ -1,4 +1,4 @@
-import { gridGap, spacingFluidLarge } from '@porsche-design-system/components-vue/styles/vanilla-extract';
+import { gridGap, spacingFluidLarge } from '@porsche-design-system/components-vue/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 
 export const Wrapper = style({

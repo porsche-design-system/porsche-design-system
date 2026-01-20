@@ -1,4 +1,4 @@
-import { spacingStaticMedium } from '@porsche-design-system/styles';
+import { spacingStaticMedium } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import {

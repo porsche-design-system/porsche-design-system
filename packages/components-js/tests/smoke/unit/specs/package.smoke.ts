@@ -29,16 +29,18 @@ const packageJsonExports = {
     import: './tokens/esm/index.mjs',
     default: './tokens/cjs/index.cjs',
   },
-  './styles': {
+  './scss': {
     sass: './styles/_index.scss',
-    types: './styles/esm/index.d.ts',
-    import: './styles/esm/index.mjs',
-    default: './styles/cjs/index.cjs',
   },
-  './styles/vanilla-extract': {
-    types: './styles/vanilla-extract/esm/index.d.ts',
-    import: './styles/vanilla-extract/esm/index.mjs',
-    default: './styles/vanilla-extract/cjs/index.cjs',
+  './emotion': {
+    types: './emotion/esm/index.d.ts',
+    import: './emotion/esm/index.mjs',
+    default: './emotion/cjs/index.cjs',
+  },
+  './vanilla-extract': {
+    types: './vanilla-extract/esm/index.d.ts',
+    import: './vanilla-extract/esm/index.mjs',
+    default: './vanilla-extract/cjs/index.cjs',
   },
   './testing': {
     types: './testing/index.d.ts',
@@ -154,8 +156,9 @@ describe('package.json files', () => {
             ('entrypoint' in prob &&
               (prob.entrypoint === './ag-grid' ||
                 prob.entrypoint === '.' ||
-                prob.entrypoint === './styles' ||
-                prob.entrypoint === './styles/vanilla-extract' ||
+                prob.entrypoint === './scss' ||
+                prob.entrypoint === './emotion' ||
+                prob.entrypoint === './vanilla-extract' ||
                 prob.entrypoint === './ssr' ||
                 prob.entrypoint.includes('tailwindcss') ||
                 prob.entrypoint.includes('font-face') ||

@@ -1,4 +1,4 @@
-import { breakpointS } from '@porsche-design-system/styles';
+import { breakpointS } from '@porsche-design-system/emotion';
 import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {

@@ -5,7 +5,7 @@ import {
   spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { colors } from '../../styles';
 import { legacyRadiusMedium, radiusXl } from '../../styles/css-variables';

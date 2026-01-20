@@ -1,4 +1,4 @@
-import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
+import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colors,

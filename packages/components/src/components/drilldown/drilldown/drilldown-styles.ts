@@ -7,7 +7,7 @@ import {
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,

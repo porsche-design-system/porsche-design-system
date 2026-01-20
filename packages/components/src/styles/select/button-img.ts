@@ -1,4 +1,4 @@
-import { fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
+import { fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { legacyRadiusSmall, radiusSm } from '../css-variables';
 

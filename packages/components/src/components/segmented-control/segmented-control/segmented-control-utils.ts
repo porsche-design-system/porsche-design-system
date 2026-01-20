@@ -1,4 +1,4 @@
-import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
+import { borderWidthBase, fontFamily } from '@porsche-design-system/emotion';
 import { forceUpdate } from '@stencil/core';
 import { hasDocument } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';

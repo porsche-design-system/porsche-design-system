@@ -4,7 +4,7 @@ import {
   fontLineHeight,
   textSmallStyle,
   textXSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colors,

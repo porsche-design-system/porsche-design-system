@@ -20,7 +20,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </p-carousel>
   `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;

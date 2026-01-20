@@ -44,7 +44,7 @@ import {
   themeLightStateDisabled,
   themeLightStateFocus,
   themeLightStateHover,
-} from '@porsche-design-system/components-react/styles';
+} from '@porsche-design-system/components-react/emotion';
 
 // Wrapper
 const wrapperStyle = {

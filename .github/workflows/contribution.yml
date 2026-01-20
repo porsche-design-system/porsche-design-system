@@ -28,6 +28,7 @@ jobs:
     with:
       image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
+      - test
       - build
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}

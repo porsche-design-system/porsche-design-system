@@ -1,0 +1,46 @@
+{
+  "name": "@porsche-design-system/vanilla-extract",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "sideEffects": false,
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:bundle",
+    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.js --bundleConfigAsCjs",
+    "test": "yarn test:unit",
+    "test:unit": "yarn generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "default": "./dist/cjs/index.cjs"
+    }
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "@biomejs/biome": "*",
+    "vitest": "*",
+    "typescript": "*",
+    "rollup": "*",
+    "@rollup/plugin-node-resolve": "*",
+    "rollup-plugin-generate-package-json": "*",
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/vite-plugin": "*",
+    "@vanilla-extract/rollup-plugin": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}
