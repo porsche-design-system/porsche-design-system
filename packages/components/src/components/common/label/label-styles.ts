@@ -7,11 +7,18 @@ import { getFunctionalComponentRequiredStyles } from '../required/required-style
 
 const { primaryColor, contrastHighColor } = colors;
 
-export const getFunctionalComponentLabelAfterStyles = (): Styles => {
+export const getFunctionalComponentLabelAfterStyles = (
+  isDisabledOrLoading: boolean,
+  additionalIsDisabledJssStyle?: JssStyle
+): Styles => {
   return {
     'slot[name="label-after"]': {
       display: 'inline-block',
       verticalAlign: 'top',
+      ...(isDisabledOrLoading && {
+        pointerEvents: 'none',
+        ...additionalIsDisabledJssStyle,
+      }),
     },
   };
 };
@@ -46,6 +53,9 @@ export const getFunctionalComponentLabelStyles = (
         color: contrastHighColor,
       },
       ...additionalDefaultJssStyle,
+      '&:is(legend)': {
+        float: 'left', // Workaround for placing contents after. Legend can't be really styles with CSS and ignores display inline.
+      },
     },
     // .required
     ...getFunctionalComponentRequiredStyles(),

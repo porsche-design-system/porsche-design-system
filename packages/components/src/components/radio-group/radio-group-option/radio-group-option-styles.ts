@@ -59,7 +59,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           ...(disabled && getDisabledBaseStyles()),
         }),
       },
-      ...getFunctionalComponentLabelAfterStyles(),
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
