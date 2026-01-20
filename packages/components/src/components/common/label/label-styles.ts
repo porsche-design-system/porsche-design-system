@@ -38,7 +38,8 @@ export const getFunctionalComponentLabelStyles = (
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
       },
-      '&+&': {
+      // styling for the description
+      '&:is(span)': {
         cursor: 'unset',
         marginTop: `-${spacingStaticXSmall}`,
         fontSize: fontSizeTextXSmall,
