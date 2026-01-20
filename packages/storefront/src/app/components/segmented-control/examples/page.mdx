@@ -1,7 +1,10 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { segmentedControlStoryLabel } from '@/app/components/segmented-control/segmented-control.stories';
+import {
+  segmentedControlStoryLabel,
+  segmentedControlStorySlots,
+} from '@/app/components/segmented-control/segmented-control.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import { segmentedControlExampleForm } from '@porsche-design-system/shared/examples';
@@ -14,7 +17,7 @@ export const metadata = {
 
 # Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'With Labels']} />
+<TableOfContents headings={['Form', 'With Labels', 'Slots']} />
 
 ## Form
 
@@ -46,3 +49,15 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 Additional meta information can be displayed by setting a `label` on each child.
 
 <ComponentStory story={segmentedControlStoryLabel} />
+
+## Slots
+
+Sometimes it's useful to render custom markup for `label`, `description` or `message`. Therefore, named slots can be
+used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a
+property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This slot must be used to render content after the label which is not directly part of it (e.g. an external link or a `popover` component).
+
+<ComponentStory story={segmentedControlStorySlots} />

@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { selectStoryOptgroups, selectStorySlottedImages } from '@/app/components/select/select.stories';
+import { selectStoryOptgroups, selectStorySlottedImages, selectStorySlots } from '@/app/components/select/select.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import {
   selectExampleForm,
@@ -25,6 +25,7 @@ export const metadata = {
     'Form',
     'Basic example without preselection',
     'Slotted images',
+    'Slots',
     'Set Value',
     'With optgroups',
     'Custom asynchronous filtering',
@@ -74,6 +75,18 @@ In order to show an icon for each option, you can optionally slot an `img` tag w
 that the `p-select-option` can only contain a `#text` and an `img` node.
 
 <ComponentStory story={selectStorySlottedImages} />
+
+## Slots
+
+Sometimes it's useful to render custom markup for `label`, `description` or `message`. Therefore, named slots can be
+used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a
+property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This slot must be used to render content after the label which is not directly part of it (e.g. an external link or a `popover` component).
+
+<ComponentStory story={selectStorySlots} />
 
 ---
 

@@ -1,7 +1,11 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { multiSelectStory, multiSelectStoryOptgroup } from '@/app/components/multi-select/multi-select.stories';
+import {
+  multiSelectStory,
+  multiSelectStoryOptgroup,
+  multiSelectStorySlots,
+} from '@/app/components/multi-select/multi-select.stories';
 import { Notification } from '@/components/common/Notification';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import {
@@ -20,7 +24,14 @@ export const metadata = {
 # Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
 
 <TableOfContents
-  headings={['Form', 'Set Value', 'With optgroups', 'Custom asynchronous filtering', 'Custom option rendering']}
+  headings={[
+    'Form',
+    'Slots',
+    'Set Value',
+    'With optgroups',
+    'Custom asynchronous filtering',
+    'Custom option rendering',
+  ]}
 />
 
 ## Form
@@ -49,6 +60,18 @@ For more details on form integration, refer to the `Form` section in the
 example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
 
 <ComponentExample codeSample={multiSelectExampleForm} />
+
+## Slots
+
+Sometimes it's useful to render custom markup for `label`, `description` or `message`. Therefore, named slots can be
+used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a
+property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This slot must be used to render content after the label which is not directly part of it (e.g. an external link or a `popover` component).
+
+<ComponentStory story={multiSelectStorySlots} />
 
 ## Set Value
 
