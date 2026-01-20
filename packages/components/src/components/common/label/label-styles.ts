@@ -54,6 +54,7 @@ export const getFunctionalComponentLabelStyles = (
       },
       ...additionalDefaultJssStyle,
       '&:is(legend)': {
+        paddingInline: 0, // reset user agent styles
         float: 'left', // Workaround for placing contents after. Legend can't be really styles with CSS and ignores display inline.
       },
     },
