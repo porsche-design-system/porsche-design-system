@@ -37,7 +37,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label', className: 'ms-static-xs' },
+          properties: { slot: 'label' },
           children: [
             'Some label with a ',
             {
@@ -45,12 +45,12 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
               properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
               children: ['link'],
             },
-            '.',
+            ' text and a "label-after" slot.',
           ],
         },
         {
           tag: 'p-popover',
-          properties: { slot: 'label-after' },
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
           children: ['Some Popover description'],
         },
         {
@@ -95,7 +95,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
                     className: 'object-contain inline-block align-middle -mt-2 me-static-sm w-[70px]',
                   },
                 },
-                'Some slotted label and a "label-after" slot',
+                'Some slotted label with custom content and a "label-after" slot',
               ],
             },
             {
@@ -112,17 +112,7 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             {
               tag: 'span',
               properties: { slot: 'label' },
-              children: [
-                {
-                  tag: 'span',
-                  properties: {
-                    slot: 'label-start',
-                    className:
-                      'w-[22px] h-[22px] inline-block align-top bg-[deeppink] mt-[2px] me-static-sm rounded-full',
-                  },
-                },
-                'Option B with slotted label and custom content at the start ',
-              ],
+              children: ['Option B with slotted label'],
             },
           ],
         },

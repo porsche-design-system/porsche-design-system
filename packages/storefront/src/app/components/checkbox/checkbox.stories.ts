@@ -55,7 +55,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
                     className: 'object-contain inline-block align-middle -mt-2 me-static-sm w-[70px]',
                   },
                 },
-                'Some slotted label with a "label-after" slot',
+                'Some slotted label with custom content and a "label-after" slot',
               ],
             },
             {
@@ -79,29 +79,7 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
             {
               tag: 'span',
               properties: { slot: 'label' },
-              children: [
-                {
-                  tag: 'span',
-                  properties: {
-                    slot: 'label-start',
-                    className:
-                      'w-[22px] h-[22px] inline-block align-top bg-[deeppink] mt-[2px] me-static-sm rounded-full',
-                  },
-                },
-                'Some slotted label with custom content at the start and a "label-after" slot',
-              ],
-            },
-            {
-              tag: 'p-popover',
-              properties: { slot: 'label-after', className: 'ms-static-xs' },
-              children: [
-                'Some label with a ',
-                {
-                  tag: 'a',
-                  properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
-                  children: ['link'],
-                },
-              ],
+              children: ['Some slotted label'],
             },
           ],
         },
