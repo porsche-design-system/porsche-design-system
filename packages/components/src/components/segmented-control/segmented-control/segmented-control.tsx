@@ -33,7 +33,8 @@ import {
   type SegmentedControlState,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
-import { labelId } from '../../common/label/label-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
   label: AllowedTypes.string,
@@ -189,10 +190,12 @@ export class SegmentedControl {
 
     return (
       <fieldset
-        inert={this.disabled}
-        aria-invalid={this.state === 'error' ? 'true' : null}
-        aria-labelledby={labelId}
         class="root"
+        inert={this.disabled}
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-labelledby={labelId}
+        aria-describedby={descriptionId}
       >
         <Label
           host={this.host}

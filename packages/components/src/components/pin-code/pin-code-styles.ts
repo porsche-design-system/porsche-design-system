@@ -91,6 +91,7 @@ export const getComponentCss = (
       },
     },
     root: {
+      all: 'unset',
       display: 'grid',
       gap: spacingStaticXSmall,
     },

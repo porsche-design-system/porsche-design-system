@@ -39,6 +39,7 @@ import {
   syncRadioGroupChildrenProps,
   updateRadioGroupOptions,
 } from './radio-group-utils';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof RadioGroup> = {
   label: AllowedTypes.string,
@@ -216,11 +217,10 @@ export class RadioGroup {
     return (
       <fieldset
         class="root"
-        // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: radiogroup is the correct role for a fieldset containing radio buttons
-        role="radiogroup"
-        aria-required={this.required ? 'true' : null}
+        inert={this.disabled}
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
         aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
-        aria-invalid={this.state === 'error' ? 'true' : null}
         aria-labelledby={labelId}
         onKeyDown={this.onKeyDown}
       >
