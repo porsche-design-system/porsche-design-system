@@ -131,9 +131,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       paddingInlineStart: labelPaddingInlineStart,
     },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled || loading, false, {
-      display: 'inline',
-    }),
+    ...getFunctionalComponentLabelStyles(disabled || loading, false),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

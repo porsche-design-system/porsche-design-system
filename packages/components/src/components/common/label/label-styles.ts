@@ -42,6 +42,7 @@ export const getFunctionalComponentLabelStyles = (
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
         getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)
       ),
+      display: 'inline',
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
       },
@@ -53,10 +54,6 @@ export const getFunctionalComponentLabelStyles = (
         color: contrastHighColor,
       },
       ...additionalDefaultJssStyle,
-      '&:is(legend)': {
-        paddingInline: 0, // reset user agent styles
-        float: 'left', // Workaround for placing contents after. Legend can't be really styles with CSS and ignores display inline.
-      },
     },
     // .required
     ...getFunctionalComponentRequiredStyles(),

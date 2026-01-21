@@ -22,7 +22,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { descriptionId } from '../../common/label/label-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import { getComponentCss } from './radio-group-styles';
@@ -221,11 +221,12 @@ export class RadioGroup {
         aria-required={this.required ? 'true' : null}
         aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
         aria-invalid={this.state === 'error' ? 'true' : null}
+        aria-labelledby={labelId}
         onKeyDown={this.onKeyDown}
       >
         <Label
           host={this.host}
-          tag="legend"
+          tag="div"
           label={this.label}
           description={this.description}
           isRequired={this.required}
