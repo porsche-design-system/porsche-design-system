@@ -22,12 +22,34 @@
 </style>
 
 <div>
-  <div class="playground light" title="should render default heading">
-    <p-heading>Some Heading</p-heading>
+  <div class="playground light" title="should render default display">
+    <p-display>The quick brown fox jumps over the lazy dog</p-display>
   </div>
 
-  <div class="playground light" title="should render default display">
-    <p-display>Some Display</p-display>
+  <div class="playground light" title="should render default heading">
+    <p-heading>The quick brown fox jumps over the lazy dog</p-heading>
+  </div>
+
+  <div class="playground light" title="should render default text">
+    <p-text>The quick brown fox jumps over the lazy dog</p-text>
+  </div>
+
+  <div class="playground light" title="should render default text-list">
+    <p-text-list>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+    </p-text-list>
+  </div>
+
+  <div class="playground light" title="should render default icon">
+    <p-icon></p-icon>
+  </div>
+
+  <div class="playground light" title="should render default flag">
+    <p-flag></p-flag>
+  </div>
+
+  <div class="playground light" title="should render default canvas">
+    <iframe src="/canvas-basic?iframe=true" loading="eager" title="fix-linter-0a"></iframe>
   </div>
 
   <div class="playground light" title="should render default sheet">
@@ -100,24 +122,6 @@
 
   <div class="playground light" title="should render default fieldset">
     <p-fieldset label="Some label"></p-fieldset>
-  </div>
-
-  <div class="playground light" title="should render default text">
-    <p-text>The quick brown fox jumps over the lazy dog</p-text>
-  </div>
-
-  <div class="playground light" title="should render default text-list">
-    <p-text-list>
-      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
-    </p-text-list>
-  </div>
-
-  <div class="playground light" title="should render default icon">
-    <p-icon></p-icon>
-  </div>
-
-  <div class="playground light" title="should render default flag">
-    <p-flag></p-flag>
   </div>
 
   <div class="playground light" title="should render default link">
@@ -251,24 +255,14 @@
   </div>
 
   <div class="playground light" title="should render default link-tile">
-    <p-link-tile description="Default" href="#" label="Some Label">
-      <img
-        alt="Beach"
-        height="50"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-        width="50"
-      />
+    <p-link-tile description="Some description" href="#" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" />
     </p-link-tile>
   </div>
 
   <div class="playground light" title="should render default button-tile">
-    <p-button-tile description="Default" label="Some Label">
-      <img
-        alt="Beach"
-        height="50"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-        width="50"
-      />
+    <p-button-tile description="Some description" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" />
     </p-button-tile>
   </div>
 
@@ -282,70 +276,94 @@
     <p-switch>Some label</p-switch>
   </div>
 
-  <div class="playground light" title="should render default input-text">
-    <p-input-text
-      name="some-name"
-      label="Label with placeholder"
-      placeholder="Some placeholder"
-      counter="true"
-      max-length="20"
-    ></p-input-text>
-  </div>
-
   <div class="playground light" title="should render default input-date">
-    <p-input-date name="some-name" label="Label"></p-input-date>
+    <p-input-date name="some-name" label="Some label"></p-input-date>
   </div>
 
   <div class="playground light" title="should render default input-email">
-    <p-input-email name="some-name" label="Label"></p-input-email>
+    <p-input-email name="some-name" label="Some label" indicator="true"></p-input-email>
+  </div>
+
+  <div class="playground light" title="should render default input-month">
+    <p-input-month name="some-name" label="Some label"></p-input-month>
   </div>
 
   <div class="playground light" title="should render default input-number">
-    <p-input-number name="some-name" label="Label" value="1234" controls="true"></p-input-number>
+    <p-input-number name="some-name" label="Some label" value="1234" controls="true"></p-input-number>
   </div>
 
   <div class="playground light" title="should render default input-password">
-    <p-input-password name="some-name" label="Label" value="some password" toggle="true"></p-input-password>
+    <p-input-password name="some-name" label="Some label" value="some password" toggle="true"></p-input-password>
   </div>
 
   <div class="playground light" title="should render default input-search">
-    <p-input-search name="some-name" label="Label" value="Some value" clear="true" indicator="true"></p-input-search>
+    <p-input-search name="some-name" label="Some label" value="Some value" clear="true" indicator="true"></p-input-search>
   </div>
 
   <div class="playground light" title="should render default input-tel">
-    <p-input-tel name="some-name" label="Label"></p-input-tel>
+    <p-input-tel name="some-name" label="Some label" indicator="true"></p-input-tel>
   </div>
 
   <div class="playground light" title="should render default input-text">
-    <p-input-text name="some-name" label="Label" value="some-value" counter="true" max-length="20"></p-input-text>
+    <p-input-text name="some-name" label="Some label" value="some-value" counter="true" max-length="20"></p-input-text>
   </div>
 
   <div class="playground light" title="should render default input-time">
-    <p-input-time name="some-name" label="Label"></p-input-time>
+    <p-input-time name="some-name" label="Some label"></p-input-time>
   </div>
 
   <div class="playground light" title="should render default input-url">
     <p-input-url
       name="some-name"
-      label="Label"
+      label="Some label"
       value="https://designsystem.porsche.com/"
       indicator="true"
       max-length="20"
     ></p-input-url>
   </div>
 
+  <div class="playground light" title="should render default input-week">
+    <p-input-week name="some-name" label="Some label"></p-input-week>
+  </div>
+
   <div class="playground light" title="should render default textarea">
-    <p-textarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></p-textarea>
+    <p-textarea name="some-name" label="Some label"></p-textarea>
+  </div>
+
+  <div class="playground light" title="should render default checkbox">
+    <p-checkbox label="Some label"></p-checkbox>
   </div>
 </div>
 
 <div data-prefix="my-prefix">
-  <div class="playground light" title="should render default heading with custom prefix">
-    <my-prefix-p-heading>Some Heading</my-prefix-p-heading>
+  <div class="playground light" title="should render default display with custom prefix">
+    <my-prefix-p-display>The quick brown fox jumps over the lazy dog</my-prefix-p-display>
   </div>
 
-  <div class="playground light" title="should render default display with custom prefix">
-    <my-prefix-p-display>Some Display</my-prefix-p-display>
+  <div class="playground light" title="should render default heading with custom prefix">
+    <my-prefix-p-heading>The quick brown fox jumps over the lazy dog</my-prefix-p-heading>
+  </div>
+
+  <div class="playground light" title="should render default text with custom prefix">
+    <my-prefix-p-text>The quick brown fox jumps over the lazy dog</my-prefix-p-text>
+  </div>
+
+  <div class="playground light" title="should render default text-list with custom prefix">
+    <my-prefix-p-text-list>
+      <my-prefix-p-text-list-item>The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item>
+    </my-prefix-p-text-list>
+  </div>
+
+  <div class="playground light" title="should render default icon with custom prefix">
+    <my-prefix-p-icon></my-prefix-p-icon>
+  </div>
+
+  <div class="playground light" title="should render default flag with custom prefix">
+    <my-prefix-p-flag></my-prefix-p-flag>
+  </div>
+
+  <div class="playground light" title="should render default canvas with custom prefix">
+    <iframe src="/canvas-prefixed?iframe=true" loading="eager" title="fix-linter-0a"></iframe>
   </div>
 
   <div class="playground light" title="should render default sheet with custom prefix">
@@ -421,24 +439,6 @@
 
   <div class="playground light" title="should render default fieldset with custom prefix">
     <my-prefix-p-fieldset label="Some label"></my-prefix-p-fieldset>
-  </div>
-
-  <div class="playground light" title="should render default text with custom prefix">
-    <my-prefix-p-text>The quick brown fox jumps over the lazy dog</my-prefix-p-text>
-  </div>
-
-  <div class="playground light" title="should render default text-list with custom prefix">
-    <my-prefix-p-text-list>
-      <my-prefix-p-text-list-item>The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item>
-    </my-prefix-p-text-list>
-  </div>
-
-  <div class="playground light" title="should render default icon with custom prefix">
-    <my-prefix-p-icon></my-prefix-p-icon>
-  </div>
-
-  <div class="playground light" title="should render default flag with custom prefix">
-    <my-prefix-p-flag></my-prefix-p-flag>
   </div>
 
   <div class="playground light" title="should render default link with custom prefix">
@@ -572,24 +572,14 @@
   </div>
 
   <div class="playground light" title="should render default link-tile with custom prefix">
-    <my-prefix-p-link-tile description="Default" href="#" label="Some Label">
-      <img
-        alt="Beach"
-        height="50"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-        width="50"
-      />
+    <my-prefix-p-link-tile description="Some description" href="#" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" />
     </my-prefix-p-link-tile>
   </div>
 
   <div class="playground light" title="should render default button-tile with custom prefix">
-    <my-prefix-p-button-tile description="Default" label="Some Label">
-      <img
-        alt="Beach"
-        height="50"
-        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
-        width="50"
-      />
+    <my-prefix-p-button-tile description="Some description" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" />
     </my-prefix-p-button-tile>
   </div>
 
@@ -603,32 +593,26 @@
     <my-prefix-p-switch>Some label</my-prefix-p-switch>
   </div>
 
-  <div class="playground light" title="should render default input-text with custom prefix">
-    <my-prefix-p-input-text
-      name="some-name"
-      label="Label with placeholder"
-      placeholder="Some placeholder"
-      counter="true"
-      max-length="20"
-    ></my-prefix-p-input-text>
-  </div>
-
   <div class="playground light" title="should render default input-date with custom prefix">
-    <my-prefix-p-input-date name="some-name" label="Label"></my-prefix-p-input-date>
+    <my-prefix-p-input-date name="some-name" label="Some label"></my-prefix-p-input-date>
   </div>
 
   <div class="playground light" title="should render default input-email with custom prefix">
-    <my-prefix-p-input-email name="some-name" label="Label"></my-prefix-p-input-email>
+    <my-prefix-p-input-email name="some-name" label="Some label" indicator="true"></my-prefix-p-input-email>
+  </div>
+
+  <div class="playground light" title="should render default input-month with custom prefix">
+    <my-prefix-p-input-month name="some-name" label="Some label"></my-prefix-p-input-month>
   </div>
 
   <div class="playground light" title="should render default input-number with custom prefix">
-    <my-prefix-p-input-number name="some-name" label="Label" value="1234" controls="true"></my-prefix-p-input-number>
+    <my-prefix-p-input-number name="some-name" label="Some label" value="1234" controls="true"></my-prefix-p-input-number>
   </div>
 
   <div class="playground light" title="should render default input-password with custom prefix">
     <my-prefix-p-input-password
       name="some-name"
-      label="Label"
+      label="Some label"
       value="some password"
       toggle="true"
     ></my-prefix-p-input-password>
@@ -637,7 +621,7 @@
   <div class="playground light" title="should render default input-search with custom prefix">
     <my-prefix-p-input-search
       name="some-name"
-      label="Label"
+      label="Some label"
       value="Some value"
       clear="true"
       indicator="true"
@@ -645,13 +629,13 @@
   </div>
 
   <div class="playground light" title="should render default input-tel with custom prefix">
-    <my-prefix-p-input-tel name="some-name" label="Label"></my-prefix-p-input-tel>
+    <my-prefix-p-input-tel name="some-name" label="Some label" indicator="true"></my-prefix-p-input-tel>
   </div>
 
   <div class="playground light" title="should render default input-text with custom prefix">
     <my-prefix-p-input-text
       name="some-name"
-      label="Label"
+      label="Some label"
       value="some-value"
       counter="true"
       max-length="20"
@@ -659,24 +643,28 @@
   </div>
 
   <div class="playground light" title="should render default input-time with custom prefix">
-    <my-prefix-p-input-time name="some-name" label="Label"></my-prefix-p-input-time>
+    <my-prefix-p-input-time name="some-name" label="Some label"></my-prefix-p-input-time>
   </div>
 
   <div class="playground light" title="should render default input-url with custom prefix">
     <my-prefix-p-input-url
       name="some-name"
-      label="Label"
+      label="Some label"
       value="https://designsystem.porsche.com/"
       indicator="true"
       max-length="20"
     ></my-prefix-p-input-url>
   </div>
 
+  <div class="playground light" title="should render default input-week with custom prefix">
+    <my-prefix-p-input-week name="some-name" label="Some label"></my-prefix-p-input-week>
+  </div>
+
   <div class="playground light" title="should render default textarea with custom prefix">
-    <my-prefix-p-textarea
-      name="some-name"
-      label="Label with placeholder"
-      placeholder="Some placeholder"
-    ></my-prefix-p-textarea>
+    <my-prefix-p-textarea name="some-name" label="Some label"></my-prefix-p-textarea>
+  </div>
+
+  <div class="playground light" title="should render default checkbox with custom prefix">
+    <my-prefix-p-checkbox label="Some label"></my-prefix-p-checkbox>
   </div>
 </div>

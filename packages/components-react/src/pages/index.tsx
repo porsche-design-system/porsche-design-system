@@ -36,6 +36,7 @@ import { CanvasGridPage } from './generated/CanvasGrid';
 import { CanvasHeaderEndPage } from './generated/CanvasHeaderEnd';
 import { CanvasHeaderStartPage } from './generated/CanvasHeaderStart';
 import { CanvasNamedSlotsPage } from './generated/CanvasNamedSlots';
+import { CanvasPrefixedPage } from './generated/CanvasPrefixed';
 import { CanvasScrollablePage } from './generated/CanvasScrollable';
 import { CanvasSidebarEndPage } from './generated/CanvasSidebarEnd';
 import { CanvasSidebarStartPage } from './generated/CanvasSidebarStart';
@@ -332,6 +333,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Canvas Named Slots',
     path: '/canvas-named-slots',
     element: <CanvasNamedSlotsPage />,
+  },
+  {
+    name: 'Canvas Prefixed',
+    path: '/canvas-prefixed',
+    element: <CanvasPrefixedPage />,
   },
   {
     name: 'Canvas Scrollable',
