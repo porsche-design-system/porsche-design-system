@@ -64,9 +64,11 @@ export const getComponentCss = (
         [`${cssVarInternalRadioGroupOptionScaling}`]: isCompact ? 0.64285714 : 1,
       },
       ...getFunctionalComponentLabelAfterStyles(isDisabled, getDisabledBaseStyles()),
-      '::slotted(*:not([slot]))': {
-        ...(isLoading && getDisabledBaseStyles()),
-      },
+      ...(isLoading && {
+        '::slotted(*:not([slot]))': {
+          getDisabledBaseStyles,
+        },
+      }),
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
