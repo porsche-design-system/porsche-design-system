@@ -333,3 +333,16 @@
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-url>
 </div>
+
+<div class="playground light" title="should render with label and label-after slot">
+  <p-input-url name="some-name" label="Label" value="https://designsystem.porsche.com/">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-input-url>
+</div>
+
+<div class="playground light" title="should render with multiline label and label-after slot">
+  <p-input-url name="some-name" label="Some label dolor sit amet, consetetur" value="https://designsystem.porsche.com/" style="width: 15rem">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-input-url>
+</div>
+

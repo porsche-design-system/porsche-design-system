@@ -340,3 +340,38 @@ Fusce commodo ipsum erat, in scelerisque nunc aliquam ut. In a sagittis nunc, in
 Ut tristique neque leo, id semper purus porttitor et. Cras gravida gravida dolor, sed fringilla elit euismod eget. Donec aliquam in velit vel vehicula. Cras semper sollicitudin tortor, ac porttitor lectus pretium eget. Vivamus massa lectus, condimentum at scelerisque vitae, venenatis eu nunc. In lectus nisi, pellentesque a vulputate tincidunt, interdum quis urna. Nam lacinia dolor felis, et ultricies ligula eleifend non. In sit amet facilisis nunc, ac sagittis purus. Donec bibendum tempus massa ut aliquet. Nunc purus risus, vulputate vel sagittis ut, accumsan nec nunc."
   ></p-textarea>
 </div>
+
+<div class="playground light" title="should render with label and label-after slot">
+  <p-textarea
+    name="some-name"
+    label="Label with description and placeholder"
+    description="Some description"
+    placeholder="Some placeholder"
+  >
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-textarea>
+</div>
+
+<div class="playground light" title="should render with multiline label and label-after slot">
+  <p-textarea
+    name="some-name"
+    label="Label with description and placeholder"
+    description="Some description"
+    placeholder="Some placeholder"
+    style="width: 15rem"
+  >
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-textarea>
+</div>
+
+<div class="playground light" title="should render with label and label-after slot in disabled state">
+  <p-textarea
+    name="some-name"
+    label="Label with description and placeholder"
+    description="Some description"
+    placeholder="Some placeholder"
+    disabled="true"
+  >
+    <p-popover slot="label-after">Some Popover content</p-popover>
+  </p-textarea>
+</div>

@@ -390,33 +390,44 @@
 </div>
 
 
-<div class="playground light auto-layout-inline" title="should render with label, error message and label-start + label-end slot">
-  <p-radio-group label="Some label" name="some-name" value="b" state="error" message="Lorem ipsum dolor sit amet, consetetur sadipscing">
+<div class="playground light" title="should render with label and label-after slots">
+  <p-radio-group label="Some label" name="some-name" value="b">
+    <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Some label A" value="a">
-      <a href="#" slot="label-start">Link</a>
-      <p-popover slot="label-end">Some popover content</p-popover>
+      <p-popover slot="label-after">Some popover content</p-popover>
     </p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with multiline label, error message and label-start + label-end slot">
-  <p-radio-group label="Some label" name="some-name" value="b" style="width: 15rem">
+<div class="playground light" title="should render with multiline label and label-after slots">
+  <p-radio-group label="Some label dolor sit amet, consetetur" name="some-name" value="b" style="display: block; width: 15rem">
+    <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Lorem ipsum dolor sit amet, consetetur" value="a">
-      <a href="#" slot="label-start">Link</a>
-      <p-popover slot="label-end">Some popover content</p-popover>
+      <p-popover slot="label-after">Some popover content</p-popover>
     </p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
   </p-radio-group>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with direction row, error message and label-start + label-end slot">
+<div class="playground light" title="should render with direction row, label and label-after slots">
   <p-radio-group label="Some label" name="some-name" value="b" direction="row">
+    <p-popover slot="label-after">Some popover content</p-popover>
     <p-radio-group-option label="Lorem ipsum dolor sit amet, consetetur sadipscing" value="a">
-      <a href="#" slot="label-start">Link</a>
-      <p-popover slot="label-end">Some popover content</p-popover>
+      <p-popover slot="label-after">Some popover content</p-popover>
+    </p-radio-group-option>
+    <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
+    <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
+  </p-radio-group>
+</div>
+
+<div class="playground light" title="should render with label and label-after slots in disabled state">
+  <p-radio-group label="Some label" name="some-name" value="b" disabled="true">
+    <p-popover slot="label-after">Some popover content</p-popover>
+    <p-radio-group-option label="Some label A" value="a">
+      <p-popover slot="label-after">Some popover content</p-popover>
     </p-radio-group-option>
     <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
     <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
