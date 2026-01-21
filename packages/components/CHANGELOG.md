@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
   custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
-- `Checkbox`, `Input-*`, `Multi-Select`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`: New slot `label-after` to add custom content (e.g. `Popover`) after the `label`
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`: New slot `label-after` to add custom content (e.g. `Popover`) after the `label`
   element ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 
 ### Changed
