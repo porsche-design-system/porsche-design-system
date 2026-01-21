@@ -690,6 +690,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-group": {
+    "deprecationMessage": "since v3.32.0, will be removed with next major release. Use simple styles instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -698,6 +699,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "propsMeta": {
@@ -9591,9 +9593,9 @@ exports[`should match snapshot 1`] = `
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
-    "hasSlot": false,
+    "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
@@ -9629,6 +9631,17 @@ exports[`should match snapshot 1`] = `
     "requiredParent": [
       "p-radio-group",
     ],
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-scroller": {
