@@ -170,9 +170,6 @@ export const setupScenario = async (
     await client.send('DOM.enable');
     await client.send('CSS.enable');
 
-    // Get the document with full depth including shadow DOMs
-    const { root } = await client.send('DOM.getDocument', { depth: -1, pierce: true });
-
     const focusableSelectors = [
       'a[href]',
       'button:not([disabled])',
@@ -182,36 +179,43 @@ export const setupScenario = async (
       '[tabindex]:not([tabindex="-1"])',
     ];
 
-    // Recursive function to traverse all nodes including shadow DOMs
+    async function forceFocusInDocument(docNodeId: number) {
+      for (const selector of focusableSelectors) {
+        try {
+          const { nodeIds } = await client.send('DOM.querySelectorAll', {
+            nodeId: docNodeId,
+            selector: selector,
+          });
+
+          for (const foundNodeId of nodeIds) {
+            try {
+              await client.send('CSS.forcePseudoState', {
+                nodeId: foundNodeId,
+                forcedPseudoClasses: ['focus', 'focus-visible'],
+              });
+            } catch (e) {
+              // Element might not support pseudo-states
+            }
+          }
+        } catch (e) {
+          // Selector might not be valid in this context
+        }
+      }
+    }
+
     async function traverseAndForceFocus(node: any) {
       if (!node) return;
 
-      // Query focusable elements from this node
       if (node.nodeId) {
-        for (const selector of focusableSelectors) {
-          try {
-            const { nodeIds } = await client.send('DOM.querySelectorAll', {
-              nodeId: node.nodeId,
-              selector: selector,
-            });
-
-            for (const foundNodeId of nodeIds) {
-              try {
-                await client.send('CSS.forcePseudoState', {
-                  nodeId: foundNodeId,
-                  forcedPseudoClasses: ['focus', 'focus-visible'],
-                });
-              } catch (e) {
-                // Element might not support pseudo-states
-              }
-            }
-          } catch (e) {
-            // Selector might not be valid in this context
-          }
-        }
+        await forceFocusInDocument(node.nodeId);
       }
 
-      // Traverse shadow roots (already included due to pierce: true)
+      // Handle content documents (iframes)
+      if (node.contentDocument) {
+        await traverseAndForceFocus(node.contentDocument);
+      }
+
+      // Traverse shadow roots
       if (node.shadowRoots) {
         for (const shadowRoot of node.shadowRoots) {
           await traverseAndForceFocus(shadowRoot);
@@ -226,6 +230,7 @@ export const setupScenario = async (
       }
     }
 
+    const { root } = await client.send('DOM.getDocument', { depth: -1, pierce: true });
     await traverseAndForceFocus(root);
   }
 
