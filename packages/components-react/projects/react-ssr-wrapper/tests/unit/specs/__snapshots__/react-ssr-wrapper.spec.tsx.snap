@@ -18933,6 +18933,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -19082,6 +19083,7 @@ input:focus-visible {
       />
     </div>
   </template>
+  Some child
 </p-radio-group-option>
 `;
 

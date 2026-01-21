@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
 import { inputUrlStory, inputUrlSlotStories } from '@/app/components/input-url/input-url.stories';
+import { FrameworkNotification } from '@/components/common/FrameworkNotification';
 
 export const metadata = {
   title: 'Input Url - Porsche Design System',
@@ -10,16 +11,21 @@ export const metadata = {
 
 # Input Url <ComponentStatus tagName="p-input-url"></ComponentStatus>
 
-The `p-input-url` component provides a user-friendly, accessible interface for entering valid website URLs. It
-leverages native HTML5 URL validation and ensures appropriate keyboard behavior on mobile devices. It includes `start`
-and `end` slots to flexibly incorporate icons, buttons, or other elements within the input field.
+The `p-input-url` component provides a user-friendly, accessible interface for entering valid website URLs. It leverages
+native HTML5 URL validation and ensures appropriate keyboard behavior on mobile devices. It includes `start` and `end`
+slots to flexibly incorporate icons, buttons, or other elements within the input field.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-input-url` component can be used with or without a label, but it's recommended to keep the label visible for better
-accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text for
-screen readers.
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-input-url`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
+
+<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
+  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
+  keystroke, use `onInput` instead.
+</FrameworkNotification>
 
 <Configurator tagName="p-input-url" story={inputUrlStory} slotStories={inputUrlSlotStories} />
