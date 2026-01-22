@@ -88,7 +88,7 @@ for (const component of components) {
       });
     }
 
-    // prefers-color-scheme: 'light' | 'dark' tests on 1000px viewport
+    // prefers-color-scheme: 'light' | 'dark'
     for (const scheme of schemes) {
       // theme="auto"
       test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
@@ -129,7 +129,7 @@ for (const component of components) {
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-scale-mode.png`);
     });
 
-    // rtl mode
+    // right-to-left
     test(`should have no visual regression for viewport ${viewportWidthM} in rtl (right-to-left) mode`, async ({
       page,
     }) => {
@@ -151,6 +151,20 @@ for (const component of components) {
         });
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-focus.png`);
+      }
+    );
+
+    // :hover
+    // TODO: somehow the components run into a timeout here, needs investigation
+    const skipHoverTest = ['canvas', 'carousel', 'drilldown', 'pin-code'].some((c) => component.startsWith(c));
+    (skipHoverTest ? test.fixme : test)(
+      `should have no visual regression for viewport ${viewportWidthM} with :hover`,
+      async ({ page }) => {
+        await setupScenario(page, `/${component}`, viewportWidthM, {
+          forcePseudoState: 'hover',
+        });
+        await revertAutoFocus(page, component);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hover.png`);
       }
     );
   });
