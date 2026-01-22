@@ -1,5 +1,3 @@
 @use '@porsche-design-system/scss' as *;
-
-.scss-prose-heading-lg {
-  @include pds-heading-large;
-}
+@use './scss/blur';
+@use './scss/color';

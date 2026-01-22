@@ -46,6 +46,7 @@
     "vite": "*",
     "react": "*",
     "react-dom": "*",
+    "react-router": "*",
     "sass": "*",
     "@vanilla-extract/css": "*",
     "@vanilla-extract/vite-plugin": "*",
