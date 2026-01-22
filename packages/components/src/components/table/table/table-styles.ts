@@ -1,4 +1,4 @@
-import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,

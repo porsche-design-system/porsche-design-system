@@ -1,7 +1,7 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { breakpoint } from '@porsche-design-system/styles';
+import { breakpoint } from '@porsche-design-system/emotion';
 import { kebabCase, pascalCase } from 'change-case';
 import * as fs from 'fs';
 import { globbySync } from 'globby';

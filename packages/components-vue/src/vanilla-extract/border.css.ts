@@ -12,7 +12,7 @@ import {
   themeDarkBackgroundBase,
   themeDarkPrimary,
   themeLightPrimary,
-} from '@porsche-design-system/components-vue/styles/vanilla-extract';
+} from '@porsche-design-system/components-vue/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 
 export const Wrapper = style({

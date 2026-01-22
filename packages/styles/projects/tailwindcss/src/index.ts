@@ -18,8 +18,8 @@ import {
   breakpointSm,
   breakpointXl,
   breakpointXs,
-  fontFamily,
-  fontLineHeight,
+  fontFamilyPorscheNext,
+  fontLineHeightNormal,
   fontSize2Xl,
   fontSize2Xs,
   fontSizeLg,
@@ -28,9 +28,9 @@ import {
   fontSizeXl,
   fontSizeXs,
   fontWeightBold,
-  fontWeightRegular,
+  fontWeightNormal,
   fontWeightSemiBold,
-  gradientFade,
+  gradientFadeDark,
   motionDurationLong,
   motionDurationModerate,
   motionDurationShort,
@@ -38,9 +38,9 @@ import {
   motionEaseIn,
   motionEaseInOut,
   motionEaseOut,
-  shadowHigh,
-  shadowLow,
-  shadowMedium,
+  shadowLg,
+  shadowMd,
+  shadowSm,
   spacingFluid2Xl,
   spacingFluidLg,
   spacingFluidMd,
@@ -69,31 +69,31 @@ export const getTailwindcssTheme = () => {
   ${cssVariableDefinitionLight}
 
   /* Typography */
-  --font-porsche-next: ${fontFamily};
+  --font-porsche-next: ${fontFamilyPorscheNext};
   --font-sans: var(--font-porsche-next);
 
-  --font-weight-normal: ${fontWeightRegular};
+  --font-weight-normal: ${fontWeightNormal};
   --font-weight-semibold: ${fontWeightSemiBold};
   --font-weight-bold: ${fontWeightBold};
 
-  --leading-normal: ${fontLineHeight};
+  --leading-normal: ${fontLineHeightNormal};
 
   --text-2xs: ${fontSize2Xs};
-  --text-2xs--line-height: ${fontLineHeight};
+  --text-2xs--line-height: ${fontLineHeightNormal};
   --text-xs: ${fontSizeXs};
-  --text-xs--line-height: ${fontLineHeight};
+  --text-xs--line-height: ${fontLineHeightNormal};
   --text-base: ${fontSizeSm};
-  --text-base--line-height: ${fontLineHeight};
+  --text-base--line-height: ${fontLineHeightNormal};
   --text-sm: ${fontSizeSm};
-  --text-sm--line-height: ${fontLineHeight};
+  --text-sm--line-height: ${fontLineHeightNormal};
   --text-md: ${fontSizeMd};
-  --text-md--line-height: ${fontLineHeight};
+  --text-md--line-height: ${fontLineHeightNormal};
   --text-lg: ${fontSizeLg};
-  --text-lg--line-height: ${fontLineHeight};
+  --text-lg--line-height: ${fontLineHeightNormal};
   --text-xl: ${fontSizeXl};
-  --text-xl--line-height: ${fontLineHeight};
+  --text-xl--line-height: ${fontLineHeightNormal};
   --text-2xl: ${fontSize2Xl};
-  --text-2xl--line-height: ${fontLineHeight};
+  --text-2xl--line-height: ${fontLineHeightNormal};
 
   /* Breakpoint */
   --breakpoint-xs: ${breakpointXs}px;
@@ -139,9 +139,9 @@ export const getTailwindcssTheme = () => {
   --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
 
   /* Shadow */
-  --shadow-low: ${shadowLow};
-  --shadow-medium: ${shadowMedium};
-  --shadow-high: ${shadowHigh};
+  --shadow-low: ${shadowSm};
+  --shadow-medium: ${shadowMd};
+  --shadow-high: ${shadowLg};
 
   /* Outline */
   --default-outline-width: ${borderWidthRegular};
@@ -189,19 +189,19 @@ export const getTailwindcssTheme = () => {
 
 /* Gradient */
 @utility bg-fade-to-t {
-  @apply bg-linear-[to_top,${gradientFade.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_top,${gradientFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-r {
-  @apply bg-linear-[to_right,${gradientFade.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_right,${gradientFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-b {
-  @apply bg-linear-[to_bottom,${gradientFade.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_bottom,${gradientFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-l {
-  @apply bg-linear-[to_left,${gradientFade.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_left,${gradientFadeDark.replaceAll(' ', '_')}];
 }
 
 /* Grid */

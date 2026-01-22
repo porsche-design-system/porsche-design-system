@@ -13,8 +13,8 @@ import {
   borderRadiusSm,
   borderRadiusXl,
   borderRadiusXs,
-  fontFamily,
-  fontLineHeight,
+  fontFamilyPorscheNext,
+  fontLineHeightNormal,
   fontSize2Xl,
   fontSize2Xs,
   fontSizeLg,
@@ -23,7 +23,7 @@ import {
   fontSizeXl,
   fontSizeXs,
   fontWeightBold,
-  fontWeightRegular,
+  fontWeightNormal,
   fontWeightSemiBold,
 } from '@porsche-design-system/tokens';
 import * as prettier from 'prettier';
@@ -32,13 +32,13 @@ export const buildVariablesCss = async () => {
   const styles = `:root {
   ${prefixedCssVariableDefinitionLight}
 
-  --p-font-porsche-next: ${fontFamily};
+  --p-font-porsche-next: ${fontFamilyPorscheNext};
 
-  --p-font-weight-normal: ${fontWeightRegular};
+  --p-font-weight-normal: ${fontWeightNormal};
   --p-font-weight-semibold: ${fontWeightSemiBold};
   --p-font-weight-bold: ${fontWeightBold};
 
-  --p-leading-normal: ${fontLineHeight};
+  --p-leading-normal: ${fontLineHeightNormal};
 
   --p-text-2xs: ${fontSize2Xs};
   --p-text-xs: ${fontSizeXs};

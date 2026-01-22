@@ -13,7 +13,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
     <p-text>Last event detail: {{ lastEventDetail }}</p-text>
   `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;

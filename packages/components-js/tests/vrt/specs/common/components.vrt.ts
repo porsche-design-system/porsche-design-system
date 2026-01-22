@@ -66,50 +66,7 @@ test('should have certain amount of components', () => {
   expect(components.length).toBe(59);
 });
 
-for (const component of components.filter((c) =>
-  [
-    // 'accordion',
-    // 'banner',
-    // 'button',
-    // 'button-pure',
-    // 'button-tile',
-    // 'canvas',
-    // 'carousel',
-    // 'checkbox',
-    // 'crest',
-    // 'display',
-    // 'divider',
-    // 'drilldown',
-    // 'fieldset',
-    // 'flag',
-    // 'flyout-1',
-    // 'flyout-2',
-    // 'flyout-3',
-    // 'heading',
-    // 'icon',
-    // 'inline-notification',
-    // 'input-password',
-    // 'input-number',
-    // 'input-date',
-    // 'input-week',
-    // 'input-month',
-    // 'input-time',
-    // 'input-text',
-    // 'input-email',
-    // 'input-tel',
-    // 'input-url',
-    // 'input-search',
-    // 'link',
-    // 'link-pure',
-    // 'link-tile',
-    // 'link-tile-product',
-    // 'modal',
-    // 'model-signature',
-    // 'multi-select',
-    // 'pagination',
-    'pin-code',
-  ].includes(c)
-)) {
+for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
     for (const theme of themes) {
@@ -186,6 +143,17 @@ for (const component of components.filter((c) =>
       });
       await revertAutoFocus(page, component);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-rtl-mode.png`);
+    });
+
+    // :focus + :focus-visible
+    test(`should have no visual regression for viewport ${viewportWidthM} with :focus and/or :focus-visible`, async ({
+      page,
+    }) => {
+      await setupScenario(page, `/${component}`, viewportWidthM, {
+        forcePseudoState: 'focus',
+      });
+      await revertAutoFocus(page, component);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-focus.png`);
     });
 
     // print view

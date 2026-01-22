@@ -21,7 +21,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
     </p-button>
   `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;

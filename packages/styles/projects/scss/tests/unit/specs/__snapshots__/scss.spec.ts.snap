@@ -1,0 +1,407 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should contain correct scss content for file ./dist/_border.scss 1`] = `
+"$pds-border-radius-small: 4px;
+$pds-border-radius-medium: 6px;
+$pds-border-radius-large: 8px;
+$pds-border-width-base: 2px;
+$pds-border-width-thin: 1px;
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_breakpoint.scss 1`] = `
+"$pds-breakpoint-base: 0;
+$pds-breakpoint-xs: 480;
+$pds-breakpoint-s: 760;
+$pds-breakpoint-m: 1000;
+$pds-breakpoint-l: 1300;
+$pds-breakpoint-xl: 1760;
+$pds-breakpoint-xxl: 1920;
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_display.scss 1`] = `
+"@mixin pds-display-large {
+  font:
+    normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+
+@mixin pds-display-medium {
+  font:
+    normal normal 400 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+
+@mixin pds-display-small {
+  font:
+    normal normal 400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_drop-shadow.scss 1`] = `
+"@mixin pds-drop-shadow-high {
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+
+@mixin pds-drop-shadow-low {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+@mixin pds-drop-shadow-medium {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_font.scss 1`] = `
+"$pds-font-family:
+  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+$pds-font-hyphenation-style-overflow-wrap: break-word;
+$pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto);
+$pds-font-line-height: calc(6px + 2.125ex);
+$pds-font-size-text-xx-small: 0.75rem;
+$pds-font-size-text-x-small: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+$pds-font-size-text-small: 1rem;
+$pds-font-size-text-medium: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+$pds-font-size-text-large: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+$pds-font-size-text-x-large: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+$pds-font-size-heading-small: 1rem;
+$pds-font-size-heading-medium: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+$pds-font-size-heading-large: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+$pds-font-size-heading-x-large: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+$pds-font-size-heading-xx-large: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
+$pds-font-size-display-small: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
+$pds-font-size-display-medium: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
+$pds-font-size-display-large: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
+$pds-font-style-normal: normal;
+$pds-font-style-italic: italic;
+$pds-font-variant: normal;
+$pds-font-weight-regular: 400;
+$pds-font-weight-semi-bold: 600;
+$pds-font-weight-bold: 700;
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_frosted-glass.scss 1`] = `
+"@mixin pds-frosted-glass {
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_gradient.scss 1`] = `
+"@mixin pds-gradient-to-bottom {
+  background: linear-gradient(
+    to bottom,
+    hsla(0, 0%, 0%, 0.8) 0%,
+    hsla(0, 0%, 0%, 0.8) 8.1%,
+    hsla(0, 0%, 0%, 0.8) 15.5%,
+    hsla(0, 0%, 0%, 0.8) 22.5%,
+    hsla(0, 0%, 0%, 0.78) 29%,
+    hsla(0, 0%, 0%, 0.73) 35.3%,
+    hsla(0, 0%, 0%, 0.67) 41.2%,
+    hsla(0, 0%, 0%, 0.6) 47.1%,
+    hsla(0, 0%, 0%, 0.52) 52.9%,
+    hsla(0, 0%, 0%, 0.44) 58.8%,
+    hsla(0, 0%, 0%, 0.33) 64.7%,
+    hsla(0, 0%, 0%, 0.22) 71%,
+    hsla(0, 0%, 0%, 0.12) 77.5%,
+    hsla(0, 0%, 0%, 0.05) 84.5%,
+    hsla(0, 0%, 0%, 0.011) 91.9%,
+    hsla(0, 0%, 0%, 0) 100%
+  );
+}
+
+@mixin pds-gradient-to-left {
+  background: linear-gradient(
+    to left,
+    hsla(0, 0%, 0%, 0.8) 0%,
+    hsla(0, 0%, 0%, 0.8) 8.1%,
+    hsla(0, 0%, 0%, 0.8) 15.5%,
+    hsla(0, 0%, 0%, 0.8) 22.5%,
+    hsla(0, 0%, 0%, 0.78) 29%,
+    hsla(0, 0%, 0%, 0.73) 35.3%,
+    hsla(0, 0%, 0%, 0.67) 41.2%,
+    hsla(0, 0%, 0%, 0.6) 47.1%,
+    hsla(0, 0%, 0%, 0.52) 52.9%,
+    hsla(0, 0%, 0%, 0.44) 58.8%,
+    hsla(0, 0%, 0%, 0.33) 64.7%,
+    hsla(0, 0%, 0%, 0.22) 71%,
+    hsla(0, 0%, 0%, 0.12) 77.5%,
+    hsla(0, 0%, 0%, 0.05) 84.5%,
+    hsla(0, 0%, 0%, 0.011) 91.9%,
+    hsla(0, 0%, 0%, 0) 100%
+  );
+}
+
+@mixin pds-gradient-to-right {
+  background: linear-gradient(
+    to right,
+    hsla(0, 0%, 0%, 0.8) 0%,
+    hsla(0, 0%, 0%, 0.8) 8.1%,
+    hsla(0, 0%, 0%, 0.8) 15.5%,
+    hsla(0, 0%, 0%, 0.8) 22.5%,
+    hsla(0, 0%, 0%, 0.78) 29%,
+    hsla(0, 0%, 0%, 0.73) 35.3%,
+    hsla(0, 0%, 0%, 0.67) 41.2%,
+    hsla(0, 0%, 0%, 0.6) 47.1%,
+    hsla(0, 0%, 0%, 0.52) 52.9%,
+    hsla(0, 0%, 0%, 0.44) 58.8%,
+    hsla(0, 0%, 0%, 0.33) 64.7%,
+    hsla(0, 0%, 0%, 0.22) 71%,
+    hsla(0, 0%, 0%, 0.12) 77.5%,
+    hsla(0, 0%, 0%, 0.05) 84.5%,
+    hsla(0, 0%, 0%, 0.011) 91.9%,
+    hsla(0, 0%, 0%, 0) 100%
+  );
+}
+
+@mixin pds-gradient-to-top {
+  background: linear-gradient(
+    to top,
+    hsla(0, 0%, 0%, 0.8) 0%,
+    hsla(0, 0%, 0%, 0.8) 8.1%,
+    hsla(0, 0%, 0%, 0.8) 15.5%,
+    hsla(0, 0%, 0%, 0.8) 22.5%,
+    hsla(0, 0%, 0%, 0.78) 29%,
+    hsla(0, 0%, 0%, 0.73) 35.3%,
+    hsla(0, 0%, 0%, 0.67) 41.2%,
+    hsla(0, 0%, 0%, 0.6) 47.1%,
+    hsla(0, 0%, 0%, 0.52) 52.9%,
+    hsla(0, 0%, 0%, 0.44) 58.8%,
+    hsla(0, 0%, 0%, 0.33) 64.7%,
+    hsla(0, 0%, 0%, 0.22) 71%,
+    hsla(0, 0%, 0%, 0.12) 77.5%,
+    hsla(0, 0%, 0%, 0.05) 84.5%,
+    hsla(0, 0%, 0%, 0.011) 91.9%,
+    hsla(0, 0%, 0%, 0) 100%
+  );
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_heading.scss 1`] = `
+"@mixin pds-heading-large {
+  font:
+    normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+
+@mixin pds-heading-medium {
+  font:
+    normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+
+@mixin pds-heading-small {
+  font:
+    normal normal 400 1rem / calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+
+@mixin pds-heading-x-large {
+  font:
+    normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+
+@mixin pds-heading-xx-large {
+  font:
+    normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_motion.scss 1`] = `
+"$pds-motion-duration-long: 0.6s;
+$pds-motion-duration-moderate: 0.4s;
+$pds-motion-duration-short: 0.25s;
+$pds-motion-duration-very-long: 1.2s;
+$pds-motion-easing-base: cubic-bezier(0.25, 0.1, 0.25, 1);
+$pds-motion-easing-in: cubic-bezier(0, 0, 0.2, 1);
+$pds-motion-easing-out: cubic-bezier(0.4, 0, 0.5, 1);
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_spacing.scss 1`] = `
+"$pds-spacing-static-x-small: 4px;
+$pds-spacing-static-small: 8px;
+$pds-spacing-static-medium: 16px;
+$pds-spacing-static-large: 32px;
+$pds-spacing-static-x-large: 48px;
+$pds-spacing-static-xx-large: 80px;
+$pds-spacing-fluid-x-small: clamp(4px, 0.25vw + 3px, 8px);
+$pds-spacing-fluid-small: clamp(8px, 0.5vw + 6px, 16px);
+$pds-spacing-fluid-medium: clamp(16px, 1.25vw + 12px, 36px);
+$pds-spacing-fluid-large: clamp(32px, 2.75vw + 23px, 76px);
+$pds-spacing-fluid-x-large: clamp(48px, 3vw + 38px, 96px);
+$pds-spacing-fluid-xx-large: clamp(80px, 7.5vw + 56px, 200px);
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
+"@mixin pds-text-large {
+  font:
+    normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+
+@mixin pds-text-medium {
+  font:
+    normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+
+@mixin pds-text-small {
+  font:
+    normal normal 400 1rem / calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+
+@mixin pds-text-x-large {
+  font:
+    normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+
+@mixin pds-text-x-small {
+  font:
+    normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+
+@mixin pds-text-xx-small {
+  font:
+    normal normal 400 0.75rem / calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_theme.scss 1`] = `
+"$pds-theme-light-primary: hsl(225, 66.7%, 1.2%);
+$pds-theme-light-background-base: #fff;
+$pds-theme-light-background-surface: hsl(240, 7.7%, 97.5%);
+$pds-theme-light-background-shading: hsla(240, 5.3%, 14.9%, 0.5);
+$pds-theme-light-background-frosted: hsla(236, 6.4%, 51%, 0.148);
+$pds-theme-light-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
+$pds-theme-light-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
+$pds-theme-light-contrast-high: hsla(240, 7.1%, 11%, 0.7);
+$pds-theme-light-notification-success: hsl(115, 77.5%, 27.8%);
+$pds-theme-light-notification-success-soft: hsla(115, 77.5%, 27.8%, 0.18);
+$pds-theme-light-notification-warning: hsl(28, 97.7%, 34.1%);
+$pds-theme-light-notification-warning-soft: hsla(28, 97.7%, 34.1%, 0.18);
+$pds-theme-light-notification-error: hsl(357, 78%, 41%);
+$pds-theme-light-notification-error-soft: hsla(357, 78%, 41%, 0.18);
+$pds-theme-light-notification-info: hsl(228, 83.2%, 51%);
+$pds-theme-light-notification-info-soft: hsla(228, 83.2%, 51%, 0.18);
+$pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148);
+$pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148);
+$pds-theme-light-state-focus: #1a44ea;
+$pds-theme-light-state-disabled: hsla(233, 6.6%, 23.9%, 0.412);
+$pds-theme-dark-primary: hsl(240, 12.5%, 96.9%);
+$pds-theme-dark-background-base: hsl(225, 66.7%, 1.2%);
+$pds-theme-dark-background-surface: hsl(240, 2%, 10%);
+$pds-theme-dark-background-shading: hsla(240, 5.3%, 14.9%, 0.5);
+$pds-theme-dark-background-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+$pds-theme-dark-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
+$pds-theme-dark-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
+$pds-theme-dark-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
+$pds-theme-dark-notification-success: hsl(157, 84.9%, 41.6%);
+$pds-theme-dark-notification-success-soft: hsla(157, 84.9%, 41.6%, 0.18);
+$pds-theme-dark-notification-warning: hsl(28, 90.2%, 56.1%);
+$pds-theme-dark-notification-warning-soft: hsla(28, 90.2%, 56.1%, 0.18);
+$pds-theme-dark-notification-error: hsl(0, 96.9%, 62%);
+$pds-theme-dark-notification-error-soft: hsla(0, 96.9%, 62%, 0.18);
+$pds-theme-dark-notification-info: hsl(210, 100%, 54.5%);
+$pds-theme-dark-notification-info-soft: hsla(210, 100%, 54.5%, 0.18);
+$pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228);
+$pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228);
+$pds-theme-dark-state-focus: #1a44ea;
+$pds-theme-dark-state-disabled: hsla(240, 1.5%, 61.8%, 0.302);
+"
+`;

@@ -6,7 +6,7 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
   textSmallStyle,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';

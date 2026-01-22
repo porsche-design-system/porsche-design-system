@@ -9,8 +9,7 @@ import {
   PHeading,
   PLink,
 } from '@porsche-design-system/components-react/ssr';
-import { breakpointS } from '@porsche-design-system/components-react/styles';
-import { breakpointM } from '@porsche-design-system/styles/src/js';
+import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
@@ -63,7 +62,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [isBannerOpen, setIsBannerOpen] = useState(false);
-  const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointM}px)`).matches;
+  const isDesktop = typeof window !== 'undefined' && window.matchMedia(`(min-width: ${breakpointMd}px)`).matches;
 
   const latestPdsVersion = stablePdsReleases[0] as Semver;
 
@@ -103,7 +102,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // initially, sidebar should be closed on mobile and opened on desktop
-    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
+    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointSm}px)`).matches);
   }, []);
 
   useEffect(() => {

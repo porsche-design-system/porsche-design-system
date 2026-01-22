@@ -4,7 +4,7 @@ import {
   motionDurationModerate,
   motionEasingIn,
   motionEasingOut,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { TOAST_Z_INDEX } from '../../../constants';
 import {

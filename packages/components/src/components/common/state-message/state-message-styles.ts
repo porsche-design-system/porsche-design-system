@@ -1,4 +1,4 @@
-import { spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import { getTransition } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';

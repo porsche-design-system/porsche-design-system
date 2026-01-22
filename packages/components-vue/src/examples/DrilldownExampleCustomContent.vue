@@ -126,7 +126,7 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
 </template>
 
 <style lang="scss" scoped>
-  @use '@porsche-design-system/components-vue/styles' as *;
+  @use '@porsche-design-system/components-vue/scss' as *;
 
   p-drilldown {
     --p-drilldown-grid-template: repeat(5, auto) minmax(0, 1fr) / auto

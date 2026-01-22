@@ -16,7 +16,7 @@ import {
   textXSmallStyle,
   textXXSmallStyle,
   themeLightPrimary,
-} from '@porsche-design-system/components-vue/styles/vanilla-extract';
+} from '@porsche-design-system/components-vue/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 
 // Wrapper

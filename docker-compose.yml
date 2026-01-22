@@ -46,8 +46,6 @@ services:
       - storefront-stackblitz-node-modules:/opt/repository/packages/storefront/projects/stackblitz/node_modules
       - tokens-node-modules:/opt/repository/packages/tokens/node_modules
       - styles-node-modules:/opt/repository/packages/styles/node_modules
-      - styles-shared-styles-node-modules:/opt/repository/packages/styles/projects/shared-styles/node_modules
-      - styles-global-styles-node-modules:/opt/repository/packages/styles/projects/global-styles/node_modules
       - styles-tailwindcss-node-modules:/opt/repository/packages/styles/projects/tailwindcss/node_modules
       - utilities-node-modules:/opt/repository/packages/utilities/node_modules
       - utilities-ag-grid-node-modules:/opt/repository/packages/utilities/projects/ag-grid/node_modules
@@ -85,8 +83,6 @@ services:
       - storefront-stackblitz-node-modules:/opt/repository-volumes/storefront-stackblitz-node_modules
       - tokens-node-modules:/opt/repository-volumes/tokens-node_modules
       - styles-node-modules:/opt/repository-volumes/styles-node_modules
-      - styles-shared-styles-node-modules:/opt/repository-volumes/styles-shared-styles-node_modules
-      - styles-global-styles-node-modules:/opt/repository-volumes/styles-global-styles-node_modules
       - styles-tailwindcss-node-modules:/opt/repository-volumes/styles-tailwindcss-node_modules
       - utilities-node-modules:/opt/repository-volumes/utilities-node_modules
       - utilities-ag-grid-node-modules:/opt/repository-volumes/utilities-ag-grid-node_modules

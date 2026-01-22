@@ -7,7 +7,7 @@ import {
   fontSizeTextXLarge,
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import type { FlagSize } from './flag-utils';
