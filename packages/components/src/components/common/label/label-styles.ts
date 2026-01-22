@@ -32,7 +32,10 @@ export const getFunctionalComponentLabelStyles = (
 ): Styles => {
   return {
     'label-wrapper': {
-      minWidth: 'fit-content', // ensures label contents don't shrink to zero in grid containers
+      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
+        ...(!isHidden && { minWidth: 'fit-content' }), // ensures label contents don't shrink to zero in grid containers
+        ...getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle),
+      })),
       ...additionalLabelWrapperJssStyle,
     },
     label: {
@@ -43,9 +46,6 @@ export const getFunctionalComponentLabelStyles = (
       }),
       color: primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
-      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-        getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)
-      ),
       display: 'inline',
       '&:empty': {
         display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
@@ -53,9 +53,12 @@ export const getFunctionalComponentLabelStyles = (
       // styling for the description
       '&:is(span)': {
         cursor: 'unset',
-        marginTop: `-${spacingStaticXSmall}`,
         fontSize: fontSizeTextXSmall,
         color: contrastHighColor,
+        ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXSmall}` })
+        ),
+        marginTop: `-${spacingStaticXSmall}`,
       },
       ...additionalDefaultJssStyle,
     },

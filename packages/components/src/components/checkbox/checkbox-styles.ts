@@ -13,7 +13,7 @@ import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-che
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading } from '../../utils';
+import { getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import {
   getFunctionalComponentLabelAfterStyles,
@@ -108,11 +108,10 @@ export const getComponentCss = (
       {
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       },
+      null,
       {
-        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-          paddingTop: hideLabelValue ? 0 : labelPaddingTop,
-          paddingInlineStart: hideLabelValue ? 0 : labelPaddingInlineStart,
-        })),
+        paddingTop: labelPaddingTop,
+        paddingInlineStart: labelPaddingInlineStart,
       }
     ),
     // .message
