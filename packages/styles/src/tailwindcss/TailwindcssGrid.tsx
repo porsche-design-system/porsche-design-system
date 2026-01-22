@@ -1,17 +1,4 @@
-import { type AccordionUpdateEventDetail, PAccordion, PButton } from '@porsche-design-system/components-react';
-import { useState } from 'react';
-
 export const TailwindcssGrid = () => {
-  const [isAccordion1Open, setIsAccordion1Open] = useState(false);
-  const [isAccordion2Open, setIsAccordion2Open] = useState(false);
-
-  const onAccordion1Update = (e: CustomEvent<AccordionUpdateEventDetail>) => {
-    setIsAccordion1Open(e.detail.open);
-  };
-  const onAccordion2Update = (e: CustomEvent<AccordionUpdateEventDetail>) => {
-    setIsAccordion2Open(e.detail.open);
-  };
-
   return (
     <div style={{ transform: 'translate3d(0px, 0px, 0px)' }}>
       <div className="grid-template fixed inset-0 pointer-events-none">
@@ -52,9 +39,6 @@ export const TailwindcssGrid = () => {
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
             <b>Wide Sidebar</b>
           </span>
-          <PAccordion heading="Some Heading" headingTag="h3" />
-          <PAccordion heading="Some Heading" headingTag="h3" />
-          <PAccordion heading="Some Heading" headingTag="h3" />
         </div>
         <div className="col-wide sm:col-span-11 sm:col-end-wide p-fluid-md rounded-lg bg-[rgba(255,125,0,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
@@ -106,9 +90,6 @@ export const TailwindcssGrid = () => {
           </span>
           <h2 className="prose-heading-xl">Heading in Teaser</h2>
           <p className="prose-text-sm mt-fluid-xs">Subline or Copy Text in Large Teaser</p>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
       </div>
 
@@ -118,54 +99,36 @@ export const TailwindcssGrid = () => {
             <b>Basic</b> for Content Tiles
           </span>
           <h3 className="prose-heading-lg">Heading in Tile</h3>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
         <div className="col-start-basic col-span-one-half p-fluid-md rounded-lg bg-[rgba(255,0,255,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
             <b>Basic Half</b> for Content Tiles
           </span>
           <h3 className="prose-heading-lg">Heading in Tile</h3>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
         <div className="col-span-one-half col-end-basic p-fluid-md rounded-lg bg-[rgba(255,0,255,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
             <b>Basic Half</b> for Content Tiles
           </span>
           <h3 className="prose-heading-lg">Heading in Tile</h3>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
         <div className="col-basic sm:col-start-basic sm:col-span-one-third p-fluid-md rounded-lg bg-[rgba(255,0,255,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
             <b>Basic Third</b> for Content Tiles
           </span>
           <h3 className="prose-heading-lg">Heading in Tile</h3>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
         <div className="col-basic sm:col-span-one-third p-fluid-md rounded-lg bg-[rgba(255,0,255,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
             <b>Basic Third</b> for Content Tiles
           </span>
           <h3 className="prose-heading-lg">Heading in Tile</h3>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
         <div className="col-basic sm:col-span-one-third sm:col-end-basic p-fluid-md rounded-lg bg-[rgba(255,0,255,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
             <b>Basic Third</b> for Content Tiles
           </span>
           <h3 className="prose-heading-lg">Heading in Tile</h3>
-          <PButton className="mt-fluid-md" variant="secondary">
-            Some label
-          </PButton>
         </div>
         <div className="col-basic sm:col-start-basic sm:col-span-two-thirds p-fluid-md rounded-lg bg-[rgba(255,0,255,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
@@ -194,18 +157,6 @@ export const TailwindcssGrid = () => {
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover ms-static-sm mt-static-sm">
             <b>Narrow</b> for small Components and Content
           </span>
-          <PAccordion heading="Some Heading" headingTag="h3" open={isAccordion1Open} onUpdate={onAccordion1Update}>
-            <p className="prose-text-sm mt-fluid-xs">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
-              felis, ultricies nec, pellentesque eu. Aenean massa.
-            </p>
-          </PAccordion>
-          <PAccordion heading="Some Heading" headingTag="h3" open={isAccordion2Open} onUpdate={onAccordion2Update}>
-            <p className="prose-text-sm mt-fluid-xs">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
-              felis, ultricies nec, pellentesque eu. Aenean massa.
-            </p>
-          </PAccordion>
         </div>
         <div className="col-start-narrow col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,255,0,0.25)]">
           <span className="prose-text-xs inline-block align-top rounded-sm mb-fluid-sm py-static-xs px-static-sm bg-hover">
