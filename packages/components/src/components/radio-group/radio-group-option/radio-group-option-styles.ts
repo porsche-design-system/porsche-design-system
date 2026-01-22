@@ -126,12 +126,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
-    'label-wrapper': {
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, null, {
       paddingTop: labelPaddingTop,
       paddingInlineStart: labelPaddingInlineStart,
-    },
-    // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled || loading, false),
+    }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

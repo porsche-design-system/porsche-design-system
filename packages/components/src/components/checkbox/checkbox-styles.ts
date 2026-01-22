@@ -101,16 +101,20 @@ export const getComponentCss = (
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
       },
     }),
-    'label-wrapper': {
-      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        paddingTop: hideLabelValue ? 0 : labelPaddingTop,
-        paddingInlineStart: hideLabelValue ? 0 : labelPaddingInlineStart,
-      })),
-    },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, {
-      cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
-    }),
+    ...getFunctionalComponentLabelStyles(
+      isDisabled || isLoading,
+      hideLabel,
+      {
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+      },
+      {
+        ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
+          paddingTop: hideLabelValue ? 0 : labelPaddingTop,
+          paddingInlineStart: hideLabelValue ? 0 : labelPaddingInlineStart,
+        })),
+      }
+    ),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading

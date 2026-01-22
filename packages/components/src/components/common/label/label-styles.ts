@@ -27,16 +27,20 @@ export const getFunctionalComponentLabelStyles = (
   isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   additionalDefaultJssStyle?: JssStyle,
+  additionalLabelWrapperJssStyle?: JssStyle,
   additionalIsShownJssStyle?: JssStyle
 ): Styles => {
   return {
+    'label-wrapper': {
+      minWidth: 'fit-content', // ensures label contents don't shrink to zero in grid containers
+      ...additionalLabelWrapperJssStyle,
+    },
     label: {
       ...textSmallStyle,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
-      justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
       color: primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
