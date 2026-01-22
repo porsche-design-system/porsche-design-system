@@ -91,6 +91,7 @@ type SetupScenarioOptions = {
   forceComponentTheme?: Theme;
   forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
+  forcePseudoState?: 'focus' | 'hover';
 };
 
 export const setupScenario = async (
@@ -106,6 +107,7 @@ export const setupScenario = async (
     scalePageFontSize,
     forceComponentTheme,
     forceDirMode,
+    forcePseudoState,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
@@ -113,6 +115,7 @@ export const setupScenario = async (
     scalePageFontSize: false,
     forceComponentTheme: undefined,
     forceDirMode: undefined,
+    forcePseudoState: undefined,
     ...options,
   };
   if (javaScriptDisabled) {
@@ -160,6 +163,76 @@ export const setupScenario = async (
 
   await waitForComponentsReady(page);
   await waitForComponentsReadyWithinIFrames(page);
+
+  if (forcePseudoState) {
+    const client = await page.context().newCDPSession(page);
+
+    await client.send('DOM.enable');
+    await client.send('CSS.enable');
+
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ];
+
+    async function forceFocusInDocument(docNodeId: number) {
+      for (const selector of focusableSelectors) {
+        try {
+          const { nodeIds } = await client.send('DOM.querySelectorAll', {
+            nodeId: docNodeId,
+            selector: selector,
+          });
+
+          for (const foundNodeId of nodeIds) {
+            try {
+              await client.send('CSS.forcePseudoState', {
+                nodeId: foundNodeId,
+                forcedPseudoClasses: ['focus', 'focus-visible'],
+              });
+            } catch (e) {
+              // Element might not support pseudo-states
+            }
+          }
+        } catch (e) {
+          // Selector might not be valid in this context
+        }
+      }
+    }
+
+    async function traverseAndForceFocus(node: any) {
+      if (!node) return;
+
+      if (node.nodeId) {
+        await forceFocusInDocument(node.nodeId);
+      }
+
+      // Handle content documents (iframes)
+      if (node.contentDocument) {
+        await traverseAndForceFocus(node.contentDocument);
+      }
+
+      // Traverse shadow roots
+      if (node.shadowRoots) {
+        for (const shadowRoot of node.shadowRoots) {
+          await traverseAndForceFocus(shadowRoot);
+        }
+      }
+
+      // Traverse children
+      if (node.children) {
+        for (const child of node.children) {
+          await traverseAndForceFocus(child);
+        }
+      }
+    }
+
+    const { root } = await client.send('DOM.getDocument', { depth: -1, pierce: true });
+    await traverseAndForceFocus(root);
+  }
 
   // PDS components have bootstrapped in the meantime which might have changed the document height
   await page.setViewportSize({

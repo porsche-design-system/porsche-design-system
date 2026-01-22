@@ -145,6 +145,17 @@ for (const component of components) {
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-rtl-mode.png`);
     });
 
+    // :focus + :focus-visible
+    test(`should have no visual regression for viewport ${viewportWidthM} with :focus and/or :focus-visible`, async ({
+      page,
+    }) => {
+      await setupScenario(page, `/${component}`, viewportWidthM, {
+        forcePseudoState: 'focus',
+      });
+      await revertAutoFocus(page, component);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-focus.png`);
+    });
+
     // print view
     /*
       themes.forEach((theme) => {

@@ -54,6 +54,7 @@ import { CanvasGridComponent } from './generated/canvas-grid.component';
 import { CanvasHeaderEndComponent } from './generated/canvas-header-end.component';
 import { CanvasHeaderStartComponent } from './generated/canvas-header-start.component';
 import { CanvasNamedSlotsComponent } from './generated/canvas-named-slots.component';
+import { CanvasPrefixedComponent } from './generated/canvas-prefixed.component';
 import { CanvasScrollableComponent } from './generated/canvas-scrollable.component';
 import { CanvasSidebarEndComponent } from './generated/canvas-sidebar-end.component';
 import { CanvasSidebarStartComponent } from './generated/canvas-sidebar-start.component';
@@ -261,6 +262,7 @@ export const generatedPages = [
   CanvasHeaderEndComponent,
   CanvasHeaderStartComponent,
   CanvasNamedSlotsComponent,
+  CanvasPrefixedComponent,
   CanvasScrollableComponent,
   CanvasSidebarEndComponent,
   CanvasSidebarStartComponent,
@@ -560,6 +562,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Canvas Named Slots',
     path: 'canvas-named-slots',
     component: CanvasNamedSlotsComponent,
+  },
+  {
+    name: 'Canvas Prefixed',
+    path: 'canvas-prefixed',
+    component: CanvasPrefixedComponent,
   },
   {
     name: 'Canvas Scrollable',

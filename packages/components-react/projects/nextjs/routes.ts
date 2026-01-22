@@ -92,6 +92,10 @@ const generatedRoutes = {
     "path": "/canvas-named-slots",
     "name": "CanvasNamedSlots"
   },
+  "canvasPrefixed": {
+    "path": "/canvas-prefixed",
+    "name": "CanvasPrefixed"
+  },
   "canvasScrollable": {
     "path": "/canvas-scrollable",
     "name": "CanvasScrollable"
