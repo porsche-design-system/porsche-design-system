@@ -10,7 +10,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:bundle",
-    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
     "test:unit": "yarn generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
