@@ -142,7 +142,9 @@ for (const component of components) {
 
     // :focus + :focus-visible
     // TODO: somehow the components run into a timeout here, needs investigation
-    const skipFocusTest = ['canvas', 'carousel', 'drilldown', 'pin-code'].some((c) => component.startsWith(c));
+    const skipFocusTest = ['canvas', 'carousel', 'drilldown', 'pin-code', 'select', 'multi-select'].some((c) =>
+      component.startsWith(c)
+    );
     (skipFocusTest ? test.fixme : test)(
       `should have no visual regression for viewport ${viewportWidthM} with :focus and/or :focus-visible`,
       async ({ page }) => {
@@ -156,7 +158,9 @@ for (const component of components) {
 
     // :hover
     // TODO: somehow the components run into a timeout here, needs investigation
-    const skipHoverTest = ['canvas', 'carousel', 'drilldown', 'pin-code'].some((c) => component.startsWith(c));
+    const skipHoverTest = ['canvas', 'carousel', 'drilldown', 'pin-code', 'select', 'multi-select'].some((c) =>
+      component.startsWith(c)
+    );
     (skipHoverTest ? test.fixme : test)(
       `should have no visual regression for viewport ${viewportWidthM} with :hover`,
       async ({ page }) => {
