@@ -11,7 +11,7 @@
   "scripts": {
     "build": "yarn clean:build && yarn build:bundle",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
-    "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.js --bundleConfigAsCjs",
+    "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
     "test": "yarn test:unit",
     "test:unit": "yarn generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
