@@ -1,5 +1,5 @@
 import { type Theme, themeQuartz } from 'ag-grid-community';
-import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
+import { checkboxStyle, inputStyles, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -9,25 +9,35 @@ import {
   fontWeightSemiBold,
   themeDarkBackgroundBase,
   themeDarkBackgroundFrosted,
+  themeDarkBackgroundShading,
   themeDarkBackgroundSurface,
+  // @ts-ignore
   themeDarkBackgroundSurfaceDarken,
   themeDarkContrastLow,
+  // @ts-ignore
   themeDarkContrastMedium,
   themeDarkNotificationError,
   themeDarkNotificationInfo,
+  themeDarkNotificationInfoSoft,
   themeDarkPrimary,
+  // @ts-ignore
   themeDarkStateDisabled,
   themeDarkStateFocus,
   themeDarkStateHover,
   themeLightBackgroundBase,
   themeLightBackgroundFrosted,
+  themeLightBackgroundShading,
   themeLightBackgroundSurface,
+  // @ts-ignore
   themeLightBackgroundSurfaceDarken,
   themeLightContrastLow,
+  // @ts-ignore
   themeLightContrastMedium,
   themeLightNotificationError,
   themeLightNotificationInfo,
+  themeLightNotificationInfoSoft,
   themeLightPrimary,
+  // @ts-ignore
   themeLightStateDisabled,
   themeLightStateFocus,
   themeLightStateHover,
@@ -57,20 +67,15 @@ export const pdsTheme: Theme = themeQuartz
     accentColor: themeLightNotificationInfo,
     backgroundColor: themeLightBackgroundBase,
     foregroundColor: themeLightPrimary,
-    headerBackgroundColor: themeLightBackgroundSurface,
-    selectedRowBackgroundColor: themeLightBackgroundSurfaceDarken,
+    headerBackgroundColor: themeLightBackgroundShading, // maybe?
+    selectedRowBackgroundColor: themeLightNotificationInfoSoft,
     oddRowBackgroundColor: themeLightBackgroundSurface,
     modalOverlayBackgroundColor: themeLightBackgroundFrosted,
     rowHoverColor: themeLightStateHover,
     columnHoverColor: themeLightStateHover,
     rangeSelectionBorderColor: themeLightStateFocus,
     borderColor: themeLightContrastLow,
-    inputBorder: `1px solid ${themeLightContrastMedium}`,
-    inputInvalidBorder: `1px solid ${themeLightNotificationError}`,
-    inputDisabledBorder: `1px solid ${themeLightStateDisabled}`,
-    inputDisabledBackgroundColor: themeLightBackgroundBase,
     invalidColor: themeLightNotificationError,
-    inputFocusBorder: `1px solid ${themeLightPrimary}`,
   })
   .withParams(
     {
@@ -78,23 +83,19 @@ export const pdsTheme: Theme = themeQuartz
       accentColor: themeDarkNotificationInfo,
       backgroundColor: themeDarkBackgroundBase,
       foregroundColor: themeDarkPrimary,
-      headerBackgroundColor: themeDarkBackgroundSurface,
-      selectedRowBackgroundColor: themeDarkBackgroundSurfaceDarken,
+      headerBackgroundColor: themeDarkBackgroundShading, // maybe?
+      selectedRowBackgroundColor: themeDarkNotificationInfoSoft,
       oddRowBackgroundColor: themeDarkBackgroundSurface,
       modalOverlayBackgroundColor: themeDarkBackgroundFrosted,
       rowHoverColor: themeDarkStateHover,
       columnHoverColor: themeDarkStateHover,
       rangeSelectionBorderColor: themeDarkStateFocus,
       borderColor: themeDarkContrastLow,
-      inputBorder: `1px solid ${themeDarkContrastMedium}`,
-      inputInvalidBorder: `1px solid ${themeDarkNotificationError}`,
-      inputDisabledBorder: `1px solid ${themeDarkStateDisabled}`,
-      inputDisabledBackgroundColor: themeDarkBackgroundBase,
       invalidColor: themeDarkNotificationError,
-      inputFocusBorder: `1px solid ${themeDarkPrimary}`,
     },
     pdsThemeModeDark
   )
   .withPart(pdsSvgIcons)
   .withPart(toggleButtonStyle)
-  .withPart(checkboxStyle);
+  .withPart(checkboxStyle)
+  .withPart(inputStyles);
