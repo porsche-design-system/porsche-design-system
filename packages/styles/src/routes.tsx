@@ -12,6 +12,7 @@ import type { ReactNode } from 'react';
 // import { ScssTypography } from './scss/ScssTypography.tsx';
 // Emotion
 import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
+import { EmotionBorder } from './app/emotion/EmotionBorder.tsx';
 // SCSS
 import { ScssBlur } from './app/scss/ScssBlur.tsx';
 import { ScssBorder } from './app/scss/ScssBorder.tsx';
@@ -39,6 +40,7 @@ import { TailwindcssTypography } from './app/tailwindcss/TailwindcssTypography.t
 // import { EmotionTypography } from './emotion/EmotionTypography.tsx';
 // Vanilla Extract
 import { VanillaExtractBlur } from './app/vanilla-extract/VanillaExtractBlur.tsx';
+import { VanillaExtractBorder } from './app/vanilla-extract/VanillaExtractBorder.tsx';
 // import { VanillaExtractBorder } from './vanilla-extract/VanillaExtractBorder.tsx';
 // import { VanillaExtractColor } from './vanilla-extract/VanillaExtractColor.tsx';
 // import { VanillaExtractGradient } from './vanilla-extract/VanillaExtractGradient.tsx';
@@ -89,6 +91,8 @@ export const routes: RouteConfig[] = [
   { path: '/scss/border', label: 'SCSS - Border', element: <ScssBorder /> },
   // Emotion
   { path: '/emotion/blur', label: 'Emotion - Blur', element: <EmotionBlur /> },
+  { path: '/emotion/border', label: 'Emotion - Border', element: <EmotionBorder /> },
   // Vanilla Extract
   { path: '/vanilla-extract/blur', label: 'Vanilla Extract - Blur', element: <VanillaExtractBlur /> },
+  { path: '/vanilla-extract/border', label: 'Vanilla Extract - Border', element: <VanillaExtractBorder /> },
 ];

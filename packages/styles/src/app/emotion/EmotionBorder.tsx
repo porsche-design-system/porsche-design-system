@@ -1,15 +1,74 @@
-export const TailwindcssBorder = () => {
+import styled from '@emotion/styled';
+import {
+  borderRadiusLarge,
+  borderRadiusMedium,
+  borderRadiusSmall,
+  borderWidthBase,
+  borderWidthThin,
+  spacingFluidMedium,
+  spacingFluidSmall,
+  spacingStaticMedium,
+  textSmallStyle,
+} from '@porsche-design-system/emotion';
+
+const EmotionBorderWrapper = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: spacingFluidMedium,
+  padding: spacingStaticMedium,
+});
+
+const EmotionBorderSection = styled.div({
+  display: 'grid',
+  gap: spacingFluidMedium,
+  ...textSmallStyle,
+});
+
+const EmotionBorderRadiusSmall = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: borderRadiusSmall,
+  padding: spacingFluidSmall,
+});
+
+const EmotionBorderRadiusMedium = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: borderRadiusMedium,
+  padding: spacingFluidSmall,
+});
+
+const EmotionBorderRadiusLarge = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: borderRadiusLarge,
+  padding: spacingFluidSmall,
+});
+
+const EmotionBorderWidthThin = styled.div({
+  borderWidth: borderWidthThin,
+  borderStyle: 'solid',
+  padding: spacingFluidSmall,
+});
+
+const EmotionBorderWidthRegular = styled.div({
+  borderWidth: borderWidthBase,
+  borderStyle: 'solid',
+  padding: spacingFluidSmall,
+});
+
+export const EmotionBorder = () => {
   return (
-    <div className="flex flex-col gap-fluid-md p-static-md">
-      <div className="grid gap-fluid-md prose-text-sm">
-        <div className="rounded-sm border p-fluid-sm">Border Radius Small</div>
-        <div className="rounded-md border p-fluid-sm">Border Radius Medium</div>
-        <div className="rounded-lg border p-fluid-sm">Border Radius Large</div>
-      </div>
-      <div className="grid gap-fluid-md prose-text-sm">
-        <div className="border-thin p-fluid-sm">Border Width Thin</div>
-        <div className="border-regular p-fluid-sm">Border Width Regular</div>
-      </div>
-    </div>
+    <EmotionBorderWrapper>
+      <EmotionBorderSection>
+        <EmotionBorderRadiusSmall>Border Radius Small</EmotionBorderRadiusSmall>
+        <EmotionBorderRadiusMedium>Border Radius Medium</EmotionBorderRadiusMedium>
+        <EmotionBorderRadiusLarge>Border Radius Large</EmotionBorderRadiusLarge>
+      </EmotionBorderSection>
+      <EmotionBorderSection>
+        <EmotionBorderWidthThin>Border Width Thin</EmotionBorderWidthThin>
+        <EmotionBorderWidthRegular>Border Width Regular</EmotionBorderWidthRegular>
+      </EmotionBorderSection>
+    </EmotionBorderWrapper>
   );
 };
