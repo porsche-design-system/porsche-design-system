@@ -1,0 +1,33 @@
+@use '@porsche-design-system/scss' as *;
+
+.scss-spacing {
+  display: grid;
+  gap: $pds-spacing-fluid-medium;
+  @include pds-text-small;
+  color: var(--scss-color-primary);
+  padding: $pds-spacing-static-medium;
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $pds-spacing-static-medium;
+  }
+
+  &__box {
+    &--fluid-xs { width: $pds-spacing-fluid-x-small; height: $pds-spacing-fluid-x-small; }
+    &--fluid-sm { width: $pds-spacing-fluid-small; height: $pds-spacing-fluid-small; }
+    &--fluid-md { width: $pds-spacing-fluid-medium; height: $pds-spacing-fluid-medium; }
+    &--fluid-lg { width: $pds-spacing-fluid-large; height: $pds-spacing-fluid-large; }
+    &--fluid-xl { width: $pds-spacing-fluid-x-large; height: $pds-spacing-fluid-x-large; }
+    &--fluid-2xl { width: $pds-spacing-fluid-xx-large; height: $pds-spacing-fluid-xx-large; }
+
+    &--static-xs { width: $pds-spacing-static-x-small; height: $pds-spacing-static-x-small; }
+    &--static-sm { width: $pds-spacing-static-small; height: $pds-spacing-static-small; }
+    &--static-md { width: $pds-spacing-static-medium; height: $pds-spacing-static-medium; }
+    &--static-lg { width: $pds-spacing-static-large; height: $pds-spacing-static-large; }
+    &--static-xl { width: $pds-spacing-static-x-large; height: $pds-spacing-static-x-large; }
+    &--static-2xl { width: $pds-spacing-static-xx-large; height: $pds-spacing-static-xx-large; }
+
+    &--bg-info { background-color: var(--scss-color-info); }
+    &--bg-error { background-color: var(--scss-color-error); }
+  }
+}

@@ -8,12 +8,12 @@ import {
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
-export const VanillaExtractBlurWrapper = style({
+export const vanillaExtractBlurWrapper = style({
   display: 'grid',
   ...textSmallStyle,
 });
 
-export const VanillaExtractBlurImage = style({
+export const vanillaExtractBlurImage = style({
   gridColumn: 1,
   gridRow: 1,
   width: '100%',
@@ -21,7 +21,7 @@ export const VanillaExtractBlurImage = style({
   objectFit: 'cover',
 });
 
-export const VanillaExtractBackdropBlurFrosted = style({
+export const vanillaExtractBackdropBlurFrosted = style({
   ...frostedGlassStyle,
   backgroundColor: vars.frosted,
   borderRadius: borderRadiusLarge,
@@ -33,6 +33,6 @@ export const VanillaExtractBackdropBlurFrosted = style({
   placeItems: 'center',
 });
 
-export const VanillaExtractBlurP = style({
+export const vanillaExtractBlurP = style({
   color: 'white',
 });

@@ -1,0 +1,30 @@
+@use '@porsche-design-system/scss' as *;
+
+.scss-gradient {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $pds-spacing-fluid-medium;
+  padding: $pds-spacing-fluid-medium;
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+  &__item {
+    @include pds-text-small;
+    color: white;
+    border-radius: $pds-border-radius-large;
+    padding: $pds-spacing-fluid-medium;
+
+    &--top {
+      @include pds-gradient-to-top;
+    }
+    &--left {
+      @include pds-gradient-to-left;
+    }
+    &--bottom {
+      @include pds-gradient-to-bottom;
+    }
+    &--right {
+      @include pds-gradient-to-right;
+    }
+  }
+}

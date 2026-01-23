@@ -12,48 +12,48 @@ import {
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
-export const VanillaExtractBorderWrapper = style({
+export const vanillaExtractBorderWrapper = style({
   display: 'flex',
   flexDirection: 'column',
   gap: spacingFluidMedium,
   padding: spacingStaticMedium,
 });
 
-export const VanillaExtractBorderSection = style({
+export const vanillaExtractBorderSection = style({
   display: 'grid',
   gap: spacingFluidMedium,
   ...textSmallStyle,
   color: vars.primary,
 });
 
-export const VanillaExtractBorderRadiusSmall = style({
+export const vanillaExtractBorderRadiusSmall = style({
   borderWidth: '1px',
   borderStyle: 'solid',
   borderRadius: borderRadiusSmall,
   padding: spacingFluidSmall,
 });
 
-export const VanillaExtractBorderRadiusMedium = style({
+export const vanillaExtractBorderRadiusMedium = style({
   borderWidth: '1px',
   borderStyle: 'solid',
   borderRadius: borderRadiusMedium,
   padding: spacingFluidSmall,
 });
 
-export const VanillaExtractBorderRadiusLarge = style({
+export const vanillaExtractBorderRadiusLarge = style({
   borderWidth: '1px',
   borderStyle: 'solid',
   borderRadius: borderRadiusLarge,
   padding: spacingFluidSmall,
 });
 
-export const VanillaExtractBorderWidthThin = style({
+export const vanillaExtractBorderWidthThin = style({
   borderWidth: borderWidthThin,
   borderStyle: 'solid',
   padding: spacingFluidSmall,
 });
 
-export const VanillaExtractBorderWidthRegular = style({
+export const vanillaExtractBorderWidthRegular = style({
   borderWidth: borderWidthBase,
   borderStyle: 'solid',
   padding: spacingFluidSmall,
