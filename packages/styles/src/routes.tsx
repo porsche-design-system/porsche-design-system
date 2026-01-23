@@ -49,6 +49,7 @@ import { VanillaExtractBlur } from './app/vanilla-extract/VanillaExtractBlur.tsx
 import { VanillaExtractBorder } from './app/vanilla-extract/VanillaExtractBorder.tsx';
 import { VanillaExtractColor } from './app/vanilla-extract/VanillaExtractColor.tsx';
 import { VanillaExtractGradient } from './app/vanilla-extract/VanillaExtractGradient.tsx';
+import { VanillaExtractSpacing } from './app/vanilla-extract/VanillaExtractSpacing.tsx';
 // import { VanillaExtractBorder } from './vanilla-extract/VanillaExtractBorder.tsx';
 // import { VanillaExtractColor } from './vanilla-extract/VanillaExtractColor.tsx';
 // import { VanillaExtractGradient } from './vanilla-extract/VanillaExtractGradient.tsx';
@@ -111,4 +112,5 @@ export const routes: RouteConfig[] = [
   { path: '/vanilla-extract/border', label: 'Vanilla Extract - Border', element: <VanillaExtractBorder /> },
   { path: '/vanilla-extract/color', label: 'Vanilla Extract - Color', element: <VanillaExtractColor /> },
   { path: '/vanilla-extract/gradient', label: 'Vanilla Extract - Gradient', element: <VanillaExtractGradient /> },
+  { path: '/vanilla-extract/spacing', label: 'Vanilla Extract - Spacing', element: <VanillaExtractSpacing /> },
 ];
