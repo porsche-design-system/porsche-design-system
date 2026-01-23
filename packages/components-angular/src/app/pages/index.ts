@@ -30,7 +30,6 @@ export * from './tabs-bar-navigation-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
-export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
@@ -54,6 +53,7 @@ import { CanvasGridComponent } from './generated/canvas-grid.component';
 import { CanvasHeaderEndComponent } from './generated/canvas-header-end.component';
 import { CanvasHeaderStartComponent } from './generated/canvas-header-start.component';
 import { CanvasNamedSlotsComponent } from './generated/canvas-named-slots.component';
+import { CanvasPrefixedComponent } from './generated/canvas-prefixed.component';
 import { CanvasScrollableComponent } from './generated/canvas-scrollable.component';
 import { CanvasSidebarEndComponent } from './generated/canvas-sidebar-end.component';
 import { CanvasSidebarStartComponent } from './generated/canvas-sidebar-start.component';
@@ -169,7 +169,8 @@ import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './gen
 import { MultiSelectOpenedWithMultipleSelectedOptionsComponent } from './generated/multi-select-opened-with-multiple-selected-options.component';
 import { MultiSelectOpenedWithOptgroupsComponent } from './generated/multi-select-opened-with-optgroups.component';
 import { MultiSelectOpenedWithOptgroupsDisabledComponent } from './generated/multi-select-opened-with-optgroups-disabled.component';
-import { OverviewComponent } from './generated/overview.component';
+import { OverviewComponentsComponent } from './generated/overview-components.component';
+import { OverviewFormsComponent } from './generated/overview-forms.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -261,6 +262,7 @@ export const generatedPages = [
   CanvasHeaderEndComponent,
   CanvasHeaderStartComponent,
   CanvasNamedSlotsComponent,
+  CanvasPrefixedComponent,
   CanvasScrollableComponent,
   CanvasSidebarEndComponent,
   CanvasSidebarStartComponent,
@@ -376,7 +378,8 @@ export const generatedPages = [
   MultiSelectOpenedWithMultipleSelectedOptionsComponent,
   MultiSelectOpenedWithOptgroupsComponent,
   MultiSelectOpenedWithOptgroupsDisabledComponent,
-  OverviewComponent,
+  OverviewComponentsComponent,
+  OverviewFormsComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
@@ -560,6 +563,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Canvas Named Slots',
     path: 'canvas-named-slots',
     component: CanvasNamedSlotsComponent,
+  },
+  {
+    name: 'Canvas Prefixed',
+    path: 'canvas-prefixed',
+    component: CanvasPrefixedComponent,
   },
   {
     name: 'Canvas Scrollable',
@@ -1130,6 +1138,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: 'multi-select-opened-with-optgroups-disabled',
     component: MultiSelectOpenedWithOptgroupsDisabledComponent,
+  },
+  {
+    name: 'Overview Components',
+    path: 'overview-components',
+    component: OverviewComponentsComponent,
+  },
+  {
+    name: 'Overview Forms',
+    path: 'overview-forms',
+    component: OverviewFormsComponent,
   },
   {
     name: 'Pagination',

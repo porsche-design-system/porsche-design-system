@@ -12,7 +12,6 @@ export * from './Utilities';
 /* Auto Generated Below */
 /* eslint-disable import/first */
 export * from './generated/CoreInitializer';
-export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
@@ -36,6 +35,7 @@ import { CanvasGridPage } from './generated/CanvasGrid';
 import { CanvasHeaderEndPage } from './generated/CanvasHeaderEnd';
 import { CanvasHeaderStartPage } from './generated/CanvasHeaderStart';
 import { CanvasNamedSlotsPage } from './generated/CanvasNamedSlots';
+import { CanvasPrefixedPage } from './generated/CanvasPrefixed';
 import { CanvasScrollablePage } from './generated/CanvasScrollable';
 import { CanvasSidebarEndPage } from './generated/CanvasSidebarEnd';
 import { CanvasSidebarStartPage } from './generated/CanvasSidebarStart';
@@ -150,6 +150,8 @@ import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generate
 import { MultiSelectOpenedWithMultipleSelectedOptionsPage } from './generated/MultiSelectOpenedWithMultipleSelectedOptions';
 import { MultiSelectOpenedWithOptgroupsPage } from './generated/MultiSelectOpenedWithOptgroups';
 import { MultiSelectOpenedWithOptgroupsDisabledPage } from './generated/MultiSelectOpenedWithOptgroupsDisabled';
+import { OverviewComponentsPage } from './generated/OverviewComponents';
+import { OverviewFormsPage } from './generated/OverviewForms';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
@@ -332,6 +334,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Canvas Named Slots',
     path: '/canvas-named-slots',
     element: <CanvasNamedSlotsPage />,
+  },
+  {
+    name: 'Canvas Prefixed',
+    path: '/canvas-prefixed',
+    element: <CanvasPrefixedPage />,
   },
   {
     name: 'Canvas Scrollable',
@@ -902,6 +909,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: '/multi-select-opened-with-optgroups-disabled',
     element: <MultiSelectOpenedWithOptgroupsDisabledPage />,
+  },
+  {
+    name: 'Overview Components',
+    path: '/overview-components',
+    element: <OverviewComponentsPage />,
+  },
+  {
+    name: 'Overview Forms',
+    path: '/overview-forms',
+    element: <OverviewFormsPage />,
   },
   {
     name: 'Pagination',

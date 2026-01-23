@@ -92,6 +92,10 @@ const generatedRoutes = {
     "path": "/canvas-named-slots",
     "name": "CanvasNamedSlots"
   },
+  "canvasPrefixed": {
+    "path": "/canvas-prefixed",
+    "name": "CanvasPrefixed"
+  },
   "canvasScrollable": {
     "path": "/canvas-scrollable",
     "name": "CanvasScrollable"
@@ -552,9 +556,13 @@ const generatedRoutes = {
     "path": "/multi-select-opened-with-optgroups-disabled",
     "name": "MultiSelectOpenedWithOptgroupsDisabled"
   },
-  "overview": {
-    "path": "/overview",
-    "name": "Overview"
+  "overviewComponents": {
+    "path": "/overview-components",
+    "name": "OverviewComponents"
+  },
+  "overviewForms": {
+    "path": "/overview-forms",
+    "name": "OverviewForms"
   },
   "pagination": {
     "path": "/pagination",
