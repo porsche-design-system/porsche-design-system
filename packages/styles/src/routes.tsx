@@ -15,12 +15,14 @@ import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 import { EmotionBorder } from './app/emotion/EmotionBorder.tsx';
 import { EmotionColor } from './app/emotion/EmotionColor.tsx';
 import { EmotionGradient } from './app/emotion/EmotionGradient.tsx';
+import { EmotionShadow } from './app/emotion/EmotionShadow.tsx';
 import { EmotionSpacing } from './app/emotion/EmotionSpacing.tsx';
 // SCSS
 import { ScssBlur } from './app/scss/ScssBlur.tsx';
 import { ScssBorder } from './app/scss/ScssBorder.tsx';
 import { ScssColor } from './app/scss/ScssColor.tsx';
 import { ScssGradient } from './app/scss/ScssGradient.tsx';
+import { ScssShadow } from './app/scss/ScssShadow.tsx';
 import { ScssSpacing } from './app/scss/ScssSpacing.tsx';
 // Tailwind CSS
 import { TailwindcssBlur } from './app/tailwindcss/TailwindcssBlur.tsx';
@@ -49,6 +51,7 @@ import { VanillaExtractBlur } from './app/vanilla-extract/VanillaExtractBlur.tsx
 import { VanillaExtractBorder } from './app/vanilla-extract/VanillaExtractBorder.tsx';
 import { VanillaExtractColor } from './app/vanilla-extract/VanillaExtractColor.tsx';
 import { VanillaExtractGradient } from './app/vanilla-extract/VanillaExtractGradient.tsx';
+import { VanillaExtractShadow } from './app/vanilla-extract/VanillaExtractShadow.tsx';
 import { VanillaExtractSpacing } from './app/vanilla-extract/VanillaExtractSpacing.tsx';
 // import { VanillaExtractBorder } from './vanilla-extract/VanillaExtractBorder.tsx';
 // import { VanillaExtractColor } from './vanilla-extract/VanillaExtractColor.tsx';
@@ -101,16 +104,19 @@ export const routes: RouteConfig[] = [
   { path: '/scss/color', label: 'SCSS - Color', element: <ScssColor /> },
   { path: '/scss/gradient', label: 'SCSS - Gradient', element: <ScssGradient /> },
   { path: '/scss/spacing', label: 'SCSS - Spacing', element: <ScssSpacing /> },
+  { path: '/scss/shadow', label: 'SCSS - Shadow', element: <ScssShadow /> },
   // Emotion
   { path: '/emotion/blur', label: 'Emotion - Blur', element: <EmotionBlur /> },
   { path: '/emotion/border', label: 'Emotion - Border', element: <EmotionBorder /> },
   { path: '/emotion/color', label: 'Emotion - Color', element: <EmotionColor /> },
   { path: '/emotion/gradient', label: 'Emotion - Gradient', element: <EmotionGradient /> },
   { path: '/emotion/spacing', label: 'Emotion - Spacing', element: <EmotionSpacing /> },
+  { path: '/emotion/shadow', label: 'Emotion - Shadow', element: <EmotionShadow /> },
   // Vanilla Extract
   { path: '/vanilla-extract/blur', label: 'Vanilla Extract - Blur', element: <VanillaExtractBlur /> },
   { path: '/vanilla-extract/border', label: 'Vanilla Extract - Border', element: <VanillaExtractBorder /> },
   { path: '/vanilla-extract/color', label: 'Vanilla Extract - Color', element: <VanillaExtractColor /> },
   { path: '/vanilla-extract/gradient', label: 'Vanilla Extract - Gradient', element: <VanillaExtractGradient /> },
   { path: '/vanilla-extract/spacing', label: 'Vanilla Extract - Spacing', element: <VanillaExtractSpacing /> },
+  { path: '/vanilla-extract/shadow', label: 'Vanilla Extract - Shadow', element: <VanillaExtractShadow /> },
 ];

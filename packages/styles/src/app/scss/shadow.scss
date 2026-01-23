@@ -1,0 +1,27 @@
+@use '@porsche-design-system/scss' as *;
+
+.scss-shadow {
+  display: grid;
+  gap: $pds-spacing-fluid-medium;
+  @include pds-text-small;
+  color: var(--scss-color-primary);
+  padding: $pds-spacing-static-medium;
+
+  &--low {
+    @include pds-drop-shadow-low;
+    border-radius: $pds-border-radius-large;
+    padding: $pds-spacing-fluid-small;
+  }
+
+  &--medium {
+    @include pds-drop-shadow-medium;
+    border-radius: $pds-border-radius-large;
+    padding: $pds-spacing-fluid-small;
+  }
+
+  &--high {
+    @include pds-drop-shadow-high;
+    border-radius: $pds-border-radius-large;
+    padding: $pds-spacing-fluid-small;
+  }
+}
