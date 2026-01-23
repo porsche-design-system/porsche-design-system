@@ -38,7 +38,7 @@ import {
 
 import '@emotion/react';
 
-type CustomTheme = typeof emotionThemes.light;
+export type CustomTheme = typeof emotionThemes.light;
 
 declare module '@emotion/react' {
   export interface Theme extends CustomTheme {}

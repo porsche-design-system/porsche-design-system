@@ -6,12 +6,16 @@ type ThemeSelectProps = {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
+export const themes = ['light', 'dark', 'auto'];
+
 export const ThemeSelect = ({ value = 'light', onChange, ...rest }: ThemeSelectProps) => {
   return (
     <select name="theme" value={value} onChange={onChange} {...rest}>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-      <option value="auto">Auto</option>
+      {themes.map((theme) => (
+        <option key={theme} value={theme}>
+          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+        </option>
+      ))}
     </select>
   );
 };

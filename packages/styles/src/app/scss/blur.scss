@@ -1,30 +1,30 @@
 @use '@porsche-design-system/scss' as *;
 
-.scss-blur-wrapper {
+.scss-blur {
   display: grid;
   @include pds-text-small;
-}
 
-.scss-blur-image {
-  grid-column: 1;
-  grid-row: 1;
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
-}
+  &__image {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
 
-.scss-backdrop-blur-frosted {
-  @include pds-frosted-glass;
-  background: var(--scss-color-frosted);
-  border-radius: $pds-border-radius-large;
-  margin: $pds-spacing-fluid-large;
-  padding: $pds-spacing-fluid-small;
-  display: grid;
-  grid-row: 1;
-  grid-column: 1;
-  place-items: center;
-}
+  &__backdrop-blur-frosted {
+    @include pds-frosted-glass;
+    background: var(--scss-color-frosted);
+    border-radius: $pds-border-radius-large;
+    margin: $pds-spacing-fluid-large;
+    padding: $pds-spacing-fluid-small;
+    display: grid;
+    grid-row: 1;
+    grid-column: 1;
+    place-items: center;
+  }
 
-.scss-blur-p {
-  color: white;
+  &__text {
+    color: white;
+  }
 }

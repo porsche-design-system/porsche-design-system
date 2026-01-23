@@ -1,22 +1,53 @@
 import { useLocation, useNavigate } from 'react-router';
-import { routes } from '../routes.tsx';
+import { styleSolutions, styles } from '../routes.tsx';
 
 interface RouteSelectProps {
   className?: string;
 }
 
-// TODO: Use two selects, one for style solution and one for style
 export function RouteSelect({ className }: RouteSelectProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const pathParts = location.pathname.split('/').filter(Boolean);
+  const currentSolution = pathParts[0] || 'tailwindcss';
+  const currentStyle = pathParts[1] || 'blur';
+
+  const handleSolutionChange = (solution: string) => {
+    navigate(`/${solution}/${currentStyle}`);
+  };
+
+  const handleStyleChange = (style: string) => {
+    navigate(`/${currentSolution}/${style}`);
+  };
+
   return (
-    <select className={className} value={location.pathname} onChange={(e) => navigate(e.target.value)}>
-      {routes.map((route) => (
-        <option key={route.path} value={route.path}>
-          {route.label}
-        </option>
-      ))}
-    </select>
+    <>
+      <select
+        name="style-solution"
+        className={className}
+        value={currentSolution}
+        onChange={(e) => handleSolutionChange(e.target.value)}
+      >
+        {styleSolutions.map((solution) => (
+          <option key={solution} value={solution}>
+            {solution.charAt(0).toUpperCase() + solution.slice(1)}
+          </option>
+        ))}
+      </select>
+
+      <select
+        name="style"
+        className={className}
+        value={currentStyle}
+        onChange={(e) => handleStyleChange(e.target.value)}
+      >
+        {styles.map((solution) => (
+          <option key={solution} value={solution}>
+            {solution.charAt(0).toUpperCase() + solution.slice(1)}
+          </option>
+        ))}
+      </select>
+    </>
   );
 }
