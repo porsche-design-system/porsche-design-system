@@ -5,6 +5,7 @@ interface RouteSelectProps {
   className?: string;
 }
 
+// TODO: Use two selects, one for style solution and one for style
 export function RouteSelect({ className }: RouteSelectProps) {
   const navigate = useNavigate();
   const location = useLocation();

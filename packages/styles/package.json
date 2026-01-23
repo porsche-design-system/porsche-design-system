@@ -27,6 +27,7 @@
     "test:unit:scss": "yarn --cwd projects/scss test:unit",
     "test:unit:emotion": "yarn --cwd projects/emotion test:unit",
     "test:unit:vanilla-extract": "yarn --cwd projects/vanilla-extract test:unit",
+    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts --ui",
     "clean:build": "yarn clean:build:app && yarn clean:build:shared-styles && yarn clean:build:global-styles && yarn clean:build:tailwindcss && yarn clean:build:scss && yarn clean:build:emotion && yarn clean:build:vanilla-extract",
     "clean:build:app": "rm -rf ./dist",
     "clean:build:shared-styles": "yarn --cwd projects/shared-styles clean:build",
@@ -40,6 +41,7 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@playwright/test": "*",
     "typescript": "*",
     "tailwindcss": "*",
     "@tailwindcss/vite": "*",

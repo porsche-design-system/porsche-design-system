@@ -2,19 +2,19 @@
 import type { ReactNode } from 'react';
 import App from './App.tsx';
 // SCSS
-import { ScssBlur } from './scss/ScssBlur.tsx';
+import { ScssBlur } from './app/scss/ScssBlur.tsx';
 // Tailwind CSS
-import { TailwindcssBlur } from './tailwindcss/TailwindcssBlur.tsx';
-import { TailwindcssBorder } from './tailwindcss/TailwindcssBorder.tsx';
-import { TailwindcssColor } from './tailwindcss/TailwindcssColor.tsx';
-import { TailwindcssGradient } from './tailwindcss/TailwindcssGradient.tsx';
-import { TailwindcssGrid } from './tailwindcss/TailwindcssGrid.tsx';
-import { TailwindcssMediaQuery } from './tailwindcss/TailwindcssMediaQuery.tsx';
-import { TailwindcssMotion } from './tailwindcss/TailwindcssMotion.tsx';
-import { TailwindcssShadow } from './tailwindcss/TailwindcssShadow.tsx';
-import { TailwindcssSkeleton } from './tailwindcss/TailwindcssSkeleton.tsx';
-import { TailwindcssSpacing } from './tailwindcss/TailwindcssSpacing.tsx';
-import { TailwindcssTypography } from './tailwindcss/TailwindcssTypography.tsx';
+import { TailwindcssBlur } from './app/tailwindcss/TailwindcssBlur.tsx';
+import { TailwindcssBorder } from './app/tailwindcss/TailwindcssBorder.tsx';
+import { TailwindcssColor } from './app/tailwindcss/TailwindcssColor.tsx';
+import { TailwindcssGradient } from './app/tailwindcss/TailwindcssGradient.tsx';
+import { TailwindcssGrid } from './app/tailwindcss/TailwindcssGrid.tsx';
+import { TailwindcssMediaQuery } from './app/tailwindcss/TailwindcssMediaQuery.tsx';
+import { TailwindcssMotion } from './app/tailwindcss/TailwindcssMotion.tsx';
+import { TailwindcssShadow } from './app/tailwindcss/TailwindcssShadow.tsx';
+import { TailwindcssSkeleton } from './app/tailwindcss/TailwindcssSkeleton.tsx';
+import { TailwindcssSpacing } from './app/tailwindcss/TailwindcssSpacing.tsx';
+import { TailwindcssTypography } from './app/tailwindcss/TailwindcssTypography.tsx';
 // import { ScssBorder } from './scss/ScssBorder.tsx';
 // import { ScssColor } from './scss/ScssColor.tsx';
 // import { ScssGradient } from './scss/ScssGradient.tsx';
@@ -27,7 +27,7 @@ import { TailwindcssTypography } from './tailwindcss/TailwindcssTypography.tsx';
 // import { ScssTypography } from './scss/ScssTypography.tsx';
 
 // Emotion
-import { EmotionBlur } from './emotion/EmotionBlur.tsx';
+import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 // import { EmotionBorder } from './emotion/EmotionBorder.tsx';
 // import { EmotionColor } from './emotion/EmotionColor.tsx';
 // import { EmotionGradient } from './emotion/EmotionGradient.tsx';
@@ -40,7 +40,7 @@ import { EmotionBlur } from './emotion/EmotionBlur.tsx';
 // import { EmotionTypography } from './emotion/EmotionTypography.tsx';
 
 // Vanilla Extract
-import { VanillaExtractBlur } from './vanilla-extract/VanillaExtractBlur.tsx';
+import { VanillaExtractBlur } from './app/vanilla-extract/VanillaExtractBlur.tsx';
 // import { VanillaExtractBorder } from './vanilla-extract/VanillaExtractBorder.tsx';
 // import { VanillaExtractColor } from './vanilla-extract/VanillaExtractColor.tsx';
 // import { VanillaExtractGradient } from './vanilla-extract/VanillaExtractGradient.tsx';
