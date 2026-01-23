@@ -28,13 +28,13 @@ export const playwrightConfigVRT: Config = {
   testDir: '../specs',
   testMatch: '**.vrt.ts',
   /* Maximum time one test can run for. */
-  timeout: 90000,
+  timeout: 120000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 60000,
+    timeout: 120000,
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   use: {

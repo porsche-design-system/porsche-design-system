@@ -5,7 +5,7 @@ import {
   viewportWidthM,
   viewportWidthXXL,
 } from '@porsche-design-system/shared/testing';
-import { setupScenario } from '../../helpers';
+import { setupScenario } from '../helpers';
 
 const component = 'carousel';
 

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { viewportWidth3XL, viewportWidth4XL, viewportWidthXXL } from '@porsche-design-system/shared/testing';
-import { setupScenario } from '../../helpers';
+import { setupScenario } from '../helpers';
 
 const component = 'banner';
 

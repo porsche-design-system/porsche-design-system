@@ -4,7 +4,7 @@ import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
 import * as path from 'path';
-import { setupScenario } from '../../helpers';
+import { setupScenario } from '../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
