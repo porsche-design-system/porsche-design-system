@@ -85,10 +85,11 @@ describe('package.json files', () => {
       expect(pkgJson.version).toBe(componentsJsPackageJson.version);
 
       if (packageName === '@porsche-design-system/components-angular') {
+        console.log(pkgJson.exports);
         expect(pkgJson.exports).toEqual({
           '.': {
             default: './fesm2022/porsche-design-system-components-angular.mjs',
-            types: './index.d.ts',
+            types: './types/porsche-design-system-components-angular.d.ts',
           },
           './package.json': {
             default: './package.json',
