@@ -1,8 +1,20 @@
 // packages/styles/src/routes.tsx
 import type { ReactNode } from 'react';
-import App from './App.tsx';
+// import { ScssBorder } from './scss/ScssBorder.tsx';
+// import { ScssColor } from './scss/ScssColor.tsx';
+// import { ScssGradient } from './scss/ScssGradient.tsx';
+// import { ScssGrid } from './scss/ScssGrid.tsx';
+// import { ScssMediaQuery } from './scss/ScssMediaQuery.tsx';
+// import { ScssMotion } from './scss/ScssMotion.tsx';
+// import { ScssShadow } from './scss/ScssShadow.tsx';
+// import { ScssSkeleton } from './scss/ScssSkeleton.tsx';
+// import { ScssSpacing } from './scss/ScssSpacing.tsx';
+// import { ScssTypography } from './scss/ScssTypography.tsx';
+// Emotion
+import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 // SCSS
 import { ScssBlur } from './app/scss/ScssBlur.tsx';
+import { ScssBorder } from './app/scss/ScssBorder.tsx';
 // Tailwind CSS
 import { TailwindcssBlur } from './app/tailwindcss/TailwindcssBlur.tsx';
 import { TailwindcssBorder } from './app/tailwindcss/TailwindcssBorder.tsx';
@@ -15,19 +27,6 @@ import { TailwindcssShadow } from './app/tailwindcss/TailwindcssShadow.tsx';
 import { TailwindcssSkeleton } from './app/tailwindcss/TailwindcssSkeleton.tsx';
 import { TailwindcssSpacing } from './app/tailwindcss/TailwindcssSpacing.tsx';
 import { TailwindcssTypography } from './app/tailwindcss/TailwindcssTypography.tsx';
-// import { ScssBorder } from './scss/ScssBorder.tsx';
-// import { ScssColor } from './scss/ScssColor.tsx';
-// import { ScssGradient } from './scss/ScssGradient.tsx';
-// import { ScssGrid } from './scss/ScssGrid.tsx';
-// import { ScssMediaQuery } from './scss/ScssMediaQuery.tsx';
-// import { ScssMotion } from './scss/ScssMotion.tsx';
-// import { ScssShadow } from './scss/ScssShadow.tsx';
-// import { ScssSkeleton } from './scss/ScssSkeleton.tsx';
-// import { ScssSpacing } from './scss/ScssSpacing.tsx';
-// import { ScssTypography } from './scss/ScssTypography.tsx';
-
-// Emotion
-import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 // import { EmotionBorder } from './emotion/EmotionBorder.tsx';
 // import { EmotionColor } from './emotion/EmotionColor.tsx';
 // import { EmotionGradient } from './emotion/EmotionGradient.tsx';
@@ -38,7 +37,6 @@ import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 // import { EmotionSkeleton } from './emotion/EmotionSkeleton.tsx';
 // import { EmotionSpacing } from './emotion/EmotionSpacing.tsx';
 // import { EmotionTypography } from './emotion/EmotionTypography.tsx';
-
 // Vanilla Extract
 import { VanillaExtractBlur } from './app/vanilla-extract/VanillaExtractBlur.tsx';
 // import { VanillaExtractBorder } from './vanilla-extract/VanillaExtractBorder.tsx';
@@ -58,8 +56,22 @@ export interface RouteConfig {
   element: ReactNode;
 }
 
+export const styleSolutions = ['tailwindcss', 'scss', 'emotion', 'vanilla-extract'] as const;
+export const styles = [
+  'blur',
+  'border',
+  'color',
+  'gradient',
+  'grid',
+  'media-query',
+  'motion',
+  'shadow',
+  'skeleton',
+  'spacing',
+  'typography',
+] as const;
+
 export const routes: RouteConfig[] = [
-  { path: '/', label: 'Home', element: <App /> },
   // Tailwind CSS
   { path: '/tailwindcss/blur', label: 'Tailwind - Blur', element: <TailwindcssBlur /> },
   { path: '/tailwindcss/border', label: 'Tailwind - Border', element: <TailwindcssBorder /> },
@@ -74,6 +86,7 @@ export const routes: RouteConfig[] = [
   { path: '/tailwindcss/typography', label: 'Tailwind - Typography', element: <TailwindcssTypography /> },
   // SCSS
   { path: '/scss/blur', label: 'SCSS - Blur', element: <ScssBlur /> },
+  { path: '/scss/border', label: 'SCSS - Border', element: <ScssBorder /> },
   // Emotion
   { path: '/emotion/blur', label: 'Emotion - Blur', element: <EmotionBlur /> },
   // Vanilla Extract

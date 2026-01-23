@@ -50,7 +50,7 @@ export const borderWidthScssStory: Story<'div'> = {
           properties: {
             className: 'border-regular p-fluid-sm',
           },
-          children: ['border-width: $pds-border-width-regular'],
+          children: ['border-width: $pds-border-width-base'],
         },
       ],
     },

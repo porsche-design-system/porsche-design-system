@@ -1,9 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { viewportWidthM } from '@porsche-design-system/shared/testing';
-
-const styleSolutions = ['tailwindcss', 'scss', 'emotion', 'vanilla-extract'];
-const styles = ['blur'];
-const themes = ['light', 'dark'];
+import { themes } from '../../../src/components/ThemeSelect';
+import { styleSolutions, styles } from '../../../src/routes';
 
 for (const styleSolution of styleSolutions) {
   for (const style of styles) {
@@ -15,8 +13,11 @@ for (const styleSolution of styleSolutions) {
           const themeSelect = page.locator('select[name="theme"]');
           await themeSelect.selectOption(theme);
 
+          const screenshotTheme = theme === 'auto' ? 'dark' : theme;
           await page.setViewportSize({ width: viewportWidthM, height: 600 });
-          await expect(page.locator('main')).toHaveScreenshot(`${style}-${viewportWidthM}-theme-${theme}.png`);
+          await expect(page.locator('main')).toHaveScreenshot(
+            `${style}-${viewportWidthM}-theme-${screenshotTheme}.png`
+          );
         });
       });
     }
