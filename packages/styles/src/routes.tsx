@@ -13,9 +13,11 @@ import type { ReactNode } from 'react';
 // Emotion
 import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 import { EmotionBorder } from './app/emotion/EmotionBorder.tsx';
+import { EmotionColor } from './app/emotion/EmotionColor.tsx';
 // SCSS
 import { ScssBlur } from './app/scss/ScssBlur.tsx';
 import { ScssBorder } from './app/scss/ScssBorder.tsx';
+import { ScssColor } from './app/scss/ScssColor.tsx';
 // Tailwind CSS
 import { TailwindcssBlur } from './app/tailwindcss/TailwindcssBlur.tsx';
 import { TailwindcssBorder } from './app/tailwindcss/TailwindcssBorder.tsx';
@@ -41,6 +43,7 @@ import { TailwindcssTypography } from './app/tailwindcss/TailwindcssTypography.t
 // Vanilla Extract
 import { VanillaExtractBlur } from './app/vanilla-extract/VanillaExtractBlur.tsx';
 import { VanillaExtractBorder } from './app/vanilla-extract/VanillaExtractBorder.tsx';
+import { VanillaExtractColor } from './app/vanilla-extract/VanillaExtractColor.tsx';
 // import { VanillaExtractBorder } from './vanilla-extract/VanillaExtractBorder.tsx';
 // import { VanillaExtractColor } from './vanilla-extract/VanillaExtractColor.tsx';
 // import { VanillaExtractGradient } from './vanilla-extract/VanillaExtractGradient.tsx';
@@ -89,10 +92,13 @@ export const routes: RouteConfig[] = [
   // SCSS
   { path: '/scss/blur', label: 'SCSS - Blur', element: <ScssBlur /> },
   { path: '/scss/border', label: 'SCSS - Border', element: <ScssBorder /> },
+  { path: '/scss/color', label: 'SCSS - Color', element: <ScssColor /> },
   // Emotion
   { path: '/emotion/blur', label: 'Emotion - Blur', element: <EmotionBlur /> },
   { path: '/emotion/border', label: 'Emotion - Border', element: <EmotionBorder /> },
+  { path: '/emotion/color', label: 'Emotion - Color', element: <EmotionColor /> },
   // Vanilla Extract
   { path: '/vanilla-extract/blur', label: 'Vanilla Extract - Blur', element: <VanillaExtractBlur /> },
   { path: '/vanilla-extract/border', label: 'Vanilla Extract - Border', element: <VanillaExtractBorder /> },
+  { path: '/vanilla-extract/color', label: 'Vanilla Extract - Color', element: <VanillaExtractColor /> },
 ];

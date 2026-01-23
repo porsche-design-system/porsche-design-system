@@ -1,7 +1,7 @@
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import type { Theme } from '@porsche-design-system/emotion';
 import { Outlet } from 'react-router';
-import { emotionThemes } from './app/emotion/color.ts';
+import { emotionThemes } from './app/emotion/emotionTheme.ts';
 import { darkTheme, lightTheme } from './app/vanilla-extract/theme.css.ts';
 import { RouteSelect } from './components/RouteSelect.tsx';
 import { ThemeSelect } from './components/ThemeSelect.tsx';

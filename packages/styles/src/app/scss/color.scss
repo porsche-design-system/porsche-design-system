@@ -1,114 +1,153 @@
 @use '@porsche-design-system/scss' as *;
 
-:root {
-  --scss-color-focus: #{$pds-theme-light-state-focus};
-  --scss-color-disabled: #{$pds-theme-light-state-disabled};
-  --scss-color-canvas: #{$pds-theme-light-background-base};
-  --scss-color-surface: #{$pds-theme-light-background-surface};
-  --scss-color-frosted: #{$pds-theme-light-background-frosted};
-  --scss-color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
-  --scss-color-backdrop: #{$pds-theme-light-background-shading};
-  --scss-color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
-  --scss-color-contrast-low: #{$pds-theme-light-contrast-low};
-  --scss-color-contrast-medium: #{$pds-theme-light-contrast-medium};
-  --scss-color-contrast-high: #{$pds-theme-light-contrast-high};
-  --scss-color-contrast-higher: hsla(240, 8.7%, 9%, 0.8);
-  --scss-color-primary: #{$pds-theme-light-primary};
-  --scss-color-success: #{$pds-theme-light-notification-success};
-  --scss-color-success-low: hsla(115, 77.5%, 27.8%, 0.18);
-  --scss-color-success-medium: hsla(115, 77.5%, 27.8%, 0.6);
-  --scss-color-success-frosted: #{$pds-theme-light-notification-success-soft};
-  --scss-color-success-frosted-soft: hsla(115, 77.5%, 27.8%, 0.1);
-  --scss-color-warning: #{$pds-theme-light-notification-warning};
-  --scss-color-warning-low: hsla(28, 97.7%, 34.1%, 0.18);
-  --scss-color-warning-medium: hsla(28, 97.7%, 34.1%, 0.6);
-  --scss-color-warning-frosted: #{$pds-theme-light-notification-warning-soft};
-  --scss-color-warning-frosted-soft: hsla(28, 97.7%, 34.1%, 0.1);
-  --scss-color-error: #{$pds-theme-light-notification-error};
-  --scss-color-error-low: hsla(357, 78%, 41%, 0.18);
-  --scss-color-error-medium: hsla(357, 78%, 41%, 0.6);
-  --scss-color-error-frosted: #{$pds-theme-light-notification-error-soft};
-  --scss-color-error-frosted-soft: hsla(357, 78%, 41%, 0.1);
-  --scss-color-info: #{$pds-theme-light-notification-info};
-  --scss-color-info-low: hsla(228, 83.2%, 51%, 0.18);
-  --scss-color-info-medium: hsla(228, 83.2%, 51%, 0.6);
-  --scss-color-info-frosted: #{$pds-theme-light-notification-info-soft};
-  --scss-color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
-  --scss-color-skeleton: #f7f7f7;
-}
+.scss-color {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: $pds-spacing-fluid-medium;
+  padding: $pds-spacing-fluid-medium;
+  @include pds-text-small;
+  color: var(--scss-color-primary);
 
-.dark {
-  --scss-color-focus: #{$pds-theme-dark-state-focus};
-  --scss-color-disabled: #{$pds-theme-dark-state-disabled};
-  --scss-color-canvas: #{$pds-theme-dark-background-base};
-  --scss-color-surface: #{$pds-theme-dark-background-surface};
-  --scss-color-frosted: #{$pds-theme-dark-background-frosted};
-  --scss-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
-  --scss-color-backdrop: #{$pds-theme-dark-background-shading};
-  --scss-color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
-  --scss-color-contrast-low: #{$pds-theme-dark-contrast-low};
-  --scss-color-contrast-medium: #{$pds-theme-dark-contrast-medium};
-  --scss-color-contrast-high: #{$pds-theme-dark-contrast-high};
-  --scss-color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
-  --scss-color-primary: #{$pds-theme-dark-primary};
-  --scss-color-success: #{$pds-theme-dark-notification-success};
-  --scss-color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
-  --scss-color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
-  --scss-color-success-frosted: #{$pds-theme-dark-notification-success-soft};
-  --scss-color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
-  --scss-color-warning: #{$pds-theme-dark-notification-warning};
-  --scss-color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
-  --scss-color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
-  --scss-color-warning-frosted: #{$pds-theme-dark-notification-warning-soft};
-  --scss-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
-  --scss-color-error: #{$pds-theme-dark-notification-error};
-  --scss-color-error-low: hsla(0, 96.9%, 62%, 0.18);
-  --scss-color-error-medium: hsla(0, 96.9%, 62%, 0.6);
-  --scss-color-error-frosted: #{$pds-theme-dark-notification-error-soft};
-  --scss-color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
-  --scss-color-info: #{$pds-theme-dark-notification-info};
-  --scss-color-info-low: hsla(210, 100%, 54.5%, 0.18);
-  --scss-color-info-medium: hsla(210, 100%, 54.5%, 0.6);
-  --scss-color-info-frosted: #{$pds-theme-dark-notification-info-soft};
-  --scss-color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
-  --scss-color-skeleton: #1a1b1e;
-}
+  &__swatches {
+    display: flex;
+    align-items: center;
+    gap: $pds-spacing-static-small;
 
-.auto {
-  @media (prefers-color-scheme: dark) {
-    --scss-color-focus: #{$pds-theme-dark-state-focus};
-    --scss-color-disabled: #{$pds-theme-dark-state-disabled};
-    --scss-color-canvas: #{$pds-theme-dark-background-base};
-    --scss-color-surface: #{$pds-theme-dark-background-surface};
-    --scss-color-frosted: #{$pds-theme-dark-background-frosted};
-    --scss-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
-    --scss-color-backdrop: #{$pds-theme-dark-background-shading};
-    --scss-color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
-    --scss-color-contrast-low: #{$pds-theme-dark-contrast-low};
-    --scss-color-contrast-medium: #{$pds-theme-dark-contrast-medium};
-    --scss-color-contrast-high: #{$pds-theme-dark-contrast-high};
-    --scss-color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
-    --scss-color-primary: #{$pds-theme-dark-primary};
-    --scss-color-success: #{$pds-theme-dark-notification-success};
-    --scss-color-success-low: hsla(157, 84.9%, 41.6%, 0.18);
-    --scss-color-success-medium: hsla(157, 84.9%, 41.6%, 0.6);
-    --scss-color-success-frosted: #{$pds-theme-dark-notification-success-soft};
-    --scss-color-success-frosted-soft: hsla(157, 84.9%, 41.6%, 0.1);
-    --scss-color-warning: #{$pds-theme-dark-notification-warning};
-    --scss-color-warning-low: hsla(28, 90.2%, 56.1%, 0.18);
-    --scss-color-warning-medium: hsla(28, 90.2%, 56.1%, 0.6);
-    --scss-color-warning-frosted: #{$pds-theme-dark-notification-warning-soft};
-    --scss-color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
-    --scss-color-error: #{$pds-theme-dark-notification-error};
-    --scss-color-error-low: hsla(0, 96.9%, 62%, 0.18);
-    --scss-color-error-medium: hsla(0, 96.9%, 62%, 0.6);
-    --scss-color-error-frosted: #{$pds-theme-dark-notification-error-soft};
-    --scss-color-error-frosted-soft: hsla(0, 96.9%, 62%, 0.1);
-    --scss-color-info: #{$pds-theme-dark-notification-info};
-    --scss-color-info-low: hsla(210, 100%, 54.5%, 0.18);
-    --scss-color-info-medium: hsla(210, 100%, 54.5%, 0.6);
-    --scss-color-info-frosted: #{$pds-theme-dark-notification-info-soft};
-    --scss-color-info-frosted-soft: hsla(210, 100%, 54.5%, 0.1);
-    --scss-color-skeleton: #1a1b1e;
+    &-item {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: $pds-border-radius-medium;
+      border: 1px solid var(--scss-color-contrast-low);
+    }
   }
+}
+
+.scss-bg-canvas {
+  background-color: var(--scss-color-canvas);
+}
+
+.scss-bg-surface {
+  background-color: var(--scss-color-surface);
+}
+
+.scss-bg-frosted {
+  background-color: var(--scss-color-frosted);
+}
+
+.scss-bg-frosted-soft {
+  background-color: var(--scss-color-frosted-soft);
+}
+
+.scss-bg-backdrop {
+  background-color: var(--scss-color-backdrop);
+}
+
+.scss-bg-primary {
+  background-color: var(--scss-color-primary);
+}
+
+.scss-bg-contrast-higher {
+  background-color: var(--scss-color-contrast-higher);
+}
+
+.scss-bg-contrast-high {
+  background-color: var(--scss-color-contrast-high);
+}
+
+.scss-bg-contrast-medium {
+  background-color: var(--scss-color-contrast-medium);
+}
+
+.scss-bg-contrast-low {
+  background-color: var(--scss-color-contrast-low);
+}
+
+.scss-bg-contrast-lower {
+  background-color: var(--scss-color-contrast-lower);
+}
+
+.scss-bg-info {
+  background-color: var(--scss-color-info);
+}
+
+.scss-bg-info-medium {
+  background-color: var(--scss-color-info-medium);
+}
+
+.scss-bg-info-low {
+  background-color: var(--scss-color-info-low);
+}
+
+.scss-bg-info-frosted {
+  background-color: var(--scss-color-info-frosted);
+}
+
+.scss-bg-info-frosted-soft {
+  background-color: var(--scss-color-info-frosted-soft);
+}
+
+.scss-bg-success {
+  background-color: var(--scss-color-success);
+}
+
+.scss-bg-success-medium {
+  background-color: var(--scss-color-success-medium);
+}
+
+.scss-bg-success-low {
+  background-color: var(--scss-color-success-low);
+}
+
+.scss-bg-success-frosted {
+  background-color: var(--scss-color-success-frosted);
+}
+
+.scss-bg-success-frosted-soft {
+  background-color: var(--scss-color-success-frosted-soft);
+}
+
+.scss-bg-warning {
+  background-color: var(--scss-color-warning);
+}
+
+.scss-bg-warning-medium {
+  background-color: var(--scss-color-warning-medium);
+}
+
+.scss-bg-warning-low {
+  background-color: var(--scss-color-warning-low);
+}
+
+.scss-bg-warning-frosted {
+  background-color: var(--scss-color-warning-frosted);
+}
+
+.scss-bg-warning-frosted-soft {
+  background-color: var(--scss-color-warning-frosted-soft);
+}
+
+.scss-bg-error {
+  background-color: var(--scss-color-error);
+}
+
+.scss-bg-error-medium {
+  background-color: var(--scss-color-error-medium);
+}
+
+.scss-bg-error-low {
+  background-color: var(--scss-color-error-low);
+}
+
+.scss-bg-error-frosted {
+  background-color: var(--scss-color-error-frosted);
+}
+
+.scss-bg-error-frosted-soft {
+  background-color: var(--scss-color-error-frosted-soft);
+}
+
+.scss-bg-focus {
+  background-color: var(--scss-color-focus);
 }
