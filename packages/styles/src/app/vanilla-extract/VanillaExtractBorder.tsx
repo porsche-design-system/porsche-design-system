@@ -6,7 +6,7 @@ import {
   VanillaExtractBorderWidthRegular,
   VanillaExtractBorderWidthThin,
   VanillaExtractBorderWrapper,
-} from './border.css.ts';
+} from './border.css';
 
 export const VanillaExtractBorder = () => {
   return (

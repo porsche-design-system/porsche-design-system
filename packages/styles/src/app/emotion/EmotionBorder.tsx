@@ -18,11 +18,12 @@ const EmotionBorderWrapper = styled.div({
   padding: spacingStaticMedium,
 });
 
-const EmotionBorderSection = styled.div({
+const EmotionBorderSection = styled.div(({ theme }) => ({
   display: 'grid',
   gap: spacingFluidMedium,
   ...textSmallStyle,
-});
+  color: theme.primary,
+}));
 
 const EmotionBorderRadiusSmall = styled.div({
   borderWidth: '1px',

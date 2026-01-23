@@ -3,7 +3,7 @@ import {
   VanillaExtractBlurImage,
   VanillaExtractBlurP,
   VanillaExtractBlurWrapper,
-} from './blur.css.ts';
+} from './blur.css';
 
 export const VanillaExtractBlur = () => {
   return (

@@ -10,6 +10,7 @@
     display: grid;
     gap: $pds-spacing-fluid-medium;
     @include pds-text-small;
+    color: var(--scss-color-primary);
   }
 
   &__radius {
@@ -33,6 +34,7 @@
     display: grid;
     gap: $pds-spacing-fluid-medium;
     @include pds-text-small;
+    color: var(--scss-color-primary);
   }
 
   &__width {

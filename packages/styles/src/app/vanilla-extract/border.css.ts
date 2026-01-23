@@ -10,6 +10,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
+import { vars } from './theme.css';
 
 export const VanillaExtractBorderWrapper = style({
   display: 'flex',
@@ -22,6 +23,7 @@ export const VanillaExtractBorderSection = style({
   display: 'grid',
   gap: spacingFluidMedium,
   ...textSmallStyle,
+  color: vars.primary,
 });
 
 export const VanillaExtractBorderRadiusSmall = style({

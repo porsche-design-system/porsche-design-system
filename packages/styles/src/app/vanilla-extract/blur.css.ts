@@ -6,7 +6,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
-import { vars } from './theme.css.ts';
+import { vars } from './theme.css';
 
 export const VanillaExtractBlurWrapper = style({
   display: 'grid',
