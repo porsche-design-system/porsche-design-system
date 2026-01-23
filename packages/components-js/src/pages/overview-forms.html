@@ -8,233 +8,240 @@
 </style>
 
 <div class="overview">
-  <p-checkbox label="Default"></p-checkbox>
-  <p-checkbox label="Readonly" read-only="true"></p-checkbox>
-  <p-checkbox label="Disabled" disabled="true"></p-checkbox>
-  <p-checkbox label="Loading" loading="true"></p-checkbox>
-  <p-checkbox label="Error" state="error" message="Some message"></p-checkbox>
-  <p-checkbox label="Error + Disabled" state="error" message="Some message" disabled="true"></p-checkbox>
-  <p-checkbox label="Success" state="success" message="Some message"></p-checkbox>
-  <p-checkbox label="Success + Disabled" state="success" message="Some message" disabled="true"></p-checkbox>
+  <p-checkbox name="some-name" label="Default"></p-checkbox>
+  <!-- p-checkbox does not support readonly -->
+  <p-checkbox name="some-name" label="Readonly"></p-checkbox>
+  <p-checkbox name="some-name" label="Disabled" disabled="true"></p-checkbox>
+  <p-checkbox name="some-name" label="Loading" loading="true"></p-checkbox>
+  <p-checkbox name="some-name" label="Error" state="error" message="Some message"></p-checkbox>
+  <p-checkbox name="some-name" label="Error + Disabled" state="error" message="Some message" disabled="true"></p-checkbox>
+  <p-checkbox name="some-name" label="Success" state="success" message="Some message"></p-checkbox>
+  <p-checkbox name="some-name" label="Success + Disabled" state="success" message="Some message" disabled="true"></p-checkbox>
 
-  <p-radio-group label="Default" value="a">
+  <p-radio-group name="some-name" label="Default" value="a">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Readonly" value="a" read-only="true">
+  <!-- p-radio-group does not support readonly -->
+  <p-radio-group name="some-name" label="Readonly" value="a">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Disabled" value="a" disabled="true">
+  <p-radio-group name="some-name" label="Disabled" value="a" disabled="true">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Loading" value="a">
+  <p-radio-group name="some-name" label="Loading" value="a">
     <p-radio-group-option label="Some label" value="a" loading="true"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b" loading="true"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Error" value="a" state="error" message="Some message">
+  <p-radio-group name="some-name" label="Error" value="a" state="error" message="Some message">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Error + Disabled" value="a" state="error" message="Some message" disabled="true">
+  <p-radio-group name="some-name" label="Error + Disabled" value="a" state="error" message="Some message" disabled="true">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Success" value="a" state="success" message="Some message">
+  <p-radio-group name="some-name" label="Success" value="a" state="success" message="Some message">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
-  <p-radio-group label="Success + Disabled" value="a" state="success" message="Some message" disabled="true">
+  <p-radio-group name="some-name" label="Success + Disabled" value="a" state="success" message="Some message" disabled="true">
     <p-radio-group-option label="Some label" value="a"></p-radio-group-option>
     <p-radio-group-option label="Some label" value="b"></p-radio-group-option>
   </p-radio-group>
 
-  <p-input-date label="Default"></p-input-date>
-  <p-input-date label="Readonly" read-only="true"></p-input-date>
-  <p-input-date label="Disabled" disabled="true"></p-input-date>
-  <p-input-date label="Loading" loading="true"></p-input-date>
-  <p-input-date label="Error" state="error" message="Some message"></p-input-date>
-  <p-input-date label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-date>
-  <p-input-date label="Success" state="success" message="Some message"></p-input-date>
-  <p-input-date label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-date>
+  <p-input-date name="some-name" label="Default"></p-input-date>
+  <p-input-date name="some-name" label="Readonly" read-only="true"></p-input-date>
+  <p-input-date name="some-name" label="Disabled" disabled="true"></p-input-date>
+  <p-input-date name="some-name" label="Loading" loading="true"></p-input-date>
+  <p-input-date name="some-name" label="Error" state="error" message="Some message"></p-input-date>
+  <p-input-date name="some-name" label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-date>
+  <p-input-date name="some-name" label="Success" state="success" message="Some message"></p-input-date>
+  <p-input-date name="some-name" label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-date>
 
-  <p-input-email label="Default" value="mail@porsche.com" indicator="true"></p-input-email>
-  <p-input-email label="Readonly" value="mail@porsche.com" indicator="true" read-only="true"></p-input-email>
-  <p-input-email label="Disabled" value="mail@porsche.com" indicator="true" disabled="true"></p-input-email>
-  <p-input-email label="Loading" value="mail@porsche.com" indicator="true" loading="true"></p-input-email>
-  <p-input-email label="Error" value="mail@porsche.com" indicator="true" state="error" message="Some message"></p-input-email>
-  <p-input-email label="Error + Disabled" value="mail@porsche.com" indicator="true" state="error" message="Some message" disabled="true"></p-input-email>
-  <p-input-email label="Success" value="mail@porsche.com" indicator="true" state="success" message="Some message"></p-input-email>
-  <p-input-email label="Success + Disabled" value="mail@porsche.com" indicator="true" state="success" message="Some message" disabled="true"></p-input-email>
+  <p-input-email name="some-name" label="Default" value="mail@porsche.com" indicator="true"></p-input-email>
+  <p-input-email name="some-name" label="Readonly" value="mail@porsche.com" indicator="true" read-only="true"></p-input-email>
+  <p-input-email name="some-name" label="Disabled" value="mail@porsche.com" indicator="true" disabled="true"></p-input-email>
+  <p-input-email name="some-name" label="Loading" value="mail@porsche.com" indicator="true" loading="true"></p-input-email>
+  <p-input-email name="some-name" label="Error" value="mail@porsche.com" indicator="true" state="error" message="Some message"></p-input-email>
+  <p-input-email name="some-name" label="Error + Disabled" value="mail@porsche.com" indicator="true" state="error" message="Some message" disabled="true"></p-input-email>
+  <p-input-email name="some-name" label="Success" value="mail@porsche.com" indicator="true" state="success" message="Some message"></p-input-email>
+  <p-input-email name="some-name" label="Success + Disabled" value="mail@porsche.com" indicator="true" state="success" message="Some message" disabled="true"></p-input-email>
 
-  <p-input-month label="Default"></p-input-month>
-  <p-input-month label="Readonly" read-only="true"></p-input-month>
-  <p-input-month label="Disabled" disabled="true"></p-input-month>
-  <p-input-month label="Loading" loading="true"></p-input-month>
-  <p-input-month label="Error" state="error" message="Some message"></p-input-month>
-  <p-input-month label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-month>
-  <p-input-month label="Success" state="success" message="Some message"></p-input-month>
-  <p-input-month label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-month>
+  <p-input-month name="some-name" label="Default"></p-input-month>
+  <p-input-month name="some-name" label="Readonly" read-only="true"></p-input-month>
+  <p-input-month name="some-name" label="Disabled" disabled="true"></p-input-month>
+  <p-input-month name="some-name" label="Loading" loading="true"></p-input-month>
+  <p-input-month name="some-name" label="Error" state="error" message="Some message"></p-input-month>
+  <p-input-month name="some-name" label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-month>
+  <p-input-month name="some-name" label="Success" state="success" message="Some message"></p-input-month>
+  <p-input-month name="some-name" label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-month>
 
-  <p-input-number label="Default" value="123" controls="true"></p-input-number>
-  <p-input-number label="Readonly" value="123" controls="true" read-only="true"></p-input-number>
-  <p-input-number label="Disabled" value="123" controls="true" disabled="true"></p-input-number>
-  <p-input-number label="Loading" value="123" controls="true" loading="true"></p-input-number>
-  <p-input-number label="Error" value="123" controls="true" state="error" message="Some message"></p-input-number>
-  <p-input-number label="Error + Disabled" value="123" controls="true" state="error" message="Some message" disabled="true"></p-input-number>
-  <p-input-number label="Success" value="123" controls="true" state="success" message="Some message"></p-input-number>
-  <p-input-number label="Success + Disabled" value="123" controls="true" state="success" message="Some message" disabled="true"></p-input-number>
+  <p-input-number name="some-name" label="Default" value="1234" controls="true"></p-input-number>
+  <p-input-number name="some-name" label="Readonly" value="1234" controls="true" read-only="true"></p-input-number>
+  <p-input-number name="some-name" label="Disabled" value="1234" controls="true" disabled="true"></p-input-number>
+  <p-input-number name="some-name" label="Loading" value="1234" controls="true" loading="true"></p-input-number>
+  <p-input-number name="some-name" label="Error" value="1234" controls="true" state="error" message="Some message"></p-input-number>
+  <p-input-number name="some-name" label="Error + Disabled" value="1234" controls="true" state="error" message="Some message" disabled="true"></p-input-number>
+  <p-input-number name="some-name" label="Success" value="1234" controls="true" state="success" message="Some message"></p-input-number>
+  <p-input-number name="some-name" label="Success + Disabled" value="1234" controls="true" state="success" message="Some message" disabled="true"></p-input-number>
 
-  <p-input-password label="Default" value="some password" toggle="true"></p-input-password>
-  <p-input-password label="Readonly" value="some password" toggle="true" read-only="true"></p-input-password>
-  <p-input-password label="Disabled" value="some password" toggle="true" disabled="true"></p-input-password>
-  <p-input-password label="Loading" value="some password" toggle="true" loading="true"></p-input-password>
-  <p-input-password label="Error" value="some password" toggle="true" state="error" message="Some message"></p-input-password>
-  <p-input-password label="Error + Disabled" value="some password" toggle="true" state="error" message="Some message" disabled="true"></p-input-password>
-  <p-input-password label="Success" value="some password" toggle="true" state="success" message="Some message"></p-input-password>
-  <p-input-password label="Success + Disabled" value="some password" toggle="true" state="success" message="Some message" disabled="true"></p-input-password>
+  <p-input-password name="some-name" label="Default" value="some password" toggle="true"></p-input-password>
+  <p-input-password name="some-name" label="Readonly" value="some password" toggle="true" read-only="true"></p-input-password>
+  <p-input-password name="some-name" label="Disabled" value="some password" toggle="true" disabled="true"></p-input-password>
+  <p-input-password name="some-name" label="Loading" value="some password" toggle="true" loading="true"></p-input-password>
+  <p-input-password name="some-name" label="Error" value="some password" toggle="true" state="error" message="Some message"></p-input-password>
+  <p-input-password name="some-name" label="Error + Disabled" value="some password" toggle="true" state="error" message="Some message" disabled="true"></p-input-password>
+  <p-input-password name="some-name" label="Success" value="some password" toggle="true" state="success" message="Some message"></p-input-password>
+  <p-input-password name="some-name" label="Success + Disabled" value="some password" toggle="true" state="success" message="Some message" disabled="true"></p-input-password>
 
-  <p-input-search label="Default" value="Some value" clear="true" indicator="true"></p-input-search>
-  <p-input-search label="Readonly" value="Some value" clear="true" indicator="true" read-only="true"></p-input-search>
-  <p-input-search label="Disabled" value="Some value" clear="true" indicator="true" disabled="true"></p-input-search>
-  <p-input-search label="Loading" value="Some value" clear="true" indicator="true" loading="true"></p-input-search>
-  <p-input-search label="Error" value="Some value" clear="true" indicator="true" state="error" message="Some message"></p-input-search>
-  <p-input-search label="Error + Disabled" value="Some value" clear="true" indicator="true" state="error" message="Some message" disabled="true"></p-input-search>
-  <p-input-search label="Success" value="Some value" clear="true" indicator="true" state="success" message="Some message"></p-input-search>
-  <p-input-search label="Success + Disabled" value="Some value" clear="true" indicator="true" state="success" message="Some message" disabled="true"></p-input-search>
+  <p-input-search name="some-name" label="Default" value="Some value" clear="true" indicator="true"></p-input-search>
+  <p-input-search name="some-name" label="Readonly" value="Some value" clear="true" indicator="true" read-only="true"></p-input-search>
+  <p-input-search name="some-name" label="Disabled" value="Some value" clear="true" indicator="true" disabled="true"></p-input-search>
+  <p-input-search name="some-name" label="Loading" value="Some value" clear="true" indicator="true" loading="true"></p-input-search>
+  <p-input-search name="some-name" label="Error" value="Some value" clear="true" indicator="true" state="error" message="Some message"></p-input-search>
+  <p-input-search name="some-name" label="Error + Disabled" value="Some value" clear="true" indicator="true" state="error" message="Some message" disabled="true"></p-input-search>
+  <p-input-search name="some-name" label="Success" value="Some value" clear="true" indicator="true" state="success" message="Some message"></p-input-search>
+  <p-input-search name="some-name" label="Success + Disabled" value="Some value" clear="true" indicator="true" state="success" message="Some message" disabled="true"></p-input-search>
 
-  <p-input-tel label="Default" value="+49 911 123456789" indicator="true"></p-input-tel>
-  <p-input-tel label="Readonly" value="+49 911 123456789" indicator="true" read-only="true"></p-input-tel>
-  <p-input-tel label="Disabled" value="+49 911 123456789" indicator="true" disabled="true"></p-input-tel>
-  <p-input-tel label="Loading" value="+49 911 123456789" indicator="true" loading="true"></p-input-tel>
-  <p-input-tel label="Error" value="+49 911 123456789" indicator="true" state="error" message="Some message"></p-input-tel>
-  <p-input-tel label="Error + Disabled" value="+49 911 123456789" indicator="true" state="error" message="Some message" disabled="true"></p-input-tel>
-  <p-input-tel label="Success" value="+49 911 123456789" indicator="true" state="success" message="Some message"></p-input-tel>
-  <p-input-tel label="Success + Disabled" value="+49 911 123456789" indicator="true" state="success" message="Some message" disabled="true"></p-input-tel>
+  <p-input-tel name="some-name" label="Default" value="+49 911 123456789" indicator="true"></p-input-tel>
+  <p-input-tel name="some-name" label="Readonly" value="+49 911 123456789" indicator="true" read-only="true"></p-input-tel>
+  <p-input-tel name="some-name" label="Disabled" value="+49 911 123456789" indicator="true" disabled="true"></p-input-tel>
+  <p-input-tel name="some-name" label="Loading" value="+49 911 123456789" indicator="true" loading="true"></p-input-tel>
+  <p-input-tel name="some-name" label="Error" value="+49 911 123456789" indicator="true" state="error" message="Some message"></p-input-tel>
+  <p-input-tel name="some-name" label="Error + Disabled" value="+49 911 123456789" indicator="true" state="error" message="Some message" disabled="true"></p-input-tel>
+  <p-input-tel name="some-name" label="Success" value="+49 911 123456789" indicator="true" state="success" message="Some message"></p-input-tel>
+  <p-input-tel name="some-name" label="Success + Disabled" value="+49 911 123456789" indicator="true" state="success" message="Some message" disabled="true"></p-input-tel>
 
-  <p-input-text label="Default" value="Some value"></p-input-text>
-  <p-input-text label="Readonly" value="Some value" read-only="true"></p-input-text>
-  <p-input-text label="Disabled" value="Some value" disabled="true"></p-input-text>
-  <p-input-text label="Loading" value="Some value" loading="true"></p-input-text>
-  <p-input-text label="Error" value="Some value" state="error" message="Some message"></p-input-text>
-  <p-input-text label="Error + Disabled" value="Some value" state="error" message="Some message" disabled="true"></p-input-text>
-  <p-input-text label="Success" value="Some value" state="success" message="Some message"></p-input-text>
-  <p-input-text label="Success + Disabled" value="Some value" state="success" message="Some message" disabled="true"></p-input-text>
+  <p-input-text name="some-name" label="Default" value="Some value"></p-input-text>
+  <p-input-text name="some-name" label="Readonly" value="Some value" read-only="true"></p-input-text>
+  <p-input-text name="some-name" label="Disabled" value="Some value" disabled="true"></p-input-text>
+  <p-input-text name="some-name" label="Loading" value="Some value" loading="true"></p-input-text>
+  <p-input-text name="some-name" label="Error" value="Some value" state="error" message="Some message"></p-input-text>
+  <p-input-text name="some-name" label="Error + Disabled" value="Some value" state="error" message="Some message" disabled="true"></p-input-text>
+  <p-input-text name="some-name" label="Success" value="Some value" state="success" message="Some message"></p-input-text>
+  <p-input-text name="some-name" label="Success + Disabled" value="Some value" state="success" message="Some message" disabled="true"></p-input-text>
 
-  <p-input-time label="Default"></p-input-time>
-  <p-input-time label="Readonly" read-only="true"></p-input-time>
-  <p-input-time label="Disabled" disabled="true"></p-input-time>
-  <p-input-time label="Loading" loading="true"></p-input-time>
-  <p-input-time label="Error" state="error" message="Some message"></p-input-time>
-  <p-input-time label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-time>
-  <p-input-time label="Success" state="success" message="Some message"></p-input-time>
-  <p-input-time label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-time>
+  <p-input-time name="some-name" label="Default"></p-input-time>
+  <p-input-time name="some-name" label="Readonly" read-only="true"></p-input-time>
+  <p-input-time name="some-name" label="Disabled" disabled="true"></p-input-time>
+  <p-input-time name="some-name" label="Loading" loading="true"></p-input-time>
+  <p-input-time name="some-name" label="Error" state="error" message="Some message"></p-input-time>
+  <p-input-time name="some-name" label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-time>
+  <p-input-time name="some-name" label="Success" state="success" message="Some message"></p-input-time>
+  <p-input-time name="some-name" label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-time>
 
-  <p-input-url label="Default" value="https://porsche.com" indicator="true" max-length="20"></p-input-url>
-  <p-input-url label="Readonly" value="https://porsche.com" indicator="true" max-length="20" read-only="true"></p-input-url>
-  <p-input-url label="Disabled" value="https://porsche.com" indicator="true" max-length="20" disabled="true"></p-input-url>
-  <p-input-url label="Loading" value="https://porsche.com" indicator="true" max-length="20" loading="true"></p-input-url>
-  <p-input-url label="Error" value="https://porsche.com" indicator="true" max-length="20" state="error" message="Some message"></p-input-url>
-  <p-input-url label="Error + Disabled" value="https://porsche.com" indicator="true" max-length="20" state="error" message="Some message" disabled="true"></p-input-url>
-  <p-input-url label="Success" value="https://porsche.com" indicator="true" max-length="20" state="success" message="Some message"></p-input-url>
-  <p-input-url label="Success + Disabled" value="https://porsche.com" indicator="true" max-length="20" state="success" message="Some message" disabled="true"></p-input-url>
+  <p-input-url name="some-name" label="Default" value="https://porsche.com" indicator="true" max-length="20"></p-input-url>
+  <p-input-url name="some-name" label="Readonly" value="https://porsche.com" indicator="true" max-length="20" read-only="true"></p-input-url>
+  <p-input-url name="some-name" label="Disabled" value="https://porsche.com" indicator="true" max-length="20" disabled="true"></p-input-url>
+  <p-input-url name="some-name" label="Loading" value="https://porsche.com" indicator="true" max-length="20" loading="true"></p-input-url>
+  <p-input-url name="some-name" label="Error" value="https://porsche.com" indicator="true" max-length="20" state="error" message="Some message"></p-input-url>
+  <p-input-url name="some-name" label="Error + Disabled" value="https://porsche.com" indicator="true" max-length="20" state="error" message="Some message" disabled="true"></p-input-url>
+  <p-input-url name="some-name" label="Success" value="https://porsche.com" indicator="true" max-length="20" state="success" message="Some message"></p-input-url>
+  <p-input-url name="some-name" label="Success + Disabled" value="https://porsche.com" indicator="true" max-length="20" state="success" message="Some message" disabled="true"></p-input-url>
 
-  <p-input-week label="Default"></p-input-week>
-  <p-input-week label="Readonly" read-only="true"></p-input-week>
-  <p-input-week label="Disabled" disabled="true"></p-input-week>
-  <p-input-week label="Loading" loading="true"></p-input-week>
-  <p-input-week label="Error" state="error" message="Some message"></p-input-week>
-  <p-input-week label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-week>
-  <p-input-week label="Success" state="success" message="Some message"></p-input-week>
-  <p-input-week label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-week>
+  <p-input-week name="some-name" label="Default"></p-input-week>
+  <p-input-week name="some-name" label="Readonly" read-only="true"></p-input-week>
+  <p-input-week name="some-name" label="Disabled" disabled="true"></p-input-week>
+  <p-input-week name="some-name" label="Loading" loading="true"></p-input-week>
+  <p-input-week name="some-name" label="Error" state="error" message="Some message"></p-input-week>
+  <p-input-week name="some-name" label="Error + Disabled" state="error" message="Some message" disabled="true"></p-input-week>
+  <p-input-week name="some-name" label="Success" state="success" message="Some message"></p-input-week>
+  <p-input-week name="some-name" label="Success + Disabled" state="success" message="Some message" disabled="true"></p-input-week>
 
-  <p-textarea label="Default" value="Some value"></p-textarea>
-  <p-textarea label="Readonly" value="Some value" read-only="true"></p-textarea>
-  <p-textarea label="Disabled" value="Some value" disabled="true"></p-textarea>
-  <p-textarea label="Loading" value="Some value" loading="true"></p-textarea>
-  <p-textarea label="Error" value="Some value" state="error" message="Some message"></p-textarea>
-  <p-textarea label="Error + Disabled" value="Some value" state="error" message="Some message" disabled="true"></p-textarea>
-  <p-textarea label="Success" value="Some value" state="success" message="Some message"></p-textarea>
-  <p-textarea label="Success + Disabled" value="Some value" state="success" message="Some message" disabled="true"></p-textarea>
+  <p-textarea name="some-name" label="Default" value="Some value"></p-textarea>
+  <p-textarea name="some-name" label="Readonly" value="Some value" read-only="true"></p-textarea>
+  <p-textarea name="some-name" label="Disabled" value="Some value" disabled="true"></p-textarea>
+  <!-- p-textarea does not support loading -->
+  <p-textarea name="some-name" label="Loading" value="Some value"></p-textarea>
+  <p-textarea name="some-name" label="Error" value="Some value" state="error" message="Some message"></p-textarea>
+  <p-textarea name="some-name" label="Error + Disabled" value="Some value" state="error" message="Some message" disabled="true"></p-textarea>
+  <p-textarea name="some-name" label="Success" value="Some value" state="success" message="Some message"></p-textarea>
+  <p-textarea name="some-name" label="Success + Disabled" value="Some value" state="success" message="Some message" disabled="true"></p-textarea>
 
-  <p-select label="Default" value="a">
+  <p-select name="some-name" label="Default" value="a">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Readonly" value="a" read-only="true">
+  <!-- p-select does not support readonly -->
+  <p-select name="some-name" label="Readonly" value="a">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Disabled" value="a" disabled="true">
+  <p-select name="some-name" label="Disabled" value="a" disabled="true">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Loading" value="a" loading="true">
+  <!-- p-select does not support loading -->
+  <p-select name="some-name" label="Loading" value="a">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Error" value="a" state="error" message="Some message">
+  <p-select name="some-name" label="Error" value="a" state="error" message="Some message">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Error + Disabled" value="a" state="error" message="Some message" disabled="true">
+  <p-select name="some-name" label="Error + Disabled" value="a" state="error" message="Some message" disabled="true">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Success" value="a" state="success" message="Some message">
+  <p-select name="some-name" label="Success" value="a" state="success" message="Some message">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
-  <p-select label="Success + Disabled" value="a" state="success" message="Some message" disabled="true">
+  <p-select name="some-name" label="Success + Disabled" value="a" state="success" message="Some message" disabled="true">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>
 
-  <p-multi-select label="Default">
+  <p-multi-select name="some-name" label="Default">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Readonly" read-only="true">
+  <!-- p-multi-select does not support readonly -->
+  <p-multi-select name="some-name" label="Readonly">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Disabled" disabled="true">
+  <p-multi-select name="some-name" label="Disabled" disabled="true">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Loading" loading="true">
+  <!-- p-multi-select does not support loading -->
+  <p-multi-select name="some-name" label="Loading">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Error" state="error" message="Some message">
+  <p-multi-select name="some-name" label="Error" state="error" message="Some message">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Error + Disabled" state="error" message="Some message" disabled="true">
+  <p-multi-select name="some-name" label="Error + Disabled" state="error" message="Some message" disabled="true">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Success" state="success" message="Some message">
+  <p-multi-select name="some-name" label="Success" state="success" message="Some message">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
   </p-multi-select>
-  <p-multi-select label="Success + Disabled" state="success" message="Some message" disabled="true">
+  <p-multi-select name="some-name" label="Success + Disabled" state="success" message="Some message" disabled="true">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
