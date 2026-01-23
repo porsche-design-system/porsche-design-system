@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing';
-import { setupScenario } from '../../helpers';
+import { setupScenario } from '../helpers';
 
 // executed in Chrome only
 test.describe('overview', () => {
