@@ -1,0 +1,81 @@
+// packages/styles/src/app/scss/typography.scss
+@use '@porsche-design-system/scss' as *;
+
+.scss-typography {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $pds-spacing-fluid-medium;
+  padding: $pds-spacing-fluid-medium;
+  color: var(--scss-color-primary);
+}
+
+.scss-display-lg {
+  @include pds-display-large;
+  margin: 0;
+}
+
+.scss-display-md {
+  @include pds-display-medium;
+  margin: 0;
+}
+
+.scss-display-sm {
+  @include pds-display-small;
+  margin: 0;
+}
+
+.scss-heading-2xl {
+  @include pds-heading-xx-large;
+  margin: 0;
+}
+
+.scss-heading-xl {
+  @include pds-heading-x-large;
+  margin: 0;
+}
+
+.scss-heading-lg {
+  @include pds-heading-large;
+  margin: 0;
+}
+
+.scss-heading-md {
+  @include pds-heading-medium;
+  margin: 0;
+}
+
+.scss-heading-sm {
+  @include pds-heading-small;
+  margin: 0;
+}
+
+.scss-text-xl {
+  @include pds-text-x-large;
+  margin: 0;
+}
+
+.scss-text-lg {
+  @include pds-text-large;
+  margin: 0;
+}
+
+.scss-text-md {
+  @include pds-text-medium;
+  margin: 0;
+}
+
+.scss-text-sm {
+  @include pds-text-small;
+  margin: 0;
+}
+
+.scss-text-xs {
+  @include pds-text-x-small;
+  margin: 0;
+}
+
+.scss-text-2xs {
+  @include pds-text-xx-small;
+  margin: 0;
+}
