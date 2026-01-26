@@ -299,6 +299,40 @@
   </div>
 </div>
 
+<div class="playground light" title="should render in compact mode">
+  <iframe src="/multi-select-compact?iframe=true" loading="eager" title="should show select compact"></iframe>
+</div>
+
+<div class="playground light" title="should render opened on #top-layer within scroll container">
+  <iframe
+    src="/multi-select-opened-scroll-context?iframe=true"
+    loading="eager"
+    title="should render opened within scroll container"
+  ></iframe>
+</div>
+
+<div class="playground light" title="should render opened with max-height option list">
+  <iframe
+    class="max-height"
+    src="/multi-select-opened-max-height?iframe=true"
+    loading="eager"
+    title="should render opened with max-height option list"
+  ></iframe>
+</div>
+
+<div class="playground light" title="should render opened with min-height option list">
+  <iframe
+    class="min-height"
+    src="/multi-select-opened-min-height?iframe=true"
+    loading="eager"
+    title="should render opened with min-height option list"
+  ></iframe>
+</div>
+
+<div class="playground light" title="should render opened with selected slot">
+  <iframe src="/multi-select-opened-selected-slot?iframe=true" loading="eager" title="should render opened with selected slot"></iframe>
+</div>
+
 <div class="playground light" title="should render with label and label-after slot">
   <p-multi-select name="some-name" label="Label">
     <p-popover slot="label-after">Some Popover content</p-popover>
