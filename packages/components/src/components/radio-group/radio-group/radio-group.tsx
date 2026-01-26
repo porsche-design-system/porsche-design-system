@@ -23,9 +23,10 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { descriptionId } from '../../common/label/label-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { LoadingMessage, loadingId } from '../../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 import { getComponentCss } from './radio-group-styles';
 import {
   findNextEnabledIndex,
@@ -60,8 +61,9 @@ const propTypes: PropTypes<typeof RadioGroup> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "", "description": "Default slot for the p-radio-group-option tags." }
+ * @slot {"name": "", "description": "Default slot for the p-radio-group-option tags."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  */
 @Component({
@@ -221,16 +223,16 @@ export class RadioGroup {
     return (
       <fieldset
         class="root"
-        // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: radiogroup is the correct role for a fieldset containing radio buttons
-        role="radiogroup"
-        aria-required={this.required ? 'true' : null}
+        inert={this.disabled}
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
         aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
-        aria-invalid={this.state === 'error' ? 'true' : null}
+        aria-labelledby={labelId}
         onKeyDown={this.onKeyDown}
       >
         <Label
           host={this.host}
-          tag="legend"
+          tag="div"
           label={this.label}
           description={this.description}
           isRequired={this.required}
@@ -291,7 +293,7 @@ export class RadioGroup {
     this.radioGroupOptions = [];
 
     for (const child of Array.from(this.host.children).filter(
-      (el) => el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message' && el.slot !== 'end'
+      (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'description' && el.slot !== 'message'
     )) {
       throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-radio-group-option']);
       this.radioGroupOptions.push(child as RadioGroupOption);

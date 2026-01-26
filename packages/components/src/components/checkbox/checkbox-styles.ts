@@ -23,17 +23,14 @@ import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styl
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable, Theme } from '../../types';
-import {
-  buildResponsiveStyles,
-  getCss,
-  isDisabledOrLoading,
-  isHighContrastMode,
-  supportsChromiumMediaQuery,
-} from '../../utils';
+import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
@@ -112,10 +109,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      'slot[name="end"]': {
-        display: 'inline-block',
-        verticalAlign: 'top',
-      },
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
       ...(isLoading
@@ -235,17 +229,19 @@ export const getComponentCss = (
         pointerEvents: 'none',
       },
     }),
-    'label-wrapper': {
-      ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        paddingTop: hideLabelValue ? 0 : paddingTop,
-        paddingInlineStart: hideLabelValue ? 0 : paddingInlineStart,
-      })),
-    },
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, theme, {
-      ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
-      display: 'inline',
-    }),
+    ...getFunctionalComponentLabelStyles(
+      isDisabled || isLoading,
+      hideLabel,
+      theme,
+      {
+        ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
+      },
+      {
+        paddingTop,
+        paddingInlineStart,
+      }
+    ),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state, {}),
     // .loading

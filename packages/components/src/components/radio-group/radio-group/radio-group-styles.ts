@@ -16,7 +16,10 @@ import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalRadioGroupOptionScaling } from '../radio-group-option/radio-group-option-styles';
@@ -66,6 +69,7 @@ export const getComponentCss = (
         }),
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
@@ -96,9 +100,6 @@ export const getComponentCss = (
     // .label / .required
     ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
       cursor: 'inherit',
-      '&:is(legend)': {
-        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-      },
     }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),

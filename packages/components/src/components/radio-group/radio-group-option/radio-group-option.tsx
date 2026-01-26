@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  hasNamedSlot,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -24,7 +23,7 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "end", "description": "Places additional content at the end of the label text. Is best to be used with the `Popover` component." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)." }
  */
 @Component({
   tag: 'p-radio-group-option',
@@ -103,17 +102,14 @@ export class RadioGroupOption {
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />
             )}
           </div>
-          <div class="label-wrapper">
-            <Label
-              host={this.host}
-              label={this.label}
-              htmlFor={id}
-              isDisabled={isDisabled}
-              isLoading={isLoading}
-              stopClickPropagation={true}
-            />
-            {hasNamedSlot(this.host, 'end') && <slot name="end" />}
-          </div>
+          <Label
+            host={this.host}
+            label={this.label}
+            htmlFor={id}
+            isDisabled={isDisabled}
+            isLoading={isLoading}
+            stopClickPropagation={true}
+          />
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
           )}

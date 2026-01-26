@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected|end)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -209,6 +209,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(
+            /hasNamedSlot\(host, '(label-after)'\)/g,
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+          )
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {

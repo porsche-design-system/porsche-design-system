@@ -1,5 +1,5 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
-import { hasDescription, hasLabel, isParentFieldsetRequired } from '../../../utils';
+import { hasDescription, hasLabel, hasNamedSlot, isParentFieldsetRequired } from '../../../utils';
 import { Required } from '../required/required';
 import { descriptionId, type LabelTag, labelId } from './label-utils';
 
@@ -19,6 +19,7 @@ type LabelProps = {
   stopClickPropagation?: boolean;
 };
 
+// fixes issue where clicking a button inside a label causes double events
 const composedPathIncludesButton = (event: MouseEvent): boolean => {
   return event.composedPath().some((node): node is HTMLButtonElement => node instanceof HTMLButtonElement);
 };
@@ -38,9 +39,16 @@ export const Label: FunctionalComponent<LabelProps> = ({
     if (stopClickPropagation) {
       e.stopPropagation();
     }
-
     if (composedPathIncludesButton(e)) {
       e.preventDefault();
+    }
+  };
+
+  // fixes issue where pressing space or enter on e.g. popover when nested inside label which propagates a keydown event to e.g. select
+  const handleKeyDown = (e: KeyboardEvent) => {
+    const { key, code } = e;
+    if (key === ' ' || code === 'Space' || key === 'Enter') {
+      e.stopPropagation();
     }
   };
 
@@ -49,18 +57,22 @@ export const Label: FunctionalComponent<LabelProps> = ({
   return (
     <Fragment>
       {hasLabel(host, label) && (
-        <TagType
-          class="label"
-          id={labelId}
-          aria-disabled={isLoading || isDisabled ? 'true' : null}
-          htmlFor={htmlFor}
-          onClick={handleClick}
-        >
-          <Fragment>
-            {label || <slot name="label" />}
-            {isRequired && !isParentFieldsetRequired(host) && <Required />}
-          </Fragment>
-        </TagType>
+        <div class="label-wrapper">
+          <TagType
+            class="label"
+            id={labelId}
+            aria-disabled={isLoading || isDisabled ? 'true' : null}
+            htmlFor={htmlFor}
+            onClick={handleClick}
+            onKeyDown={handleKeyDown}
+          >
+            <Fragment>
+              {label || <slot name="label" />}
+              {isRequired && !isParentFieldsetRequired(host) && <Required />}
+            </Fragment>
+          </TagType>
+          {hasNamedSlot(host, 'label-after') && <slot name="label-after" />}
+        </div>
       )}
       {hasDescription(host, description) && (
         <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>

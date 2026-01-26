@@ -16,8 +16,6 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
-  hasLabel,
-  hasNamedSlot,
   hasPropValueChanged,
   isDisabledOrLoading,
   THEMES,
@@ -53,8 +51,8 @@ const propTypes: PropTypes<typeof Checkbox> = {
 };
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "end", "description": "Places additional content at the end of the label text. Is best to be used with the `Popover` component." }
  */
 @Component({
   tag: 'p-checkbox',
@@ -128,8 +126,6 @@ export class Checkbox {
   private initialLoading: boolean = false;
   private defaultChecked: boolean;
   private checkboxInputElement: HTMLInputElement;
-  private externalLabel: HTMLLabelElement | null = null;
-  private isExternalLabelClickListenerAttached = false;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -158,7 +154,6 @@ export class Checkbox {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
-    this.externalLabel = this.host.closest('label');
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -180,13 +175,6 @@ export class Checkbox {
   public componentWillUpdate(): void {
     if (this.loading) {
       this.initialLoading = true;
-    }
-  }
-
-  public disconnectedCallback(): void {
-    if (this.externalLabel && this.isExternalLabelClickListenerAttached) {
-      this.externalLabel.removeEventListener('click', this.onExternalLabelClick, true);
-      this.isExternalLabelClickListenerAttached = false;
     }
   }
 
@@ -213,22 +201,6 @@ export class Checkbox {
         this.checkboxInputElement.validationMessage || ' ',
         this.checkboxInputElement
       );
-    }
-
-    // Handle cross-root ARIA labeling when the component is wrapped in a <label> element.
-    // We use the Accessibility Object Model (AOM) ariaLabelledByElements property to establish
-    // the relationship across the shadow DOM boundary, as IDREF-based aria-labelledby doesn't work cross-root.
-    if (this.externalLabel && !hasLabel(this.host, this.label)) {
-      if ('ariaLabelledByElements' in this.checkboxInputElement) {
-        this.checkboxInputElement.ariaLabelledByElements = [this.externalLabel];
-      } else {
-        (this.checkboxInputElement as HTMLInputElement).ariaLabel = this.externalLabel.textContent || '';
-      }
-
-      if (!this.isExternalLabelClickListenerAttached) {
-        this.externalLabel.addEventListener('click', this.onExternalLabelClick, true);
-        this.isExternalLabelClickListenerAttached = true;
-      }
     }
   }
 
@@ -273,17 +245,14 @@ export class Checkbox {
               <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
             )}
           </div>
-          <div class="label-wrapper">
-            <Label
-              host={this.host}
-              htmlFor={id}
-              label={this.label}
-              isLoading={this.loading}
-              isDisabled={this.disabled}
-              isRequired={this.required}
-            />
-            {hasNamedSlot(this.host, 'end') && <slot name="end" />}
-          </div>
+          <Label
+            host={this.host}
+            htmlFor={id}
+            label={this.label}
+            isLoading={this.loading}
+            isDisabled={this.disabled}
+            isRequired={this.required}
+          />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
@@ -295,25 +264,6 @@ export class Checkbox {
     e.stopPropagation();
     e.stopImmediatePropagation();
     this.blur.emit(e);
-  };
-
-  private onExternalLabelClick = (e: MouseEvent): void => {
-    const target = e.target as HTMLElement;
-    const excludedChildElements =
-      target.tagName === 'A' ||
-      target.tagName === 'BUTTON' ||
-      e.target === this.host ||
-      target.shadowRoot?.querySelector('a, button');
-
-    if (excludedChildElements) {
-      return;
-    }
-
-    e.preventDefault();
-
-    if (!isDisabledOrLoading(this.disabled, this.loading)) {
-      this.checkboxInputElement.click();
-    }
   };
 
   private onChange = (e: Event): void => {

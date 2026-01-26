@@ -26,7 +26,10 @@ import type { Theme } from '../../../types';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../../utils';
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
@@ -100,10 +103,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         }),
         display: 'block',
       },
-      'slot[name="end"]': {
-        display: 'inline-block',
-        verticalAlign: 'top',
-      },
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       input: {
         gridArea: '1/1',
         borderRadius: '50%',
@@ -216,10 +216,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       }),
       height,
     },
-    'label-wrapper': {
-      paddingTop,
-      paddingInlineStart,
-    },
     ...(loading && {
       spinner: {
         position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
@@ -232,8 +228,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, {
-      display: 'inline',
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, null, {
+      paddingTop,
+      paddingInlineStart,
     }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
