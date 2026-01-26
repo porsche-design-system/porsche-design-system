@@ -1,0 +1,153 @@
+@use '@porsche-design-system/scss' as *;
+
+.scss-color {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: $pds-spacing-fluid-medium;
+  padding: $pds-spacing-fluid-medium;
+  @include pds-text-small;
+  color: var(--scss-color-primary);
+
+  &__swatches {
+    display: flex;
+    align-items: center;
+    gap: $pds-spacing-static-small;
+
+    &-item {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: $pds-border-radius-medium;
+      border: 1px solid var(--scss-color-contrast-low);
+    }
+  }
+}
+
+.scss-bg-canvas {
+  background-color: var(--scss-color-canvas);
+}
+
+.scss-bg-surface {
+  background-color: var(--scss-color-surface);
+}
+
+.scss-bg-frosted {
+  background-color: var(--scss-color-frosted);
+}
+
+.scss-bg-frosted-soft {
+  background-color: var(--scss-color-frosted-soft);
+}
+
+.scss-bg-backdrop {
+  background-color: var(--scss-color-backdrop);
+}
+
+.scss-bg-primary {
+  background-color: var(--scss-color-primary);
+}
+
+.scss-bg-contrast-higher {
+  background-color: var(--scss-color-contrast-higher);
+}
+
+.scss-bg-contrast-high {
+  background-color: var(--scss-color-contrast-high);
+}
+
+.scss-bg-contrast-medium {
+  background-color: var(--scss-color-contrast-medium);
+}
+
+.scss-bg-contrast-low {
+  background-color: var(--scss-color-contrast-low);
+}
+
+.scss-bg-contrast-lower {
+  background-color: var(--scss-color-contrast-lower);
+}
+
+.scss-bg-info {
+  background-color: var(--scss-color-info);
+}
+
+.scss-bg-info-medium {
+  background-color: var(--scss-color-info-medium);
+}
+
+.scss-bg-info-low {
+  background-color: var(--scss-color-info-low);
+}
+
+.scss-bg-info-frosted {
+  background-color: var(--scss-color-info-frosted);
+}
+
+.scss-bg-info-frosted-soft {
+  background-color: var(--scss-color-info-frosted-soft);
+}
+
+.scss-bg-success {
+  background-color: var(--scss-color-success);
+}
+
+.scss-bg-success-medium {
+  background-color: var(--scss-color-success-medium);
+}
+
+.scss-bg-success-low {
+  background-color: var(--scss-color-success-low);
+}
+
+.scss-bg-success-frosted {
+  background-color: var(--scss-color-success-frosted);
+}
+
+.scss-bg-success-frosted-soft {
+  background-color: var(--scss-color-success-frosted-soft);
+}
+
+.scss-bg-warning {
+  background-color: var(--scss-color-warning);
+}
+
+.scss-bg-warning-medium {
+  background-color: var(--scss-color-warning-medium);
+}
+
+.scss-bg-warning-low {
+  background-color: var(--scss-color-warning-low);
+}
+
+.scss-bg-warning-frosted {
+  background-color: var(--scss-color-warning-frosted);
+}
+
+.scss-bg-warning-frosted-soft {
+  background-color: var(--scss-color-warning-frosted-soft);
+}
+
+.scss-bg-error {
+  background-color: var(--scss-color-error);
+}
+
+.scss-bg-error-medium {
+  background-color: var(--scss-color-error-medium);
+}
+
+.scss-bg-error-low {
+  background-color: var(--scss-color-error-low);
+}
+
+.scss-bg-error-frosted {
+  background-color: var(--scss-color-error-frosted);
+}
+
+.scss-bg-error-frosted-soft {
+  background-color: var(--scss-color-error-frosted-soft);
+}
+
+.scss-bg-focus {
+  background-color: var(--scss-color-focus);
+}
