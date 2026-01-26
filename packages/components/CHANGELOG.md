@@ -14,9 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Checkbox`, `Radio Button Group`, `Segmented Control`: New slot `label-after` to add custom content (e.g. `Popover`)
+  after the `label` element ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+
 ## [3.32.0-rc.1] - 2026-01-12
 
 ### Added
+
 - `AG Grid`: Relaxed peer dependency to support AG Grid new major version 35
   ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 
@@ -29,10 +35,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Checkbox`: supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
-  custom label ([#4112](https://github.com/porsche-design-system/porsche-design-system/pull/4112))
-- `Checkbox`, `Radio Button Group`: New slot `end` to add custom content (e.g. `Popover`) at the end of the `label`
-  element ([#4112](https://github.com/porsche-design-system/porsche-design-system/pull/4112))
 - `Multi Select, Select`:
   - `selected` slot for custom selection rendering and enabling complex options
   - `options-status` slot for loading, error and no results states when using custom filtering
