@@ -217,10 +217,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         if (newFileContent.includes('export const Label:')) {
           newFileContent = newFileContent
+            .replace(/(type LabelProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 children, ')
             .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
-            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/}\) => \{/, `$& const { namedSlotChildren } = splitChildren(children);\n`)
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`);
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
