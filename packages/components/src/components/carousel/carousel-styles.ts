@@ -41,7 +41,7 @@ import type {
 } from './carousel-utils';
 
 /**
- * @css-variable {"name": "--p-carousel-px", "description": "Defines the padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ * @css-variable {"name": "--p-carousel-px", "description": "Defines the inline padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
  */
 export const cssVarPaddingInline = '--p-carousel-px';
 
