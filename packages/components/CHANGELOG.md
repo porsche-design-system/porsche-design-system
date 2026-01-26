@@ -14,6 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.32.0-rc.1] - 2026-01-12
+
+### Added
+- `AG Grid`: Relaxed peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
+## [3.32.0-rc.0] - 2025-12-16
+
 ### Added
 
 - `Checkbox`: supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
@@ -36,6 +49,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
 - `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
+- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
+- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
+- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
+  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
+- `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
+  intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ### Fixed
 
@@ -45,6 +64,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+- `Multi Select`: trim whitespace of selected options text
+  ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
 
 ## [3.31.0] - 2025-11-13
 

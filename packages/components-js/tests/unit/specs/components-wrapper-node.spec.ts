@@ -1,3 +1,5 @@
+// @vitest-environment node
+
 describe('in node environment', () => {
   it('should expose componentsReady() and load()', () => {
     const porscheDesignSystem = require('@porsche-design-system/components-js');

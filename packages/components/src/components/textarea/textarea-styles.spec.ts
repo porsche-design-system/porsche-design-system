@@ -38,7 +38,7 @@ describe('getComponentCss()', () => {
       'dark',
     ],
   ])(
-    'should return correct css for isDisabled: %s, isReadonly: %s, hideLabel: %o, state: %s, compact: %s, counter: %s, theme: %s',
+    'should return correct css for isDisabled: %s, isReadonly: %s, hideLabel: %o, state: %s, compact: %s, counter: %s, resize: %s, theme: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

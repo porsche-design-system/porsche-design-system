@@ -397,6 +397,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-input-month > propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "string",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "max": "string",
+  "message": "string",
+  "min": "string",
+  "name": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "step": "number",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-input-number > propTypes with ValidatorFunctions 1`] = `
 {
   "autoComplete": "string",
@@ -458,7 +481,9 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "indicator": "boolean",
   "label": "string",
   "loading": "boolean",
+  "maxLength": "number",
   "message": "string",
+  "minLength": "number",
   "name": "string",
   "placeholder": "string",
   "readOnly": "boolean",
@@ -562,6 +587,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-input-week > propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "string",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "max": "string",
+  "message": "string",
+  "min": "string",
+  "name": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "step": "number",
   "theme": "oneOf",
   "value": "string",
 }

@@ -1,5 +1,6 @@
+import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { CM_KEY, getComponentsManagerData } from './data-handler';
-import { loadComponentLibrary, LoadComponentLibraryOptions, setRegisterComponentsCallback } from './library-handler';
+import { LoadComponentLibraryOptions, loadComponentLibrary, setRegisterComponentsCallback } from './library-handler';
 
 let scriptTags: Node[];
 const script = 'http://localhost/some-lib-vendors.es2015.js';
@@ -12,7 +13,7 @@ const defaultOptions: LoadComponentLibraryOptions = {
 beforeEach(() => {
   scriptTags = [];
 
-  jest.spyOn(document.body, 'appendChild').mockImplementation((addedScript) => {
+  vi.spyOn(document.body, 'appendChild').mockImplementation((addedScript) => {
     scriptTags.push(addedScript);
     return addedScript;
   });
@@ -28,7 +29,7 @@ it('should load the script for the library loaded via loadComponentLibrary', asy
   expect((scriptTags[0] as HTMLScriptElement).src).toBe(script);
 });
 
-xit('should ignore version if prefix is not set', async () => {
+it.skip('should ignore version if prefix is not set', async () => {
   loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
   expect(document.body.appendChild).toHaveBeenCalledTimes(1);
 
@@ -136,8 +137,8 @@ it('should load the library for each version once if version and prefix is used'
 });
 
 it('should call the "RegisterCustomElementsCallback" once for the library and version when ever a prefix is loaded', async () => {
-  const registerComponentsSpy1 = jest.fn();
-  const registerComponentsSpy2 = jest.fn();
+  const registerComponentsSpy1 = vi.fn();
+  const registerComponentsSpy2 = vi.fn();
   setRegisterComponentsCallback(registerComponentsSpy1, '1.0.0');
   setRegisterComponentsCallback(registerComponentsSpy2, '2.0.0');
 
@@ -164,7 +165,7 @@ it('should call the "RegisterCustomElementsCallback" once for the library and ve
 });
 
 it('should call the "RegisterCustomElementsCallback" also if it was not yet registered as soon as it\'s registered for library prefixes that have been loaded before', async () => {
-  const registerComponentsSpy1 = jest.fn();
+  const registerComponentsSpy1 = vi.fn();
   loadComponentLibrary({ ...defaultOptions, version: '1.0.0' });
   expect(registerComponentsSpy1).not.toHaveBeenCalled();
 
@@ -198,8 +199,8 @@ it('should throw if prefix is already used by different version', () => {
   `);
 
   expect(() => loadComponentLibrary({ ...defaultOptions, version: '1.1.0' })).toThrowErrorMatchingInlineSnapshot(`
-    "[Porsche Design System v1.1.0] prefix '' is already registered with version '1.0.0' of the Porsche Design System. Please use a different one.
-    Take a look at document.porscheDesignSystem for more details."
+    [Error: [Porsche Design System v1.1.0] prefix '' is already registered with version '1.0.0' of the Porsche Design System. Please use a different one.
+    Take a look at document.porscheDesignSystem for more details.]
   `);
   expect(getComponentsManagerData()).toMatchInlineSnapshot(`
     {

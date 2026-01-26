@@ -13944,6 +13944,160 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 </p-input-email>
 `;
 
+exports[`should render dsr component for PInputMonth 1`] = `
+<p-input-month
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-month"
+          step="1"
+          type="month"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-month>
+`;
+
 exports[`should render dsr component for PInputNumber 1`] = `
 <p-input-number
   data-ssr=""
@@ -15024,6 +15178,160 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   </template>
   Some child
 </p-input-url>
+`;
+
+exports[`should render dsr component for PInputWeek 1`] = `
+<p-input-week
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #010205;
+  }
+  .label:hover~.wrapper {
+    border-color: #010205;
+  }
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          id="input-week"
+          step="1"
+          type="week"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-week>
 `;
 
 exports[`should render dsr component for PLink 1`] = `
@@ -18640,6 +18948,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -23886,6 +24195,11 @@ exports[`should render dsr component for PTextarea 1`] = `
 }
 textarea {
   resize: vertical;
+  field-sizing: var(--p-textarea-field-sizing, unset);
+  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  max-width: var(--p-textarea-max-width, unset);
+  min-height: var(--p-textarea-min-height, unset);
+  max-height: var(--p-textarea-max-height, unset);
   display: block;
   width: 100%;
   height: auto;
@@ -23899,7 +24213,6 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
-  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

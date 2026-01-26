@@ -180,11 +180,6 @@ export class Select {
     return !!(this.filter || this.filterSlot);
   }
 
-  @Listen('keydown')
-  public onKeyDown(e: KeyboardEvent): void {
-    this.onComboKeyDown(e);
-  }
-
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
     e.stopPropagation();
@@ -262,6 +257,7 @@ export class Select {
       this.inputSearchElement = this.filterSlot
         ? (this.filterSlot.assignedElements()[0] as HTMLPInputSearchElement)
         : this.inputSearchElement;
+      this.filterSlot && this.inputSearchElement.addEventListener('keydown', this.onComboKeyDown);
       const nativeInput = this.inputSearchElement.shadowRoot.querySelector('input');
       // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
       if (nativeInput) {
@@ -333,6 +329,7 @@ export class Select {
           disabled={this.disabled}
           onClick={this.onComboClick}
           onBlur={this.onComboBlur}
+          onKeyDown={this.onComboKeyDown}
           ref={(el) => (this.buttonElement = el)}
         >
           {hasCustomSelectedSlot ? (
@@ -378,6 +375,7 @@ export class Select {
               onInput={this.onFilterInput}
               onBlur={(e: any) => e.stopPropagation()}
               onChange={(e: any) => e.stopPropagation()}
+              onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
             />
           )}

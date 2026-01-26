@@ -287,6 +287,46 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputDateExampleReactiveFormComponent,
   },
   {
+    name: 'Input Month Example',
+    path: 'input-month-example',
+    component: fromExamples.InputMonthExampleComponent,
+  },
+  {
+    name: 'Input Month Example Controlled',
+    path: 'input-month-example-controlled',
+    component: fromExamples.InputMonthExampleControlledComponent,
+  },
+  {
+    name: 'Input Month Example Form',
+    path: 'input-month-example-form',
+    component: fromExamples.InputMonthExampleFormComponent,
+  },
+  {
+    name: 'Input Month Example Reactive Form',
+    path: 'input-month-example-reactive-form',
+    component: fromExamples.InputMonthExampleReactiveFormComponent,
+  },
+  {
+    name: 'Input Week Example',
+    path: 'input-week-example',
+    component: fromExamples.InputWeekExampleComponent,
+  },
+  {
+    name: 'Input Week Example Controlled',
+    path: 'input-week-example-controlled',
+    component: fromExamples.InputWeekExampleControlledComponent,
+  },
+  {
+    name: 'Input Week Example Form',
+    path: 'input-week-example-form',
+    component: fromExamples.InputWeekExampleFormComponent,
+  },
+  {
+    name: 'Input Week Example Reactive Form',
+    path: 'input-week-example-reactive-form',
+    component: fromExamples.InputWeekExampleReactiveFormComponent,
+  },
+  {
     name: 'Input Search Example',
     path: 'input-search-example',
     component: fromExamples.InputSearchExampleComponent,

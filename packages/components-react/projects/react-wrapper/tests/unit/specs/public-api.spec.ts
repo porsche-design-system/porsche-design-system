@@ -1,3 +1,5 @@
+import { expect, it } from 'vitest';
+import type { IconName, TabsUpdateEvent } from '../../../src/public-api';
 import {
   componentsReady,
   PorscheDesignSystemProvider,
@@ -5,7 +7,6 @@ import {
   skipPorscheDesignSystemCDNRequestsDuringTests,
   useToastManager,
 } from '../../../src/public-api';
-import type { IconName, TabsUpdateEvent } from '../../../src/public-api';
 
 it('should expose componentsReady()', () => {
   expect(typeof componentsReady).toBe('function');

@@ -236,6 +236,10 @@ const generatedRoutes = {
     "path": "/flyout-2",
     "name": "Flyout_2"
   },
+  "flyout_3": {
+    "path": "/flyout-3",
+    "name": "Flyout_3"
+  },
   "flyoutBackdropBlur": {
     "path": "/flyout-backdrop-blur",
     "name": "FlyoutBackdropBlur"
@@ -400,6 +404,10 @@ const generatedRoutes = {
     "path": "/input-email",
     "name": "InputEmail"
   },
+  "inputMonth": {
+    "path": "/input-month",
+    "name": "InputMonth"
+  },
   "inputNumber": {
     "path": "/input-number",
     "name": "InputNumber"
@@ -427,6 +435,10 @@ const generatedRoutes = {
   "inputUrl": {
     "path": "/input-url",
     "name": "InputUrl"
+  },
+  "inputWeek": {
+    "path": "/input-week",
+    "name": "InputWeek"
   },
   "link": {
     "path": "/link",
