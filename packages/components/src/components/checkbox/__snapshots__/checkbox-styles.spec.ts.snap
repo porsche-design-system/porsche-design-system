@@ -8,9 +8,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -73,15 +75,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -97,10 +106,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -129,8 +146,15 @@ input:indeterminate {
 }
 @media(min-width:480px) {
   .label-wrapper {
-    padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-    padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
   .label {
     position: static;
@@ -142,14 +166,41 @@ input:indeterminate {
     clip: auto;
     white-space: normal;
   }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
+  }
 }
 
 @media(min-width:760px) {
   .label-wrapper {
-    padding-top: 0;
-    padding-inline-start: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label:is(span) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -163,8 +214,15 @@ input:indeterminate {
 
 @media(min-width:1000px) {
   .label-wrapper {
-    padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-    padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
   .label {
     position: static;
@@ -176,14 +234,41 @@ input:indeterminate {
     clip: auto;
     white-space: normal;
   }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
+  }
 }
 
 @media(min-width:1300px) {
   .label-wrapper {
-    padding-top: 0;
-    padding-inline-start: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label:is(span) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -197,8 +282,15 @@ input:indeterminate {
 
 @media(min-width:1760px) {
   .label-wrapper {
-    padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-    padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
   .label {
     position: static;
@@ -209,6 +301,17 @@ input:indeterminate {
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
 }
 "
@@ -222,7 +325,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -317,6 +420,15 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -325,7 +437,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -341,11 +452,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -383,7 +502,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -478,6 +597,15 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -486,7 +614,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -502,11 +629,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -544,9 +679,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -609,6 +746,15 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -617,7 +763,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -633,10 +778,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -674,9 +827,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -739,6 +894,15 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -747,7 +911,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -763,10 +926,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -804,7 +975,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -899,6 +1070,15 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -907,7 +1087,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -923,11 +1102,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -964,7 +1151,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -1059,6 +1246,15 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1067,7 +1263,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1083,11 +1278,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1124,9 +1327,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1189,6 +1394,15 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1197,7 +1411,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1213,10 +1426,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1253,9 +1474,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1318,6 +1541,15 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1326,7 +1558,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1342,10 +1573,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1382,7 +1621,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -1477,6 +1716,15 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1485,7 +1733,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1501,11 +1748,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1543,7 +1798,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -1638,6 +1893,15 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1646,7 +1910,6 @@ input:focus-visible {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1662,11 +1925,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1704,9 +1975,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1769,6 +2042,15 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1777,7 +2059,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1793,10 +2074,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1834,9 +2123,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1899,6 +2190,15 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
   padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
@@ -1907,7 +2207,6 @@ input:indeterminate {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -1923,10 +2222,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1964,7 +2271,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -2059,15 +2366,22 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2083,11 +2397,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -2125,7 +2447,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -2220,15 +2542,22 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2244,11 +2573,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -2286,9 +2623,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2351,15 +2690,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2375,10 +2721,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -2416,9 +2770,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2481,15 +2837,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2505,10 +2868,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -2546,7 +2917,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -2641,15 +3012,22 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2665,11 +3043,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -2706,7 +3092,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -2801,15 +3187,22 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2825,11 +3218,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -2866,9 +3267,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2944,15 +3347,22 @@ input:focus-visible {
   pointer-events: none;
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -2963,16 +3373,24 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  pointer-events: none;
   display: inline;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3009,9 +3427,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3087,15 +3507,22 @@ input:focus-visible {
   pointer-events: none;
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3106,16 +3533,24 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  pointer-events: none;
   display: inline;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3152,9 +3587,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3217,15 +3654,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3241,10 +3685,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3281,9 +3733,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3346,15 +3800,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3370,10 +3831,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3410,9 +3879,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3478,15 +3949,22 @@ input:checked {
   pointer-events: none;
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3497,16 +3975,24 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  pointer-events: none;
   display: inline;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3543,9 +4029,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -3611,15 +4099,22 @@ input:checked {
   pointer-events: none;
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3630,16 +4125,24 @@ input:checked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  pointer-events: none;
   display: inline;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3676,7 +4179,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -3771,15 +4274,22 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3795,11 +4305,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3837,7 +4355,7 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
 }
@@ -3932,15 +4450,22 @@ input:focus-visible {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -3956,11 +4481,19 @@ input:focus-visible {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #AFB0B3;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -3998,9 +4531,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -4063,15 +4598,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -4087,10 +4629,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -4128,9 +4678,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 :host([hidden]) {
   display: none !important;
 }
-slot[name="end"] {
+slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
+  pointer-events: none;
+  opacity: 0.4;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -4193,15 +4745,22 @@ input:indeterminate {
   height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label-wrapper {
-  padding-top: 0;
-  padding-inline-start: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -4217,10 +4776,18 @@ input:indeterminate {
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;

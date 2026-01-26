@@ -44,12 +44,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -60,15 +70,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -172,12 +191,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -188,15 +217,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -300,12 +338,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -316,15 +364,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -416,12 +473,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -432,15 +499,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -532,12 +608,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -548,15 +634,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -648,12 +743,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -664,15 +769,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -765,12 +879,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  min-width: fit-content;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: static;
@@ -781,15 +905,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: visible;
   clip: auto;
   white-space: normal;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -882,12 +1015,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -898,15 +1040,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -999,12 +1150,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1015,15 +1175,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1127,12 +1296,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1143,15 +1321,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1243,12 +1430,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:has(input:focus) {
   border-color: #010205;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1259,15 +1455,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1359,12 +1564,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1375,15 +1589,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1478,12 +1701,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1494,15 +1726,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1602,12 +1843,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
-  justify-self: flex-start;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1618,15 +1868,24 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: #535457;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1664,6 +1923,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   white-space: nowrap;
 }
 @media(min-width:480px) {
+  .label-wrapper {
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
   .label {
     position: static;
     width: auto;
@@ -1674,10 +1944,41 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
+  }
 }
 
 @media(min-width:760px) {
+  .label-wrapper {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label:is(span) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1690,6 +1991,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 
 @media(min-width:1000px) {
+  .label-wrapper {
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
   .label {
     position: static;
     width: auto;
@@ -1700,10 +2012,41 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
+  }
 }
 
 @media(min-width:1300px) {
+  .label-wrapper {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label:is(span) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1716,6 +2059,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 
 @media(min-width:1760px) {
+  .label-wrapper {
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
   .label {
     position: static;
     width: auto;
@@ -1725,6 +2079,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
 }
 
@@ -1783,12 +2148,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: not-allowed;
   border-color: #7E7F82;
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1799,14 +2173,23 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1844,6 +2227,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   white-space: nowrap;
 }
 @media(min-width:480px) {
+  .label-wrapper {
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
   .label {
     position: static;
     width: auto;
@@ -1854,10 +2248,41 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
+  }
 }
 
 @media(min-width:760px) {
+  .label-wrapper {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label:is(span) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1870,6 +2295,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 
 @media(min-width:1000px) {
+  .label-wrapper {
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
   .label {
     position: static;
     width: auto;
@@ -1880,10 +2316,41 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
+  }
 }
 
 @media(min-width:1300px) {
+  .label-wrapper {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label:is(span) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1896,6 +2363,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 
 @media(min-width:1760px) {
+  .label-wrapper {
+    min-width: fit-content;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
   .label {
     position: static;
     width: auto;
@@ -1905,6 +2383,17 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+  .label:is(span) {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
 }
 "
@@ -1959,12 +2448,21 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
 }
+.label-wrapper {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
-  justify-self: flex-start;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: absolute;
@@ -1975,14 +2473,23 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
