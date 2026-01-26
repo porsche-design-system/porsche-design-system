@@ -3,7 +3,7 @@ import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import { themes } from '../../../src/components/ThemeSelect';
 import { styleSolutions } from '../../../src/routes';
 
-for (const style of ['blur', 'border', 'color']) {
+for (const style of ['blur', 'border', 'color', 'grid']) {
   test.describe(`Style: ${style}`, () => {
     for (const theme of themes.filter((theme) => theme !== 'auto')) {
       test.describe(`Theme: ${theme}`, () => {
@@ -29,3 +29,5 @@ for (const style of ['blur', 'border', 'color']) {
     }
   });
 }
+
+// TODO: Add multiple sizes for grid (s, xxl)
