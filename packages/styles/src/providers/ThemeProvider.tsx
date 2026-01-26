@@ -10,11 +10,7 @@ interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [selectedTheme, setSelectedTheme] = useState<Theme>(() => {
-    const urlTheme = searchParams.get('theme') as Theme | null;
-    return urlTheme || 'auto';
-  });
+  const [selectedTheme, setSelectedTheme] = useState<Theme>('auto');
 
   // Sync initial theme class on mount
   // biome-ignore lint/correctness/useExhaustiveDependencies: only for mount
@@ -27,10 +23,6 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     setSelectedTheme(theme);
     document.documentElement.classList.remove('light', 'dark', 'auto');
     document.documentElement.classList.add(theme);
-    setSearchParams((params) => {
-      params.set('theme', theme);
-      return params;
-    });
   };
 
   return <ThemeContext.Provider value={{ theme: selectedTheme, setTheme }}>{children}</ThemeContext.Provider>;

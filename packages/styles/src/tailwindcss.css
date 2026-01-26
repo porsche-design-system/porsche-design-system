@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "@porsche-design-system/tailwindcss";
 
+/* biome-ignore lint/suspicious/noUnknownAtRules: correct */
 @theme {
   --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
   --_pds-grid-narrow-offset-sm: calc(
@@ -1153,6 +1154,7 @@
 
 @layer components {
   ._pds-grid-visualization {
+    /* biome-ignore lint/suspicious/noUnknownAtRules: correct */
     @apply bg-linear-(--_pds-grid-visualization-base) sm:bg-linear-(--_pds-grid-visualization-sm) 2xl:bg-linear-(--_pds-grid-visualization-2xl);
   }
 }
