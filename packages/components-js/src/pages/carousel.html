@@ -69,6 +69,10 @@
   .change-gradient-color-width {
     --p-gradient-color-width: 50%;
   }
+
+  .change-px {
+    --p-carousel-px: 100px;
+  }
 </style>
 
 <div class="visualize-grid">
@@ -764,6 +768,30 @@
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
     </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with width=wide, heading and description">
+  <p-carousel heading="Heading (width=wide)" description="Description (width=wide)" width="wide">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with width=full, heading and description">
+  <p-carousel heading="Heading (width=full)" description="Description (width=full)" width="full">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with CSS variable --p-carousel-px">
+  <p-carousel class="change-px" heading="Heading (--p-carousel-px)" description="Description (--p-carousel-px)">
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>

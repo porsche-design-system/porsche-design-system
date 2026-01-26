@@ -4,6 +4,7 @@ import {
   getMediaQueryMin,
   gridBasicOffset,
   gridExtendedOffset,
+  gridFullOffset,
   gridWideOffset,
   headingXLargeStyle,
   headingXXLargeStyle,
@@ -82,9 +83,9 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   extended: gridExtendedOffset,
   wide: gridWideOffset,
   full: {
-    base: '1px', // safe zone, ensure rounded tiles are fully visible at full width
-    s: '1px',
-    xxl: '1px'
+    base: gridFullOffset,
+    s: gridFullOffset,
+    xxl: gridFullOffset
   },
 };
 
