@@ -1761,6 +1761,10 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "none",
         "description": "CSS Filter applied to the navigation (prev/next buttons)",
       },
+      "--p-carousel-px": {
+        "defaultValue": "",
+        "description": "Defines the padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop \`width\` has no effect anymore.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -1948,6 +1952,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "basic",
           "extended",
+          "wide",
+          "full",
         ],
         "defaultValue": "basic",
         "description": "Defines the outer spacings between the carousel and the left and right screen sides.",
