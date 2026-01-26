@@ -1,14 +1,14 @@
 export const TailwindcssMediaQuery = () => {
   return (
     <div className="grid prose-text-sm p-static-md">
-      <p className="m-0 after:content-['base'] xs:after:content-['xs'] sm:after:content-['sm'] md:after:content-['md'] lg:after:content-['lg'] xl:after:content-['xl'] 2xl:after:content-['2xl']">
-        Media Query Min:{' '}
+      <p className="m-0 after:content-['_base'] xs:after:content-['_xs'] sm:after:content-['_sm'] md:after:content-['_md'] lg:after:content-['_lg'] xl:after:content-['_xl'] 2xl:after:content-['_2xl']">
+        Media Query Min:
       </p>
-      <p className="m-0 max-xs:after:content-['xs'] max-sm:after:content-['sm'] max-md:after:content-['md'] max-lg:after:content-['lg'] max-xl:after:content-['xl'] max–2xl:after:content-['2xl']">
-        Media Query Max:{' '}
+      <p className="m-0 max-xs:after:content-['_xs'] max-sm:after:content-['_sm'] max-md:after:content-['_md'] max-lg:after:content-['_lg'] max-xl:after:content-['_xl'] max-2xl:after:content-['_2xl']">
+        Media Query Max:
       </p>
-      <p className="m-0 after:content-['base_-_xs'] xs:max-sm:after:content-['xs_-_sm'] sm:max-md:after:content-['sm_-_md'] md:max-lg:after:content-['md_-_lg'] lg:max-xl:after:content-['lg_-_xl'] xl:max-2xl:after:content-['xl_-_2xl']">
-        Media Query Min Max:{' '}
+      <p className="m-0 max-xs:after:content-['_base_-_xs'] xs:max-sm:after:content-['_xs_-_sm'] sm:max-md:after:content-['_sm_-_md'] md:max-lg:after:content-['_md_-_lg'] lg:max-xl:after:content-['_lg_-_xl'] xl:max-2xl:after:content-['_xl_-_2xl']">
+        Media Query Min Max:
       </p>
     </div>
   );
