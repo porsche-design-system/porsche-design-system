@@ -56,7 +56,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...(disabled && getDisabledBaseStyles()),
+          ...(disabledOrLoading && getDisabledBaseStyles()),
         }),
       },
       ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
