@@ -33,7 +33,7 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -53,7 +53,7 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -140,7 +140,7 @@ slot[name="controls"] {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
     column-gap: 16px;
   }
   .nav {
@@ -151,16 +151,16 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
@@ -224,7 +224,7 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -244,7 +244,7 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -303,7 +303,7 @@ slot[name="controls"] {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
     column-gap: 16px;
   }
   .nav {
@@ -314,16 +314,16 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 "
@@ -375,7 +375,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -395,7 +395,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -518,7 +518,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
     column-gap: 16px;
   }
   .nav {
@@ -529,7 +529,7 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
   .pagination-container {
     display: none;
@@ -556,10 +556,10 @@ p,::slotted([slot="description"]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
@@ -636,7 +636,7 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -656,7 +656,7 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -715,7 +715,7 @@ slot[name="controls"] {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -726,16 +726,16 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 "
@@ -780,7 +780,7 @@ p,::slotted([slot="description"]) {
 }
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -800,7 +800,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -887,7 +887,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -898,16 +898,16 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
@@ -991,7 +991,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -1011,7 +1011,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1122,7 +1122,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -1133,16 +1133,16 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
@@ -1226,7 +1226,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -1246,7 +1246,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1333,7 +1333,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .nav {
     grid-row-start: 3;
@@ -1343,16 +1343,16 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
@@ -1416,7 +1416,7 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -1436,7 +1436,7 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1529,7 +1529,7 @@ slot[name="controls"] {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -1540,16 +1540,16 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
@@ -1613,7 +1613,7 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -1633,7 +1633,7 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1750,7 +1750,7 @@ slot[name="controls"] {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -1761,16 +1761,16 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
@@ -1845,7 +1845,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -1865,7 +1865,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -1924,7 +1924,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -1935,16 +1935,16 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 "
@@ -2003,7 +2003,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -2023,7 +2023,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2116,7 +2116,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
     column-gap: 16px;
   }
   .nav {
@@ -2127,7 +2127,7 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
   .pagination-container {
     display: none;
@@ -2154,10 +2154,10 @@ p,::slotted([slot="description"]) {
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
@@ -2236,7 +2236,7 @@ slot[name="controls"] {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -2256,7 +2256,7 @@ slot[name="controls"] {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2305,7 +2305,7 @@ slot[name="controls"] {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
     column-gap: 16px;
   }
   .nav {
@@ -2316,16 +2316,16 @@ slot[name="controls"] {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 "
@@ -2386,7 +2386,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -2406,7 +2406,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2455,7 +2455,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
     column-gap: 16px;
   }
   .nav {
@@ -2466,16 +2466,16 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)) !important;
   }
 }
 "
@@ -2536,7 +2536,7 @@ p,::slotted([slot="description"]) {
 
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px));
 }
 .nav {
   display: none;
@@ -2556,7 +2556,7 @@ p,::slotted([slot="description"]) {
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding: 0 var(--p-carousel-px,max(22px, 10.625vw - 12px)) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -2657,7 +2657,7 @@ p,::slotted([slot="description"]) {
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
     column-gap: 16px;
   }
   .nav {
@@ -2668,16 +2668,16 @@ p,::slotted([slot="description"]) {
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1);
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    padding: 0 var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)) !important;
   }
 }
 
