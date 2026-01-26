@@ -1,6 +1,5 @@
 import type { Theme } from '@porsche-design-system/emotion';
 import { createContext, type PropsWithChildren, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
 
 interface ThemeContextProps {
   theme: Theme;
