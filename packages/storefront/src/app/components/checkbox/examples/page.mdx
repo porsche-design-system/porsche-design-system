@@ -8,6 +8,7 @@ import {
   checkboxStoryWrappedLabel,
 } from '@/app/components/checkbox/checkbox.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Checkbox - Porsche Design System',
@@ -16,7 +17,7 @@ export const metadata = {
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Indeterminate', 'Slots', 'Custom wrapped label']} />
+<TableOfContents headings={['Form', 'Indeterminate', 'Slots', 'Custom wrapped label (🧪Experimental)']} />
 
 ## Form
 
@@ -51,20 +52,21 @@ but the checkbox still keeps it's `checked` state. You can find more details in
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message` or adding additional
-markup (e.g. `popover`) at the end of a `label`. Therefore, a named slot can be used. Make sure **not** to define the
-corresponding property on the host element when a named slot is used (because a property definition is preferred over a
-named slot). For named slots only
+Sometimes it's useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
+**not** to define the corresponding property on the host element when a named slot is used (because a property
+definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
 
+In addition to the named slots `label` and `message`, there is also a `label-after` slot available. This slot must be
+used to render content after the label which is not directly part of it (e.g. an external link or a `popover`
+component).
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  If the <code>p-checkbox</code> is in <code>disabled/loading</code> state
+  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
+  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
+  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+</Notification>
+
 <ComponentStory story={checkboxStorySlots} />
-
-## Custom wrapped label
-
-The `p-checkbox` component also supports a custom wrapped `label` by just wrapping the component within a `label` tag.
-This approach can be used if the `label` must be placed individually. The contents of the wrapping `label` must only
-contain raw text and optionally `a` or `button` elements. Be aware that by using this approach, the **styling of the
-`label` must be controlled by the integrating team**.
-
-<ComponentStory story={checkboxStoryWrappedLabel} />

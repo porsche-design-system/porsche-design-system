@@ -5,40 +5,8 @@ import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/genera
 
 const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
   { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
-  {
-    tag: 'p-radio-group-option',
-    properties: { value: 'b' },
-    children: [
-      {
-        tag: 'span',
-        properties: { slot: 'label' },
-        children: [
-          'Option B with slotted label and ',
-          {
-            tag: 'a',
-            properties: { href: 'https://www.porsche.com', className: 'underline' },
-            children: ['link'],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    tag: 'p-radio-group-option',
-    properties: { value: 'c' },
-    children: [
-      {
-        tag: 'span',
-        properties: { slot: 'label' },
-        children: ['Option C with slotted label and a popover '],
-      },
-      {
-        tag: 'p-popover',
-        properties: { slot: 'end' },
-        children: ['Option C with slotted label and a popover '],
-      },
-    ],
-  },
+  { tag: 'p-radio-group-option', properties: { value: 'b', label: 'Option B' } },
+  { tag: 'p-radio-group-option', properties: { value: 'c', label: 'Option C' } },
   { tag: 'p-radio-group-option', properties: { value: 'd', label: 'Option D' } },
   { tag: 'p-radio-group-option', properties: { value: 'e', label: 'Option E' } },
   { tag: 'p-radio-group-option', properties: { value: 'f', label: 'Option F' } },
@@ -77,8 +45,13 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
               properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
               children: ['link'],
             },
-            '.',
+            ' text and a "label-after" slot.',
           ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover description'],
         },
         {
           tag: 'span',
@@ -106,7 +79,61 @@ export const radioGroupStorySlots: Story<'p-radio-group'> = {
             '.',
           ],
         },
-        ...radioGroupOptions,
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'a' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                {
+                  tag: 'img',
+                  properties: {
+                    src: 'assets/911.png',
+                    alt: '',
+                    className: 'object-contain inline-block align-middle -mt-2 me-static-sm w-[70px]',
+                  },
+                },
+                'Some slotted label with custom content and a "label-after" slot',
+              ],
+            },
+            {
+              tag: 'p-popover',
+              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              children: ['Option A with slotted label and a popover '],
+            },
+          ],
+        },
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'b' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: ['Option B with slotted label'],
+            },
+          ],
+        },
+        {
+          tag: 'p-radio-group-option',
+          properties: { value: 'c' },
+          children: [
+            {
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                'Option C with slotted label and a nested ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://www.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
   ],

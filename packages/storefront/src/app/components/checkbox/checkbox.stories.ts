@@ -36,42 +36,80 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
   },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-checkbox',
-      properties,
+      tag: 'div',
+      properties: { className: 'flex flex-col gap-static-sm' },
       children: [
         {
-          tag: 'span',
-          properties: { slot: 'label' },
+          tag: 'p-checkbox',
+          properties,
           children: [
-            'Some label with a ',
             {
-              tag: 'a',
-              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
-              children: ['link'],
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                {
+                  tag: 'img',
+                  properties: {
+                    src: 'assets/911.png',
+                    alt: '',
+                    className: 'object-contain inline-block align-middle -mt-2 me-static-sm w-[70px]',
+                  },
+                },
+                'Some slotted label with custom content and a "label-after" slot',
+              ],
+            },
+            {
+              tag: 'p-popover',
+              properties: { slot: 'label-after', className: 'ms-static-xs' },
+              children: [
+                'Some label with a ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
             },
           ],
         },
         {
-          tag: 'p-popover',
-          properties: { slot: 'end' },
+          tag: 'p-checkbox',
+          properties,
           children: [
-            'Some label with a ',
             {
-              tag: 'a',
-              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
-              children: ['link'],
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: ['Some slotted label'],
             },
           ],
         },
         {
-          tag: 'span',
-          properties: { slot: 'message' },
+          tag: 'p-checkbox',
+          properties,
           children: [
-            'Some error message with a ',
             {
-              tag: 'a',
-              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
-              children: ['link'],
+              tag: 'span',
+              properties: { slot: 'label' },
+              children: [
+                'Some slotted label with a nested ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://www.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
+            },
+            {
+              tag: 'span',
+              properties: { slot: 'message' },
+              children: [
+                'Some error message with a ',
+                {
+                  tag: 'a',
+                  properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+                  children: ['link'],
+                },
+              ],
             },
           ],
         },
@@ -83,70 +121,45 @@ export const checkboxStorySlots: Story<'p-checkbox'> = {
 export const checkboxStoryWrappedLabel: Story<'p-checkbox'> = {
   state: {
     properties: {
-      state: 'error',
-      name: 'some-name',
-    } as any,
+      checked: false,
+    },
   },
-  generator: () => [
-    {
-      tag: 'label',
-      properties: { className: 'inline-flex flex-col gap-static-xs prose-text-sm cursor-pointer' },
-      children: [
-        'Some wrapped custom label',
-        {
-          tag: 'p-checkbox',
-          properties: { className: 'cursor-default' },
-        },
-      ],
-    },
-    {
-      tag: 'p-divider',
-      properties: { className: 'my-static-lg' },
-    },
-    {
-      tag: 'label',
-      properties: { className: 'inline-flex flex-col gap-static-xs prose-text-sm cursor-pointer' },
-      children: [
-        {
-          tag: 'span',
-          children: [
-            'Some wrapped custom label with a ',
-            {
-              tag: 'a',
-              properties: { href: 'https://www.porsche.com', className: 'underline' },
-              children: ['link'],
-            },
-          ],
-        },
-        {
-          tag: 'p-checkbox',
-          properties: { className: 'cursor-default' },
-        },
-      ],
-    },
-    {
-      tag: 'p-divider',
-      properties: { className: 'my-static-lg' },
-    },
+  generator: ({ properties } = {}) => [
     {
       tag: 'div',
-      properties: { className: 'flex items-center' },
+      properties: {
+        className:
+          'flex items-start w-64 border-2 border-contrast-lower rounded-md hover:border-primary transition-colors',
+      },
       children: [
         {
           tag: 'label',
-          properties: { className: 'flex items-center prose-text-sm cursor-pointer' },
+          properties: {
+            className:
+              'inline-flex flex-col p-fluid-xs gap-static-xs prose-text-sm cursor-pointer hover:[--p-checkbox-border-color:var(--color-primary)]',
+          },
           children: [
             {
-              tag: 'p-checkbox',
+              tag: 'span',
+              children: ['Some wrapped custom label besides a popover'],
             },
             {
-              tag: 'span',
-              children: ['Some wrapped custom label besides an popover'],
+              tag: 'p-checkbox',
+              properties,
             },
           ],
+          events: {
+            onClick: {
+              target: 'p-checkbox',
+              prop: 'checked',
+              value: true,
+              preventDefault: true,
+            },
+          },
         },
         {
           tag: 'p-popover',
+          properties: { className: 'mr-static-xs mt-static-xs' },
           children: ['Some additional content.'],
         },
       ],
