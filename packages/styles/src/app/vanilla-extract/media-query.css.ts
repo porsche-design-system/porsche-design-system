@@ -4,7 +4,7 @@ import {
   getMediaQueryMinMax,
   spacingStaticMedium,
   textSmallStyle,
-} from '@porsche-design-system/components-vue/vanilla-extract';
+} from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css.ts';
 
