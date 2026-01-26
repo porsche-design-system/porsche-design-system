@@ -1,32 +1,32 @@
 import { getMediaQueryMin } from '../mediaQuery';
-import { gridGap } from './gridGap';
-import { gridFullColumnStart } from './gridFullColumnStart';
-import { gridWideColumnStart } from './gridWideColumnStart';
-import { gridExtendedColumnStart } from './gridExtendedColumnStart';
-import { gridBasicColumnStart } from './gridBasicColumnStart';
-import { gridNarrowColumnStart } from './gridNarrowColumnStart';
-import { gridNarrowColumnEnd } from './gridNarrowColumnEnd';
 import { gridBasicColumnEnd } from './gridBasicColumnEnd';
+import { gridBasicColumnStart } from './gridBasicColumnStart';
 import { gridExtendedColumnEnd } from './gridExtendedColumnEnd';
-import { gridWideColumnEnd } from './gridWideColumnEnd';
+import { gridExtendedColumnStart } from './gridExtendedColumnStart';
 import { gridFullColumnEnd } from './gridFullColumnEnd';
+import { gridFullColumnStart } from './gridFullColumnStart';
+import { gridGap } from './gridGap';
+import { gridNarrowColumnEnd } from './gridNarrowColumnEnd';
+import { gridNarrowColumnStart } from './gridNarrowColumnStart';
 import {
   _cssVariableGridBasicSpanOneHalf,
   _cssVariableGridBasicSpanOneThird,
   _cssVariableGridBasicSpanTwoThirds,
   _cssVariableGridExtendedSpanOneHalf,
   _cssVariableGridMargin,
-  _cssVariableGridWidthMin,
   _cssVariableGridNarrowSpanOneHalf,
   _cssVariableGridOuterColumn,
   _cssVariableGridSafeZone,
+  _cssVariableGridWidthMax,
+  _cssVariableGridWidthMin,
   _gridSafeZoneBase,
   _gridSafeZoneS,
   _gridSafeZoneXXL,
   _gridWidthMax,
   _gridWidthMin,
-  _cssVariableGridWidthMax,
 } from './gridShared';
+import { gridWideColumnEnd } from './gridWideColumnEnd';
+import { gridWideColumnStart } from './gridWideColumnStart';
 
 // _cssVariableGridOuterColumn is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
 const outerColumn = `minmax(0,var(${_cssVariableGridOuterColumn},calc(var(${_cssVariableGridSafeZone}) - ${gridGap})))`;
@@ -64,16 +64,18 @@ export const gridStyle = {
   margin: `0 var(${_cssVariableGridMargin},0)`,
   padding: `0 calc(50% - var(${_cssVariableGridMargin},0px) - ${_gridWidthMax} / 2)`,
   boxSizing: 'content-box',
-  [getMediaQueryMin('s')]: {
-    [_cssVariableGridSafeZone]: _gridSafeZoneS,
-    [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(7),
-    [_cssVariableGridBasicSpanOneHalf]: getColumnSpan(6),
-    [_cssVariableGridBasicSpanOneThird]: getColumnSpan(4),
-    [_cssVariableGridBasicSpanTwoThirds]: getColumnSpan(8),
-    [_cssVariableGridNarrowSpanOneHalf]: getColumnSpan(4),
-    gridTemplateColumns: getGridTemplateColumns('desktop'),
-  },
-  [getMediaQueryMin('xxl')]: {
-    [_cssVariableGridSafeZone]: _gridSafeZoneXXL,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      [_cssVariableGridSafeZone]: _gridSafeZoneS,
+      [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(7),
+      [_cssVariableGridBasicSpanOneHalf]: getColumnSpan(6),
+      [_cssVariableGridBasicSpanOneThird]: getColumnSpan(4),
+      [_cssVariableGridBasicSpanTwoThirds]: getColumnSpan(8),
+      [_cssVariableGridNarrowSpanOneHalf]: getColumnSpan(4),
+      gridTemplateColumns: getGridTemplateColumns('desktop'),
+    },
+    [getMediaQueryMin('xxl')]: {
+      [_cssVariableGridSafeZone]: _gridSafeZoneXXL,
+    },
   },
 } as const;

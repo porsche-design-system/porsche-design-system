@@ -33,6 +33,10 @@ Import paths for `styles` package:
 + @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
 ```
 
+### Fixed
+
+- `Vanilla Extract`: grid style media query not working
+
 ## [4.0.0-alpha.0] - 2025-12-12
 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes

@@ -2,3 +2,1157 @@
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "@porsche-design-system/tailwindcss";
+
+@theme {
+  --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-narrow-offset-sm: calc(
+    5vw -
+    16px +
+    (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) *
+    4
+  );
+  --_pds-grid-narrow-offset-2xl: calc(
+    max(0px, 50vw - 1280px) +
+    min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+      (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) /
+      16
+    ) *
+    4
+  );
+  --_pds-grid-basic-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-basic-offset-sm: calc(
+    5vw -
+    16px +
+    (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) *
+    2
+  );
+  --_pds-grid-basic-offset-2xl: calc(
+    max(0px, 50vw - 1280px) +
+    min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+      (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) /
+      16
+    ) *
+    2
+  );
+  --_pds-grid-extended-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-extended-offset-sm: calc(
+    5vw -
+    16px +
+    (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) *
+    1
+  );
+  --_pds-grid-extended-offset-2xl: calc(
+    max(0px, 50vw - 1280px) +
+    min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+      (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) /
+      16
+    ) *
+    1
+  );
+  --_pds-grid-wide-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-wide-offset-sm: calc(5vw - 16px);
+  --_pds-grid-wide-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px));
+  --_pds-grid-full-offset: max(0px, 50vw - 1280px);
+  --_pds-grid-visualization-color: rgba(0, 0, 255, 0.1);
+  --_pds-grid-visualization-grid-gap: var(--spacing-fluid-md);
+  --_pds-grid-visualization-safe-zone-base: var(--_pds-grid-wide-offset);
+  --_pds-grid-visualization-column-width-base: calc(
+    (100% - var(--_pds-grid-visualization-safe-zone-base) * 2 - var(--_pds-grid-visualization-grid-gap) * 5) /
+    6
+  );
+  --_pds-grid-visualization-base:
+    to right,
+    var(--_pds-grid-visualization-color) 0%,
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) -
+      var(--_pds-grid-visualization-grid-gap)
+    ),
+    transparent calc(var(--_pds-grid-visualization-safe-zone-base) - var(--_pds-grid-visualization-grid-gap)),
+    transparent var(--_pds-grid-visualization-safe-zone-base),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      0 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-column-width-base) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    transparent calc(100% - var(--_pds-grid-visualization-safe-zone-base)),
+    transparent calc(100% - var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-grid-gap)),
+    var(--_pds-grid-visualization-color) calc(
+      100% -
+      var(--_pds-grid-visualization-safe-zone-base) +
+      var(--_pds-grid-visualization-grid-gap)
+    ),
+    var(--_pds-grid-visualization-color) 100%;
+  --_pds-grid-visualization-safe-zone-sm: var(--_pds-grid-wide-offset-sm);
+  --_pds-grid-visualization-column-width-sm: calc(
+    (100% - var(--_pds-grid-visualization-safe-zone-sm) * 2 - var(--_pds-grid-visualization-grid-gap) * 15) /
+    16
+  );
+  --_pds-grid-visualization-sm:
+    to right,
+    var(--_pds-grid-visualization-color) 0%,
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) -
+      var(--_pds-grid-visualization-grid-gap)
+    ),
+    transparent calc(var(--_pds-grid-visualization-safe-zone-sm) - var(--_pds-grid-visualization-grid-gap)),
+    transparent var(--_pds-grid-visualization-safe-zone-sm),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      0 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      15
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      15
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-column-width-sm) *
+      16 +
+      var(--_pds-grid-visualization-grid-gap) *
+      15
+    ),
+    transparent calc(100% - var(--_pds-grid-visualization-safe-zone-sm)),
+    transparent calc(100% - var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-grid-gap)),
+    var(--_pds-grid-visualization-color) calc(
+      100% -
+      var(--_pds-grid-visualization-safe-zone-sm) +
+      var(--_pds-grid-visualization-grid-gap)
+    ),
+    var(--_pds-grid-visualization-color) 100%;
+  --_pds-grid-visualization-safe-zone-2xl: var(--_pds-grid-wide-offset-2xl);
+  --_pds-grid-visualization-column-width-2xl: calc(
+    (100% - var(--_pds-grid-visualization-safe-zone-2xl) * 2 - var(--_pds-grid-visualization-grid-gap) * 15) /
+    16
+  );
+  --_pds-grid-visualization-2xl:
+    to right,
+    var(--_pds-grid-visualization-color) 0%,
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) -
+      var(--_pds-grid-visualization-grid-gap)
+    ),
+    transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) - var(--_pds-grid-visualization-grid-gap)),
+    transparent var(--_pds-grid-visualization-safe-zone-2xl),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      0 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      0
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      1 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      1
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      2 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      2
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      3 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      3
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      4 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      4
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      5 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      5
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      6 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      6
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      7 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      7
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      8 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      8
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      9 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      9
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      10 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      10
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      11 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      11
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      12 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      12
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      13 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      13
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      14 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      14
+    ),
+    transparent calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      15
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      15 +
+      var(--_pds-grid-visualization-grid-gap) *
+      15
+    ),
+    var(--_pds-grid-visualization-color) calc(
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-column-width-2xl) *
+      16 +
+      var(--_pds-grid-visualization-grid-gap) *
+      15
+    ),
+    transparent calc(100% - var(--_pds-grid-visualization-safe-zone-2xl)),
+    transparent calc(100% - var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-grid-gap)),
+    var(--_pds-grid-visualization-color) calc(
+      100% -
+      var(--_pds-grid-visualization-safe-zone-2xl) +
+      var(--_pds-grid-visualization-grid-gap)
+    ),
+    var(--_pds-grid-visualization-color) 100%;
+}
+
+@layer components {
+  ._pds-grid-visualization {
+    @apply bg-linear-(--_pds-grid-visualization-base) sm:bg-linear-(--_pds-grid-visualization-sm) 2xl:bg-linear-(--_pds-grid-visualization-2xl);
+  }
+}
