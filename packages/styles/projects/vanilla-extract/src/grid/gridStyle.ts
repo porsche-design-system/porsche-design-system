@@ -66,6 +66,7 @@ export const gridStyle = {
   boxSizing: 'content-box',
   '@media': {
     [getMediaQueryMin('s')]: {
+      display: 'grid', // Vanilla Extract type complains if only Custom properties are used within media query
       [_cssVariableGridSafeZone]: _gridSafeZoneS,
       [_cssVariableGridExtendedSpanOneHalf]: getColumnSpan(7),
       [_cssVariableGridBasicSpanOneHalf]: getColumnSpan(6),
@@ -75,6 +76,7 @@ export const gridStyle = {
       gridTemplateColumns: getGridTemplateColumns('desktop'),
     },
     [getMediaQueryMin('xxl')]: {
+      display: 'grid', // Vanilla Extract type complains if only Custom properties are used within media query
       [_cssVariableGridSafeZone]: _gridSafeZoneXXL,
     },
   },
