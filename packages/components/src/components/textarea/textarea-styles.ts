@@ -16,7 +16,10 @@ import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
@@ -62,6 +65,7 @@ export const getComponentCss = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         all: 'unset',

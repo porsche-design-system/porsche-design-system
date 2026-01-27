@@ -14,7 +14,7 @@ import { legacyRadiusSmall, radiusLg, radiusXl } from '../../../styles/css-varia
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../label/label-styles';
+import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 
@@ -62,6 +62,7 @@ export const getFunctionalComponentInputBaseStyles = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',

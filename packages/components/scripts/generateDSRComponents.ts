@@ -224,11 +224,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
             .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
             .replace(/}\) => \{/, `$& const { namedSlotChildren } = splitChildren(children);\n`)
-            .replace(
-              /^/,
-              `import { splitChildren } from '../../splitChildren';
-`
-            );
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`);
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
