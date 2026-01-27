@@ -18,6 +18,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -235,6 +239,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -455,6 +463,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -672,6 +684,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -891,6 +907,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1094,6 +1116,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1295,6 +1323,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1498,6 +1532,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1699,6 +1739,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -1903,6 +1949,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2105,6 +2157,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2305,6 +2363,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2507,6 +2571,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -2727,6 +2795,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2944,6 +3016,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3163,6 +3239,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3380,6 +3460,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3599,6 +3683,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3815,6 +3903,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4034,6 +4126,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4252,6 +4348,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4455,6 +4557,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4656,6 +4764,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4860,6 +4974,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -5063,6 +5183,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -5264,6 +5390,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+    opacity: 0.4;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;

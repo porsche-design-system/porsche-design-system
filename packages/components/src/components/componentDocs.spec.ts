@@ -49,6 +49,8 @@ describe.each<TagName>(
 
       if (sourceFileContent.includes('<Label') || sourceFileContent.includes('<LegacyLabel')) {
         namedSlotsUnique.push('label');
+      }
+      if (sourceFileContent.includes('<Label')) {
         namedSlotsUnique.push('label-after');
       }
       if (/<(Label|LegacyLabel)[\s\S]+?description/.test(sourceFileContent)) {
