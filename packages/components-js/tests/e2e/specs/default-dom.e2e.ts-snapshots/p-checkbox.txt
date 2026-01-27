@@ -1,13 +1,17 @@
 <div class="root">
-  <label class="label" id="label" for="checkbox"> Some label</label>
   <div class="wrapper">
-    <input
-      type="checkbox"
-      id="checkbox"
-      aria-describedby="description message"
-      value="on"
-      name=""
-    />
+    <div class="input-wrapper">
+      <input
+        type="checkbox"
+        id="checkbox"
+        aria-describedby="description message"
+        value="on"
+        name=""
+      />
+    </div>
+    <div class="label-wrapper">
+      <label class="label" id="label" for="checkbox"> Some label</label>
+    </div>
   </div>
   <span id="message" class="message" role="alert"> </span>
   <span id="loading" class="loading" role="status"> </span>
