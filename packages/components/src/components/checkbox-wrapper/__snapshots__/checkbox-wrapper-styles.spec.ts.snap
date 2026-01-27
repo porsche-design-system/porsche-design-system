@@ -57,8 +57,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -67,14 +65,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -131,16 +121,8 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
     overflow: visible;
     clip: auto;
     white-space: normal;
-  }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
+    padding-top: 2px;
+    padding-inline-start: 8px;
   }
   .label:is(span) {
     position: static;
@@ -157,16 +139,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 
 @media(min-width:760px) {
   .label-wrapper {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -199,16 +171,8 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
     overflow: visible;
     clip: auto;
     white-space: normal;
-  }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
+    padding-top: 2px;
+    padding-inline-start: 8px;
   }
   .label:is(span) {
     position: static;
@@ -225,16 +189,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 
 @media(min-width:1300px) {
   .label-wrapper {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -267,16 +221,8 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
     overflow: visible;
     clip: auto;
     white-space: normal;
-  }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
+    padding-top: 2px;
+    padding-inline-start: 8px;
   }
   .label:is(span) {
     position: static;
@@ -386,14 +332,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -536,14 +474,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -661,14 +591,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -785,14 +707,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -934,14 +848,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1083,14 +989,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1207,14 +1105,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1330,14 +1220,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1478,14 +1360,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1628,14 +1502,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1753,14 +1619,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -1877,14 +1735,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
   grid-area: 1/2;
 }
@@ -2015,8 +1865,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2025,14 +1873,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2164,8 +2004,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2174,14 +2012,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2288,8 +2118,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2298,14 +2126,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2411,8 +2231,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2421,14 +2239,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2559,8 +2369,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2569,14 +2377,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2707,8 +2507,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2717,14 +2515,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2845,8 +2635,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2855,14 +2643,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -2982,8 +2762,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2992,14 +2770,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3104,8 +2874,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3114,14 +2882,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3226,8 +2986,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3236,14 +2994,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3353,8 +3103,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3363,14 +3111,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3480,8 +3220,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3490,14 +3228,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3627,8 +3357,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3637,14 +3365,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3776,8 +3496,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3786,14 +3504,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -3900,8 +3610,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3910,14 +3618,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }
@@ -4023,8 +3723,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  padding-top: 2px;
-  padding-inline-start: 8px;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -4033,14 +3731,6 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
   grid-area: 1/2;
 }

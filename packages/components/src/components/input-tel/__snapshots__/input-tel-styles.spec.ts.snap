@@ -62,14 +62,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -198,14 +190,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -334,14 +318,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -469,14 +445,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -604,14 +572,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -739,14 +699,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -875,14 +827,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1010,14 +954,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1145,14 +1081,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1280,14 +1208,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1414,14 +1334,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1548,14 +1460,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1674,14 +1578,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1805,14 +1701,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -1879,16 +1767,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
   .label:is(span) {
     position: static;
     width: auto;
@@ -1904,16 +1782,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 
 @media(min-width:760px) {
   .label-wrapper {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1947,16 +1815,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
   .label:is(span) {
     position: static;
     width: auto;
@@ -1981,16 +1839,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
   .label:is(span) {
     position: absolute;
     width: 1px;
@@ -2006,16 +1854,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 @media(min-width:1760px) {
   .label-wrapper {
     min-width: fit-content;
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-  .label {
     position: static;
     width: auto;
     height: auto;
@@ -2110,14 +1948,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {
@@ -2183,16 +2013,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
   .label:is(span) {
     position: static;
     width: auto;
@@ -2208,16 +2028,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 
 @media(min-width:760px) {
   .label-wrapper {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -2251,16 +2061,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: auto;
     white-space: normal;
   }
-  .label {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
   .label:is(span) {
     position: static;
     width: auto;
@@ -2285,16 +2085,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
   .label:is(span) {
     position: absolute;
     width: 1px;
@@ -2310,16 +2100,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 @media(min-width:1760px) {
   .label-wrapper {
     min-width: fit-content;
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-  .label {
     position: static;
     width: auto;
     height: auto;
@@ -2410,14 +2190,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
   display: inline;
 }
 .label:empty {

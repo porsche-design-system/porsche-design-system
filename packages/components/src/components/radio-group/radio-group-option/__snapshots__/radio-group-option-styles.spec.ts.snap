@@ -108,14 +108,6 @@ input:focus-visible {
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -258,14 +250,6 @@ input:focus-visible {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -408,14 +392,6 @@ input:focus-visible {
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -558,14 +534,6 @@ input:focus-visible {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -708,14 +676,6 @@ input:focus-visible {
   cursor: pointer;
   color: #FBFCFF;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -858,14 +818,6 @@ input:focus-visible {
   cursor: pointer;
   color: #010205;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1004,14 +956,6 @@ input:focus-visible {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1149,14 +1093,6 @@ input:focus-visible {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1294,14 +1230,6 @@ input:focus-visible {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1439,14 +1367,6 @@ input:focus-visible {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1584,14 +1504,6 @@ input:focus-visible {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1729,14 +1641,6 @@ input:focus-visible {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1855,14 +1759,6 @@ input:checked {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -1981,14 +1877,6 @@ input:checked {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2107,14 +1995,6 @@ input:checked {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2233,14 +2113,6 @@ input:checked {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2359,14 +2231,6 @@ input:checked {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2485,14 +2349,6 @@ input:checked {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2620,14 +2476,6 @@ input:checked {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2755,14 +2603,6 @@ input:checked {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -2890,14 +2730,6 @@ input:checked {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -3025,14 +2857,6 @@ input:checked {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -3160,14 +2984,6 @@ input:checked {
   cursor: not-allowed;
   color: #7E7F82;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
@@ -3295,14 +3111,6 @@ input:checked {
   cursor: not-allowed;
   color: #949598;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
   display: inline;
 }
 .label:empty {
