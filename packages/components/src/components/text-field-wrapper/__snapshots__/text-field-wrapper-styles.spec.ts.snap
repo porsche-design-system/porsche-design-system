@@ -56,7 +56,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -312,7 +312,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -457,7 +457,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -594,7 +594,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -744,7 +744,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
   }
 }
@@ -894,7 +894,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -1044,7 +1044,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -1188,7 +1188,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -1338,7 +1338,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -1488,7 +1488,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -1632,7 +1632,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -1768,7 +1768,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -1924,7 +1924,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -2081,7 +2081,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -2230,7 +2230,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -2379,7 +2379,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -2535,7 +2535,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -2691,7 +2691,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FBFCFF !important;
   }
 }
@@ -2840,7 +2840,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -2989,7 +2989,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -3134,7 +3134,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -3271,7 +3271,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -3421,7 +3421,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #069561 !important;
   }
 }
@@ -3571,7 +3571,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -3721,7 +3721,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -3870,7 +3870,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -4014,7 +4014,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -4150,7 +4150,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -4299,7 +4299,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -4442,7 +4442,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -4577,7 +4577,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -4725,7 +4725,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -4869,7 +4869,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -5005,7 +5005,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
   }
 }
@@ -5154,7 +5154,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }
@@ -5289,7 +5289,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
   }
 }

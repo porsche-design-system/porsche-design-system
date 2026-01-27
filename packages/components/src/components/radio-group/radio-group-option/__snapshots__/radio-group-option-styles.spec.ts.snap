@@ -56,15 +56,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #FB0404;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #FB0404;
     background-color: #FB0404;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -198,15 +198,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #951219;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #951219;
     background-color: #951219;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -340,15 +340,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #FBFCFF;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #AFB0B3;
     background-color: #AFB0B3;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -482,15 +482,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #010205;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #535457;
     background-color: #535457;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -624,15 +624,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #069561;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #069561;
     background-color: #069561;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -766,15 +766,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #0E4809;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #0E4809;
     background-color: #0E4809;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }

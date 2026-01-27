@@ -54,7 +54,7 @@ textarea[readonly] {
   background: #404044;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #FBFCFF;
   }
 }
@@ -294,7 +294,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -534,7 +534,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #951219;
   }
 }
@@ -655,7 +655,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #951219;
   }
 }
@@ -776,7 +776,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -919,7 +919,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1062,7 +1062,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #0E4809;
   }
 }
@@ -1183,7 +1183,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #0E4809;
   }
 }
@@ -1327,7 +1327,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #951219;
   }
 }
@@ -1447,7 +1447,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #951219;
   }
 }
@@ -1567,7 +1567,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1709,7 +1709,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1851,7 +1851,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #0E4809;
   }
 }
@@ -1971,7 +1971,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #0E4809;
   }
 }
@@ -2091,7 +2091,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -2236,7 +2236,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #951219;
   }
 }

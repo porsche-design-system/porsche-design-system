@@ -47,7 +47,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -298,7 +298,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #069561 !important;
   }
 }
@@ -430,7 +430,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -562,7 +562,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FB0404 !important;
   }
 }
@@ -693,7 +693,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -824,7 +824,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FBFCFF !important;
   }
 }
@@ -954,7 +954,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1085,7 +1085,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FB0404 !important;
   }
 }
@@ -1218,7 +1218,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #951219 !important;
   }
 }
@@ -1351,7 +1351,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FBFCFF !important;
   }
 }
@@ -1483,7 +1483,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -1615,7 +1615,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #069561 !important;
   }
 }
@@ -1747,7 +1747,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, hasC
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #0E4809 !important;
   }
 }
@@ -1878,7 +1878,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, hasCu
   -webkit-text-fill-color: #7E7F82 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #FB0404 !important;
   }
 }

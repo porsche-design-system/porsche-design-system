@@ -49,7 +49,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #0E4809;
   }
 }
@@ -299,7 +299,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -428,7 +428,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -557,7 +557,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -686,7 +686,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -815,7 +815,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -944,7 +944,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1209,7 +1209,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1339,7 +1339,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1469,7 +1469,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1599,7 +1599,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1729,7 +1729,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1859,7 +1859,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -1987,7 +1987,7 @@ input:disabled {
   -webkit-text-fill-color: #7E7F82;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #FB0404;
   }
 }

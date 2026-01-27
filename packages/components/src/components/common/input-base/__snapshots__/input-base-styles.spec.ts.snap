@@ -110,7 +110,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #951219;
   }
 }
@@ -227,7 +227,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #951219;
   }
 }
@@ -343,7 +343,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -459,7 +459,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -575,7 +575,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -692,7 +692,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #0E4809;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #0E4809;
   }
 }
@@ -809,7 +809,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #0E4809;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #0E4809;
   }
 }
@@ -926,7 +926,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #951219;
   }
 }
@@ -1042,7 +1042,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #951219;
   }
 }
@@ -1157,7 +1157,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -1272,7 +1272,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -1728,7 +1728,7 @@ input {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }

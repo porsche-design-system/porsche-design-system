@@ -2899,7 +2899,7 @@ input[type="search"]::-webkit-search-cancel-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #FBFCFF;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #FBFCFF;
   }
 }
@@ -3854,7 +3854,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -4319,15 +4319,15 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
   outline-offset: 2px !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
+  ::slotted(input:hover), .label-wrapper:hover~.wrapper ::slotted(input) {
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label-wrapper:hover~.wrapper ::slotted(input:checked) {
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
+    .label-wrapper:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -4749,7 +4749,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -5223,7 +5223,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -7540,7 +7540,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -7716,7 +7716,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -7892,7 +7892,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -8247,7 +8247,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -11134,20 +11134,20 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #010205;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #535457;
     background-color: #535457;
   }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #010205;
     background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -11330,15 +11330,15 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
+  ::slotted(input:hover), .label-wrapper:hover~.wrapper ::slotted(input) {
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label-wrapper:hover~.wrapper ::slotted(input:checked) {
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
+    .label-wrapper:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -13999,7 +13999,7 @@ input::-webkit-calendar-picker-indicator {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -14174,7 +14174,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -14343,7 +14343,7 @@ input::-webkit-calendar-picker-indicator {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -14508,7 +14508,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -14672,7 +14672,7 @@ input[type="text"] {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -14836,7 +14836,7 @@ input[type="search"]::-webkit-search-cancel-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -15011,7 +15011,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -15186,7 +15186,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -15355,7 +15355,7 @@ input::-webkit-calendar-picker-indicator {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -15530,7 +15530,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -15699,7 +15699,7 @@ input::-webkit-calendar-picker-indicator {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -18041,7 +18041,7 @@ input[type="search"]::-webkit-search-cancel-button {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
   }
-  .label:hover~.wrapper {
+  .label-wrapper:hover~.wrapper {
     border-color: #010205;
   }
 }
@@ -18800,7 +18800,7 @@ input:disabled {
   -webkit-text-fill-color: #949598;
 }
 @media(hover:hover) {
-  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -19161,15 +19161,15 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   outline-offset: 2px !important;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
+  ::slotted(input:hover), .label-wrapper:hover~.wrapper ::slotted(input) {
     border-color: #010205 !important;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
+  ::slotted(input:checked:hover), .label-wrapper:hover~.wrapper ::slotted(input:checked) {
     border-color: #535457 !important;
     background-color: #535457 !important;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
+    .label-wrapper:hover~.wrapper ::slotted(input) {
       transition: unset !important;
     }
 }
@@ -19490,15 +19490,15 @@ input:focus-visible {
   visibility: hidden;
 }
 @media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
+  input:hover,.label-wrapper:hover~.wrapper input {
     border-color: #010205;
   }
-  input:checked:hover,label:hover~.wrapper input:checked {
+  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
     border-color: #535457;
     background-color: #535457;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
+    .label-wrapper:hover~.wrapper input {
       transition: unset;
     }
 }
@@ -20719,7 +20719,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   -webkit-text-fill-color: #949598 !important;
 }
 @media(hover:hover) {
-  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown) {
     border-color: #010205 !important;
   }
 }
@@ -24534,7 +24534,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   direction: ltr !important;
 }
 @media(hover:hover) {
-  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
@@ -24786,7 +24786,7 @@ textarea[readonly] {
   background: #D8D8DB;
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
     border-color: #010205;
   }
 }
@@ -24933,7 +24933,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   background: #D8D8DB !important;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
+  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
   }
 }
