@@ -53,11 +53,6 @@ export const routes: RouteType[] = [
     element: <fromPages.StencilLifecyclesPage />,
   },
   {
-    name: 'Theme Injection',
-    path: '/theme-injection',
-    element: <fromPages.ThemeInjectionPage />,
-  },
-  {
     name: 'Utilities',
     path: '/utilities',
     element: <fromPages.UtilitiesPage />,
