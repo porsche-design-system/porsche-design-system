@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { type Route, RouterModule } from '@angular/router';
 import * as fromExamples from './examples';
 import * as fromPages from './pages';
-import * as fromStyles from './styles';
 
 export type ExtendedRoute = Route & {
   name?: string; // optional to be filtered out for select options
@@ -654,83 +653,7 @@ export const routes: ExtendedRoute[] = [
     name: 'Toast Example',
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,
-  },
-  {
-    name: '---',
-    path: '---',
-    isDisabled: true,
-    children: [],
-  },
-  {
-    name: 'Styles Border Example',
-    path: 'styles-border',
-    component: fromStyles.StylesBorderExampleComponent,
-  },
-  {
-    name: 'Styles Drop Shadow Example',
-    path: 'styles-drop-shadow',
-    component: fromStyles.StylesDropShadowExampleComponent,
-  },
-  {
-    name: 'Styles Flyout Grid Example',
-    path: 'styles-flyout-grid',
-    component: fromStyles.StylesFlyoutGridExampleComponent,
-  },
-  {
-    name: 'Styles Focus Example',
-    path: 'styles-focus',
-    component: fromStyles.StylesFocusExampleComponent,
-  },
-  {
-    name: 'Styles Frosted Glass Example',
-    path: 'styles-frosted-glass',
-    component: fromStyles.StylesFrostedGlassExampleComponent,
-  },
-  {
-    name: 'Styles Gradient Example',
-    path: 'styles-gradient',
-    component: fromStyles.StylesGradientExampleComponent,
-  },
-  {
-    name: 'Styles Grid Example',
-    path: 'styles-grid',
-    component: fromStyles.StylesGridExampleComponent,
-  },
-  {
-    name: 'Styles Hover Example',
-    path: 'styles-hover',
-    component: fromStyles.StylesHoverExampleComponent,
-  },
-  {
-    name: 'Styles Media Query Example',
-    path: 'styles-media-query',
-    component: fromStyles.StylesMediaQueryExampleComponent,
-  },
-  {
-    name: 'Styles Motion Example',
-    path: 'styles-motion',
-    component: fromStyles.StylesMotionExampleComponent,
-  },
-  {
-    name: 'Styles Skeleton Example',
-    path: 'styles-skeleton',
-    component: fromStyles.StylesSkeletonExampleComponent,
-  },
-  {
-    name: 'Styles Spacing Example',
-    path: 'styles-spacing',
-    component: fromStyles.StylesSpacingExampleComponent,
-  },
-  {
-    name: 'Styles Theme Example',
-    path: 'styles-theme',
-    component: fromStyles.StylesThemeExampleComponent,
-  },
-  {
-    name: 'Styles Typography Example',
-    path: 'styles-typography',
-    component: fromStyles.StylesTypographyExampleComponent,
-  },
+  }
 ];
 
 @NgModule({
