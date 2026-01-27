@@ -55,9 +55,6 @@ export const getFunctionalComponentLabelStyles = (
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       color: isDisabledOrLoading ? disabledColor : primaryColor,
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
-      ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-        getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)
-      ),
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),

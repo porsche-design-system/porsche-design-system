@@ -228,7 +228,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, null, {
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, null, null, {
       paddingTop,
       paddingInlineStart,
     }),

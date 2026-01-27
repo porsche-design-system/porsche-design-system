@@ -237,6 +237,7 @@ export const getComponentCss = (
       {
         ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
+      null,
       {
         paddingTop,
         paddingInlineStart,
