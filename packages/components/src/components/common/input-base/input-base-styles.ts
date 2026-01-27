@@ -173,6 +173,7 @@ export const getFunctionalComponentInputBaseStyles = (
       disabled,
       hideLabel,
       theme,
+      null,
       !disabled &&
         !readOnly &&
         hoverMediaQuery({

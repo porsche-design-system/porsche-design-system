@@ -152,13 +152,13 @@ export const getComponentCss = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          'input:hover,label:hover~.wrapper input': {
+          'input:hover,.label-wrapper:hover~.wrapper input': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          'input:checked:hover,label:hover~.wrapper input:checked': {
+          'input:checked:hover,.label-wrapper:hover~.wrapper input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -166,7 +166,7 @@ export const getComponentCss = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+          'input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
@@ -176,7 +176,7 @@ export const getComponentCss = (
               backgroundColor: 'transparent',
             }),
           },
-          'label:hover~.wrapper input': supportsChromiumMediaQuery({
+          '.label-wrapper:hover~.wrapper input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
