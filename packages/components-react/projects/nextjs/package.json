@@ -33,8 +33,8 @@
     "globby-legacy": "npm:globby@^11.0.4"
   },
   "peerDependencies": {
-    "ag-grid-enterprise": ">= 33.0.0 <36.0.0",
-    "ag-grid-react": ">= 33.0.0 <36.0.0",
+    "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
+    "ag-grid-react": ">= 35.0.0 <36.0.0",
     "concurrently": "*",
     "tsx": "*",
     "typescript": "*"
