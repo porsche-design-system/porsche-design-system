@@ -33,11 +33,6 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.EventsComponent,
   },
   {
-    name: 'Form Wrapper Binding',
-    path: 'form-wrapper-binding',
-    component: fromPages.FormWrapperBindingComponent,
-  },
-  {
     name: 'Tabs Bar Navigation',
     path: 'tabs-bar-navigation',
     redirectTo: 'tabs-bar-navigation/page-1',

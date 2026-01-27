@@ -120,7 +120,7 @@ import type {
     </div>
 
     <div class="playground light">
-      <p-carousel (update)="onCarouselUpdate($event)">
+      <p-carousel (update)="onCarouselUpdate($event)" [pagination]="true" [rewind]="true" [trimSpace]="true">
         <div>Slide 1</div>
         <div>Slide 2</div>
         <div>Slide 3</div>
