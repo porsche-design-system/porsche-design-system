@@ -242,9 +242,12 @@ export class AppModule {}
 
 ### Styles Package
 
-The styles work the same way as before, only the import paths have changed:
+- Removed `getHoverStyle`/`pds-hover` since it did not work reliable
 
 #### Emotion, Styled Components
+
+- Changed import path for styles. These styles will likely work with both Styled Components and Emotion but are only
+  officially supported with Emotion going forward.
 
 ```diff
 - import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
@@ -253,12 +256,16 @@ The styles work the same way as before, only the import paths have changed:
 
 #### Vanilla Extract
 
+- Changed import path for Vanilla Extract styles.
+
 ```diff
 - import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
 + import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
 ```
 
 #### SCSS
+
+- Changed import path for SCSS styles.
 
 ```diff
 - @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;

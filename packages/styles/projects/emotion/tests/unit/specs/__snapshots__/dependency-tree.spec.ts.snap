@@ -282,13 +282,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "grid/gridShared.cjs",
     "grid/gridSharedOffset.cjs",
   ],
-  "hover/getHoverStyle.cjs": [
-    "border/borderRadiusMedium.cjs",
-    "border/borderRadiusSmall.cjs",
-    "motion/motionDurationShort.cjs",
-    "motion/motionEasingBase.cjs",
-    "theme/themeLightStateHover.cjs",
-  ],
   "index.cjs": [
     "border/border.cjs",
     "border/borderRadius.cjs",
@@ -375,7 +368,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "grid/gridWideOffsetBase.cjs",
     "grid/gridWideOffsetS.cjs",
     "grid/gridWideOffsetXXL.cjs",
-    "hover/getHoverStyle.cjs",
     "mediaQuery/breakpoint.cjs",
     "mediaQuery/breakpointBase.cjs",
     "mediaQuery/breakpointL.cjs",
@@ -1277,13 +1269,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "grid/gridShared.mjs",
     "grid/gridSharedOffset.mjs",
   ],
-  "hover/getHoverStyle.mjs": [
-    "border/borderRadiusMedium.mjs",
-    "border/borderRadiusSmall.mjs",
-    "motion/motionDurationShort.mjs",
-    "motion/motionEasingBase.mjs",
-    "theme/themeLightStateHover.mjs",
-  ],
   "index.mjs": [
     "border/border.mjs",
     "border/borderRadius.mjs",
@@ -1370,7 +1355,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "grid/gridWideOffsetBase.mjs",
     "grid/gridWideOffsetS.mjs",
     "grid/gridWideOffsetXXL.mjs",
-    "hover/getHoverStyle.mjs",
     "mediaQuery/breakpoint.mjs",
     "mediaQuery/breakpointBase.mjs",
     "mediaQuery/breakpointL.mjs",

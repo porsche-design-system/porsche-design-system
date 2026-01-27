@@ -37,6 +37,10 @@ Import paths for `styles` package:
 
 - `Vanilla Extract`: grid style media query not working
 
+### Removed
+
+- Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
 ## [4.0.0-alpha.0] - 2025-12-12
 
 See the full [migration guide](/news/migration-guide/porsche-design-system/) for a detailed explanation of all changes
