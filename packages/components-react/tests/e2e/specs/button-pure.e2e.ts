@@ -13,7 +13,7 @@ const getTextarea = (page: Page) => page.locator('p-textarea textarea');
 test.describe('form', () => {
   test('should reset value to its initial value on form reset', async ({ page }) => {
     await goto(page, 'button-pure-example-form-attribute');
-    expect(await waitForComponentsReady(page)).toBe(5);
+    expect(await waitForComponentsReady(page)).toBe(4);
 
     const name = 'name';
     const newValue = 'New value';
@@ -40,7 +40,7 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit', async ({ page }) => {
     await goto(page, 'button-pure-example-form-attribute');
-    expect(await waitForComponentsReady(page)).toBe(5);
+    expect(await waitForComponentsReady(page)).toBe(4);
 
     const form = getForm(page);
     const textarea = getTextarea(page);

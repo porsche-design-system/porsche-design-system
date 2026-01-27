@@ -414,7 +414,7 @@ export const EventsPage = (): JSX.Element => {
       </div>
 
       <div className="playground light">
-        <PCarousel onUpdate={onCarouselUpdate}>
+        <PCarousel onUpdate={onCarouselUpdate} pagination={true} trimSpace={true} rewind={true}>
           <div children="Slide 1" />
           <div children="Slide 2" />
           <div children="Slide 3" />
