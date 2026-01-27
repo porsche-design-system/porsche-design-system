@@ -139,6 +139,10 @@ and migration steps.
   - Reset all default Tailwind color tokens
   - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
 
+- Styles (SCSS, Emotion, Vanilla-Extract)
+  - heading styles use a regular instead of semi-bold font-weight
+  - border-radius large was changed from `12px` to `8px`, since more radius styles are now available
+
 ### Removed
 
 - `Partials`:
