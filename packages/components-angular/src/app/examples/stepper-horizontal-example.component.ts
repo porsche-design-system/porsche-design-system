@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   PorscheDesignSystemModule,
@@ -10,16 +9,18 @@ import {
   selector: 'page-stepper-horizontal-example',
   template: `
     <p-stepper-horizontal (update)="onUpdate($event)">
-      <ng-container *ngFor="let step of steps">
+      @for (step of steps; track step) {
         <p-stepper-horizontal-item [state]="step.state">
           {{ step.name }}
         </p-stepper-horizontal-item>
-      </ng-container>
+      }
     </p-stepper-horizontal>
 
-    <ng-container *ngFor="let content of stepContent; let i = index">
-      <p-text *ngIf="getActiveStepIndex(steps) === i">{{ content }}</p-text>
-    </ng-container>
+    @for (content of stepContent; track content; let i = $index) {
+      @if (getActiveStepIndex(steps) === i) {
+        <p-text>{{ content }}</p-text>
+      }
+    }
 
     <p-button-group>
       <p-button
@@ -28,7 +29,7 @@ import {
         [variant]="'tertiary'"
         [disabled]="getActiveStepIndex(steps) === 0"
         (click)="onNextPrevStep('prev')"
-      >
+        >
         Previous Step
       </p-button>
 
@@ -37,14 +38,14 @@ import {
         [variant]="'primary'"
         [disabled]="getActiveStepIndex(steps) === steps.length - 1"
         (click)="onNextPrevStep('next')"
-      >
+        >
         Next Step
       </p-button>
     </p-button-group>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class StepperHorizontalExampleComponent {
   steps: StepperHorizontalItemProps[] = [

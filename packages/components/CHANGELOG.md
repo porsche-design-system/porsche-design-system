@@ -19,8 +19,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
   New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
   ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- 'Angular': Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
 - `Carousel`:
-  - `width` prop now supports `wide` and `full` values
+  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
   - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 
@@ -28,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `AG Grid`: Relaxed peer dependency to support AG Grid new major version 35
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
   ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 
 ### Fixed
