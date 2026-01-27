@@ -23,11 +23,6 @@ export const routes: RouteType[] = [
     isDisabled: true,
   },
   {
-    name: 'Overview',
-    path: '/overview',
-    element: <fromPages.OverviewPage />,
-  },
-  {
     name: 'Core Initializer',
     path: '/core-initializer',
     element: <fromPages.CoreInitializerPage />,
