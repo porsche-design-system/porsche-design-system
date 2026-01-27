@@ -21,7 +21,7 @@
     "build:vanilla-extract": "yarn --cwd projects/vanilla-extract build",
     "build-prod:global-styles": "yarn --cwd projects/global-styles build-prod",
     "test": "yarn test:unit && yarn test:vrt",
-    "test:unit": "yarn test:unit:global-styles && yarn test:unit:global-styles && yarn test:unit:tailwindcss && yarn test:unit:scss && yarn test:unit:emotion && yarn test:unit:vanilla-extract",
+    "test:unit": "yarn test:unit:shared-styles && yarn test:unit:global-styles && yarn test:unit:tailwindcss && yarn test:unit:scss && yarn test:unit:emotion && yarn test:unit:vanilla-extract",
     "test:unit:shared-styles": "yarn --cwd projects/shared-styles test:unit",
     "test:unit:global-styles": "yarn --cwd projects/global-styles test:unit",
     "test:unit:tailwindcss": "yarn --cwd projects/tailwindcss test:unit",
