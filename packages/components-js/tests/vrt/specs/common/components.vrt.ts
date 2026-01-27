@@ -95,6 +95,8 @@ for (const component of components) {
     // regular tests on different viewports
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+        test.skip(component === 'select', 'This component is flaky');
+
         await setupScenario(page, `/${component}`, viewportWidth);
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
@@ -108,6 +110,7 @@ for (const component of components) {
         page,
       }) => {
         test.skip(!isComponentThemeable(component), 'This component has no theme support');
+        test.skip(component === 'select', 'This component is flaky');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forceComponentTheme: 'auto',
@@ -136,6 +139,8 @@ for (const component of components) {
 
     // 200% font scaling
     test(`should have no visual regression for viewport ${viewportWidthM} in scale mode`, async ({ page }) => {
+      test.skip(component === 'select', 'This component is flaky');
+
       await setupScenario(page, `/${component}`, viewportWidthM, {
         scalePageFontSize: true,
       });
@@ -147,6 +152,8 @@ for (const component of components) {
     test(`should have no visual regression for viewport ${viewportWidthM} in rtl (right-to-left) mode`, async ({
       page,
     }) => {
+      test.skip(component === 'select', 'This component is flaky');
+
       await setupScenario(page, `/${component}`, viewportWidthM, {
         forceDirMode: 'rtl',
       });

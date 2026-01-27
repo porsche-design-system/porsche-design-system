@@ -16,7 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- 'Angular': Relaxed peer dependency to support Angular new major version 21
+- 'Angular': Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 
 ## [3.32.0-rc.1] - 2026-01-12
 
