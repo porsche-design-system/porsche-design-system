@@ -30,7 +30,7 @@ const packageJsonExports = {
     default: './tokens/cjs/index.cjs',
   },
   './scss': {
-    sass: './styles/_index.scss',
+    sass: './scss/_index.scss',
   },
   './emotion': {
     types: './emotion/esm/index.d.ts',
