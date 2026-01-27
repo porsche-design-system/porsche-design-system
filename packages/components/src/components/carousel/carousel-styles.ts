@@ -4,6 +4,8 @@ import {
   getMediaQueryMin,
   gridBasicOffset,
   gridExtendedOffset,
+  gridFullOffset,
+  gridWideOffset,
   headingXLargeStyle,
   headingXXLargeStyle,
   motionDurationModerate,
@@ -37,6 +39,21 @@ import type {
   CarouselHeadingSize,
   CarouselWidth,
 } from './carousel-utils';
+
+/**
+ * @css-variable {"name": "--p-carousel-px", "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ */
+export const cssVarPaddingInline = '--p-carousel-px';
+
+/**
+ * @css-variable {"name": "--p-carousel-ps", "description": "Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with `--p-carousel-px` or `--p-carousel-pe`. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ */
+export const cssVarPaddingInlineStart = '--p-carousel-ps';
+
+/**
+ * @css-variable {"name": "--p-carousel-pe", "description": "Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with `--p-carousel-px` or `--p-carousel-ps`. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ */
+export const cssVarPaddingInlineEnd = '--p-carousel-pe';
 
 /**
  * @css-variable {"name": "--p-carousel-prev-next-filter", "description": "CSS Filter applied to the navigation (prev/next buttons)", "defaultValue": "none"}
@@ -74,6 +91,12 @@ const mediaQueryPointerCoarse = '@media (pointer: coarse)';
 const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
   extended: gridExtendedOffset,
+  wide: gridWideOffset,
+  full: {
+    base: gridFullOffset,
+    s: gridFullOffset,
+    xxl: gridFullOffset
+  },
 };
 
 const backfaceVisibilityJssStyle: JssStyle = {
@@ -215,14 +238,17 @@ export const getComponentCss = (
     },
     header: {
       display: 'grid',
-      padding: `0 ${spacingMap[width].base}`,
+      paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
+      paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
       [mediaQueryS]: {
-        gridTemplateColumns: 'minmax(0px, 1fr) auto',
-        padding: `0 ${spacingMap[width].s}`,
+        gridTemplateColumns: 'minmax(0px,1fr) auto',
+        paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
+        paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
         ...(hasNavigation && { columnGap: spacingStaticMedium }),
       },
       [mediaQueryXXL]: {
-        padding: `0 ${spacingMap[width].xxl}`,
+        paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
+        paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
       },
     },
     nav: {
@@ -254,12 +280,16 @@ export const getComponentCss = (
         position: 'relative',
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
-          padding: `0 ${spacingMap[width].base}`,
+          paddingBlock: '0px',
+          paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
+          paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
           [mediaQueryS]: {
-            padding: `0 ${spacingMap[width].s}`,
+            paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
+            paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
           },
           [mediaQueryXXL]: {
-            padding: `0 ${spacingMap[width].xxl}`,
+            paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
+            paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
           },
         }),
         '&--draggable': {

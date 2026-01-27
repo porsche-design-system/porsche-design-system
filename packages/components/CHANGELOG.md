@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
   New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
   ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 
 ## [3.32.0-rc.1] - 2026-01-12
 
