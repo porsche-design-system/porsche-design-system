@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { type Route, RouterModule } from '@angular/router';
 import * as fromExamples from './examples';
-import { SelectExampleReactiveFormComponent } from './examples/select-example-reactive-form.component';
 import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
@@ -17,11 +16,6 @@ export const routes: ExtendedRoute[] = [
     path: '---',
     isDisabled: true,
     children: [],
-  },
-  {
-    name: 'Overview',
-    path: 'overview',
-    component: fromPages.OverviewComponent,
   },
   {
     name: 'Core Initializer',
