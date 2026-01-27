@@ -73,6 +73,14 @@
   .change-px {
     --p-carousel-px: 100px;
   }
+
+  .change-ps {
+    --p-carousel-ps: 20px;
+  }
+
+  .change-pe {
+    --p-carousel-pe: 80px;
+  }
 </style>
 
 <div class="visualize-grid">
@@ -792,6 +800,14 @@
 
 <div class="playground light" title="should render carousel with CSS variable --p-carousel-px">
   <p-carousel class="change-px" heading="Heading (--p-carousel-px)" description="Description (--p-carousel-px)">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with CSS variable --p-carousel-ps and --p-carousel-pe">
+  <p-carousel class="change-ps change-pe" heading="Heading (--p-carousel-ps/e)" description="Description (--p-carousel-ps/e)">
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>
