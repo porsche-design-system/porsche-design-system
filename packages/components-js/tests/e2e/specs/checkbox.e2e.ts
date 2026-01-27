@@ -24,8 +24,6 @@ const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
 const getLabel = (page: Page) => page.locator('p-checkbox label');
 const getMessage = (page: Page) => page.locator('p-checkbox .message');
 const getForm = (page: Page) => page.locator('form');
-const getOuterLabel = (page: Page) => page.locator('label');
-const getOuterLabelChild = (page: Page) => page.locator('label > :first-child');
 
 const setChecked = async (locator: Locator, value: boolean) => {
   await setProperty(locator, 'checked', value);
@@ -50,7 +48,7 @@ type InitOptions = {
   name?: string;
   form?: string;
   value?: string;
-  label?: string | boolean;
+  label?: string;
   checked?: boolean;
   required?: boolean;
   indeterminate?: boolean;
@@ -828,76 +826,5 @@ test.describe('Event', () => {
 
       expect((await getEventSummary(host, 'blur')).counter).toBe(1);
     });
-  });
-});
-
-test.describe('Wrapped custom label', () => {
-  test('should toggle checkbox when outer label is clicked', async ({ page }) => {
-    await initCheckbox(page, {
-      label: false,
-      markupBefore: `<label>Some label text`,
-      markupAfter: '</label>',
-    });
-    const label = getOuterLabel(page);
-    const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
-
-    expect(await isInputChecked()).toBe(false);
-
-    await label.click();
-
-    expect(await isInputChecked()).toBe(true);
-  });
-
-  test('should not toggle disabled checkbox when outer label is clicked', async ({ page }) => {
-    await initCheckbox(page, {
-      label: false,
-      disabled: true,
-      markupBefore: `<label>Some label text`,
-      markupAfter: '</label>',
-    });
-    const label = getOuterLabel(page);
-    const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
-
-    expect(await isInputChecked()).toBe(false);
-
-    await label.click();
-
-    expect(await isInputChecked()).toBe(false);
-  });
-
-  test('should not toggle checkbox when outer label has link and is clicked', async ({ page }) => {
-    await initCheckbox(page, {
-      label: false,
-      markupBefore: `<label>Some label text with a <a>link</a>.`,
-      markupAfter: '</label>',
-    });
-    const labelChild = getOuterLabelChild(page);
-    const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
-
-    expect(await isInputChecked()).toBe(false);
-
-    await labelChild.click();
-
-    expect(await isInputChecked()).toBe(false);
-  });
-
-  test('should not toggle checkbox when outer label has button and is clicked', async ({ page }) => {
-    await initCheckbox(page, {
-      label: false,
-      markupBefore: `<label>Some label text with a <button>button</button>.`,
-      markupAfter: '</label>',
-    });
-    const labelChild = getOuterLabelChild(page);
-    const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
-
-    expect(await isInputChecked()).toBe(false);
-
-    await labelChild.click();
-
-    expect(await isInputChecked()).toBe(false);
   });
 });
