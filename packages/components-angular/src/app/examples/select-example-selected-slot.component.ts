@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   type FlagName,
@@ -103,7 +102,7 @@ const optionsData: Option[] = [
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule, CommonModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleSelectedSlotComponent {
   value?: string;

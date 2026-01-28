@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -11,15 +10,16 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
       <div>Slide 3</div>
     </p-carousel>
 
-    <p-button
-      *ngFor="let _ of [].constructor(3); let i = index"
-      type="button"
-      (click)="onButtonClick($event)"
-      [disabled]="activeSlideIndex === i"
-    >
-      {{ i + 1 }}
-    </p-button>
-  `,
+    @for (_ of [].constructor(3); track _; let i = $index) {
+      <p-button
+        type="button"
+        (click)="onButtonClick($event)"
+        [disabled]="activeSlideIndex === i"
+        >
+        {{ i + 1 }}
+      </p-button>
+    }
+    `,
   styles: `
     @use '@porsche-design-system/components-angular/scss' as *;
 
@@ -34,7 +34,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class CarouselExampleJumpToSlideComponent {
   activeSlideIndex = 1;

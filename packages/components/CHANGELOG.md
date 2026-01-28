@@ -14,9 +14,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-ps`, `--p-carousel-pe` CSS custom property introduced to control the logical inline start/end padding
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
 ### Changed
 
-Import paths for `styles` package:
+- `Canvas`: visual appearance on mobile view
+- `Styles`: Import paths for npm package:
 
 ```diff
 - import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
@@ -32,6 +48,16 @@ Import paths for `styles` package:
 - @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
 + @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
 ```
+
+### Fixed
+
+- `Vanilla Extract`: grid style media query not working
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
+### Removed
+
+- Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
 
 ## [4.0.0-alpha.0] - 2025-12-12
 
@@ -78,25 +104,25 @@ and migration steps.
 - Remove **slotted** Anchor Styles entirely from all components.
 - `Heading`: Uses a regular instead of semi-bold font-weight
 - `Text` and `Icon`:
-    - value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop `color`
-      (use `'success', 'warning', 'error', 'info'` instead)
+  - value `'notification-success', 'notification-warning', 'notification-error', 'notification-info'` of prop `color`
+    (use `'success', 'warning', 'error', 'info'` instead)
 - `Icon`:
-    - when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
-      `p-icon { color: deeppink; }`) can be applied directly
-    - value `'state-disabled'` of prop color is removed
+  - when `color="inherit"` is used no CSS filters are necessary anymore, instead a CSS color (e.g.
+    `p-icon { color: deeppink; }`) can be applied directly
+  - value `'state-disabled'` of prop color is removed
 - `Model Signature`:
-    - when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly
+  - when `color="inherit"` is used a CSS color (e.g. `p-model-signature { color: deeppink; }`) can be applied directly
 - `Tag`:
-    - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
-      `error`, `info`
+  - removed prop `color` and introduced prop `variant` with values `primary`, `secondary`, `success`, `warning`,
+    `error`, `info`
 - `Button`, `Link`:
-    - removed prop value `ghost`, use `secondary` instead
+  - removed prop value `ghost`, use `secondary` instead
 - `Modal`
-    - visually changed footer slot: becomes frosted when it's sticky
-    - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
-      instead
-    - added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
-    - added prop `background` with value `canvas | surface`
+  - visually changed footer slot: becomes frosted when it's sticky
+  - removed `.stretch-to-full-modal-width` use `-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb)`
+    instead
+  - added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
+  - added prop `background` with value `canvas | surface`
 - `Flyout`
     - removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
       `clamp()` instead)
@@ -135,148 +161,162 @@ and migration steps.
     - Reset all default Tailwind color tokens
     - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
 
+- Styles (SCSS, Emotion, Vanilla-Extract)
+  - heading styles use a regular instead of semi-bold font-weight
+  - border-radius large was changed from `12px` to `8px`, since more radius styles are now available
+
 ### Removed
 
 - `Partials`:
-    - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
-      `@porsche-design-system/fallbacks`
-    - Removed `getDSRPonyfill()` partial
-    - Removed `getFontFaceStyles()`, `getFontFaceStylesheet()` and `getInitialStyles()` partial in favor of CSS imports
-      from `@porsche-design-system/components-{js|angular|react|vue}`
-    - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now
-    - Automatic FOUC handling in `getInitialStyles()`, must be implemented manually now
+  - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo
+    `@porsche-design-system/fallbacks`
+  - Removed `getDSRPonyfill()` partial
+  - Removed `getFontFaceStyles()`, `getFontFaceStylesheet()` and `getInitialStyles()` partial in favor of CSS imports
+    from `@porsche-design-system/components-{js|angular|react|vue}`
+  - `@font-face` styles are no longer auto-injected, import of global styles is mandatory now
+  - Automatic FOUC handling in `getInitialStyles()`, must be implemented manually now
 
 - `Accordion`:
-    - prop `tag` (use `heading-tag` instead)
-    - event `accordionChange` (use `update` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - prop `tag` (use `heading-tag` instead)
+  - event `accordionChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Banner`:
-    - `slot="title"` (use `slot="heading"` instead)
-    - prop `persistent` (use `dismissButton` instead)
-    - prop `width`
-    - value `neutral` of prop `state` (use `info` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - `slot="title"` (use `slot="heading"` instead)
+  - prop `persistent` (use `dismissButton` instead)
+  - prop `width`
+  - value `neutral` of prop `state` (use `info` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Button`, `Link`:
-    - prop `tertiary`
+  - prop `tertiary`
 - `Button Pure`:
-    - prop `weight` (can't be configured anymore)
-    - value `left | right` of prop `alignLabel` (use `start | end` instead)
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
 - `Carousel`:
-    - prop `wrapContent` (has no effect anyway)
-    - prop `disablePagination` (use `pagination` instead)
-    - value `left` of prop `alignHeader` (use `start` instead)
-    - event `carouselChange` (use `update` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - prop `wrapContent` (has no effect anyway)
+  - prop `disablePagination` (use `pagination` instead)
+  - value `left` of prop `alignHeader` (use `start` instead)
+  - event `carouselChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Checkbox`:
-    - event `update` (use `change` instead)
+  - event `update` (use `change` instead)
 - `Display`:
-    - value `left | right` of prop `align` (use `start | end` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Divider`:
-    - prop `orientation` (use `direction` instead)
-    - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
+  - prop `orientation` (use `direction` instead)
+  - value `neutral-contrast-{low|medium|high}` of prop `color` (use `contrast-{low|medium|high}` instead)
 - `Flyout`:
-    - value `left | right` of prop `position` (use `start | end` instead)
+  - value `left | right` of prop `position` (use `start | end` instead)
 - `Heading`:
-    - value `left | right` of prop `align` (use `start | end` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Icon`:
-    - prop: `lazy`
-    - value
-      `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-      prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+  - prop: `lazy`
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
 - `Inline Notification`:
-    - prop `persistent` (use `dismissButton` instead)
-    - value `neutral` of prop `state` (use `info` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - prop `persistent` (use `dismissButton` instead)
+  - value `neutral` of prop `state` (use `info` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Link Pure`:
-    - prop `weight` (can't be configured anymore)
-    - value `left | right` of prop `alignLabel` (use `start | end` instead)
+  - prop `weight` (can't be configured anymore)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
 - `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
-    - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` (use `1/1 | 4/3 | 3/4 | 16/9 | 9/16` instead)
+  - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` (use `1/1 | 4/3 | 3/4 | 16/9 | 9/16` instead)
 - `Link Tile`, `Button Tile`:
-    - Value `default` of prop `size` (use `medium` instead)
-    - Value `semibold` of prop `weight` (use `semi-bold` instead)
+  - Value `default` of prop `size` (use `medium` instead)
+  - Value `semibold` of prop `weight` (use `semi-bold` instead)
 - `Modal`:
-    - prop `disableCloseButton` (use `dismissButton` instead)
-    - prop `heading` (use `slot="header"` instead)
-    - slot `heading` (use `slot="header"` instead)
-    - event `close` (use `dismiss` instead)
+  - prop `disableCloseButton` (use `dismissButton` instead)
+  - prop `heading` (use `slot="header"` instead)
+  - slot `heading` (use `slot="header"` instead)
+  - event `close` (use `dismiss` instead)
 - `Multi Select`:
-    - event `update` (use `change` instead)
+  - event `update` (use `change` instead)
 - `Pagination`:
-    - prop `allyLabel` (use `intl.root` instead)
-    - prop `allyLabelPrev` (use `intl.prev` instead)
-    - prop `allyLabelPage` (use `intl.page` instead)
-    - prop `allyLabelNext` (use `intl.next` instead)
-    - prop `maxNumberOfPageLinks` (has no effect anyway)
-    - event `pageChange` (use `update` instead)
+  - prop `allyLabel` (use `intl.root` instead)
+  - prop `allyLabelPrev` (use `intl.prev` instead)
+  - prop `allyLabelPage` (use `intl.page` instead)
+  - prop `allyLabelNext` (use `intl.next` instead)
+  - prop `maxNumberOfPageLinks` (has no effect anyway)
+  - event `pageChange` (use `update` instead)
 - `Pin Code`:
-    - event `update` (use `change` instead)
+  - event `update` (use `change` instead)
 - `Scroller`:
-    - prop `gradientColorScheme` (has no effect anyway)
-    - prop `gradientColor` (has no effect anyway)
-    - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - prop `scrollIndicatorPosition` (use `alignScrollIndicator` instead)
 - `Segmented Control`:
-    - prop `backgroundColor` (has no effect anyway)
-    - event `segmentedControlChange` (use `change` instead)
-    - event `update` (use `change` instead)
+  - prop `backgroundColor` (has no effect anyway)
+  - event `segmentedControlChange` (use `change` instead)
+  - event `update` (use `change` instead)
 - `Select`:
-    - event `update` (use `change` instead)
+  - event `update` (use `change` instead)
 - `Stepper Horizontal`:
-    - event `stepChange` (use `update` instead)
+  - event `stepChange` (use `update` instead)
 - `Switch`:
-    - value `left | right` of prop `alignLabel` (use `start | end` instead)
-    - event `switchChange` (use `update` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - value `left | right` of prop `alignLabel` (use `start | end` instead)
+  - event `switchChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Table`:
-    - event `sortingChange` (use `update` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - event `sortingChange` (use `update` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Tabs`, `Tabs Bar`:
-    - prop `gradientColorScheme` (has no effect anyway)
-    - prop `gradientColor` (has no effect anyway)
-    - value `semibold` of prop `weight` (use `semi-bold` instead)
-    - event `tabChange` (use `update` instead)
+  - prop `gradientColorScheme` (has no effect anyway)
+  - prop `gradientColor` (has no effect anyway)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - event `tabChange` (use `update` instead)
 - `Tabs`
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Tag`:
-    - prop `color` (use `variant` instead)
+  - prop `color` (use `variant` instead)
 - `Tag Dismissible`:
-    - prop `color`
+  - prop `color`
 - `Text`
-    - value `left | right` of prop `align` (use `start | end` instead)
-    - value
-      `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
-      prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
-    - value `semibold` of prop `weight` (use `semi-bold` instead)
-    - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
+  - value `left | right` of prop `align` (use `start | end` instead)
+  - value
+    `brand | default | neutral-contrast-low | neutral-contrast-medium | neutral-contrast-high | notification-neutral` of
+    prop `color` (use `primary | contrast-low | contrast-medium | contrast-high | notification-info` instead)
+  - value `semibold` of prop `weight` (use `semi-bold` instead)
+  - Slotted anchor styling (use `Link Pure` instead or define an anchor style)
 - `Text List`
-    - prop `listType` (use `type` instead)
-    - prop `orderType` (use `type` instead)
-    - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
+  - prop `listType` (use `type` instead)
+  - prop `orderType` (use `type` instead)
+  - Slotted anchor `<a>` styling (use `Link Pure` instead or define an anchor style)
 - `Toast`:
-    - value `neutral` of prop `state` (use `info` instead)
+  - value `neutral` of prop `state` (use `info` instead)
 - Removed Components:
-    - `Button Group` (use Tailwind CSS instead,
-      `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
-    - `Checkbox Wrapper` (use `Checkbox` instead)
-    - `Radio Button Wrapper` (use `Radio Group` instead)
-    - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
-    - `Link Tile Model Signature`
-    - `Fieldset Wrapper` (use `Fieldset` instead)
-    - `Flex` (use CSS Flex instead, Tailwind CSS is recommended)
-    - `Grid` (use CSS Grid instead, Tailwind CSS is recommended)
-    - `Headline` (use `Heading` instead)
-    - `Link Social`
-    - `Marque` (use `Wordmark` (recommended) or `Crest` instead)
-    - `Select Wrapper` (use `Select` instead)
-    - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
-    - `Textarea Wrapper` (use `Textarea` instead)
+  - `Button Group` (use Tailwind CSS instead,
+    `<div role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">…</div>`)
+  - `Checkbox Wrapper` (use `Checkbox` instead)
+  - `Radio Button Wrapper` (use `Radio Group` instead)
+  - `Content Wrapper` (use Porsche Grid Style instead, Tailwind CSS is recommended)
+  - `Link Tile Model Signature`
+  - `Fieldset Wrapper` (use `Fieldset` instead)
+  - `Flex` (use CSS Flex instead, Tailwind CSS is recommended)
+  - `Grid` (use CSS Grid instead, Tailwind CSS is recommended)
+  - `Headline` (use `Heading` instead)
+  - `Link Social`
+  - `Marque` (use `Wordmark` (recommended) or `Crest` instead)
+  - `Select Wrapper` (use `Select` instead)
+  - `Text Field Wrapper` (use `Input-{Date|Email|Number|Password|Search|Tel|Text|Time|Url}` instead)
+  - `Textarea Wrapper` (use `Textarea` instead)
+
+### Fixed
+
+- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
+- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
+  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
+  ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 
 ## [3.32.0-rc.1] - 2026-01-12
 
 ### Added
-- `AG Grid`: Relaxed peer dependency to support AG Grid new major version 35
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
   ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 
 ### Fixed
@@ -288,39 +328,19 @@ and migration steps.
 
 ### Added
 
-- `Multi Select, Select`:
-  - `selected` slot for custom selection rendering and enabling complex options
-  - `options-status` slot for loading, error and no results states when using custom filtering
-    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
-- `Multi Select, Select`:
-  - `filter` slot to allow custom asynchronous filtering
-  - `toggle` event when opening/closing the dropdown
-    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
-- `Segmented Control`: add `state` and `message` props to enable visual validation states
-  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
-- `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
-  ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023))
-- `Textarea`: `compact` prop to enable a smaller, space-saving version for compact layouts
-  ([#4102](https://github.com/porsche-design-system/porsche-design-system/pull/4102))
-- `Tag Dismissible`: `compact` prop to enable a smaller, space-saving version for compact layouts
-  ([#4114](https://github.com/porsche-design-system/porsche-design-system/pull/4114))
-- Flags: added `AL, BD, RE` flags ([#4128](https://github.com/porsche-design-system/porsche-design-system/pull/4128))
-- `Input Month`, `Input Week`: ([#4126](https://github.com/porsche-design-system/porsche-design-system/pull/4126))
-- `Input Search`: `maxLength` & `minLength` prop to specify the maximum and minimum number of characters the user can
-  enter ([#4131](https://github.com/porsche-design-system/porsche-design-system/pull/4131))
 - `Textarea`: add CSS Variables for `fieldSizing`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight` to control the
   intrinsic sizing behavior ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
 
 ### Fixed
 
-- `Checkbox`: missing deprecation for `CheckboxUpdateEventDetail` event & disabled prop is not mutable
-- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
-  `Input Time`, `Input Url`, `Textarea`: disabled prop is not mutable & error when disabled and invalid
-- `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
-  ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
-  ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+### Changed
+
+- `Link Tile`, `Button Tile`: appearance in compact mode
+- `Canvas`: appearance on mobile view
 
 ## [3.31.0] - 2025-11-13
 
@@ -1737,7 +1757,7 @@ and migration steps.
 
 ```diff
 - <p-carousel align-header="left"></p-carousel>
-+ <p-carousel-pure align-header="start"></p-carousel>
++ <p-carousel align-header="start"></p-carousel>
 ```
 
 ### Fixed

@@ -9,8 +9,8 @@ import { routes } from './routes.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ThemeProvider>
         <Routes>
           <Route element={<App />}>
             {routes.map((route) => (
@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')!).render(
             ))}
           </Route>
         </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   </StrictMode>
 );

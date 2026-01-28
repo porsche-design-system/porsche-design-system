@@ -310,9 +310,13 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
   ],
   template: `
     <div [ngStyle]="{ transform: 'translate3d(0px, 0px, 0px)' }">
-      <div class="visualize-grid" *ngIf="visualizeGrid">
-        <span *ngFor="let n of counter(18)" class="visualize-grid-columns"></span>
-      </div>
+      @if (visualizeGrid) {
+        <div class="visualize-grid">
+          @for (n of counter(18); track n) {
+            <span class="visualize-grid-columns"></span>
+          }
+        </div>
+      }
       <div class="hero-grid">
         <div class="hero-media">
           <span class="info"><b>Full</b> for Background and Media</span>
@@ -412,15 +416,15 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
           <span class="info"><b>Narrow</b> for small Components and Content</span>
           <p-accordion heading="Some Heading" tag="h3" [open]="isAccordion1Open" (update)="onAccordion1Update($event)"
             ><p class="text">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
-              felis, ultricies nec, pellentesque eu. Aenean massa.
-            </p></p-accordion
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
+            felis, ultricies nec, pellentesque eu. Aenean massa.
+          </p></p-accordion
           >
           <p-accordion heading="Some Heading" tag="h3" [open]="isAccordion2Open" (update)="onAccordion2Update($event)"
             ><p class="text">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
-              felis, ultricies nec, pellentesque eu. Aenean massa.
-            </p></p-accordion
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Donec quam
+            felis, ultricies nec, pellentesque eu. Aenean massa.
+          </p></p-accordion
           >
         </div>
         <div class="narrow-content-half-left">
@@ -441,7 +445,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
         </div>
       </div>
     </div>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })

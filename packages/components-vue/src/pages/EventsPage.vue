@@ -5,15 +5,12 @@ import type {
   InputDateBlurEventDetail,
   InputDateChangeEventDetail,
   InputDateInputEventDetail,
-  InputMonthInputEventDetail,
-  InputMonthBlurEventDetail,
-  InputMonthChangeEventDetail,
-  InputWeekInputEventDetail,
-  InputWeekBlurEventDetail,
-  InputWeekChangeEventDetail,
   InputEmailBlurEventDetail,
   InputEmailChangeEventDetail,
   InputEmailInputEventDetail,
+  InputMonthBlurEventDetail,
+  InputMonthChangeEventDetail,
+  InputMonthInputEventDetail,
   InputNumberBlurEventDetail,
   InputNumberChangeEventDetail,
   InputNumberInputEventDetail,
@@ -35,6 +32,9 @@ import type {
   InputUrlBlurEventDetail,
   InputUrlChangeEventDetail,
   InputUrlInputEventDetail,
+  InputWeekBlurEventDetail,
+  InputWeekChangeEventDetail,
+  InputWeekInputEventDetail,
   PaginationUpdateEventDetail,
   SwitchUpdateEventDetail,
   TableUpdateEventDetail,
@@ -50,6 +50,7 @@ import {
   PCarousel,
   PInputDate,
   PInputEmail,
+  PInputMonth,
   PInputNumber,
   PInputPassword,
   PInputSearch,
@@ -57,7 +58,6 @@ import {
   PInputText,
   PInputTime,
   PInputUrl,
-  PInputMonth,
   PInputWeek,
   PModal,
   PPagination,
@@ -90,17 +90,17 @@ const inputDateValue = ref('');
 const inputDateBlurCounter = ref(0);
 const inputDateChangeCounter = ref(0);
 
-  const inputMonthValue = ref('');
-  const inputMonthBlurCounter = ref(0);
-  const inputMonthChangeCounter = ref(0);
+const inputMonthValue = ref('');
+const inputMonthBlurCounter = ref(0);
+const inputMonthChangeCounter = ref(0);
 
-  const inputWeekValue = ref('');
-  const inputWeekBlurCounter = ref(0);
-  const inputWeekChangeCounter = ref(0);
+const inputWeekValue = ref('');
+const inputWeekBlurCounter = ref(0);
+const inputWeekChangeCounter = ref(0);
 
-  const inputEmailValue = ref('');
-  const inputEmailBlurCounter = ref(0);
-  const inputEmailChangeCounter = ref(0);
+const inputEmailValue = ref('');
+const inputEmailBlurCounter = ref(0);
+const inputEmailChangeCounter = ref(0);
 
 const inputNumberValue = ref('');
 const inputNumberBlurCounter = ref(0);
@@ -163,26 +163,26 @@ const onInputDateInput = (e: InputDateInputEventDetail) => {
 const onInputDateBlur = (_: InputDateBlurEventDetail) => inputDateBlurCounter.value++;
 const onInputDateChange = (_: InputDateChangeEventDetail) => inputDateChangeCounter.value++;
 
-  // PInputMonth
-  const onInputMonthInput = (e: InputMonthInputEventDetail) => {
-    inputMonthValue.value = (e.target as HTMLInputElement).value;
-  };
-  const onInputMonthBlur = (_: InputMonthBlurEventDetail) => inputMonthBlurCounter.value++;
-  const onInputMonthChange = (_: InputMonthChangeEventDetail) => inputMonthChangeCounter.value++;
+// PInputMonth
+const onInputMonthInput = (e: InputMonthInputEventDetail) => {
+  inputMonthValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputMonthBlur = (_: InputMonthBlurEventDetail) => inputMonthBlurCounter.value++;
+const onInputMonthChange = (_: InputMonthChangeEventDetail) => inputMonthChangeCounter.value++;
 
-  // PInputWeek
-  const onInputWeekInput = (e: InputWeekInputEventDetail) => {
-    inputWeekValue.value = (e.target as HTMLInputElement).value;
-  };
-  const onInputWeekBlur = (_: InputWeekBlurEventDetail) => inputWeekBlurCounter.value++;
-  const onInputWeekChange = (_: InputWeekChangeEventDetail) => inputWeekChangeCounter.value++;
+// PInputWeek
+const onInputWeekInput = (e: InputWeekInputEventDetail) => {
+  inputWeekValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputWeekBlur = (_: InputWeekBlurEventDetail) => inputWeekBlurCounter.value++;
+const onInputWeekChange = (_: InputWeekChangeEventDetail) => inputWeekChangeCounter.value++;
 
-  // PInputEmail
-  const onInputEmailInput = (e: InputEmailInputEventDetail) => {
-    inputEmailValue.value = (e.target as HTMLInputElement).value;
-  };
-  const onInputEmailBlur = (_: InputEmailBlurEventDetail) => inputEmailBlurCounter.value++;
-  const onInputEmailChange = (_: InputEmailChangeEventDetail) => inputEmailChangeCounter.value++;
+// PInputEmail
+const onInputEmailInput = (e: InputEmailInputEventDetail) => {
+  inputEmailValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputEmailBlur = (_: InputEmailBlurEventDetail) => inputEmailBlurCounter.value++;
+const onInputEmailChange = (_: InputEmailChangeEventDetail) => inputEmailChangeCounter.value++;
 
 // PInputNumber
 const onInputNumberInput = (e: InputNumberInputEventDetail) => {
@@ -272,11 +272,6 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
   </div>
 
   <div class="playground light">
-    <PInputText name="some-name" type="search" :value="textFieldSearchValue" @input="onTextFieldSearchChange" />
-    <p>Value: {{ textFieldSearchValue }}</p>
-  </div>
-
-  <div class="playground light">
     <PSwitch @update="onSwitchUpdate">Switch</PSwitch>
     <p>{{ switchUpdateEventCounter }}</p>
   </div>
@@ -305,7 +300,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
   </div>
 
   <div class="playground light">
-    <PCarousel @update="onCarouselUpdate">
+    <PCarousel @update="onCarouselUpdate" :pagination="true" :trimSpace="true" :rewind="true">
       <div>Slide 1</div>
       <div>Slide 2</div>
       <div>Slide 3</div>

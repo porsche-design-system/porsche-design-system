@@ -27,7 +27,7 @@ export const TablePage = (): JSX.Element => {
       </div>
 
       <div className="playground dark" title="should render table with unstyled slotted caption on dark background">
-        <PTable theme="dark">
+        <PTable>
           <span slot="caption">
             Some unstyled caption <a href="https://porsche.com">with a link</a>
           </span>

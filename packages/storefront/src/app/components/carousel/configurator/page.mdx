@@ -20,13 +20,16 @@ Therefore, the `p-carousel`'s content has to be divided into multiple parts or s
 be specified on a per-breakpoint basis.
 
 <Notification heading="Layout hint" heading-tag="h2" state="warning">
-  The component can only be used with the full viewport width. The alignment of its content can be controlled by the{' '}
-  <code>width</code> prop, which is in sync with the **[Porsche Grid](/styles/grid/)**.
+  When using the <code>width</code> prop to align with the **[Porsche Grid](/styles/grid/)**, the component must span the full viewport width.
+
+  When using the <code>--p-carousel-px</code> CSS variable, the component can be placed within any container, allowing you to customize the horizontal padding that reveals parts of the next/previous slide.
+
+  When using the <code>--p-carousel-ps</code> and <code>--p-carousel-pe</code> CSS variables, the component can be placed within any container, allowing you to customize the horizontal padding asymmetric that reveals parts of the next/previous slide.
 </Notification>
 
 <Notification heading="Dynamic changes" heading-tag="h2" state="warning">
-  This component has limited support for dynamic property changes due to the way it is implemented. If you need to use a
-  specific property dynamically, please open a <Link href="/help/feature-request/">feature request</Link>.
+  This component has limited support for dynamic property changes due to the way it is implemented. <br /><br />
+  If you need to use a specific property dynamically, please open a <Link href="/help/feature-request/">feature request</Link>.
 </Notification>
 
 <Configurator tagName="p-carousel" story={carouselStory} />

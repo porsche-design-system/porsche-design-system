@@ -1,7 +1,6 @@
 import type { ExtendedRoute } from '../app-routing.module';
 import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { EventsComponent } from './events.component';
-import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
@@ -11,7 +10,6 @@ import { UtilitiesComponent } from './utilities.component';
 export const pages = [
   CoreInitializerPrefixedComponent,
   EventsComponent,
-  FormWrapperBindingComponent,
   OptionalPropertiesComponent,
   ThemeInjectionComponent,
   UtilitiesComponent,
@@ -21,7 +19,6 @@ export const pages = [
 
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
-export * from './form-wrapper-binding.component';
 export * from './optional-properties.component';
 export * from './theme-injection.component';
 export * from './utilities.component';

@@ -7,7 +7,7 @@ export const gradientStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid gap-fluid-md prose-text-sm text-center text-primary-dark',
+        className: 'grid gap-fluid-md prose-text-sm text-center text-white',
       },
       children: [
         {

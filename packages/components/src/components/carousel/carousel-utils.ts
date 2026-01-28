@@ -8,7 +8,7 @@ import {
   paginationInfiniteStartCaseClass,
 } from './carousel-styles';
 
-export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
+export const CAROUSEL_WIDTHS = ['basic', 'extended', 'wide', 'full'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
 export const CAROUSEL_SLIDES_PER_PAGE = ['auto', ...Array.from(new Array(10), (_, i) => i + 1)];

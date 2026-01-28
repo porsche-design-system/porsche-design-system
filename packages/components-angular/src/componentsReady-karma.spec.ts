@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { PorscheDesignSystemModule, componentsReady } from '@porsche-design-system/components-angular';
+import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+// TODO: remove karma tests since vitest is primary
 
 @Component({
   selector: 'empty',
@@ -14,8 +16,10 @@ class EmptyComponent {}
   selector: 'sample',
   template: `
     <p-button (click)="onClick()">Button 1</p-button>
-    <p-button *ngIf="active">Button 2</p-button>
-  `,
+    @if (active) {
+      <p-button>Button 2</p-button>
+    }
+    `,
   standalone: false,
 })
 class SampleComponent {

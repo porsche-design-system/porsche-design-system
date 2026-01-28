@@ -6,7 +6,6 @@ export * from './LifecycleOverlapping';
 export * from './ModalFocusCycle';
 export * from './StencilLifecycles';
 export * from './Table';
-export * from './ThemeInjection';
 export * from './Utilities';
 
 /* Auto Generated Below */
