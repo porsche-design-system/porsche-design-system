@@ -324,14 +324,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #951219;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #951219;
     background-color: #951219;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #951219;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23951219" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -493,14 +493,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #FB0404;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #FB0404;
     background-color: #FB0404;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #FB0404;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FB0404" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -942,14 +942,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #010205;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #535457;
     background-color: #535457;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #010205;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -1110,14 +1110,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #FBFCFF;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #AFB0B3;
     background-color: #AFB0B3;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #FBFCFF;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -1556,14 +1556,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #0E4809;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #0E4809;
     background-color: #0E4809;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #0E4809;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230E4809" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -1725,14 +1725,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #069561;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #069561;
     background-color: #069561;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #069561;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23069561" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -2174,14 +2174,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #951219;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #951219;
     background-color: #951219;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #951219;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23951219" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -2340,14 +2340,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #FB0404;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #FB0404;
     background-color: #FB0404;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #FB0404;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FB0404" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -2780,14 +2780,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #010205;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #535457;
     background-color: #535457;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #010205;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -2945,14 +2945,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #FBFCFF;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #AFB0B3;
     background-color: #AFB0B3;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #FBFCFF;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -3962,14 +3962,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #0E4809;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #0E4809;
     background-color: #0E4809;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #0E4809;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230E4809" d="m20,11v2H4v-2h16Z"/></svg>');
@@ -4128,14 +4128,14 @@ input:focus-visible {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  input:hover,.label-wrapper:hover~.wrapper input {
+  input:hover,.wrapper:has(.label-wrapper:hover) input {
     border-color: #069561;
   }
-  input:checked:hover,.label-wrapper:hover~.wrapper input:checked {
+  input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked {
     border-color: #069561;
     background-color: #069561;
   }
-  input:indeterminate:hover,.label-wrapper:hover~.wrapper input:indeterminate {
+  input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate {
     background: transparent 0% 0% / calc(6px + 2.125ex);
     border-color: #069561;
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23069561" d="m20,11v2H4v-2h16Z"/></svg>');
