@@ -1,10 +1,16 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import {
-  borderRadiusSm,
+  borderRadius3Xl,
+  borderRadius4Xl,
+  borderRadiusXl,
+  borderWidthThin,
+  borderWidthRegular,
+  borderRadius2Xl,
+  borderRadiusFull,
   borderRadiusLg,
   borderRadiusMd,
-  borderWidthRegular,
-  borderWidthThin,
+  borderRadiusSm,
+  borderRadiusXs,
 } from '@porsche-design-system/tokens';
 
 export const metadata = {
@@ -20,15 +26,21 @@ export const metadata = {
 
 ### Radius
 
-| SCSS Variable               | Description                         | Value            |
-| --------------------------- | ----------------------------------- | ---------------- |
-| `$pds-border-radius-small`  | Holds a **small** `border-radius`.  | {borderRadiusSm} |
-| `$pds-border-radius-medium` | Holds a **medium** `border-radius`. | {borderRadiusMd} |
-| `$pds-border-radius-large`  | Holds a **large** `border-radius`.  | {borderRadiusLg} |
+| SCSS Variable         | Description                                | Value              |
+| --------------------- | ------------------------------------------ | ------------------ |
+| `$border-radius-xs`   | Holds a **x-small** `border-radius`.       | {borderRadiusXs}   |
+| `$border-radius-sm`   | Holds a **small** `border-radius`.         | {borderRadiusSm}   |
+| `$border-radius-md`   | Holds a **medium** `border-radius`.        | {borderRadiusMd}   |
+| `$border-radius-lg`   | Holds a **large** `border-radius`.         | {borderRadiusLg}   |
+| `$border-radius-xl`   | Holds a **x-large** `border-radius`.       | {borderRadiusXl}   |
+| `$border-radius-2xl`  | Holds a **2x-large** `border-radius`.      | {borderRadius2Xl}  |
+| `$border-radius-3xl`  | Holds a **3x-large** `border-radius`.      | {borderRadius3Xl}  |
+| `$border-radius-4xl`  | Holds a **4x-large** `border-radius`.      | {borderRadius4Xl}  |
+| `$border-radius-full` | Holds a **fully** rounded `border-radius`. | {borderRadiusFull} |
 
 ### Width
 
-| SCSS Variable            | Description                         | Value                |
-| ------------------------ | ----------------------------------- | -------------------- |
-| `$pds-border-width-thin` | Holds a **thin** `border-width`.    | {borderWidthThin}    |
-| `$pds-border-width-base` | Holds a **regular** `border-width`. | {borderWidthRegular} |
+| SCSS Variable     | Description                     | Value                |
+| ----------------- | ------------------------------- | -------------------- |
+| `$border-width-1` | Holds a **1px** `border-width`. | {borderWidthThin}    |
+| `$border-width-2` | Holds a **2px** `border-width`. | {borderWidthRegular} |
