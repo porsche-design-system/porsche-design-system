@@ -7,7 +7,7 @@ export const blurVanillaExtractStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid prose-text-sm text-primary-dark',
+        className: 'grid prose-text-sm text-white',
       },
       children: [
         {
