@@ -88,7 +88,7 @@ export const getComponentCss = (
         ...(!isLoading &&
           !isDisabled &&
           hoverMediaQuery({
-            '&:hover,.label-wrapper:hover~&': {
+            '&:hover': {
               borderColor: formStateBorderHoverColor,
             },
           })),

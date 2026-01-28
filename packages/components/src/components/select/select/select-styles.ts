@@ -2,6 +2,7 @@ import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emo
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
@@ -55,6 +56,7 @@ export const getComponentCss = (
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
+        ...(isDisabled && getDisabledBaseStyles()),
       },
       ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,

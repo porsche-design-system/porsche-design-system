@@ -76,9 +76,6 @@ export const getComponentCss = (
       display: 'grid',
       justifySelf: 'flex-start',
       rowGap: spacingStaticXSmall,
-      ...(isDisabled && {
-        cursor: 'not-allowed',
-      }),
     },
     wrapper: {
       alignItems: 'start',

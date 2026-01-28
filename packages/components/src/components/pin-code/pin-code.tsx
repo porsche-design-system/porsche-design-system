@@ -195,7 +195,6 @@ export class PinCode {
     return (
       <fieldset
         class="root"
-        inert={this.disabled}
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
         aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
