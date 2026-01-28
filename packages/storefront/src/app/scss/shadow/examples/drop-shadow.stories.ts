@@ -13,23 +13,23 @@ export const shadowScssStory: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'shadow-low rounded-lg p-fluid-sm',
+            className: 'shadow-sm rounded-lg p-fluid-sm',
           },
-          children: ['@include pds-drop-shadow-low;'],
+          children: ['box-shadow: $box-shadow-sm;'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'shadow-medium rounded-lg p-fluid-sm',
+            className: 'shadow-md rounded-lg p-fluid-sm',
           },
-          children: ['@include pds-drop-shadow-medium;'],
+          children: ['box-shadow: $box-shadow-md;'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'shadow-high rounded-lg p-fluid-sm',
+            className: 'shadow-lg rounded-lg p-fluid-sm',
           },
-          children: ['@include pds-drop-shadow-high;'],
+          children: ['box-shadow: $box-shadow-lg;'],
         },
       ],
     },
