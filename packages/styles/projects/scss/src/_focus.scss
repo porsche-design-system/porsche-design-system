@@ -1,5 +1,5 @@
 @use 'border';
-@use 'theme';
+@use 'color';
 @use 'sass:map';
 
 $pds-focus-offset-map: (
@@ -24,7 +24,7 @@ $pds-focus-border-radius-map: (
     }
   }
   &:focus {
-    outline: border.$pds-border-width-base solid theme.$pds-theme-light-state-focus;
+    outline: border.$pds-border-width-base solid color.$color-focus;
     @if map.has-key($pds-focus-offset-map, $offset) {
       outline-offset: map.get($pds-focus-offset-map, $offset);
     } @else {

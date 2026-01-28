@@ -1,5 +1,6 @@
 import { getBorderScss } from '../src/border';
 import { getBreakpointScss } from '../src/breakpoint';
+import { getColorScss } from '../src/color';
 import { getDisplayScss } from '../src/display';
 import { getDropShadowScss } from '../src/drop-shadow';
 import { getFontScss } from '../src/font';
@@ -9,12 +10,11 @@ import { getHeadingScss } from '../src/heading';
 import { getMotionScss } from '../src/motion';
 import { getSpacingScss } from '../src/spacing';
 import { getTextScss } from '../src/text';
-import { getThemeScss } from '../src/theme';
 
 export const fileMap = {
   '_border.scss': getBorderScss,
   '_breakpoint.scss': getBreakpointScss,
-  '_theme.scss': getThemeScss,
+  '_color.scss': getColorScss,
   '_font.scss': getFontScss,
   '_text.scss': getTextScss,
   '_heading.scss': getHeadingScss,
