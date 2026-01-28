@@ -61,6 +61,10 @@ export const getTailwindcssTheme = () => {
 @theme {
   /* Reset */
   --color-*: initial;
+  --text-*: initial;
+  --breakpoint-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
 
   /* Color */
   --color-black: #000;
@@ -104,8 +108,6 @@ export const getTailwindcssTheme = () => {
   --breakpoint-2xl: ${breakpoint2Xl}px;
 
   /* Spacing */
-  --spacing: .25rem;
-
   --spacing-fluid-xs: ${spacingFluidXs};
   --spacing-fluid-sm: ${spacingFluidSm};
   --spacing-fluid-md: ${spacingFluidMd};
@@ -132,16 +134,21 @@ export const getTailwindcssTheme = () => {
   --radius-full: ${borderRadiusFull};
 
   --default-border-width: ${borderWidthThin};
-  --border-width-regular: ${borderWidthRegular};
-  --border-width-thin: ${borderWidthThin};
+  --border-width-1: ${borderWidthThin};
+  --border-width-regular: var(--border-width-1); /* alias (deprecated) */
+  --border-width-thin: var(--border-width-1); /* alias (deprecated) */
+  --border-width-2: ${borderWidthRegular};
 
   /* Blur */
   --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
 
   /* Shadow */
-  --shadow-low: ${shadowSm};
-  --shadow-medium: ${shadowMd};
-  --shadow-high: ${shadowLg};
+  --shadow-sm: ${shadowSm};
+  --shadow-low: var(--shadow-sm); /* alias (deprecated) */
+  --shadow-md: ${shadowMd};
+  --shadow-medium: var(--shadow-md); /* alias (deprecated) */
+  --shadow-lg: ${shadowLg};
+  --shadow-high: var(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
   --default-outline-width: ${borderWidthRegular};
@@ -153,10 +160,14 @@ export const getTailwindcssTheme = () => {
   --ease-out: ${motionEaseOut};
 
   --default-transition-duration: ${motionDurationShort};
-  --transition-duration-short: ${motionDurationShort};
-  --transition-duration-moderate: ${motionDurationModerate};
-  --transition-duration-long: ${motionDurationLong};
-  --transition-duration-very-long: ${motionDurationVeryLong};
+  --transition-duration-sm: ${motionDurationShort};
+  --transition-duration-short: var(--transition-duration-sm); /* alias (deprecated) */
+  --transition-duration-md: ${motionDurationModerate};
+  --transition-duration-moderate: var(--transition-duration-md); /* alias (deprecated) */
+  --transition-duration-lg: ${motionDurationLong};
+  --transition-duration-long: var(--transition-duration-lg); /* alias (deprecated) */
+  --transition-duration-xl: ${motionDurationVeryLong};
+  --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
   --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;

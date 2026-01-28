@@ -1,9 +1,9 @@
 export const TailwindcssShadow = () => {
   return (
     <div className="grid gap-fluid-md prose-text-sm p-static-md">
-      <div className="shadow-low rounded-lg p-fluid-sm">Shadow Low</div>
-      <div className="shadow-medium rounded-lg p-fluid-sm">Shadow Medium</div>
-      <div className="shadow-high rounded-lg p-fluid-sm">Shadow High</div>
+      <div className="shadow-sm rounded-lg p-fluid-sm">Shadow Small</div>
+      <div className="shadow-md rounded-lg p-fluid-sm">Shadow Medium</div>
+      <div className="shadow-lg rounded-lg p-fluid-sm">Shadow Large</div>
     </div>
   );
 };

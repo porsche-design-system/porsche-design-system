@@ -1,17 +1,17 @@
 export const TailwindcssMotion = () => {
   return (
     <div className="grid gap-fluid-md p-static-md prose-text-sm">
-      <div className="duration-short transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
-        Duration Short
+      <div className="duration-sm transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+        Duration Small
       </div>
-      <div className="duration-moderate transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
-        Duration Moderate
+      <div className="duration-md transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+        Duration Medium
       </div>
-      <div className="duration-long transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
-        Duration Long
+      <div className="duration-lg transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+        Duration Large
       </div>
-      <div className="duration-very-long transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
-        Duration Very Long
+      <div className="duration-xl transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
+        Duration X-Large
       </div>
       <div className="ease-in-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm">
         Ease In Out
