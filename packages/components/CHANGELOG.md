@@ -61,6 +61,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `$color-info-low-light`, `$color-info-low-dark`, `$color-info-medium`, `$color-info-medium-light`,
     `$color-info-medium-dark`, `$color-info-frosted`, `$color-info-frosted-light`, `$color-info-frosted-dark`,
     `$color-info-frosted-soft`, `$color-info-frosted-soft-light` and `$color-info-frosted-soft-dark`
+  - Motion: `$motion-duration-sm`, `$motion-duration-md`, `$motion-duration-lg`, `$motion-duration-xl`,
+    `$motion-ease-in-out`, `$motion-ease-in` and `$motion-ease-out`
 
 ### Changed
 
