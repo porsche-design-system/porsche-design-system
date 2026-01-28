@@ -67,7 +67,8 @@ export const getComponentCss = (
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
           hoverMediaQuery({
-            '&:hover,label:hover~.wrapper>&': {
+            // is label-wrapper:hover needed? Or is this browser behaviour because of the "for" attribute?
+            '&:hover,.label-wrapper:hover~.wrapper>&': {
               borderColor: `var(${cssVarCheckboxBorderColor}, ${formStateBorderHoverColor})`,
             },
           })),

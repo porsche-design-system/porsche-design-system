@@ -103,7 +103,7 @@ export const getFunctionalComponentInputBaseStyles = (
         !readOnly &&
         !isLoading &&
         hoverMediaQuery({
-          '&:hover:not(.button:hover),label:hover~&': {
+          '&:hover:not(.button:hover),.label-wrapper:hover~&': {
             borderColor: formStateBorderHoverColor,
           },
         })),
