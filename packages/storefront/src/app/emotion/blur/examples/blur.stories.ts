@@ -7,7 +7,7 @@ export const blurEmotionStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid prose-text-sm text-primary-dark',
+        className: 'grid prose-text-sm text-white',
       },
       children: [
         {
