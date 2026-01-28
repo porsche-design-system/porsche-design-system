@@ -20,6 +20,7 @@ export const vanillaExtractSpacingWrapper = style({
   display: 'grid',
   gap: spacingFluidMedium,
   ...textSmallStyle,
+  color: vars.primary,
   padding: spacingStaticMedium,
 });
 

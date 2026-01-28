@@ -10667,7 +10667,8 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 .header {
   display: grid;
-  padding: 0 max(22px, 10.625vw - 12px);
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px)));
 }
 .nav {
   display: none;
@@ -10687,7 +10688,9 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 .splide__track {
   position: relative;
-  padding: 0 max(22px, 10.625vw - 12px) !important;
+  padding-block: 0px !important;
+  padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
+  padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
 .splide__list {
   backface-visibility: hidden;
@@ -10757,8 +10760,9 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 @media(min-width:760px) {
   .header {
-    grid-template-columns: minmax(0px, 1fr) auto;
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    grid-template-columns: minmax(0px,1fr) auto;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .nav {
     grid-row-start: 3;
@@ -10768,16 +10772,19 @@ exports[`should render dsr component for PCarousel 1`] = `
     align-self: flex-start;
   }
   .splide__track {
-    padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
 @media(min-width:1920px) {
   .header {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)));
   }
   .splide__track {
-    padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
+    padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
+    padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2))) !important;
   }
 }
 
@@ -18933,6 +18940,7 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -19082,6 +19090,7 @@ input:focus-visible {
       />
     </div>
   </template>
+  Some child
 </p-radio-group-option>
 `;
 

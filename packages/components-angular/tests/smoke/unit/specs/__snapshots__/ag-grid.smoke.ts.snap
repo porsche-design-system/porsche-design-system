@@ -49,6 +49,10 @@ exports[`style package content > should match content 1`] = `
               "style": "solid",
               "width": 1,
             },
+            "columnDragIndicatorColor": {
+              "ref": "accentColor",
+            },
+            "columnDragIndicatorWidth": 2,
             "columnDropCellBackgroundColor": {
               "mix": 0.07,
               "ref": "foregroundColor",
@@ -71,6 +75,9 @@ exports[`style package content > should match content 1`] = `
             },
             "columnSelectIndentSize": {
               "ref": "iconSize",
+            },
+            "dataBackgroundColor": {
+              "ref": "backgroundColor",
             },
             "dataFontSize": {
               "ref": "fontSize",
@@ -200,7 +207,7 @@ exports[`style package content > should match content 1`] = `
               "ref": "backgroundColor",
             },
             "oddRowBackgroundColor": {
-              "ref": "backgroundColor",
+              "ref": "dataBackgroundColor",
             },
             "paginationPanelHeight": {
               "calc": "max(rowHeight, 22px)",
@@ -216,6 +223,9 @@ exports[`style package content > should match content 1`] = `
             "panelTitleBarFontWeight": {
               "ref": "headerFontWeight",
             },
+            "panelTitleBarHeight": {
+              "ref": "headerHeight",
+            },
             "panelTitleBarIconColor": {
               "ref": "headerTextColor",
             },
@@ -224,7 +234,7 @@ exports[`style package content > should match content 1`] = `
             },
             "pinnedColumnBorder": true,
             "pinnedRowBackgroundColor": {
-              "ref": "backgroundColor",
+              "ref": "dataBackgroundColor",
             },
             "pinnedRowBorder": true,
             "pinnedRowFontWeight": 600,
@@ -232,7 +242,7 @@ exports[`style package content > should match content 1`] = `
               "ref": "textColor",
             },
             "pinnedSourceRowBackgroundColor": {
-              "ref": "backgroundColor",
+              "ref": "dataBackgroundColor",
             },
             "pinnedSourceRowFontWeight": 600,
             "pinnedSourceRowTextColor": {
@@ -258,6 +268,10 @@ exports[`style package content > should match content 1`] = `
               "ref": "accentColor",
             },
             "rowBorder": true,
+            "rowDragIndicatorColor": {
+              "ref": "rangeSelectionBorderColor",
+            },
+            "rowDragIndicatorWidth": 2,
             "rowGroupIndentSize": {
               "calc": "cellWidgetSpacing + iconSize",
             },

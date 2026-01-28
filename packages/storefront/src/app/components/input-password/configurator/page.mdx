@@ -1,14 +1,13 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from "@/components/playground/Configurator";
-import {
-  inputPasswordSlotStories,
-  inputPasswordStory
-} from "@/app/components/input-password/input-password.stories";
+import { Configurator } from '@/components/playground/Configurator';
+import { inputPasswordSlotStories, inputPasswordStory } from '@/app/components/input-password/input-password.stories';
+import { FrameworkNotification } from '@/components/common/FrameworkNotification';
 
 export const metadata = {
   title: 'Input Password - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Input Password component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Input Password component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
 
@@ -25,4 +24,10 @@ for screen readers.
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
-<Configurator tagName="p-input-password" story={inputPasswordStory}  slotStories={inputPasswordSlotStories} />
+<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
+  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
+  keystroke, use `onInput` instead.
+</FrameworkNotification>
+
+<Configurator tagName="p-input-password" story={inputPasswordStory} slotStories={inputPasswordSlotStories} />

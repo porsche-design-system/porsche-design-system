@@ -15,12 +15,13 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/emotion';
 
-const EmotionSpacingWrapper = styled.div({
+const EmotionSpacingWrapper = styled.div(({ theme }) => ({
   display: 'grid',
   gap: spacingFluidMedium,
   ...textSmallStyle,
+  color: theme.primary,
   padding: spacingStaticMedium,
-});
+}));
 
 const SpacingRow = styled.div({
   display: 'flex',

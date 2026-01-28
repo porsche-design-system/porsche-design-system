@@ -35,46 +35,9 @@ import {
   themeLightStateDisabled,
   themeLightStateFocus,
 } from '@porsche-design-system/vanilla-extract';
-import { createTheme, createThemeContract } from '@vanilla-extract/css';
+import { createTheme } from '@vanilla-extract/css';
 
-export const vars = createThemeContract({
-  focus: null,
-  disabled: null,
-  canvas: null,
-  surface: null,
-  frosted: null,
-  frostedSoft: null,
-  backdrop: null,
-  contrastLower: null,
-  contrastLow: null,
-  contrastMedium: null,
-  contrastHigh: null,
-  contrastHigher: null,
-  primary: null,
-  success: null,
-  successLow: null,
-  successMedium: null,
-  successFrosted: null,
-  successFrostedSoft: null,
-  warning: null,
-  warningLow: null,
-  warningMedium: null,
-  warningFrosted: null,
-  warningFrostedSoft: null,
-  error: null,
-  errorLow: null,
-  errorMedium: null,
-  errorFrosted: null,
-  errorFrostedSoft: null,
-  info: null,
-  infoLow: null,
-  infoMedium: null,
-  infoFrosted: null,
-  infoFrostedSoft: null,
-  skeleton: null,
-});
-
-export const lightTheme = createTheme(vars, {
+export const [lightTheme, vars] = createTheme({
   focus: themeLightStateFocus,
   disabled: themeLightStateDisabled,
   canvas: themeLightBackgroundBase,
@@ -147,5 +110,3 @@ export const darkTheme = createTheme(vars, {
   infoFrostedSoft: 'hsla(210, 100%, 54.5%, 0.1)',
   skeleton: '#1a1b1e',
 });
-
-export const autoTheme = darkTheme;

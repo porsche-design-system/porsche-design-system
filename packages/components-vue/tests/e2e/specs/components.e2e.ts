@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
 
 const console = require('console');
@@ -18,8 +18,8 @@ test('should stringify object props correctly', async ({ page }) => {
 
   const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
 
-  expect(innerHTML).toContain('<p-headline');
-  expect(innerHTML).toContain('<my-prefix-p-headline');
+  expect(innerHTML).toContain('<p-heading');
+  expect(innerHTML).toContain('<my-prefix-p-heading');
   expect(innerHTML).not.toContain('[object Object]');
 });
 

@@ -18,10 +18,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
   custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-ps`, `--p-carousel-pe` CSS custom property introduced to control the logical inline start/end padding
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 
 ### Changed
 
-Import paths for `styles` package:
+- `Canvas`: visual appearance on mobile view
+- `Styles`: Import paths for npm package:
 
 ```diff
 - import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
@@ -37,6 +50,16 @@ Import paths for `styles` package:
 - @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
 + @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
 ```
+
+### Fixed
+
+- `Vanilla Extract`: grid style media query not working
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
+### Removed
+
+- Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
 
 ## [4.0.0-alpha.0] - 2025-12-12
 
@@ -138,6 +161,10 @@ and migration steps.
 - Tailwind CSS:
   - Reset all default Tailwind color tokens
   - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
+
+- Styles (SCSS, Emotion, Vanilla-Extract)
+  - heading styles use a regular instead of semi-bold font-weight
+  - border-radius large was changed from `12px` to `8px`, since more radius styles are now available
 
 ### Removed
 
@@ -285,6 +312,18 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
+## [3.32.0-rc.1] - 2026-01-12
+
+### Added
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
 
 ## [3.32.0-rc.0] - 2025-12-16
 

@@ -1,1 +1,0 @@
-export { getHoverStyle } from './getHoverStyle';

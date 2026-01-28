@@ -21,6 +21,8 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
   loading: AllowedTypes.boolean,
 };
 
+// Though "description" and "message" slots are technically available (provided by the "label" component),
+// they are not documented here to avoid confusion since they are not intended for use within radio group options.
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)." }

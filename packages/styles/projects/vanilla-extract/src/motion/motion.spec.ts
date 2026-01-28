@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import * as fromMotion from './index';
 
 it('should provide all exports', () => {

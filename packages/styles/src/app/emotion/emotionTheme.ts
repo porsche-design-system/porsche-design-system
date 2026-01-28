@@ -121,5 +121,4 @@ const dark = {
 export const emotionThemes = {
   light,
   dark,
-  auto: dark,
 };

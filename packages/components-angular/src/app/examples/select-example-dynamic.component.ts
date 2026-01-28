@@ -1,4 +1,3 @@
-import { NgForOf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-design-system/components-angular';
 
@@ -10,17 +9,19 @@ import { PorscheDesignSystemModule, SelectChangeEventDetail } from '@porsche-des
     <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
 
     <p-select name="options" label="Some Label" [value]="selectedValue" (change)="onChange($event)">
-      <p-select-option *ngFor="let idx of optionIndices" [value]="(idx + 1).toString()"
-        >Option {{ idx + 1 }}</p-select-option
-      >
-    </p-select>
+      @for (idx of optionIndices; track idx) {
+        <p-select-option [value]="(idx + 1).toString()"
+          >Option {{ idx + 1 }}</p-select-option
+          >
+        }
+      </p-select>
 
-    <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
-    <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
-  `,
+      <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
+      <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule, NgForOf],
+  imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleDynamicComponent {
   selectedValue: string = '1';
