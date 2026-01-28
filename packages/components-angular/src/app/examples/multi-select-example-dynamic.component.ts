@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -17,17 +16,19 @@ import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsch
     <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
 
     <p-multi-select name="options" label="Some Label" [value]="selectedValues" (change)="onChange($event)">
-      <p-multi-select-option *ngFor="let idx of optionIndices" [value]="(idx + 1).toString()"
-        >Option {{ idx + 1 }}</p-multi-select-option
-      >
-    </p-multi-select>
+      @for (idx of optionIndices; track idx) {
+        <p-multi-select-option [value]="(idx + 1).toString()"
+          >Option {{ idx + 1 }}</p-multi-select-option
+          >
+        }
+      </p-multi-select>
 
-    <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
-    <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
-  `,
+      <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
+      <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule, NgFor],
+  imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleDynamicComponent {
   selectedValues: string[] = [];

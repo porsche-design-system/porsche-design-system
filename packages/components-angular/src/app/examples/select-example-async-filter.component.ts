@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import {
   type InputSearchInputEventDetail,
@@ -73,7 +72,7 @@ import {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule, CommonModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleAsyncFilterComponent {
   value?: string;

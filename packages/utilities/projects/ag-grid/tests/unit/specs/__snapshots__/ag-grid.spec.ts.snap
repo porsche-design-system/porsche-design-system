@@ -65,12 +65,15 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-color-picker-track-border-radius: var(--ag-inherited-color-picker-track-border-radius, 12px);
 	--ag-color-picker-track-size: var(--ag-inherited-color-picker-track-size, 12px);
 	--ag-column-border: var(--ag-inherited-column-border, solid 1px transparent);
+	--ag-column-drag-indicator-color: var(--ag-inherited-column-drag-indicator-color, var(--ag-accent-color));
+	--ag-column-drag-indicator-width: var(--ag-inherited-column-drag-indicator-width, 2px);
 	--ag-column-drop-cell-background-color: var(--ag-inherited-column-drop-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
 	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
 	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
 	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
 	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
 	--ag-column-select-indent-size: var(--ag-inherited-column-select-indent-size, var(--ag-icon-size));
+	--ag-data-background-color: var(--ag-inherited-data-background-color, var(--ag-background-color));
 	--ag-data-font-size: var(--ag-inherited-data-font-size, var(--ag-font-size));
 	--ag-dialog-border: var(--ag-inherited-dialog-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 20%));
 	--ag-dialog-shadow: var(--ag-inherited-dialog-shadow, var(--ag-popup-shadow));
@@ -155,6 +158,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
 	--ag-panel-title-bar-border: var(--ag-inherited-panel-title-bar-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-panel-title-bar-font-weight: var(--ag-inherited-panel-title-bar-font-weight, var(--ag-header-font-weight));
+	--ag-panel-title-bar-height: var(--ag-inherited-panel-title-bar-height, var(--ag-header-height));
 	--ag-panel-title-bar-icon-color: var(--ag-inherited-panel-title-bar-icon-color, var(--ag-header-text-color));
 	--ag-panel-title-bar-text-color: var(--ag-inherited-panel-title-bar-text-color, var(--ag-header-text-color));
 	--ag-picker-button-background-color: var(--ag-inherited-picker-button-background-color, var(--ag-background-color));
@@ -164,11 +168,11 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-picker-list-background-color: var(--ag-inherited-picker-list-background-color, var(--ag-background-color));
 	--ag-picker-list-border: var(--ag-inherited-picker-list-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-pinned-column-border: var(--ag-inherited-pinned-column-border, solid var(--ag-border-width) var(--ag-border-color));
-	--ag-pinned-row-background-color: var(--ag-inherited-pinned-row-background-color, var(--ag-background-color));
+	--ag-pinned-row-background-color: var(--ag-inherited-pinned-row-background-color, var(--ag-data-background-color));
 	--ag-pinned-row-border: var(--ag-inherited-pinned-row-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-pinned-row-font-weight: var(--ag-inherited-pinned-row-font-weight, 600);
 	--ag-pinned-row-text-color: var(--ag-inherited-pinned-row-text-color, var(--ag-text-color));
-	--ag-pinned-source-row-background-color: var(--ag-inherited-pinned-source-row-background-color, var(--ag-background-color));
+	--ag-pinned-source-row-background-color: var(--ag-inherited-pinned-source-row-background-color, var(--ag-data-background-color));
 	--ag-pinned-source-row-font-weight: var(--ag-inherited-pinned-source-row-font-weight, 600);
 	--ag-pinned-source-row-text-color: var(--ag-inherited-pinned-source-row-text-color, var(--ag-text-color));
 	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0 16px #00000026);
@@ -183,6 +187,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, var(--ag-cell-batch-edit-background-color));
 	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
 	--ag-row-border: var(--ag-inherited-row-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-row-drag-indicator-color: var(--ag-inherited-row-drag-indicator-color, var(--ag-range-selection-border-color));
+	--ag-row-drag-indicator-width: var(--ag-inherited-row-drag-indicator-width, 2px);
 	--ag-row-group-indent-size: var(--ag-inherited-row-group-indent-size, calc( var(--ag-cell-widget-spacing)   +   var(--ag-icon-size) ));
 	--ag-row-height: var(--ag-inherited-row-height, calc(var(--ag-font-size) + var(--ag-spacing) * 4));
 	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
@@ -410,12 +416,15 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-color-picker-track-border-radius: var(--ag-color-picker-track-border-radius);
 	--ag-inherited-color-picker-track-size: var(--ag-color-picker-track-size);
 	--ag-inherited-column-border: var(--ag-column-border);
+	--ag-inherited-column-drag-indicator-color: var(--ag-column-drag-indicator-color);
+	--ag-inherited-column-drag-indicator-width: var(--ag-column-drag-indicator-width);
 	--ag-inherited-column-drop-cell-background-color: var(--ag-column-drop-cell-background-color);
 	--ag-inherited-column-drop-cell-border: var(--ag-column-drop-cell-border);
 	--ag-inherited-column-drop-cell-drag-handle-color: var(--ag-column-drop-cell-drag-handle-color);
 	--ag-inherited-column-drop-cell-text-color: var(--ag-column-drop-cell-text-color);
 	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
 	--ag-inherited-column-select-indent-size: var(--ag-column-select-indent-size);
+	--ag-inherited-data-background-color: var(--ag-data-background-color);
 	--ag-inherited-data-font-size: var(--ag-data-font-size);
 	--ag-inherited-dialog-border: var(--ag-dialog-border);
 	--ag-inherited-dialog-shadow: var(--ag-dialog-shadow);
@@ -500,6 +509,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-panel-title-bar-background-color: var(--ag-panel-title-bar-background-color);
 	--ag-inherited-panel-title-bar-border: var(--ag-panel-title-bar-border);
 	--ag-inherited-panel-title-bar-font-weight: var(--ag-panel-title-bar-font-weight);
+	--ag-inherited-panel-title-bar-height: var(--ag-panel-title-bar-height);
 	--ag-inherited-panel-title-bar-icon-color: var(--ag-panel-title-bar-icon-color);
 	--ag-inherited-panel-title-bar-text-color: var(--ag-panel-title-bar-text-color);
 	--ag-inherited-picker-button-background-color: var(--ag-picker-button-background-color);
@@ -528,6 +538,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
 	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
 	--ag-inherited-row-border: var(--ag-row-border);
+	--ag-inherited-row-drag-indicator-color: var(--ag-row-drag-indicator-color);
+	--ag-inherited-row-drag-indicator-width: var(--ag-row-drag-indicator-width);
 	--ag-inherited-row-group-indent-size: var(--ag-row-group-indent-size);
 	--ag-inherited-row-height: var(--ag-row-height);
 	--ag-inherited-row-hover-color: var(--ag-row-hover-color);
@@ -922,6 +934,10 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "style": "solid",
       "width": 1,
     },
+    "columnDragIndicatorColor": {
+      "ref": "accentColor",
+    },
+    "columnDragIndicatorWidth": 2,
     "columnDropCellBackgroundColor": {
       "mix": 0.07,
       "ref": "foregroundColor",
@@ -941,6 +957,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "columnHoverColor": "rgba(148, 149, 152, .18)",
     "columnSelectIndentSize": {
       "ref": "iconSize",
+    },
+    "dataBackgroundColor": {
+      "ref": "backgroundColor",
     },
     "dataFontSize": {
       "ref": "fontSize",
@@ -1154,6 +1173,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "panelTitleBarFontWeight": {
       "ref": "headerFontWeight",
     },
+    "panelTitleBarHeight": {
+      "ref": "headerHeight",
+    },
     "panelTitleBarIconColor": {
       "ref": "headerTextColor",
     },
@@ -1176,7 +1198,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "pickerListBorder": true,
     "pinnedColumnBorder": true,
     "pinnedRowBackgroundColor": {
-      "ref": "backgroundColor",
+      "ref": "dataBackgroundColor",
     },
     "pinnedRowBorder": true,
     "pinnedRowFontWeight": 600,
@@ -1184,7 +1206,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "textColor",
     },
     "pinnedSourceRowBackgroundColor": {
-      "ref": "backgroundColor",
+      "ref": "dataBackgroundColor",
     },
     "pinnedSourceRowFontWeight": 600,
     "pinnedSourceRowTextColor": {
@@ -1218,6 +1240,10 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "cellBatchEditTextColor",
     },
     "rowBorder": true,
+    "rowDragIndicatorColor": {
+      "ref": "rangeSelectionBorderColor",
+    },
+    "rowDragIndicatorWidth": 2,
     "rowGroupIndentSize": {
       "calc": "cellWidgetSpacing + iconSize",
     },

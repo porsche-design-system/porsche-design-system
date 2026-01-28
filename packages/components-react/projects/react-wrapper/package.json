@@ -20,9 +20,9 @@
     "@porsche-design-system/components-js": "4.0.0-alpha.0"
   },
   "peerDependencies": {
-    "ag-grid-community": ">= 33.0.0 <35.0.0",
-    "ag-grid-enterprise": ">= 33.0.0 <35.0.0",
-    "ag-grid-react": ">= 33.0.0 <35.0.0",
+    "ag-grid-community": ">= 35.0.0 <36.0.0",
+    "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
+    "ag-grid-react": ">= 35.0.0 <36.0.0",
     "react": ">=19.0.0 <20.0.0",
     "react-dom": ">=19.0.0 <20.0.0",
     "tailwindcss": ">= 4.0.0 <5.0.0"

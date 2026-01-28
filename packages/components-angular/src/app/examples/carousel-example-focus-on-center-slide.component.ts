@@ -13,12 +13,14 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       [heading]="'Some Heading'"
       [gradient]="true"
       (update)="onCarouselUpdate($event)"
-    >
-      <div *ngFor="let slide of slides; let i = index" [ngClass]="getSlideClass(i)">
-        {{ slide }}
-      </div>
+      >
+      @for (slide of slides; track slide; let i = $index) {
+        <div [ngClass]="getSlideClass(i)">
+          {{ slide }}
+        </div>
+      }
     </p-carousel>
-  `,
+    `,
   styles: `
     @use '@porsche-design-system/components-angular/scss' as *;
 

@@ -14,9 +14,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+- `Angular`: Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
 ### Changed
 
-Import paths for `styles` package:
+- `Canvas`: visual appearance on mobile view
+- `Styles`: Import paths for npm package:
 
 ```diff
 - import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
@@ -36,6 +47,8 @@ Import paths for `styles` package:
 ### Fixed
 
 - `Vanilla Extract`: grid style media query not working
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
 
 ### Removed
 
@@ -293,6 +306,18 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
+## [3.32.0-rc.1] - 2026-01-12
+
+### Added
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
 
 ## [3.32.0-rc.0] - 2025-12-16
 
