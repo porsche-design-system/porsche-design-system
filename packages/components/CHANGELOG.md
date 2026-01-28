@@ -28,9 +28,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
 - `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
   ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+- `Tailwind CSS`:
+  - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
+    `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
+    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
 
 ### Changed
 
+- `Tailwind CSS`:
+  - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
 - `Canvas`: visual appearance on mobile view
 - `Styles`: Import paths for npm package:
 
