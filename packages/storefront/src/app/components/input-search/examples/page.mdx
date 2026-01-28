@@ -4,6 +4,7 @@ import { inputSearchStorySlots } from '@/app/components/input-search/input-searc
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { ComponentExample } from '@/components/playground/ComponentExample';
 import { inputSearchExampleForm } from '@porsche-design-system/shared/examples';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Input Search - Porsche Design System',
@@ -52,5 +53,12 @@ to avoid being mistaken for a button.
 
 If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
 `--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  If the <code>component</code> is in <code>disabled/loading</code> state
+  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
+  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
+  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+</Notification>
 
 <ComponentStory story={inputSearchStorySlots} />
