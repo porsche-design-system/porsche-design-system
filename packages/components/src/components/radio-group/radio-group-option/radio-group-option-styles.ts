@@ -163,13 +163,13 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          'input:hover,.label-wrapper:hover~.wrapper input': {
+          'input:hover,.wrapper:has(~.label-wrapper:hover) input': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          'input:checked:hover,.label-wrapper:hover~.wrapper input:checked': {
+          'input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -177,7 +177,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          '.label-wrapper:hover~.wrapper input': supportsChromiumMediaQuery({
+          '.wrapper:has(~.label-wrapper:hover) input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes a chrome bug where transition properties are stuck on hover
           }),
         })),
