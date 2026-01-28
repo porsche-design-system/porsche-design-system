@@ -16,11 +16,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
 - `Carousel`:
-  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
-  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+  - `width` prop now supports `wide` and `full` values
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
-- `Angular`: Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-ps`, `--p-carousel-pe` CSS custom property introduced to control the logical inline start/end padding
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
 - `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
   ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
 
