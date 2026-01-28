@@ -191,7 +191,6 @@ export class SegmentedControl {
     return (
       <fieldset
         class="root"
-        inert={this.disabled}
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
         aria-labelledby={labelId}

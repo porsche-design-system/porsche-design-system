@@ -76,12 +76,9 @@ export const getComponentCss = (
         color: primaryColor,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         textOverflow: 'ellipsis',
-        cursor: isDisabled ? 'not-allowed' : 'text',
+        cursor: isDisabled || isLoading ? 'not-allowed' : 'text',
         textAlign: 'center',
-        ...(isLoading && {
-          opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
-          cursor: 'not-allowed',
-        }),
+        ...(isLoading && getDisabledBaseStyles()),
         '&:focus-visible': {
           borderColor: formStateBorderHoverColor,
         },
