@@ -115,13 +115,13 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-textarea-wrapper:not(.force-label) textarea');
-  await forceHoverState(page, '.hover p-textarea-wrapper.force-label >>> label');
+  await forceHoverState(page, '.hover p-textarea-wrapper.force-label >>> .label-wrapper');
   await forceHoverState(page, '.hover p-textarea-wrapper a');
   await forceFocusState(page, '.focus p-textarea-wrapper textarea');
   await forceFocusVisibleState(page, '.focus p-textarea-wrapper a');
   await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper:not(.force-label) textarea');
   await forceFocusState(page, '.focus-hover p-textarea-wrapper.force-label textarea');
-  await forceHoverState(page, '.focus-hover p-textarea-wrapper.force-label >>> label');
+  await forceHoverState(page, '.focus-hover p-textarea-wrapper.force-label >>> .label-wrapper');
   await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper a');
 };
 
