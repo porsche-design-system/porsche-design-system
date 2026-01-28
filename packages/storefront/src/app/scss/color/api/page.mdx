@@ -1,67 +1,99 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import {
+  colorCanvas,
   colorCanvasLight,
   colorCanvasDark,
+  colorSurface,
   colorSurfaceLight,
   colorSurfaceDark,
+  colorFrosted,
   colorFrostedLight,
   colorFrostedDark,
+  colorFrostedSoft,
   colorFrostedSoftLight,
   colorFrostedSoftDark,
+  colorBackdrop,
   colorBackdropLight,
   colorBackdropDark,
+  colorPrimary,
   colorPrimaryLight,
   colorPrimaryDark,
+  colorContrastHigher,
   colorContrastHigherLight,
   colorContrastHigherDark,
+  colorContrastHigh,
   colorContrastHighLight,
   colorContrastHighDark,
+  colorContrastMedium,
   colorContrastMediumLight,
   colorContrastMediumDark,
+  colorContrastLow,
   colorContrastLowLight,
   colorContrastLowDark,
+  colorContrastLower,
   colorContrastLowerLight,
   colorContrastLowerDark,
+  colorInfo,
   colorInfoLight,
+  colorInfoMedium,
   colorInfoMediumLight,
+  colorInfoLow,
   colorInfoLowLight,
+  colorInfoFrosted,
   colorInfoFrostedLight,
+  colorInfoFrostedSoft,
   colorInfoFrostedSoftLight,
   colorInfoDark,
   colorInfoMediumDark,
   colorInfoLowDark,
   colorInfoFrostedDark,
   colorInfoFrostedSoftDark,
+  colorSuccess,
   colorSuccessLight,
+  colorSuccessMedium,
   colorSuccessMediumLight,
+  colorSuccessLow,
   colorSuccessLowLight,
+  colorSuccessFrosted,
   colorSuccessFrostedLight,
   colorSuccessFrostedSoftLight,
   colorSuccessDark,
   colorSuccessMediumDark,
   colorSuccessLowDark,
   colorSuccessFrostedDark,
+  colorSuccessFrostedSoft,
   colorSuccessFrostedSoftDark,
+  colorWarning,
   colorWarningLight,
+  colorWarningMedium,
   colorWarningMediumLight,
+  colorWarningLow,
   colorWarningLowLight,
+  colorWarningFrosted,
   colorWarningFrostedLight,
+  colorWarningFrostedSoft,
   colorWarningFrostedSoftLight,
   colorWarningDark,
   colorWarningMediumDark,
   colorWarningLowDark,
   colorWarningFrostedDark,
   colorWarningFrostedSoftDark,
+  colorError,
   colorErrorLight,
+  colorErrorMedium,
   colorErrorMediumLight,
+  colorErrorLow,
   colorErrorLowLight,
+  colorErrorFrosted,
   colorErrorFrostedLight,
+  colorErrorFrostedSoft,
   colorErrorFrostedSoftLight,
   colorErrorDark,
   colorErrorMediumDark,
   colorErrorLowDark,
   colorErrorFrostedDark,
   colorErrorFrostedSoftDark,
+  colorFocus,
   colorFocusLight,
   colorFocusDark,
 } from '@porsche-design-system/tokens';
@@ -79,37 +111,54 @@ export const metadata = {
 
 ### Background
 
-| Color                                                                               | SCSS Variable                                                               | Description                                                                                    | Value (light)        | Value (dark)        |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------- | ------------------- |
-| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>   | `$pds-theme-light-background-base`, `$pds-theme-dark-background-base`       | Holds the **canvas** color, typically used for surfaces.                                       | {colorCanvasLight}   | {colorCanvasDark}   |
-| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>  | `$pds-theme-light-background-surface`, `$pds-theme-dark-background-surface` | Holds the **surface** color, typically used for surfaces.                                      | {colorSurfaceLight}  | {colorSurfaceDark}  |
-| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>  | `$pds-theme-light-background-frosted`, `$pds-theme-dark-background-frosted` | Holds the **frosted** color, typically used as a background in combination with a blur effect. | {colorFrostedLight}  | {colorFrostedDark}  |
-| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div> | `$pds-theme-light-background-shading`, `$pds-theme-dark-background-shading` | Holds the **backdrop** color, typically used for backdrops.                                    | {colorBackdropLight} | {colorBackdropDark} |
+| Color                                                                                   | SCSS Variable         | Description                                                                                                             | Value              |
+| --------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>       | `$color-canvas`       | Holds the `light-dark()` **canvas** color, typically used for surfaces.                                                 | {colorCanvas}      |
+| <div className="light bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-canvas-light` | Holds the `light` **canvas** color, typically used for surfaces.                                                        | {colorCanvasLight} |
+| <div className="dark bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>  | `$color-canvas-dark`  | Holds the `dark` **canvas** color, typically used for surfaces.                                                         | {colorCanvasDark}  |
+| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>      | `$color-surface`      | Holds the **surface** color, typically used for surfaces.                                                               | {colorSurface}     |
+| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `$color-frosted`      | Holds the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | {colorFrosted}     |
+| <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-frosted-soft` | Holds the **frosted** color, typically used as a background `:hover`.                                                   | {colorFrostedSoft} |
+| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>     | `$color-backdrop`     | Holds the **backdrop** color, typically used for backdrops.                                                             | {colorBackdrop}    |
 
 ### Foreground
 
-| Color                                                                                      | SCSS Variable                                                         | Description                                                                                                    | Value (light)              | Value (dark)              |
-| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------- |
-| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `$pds-theme-light-primary`, `$pds-theme-dark-primary`                 | Holds the **primary** color, typically used for text.                                                          | {colorPrimaryLight}        | {colorPrimaryDark}        |
-| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `$pds-theme-light-contrast-high`, `$pds-theme-dark-contrast-high`     | Holds the **contrast-high** color, typically used for text.                                                    | {colorContrastHighLight}   | {colorContrastHighDark}   |
-| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `$pds-theme-light-contrast-medium`, `$pds-theme-dark-contrast-medium` | Holds the **contrast-medium** color, typically used for text.                                                  | {colorContrastMediumLight} | {colorContrastMediumDark} |
-| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `$pds-theme-light-contrast-low`, `$pds-theme-dark-contrast-low`       | Holds the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant. | {colorContrastLowLight}    | {colorContrastLowDark}    |
+| Color                                                                                      | SCSS Variable            | Description                                                                                                        | Value                 |
+| ------------------------------------------------------------------------------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-primary`         | Applies the **primary** color, typically used for text.                                                            | {colorPrimary}        |
+| <div className="bg-contrast-higher w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-contrast-higher` | Applies the **contrast-higher** color, typically used for text.                                                    | {colorContrastHigher} |
+| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `$color-contrast-high`   | Applies the **contrast-high** color, typically used for text.                                                      | {colorContrastHigh}   |
+| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-contrast-medium` | Applies the **contrast-medium** color, typically used for text.                                                    | {colorContrastMedium} |
+| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `$color-contrast-low`    | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | {colorContrastLow}    |
+| <div className="bg-contrast-lower w-10 h-10 rounded-md border border-contrast-low"></div>  | `$color-contrast-lower`  | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | {colorContrastLower}  |
 
 ### Semantic
 
-| Color                                                                                      | SCSS variable                                                                             | Description                                                                                          | Value (light)              | Value (dark)              |
-| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------- | ------------------------- |
-| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>            | `$pds-theme-light-notification-info`, `$pds-theme-dark-notification-info`                 | Holds the **info** color, typically used for text.                                                   | {colorInfoLight}           | {colorInfoDark}           |
-| <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>    | `$pds-theme-light-notification-info-soft`, `$pds-theme-dark-notification-info-soft`       | Holds the **info-frosted** color, typically used as background in combination with a blur effect.    | {colorInfoFrostedLight}    | {colorInfoFrostedDark}    |
-| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>         | `$pds-theme-light-notification-success`, `$pds-theme-dark-notification-success`           | Holds the **success** color, typically used for text.                                                | {colorSuccessLight}        | {colorSuccessDark}        |
-| <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div> | `$pds-theme-light-notification-success-soft`, `$pds-theme-dark-notification-success-soft` | Holds the **success-frosted** color, typically used as background in combination with a blur effect. | {colorSuccessFrostedLight} | {colorSuccessFrostedDark} |
-| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>         | `$pds-theme-light-notification-warning`, `$pds-theme-dark-notification-warning`           | Holds the **warning** color, typically used for text.                                                | {colorWarningLight}        | {colorWarningDark}        |
-| <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div> | `$pds-theme-light-notification-warning-soft`, `$pds-theme-dark-notification-warning-soft` | Holds the **warning-frosted** color, typically used as background in combination with a blur effect. | {colorWarningFrostedLight} | {colorWarningFrostedDark} |
-| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>           | `$pds-theme-light-notification-error`, `$pds-theme-dark-notification-error`               | Holds the **error** color, typically used for text.                                                  | {colorErrorLight}          | {colorErrorDark}          |
-| <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>   | `$pds-theme-light-notification-error-soft`, `$pds-theme-dark-notification-error-soft`     | Holds the **error-frosted** color, typically used as background in combination with a blur effect.   | {colorErrorFrostedLight}   | {colorErrorFrostedDark}   |
+| Color                                                                                           | SCSS Variable                 | Description                                                                                                                     | Value (light)             |
+| ----------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>                 | `$color-info`                 | Applies the **info** color, typically used for text.                                                                            | {colorInfo}               |
+| <div className="bg-info-medium w-10 h-10 rounded-md border border-contrast-low"></div>          | `$color-info-medium`          | Applies the **info** color, typically used for text or border.                                                                  | {colorInfoMedium}         |
+| <div className="bg-info-low w-10 h-10 rounded-md border border-contrast-low"></div>             | `$color-info-low`             | Applies the **info** color, typically used for text or border.                                                                  | {colorInfoLow}            |
+| <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-info-frosted`         | Applies the **info-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.    | {colorInfoFrosted}        |
+| <div className="bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>    | `$color-info-frosted-soft`    | Applies the **info-frosted-soft** color, typically used as background `:hover`.                                                 | {colorInfoFrostedSoft}    |
+| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>              | `$color-success`              | Applies the **success** color, typically used for text.                                                                         | {colorSuccess}            |
+| <div className="bg-success-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | `$color-success-medium`       | Applies the **success** color, typically used for text or border.                                                               | {colorSuccessMedium}      |
+| <div className="bg-success-low w-10 h-10 rounded-md border border-contrast-low"></div>          | `$color-success-low`          | Applies the **success** color, typically used for text or border.                                                               | {colorSuccessLow}         |
+| <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `$color-success-frosted`      | Applies the **success-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | {colorSuccessFrosted}     |
+| <div className="bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-success-frosted-soft` | Applies the **success-frosted-soft** color, typically used as background `:hover`.                                              | {colorSuccessFrostedSoft} |
+| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>              | `$color-warning`              | Applies the **warning** color, typically used for text.                                                                         | {colorWarning}            |
+| <div className="bg-warning-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | `$color-warning-medium`       | Applies the **warning** color, typically used for text or border.                                                               | {colorWarningMedium}      |
+| <div className="bg-warning-low w-10 h-10 rounded-md border border-contrast-low"></div>          | `$color-warning-low`          | Applies the **warning** color, typically used for text or border.                                                               | {colorWarningLow}         |
+| <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `$color-warning-frosted`      | Applies the **warning-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | {colorWarningFrosted}     |
+| <div className="bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-warning-frosted-soft` | Applies the **warning-frosted-soft** color, typically used as background `:hover`.                                              | {colorWarningFrostedSoft} |
+| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>                | `$color-error`                | Applies the **error** color, typically used for text.                                                                           | {colorError}              |
+| <div className="bg-error-medium w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-error-medium`         | Applies the **error** color, typically used for text or border.                                                                 | {colorErrorMedium}        |
+| <div className="bg-error-low w-10 h-10 rounded-md border border-contrast-low"></div>            | `$color-error-low`            | Applies the **error** color, typically used for text or border.                                                                 | {colorErrorLow}           |
+| <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | `$color-error-frosted`        | Applies the **error-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.   | {colorErrorFrosted}       |
+| <div className="bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | `$color-error-frosted-soft`   | Applies the **error-frosted-soft** color, typically used as background `:hover`.                                                | {colorErrorFrostedSoft}   |
 
 ### A11y
 
-| Color                                                                            | SCSS variable                                                 | Description                                                                           | Value (light)     | Value (dark)     |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------- | ---------------- |
-| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div> | `$pds-theme-light-state-focus`, `$pds-theme-dark-state-focus` | Holds the **focus** color, typically used as the outline for `:focus-visible` states. | {colorFocusLight} | {colorFocusDark} |
+| Color                                                                            | SCSS Variable  | Description                                                                             | Value (light) |
+| -------------------------------------------------------------------------------- | -------------- | --------------------------------------------------------------------------------------- | ------------- |
+| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-focus` | Applies the **focus** color, typically used as the outline for `:focus-visible` states. | {colorFocus}  |
