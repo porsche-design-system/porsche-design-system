@@ -32,11 +32,6 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-low' },
-          children: ['.text-contrast-low'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-success' },
           children: ['.text-success'],
         },
