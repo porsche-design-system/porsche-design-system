@@ -286,9 +286,9 @@ test.describe('keyboard behavior', () => {
 
   test('should skip disabled option and focus checked element on tab', async ({ page }) => {
     await initRadioGroup(page, {
-      props: { value: 'b', name: 'options', label: 'Some Label' },
+      props: { value: 'c', name: 'options', label: 'Some Label' },
       options: {
-        values: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+        values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }],
       },
     });
 
@@ -296,7 +296,7 @@ test.describe('keyboard behavior', () => {
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
-    await expect(options.nth(1)).toBeFocused();
+    await expect(options.nth(2)).toBeFocused();
   });
 
   test('should skip checked disabled option and focus 1st available element on tab', async ({ page }) => {
