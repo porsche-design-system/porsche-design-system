@@ -1,17 +1,17 @@
 @use 'border';
-@use 'theme';
+@use 'color';
 @use 'motion';
 
 @mixin pds-skeleton($theme: 'light') {
   @if ($theme == 'dark') {
-    background: theme.$pds-theme-dark-background-surface
+    background: color.$color-surface-dark
       linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%)
       0
       0 /
       200%
       100%;
   } @else {
-    background: theme.$pds-theme-light-background-surface
+    background: color.$color-surface-light
       linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%)
       0
       0 /

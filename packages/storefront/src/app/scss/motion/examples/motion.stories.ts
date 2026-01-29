@@ -13,32 +13,30 @@ export const motionScssStoryDuration: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'duration-short transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-sm transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $pds-motion-duration-short'],
+          children: ['transition-duration: $motion-duration-sm;'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'duration-moderate transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-md transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $pds-motion-duration-moderate'],
+          children: ['transition-duration: $motion-duration-md;'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'duration-long transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-lg transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $pds-motion-duration-long'],
+          children: ['transition-duration: $motion-duration-lg;'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'duration-very-long transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-xl transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $pds-motion-duration-very-long'],
+          children: ['transition-duration: $motion-duration-xl;'],
         },
       ],
     },
@@ -59,7 +57,7 @@ export const motionScssStoryEase: Story<'div'> = {
             className:
               'ease-in-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-timing-function: $pds-motion-easing-base'],
+          children: ['transition-timing-function: $motion-ease-in-out;'],
         },
         {
           tag: 'div',
@@ -67,7 +65,7 @@ export const motionScssStoryEase: Story<'div'> = {
             className:
               'ease-in transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-timing-function: $pds-motion-easing-in'],
+          children: ['transition-timing-function: $motion-ease-in;'],
         },
         {
           tag: 'div',
@@ -75,7 +73,7 @@ export const motionScssStoryEase: Story<'div'> = {
             className:
               'ease-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-timing-function: $pds-motion-easing-out'],
+          children: ['transition-timing-function: $motion-ease-out;'],
         },
       ],
     },
