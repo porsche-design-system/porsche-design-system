@@ -1,4 +1,5 @@
 import {
+  borderRadiusLg,
   borderRadiusMd,
   borderRadiusSm,
   borderRadiusXl,
@@ -22,6 +23,8 @@ import {
   colorFocusLight,
   colorFrostedDark,
   colorFrostedLight,
+  colorFrostedSoftDark,
+  colorFrostedSoftLight,
   colorInfoDark,
   colorInfoLight,
   colorInfoLowDark,
@@ -42,6 +45,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const styles = {
+  borderRadiusLg,
   borderRadiusMd,
   borderRadiusSm,
   borderRadiusXl,
@@ -65,6 +69,8 @@ const styles = {
   colorFocusLight,
   colorFrostedDark,
   colorFrostedLight,
+  colorFrostedSoftDark,
+  colorFrostedSoftLight,
   colorInfoDark,
   colorInfoLight,
   colorInfoLowDark,

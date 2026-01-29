@@ -1,13 +1,13 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
-  colorCanvasDark,
-  colorCanvasLight,
-  colorContrastHighDark,
-  colorContrastHighLight,
-  colorContrastMediumDark,
+  borderRadiusLg,
+  colorContrastLowerDark,
+  colorContrastLowerLight,
   colorContrastMediumLight,
   colorDisabledDark,
   colorDisabledLight,
+  colorFrostedSoftDark,
+  colorFrostedSoftLight,
   colorPrimaryDark,
   colorPrimaryLight,
 } from '../styles';
@@ -20,38 +20,38 @@ export const radioCheckedShapeImage = `<svg xmlns="http://www.w3.org/2000/svg" v
 export const checkboxStyle: Part = createPart({
   feature: 'checkboxStyle',
   params: {
-    checkboxUncheckedBackgroundColor: { ref: 'backgroundColor' },
-    checkboxCheckedShapeColor: { ref: 'backgroundColor' },
+    checkboxUncheckedBackgroundColor: colorFrostedSoftLight,
+    checkboxCheckedShapeColor: colorPrimaryLight,
     checkboxCheckedShapeImage: { svg: checkboxCheckedShapeImage },
     checkboxIndeterminateShapeImage: { svg: checkboxIndeterminateShapeImage },
     radioCheckedShapeImage: { svg: radioCheckedShapeImage },
-    checkboxCheckedBackgroundColor: colorPrimaryLight,
-    checkboxCheckedBorderColor: colorPrimaryLight,
-    checkboxUncheckedBorderColor: colorContrastMediumLight,
+    checkboxCheckedBackgroundColor: colorFrostedSoftLight,
+    checkboxCheckedBorderColor: colorContrastLowerLight,
+    checkboxUncheckedBorderColor: colorContrastLowerLight,
     checkboxIndeterminateBorderColor: colorContrastMediumLight,
-    checkboxIndeterminateBackgroundColor: colorCanvasLight,
+    checkboxIndeterminateBackgroundColor: colorFrostedSoftLight,
     checkboxIndeterminateShapeColor: colorPrimaryLight,
     checkboxUncheckedHoverBorderColor: colorPrimaryLight,
-    checkboxCheckedHoverBorderColor: colorContrastHighLight,
-    checkboxCheckedHoverBackgroundColor: colorContrastHighLight,
+    checkboxCheckedHoverBorderColor: colorPrimaryLight,
+    checkboxCheckedHoverBackgroundColor: colorFrostedSoftLight,
     checkboxDisabledColor: colorDisabledLight,
   },
   modeParams: {
     [pdsThemeModeDark]: {
-      checkboxUncheckedBackgroundColor: { ref: 'backgroundColor' },
-      checkboxCheckedShapeColor: { ref: 'backgroundColor' },
+      checkboxUncheckedBackgroundColor: colorFrostedSoftDark,
+      checkboxCheckedShapeColor: colorPrimaryDark,
       checkboxCheckedShapeImage: { svg: checkboxCheckedShapeImage },
       checkboxIndeterminateShapeImage: { svg: checkboxIndeterminateShapeImage },
       radioCheckedShapeImage: { svg: radioCheckedShapeImage },
-      checkboxCheckedBackgroundColor: colorPrimaryDark,
-      checkboxCheckedBorderColor: colorPrimaryDark,
-      checkboxUncheckedBorderColor: colorContrastMediumDark,
-      checkboxIndeterminateBorderColor: colorContrastMediumDark,
-      checkboxIndeterminateBackgroundColor: colorCanvasDark,
+      checkboxCheckedBackgroundColor: colorFrostedSoftDark,
+      checkboxCheckedBorderColor: colorContrastLowerDark,
+      checkboxUncheckedBorderColor: colorContrastLowerDark,
+      checkboxIndeterminateBorderColor: colorContrastLowerDark,
+      checkboxIndeterminateBackgroundColor: colorFrostedSoftDark,
       checkboxIndeterminateShapeColor: colorPrimaryDark,
       checkboxUncheckedHoverBorderColor: colorPrimaryDark,
-      checkboxCheckedHoverBorderColor: colorContrastHighDark,
-      checkboxCheckedHoverBackgroundColor: colorContrastHighDark,
+      checkboxCheckedHoverBorderColor: colorPrimaryDark,
+      checkboxCheckedHoverBackgroundColor: colorFrostedSoftDark,
       checkboxDisabledColor: colorDisabledDark,
     },
   },
@@ -63,7 +63,7 @@ export const checkboxStyle: Part = createPart({
         width: var(--ag-icon-size);
         height: var(--ag-icon-size);
         background-color: var(--ag-checkbox-unchecked-background-color);
-        border: solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);
+        border: solid 1px var(--ag-checkbox-unchecked-border-color);
 
         :where(input) {
             cursor: pointer;
@@ -124,7 +124,7 @@ export const checkboxStyle: Part = createPart({
     }
 
     .ag-checkbox-input-wrapper {
-        border-radius: var(--ag-checkbox-border-radius);
+        border-radius: ${borderRadiusLg};
 
         &.ag-checked::after {
             mask-image: var(--ag-checkbox-checked-shape-image);
