@@ -70,7 +70,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Shadow: `$box-shadow-sm`, `$box-shadow-md` and `$box-shadow-lg`
   - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`,
     `@mixin prose-heading-2xl()`, `@mixin prose-heading-xl()`, `@mixin prose-heading-lg()`, `@mixin prose-heading-md()`,
-    `@mixin prose-heading-sm()`
+    `@mixin prose-heading-sm()`, `@mixin prose-text-xl()`, `@mixin prose-text-lg()`, `@mixin prose-text-md()`,
+    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` and `@mixin prose-text-2xs()`
 
 ### Changed
 

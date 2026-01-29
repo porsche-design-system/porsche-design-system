@@ -79,32 +79,32 @@ export const typographyScssStoryText: Story<'div'> = {
         {
           tag: 'p',
           properties: { className: 'prose-text-xl hyphens-auto' },
-          children: ['@include pds-text-x-large;'],
+          children: ['@include prose-text-xl;'],
         },
         {
           tag: 'p',
           properties: { className: 'prose-text-lg hyphens-auto' },
-          children: ['@include pds-text-large;'],
+          children: ['@include prose-text-lg;'],
         },
         {
           tag: 'p',
           properties: { className: 'prose-text-md hyphens-auto' },
-          children: ['@include pds-text-medium;'],
+          children: ['@include prose-text-md;'],
         },
         {
           tag: 'p',
           properties: { className: 'prose-text-sm hyphens-auto' },
-          children: ['@include pds-text-small;'],
+          children: ['@include prose-text-sm;'],
         },
         {
           tag: 'p',
           properties: { className: 'prose-text-xs hyphens-auto' },
-          children: ['@include pds-text-x-small;'],
+          children: ['@include prose-text-xs;'],
         },
         {
           tag: 'p',
           properties: { className: 'prose-text-2xs hyphens-auto' },
-          children: ['@include pds-text-xx-small;'],
+          children: ['@include prose-text-2xs;'],
         },
       ],
     },

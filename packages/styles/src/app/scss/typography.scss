@@ -51,31 +51,31 @@
 }
 
 .scss-text-xl {
-  @include pds.pds-text-x-large;
+  @include pds.prose-text-xl;
   margin: 0;
 }
 
 .scss-text-lg {
-  @include pds.pds-text-large;
+  @include pds.prose-text-lg;
   margin: 0;
 }
 
 .scss-text-md {
-  @include pds.pds-text-medium;
+  @include pds.prose-text-md;
   margin: 0;
 }
 
 .scss-text-sm {
-  @include pds.pds-text-small;
+  @include pds.prose-text-sm;
   margin: 0;
 }
 
 .scss-text-xs {
-  @include pds.pds-text-x-small;
+  @include pds.prose-text-xs;
   margin: 0;
 }
 
 .scss-text-2xs {
-  @include pds.pds-text-xx-small;
+  @include pds.prose-text-2xs;
   margin: 0;
 }
