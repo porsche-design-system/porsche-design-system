@@ -75,7 +75,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`,
     `@mixin prose-heading-2xl()`, `@mixin prose-heading-xl()`, `@mixin prose-heading-lg()`, `@mixin prose-heading-md()`,
     `@mixin prose-heading-sm()`, `@mixin prose-text-xl()`, `@mixin prose-text-lg()`, `@mixin prose-text-md()`,
-    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` and `@mixin prose-text-2xs()`
+    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` `@mixin prose-text-2xs()`, `$font-porsche-next`,
+    `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
+    `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
 
 ### Changed
 
