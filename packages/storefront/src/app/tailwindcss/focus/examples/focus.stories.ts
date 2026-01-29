@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const focusScssStory: Story<'div'> = {
+export const focusTailwindStory: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
@@ -16,7 +16,7 @@ export const focusScssStory: Story<'div'> = {
             type: 'button',
             className: 'focus-visible:outline outline-focus outline-offset-2 rounded-xl p-static-sm bg-frosted',
           },
-          children: ['@include focus-visible();'],
+          children: ['.focus-visible:outline .outline-focus .outline-offset-2'],
         },
       ],
     },
