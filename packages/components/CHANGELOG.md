@@ -67,7 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Media Query: `@mixin media-query-min()`, `@mixin media-query-max()` and `@mixin media-query-min-max()`
   - Motion: `$motion-duration-sm`, `$motion-duration-md`, `$motion-duration-lg`, `$motion-duration-xl`,
     `$motion-ease-in-out`, `$motion-ease-in` and `$motion-ease-out`
-  - Shadow: `$box-shadow-sm`, `$box-shadow-md` and `$box-shadow-lg`
+  - Shadow: `$shadow-sm`, `$shadow-md` and `$shadow-lg`
   - Spacing: `$spacing-fluid-xs`, `$spacing-fluid-sm`, `$spacing-fluid-md`, `$spacing-fluid-lg`, `$spacing-fluid-xl`,
     `$spacing-fluid-2xl`, `$spacing-static-xs`, `$spacing-static-sm`, `$spacing-static-md`, `$spacing-static-lg`,
     `$spacing-static-xl` and `$spacing-static-2xl`
