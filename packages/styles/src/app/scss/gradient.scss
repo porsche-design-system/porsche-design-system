@@ -1,30 +1,30 @@
-@use '@porsche-design-system/scss' as *;
+@use '@porsche-design-system/scss' as pds;
 
 .scss-gradient {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: $pds-spacing-fluid-medium;
-  padding: $pds-spacing-fluid-medium;
+  gap: pds.$spacing-fluid-md;
+  padding: pds.$spacing-fluid-md;
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 
   &__item {
-    @include pds-text-small;
+    @include pds.prose-text-sm;
     color: white;
-    border-radius: $pds-border-radius-large;
-    padding: $pds-spacing-fluid-medium;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-md;
 
     &--top {
-      @include pds-gradient-to-top;
+      background: linear-gradient(to top, pds.$gradient-stops-fade-dark);
     }
     &--left {
-      @include pds-gradient-to-left;
+      background: linear-gradient(to left, pds.$gradient-stops-fade-dark);
     }
     &--bottom {
-      @include pds-gradient-to-bottom;
+      background: linear-gradient(to bottom, pds.$gradient-stops-fade-dark);
     }
     &--right {
-      @include pds-gradient-to-right;
+      background: linear-gradient(to right, pds.$gradient-stops-fade-dark);
     }
   }
 }

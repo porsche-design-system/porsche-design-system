@@ -63,6 +63,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `$color-info-medium-dark`, `$color-info-frosted`, `$color-info-frosted-light`, `$color-info-frosted-dark`,
     `$color-info-frosted-soft`, `$color-info-frosted-soft-light` and `$color-info-frosted-soft-dark`
   - Focus: `@mixin focus-visible()`
+  - Gradient: `$gradient-stops-fade-dark`
   - Skeleton: `@mixin skeleton()`
   - Media Query: `@mixin media-query-min()`, `@mixin media-query-max()` and `@mixin media-query-min-max()`
   - Motion: `$duration-sm`, `$duration-md`, `$duration-lg`, `$duration-xl`, `$ease-in-out`, `$ease-in` and `$ease-out`
