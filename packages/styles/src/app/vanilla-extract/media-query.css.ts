@@ -23,13 +23,6 @@ const getTypographyStyle = {
 export const VanillaExtractMediaQueryMin = style({
   ...getTypographyStyle,
   '@media': {
-    [getMediaQueryMin('base')]: {
-      selectors: {
-        '&::after': {
-          content: '" base"',
-        },
-      },
-    },
     [getMediaQueryMin('xs')]: {
       selectors: {
         '&::after': {
@@ -126,13 +119,6 @@ export const VanillaExtractMediaQueryMax = style({
 export const VanillaExtractMediaQueryMinMax = style({
   ...getTypographyStyle,
   '@media': {
-    [getMediaQueryMinMax('base', 'xs')]: {
-      selectors: {
-        '&::after': {
-          content: '" base - xs"',
-        },
-      },
-    },
     [getMediaQueryMinMax('xs', 's')]: {
       selectors: {
         '&::after': {

@@ -11,26 +11,25 @@ export const metadata = {
 
 The Porsche Design System provides SCSS Mixins for the media queries and SCSS Variables for breakpoints.
 
-- min-width: `@mixin pds-media-query-min('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
-- max-width: `@mixin pds-media-query-max('xs'|'s'|'m'|'l'|'xl'|'xxl')`
-- min-width and max-width: `@mixin pds-media-query-min-max('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`.
+- min-width: `@mixin media-query-min('xs'|'sm'|'md'|'lg'|'xl'|'2xl')`
+- max-width: `@mixin media-query-max('xs'|'sm'|'md'|'lg'|'xl'|'2xl')`
+- min-width and max-width: `@mixin media-query-min-max('xs'|'sm'|'md'|'lg'|'xl'|'2xl', 'xs'|'sm'|'md'|'lg'|'xl'|'2xl')`.
 
 ```scss
 // Usage example:
-@include pds-media-query-min('xs') {
+@include media-query-min('xs') {
   // styles for min-width: xs
 }
 ```
 
 All breakpoints are also available as SCSS Variables:
 
-- Base: `$pds-breakpoint-base`
-- xs: `$pds-breakpoint-xs`
-- s: `$pds-breakpoint-s`
-- m: `$pds-breakpoint-m`
-- l: `$pds-breakpoint-l`
-- xl: `$pds-breakpoint-xl`
-- xxl: `$pds-breakpoint-xxl`
+- xs: `$breakpoint-xs`
+- sm: `$breakpoint-sm`
+- md: `$breakpoint-md`
+- lg: `$breakpoint-lg`
+- xl: `$breakpoint-xl`
+- 2xl: `$breakpoint-2xl`
 
 Styles import: `@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;`
 

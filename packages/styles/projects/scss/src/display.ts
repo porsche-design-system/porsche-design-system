@@ -2,16 +2,27 @@ import { fontFamilyPorscheNext, fontLineHeightNormal, fontWeightNormal } from '@
 
 export const getDisplayScss = () => {
   return `
-    @mixin pds-display-large {
+    @mixin prose-display-lg {
       font: normal normal ${fontWeightNormal} clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
-
-    @mixin pds-display-medium {
+    @mixin prose-display-md {
       font: normal normal ${fontWeightNormal} clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem) / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
-
-    @mixin pds-display-small {
+    @mixin prose-display-sm {
       font: normal normal ${fontWeightNormal} clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem) / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+    }
+
+    /* alias (deprecated) */
+    @mixin pds-display-large {
+      @include prose-display-lg();
+    }
+    /* alias (deprecated) */
+    @mixin pds-display-medium {
+      @include prose-display-md();
+    }
+    /* alias (deprecated) */
+    @mixin pds-display-small {
+      @include prose-display-sm();
     }
   `;
 };

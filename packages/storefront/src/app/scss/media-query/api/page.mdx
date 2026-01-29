@@ -19,20 +19,19 @@ export const metadata = {
 
 ## SCSS Mixins
 
-| SCSS Mixins                                                                                           | Description                                                       |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `@mixin pds-media-query-min('base'\|'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')`                                | Applies a **min** media query with the specified breakpoint.      |
-| `@mixin pds-media-query-max('xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')`                                        | Applies a **max** media query with the specified breakpoint.      |
-| `@mixin pds-media-query-min-max('base'\|'xs'\|'s'\|'m'\|'l'\|'xl', 'xs'\|'s'\|'m'\|'l'\|'xl'\|'xxl')` | Applies a **min-max** media query with the specified breakpoints. |
+| SCSS Mixins                                                                                            | Description                                                       |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| `@mixin media-query-min('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')`                                          | Applies a **min** media query with the specified breakpoint.      |
+| `@mixin media-query-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')`                                          | Applies a **max** media query with the specified breakpoint.      |
+| `@mixin media-query-min-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl', 'xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')` | Applies a **min-max** media query with the specified breakpoints. |
 
 ## SCSS Variables
 
-| SCSS Variable          | Description                        | Value           |
-| ---------------------- | ---------------------------------- | --------------- |
-| `$pds-breakpoint-base` | Holds the `base` breakpoint value. | 0               |
-| `$pds-breakpoint-xs`   | Holds the `xs` breakpoint value.   | {breakpointXs}  |
-| `$pds-breakpoint-s`    | Holds the `sm` breakpoint value.   | {breakpointSm}  |
-| `$pds-breakpoint-m`    | Holds the `md` breakpoint value.   | {breakpointMd}  |
-| `$pds-breakpoint-l`    | Holds the `lg` breakpoint value.   | {breakpointLg}  |
-| `$pds-breakpoint-xl`   | Holds the `xl` breakpoint value.   | {breakpointXl}  |
-| `$pds-breakpoint-xxl`  | Holds the `2xl` breakpoint value.  | {breakpoint2Xl} |
+| SCSS Variable     | Description                       | Value           |
+| ----------------- | --------------------------------- | --------------- |
+| `$breakpoint-xs`  | Holds the `xs` breakpoint value.  | {breakpointXs}  |
+| `$breakpoint-sm`  | Holds the `sm` breakpoint value.  | {breakpointSm}  |
+| `$breakpoint-md`  | Holds the `md` breakpoint value.  | {breakpointMd}  |
+| `$breakpoint-lg`  | Holds the `lg` breakpoint value.  | {breakpointLg}  |
+| `$breakpoint-xl`  | Holds the `xl` breakpoint value.  | {breakpointXl}  |
+| `$breakpoint-2xl` | Holds the `2xl` breakpoint value. | {breakpoint2Xl} |

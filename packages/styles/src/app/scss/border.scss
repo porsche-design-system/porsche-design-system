@@ -18,50 +18,31 @@
     padding: pds.$pds-spacing-fluid-medium;
 
     &--xs {
-      border-radius: pds.$border-radius-xs;
+      border-radius: pds.$radius-xs;
     }
     &--sm {
-      border-radius: pds.$border-radius-sm;
+      border-radius: pds.$radius-sm;
     }
     &--md {
-      border-radius: pds.$border-radius-md;
+      border-radius: pds.$radius-md;
     }
     &--lg {
-      border-radius: pds.$border-radius-lg;
+      border-radius: pds.$radius-lg;
     }
     &--xl {
-      border-radius: pds.$border-radius-xl;
+      border-radius: pds.$radius-xl;
     }
     &--2xl {
-      border-radius: pds.$border-radius-2xl;
+      border-radius: pds.$radius-2xl;
     }
     &--3xl {
-      border-radius: pds.$border-radius-3xl;
+      border-radius: pds.$radius-3xl;
     }
     &--4xl {
-      border-radius: pds.$border-radius-4xl;
+      border-radius: pds.$radius-4xl;
     }
     &--full {
-      border-radius: pds.$border-radius-full;
-    }
-  }
-
-  &__width-wrapper {
-    display: grid;
-    gap: pds.$pds-spacing-fluid-medium;
-    @include pds.pds-text-small;
-    color: var(--scss-color-primary);
-  }
-
-  &__width {
-    border-style: solid;
-    padding: pds.$pds-spacing-fluid-medium;
-
-    &--1 {
-      border-width: pds.$border-width-1;
-    }
-    &--2 {
-      border-width: pds.$border-width-2;
+      border-radius: pds.$radius-full;
     }
   }
 }

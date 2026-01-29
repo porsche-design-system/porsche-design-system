@@ -59,30 +59,3 @@ export const borderRadiusScssStory: Story<'div'> = {
     },
   ],
 };
-
-export const borderWidthScssStory: Story<'div'> = {
-  generator: () => [
-    {
-      tag: 'div',
-      properties: {
-        className: 'grid gap-fluid-md prose-text-sm',
-      },
-      children: [
-        {
-          tag: 'div',
-          properties: {
-            className: 'border-1 p-fluid-md',
-          },
-          children: ['border-width: $border-width-1;'],
-        },
-        {
-          tag: 'div',
-          properties: {
-            className: 'border-2 p-fluid-md',
-          },
-          children: ['border-width: $border-width-2;'],
-        },
-      ],
-    },
-  ],
-};

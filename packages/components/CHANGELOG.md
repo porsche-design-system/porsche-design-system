@@ -36,9 +36,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
 - `SCSS`:
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
-  - Border: `$border-radius-xs`, `$border-radius-sm`, `$border-radius-md`, `$border-radius-lg`, `$border-radius-xl`,
-    `$border-radius-2xl`, `$border-radius-3xl`, `$border-radius-4xl`, `$border-radius-full`, `$border-width-1` and
-    `$border-width-2`
+  - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
+    `$breakpoint-2xl`
+  - Border: `$radius-xs`, `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-2xl`, `$radius-3xl`,
+    `$radius-4xl` and `$radius-full`
   - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
     `$color-canvas-dark`, `$color-surface`, `$color-surface-light`, `$color-surface-dark`, `$color-frosted`,
     `$color-frosted-light`, `$color-frosted-dark`, `$color-frosted-soft`, `$color-frosted-soft-light`,
@@ -63,9 +64,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `$color-info-low-light`, `$color-info-low-dark`, `$color-info-medium`, `$color-info-medium-light`,
     `$color-info-medium-dark`, `$color-info-frosted`, `$color-info-frosted-light`, `$color-info-frosted-dark`,
     `$color-info-frosted-soft`, `$color-info-frosted-soft-light` and `$color-info-frosted-soft-dark`
+  - Focus: `@mixin focus-visible()`
+  - Skeleton: `@mixin skeleton()`
+  - Media Query: `@mixin media-query-min()`, `@mixin media-query-max()` and `@mixin media-query-min-max()`
   - Motion: `$motion-duration-sm`, `$motion-duration-md`, `$motion-duration-lg`, `$motion-duration-xl`,
     `$motion-ease-in-out`, `$motion-ease-in` and `$motion-ease-out`
   - Shadow: `$box-shadow-sm`, `$box-shadow-md` and `$box-shadow-lg`
+  - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`,
+    `@mixin prose-heading-2xl()`, `@mixin prose-heading-xl()`, `@mixin prose-heading-lg()`, `@mixin prose-heading-md()`,
+    `@mixin prose-heading-sm()`, `@mixin prose-text-xl()`, `@mixin prose-text-lg()`, `@mixin prose-text-md()`,
+    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` and `@mixin prose-text-2xs()`
 
 ### Changed
 

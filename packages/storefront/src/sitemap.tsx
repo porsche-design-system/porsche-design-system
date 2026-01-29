@@ -692,6 +692,23 @@ export const sitemap: Routes = {
           },
         },
       },
+      focus: {
+        name: 'Focus',
+        path: '/tailwindcss/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwindcss/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwindcss/focus/usage',
+            type: 'TAB',
+          },
+        },
+      },
       gradient: {
         name: 'Gradient',
         path: '/tailwindcss/gradient',

@@ -11,7 +11,7 @@ export const skeletonScssStory: Story<'div'> = {
         {
           tag: 'span',
           properties: { className: 'skeleton p-fluid-sm' },
-          children: ["@include pds-skeleton('light'|'dark');"],
+          children: ["@include skeleton('light'|'dark'|'auto');"],
         },
         {
           tag: 'span',

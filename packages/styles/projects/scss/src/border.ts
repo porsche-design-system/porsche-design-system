@@ -14,18 +14,15 @@ import {
 
 export const getBorderScss = () => {
   return `
-    $border-radius-xs: ${borderRadiusXs};
-    $border-radius-sm: ${borderRadiusSm};
-    $border-radius-md: ${borderRadiusMd};
-    $border-radius-lg: ${borderRadiusLg};
-    $border-radius-xl: ${borderRadiusXl};
-    $border-radius-2xl: ${borderRadius2Xl};
-    $border-radius-3xl: ${borderRadius3Xl};
-    $border-radius-4xl: ${borderRadius4Xl};
-    $border-radius-full: ${borderRadiusFull};
-
-    $border-width-1: ${borderWidthThin};
-    $border-width-2: ${borderWidthRegular};
+    $radius-xs: ${borderRadiusXs};
+    $radius-sm: ${borderRadiusSm};
+    $radius-md: ${borderRadiusMd};
+    $radius-lg: ${borderRadiusLg};
+    $radius-xl: ${borderRadiusXl};
+    $radius-2xl: ${borderRadius2Xl};
+    $radius-3xl: ${borderRadius3Xl};
+    $radius-4xl: ${borderRadius4Xl};
+    $radius-full: ${borderRadiusFull};
 
     $pds-border-radius-small: ${borderRadiusSm}; /* alias (deprecated) */
     $pds-border-radius-medium: ${borderRadiusMd}; /* alias (deprecated) */

@@ -2,16 +2,20 @@
 @use 'sass:map';
 
 $pds-breakpoints: (
-  'base': breakpoint.$pds-breakpoint-base,
-  'xs': breakpoint.$pds-breakpoint-xs,
-  's': breakpoint.$pds-breakpoint-s,
-  'm': breakpoint.$pds-breakpoint-m,
-  'l': breakpoint.$pds-breakpoint-l,
-  'xl': breakpoint.$pds-breakpoint-xl,
-  'xxl': breakpoint.$pds-breakpoint-xxl,
+  'xs': breakpoint.$breakpoint-xs,
+  'sm': breakpoint.$breakpoint-sm,
+  'md': breakpoint.$breakpoint-md,
+  'lg': breakpoint.$breakpoint-lg,
+  'xl': breakpoint.$breakpoint-xl,
+  '2xl': breakpoint.$breakpoint-2xl,
+  'base': breakpoint.$pds-breakpoint-base, /* (deprecated) */
+  's': breakpoint.$breakpoint-sm, /* alias (deprecated) */
+  'm': breakpoint.$breakpoint-md, /* alias (deprecated) */
+  'l': breakpoint.$breakpoint-lg, /* alias (deprecated) */
+  'xxl': breakpoint.$breakpoint-2xl, /* alias (deprecated) */
 );
 
-@mixin pds-media-query-min($min: null) {
+@mixin media-query-min($min: null) {
   @if map.has-key($pds-breakpoints, $min) {
     @media (min-width: #{map.get($pds-breakpoints, $min)}px) {
       @content;
@@ -21,7 +25,14 @@ $pds-breakpoints: (
   }
 }
 
-@mixin pds-media-query-max($max: null) {
+/* alias (deprecated) */
+@mixin pds-media-query-min($min: null) {
+  @include media-query-min($min) {
+    @content;
+  }
+}
+
+@mixin media-query-max($max: null) {
   @if map.has-key($pds-breakpoints, $max) {
     @media (max-width: #{map.get($pds-breakpoints, $max) - 1}px) {
       @content;
@@ -31,12 +42,26 @@ $pds-breakpoints: (
   }
 }
 
-@mixin pds-media-query-min-max($min: null, $max: null) {
+/* alias (deprecated) */
+@mixin pds-media-query-max($max: null) {
+  @include media-query-max($max) {
+    @content;
+  }
+}
+
+@mixin media-query-min-max($min: null, $max: null) {
   @if map.has-key($pds-breakpoints, $min) and map.has-key($pds-breakpoints, $max) {
     @media (min-width: #{map.get($pds-breakpoints, $min)}px) and (max-width: #{map.get($pds-breakpoints, $max) - 1}px) {
       @content;
     }
   } @else {
     @error "Passed #{$min} and/or #{$max} breakpoint is not available for used pds-media-query-min-max() mixin.";
+  }
+}
+
+/* alias (deprecated) */
+@mixin pds-media-query-min-max($min: null, $max: null) {
+  @include media-query-min-max($min, $max) {
+    @content;
   }
 }
