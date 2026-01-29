@@ -26,6 +26,7 @@ import { EmotionTypography } from './app/emotion/EmotionTypography.tsx';
 import { ScssBlur } from './app/scss/ScssBlur.tsx';
 import { ScssBorder } from './app/scss/ScssBorder.tsx';
 import { ScssColor } from './app/scss/ScssColor.tsx';
+import { ScssFocusVisible } from './app/scss/ScssFocusVisible.tsx';
 import { ScssGradient } from './app/scss/ScssGradient.tsx';
 import { ScssGrid } from './app/scss/ScssGrid.tsx';
 import { ScssMediaQuery } from './app/scss/ScssMediaQuery.tsx';
@@ -90,6 +91,7 @@ export const styles = [
   'blur',
   'border',
   'color',
+  'focus-visible',
   'gradient',
   'grid',
   'media-query',
@@ -117,6 +119,7 @@ export const routes: RouteConfig[] = [
   { path: '/scss/blur', label: 'SCSS - Blur', element: <ScssBlur /> },
   { path: '/scss/border', label: 'SCSS - Border', element: <ScssBorder /> },
   { path: '/scss/color', label: 'SCSS - Color', element: <ScssColor /> },
+  { path: '/scss/focus-visible', label: 'SCSS - Focus Visible', element: <ScssFocusVisible /> },
   { path: '/scss/gradient', label: 'SCSS - Gradient', element: <ScssGradient /> },
   { path: '/scss/grid', label: 'SCSS - Grid', element: <ScssGrid /> },
   { path: '/scss/media-query', label: 'SCSS - Media Query', element: <ScssMediaQuery /> },

@@ -1,0 +1,11 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-focus-visible {
+  padding: pds.$pds-spacing-static-medium;
+
+  &__button {
+    @include pds.focus-visible();
+    border-radius: pds.$border-radius-md;
+    padding: pds.$pds-spacing-static-small;
+  }
+}
