@@ -1,8 +1,8 @@
-import { gradientFadeDark } from '@porsche-design-system/tokens';
+import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
 
 export const getGradientScss = () => {
   return `
-    $gradient-stops-fade-dark: ${gradientFadeDark};
+    $gradient-stops-fade-dark: ${gradientStopsFadeDark};
 
     /* alias (deprecated) */
     @mixin pds-gradient-to-bottom {
