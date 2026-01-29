@@ -1,1 +1,1 @@
-export { fontFamilyPorscheNext } from './fontFamilyPorscheNext';
+export { fontPorscheNext } from './fontPorscheNext';

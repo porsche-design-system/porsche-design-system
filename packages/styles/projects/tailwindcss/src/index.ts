@@ -10,7 +10,6 @@ import {
   borderRadiusSm,
   borderRadiusXl,
   borderRadiusXs,
-  borderWidthRegular,
   borderWidthThin,
   breakpoint2Xl,
   breakpointLg,
@@ -134,10 +133,8 @@ export const getTailwindcssTheme = () => {
   --radius-full: ${borderRadiusFull};
 
   --default-border-width: ${borderWidthThin};
-  --border-width-1: ${borderWidthThin};
-  --border-width-regular: var(--border-width-1); /* alias (deprecated) */
-  --border-width-thin: var(--border-width-1); /* alias (deprecated) */
-  --border-width-2: ${borderWidthRegular};
+  --border-width-regular: 2px; /* alias (deprecated) */
+  --border-width-thin: 1px; /* alias (deprecated) */
 
   /* Blur */
   --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
@@ -151,7 +148,7 @@ export const getTailwindcssTheme = () => {
   --shadow-high: var(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
-  --default-outline-width: ${borderWidthRegular};
+  --default-outline-width: 2px;
 
   /* Motion */
   --default-transition-timing-function: ${motionEaseInOut};

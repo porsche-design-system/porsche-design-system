@@ -8,8 +8,6 @@ import {
   borderRadiusSm,
   borderRadiusXl,
   borderRadiusXs,
-  borderWidthRegular,
-  borderWidthThin,
 } from '@porsche-design-system/tokens';
 
 export const getBorderScss = () => {
@@ -27,7 +25,7 @@ export const getBorderScss = () => {
     $pds-border-radius-small: ${borderRadiusSm}; /* alias (deprecated) */
     $pds-border-radius-medium: ${borderRadiusMd}; /* alias (deprecated) */
     $pds-border-radius-large: ${borderRadiusLg}; /* alias (deprecated) */
-    $pds-border-width-base: ${borderWidthRegular}; /* alias (deprecated) */
-    $pds-border-width-thin: ${borderWidthThin}; /* alias (deprecated) */
+    $pds-border-width-base: 2px; /* alias (deprecated) */
+    $pds-border-width-thin: 1px; /* alias (deprecated) */
 `;
 };
