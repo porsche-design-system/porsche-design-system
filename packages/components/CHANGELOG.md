@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
   - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
     `$breakpoint-2xl`
+  - Blur: `$blur-frosted`
   - Border: `$radius-xs`, `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-2xl`, `$radius-3xl`,
     `$radius-4xl` and `$radius-full`
   - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
