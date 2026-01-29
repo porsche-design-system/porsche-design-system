@@ -21,10 +21,6 @@
   @include pds-skeleton('dark');
 }
 
-.auto {
-  @media (prefers-color-scheme: dark) {
-    .scss-skeleton__item {
-      @include pds-skeleton('dark');
-    }
-  }
+.auto .scss-skeleton__item {
+  @include pds-skeleton('auto');
 }
