@@ -2,13 +2,13 @@
 
 .scss-motion {
   display: grid;
-  gap: pds.$pds-spacing-fluid-medium;
-  padding: pds.$pds-spacing-static-medium;
+  gap: pds.$spacing-fluid-md;
+  padding: pds.$spacing-static-md;
   @include pds.pds-text-small;
   color: var(--scss-color-primary);
 
   &__item {
-    border-radius: pds.$pds-border-radius-large;
+    border-radius: pds.$radius-lg;
     background: var(--scss-color-surface);
     padding: pds.$pds-spacing-fluid-small;
     transition-property: transform;
@@ -16,44 +16,44 @@
   }
 
   &__sm {
-    transition-duration: pds.$motion-duration-sm;
-    transition-timing-function: pds.$motion-ease-in-out;
+    transition-duration: pds.$duration-sm;
+    transition-timing-function: pds.$ease-in-out;
     &:hover { transform: scale(1.2); }
   }
 
   &__md {
-    transition-duration: pds.$motion-duration-md;
-    transition-timing-function: pds.$motion-ease-in-out;
+    transition-duration: pds.$duration-md;
+    transition-timing-function: pds.$ease-in-out;
     &:hover { transform: scale(1.2); }
   }
 
   &__lg {
-    transition-duration: pds.$motion-duration-lg;
-    transition-timing-function: pds.$motion-ease-in-out;
+    transition-duration: pds.$duration-lg;
+    transition-timing-function: pds.$ease-in-out;
     &:hover { transform: scale(1.2); }
   }
 
   &__xl {
-    transition-duration: pds.$motion-duration-xl;
-    transition-timing-function: pds.$motion-ease-in-out;
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-in-out;
     &:hover { transform: scale(1.2); }
   }
 
   &__ease-in-out {
-    transition-duration: pds.$motion-duration-xl;
-    transition-timing-function: pds.$motion-ease-in-out;
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-in-out;
     &:hover { transform: scale(1.2); }
   }
 
   &__ease-in {
-    transition-duration: pds.$motion-duration-xl;
-    transition-timing-function: pds.$motion-ease-in;
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-in;
     &:hover { transform: scale(1.2); }
   }
 
   &__ease-out {
-    transition-duration: pds.$motion-duration-xl;
-    transition-timing-function: pds.$motion-ease-out;
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-out;
     &:hover { transform: scale(1.2); }
   }
 }

@@ -10,13 +10,14 @@ import {
 
 export const getMotionScss = () => {
   return `
-    $motion-duration-sm: ${motionDurationShort};
-    $motion-duration-md: ${motionDurationModerate};
-    $motion-duration-lg: ${motionDurationLong};
-    $motion-duration-xl: ${motionDurationVeryLong};
-    $motion-ease-in-out: ${motionEaseInOut};
-    $motion-ease-in: ${motionEaseIn};
-    $motion-ease-out: ${motionEaseOut};
+    $duration-sm: ${motionDurationShort};
+    $duration-md: ${motionDurationModerate};
+    $duration-lg: ${motionDurationLong};
+    $duration-xl: ${motionDurationVeryLong};
+
+    $ease-in-out: ${motionEaseInOut};
+    $ease-in: ${motionEaseIn};
+    $ease-out: ${motionEaseOut};
 
     $pds-motion-duration-long: ${motionDurationLong}; /* alias (deprecated) */
     $pds-motion-duration-moderate: ${motionDurationModerate}; /* alias (deprecated) */
