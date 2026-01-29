@@ -26,27 +26,27 @@
 }
 
 .scss-heading-2xl {
-  @include pds.pds-heading-xx-large;
+  @include pds.prose-heading-2xl;
   margin: 0;
 }
 
 .scss-heading-xl {
-  @include pds.pds-heading-x-large;
+  @include pds.prose-heading-xl;
   margin: 0;
 }
 
 .scss-heading-lg {
-  @include pds.pds-heading-large;
+  @include pds.prose-heading-lg;
   margin: 0;
 }
 
 .scss-heading-md {
-  @include pds.pds-heading-medium;
+  @include pds.prose-heading-md;
   margin: 0;
 }
 
 .scss-heading-sm {
-  @include pds.pds-heading-small;
+  @include pds.prose-heading-sm;
   margin: 0;
 }
 

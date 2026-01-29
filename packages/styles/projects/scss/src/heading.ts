@@ -11,24 +11,41 @@ import {
 
 export const getHeadingScss = () => {
   return `
-    @mixin pds-heading-large {
+    @mixin prose-heading-2xl {
+      font: normal normal ${fontWeightNormal} ${fontSize2Xl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+    }
+    @mixin prose-heading-xl {
+      font: normal normal ${fontWeightNormal} ${fontSizeXl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+    }
+    @mixin prose-heading-lg {
       font: normal normal ${fontWeightNormal} ${fontSizeLg} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
-
-    @mixin pds-heading-medium {
+    @mixin prose-heading-md {
       font: normal normal ${fontWeightNormal} ${fontSizeMd} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
-
-    @mixin pds-heading-small {
+    @mixin prose-heading-sm {
       font: normal normal ${fontWeightNormal} ${fontSizeSm} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
     }
 
-    @mixin pds-heading-x-large {
-      font: normal normal ${fontWeightNormal} ${fontSizeXl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
-    }
-
+    /* alias (deprecated) */
     @mixin pds-heading-xx-large {
-      font: normal normal ${fontWeightNormal} ${fontSize2Xl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      @include prose-heading-2xl();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-x-large {
+      @include prose-heading-xl();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-large {
+      @include prose-heading-lg();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-medium {
+      @include prose-heading-md();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-small {
+      @include prose-heading-sm();
     }
 `;
 };

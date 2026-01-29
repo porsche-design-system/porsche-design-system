@@ -41,27 +41,27 @@ export const typographyScssStoryHeading: Story<'div'> = {
         {
           tag: 'h3',
           properties: { className: 'prose-heading-2xl' },
-          children: ['@include pds-heading-xx-large;'],
+          children: ['@include prose-heading-2xl;'],
         },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-xl' },
-          children: ['@include pds-heading-x-large;'],
+          children: ['@include prose-heading-xl;'],
         },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-lg' },
-          children: ['@include pds-heading-large;'],
+          children: ['@include prose-heading-lg;'],
         },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-md' },
-          children: ['@include pds-heading-medium;'],
+          children: ['@include prose-heading-md;'],
         },
         {
           tag: 'h3',
           properties: { className: 'prose-heading-sm' },
-          children: ['@include pds-heading-small;'],
+          children: ['@include prose-heading-sm;'],
         },
       ],
     },
