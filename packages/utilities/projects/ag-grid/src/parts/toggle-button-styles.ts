@@ -18,26 +18,32 @@ import { pdsThemeModeDark } from '../types/theme-mode';
 export const toggleButtonStyle: Part = createPart({
   feature: 'toggleButtonStyle',
   params: {
+    // On state
     toggleButtonOnBackgroundColor: colorSuccessLight,
-    toggleButtonOffBackgroundColor: colorCanvasLight,
-    toggleButtonSwitchBackgroundColor: colorPrimaryLight,
-    toggleButtonOnHoverBackgroundColor: colorSuccessLight,
     toggleButtonOnBorderColor: colorSuccessLight,
+    toggleButtonOnHoverBackgroundColor: colorSuccessLight,
     toggleButtonOnHoverBorderColor: colorSuccessLight,
-    toggleButtonOffHoverBorderColor: colorPrimaryLight,
+    // Off state
+    toggleButtonOffBackgroundColor: colorCanvasLight,
     toggleButtonOffBorderColor: colorContrastMediumLight,
+    toggleButtonOffHoverBorderColor: colorPrimaryLight,
+    toggleButtonSwitchBackgroundColor: colorPrimaryLight,
+    // Disabled state
     toggleButtonDisabledColor: colorDisabledLight,
   },
   modeParams: {
     [pdsThemeModeDark]: {
+      // On state
       toggleButtonOnBackgroundColor: colorSuccessDark,
-      toggleButtonOffBackgroundColor: colorCanvasDark,
-      toggleButtonSwitchBackgroundColor: colorPrimaryDark,
-      toggleButtonOnHoverBackgroundColor: colorSuccessDark,
       toggleButtonOnBorderColor: colorSuccessDark,
+      toggleButtonOnHoverBackgroundColor: colorSuccessDark,
       toggleButtonOnHoverBorderColor: colorSuccessDark,
-      toggleButtonOffHoverBorderColor: colorPrimaryDark,
+      // Off state
+      toggleButtonOffBackgroundColor: colorCanvasDark,
       toggleButtonOffBorderColor: colorContrastMediumDark,
+      toggleButtonOffHoverBorderColor: colorPrimaryDark,
+      toggleButtonSwitchBackgroundColor: colorPrimaryDark,
+      // Disabled state
       toggleButtonDisabledColor: colorDisabledDark,
     },
   },
