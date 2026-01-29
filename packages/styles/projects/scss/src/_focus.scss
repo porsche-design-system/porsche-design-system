@@ -15,8 +15,8 @@ $pds-focus-offset-map: (
 );
 
 $pds-focus-border-radius-map: (
-  'small': border.$pds-border-radius-small,
-  'medium': border.$pds-border-radius-medium,
+  'small': border.$radius-sm,
+  'medium': border.$radius-md,
 );
 
 /* alias (deprecated) */
