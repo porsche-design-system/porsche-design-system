@@ -1,6 +1,7 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
   borderRadiusLg,
+  borderWidthThin,
   colorContrastLowerDark,
   colorContrastLowerLight,
   colorContrastMediumLight,
@@ -73,7 +74,7 @@ export const checkboxStyle: Part = createPart({
         width: var(--ag-icon-size);
         height: var(--ag-icon-size);
         background-color: var(--ag-checkbox-unchecked-background-color);
-        border: solid 1px var(--ag-checkbox-unchecked-border-color);
+        border: solid ${borderWidthThin} var(--ag-checkbox-unchecked-border-color);
 
         :where(input) {
             cursor: pointer;

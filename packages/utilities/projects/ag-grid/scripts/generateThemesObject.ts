@@ -4,6 +4,7 @@ import {
   borderRadiusSm,
   borderRadiusXl,
   borderWidthRegular,
+  borderWidthThin,
   colorCanvasDark,
   colorCanvasLight,
   colorContrastHighDark,
@@ -46,6 +47,7 @@ import * as path from 'path';
 
 const styles = {
   borderRadiusLg,
+  borderWidthThin,
   borderRadiusMd,
   borderRadiusSm,
   borderRadiusXl,
