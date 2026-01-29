@@ -17,11 +17,6 @@ const EmotionMediaQueryMin = styled.p(({ theme }) => ({
   ...textSmallStyle,
   color: theme.primary,
   margin: 0,
-  [getMediaQueryMin('base')]: {
-    '&::after': {
-      content: '" base"',
-    },
-  },
   [getMediaQueryMin('xs')]: {
     '&::after': {
       content: '" xs"',
@@ -94,11 +89,6 @@ const EmotionMediaQueryMinMax = styled.p(({ theme }) => ({
   ...textSmallStyle,
   color: theme.primary,
   margin: 0,
-  [getMediaQueryMinMax('base', 'xs')]: {
-    '&::after': {
-      content: '" base - xs"',
-    },
-  },
   [getMediaQueryMinMax('xs', 's')]: {
     '&::after': {
       content: '" xs - sm"',

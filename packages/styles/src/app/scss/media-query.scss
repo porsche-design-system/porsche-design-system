@@ -1,49 +1,44 @@
-@use '@porsche-design-system/scss' as *;
+@use '@porsche-design-system/scss' as pds;
 
 .scss-media-query-wrapper {
   display: flex;
   flex-direction: column;
-  padding: $pds-spacing-static-medium;
+  padding: pds.$pds-spacing-static-medium;
 }
 
 .scss-media-query-text {
-  @include pds-text-small;
+  @include pds.pds-text-small;
   color: var(--scss-color-primary);
   margin: 0;
 }
 
 .scss-media-query-min {
-  @include pds-media-query-min('base') {
-    &::after {
-      content: ' base';
-    }
-  }
-  @include pds-media-query-min('xs') {
+  @include pds.media-query-min('xs') {
     &::after {
       content: ' xs';
     }
   }
-  @include pds-media-query-min('s') {
+  @include pds.media-query-min('s') {
     &::after {
       content: ' sm';
     }
   }
-  @include pds-media-query-min('m') {
+  @include pds.media-query-min('m') {
     &::after {
       content: ' md';
     }
   }
-  @include pds-media-query-min('l') {
+  @include pds.media-query-min('l') {
     &::after {
       content: ' lg';
     }
   }
-  @include pds-media-query-min('xl') {
+  @include pds.media-query-min('xl') {
     &::after {
       content: ' xl';
     }
   }
-  @include pds-media-query-min('xxl') {
+  @include pds.media-query-min('xxl') {
     &::after {
       content: ' 2xl';
     }
@@ -51,32 +46,32 @@
 }
 
 .scss-media-query-max {
-  @include pds-media-query-max('xxl') {
+  @include pds.media-query-max('xxl') {
     &::after {
       content: ' 2xl';
     }
   }
-  @include pds-media-query-max('xl') {
+  @include pds.media-query-max('xl') {
     &::after {
       content: ' xl';
     }
   }
-  @include pds-media-query-max('l') {
+  @include pds.media-query-max('l') {
     &::after {
       content: ' lg';
     }
   }
-  @include pds-media-query-max('m') {
+  @include pds.media-query-max('m') {
     &::after {
       content: ' md';
     }
   }
-  @include pds-media-query-max('s') {
+  @include pds.media-query-max('s') {
     &::after {
       content: ' sm';
     }
   }
-  @include pds-media-query-max('xs') {
+  @include pds.media-query-max('xs') {
     &::after {
       content: ' xs';
     }
@@ -84,32 +79,27 @@
 }
 
 .scss-media-query-min-max {
-  @include pds-media-query-min-max('base', 'xs') {
-    &::after {
-      content: ' base - xs';
-    }
-  }
-  @include pds-media-query-min-max('xs', 's') {
+  @include pds.media-query-min-max('xs', 's') {
     &::after {
       content: ' xs - sm';
     }
   }
-  @include pds-media-query-min-max('s', 'm') {
+  @include pds.media-query-min-max('s', 'm') {
     &::after {
       content: ' sm - md';
     }
   }
-  @include pds-media-query-min-max('m', 'l') {
+  @include pds.media-query-min-max('m', 'l') {
     &::after {
       content: ' md - lg';
     }
   }
-  @include pds-media-query-min-max('l', 'xl') {
+  @include pds.media-query-min-max('l', 'xl') {
     &::after {
       content: ' lg - xl';
     }
   }
-  @include pds-media-query-min-max('xl', 'xxl') {
+  @include pds.media-query-min-max('xl', 'xxl') {
     &::after {
       content: ' xl - 2xl';
     }
