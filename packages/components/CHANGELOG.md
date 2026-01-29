@@ -26,8 +26,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 - `Angular`: Bumped peer dependency to support Angular new major version 21
   ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
-- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
-  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+- `AG Grid`:
+  - Bumped peer dependency to support AG Grid new major version 35
+    ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+  - Refreshed visuals to reflect new color tokens
 - `Tailwind CSS`:
   - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
     `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
@@ -105,21 +107,21 @@ and migration steps.
 ### Added
 
 - Global Styles: mandatory CSS styles (normalize, font-face and color variables)
-    - `@porsche-design-system/components-{js|angular|react|vue}/index.css`
-    - `@porsche-design-system/components-{js|angular|react|vue}/cn/index.css`
-    - to enable legacy radius styles (aligned with app) import
-      `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
+  - `@porsche-design-system/components-{js|angular|react|vue}/index.css`
+  - `@porsche-design-system/components-{js|angular|react|vue}/cn/index.css`
+  - to enable legacy radius styles (aligned with app) import
+    `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`
 
 - `Divider`: value `contrast-lower` for prop `color`
 
 - `Multi Select, Select`:
-    - `selected` slot for custom selection rendering and enabling complex options
-    - `options-status` slot for loading, error and no results states when using custom filtering
-      ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
+  - `selected` slot for custom selection rendering and enabling complex options
+  - `options-status` slot for loading, error and no results states when using custom filtering
+    ([#4111](https://github.com/porsche-design-system/porsche-design-system/pull/4111))
 - `Multi Select, Select`:
-    - `filter` slot to allow custom asynchronous filtering
-    - `toggle` event when opening/closing the dropdown
-      ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
+  - `filter` slot to allow custom asynchronous filtering
+  - `toggle` event when opening/closing the dropdown
+    ([#4089](https://github.com/porsche-design-system/porsche-design-system/pull/4089))
 - `Segmented Control`: add `state` and `message` props to enable visual validation states
   ([#4023](https://github.com/porsche-design-system/porsche-design-system/pull/4023)) `Segmented Control`: add `label`,
 - `Segmented Control`: `label`, `desription`, `hideLabel` and `required` props for better form integration
@@ -162,42 +164,42 @@ and migration steps.
   - added read only css variables `--ref-p-modal-pt`, `--ref-p-modal-pb`, `--ref-p-modal-px`
   - added prop `background` with value `canvas | surface`
 - `Flyout`
-    - removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
-      `clamp()` instead)
-    - visually changed footer slot: becomes frosted when it's sticky
-    - added read only css variables `--ref-p-flyout-pb`
-    - added prop `background` with value `canvas | surface`
+  - removed CSS variable `--p-flyout-max-width` (use `--p-flyout-width` with a static value or `min()`, `max()` or
+    `clamp()` instead)
+  - visually changed footer slot: becomes frosted when it's sticky
+  - added read only css variables `--ref-p-flyout-pb`
+  - added prop `background` with value `canvas | surface`
 - `Sheet`:
-    - added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
-    - added prop `background` with value `canvas | surface`
+  - added read only css variables `--ref-p-sheet-pt`, `--ref-p-sheet-px`, `--ref-p-sheet-pb`
+  - added prop `background` with value `canvas | surface`
 - `Inline Notification`:
-    - removed max-width limitation for content
+  - removed max-width limitation for content
 - `Banner`:
-    - added `state="success"`
-    - removed max-width limitation for content
+  - added `state="success"`
+  - removed max-width limitation for content
 - `Toast`:
-    - added `state="warning | error"`
+  - added `state="warning | error"`
 - `Carousel`:
-    - removed CSS variable `--p-carousel-prev-next-filter`
-    - removed prop `gradient-color` (use `gradient="true"` instead)
-    - changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
-      to enable trimming)
-    - changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
-      to enable pagination)
-    - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
-      enable rewind)
+  - removed CSS variable `--p-carousel-prev-next-filter`
+  - removed prop `gradient-color` (use `gradient="true"` instead)
+  - changed default value of prop `trim-space` from `true` to `false` (use `<p-carousel trim-space="true"></p-carousel>`
+    to enable trimming)
+  - changed default value of prop `pagination` from `true` to `false` (use `<p-carousel pagination="true"></p-carousel>`
+    to enable pagination)
+  - changed default value of prop `rewind` from `true` to `false` (use `<p-carousel rewind="true"></p-carousel>` to
+    enable rewind)
 - `Link Tile`, `Button Tile`:
-    - changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>`
-      to enable gradient)
-    - removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
-    - added an optional light gradient when used in light mode and gradient is enabled
-    - added value `auto` for prop `aspect-ratio`
+  - changed default value of prop `gradient` from `true` to `false` (use `<p-link-tile gradient="true"></p-link-tile>`
+    to enable gradient)
+  - removed prop `background` (use CSS class `.light | .dark | .auto` on :host element instead)
+  - added an optional light gradient when used in light mode and gradient is enabled
+  - added value `auto` for prop `aspect-ratio`
 - `Link Tile Product`:
-    - Values `3:4 | 9:16` of prop `aspect-ratio` (use `3/4 | 9/16` instead)
+  - Values `3:4 | 9:16` of prop `aspect-ratio` (use `3/4 | 9/16` instead)
 
 - Tailwind CSS:
-    - Reset all default Tailwind color tokens
-    - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
+  - Reset all default Tailwind color tokens
+  - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
 
 - Styles (SCSS, Emotion, Vanilla-Extract)
   - heading styles use a regular instead of semi-bold font-weight
