@@ -1,14 +1,15 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
   borderRadiusXl,
+  borderWidthThin,
   colorCanvasDark,
   colorCanvasLight,
-  colorContrastMedium,
-  colorContrastMediumDark,
+  colorContrastLowerDark,
+  colorContrastLowerLight,
   colorDisabledDark,
   colorDisabledLight,
-  colorErrorDark,
-  colorErrorLight,
+  colorErrorLowDark,
+  colorErrorLowLight,
   colorPrimaryDark,
   colorPrimaryLight,
 } from '../styles';
@@ -17,19 +18,19 @@ import { pdsThemeModeDark } from '../types/theme-mode';
 export const inputStyles: Part = createPart({
   feature: 'inputStyles',
   params: {
-    inputBorder: `1px solid ${colorContrastMedium}`,
-    inputInvalidBorder: `1px solid ${colorErrorLight}`,
-    inputDisabledBorder: `1px solid ${colorDisabledLight}`,
+    inputBorder: `solid ${borderWidthThin} ${colorContrastLowerLight}`,
+    inputInvalidBorder: `solid ${borderWidthThin} ${colorErrorLowLight}`,
+    inputDisabledBorder: `solid ${borderWidthThin} ${colorDisabledLight}`,
     inputDisabledBackgroundColor: colorCanvasLight,
-    inputFocusBorder: `1px solid ${colorPrimaryLight}`,
+    inputFocusBorder: `solid ${borderWidthThin} ${colorPrimaryLight}`,
   },
   modeParams: {
     [pdsThemeModeDark]: {
-      inputBorder: `1px solid ${colorContrastMediumDark}`,
-      inputInvalidBorder: `1px solid ${colorErrorDark}`,
-      inputDisabledBorder: `1px solid ${colorDisabledDark}`,
+      inputBorder: `solid ${borderWidthThin} ${colorContrastLowerDark}`,
+      inputInvalidBorder: `solid ${borderWidthThin} ${colorErrorLowDark}`,
+      inputDisabledBorder: `solid ${borderWidthThin} ${colorDisabledDark}`,
       inputDisabledBackgroundColor: colorCanvasDark,
-      inputFocusBorder: `1px solid ${colorPrimaryDark}`,
+      inputFocusBorder: `solid ${borderWidthThin} ${colorPrimaryDark}`,
     },
   },
   css: `

@@ -9,8 +9,8 @@ import {
   colorContrastLowerDark,
   colorContrastLowerLight,
   colorContrastLowLight,
-  colorErrorDark,
-  colorErrorLight,
+  colorErrorLowDark,
+  colorErrorLowLight,
   colorFocusDark,
   colorFocusLight,
   colorFrostedDark,
@@ -61,7 +61,7 @@ export const pdsTheme: Theme = themeQuartz
     columnHoverColor: colorFrostedLight,
     rangeSelectionBorderColor: colorFocusLight,
     borderColor: colorContrastLowLight,
-    invalidColor: colorErrorLight,
+    invalidColor: colorErrorLowLight,
   })
   .withParams(
     {
@@ -77,7 +77,7 @@ export const pdsTheme: Theme = themeQuartz
       columnHoverColor: colorFrostedDark,
       rangeSelectionBorderColor: colorFocusDark,
       borderColor: colorContrastLowDark,
-      invalidColor: colorErrorDark,
+      invalidColor: colorErrorLowDark,
     },
     pdsThemeModeDark
   )
