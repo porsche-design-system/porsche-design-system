@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import * as fromBorder from './';
 
 it('should provide all exports', () => {
