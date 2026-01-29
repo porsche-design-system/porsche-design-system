@@ -1,7 +1,11 @@
 /* Auto Generated Start */
 export const borderRadiusLg = "8px";
 export const borderWidthThin = "1px";
+export const colorSuccessFrostedSoftDark = "hsla(157, 84.9%, 41.6%, 0.100)";
+export const colorSuccessFrostedSoftLight = "hsla(115, 77.5%, 27.8%, 0.100)";
 export const borderRadiusMd = "6px";
+export const colorSuccessLowDark = "hsla(157, 84.9%, 41.6%, 0.180)";
+export const colorSuccessLowLight = "hsla(115, 77.5%, 27.8%, 0.180)";
 export const borderRadiusSm = "4px";
 export const borderRadiusXl = "12px";
 export const borderWidthRegular = "2px";
