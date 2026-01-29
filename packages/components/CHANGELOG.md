@@ -34,6 +34,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
 - `SCSS`:
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
+  - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
+    `$breakpoint-2xl`
   - Border: `$border-radius-xs`, `$border-radius-sm`, `$border-radius-md`, `$border-radius-lg`, `$border-radius-xl`,
     `$border-radius-2xl`, `$border-radius-3xl`, `$border-radius-4xl`, `$border-radius-full`, `$border-width-1` and
     `$border-width-2`
