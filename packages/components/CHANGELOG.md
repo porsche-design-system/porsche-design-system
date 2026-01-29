@@ -68,6 +68,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Motion: `$motion-duration-sm`, `$motion-duration-md`, `$motion-duration-lg`, `$motion-duration-xl`,
     `$motion-ease-in-out`, `$motion-ease-in` and `$motion-ease-out`
   - Shadow: `$box-shadow-sm`, `$box-shadow-md` and `$box-shadow-lg`
+  - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`
 
 ### Changed
 

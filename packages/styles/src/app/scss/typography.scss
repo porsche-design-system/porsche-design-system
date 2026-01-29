@@ -1,81 +1,81 @@
 // packages/styles/src/app/scss/typography.scss
-@use '@porsche-design-system/scss' as *;
+@use '@porsche-design-system/scss' as pds;
 
 .scss-typography {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $pds-spacing-fluid-medium;
-  padding: $pds-spacing-fluid-medium;
+  gap: pds.$pds-spacing-fluid-medium;
+  padding: pds.$pds-spacing-fluid-medium;
   color: var(--scss-color-primary);
 }
 
 .scss-display-lg {
-  @include pds-display-large;
+  @include pds.prose-display-lg;
   margin: 0;
 }
 
 .scss-display-md {
-  @include pds-display-medium;
+  @include pds.prose-display-md;
   margin: 0;
 }
 
 .scss-display-sm {
-  @include pds-display-small;
+  @include pds.prose-display-sm;
   margin: 0;
 }
 
 .scss-heading-2xl {
-  @include pds-heading-xx-large;
+  @include pds.pds-heading-xx-large;
   margin: 0;
 }
 
 .scss-heading-xl {
-  @include pds-heading-x-large;
+  @include pds.pds-heading-x-large;
   margin: 0;
 }
 
 .scss-heading-lg {
-  @include pds-heading-large;
+  @include pds.pds-heading-large;
   margin: 0;
 }
 
 .scss-heading-md {
-  @include pds-heading-medium;
+  @include pds.pds-heading-medium;
   margin: 0;
 }
 
 .scss-heading-sm {
-  @include pds-heading-small;
+  @include pds.pds-heading-small;
   margin: 0;
 }
 
 .scss-text-xl {
-  @include pds-text-x-large;
+  @include pds.pds-text-x-large;
   margin: 0;
 }
 
 .scss-text-lg {
-  @include pds-text-large;
+  @include pds.pds-text-large;
   margin: 0;
 }
 
 .scss-text-md {
-  @include pds-text-medium;
+  @include pds.pds-text-medium;
   margin: 0;
 }
 
 .scss-text-sm {
-  @include pds-text-small;
+  @include pds.pds-text-small;
   margin: 0;
 }
 
 .scss-text-xs {
-  @include pds-text-x-small;
+  @include pds.pds-text-x-small;
   margin: 0;
 }
 
 .scss-text-2xs {
-  @include pds-text-xx-small;
+  @include pds.pds-text-xx-small;
   margin: 0;
 }

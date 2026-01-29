@@ -5,7 +5,7 @@
 
   &__button {
     @include pds.focus-visible();
-    border-radius: pds.$border-radius-md;
+    border-radius: pds.$radius-md;
     padding: pds.$pds-spacing-static-small;
   }
 }

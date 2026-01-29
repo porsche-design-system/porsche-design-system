@@ -13,17 +13,17 @@ export const typographyScssStoryDisplay: Story<'div'> = {
         {
           tag: 'h3',
           properties: { className: 'prose-display-lg' },
-          children: ['@include pds-display-large;'],
+          children: ['@include prose-display-lg;'],
         },
         {
           tag: 'h3',
           properties: { className: 'prose-display-md' },
-          children: ['@include pds-display-medium;'],
+          children: ['@include prose-display-md;'],
         },
         {
           tag: 'h3',
           properties: { className: 'prose-display-sm' },
-          children: ['@include pds-display-small;'],
+          children: ['@include prose-display-sm;'],
         },
       ],
     },
