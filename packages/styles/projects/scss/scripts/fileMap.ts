@@ -2,12 +2,12 @@ import { getBorderScss } from '../src/border';
 import { getBreakpointScss } from '../src/breakpoint';
 import { getColorScss } from '../src/color';
 import { getDisplayScss } from '../src/display';
-import { getDropShadowScss } from '../src/drop-shadow';
 import { getFontScss } from '../src/font';
 import { getFrostedGlassScss } from '../src/frosted-glass';
 import { getGradientScss } from '../src/gradient';
 import { getHeadingScss } from '../src/heading';
 import { getMotionScss } from '../src/motion';
+import { getShadowScss } from '../src/shadow';
 import { getSpacingScss } from '../src/spacing';
 import { getTextScss } from '../src/text';
 
@@ -23,5 +23,5 @@ export const fileMap = {
   '_motion.scss': getMotionScss,
   '_gradient.scss': getGradientScss,
   '_frosted-glass.scss': getFrostedGlassScss,
-  '_drop-shadow.scss': getDropShadowScss,
+  '_shadow.scss': getShadowScss,
 };
