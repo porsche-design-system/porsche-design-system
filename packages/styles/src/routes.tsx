@@ -47,6 +47,7 @@ import { TailwindcssShadow } from './app/tailwindcss/TailwindcssShadow.tsx';
 import { TailwindcssSkeleton } from './app/tailwindcss/TailwindcssSkeleton.tsx';
 import { TailwindcssSpacing } from './app/tailwindcss/TailwindcssSpacing.tsx';
 import { TailwindcssTypography } from './app/tailwindcss/TailwindcssTypography.tsx';
+import { TailwindFocusVisible } from './app/tailwindcss/TailwindFocusVisible.tsx';
 // import { EmotionBorder } from './emotion/EmotionBorder.tsx';
 // import { EmotionColor } from './emotion/EmotionColor.tsx';
 // import { EmotionGradient } from './emotion/EmotionGradient.tsx';
@@ -107,6 +108,7 @@ export const routes: RouteConfig[] = [
   { path: '/tailwindcss/blur', label: 'Tailwind - Blur', element: <TailwindcssBlur /> },
   { path: '/tailwindcss/border', label: 'Tailwind - Border', element: <TailwindcssBorder /> },
   { path: '/tailwindcss/color', label: 'Tailwind - Color', element: <TailwindcssColor /> },
+  { path: '/tailwindcss/focus-visible', label: 'Tailwind - Focus Visible', element: <TailwindFocusVisible /> },
   { path: '/tailwindcss/gradient', label: 'Tailwind - Gradient', element: <TailwindcssGradient /> },
   { path: '/tailwindcss/grid', label: 'Tailwind - Grid', element: <TailwindcssGrid /> },
   { path: '/tailwindcss/media-query', label: 'Tailwind - Media Query', element: <TailwindcssMediaQuery /> },
