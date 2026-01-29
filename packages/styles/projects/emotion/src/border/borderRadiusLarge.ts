@@ -1,3 +1,3 @@
-import { borderRadiusLg } from '@porsche-design-system/tokens';
+import { radiusLg } from '@porsche-design-system/tokens';
 
-export const borderRadiusLarge = borderRadiusLg;
+export const borderRadiusLarge = radiusLg;

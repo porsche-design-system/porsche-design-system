@@ -1,12 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should contain correct values for durationLg 1`] = `".6s"`;
+exports[`should contain correct values for motionDurationLong 1`] = `".6s"`;
 
-exports[`should contain correct values for durationMd 1`] = `".4s"`;
+exports[`should contain correct values for motionDurationModerate 1`] = `".4s"`;
 
-exports[`should contain correct values for durationSm 1`] = `".25s"`;
+exports[`should contain correct values for motionDurationShort 1`] = `".25s"`;
 
-exports[`should contain correct values for durationXl 1`] = `"1.2s"`;
+exports[`should contain correct values for motionDurationVeryLong 1`] = `"1.2s"`;
 
 exports[`should contain correct values for motionEasingBase 1`] = `"cubic-bezier(.25,.1,.25,1)"`;
 

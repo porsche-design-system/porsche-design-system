@@ -118,4 +118,4 @@ exports[`should contain correct values for fontWeightBold 1`] = `700`;
 
 exports[`should contain correct values for fontWeightRegular 1`] = `400`;
 
-exports[`should contain correct values for fontWeightSemibold 1`] = `600`;
+exports[`should contain correct values for fontWeightSemiBold 1`] = `600`;

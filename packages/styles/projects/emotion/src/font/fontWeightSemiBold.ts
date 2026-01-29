@@ -1,3 +1,3 @@
-import { fontWeightSemiBold as _fontWeightSemiBold } from '@porsche-design-system/tokens';
+import { fontWeightSemibold } from '@porsche-design-system/tokens';
 
-export const fontWeightSemiBold = _fontWeightSemiBold;
+export const fontWeightSemiBold = fontWeightSemibold;

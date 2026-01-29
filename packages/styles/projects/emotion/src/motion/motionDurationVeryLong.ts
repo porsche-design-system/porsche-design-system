@@ -1,3 +1,3 @@
-import { motionDurationVeryLong as _motionDurationVeryLong } from '@porsche-design-system/tokens';
+import { durationXl } from '@porsche-design-system/tokens';
 
-export const motionDurationVeryLong = _motionDurationVeryLong;
+export const motionDurationVeryLong = durationXl;

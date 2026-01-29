@@ -24,12 +24,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "border/borderWidthBase.cjs",
     "border/borderWidthThin.cjs",
   ],
-  "border/borderWidthBase.cjs": [
-    "tokens/dist/esm/border/width/borderWidthRegular.cjs",
-  ],
-  "border/borderWidthThin.cjs": [
-    "tokens/dist/esm/border/width/borderWidthThin.cjs",
-  ],
+  "border/borderWidthBase.cjs": [],
+  "border/borderWidthThin.cjs": [],
   "dropShadow/dropShadowHighStyle.cjs": [
     "tokens/dist/esm/shadow/shadowLg.cjs",
   ],
@@ -123,7 +119,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "font/fontWeight.cjs": [
     "font/fontWeightBold.cjs",
     "font/fontWeightRegular.cjs",
-    "font/fontWeightSemibold.cjs",
+    "font/fontWeightSemiBold.cjs",
   ],
   "font/fontWeightBold.cjs": [
     "tokens/dist/esm/font/weight/fontWeightBold.cjs",
@@ -131,7 +127,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "font/fontWeightRegular.cjs": [
     "tokens/dist/esm/font/weight/fontWeightNormal.cjs",
   ],
-  "font/fontWeightSemibold.cjs": [
+  "font/fontWeightSemiBold.cjs": [
     "tokens/dist/esm/font/weight/fontWeightSemibold.cjs",
   ],
   "frostedGlass/frostedGlassStyle.cjs": [
@@ -323,7 +319,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontWeight.cjs",
     "font/fontWeightBold.cjs",
     "font/fontWeightRegular.cjs",
-    "font/fontWeightSemibold.cjs",
+    "font/fontWeightSemiBold.cjs",
     "frostedGlass/frostedGlassStyle.cjs",
     "gradient/gradientToBottomStyle.cjs",
     "gradient/gradientToLeftStyle.cjs",
@@ -380,10 +376,10 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "mediaQuery/getMediaQueryMax.cjs",
     "mediaQuery/getMediaQueryMin.cjs",
     "mediaQuery/getMediaQueryMinMax.cjs",
-    "motion/durationLg.cjs",
-    "motion/durationMd.cjs",
-    "motion/durationSm.cjs",
-    "motion/durationXl.cjs",
+    "motion/motionDurationLong.cjs",
+    "motion/motionDurationModerate.cjs",
+    "motion/motionDurationShort.cjs",
+    "motion/motionDurationVeryLong.cjs",
     "motion/motionEasingBase.cjs",
     "motion/motionEasingIn.cjs",
     "motion/motionEasingOut.cjs",
@@ -499,16 +495,16 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "mediaQuery/getMediaQueryMinMax.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
-  "motion/durationLg.cjs": [
+  "motion/motionDurationLong.cjs": [
     "tokens/dist/esm/motion/duration/durationLg.cjs",
   ],
-  "motion/durationMd.cjs": [
+  "motion/motionDurationModerate.cjs": [
     "tokens/dist/esm/motion/duration/durationMd.cjs",
   ],
-  "motion/durationSm.cjs": [
+  "motion/motionDurationShort.cjs": [
     "tokens/dist/esm/motion/duration/durationSm.cjs",
   ],
-  "motion/durationXl.cjs": [
+  "motion/motionDurationVeryLong.cjs": [
     "tokens/dist/esm/motion/duration/durationXl.cjs",
   ],
   "motion/motionEasingBase.cjs": [
@@ -522,7 +518,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "skeleton/getSkeletonStyle.cjs": [
     "border/borderRadiusSmall.cjs",
-    "motion/durationLg.cjs",
+    "motion/motionDurationLong.cjs",
     "motion/motionEasingBase.cjs",
     "theme/themeDarkBackgroundSurface.cjs",
     "theme/themeLightBackgroundSurface.cjs",
@@ -755,8 +751,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/border/radius/radiusLg.cjs": [],
   "tokens/dist/esm/border/radius/radiusMd.cjs": [],
   "tokens/dist/esm/border/radius/radiusSm.cjs": [],
-  "tokens/dist/esm/border/width/borderWidthRegular.cjs": [],
-  "tokens/dist/esm/border/width/borderWidthThin.cjs": [],
   "tokens/dist/esm/breakpoint/breakpoint2Xl.cjs": [],
   "tokens/dist/esm/breakpoint/breakpointLg.cjs": [],
   "tokens/dist/esm/breakpoint/breakpointMd.cjs": [],
@@ -1011,12 +1005,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "border/borderWidthBase.mjs",
     "border/borderWidthThin.mjs",
   ],
-  "border/borderWidthBase.mjs": [
-    "tokens/dist/esm/border/width/borderWidthRegular.mjs",
-  ],
-  "border/borderWidthThin.mjs": [
-    "tokens/dist/esm/border/width/borderWidthThin.mjs",
-  ],
+  "border/borderWidthBase.mjs": [],
+  "border/borderWidthThin.mjs": [],
   "dropShadow/dropShadowHighStyle.mjs": [
     "tokens/dist/esm/shadow/shadowLg.mjs",
   ],
@@ -1110,7 +1100,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "font/fontWeight.mjs": [
     "font/fontWeightBold.mjs",
     "font/fontWeightRegular.mjs",
-    "font/fontWeightSemibold.mjs",
+    "font/fontWeightSemiBold.mjs",
   ],
   "font/fontWeightBold.mjs": [
     "tokens/dist/esm/font/weight/fontWeightBold.mjs",
@@ -1118,7 +1108,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "font/fontWeightRegular.mjs": [
     "tokens/dist/esm/font/weight/fontWeightNormal.mjs",
   ],
-  "font/fontWeightSemibold.mjs": [
+  "font/fontWeightSemiBold.mjs": [
     "tokens/dist/esm/font/weight/fontWeightSemibold.mjs",
   ],
   "frostedGlass/frostedGlassStyle.mjs": [
@@ -1310,7 +1300,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontWeight.mjs",
     "font/fontWeightBold.mjs",
     "font/fontWeightRegular.mjs",
-    "font/fontWeightSemibold.mjs",
+    "font/fontWeightSemiBold.mjs",
     "frostedGlass/frostedGlassStyle.mjs",
     "gradient/gradientToBottomStyle.mjs",
     "gradient/gradientToLeftStyle.mjs",
@@ -1367,10 +1357,10 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "mediaQuery/getMediaQueryMax.mjs",
     "mediaQuery/getMediaQueryMin.mjs",
     "mediaQuery/getMediaQueryMinMax.mjs",
-    "motion/durationLg.mjs",
-    "motion/durationMd.mjs",
-    "motion/durationSm.mjs",
-    "motion/durationXl.mjs",
+    "motion/motionDurationLong.mjs",
+    "motion/motionDurationModerate.mjs",
+    "motion/motionDurationShort.mjs",
+    "motion/motionDurationVeryLong.mjs",
     "motion/motionEasingBase.mjs",
     "motion/motionEasingIn.mjs",
     "motion/motionEasingOut.mjs",
@@ -1486,16 +1476,16 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "mediaQuery/getMediaQueryMinMax.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
-  "motion/durationLg.mjs": [
+  "motion/motionDurationLong.mjs": [
     "tokens/dist/esm/motion/duration/durationLg.mjs",
   ],
-  "motion/durationMd.mjs": [
+  "motion/motionDurationModerate.mjs": [
     "tokens/dist/esm/motion/duration/durationMd.mjs",
   ],
-  "motion/durationSm.mjs": [
+  "motion/motionDurationShort.mjs": [
     "tokens/dist/esm/motion/duration/durationSm.mjs",
   ],
-  "motion/durationXl.mjs": [
+  "motion/motionDurationVeryLong.mjs": [
     "tokens/dist/esm/motion/duration/durationXl.mjs",
   ],
   "motion/motionEasingBase.mjs": [
@@ -1509,7 +1499,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "skeleton/getSkeletonStyle.mjs": [
     "border/borderRadiusSmall.mjs",
-    "motion/durationLg.mjs",
+    "motion/motionDurationLong.mjs",
     "motion/motionEasingBase.mjs",
     "theme/themeDarkBackgroundSurface.mjs",
     "theme/themeLightBackgroundSurface.mjs",
@@ -1742,8 +1732,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/border/radius/radiusLg.mjs": [],
   "tokens/dist/esm/border/radius/radiusMd.mjs": [],
   "tokens/dist/esm/border/radius/radiusSm.mjs": [],
-  "tokens/dist/esm/border/width/borderWidthRegular.mjs": [],
-  "tokens/dist/esm/border/width/borderWidthThin.mjs": [],
   "tokens/dist/esm/breakpoint/breakpoint2Xl.mjs": [],
   "tokens/dist/esm/breakpoint/breakpointLg.mjs": [],
   "tokens/dist/esm/breakpoint/breakpointMd.mjs": [],

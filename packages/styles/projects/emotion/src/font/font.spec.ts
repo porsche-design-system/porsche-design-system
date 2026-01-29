@@ -1,4 +1,5 @@
 import * as fromFont from './';
+import { it, expect } from 'vitest';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromFont).length).toBe(29);
