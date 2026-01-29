@@ -20,38 +20,48 @@ export const radioCheckedShapeImage = `<svg xmlns="http://www.w3.org/2000/svg" v
 export const checkboxStyle: Part = createPart({
   feature: 'checkboxStyle',
   params: {
-    checkboxUncheckedBackgroundColor: colorFrostedSoftLight,
-    checkboxCheckedShapeColor: colorPrimaryLight,
+    // SVG shapes
     checkboxCheckedShapeImage: { svg: checkboxCheckedShapeImage },
     checkboxIndeterminateShapeImage: { svg: checkboxIndeterminateShapeImage },
     radioCheckedShapeImage: { svg: radioCheckedShapeImage },
+    // Unchecked state
+    checkboxUncheckedBackgroundColor: colorFrostedSoftLight,
+    checkboxUncheckedBorderColor: colorContrastLowerLight,
+    checkboxUncheckedHoverBorderColor: colorPrimaryLight,
+    // Checked state
     checkboxCheckedBackgroundColor: colorFrostedSoftLight,
     checkboxCheckedBorderColor: colorContrastLowerLight,
-    checkboxUncheckedBorderColor: colorContrastLowerLight,
-    checkboxIndeterminateBorderColor: colorContrastMediumLight,
-    checkboxIndeterminateBackgroundColor: colorFrostedSoftLight,
-    checkboxIndeterminateShapeColor: colorPrimaryLight,
-    checkboxUncheckedHoverBorderColor: colorPrimaryLight,
+    checkboxCheckedShapeColor: colorPrimaryLight,
     checkboxCheckedHoverBorderColor: colorPrimaryLight,
     checkboxCheckedHoverBackgroundColor: colorFrostedSoftLight,
+    // Indeterminate state
+    checkboxIndeterminateBackgroundColor: colorFrostedSoftLight,
+    checkboxIndeterminateBorderColor: colorContrastMediumLight,
+    checkboxIndeterminateShapeColor: colorPrimaryLight,
+    // Disabled state
     checkboxDisabledColor: colorDisabledLight,
   },
   modeParams: {
     [pdsThemeModeDark]: {
-      checkboxUncheckedBackgroundColor: colorFrostedSoftDark,
-      checkboxCheckedShapeColor: colorPrimaryDark,
+      // SVG shapes
       checkboxCheckedShapeImage: { svg: checkboxCheckedShapeImage },
       checkboxIndeterminateShapeImage: { svg: checkboxIndeterminateShapeImage },
       radioCheckedShapeImage: { svg: radioCheckedShapeImage },
+      // Unchecked state
+      checkboxUncheckedBackgroundColor: colorFrostedSoftDark,
+      checkboxUncheckedBorderColor: colorContrastLowerDark,
+      checkboxUncheckedHoverBorderColor: colorPrimaryDark,
+      // Checked state
       checkboxCheckedBackgroundColor: colorFrostedSoftDark,
       checkboxCheckedBorderColor: colorContrastLowerDark,
-      checkboxUncheckedBorderColor: colorContrastLowerDark,
-      checkboxIndeterminateBorderColor: colorContrastLowerDark,
-      checkboxIndeterminateBackgroundColor: colorFrostedSoftDark,
-      checkboxIndeterminateShapeColor: colorPrimaryDark,
-      checkboxUncheckedHoverBorderColor: colorPrimaryDark,
+      checkboxCheckedShapeColor: colorPrimaryDark,
       checkboxCheckedHoverBorderColor: colorPrimaryDark,
       checkboxCheckedHoverBackgroundColor: colorFrostedSoftDark,
+      // Indeterminate state
+      checkboxIndeterminateBackgroundColor: colorFrostedSoftDark,
+      checkboxIndeterminateBorderColor: colorContrastLowerDark,
+      checkboxIndeterminateShapeColor: colorPrimaryDark,
+      // Disabled state
       checkboxDisabledColor: colorDisabledDark,
     },
   },
