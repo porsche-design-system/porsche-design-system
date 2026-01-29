@@ -15,6 +15,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
+  forcedColorsMediaQuery,
 } from '../../../styles';
 import { radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
@@ -71,6 +72,9 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         borderRadius: radiusFull,
         ...(disabledOrLoading && {
           pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+          ...forcedColorsMediaQuery({
+            borderColor: 'GrayText',
+          }),
         }),
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
@@ -85,6 +89,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           gridArea: '1/1',
         },
         '&:checked::before': {
+          forcedColorAdjust: 'none',
           WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${checkedIcon} center/contain no-repeat`,
           backgroundColor: primaryColor,

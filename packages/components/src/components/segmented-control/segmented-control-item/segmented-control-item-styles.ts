@@ -8,6 +8,7 @@ import {
 import {
   addImportantToEachRule,
   colors,
+  forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
@@ -95,6 +96,10 @@ export const getComponentCss = (
         ...(isDisabled
           ? {
               cursor: 'not-allowed',
+              ...forcedColorsMediaQuery({
+                color: 'GrayText',
+                borderColor: 'GrayText',
+              }),
             }
           : {
               cursor: 'pointer',

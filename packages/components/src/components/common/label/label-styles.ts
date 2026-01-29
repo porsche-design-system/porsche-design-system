@@ -1,6 +1,6 @@
 import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
-import { colors, getHiddenTextJssStyle, getTransition } from '../../../styles';
+import { colors, forcedColorsMediaQuery, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
@@ -22,6 +22,10 @@ export const getFunctionalComponentLabelStyles = (
       }),
       justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
       color: primaryColor,
+      ...(isDisabledOrLoading &&
+        forcedColorsMediaQuery({
+          color: 'GrayText',
+        })),
       transition: getTransition('color'), // for smooth transitions between e.g. disabled state
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
         getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)

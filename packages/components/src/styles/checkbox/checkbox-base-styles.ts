@@ -5,6 +5,7 @@ import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
 import { legacyRadiusSmall, radiusLg, radiusMd } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
@@ -34,6 +35,10 @@ export const getCheckboxBaseStyles = (
     background: formStateBackgroundColor,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
     border: `${checkboxBorderWidth} solid ${formStateBorderColor}`,
+    ...(disabledOrLoading &&
+      forcedColorsMediaQuery({
+        borderColor: 'GrayText',
+      })),
     borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusMd : radiusLg})`,
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable

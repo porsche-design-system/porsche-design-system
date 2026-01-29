@@ -9,6 +9,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
+  forcedColorsMediaQuery,
 } from '../../../styles';
 import { legacyRadiusSmall, radiusLg, radiusXl } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
@@ -85,6 +86,10 @@ export const getFunctionalComponentInputBaseStyles = (
       boxSizing: 'border-box',
       paddingInline: wrapperPaddingInline,
       border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
+      ...(isDisabled &&
+        forcedColorsMediaQuery({
+          borderColor: 'GrayText',
+        })),
       borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
       background: formStateBackgroundColor,
       color: primaryColor,

@@ -2,7 +2,6 @@ import { spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
@@ -27,7 +26,6 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
-          ...(disabled && getDisabledBaseStyles()),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

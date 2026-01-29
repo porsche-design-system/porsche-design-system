@@ -13,6 +13,7 @@ export const getCheckboxIndeterminateBaseStyles = (isLoading: boolean): JssStyle
 
   return {
     '&::before': {
+      forcedColorAdjust: 'none',
       WebkitMask: `${indeterminateIcon} center/contain no-repeat`,
       mask: `${indeterminateIcon} center/contain no-repeat`,
       backgroundColor: primaryColor,

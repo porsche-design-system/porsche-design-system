@@ -3,6 +3,7 @@ import type { JssStyle } from 'jss';
 import { colors } from '../colors';
 import { getTransition } from '../common-styles';
 import { legacyRadiusSmall, radiusSm } from '../css-variables';
+import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 const { primaryColor, frostedSoftColor, contrastHighColor } = colors;
 
@@ -30,12 +31,21 @@ export const getOptionJssStyle = (
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
       background: frostedSoftColor,
+      ...forcedColorsMediaQuery({
+        forcedColorAdjust: 'none',
+        background: 'none',
+        borderRadius: '0',
+        boxShadow: 'inset 4px 0 0 0 CanvasText',
+      }),
     },
     '&--highlighted, &--selected': {
       color: primaryColor,
     },
     '&--disabled': {
       cursor: 'not-allowed',
+      ...forcedColorsMediaQuery({
+        color: 'GrayText',
+      }),
     },
     '&--hidden': {
       display: 'none',
