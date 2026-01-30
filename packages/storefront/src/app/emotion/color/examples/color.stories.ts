@@ -13,42 +13,62 @@ export const colorEmotionStoryTextColor: Story<'div'> = {
         {
           tag: 'li',
           properties: { className: 'text-primary' },
-          children: ['color: theme{Light|Dark}Primary'],
+          children: ['color: colorPrimary | colorPrimaryLight | colorPrimaryDark;'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-contrast-higher' },
+          children: ['color: $color-contrast-higher | $color-contrast-higher-light | $color-contrast-higher-dark;'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-high' },
-          children: ['color: theme{Light|Dark}ContrastHigh'],
+          children: ['color: $color-contrast-high | $color-contrast-high-light | $color-contrast-high-dark;'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-medium' },
-          children: ['color: theme{Light|Dark}ContrastMedium'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-contrast-low' },
-          children: ['color: theme{Light|Dark}ContrastLow'],
+          children: ['color: $color-contrast-medium | $color-contrast-medium-light | $color-contrast-medium-dark;'],
         },
         {
           tag: 'li',
           properties: { className: 'text-success' },
-          children: ['color: theme{Light|Dark}NotificationSuccess'],
+          children: ['color: $color-success | $color-success-light | $color-success-dark;'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-success-medium' },
+          children: ['color: $color-success-medium | $color-success-medium-light | $color-success-medium-dark;'],
         },
         {
           tag: 'li',
           properties: { className: 'text-warning' },
-          children: ['color: theme{Light|Dark}NotificationWarning'],
+          children: ['color: $color-warning | $color-warning-light | $color-warning-dark;'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-warning-medium' },
+          children: ['color: $color-warning-medium | $color-warning-medium-light | $color-warning-medium-dark;'],
         },
         {
           tag: 'li',
           properties: { className: 'text-error' },
-          children: ['color: theme{Light|Dark}NotificationError'],
+          children: ['color: $color-error | $color-error-light | $color-error-dark;'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-error-medium' },
+          children: ['color: $color-error-medium | $color-error-medium-light | $color-error-medium-dark;'],
         },
         {
           tag: 'li',
           properties: { className: 'text-info' },
-          children: ['color: theme{Light|Dark}NotificationInfo'],
+          children: ['color: $color-info | $color-info-light | $color-info-dark;'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-info-medium' },
+          children: ['color: $color-info-medium | $color-info-medium-light | $color-info-medium-dark;'],
         },
       ],
     },
@@ -73,7 +93,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-canvas w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: theme{Light|Dark}BackgroundBase',
+            'background-color: $color-canvas | $color-canvas-light | $color-canvas-dark;',
           ],
         },
         {
@@ -86,7 +106,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-surface w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: theme{Light|Dark}BackgroundSurface',
+            'background-color: $color-surface | $color-surface-light | $color-surface-dark;',
           ],
         },
         {
@@ -99,7 +119,20 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: theme{Light|Dark}BackgroundFrosted',
+            'background-color: $color-frosted | $color-frosted-light | $color-frosted-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-frosted-soft | $color-frosted-soft-light | $color-frosted-soft-dark;',
           ],
         },
         {
@@ -112,7 +145,111 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-backdrop w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: theme{Light|Dark}BackgroundShading',
+            'background-color: $color-backdrop | $color-backdrop-light | $color-backdrop-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-success-frosted w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-success-frosted | $color-success-frosted-light | $color-success-frosted-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-success-frosted-soft | $color-success-frosted-soft-light | $color-success-frosted-soft-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-warning-frosted | $color-warning-frosted-light | $color-warning-frosted-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-warning-frosted-soft | $color-warning-frosted-soft-light | $color-warning-frosted-soft-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-error-frosted w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-error-frosted | $color-error-frosted-light | $color-error-frosted-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-error-frosted-soft | $color-error-frosted-soft-light | $color-error-frosted-soft-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-info-frosted w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-info-frosted | $color-info-frosted-light | $color-info-frosted-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-info-frosted-soft | $color-info-frosted-soft-light | $color-info-frosted-soft-dark;',
           ],
         },
       ],
@@ -120,7 +257,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
   ],
 };
 
-export const colorEmotionStoryBorderColor: Story<'div'> = {
+export const colorScssStoryBorderColor: Story<'div'> = {
   generator: () => [
     {
       tag: 'ul',
@@ -138,7 +275,20 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-primary w-10 h-10 rounded-md border' },
             },
-            'borderColor: theme{Light|Dark}Primary',
+            'border-color: $color-primary | $color-primary-light | $color-primary-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-contrast-higher w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-contrast-higher | $color-contrast-higher-light | $color-contrast-higher-dark;',
           ],
         },
         {
@@ -151,7 +301,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-high w-10 h-10 rounded-md border' },
             },
-            'borderColor: theme{Light|Dark}ContrastHigh',
+            'border-color: $color-contrast-high | $color-contrast-high-light | $color-contrast-high-dark;',
           ],
         },
         {
@@ -164,7 +314,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-medium w-10 h-10 rounded-md border' },
             },
-            'borderColor: theme{Light|Dark}ContrastMedium',
+            'border-color: $color-contrast-medium | $color-contrast-medium-light | $color-contrast-medium-dark;',
           ],
         },
         {
@@ -177,7 +327,124 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-low w-10 h-10 rounded-md border' },
             },
-            'borderColor: theme{Light|Dark}ContrastLow',
+            'border-color: $color-contrast-low | $color-contrast-low-light | $color-contrast-low-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-contrast-lower w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-contrast-lower | $color-contrast-lower-light | $color-contrast-lower-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-info-medium w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-info-medium | $color-info-medium-light | $color-info-medium-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-info-low w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-info-low | $color-info-low-light | $color-info-low-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-success-medium w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-success-medium | $color-success-medium-light | $color-success-medium-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-success-low w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-success-low | $color-success-low-light | $color-success-low-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-warning-medium w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-warning-medium | $color-warning-medium-light | $color-warning-medium-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-warning-low w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-warning-low | $color-warning-low-light | $color-warning-low-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-error-medium w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-error-medium | $color-error-medium-light | $color-error-medium-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-error-low w-10 h-10 rounded-md border' },
+            },
+            'border-color: $color-error-low | $color-error-low-light | $color-error-low-dark;',
           ],
         },
       ],
