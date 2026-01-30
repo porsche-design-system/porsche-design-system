@@ -3,18 +3,18 @@ import {
   getMediaQueryMax,
   getMediaQueryMin,
   getMediaQueryMinMax,
-  spacingStaticMedium,
-  textSmallStyle,
+  proseTextSmStyle,
+  spacingStaticMd,
 } from '@porsche-design-system/emotion';
 
 const EmotionWrapper = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  padding: spacingStaticMedium,
+  padding: spacingStaticMd,
 });
 
 const EmotionMediaQueryMin = styled.p(({ theme }) => ({
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: theme.primary,
   margin: 0,
   [getMediaQueryMin('xs')]: {
@@ -50,7 +50,7 @@ const EmotionMediaQueryMin = styled.p(({ theme }) => ({
 }));
 
 const EmotionMediaQueryMax = styled.p(({ theme }) => ({
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: theme.primary,
   margin: 0,
   [getMediaQueryMax('xxl')]: {
@@ -86,7 +86,7 @@ const EmotionMediaQueryMax = styled.p(({ theme }) => ({
 }));
 
 const EmotionMediaQueryMinMax = styled.p(({ theme }) => ({
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: theme.primary,
   margin: 0,
   [getMediaQueryMinMax('xs', 's')]: {

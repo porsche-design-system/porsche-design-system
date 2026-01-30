@@ -1,32 +1,32 @@
 import styled from '@emotion/styled';
 import {
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXLarge,
-  spacingFluidXSmall,
-  spacingFluidXXLarge,
-  spacingStaticLarge,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXLarge,
-  spacingStaticXSmall,
-  spacingStaticXXLarge,
-  textSmallStyle,
+  proseTextSmStyle,
+  spacingFluid2Xl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXl,
+  spacingFluidXs,
+  spacingStatic2Xl,
+  spacingStaticLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXl,
+  spacingStaticXs,
 } from '@porsche-design-system/emotion';
 
 const EmotionSpacingWrapper = styled.div(({ theme }) => ({
   display: 'grid',
-  gap: spacingFluidMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  ...proseTextSmStyle,
   color: theme.primary,
-  padding: spacingStaticMedium,
+  padding: spacingStaticMd,
 }));
 
 const SpacingRow = styled.div({
   display: 'flex',
   alignItems: 'center',
-  gap: spacingStaticMedium,
+  gap: spacingStaticMd,
 });
 
 const FluidBox = styled.div<{ size: string }>((props) => ({
@@ -45,51 +45,51 @@ export const EmotionSpacing = () => {
   return (
     <EmotionSpacingWrapper>
       <SpacingRow>
-        <FluidBox size={spacingFluidXSmall} />
+        <FluidBox size={spacingFluidXs} />
         Fluid xs
       </SpacingRow>
       <SpacingRow>
-        <FluidBox size={spacingFluidSmall} />
+        <FluidBox size={spacingFluidSm} />
         Fluid sm
       </SpacingRow>
       <SpacingRow>
-        <FluidBox size={spacingFluidMedium} />
+        <FluidBox size={spacingFluidMd} />
         Fluid md
       </SpacingRow>
       <SpacingRow>
-        <FluidBox size={spacingFluidLarge} />
+        <FluidBox size={spacingFluidLg} />
         Fluid lg
       </SpacingRow>
       <SpacingRow>
-        <FluidBox size={spacingFluidXLarge} />
+        <FluidBox size={spacingFluidXl} />
         Fluid xl
       </SpacingRow>
       <SpacingRow>
-        <FluidBox size={spacingFluidXXLarge} />
+        <FluidBox size={spacingFluid2Xl} />
         Fluid 2xl
       </SpacingRow>
       <SpacingRow>
-        <StaticBox size={spacingStaticXSmall} />
+        <StaticBox size={spacingStaticXs} />
         Static xs
       </SpacingRow>
       <SpacingRow>
-        <StaticBox size={spacingStaticSmall} />
+        <StaticBox size={spacingStaticSm} />
         Static sm
       </SpacingRow>
       <SpacingRow>
-        <StaticBox size={spacingStaticMedium} />
+        <StaticBox size={spacingStaticMd} />
         Static md
       </SpacingRow>
       <SpacingRow>
-        <StaticBox size={spacingStaticLarge} />
+        <StaticBox size={spacingStaticLg} />
         Static lg
       </SpacingRow>
       <SpacingRow>
-        <StaticBox size={spacingStaticXLarge} />
+        <StaticBox size={spacingStaticXl} />
         Static xl
       </SpacingRow>
       <SpacingRow>
-        <StaticBox size={spacingStaticXXLarge} />
+        <StaticBox size={spacingStatic2Xl} />
         Static 2xl
       </SpacingRow>
     </EmotionSpacingWrapper>

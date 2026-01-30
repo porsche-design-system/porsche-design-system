@@ -1,31 +1,31 @@
 import styled from '@emotion/styled';
 import {
-  borderRadiusLarge,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionDurationVeryLong,
-  motionEasingBase,
-  motionEasingIn,
-  motionEasingOut,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
 } from '@porsche-design-system/emotion';
 
 const EmotionMotionWrapper = styled.div(({ theme }) => ({
   display: 'grid',
-  gap: spacingFluidMedium,
-  padding: spacingStaticMedium,
+  gap: spacingFluidMd,
+  padding: spacingStaticMd,
   color: theme.primary,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
 }));
 
 const baseItemStyle = ({ theme }: { theme: any }) => ({
-  borderRadius: borderRadiusLarge,
+  borderRadius: radiusLg,
   background: theme.surface,
-  padding: spacingFluidSmall,
+  padding: spacingFluidSm,
   transitionProperty: 'transform',
   willChange: 'transform',
   cursor: 'pointer',
@@ -33,50 +33,50 @@ const baseItemStyle = ({ theme }: { theme: any }) => ({
 
 const EmotionMotionShort = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationShort}`,
-  transitionTimingFunction: `${motionEasingBase}`,
+  transitionDuration: durationSm,
+  transitionTimingFunction: easeInOut,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
 const EmotionMotionModerate = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationModerate}`,
-  transitionTimingFunction: `${motionEasingBase}`,
+  transitionDuration: durationMd,
+  transitionTimingFunction: easeInOut,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
 const EmotionMotionLong = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationLong}`,
-  transitionTimingFunction: `${motionEasingBase}`,
+  transitionDuration: durationLg,
+  transitionTimingFunction: easeInOut,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
 const EmotionMotionVeryLong = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationVeryLong}`,
-  transitionTimingFunction: `${motionEasingBase}`,
+  transitionDuration: durationXl,
+  transitionTimingFunction: easeInOut,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
 const EmotionMotionEaseInOut = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationVeryLong}`,
-  transitionTimingFunction: `${motionEasingBase}`,
+  transitionDuration: durationXl,
+  transitionTimingFunction: easeInOut,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
 const EmotionMotionEaseIn = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationVeryLong}`,
-  transitionTimingFunction: `${motionEasingIn}`,
+  transitionDuration: durationXl,
+  transitionTimingFunction: easeIn,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
 const EmotionMotionEaseOut = styled.div(({ theme }) => ({
   ...baseItemStyle({ theme }),
-  transitionDuration: `${motionDurationVeryLong}`,
-  transitionTimingFunction: `${motionEasingOut}`,
+  transitionDuration: durationXl,
+  transitionTimingFunction: easeOut,
   '&:hover': { transform: 'scale(1.2)' },
 }));
 
