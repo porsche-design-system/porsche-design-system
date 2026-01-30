@@ -1,4 +1,5 @@
-import * as fromTypography from './index';
+import { expect, it } from 'vitest';
+import * as fromTypography from './';
 
 it('should provide all typography exports', () => {
   expect(Object.keys(fromTypography).length).toBe(14);
