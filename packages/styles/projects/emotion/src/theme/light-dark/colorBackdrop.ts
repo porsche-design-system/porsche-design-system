@@ -1,4 +1,3 @@
-import { colorBackdropDark } from '../dark';
-import { colorBackdropLight } from '../light';
+import { colorBackdrop as _colorBackdrop } from '@porsche-design-system/tokens';
 
-export const colorBackdrop = `light-dark(${colorBackdropLight},${colorBackdropDark})`;
+export const colorBackdrop = _colorBackdrop;

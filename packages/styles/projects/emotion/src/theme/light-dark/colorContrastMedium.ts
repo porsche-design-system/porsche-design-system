@@ -1,4 +1,3 @@
-import { colorContrastMediumDark } from '../dark';
-import { colorContrastMediumLight } from '../light';
+import { colorContrastMedium as _colorContrastMedium } from '@porsche-design-system/tokens';
 
-export const colorContrastMedium = `light-dark(${colorContrastMediumLight},${colorContrastMediumDark})`;
+export const colorContrastMedium = _colorContrastMedium;

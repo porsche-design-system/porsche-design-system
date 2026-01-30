@@ -1,4 +1,3 @@
-import { colorPrimaryDark } from '../dark';
-import { colorPrimaryLight } from '../light';
+import { colorPrimary as _colorPrimary } from '@porsche-design-system/tokens';
 
-export const colorPrimary = `light-dark(${colorPrimaryLight},${colorPrimaryDark})`;
+export const colorPrimary = _colorPrimary;

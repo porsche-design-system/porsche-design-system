@@ -1,4 +1,3 @@
-import { colorInfoLowDark } from '../dark';
-import { colorInfoLowLight } from '../light';
+import { colorInfoLow as _colorInfoLow } from '@porsche-design-system/tokens';
 
-export const colorInfoLow = `light-dark(${colorInfoLowLight},${colorInfoLowDark})`;
+export const colorInfoLow = _colorInfoLow;
