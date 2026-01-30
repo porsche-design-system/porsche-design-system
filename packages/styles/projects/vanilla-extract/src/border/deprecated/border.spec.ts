@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import * as fromBorder from './index';
+import * as fromBorder from '../index';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromBorder).length).toBe(8);

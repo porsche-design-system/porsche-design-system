@@ -3,7 +3,7 @@ export * from './border';
 export * from './shadow';
 export * from './focus';
 export * from './font';
-export * from './frostedGlass';
+export * from './blur';
 export * from './gradient';
 export * from './grid';
 export * from './mediaQuery';
