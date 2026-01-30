@@ -1,4 +1,5 @@
-import * as fromSpacing from './index';
+import { expect, it } from 'vitest';
+import * as fromSpacing from '../';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromSpacing).length).toBe(15);
