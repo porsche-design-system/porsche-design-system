@@ -1,3 +1,3 @@
-import { fontSizeMd } from '@porsche-design-system/tokens';
+import { typescaleMd } from '@porsche-design-system/tokens';
 
-export const fontSizeTextMedium = fontSizeMd;
+export const fontSizeTextMedium = typescaleMd;
