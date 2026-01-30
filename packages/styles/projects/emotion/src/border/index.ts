@@ -6,7 +6,6 @@ export { borderRadiusSmall } from './deprecated/borderRadiusSmall';
 export { borderWidth } from './deprecated/borderWidth';
 export { borderWidthBase } from './deprecated/borderWidthBase';
 export { borderWidthThin } from './deprecated/borderWidthThin';
-
 export { radius2Xl } from './radius2Xl';
 export { radius3Xl } from './radius3Xl';
 export { radius4Xl } from './radius4Xl';

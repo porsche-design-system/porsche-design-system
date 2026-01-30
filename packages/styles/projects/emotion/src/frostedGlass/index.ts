@@ -1,1 +1,2 @@
-export { frostedGlassStyle } from './frostedGlassStyle';
+export { blurFrosted } from './blurFrosted';
+export { frostedGlassStyle } from './deprecated/frostedGlassStyle';
