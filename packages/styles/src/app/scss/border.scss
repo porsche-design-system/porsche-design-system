@@ -7,9 +7,9 @@
   padding: pds.$pds-spacing-static-medium;
 
   &__radius-wrapper {
+    @include pds.pds-text-small;
     display: grid;
     gap: pds.$pds-spacing-fluid-medium;
-    @include pds.pds-text-small;
     color: var(--scss-color-primary);
   }
 

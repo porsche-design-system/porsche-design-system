@@ -1,11 +1,12 @@
 @use '@porsche-design-system/scss' as pds;
 
 .scss-spacing {
+  @include pds.prose-text-sm;
   display: grid;
   gap: pds.$spacing-fluid-md;
-  @include pds.prose-text-sm;
   color: var(--scss-color-primary);
   padding: pds.$spacing-static-md;
+
   &__item {
     display: flex;
     align-items: center;

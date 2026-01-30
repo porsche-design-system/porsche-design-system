@@ -1,24 +1,24 @@
-@use '@porsche-design-system/scss' as *;
+@use '@porsche-design-system/scss' as pds;
 
 .scss-color {
+  @include pds.prose-text-sm;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: $pds-spacing-fluid-medium;
-  padding: $pds-spacing-fluid-medium;
-  @include pds-text-small;
+  gap: pds.$spacing-fluid-md;
+  padding: pds.$spacing-fluid-md;
   color: var(--scss-color-primary);
 
   &__swatches {
     display: flex;
     align-items: center;
-    gap: $pds-spacing-static-small;
+    gap: pds.$spacing-static-sm;
 
     &-item {
       width: 2.5rem;
       height: 2.5rem;
-      border-radius: $pds-border-radius-medium;
+      border-radius: pds.$radius-md;
       border: 1px solid var(--scss-color-contrast-low);
     }
   }

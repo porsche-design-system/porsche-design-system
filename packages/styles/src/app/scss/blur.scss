@@ -1,8 +1,8 @@
 @use '@porsche-design-system/scss' as pds;
 
 .scss-blur {
-  display: grid;
   @include pds.prose-text-sm;
+  display: grid;
 
   &__image {
     grid-column: 1;
