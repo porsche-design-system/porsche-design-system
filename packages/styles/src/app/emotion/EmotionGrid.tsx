@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import {
-  borderRadiusLarge,
   gridBasicColumnEnd,
   gridBasicColumnStart,
   gridBasicSpanOneHalf,
@@ -17,14 +16,15 @@ import {
   gridStyle,
   gridWideColumnEnd,
   gridWideColumnStart,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  textSmallStyle,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidMd,
+  spacingFluidSm,
 } from '@porsche-design-system/emotion';
 
 const GridWrapper = styled.div(({ theme }) => ({
   ...gridStyle,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: theme.primary,
   textAlign: 'center',
 }));
@@ -32,7 +32,7 @@ const GridWrapper = styled.div(({ theme }) => ({
 const Subgrid = styled.div({
   display: 'grid',
   gridTemplateColumns: 'subgrid',
-  rowGap: spacingFluidMedium,
+  rowGap: spacingFluidMd,
 });
 const SubgridExtended = styled(Subgrid)({
   gridColumn: `${gridExtendedColumnStart} / ${gridExtendedColumnEnd}`,
@@ -45,11 +45,11 @@ const SubgridNarrow = styled(Subgrid)({
 });
 
 const PaddingSmall = {
-  padding: spacingFluidSmall,
+  padding: spacingFluidSm,
 };
 
 const BorderRadiusLarge = {
-  borderRadius: borderRadiusLarge,
+  borderRadius: radiusLg,
 };
 
 // Main columns

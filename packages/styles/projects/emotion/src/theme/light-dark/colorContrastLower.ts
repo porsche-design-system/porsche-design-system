@@ -1,4 +1,3 @@
-import { colorContrastLowerDark } from '../dark';
-import { colorContrastLowerLight } from '../light';
+import { colorContrastLower as _colorContrastLower } from '@porsche-design-system/tokens';
 
-export const colorContrastLower = `light-dark(${colorContrastLowerLight},${colorContrastLowerDark})`;
+export const colorContrastLower = _colorContrastLower;

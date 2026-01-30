@@ -1,4 +1,3 @@
-import { colorDisabledDark } from '../dark';
-import { colorDisabledLight } from '../light';
+import { colorDisabled as _colorDisabled } from '@porsche-design-system/tokens';
 
-export const colorDisabled = `light-dark(${colorDisabledLight},${colorDisabledDark})`;
+export const colorDisabled = _colorDisabled;

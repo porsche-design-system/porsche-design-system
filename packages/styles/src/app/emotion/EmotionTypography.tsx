@@ -1,98 +1,98 @@
 import styled from '@emotion/styled';
 import {
-  displayLargeStyle,
-  displayMediumStyle,
-  displaySmallStyle,
-  headingLargeStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  headingXLargeStyle,
-  headingXXLargeStyle,
-  spacingFluidMedium,
-  textLargeStyle,
-  textMediumStyle,
-  textSmallStyle,
-  textXLargeStyle,
-  textXSmallStyle,
-  textXXSmallStyle,
+  proseDisplayLgStyle,
+  proseDisplayMdStyle,
+  proseDisplaySmStyle,
+  proseHeading2XlStyle,
+  proseHeadingLgStyle,
+  proseHeadingMdStyle,
+  proseHeadingSmStyle,
+  proseHeadingXlStyle,
+  proseText2XsStyle,
+  proseTextLgStyle,
+  proseTextMdStyle,
+  proseTextSmStyle,
+  proseTextXlStyle,
+  proseTextXsStyle,
+  spacingFluidMd,
 } from '@porsche-design-system/emotion';
 
 const EmotionTypographyWrapper = styled.div(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  gap: spacingFluidMedium,
-  padding: spacingFluidMedium,
+  gap: spacingFluidMd,
+  padding: spacingFluidMd,
   color: theme.primary,
 }));
 
 const DisplayLarge = styled.h1({
-  ...displayLargeStyle,
+  ...proseDisplayLgStyle,
   margin: 0,
 });
 
 const DisplayMedium = styled.h2({
-  ...displayMediumStyle,
+  ...proseDisplayMdStyle,
   margin: 0,
 });
 
 const DisplaySmall = styled.h2({
-  ...displaySmallStyle,
+  ...proseDisplaySmStyle,
   margin: 0,
 });
 
-const HeadingXXLarge = styled.h2({
-  ...headingXXLargeStyle,
+const Heading2XLarge = styled.h2({
+  ...proseHeading2XlStyle,
   margin: 0,
 });
 
 const HeadingXLarge = styled.h3({
-  ...headingXLargeStyle,
+  ...proseHeadingXlStyle,
   margin: 0,
 });
 
 const HeadingLarge = styled.h4({
-  ...headingLargeStyle,
+  ...proseHeadingLgStyle,
   margin: 0,
 });
 
 const HeadingMedium = styled.h5({
-  ...headingMediumStyle,
+  ...proseHeadingMdStyle,
   margin: 0,
 });
 
 const HeadingSmall = styled.h6({
-  ...headingSmallStyle,
+  ...proseHeadingSmStyle,
   margin: 0,
 });
 
 const TextXLarge = styled.p({
-  ...textXLargeStyle,
+  ...proseTextXlStyle,
   margin: 0,
 });
 
 const TextLarge = styled.p({
-  ...textLargeStyle,
+  ...proseTextLgStyle,
   margin: 0,
 });
 
 const TextMedium = styled.p({
-  ...textMediumStyle,
+  ...proseTextMdStyle,
   margin: 0,
 });
 
 const TextSmallStyled = styled.p({
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   margin: 0,
 });
 
 const TextXSmall = styled.p({
-  ...textXSmallStyle,
+  ...proseTextXsStyle,
   margin: 0,
 });
 
-const TextXXSmall = styled.p({
-  ...textXXSmallStyle,
+const Text2XSmall = styled.p({
+  ...proseText2XsStyle,
   margin: 0,
 });
 
@@ -105,7 +105,7 @@ export const EmotionTypography = () => {
         <DisplaySmall>Display sm</DisplaySmall>
       </EmotionTypographyWrapper>
       <EmotionTypographyWrapper>
-        <HeadingXXLarge>Heading 2xl</HeadingXXLarge>
+        <Heading2XLarge>Heading 2xl</Heading2XLarge>
         <HeadingXLarge>Heading xl</HeadingXLarge>
         <HeadingLarge>Heading lg</HeadingLarge>
         <HeadingMedium>Heading md</HeadingMedium>
@@ -117,7 +117,7 @@ export const EmotionTypography = () => {
         <TextMedium>text md</TextMedium>
         <TextSmallStyled>text sm</TextSmallStyled>
         <TextXSmall>text xs</TextXSmall>
-        <TextXXSmall>text 2xs</TextXXSmall>
+        <Text2XSmall>text 2xs</Text2XSmall>
       </EmotionTypographyWrapper>
     </>
   );

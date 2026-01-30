@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
-import {
-  borderRadiusMedium,
-  spacingFluidMedium,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
+import { proseTextSmStyle, radiusMd, spacingFluidMd, spacingStaticSm } from '@porsche-design-system/emotion';
 import type { CustomTheme } from './emotionTheme.ts';
 
 const EmotionColorWrapper = styled.div(({ theme }) => ({
@@ -12,22 +7,22 @@ const EmotionColorWrapper = styled.div(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'center',
-  gap: spacingFluidMedium,
-  padding: spacingFluidMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  padding: spacingFluidMd,
+  ...proseTextSmStyle,
   color: theme.primary,
 }));
 
 const EmotionColorSwatches = styled.div({
   display: 'flex',
   alignItems: 'center',
-  gap: spacingStaticSmall,
+  gap: spacingStaticSm,
 });
 
 const EmotionColorSwatchesItem = styled.div<{ bg: keyof CustomTheme }>(({ theme, bg }) => ({
   width: '2.5rem',
   height: '2.5rem',
-  borderRadius: borderRadiusMedium,
+  borderRadius: radiusMd,
   border: `1px solid ${theme.contrastLow}`,
   backgroundColor: theme[bg],
 }));
