@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import * as fromTypography from './';
 
 it('should provide all typography exports', () => {

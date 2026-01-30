@@ -1,10 +1,4 @@
-export { motionDurationLong } from './deprecated/motionDurationLong';
-export { motionDurationModerate } from './deprecated/motionDurationModerate';
-export { motionDurationShort } from './deprecated/motionDurationShort';
-export { motionDurationVeryLong } from './deprecated/motionDurationVeryLong';
-export { motionEasingBase } from './deprecated/motionEasingBase';
-export { motionEasingIn } from './deprecated/motionEasingIn';
-export { motionEasingOut } from './deprecated/motionEasingOut';
+export * from './deprecated';
 export { durationLg } from './durationLg';
 export { durationMd } from './durationMd';
 export { durationSm } from './durationSm';

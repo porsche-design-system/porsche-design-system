@@ -1,5 +1,2 @@
-export { gradientToBottomStyle } from './deprecated/gradientToBottomStyle';
-export { gradientToLeftStyle } from './deprecated/gradientToLeftStyle';
-export { gradientToRightStyle } from './deprecated/gradientToRightStyle';
-export { gradientToTopStyle } from './deprecated/gradientToTopStyle';
+export * from './deprecated';
 export { gradientStopsFadeDark } from './gradientStopsFadeDark';

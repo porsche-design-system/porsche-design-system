@@ -1,19 +1,4 @@
-export { spacing } from './deprecated/spacing';
-export { spacingFluid } from './deprecated/spacingFluid';
-export { spacingFluidLarge } from './deprecated/spacingFluidLarge';
-export { spacingFluidMedium } from './deprecated/spacingFluidMedium';
-export { spacingFluidSmall } from './deprecated/spacingFluidSmall';
-export { spacingFluidXLarge } from './deprecated/spacingFluidXLarge';
-export { spacingFluidXSmall } from './deprecated/spacingFluidXSmall';
-export { spacingFluidXXLarge } from './deprecated/spacingFluidXXLarge';
-export { spacingStatic } from './deprecated/spacingStatic';
-export { spacingStaticLarge } from './deprecated/spacingStaticLarge';
-export { spacingStaticMedium } from './deprecated/spacingStaticMedium';
-export { spacingStaticSmall } from './deprecated/spacingStaticSmall';
-export { spacingStaticXLarge } from './deprecated/spacingStaticXLarge';
-export { spacingStaticXSmall } from './deprecated/spacingStaticXSmall';
-export { spacingStaticXXLarge } from './deprecated/spacingStaticXXLarge';
-
+export * from './deprecated';
 export { spacingFluid2Xl } from './spacingFluid2Xl';
 export { spacingFluidLg } from './spacingFluidLg';
 export { spacingFluidMd } from './spacingFluidMd';
