@@ -1,4 +1,5 @@
-import * as fromGradient from './index';
+import { expect, it } from 'vitest';
+import * as fromGradient from './';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromGradient).length).toBe(4);
