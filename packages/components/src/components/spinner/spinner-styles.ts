@@ -2,7 +2,6 @@ import { motionDurationVeryLong } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   cssVariableAnimationDuration,
   getHiddenTextJssStyle,
@@ -59,7 +58,6 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
         display: 'inline-flex',
         ...addImportantToEachRule({
           verticalAlign: 'top',
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

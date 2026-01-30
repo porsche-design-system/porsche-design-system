@@ -5,7 +5,6 @@ import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -79,7 +78,6 @@ export const getLinkButtonStyles = (
           }))
         ),
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

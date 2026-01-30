@@ -7,7 +7,7 @@ import {
   fontSizeTextXXSmall,
   textSmallStyle,
 } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import type { BreakpointCustomizable, TextSize } from '../../types';
@@ -39,7 +39,6 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

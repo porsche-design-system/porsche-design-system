@@ -1,7 +1,6 @@
 import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   dismissButtonJssStyle,
   hostHiddenStyles,
@@ -42,7 +41,6 @@ export const getComponentCss = (state: InlineNotificationState, hasAction: boole
         display: 'grid',
         ...addImportantToEachRule({
           ...getNotificationRootJssStyle(state, hasAction, hasClose),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

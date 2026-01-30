@@ -10,7 +10,6 @@ import { TOAST_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colorSchemeStyles,
   cssVariableAnimationDuration,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -70,7 +69,6 @@ export const getComponentCss = (): string => {
           inset: `auto auto var(${cssVariablePositionBottomInternal}) 64px`,
           maxWidth: 'min(42rem, calc(100vw - 64px * 2))',
         },
-        ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       ...preventFoucOfNestedElementsStyles,

@@ -1,5 +1,5 @@
 import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, colors, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
@@ -23,7 +23,6 @@ export const getComponentCss = (type: TextListType): string => {
         display: 'block',
         ...addImportantToEachRule({
           counterReset: counter,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

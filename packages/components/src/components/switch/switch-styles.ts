@@ -7,7 +7,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getDisabledBaseStyles,
   getFocusBaseStyles,
@@ -84,7 +83,6 @@ export const getComponentCss = (
           outline: 0, // custom element is able to delegate the focus
           font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct gap definition based on ex-unit
           gap,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...buildResponsiveStyles(isStretched, (stretchValue: boolean) => ({
             justifyContent: stretchValue ? 'space-between' : 'flex-start',

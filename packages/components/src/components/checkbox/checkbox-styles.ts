@@ -1,7 +1,6 @@
 import { fontFamily, fontLineHeight, fontSizeTextSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   hostHiddenStyles,
@@ -42,7 +41,6 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),

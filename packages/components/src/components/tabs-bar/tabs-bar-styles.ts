@@ -10,7 +10,6 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colorSchemeStyles,
   colors,
   cssVariableAnimationDuration,
   cssVariableTransitionDuration,
@@ -48,7 +47,6 @@ export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weigh
         display: 'block',
         ...addImportantToEachRule({
           position: 'relative',
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
