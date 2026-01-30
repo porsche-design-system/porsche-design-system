@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest';
 import * as fromDropShadow from './';
 
 it('should provide all exports', () => {
