@@ -1,4 +1,3 @@
-import { colorInfoFrostedSoftDark } from '../dark';
-import { colorInfoFrostedSoftLight } from '../light';
+import { colorInfoFrostedSoft as _colorInfoFrostedSoft } from '@porsche-design-system/tokens';
 
-export const colorInfoFrostedSoft = `light-dark(${colorInfoFrostedSoftLight},${colorInfoFrostedSoftDark})`;
+export const colorInfoFrostedSoft = _colorInfoFrostedSoft;

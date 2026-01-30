@@ -1,4 +1,3 @@
-import { colorCanvasDark } from '../dark';
-import { colorCanvasLight } from '../light';
+import { colorCanvas as _colorCanvas } from '@porsche-design-system/tokens';
 
-export const colorCanvas = `light-dark(${colorCanvasLight},${colorCanvasDark})`;
+export const colorCanvas = _colorCanvas;

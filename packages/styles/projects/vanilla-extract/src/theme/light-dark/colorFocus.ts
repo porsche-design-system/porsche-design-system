@@ -1,4 +1,3 @@
-import { colorFocusDark } from '../dark';
-import { colorFocusLight } from '../light';
+import { colorFocus as _colorFocus } from '@porsche-design-system/tokens';
 
-export const colorFocus = `light-dark(${colorFocusLight},${colorFocusDark})`;
+export const colorFocus = _colorFocus;

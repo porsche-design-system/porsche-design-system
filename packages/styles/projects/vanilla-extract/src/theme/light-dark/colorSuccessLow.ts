@@ -1,4 +1,3 @@
-import { colorSuccessLowDark } from '../dark';
-import { colorSuccessLowLight } from '../light';
+import { colorSuccessLow as _colorSuccessLow } from '@porsche-design-system/tokens';
 
-export const colorSuccessLow = `light-dark(${colorSuccessLowLight},${colorSuccessLowDark})`;
+export const colorSuccessLow = _colorSuccessLow;

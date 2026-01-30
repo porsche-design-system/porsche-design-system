@@ -1,4 +1,3 @@
-import { colorSurfaceDark } from '../dark';
-import { colorSurfaceLight } from '../light';
+import { colorSurface as _colorSurface } from '@porsche-design-system/tokens';
 
-export const colorSurface = `light-dark(${colorSurfaceLight},${colorSurfaceDark})`;
+export const colorSurface = _colorSurface;
