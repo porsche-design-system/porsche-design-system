@@ -5,7 +5,7 @@
   display: grid;
   gap: pds.$spacing-fluid-sm;
   padding: pds.$spacing-static-md;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
 
   &__item {
     @include pds.skeleton('light');

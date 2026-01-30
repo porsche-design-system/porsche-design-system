@@ -14,7 +14,7 @@
 
   &__backdrop-blur-frosted {
     backdrop-filter: pds.$blur-frosted;
-    background: var(--scss-color-frosted);
+    background: pds.$color-frosted;
     border-radius: pds.$radius-lg;
     margin: pds.$spacing-fluid-lg;
     padding: pds.$spacing-fluid-sm;

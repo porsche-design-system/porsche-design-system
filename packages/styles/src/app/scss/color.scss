@@ -8,7 +8,7 @@
   justify-content: center;
   gap: pds.$spacing-fluid-md;
   padding: pds.$spacing-fluid-md;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
 
   &__swatches {
     display: flex;
@@ -19,135 +19,135 @@
       width: 2.5rem;
       height: 2.5rem;
       border-radius: pds.$radius-md;
-      border: 1px solid var(--scss-color-contrast-low);
+      border: 1px solid pds.$color-contrast-low;
     }
   }
 }
 
 .scss-bg-canvas {
-  background-color: var(--scss-color-canvas);
+  background-color: pds.$color-canvas;
 }
 
 .scss-bg-surface {
-  background-color: var(--scss-color-surface);
+  background-color: pds.$color-surface;
 }
 
 .scss-bg-frosted {
-  background-color: var(--scss-color-frosted);
+  background-color: pds.$color-frosted;
 }
 
 .scss-bg-frosted-soft {
-  background-color: var(--scss-color-frosted-soft);
+  background-color: pds.$color-frosted-soft;
 }
 
 .scss-bg-backdrop {
-  background-color: var(--scss-color-backdrop);
+  background-color: pds.$color-backdrop;
 }
 
 .scss-bg-primary {
-  background-color: var(--scss-color-primary);
+  background-color: pds.$color-primary;
 }
 
 .scss-bg-contrast-higher {
-  background-color: var(--scss-color-contrast-higher);
+  background-color: pds.$color-contrast-higher;
 }
 
 .scss-bg-contrast-high {
-  background-color: var(--scss-color-contrast-high);
+  background-color: pds.$color-contrast-high;
 }
 
 .scss-bg-contrast-medium {
-  background-color: var(--scss-color-contrast-medium);
+  background-color: pds.$color-contrast-medium;
 }
 
 .scss-bg-contrast-low {
-  background-color: var(--scss-color-contrast-low);
+  background-color: pds.$color-contrast-low;
 }
 
 .scss-bg-contrast-lower {
-  background-color: var(--scss-color-contrast-lower);
+  background-color: pds.$color-contrast-lower;
 }
 
 .scss-bg-info {
-  background-color: var(--scss-color-info);
+  background-color: pds.$color-info;
 }
 
 .scss-bg-info-medium {
-  background-color: var(--scss-color-info-medium);
+  background-color: pds.$color-info-medium;
 }
 
 .scss-bg-info-low {
-  background-color: var(--scss-color-info-low);
+  background-color: pds.$color-info-low;
 }
 
 .scss-bg-info-frosted {
-  background-color: var(--scss-color-info-frosted);
+  background-color: pds.$color-info-frosted;
 }
 
 .scss-bg-info-frosted-soft {
-  background-color: var(--scss-color-info-frosted-soft);
+  background-color: pds.$color-info-frosted-soft;
 }
 
 .scss-bg-success {
-  background-color: var(--scss-color-success);
+  background-color: pds.$color-success;
 }
 
 .scss-bg-success-medium {
-  background-color: var(--scss-color-success-medium);
+  background-color: pds.$color-success-medium;
 }
 
 .scss-bg-success-low {
-  background-color: var(--scss-color-success-low);
+  background-color: pds.$color-success-low;
 }
 
 .scss-bg-success-frosted {
-  background-color: var(--scss-color-success-frosted);
+  background-color: pds.$color-success-frosted;
 }
 
 .scss-bg-success-frosted-soft {
-  background-color: var(--scss-color-success-frosted-soft);
+  background-color: pds.$color-success-frosted-soft;
 }
 
 .scss-bg-warning {
-  background-color: var(--scss-color-warning);
+  background-color: pds.$color-warning;
 }
 
 .scss-bg-warning-medium {
-  background-color: var(--scss-color-warning-medium);
+  background-color: pds.$color-warning-medium;
 }
 
 .scss-bg-warning-low {
-  background-color: var(--scss-color-warning-low);
+  background-color: pds.$color-warning-low;
 }
 
 .scss-bg-warning-frosted {
-  background-color: var(--scss-color-warning-frosted);
+  background-color: pds.$color-warning-frosted;
 }
 
 .scss-bg-warning-frosted-soft {
-  background-color: var(--scss-color-warning-frosted-soft);
+  background-color: pds.$color-warning-frosted-soft;
 }
 
 .scss-bg-error {
-  background-color: var(--scss-color-error);
+  background-color: pds.$color-error;
 }
 
 .scss-bg-error-medium {
-  background-color: var(--scss-color-error-medium);
+  background-color: pds.$color-error-medium;
 }
 
 .scss-bg-error-low {
-  background-color: var(--scss-color-error-low);
+  background-color: pds.$color-error-low;
 }
 
 .scss-bg-error-frosted {
-  background-color: var(--scss-color-error-frosted);
+  background-color: pds.$color-error-frosted;
 }
 
 .scss-bg-error-frosted-soft {
-  background-color: var(--scss-color-error-frosted-soft);
+  background-color: pds.$color-error-frosted-soft;
 }
 
 .scss-bg-focus {
-  background-color: var(--scss-color-focus);
+  background-color: pds.$color-focus;
 }

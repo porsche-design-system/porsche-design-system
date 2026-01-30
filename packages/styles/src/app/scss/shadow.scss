@@ -4,7 +4,7 @@
   @include pds.prose-text-sm;
   display: grid;
   gap: pds.$spacing-fluid-md;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
   padding: pds.$spacing-static-md;
 
   &--sm {

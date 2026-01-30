@@ -6,7 +6,7 @@
   align-items: flex-start;
   gap: pds.$pds-spacing-fluid-medium;
   padding: pds.$pds-spacing-fluid-medium;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
 }
 
 .scss-display-lg {

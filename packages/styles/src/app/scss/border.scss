@@ -10,7 +10,7 @@
     @include pds.pds-text-small;
     display: grid;
     gap: pds.$pds-spacing-fluid-medium;
-    color: var(--scss-color-primary);
+    color: pds.$color-primary;
   }
 
   &__radius {
