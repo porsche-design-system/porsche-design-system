@@ -1,6 +1,6 @@
 // TODO: think of providing, internal-api.ts and public-api.ts? So that e.g. types can be re-used in components?
 export * from './border';
-export * from './dropShadow';
+export * from './shadow';
 export * from './focus';
 export * from './font';
 export * from './frostedGlass';
