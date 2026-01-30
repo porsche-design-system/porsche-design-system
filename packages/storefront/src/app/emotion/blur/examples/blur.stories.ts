@@ -33,7 +33,7 @@ export const blurEmotionStory: Story<'div'> = {
               'backdrop-blur-frosted bg-frosted col-1 row-1 rounded-lg m-fluid-lg p-fluid-sm grid place-items-center',
           },
           children: [
-            'backdropFilter: blurFrosted; backgroundColor: colorFrosted | colorFrostedLight | colorFrostedDark;',
+            'backdropFilter: blurFrosted, backgroundColor: colorFrosted | colorFrostedLight | colorFrostedDark',
           ],
         },
       ],

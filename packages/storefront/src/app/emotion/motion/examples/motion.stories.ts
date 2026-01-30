@@ -59,7 +59,7 @@ export const motionEmotionStoryEase: Story<'div'> = {
             className:
               'ease-in-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transitionTimingFunction: `${motionEasingBase}`'],
+          children: ['transitionTimingFunction: `${easeInOut}`'],
         },
         {
           tag: 'div',
@@ -67,7 +67,7 @@ export const motionEmotionStoryEase: Story<'div'> = {
             className:
               'ease-in transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transitionTimingFunction: `${motionEasingIn}`'],
+          children: ['transitionTimingFunction: `${easeIn}`'],
         },
         {
           tag: 'div',
@@ -75,7 +75,7 @@ export const motionEmotionStoryEase: Story<'div'> = {
             className:
               'ease-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transitionTimingFunction: `${motionEasingOut}`'],
+          children: ['transitionTimingFunction: `${easeOut}`'],
         },
       ],
     },

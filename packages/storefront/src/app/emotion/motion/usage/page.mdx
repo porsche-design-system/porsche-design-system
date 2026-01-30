@@ -1,12 +1,12 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import {
-  motionEasingBase,
-  motionDurationVeryLong,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionEasingIn,
-  motionEasingOut,
+  durationSm,
+  durationMd,
+  durationLg,
+  durationXl,
+  easeInOut,
+  easeIn,
+  easeOut,
 } from '@porsche-design-system/components-react/emotion';
 
 export const metadata = {
@@ -38,8 +38,8 @@ ensure that motion is swift, subtle, and purposeful.
 
 Effects are the key for turning components from static to interactive and keeping UI elements alive.
 
-| JS                 | Ease               | Usage                                                                                                                                                            |
-| ------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `motionEasingBase` | {motionEasingBase} | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.                                                  |
-| `motionEasingIn`   | {motionEasingIn}   | Elements like Banners/Toasts or Modals that appear quickly and then ease into view.<br />Elements like Flyouts that slide in from off-screen and then slow down. |
-| `motionEasingOut`  | {motionEasingOut}  | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                                                                |
+| JS          | Ease        | Usage                                                                                                                                                            |
+| ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `easeInOut` | {easeInOut} | Buttons (hover and active states).<br />Tabs or segments switching.<br />Basic fade-in and fade-out animations.                                                  |
+| `easeIn`    | {easeIn}    | Elements like Banners/Toasts or Modals that appear quickly and then ease into view.<br />Elements like Flyouts that slide in from off-screen and then slow down. |
+| `easeOut`   | {easeOut}   | Closing animations for Modals or Flyouts.<br />Elements sliding out of view fast.                                                                                |
