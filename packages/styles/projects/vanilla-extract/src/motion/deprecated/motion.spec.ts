@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import * as fromMotion from './index';
+import * as fromMotion from './';
+import { expect, it } from 'vitest';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromMotion).length).toBe(7);
@@ -11,3 +11,4 @@ it.each<keyof typeof fromMotion>(Object.keys(fromMotion) as (keyof typeof fromMo
     expect(fromMotion[item]).toMatchSnapshot();
   }
 );
+
