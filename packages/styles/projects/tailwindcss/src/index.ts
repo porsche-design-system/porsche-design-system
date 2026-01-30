@@ -1,43 +1,34 @@
 import { cssVariableDefinitionDark, cssVariableDefinitionLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
-  borderRadius2Xl,
-  borderRadius3Xl,
-  borderRadius4Xl,
-  borderRadiusFull,
-  borderRadiusLg,
-  borderRadiusMd,
-  borderRadiusSm,
-  borderRadiusXl,
-  borderRadiusXs,
-  borderWidthRegular,
-  borderWidthThin,
   breakpoint2Xl,
   breakpointLg,
   breakpointMd,
   breakpointSm,
   breakpointXl,
   breakpointXs,
-  fontFamilyPorscheNext,
-  fontLineHeightNormal,
-  fontSize2Xl,
-  fontSize2Xs,
-  fontSizeLg,
-  fontSizeMd,
-  fontSizeSm,
-  fontSizeXl,
-  fontSizeXs,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+  fontPorscheNext,
   fontWeightBold,
   fontWeightNormal,
-  fontWeightSemiBold,
-  gradientFadeDark,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionDurationVeryLong,
-  motionEaseIn,
-  motionEaseInOut,
-  motionEaseOut,
+  fontWeightSemibold,
+  gradientStopsFadeDark,
+  leadingNormal,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXl,
+  radiusXs,
   shadowLg,
   shadowMd,
   shadowSm,
@@ -53,6 +44,13 @@ import {
   spacingStaticSm,
   spacingStaticXl,
   spacingStaticXs,
+  typescale2Xl,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
 } from '@porsche-design-system/tokens';
 
 export const getTailwindcssTheme = () => {
@@ -73,31 +71,31 @@ export const getTailwindcssTheme = () => {
   ${cssVariableDefinitionLight}
 
   /* Typography */
-  --font-porsche-next: ${fontFamilyPorscheNext};
+  --font-porsche-next: ${fontPorscheNext};
   --font-sans: var(--font-porsche-next);
 
   --font-weight-normal: ${fontWeightNormal};
-  --font-weight-semibold: ${fontWeightSemiBold};
+  --font-weight-semibold: ${fontWeightSemibold};
   --font-weight-bold: ${fontWeightBold};
 
-  --leading-normal: ${fontLineHeightNormal};
+  --leading-normal: ${leadingNormal};
 
-  --text-2xs: ${fontSize2Xs};
-  --text-2xs--line-height: ${fontLineHeightNormal};
-  --text-xs: ${fontSizeXs};
-  --text-xs--line-height: ${fontLineHeightNormal};
-  --text-base: ${fontSizeSm};
-  --text-base--line-height: ${fontLineHeightNormal};
-  --text-sm: ${fontSizeSm};
-  --text-sm--line-height: ${fontLineHeightNormal};
-  --text-md: ${fontSizeMd};
-  --text-md--line-height: ${fontLineHeightNormal};
-  --text-lg: ${fontSizeLg};
-  --text-lg--line-height: ${fontLineHeightNormal};
-  --text-xl: ${fontSizeXl};
-  --text-xl--line-height: ${fontLineHeightNormal};
-  --text-2xl: ${fontSize2Xl};
-  --text-2xl--line-height: ${fontLineHeightNormal};
+  --text-2xs: ${typescale2Xs};
+  --text-2xs--line-height: ${leadingNormal};
+  --text-xs: ${typescaleXs};
+  --text-xs--line-height: ${leadingNormal};
+  --text-base: ${typescaleSm};
+  --text-base--line-height: ${leadingNormal};
+  --text-sm: ${typescaleSm};
+  --text-sm--line-height: ${leadingNormal};
+  --text-md: ${typescaleMd};
+  --text-md--line-height: ${leadingNormal};
+  --text-lg: ${typescaleLg};
+  --text-lg--line-height: ${leadingNormal};
+  --text-xl: ${typescaleXl};
+  --text-xl--line-height: ${leadingNormal};
+  --text-2xl: ${typescale2Xl};
+  --text-2xl--line-height: ${leadingNormal};
 
   /* Breakpoint */
   --breakpoint-xs: ${breakpointXs}px;
@@ -123,21 +121,19 @@ export const getTailwindcssTheme = () => {
   --spacing-static-2xl: ${spacingStatic2Xl};
 
   /* Border */
-  --radius-xs: ${borderRadiusXs};
-  --radius-sm: ${borderRadiusSm};
-  --radius-md: ${borderRadiusMd};
-  --radius-lg: ${borderRadiusLg};
-  --radius-xl: ${borderRadiusXl};
-  --radius-2xl: ${borderRadius2Xl};
-  --radius-3xl: ${borderRadius3Xl};
-  --radius-4xl: ${borderRadius4Xl};
-  --radius-full: ${borderRadiusFull};
+  --radius-xs: ${radiusXs};
+  --radius-sm: ${radiusSm};
+  --radius-md: ${radiusMd};
+  --radius-lg: ${radiusLg};
+  --radius-xl: ${radiusXl};
+  --radius-2xl: ${radius2Xl};
+  --radius-3xl: ${radius3Xl};
+  --radius-4xl: ${radius4Xl};
+  --radius-full: ${radiusFull};
 
-  --default-border-width: ${borderWidthThin};
-  --border-width-1: ${borderWidthThin};
-  --border-width-regular: var(--border-width-1); /* alias (deprecated) */
-  --border-width-thin: var(--border-width-1); /* alias (deprecated) */
-  --border-width-2: ${borderWidthRegular};
+  --default-border-width: 1px;
+  --border-width-regular: 2px; /* alias (deprecated) */
+  --border-width-thin: 1px; /* alias (deprecated) */
 
   /* Blur */
   --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
@@ -151,22 +147,22 @@ export const getTailwindcssTheme = () => {
   --shadow-high: var(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
-  --default-outline-width: ${borderWidthRegular};
+  --default-outline-width: 2px;
 
   /* Motion */
-  --default-transition-timing-function: ${motionEaseInOut};
-  --ease-in-out: ${motionEaseInOut};
-  --ease-in: ${motionEaseIn};
-  --ease-out: ${motionEaseOut};
+  --default-transition-timing-function: ${easeInOut};
+  --ease-in-out: ${easeInOut};
+  --ease-in: ${easeIn};
+  --ease-out: ${easeOut};
 
-  --default-transition-duration: ${motionDurationShort};
-  --transition-duration-sm: ${motionDurationShort};
+  --default-transition-duration: ${durationSm};
+  --transition-duration-sm: ${durationSm};
   --transition-duration-short: var(--transition-duration-sm); /* alias (deprecated) */
-  --transition-duration-md: ${motionDurationModerate};
+  --transition-duration-md: ${durationMd};
   --transition-duration-moderate: var(--transition-duration-md); /* alias (deprecated) */
-  --transition-duration-lg: ${motionDurationLong};
+  --transition-duration-lg: ${durationLg};
   --transition-duration-long: var(--transition-duration-lg); /* alias (deprecated) */
-  --transition-duration-xl: ${motionDurationVeryLong};
+  --transition-duration-xl: ${durationXl};
   --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
@@ -200,19 +196,19 @@ export const getTailwindcssTheme = () => {
 
 /* Gradient */
 @utility bg-fade-to-t {
-  @apply bg-linear-[to_top,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_top,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-r {
-  @apply bg-linear-[to_right,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_right,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-b {
-  @apply bg-linear-[to_bottom,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_bottom,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-l {
-  @apply bg-linear-[to_left,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_left,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 /* Grid */

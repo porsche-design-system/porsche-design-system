@@ -2,26 +2,26 @@
 
 .scss-shadow {
   display: grid;
-  gap: pds.$pds-spacing-fluid-medium;
-  @include pds.pds-text-small;
+  gap: pds.$spacing-fluid-md;
+  @include pds.prose-text-sm;
   color: var(--scss-color-primary);
-  padding: pds.$pds-spacing-static-medium;
+  padding: pds.$spacing-static-md;
 
   &--sm {
-    box-shadow: pds.$box-shadow-sm;
-    border-radius: pds.$pds-border-radius-large;
-    padding: pds.$pds-spacing-fluid-small;
+    box-shadow: pds.$shadow-sm;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-sm;
   }
 
   &--md {
-    box-shadow: pds.$box-shadow-md;
-    border-radius: pds.$pds-border-radius-large;
-    padding: pds.$pds-spacing-fluid-small;
+    box-shadow: pds.$shadow-md;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-sm;
   }
 
   &--lg {
-    box-shadow: pds.$box-shadow-lg;
-    border-radius: pds.$pds-border-radius-large;
-    padding: pds.$pds-spacing-fluid-small;
+    box-shadow: pds.$shadow-lg;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-sm;
   }
 }

@@ -1,81 +1,81 @@
 // packages/styles/src/app/scss/typography.scss
-@use '@porsche-design-system/scss' as *;
+@use '@porsche-design-system/scss' as pds;
 
 .scss-typography {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $pds-spacing-fluid-medium;
-  padding: $pds-spacing-fluid-medium;
+  gap: pds.$pds-spacing-fluid-medium;
+  padding: pds.$pds-spacing-fluid-medium;
   color: var(--scss-color-primary);
 }
 
 .scss-display-lg {
-  @include pds-display-large;
+  @include pds.prose-display-lg;
   margin: 0;
 }
 
 .scss-display-md {
-  @include pds-display-medium;
+  @include pds.prose-display-md;
   margin: 0;
 }
 
 .scss-display-sm {
-  @include pds-display-small;
+  @include pds.prose-display-sm;
   margin: 0;
 }
 
 .scss-heading-2xl {
-  @include pds-heading-xx-large;
+  @include pds.prose-heading-2xl;
   margin: 0;
 }
 
 .scss-heading-xl {
-  @include pds-heading-x-large;
+  @include pds.prose-heading-xl;
   margin: 0;
 }
 
 .scss-heading-lg {
-  @include pds-heading-large;
+  @include pds.prose-heading-lg;
   margin: 0;
 }
 
 .scss-heading-md {
-  @include pds-heading-medium;
+  @include pds.prose-heading-md;
   margin: 0;
 }
 
 .scss-heading-sm {
-  @include pds-heading-small;
+  @include pds.prose-heading-sm;
   margin: 0;
 }
 
 .scss-text-xl {
-  @include pds-text-x-large;
+  @include pds.prose-text-xl;
   margin: 0;
 }
 
 .scss-text-lg {
-  @include pds-text-large;
+  @include pds.prose-text-lg;
   margin: 0;
 }
 
 .scss-text-md {
-  @include pds-text-medium;
+  @include pds.prose-text-md;
   margin: 0;
 }
 
 .scss-text-sm {
-  @include pds-text-small;
+  @include pds.prose-text-sm;
   margin: 0;
 }
 
 .scss-text-xs {
-  @include pds-text-x-small;
+  @include pds.prose-text-xs;
   margin: 0;
 }
 
 .scss-text-2xs {
-  @include pds-text-xx-small;
+  @include pds.prose-text-2xs;
   margin: 0;
 }

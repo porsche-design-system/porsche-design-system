@@ -18,7 +18,7 @@ export const spacingFluidScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-xs h-fluid-xs bg-info' },
             },
-            'width: $pds-spacing-fluid-x-small; height: $pds-spacing-fluid-x-small;',
+            'width: $spacing-fluid-xs; height: $spacing-fluid-xs;',
           ],
         },
         {
@@ -31,7 +31,7 @@ export const spacingFluidScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-sm h-fluid-sm bg-info' },
             },
-            'width: $pds-spacing-fluid-small; height: $pds-spacing-fluid-small;',
+            'width: $spacing-fluid-sm; height: $spacing-fluid-sm;',
           ],
         },
         {
@@ -44,7 +44,7 @@ export const spacingFluidScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-md h-fluid-md bg-info' },
             },
-            'width: $pds-spacing-fluid-medium; height: $pds-spacing-fluid-medium;',
+            'width: $spacing-fluid-md; height: $spacing-fluid-md;',
           ],
         },
         {
@@ -57,7 +57,7 @@ export const spacingFluidScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-lg h-fluid-lg bg-info' },
             },
-            'width: $pds-spacing-fluid-large; height: $pds-spacing-fluid-large;',
+            'width: $spacing-fluid-lg; height: $spacing-fluid-lg;',
           ],
         },
         {
@@ -70,7 +70,7 @@ export const spacingFluidScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-xl h-fluid-xl bg-info' },
             },
-            'width: $pds-spacing-fluid-x-large; height: $pds-spacing-fluid-x-large;',
+            'width: $spacing-fluid-xl; height: $spacing-fluid-xl;',
           ],
         },
         {
@@ -83,7 +83,7 @@ export const spacingFluidScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-2xl h-fluid-2xl bg-info' },
             },
-            'width: $pds-spacing-fluid-xx-large; height: $pds-spacing-fluid-xx-large;',
+            'width: $spacing-fluid-2xl; height: $spacing-fluid-2xl;',
           ],
         },
       ],
@@ -107,7 +107,7 @@ export const spacingStaticScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-xs h-static-xs bg-error' },
             },
-            'width: $pds-spacing-static-x-small; height: $pds-spacing-static-x-small;',
+            'width: $spacing-static-xs; height: $spacing-static-xs;',
           ],
         },
         {
@@ -120,7 +120,7 @@ export const spacingStaticScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-sm h-static-sm bg-error' },
             },
-            'width: $pds-spacing-static-small; height: $pds-spacing-static-small;',
+            'width: $spacing-static-sm; height: $spacing-static-sm;',
           ],
         },
         {
@@ -133,7 +133,7 @@ export const spacingStaticScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-md h-static-md bg-error' },
             },
-            'width: $pds-spacing-static-medium; height: $pds-spacing-static-medium;',
+            'width: $spacing-static-md; height: $spacing-static-md;',
           ],
         },
         {
@@ -146,7 +146,7 @@ export const spacingStaticScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-lg h-static-lg bg-error' },
             },
-            'width: $pds-spacing-static-large; height: $pds-spacing-static-large;',
+            'width: $spacing-static-lg; height: $spacing-static-lg;',
           ],
         },
         {
@@ -159,7 +159,7 @@ export const spacingStaticScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-xl h-static-xl bg-error' },
             },
-            'width: $pds-spacing-static-x-large; height: $pds-spacing-static-x-large;',
+            'width: $spacing-static-xl; height: $spacing-static-xl;',
           ],
         },
         {
@@ -172,7 +172,7 @@ export const spacingStaticScssStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-2xl h-static-2xl bg-error' },
             },
-            'width: $pds-spacing-static-xx-large; height: $pds-spacing-static-xx-large;',
+            'width: $spacing-static-2xl; height: $spacing-static-2xl;',
           ],
         },
       ],

@@ -1,3 +1,3 @@
-import { fontSizeXl } from '@porsche-design-system/tokens';
+import { typescaleXl } from '@porsche-design-system/tokens';
 
-export const fontSizeTextXLarge = fontSizeXl;
+export const fontSizeTextXLarge = typescaleXl;

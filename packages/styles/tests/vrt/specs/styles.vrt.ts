@@ -11,7 +11,8 @@ import {
 import { themes } from '../../../src/components/ThemeSelect';
 import { styleSolutions, styles } from '../../../src/routes';
 
-const stylesToExclude: (typeof styles)[number][] = ['motion'];
+// TODO: Add VRT for focus-visible
+const stylesToExclude: (typeof styles)[number][] = ['motion', 'focus-visible'];
 
 // Add viewport widths if more than just viewportWidthM should be tested
 const styleViewportMap: Partial<Record<(typeof styles)[number], number[]>> = {

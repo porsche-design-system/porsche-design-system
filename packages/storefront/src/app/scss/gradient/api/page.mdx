@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
 
 export const metadata = {
   title: 'SCSS: Gradient - Porsche Design System',
@@ -9,11 +10,8 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-## SCSS Mixins
+## SCSS Variables
 
-| SCSS Mixin                        | Description                                                       |
-| --------------------------------- | ----------------------------------------------------------------- |
-| `@mixin pds-gradient-to-top()`    | Applies a gradient faded to the **top** as `background-image`.    |
-| `@mixin pds-gradient-to-right()`  | Applies a gradient faded to the **right** as `background-image`.  |
-| `@mixin pds-gradient-to-bottom()` | Applies a gradient faded to the **bottom** as `background-image`. |
-| `@mixin pds-gradient-to-left()`   | Applies a gradient faded to the **left** as `background-image`.   |
+| SCSS Variable               | Description                                                         | Value                   |
+| --------------------------- | ------------------------------------------------------------------- | ----------------------- |
+| `$gradient-stops-fade-dark` | Holds color stops for a faded gradient, used as `background-image`. | {gradientStopsFadeDark} |

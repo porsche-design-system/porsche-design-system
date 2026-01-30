@@ -15,28 +15,28 @@ export const motionScssStoryDuration: Story<'div'> = {
           properties: {
             className: 'duration-sm transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $motion-duration-sm;'],
+          children: ['transition-duration: $duration-sm;'],
         },
         {
           tag: 'div',
           properties: {
             className: 'duration-md transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $motion-duration-md;'],
+          children: ['transition-duration: $duration-md;'],
         },
         {
           tag: 'div',
           properties: {
             className: 'duration-lg transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $motion-duration-lg;'],
+          children: ['transition-duration: $duration-lg;'],
         },
         {
           tag: 'div',
           properties: {
             className: 'duration-xl transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-duration: $motion-duration-xl;'],
+          children: ['transition-duration: $duration-xl;'],
         },
       ],
     },
@@ -55,25 +55,25 @@ export const motionScssStoryEase: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'ease-in-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+              'ease-in-out transition-transform duration-xl transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-timing-function: $motion-ease-in-out;'],
+          children: ['transition-timing-function: $ease-in-out;'],
         },
         {
           tag: 'div',
           properties: {
             className:
-              'ease-in transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+              'ease-in transition-transform duration-xl transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-timing-function: $motion-ease-in;'],
+          children: ['transition-timing-function: $ease-in;'],
         },
         {
           tag: 'div',
           properties: {
             className:
-              'ease-out transition-transform duration-very-long transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+              'ease-out transition-transform duration-xl transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['transition-timing-function: $motion-ease-out;'],
+          children: ['transition-timing-function: $ease-out;'],
         },
       ],
     },

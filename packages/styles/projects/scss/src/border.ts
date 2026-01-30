@@ -1,36 +1,31 @@
 import {
-  borderRadius2Xl,
-  borderRadius3Xl,
-  borderRadius4Xl,
-  borderRadiusFull,
-  borderRadiusLg,
-  borderRadiusMd,
-  borderRadiusSm,
-  borderRadiusXl,
-  borderRadiusXs,
-  borderWidthRegular,
-  borderWidthThin,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXl,
+  radiusXs,
 } from '@porsche-design-system/tokens';
 
 export const getBorderScss = () => {
   return `
-    $border-radius-xs: ${borderRadiusXs};
-    $border-radius-sm: ${borderRadiusSm};
-    $border-radius-md: ${borderRadiusMd};
-    $border-radius-lg: ${borderRadiusLg};
-    $border-radius-xl: ${borderRadiusXl};
-    $border-radius-2xl: ${borderRadius2Xl};
-    $border-radius-3xl: ${borderRadius3Xl};
-    $border-radius-4xl: ${borderRadius4Xl};
-    $border-radius-full: ${borderRadiusFull};
+    $radius-xs: ${radiusXs};
+    $radius-sm: ${radiusSm};
+    $radius-md: ${radiusMd};
+    $radius-lg: ${radiusLg};
+    $radius-xl: ${radiusXl};
+    $radius-2xl: ${radius2Xl};
+    $radius-3xl: ${radius3Xl};
+    $radius-4xl: ${radius4Xl};
+    $radius-full: ${radiusFull};
 
-    $border-width-1: ${borderWidthThin};
-    $border-width-2: ${borderWidthRegular};
-
-    $pds-border-radius-small: ${borderRadiusSm}; /* alias (deprecated) */
-    $pds-border-radius-medium: ${borderRadiusMd}; /* alias (deprecated) */
-    $pds-border-radius-large: ${borderRadiusLg}; /* alias (deprecated) */
-    $pds-border-width-base: ${borderWidthRegular}; /* alias (deprecated) */
-    $pds-border-width-thin: ${borderWidthThin}; /* alias (deprecated) */
+    $pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */
+    $pds-border-radius-medium: ${radiusMd}; /* alias (deprecated) */
+    $pds-border-radius-large: ${radiusLg}; /* alias (deprecated) */
+    $pds-border-width-base: 2px; /* alias (deprecated) */
+    $pds-border-width-thin: 1px; /* alias (deprecated) */
 `;
 };

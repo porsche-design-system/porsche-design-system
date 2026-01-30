@@ -26,6 +26,7 @@ import { EmotionTypography } from './app/emotion/EmotionTypography.tsx';
 import { ScssBlur } from './app/scss/ScssBlur.tsx';
 import { ScssBorder } from './app/scss/ScssBorder.tsx';
 import { ScssColor } from './app/scss/ScssColor.tsx';
+import { ScssFocusVisible } from './app/scss/ScssFocusVisible.tsx';
 import { ScssGradient } from './app/scss/ScssGradient.tsx';
 import { ScssGrid } from './app/scss/ScssGrid.tsx';
 import { ScssMediaQuery } from './app/scss/ScssMediaQuery.tsx';
@@ -46,6 +47,7 @@ import { TailwindcssShadow } from './app/tailwindcss/TailwindcssShadow.tsx';
 import { TailwindcssSkeleton } from './app/tailwindcss/TailwindcssSkeleton.tsx';
 import { TailwindcssSpacing } from './app/tailwindcss/TailwindcssSpacing.tsx';
 import { TailwindcssTypography } from './app/tailwindcss/TailwindcssTypography.tsx';
+import { TailwindFocusVisible } from './app/tailwindcss/TailwindFocusVisible.tsx';
 // import { EmotionBorder } from './emotion/EmotionBorder.tsx';
 // import { EmotionColor } from './emotion/EmotionColor.tsx';
 // import { EmotionGradient } from './emotion/EmotionGradient.tsx';
@@ -90,6 +92,7 @@ export const styles = [
   'blur',
   'border',
   'color',
+  'focus-visible',
   'gradient',
   'grid',
   'media-query',
@@ -105,6 +108,7 @@ export const routes: RouteConfig[] = [
   { path: '/tailwindcss/blur', label: 'Tailwind - Blur', element: <TailwindcssBlur /> },
   { path: '/tailwindcss/border', label: 'Tailwind - Border', element: <TailwindcssBorder /> },
   { path: '/tailwindcss/color', label: 'Tailwind - Color', element: <TailwindcssColor /> },
+  { path: '/tailwindcss/focus-visible', label: 'Tailwind - Focus Visible', element: <TailwindFocusVisible /> },
   { path: '/tailwindcss/gradient', label: 'Tailwind - Gradient', element: <TailwindcssGradient /> },
   { path: '/tailwindcss/grid', label: 'Tailwind - Grid', element: <TailwindcssGrid /> },
   { path: '/tailwindcss/media-query', label: 'Tailwind - Media Query', element: <TailwindcssMediaQuery /> },
@@ -117,6 +121,7 @@ export const routes: RouteConfig[] = [
   { path: '/scss/blur', label: 'SCSS - Blur', element: <ScssBlur /> },
   { path: '/scss/border', label: 'SCSS - Border', element: <ScssBorder /> },
   { path: '/scss/color', label: 'SCSS - Color', element: <ScssColor /> },
+  { path: '/scss/focus-visible', label: 'SCSS - Focus Visible', element: <ScssFocusVisible /> },
   { path: '/scss/gradient', label: 'SCSS - Gradient', element: <ScssGradient /> },
   { path: '/scss/grid', label: 'SCSS - Grid', element: <ScssGrid /> },
   { path: '/scss/media-query', label: 'SCSS - Media Query', element: <ScssMediaQuery /> },
