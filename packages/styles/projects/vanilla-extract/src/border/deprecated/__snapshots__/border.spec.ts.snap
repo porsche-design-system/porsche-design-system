@@ -38,3 +38,21 @@ exports[`should contain correct values for borderWidth 1`] = `
 exports[`should contain correct values for borderWidthBase 1`] = `"2px"`;
 
 exports[`should contain correct values for borderWidthThin 1`] = `"1px"`;
+
+exports[`should contain correct values for radius2Xl 1`] = `"16px"`;
+
+exports[`should contain correct values for radius3Xl 1`] = `"24px"`;
+
+exports[`should contain correct values for radius4Xl 1`] = `"32px"`;
+
+exports[`should contain correct values for radiusFull 1`] = `"calc(infinity * 1px)"`;
+
+exports[`should contain correct values for radiusLg 1`] = `"8px"`;
+
+exports[`should contain correct values for radiusMd 1`] = `"6px"`;
+
+exports[`should contain correct values for radiusSm 1`] = `"4px"`;
+
+exports[`should contain correct values for radiusXl 1`] = `"12px"`;
+
+exports[`should contain correct values for radiusXs 1`] = `"2px"`;

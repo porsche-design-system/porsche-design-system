@@ -1,1 +1,2 @@
-export { getFocusStyle } from './getFocusStyle';
+export * from './deprecated';
+export { getFocusVisibleStyle } from './getFocusVisibleStyle';

@@ -1,7 +1,54 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`pds-focus() > should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
-"div {
+"/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* TBD: $color-skeleton: #f7f7f7; */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+div {
   border-radius: 6px;
 }
 div:focus {
@@ -14,7 +61,54 @@ div:focus:not(:focus-visible) {
 `;
 
 exports[`pds-focus() > should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
-"div {
+"/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* TBD: $color-skeleton: #f7f7f7; */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+div {
   border-radius: 6px;
 }
 div:focus {
@@ -27,7 +121,54 @@ div:focus:not(:focus-visible) {
 `;
 
 exports[`pds-focus() > should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
-"div {
+"/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* TBD: $color-skeleton: #f7f7f7; */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+div {
   border-radius: 4px;
 }
 div:focus {
@@ -40,7 +181,54 @@ div:focus:not(:focus-visible) {
 `;
 
 exports[`pds-focus() > should return correct css for opts: {} 1`] = `
-"div {
+"/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* TBD: $color-skeleton: #f7f7f7; */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+/* alias (deprecated) */
+div {
   border-radius: 4px;
 }
 div:focus {

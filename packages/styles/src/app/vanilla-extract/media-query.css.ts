@@ -2,8 +2,8 @@ import {
   getMediaQueryMax,
   getMediaQueryMin,
   getMediaQueryMinMax,
-  spacingStaticMedium,
-  textSmallStyle,
+  proseTextSmStyle,
+  spacingStaticMd,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css.ts';
@@ -11,11 +11,11 @@ import { vars } from './theme.css.ts';
 export const VanillaExtractWrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  padding: spacingStaticMedium,
+  padding: spacingStaticMd,
 });
 
 const getTypographyStyle = {
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: vars.primary,
   margin: 0,
 };
@@ -30,21 +30,21 @@ export const VanillaExtractMediaQueryMin = style({
         },
       },
     },
-    [getMediaQueryMin('s')]: {
+    [getMediaQueryMin('sm')]: {
       selectors: {
         '&::after': {
           content: '" sm"',
         },
       },
     },
-    [getMediaQueryMin('m')]: {
+    [getMediaQueryMin('md')]: {
       selectors: {
         '&::after': {
           content: '" md"',
         },
       },
     },
-    [getMediaQueryMin('l')]: {
+    [getMediaQueryMin('lg')]: {
       selectors: {
         '&::after': {
           content: '" lg"',
@@ -58,7 +58,7 @@ export const VanillaExtractMediaQueryMin = style({
         },
       },
     },
-    [getMediaQueryMin('xxl')]: {
+    [getMediaQueryMin('2xl')]: {
       selectors: {
         '&::after': {
           content: '" 2xl"',
@@ -71,7 +71,7 @@ export const VanillaExtractMediaQueryMin = style({
 export const VanillaExtractMediaQueryMax = style({
   ...getTypographyStyle,
   '@media': {
-    [getMediaQueryMax('xxl')]: {
+    [getMediaQueryMax('2xl')]: {
       selectors: {
         '&::after': {
           content: '" 2xl"',
@@ -85,21 +85,21 @@ export const VanillaExtractMediaQueryMax = style({
         },
       },
     },
-    [getMediaQueryMax('l')]: {
+    [getMediaQueryMax('lg')]: {
       selectors: {
         '&::after': {
           content: '" lg"',
         },
       },
     },
-    [getMediaQueryMax('m')]: {
+    [getMediaQueryMax('md')]: {
       selectors: {
         '&::after': {
           content: '" md"',
         },
       },
     },
-    [getMediaQueryMax('s')]: {
+    [getMediaQueryMax('sm')]: {
       selectors: {
         '&::after': {
           content: '" sm"',
@@ -119,35 +119,35 @@ export const VanillaExtractMediaQueryMax = style({
 export const VanillaExtractMediaQueryMinMax = style({
   ...getTypographyStyle,
   '@media': {
-    [getMediaQueryMinMax('xs', 's')]: {
+    [getMediaQueryMinMax('xs', 'sm')]: {
       selectors: {
         '&::after': {
           content: '" xs - sm"',
         },
       },
     },
-    [getMediaQueryMinMax('s', 'm')]: {
+    [getMediaQueryMinMax('sm', 'md')]: {
       selectors: {
         '&::after': {
           content: '" sm - md"',
         },
       },
     },
-    [getMediaQueryMinMax('m', 'l')]: {
+    [getMediaQueryMinMax('md', 'lg')]: {
       selectors: {
         '&::after': {
           content: '" md - lg"',
         },
       },
     },
-    [getMediaQueryMinMax('l', 'xl')]: {
+    [getMediaQueryMinMax('lg', 'xl')]: {
       selectors: {
         '&::after': {
           content: '" lg - xl"',
         },
       },
     },
-    [getMediaQueryMinMax('xl', 'xxl')]: {
+    [getMediaQueryMinMax('xl', '2xl')]: {
       selectors: {
         '&::after': {
           content: '" xl - 2xl"',

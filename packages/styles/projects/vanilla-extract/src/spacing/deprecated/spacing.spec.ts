@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import * as fromSpacing from '../';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromSpacing).length).toBe(15);
+  expect(Object.keys(fromSpacing).length).toBe(27);
 });
 
 it.each<keyof typeof fromSpacing>(Object.keys(fromSpacing) as (keyof typeof fromSpacing)[])(

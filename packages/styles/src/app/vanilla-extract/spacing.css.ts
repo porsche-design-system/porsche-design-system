@@ -1,33 +1,33 @@
 import {
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXLarge,
-  spacingFluidXSmall,
-  spacingFluidXXLarge,
-  spacingStaticLarge,
-  spacingStaticMedium,
-  spacingStaticSmall,
-  spacingStaticXLarge,
-  spacingStaticXSmall,
-  spacingStaticXXLarge,
-  textSmallStyle,
+  proseTextSmStyle,
+  spacingFluid2Xl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXl,
+  spacingFluidXs,
+  spacingStatic2Xl,
+  spacingStaticLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXl,
+  spacingStaticXs,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
 export const vanillaExtractSpacingWrapper = style({
   display: 'grid',
-  gap: spacingFluidMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  ...proseTextSmStyle,
   color: vars.primary,
-  padding: spacingStaticMedium,
+  padding: spacingStaticMd,
 });
 
 export const vanillaExtractSpacingRow = style({
   display: 'flex',
   alignItems: 'center',
-  gap: spacingStaticMedium,
+  gap: spacingStaticMd,
 });
 
 const getFluidBoxStyle = {
@@ -38,74 +38,74 @@ const getStaticBoxStyle = {
   backgroundColor: vars.error,
 } as const;
 
-export const vanillaExtractSpacingFluidXSmall = style({
+export const vanillaExtractSpacingFluidXs = style({
   ...getFluidBoxStyle,
-  width: spacingFluidXSmall,
-  height: spacingFluidXSmall,
+  width: spacingFluidXs,
+  height: spacingFluidXs,
 });
 
-export const vanillaExtractSpacingFluidSmall = style({
+export const vanillaExtractSpacingFluidSm = style({
   ...getFluidBoxStyle,
-  width: spacingFluidSmall,
-  height: spacingFluidSmall,
+  width: spacingFluidSm,
+  height: spacingFluidSm,
 });
 
-export const vanillaExtractSpacingFluidMedium = style({
+export const vanillaExtractSpacingFluidMd = style({
   ...getFluidBoxStyle,
-  width: spacingFluidMedium,
-  height: spacingFluidMedium,
+  width: spacingFluidMd,
+  height: spacingFluidMd,
 });
 
-export const vanillaExtractSpacingFluidLarge = style({
+export const vanillaExtractSpacingFluidLg = style({
   ...getFluidBoxStyle,
-  width: spacingFluidLarge,
-  height: spacingFluidLarge,
+  width: spacingFluidLg,
+  height: spacingFluidLg,
 });
 
-export const vanillaExtractSpacingFluidXLarge = style({
+export const vanillaExtractSpacingFluidXl = style({
   ...getFluidBoxStyle,
-  width: spacingFluidXLarge,
-  height: spacingFluidXLarge,
+  width: spacingFluidXl,
+  height: spacingFluidXl,
 });
 
-export const vanillaExtractSpacingFluidXXLarge = style({
+export const vanillaExtractSpacingFluid2Xl = style({
   ...getFluidBoxStyle,
-  width: spacingFluidXXLarge,
-  height: spacingFluidXXLarge,
+  width: spacingFluid2Xl,
+  height: spacingFluid2Xl,
 });
 
-export const vanillaExtractSpacingStaticXSmall = style({
+export const vanillaExtractSpacingStaticXs = style({
   ...getStaticBoxStyle,
-  width: spacingStaticXSmall,
-  height: spacingStaticXSmall,
+  width: spacingStaticXs,
+  height: spacingStaticXs,
 });
 
-export const vanillaExtractSpacingStaticSmall = style({
+export const vanillaExtractSpacingStaticSm = style({
   ...getStaticBoxStyle,
-  width: spacingStaticSmall,
-  height: spacingStaticSmall,
+  width: spacingStaticSm,
+  height: spacingStaticSm,
 });
 
-export const vanillaExtractSpacingStaticMedium = style({
+export const vanillaExtractSpacingStaticMd = style({
   ...getStaticBoxStyle,
-  width: spacingStaticMedium,
-  height: spacingStaticMedium,
+  width: spacingStaticMd,
+  height: spacingStaticMd,
 });
 
-export const vanillaExtractSpacingStaticLarge = style({
+export const vanillaExtractSpacingStaticLg = style({
   ...getStaticBoxStyle,
-  width: spacingStaticLarge,
-  height: spacingStaticLarge,
+  width: spacingStaticLg,
+  height: spacingStaticLg,
 });
 
-export const vanillaExtractSpacingStaticXLarge = style({
+export const vanillaExtractSpacingStaticXl = style({
   ...getStaticBoxStyle,
-  width: spacingStaticXLarge,
-  height: spacingStaticXLarge,
+  width: spacingStaticXl,
+  height: spacingStaticXl,
 });
 
-export const vanillaExtractSpacingStaticXXLarge = style({
+export const vanillaExtractSpacingStatic2Xl = style({
   ...getStaticBoxStyle,
-  width: spacingStaticXXLarge,
-  height: spacingStaticXXLarge,
+  width: spacingStatic2Xl,
+  height: spacingStatic2Xl,
 });

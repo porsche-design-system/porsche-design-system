@@ -15,21 +15,21 @@ export const shadowVanillaExtractStory: Story<'div'> = {
           properties: {
             className: 'shadow-low rounded-lg p-fluid-sm',
           },
-          children: ['...dropShadowLowStyle'],
+          children: ['boxShadow: shadowSm'],
         },
         {
           tag: 'div',
           properties: {
             className: 'shadow-medium rounded-lg p-fluid-sm',
           },
-          children: ['...dropShadowMediumStyle'],
+          children: ['boxShadow: shadowMd'],
         },
         {
           tag: 'div',
           properties: {
             className: 'shadow-high rounded-lg p-fluid-sm',
           },
-          children: ['...dropShadowHighStyle'],
+          children: ['boxShadow: shadowLg'],
         },
       ],
     },

@@ -3,11 +3,15 @@
 exports[`should contain correct values for breakpoints 1`] = `
 [
   "base",
-  "xs",
   "s",
   "m",
   "l",
-  "xl",
   "xxl",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
 ]
 `;

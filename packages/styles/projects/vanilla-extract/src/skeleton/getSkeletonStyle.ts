@@ -1,9 +1,9 @@
-import { borderRadiusSmall } from '../border';
-import { motionDurationLong, motionEasingBase } from '../motion';
-import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../theme';
+import { radiusSm } from '../border';
+import { colorSurfaceDark, colorSurfaceLight, type Theme } from '../color';
+import { durationLg, easeInOut } from '../motion';
 
 type Options = {
-  theme?: Exclude<Theme, 'auto'>;
+  theme?: Theme;
 };
 
 export const skeletonKeyframes = {
@@ -22,14 +22,25 @@ export const skeletonKeyframes = {
 export const getSkeletonStyle = (animationName: string, opts?: Options) => {
   const { theme = 'light' } = opts || {};
 
+  // TODO: Extract into tokens
+  const highlightColorLight = '#f7f7f7';
+  const highlightColorDark = '#1a1b1e';
+
   const isThemeDark = theme === 'dark';
-  const backgroundColor = isThemeDark ? themeDarkBackgroundSurface : themeLightBackgroundSurface;
-  const highlightColor = isThemeDark ? '#1a1b1e' : '#f7f7f7';
+  const backgroundColor = isThemeDark ? colorSurfaceDark : colorSurfaceLight;
+  const highlightColor = isThemeDark ? highlightColorDark : highlightColorLight;
 
   return {
     display: 'block',
     background: `${backgroundColor} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
-    borderRadius: borderRadiusSmall,
-    animation: `${animationName} ${motionDurationLong} ${motionEasingBase} infinite`,
+    ...(theme === 'auto' && {
+      '@media': {
+        '(prefers-color-scheme: dark)': {
+          background: `${colorSurfaceDark} linear-gradient(to right, transparent 0%, ${highlightColorDark} 25%, transparent 50%) 0 0 / 200% 100%`,
+        },
+      },
+    }),
+    borderRadius: radiusSm,
+    animation: `${animationName} ${durationLg} ${easeInOut} infinite`,
   } as const;
 };

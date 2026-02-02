@@ -1,19 +1,19 @@
 import {
-  displayLargeStyle,
-  displayMediumStyle,
-  displaySmallStyle,
-  headingLargeStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  headingXLargeStyle,
-  headingXXLargeStyle,
-  spacingFluidMedium,
-  textLargeStyle,
-  textMediumStyle,
-  textSmallStyle,
-  textXLargeStyle,
-  textXSmallStyle,
-  textXXSmallStyle,
+  proseDisplayLgStyle,
+  proseDisplayMdStyle,
+  proseDisplaySmStyle,
+  proseHeading2XlStyle,
+  proseHeadingLgStyle,
+  proseHeadingMdStyle,
+  proseHeadingSmStyle,
+  proseHeadingXlStyle,
+  proseText2XsStyle,
+  proseTextLgStyle,
+  proseTextMdStyle,
+  proseTextSmStyle,
+  proseTextXlStyle,
+  proseTextXsStyle,
+  spacingFluidMd,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
@@ -22,77 +22,77 @@ export const vanillaExtractTypographyWrapper = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  gap: spacingFluidMedium,
-  padding: spacingFluidMedium,
+  gap: spacingFluidMd,
+  padding: spacingFluidMd,
   color: vars.primary,
 });
 
 export const displayLarge = style({
-  ...displayLargeStyle,
+  ...proseDisplayLgStyle,
   margin: 0,
 });
 
 export const displayMedium = style({
-  ...displayMediumStyle,
+  ...proseDisplayMdStyle,
   margin: 0,
 });
 
 export const displaySmall = style({
-  ...displaySmallStyle,
+  ...proseDisplaySmStyle,
   margin: 0,
 });
 
 export const headingXXLarge = style({
-  ...headingXXLargeStyle,
+  ...proseHeading2XlStyle,
   margin: 0,
 });
 
 export const headingXLarge = style({
-  ...headingXLargeStyle,
+  ...proseHeadingXlStyle,
   margin: 0,
 });
 
 export const headingLarge = style({
-  ...headingLargeStyle,
+  ...proseHeadingLgStyle,
   margin: 0,
 });
 
 export const headingMedium = style({
-  ...headingMediumStyle,
+  ...proseHeadingMdStyle,
   margin: 0,
 });
 
 export const headingSmall = style({
-  ...headingSmallStyle,
+  ...proseHeadingSmStyle,
   margin: 0,
 });
 
 export const textXLarge = style({
-  ...textXLargeStyle,
+  ...proseTextXlStyle,
   margin: 0,
 });
 
 export const textLarge = style({
-  ...textLargeStyle,
+  ...proseTextLgStyle,
   margin: 0,
 });
 
 export const textMedium = style({
-  ...textMediumStyle,
+  ...proseTextMdStyle,
   margin: 0,
 });
 
 export const textSmall = style({
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   margin: 0,
 });
 
 export const textXSmall = style({
-  ...textXSmallStyle,
+  ...proseTextXsStyle,
   margin: 0,
 });
 
 export const textXXSmall = style({
-  ...textXXSmallStyle,
+  ...proseText2XsStyle,
   margin: 0,
 });
