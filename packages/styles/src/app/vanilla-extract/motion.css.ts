@@ -1,32 +1,32 @@
 import {
-  borderRadiusLarge,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionDurationVeryLong,
-  motionEasingBase,
-  motionEasingIn,
-  motionEasingOut,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
 export const vanillaExtractMotionWrapper = style({
   display: 'grid',
-  gap: spacingFluidMedium,
-  padding: spacingStaticMedium,
+  gap: spacingFluidMd,
+  padding: spacingStaticMd,
   color: vars.primary,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
 });
 
 const baseItemStyle = {
-  borderRadius: borderRadiusLarge,
+  borderRadius: radiusLg,
   background: vars.surface,
-  padding: spacingFluidSmall,
+  padding: spacingFluidSm,
   transitionProperty: 'transform',
   willChange: 'transform',
   cursor: 'pointer',
@@ -35,8 +35,8 @@ const baseItemStyle = {
 export const vanillaExtractMotionShort = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationShort,
-    transitionTimingFunction: motionEasingBase,
+    transitionDuration: durationSm,
+    transitionTimingFunction: easeInOut,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },
@@ -46,8 +46,8 @@ export const vanillaExtractMotionShort = style([
 export const vanillaExtractMotionModerate = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationModerate,
-    transitionTimingFunction: motionEasingBase,
+    transitionDuration: durationMd,
+    transitionTimingFunction: easeInOut,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },
@@ -57,8 +57,8 @@ export const vanillaExtractMotionModerate = style([
 export const vanillaExtractMotionLong = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationLong,
-    transitionTimingFunction: motionEasingBase,
+    transitionDuration: durationLg,
+    transitionTimingFunction: easeInOut,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },
@@ -68,8 +68,8 @@ export const vanillaExtractMotionLong = style([
 export const vanillaExtractMotionVeryLong = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationVeryLong,
-    transitionTimingFunction: motionEasingBase,
+    transitionDuration: durationXl,
+    transitionTimingFunction: easeInOut,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },
@@ -79,8 +79,8 @@ export const vanillaExtractMotionVeryLong = style([
 export const vanillaExtractMotionEaseInOut = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationVeryLong,
-    transitionTimingFunction: motionEasingBase,
+    transitionDuration: durationXl,
+    transitionTimingFunction: easeOut,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },
@@ -90,8 +90,8 @@ export const vanillaExtractMotionEaseInOut = style([
 export const vanillaExtractMotionEaseIn = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationVeryLong,
-    transitionTimingFunction: motionEasingIn,
+    transitionDuration: durationXl,
+    transitionTimingFunction: easeIn,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },
@@ -101,8 +101,8 @@ export const vanillaExtractMotionEaseIn = style([
 export const vanillaExtractMotionEaseOut = style([
   baseItemStyle,
   {
-    transitionDuration: motionDurationVeryLong,
-    transitionTimingFunction: motionEasingOut,
+    transitionDuration: durationXl,
+    transitionTimingFunction: easeOut,
     selectors: {
       '&:hover': { transform: 'scale(1.2)' },
     },

@@ -1,16 +1,16 @@
 import {
-  borderRadiusLarge,
-  frostedGlassStyle,
-  spacingFluidLarge,
-  spacingFluidSmall,
-  textSmallStyle,
+  blurFrosted,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidLg,
+  spacingFluidSm,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
 export const vanillaExtractBlurWrapper = style({
   display: 'grid',
-  ...textSmallStyle,
+  ...proseTextSmStyle,
 });
 
 export const vanillaExtractBlurImage = style({
@@ -22,11 +22,11 @@ export const vanillaExtractBlurImage = style({
 });
 
 export const vanillaExtractBackdropBlurFrosted = style({
-  ...frostedGlassStyle,
+  backdropFilter: blurFrosted,
   backgroundColor: vars.frosted,
-  borderRadius: borderRadiusLarge,
-  margin: spacingFluidLarge,
-  padding: spacingFluidSmall,
+  borderRadius: radiusLg,
+  margin: spacingFluidLg,
+  padding: spacingFluidSm,
   display: 'grid',
   gridRow: 1,
   gridColumn: 1,
