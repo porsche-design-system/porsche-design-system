@@ -16,7 +16,7 @@ window.FLAG_NAMES = FLAG_NAMES;
 window.ICON_NAMES = ICON_NAMES;
 
 const getPage = () => window.location.pathname.substring(1);
-const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+const getTheme = () => new URL(document.location).searchParams.get('theme') || 'scheme-light-dark';
 const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
 const getScale = () => new URL(document.location).searchParams.get('scale') || '100';
 const getTransition = () => new URL(document.location).searchParams.get('transition') || 'none';
@@ -62,7 +62,7 @@ const updateRoute = async (opts) => {
     const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
     document.querySelector('html').setAttribute('dir', dir);
     document.querySelector('html').style.fontSize = `${scale}%`;
-    document.querySelector('body').classList.remove('light', 'dark', 'auto');
+    document.querySelector('body').classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
     document.querySelector('body').classList.add(theme);
 
     if (isPageLoadedInIFrame()) {
