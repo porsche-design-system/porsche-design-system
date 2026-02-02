@@ -1,4 +1,4 @@
-import { themeLightStateFocus } from '../theme';
+import { themeLightStateFocus } from '../color';
 
 export type Options = {
   offset?: string;

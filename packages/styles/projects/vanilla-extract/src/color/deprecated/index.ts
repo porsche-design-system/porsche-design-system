@@ -41,4 +41,3 @@ export { themeLightStateActive } from './themeLightStateActive';
 export { themeLightStateDisabled } from './themeLightStateDisabled';
 export { themeLightStateFocus } from './themeLightStateFocus';
 export { themeLightStateHover } from './themeLightStateHover';
-export type { Theme } from './themeShared';

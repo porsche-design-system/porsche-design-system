@@ -1,6 +1,6 @@
 import { borderRadiusSmall } from '../border';
+import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../color';
 import { motionDurationLong, motionEasingBase } from '../motion';
-import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../theme';
 
 type Options = {
   theme?: Exclude<Theme, 'auto'>;

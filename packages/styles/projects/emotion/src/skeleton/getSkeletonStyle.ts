@@ -1,6 +1,6 @@
 import { radiusSm } from '../border';
+import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../color';
 import { durationLg, easeInOut } from '../motion';
-import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../theme';
 
 type Options = {
   theme?: Theme;

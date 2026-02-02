@@ -1,5 +1,5 @@
 import { borderRadiusMedium, borderRadiusSmall, borderWidthBase } from '../border';
-import { themeLightStateFocus } from '../theme';
+import { themeLightStateFocus } from '../color';
 
 type Offset = 'small' | 'none';
 type BorderRadius = 'small' | 'medium';
