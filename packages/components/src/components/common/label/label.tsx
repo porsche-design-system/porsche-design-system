@@ -19,11 +19,6 @@ type LabelProps = {
   stopClickPropagation?: boolean;
 };
 
-// fixes issue where clicking a button inside a label causes double events
-const composedPathIncludesButton = (event: MouseEvent): boolean => {
-  return event.composedPath().some((node): node is HTMLButtonElement => node instanceof HTMLButtonElement);
-};
-
 export const Label: FunctionalComponent<LabelProps> = ({
   host,
   label,
@@ -37,17 +32,6 @@ export const Label: FunctionalComponent<LabelProps> = ({
 }) => {
   const handleClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
-      e.stopPropagation();
-    }
-    if (composedPathIncludesButton(e)) {
-      e.preventDefault();
-    }
-  };
-
-  // fixes issue where pressing space or enter on e.g. popover when nested inside label which propagates a keydown event to e.g. select
-  const handleKeyDown = (e: KeyboardEvent) => {
-    const { key, code } = e;
-    if (key === ' ' || code === 'Space' || key === 'Enter') {
       e.stopPropagation();
     }
   };
@@ -64,7 +48,6 @@ export const Label: FunctionalComponent<LabelProps> = ({
             aria-disabled={isLoading || isDisabled ? 'true' : null}
             htmlFor={htmlFor}
             onClick={handleClick}
-            onKeyDown={handleKeyDown}
           >
             <Fragment>
               {label || <slot name="label" />}
