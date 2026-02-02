@@ -1,6 +1,7 @@
+import { describe, expect, it } from 'vitest';
 import type { Breakpoint } from './breakpointShared';
-import { getMediaQueryMin } from './getMediaQueryMin';
 import { getMediaQueryMax } from './getMediaQueryMax';
+import { getMediaQueryMin } from './getMediaQueryMin';
 import { getMediaQueryMinMax } from './getMediaQueryMinMax';
 import * as fromMediaQuery from './index';
 
@@ -9,16 +10,13 @@ it('should provide all exports', () => {
 });
 
 describe('mediaQueryMin()', () => {
-  it.each<Breakpoint>(['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'])(
-    'should return correct css for breakpoint: %s',
-    (min) => {
-      expect(getMediaQueryMin(min as any)).toMatchSnapshot();
-    }
-  );
+  it.each<Breakpoint>(['xs', 'sm', 'md', 'lg', 'xl', '2xl'])('should return correct css for breakpoint: %s', (min) => {
+    expect(getMediaQueryMin(min as any)).toMatchSnapshot();
+  });
 });
 
 describe('mediaQueryMax()', () => {
-  it.each<Exclude<Breakpoint, 'base'>>(['xs', 's', 'm', 'l', 'xl', 'xxl'])(
+  it.each<Exclude<Breakpoint, 'base'>>(['xs', 'sm', 'md', 'lg', 'xl', '2xl'])(
     'should return correct css for breakpoint: %s',
     (max) => {
       expect(getMediaQueryMax(max as any)).toMatchSnapshot();
@@ -28,12 +26,11 @@ describe('mediaQueryMax()', () => {
 
 describe('mediaQueryMinMax()', () => {
   it.each<[Exclude<Breakpoint, 'xxl'>, Exclude<Breakpoint, 'base'>]>([
-    ['base', 'xs'],
-    ['xs', 's'],
-    ['s', 'm'],
-    ['m', 'l'],
-    ['l', 'xl'],
-    ['xl', 'xxl'],
+    ['xs', 'sm'],
+    ['sm', 'md'],
+    ['md', 'lg'],
+    ['lg', 'xl'],
+    ['xl', '2xl'],
   ])('should return correct css for breakpoint range: %s - %s', (min, max) => {
     expect(getMediaQueryMinMax(min as any, max as any)).toMatchSnapshot();
   });
