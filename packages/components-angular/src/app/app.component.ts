@@ -34,7 +34,7 @@ export class SafePipe implements PipeTransform {
       </select>
     }
 
-    <div id="app">
+    <div id="app" [class]="theme$.value">
       <router-outlet />
     </div>
     `,
