@@ -2,10 +2,14 @@
 
 exports[`should contain correct values for breakpoint 1`] = `
 {
+  "2xl": 1920,
   "base": 0,
   "l": 1300,
+  "lg": 1300,
   "m": 1000,
+  "md": 1000,
   "s": 760,
+  "sm": 760,
   "xl": 1760,
   "xs": 480,
   "xxl": 1920,
