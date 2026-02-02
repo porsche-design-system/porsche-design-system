@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  PLinkPure,
   PPopover,
   PSelect,
   PSelectOption,
@@ -8,32 +9,50 @@ import {
   type SelectChangeEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
-import type { PlaygroundTheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/theme';
 
 type ThemeSelectProps = {
-  value: PlaygroundTheme;
+  value: StorefrontColorScheme;
   onThemeChange: (event: CustomEvent<SelectChangeEventDetail>) => void;
 } & Partial<PSelectProps>;
 
 export const ThemeSelect = ({
-  value = 'light',
+  value = 'scheme-light',
   onThemeChange,
   name = 'theme',
-  label = 'Theme',
+  label = 'Color Scheme',
   hideLabel = false,
   ...rest
 }: ThemeSelectProps) => {
+  const themeMap: Record<StorefrontColorScheme, string> = {
+    'scheme-light': 'Light',
+    'scheme-dark': 'Dark',
+    'scheme-light-dark': 'Light Dark',
+  };
+
   return (
-    <PSelect name={name} value={value} onChange={onThemeChange} label={label} hideLabel={hideLabel} {...rest}>
-      <span slot="label">{label}</span>
-      <PPopover slot="label-after" className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-        Changes the theme of the application and any Porsche Design System component. It's possible to choose between
-        forced theme <b>light</b> and <b>dark</b>. It's also possible to use <b>auto</b>, which applies light or dark
-        theme depending on the operating system settings automatically.
-      </PPopover>
-      <PSelectOption value="light">Light</PSelectOption>
-      <PSelectOption value="dark">Dark</PSelectOption>
-      <PSelectOption value="auto">Auto (sync with operating system)</PSelectOption>
+    <PSelect name={name} value={value} onChange={onThemeChange} hideLabel={hideLabel} {...rest}>
+      <span slot="label" className="inline-flex gap-static-xs">
+        {label}
+        <PPopover slot="label-after">
+          All color tokens use the{' '}
+          <PLinkPure
+            icon="none"
+            underline={true}
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark"
+            target="_blank"
+          >
+            light-dark()
+          </PLinkPure>{' '}
+          CSS function. Set the theme via the CSS <code>color-scheme</code> property: <code>light</code> for light mode,{' '}
+          <code>dark</code> for dark mode, or <code>light dark</code> to follow the user's system preference.
+        </PPopover>
+      </span>
+      {Object.entries(themeMap).map(([theme, name]) => (
+        <PSelectOption key={theme} value={theme}>
+          {name}
+        </PSelectOption>
+      ))}
     </PSelect>
   );
 };

@@ -45,7 +45,7 @@ export const motionVanillaExtractStoryDuration: Story<'div'> = {
   ],
 };
 
-export const motionEmotionStoryEase: Story<'div'> = {
+export const motionVanillaExtractStoryEase: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
