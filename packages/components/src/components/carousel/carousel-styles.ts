@@ -18,7 +18,6 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -82,7 +81,7 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   full: {
     base: gridFullOffset,
     s: gridFullOffset,
-    xxl: gridFullOffset
+    xxl: gridFullOffset,
   },
 };
 
@@ -123,7 +122,6 @@ export const getComponentCss = (
           gap: spacingFluidMedium, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
           flexDirection: 'column',
           boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

@@ -1,47 +1,47 @@
 import styled from '@emotion/styled';
 import {
-  borderRadiusLarge,
-  dropShadowHighStyle,
-  dropShadowLowStyle,
-  dropShadowMediumStyle,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  proseTextSmStyle,
+  radiusLg,
+  shadowLg,
+  shadowMd,
+  shadowSm,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
 } from '@porsche-design-system/emotion';
 
 const EmotionShadowWrapper = styled.div(({ theme }) => ({
   display: 'grid',
-  gap: spacingFluidMedium,
-  padding: spacingStaticMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  padding: spacingStaticMd,
+  ...proseTextSmStyle,
   color: theme.primary,
 }));
 
 const EmotionShadowLow = styled.div({
-  ...dropShadowLowStyle,
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+  boxShadow: shadowSm,
+  borderRadius: radiusLg,
+  padding: spacingFluidSm,
 });
 
 const EmotionShadowMedium = styled.div({
-  ...dropShadowMediumStyle,
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+  boxShadow: shadowMd,
+  borderRadius: radiusLg,
+  padding: spacingFluidSm,
 });
 
 const EmotionShadowHigh = styled.div({
-  ...dropShadowHighStyle,
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+  boxShadow: shadowLg,
+  borderRadius: radiusLg,
+  padding: spacingFluidSm,
 });
 
 export const EmotionShadow = () => {
   return (
     <EmotionShadowWrapper>
-      <EmotionShadowLow>Shadow Low</EmotionShadowLow>
+      <EmotionShadowLow>Shadow Small</EmotionShadowLow>
       <EmotionShadowMedium>Shadow Medium</EmotionShadowMedium>
-      <EmotionShadowHigh>Shadow High</EmotionShadowHigh>
+      <EmotionShadowHigh>Shadow Large</EmotionShadowHigh>
     </EmotionShadowWrapper>
   );
 };

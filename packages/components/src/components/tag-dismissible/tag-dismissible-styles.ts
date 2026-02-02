@@ -1,7 +1,6 @@
 import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -38,7 +37,6 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

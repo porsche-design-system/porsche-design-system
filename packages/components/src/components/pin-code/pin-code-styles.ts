@@ -1,7 +1,6 @@
 import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getDisabledBaseStyles,
   getTransition,
@@ -53,7 +52,6 @@ export const getComponentCss = (
         display: 'block',
         [`${cssVarInternalPinCodeScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),

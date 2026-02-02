@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import {
-  borderRadiusLarge,
-  frostedGlassStyle,
-  spacingFluidLarge,
-  spacingFluidSmall,
-  textSmallStyle,
+  blurFrosted,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidLg,
+  spacingFluidSm,
 } from '@porsche-design-system/emotion';
 
 const EmotionBlurWrapper = styled.div({
   display: 'grid',
-  ...textSmallStyle,
+  ...proseTextSmStyle,
 });
 
 const EmotionBlurImage = styled.img({
@@ -21,11 +21,11 @@ const EmotionBlurImage = styled.img({
 });
 
 const EmotionBackdropBlurFrosted = styled.div(({ theme }) => ({
-  ...frostedGlassStyle,
+  backdropFilter: blurFrosted,
   backgroundColor: theme.frosted,
-  borderRadius: borderRadiusLarge,
-  margin: spacingFluidLarge,
-  padding: spacingFluidSmall,
+  borderRadius: radiusLg,
+  margin: spacingFluidLg,
+  padding: spacingFluidSm,
   display: 'grid',
   gridRow: 1,
   gridColumn: 1,

@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { blurFrosted } from '@porsche-design-system/tokens';
 
 export const metadata = {
   title: 'SCSS: Blur - Porsche Design System',
@@ -9,8 +10,8 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-## SCSS Mixins
+## SCSS Variables
 
-| SCSS Mixin                   | Description                                                               |
-| ---------------------------- | ------------------------------------------------------------------------- |
-| `@mixin pds-frosted-glass()` | Applies a **frosted** effect when combined with a semi-transparent color. |
+| SCSS Variable   | Description                                                                              | Value         |
+| --------------- | ---------------------------------------------------------------------------------------- | ------------- |
+| `$blur-frosted` | Holds a blur value for a **frosted** effect when combined with a semi-transparent color. | {blurFrosted} |

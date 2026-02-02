@@ -37,7 +37,7 @@
   display: block;
   border-radius: border.$radius-sm;
 
-  animation: skeletonAnimation motion.$pds-motion-duration-long motion.$pds-motion-easing-base infinite;
+  animation: skeletonAnimation motion.$duration-lg motion.$ease-in-out infinite;
 
   @keyframes skeletonAnimation {
     from {

@@ -19,7 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
+const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.locator('p-flyout');

@@ -11,7 +11,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   cssVariableAnimationDuration,
   getFocusBaseStyles,
@@ -50,7 +49,6 @@ export const getComponentCss = (): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

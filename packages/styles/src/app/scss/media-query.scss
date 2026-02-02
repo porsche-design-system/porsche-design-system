@@ -8,7 +8,7 @@
 
 .scss-media-query-text {
   @include pds.pds-text-small;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
   margin: 0;
 }
 

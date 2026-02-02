@@ -12,13 +12,13 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "border/borderRadiusSmall.cjs",
   ],
   "border/borderRadiusLarge.cjs": [
-    "tokens/dist/esm/border/radius/borderRadiusLg.cjs",
+    "tokens/dist/esm/border/radius/radiusLg.cjs",
   ],
   "border/borderRadiusMedium.cjs": [
-    "tokens/dist/esm/border/radius/borderRadiusMd.cjs",
+    "tokens/dist/esm/border/radius/radiusMd.cjs",
   ],
   "border/borderRadiusSmall.cjs": [
-    "tokens/dist/esm/border/radius/borderRadiusSm.cjs",
+    "tokens/dist/esm/border/radius/radiusSm.cjs",
   ],
   "border/borderWidth.cjs": [
     "border/borderWidthBase.cjs",
@@ -73,19 +73,19 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontSizeHeadingXXLarge.cjs",
   ],
   "font/fontSizeHeadingLarge.cjs": [
-    "tokens/dist/esm/font/size/fontSizeLg.cjs",
+    "tokens/dist/esm/font/size/typescaleLg.cjs",
   ],
   "font/fontSizeHeadingMedium.cjs": [
-    "tokens/dist/esm/font/size/fontSizeMd.cjs",
+    "tokens/dist/esm/font/size/typescaleMd.cjs",
   ],
   "font/fontSizeHeadingSmall.cjs": [
-    "tokens/dist/esm/font/size/fontSizeSm.cjs",
+    "tokens/dist/esm/font/size/typescaleSm.cjs",
   ],
   "font/fontSizeHeadingXLarge.cjs": [
-    "tokens/dist/esm/font/size/fontSizeXl.cjs",
+    "tokens/dist/esm/font/size/typescaleXl.cjs",
   ],
   "font/fontSizeHeadingXXLarge.cjs": [
-    "tokens/dist/esm/font/size/fontSize2Xl.cjs",
+    "tokens/dist/esm/font/size/typescale2Xl.cjs",
   ],
   "font/fontSizeText.cjs": [
     "font/fontSizeTextLarge.cjs",
@@ -96,22 +96,22 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontSizeTextXXSmall.cjs",
   ],
   "font/fontSizeTextLarge.cjs": [
-    "tokens/dist/esm/font/size/fontSizeLg.cjs",
+    "tokens/dist/esm/font/size/typescaleLg.cjs",
   ],
   "font/fontSizeTextMedium.cjs": [
-    "tokens/dist/esm/font/size/fontSizeMd.cjs",
+    "tokens/dist/esm/font/size/typescaleMd.cjs",
   ],
   "font/fontSizeTextSmall.cjs": [
-    "tokens/dist/esm/font/size/fontSizeSm.cjs",
+    "tokens/dist/esm/font/size/typescaleSm.cjs",
   ],
   "font/fontSizeTextXLarge.cjs": [
-    "tokens/dist/esm/font/size/fontSizeXl.cjs",
+    "tokens/dist/esm/font/size/typescaleXl.cjs",
   ],
   "font/fontSizeTextXSmall.cjs": [
-    "tokens/dist/esm/font/size/fontSizeXs.cjs",
+    "tokens/dist/esm/font/size/typescaleXs.cjs",
   ],
   "font/fontSizeTextXXSmall.cjs": [
-    "tokens/dist/esm/font/size/fontSize2Xs.cjs",
+    "tokens/dist/esm/font/size/typescale2Xs.cjs",
   ],
   "font/fontStyle.cjs": [
     "font/fontStyleItalic.cjs",
@@ -123,7 +123,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "font/fontWeight.cjs": [
     "font/fontWeightBold.cjs",
     "font/fontWeightRegular.cjs",
-    "font/fontWeightSemiBold.cjs",
+    "font/fontWeightSemibold.cjs",
   ],
   "font/fontWeightBold.cjs": [
     "tokens/dist/esm/font/weight/fontWeightBold.cjs",
@@ -131,8 +131,8 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "font/fontWeightRegular.cjs": [
     "tokens/dist/esm/font/weight/fontWeightRegular.cjs",
   ],
-  "font/fontWeightSemiBold.cjs": [
-    "tokens/dist/esm/font/weight/fontWeightSemiBold.cjs",
+  "font/fontWeightSemibold.cjs": [
+    "tokens/dist/esm/font/weight/fontWeightSemibold.cjs",
   ],
   "frostedGlass/frostedGlassStyle.cjs": [
     "tokens/dist/esm/blur/blurFrosted.cjs",
@@ -285,7 +285,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "hover/getHoverStyle.cjs": [
     "border/borderRadiusMedium.cjs",
     "border/borderRadiusSmall.cjs",
-    "motion/motionDurationShort.cjs",
+    "motion/durationSm.cjs",
     "motion/motionEasingBase.cjs",
     "theme/themeLightStateHover.cjs",
   ],
@@ -330,7 +330,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/fontWeight.cjs",
     "font/fontWeightBold.cjs",
     "font/fontWeightRegular.cjs",
-    "font/fontWeightSemiBold.cjs",
+    "font/fontWeightSemibold.cjs",
     "frostedGlass/frostedGlassStyle.cjs",
     "gradient/gradientToBottomStyle.cjs",
     "gradient/gradientToLeftStyle.cjs",
@@ -388,10 +388,10 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "mediaQuery/getMediaQueryMax.cjs",
     "mediaQuery/getMediaQueryMin.cjs",
     "mediaQuery/getMediaQueryMinMax.cjs",
-    "motion/motionDurationLong.cjs",
-    "motion/motionDurationModerate.cjs",
-    "motion/motionDurationShort.cjs",
-    "motion/motionDurationVeryLong.cjs",
+    "motion/durationLg.cjs",
+    "motion/durationMd.cjs",
+    "motion/durationSm.cjs",
+    "motion/durationXl.cjs",
     "motion/motionEasingBase.cjs",
     "motion/motionEasingIn.cjs",
     "motion/motionEasingOut.cjs",
@@ -507,30 +507,30 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "mediaQuery/getMediaQueryMinMax.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
-  "motion/motionDurationLong.cjs": [
-    "tokens/dist/esm/motion/duration/motionDurationLong.cjs",
+  "motion/durationLg.cjs": [
+    "tokens/dist/esm/motion/duration/durationLg.cjs",
   ],
-  "motion/motionDurationModerate.cjs": [
-    "tokens/dist/esm/motion/duration/motionDurationModerate.cjs",
+  "motion/durationMd.cjs": [
+    "tokens/dist/esm/motion/duration/durationMd.cjs",
   ],
-  "motion/motionDurationShort.cjs": [
-    "tokens/dist/esm/motion/duration/motionDurationShort.cjs",
+  "motion/durationSm.cjs": [
+    "tokens/dist/esm/motion/duration/durationSm.cjs",
   ],
-  "motion/motionDurationVeryLong.cjs": [
-    "tokens/dist/esm/motion/duration/motionDurationVeryLong.cjs",
+  "motion/durationXl.cjs": [
+    "tokens/dist/esm/motion/duration/durationXl.cjs",
   ],
   "motion/motionEasingBase.cjs": [
-    "tokens/dist/esm/motion/ease/motionEaseInOut.cjs",
+    "tokens/dist/esm/motion/ease/easeInOut.cjs",
   ],
   "motion/motionEasingIn.cjs": [
-    "tokens/dist/esm/motion/ease/motionEaseIn.cjs",
+    "tokens/dist/esm/motion/ease/easeIn.cjs",
   ],
   "motion/motionEasingOut.cjs": [
-    "tokens/dist/esm/motion/ease/motionEaseOut.cjs",
+    "tokens/dist/esm/motion/ease/easeOut.cjs",
   ],
   "skeleton/getSkeletonStyle.cjs": [
     "border/borderRadiusSmall.cjs",
-    "motion/motionDurationLong.cjs",
+    "motion/durationLg.cjs",
     "motion/motionEasingBase.cjs",
     "theme/themeDarkBackgroundSurface.cjs",
     "theme/themeLightBackgroundSurface.cjs",
@@ -760,9 +760,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
   ],
   "tokens/dist/esm/blur/blurFrosted.cjs": [],
-  "tokens/dist/esm/border/radius/borderRadiusLg.cjs": [],
-  "tokens/dist/esm/border/radius/borderRadiusMd.cjs": [],
-  "tokens/dist/esm/border/radius/borderRadiusSm.cjs": [],
+  "tokens/dist/esm/border/radius/radiusLg.cjs": [],
+  "tokens/dist/esm/border/radius/radiusMd.cjs": [],
+  "tokens/dist/esm/border/radius/radiusSm.cjs": [],
   "tokens/dist/esm/border/width/borderWidthRegular.cjs": [],
   "tokens/dist/esm/border/width/borderWidthThin.cjs": [],
   "tokens/dist/esm/breakpoint/breakpoint2Xl.cjs": [],
@@ -876,24 +876,24 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/color/palette.cjs": [],
   "tokens/dist/esm/font/family/fontFamily.cjs": [],
   "tokens/dist/esm/font/lineHeight/fontLineHeight.cjs": [],
-  "tokens/dist/esm/font/size/fontSize2Xl.cjs": [],
-  "tokens/dist/esm/font/size/fontSize2Xs.cjs": [],
-  "tokens/dist/esm/font/size/fontSizeLg.cjs": [],
-  "tokens/dist/esm/font/size/fontSizeMd.cjs": [],
-  "tokens/dist/esm/font/size/fontSizeSm.cjs": [],
-  "tokens/dist/esm/font/size/fontSizeXl.cjs": [],
-  "tokens/dist/esm/font/size/fontSizeXs.cjs": [],
+  "tokens/dist/esm/font/size/typescale2Xl.cjs": [],
+  "tokens/dist/esm/font/size/typescale2Xs.cjs": [],
+  "tokens/dist/esm/font/size/typescaleLg.cjs": [],
+  "tokens/dist/esm/font/size/typescaleMd.cjs": [],
+  "tokens/dist/esm/font/size/typescaleSm.cjs": [],
+  "tokens/dist/esm/font/size/typescaleXl.cjs": [],
+  "tokens/dist/esm/font/size/typescaleXs.cjs": [],
   "tokens/dist/esm/font/weight/fontWeightBold.cjs": [],
   "tokens/dist/esm/font/weight/fontWeightRegular.cjs": [],
-  "tokens/dist/esm/font/weight/fontWeightSemiBold.cjs": [],
+  "tokens/dist/esm/font/weight/fontWeightSemibold.cjs": [],
   "tokens/dist/esm/gradient/gradientFade.cjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationLong.cjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationModerate.cjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationShort.cjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationVeryLong.cjs": [],
-  "tokens/dist/esm/motion/ease/motionEaseIn.cjs": [],
-  "tokens/dist/esm/motion/ease/motionEaseInOut.cjs": [],
-  "tokens/dist/esm/motion/ease/motionEaseOut.cjs": [],
+  "tokens/dist/esm/motion/duration/durationLg.cjs": [],
+  "tokens/dist/esm/motion/duration/durationMd.cjs": [],
+  "tokens/dist/esm/motion/duration/durationSm.cjs": [],
+  "tokens/dist/esm/motion/duration/durationXl.cjs": [],
+  "tokens/dist/esm/motion/ease/easeIn.cjs": [],
+  "tokens/dist/esm/motion/ease/easeInOut.cjs": [],
+  "tokens/dist/esm/motion/ease/easeOut.cjs": [],
   "tokens/dist/esm/shadow/shadowHigh.cjs": [],
   "tokens/dist/esm/shadow/shadowLow.cjs": [],
   "tokens/dist/esm/shadow/shadowMedium.cjs": [],
@@ -1007,13 +1007,13 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "border/borderRadiusSmall.mjs",
   ],
   "border/borderRadiusLarge.mjs": [
-    "tokens/dist/esm/border/radius/borderRadiusLg.mjs",
+    "tokens/dist/esm/border/radius/radiusLg.mjs",
   ],
   "border/borderRadiusMedium.mjs": [
-    "tokens/dist/esm/border/radius/borderRadiusMd.mjs",
+    "tokens/dist/esm/border/radius/radiusMd.mjs",
   ],
   "border/borderRadiusSmall.mjs": [
-    "tokens/dist/esm/border/radius/borderRadiusSm.mjs",
+    "tokens/dist/esm/border/radius/radiusSm.mjs",
   ],
   "border/borderWidth.mjs": [
     "border/borderWidthBase.mjs",
@@ -1068,19 +1068,19 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontSizeHeadingXXLarge.mjs",
   ],
   "font/fontSizeHeadingLarge.mjs": [
-    "tokens/dist/esm/font/size/fontSizeLg.mjs",
+    "tokens/dist/esm/font/size/typescaleLg.mjs",
   ],
   "font/fontSizeHeadingMedium.mjs": [
-    "tokens/dist/esm/font/size/fontSizeMd.mjs",
+    "tokens/dist/esm/font/size/typescaleMd.mjs",
   ],
   "font/fontSizeHeadingSmall.mjs": [
-    "tokens/dist/esm/font/size/fontSizeSm.mjs",
+    "tokens/dist/esm/font/size/typescaleSm.mjs",
   ],
   "font/fontSizeHeadingXLarge.mjs": [
-    "tokens/dist/esm/font/size/fontSizeXl.mjs",
+    "tokens/dist/esm/font/size/typescaleXl.mjs",
   ],
   "font/fontSizeHeadingXXLarge.mjs": [
-    "tokens/dist/esm/font/size/fontSize2Xl.mjs",
+    "tokens/dist/esm/font/size/typescale2Xl.mjs",
   ],
   "font/fontSizeText.mjs": [
     "font/fontSizeTextLarge.mjs",
@@ -1091,22 +1091,22 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontSizeTextXXSmall.mjs",
   ],
   "font/fontSizeTextLarge.mjs": [
-    "tokens/dist/esm/font/size/fontSizeLg.mjs",
+    "tokens/dist/esm/font/size/typescaleLg.mjs",
   ],
   "font/fontSizeTextMedium.mjs": [
-    "tokens/dist/esm/font/size/fontSizeMd.mjs",
+    "tokens/dist/esm/font/size/typescaleMd.mjs",
   ],
   "font/fontSizeTextSmall.mjs": [
-    "tokens/dist/esm/font/size/fontSizeSm.mjs",
+    "tokens/dist/esm/font/size/typescaleSm.mjs",
   ],
   "font/fontSizeTextXLarge.mjs": [
-    "tokens/dist/esm/font/size/fontSizeXl.mjs",
+    "tokens/dist/esm/font/size/typescaleXl.mjs",
   ],
   "font/fontSizeTextXSmall.mjs": [
-    "tokens/dist/esm/font/size/fontSizeXs.mjs",
+    "tokens/dist/esm/font/size/typescaleXs.mjs",
   ],
   "font/fontSizeTextXXSmall.mjs": [
-    "tokens/dist/esm/font/size/fontSize2Xs.mjs",
+    "tokens/dist/esm/font/size/typescale2Xs.mjs",
   ],
   "font/fontStyle.mjs": [
     "font/fontStyleItalic.mjs",
@@ -1118,7 +1118,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "font/fontWeight.mjs": [
     "font/fontWeightBold.mjs",
     "font/fontWeightRegular.mjs",
-    "font/fontWeightSemiBold.mjs",
+    "font/fontWeightSemibold.mjs",
   ],
   "font/fontWeightBold.mjs": [
     "tokens/dist/esm/font/weight/fontWeightBold.mjs",
@@ -1126,8 +1126,8 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "font/fontWeightRegular.mjs": [
     "tokens/dist/esm/font/weight/fontWeightRegular.mjs",
   ],
-  "font/fontWeightSemiBold.mjs": [
-    "tokens/dist/esm/font/weight/fontWeightSemiBold.mjs",
+  "font/fontWeightSemibold.mjs": [
+    "tokens/dist/esm/font/weight/fontWeightSemibold.mjs",
   ],
   "frostedGlass/frostedGlassStyle.mjs": [
     "tokens/dist/esm/blur/blurFrosted.mjs",
@@ -1280,7 +1280,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "hover/getHoverStyle.mjs": [
     "border/borderRadiusMedium.mjs",
     "border/borderRadiusSmall.mjs",
-    "motion/motionDurationShort.mjs",
+    "motion/durationSm.mjs",
     "motion/motionEasingBase.mjs",
     "theme/themeLightStateHover.mjs",
   ],
@@ -1325,7 +1325,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/fontWeight.mjs",
     "font/fontWeightBold.mjs",
     "font/fontWeightRegular.mjs",
-    "font/fontWeightSemiBold.mjs",
+    "font/fontWeightSemibold.mjs",
     "frostedGlass/frostedGlassStyle.mjs",
     "gradient/gradientToBottomStyle.mjs",
     "gradient/gradientToLeftStyle.mjs",
@@ -1383,10 +1383,10 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "mediaQuery/getMediaQueryMax.mjs",
     "mediaQuery/getMediaQueryMin.mjs",
     "mediaQuery/getMediaQueryMinMax.mjs",
-    "motion/motionDurationLong.mjs",
-    "motion/motionDurationModerate.mjs",
-    "motion/motionDurationShort.mjs",
-    "motion/motionDurationVeryLong.mjs",
+    "motion/durationLg.mjs",
+    "motion/durationMd.mjs",
+    "motion/durationSm.mjs",
+    "motion/durationXl.mjs",
     "motion/motionEasingBase.mjs",
     "motion/motionEasingIn.mjs",
     "motion/motionEasingOut.mjs",
@@ -1502,30 +1502,30 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "mediaQuery/getMediaQueryMinMax.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
-  "motion/motionDurationLong.mjs": [
-    "tokens/dist/esm/motion/duration/motionDurationLong.mjs",
+  "motion/durationLg.mjs": [
+    "tokens/dist/esm/motion/duration/durationLg.mjs",
   ],
-  "motion/motionDurationModerate.mjs": [
-    "tokens/dist/esm/motion/duration/motionDurationModerate.mjs",
+  "motion/durationMd.mjs": [
+    "tokens/dist/esm/motion/duration/durationMd.mjs",
   ],
-  "motion/motionDurationShort.mjs": [
-    "tokens/dist/esm/motion/duration/motionDurationShort.mjs",
+  "motion/durationSm.mjs": [
+    "tokens/dist/esm/motion/duration/durationSm.mjs",
   ],
-  "motion/motionDurationVeryLong.mjs": [
-    "tokens/dist/esm/motion/duration/motionDurationVeryLong.mjs",
+  "motion/durationXl.mjs": [
+    "tokens/dist/esm/motion/duration/durationXl.mjs",
   ],
   "motion/motionEasingBase.mjs": [
-    "tokens/dist/esm/motion/ease/motionEaseInOut.mjs",
+    "tokens/dist/esm/motion/ease/easeInOut.mjs",
   ],
   "motion/motionEasingIn.mjs": [
-    "tokens/dist/esm/motion/ease/motionEaseIn.mjs",
+    "tokens/dist/esm/motion/ease/easeIn.mjs",
   ],
   "motion/motionEasingOut.mjs": [
-    "tokens/dist/esm/motion/ease/motionEaseOut.mjs",
+    "tokens/dist/esm/motion/ease/easeOut.mjs",
   ],
   "skeleton/getSkeletonStyle.mjs": [
     "border/borderRadiusSmall.mjs",
-    "motion/motionDurationLong.mjs",
+    "motion/durationLg.mjs",
     "motion/motionEasingBase.mjs",
     "theme/themeDarkBackgroundSurface.mjs",
     "theme/themeLightBackgroundSurface.mjs",
@@ -1755,9 +1755,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
   ],
   "tokens/dist/esm/blur/blurFrosted.mjs": [],
-  "tokens/dist/esm/border/radius/borderRadiusLg.mjs": [],
-  "tokens/dist/esm/border/radius/borderRadiusMd.mjs": [],
-  "tokens/dist/esm/border/radius/borderRadiusSm.mjs": [],
+  "tokens/dist/esm/border/radius/radiusLg.mjs": [],
+  "tokens/dist/esm/border/radius/radiusMd.mjs": [],
+  "tokens/dist/esm/border/radius/radiusSm.mjs": [],
   "tokens/dist/esm/border/width/borderWidthRegular.mjs": [],
   "tokens/dist/esm/border/width/borderWidthThin.mjs": [],
   "tokens/dist/esm/breakpoint/breakpoint2Xl.mjs": [],
@@ -1871,24 +1871,24 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/color/palette.mjs": [],
   "tokens/dist/esm/font/family/fontFamily.mjs": [],
   "tokens/dist/esm/font/lineHeight/fontLineHeight.mjs": [],
-  "tokens/dist/esm/font/size/fontSize2Xl.mjs": [],
-  "tokens/dist/esm/font/size/fontSize2Xs.mjs": [],
-  "tokens/dist/esm/font/size/fontSizeLg.mjs": [],
-  "tokens/dist/esm/font/size/fontSizeMd.mjs": [],
-  "tokens/dist/esm/font/size/fontSizeSm.mjs": [],
-  "tokens/dist/esm/font/size/fontSizeXl.mjs": [],
-  "tokens/dist/esm/font/size/fontSizeXs.mjs": [],
+  "tokens/dist/esm/font/size/typescale2Xl.mjs": [],
+  "tokens/dist/esm/font/size/typescale2Xs.mjs": [],
+  "tokens/dist/esm/font/size/typescaleLg.mjs": [],
+  "tokens/dist/esm/font/size/typescaleMd.mjs": [],
+  "tokens/dist/esm/font/size/typescaleSm.mjs": [],
+  "tokens/dist/esm/font/size/typescaleXl.mjs": [],
+  "tokens/dist/esm/font/size/typescaleXs.mjs": [],
   "tokens/dist/esm/font/weight/fontWeightBold.mjs": [],
   "tokens/dist/esm/font/weight/fontWeightRegular.mjs": [],
-  "tokens/dist/esm/font/weight/fontWeightSemiBold.mjs": [],
+  "tokens/dist/esm/font/weight/fontWeightSemibold.mjs": [],
   "tokens/dist/esm/gradient/gradientFade.mjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationLong.mjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationModerate.mjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationShort.mjs": [],
-  "tokens/dist/esm/motion/duration/motionDurationVeryLong.mjs": [],
-  "tokens/dist/esm/motion/ease/motionEaseIn.mjs": [],
-  "tokens/dist/esm/motion/ease/motionEaseInOut.mjs": [],
-  "tokens/dist/esm/motion/ease/motionEaseOut.mjs": [],
+  "tokens/dist/esm/motion/duration/durationLg.mjs": [],
+  "tokens/dist/esm/motion/duration/durationMd.mjs": [],
+  "tokens/dist/esm/motion/duration/durationSm.mjs": [],
+  "tokens/dist/esm/motion/duration/durationXl.mjs": [],
+  "tokens/dist/esm/motion/ease/easeIn.mjs": [],
+  "tokens/dist/esm/motion/ease/easeInOut.mjs": [],
+  "tokens/dist/esm/motion/ease/easeOut.mjs": [],
   "tokens/dist/esm/shadow/shadowHigh.mjs": [],
   "tokens/dist/esm/shadow/shadowLow.mjs": [],
   "tokens/dist/esm/shadow/shadowMedium.mjs": [],

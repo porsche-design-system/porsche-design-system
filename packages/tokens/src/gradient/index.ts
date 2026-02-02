@@ -1,1 +1,1 @@
-export { gradientFadeDark } from './gradientFadeDark';
+export { gradientStopsFadeDark } from './gradientStopsFadeDark';

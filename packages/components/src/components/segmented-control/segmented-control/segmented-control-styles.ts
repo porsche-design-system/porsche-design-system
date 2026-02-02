@@ -1,7 +1,6 @@
 import { spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,

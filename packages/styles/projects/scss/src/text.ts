@@ -1,44 +1,44 @@
 import {
-  fontFamilyPorscheNext,
-  fontLineHeightNormal,
-  fontSize2Xs,
-  fontSizeLg,
-  fontSizeMd,
-  fontSizeSm,
-  fontSizeXl,
-  fontSizeXs,
+  fontPorscheNext,
   fontWeightNormal,
+  leadingNormal,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
 } from '@porsche-design-system/tokens';
 
 export const getTextScss = () => {
   return `
     @mixin prose-text-xl {
-      font: normal normal ${fontWeightNormal} ${fontSizeXl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext};
       hyphens: var(--p-hyphens, auto);
       overflow-wrap: break-word;
     }
     @mixin prose-text-lg {
-      font: normal normal ${fontWeightNormal} ${fontSizeLg} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleLg} / ${leadingNormal} ${fontPorscheNext};
       hyphens: var(--p-hyphens, auto);
       overflow-wrap: break-word;
     }
     @mixin prose-text-md {
-      font: normal normal ${fontWeightNormal} ${fontSizeMd} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext};
       hyphens: var(--p-hyphens, auto);
       overflow-wrap: break-word;
     }
     @mixin prose-text-sm {
-      font: normal normal ${fontWeightNormal} ${fontSizeSm} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext};
       hyphens: var(--p-hyphens, auto);
       overflow-wrap: break-word;
     }
     @mixin prose-text-xs {
-      font: normal normal ${fontWeightNormal} ${fontSizeXs} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext};
       hyphens: var(--p-hyphens, auto);
       overflow-wrap: break-word;
     }
     @mixin prose-text-2xs {
-      font: normal normal ${fontWeightNormal} ${fontSize2Xs} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext};
       hyphens: var(--p-hyphens, auto);
       overflow-wrap: break-word;
     }

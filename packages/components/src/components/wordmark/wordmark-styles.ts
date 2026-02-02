@@ -1,10 +1,4 @@
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
-  hostHiddenStyles,
-  getFocusBaseStyles
-} from '../../styles';
+import { addImportantToEachRule, colors, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
 
@@ -28,7 +22,6 @@ export const getComponentCss = (size: WordmarkSize): string => {
               height: 'round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px)',
             },
           }),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

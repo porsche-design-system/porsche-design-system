@@ -2,7 +2,6 @@ import { spacingFluidSmall, textMediumStyle } from '@porsche-design-system/emoti
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -36,7 +35,6 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

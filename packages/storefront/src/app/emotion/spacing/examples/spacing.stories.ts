@@ -18,7 +18,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-xs h-fluid-xs bg-info' },
             },
-            'width: spacingFluidXSmall, height: spacingFluidXSmall',
+            'width: spacingFluidXs, height: spacingFluidXs',
           ],
         },
         {
@@ -31,7 +31,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-sm h-fluid-sm bg-info' },
             },
-            'width: spacingFluidSmall, height: spacingFluidSmall',
+            'width: spacingFluidSm, height: spacingFluidSm',
           ],
         },
         {
@@ -44,7 +44,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-md h-fluid-md bg-info' },
             },
-            'width: spacingFluidMedium, height: spacingFluidMedium',
+            'width: spacingFluidMd, height: spacingFluidMd',
           ],
         },
         {
@@ -57,7 +57,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-lg h-fluid-lg bg-info' },
             },
-            'width: spacingFluidLarge, height: spacingFluidLarge',
+            'width: spacingFluidLg, height: spacingFluidLg',
           ],
         },
         {
@@ -70,7 +70,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-xl h-fluid-xl bg-info' },
             },
-            'width: spacingFluidXLarge, height: spacingFluidXLarge',
+            'width: spacingFluidXl, height: spacingFluidXl',
           ],
         },
         {
@@ -83,7 +83,7 @@ export const spacingFluidEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-fluid-2xl h-fluid-2xl bg-info' },
             },
-            'width: spacingFluidXXLarge, height: spacingFluidXXLarge',
+            'width: spacingFluid2Xl, height: spacingFluid2Xl',
           ],
         },
       ],
@@ -107,7 +107,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-xs h-static-xs bg-error' },
             },
-            'width: spacingStaticXSmall, height: spacingStaticXSmall',
+            'width: spacingStaticXs, height: spacingStaticXs',
           ],
         },
         {
@@ -120,7 +120,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-sm h-static-sm bg-error' },
             },
-            'width: spacingStaticSmall, height: spacingStaticSmall',
+            'width: spacingStaticSm, height: spacingStaticSm',
           ],
         },
         {
@@ -133,7 +133,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-md h-static-md bg-error' },
             },
-            'width: spacingStaticMedium, height: spacingStaticMedium',
+            'width: spacingStaticMd, height: spacingStaticMd',
           ],
         },
         {
@@ -146,7 +146,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-lg h-static-lg bg-error' },
             },
-            'width: spacingStaticLarge, height: spacingStaticLarge',
+            'width: spacingStaticLg, height: spacingStaticLg',
           ],
         },
         {
@@ -159,7 +159,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-xl h-static-xl bg-error' },
             },
-            'width: spacingStaticXLarge, height: spacingStaticXLarge',
+            'width: spacingStaticXl, height: spacingStaticXl',
           ],
         },
         {
@@ -172,7 +172,7 @@ export const spacingStaticEmotionStory: Story<'div'> = {
               tag: 'div',
               properties: { className: 'w-static-2xl h-static-2xl bg-error' },
             },
-            'width: spacingStaticXXLarge, height: spacingStaticXXLarge',
+            'width: spacingStatic2Xl, height: spacingStatic2Xl',
           ],
         },
       ],

@@ -11,7 +11,6 @@ import {
 import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   cssVariableTransitionDuration,
   getAnimation,
@@ -69,7 +68,6 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
           [cssVarColorBackgroundShading]: backdropColor,
           // [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           [cssVarColorBackgroundScroller]: 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

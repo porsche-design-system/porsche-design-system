@@ -1,11 +1,5 @@
 import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
+import { addImportantToEachRule, colors, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
 import { getCss, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
@@ -20,7 +14,6 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, 
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

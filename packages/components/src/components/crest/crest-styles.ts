@@ -1,9 +1,4 @@
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusBaseStyles,
-  hostHiddenStyles
-} from '../../styles';
+import { addImportantToEachRule, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import { crestSize } from './crest-utils';
 
@@ -25,7 +20,6 @@ export const getComponentCss = (): string => {
         ...addImportantToEachRule({
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
           ...getDimensionStyle,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

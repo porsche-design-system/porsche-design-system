@@ -1,11 +1,5 @@
 import { fontWeightSemiBold, textXSmallStyle } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
-  getDisabledBaseStyles,
-  hostHiddenStyles,
-} from '../../styles';
+import { addImportantToEachRule, colors, getDisabledBaseStyles, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 
 export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
@@ -21,7 +15,6 @@ export const getComponentCss = (isDisabled: boolean): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        ...colorSchemeStyles,
         ...hostHiddenStyles,
         ...(isDisabled && getDisabledBaseStyles()),
       }),
