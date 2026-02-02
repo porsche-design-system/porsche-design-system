@@ -7,9 +7,11 @@ export type Options = {
 export const getFocusVisibleStyle = (opts?: Options) => {
   const { offset = '2px' } = opts || {};
   return {
-    '&:focus-visible': {
-      outline: `2px solid ${colorFocusLight}`,
-      outlineOffset: offset,
+    selectors: {
+      '&:focus-visible': {
+        outline: `2px solid ${colorFocusLight}`,
+        outlineOffset: offset,
+      },
     },
   } as const;
 };
