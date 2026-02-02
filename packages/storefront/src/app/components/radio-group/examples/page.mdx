@@ -39,10 +39,21 @@ example in our [examples repository](https://github.com/porsche-design-system/ex
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
-Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
-named slot is used (because a property definition is preferred over a named slot). For named slots only
+Sometimes it's useful to render custom markup for `label` or `message`. Therefore, named slots can be used. Make sure
+**not** to define the corresponding property on the host element when a named slot is used (because a property
+definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
 allowed.
+
+In addition to the named slots `label` and `message`, there is also a `label-after` slot available. This slot must be
+used to render content after the label which is not directly part of it (e.g. an external link or a `p-popover`
+component).
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  If the <code>p-radio-group</code>/<code>p-radio-group-item</code> is in <code>disabled/loading</code> state
+  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
+  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
+  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+</Notification>
 
 <ComponentStory story={radioGroupStorySlots} />

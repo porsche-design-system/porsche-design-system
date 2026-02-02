@@ -51,6 +51,7 @@ const propTypes: PropTypes<typeof Checkbox> = {
 };
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  */
 @Component({
@@ -218,38 +219,40 @@ export class Checkbox {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     const id = 'checkbox';
+
     return (
       <div class="root">
-        <Label
-          host={this.host}
-          htmlFor={id}
-          label={this.label}
-          isLoading={this.loading}
-          isDisabled={this.disabled}
-          isRequired={this.required}
-        />
         <div class="wrapper">
-          <input
-            type="checkbox"
-            id={id}
-            aria-describedby={`${descriptionId} ${messageId}`}
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            aria-disabled={this.loading || this.disabled ? 'true' : null}
-            checked={this.checked}
-            form={this.form}
-            value={this.value}
-            name={this.name}
-            onChange={this.onChange}
-            onBlur={this.onBlur}
-            required={this.required}
-            disabled={this.disabled}
-            ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
+          <div class="input-wrapper">
+            <input
+              type="checkbox"
+              id={id}
+              aria-describedby={`${descriptionId} ${messageId}`}
+              aria-invalid={this.state === 'error' ? 'true' : null}
+              aria-disabled={this.loading || this.disabled ? 'true' : null}
+              checked={this.checked}
+              form={this.form}
+              value={this.value}
+              name={this.name}
+              onChange={this.onChange}
+              onBlur={this.onBlur}
+              required={this.required}
+              disabled={this.disabled}
+              ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
+            />
+            {this.loading && (
+              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
+            )}
+          </div>
+          <Label
+            host={this.host}
+            htmlFor={id}
+            label={this.label}
+            isLoading={this.loading}
+            isDisabled={this.disabled}
+            isRequired={this.required}
           />
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />

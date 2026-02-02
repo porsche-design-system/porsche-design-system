@@ -21,7 +21,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../label/label-styles';
+import { getFunctionalComponentLabelAfterStyles, getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 
@@ -92,6 +92,7 @@ export const getFunctionalComponentInputBaseStyles = (
           [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -172,6 +173,7 @@ export const getFunctionalComponentInputBaseStyles = (
       disabled,
       hideLabel,
       theme,
+      null,
       !disabled &&
         !readOnly &&
         hoverMediaQuery({

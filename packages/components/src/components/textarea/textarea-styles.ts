@@ -22,7 +22,10 @@ import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styl
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
@@ -84,6 +87,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         resize,
@@ -144,7 +148,7 @@ export const getComponentCss = (
       },
       ...(hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
-        'textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
+        'textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
           {
             borderColor: formStateHoverColor || primaryColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {

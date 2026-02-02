@@ -7,7 +7,10 @@ import {
 } from '../../../styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 
@@ -32,6 +35,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
       'slot:not([name])': {
         display: 'grid',
