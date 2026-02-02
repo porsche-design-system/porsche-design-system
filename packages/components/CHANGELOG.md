@@ -78,7 +78,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `@mixin prose-text-sm()`, `@mixin prose-text-xs()` `@mixin prose-text-2xs()`, `$font-porsche-next`,
     `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
     `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
-- Emotion:
+- Emotion, Vanilla-Extract:
   - Breakpoint: `breakpointXs`, `breakpointSm`, `breakpointMd`, `breakpointLg`, `breakpointXl` and `breakpoint2xl`
   - Blur: `blurFrosted`
   - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
