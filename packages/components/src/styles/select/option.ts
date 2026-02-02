@@ -33,9 +33,7 @@ export const getOptionJssStyle = (
       background: frostedSoftColor,
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
-        background: 'none',
-        borderRadius: '0',
-        boxShadow: 'inset 4px 0 0 0 CanvasText',
+        background: 'CanvasText',
       }),
     },
     '&--highlighted, &--selected': {
