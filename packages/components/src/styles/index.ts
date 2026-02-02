@@ -4,7 +4,6 @@ export * from './alpha-disabled';
 export * from './colors';
 export * from './common-styles';
 export * from './global';
-export * from './host/color-scheme-styles';
 export * from './host/host-hidden-styles';
 export * from './host/prevent-fouc-of-nested-elements-styles';
 export * from './media-query/forced-colors-media-query';

@@ -1,27 +1,422 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`should contain correct scss content for file ./dist/_blur.scss 1`] = `
+"$blur-frosted: blur(32px);
+
+/* alias (deprecated) */
+@mixin pds-frosted-glass {
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+"
+`;
+
 exports[`should contain correct scss content for file ./dist/_border.scss 1`] = `
-"$pds-border-radius-small: 4px;
-$pds-border-radius-medium: 6px;
-$pds-border-radius-large: 8px;
-$pds-border-width-base: 2px;
-$pds-border-width-thin: 1px;
+"$radius-xs: 2px;
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+$radius-2xl: 16px;
+$radius-3xl: 24px;
+$radius-4xl: 32px;
+$radius-full: calc(infinity * 1px);
+
+$pds-border-radius-small: 4px; /* alias (deprecated) */
+$pds-border-radius-medium: 6px; /* alias (deprecated) */
+$pds-border-radius-large: 8px; /* alias (deprecated) */
+$pds-border-width-base: 2px; /* alias (deprecated) */
+$pds-border-width-thin: 1px; /* alias (deprecated) */
 "
 `;
 
 exports[`should contain correct scss content for file ./dist/_breakpoint.scss 1`] = `
-"$pds-breakpoint-base: 0;
-$pds-breakpoint-xs: 480;
-$pds-breakpoint-s: 760;
-$pds-breakpoint-m: 1000;
-$pds-breakpoint-l: 1300;
-$pds-breakpoint-xl: 1760;
-$pds-breakpoint-xxl: 1920;
+"$breakpoint-xs: 480;
+$breakpoint-sm: 760;
+$breakpoint-md: 1000;
+$breakpoint-lg: 1300;
+$breakpoint-xl: 1760;
+$breakpoint-2xl: 1920;
+
+$pds-breakpoint-base: 0; /* alias (deprecated) */
+$pds-breakpoint-xs: 480; /* alias (deprecated) */
+$pds-breakpoint-s: 760; /* alias (deprecated) */
+$pds-breakpoint-m: 1000; /* alias (deprecated) */
+$pds-breakpoint-l: 1300; /* alias (deprecated) */
+$pds-breakpoint-xl: 1760; /* alias (deprecated) */
+$pds-breakpoint-xxl: 1920; /* alias (deprecated) */
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_color.scss 1`] = `
+"$color-focus: light-dark(#1a44ea, #1a44ea);
+$color-focus-light: #1a44ea;
+$color-focus-dark: #1a44ea;
+$color-canvas: light-dark(#fff, hsl(225, 66.7%, 1.2%));
+$color-canvas-light: #fff;
+$color-canvas-dark: hsl(225, 66.7%, 1.2%);
+$color-surface: light-dark(hsl(240, 7.7%, 97.5%), hsl(240, 2%, 10%));
+$color-surface-light: hsl(240, 7.7%, 97.5%);
+$color-surface-dark: hsl(240, 2%, 10%);
+$color-frosted: light-dark(
+  hsla(236, 6.4%, 51%, 0.148),
+  hsla(240, 2.2%, 44.1%, 0.228)
+);
+$color-frosted-light: hsla(236, 6.4%, 51%, 0.148);
+$color-frosted-dark: hsla(240, 2.2%, 44.1%, 0.228);
+$color-frosted-soft: light-dark(
+  hsla(234, 9.8%, 60%, 0.06),
+  hsla(240, 3.7%, 26.5%, 0.154)
+);
+$color-frosted-soft-light: hsla(234, 9.8%, 60%, 0.06);
+$color-frosted-soft-dark: hsla(240, 3.7%, 26.5%, 0.154);
+$color-backdrop: light-dark(
+  hsla(240, 5.3%, 14.9%, 0.5),
+  hsla(240, 5.3%, 14.9%, 0.5)
+);
+$color-backdrop-light: hsla(240, 5.3%, 14.9%, 0.5);
+$color-backdrop-dark: hsla(240, 5.3%, 14.9%, 0.5);
+$color-contrast-lower: light-dark(
+  hsla(234, 6%, 32.9%, 0.324),
+  hsla(240, 1.5%, 61.8%, 0.302)
+);
+$color-contrast-lower-light: hsla(234, 6%, 32.9%, 0.324);
+$color-contrast-lower-dark: hsla(240, 1.5%, 61.8%, 0.302);
+$color-contrast-low: light-dark(
+  hsla(240, 5.3%, 14.9%, 0.5),
+  hsla(240, 12.5%, 96.9%, 0.45)
+);
+$color-contrast-low-light: hsla(240, 5.3%, 14.9%, 0.5);
+$color-contrast-low-dark: hsla(240, 12.5%, 96.9%, 0.45);
+$color-contrast-medium: light-dark(
+  hsla(240, 6.1%, 7%, 0.6),
+  hsla(240, 12.5%, 96.9%, 0.56)
+);
+$color-contrast-medium-light: hsla(240, 6.1%, 7%, 0.6);
+$color-contrast-medium-dark: hsla(240, 12.5%, 96.9%, 0.56);
+$color-contrast-high: light-dark(
+  hsla(240, 7.1%, 11%, 0.7),
+  hsla(240, 12.5%, 96.9%, 0.67)
+);
+$color-contrast-high-light: hsla(240, 7.1%, 11%, 0.7);
+$color-contrast-high-dark: hsla(240, 12.5%, 96.9%, 0.67);
+$color-contrast-higher: light-dark(
+  hsla(240, 8.7%, 9%, 0.8),
+  hsla(240, 12.5%, 96.9%, 0.78)
+);
+$color-contrast-higher-light: hsla(240, 8.7%, 9%, 0.8);
+$color-contrast-higher-dark: hsla(240, 12.5%, 96.9%, 0.78);
+$color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(240, 12.5%, 96.9%));
+$color-primary-light: hsl(225, 66.7%, 1.2%);
+$color-primary-dark: hsl(240, 12.5%, 96.9%);
+$color-success: light-dark(hsl(115, 77.5%, 27.8%), hsl(157, 84.9%, 41.6%));
+$color-success-light: hsl(115, 77.5%, 27.8%);
+$color-success-dark: hsl(157, 84.9%, 41.6%);
+$color-success-low: light-dark(
+  hsla(115, 77.5%, 27.8%, 0.18),
+  hsla(157, 84.9%, 41.6%, 0.18)
+);
+$color-success-low-light: hsla(115, 77.5%, 27.8%, 0.18);
+$color-success-low-dark: hsla(157, 84.9%, 41.6%, 0.18);
+$color-success-medium: light-dark(
+  hsla(115, 77.5%, 27.8%, 0.6),
+  hsla(157, 84.9%, 41.6%, 0.6)
+);
+$color-success-medium-light: hsla(115, 77.5%, 27.8%, 0.6);
+$color-success-medium-dark: hsla(157, 84.9%, 41.6%, 0.6);
+$color-success-frosted: light-dark(
+  hsla(115, 77.5%, 27.8%, 0.18),
+  hsla(157, 84.9%, 41.6%, 0.18)
+);
+$color-success-frosted-light: hsla(115, 77.5%, 27.8%, 0.18);
+$color-success-frosted-dark: hsla(157, 84.9%, 41.6%, 0.18);
+$color-success-frosted-soft: light-dark(
+  hsla(115, 77.5%, 27.8%, 0.1),
+  hsla(157, 84.9%, 41.6%, 0.1)
+);
+$color-success-frosted-soft-light: hsla(115, 77.5%, 27.8%, 0.1);
+$color-success-frosted-soft-dark: hsla(157, 84.9%, 41.6%, 0.1);
+$color-warning: light-dark(hsl(28, 97.7%, 34.1%), hsl(28, 90.2%, 56.1%));
+$color-warning-light: hsl(28, 97.7%, 34.1%);
+$color-warning-dark: hsl(28, 90.2%, 56.1%);
+$color-warning-low: light-dark(
+  hsla(28, 97.7%, 34.1%, 0.18),
+  hsla(28, 90.2%, 56.1%, 0.18)
+);
+$color-warning-low-light: hsla(28, 97.7%, 34.1%, 0.18);
+$color-warning-low-dark: hsla(28, 90.2%, 56.1%, 0.18);
+$color-warning-medium: light-dark(
+  hsla(28, 97.7%, 34.1%, 0.6),
+  hsla(28, 90.2%, 56.1%, 0.6)
+);
+$color-warning-medium-light: hsla(28, 97.7%, 34.1%, 0.6);
+$color-warning-medium-dark: hsla(28, 90.2%, 56.1%, 0.6);
+$color-warning-frosted: light-dark(
+  hsla(28, 97.7%, 34.1%, 0.18),
+  hsla(28, 90.2%, 56.1%, 0.18)
+);
+$color-warning-frosted-light: hsla(28, 97.7%, 34.1%, 0.18);
+$color-warning-frosted-dark: hsla(28, 90.2%, 56.1%, 0.18);
+$color-warning-frosted-soft: light-dark(
+  hsla(28, 97.7%, 34.1%, 0.1),
+  hsla(28, 90.2%, 56.1%, 0.1)
+);
+$color-warning-frosted-soft-light: hsla(28, 97.7%, 34.1%, 0.1);
+$color-warning-frosted-soft-dark: hsla(28, 90.2%, 56.1%, 0.1);
+$color-error: light-dark(hsl(357, 78%, 41%), hsl(0, 96.9%, 62%));
+$color-error-light: hsl(357, 78%, 41%);
+$color-error-dark: hsl(0, 96.9%, 62%);
+$color-error-low: light-dark(
+  hsla(357, 78%, 41%, 0.18),
+  hsla(0, 96.9%, 62%, 0.18)
+);
+$color-error-low-light: hsla(357, 78%, 41%, 0.18);
+$color-error-low-dark: hsla(0, 96.9%, 62%, 0.18);
+$color-error-medium: light-dark(
+  hsla(357, 78%, 41%, 0.6),
+  hsla(0, 96.9%, 62%, 0.6)
+);
+$color-error-medium-light: hsla(357, 78%, 41%, 0.6);
+$color-error-medium-dark: hsla(0, 96.9%, 62%, 0.6);
+$color-error-frosted: light-dark(
+  hsla(357, 78%, 41%, 0.18),
+  hsla(0, 96.9%, 62%, 0.18)
+);
+$color-error-frosted-light: hsla(357, 78%, 41%, 0.18);
+$color-error-frosted-dark: hsla(0, 96.9%, 62%, 0.18);
+$color-error-frosted-soft: light-dark(
+  hsla(357, 78%, 41%, 0.1),
+  hsla(0, 96.9%, 62%, 0.1)
+);
+$color-error-frosted-soft-light: hsla(357, 78%, 41%, 0.1);
+$color-error-frosted-soft-dark: hsla(0, 96.9%, 62%, 0.1);
+$color-info: light-dark(hsl(228, 83.2%, 51%), hsl(210, 100%, 54.5%));
+$color-info-light: hsl(228, 83.2%, 51%);
+$color-info-dark: hsl(210, 100%, 54.5%);
+$color-info-low: light-dark(
+  hsla(228, 83.2%, 51%, 0.18),
+  hsla(210, 100%, 54.5%, 0.18)
+);
+$color-info-low-light: hsla(228, 83.2%, 51%, 0.18);
+$color-info-low-dark: hsla(210, 100%, 54.5%, 0.18);
+$color-info-medium: light-dark(
+  hsla(228, 83.2%, 51%, 0.6),
+  hsla(210, 100%, 54.5%, 0.6)
+);
+$color-info-medium-light: hsla(228, 83.2%, 51%, 0.6);
+$color-info-medium-dark: hsla(210, 100%, 54.5%, 0.6);
+$color-info-frosted: light-dark(
+  hsla(228, 83.2%, 51%, 0.18),
+  hsla(210, 100%, 54.5%, 0.18)
+);
+$color-info-frosted-light: hsla(228, 83.2%, 51%, 0.18);
+$color-info-frosted-dark: hsla(210, 100%, 54.5%, 0.18);
+$color-info-frosted-soft: light-dark(
+  hsla(228, 83.2%, 51%, 0.1),
+  hsla(210, 100%, 54.5%, 0.1)
+);
+$color-info-frosted-soft-light: hsla(228, 83.2%, 51%, 0.1);
+$color-info-frosted-soft-dark: hsla(210, 100%, 54.5%, 0.1);
+
+/* TBD: $color-skeleton: #f7f7f7; */
+
+$pds-theme-light-primary: hsl(225, 66.7%, 1.2%); /* alias (deprecated) */
+$pds-theme-light-background-base: #fff; /* alias (deprecated) */
+$pds-theme-light-background-surface: hsl(
+  240,
+  7.7%,
+  97.5%
+); /* alias (deprecated) */
+$pds-theme-light-background-shading: hsla(
+  240,
+  5.3%,
+  14.9%,
+  0.5
+); /* alias (deprecated) */
+$pds-theme-light-background-frosted: hsla(
+  236,
+  6.4%,
+  51%,
+  0.148
+); /* alias (deprecated) */
+$pds-theme-light-contrast-low: hsla(
+  240,
+  5.3%,
+  14.9%,
+  0.5
+); /* alias (deprecated) */
+$pds-theme-light-contrast-medium: hsla(
+  240,
+  6.1%,
+  7%,
+  0.6
+); /* alias (deprecated) */
+$pds-theme-light-contrast-high: hsla(
+  240,
+  7.1%,
+  11%,
+  0.7
+); /* alias (deprecated) */
+$pds-theme-light-notification-success: hsl(
+  115,
+  77.5%,
+  27.8%
+); /* alias (deprecated) */
+$pds-theme-light-notification-success-soft: hsla(
+  115,
+  77.5%,
+  27.8%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-light-notification-warning: hsl(
+  28,
+  97.7%,
+  34.1%
+); /* alias (deprecated) */
+$pds-theme-light-notification-warning-soft: hsla(
+  28,
+  97.7%,
+  34.1%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-light-notification-error: hsl(
+  357,
+  78%,
+  41%
+); /* alias (deprecated) */
+$pds-theme-light-notification-error-soft: hsla(
+  357,
+  78%,
+  41%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-light-notification-info: hsl(
+  228,
+  83.2%,
+  51%
+); /* alias (deprecated) */
+$pds-theme-light-notification-info-soft: hsla(
+  228,
+  83.2%,
+  51%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-light-state-hover: hsla(
+  236,
+  6.4%,
+  51%,
+  0.148
+); /* alias (deprecated) */
+$pds-theme-light-state-active: hsla(
+  236,
+  6.4%,
+  51%,
+  0.148
+); /* alias (deprecated) */
+$pds-theme-light-state-focus: #1a44ea; /* alias (deprecated) */
+$pds-theme-light-state-disabled: hsla(
+  233,
+  6.6%,
+  23.9%,
+  0.412
+); /* alias (deprecated) */
+$pds-theme-dark-primary: hsl(240, 12.5%, 96.9%); /* alias (deprecated) */
+$pds-theme-dark-background-base: hsl(225, 66.7%, 1.2%); /* alias (deprecated) */
+$pds-theme-dark-background-surface: hsl(240, 2%, 10%); /* alias (deprecated) */
+$pds-theme-dark-background-shading: hsla(
+  240,
+  5.3%,
+  14.9%,
+  0.5
+); /* alias (deprecated) */
+$pds-theme-dark-background-frosted: hsla(
+  240,
+  2.2%,
+  44.1%,
+  0.228
+); /* alias (deprecated) */
+$pds-theme-dark-contrast-low: hsla(
+  240,
+  12.5%,
+  96.9%,
+  0.45
+); /* alias (deprecated) */
+$pds-theme-dark-contrast-medium: hsla(
+  240,
+  12.5%,
+  96.9%,
+  0.56
+); /* alias (deprecated) */
+$pds-theme-dark-contrast-high: hsla(
+  240,
+  12.5%,
+  96.9%,
+  0.67
+); /* alias (deprecated) */
+$pds-theme-dark-notification-success: hsl(
+  157,
+  84.9%,
+  41.6%
+); /* alias (deprecated) */
+$pds-theme-dark-notification-success-soft: hsla(
+  157,
+  84.9%,
+  41.6%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-dark-notification-warning: hsl(
+  28,
+  90.2%,
+  56.1%
+); /* alias (deprecated) */
+$pds-theme-dark-notification-warning-soft: hsla(
+  28,
+  90.2%,
+  56.1%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-dark-notification-error: hsl(0, 96.9%, 62%); /* alias (deprecated) */
+$pds-theme-dark-notification-error-soft: hsla(
+  0,
+  96.9%,
+  62%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-dark-notification-info: hsl(
+  210,
+  100%,
+  54.5%
+); /* alias (deprecated) */
+$pds-theme-dark-notification-info-soft: hsla(
+  210,
+  100%,
+  54.5%,
+  0.18
+); /* alias (deprecated) */
+$pds-theme-dark-state-hover: hsla(
+  240,
+  2.2%,
+  44.1%,
+  0.228
+); /* alias (deprecated) */
+$pds-theme-dark-state-active: hsla(
+  240,
+  2.2%,
+  44.1%,
+  0.228
+); /* alias (deprecated) */
+$pds-theme-dark-state-focus: #1a44ea; /* alias (deprecated) */
+$pds-theme-dark-state-disabled: hsla(
+  240,
+  1.5%,
+  61.8%,
+  0.302
+); /* alias (deprecated) */
 "
 `;
 
 exports[`should contain correct scss content for file ./dist/_display.scss 1`] = `
-"@mixin pds-display-large {
+"@mixin prose-display-lg {
   font:
     normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -31,8 +426,7 @@ exports[`should contain correct scss content for file ./dist/_display.scss 1`] =
     SimHei,
     sans-serif;
 }
-
-@mixin pds-display-medium {
+@mixin prose-display-md {
   font:
     normal normal 400 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -42,8 +436,7 @@ exports[`should contain correct scss content for file ./dist/_display.scss 1`] =
     SimHei,
     sans-serif;
 }
-
-@mixin pds-display-small {
+@mixin prose-display-sm {
   font:
     normal normal 400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -53,197 +446,155 @@ exports[`should contain correct scss content for file ./dist/_display.scss 1`] =
     SimHei,
     sans-serif;
 }
-"
-`;
 
-exports[`should contain correct scss content for file ./dist/_drop-shadow.scss 1`] = `
-"@mixin pds-drop-shadow-high {
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+/* alias (deprecated) */
+@mixin pds-display-large {
+  @include prose-display-lg();
 }
-
-@mixin pds-drop-shadow-low {
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+/* alias (deprecated) */
+@mixin pds-display-medium {
+  @include prose-display-md();
 }
-
-@mixin pds-drop-shadow-medium {
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+/* alias (deprecated) */
+@mixin pds-display-small {
+  @include prose-display-sm();
 }
 "
 `;
 
 exports[`should contain correct scss content for file ./dist/_font.scss 1`] = `
-"$pds-font-family:
+"$font-porsche-next:
   "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
-$pds-font-hyphenation-style-overflow-wrap: break-word;
-$pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto);
-$pds-font-line-height: calc(6px + 2.125ex);
-$pds-font-size-text-xx-small: 0.75rem;
-$pds-font-size-text-x-small: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-$pds-font-size-text-small: 1rem;
-$pds-font-size-text-medium: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-$pds-font-size-text-large: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-$pds-font-size-text-x-large: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-$pds-font-size-heading-small: 1rem;
-$pds-font-size-heading-medium: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-$pds-font-size-heading-large: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
-$pds-font-size-heading-x-large: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
-$pds-font-size-heading-xx-large: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
-$pds-font-size-display-small: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
-$pds-font-size-display-medium: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
-$pds-font-size-display-large: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
-$pds-font-style-normal: normal;
-$pds-font-style-italic: italic;
-$pds-font-variant: normal;
-$pds-font-weight-regular: 400;
-$pds-font-weight-semi-bold: 600;
-$pds-font-weight-bold: 700;
-"
-`;
 
-exports[`should contain correct scss content for file ./dist/_frosted-glass.scss 1`] = `
-"@mixin pds-frosted-glass {
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-}
+$leading-normal: calc(6px + 2.125ex);
+
+$typescale-2xs: 0.75rem;
+$typescale-xs: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+$typescale-sm: 1rem;
+$typescale-md: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+$typescale-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+$typescale-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+$typescale-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
+
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$pds-font-family:
+  "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif; /* alias (deprecated) */
+$pds-font-hyphenation-style-overflow-wrap: break-word; /* alias (deprecated) */
+$pds-font-hyphenation-style-hyphens: var(
+  --p-hyphens,
+  auto
+); /* alias (deprecated) */
+$pds-font-line-height: calc(6px + 2.125ex); /* alias (deprecated) */
+$pds-font-size-text-xx-small: 0.75rem; /* alias (deprecated) */
+$pds-font-size-text-x-small: clamp(
+  0.81rem,
+  0.23vw + 0.77rem,
+  0.88rem
+); /* alias (deprecated) */
+$pds-font-size-text-small: 1rem; /* alias (deprecated) */
+$pds-font-size-text-medium: clamp(
+  1.13rem,
+  0.21vw + 1.08rem,
+  1.33rem
+); /* alias (deprecated) */
+$pds-font-size-text-large: clamp(
+  1.27rem,
+  0.51vw + 1.16rem,
+  1.78rem
+); /* alias (deprecated) */
+$pds-font-size-text-x-large: clamp(
+  1.42rem,
+  0.94vw + 1.23rem,
+  2.37rem
+); /* alias (deprecated) */
+$pds-font-size-heading-small: 1rem; /* alias (deprecated) */
+$pds-font-size-heading-medium: clamp(
+  1.13rem,
+  0.21vw + 1.08rem,
+  1.33rem
+); /* alias (deprecated) */
+$pds-font-size-heading-large: clamp(
+  1.27rem,
+  0.51vw + 1.16rem,
+  1.78rem
+); /* alias (deprecated) */
+$pds-font-size-heading-x-large: clamp(
+  1.42rem,
+  0.94vw + 1.23rem,
+  2.37rem
+); /* alias (deprecated) */
+$pds-font-size-heading-xx-large: clamp(
+  1.6rem,
+  1.56vw + 1.29rem,
+  3.16rem
+); /* alias (deprecated) */
+$pds-font-size-display-small: clamp(
+  1.8rem,
+  2.41vw + 1.32rem,
+  4.21rem
+); /* alias (deprecated) */
+$pds-font-size-display-medium: clamp(
+  2.03rem,
+  3.58vw + 1.31rem,
+  5.61rem
+); /* alias (deprecated) */
+$pds-font-size-display-large: clamp(
+  2.28rem,
+  5.2vw + 1.24rem,
+  7.48rem
+); /* alias (deprecated) */
+$pds-font-style-normal: normal; /* alias (deprecated) */
+$pds-font-style-italic: italic; /* alias (deprecated) */
+$pds-font-variant: normal; /* alias (deprecated) */
+$pds-font-weight-regular: 400; /* alias (deprecated) */
+$pds-font-weight-semi-bold: 600; /* alias (deprecated) */
+$pds-font-weight-bold: 700; /* alias (deprecated) */
 "
 `;
 
 exports[`should contain correct scss content for file ./dist/_gradient.scss 1`] = `
-"@mixin pds-gradient-to-bottom {
-  background: linear-gradient(
-    to bottom,
-    hsla(0, 0%, 0%, 0.8) 0%,
-    hsla(0, 0%, 0%, 0.8) 8.1%,
-    hsla(0, 0%, 0%, 0.8) 15.5%,
-    hsla(0, 0%, 0%, 0.8) 22.5%,
-    hsla(0, 0%, 0%, 0.78) 29%,
-    hsla(0, 0%, 0%, 0.73) 35.3%,
-    hsla(0, 0%, 0%, 0.67) 41.2%,
-    hsla(0, 0%, 0%, 0.6) 47.1%,
-    hsla(0, 0%, 0%, 0.52) 52.9%,
-    hsla(0, 0%, 0%, 0.44) 58.8%,
-    hsla(0, 0%, 0%, 0.33) 64.7%,
-    hsla(0, 0%, 0%, 0.22) 71%,
-    hsla(0, 0%, 0%, 0.12) 77.5%,
-    hsla(0, 0%, 0%, 0.05) 84.5%,
-    hsla(0, 0%, 0%, 0.011) 91.9%,
-    hsla(0, 0%, 0%, 0) 100%
-  );
-}
+"$gradient-stops-fade-dark:
+  hsla(0, 0%, 0%, 0.8) 0%,
+  hsla(0, 0%, 0%, 0.8) 8.1%,
+  hsla(0, 0%, 0%, 0.8) 15.5%,
+  hsla(0, 0%, 0%, 0.8) 22.5%,
+  hsla(0, 0%, 0%, 0.78) 29%,
+  hsla(0, 0%, 0%, 0.73) 35.3%,
+  hsla(0, 0%, 0%, 0.67) 41.2%,
+  hsla(0, 0%, 0%, 0.6) 47.1%,
+  hsla(0, 0%, 0%, 0.52) 52.9%,
+  hsla(0, 0%, 0%, 0.44) 58.8%,
+  hsla(0, 0%, 0%, 0.33) 64.7%,
+  hsla(0, 0%, 0%, 0.22) 71%,
+  hsla(0, 0%, 0%, 0.12) 77.5%,
+  hsla(0, 0%, 0%, 0.05) 84.5%,
+  hsla(0, 0%, 0%, 0.011) 91.9%,
+  hsla(0, 0%, 0%, 0) 100%;
 
+/* alias (deprecated) */
+@mixin pds-gradient-to-bottom {
+  background: linear-gradient(to bottom, $gradient-stops-fade-dark);
+}
+/* alias (deprecated) */
 @mixin pds-gradient-to-left {
-  background: linear-gradient(
-    to left,
-    hsla(0, 0%, 0%, 0.8) 0%,
-    hsla(0, 0%, 0%, 0.8) 8.1%,
-    hsla(0, 0%, 0%, 0.8) 15.5%,
-    hsla(0, 0%, 0%, 0.8) 22.5%,
-    hsla(0, 0%, 0%, 0.78) 29%,
-    hsla(0, 0%, 0%, 0.73) 35.3%,
-    hsla(0, 0%, 0%, 0.67) 41.2%,
-    hsla(0, 0%, 0%, 0.6) 47.1%,
-    hsla(0, 0%, 0%, 0.52) 52.9%,
-    hsla(0, 0%, 0%, 0.44) 58.8%,
-    hsla(0, 0%, 0%, 0.33) 64.7%,
-    hsla(0, 0%, 0%, 0.22) 71%,
-    hsla(0, 0%, 0%, 0.12) 77.5%,
-    hsla(0, 0%, 0%, 0.05) 84.5%,
-    hsla(0, 0%, 0%, 0.011) 91.9%,
-    hsla(0, 0%, 0%, 0) 100%
-  );
+  background: linear-gradient(to left, $gradient-stops-fade-dark);
 }
-
+/* alias (deprecated) */
 @mixin pds-gradient-to-right {
-  background: linear-gradient(
-    to right,
-    hsla(0, 0%, 0%, 0.8) 0%,
-    hsla(0, 0%, 0%, 0.8) 8.1%,
-    hsla(0, 0%, 0%, 0.8) 15.5%,
-    hsla(0, 0%, 0%, 0.8) 22.5%,
-    hsla(0, 0%, 0%, 0.78) 29%,
-    hsla(0, 0%, 0%, 0.73) 35.3%,
-    hsla(0, 0%, 0%, 0.67) 41.2%,
-    hsla(0, 0%, 0%, 0.6) 47.1%,
-    hsla(0, 0%, 0%, 0.52) 52.9%,
-    hsla(0, 0%, 0%, 0.44) 58.8%,
-    hsla(0, 0%, 0%, 0.33) 64.7%,
-    hsla(0, 0%, 0%, 0.22) 71%,
-    hsla(0, 0%, 0%, 0.12) 77.5%,
-    hsla(0, 0%, 0%, 0.05) 84.5%,
-    hsla(0, 0%, 0%, 0.011) 91.9%,
-    hsla(0, 0%, 0%, 0) 100%
-  );
+  background: linear-gradient(to right, $gradient-stops-fade-dark);
 }
-
+/* alias (deprecated) */
 @mixin pds-gradient-to-top {
-  background: linear-gradient(
-    to top,
-    hsla(0, 0%, 0%, 0.8) 0%,
-    hsla(0, 0%, 0%, 0.8) 8.1%,
-    hsla(0, 0%, 0%, 0.8) 15.5%,
-    hsla(0, 0%, 0%, 0.8) 22.5%,
-    hsla(0, 0%, 0%, 0.78) 29%,
-    hsla(0, 0%, 0%, 0.73) 35.3%,
-    hsla(0, 0%, 0%, 0.67) 41.2%,
-    hsla(0, 0%, 0%, 0.6) 47.1%,
-    hsla(0, 0%, 0%, 0.52) 52.9%,
-    hsla(0, 0%, 0%, 0.44) 58.8%,
-    hsla(0, 0%, 0%, 0.33) 64.7%,
-    hsla(0, 0%, 0%, 0.22) 71%,
-    hsla(0, 0%, 0%, 0.12) 77.5%,
-    hsla(0, 0%, 0%, 0.05) 84.5%,
-    hsla(0, 0%, 0%, 0.011) 91.9%,
-    hsla(0, 0%, 0%, 0) 100%
-  );
+  background: linear-gradient(to top, $gradient-stops-fade-dark);
 }
 "
 `;
 
 exports[`should contain correct scss content for file ./dist/_heading.scss 1`] = `
-"@mixin pds-heading-large {
-  font:
-    normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) /
-      calc(6px + 2.125ex) "Porsche Next",
-    "Arial Narrow",
-    Arial,
-    "Heiti SC",
-    SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-medium {
-  font:
-    normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) /
-      calc(6px + 2.125ex) "Porsche Next",
-    "Arial Narrow",
-    Arial,
-    "Heiti SC",
-    SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-small {
-  font:
-    normal normal 400 1rem / calc(6px + 2.125ex) "Porsche Next",
-    "Arial Narrow",
-    Arial,
-    "Heiti SC",
-    SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-x-large {
-  font:
-    normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) /
-      calc(6px + 2.125ex) "Porsche Next",
-    "Arial Narrow",
-    Arial,
-    "Heiti SC",
-    SimHei,
-    sans-serif;
-}
-
-@mixin pds-heading-xx-large {
+"@mixin prose-heading-2xl {
   font:
     normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -253,38 +604,17 @@ exports[`should contain correct scss content for file ./dist/_heading.scss 1`] =
     SimHei,
     sans-serif;
 }
-"
-`;
-
-exports[`should contain correct scss content for file ./dist/_motion.scss 1`] = `
-"$pds-motion-duration-long: 0.6s;
-$pds-motion-duration-moderate: 0.4s;
-$pds-motion-duration-short: 0.25s;
-$pds-motion-duration-very-long: 1.2s;
-$pds-motion-easing-base: cubic-bezier(0.25, 0.1, 0.25, 1);
-$pds-motion-easing-in: cubic-bezier(0, 0, 0.2, 1);
-$pds-motion-easing-out: cubic-bezier(0.4, 0, 0.5, 1);
-"
-`;
-
-exports[`should contain correct scss content for file ./dist/_spacing.scss 1`] = `
-"$pds-spacing-static-x-small: 4px;
-$pds-spacing-static-small: 8px;
-$pds-spacing-static-medium: 16px;
-$pds-spacing-static-large: 32px;
-$pds-spacing-static-x-large: 48px;
-$pds-spacing-static-xx-large: 80px;
-$pds-spacing-fluid-x-small: clamp(4px, 0.25vw + 3px, 8px);
-$pds-spacing-fluid-small: clamp(8px, 0.5vw + 6px, 16px);
-$pds-spacing-fluid-medium: clamp(16px, 1.25vw + 12px, 36px);
-$pds-spacing-fluid-large: clamp(32px, 2.75vw + 23px, 76px);
-$pds-spacing-fluid-x-large: clamp(48px, 3vw + 38px, 96px);
-$pds-spacing-fluid-xx-large: clamp(80px, 7.5vw + 56px, 200px);
-"
-`;
-
-exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
-"@mixin pds-text-large {
+@mixin prose-heading-xl {
+  font:
+    normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+}
+@mixin prose-heading-lg {
   font:
     normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -293,11 +623,8 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
-
-@mixin pds-text-medium {
+@mixin prose-heading-md {
   font:
     normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -306,11 +633,8 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
-
-@mixin pds-text-small {
+@mixin prose-heading-sm {
   font:
     normal normal 400 1rem / calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
@@ -318,11 +642,135 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
     "Heiti SC",
     SimHei,
     sans-serif;
-  hyphens: var(--p-hyphens, auto);
-  overflow-wrap: break-word;
 }
 
-@mixin pds-text-x-large {
+/* alias (deprecated) */
+@mixin pds-heading-xx-large {
+  @include prose-heading-2xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-x-large {
+  @include prose-heading-xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-large {
+  @include prose-heading-lg();
+}
+/* alias (deprecated) */
+@mixin pds-heading-medium {
+  @include prose-heading-md();
+}
+/* alias (deprecated) */
+@mixin pds-heading-small {
+  @include prose-heading-sm();
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_motion.scss 1`] = `
+"$duration-sm: 0.25s;
+$duration-md: 0.4s;
+$duration-lg: 0.6s;
+$duration-xl: 1.2s;
+
+$ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+$ease-in: cubic-bezier(0, 0, 0.2, 1);
+$ease-out: cubic-bezier(0.4, 0, 0.5, 1);
+
+$pds-motion-duration-long: 0.6s; /* alias (deprecated) */
+$pds-motion-duration-moderate: 0.4s; /* alias (deprecated) */
+$pds-motion-duration-short: 0.25s; /* alias (deprecated) */
+$pds-motion-duration-very-long: 1.2s; /* alias (deprecated) */
+$pds-motion-easing-base: cubic-bezier(
+  0.25,
+  0.1,
+  0.25,
+  1
+); /* alias (deprecated) */
+$pds-motion-easing-in: cubic-bezier(0, 0, 0.2, 1); /* alias (deprecated) */
+$pds-motion-easing-out: cubic-bezier(0.4, 0, 0.5, 1); /* alias (deprecated) */
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_shadow.scss 1`] = `
+"$shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
+$shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
+$shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
+
+/* alias (deprecated) */
+@mixin pds-drop-shadow-high {
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* alias (deprecated) */
+@mixin pds-drop-shadow-low {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+/* alias (deprecated) */
+@mixin pds-drop-shadow-medium {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+}
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_spacing.scss 1`] = `
+"$spacing-static-xs: 4px;
+$spacing-static-sm: 8px;
+$spacing-static-md: 16px;
+$spacing-static-lg: 32px;
+$spacing-static-xl: 48px;
+$spacing-static-2xl: 80px;
+
+$spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
+$spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
+$spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
+$spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
+$spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
+$spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
+
+$pds-spacing-static-x-small: 4px; /* alias (deprecated) */
+$pds-spacing-static-small: 8px; /* alias (deprecated) */
+$pds-spacing-static-medium: 16px; /* alias (deprecated) */
+$pds-spacing-static-large: 32px; /* alias (deprecated) */
+$pds-spacing-static-x-large: 48px; /* alias (deprecated) */
+$pds-spacing-static-xx-large: 80px; /* alias (deprecated) */
+
+$pds-spacing-fluid-x-small: clamp(
+  4px,
+  0.25vw + 3px,
+  8px
+); /* alias (deprecated) */
+$pds-spacing-fluid-small: clamp(
+  8px,
+  0.5vw + 6px,
+  16px
+); /* alias (deprecated) */
+$pds-spacing-fluid-medium: clamp(
+  16px,
+  1.25vw + 12px,
+  36px
+); /* alias (deprecated) */
+$pds-spacing-fluid-large: clamp(
+  32px,
+  2.75vw + 23px,
+  76px
+); /* alias (deprecated) */
+$pds-spacing-fluid-x-large: clamp(
+  48px,
+  3vw + 38px,
+  96px
+); /* alias (deprecated) */
+$pds-spacing-fluid-xx-large: clamp(
+  80px,
+  7.5vw + 56px,
+  200px
+); /* alias (deprecated) */
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
+"@mixin prose-text-xl {
   font:
     normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -334,8 +782,42 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
   hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
-
-@mixin pds-text-x-small {
+@mixin prose-text-lg {
+  font:
+    normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+@mixin prose-text-md {
+  font:
+    normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) /
+      calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+@mixin prose-text-sm {
+  font:
+    normal normal 400 1rem / calc(6px + 2.125ex) "Porsche Next",
+    "Arial Narrow",
+    Arial,
+    "Heiti SC",
+    SimHei,
+    sans-serif;
+  hyphens: var(--p-hyphens, auto);
+  overflow-wrap: break-word;
+}
+@mixin prose-text-xs {
   font:
     normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem) /
       calc(6px + 2.125ex) "Porsche Next",
@@ -347,8 +829,7 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
   hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
-
-@mixin pds-text-xx-small {
+@mixin prose-text-2xs {
   font:
     normal normal 400 0.75rem / calc(6px + 2.125ex) "Porsche Next",
     "Arial Narrow",
@@ -359,49 +840,30 @@ exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
   hyphens: var(--p-hyphens, auto);
   overflow-wrap: break-word;
 }
-"
-`;
 
-exports[`should contain correct scss content for file ./dist/_theme.scss 1`] = `
-"$pds-theme-light-primary: hsl(225, 66.7%, 1.2%);
-$pds-theme-light-background-base: #fff;
-$pds-theme-light-background-surface: hsl(240, 7.7%, 97.5%);
-$pds-theme-light-background-shading: hsla(240, 5.3%, 14.9%, 0.5);
-$pds-theme-light-background-frosted: hsla(236, 6.4%, 51%, 0.148);
-$pds-theme-light-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
-$pds-theme-light-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
-$pds-theme-light-contrast-high: hsla(240, 7.1%, 11%, 0.7);
-$pds-theme-light-notification-success: hsl(115, 77.5%, 27.8%);
-$pds-theme-light-notification-success-soft: hsla(115, 77.5%, 27.8%, 0.18);
-$pds-theme-light-notification-warning: hsl(28, 97.7%, 34.1%);
-$pds-theme-light-notification-warning-soft: hsla(28, 97.7%, 34.1%, 0.18);
-$pds-theme-light-notification-error: hsl(357, 78%, 41%);
-$pds-theme-light-notification-error-soft: hsla(357, 78%, 41%, 0.18);
-$pds-theme-light-notification-info: hsl(228, 83.2%, 51%);
-$pds-theme-light-notification-info-soft: hsla(228, 83.2%, 51%, 0.18);
-$pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148);
-$pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148);
-$pds-theme-light-state-focus: #1a44ea;
-$pds-theme-light-state-disabled: hsla(233, 6.6%, 23.9%, 0.412);
-$pds-theme-dark-primary: hsl(240, 12.5%, 96.9%);
-$pds-theme-dark-background-base: hsl(225, 66.7%, 1.2%);
-$pds-theme-dark-background-surface: hsl(240, 2%, 10%);
-$pds-theme-dark-background-shading: hsla(240, 5.3%, 14.9%, 0.5);
-$pds-theme-dark-background-frosted: hsla(240, 2.2%, 44.1%, 0.228);
-$pds-theme-dark-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
-$pds-theme-dark-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
-$pds-theme-dark-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
-$pds-theme-dark-notification-success: hsl(157, 84.9%, 41.6%);
-$pds-theme-dark-notification-success-soft: hsla(157, 84.9%, 41.6%, 0.18);
-$pds-theme-dark-notification-warning: hsl(28, 90.2%, 56.1%);
-$pds-theme-dark-notification-warning-soft: hsla(28, 90.2%, 56.1%, 0.18);
-$pds-theme-dark-notification-error: hsl(0, 96.9%, 62%);
-$pds-theme-dark-notification-error-soft: hsla(0, 96.9%, 62%, 0.18);
-$pds-theme-dark-notification-info: hsl(210, 100%, 54.5%);
-$pds-theme-dark-notification-info-soft: hsla(210, 100%, 54.5%, 0.18);
-$pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228);
-$pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228);
-$pds-theme-dark-state-focus: #1a44ea;
-$pds-theme-dark-state-disabled: hsla(240, 1.5%, 61.8%, 0.302);
+/* alias (deprecated) */
+@mixin pds-text-x-large {
+  @include prose-text-xl();
+}
+/* alias (deprecated) */
+@mixin pds-text-large {
+  @include prose-text-lg();
+}
+/* alias (deprecated) */
+@mixin pds-text-medium {
+  @include prose-text-md();
+}
+/* alias (deprecated) */
+@mixin pds-text-small {
+  @include prose-text-sm();
+}
+/* alias (deprecated) */
+@mixin pds-text-x-small {
+  @include prose-text-xs();
+}
+/* alias (deprecated) */
+@mixin pds-text-xx-small {
+  @include prose-text-2xs();
+}
 "
 `;

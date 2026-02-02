@@ -1,9 +1,4 @@
-import {
-  borderRadiusMedium,
-  spacingFluidMedium,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/vanilla-extract';
+import { proseTextSmStyle, radiusMd, spacingFluidMd, spacingStaticSm } from '@porsche-design-system/vanilla-extract';
 import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
@@ -12,22 +7,22 @@ export const colorWrapper = style({
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'center',
-  gap: spacingFluidMedium,
-  padding: spacingFluidMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  padding: spacingFluidMd,
+  ...proseTextSmStyle,
   color: vars.primary,
 });
 
 export const colorSwatches = style({
   display: 'flex',
   alignItems: 'center',
-  gap: spacingStaticSmall,
+  gap: spacingStaticSm,
 });
 
 const swatchBase = style({
   width: '2.5rem',
   height: '2.5rem',
-  borderRadius: borderRadiusMedium,
+  borderRadius: radiusMd,
   border: `1px solid ${vars.contrastLow}`,
 });
 

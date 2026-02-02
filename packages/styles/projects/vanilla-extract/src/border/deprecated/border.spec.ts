@@ -2,7 +2,7 @@ import { expect, it } from 'vitest';
 import * as fromBorder from '../index';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromBorder).length).toBe(8);
+  expect(Object.keys(fromBorder).length).toBe(17);
 });
 
 it.each<keyof typeof fromBorder>(Object.keys(fromBorder) as (keyof typeof fromBorder)[])(

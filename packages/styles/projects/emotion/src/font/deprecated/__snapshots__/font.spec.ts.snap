@@ -2,13 +2,6 @@
 
 exports[`should contain correct values for fontFamily 1`] = `"'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif"`;
 
-exports[`should contain correct values for fontHyphenationStyle 1`] = `
-{
-  "hyphens": "var(--p-hyphens, auto)",
-  "overflowWrap": "break-word",
-}
-`;
-
 exports[`should contain correct values for fontLineHeight 1`] = `"calc(6px + 2.125ex)"`;
 
 exports[`should contain correct values for fontSize 1`] = `
@@ -43,12 +36,6 @@ exports[`should contain correct values for fontSizeDisplay 1`] = `
   "small": "clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)",
 }
 `;
-
-exports[`should contain correct values for fontSizeDisplayLarge 1`] = `"clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)"`;
-
-exports[`should contain correct values for fontSizeDisplayMedium 1`] = `"clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)"`;
-
-exports[`should contain correct values for fontSizeDisplaySmall 1`] = `"clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)"`;
 
 exports[`should contain correct values for fontSizeHeading 1`] = `
 {
@@ -114,8 +101,6 @@ exports[`should contain correct values for fontWeight 1`] = `
 }
 `;
 
-exports[`should contain correct values for fontWeightBold 1`] = `700`;
-
 exports[`should contain correct values for fontWeightRegular 1`] = `400`;
 
-exports[`should contain correct values for fontWeightSemibold 1`] = `600`;
+exports[`should contain correct values for fontWeightSemiBold 1`] = `600`;

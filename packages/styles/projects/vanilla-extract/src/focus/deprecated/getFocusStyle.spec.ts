@@ -1,5 +1,6 @@
-import * as fromFocus from './index';
+import { describe, expect, it } from 'vitest';
 import { getFocusStyle } from './getFocusStyle';
+import * as fromFocus from './index';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromFocus).length).toBe(1);

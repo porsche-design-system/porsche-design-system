@@ -1,19 +1,23 @@
-import type { Theme } from '@porsche-design-system/emotion';
 import type { ChangeEvent, SelectHTMLAttributes } from 'react';
+import type { LightDarkTheme } from '../providers/ThemeProvider.tsx';
 
 type ThemeSelectProps = {
-  value: Theme;
+  value: LightDarkTheme;
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
-export const themes = ['light', 'dark', 'auto'];
+const themeMap: Record<LightDarkTheme, string> = {
+  light: 'Light',
+  dark: 'Dark',
+  'light-dark': 'Light Dark',
+};
 
 export const ThemeSelect = ({ value = 'light', onChange, ...rest }: ThemeSelectProps) => {
   return (
     <select name="theme" value={value} onChange={onChange} {...rest}>
-      {themes.map((theme) => (
+      {Object.entries(themeMap).map(([theme, name]) => (
         <option key={theme} value={theme}>
-          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+          {name}
         </option>
       ))}
     </select>

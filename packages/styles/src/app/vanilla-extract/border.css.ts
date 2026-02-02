@@ -1,13 +1,16 @@
 import {
-  borderRadiusLarge,
-  borderRadiusMedium,
-  borderRadiusSmall,
-  borderWidthBase,
-  borderWidthThin,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  proseTextSmStyle,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXl,
+  radiusXs,
+  spacingFluidMd,
+  spacingStaticMd,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
@@ -15,46 +18,76 @@ import { vars } from './theme.css';
 export const vanillaExtractBorderWrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: spacingFluidMedium,
-  padding: spacingStaticMedium,
+  gap: spacingFluidMd,
+  padding: spacingStaticMd,
 });
 
 export const vanillaExtractBorderSection = style({
   display: 'grid',
-  gap: spacingFluidMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  ...proseTextSmStyle,
   color: vars.primary,
 });
 
-export const vanillaExtractBorderRadiusSmall = style({
+export const vanillaExtractRadiusXs = style({
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderRadius: borderRadiusSmall,
-  padding: spacingFluidSmall,
+  borderRadius: radiusXs,
+  padding: spacingFluidMd,
 });
 
-export const vanillaExtractBorderRadiusMedium = style({
+export const vanillaExtractRadiusSm = style({
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderRadius: borderRadiusMedium,
-  padding: spacingFluidSmall,
+  borderRadius: radiusSm,
+  padding: spacingFluidMd,
 });
 
-export const vanillaExtractBorderRadiusLarge = style({
+export const vanillaExtractRadiusMd = style({
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+  borderRadius: radiusMd,
+  padding: spacingFluidMd,
 });
 
-export const vanillaExtractBorderWidthThin = style({
-  borderWidth: borderWidthThin,
+export const vanillaExtractRadiusLg = style({
+  borderWidth: '1px',
   borderStyle: 'solid',
-  padding: spacingFluidSmall,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
 });
 
-export const vanillaExtractBorderWidthRegular = style({
-  borderWidth: borderWidthBase,
+export const vanillaExtractRadiusXl = style({
+  borderWidth: '1px',
   borderStyle: 'solid',
-  padding: spacingFluidSmall,
+  borderRadius: radiusXl,
+  padding: spacingFluidMd,
+});
+
+export const vanillaExtractRadius2Xl = style({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radius2Xl,
+  padding: spacingFluidMd,
+});
+
+export const vanillaExtractRadius3Xl = style({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radius3Xl,
+  padding: spacingFluidMd,
+});
+
+export const vanillaExtractRadius4Xl = style({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radius4Xl,
+  padding: spacingFluidMd,
+});
+
+export const vanillaExtractRadiusFull = style({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radiusFull,
+  padding: spacingFluidMd,
 });
