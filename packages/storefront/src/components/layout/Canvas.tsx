@@ -26,7 +26,7 @@ import { useTextZoom } from '@/hooks/useTextZoom';
 import type { StorefrontDirection } from '@/models/dir';
 import { LEGACY_PDS_VERSIONS, type PDSVersionGroup, type Semver } from '@/models/pdsVersion';
 import type { StorefrontTextZoom } from '@/models/textZoom';
-import type { StorefrontTheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/theme';
 import { fetchPdsVersions } from '@/utils/fetchPdsVersions';
 import { isDevEnvironment } from '@/utils/isDev';
 import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
@@ -184,7 +184,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           </PHeading>
           <ThemeSelect
             value={storefrontTheme}
-            onThemeChange={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
+            onThemeChange={(e): void => setStorefrontTheme(e.detail.value as StorefrontColorScheme)}
             compact={true}
           />
           <DirectionSelect

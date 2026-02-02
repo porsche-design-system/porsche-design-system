@@ -1,6 +1,6 @@
 import type { Framework } from '@porsche-design-system/shared';
 // TODO: Move to shared
-import type { StorefrontTheme } from '@porsche-design-system/storefront/src/models/theme';
+import type { StorefrontColorScheme } from '@porsche-design-system/storefront/src/models/theme';
 import sdk, { type ProjectFiles } from '@stackblitz/sdk';
 import { angularBundle, reactBundle, vanillaJsBundle, vueBundle } from '../generated/bundle';
 
@@ -18,7 +18,7 @@ const frameworkComponentMap: Record<Framework, string> = {
   react: 'src/Example.tsx',
 };
 
-export const openInStackblitz = (framework: Framework, markup: string, theme: StorefrontTheme) => {
+export const openInStackblitz = (framework: Framework, markup: string, theme: StorefrontColorScheme) => {
   const getFrameworkFiles = (framework: Framework): ProjectFiles => {
     switch (framework) {
       case 'angular':

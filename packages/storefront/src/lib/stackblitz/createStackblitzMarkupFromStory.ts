@@ -1,7 +1,6 @@
 import type { Framework } from '@porsche-design-system/shared';
 import type { Story, StoryState } from '@/models/story';
-import type { StorefrontTheme } from '@/models/theme';
-import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
+import type { StorefrontColorScheme } from '@/models/theme';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
@@ -14,7 +13,7 @@ import type { HTMLTagOrComponent } from '@/utils/generator/generator';
  * @param {Story<HTMLTagOrComponent>} story - The story object containing the component or HTML tag.
  * @param {StoryState<HTMLTagOrComponent>} storyState - The state of the story, used to generate dynamic content.
  * @param {Framework} storefrontFramework - The framework for which the markup should be generated.
- * @param {StorefrontTheme} storefrontTheme - The theme to apply, relevant especially for vanilla-js.
+ * @param {StorefrontColorScheme} storefrontTheme - The theme to apply, relevant especially for vanilla-js.
  * @returns {string} - The generated markup/code for the specified framework.
  * @throws {Error} - Throws an error if the provided framework is unsupported.
  */
@@ -22,7 +21,7 @@ export const createStackblitzMarkupFromStory = (
   story: Story<HTMLTagOrComponent>,
   storyState: StoryState<HTMLTagOrComponent>,
   storefrontFramework: Framework,
-  storefrontTheme: StorefrontTheme
+  storefrontTheme: StorefrontColorScheme
 ): string => {
   const generatedStory = story.generator(storyState);
 

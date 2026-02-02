@@ -5,7 +5,7 @@ import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-sys
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { ConfigureCssClasses } from '@/components/playground/ConfigureCssClasses';
+import { ConfigureColorScheme } from '@/components/playground/ConfigureColorScheme';
 import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
@@ -126,16 +126,17 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     });
   };
 
-  const handleUpdateCssClasses = (cssClass: string) => {
+  const handleUpdateColorScheme = (colorScheme: string) => {
     setStoryState((prev) => {
-      // TODO: Currently only works for theme classes, change when more classes are supported
-      const cleanedClassName = (prev.properties?.className ?? '')
-        .replace(/\b(light|dark|auto)\b/g, '')
-        .trim()
-        .replace(/\s+/g, ' ');
-      const updatedClassName = cssClass ? `${cleanedClassName} ${cssClass}`.trim() : cleanedClassName;
-      const updatedProperties = { ...prev.properties, className: updatedClassName };
-      return { ...prev, properties: updatedProperties as PropTypeMapping[typeof tagName] };
+      const updatedProps = { ...prev.properties, style: { ...prev.properties?.style, colorScheme } };
+      if (!colorScheme) {
+        delete (updatedProps.style as Record<string, string>).colorScheme;
+        if (Object.keys(updatedProps.style).length === 0) {
+          // @ts-expect-error TODO: Fix typing
+          delete updatedProps.style;
+        }
+      }
+      return { ...prev, properties: updatedProps as PropTypeMapping[typeof tagName] };
     });
   };
 
@@ -175,9 +176,9 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         }}
       />
     ),
-    <ConfigureCssClasses
-      cssClasses={storyState.properties?.className ?? ''}
-      onUpdateCssClasses={handleUpdateCssClasses}
+    <ConfigureColorScheme
+      style={storyState.properties?.style ?? {}}
+      handleUpdateColorScheme={handleUpdateColorScheme}
     />,
   ];
 
