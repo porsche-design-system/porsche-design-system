@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-
+import { Navigate } from 'react-router';
 import { EmotionBlur } from './app/emotion/EmotionBlur.tsx';
 import { EmotionBorder } from './app/emotion/EmotionBorder.tsx';
 import { EmotionColor } from './app/emotion/EmotionColor.tsx';
@@ -72,6 +72,7 @@ export const styles = [
 ] as const;
 
 export const routes: RouteConfig[] = [
+  { path: '/', label: 'Home', element: <Navigate to="/tailwindcss/blur" replace /> },
   // Tailwind CSS
   { path: '/tailwindcss/blur', label: 'Tailwind - Blur', element: <TailwindcssBlur /> },
   { path: '/tailwindcss/border', label: 'Tailwind - Border', element: <TailwindcssBorder /> },
