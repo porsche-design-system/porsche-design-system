@@ -1,5 +1,5 @@
 import { radiusSm } from '../border';
-import { type Theme, themeDarkBackgroundSurface, themeLightBackgroundSurface } from '../color';
+import { colorSurfaceDark, colorSurfaceLight, type Theme } from '../color';
 import { durationLg, easeInOut } from '../motion';
 
 type Options = {
@@ -14,7 +14,7 @@ export const getSkeletonStyle = (opts?: Options) => {
   const highlightColorDark = '#1a1b1e';
 
   const isThemeDark = theme === 'dark';
-  const backgroundColor = isThemeDark ? themeDarkBackgroundSurface : themeLightBackgroundSurface;
+  const backgroundColor = isThemeDark ? colorSurfaceDark : colorSurfaceLight;
   const highlightColor = isThemeDark ? highlightColorDark : highlightColorLight;
 
   return {
@@ -22,7 +22,7 @@ export const getSkeletonStyle = (opts?: Options) => {
     background: `${backgroundColor} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
     ...(theme === 'auto' && {
       '@media (prefers-color-scheme: dark)': {
-        background: `${themeDarkBackgroundSurface} linear-gradient(to right, transparent 0%, ${highlightColorDark} 25%, transparent 50%) 0 0 / 200% 100%`,
+        background: `${colorSurfaceDark} linear-gradient(to right, transparent 0%, ${highlightColorDark} 25%, transparent 50%) 0 0 / 200% 100%`,
       },
     }),
     borderRadius: radiusSm,
