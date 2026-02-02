@@ -7,7 +7,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getDisabledBaseStyles,
   getFocusBaseStyles,
@@ -52,7 +51,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(disabled && getDisabledBaseStyles()),
         }),

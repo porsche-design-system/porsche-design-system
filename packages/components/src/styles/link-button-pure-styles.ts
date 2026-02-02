@@ -4,7 +4,6 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize }
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getTransition,
@@ -54,7 +53,6 @@ export const getLinkButtonPureStyles = (
       ':host': {
         ...addImportantToEachRule({
           transform: 'translate3d(0,0,0)', // creates new stacking context
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({

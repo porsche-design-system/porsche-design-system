@@ -15,17 +15,32 @@ import {
 
 export const getSpacingScss = () => {
   return `
-    $pds-spacing-static-x-small: ${spacingStaticXs};
-    $pds-spacing-static-small: ${spacingStaticSm};
-    $pds-spacing-static-medium: ${spacingStaticMd};
-    $pds-spacing-static-large: ${spacingStaticLg};
-    $pds-spacing-static-x-large: ${spacingStaticXl};
-    $pds-spacing-static-xx-large: ${spacingStatic2Xl};
-    $pds-spacing-fluid-x-small: ${spacingFluidXs};
-    $pds-spacing-fluid-small: ${spacingFluidSm};
-    $pds-spacing-fluid-medium: ${spacingFluidMd};
-    $pds-spacing-fluid-large: ${spacingFluidLg};
-    $pds-spacing-fluid-x-large: ${spacingFluidXl};
-    $pds-spacing-fluid-xx-large: ${spacingFluid2Xl};
+    $spacing-static-xs: ${spacingStaticXs};
+    $spacing-static-sm: ${spacingStaticSm};
+    $spacing-static-md: ${spacingStaticMd};
+    $spacing-static-lg: ${spacingStaticLg};
+    $spacing-static-xl: ${spacingStaticXl};
+    $spacing-static-2xl: ${spacingStatic2Xl};
+
+    $spacing-fluid-xs: ${spacingFluidXs};
+    $spacing-fluid-sm: ${spacingFluidSm};
+    $spacing-fluid-md: ${spacingFluidMd};
+    $spacing-fluid-lg: ${spacingFluidLg};
+    $spacing-fluid-xl: ${spacingFluidXl};
+    $spacing-fluid-2xl: ${spacingFluid2Xl};
+
+    $pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */
+    $pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */
+    $pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */
+    $pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */
+    $pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */
+    $pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */
+
+    $pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */
+    $pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */
+    $pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */
+    $pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */
+    $pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */
+    $pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */
 `;
 };

@@ -15,10 +15,14 @@ export const metadata = {
 
 <TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
 
-The Porsche Design System provides multiple JS Variables and Objects for color styles to be used in Emotion.
+The Porsche Design System provides multiple JS Variables for color styles to be used in Emotion.
+
+While `Light`, `Dark` suffix colors contain the specific color tokens, the colors without suffix use the
+[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) CSS color
+function.
 
 Styles import:
-`import { themeLightPrimary, themeLightBackgroundFrosted, … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+`import { colorPrimary, colorFrosted, … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
 
 ## Text Color
 

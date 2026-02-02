@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
   - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
     `$breakpoint-2xl`
+  - Blur: `$blur-frosted`
   - Border: `$radius-xs`, `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-2xl`, `$radius-3xl`,
     `$radius-4xl` and `$radius-full`
   - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
@@ -63,15 +64,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `$color-info-medium-dark`, `$color-info-frosted`, `$color-info-frosted-light`, `$color-info-frosted-dark`,
     `$color-info-frosted-soft`, `$color-info-frosted-soft-light` and `$color-info-frosted-soft-dark`
   - Focus: `@mixin focus-visible()`
+  - Gradient: `$gradient-stops-fade-dark`
   - Skeleton: `@mixin skeleton()`
   - Media Query: `@mixin media-query-min()`, `@mixin media-query-max()` and `@mixin media-query-min-max()`
-  - Motion: `$motion-duration-sm`, `$motion-duration-md`, `$motion-duration-lg`, `$motion-duration-xl`,
-    `$motion-ease-in-out`, `$motion-ease-in` and `$motion-ease-out`
-  - Shadow: `$box-shadow-sm`, `$box-shadow-md` and `$box-shadow-lg`
+  - Motion: `$duration-sm`, `$duration-md`, `$duration-lg`, `$duration-xl`, `$ease-in-out`, `$ease-in` and `$ease-out`
+  - Shadow: `$shadow-sm`, `$shadow-md` and `$shadow-lg`
+  - Spacing: `$spacing-fluid-xs`, `$spacing-fluid-sm`, `$spacing-fluid-md`, `$spacing-fluid-lg`, `$spacing-fluid-xl`,
+    `$spacing-fluid-2xl`, `$spacing-static-xs`, `$spacing-static-sm`, `$spacing-static-md`, `$spacing-static-lg`,
+    `$spacing-static-xl` and `$spacing-static-2xl`
   - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`,
     `@mixin prose-heading-2xl()`, `@mixin prose-heading-xl()`, `@mixin prose-heading-lg()`, `@mixin prose-heading-md()`,
     `@mixin prose-heading-sm()`, `@mixin prose-text-xl()`, `@mixin prose-text-lg()`, `@mixin prose-text-md()`,
-    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` and `@mixin prose-text-2xs()`
+    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` `@mixin prose-text-2xs()`, `$font-porsche-next`,
+    `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
+    `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
 
 ### Changed
 

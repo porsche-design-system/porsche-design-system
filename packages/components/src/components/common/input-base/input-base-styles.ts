@@ -2,7 +2,6 @@ import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } 
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getDisabledBaseStyles,
   getTransition,
@@ -58,7 +57,6 @@ export const getFunctionalComponentInputBaseStyles = (
         ...addImportantToEachRule({
           [`${cssVarButtonPurePadding}`]: buttonPadding,
           [`${cssVarButtonPureMargin}`]: buttonMargin,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),

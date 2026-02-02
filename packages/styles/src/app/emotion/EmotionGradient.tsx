@@ -1,53 +1,45 @@
 import styled from '@emotion/styled';
-import {
-  borderRadiusLarge,
-  gradientToBottomStyle,
-  gradientToLeftStyle,
-  gradientToRightStyle,
-  gradientToTopStyle,
-  spacingFluidMedium,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
+import { gradientStopsFadeDark, proseTextSmStyle, radiusLg, spacingFluidMd } from '@porsche-design-system/emotion';
 
 const EmotionGradientWrapper = styled.div({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
-  gap: spacingFluidMedium,
-  padding: spacingFluidMedium,
+  gap: spacingFluidMd,
+  padding: spacingFluidMd,
   background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
 });
 
 const EmotionGradientItemTop = styled.div({
-  ...gradientToTopStyle,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
+  backgroundImage: `linear-gradient(to top, ${gradientStopsFadeDark})`,
 });
 
 const EmotionGradientItemBottom = styled.div({
-  ...gradientToBottomStyle,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
+  backgroundImage: `linear-gradient(to bottom, ${gradientStopsFadeDark})`,
 });
 
 const EmotionGradientItemLeft = styled.div({
-  ...gradientToLeftStyle,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
+  backgroundImage: `linear-gradient(to left, ${gradientStopsFadeDark})`,
 });
 
 const EmotionGradientItemRight = styled.div({
-  ...gradientToRightStyle,
-  ...textSmallStyle,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
+  backgroundImage: `linear-gradient(to right, ${gradientStopsFadeDark})`,
 });
 
 export const EmotionGradient = () => {

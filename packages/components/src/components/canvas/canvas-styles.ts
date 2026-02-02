@@ -10,7 +10,6 @@ import {
 import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getTransition,
@@ -66,7 +65,6 @@ export const getComponentCss = (
           // prevents horizontal scroll due to sidebar transform. `overflow: clip` clips content like hidden but doesn't
           // establish a scrolling context, so sticky positioning still works.
           overflowX: 'clip',
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

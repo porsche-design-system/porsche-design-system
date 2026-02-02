@@ -1,26 +1,14 @@
-@use '@porsche-design-system/scss' as *;
+@use '@porsche-design-system/scss' as pds;
 
 .scss-skeleton {
+  @include pds.prose-text-sm;
   display: grid;
-  gap: $pds-spacing-fluid-small;
-  padding: $pds-spacing-static-medium;
-  @include pds-text-small;
-  color: var(--scss-color-primary);
+  gap: pds.$spacing-fluid-sm;
+  padding: pds.$spacing-static-md;
+  color: pds.$color-primary;
 
   &__item {
-    padding: $pds-spacing-fluid-small;
-    @include pds-skeleton('light');
+    @include pds.skeleton('light');
+    padding: pds.$spacing-fluid-sm;
   }
-}
-
-.light .scss-skeleton__item {
-  @include pds-skeleton('light');
-}
-
-.dark .scss-skeleton__item {
-  @include pds-skeleton('dark');
-}
-
-.auto .scss-skeleton__item {
-  @include pds-skeleton('auto');
 }

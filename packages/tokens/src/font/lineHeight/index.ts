@@ -1,1 +1,1 @@
-export { fontLineHeightNormal } from './fontLineHeightNormal';
+export { leadingNormal } from './leadingNormal';

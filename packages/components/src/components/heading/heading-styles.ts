@@ -8,7 +8,7 @@ import {
   fontWeightSemiBold,
   headingXXLargeStyle,
 } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
@@ -33,7 +33,6 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

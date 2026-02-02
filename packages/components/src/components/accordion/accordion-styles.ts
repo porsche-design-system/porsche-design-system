@@ -11,7 +11,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   cssVariableTransitionDuration,
   getFocusBaseStyles,
@@ -51,7 +50,6 @@ export const getComponentCss = (
                 borderBottom: `1px solid ${contrastLowerColor}`,
               }),
           '&(:only-of-type)': { borderBottom: 0 },
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

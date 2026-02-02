@@ -10,10 +10,9 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
-  hostHiddenStyles,
   forcedColorsMediaQuery,
+  hostHiddenStyles,
 } from '../../styles';
 import type { IconName, TextSize } from '../../types';
 import { getCss } from '../../utils';
@@ -104,7 +103,6 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
               transform: 'scaleX(-1)',
             },
           }),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

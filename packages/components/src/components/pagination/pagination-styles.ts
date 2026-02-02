@@ -11,13 +11,13 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
+  getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles, getDisabledBaseStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getCss } from '../../utils';
@@ -44,7 +44,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

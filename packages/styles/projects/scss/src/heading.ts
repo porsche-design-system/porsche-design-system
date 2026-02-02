@@ -1,30 +1,30 @@
 import {
-  fontFamilyPorscheNext,
-  fontLineHeightNormal,
-  fontSize2Xl,
-  fontSizeLg,
-  fontSizeMd,
-  fontSizeSm,
-  fontSizeXl,
+  fontPorscheNext,
   fontWeightNormal,
+  leadingNormal,
+  typescale2Xl,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
 } from '@porsche-design-system/tokens';
 
 export const getHeadingScss = () => {
   return `
     @mixin prose-heading-2xl {
-      font: normal normal ${fontWeightNormal} ${fontSize2Xl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescale2Xl} / ${leadingNormal} ${fontPorscheNext};
     }
     @mixin prose-heading-xl {
-      font: normal normal ${fontWeightNormal} ${fontSizeXl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext};
     }
     @mixin prose-heading-lg {
-      font: normal normal ${fontWeightNormal} ${fontSizeLg} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleLg} / ${leadingNormal} ${fontPorscheNext};
     }
     @mixin prose-heading-md {
-      font: normal normal ${fontWeightNormal} ${fontSizeMd} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext};
     }
     @mixin prose-heading-sm {
-      font: normal normal ${fontWeightNormal} ${fontSizeSm} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      font: normal normal ${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext};
     }
 
     /* alias (deprecated) */

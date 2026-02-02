@@ -1,9 +1,4 @@
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -64,7 +59,6 @@ export const getComponentCss = (
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
           ...dialogHostJssStyle(background),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

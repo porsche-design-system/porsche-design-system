@@ -1,74 +1,109 @@
 import styled from '@emotion/styled';
 import {
-  borderRadiusLarge,
-  borderRadiusMedium,
-  borderRadiusSmall,
-  borderWidthBase,
-  borderWidthThin,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  proseTextSmStyle,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXl,
+  radiusXs,
+  spacingFluidMd,
+  spacingStaticMd,
 } from '@porsche-design-system/emotion';
 
 const EmotionBorderWrapper = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  gap: spacingFluidMedium,
-  padding: spacingStaticMedium,
+  gap: spacingFluidMd,
+  padding: spacingStaticMd,
 });
 
 const EmotionBorderSection = styled.div(({ theme }) => ({
   display: 'grid',
-  gap: spacingFluidMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  ...proseTextSmStyle,
   color: theme.primary,
 }));
 
-const EmotionBorderRadiusSmall = styled.div({
+const EmotionBorderRadiusXs = styled.div({
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderRadius: borderRadiusSmall,
-  padding: spacingFluidSmall,
+  borderRadius: radiusXs,
+  padding: spacingFluidMd,
 });
 
-const EmotionBorderRadiusMedium = styled.div({
+const EmotionBorderRadiusSm = styled.div({
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderRadius: borderRadiusMedium,
-  padding: spacingFluidSmall,
+  borderRadius: radiusSm,
+  padding: spacingFluidMd,
 });
 
-const EmotionBorderRadiusLarge = styled.div({
+const EmotionBorderRadiusMd = styled.div({
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+  borderRadius: radiusMd,
+  padding: spacingFluidMd,
 });
 
-const EmotionBorderWidthThin = styled.div({
-  borderWidth: borderWidthThin,
+const EmotionBorderRadiusLg = styled.div({
+  borderWidth: '1px',
   borderStyle: 'solid',
-  padding: spacingFluidSmall,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
 });
 
-const EmotionBorderWidthRegular = styled.div({
-  borderWidth: borderWidthBase,
+const EmotionBorderRadiusXl = styled.div({
+  borderWidth: '1px',
   borderStyle: 'solid',
-  padding: spacingFluidSmall,
+  borderRadius: radiusXl,
+  padding: spacingFluidMd,
+});
+
+const EmotionBorderRadius2Xl = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radius2Xl,
+  padding: spacingFluidMd,
+});
+
+const EmotionBorderRadius3Xl = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radius3Xl,
+  padding: spacingFluidMd,
+});
+
+const EmotionBorderRadius4Xl = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radius4Xl,
+  padding: spacingFluidMd,
+});
+
+const EmotionBorderRadiusFull = styled.div({
+  borderWidth: '1px',
+  borderStyle: 'solid',
+  borderRadius: radiusFull,
+  padding: spacingFluidMd,
 });
 
 export const EmotionBorder = () => {
   return (
     <EmotionBorderWrapper>
       <EmotionBorderSection>
-        <EmotionBorderRadiusSmall>Border Radius Small</EmotionBorderRadiusSmall>
-        <EmotionBorderRadiusMedium>Border Radius Medium</EmotionBorderRadiusMedium>
-        <EmotionBorderRadiusLarge>Border Radius Large</EmotionBorderRadiusLarge>
-      </EmotionBorderSection>
-      <EmotionBorderSection>
-        <EmotionBorderWidthThin>Border Width Thin</EmotionBorderWidthThin>
-        <EmotionBorderWidthRegular>Border Width Regular</EmotionBorderWidthRegular>
+        <EmotionBorderRadiusXs>Border Radius X-Small</EmotionBorderRadiusXs>
+        <EmotionBorderRadiusSm>Border Radius Small</EmotionBorderRadiusSm>
+        <EmotionBorderRadiusMd>Border Radius Medium</EmotionBorderRadiusMd>
+        <EmotionBorderRadiusLg>Border Radius Large</EmotionBorderRadiusLg>
+        <EmotionBorderRadiusXl>Border Radius X-Large</EmotionBorderRadiusXl>
+        <EmotionBorderRadius2Xl>Border Radius 2X-Large</EmotionBorderRadius2Xl>
+        <EmotionBorderRadius3Xl>Border Radius 3X-Large</EmotionBorderRadius3Xl>
+        <EmotionBorderRadius4Xl>Border Radius 4X-Large</EmotionBorderRadius4Xl>
+        <EmotionBorderRadiusFull>Border Radius Full</EmotionBorderRadiusFull>
       </EmotionBorderSection>
     </EmotionBorderWrapper>
   );

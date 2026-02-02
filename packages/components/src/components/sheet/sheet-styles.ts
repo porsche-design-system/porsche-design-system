@@ -1,10 +1,5 @@
 import { spacingFluidLarge } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -46,7 +41,6 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
           ...dialogHostJssStyle(background),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

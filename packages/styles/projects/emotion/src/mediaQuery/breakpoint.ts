@@ -1,18 +1,27 @@
+import { breakpoint2Xl } from './breakpoint2Xl';
+import { breakpointLg } from './breakpointLg';
+import { breakpointMd } from './breakpointMd';
 import type { Breakpoint } from './breakpointShared';
-import { breakpointBase } from './breakpointBase';
-import { breakpointXS } from './breakpointXS';
-import { breakpointS } from './breakpointS';
-import { breakpointM } from './breakpointM';
-import { breakpointL } from './breakpointL';
-import { breakpointXL } from './breakpointXL';
-import { breakpointXXL } from './breakpointXXL';
+import { breakpointSm } from './breakpointSm';
+import { breakpointXl } from './breakpointXl';
+import { breakpointXs } from './breakpointXs';
+import { breakpointBase } from './deprecated/breakpointBase';
+
+/** @deprecated since v4.0.0, will be removed with next major release. Use xs | sm | md | lg | xl | 2xl instead. */
+const breakpointLegacy = {
+  base: breakpointBase,
+  s: breakpointSm,
+  m: breakpointMd,
+  l: breakpointLg,
+  xxl: breakpoint2Xl,
+} as const;
 
 export const breakpoint: { [key in Breakpoint]: number } = {
-  base: breakpointBase,
-  xs: breakpointXS,
-  s: breakpointS,
-  m: breakpointM,
-  l: breakpointL,
-  xl: breakpointXL,
-  xxl: breakpointXXL,
+  xs: breakpointXs,
+  sm: breakpointSm,
+  md: breakpointMd,
+  lg: breakpointLg,
+  xl: breakpointXl,
+  '2xl': breakpoint2Xl,
+  ...breakpointLegacy,
 };
