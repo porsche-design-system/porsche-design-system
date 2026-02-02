@@ -4,7 +4,7 @@ import { createApp, type InjectionKey, type Ref } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-export type Theme = 'light' | 'dark' | 'auto';
+export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
 export const themeInjectionKey = Symbol('pdsTheme') as InjectionKey<Ref<Theme>>;
 
 const app = createApp(App);

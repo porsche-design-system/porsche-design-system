@@ -3,3 +3,4 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "@porsche-design-system/components-vue";
 @import "@porsche-design-system/components-vue/tailwindcss";
+@import "@porsche-design-system/shared/css/styles.css";
