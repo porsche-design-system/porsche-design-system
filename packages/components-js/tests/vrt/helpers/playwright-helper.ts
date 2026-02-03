@@ -10,14 +10,11 @@ export const waitForComponentsReadyWithinIFrames = async (page: Page): Promise<v
 };
 
 export type PrefersColorScheme = 'light' | 'dark';
-export type Dir = 'ltr' | 'rtl' | 'auto';
 type SetupScenarioOptions = {
   javaScriptDisabled?: boolean;
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
-  forceComponentTheme?: 'light' | 'dark' | 'light-dark';
-  forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
   forcePseudoState?: 'focus' | 'hover';
 };
@@ -33,16 +30,12 @@ export const setupScenario = async (
     forcedColorsEnabled,
     prefersColorScheme,
     scalePageFontSize,
-    forceComponentTheme,
-    forceDirMode,
     forcePseudoState,
   }: SetupScenarioOptions = {
     javaScriptDisabled: false,
     forcedColorsEnabled: false,
     prefersColorScheme: undefined,
     scalePageFontSize: false,
-    forceComponentTheme: undefined,
-    forceDirMode: undefined,
     forcePseudoState: undefined,
     ...options,
   };
@@ -72,15 +65,7 @@ export const setupScenario = async (
 
   await page.setViewportSize({ width: viewportWidth, height: 600 });
 
-  const searchParams = new URLSearchParams();
-  if (forceComponentTheme) {
-    searchParams.append('theme', forceComponentTheme);
-  }
-  if (forceDirMode) {
-    searchParams.append('dir', forceDirMode);
-  }
-  const finalUrl = `${url}?${searchParams.toString()}`;
-  await page.goto(finalUrl);
+  await page.goto(url);
 
   // we need to have the full document height containing all iframes, otherwise iframes might get loaded lazy,
   // which causes componentsReadyWithinIFrames() to never resolve
