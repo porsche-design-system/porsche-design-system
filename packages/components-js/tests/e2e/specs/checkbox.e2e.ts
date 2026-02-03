@@ -214,8 +214,7 @@ test.describe('focus', () => {
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
   });
 
-  // TODO: Looks good when manually tested but receives no outline in the test
-  test.fixme('should receive focus in loading state', async ({ page }) => {
+  test('should receive focus in loading state', async ({ page }) => {
     await initCheckbox(page, { loading: true });
     const input = getInput(page);
 
@@ -225,8 +224,7 @@ test.describe('focus', () => {
     await expect(input).toHaveCSS('outline-offset', '2px');
   });
 
-  // TODO: Looks good when manually tested but receives no outline in the test
-  test.fixme('should receive focus when focus is set programmatically', async ({ page }) => {
+  test('should receive focus when focus is set programmatically', async ({ page }) => {
     await initCheckbox(page);
     const input = getInput(page);
 
