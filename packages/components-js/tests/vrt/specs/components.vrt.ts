@@ -95,7 +95,7 @@ for (const component of components) {
         page,
       }) => {
         await setupScenario(page, `/${component}`, viewportWidthM, {
-          forceComponentTheme: 'auto',
+          forceComponentTheme: 'light-dark',
           prefersColorScheme: scheme,
         });
         await revertAutoFocus(page, component);
