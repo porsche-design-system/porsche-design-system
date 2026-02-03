@@ -5,23 +5,23 @@
   }
 </style>
 
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-input-time name="some-name" label="Label"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with label and value">
+<div class="playground" title="should render with label and value">
   <p-input-time name="some-name" label="Label" value="13:30"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with label and seconds">
+<div class="playground" title="should render with label and seconds">
   <p-input-time name="some-name" label="Label" value="13:30:10"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with label, seconds and without value">
+<div class="playground" title="should render with label, seconds and without value">
   <p-input-time name="some-name" label="Label" step="1"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with label, description">
+<div class="playground" title="should render with label, description">
   <p-input-time
     name="some-name"
     label="Label with description"
@@ -30,11 +30,11 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render with loading indicator">
+<div class="playground" title="should render with loading indicator">
   <p-input-time name="some-name" label="Some label" loading="true" class="a11ytree-snapshot-test"></p-input-time>
 </div>
 
-<div class="playground light" title="should render without label and without description">
+<div class="playground" title="should render without label and without description">
   <p-input-time
     name="some-name"
     label="Some label"
@@ -45,7 +45,7 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render with responsive label and description">
+<div class="playground" title="should render with responsive label and description">
   <p-input-time
     name="some-name"
     label="Label responsive"
@@ -55,7 +55,7 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render in required state">
+<div class="playground" title="should render in required state">
   <p-input-time name="some-name" label="Required" required="true" class="a11ytree-snapshot-test"></p-input-time>
   <p-input-time
     name="some-name"
@@ -65,7 +65,7 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render in disabled state">
+<div class="playground" title="should render in disabled state">
   <p-input-time
     name="some-name"
     label="Disabled"
@@ -75,11 +75,11 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render without value in disabled state">
+<div class="playground" title="should render without value in disabled state">
   <p-input-time name="some-name" label="Disabled without value" disabled="true"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with readonly state">
+<div class="playground" title="should render with readonly state">
   <p-input-time
     name="some-name"
     label="Readonly"
@@ -90,15 +90,15 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-input-time name="some-name" label="Error with message" state="error" message="Error message"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with error state and no error message">
+<div class="playground" title="should render with error state and no error message">
   <p-input-time name="some-name" label="Error without message" state="error"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-input-time
     name="some-name"
     label="Success with message"
@@ -108,11 +108,11 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render with success state and no success message">
+<div class="playground" title="should render with success state and no success message">
   <p-input-time name="some-name" label="Success without message" state="success"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with default state and no message">
+<div class="playground" title="should render with default state and no message">
   <p-input-time
     name="some-name"
     label="Default without message"
@@ -121,7 +121,7 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render label, description and message by slotted content with error state">
+<div class="playground" title="should render label, description and message by slotted content with error state">
   <p-input-time name="some-name" state="error">
     <span slot="label">
       <span>
@@ -145,7 +145,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render label, description and message by slotted content with success state"
 >
   <p-input-time name="some-name" state="success">
@@ -170,7 +170,7 @@
   </p-input-time>
 </div>
 
-<div class="playground light" title="should render with multiline label, description, message and text">
+<div class="playground" title="should render with multiline label, description, message and text">
   <p-input-time
     name="some-name"
     label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
@@ -182,14 +182,14 @@
   ></p-input-time>
 </div>
 
-<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+<div class="playground" title="should render with ellipsis and min-width in a smaller container">
   <div style="width: 0">
     <p-input-time label="Some label" name="some-name" value="13:30"></p-input-time>
     <p-input-time label="Some label" name="some-name" value="13:30"></p-input-time>
   </div>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in compact mode">
+<div class="playground auto-layout-inline" title="should render in compact mode">
   <p-input-time label="Some label" compact="true" name="some-name" value="13:30"></p-input-time>
   <p-input-time label="Some label" compact="true" name="some-name" value="13:30" disabled="true"></p-input-time>
   <p-input-time
@@ -212,19 +212,19 @@
   <p-input-time label="Some label" compact="true" name="some-name" loading="true"></p-input-time>
 </div>
 
-<div class="playground light" title="should render with slot start">
+<div class="playground" title="should render with slot start">
   <p-input-time name="some-name" label="Label" value="13:30">
     <p-text slot="start" color="contrast-medium" aria-hidden="true">Time</p-text>
   </p-input-time>
 </div>
 
-<div class="playground light" title="should render with slot end">
+<div class="playground" title="should render with slot end">
   <p-input-time name="some-name" label="Label" value="13:30">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-time>
 </div>
 
-<div class="playground light" title="should render with slot end and loading indicator">
+<div class="playground" title="should render with slot end and loading indicator">
   <p-input-time name="some-name" label="Label" value="13:30" loading="true">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-time>

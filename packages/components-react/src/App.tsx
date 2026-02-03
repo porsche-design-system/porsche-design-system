@@ -3,12 +3,12 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from './contexts/ThemeContext.tsx';
 import { routes } from './routes';
 
-export type Theme = 'light' | 'dark' | 'auto';
+export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
-  const themes: Theme[] = ['light', 'dark', 'auto'];
+  const themes: Theme[] = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
   const { pathname } = useLocation();
   const isWithinIFrame: boolean = window.location !== window.parent.location;
 

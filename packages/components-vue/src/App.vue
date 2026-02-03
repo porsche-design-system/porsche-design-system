@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, provide, ref } from 'vue';
+import { onMounted, provide, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import '@porsche-design-system/shared/css/styles.css';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
@@ -8,11 +8,20 @@ import { routes } from './router';
 
 const router = useRouter();
 const route = ref<string>('');
-const theme = ref<Theme>('light');
-const themes: Theme[] = ['light', 'dark', 'auto'];
+const theme = ref<Theme>('scheme-light-dark');
+const themes: Theme[] = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
 const isWithinIFrame: boolean = window.location !== window.parent.location;
 
 provide(themeInjectionKey, theme);
+
+// Update body class when theme changes
+watch(
+  theme,
+  (newTheme) => {
+    document.body.className = newTheme;
+  },
+  { immediate: true }
+);
 
 onMounted(async () => {
   await router.isReady();

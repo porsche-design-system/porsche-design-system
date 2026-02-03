@@ -7,16 +7,9 @@ import { AppComponent, SafePipe, THEME_TOKEN, Theme } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as fromComponents from './components';
 import * as fromPages from './pages';
-import * as fromStyles from './styles';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ...fromComponents.components,
-    ...fromPages.generatedPages,
-    ...fromPages.pages,
-    ...fromStyles.examples,
-  ],
+  declarations: [AppComponent, ...fromComponents.components, ...fromPages.generatedPages, ...fromPages.pages],
   imports: [
     BrowserModule,
     FormsModule,
@@ -28,7 +21,7 @@ import * as fromStyles from './styles';
   providers: [
     {
       provide: THEME_TOKEN,
-      useValue: new BehaviorSubject<Theme>('auto'),
+      useValue: new BehaviorSubject<Theme>('scheme-light-dark'),
     },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -22,7 +22,7 @@
 </style>
 
 <!-- skip this axe-core test because it is just needed for vrt -->
-<div class="playground light skip-axe-core-test" title="should render without label and without description">
+<div class="playground skip-axe-core-test" title="should render without label and without description">
   <p-select name="options" value="a">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -30,7 +30,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-select name="options" value="a" label="Some Label">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -38,7 +38,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with label and description">
+<div class="playground" title="should render with label and description">
   <p-select name="options" value="a" label="Some Label" description="Some description" class="a11ytree-snapshot-test">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -46,7 +46,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with responsive label and description">
+<div class="playground" title="should render with responsive label and description">
   <p-select
     name="options"
     value="a"
@@ -60,7 +60,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render in disabled state">
+<div class="playground" title="should render in disabled state">
   <p-select name="options" value="a" label="Some Label disabled" disabled="true" class="a11ytree-snapshot-test">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -68,7 +68,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render in required state">
+<div class="playground" title="should render in required state">
   <p-select name="options" value="a" label="Some label required" required="true" class="a11ytree-snapshot-test">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -86,7 +86,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-select
     name="options"
     value="a"
@@ -101,7 +101,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with error state and no error message">
+<div class="playground" title="should render with error state and no error message">
   <p-select name="options" value="a" label="Error state (no message)" state="error">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -109,7 +109,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-select
     name="options"
     value="a"
@@ -124,7 +124,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with success state and no success message">
+<div class="playground" title="should render with success state and no success message">
   <p-select name="options" value="a" label="Success state (no message)" state="success">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -132,7 +132,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with default state and no message">
+<div class="playground" title="should render with default state and no message">
   <p-select
     name="options"
     value="a"
@@ -146,7 +146,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render label, description and message by slotted content with error state">
+<div class="playground" title="should render label, description and message by slotted content with error state">
   <p-select name="options" value="a" state="error">
     <span slot="label">
       <span>
@@ -173,7 +173,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render label, description and message by slotted content with success state"
 >
   <p-select name="options" value="a" state="success">
@@ -201,7 +201,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with multiline label, description and cut off too long option text">
+<div class="playground" title="should render with multiline label, description and cut off too long option text">
   <p-select
     name="options"
     value="a"
@@ -218,7 +218,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render unopened without preselection">
+<div class="playground" title="should render unopened without preselection">
   <p-select name="options" label="No selection" class="focus">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -226,7 +226,7 @@
   </p-select>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened with direction bottom">
+<div class="playground a11ytree-snapshot-test" title="should render opened with direction bottom">
   <iframe
     src="/select-opened-bottom?iframe=true"
     loading="eager"
@@ -234,11 +234,11 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with direction top">
+<div class="playground" title="should render opened with direction top">
   <iframe src="/select-opened-top?iframe=true" loading="eager" title="should show select with top direction"></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with disabled, highlighted and selected">
+<div class="playground" title="should render opened and with disabled, highlighted and selected">
   <iframe
     src="/select-opened-with-disabled-highlighted-selected?iframe=true"
     loading="eager"
@@ -246,7 +246,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with selected empty option">
+<div class="playground" title="should render opened and with selected empty option">
   <iframe
     src="/select-opened-with-selected-empty-option?iframe=true"
     loading="eager"
@@ -254,7 +254,7 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened and with optgroups">
+<div class="playground a11ytree-snapshot-test" title="should render opened and with optgroups">
   <iframe
     src="/select-opened-with-optgroups?iframe=true"
     loading="eager"
@@ -262,7 +262,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with optgroup in disabled state">
+<div class="playground" title="should render opened and with optgroup in disabled state">
   <iframe
     src="/select-opened-with-optgroups-disabled?iframe=true"
     loading="eager"
@@ -270,7 +270,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with options within and outside optgroup">
+<div class="playground" title="should render opened and with options within and outside optgroup">
   <iframe
     src="/select-opened-with-and-without-optgroups?iframe=true"
     loading="eager"
@@ -278,7 +278,7 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened and with slotted images">
+<div class="playground a11ytree-snapshot-test" title="should render opened and with slotted images">
   <iframe
     src="/select-opened-with-slotted-images?iframe=true"
     loading="eager"
@@ -286,7 +286,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render unopened and with preselected slotted image">
+<div class="playground" title="should render unopened and with preselected slotted image">
   <p-select name="options" value="d" label="Some label with preselected slotted image" dropdown-direction="down">
     <p-select-option value="a">
       <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
@@ -311,7 +311,7 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+<div class="playground" title="should render with ellipsis and min-width in a smaller container">
   <div style="width: 0">
     <p-select name="options" value="a" label="Some label">
       <p-select-option value="a">Option A</p-select-option>
@@ -322,7 +322,7 @@
 </div>
 
 <!-- when theme="dark" is used then icon will also be dark because `--p-select-icon-filter` needs to be defined by the integrating team -->
-<div class="playground light" title="should render with custom css variables">
+<div class="playground" title="should render with custom css variables">
   <p-select class="css-variables" name="options" value="a" label="Some label">
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
@@ -330,11 +330,11 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render in compact mode">
+<div class="playground" title="should render in compact mode">
   <iframe src="/select-compact?iframe=true" loading="eager" title="should show select compact"></iframe>
 </div>
 
-<div class="playground light" title="should render opened on #top-layer within scroll container">
+<div class="playground" title="should render opened on #top-layer within scroll container">
   <iframe
     src="/select-opened-scroll-context?iframe=true"
     loading="eager"
@@ -342,7 +342,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with max-height option list">
+<div class="playground" title="should render opened with max-height option list">
   <iframe
     class="max-height"
     src="/select-opened-max-height?iframe=true"
@@ -351,7 +351,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with min-height option list">
+<div class="playground" title="should render opened with min-height option list">
   <iframe
     class="min-height"
     src="/select-opened-min-height?iframe=true"
@@ -360,7 +360,7 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened with filter and no results">
+<div class="playground a11ytree-snapshot-test" title="should render opened with filter and no results">
   <iframe
     src="/select-opened-filter-no-results?iframe=true"
     loading="eager"
@@ -368,7 +368,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with filter and no results in compact mode">
+<div class="playground" title="should render opened with filter and no results in compact mode">
   <iframe
     src="/select-opened-filter-no-results-compact?iframe=true"
     loading="eager"
@@ -376,11 +376,11 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened with filter">
+<div class="playground a11ytree-snapshot-test" title="should render opened with filter">
   <iframe src="/select-opened-filter?iframe=true" loading="eager" title="should render opened with filter"></iframe>
 </div>
 
-<div class="playground light" title="should render opened with selected slot">
+<div class="playground" title="should render opened with selected slot">
   <iframe src="/select-opened-selected-slot?iframe=true" loading="eager" title="should render opened with selected slot"></iframe>
 </div>
 

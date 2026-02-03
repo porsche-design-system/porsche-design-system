@@ -1,6 +1,6 @@
 import { createContext, type JSX, type ReactNode, useContext, useState } from 'react';
 
-export type Theme = 'light' | 'dark' | 'auto';
+export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
 
 interface ThemeContextValue {
   theme: Theme;
@@ -22,7 +22,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('scheme-light-dark');
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };

@@ -20,15 +20,15 @@
     --p-textarea-max-height: 20rem;
   }
 </style>
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-textarea name="some-name" label="Label"></p-textarea>
 </div>
 
-<div class="playground light" title="should render with label and placeholder">
+<div class="playground" title="should render with label and placeholder">
   <p-textarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></p-textarea>
 </div>
 
-<div class="playground light" title="should render with label, description and placeholder">
+<div class="playground" title="should render with label, description and placeholder">
   <p-textarea
     name="some-name"
     label="Label with description and placeholder"
@@ -38,7 +38,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render without label and without description">
+<div class="playground" title="should render without label and without description">
   <p-textarea
     name="some-name"
     label="Label"
@@ -48,7 +48,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with responsive label and description">
+<div class="playground" title="should render with responsive label and description">
   <p-textarea
     name="some-name"
     label="Label"
@@ -59,7 +59,7 @@
   </p-textarea>
 </div>
 
-<div class="playground light" title="should render in required state">
+<div class="playground" title="should render in required state">
   <p-textarea name="some-name" label="Required" required="true" class="a11ytree-snapshot-test"></p-textarea>
   <p-textarea
     name="some-name"
@@ -68,7 +68,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render in disabled state">
+<div class="playground" title="should render in disabled state">
   <p-textarea
     name="some-name"
     label="Disabled"
@@ -78,11 +78,11 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with placeholder in disabled state">
+<div class="playground" title="should render with placeholder in disabled state">
   <p-textarea name="some-name" label="Disabled placeholder" disabled="true" placeholder="Some placeholder"></p-textarea>
 </div>
 
-<div class="playground light" title="should render in readonly state">
+<div class="playground" title="should render in readonly state">
   <p-textarea
     name="some-name"
     label="Readonly"
@@ -92,7 +92,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with counter">
+<div class="playground" title="should render with counter">
   <p-textarea
     name="some-name"
     label="Counter"
@@ -103,7 +103,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with counter and without max-length">
+<div class="playground" title="should render with counter and without max-length">
   <p-textarea
     name="some-name"
     label="Type counter=true & max-length=false"
@@ -112,7 +112,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-textarea
     name="some-name"
     label="Error with message"
@@ -123,11 +123,11 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with error state and no error message">
+<div class="playground" title="should render with error state and no error message">
   <p-textarea name="some-name" label="Error without message" state="error" value="Some value"></p-textarea>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-textarea
     name="some-name"
     label="Success with message"
@@ -138,11 +138,11 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render with success state and no success message">
+<div class="playground" title="should render with success state and no success message">
   <p-textarea name="some-name" label="Success without message" state="success" value="Some value"></p-textarea>
 </div>
 
-<div class="playground light" title="should render with default state and no message">
+<div class="playground" title="should render with default state and no message">
   <p-textarea
     name="some-name"
     label="Default without message"
@@ -152,7 +152,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light" title="should render label, description and message by slotted content with error state">
+<div class="playground" title="should render label, description and message by slotted content with error state">
   <p-textarea name="some-name" state="error" value="Some value" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
@@ -176,7 +176,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render label, description and message by slotted content with success state"
 >
   <p-textarea name="some-name" state="success" value="Some value" class="a11ytree-snapshot-test">
@@ -201,7 +201,7 @@
   </p-textarea>
 </div>
 
-<div class="playground light" title="should render with multiline label, description, message and text">
+<div class="playground" title="should render with multiline label, description, message and text">
   <p-textarea
     name="some-name"
     label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
@@ -214,7 +214,7 @@
   </p-textarea>
 </div>
 
-<div class="playground light" title="should render with label and multiline text">
+<div class="playground" title="should render with label and multiline text">
   <p-textarea
     name="some-name"
     label="Multiline text"
@@ -223,13 +223,13 @@
   </p-textarea>
 </div>
 
-<div class="playground light" title="should render with min-width when viewport is too small">
+<div class="playground" title="should render with min-width when viewport is too small">
   <div style="width: 0">
     <p-textarea name="some-name" label="X" value="M"></p-textarea>
   </div>
 </div>
 
-<div class="playground light" title="should render with counter readonly">
+<div class="playground" title="should render with counter readonly">
   <p-textarea
     name="some-name"
     label="Counter"
@@ -240,7 +240,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render in compact mode">
+<div class="playground auto-layout-inline" title="should render in compact mode">
   <p-textarea
     compact="true"
     value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua."
@@ -275,7 +275,7 @@
   ></p-textarea>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with 'field-sizing' related CSS Variables">
+<div class="playground auto-layout-inline" title="should render with 'field-sizing' related CSS Variables">
   <p-textarea
     class="field-sizing-content"
     name="some-name"

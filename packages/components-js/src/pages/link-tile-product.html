@@ -5,7 +5,7 @@
   }
 </style>
 
-<div class="playground light auto-layout-inline" title="should render default with 3/4 and 9/16">
+<div class="playground auto-layout-inline" title="should render default with 3/4 and 9/16">
   <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com">
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
@@ -13,12 +13,12 @@
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render without like button">
+<div class="playground auto-layout-inline" title="should render without like button">
   <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" like-button="false">
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render with sale and original price">
+<div class="playground auto-layout-inline" title="should render with sale and original price">
   <p-link-tile-product
     heading="Some product"
     price="718,00 €"
@@ -40,7 +40,7 @@
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render with very long heading">
+<div class="playground auto-layout-inline" title="should render with very long heading">
   <p-link-tile-product
     heading="Some very long product name to illustrate what happens when the text takes a lot of space"
     price="1.911,00 €"
@@ -49,7 +49,7 @@
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render with description, likeButton and tags">
+<div class="playground auto-layout-inline" title="should render with description, likeButton and tags">
   <p-link-tile-product
     heading="Some product"
     price="1.911,00 €"
@@ -62,7 +62,7 @@
   </p-link-tile-product>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with very long description and price text">
+<div class="playground auto-layout-inline" title="should render with very long description and price text">
   <p-link-tile-product
     heading="Some product"
     price="Some very long price text to illustrate what happens when the text takes a lot of space"
@@ -74,7 +74,7 @@
   </p-link-tile-product>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with too much text">
+<div class="playground auto-layout-inline" title="should render with too much text">
   <p-link-tile-product
     heading="Some very long product name text to illustrate what happens when the text is too long for the container and the image will become a lot smaller"
     price="Some very long price text to illustrate what happens when the text takes a lot of space. Some very long price text to illustrate what happens when the text takes a lot of space"
@@ -86,7 +86,7 @@
   </p-link-tile-product>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with like button and too many tags">
+<div class="playground auto-layout-inline" title="should render with like button and too many tags">
   <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com">
     <div slot="header">
       <p-tag variant="primary">Using</p-tag>
@@ -100,7 +100,7 @@
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render without like button and too many tags">
+<div class="playground auto-layout-inline" title="should render without like button and too many tags">
   <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" like-button="false">
     <div slot="header">
       <p-tag variant="primary">Using</p-tag>
@@ -114,20 +114,20 @@
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render with slotted picture">
+<div class="playground auto-layout-inline" title="should render with slotted picture">
   <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <picture>
       <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" />
     </picture>
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render with image which has wrong aspect-ratio">
+<div class="playground auto-layout-inline" title="should render with image which has wrong aspect-ratio">
   <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <img src="http://localhost:3002/placeholder_800x500.svg" width="800" height="500" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 <div
-  class="playground light auto-layout-inline"
+  class="playground auto-layout-inline"
   title="should render with images which have wrong aspect-ratios when using slotted picture"
 >
   <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
@@ -137,13 +137,13 @@
   </p-link-tile-product>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with image and slotted link">
+<div class="playground auto-layout-inline" title="should render with image and slotted link">
   <p-link-tile-product heading="Product Name" price="1.911,00 €">
     <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
     <a slot="anchor" href="https://porsche.com">Some label</a>
   </p-link-tile-product>
 </div>
-<div class="playground light auto-layout-inline" title="should render with picture and slotted link">
+<div class="playground auto-layout-inline" title="should render with picture and slotted link">
   <p-link-tile-product heading="Product Name" price="1.911,00 €">
     <picture>
       <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" />
@@ -153,7 +153,7 @@
 </div>
 
 <div
-  class="playground light auto-layout-inline"
+  class="playground auto-layout-inline"
   title="should render with responsive aspect-ratio { base: '9/16', s: '3/4' }"
 >
   <p-link-tile-product
@@ -166,12 +166,12 @@
   </p-link-tile-product>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with image not found">
+<div class="playground auto-layout-inline" title="should render with image not found">
   <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <img src="nonexistent.png" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render without slotted image">
+<div class="playground auto-layout-inline" title="should render without slotted image">
   <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com"> </p-link-tile-product>
 </div>
