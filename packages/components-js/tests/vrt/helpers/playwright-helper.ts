@@ -1,5 +1,4 @@
 import { type Page } from '@playwright/test';
-import { type Theme } from '@porsche-design-system/styles';
 
 export const waitForComponentsReady = async (page: Page): Promise<number> => {
   await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
@@ -17,7 +16,7 @@ type SetupScenarioOptions = {
   forcedColorsEnabled?: boolean;
   prefersColorScheme?: PrefersColorScheme;
   scalePageFontSize?: boolean;
-  forceComponentTheme?: Theme;
+  forceComponentTheme?: 'light' | 'dark' | 'light-dark';
   forceDirMode?: Dir;
   emulateMediaPrint?: boolean;
   forcePseudoState?: 'focus' | 'hover';
