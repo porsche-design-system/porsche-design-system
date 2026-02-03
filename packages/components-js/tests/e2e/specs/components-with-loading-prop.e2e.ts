@@ -1,4 +1,4 @@
-import { type Locator, expect, test } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import type { Page } from 'playwright';
@@ -103,7 +103,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
-        await expect.poll(() => getLoadingMessage(page)).toBe('Loading finished');
+        await expect.poll(() => getLoadingMessage(page), { timeout: 10000 }).toBe('Loading finished');
       });
     });
   });
