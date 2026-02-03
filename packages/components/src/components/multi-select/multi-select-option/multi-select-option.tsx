@@ -29,10 +29,17 @@ export class MultiSelectOption {
   @Prop() public value: string;
 
   /** Disables the option. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
+  }
+
+  public componentWillRender(): void {
+    // Needs to be set explicitly if whole optgroup is disabled
+    if (this.host.disabledParent === true) {
+      this.disabled = true;
+    }
   }
 
   public render(): JSX.Element {

@@ -134,7 +134,7 @@ export const getComponentCss = (
         minHeight: 0, // prevents flex child to overflow max available parent size
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         color: textColor,
-        ...(isDisabledOrLoading &&
+        ...(disabledOrLoading &&
           forcedColorsMediaQuery({
             color: 'GrayText',
           })),

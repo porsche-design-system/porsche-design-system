@@ -33,7 +33,8 @@ export const getOptionJssStyle = (
       background: frostedSoftColor,
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
-        background: 'CanvasText',
+        outline: '1px solid CanvasText',
+        outlineOffset: '-1px',
       }),
     },
     '&--highlighted, &--selected': {

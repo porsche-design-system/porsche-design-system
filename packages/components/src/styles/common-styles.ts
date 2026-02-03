@@ -103,6 +103,7 @@ export const getDisabledBaseStyles = () => {
     opacity: alphaDisabled,
     ...forcedColorsMediaQuery({
       opacity: 1,
+      color: 'GrayText',
     }),
   } as const;
 };

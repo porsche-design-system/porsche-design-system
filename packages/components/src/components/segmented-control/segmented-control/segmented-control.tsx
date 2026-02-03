@@ -186,7 +186,7 @@ export class SegmentedControl {
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.state, this.message, this.compact);
 
     return (
-      <fieldset inert={this.disabled} aria-invalid={this.state === 'error' ? 'true' : null} class="root">
+      <fieldset aria-invalid={this.state === 'error' ? 'true' : null} class="root">
         <Label
           host={this.host}
           tag="legend"

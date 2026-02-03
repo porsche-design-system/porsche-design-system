@@ -119,6 +119,10 @@ export const getComponentCss = (
         ...textXSmallStyle,
         overflowWrap: 'normal',
         color: contrastMediumColor,
+        ...(isDisabled &&
+          forcedColorsMediaQuery({
+            color: 'GrayText',
+          })),
       },
     },
     ...(hasIcon && {

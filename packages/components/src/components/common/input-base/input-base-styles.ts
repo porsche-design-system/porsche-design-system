@@ -84,10 +84,6 @@ export const getFunctionalComponentInputBaseStyles = (
       boxSizing: 'border-box',
       paddingInline: wrapperPaddingInline,
       border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
-      ...(isDisabled &&
-        forcedColorsMediaQuery({
-          borderColor: 'GrayText',
-        })),
       borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
       background: formStateBackgroundColor,
       color: primaryColor,
@@ -98,9 +94,18 @@ export const getFunctionalComponentInputBaseStyles = (
         background: frostedColor,
         color: contrastMediumColor,
       }),
-      '&:focus-within': {
+      '&:not(:has(input:disabled)):focus-within': {
         borderColor: formStateBorderHoverColor,
+        ...forcedColorsMediaQuery({
+          outline: '2px solid Highlight',
+          outlineOffset: '2px',
+          ...(isDisabled && { borderColor: 'GrayText' }),
+        }),
       },
+      ...(isDisabled &&
+        forcedColorsMediaQuery({
+          borderColor: 'GrayText !important',
+        })),
       ...(!isDisabled &&
         !readOnly &&
         !isLoading &&
