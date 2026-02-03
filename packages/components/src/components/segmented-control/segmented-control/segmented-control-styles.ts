@@ -29,7 +29,6 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
