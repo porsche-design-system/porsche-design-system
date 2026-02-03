@@ -470,7 +470,7 @@ test.describe('focus state', () => {
 
     await addEventListener(inputMonth, 'focus');
     expect((await getEventSummary(inputMonth, 'focus')).counter).toBe(0);
-    await expect(inputMonthWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(inputMonthWrapper).toHaveCSS('border-color', 'rgba(79, 80, 89, 0.325)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
@@ -551,7 +551,7 @@ test.describe('Event', () => {
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const defaultBorderColor = 'rgb(107, 109, 112)';
+  const defaultBorderColor = 'rgba(79, 80, 89, 0.325)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-month when label is hovered', async ({ page }) => {
