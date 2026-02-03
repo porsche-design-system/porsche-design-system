@@ -17,7 +17,7 @@
     "clean:build": "rm -rf ./.react-router && rm -rf ./build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.32.0-rc.1",
+    "@porsche-design-system/components-react": "3.32.0-rc.2",
     "@react-router/node": "^7.9.4",
     "@react-router/serve": "^7.9.4",
     "isbot": "^5.1.31",
