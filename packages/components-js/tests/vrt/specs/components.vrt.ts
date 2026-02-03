@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
 import * as path from 'path';
 import { setupScenario } from '../helpers';
@@ -64,13 +64,15 @@ test('should have certain amount of components', () => {
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
-    for (const theme of themes) {
-      test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
+    for (const scheme of schemes) {
+      test(`should have no visual regression for viewport "${viewportWidthM}" and color-scheme "${scheme}"`, async ({
+        page,
+      }) => {
         await setupScenario(page, `/${component}`, viewportWidthM, {
-          forceComponentTheme: theme,
+          forceComponentTheme: scheme,
         });
         await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${theme}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${scheme}.png`);
       });
     }
   });
