@@ -94,7 +94,7 @@ export default function RootLayout({
   );
 
   return (
-    <html lang="en" className="auto">
+    <html lang="en" className="scheme-light-dark">
       <head>
         <base href={basePath ? `/${basePath}/` : '/'} />
         {getCSPMetaTag()}

@@ -59,7 +59,8 @@
     "concurrently": "*",
     "globby": "*",
     "vite": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "@tailwindcss/vite": "*"
   },
   "volta": {
     "extends": "../../package.json"

@@ -4,23 +4,23 @@
   }
 </style>
 
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-fieldset label="Some label" class="a11ytree-snapshot-test"></p-fieldset>
 </div>
 
-<div class="playground light" title="should render with label and textfield with defined spacing">
+<div class="playground" title="should render with label and textfield with defined spacing">
   <p-fieldset label="Some label">
     <p-input-text name="some-name" label="Some label"></p-input-text>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with required">
+<div class="playground" title="should render with required">
   <p-fieldset label="Some label" required="true" class="a11ytree-snapshot-test">
     <p-checkbox name="some-name" label="Some label"></p-checkbox>
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with slotted label">
+<div class="playground" title="should render with slotted label">
   <p-fieldset>
     <span slot="label">Some slotted label</span>
     <p-checkbox name="some-name" label="Some label"></p-checkbox>
@@ -28,7 +28,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with label size small">
+<div class="playground" title="should render with label size small">
   <p-fieldset label="Some label" label-size="small">
     <p-radio-group name="some-name" label="Some Label">
       <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
@@ -37,7 +37,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with label size small and required">
+<div class="playground" title="should render with label size small and required">
   <p-fieldset label="Some label" label-size="small" required="true">
     <p-radio-group name="some-name" label="Some Label">
       <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
@@ -46,7 +46,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-fieldset label="Some label" state="error" message="Some error message" class="a11ytree-snapshot-test">
     <p-radio-group name="some-name" label="Some Label" state="error">
       <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
@@ -55,7 +55,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with error state and slotted error message">
+<div class="playground" title="should render with error state and slotted error message">
   <p-fieldset label="Some label" state="error">
     <p-radio-group name="some-name" label="Some Label" state="error">
       <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
@@ -65,7 +65,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-fieldset label="Some label" state="success" message="Some success message" class="a11ytree-snapshot-test">
     <p-radio-group name="some-name" label="Some Label" state="success">
       <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
@@ -74,7 +74,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render with success state and slotted success message">
+<div class="playground" title="should render with success state and slotted success message">
   <p-fieldset label="Some label" state="success">
     <p-radio-group name="some-name" label="Some Label" state="success">
       <p-radio-group-option value="a" label="Some Label"></p-radio-group-option>
@@ -83,7 +83,7 @@
     <span slot="message">Some slotted success message</span>
   </p-fieldset>
 </div>
-<div class="playground light" title="should render fieldset in fieldset as section">
+<div class="playground" title="should render fieldset in fieldset as section">
   <p-fieldset label="Some label">
     <p-fieldset label="Some label" label-size="small">
       <p-radio-group name="some-name" label="Some Label" state="success">
@@ -94,7 +94,7 @@
   </p-fieldset>
 </div>
 
-<div class="playground light" title="should render required only on fieldset">
+<div class="playground" title="should render required only on fieldset">
   <p-fieldset label="Some label" label-size="small" required="true">
     <p-input-text name="some-name" label="Some label" required="true"></p-input-text>
     <p-textarea name="some-name" label="Some label" hide-label="false" required="true"></p-textarea>

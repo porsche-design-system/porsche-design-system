@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { Theme } from '@porsche-design-system/components-angular';
 import { dataVrt, headVrt } from '@porsche-design-system/shared';
 
 @Component({
@@ -10,7 +9,7 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
       [title]="'should render table with ' + theme + ' mode'"
       *ngFor="let theme of themes"
     >
-      <p-table caption="Some caption" [theme]="theme">
+      <p-table caption="Some caption" [class]="theme">
         <p-table-head>
           <p-table-head-row>
             <p-table-head-cell
@@ -53,7 +52,7 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
       [title]="'should render table with unstyled slotted caption with ' + theme + ' mode'"
       *ngFor="let theme of themes"
     >
-      <p-table [theme]="theme">
+      <p-table [class]="theme">
         <span slot="caption">Some unstyled caption <a href="#">with a link</a></span>
         <p-table-head>
           <p-table-head-row>
@@ -69,5 +68,5 @@ import { dataVrt, headVrt } from '@porsche-design-system/shared';
 export class TableComponent {
   public head = headVrt;
   public data = dataVrt;
-  public themes: Theme[] = ['light', 'dark'];
+  public themes = ['scheme-light', 'scheme-dark'];
 }
