@@ -1,5 +1,5 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
-import { addImportantToEachRule, colors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colors, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import {
   getSvgUrl,
@@ -46,6 +46,9 @@ export const getComponentCss = (
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
           background: 'currentcolor', // necessary for proper color inheritance
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
           ...hostHiddenStyles,
         }),
       },

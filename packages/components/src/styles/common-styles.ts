@@ -95,6 +95,9 @@ export const getFocusBaseStyles = () => {
   return {
     outline: `${borderWidthBase} solid ${focusColor}`,
     outlineOffset: '2px',
+    ...forcedColorsMediaQuery({
+      outlineColor: 'Highlight',
+    }),
   } as const;
 };
 

@@ -2,6 +2,7 @@ import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsch
 import {
   addImportantToEachRule,
   colors,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -105,6 +106,11 @@ export const getComponentCss = (
               background: backgroundHoverColor,
             },
           })),
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
+          backgroundColor: 'Canvas',
+        }),
       },
       '::slotted': addImportantToEachRule({
         '&(a),&(button)': {

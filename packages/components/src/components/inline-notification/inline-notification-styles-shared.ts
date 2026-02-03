@@ -7,7 +7,7 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { colors } from '../../styles';
+import { colors, forcedColorsMediaQuery } from '../../styles';
 import { legacyRadiusMedium, radiusXl } from '../../styles/css-variables';
 import type { InlineNotificationState } from './inline-notification-utils';
 
@@ -45,6 +45,10 @@ export const getNotificationRootJssStyle = (
       // 4 columns are for icon, content, optional action button and optional close button
       gridTemplateColumns: `auto minmax(auto, 1fr)${hasAction ? ' auto' : ''}${hasClose ? ' auto' : ''}`,
     },
+    ...forcedColorsMediaQuery({
+      outline: '2px solid CanvasText',
+      outlineOffset: '-2px',
+    }),
   };
 };
 

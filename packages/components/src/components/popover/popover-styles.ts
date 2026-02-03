@@ -13,6 +13,7 @@ import {
   addImportantToEachRule,
   colors,
   cssVariableAnimationDuration,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -100,6 +101,9 @@ export const getComponentCss = (): string => {
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
       background: canvasColor,
+      ...forcedColorsMediaQuery({
+        background: 'CanvasText',
+      }),
     },
     content: {
       maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
@@ -111,6 +115,10 @@ export const getComponentCss = (): string => {
       ...textSmallStyle,
       background: canvasColor,
       color: primaryColor,
+      ...forcedColorsMediaQuery({
+        outline: '2px solid CanvasText',
+        outlineOffset: '-2px',
+      }),
     },
   });
 };

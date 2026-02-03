@@ -13,6 +13,7 @@ import {
   colors,
   cssVariableAnimationDuration,
   cssVariableTransitionDuration,
+  forcedColorsMediaQuery,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
@@ -38,6 +39,9 @@ const barJssStyle: JssStyle = {
   height: '2px',
   left: 0,
   background: primaryColor,
+  ...forcedColorsMediaQuery({
+    background: 'ActiveBorder',
+  }),
 };
 
 export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weight: TabsBarWeight): string => {
