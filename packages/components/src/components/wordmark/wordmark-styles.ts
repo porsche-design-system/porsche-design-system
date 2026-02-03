@@ -1,3 +1,4 @@
+import type { Styles } from 'jss';
 import { addImportantToEachRule, colors, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
@@ -5,6 +6,12 @@ import type { WordmarkSize } from './wordmark-utils';
 const { primaryColor } = colors;
 
 export const getComponentCss = (size: WordmarkSize): string => {
+  const sizingStyles: Styles = {
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
+    height: 'inherit',
+  };
   return getCss({
     '@global': {
       ':host': {
@@ -25,14 +32,9 @@ export const getComponentCss = (size: WordmarkSize): string => {
           ...hostHiddenStyles,
         }),
       },
-      'a, svg': {
-        display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        height: 'inherit',
-      },
       a: {
         all: 'unset',
+        ...sizingStyles,
         cursor: 'pointer',
         '&::before': {
           // needs to be defined always to have correct custom click area
@@ -44,6 +46,7 @@ export const getComponentCss = (size: WordmarkSize): string => {
         '&:focus-visible::before': getFocusBaseStyles(),
       },
       svg: {
+        ...sizingStyles,
         fill: primaryColor,
       },
     },
