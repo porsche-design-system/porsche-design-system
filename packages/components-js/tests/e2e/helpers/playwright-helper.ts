@@ -405,7 +405,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
       .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   const childMarkup = buildChildMarkup(requiredChild, requiredNamedSlots, hasSlot && '' in slotsMeta);
-  const label = childMarkup === undefined && propsMeta['label'] ? 'label="Some label"' : '';
+  const label = childMarkup === undefined && propsMeta?.label ? 'label="Some label"' : '';
   const componentMarkup = `<${tagName}${attributes} ${label}>${childMarkup ?? ''}</${tagName}>`;
 
   return buildParentMarkup(componentMarkup, requiredParent);
