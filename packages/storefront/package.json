@@ -37,7 +37,7 @@
     "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.32.0-rc.2",
+    "@porsche-design-system/components-react": "3.32.0",
     "@porsche-design-system/fallbacks": "0.0.0",
     "react-syntax-highlighter": "^15.6.6",
     "next": "15.4.2",

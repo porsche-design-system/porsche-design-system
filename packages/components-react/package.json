@@ -28,7 +28,7 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.32.0-rc.2",
+    "@porsche-design-system/components-react": "3.32.0",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.9.4",
     "styled-components": "^6.1.19",
