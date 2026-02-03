@@ -26,7 +26,10 @@ import type { Theme } from '../../../types';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../../utils';
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
@@ -100,6 +103,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         }),
         display: 'block',
       },
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       input: {
         gridArea: '1/1',
         borderRadius: '50%',
@@ -159,13 +163,13 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          'input:hover,label:hover~.wrapper input': {
+          'input:hover,.wrapper:has(~.label-wrapper:hover) input': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          'input:checked:hover,label:hover~.wrapper input:checked': {
+          'input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -173,7 +177,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          'label:hover~.wrapper input': supportsChromiumMediaQuery({
+          '.wrapper:has(~.label-wrapper:hover) input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes a chrome bug where transition properties are stuck on hover
           }),
         })),
@@ -202,7 +206,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     wrapper: {
       ...textSmallStyle,
       display: 'grid',
-      gridArea: '1/1',
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
       justifyContent: 'center',
@@ -225,18 +228,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled || loading,
-      false,
-      theme,
-      {
-        gridArea: '1/2',
-      },
-      {
-        paddingTop,
-        paddingInlineStart,
-      }
-    ),
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, null, null, {
+      paddingTop,
+      paddingInlineStart,
+    }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

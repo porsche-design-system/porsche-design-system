@@ -25,19 +25,21 @@ export const LegacyLabel: FunctionalComponent<LegacyLabelProps> = ({
 }) => {
   return (
     <Fragment>
-      <label
-        class="label"
-        id={labelId}
-        aria-disabled={isLoading || isDisabled ? 'true' : null}
-        onClick={(event: LabelClickEvent) => onLabelClick(event, formElement, isLoading, isDisabled, host)}
-      >
-        {hasLabel(host, label) && (
-          <Fragment>
-            {label || <slot name="label" />}
-            {formElement && isRequiredAndParentNotRequired(host, formElement) && <Required />}
-          </Fragment>
-        )}
-      </label>
+      <div class="label-wrapper">
+        <label
+          class="label"
+          id={labelId}
+          aria-disabled={isLoading || isDisabled ? 'true' : null}
+          onClick={(event: LabelClickEvent) => onLabelClick(event, formElement, isLoading, isDisabled, host)}
+        >
+          {hasLabel(host, label) && (
+            <Fragment>
+              {label || <slot name="label" />}
+              {formElement && isRequiredAndParentNotRequired(host, formElement) && <Required />}
+            </Fragment>
+          )}
+        </label>
+      </div>
       {hasDescription(host, description) && (
         <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>
           {description || <slot name="description" />}

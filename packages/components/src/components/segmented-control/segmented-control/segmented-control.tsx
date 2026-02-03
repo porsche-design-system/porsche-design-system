@@ -24,7 +24,9 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { StateMessage } from '../../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
@@ -61,6 +63,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
@@ -224,10 +227,17 @@ export class SegmentedControl {
     );
 
     return (
-      <fieldset inert={this.disabled} aria-invalid={this.state === 'error' ? 'true' : null} class="root">
+      <fieldset
+        inert={this.disabled}
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-labelledby={labelId}
+        aria-describedby={descriptionId}
+        class="root"
+      >
         <Label
           host={this.host}
-          tag="legend"
+          tag="div"
           label={this.label}
           description={this.description}
           isRequired={this.required}

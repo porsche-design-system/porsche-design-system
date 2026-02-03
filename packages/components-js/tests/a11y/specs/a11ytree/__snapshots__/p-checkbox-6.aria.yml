@@ -1,4 +1,4 @@
-- text: Some label
 - checkbox "Some label" [disabled]
+- text: Some label
 - alert
 - status: Loading

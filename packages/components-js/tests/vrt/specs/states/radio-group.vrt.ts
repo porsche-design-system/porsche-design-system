@@ -98,7 +98,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-radio-group:not(.force-label) p-radio-group-option:first-of-type >>> input');
-  await forceHoverState(page, '.hover p-radio-group.force-label p-radio-group-option:first-of-type >>> label');
+  await forceHoverState(page, '.hover p-radio-group.force-label p-radio-group-option:first-of-type >>> .label-wrapper');
   await forceFocusVisibleState(page, '.focus p-radio-group p-radio-group-option:first-of-type >>> input');
   await forceFocusHoverState(
     page,
@@ -108,7 +108,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     page,
     '.focus-hover p-radio-group.force-label p-radio-group-option:first-of-type >>> input[type="radio"]'
   );
-  await forceHoverState(page, '.focus-hover p-radio-group.force-label p-radio-group-option:first-of-type >>> label');
+  await forceHoverState(
+    page,
+    '.focus-hover p-radio-group.force-label p-radio-group-option:first-of-type >>> .label-wrapper'
+  );
 };
 
 // executed in Chrome only
