@@ -7,22 +7,12 @@
     </div>
   </div>
   <div class="action-prev">
-    <p-button
-      class="action-button hydrated"
-      hide-label="true"
-      tabindex="-1"
-      dir="ltr"
-    >
+    <p-button class="action-button hydrated" hide-label="true" tabindex="-1">
       prev</p-button
     >
   </div>
   <div class="action-next">
-    <p-button
-      class="action-button hydrated"
-      hide-label="true"
-      tabindex="-1"
-      dir="ltr"
-    >
+    <p-button class="action-button hydrated" hide-label="true" tabindex="-1">
       next</p-button
     >
   </div>

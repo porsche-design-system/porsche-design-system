@@ -1,9 +1,9 @@
 <div class="root">
-  <label class="label" id="label" for="checkbox"> Some label</label>
+  <label class="label" id="label" for="x"> Some label</label>
   <div class="wrapper">
     <input
       type="checkbox"
-      id="checkbox"
+      id="x"
       aria-describedby="description message"
       value="on"
       name=""

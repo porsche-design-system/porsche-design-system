@@ -6,7 +6,7 @@ type ThemeSelectProps = {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 } & SelectHTMLAttributes<HTMLSelectElement>;
 
-const themeMap: Record<LightDarkTheme, string> = {
+export const themeMap: Record<LightDarkTheme, string> = {
   light: 'Light',
   dark: 'Dark',
   'light-dark': 'Light Dark',
