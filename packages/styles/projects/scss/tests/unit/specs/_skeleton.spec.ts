@@ -13,11 +13,11 @@ const skeletonMixin = fs
   .replace(/color\./g, '')
   .replace(/motion\./g, '');
 
-describe('pds-skeleton()', () => {
-  it.each([{}, { theme: 'light' }, { theme: 'dark' }])('should return correct css for opts: %s', (opts) => {
+describe('skeleton()', () => {
+  it('should return correct css', () => {
     const result = sass.compileString(`
 ${borderVariables} ${motionVariables} ${themeVariables} ${skeletonMixin} div {
-  @include pds-skeleton(${Object.values(opts).join(', ')});
+  @include skeleton();
 }`);
     expect(result.css).toMatchSnapshot();
   });
