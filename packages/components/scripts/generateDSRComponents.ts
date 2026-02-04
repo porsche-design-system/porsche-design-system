@@ -209,10 +209,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
-          .replace(
-            /hasNamedSlot\(host, '(label-after)'\)/g,
-            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
-          )
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
