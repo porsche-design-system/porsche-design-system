@@ -1,6 +1,5 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
-  borderRadiusXl,
   borderWidthThin,
   colorCanvasDark,
   colorCanvasLight,
@@ -12,6 +11,7 @@ import {
   colorErrorLowLight,
   colorPrimaryDark,
   colorPrimaryLight,
+  radiusXl,
 } from '../styles';
 import { pdsThemeModeDark } from '../types/theme-mode';
 
@@ -62,7 +62,7 @@ export const inputStyles: Part = createPart({
   css: `
     /* Custom border radius for input fields */
     .ag-text-field-input {
-        border-radius: ${borderRadiusXl};
+        border-radius: ${radiusXl};
     }
   `,
 });

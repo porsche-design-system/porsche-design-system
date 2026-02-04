@@ -1,16 +1,15 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
-  borderRadiusLg,
   borderWidthThin,
   colorContrastLowerDark,
   colorContrastLowerLight,
-  colorContrastMediumLight,
   colorDisabledDark,
   colorDisabledLight,
   colorFrostedSoftDark,
   colorFrostedSoftLight,
   colorPrimaryDark,
   colorPrimaryLight,
+  radiusLg,
 } from '../styles';
 import { pdsThemeModeDark } from '../types/theme-mode';
 
@@ -53,7 +52,7 @@ export const checkboxStyle: Part = createPart({
 
     // Indeterminate state
     checkboxIndeterminateBackgroundColor: colorFrostedSoftLight,
-    checkboxIndeterminateBorderColor: colorContrastMediumLight,
+    checkboxIndeterminateBorderColor: colorPrimaryLight,
     checkboxIndeterminateShapeColor: colorPrimaryLight,
 
     // Disabled state
@@ -97,7 +96,6 @@ export const checkboxStyle: Part = createPart({
         background-color: var(--ag-checkbox-unchecked-background-color);
         border: solid ${borderWidthThin} var(--ag-checkbox-unchecked-border-color);
 
-        /* Hidden input element */
         :where(input) {
             cursor: pointer;
             appearance: none;
@@ -108,7 +106,6 @@ export const checkboxStyle: Part = createPart({
             height: 100%;
         }
 
-        /* Icon/shape container */
         &::after {
             content: '';
             position: absolute;
@@ -119,63 +116,68 @@ export const checkboxStyle: Part = createPart({
             pointer-events: none;
         }
 
-        /* Checked state */
         &.ag-checked {
             background-color: var(--ag-checkbox-checked-background-color);
             border-color: var(--ag-checkbox-checked-border-color);
 
             &::after {
-                background-color: var(--ag-checkbox-checked-color);
+                background-color: var(--ag-checkbox-checked-shape-color);
             }
         }
 
-        /* Indeterminate state (checkboxes only) */
-        &.ag-indeterminate {
-            background-color: var(--ag-checkbox-indeterminate-background-color);
-            border-color: var(--ag-checkbox-indeterminate-border-color);
-
-            &::after {
-                background-color: var(--ag-checkbox-indeterminate-color);
-            }
+        &:focus-within,
+        &:active {
+            box-shadow: var(--ag-focus-shadow);
         }
 
-        /* Hover states */
-        &:not(.ag-disabled):hover {
-            border-color: var(--ag-checkbox-unchecked-hover-border-color);
-        }
-
-        &.ag-checked:not(.ag-disabled):hover {
-            background-color: var(--ag-checkbox-checked-hover-background-color);
-            border-color: var(--ag-checkbox-checked-hover-border-color);
-        }
-
-        /* Disabled state */
         &.ag-disabled {
-            opacity: 1 !important;
-            background-color: var(--ag-checkbox-disabled-color);
+            opacity: 1;
+            filter: unset;
             border-color: var(--ag-checkbox-disabled-color);
 
-            &::after {
-                background-color: transparent;
+            &.ag-checked {
+                background-color: var(--ag-checkbox-disabled-color);
             }
 
             &:hover input {
                 cursor: not-allowed;
             }
         }
+
+        /* Hover styling for enabled items */
+        &:not(.ag-disabled):hover {
+            border-color: var(--ag-checkbox-unchecked-hover-border-color) !important;
+        }
+
+        &.ag-checked:not(.ag-disabled):hover {
+            border-color: var(--ag-checkbox-checked-hover-border-color) !important;
+            background-color: var(--ag-checkbox-checked-hover-background-color) !important;
+        }
     }
 
-    /* Checkbox-specific border radius */
     .ag-checkbox-input-wrapper {
-        border-radius: ${borderRadiusLg};
+        border-radius: ${radiusLg};
+
+        &.ag-checked::after {
+            mask-image: var(--ag-checkbox-checked-shape-image);
+        }
+
+        &.ag-indeterminate {
+            background-color: var(--ag-checkbox-indeterminate-background-color);
+            border-color: var(--ag-checkbox-indeterminate-border-color);
+
+            &::after {
+                background-color: var(--ag-checkbox-indeterminate-shape-color);
+                mask-image: var(--ag-checkbox-indeterminate-shape-image);
+            }
+        }
     }
 
-    /* Radio button-specific border radius (circular) */
     .ag-radio-button-input-wrapper {
         border-radius: 50%;
 
-        &::after {
-            border-radius: 50%;
+        &.ag-checked::after {
+            mask-image: var(--ag-radio-checked-shape-image);
         }
     }
   `,

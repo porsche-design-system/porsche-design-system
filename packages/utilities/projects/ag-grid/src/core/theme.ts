@@ -1,8 +1,6 @@
 import { type Theme, themeQuartz } from 'ag-grid-community';
 import { checkboxStyle, inputStyles, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import {
-  borderRadiusMd,
-  borderRadiusSm,
   colorCanvasDark,
   colorCanvasLight,
   colorContrastLowDark,
@@ -23,10 +21,12 @@ import {
   colorPrimaryLight,
   colorSurfaceDark,
   colorSurfaceLight,
-  fontFamilyPorscheNext,
-  fontSizeSm,
-  fontSizeXs,
-  fontWeightSemiBold,
+  fontPorscheNext,
+  fontWeightSemibold,
+  radiusMd,
+  radiusSm,
+  typescaleSm,
+  typescaleXs,
 } from '../styles';
 import { pdsThemeModeDark } from '../types/theme-mode';
 
@@ -65,24 +65,24 @@ export const pdsTheme: Theme = themeQuartz
   .withParams({
     // Component sizing
     checkboxBorderWidth: 2,
-    checkboxBorderRadius: borderRadiusSm,
+    checkboxBorderRadius: radiusSm,
     spacing: 10,
     toggleButtonHeight: 28,
     toggleButtonWidth: 48,
     toggleButtonSwitchInset: 3,
     iconSize: 24,
-    borderRadius: borderRadiusSm,
-    wrapperBorderRadius: borderRadiusMd,
+    borderRadius: radiusSm,
+    wrapperBorderRadius: radiusMd,
 
     // Grid structure
     headerHeight: 'calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)',
     rowHeight: 'calc(var(--ag-font-size) + var(--ag-spacing) * 4)',
 
     // Typography
-    fontFamily: fontFamilyPorscheNext,
-    fontSize: fontSizeSm,
-    headerFontWeight: fontWeightSemiBold,
-    headerFontSize: fontSizeXs,
+    fontFamily: fontPorscheNext,
+    fontSize: typescaleSm,
+    headerFontWeight: fontWeightSemibold,
+    headerFontSize: typescaleXs,
 
     // Focus and shadows
     focusShadow: 'none',
