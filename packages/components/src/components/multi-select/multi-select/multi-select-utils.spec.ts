@@ -6,7 +6,6 @@ import {
   type MultiSelectOption,
   resetSelectedOptions,
   selectOptionsByValue,
-  syncMultiSelectChildrenProps,
 } from './multi-select-utils';
 
 type GenerateMultiSelectOptionsParams = {
@@ -36,20 +35,6 @@ const generateMultiSelectOptions = (
       }) as MultiSelectOption
   );
 };
-
-describe('syncMultiSelectChildrenProps', () => {
-  it('should update theme and force update for mismatched options', () => {
-    const options = generateMultiSelectOptions();
-    options[0].theme = 'light';
-    options[1].theme = 'dark';
-
-    syncMultiSelectChildrenProps(options, 'dark');
-
-    options.forEach((option) => {
-      expect(option.theme).toBe('dark');
-    });
-  });
-});
 
 describe('getSelectedOptions()', () => {
   it('should return all selected options', () => {

@@ -155,7 +155,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
 
-```
+```diff
 - @include pds-skeleton('light'|'dark');
 + @include skeleton();
 ```
@@ -163,7 +163,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
   color function)
 
-```
+```diff
 - getSkeletonStyle({ theme: 'light|dark' })
 + getSkeletonStyle()
 ```
@@ -171,7 +171,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
   `light-dark()` CSS color function)
 
-```
+```diff
 const skeletonAnimation = keyframes(skeletonKeyframes);
 - const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
 + const Skeleton = style(getSkeletonStyle(skeletonAnimation));

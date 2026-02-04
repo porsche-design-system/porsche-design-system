@@ -1,7 +1,7 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import * as fs from 'fs';
 import { gzipSizeSync } from 'gzip-size';
+import * as path from 'path';
 import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
 
 const indexJsFileCjs = require.resolve('@porsche-design-system/components-js');
@@ -249,23 +249,10 @@ describe('chunk content', () => {
 
   describe('hex colors', () => {
     const hexColorRegEx = /#[a-f\d]{3,6}/i;
-    const componentsWithHexColors: ComponentChunkName[] = [
-      'select-wrapper',
-      'text-field-wrapper',
-      'textarea-wrapper',
-      'scroller',
-    ];
+    const componentsWithHexColors: ComponentChunkName[] = ['carousel', 'scroller'];
 
     const containsHexColor = (chunkFileName: string): boolean =>
       componentsWithHexColors.some((x) => chunkFileName.includes(x));
-
-    describe('core chunk', () => {
-      const content = getChunkContent(chunkFileNames[0]);
-
-      it('should contain hex colors', () => {
-        expect(content).toMatch(hexColorRegEx);
-      });
-    });
 
     it.each(chunkFileNames.filter((x) => !isCoreChunk(x) && !containsHexColor(x)))(
       'should not contain hex colors in %s',
@@ -284,18 +271,6 @@ describe('chunk content', () => {
     }
   });
 
-  describe('color scheme', () => {
-    const colorSchemeRegEx = /{colorScheme:.*?light dark.*?}/i;
-
-    it.each(chunkFileNames.filter((x) => !isCoreChunk(x)))(
-      'should contain color scheme style in %s',
-      (chunkFileName) => {
-        const content = getChunkContent(chunkFileName);
-        expect(content).toMatch(colorSchemeRegEx);
-      }
-    );
-  });
-
   describe('host hidden', () => {
     const colorSchemeRegEx = /\[hidden].*?:.*?{display:.*?none.*?}/i;
 
@@ -309,8 +284,8 @@ describe('chunk content', () => {
   });
 
   describe('getPrefixedTagNames', () => {
-    const getPrefixedTagNamesRegEx =
-      /new Map.+?\.filter\(\(([a-z])=>[\\"']+p-text[\\"']+!==\1&&[\\"']+p-heading[\\"']+!==\1&&[\\"']+p-headline[\\"']+!==\1&&[\\"']+p-display[\\"']+!==\1\)/;
+    // /^([a-z-]+)-p-[a-z-]+$/.exec is used in the getPrefixedTagNames function
+    const getPrefixedTagNamesRegEx = /\/\^\(\[a-z-]\+\)-p-\[a-z-]\+\$\/\.exec/;
 
     it('should be in core chunk', () => {
       const content = getChunkContent(chunkFileNames[0]);

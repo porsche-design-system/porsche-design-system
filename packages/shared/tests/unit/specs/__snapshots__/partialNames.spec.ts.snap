@@ -3,12 +3,8 @@
 exports[`should match snapshot 1`] = `
 [
   "getComponentChunkLinks",
-  "getDSRPonyfill",
-  "getFontFaceStyles",
-  "getFontFaceStylesheet",
   "getFontLinks",
   "getIconLinks",
-  "getInitialStyles",
   "getLoaderScript",
   "getMetaTagsAndIconLinks",
 ]

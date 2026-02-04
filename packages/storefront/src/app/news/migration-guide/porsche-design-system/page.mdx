@@ -254,6 +254,14 @@ export class AppModule {}
 + import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
 ```
 
+- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```diff
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
 #### Vanilla Extract
 
 - Changed import path for Vanilla Extract styles.
@@ -263,6 +271,15 @@ export class AppModule {}
 + import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
 ```
 
+- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```diff
+const skeletonAnimation = keyframes(skeletonKeyframes);
+- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
++ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
+```
+
 #### SCSS
 
 - Changed import path for SCSS styles.
@@ -270,6 +287,14 @@ export class AppModule {}
 ```diff
 - @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
 + @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
+
+- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
+  `light-dark()` CSS color function)
+
+```
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
 ```
 
 ### Common

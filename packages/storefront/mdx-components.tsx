@@ -13,13 +13,15 @@ import {
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
-import { kebabCase } from 'change-case';
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import type React from 'react';
 import type { PropsWithChildren } from 'react';
+
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { getChangelogAnchorId } from '@/utils/extractChangelogVersion';
 
 export const H3 = ({ children }: PropsWithChildren) => (
   <PHeading tag="h3" size="large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
@@ -46,9 +48,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h2: ({ children }) => {
       const text = children as string;
-      // Extract version from changelog format like "## [3.31.0] - 2025-11-13" => "3.31.0"
-      const versionMatch = text.match(/^\[([^\]]+)]/);
-      const id = versionMatch ? kebabCase(versionMatch[1]) : kebabCase(text);
+      const id = getChangelogAnchorId(text);
 
       return (
         <PHeading
