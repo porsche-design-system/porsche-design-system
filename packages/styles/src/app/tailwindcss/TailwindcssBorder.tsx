@@ -12,10 +12,6 @@ export const TailwindcssBorder = () => {
         <div className="rounded-4xl border p-fluid-md">Border Radius 4X-Large</div>
         <div className="rounded-full border p-fluid-md">Border Radius Full</div>
       </div>
-      <div className="grid gap-fluid-md prose-text-sm">
-        <div className="border-1 p-fluid-md">Border Width 1</div>
-        <div className="border-2 p-fluid-md">Border Width 2</div>
-      </div>
     </div>
   );
 };

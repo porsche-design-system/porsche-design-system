@@ -19,7 +19,7 @@ export const vanillaExtractShadowWrapper = style({
   color: vars.primary,
 });
 
-export const vanillaExtractShadowLow = style({
+export const vanillaExtractShadowSmall = style({
   boxShadow: shadowSm,
   borderRadius: radiusLg,
   padding: spacingFluidSm,
@@ -31,7 +31,7 @@ export const vanillaExtractShadowMedium = style({
   padding: spacingFluidSm,
 });
 
-export const vanillaExtractShadowHigh = style({
+export const vanillaExtractShadowLarge = style({
   boxShadow: shadowLg,
   borderRadius: radiusLg,
   padding: spacingFluidSm,
