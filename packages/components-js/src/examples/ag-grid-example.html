@@ -1,9 +1,9 @@
 <script type="module">
 
-  const theme = new URL(document.location).searchParams.get('theme') || 'light';
+  const scheme = new URL(document.location).searchParams.get('scheme') || 'light';
   const grid = document.querySelector('#my-grid');
 
-  grid.setAttribute('data-ag-theme-mode', theme === 'light' ? null : 'dark');
+  grid.setAttribute('data-ag-theme-mode', scheme === 'light' ? null : 'dark');
 
 
   class ImageUrlRenderer {
