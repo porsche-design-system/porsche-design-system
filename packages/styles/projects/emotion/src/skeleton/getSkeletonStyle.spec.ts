@@ -7,10 +7,7 @@ it('should provide all exports', () => {
 });
 
 describe('getSkeletonStyle()', () => {
-  it.each<Parameters<typeof getSkeletonStyle>>([[{ theme: 'light' }], [{ theme: 'dark' }]])(
-    'should return correct css for opts: %s',
-    (...args) => {
-      expect(getSkeletonStyle(...args)).toMatchSnapshot();
-    }
-  );
+  it('should return correct css', () => {
+    expect(getSkeletonStyle()).toMatchSnapshot();
+  });
 });

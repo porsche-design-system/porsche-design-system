@@ -8,7 +8,7 @@
   color: pds.$color-primary;
 
   &__item {
-    @include pds.skeleton('light');
+    @include pds.skeleton();
     padding: pds.$spacing-fluid-sm;
   }
 }

@@ -1252,8 +1252,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "skeleton/getSkeletonStyle.cjs": [
     "border/radiusSm.cjs",
-    "color/dark/colorSurfaceDark.cjs",
-    "color/light/colorSurfaceLight.cjs",
+    "color/light-dark/colorSurface.cjs",
     "motion/durationLg.cjs",
     "motion/easeInOut.cjs",
   ],
@@ -3150,8 +3149,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "skeleton/getSkeletonStyle.mjs": [
     "border/radiusSm.mjs",
-    "color/dark/colorSurfaceDark.mjs",
-    "color/light/colorSurfaceLight.mjs",
+    "color/light-dark/colorSurface.mjs",
     "motion/durationLg.mjs",
     "motion/easeInOut.mjs",
   ],
