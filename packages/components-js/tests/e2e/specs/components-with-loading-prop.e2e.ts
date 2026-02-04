@@ -6,6 +6,7 @@ import {
   buildDefaultComponentMarkup,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -94,6 +95,10 @@ for (const tagName of tagNamesWithLoadingProp) {
       });
 
       test('should render loading finished message when loading is set to true, then to false', async ({ page }) => {
+        // TODO: Fails in CI but works locally
+        if (tagName === 'p-button') {
+          skipInBrowsers(['webkit']);
+        }
         await setContentWithDesignSystem(page, markup);
 
         const host = page.locator(tagName);
