@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
+import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
 import * as path from 'path';
 import { setupScenario } from '../helpers';
@@ -64,13 +64,11 @@ test('should have certain amount of components', () => {
 for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
-    for (const theme of themes) {
-      test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forceComponentTheme: theme,
-        });
+    for (const scheme of schemes) {
+      test(`color-scheme ${scheme}`, async ({ page }) => {
+        await setupScenario(page, `/${component}?scheme=${scheme}`, viewportWidthM);
         await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${theme}.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-${scheme}.png`);
       });
     }
   });
@@ -79,97 +77,68 @@ for (const component of components) {
   test.describe(component, () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
 
-    // regular tests on different viewports
     for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
-      test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+      test(`viewport ${viewportWidth}`, async ({ page }) => {
         await setupScenario(page, `/${component}`, viewportWidth);
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
       });
     }
 
-    // prefers-color-scheme: 'light' | 'dark'
     for (const scheme of schemes) {
-      // theme="auto"
-      test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
-        page,
-      }) => {
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forceComponentTheme: 'auto',
+      test(`prefers-color-scheme ${scheme}`, async ({ page }) => {
+        await setupScenario(page, `/${component}?scheme=light-dark`, viewportWidthM, {
           prefersColorScheme: scheme,
         });
         await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-${scheme}.png`); // screenshot is aliased since result has to be equal
       });
 
-      // high contrast mode
-      test.fixme(
-        `should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`,
-        async ({ page }) => {
-          // test.skip(component === 'select', 'This component is flaky in HC mode');
+      test.fixme(`hcm ${scheme}`, async ({ page }) => {
+        // test.skip(component === 'select', 'This component is flaky in HC mode');
 
-          await setupScenario(page, `/${component}`, viewportWidthM, {
-            forcedColorsEnabled: true,
-            prefersColorScheme: scheme,
-          });
-          await revertAutoFocus(page, component);
-          await expect(page.locator('#app')).toHaveScreenshot(
-            `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
-          );
-        }
-      );
+        await setupScenario(page, `/${component}`, viewportWidthM, {
+          forcedColorsEnabled: true,
+          prefersColorScheme: scheme,
+        });
+        await revertAutoFocus(page, component);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hcm-${scheme}.png`);
+      });
     }
 
-    // 200% font scaling
-    test(`should have no visual regression for viewport ${viewportWidthM} in scale mode`, async ({ page }) => {
+    test(`font-size 200%`, async ({ page }) => {
       await setupScenario(page, `/${component}`, viewportWidthM, {
         scalePageFontSize: true,
       });
       await revertAutoFocus(page, component);
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-scale-mode.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-fs200.png`);
     });
 
-    // right-to-left
-    test(`should have no visual regression for viewport ${viewportWidthM} in rtl (right-to-left) mode`, async ({
-      page,
-    }) => {
+    test(`rtl (right-to-left)`, async ({ page }) => {
+      await setupScenario(page, `/${component}?dir=rtl`, viewportWidthM);
+      await revertAutoFocus(page, component);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-rtl.png`);
+    });
+
+    // TODO: somehow the components run into a timeout here, needs investigation
+    const skipPseudoStateTest = ['canvas', 'carousel', 'drilldown', 'pin-code', 'select', 'multi-select'].some((c) =>
+      component.startsWith(c)
+    );
+
+    (skipPseudoStateTest ? test.fixme : test)(`focus state`, async ({ page }) => {
       await setupScenario(page, `/${component}`, viewportWidthM, {
-        forceDirMode: 'rtl',
+        forcePseudoState: 'focus',
       });
       await revertAutoFocus(page, component);
-      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-rtl-mode.png`);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-focus.png`);
     });
 
-    // :focus + :focus-visible
-    // TODO: somehow the components run into a timeout here, needs investigation
-    const skipFocusTest = ['canvas', 'carousel', 'drilldown', 'pin-code', 'select', 'multi-select'].some((c) =>
-      component.startsWith(c)
-    );
-    (skipFocusTest ? test.fixme : test)(
-      `should have no visual regression for viewport ${viewportWidthM} with :focus and/or :focus-visible`,
-      async ({ page }) => {
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forcePseudoState: 'focus',
-        });
-        await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-focus.png`);
-      }
-    );
-
-    // :hover
-    // TODO: somehow the components run into a timeout here, needs investigation
-    const skipHoverTest = ['canvas', 'carousel', 'drilldown', 'pin-code', 'select', 'multi-select'].some((c) =>
-      component.startsWith(c)
-    );
-    (skipHoverTest ? test.fixme : test)(
-      `should have no visual regression for viewport ${viewportWidthM} with :hover`,
-      async ({ page }) => {
-        await setupScenario(page, `/${component}`, viewportWidthM, {
-          forcePseudoState: 'hover',
-        });
-        await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hover.png`);
-      }
-    );
+    (skipPseudoStateTest ? test.fixme : test)(`hover state`, async ({ page }) => {
+      await setupScenario(page, `/${component}`, viewportWidthM, {
+        forcePseudoState: 'hover',
+      });
+      await revertAutoFocus(page, component);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-hover.png`);
+    });
   });
 }

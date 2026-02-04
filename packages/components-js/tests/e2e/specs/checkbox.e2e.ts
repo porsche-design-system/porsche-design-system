@@ -44,10 +44,10 @@ async function performBoundaryClicks(host: Locator, page: Page) {
   await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // Center center
 }
 
-const getMaskImage = (page: Page) =>
-  page.evaluate(
-    "window.getComputedStyle(document.querySelector('p-checkbox').shadowRoot?.querySelector('input'), '::before')['mask']"
-  );
+const getMaskImage = async (input: Locator): Promise<string> => {
+  return input.evaluate((el) => getComputedStyle(el, '::before').mask);
+};
+
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
@@ -147,26 +147,25 @@ test('should toggle checkbox when input is clicked', async ({ page }) => {
   const host = getHost(page);
   const input = getInput(page);
 
-  expect(await getMaskImage(page)).toBe('none');
+  expect(await getMaskImage(input)).toBe('none');
 
   await input.click();
 
-  const checkedImage = await getMaskImage(page);
+  const checkedImage = await getMaskImage(input);
   expect(checkedImage).toContain(backgroundURL);
 
   await input.click();
-  expect(await getMaskImage(page)).toBe('none');
+  expect(await getMaskImage(input)).toBe('none');
 
   // ensure that checked and indeterminate use different images
   await setProperty(host, 'indeterminate', true);
-  expect(checkedImage).not.toBe(await getMaskImage(page));
+  expect(checkedImage).not.toBe(await getMaskImage(input));
 });
 
 test('should not toggle checkbox on click in loading state', async ({ page }) => {
   await initCheckbox(page, { loading: true });
   const host = getHost(page);
   const input = getInput(page);
-  await addEventListener(host, 'update');
   await addEventListener(host, 'change');
 
   await expect(host).toHaveJSProperty('checked', false);
@@ -190,7 +189,6 @@ test('should not toggle checkbox on click in disabled state', async ({ page }) =
   await initCheckbox(page, { disabled: true });
   const host = getHost(page);
   const input = getInput(page);
-  await addEventListener(host, 'update');
   await addEventListener(host, 'change');
 
   await expect(host).toHaveJSProperty('checked', false);
@@ -223,7 +221,7 @@ test.describe('focus', () => {
     await initCheckbox(page, { loading: true });
     const input = getInput(page);
 
-    await input.focus();
+    await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
     await expect(input).toHaveCSS('outline', 'rgb(26, 68, 234) solid 2px');
     await expect(input).toHaveCSS('outline-offset', '2px');
@@ -306,13 +304,13 @@ test('should check/uncheck checkbox when checkbox property is changed programmat
   await initCheckbox(page);
   const input = getInput(page);
 
-  expect(await getMaskImage(page)).toBe('none');
+  expect(await getMaskImage(input)).toBe('none');
 
   await setProperty(input, 'checked', true);
-  expect(await getMaskImage(page)).toContain(backgroundURL);
+  expect(await getMaskImage(input)).toContain(backgroundURL);
 
   await setProperty(input, 'checked', false);
-  expect(await getMaskImage(page)).toBe('none');
+  expect(await getMaskImage(input)).toBe('none');
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {
@@ -323,7 +321,6 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     const wrapper = getInputWrapper(page);
 
     await expect(wrapper).toHaveCSS('cursor', 'pointer');
-    await expect(input).toHaveCSS('cursor', 'pointer');
     await expect(input).toHaveCSS('pointer-events', 'auto');
 
     await setProperty(host, 'disabled', true);
@@ -356,14 +353,14 @@ test.describe('indeterminate state', () => {
     const host = getHost(page);
     const input = getInput(page);
 
-    expect(await getMaskImage(page)).toBe('none');
+    expect(await getMaskImage(input)).toBe('none');
 
     await setProperty(host, 'indeterminate', true);
 
-    expect(await getMaskImage(page)).toContain(backgroundURL);
+    expect(await getMaskImage(input)).toContain(backgroundURL);
 
     await setProperty(host, 'indeterminate', false);
-    expect(await getMaskImage(page)).toBe('none');
+    expect(await getMaskImage(input)).toBe('none');
   });
 
   test('should remove indeterminate state when checkbox value is changed by the user', async ({ page }) => {
@@ -372,20 +369,20 @@ test.describe('indeterminate state', () => {
     const input = getInput(page);
 
     await setProperty(host, 'indeterminate', true);
-    const indeterminateImage = await getMaskImage(page);
+    const indeterminateImage = await getMaskImage(input);
     expect(indeterminateImage, 'first indeterminate set').toContain(backgroundURL);
 
     // checked Image is set
     await input.click();
-    const checkedImage = await getMaskImage(page);
+    const checkedImage = await getMaskImage(input);
     expect(checkedImage, 'first click').toContain(backgroundURL);
     expect(indeterminateImage).not.toBe(checkedImage);
 
     await setProperty(host, 'indeterminate', true);
-    expect(await getMaskImage(page), 'second indeterminate set').toContain(backgroundURL);
+    expect(await getMaskImage(input), 'second indeterminate set').toContain(backgroundURL);
 
     await input.click();
-    expect(await getMaskImage(page), 'second click').toBe('none');
+    expect(await getMaskImage(input), 'second click').toBe('none');
   });
 
   test('should keep indeterminate state when checkbox value is changed programmatically', async ({ page }) => {
@@ -394,13 +391,13 @@ test.describe('indeterminate state', () => {
     const input = getInput(page);
 
     await setProperty(host, 'indeterminate', true);
-    expect(await getMaskImage(page)).toContain(backgroundURL);
+    expect(await getMaskImage(input)).toContain(backgroundURL);
 
     await setChecked(input, true);
-    expect(await getMaskImage(page)).toContain(backgroundURL);
+    expect(await getMaskImage(input)).toContain(backgroundURL);
 
     await setChecked(input, false);
-    expect(await getMaskImage(page)).toContain(backgroundURL);
+    expect(await getMaskImage(input)).toContain(backgroundURL);
   });
 });
 

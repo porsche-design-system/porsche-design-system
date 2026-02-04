@@ -1,4 +1,4 @@
-import { vanillaExtractFocusVisibleButton, vanillaExtractFocusVisibleWrapper } from './focus-visible.css.ts';
+import { vanillaExtractFocusVisibleButton, vanillaExtractFocusVisibleWrapper } from './focus-visible.css';
 
 export const VanillaExtractFocusVisible = () => {
   return (
