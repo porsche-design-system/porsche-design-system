@@ -36,7 +36,6 @@ export * from './supportsChromiumMediaQuery';
 export * from './supportsNativePopover';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
-export { isThemeDark, THEMES } from './theme';
 export * from './tile';
 export * from './typography';
 export * from './validation';
