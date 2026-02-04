@@ -3,7 +3,8 @@
 exports[`getComponentCss() > should return correct css for hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,67 +13,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -90,6 +88,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -100,8 +99,8 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -127,8 +126,8 @@ input:indeterminate {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-    padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+    padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+    padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   }
 }
 
@@ -155,8 +154,8 @@ input:indeterminate {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-    padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+    padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+    padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   }
 }
 
@@ -183,8 +182,8 @@ input:indeterminate {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-    padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+    padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+    padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   }
 }
 "
@@ -193,7 +192,7 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -202,69 +201,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #CC1922;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #CC1922;
-  background-color: #CC1922;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #CC1922;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23CC1922" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #951219;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #951219;
-    background-color: #951219;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #951219;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23951219" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-error);
+  }
 }
 
 .root {
@@ -273,17 +248,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -291,8 +261,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -301,8 +271,8 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -312,7 +282,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -323,9 +293,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -346,7 +316,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: false, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -355,69 +325,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #FC4040;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #FC4040;
-  background-color: #FC4040;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #FC4040;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FC4040" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #FB0404;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #FB0404;
-    background-color: #FB0404;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #FB0404;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FB0404" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-error);
+  }
 }
 
 .root {
@@ -426,17 +372,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -444,8 +385,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -454,8 +395,8 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -465,7 +406,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -476,9 +417,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -499,7 +440,8 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -508,67 +450,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -577,8 +516,8 @@ input:indeterminate {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -588,6 +527,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -598,9 +538,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -621,7 +561,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: error, isDisabled: true, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -630,67 +571,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -699,8 +637,8 @@ input:indeterminate {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -710,6 +648,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -720,9 +659,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -743,7 +682,7 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -752,69 +691,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #6B6D70;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #010205;
-  background-color: #010205;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #6B6D70;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #010205;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #535457;
-    background-color: #535457;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #010205;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-primary);
+  }
 }
 
 .root {
@@ -823,17 +738,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -841,8 +751,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -851,8 +761,8 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -862,7 +772,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -873,8 +783,8 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -895,7 +805,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -904,69 +814,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #88898C;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #FBFCFF;
-  background-color: #FBFCFF;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #88898C;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #FBFCFF;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #AFB0B3;
-    background-color: #AFB0B3;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #FBFCFF;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-primary);
+  }
 }
 
 .root {
@@ -975,17 +861,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -993,8 +874,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1003,8 +884,8 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1014,7 +895,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1025,8 +906,8 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1047,7 +928,8 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1056,67 +938,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1125,8 +1004,8 @@ input:indeterminate {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1136,6 +1015,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1146,8 +1026,8 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1168,7 +1048,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1177,67 +1058,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1246,8 +1124,8 @@ input:indeterminate {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1257,6 +1135,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1267,8 +1146,8 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1289,7 +1168,7 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1298,69 +1177,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #197E10;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #197E10;
-  background-color: #197E10;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #197E10;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23197E10" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #0E4809;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #0E4809;
-    background-color: #0E4809;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #0E4809;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230E4809" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-success);
+  }
 }
 
 .root {
@@ -1369,17 +1224,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1387,8 +1237,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1397,8 +1247,8 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1408,7 +1258,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1419,9 +1269,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1442,7 +1292,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: false, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1451,69 +1301,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #09D087;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #09D087;
-  background-color: #09D087;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #09D087;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2309D087" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #069561;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #069561;
-    background-color: #069561;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #069561;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23069561" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-success);
+  }
 }
 
 .root {
@@ -1522,17 +1348,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1540,8 +1361,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1550,8 +1371,8 @@ input:focus-visible {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1561,7 +1382,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1572,9 +1393,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1595,7 +1416,8 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1604,67 +1426,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1673,8 +1492,8 @@ input:indeterminate {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1684,6 +1503,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1694,9 +1514,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1717,7 +1537,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: success, isDisabled: true, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1726,67 +1547,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1795,8 +1613,8 @@ input:indeterminate {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
+  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
   grid-area: 1/2;
 }
 .label:empty {
@@ -1806,6 +1624,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1816,9 +1635,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1839,7 +1658,7 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1848,69 +1667,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #CC1922;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #CC1922;
-  background-color: #CC1922;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #CC1922;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23CC1922" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #951219;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #951219;
-    background-color: #951219;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #951219;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23951219" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-error);
+  }
 }
 
 .root {
@@ -1919,17 +1714,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1937,8 +1727,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1956,7 +1746,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1967,9 +1757,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -1990,7 +1780,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1999,69 +1789,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #FC4040;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #FC4040;
-  background-color: #FC4040;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #FC4040;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FC4040" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #FB0404;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #FB0404;
-    background-color: #FB0404;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #FB0404;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FB0404" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-error);
+  }
 }
 
 .root {
@@ -2070,17 +1836,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2088,8 +1849,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2107,7 +1868,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2118,9 +1879,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2141,7 +1902,8 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -2150,67 +1912,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2228,6 +1987,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2238,9 +1998,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2261,7 +2021,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: true, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -2270,67 +2031,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2348,6 +2106,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2358,9 +2117,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2381,7 +2140,7 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -2390,69 +2149,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #6B6D70;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #010205;
-  background-color: #010205;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #6B6D70;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #010205;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #535457;
-    background-color: #535457;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #010205;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-primary);
+  }
 }
 
 .root {
@@ -2461,17 +2196,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2479,8 +2209,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2498,7 +2228,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2509,8 +2239,8 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2531,7 +2261,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -2540,69 +2270,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #88898C;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #FBFCFF;
-  background-color: #FBFCFF;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #88898C;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #FBFCFF;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #AFB0B3;
-    background-color: #AFB0B3;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #FBFCFF;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-primary);
+  }
 }
 
 .root {
@@ -2611,17 +2317,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2629,8 +2330,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2648,7 +2349,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2659,8 +2360,8 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2681,7 +2382,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -2690,80 +2391,63 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2773,7 +2457,6 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
-  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -2782,6 +2465,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2792,8 +2476,8 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2814,7 +2498,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: false, isLoading: true and theme true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -2823,80 +2507,63 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2906,7 +2573,6 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
-  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -2915,6 +2581,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -2925,8 +2592,8 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -2947,7 +2614,8 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -2956,67 +2624,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3034,6 +2699,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3044,8 +2710,8 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3066,7 +2732,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -3075,67 +2742,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3153,6 +2817,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3163,8 +2828,8 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3185,7 +2850,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -3194,70 +2860,63 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3267,7 +2926,6 @@ input:checked {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
-  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -3276,6 +2934,7 @@ input:checked {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3286,8 +2945,8 @@ input:checked {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3308,7 +2967,8 @@ input:checked {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: none, isDisabled: true, isLoading: true and theme true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -3317,70 +2977,63 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .spinner {
-  position: relative;
-  grid-area: 1/1;
-  place-self: center;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 0.6668) * calc(6px + 2.125ex)));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  pointer-events: none;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3390,7 +3043,6 @@ input:checked {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
-  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -3399,6 +3051,7 @@ input:checked {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3409,8 +3062,8 @@ input:checked {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3431,7 +3084,7 @@ input:checked {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -3440,69 +3093,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #197E10;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #197E10;
-  background-color: #197E10;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #197E10;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23197E10" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #0E4809;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #0E4809;
-    background-color: #0E4809;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #0E4809;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230E4809" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-success);
+  }
 }
 
 .root {
@@ -3511,17 +3140,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3529,8 +3153,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3548,7 +3172,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3559,9 +3183,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3582,7 +3206,7 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: false, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -3591,69 +3215,45 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #09D087;
-  outline: 0;
-  cursor: pointer;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #09D087;
-  background-color: #09D087;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
-}
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #09D087;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2309D087" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
 input:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(hover:hover) {
-  input:hover,label:hover~.wrapper input {
-    border-color: #069561;
-  }
-  input:checked:hover,label:hover~.wrapper input:checked {
-    border-color: #069561;
-    background-color: #069561;
-  }
-  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
-    background: transparent 0% 0% / calc(6px + 2.125ex);
-    border-color: #069561;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23069561" d="m20,11v2H4v-2h16Z"/></svg>');
-  }
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper input {
-      transition: unset;
-    }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
-
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+@media(hover:hover) {
+  input:hover, label:hover~.wrapper>input {
+    border-color: var(--p-color-success);
+  }
 }
 
 .root {
@@ -3662,17 +3262,12 @@ input:focus-visible {
   row-gap: 4px;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: pointer;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3680,8 +3275,8 @@ input:focus-visible {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3699,7 +3294,7 @@ input:focus-visible {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3710,9 +3305,9 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3733,7 +3328,8 @@ input:focus-visible {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -3742,67 +3338,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #949598;
-  outline: 0;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #949598;
-  background-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #949598;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3820,6 +3413,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3830,9 +3424,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -3853,7 +3447,8 @@ input:indeterminate {
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: success, isDisabled: true, isLoading: false and theme false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
+  --p-internal-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -3862,67 +3457,64 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
   visibility: hidden;
 }
 input {
-  position: relative;
-  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
-  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  display: block;
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: content-box;
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border: 2px solid #7E7F82;
-  outline: 0;
+  background: var(--p-color-success-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   pointer-events: none;
-  grid-area: 1/1;
-  border-radius: 4px;
-  background-size: cover !important;
 }
 input::before {
   content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  grid-area: 1/1;
 }
-input:checked {
-  border-color: #7E7F82;
-  background-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
 }
-input:indeterminate {
-  background: transparent 0% 0% / calc(6px + 2.125ex);
-  border-color: #7E7F82;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
 }
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
-  cursor: not-allowed;
 }
 .wrapper {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 24px;
-  min-height: 24px;
-  justify-content: center;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: grid;
-  grid-area: 1/1;
   align-self: flex-start;
-  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3940,6 +3532,7 @@ input:indeterminate {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -3950,9 +3543,9 @@ input:indeterminate {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
