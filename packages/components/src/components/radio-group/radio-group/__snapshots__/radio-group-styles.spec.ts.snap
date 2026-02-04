@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -22,8 +22,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -31,8 +31,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -49,7 +49,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -63,8 +63,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -92,10 +92,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, direction: 'column', theme: %s 2`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -114,8 +114,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -123,8 +123,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -141,7 +141,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -155,8 +155,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -184,10 +184,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -206,8 +206,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -215,8 +215,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -233,7 +233,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -247,7 +247,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -275,10 +275,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: %s 2`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -297,8 +297,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -306,8 +306,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -324,7 +324,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -338,7 +338,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -366,10 +366,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: light 3`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, direction: 'column', theme: %s 3`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -388,8 +388,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -397,8 +397,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -415,7 +415,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -429,7 +429,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -457,10 +457,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -479,8 +479,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -488,8 +488,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -506,7 +506,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -520,8 +520,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -549,10 +549,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, direction: 'column', theme: %s 2`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -571,8 +571,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -580,8 +580,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -598,7 +598,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -612,8 +612,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -641,10 +641,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -663,8 +663,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -672,8 +672,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -690,7 +690,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -704,8 +704,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -733,10 +733,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, direction: 'column', theme: %s 2`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -755,8 +755,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -764,8 +764,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -782,7 +782,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -796,8 +796,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -825,10 +825,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -847,8 +847,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -856,8 +856,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -874,7 +874,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -888,7 +888,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -916,10 +916,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, direction: 'column', theme: %s 2`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -938,8 +938,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -947,8 +947,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -965,7 +965,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -979,7 +979,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1007,10 +1007,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.6668);
+  --p-internal-radio-group-scaling: 0.64285714;
+  --p-internal-radio-group-option-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1029,8 +1029,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 0.6668) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 0.6668) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1038,8 +1038,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1056,7 +1056,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -1070,8 +1070,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1099,10 +1099,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, direction: 'column', theme: %s 2`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 0.6668);
+  --p-internal-radio-group-scaling: 0.64285714;
+  --p-internal-radio-group-option-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1121,8 +1121,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 0.6668) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 0.6668) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1130,8 +1130,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1148,7 +1148,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -1162,8 +1162,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1191,13 +1191,16 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(*) {
+  opacity: 0.4 !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1213,16 +1216,16 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .spinner {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: max(calc(6px + 2.125ex), var(--p-internal-radio-group-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  height: max(calc(6px + 2.125ex), var(--p-internal-radio-group-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  width: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
+  height: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
   pointer-events: none;
 }
 .label {
@@ -1231,8 +1234,8 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1249,7 +1252,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -1263,7 +1266,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1356,10 +1359,10 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1378,17 +1381,18 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1405,6 +1409,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -1418,7 +1423,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1511,13 +1516,16 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, direction: 'column', theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, direction: 'column', theme: %s 1`] = `
 ":host {
-  color-scheme: light dark !important;
-  --p-internal-radio-group-option-scaling: var(--p-internal-radio-group-scaling, 1);
+  --p-internal-radio-group-scaling: 1;
+  --p-internal-radio-group-option-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(*) {
+  opacity: 0.4 !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1533,16 +1541,16 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   position: relative;
   display: flex;
   flex-flow: column nowrap;
-  column-gap: max(8px, var(--p-internal-radio-group-scaling, 1) * 16px);
-  row-gap: max(4px, var(--p-internal-radio-group-scaling, 1) * 8px);
+  column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
+  row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
 .spinner {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: max(calc(6px + 2.125ex), var(--p-internal-radio-group-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  height: max(calc(6px + 2.125ex), var(--p-internal-radio-group-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  width: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
+  height: calc(var(--p-internal-radio-group-scaling) * 1.75rem);
   pointer-events: none;
 }
 .label {
@@ -1550,9 +1558,10 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: inherit;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1569,6 +1578,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .label:is(legend) {
   margin-bottom: 4px;
@@ -1582,8 +1592,8 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
