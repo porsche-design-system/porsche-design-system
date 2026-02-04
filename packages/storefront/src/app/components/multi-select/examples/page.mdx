@@ -4,7 +4,12 @@ import { Configurator } from '@/components/playground/Configurator';
 import { multiSelectStory, multiSelectStoryOptgroup } from '@/app/components/multi-select/multi-select.stories';
 import { Notification } from '@/components/common/Notification';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { multiSelectExampleForm, multiSelectExampleDynamic } from '@porsche-design-system/shared/examples';
+import {
+  multiSelectExampleForm,
+  multiSelectExampleDynamic,
+  multiSelectExampleAsyncFilter,
+  multiSelectExampleSelectedSlot,
+} from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 
 export const metadata = {
@@ -14,7 +19,9 @@ export const metadata = {
 
 # Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
 
-<TableOfContents headings={['Form', 'Set Value', 'With optgroups']} />
+<TableOfContents
+  headings={['Form', 'Set Value', 'With optgroups', 'Custom asynchronous filtering', 'Custom option rendering']}
+/>
 
 ## Form
 
@@ -39,7 +46,7 @@ smaller forms or simple submissions.
 
 For more details on form integration, refer to the `Form` section in the
 [developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
-example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
 
 <ComponentExample codeSample={multiSelectExampleForm} />
 
@@ -54,3 +61,27 @@ represent the selected option values.
 ## With optgroups
 
 <ComponentStory story={multiSelectStoryOptgroup} />
+
+## Custom asynchronous filtering
+
+The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
+or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
+slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+<ComponentExample codeSample={multiSelectExampleAsyncFilter} />
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+<ComponentExample codeSample={multiSelectExampleSelectedSlot} />

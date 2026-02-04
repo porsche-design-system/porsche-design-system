@@ -236,6 +236,10 @@ const generatedRoutes = {
     "path": "/flyout-2",
     "name": "Flyout_2"
   },
+  "flyout_3": {
+    "path": "/flyout-3",
+    "name": "Flyout_3"
+  },
   "flyoutBackdropBlur": {
     "path": "/flyout-backdrop-blur",
     "name": "FlyoutBackdropBlur"
@@ -400,6 +404,10 @@ const generatedRoutes = {
     "path": "/input-email",
     "name": "InputEmail"
   },
+  "inputMonth": {
+    "path": "/input-month",
+    "name": "InputMonth"
+  },
   "inputNumber": {
     "path": "/input-number",
     "name": "InputNumber"
@@ -427,6 +435,10 @@ const generatedRoutes = {
   "inputUrl": {
     "path": "/input-url",
     "name": "InputUrl"
+  },
+  "inputWeek": {
+    "path": "/input-week",
+    "name": "InputWeek"
   },
   "link": {
     "path": "/link",
@@ -563,6 +575,10 @@ const generatedRoutes = {
   "multiSelectOpenedScrollContext": {
     "path": "/multi-select-opened-scroll-context",
     "name": "MultiSelectOpenedScrollContext"
+  },
+  "multiSelectOpenedSelectedSlot": {
+    "path": "/multi-select-opened-selected-slot",
+    "name": "MultiSelectOpenedSelectedSlot"
   },
   "multiSelectOpenedTop": {
     "path": "/multi-select-opened-top",
@@ -707,6 +723,10 @@ const generatedRoutes = {
   "selectOpenedScrollContext": {
     "path": "/select-opened-scroll-context",
     "name": "SelectOpenedScrollContext"
+  },
+  "selectOpenedSelectedSlot": {
+    "path": "/select-opened-selected-slot",
+    "name": "SelectOpenedSelectedSlot"
   },
   "selectOpenedTop": {
     "path": "/select-opened-top",

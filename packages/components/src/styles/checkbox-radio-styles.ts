@@ -1,6 +1,8 @@
-import type { Theme } from '../types';
+import { borderWidthBase, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
+import type { Theme } from '../types';
 import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
+import type { FormState } from '../utils/form/form-state';
 import {
   getFocusJssStyle,
   getHighContrastColors,
@@ -9,8 +11,6 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '.';
-import { borderWidthBase, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
-import type { FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
 
 // TODO: move to form-styles.ts
@@ -92,13 +92,13 @@ export const getSlottedCheckboxRadioButtonStyles = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          '&(input:hover),label:hover~.wrapper &(input)': {
+          '&(input:hover),.label-wrapper:hover~.wrapper &(input)': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          '&(input:checked:hover),label:hover~.wrapper &(input:checked)': {
+          '&(input:checked:hover),.label-wrapper:hover~.wrapper &(input:checked)': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -106,7 +106,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          'label:hover~.wrapper &(input)': supportsChromiumMediaQuery({
+          '.label-wrapper:hover~.wrapper &(input)': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),

@@ -177,7 +177,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
     const { children, namedSlotChildren, otherChildren } = splitChildren(this.props.children);\n`
           )
           .replace(
-            /this\.(?:input|select|textarea)(?!Elements)/g,
+            /this\.(?:input|select|textarea)(?!Elements|edOption|edOptions)/g,
             "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
           ); // fallback for undefined input, select and textarea reference
 
@@ -197,7 +197,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background|filter|selected)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -209,14 +209,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          .replace(
+            /hasNamedSlot\(host, '(label-after)'\)/g,
+            `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
+          )
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
           newFileContent = newFileContent
+            .replace(/(type LabelProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 children, ')
             .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
-            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+            .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/}\) => \{/, `$& const { namedSlotChildren } = splitChildren(children);\n`)
+            .replace(/^/, `import { splitChildren } from '../../splitChildren';`);
         }
         if (newFileContent.includes('export const InputBase:')) {
           newFileContent = newFileContent
@@ -512,6 +520,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
+          .replace(/getItemMaxWidth\(this\.props,\s*this\.props\.compact\)/, '100')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-segmented-control-item') {
@@ -560,15 +569,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          .replace(
-            /getSelectedOptionValues\(this\.props\.multiSelectOptions\);/,
-            'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
-          )
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(
-            /getSelectedOptionsString\(this\.props\.multiSelectOptions\)/,
-            'getSelectedOptionsString(otherChildren)'
-          )
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
@@ -772,6 +772,8 @@ $&`
       } else if (
         tagName === 'p-input-number' ||
         tagName === 'p-input-date' ||
+        tagName === 'p-input-week' ||
+        tagName === 'p-input-month' ||
         tagName === 'p-input-time' ||
         tagName === 'p-input-search' ||
         tagName === 'p-input-text' ||

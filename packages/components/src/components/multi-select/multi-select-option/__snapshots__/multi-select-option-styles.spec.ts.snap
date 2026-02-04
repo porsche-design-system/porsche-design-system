@@ -10,9 +10,6 @@ exports[`getComponentCss() > should return correct css for theme: dark, isDisabl
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -87,9 +84,6 @@ exports[`getComponentCss() > should return correct css for theme: dark, isDisabl
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -169,9 +163,6 @@ exports[`getComponentCss() > should return correct css for theme: dark, isDisabl
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -246,9 +237,6 @@ exports[`getComponentCss() > should return correct css for theme: dark, isDisabl
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -328,9 +316,6 @@ exports[`getComponentCss() > should return correct css for theme: light, isDisab
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -405,9 +390,6 @@ exports[`getComponentCss() > should return correct css for theme: light, isDisab
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;
@@ -487,9 +469,6 @@ exports[`getComponentCss() > should return correct css for theme: light, isDisab
 :host([hidden]) {
   display: none !important;
 }
-slot {
-  display: block;
-}
 .option {
   display: flex;
   gap: max(4px, var(--p-internal-multi-select-option-scaling, 1) * 12px);
@@ -564,9 +543,6 @@ exports[`getComponentCss() > should return correct css for theme: light, isDisab
 }
 :host([hidden]) {
   display: none !important;
-}
-slot {
-  display: block;
 }
 .option {
   display: flex;

@@ -22,7 +22,7 @@ const getFirstItemHost = (page: Page) => page.locator('p-segmented-control-item'
 const getSecondItemHost = (page: Page) => page.locator('p-segmented-control-item:nth-child(2)');
 const getFirstItemButton = (page: Page) => page.locator('p-segmented-control-item button').first();
 const getAllItemHosts = (page: Page) => page.locator('p-segmented-control-item').all();
-const getFieldset = (page: Page) => page.locator('fieldset');
+const getOuterFieldset = (page: Page) => page.locator('fieldset').first();
 const getAllItemButtons = async (page: Page) =>
   Promise.all(
     (await getAllItemHosts(page)).map(async (x) =>
@@ -556,7 +556,7 @@ test.describe('form', () => {
       markupAfter: `</fieldset>`,
     });
     const host = getHost(page);
-    const fieldset = getFieldset(page);
+    const fieldset = getOuterFieldset(page);
     await expect(fieldset).toHaveJSProperty('disabled', true);
     await expect(host).toHaveJSProperty('disabled', true);
 

@@ -1,8 +1,6 @@
 import { vi } from 'vitest';
 import { Checkbox } from './checkbox';
 
-vi.mock('../../utils/dom');
-
 class MockElementInternals {
   setValidity = vi.fn();
   setFormValue = vi.fn();
@@ -98,10 +96,11 @@ describe('componentDidRender', () => {
     expect(setValiditySpy).toHaveBeenCalledTimes(1);
     expect(setValiditySpy).toHaveBeenCalledWith(
       component['checkboxInputElement'].validity,
-      component['checkboxInputElement'].validationMessage,
+      component['checkboxInputElement'].validationMessage || ' ',
       component['checkboxInputElement']
     );
   });
+
   it('should not call ElementInternals setValidity() if checkbox is disabled', () => {
     const component = initComponent();
     const setValiditySpy = vi.spyOn(component['internals'], 'setValidity' as any);

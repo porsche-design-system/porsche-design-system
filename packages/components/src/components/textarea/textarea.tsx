@@ -48,11 +48,13 @@ const propTypes: PropTypes<typeof Textarea> = {
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  */
@@ -69,6 +71,9 @@ export class Textarea {
 
   /** Supplementary text providing more context or explanation for the textarea. */
   @Prop() public description?: string = '';
+
+  /** A boolean value that, if present, renders the textarea as a compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** The name of the textarea, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
@@ -97,7 +102,7 @@ export class Textarea {
   @Prop() public required?: boolean = false;
 
   /** A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
   @Prop() public maxLength?: number;
@@ -108,7 +113,7 @@ export class Textarea {
   /** Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The number of rows of the textarea. */
+  /** The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'. */
   @Prop() public rows?: number = 7;
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
@@ -158,6 +163,7 @@ export class Textarea {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -173,11 +179,13 @@ export class Textarea {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(
-      this.textAreaElement.validity,
-      this.textAreaElement.validationMessage,
-      this.textAreaElement
-    );
+    if (!this.disabled && !this.readOnly) {
+      this.internals?.setValidity(
+        this.textAreaElement.validity,
+        this.textAreaElement.validationMessage || ' ',
+        this.textAreaElement
+      );
+    }
   }
 
   public render(): JSX.Element {
@@ -190,6 +198,7 @@ export class Textarea {
       this.readOnly,
       this.hideLabel,
       this.state,
+      this.compact,
       this.counter,
       this.resize,
       this.theme

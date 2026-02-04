@@ -294,6 +294,34 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-month',
+    examples: [
+      {
+        name: 'InputMonthExampleForm',
+        paths: {
+          'vanilla-js': '/input-month-example-form.html',
+          angular: '/input-month-example-form.component.ts',
+          react: '/InputMonthExampleForm.tsx',
+          vue: '/InputMonthExampleForm.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-week',
+    examples: [
+      {
+        name: 'InputWeekExampleForm',
+        paths: {
+          'vanilla-js': '/input-week-example-form.html',
+          angular: '/input-week-example-form.component.ts',
+          react: '/InputWeekExampleForm.tsx',
+          vue: '/InputWeekExampleForm.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-time',
     examples: [
       {
@@ -426,6 +454,24 @@ const codeExamples: CodeSample[] = [
           vue: '/MultiSelectExampleDynamic.vue',
         },
       },
+      {
+        name: 'MultiSelectExampleAsync',
+        paths: {
+          'vanilla-js': '/multi-select-example-async-filter.html',
+          angular: '/multi-select-example-async-filter.component.ts',
+          react: '/MultiSelectExampleAsyncFilter.tsx',
+          vue: '/MultiSelectExampleAsyncFilter.vue',
+        },
+      },
+      {
+        name: 'MultiSelectExampleSelectedSlot',
+        paths: {
+          'vanilla-js': '/multi-select-example-selected-slot.html',
+          angular: '/multi-select-example-selected-slot.component.ts',
+          react: '/MultiSelectExampleSelectedSlot.tsx',
+          vue: '/MultiSelectExampleSelectedSlot.vue',
+        },
+      },
     ],
   },
   {
@@ -512,6 +558,24 @@ const codeExamples: CodeSample[] = [
           angular: '/select-example-required.component.ts',
           react: '/SelectExampleRequired.tsx',
           vue: '/SelectExampleRequired.vue',
+        },
+      },
+      {
+        name: 'SelectExampleAsync',
+        paths: {
+          'vanilla-js': '/select-example-async-filter.html',
+          angular: '/select-example-async-filter.component.ts',
+          react: '/SelectExampleAsyncFilter.tsx',
+          vue: '/SelectExampleAsyncFilter.vue',
+        },
+      },
+      {
+        name: 'SelectExampleSelectedSlot',
+        paths: {
+          'vanilla-js': '/select-example-selected-slot.html',
+          angular: '/select-example-selected-slot.component.ts',
+          react: '/SelectExampleSelectedSlot.tsx',
+          vue: '/SelectExampleSelectedSlot.vue',
         },
       },
     ],

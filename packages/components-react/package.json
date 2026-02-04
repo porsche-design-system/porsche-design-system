@@ -20,7 +20,7 @@
     "build:typings:ag-grid": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/ag-grid/index.d.ts $DEST/ag-grid/esm/index.d.ts && rm -rf $SRC/ag-grid",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "yarn test:unit:react-wrapper && yarn test:unit:react-ssr-wrapper",
-    "test:unit:react-wrapper": "jest --colors -c projects/react-wrapper/tests/unit/config/jest.config.js",
+    "test:unit:react-wrapper": "vitest -c projects/react-wrapper/tests/unit/config/vitest.config.ts",
     "test:unit:react-ssr-wrapper": "yarn --cwd ./projects/react-ssr-wrapper test:unit",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
@@ -28,7 +28,7 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.31.0",
+    "@porsche-design-system/components-react": "3.32.0",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.9.4",
     "styled-components": "^6.1.19",
@@ -38,14 +38,13 @@
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "ag-grid-community": "34.2.0",
-    "ag-grid-enterprise": "34.2.0",
-    "ag-grid-react": "34.2.0",
+    "ag-grid-community": "35.0.0",
+    "ag-grid-enterprise": "35.0.0",
+    "ag-grid-react": "35.0.0",
     "local-web-server": "^5.4.0",
     "@vitejs/plugin-react": "^5.0.4",
     "vite-plugin-html": "^3.2.2"

@@ -89,6 +89,7 @@ export class SegmentedControlItem {
       this.host.compact,
       isDisabled,
       this.host.selected,
+      this.host.state,
       hasIcon,
       hasSlottedContent,
       this.host.theme || 'light' // default as fallback
@@ -97,7 +98,16 @@ export class SegmentedControlItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host onClick={!isDisabled && this.onClick} onBlur={this.onBlur}>
-        <button type="button" {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}>
+        <button
+          type="button"
+          {...getSegmentedControlItemAriaAttributes(
+            this.host.selected,
+            this.disabled,
+            this.host.state,
+            this.host.message,
+            this.aria
+          )}
+        >
           {this.label && <span>{this.label}</span>}
           {hasIcon && (
             <PrefixedTagNames.pIcon

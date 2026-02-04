@@ -71,6 +71,7 @@ import { FlagPage } from './generated/Flag';
 import { FlexPage } from './generated/Flex';
 import { Flyout_1Page } from './generated/Flyout_1';
 import { Flyout_2Page } from './generated/Flyout_2';
+import { Flyout_3Page } from './generated/Flyout_3';
 import { FlyoutBackdropBlurPage } from './generated/FlyoutBackdropBlur';
 import { FlyoutBackdropShadingPage } from './generated/FlyoutBackdropShading';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
@@ -112,6 +113,7 @@ import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
 import { InputDatePage } from './generated/InputDate';
 import { InputEmailPage } from './generated/InputEmail';
+import { InputMonthPage } from './generated/InputMonth';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
@@ -119,6 +121,7 @@ import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
 import { InputTimePage } from './generated/InputTime';
 import { InputUrlPage } from './generated/InputUrl';
+import { InputWeekPage } from './generated/InputWeek';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -153,6 +156,7 @@ import { MultiSelectOpenedFilterNoResultsCompactPage } from './generated/MultiSe
 import { MultiSelectOpenedMaxHeightPage } from './generated/MultiSelectOpenedMaxHeight';
 import { MultiSelectOpenedMinHeightPage } from './generated/MultiSelectOpenedMinHeight';
 import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
+import { MultiSelectOpenedSelectedSlotPage } from './generated/MultiSelectOpenedSelectedSlot';
 import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
 import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generated/MultiSelectOpenedWithDisabledHighlightedSelected';
@@ -188,6 +192,7 @@ import { SelectOpenedFilterNoResultsCompactPage } from './generated/SelectOpened
 import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
 import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
 import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
+import { SelectOpenedSelectedSlotPage } from './generated/SelectOpenedSelectedSlot';
 import { SelectOpenedTopPage } from './generated/SelectOpenedTop';
 import { SelectOpenedWithAndWithoutOptgroupsPage } from './generated/SelectOpenedWithAndWithoutOptgroups';
 import { SelectOpenedWithDisabledHighlightedSelectedPage } from './generated/SelectOpenedWithDisabledHighlightedSelected';
@@ -530,6 +535,11 @@ export const generatedRoutes: RouteType[] = [
     element: <Flyout_2Page />,
   },
   {
+    name: 'Flyout 3',
+    path: '/flyout-3',
+    element: <Flyout_3Page />,
+  },
+  {
     name: 'Flyout Backdrop Blur',
     path: '/flyout-backdrop-blur',
     element: <FlyoutBackdropBlurPage />,
@@ -735,6 +745,11 @@ export const generatedRoutes: RouteType[] = [
     element: <InputEmailPage />,
   },
   {
+    name: 'Input Month',
+    path: '/input-month',
+    element: <InputMonthPage />,
+  },
+  {
     name: 'Input Number',
     path: '/input-number',
     element: <InputNumberPage />,
@@ -768,6 +783,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Url',
     path: '/input-url',
     element: <InputUrlPage />,
+  },
+  {
+    name: 'Input Week',
+    path: '/input-week',
+    element: <InputWeekPage />,
   },
   {
     name: 'Link',
@@ -938,6 +958,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Multi Select Opened Scroll Context',
     path: '/multi-select-opened-scroll-context',
     element: <MultiSelectOpenedScrollContextPage />,
+  },
+  {
+    name: 'Multi Select Opened Selected Slot',
+    path: '/multi-select-opened-selected-slot',
+    element: <MultiSelectOpenedSelectedSlotPage />,
   },
   {
     name: 'Multi Select Opened Top',
@@ -1113,6 +1138,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Scroll Context',
     path: '/select-opened-scroll-context',
     element: <SelectOpenedScrollContextPage />,
+  },
+  {
+    name: 'Select Opened Selected Slot',
+    path: '/select-opened-selected-slot',
+    element: <SelectOpenedSelectedSlotPage />,
   },
   {
     name: 'Select Opened Top',

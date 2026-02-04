@@ -1,7 +1,7 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
-  spacingStaticLarge,
+  fontLineHeight,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
@@ -22,23 +22,50 @@ import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styl
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
-// CSS Variable defined in fontHyphenationStyle
+export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
+export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
+
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
+ * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"unset"}
  */
 export const getComponentCss = (
   isDisabled: boolean,
   isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  compact: boolean,
   counter: boolean,
   resize: TextareaResize,
   theme: Theme
 ): string => {
+  const scalingVar = getScalingVar(compact);
+
+  const minPadding = '2px';
+  const minCounterPadding = '12px';
+
+  const basePaddingInline = `max(${minPadding}, calc(${formElementPaddingHorizontal} * ${scalingVar}))`;
+  const basePaddingBlock = `max(${minPadding}, calc(12px * ${scalingVar}))`;
+
+  const counterPaddingInline = `max(${minCounterPadding}, calc((${formElementPaddingHorizontal} + ${borderWidthBase}) * ${scalingVar}))`;
+  const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
+
+  const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
+
+  // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
+  const minWidth = `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`;
+
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -60,9 +87,15 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
         resize,
+        fieldSizing: 'var(--p-textarea-field-sizing, unset)',
+        minWidth: `var(--p-textarea-min-width, ${minWidth})`,
+        maxWidth: 'var(--p-textarea-max-width, unset)',
+        minHeight: 'var(--p-textarea-min-height, unset)',
+        maxHeight: 'var(--p-textarea-max-height, unset)',
         display: 'block',
         width: '100%',
         height: 'auto',
@@ -76,8 +109,6 @@ export const getComponentCss = (
         background: 'transparent',
         textIndent: 0,
         color: primaryColor,
-        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-        minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: formStateColorDark || contrastMediumColorDark,
@@ -86,8 +117,8 @@ export const getComponentCss = (
         gridArea: '1/1',
         font: textSmallStyle.font, // to override line-height
         padding: counter
-          ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
-          : `12px ${formElementPaddingHorizontal}`,
+          ? `${basePaddingBlock} ${basePaddingInline} ${paddingBottom}`
+          : `${basePaddingBlock} ${basePaddingInline}`,
         // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
         '&:focus': {
           borderColor: primaryColor,
@@ -117,7 +148,7 @@ export const getComponentCss = (
       },
       ...(hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
-        'textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
+        'textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
           {
             borderColor: formStateHoverColor || primaryColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -138,7 +169,7 @@ export const getComponentCss = (
         ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
         gridArea: '1/1',
         placeSelf: 'flex-end',
-        padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
+        padding: `${counterPaddingBlock} ${counterPaddingInline}`,
       },
       // TODO: maybe we should extract it as functional component too
       'sr-only': getHiddenTextJssStyle(),

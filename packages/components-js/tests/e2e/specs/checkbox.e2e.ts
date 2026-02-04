@@ -1,19 +1,21 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
+import type { CheckboxState } from '@porsche-design-system/components';
 import {
   addEventListener,
   getActiveElementTagName,
+  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValue,
   getLifecycleStatus,
   getProperty,
   hasFocus,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { CheckboxState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-checkbox');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -87,7 +89,7 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
     : '';
 
   const attrs = [
-    !useSlottedLabel && `label="${label}"`,
+    !useSlottedLabel && label && `label="${label}"`,
     `state="${state}"`,
     `value="${value}"`,
     `name="${name}"`,
@@ -773,6 +775,18 @@ test.describe('form', () => {
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
     await expect(checkbox).toHaveJSProperty('disabled', false);
+  });
+
+  test('should not set validity when disabled and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initCheckbox(page, {
+      isWithinForm: true,
+      required: true,
+      disabled: true,
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

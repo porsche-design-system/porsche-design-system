@@ -84,9 +84,10 @@ describe('resetSelectedOption', () => {
 
 describe('updateSelectOptions', () => {
   it('should not select option when value="undefined" and no option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = generateOptions();
     const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
-    selectUtils.updateSelectOptions(options, undefined);
+    selectUtils.selectOptionByValue(host, options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     options.forEach((option) => {
       expect(option.selected).toBe(false);
@@ -94,38 +95,41 @@ describe('updateSelectOptions', () => {
   });
 
   it('should select correct option when value="undefined" and option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = [
       { value: undefined, selected: false },
       { value: 'a', selected: false },
       { value: 'b', selected: false },
     ] as selectUtils.SelectOption[];
     const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
-    selectUtils.updateSelectOptions(options, undefined);
+    selectUtils.selectOptionByValue(host, options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);
     expect(options[2].selected).toBe(false);
   });
   it('should not select option and show warning when value="a" and no option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = generateOptions();
     const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
-    selectUtils.updateSelectOptions(options, 'a');
+    selectUtils.selectOptionByValue(host, options, 'a');
     options.forEach((option) => {
       expect(option.selected).toBe(false);
     });
     expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value is not included in the options of the p-select:',
-      'a'
+      'The provided value: a is not included in the options of the p-select:',
+      host
     );
   });
   it('should select correct option when value="a" and option with that value exists', () => {
+    const host = document.createElement('p-select');
     const options = [
       { value: 'a', selected: false },
       { value: 'b', selected: false },
       { value: 'c', selected: false },
     ] as selectUtils.SelectOption[];
     const resetSelectedOptionSpy = vi.spyOn(selectUtils.internalSelect, 'resetSelectedOption');
-    selectUtils.updateSelectOptions(options, 'a');
+    selectUtils.selectOptionByValue(host, options, 'a');
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(options[0].selected).toBe(true);
     expect(options[1].selected).toBe(false);

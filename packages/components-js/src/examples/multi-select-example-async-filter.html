@@ -1,0 +1,127 @@
+<p-multi-select name="async-search-select" label="Async Search">
+  <p-input-search
+    slot="filter"
+    name="search"
+    clear
+    indicator
+    compact
+    autocomplete="off"
+  ></p-input-search>
+
+  <!-- Initial skeleton loading -->
+  <div slot="options-status" class="skeleton-container contents">
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+    <div class="skeleton h-[40px]"></div>
+  </div>
+
+  <!-- No filter results -->
+  <div slot="options-status" class="no-results hidden text-contrast-medium cursor-not-allowed py-static-sm px-[12px]" role="alert">
+    <span aria-hidden="true">–</span>
+    <span class="sr-only">No results found</span>
+  </div>
+
+  <!-- Error state -->
+  <div slot="options-status" class="error hidden flex gap-static-sm py-static-sm px-[12px]" role="alert">
+    <p-icon name="information" color="notification-error"></p-icon>
+    <span class="text-error"></span>
+  </div>
+</p-multi-select>
+
+<script>
+  const select = document.querySelector('p-multi-select');
+  const input = select.querySelector('p-input-search');
+  const skeletonContainer = select.querySelector('.skeleton-container');
+  const noResults = select.querySelector('.no-results');
+  const errorContainer = select.querySelector('.error');
+  const errorText = errorContainer.querySelector('span.text-error');
+
+  let value = [];
+  let options = [];
+  let searchValue = '';
+  let initialLoading = false;
+  let error = null;
+  let hasLoadedOnce = false;
+  let currentFetchId = 0;
+  let debounceTimer;
+
+  const debounce = (fn, delay = 400) => (...args) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => fn(...args), delay);
+  };
+
+  async function fetchOptions(term = '', isInitial = false) {
+    const fetchId = ++currentFetchId;
+    if (isInitial) initialLoading = true;
+    else input.loading = true;
+    render();
+
+    try {
+      const url = term
+        ? `https://jsonplaceholder.typicode.com/users?username_like=${term}`
+        : `https://jsonplaceholder.typicode.com/users`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (fetchId !== currentFetchId) return;
+
+      options = data.map(u => ({ value: u.id.toString(), label: `${u.name} (${u.username})` }));
+      error = null;
+      hasLoadedOnce = true;
+    } catch (err) {
+      console.error(err);
+      options = [];
+      error = 'Failed to load options';
+    } finally {
+      if (isInitial) initialLoading = false;
+      else input.loading = false;
+      render();
+    }
+  }
+
+  const debouncedFetch = debounce(term => fetchOptions(term.trim()));
+
+  input.addEventListener('input', (e) => {
+    searchValue = e.target.value;
+    debouncedFetch(searchValue);
+  });
+
+  select.addEventListener('change', (e) => {
+    value = e.target.value;
+  });
+
+  select.addEventListener('toggle', (e) => {
+    if (e.detail.open && !hasLoadedOnce) {
+      fetchOptions('', true);
+    }
+  });
+
+  function render() {
+    // Skeleton
+    skeletonContainer.classList.toggle('hidden', !(initialLoading && !error));
+
+    // Options
+    select.querySelectorAll('p-multi-select-option').forEach(opt => opt.remove());
+    options.forEach(opt => {
+      const optionEl = document.createElement('p-multi-select-option');
+      optionEl.setAttribute('value', opt.value);
+      optionEl.textContent = opt.label;
+      select.appendChild(optionEl);
+    });
+
+    // No results
+    const showNoResults = !initialLoading && options.length === 0 && !error;
+    noResults.classList.toggle('hidden', !showNoResults);
+
+    // Error
+    const showError = !!error;
+    errorContainer.classList.toggle('hidden', !showError);
+    if (showError) errorText.textContent = error;
+  }
+</script>

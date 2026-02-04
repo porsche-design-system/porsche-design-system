@@ -252,6 +252,36 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputDateExampleFormPage />,
   },
   {
+    name: 'Input Month Example',
+    path: '/input-month-example',
+    element: <fromExamples.InputMonthExamplePage />,
+  },
+  {
+    name: 'Input Month Example Controlled',
+    path: '/input-month-example-controlled',
+    element: <fromExamples.InputMonthControlledExamplePage />,
+  },
+  {
+    name: 'Input Month Example Form',
+    path: '/input-month-example-form',
+    element: <fromExamples.InputMonthExampleFormPage />,
+  },
+  {
+    name: 'Input Week Example',
+    path: '/input-week-example',
+    element: <fromExamples.InputWeekExamplePage />,
+  },
+  {
+    name: 'Input Week Example Controlled',
+    path: '/input-week-example-controlled',
+    element: <fromExamples.InputWeekControlledExamplePage />,
+  },
+  {
+    name: 'Input Week Example Form',
+    path: '/input-week-example-form',
+    element: <fromExamples.InputWeekExampleFormPage />,
+  },
+  {
     name: 'Input Time Example',
     path: '/input-time-example',
     element: <fromExamples.InputTimeExamplePage />,
@@ -382,6 +412,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.MultiSelectExampleFormPage />,
   },
   {
+    name: 'Multi Select Example Async',
+    path: '/multi-select-example-async-filter',
+    element: <fromExamples.MultiSelectExampleAsyncFilter />,
+  },
+  {
+    name: 'Multi Select Selected Slot',
+    path: '/multi-select-example-selected-slot',
+    element: <fromExamples.MultiSelectExampleSelectedSlot />,
+  },
+  {
     name: 'Pin Code Example',
     path: '/pin-code-example',
     element: <fromExamples.PinCodeExamplePage />,
@@ -455,6 +495,16 @@ export const routes: RouteType[] = [
     name: 'Select Example Required',
     path: '/select-example-required',
     element: <fromExamples.SelectExampleRequiredPage />,
+  },
+  {
+    name: 'Select Example Async',
+    path: '/select-example-async-filter',
+    element: <fromExamples.SelectExampleAsyncFilter />,
+  },
+  {
+    name: 'Select Example Selected Slot',
+    path: '/select-example-async-selected-slot',
+    element: <fromExamples.SelectExampleSelectedSlot />,
   },
   {
     name: 'Stepper Horizontal Example',

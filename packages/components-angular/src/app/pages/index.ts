@@ -90,6 +90,7 @@ import { FlagComponent } from './generated/flag.component';
 import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
+import { Flyout_3Component } from './generated/flyout-3.component';
 import { FlyoutBackdropBlurComponent } from './generated/flyout-backdrop-blur.component';
 import { FlyoutBackdropShadingComponent } from './generated/flyout-backdrop-shading.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
@@ -131,6 +132,7 @@ import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
 import { InputDateComponent } from './generated/input-date.component';
 import { InputEmailComponent } from './generated/input-email.component';
+import { InputMonthComponent } from './generated/input-month.component';
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
@@ -138,6 +140,7 @@ import { InputTelComponent } from './generated/input-tel.component';
 import { InputTextComponent } from './generated/input-text.component';
 import { InputTimeComponent } from './generated/input-time.component';
 import { InputUrlComponent } from './generated/input-url.component';
+import { InputWeekComponent } from './generated/input-week.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
@@ -172,6 +175,7 @@ import { MultiSelectOpenedFilterNoResultsCompactComponent } from './generated/mu
 import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
 import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
 import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
+import { MultiSelectOpenedSelectedSlotComponent } from './generated/multi-select-opened-selected-slot.component';
 import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
 import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/multi-select-opened-with-disabled-highlighted-selected.component';
@@ -208,6 +212,7 @@ import { SelectOpenedFilterNoResultsCompactComponent } from './generated/select-
 import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
 import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
+import { SelectOpenedSelectedSlotComponent } from './generated/select-opened-selected-slot.component';
 import { SelectOpenedTopComponent } from './generated/select-opened-top.component';
 import { SelectOpenedWithAndWithoutOptgroupsComponent } from './generated/select-opened-with-and-without-optgroups.component';
 import { SelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/select-opened-with-disabled-highlighted-selected.component';
@@ -318,6 +323,7 @@ export const generatedPages = [
   FlexComponent,
   Flyout_1Component,
   Flyout_2Component,
+  Flyout_3Component,
   FlyoutBackdropBlurComponent,
   FlyoutBackdropShadingComponent,
   FlyoutBasicComponent,
@@ -359,6 +365,7 @@ export const generatedPages = [
   InlineNotificationComponent,
   InputDateComponent,
   InputEmailComponent,
+  InputMonthComponent,
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
@@ -366,6 +373,7 @@ export const generatedPages = [
   InputTextComponent,
   InputTimeComponent,
   InputUrlComponent,
+  InputWeekComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -400,6 +408,7 @@ export const generatedPages = [
   MultiSelectOpenedMaxHeightComponent,
   MultiSelectOpenedMinHeightComponent,
   MultiSelectOpenedScrollContextComponent,
+  MultiSelectOpenedSelectedSlotComponent,
   MultiSelectOpenedTopComponent,
   MultiSelectOpenedWithAndWithoutOptgroupsComponent,
   MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
@@ -436,6 +445,7 @@ export const generatedPages = [
   SelectOpenedMaxHeightComponent,
   SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
+  SelectOpenedSelectedSlotComponent,
   SelectOpenedTopComponent,
   SelectOpenedWithAndWithoutOptgroupsComponent,
   SelectOpenedWithDisabledHighlightedSelectedComponent,
@@ -779,6 +789,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: Flyout_2Component,
   },
   {
+    name: 'Flyout 3',
+    path: 'flyout-3',
+    component: Flyout_3Component,
+  },
+  {
     name: 'Flyout Backdrop Blur',
     path: 'flyout-backdrop-blur',
     component: FlyoutBackdropBlurComponent,
@@ -984,6 +999,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InputEmailComponent,
   },
   {
+    name: 'Input Month',
+    path: 'input-month',
+    component: InputMonthComponent,
+  },
+  {
     name: 'Input Number',
     path: 'input-number',
     component: InputNumberComponent,
@@ -1017,6 +1037,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Url',
     path: 'input-url',
     component: InputUrlComponent,
+  },
+  {
+    name: 'Input Week',
+    path: 'input-week',
+    component: InputWeekComponent,
   },
   {
     name: 'Link',
@@ -1187,6 +1212,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened Scroll Context',
     path: 'multi-select-opened-scroll-context',
     component: MultiSelectOpenedScrollContextComponent,
+  },
+  {
+    name: 'Multi Select Opened Selected Slot',
+    path: 'multi-select-opened-selected-slot',
+    component: MultiSelectOpenedSelectedSlotComponent,
   },
   {
     name: 'Multi Select Opened Top',
@@ -1362,6 +1392,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Scroll Context',
     path: 'select-opened-scroll-context',
     component: SelectOpenedScrollContextComponent,
+  },
+  {
+    name: 'Select Opened Selected Slot',
+    path: 'select-opened-selected-slot',
+    component: SelectOpenedSelectedSlotComponent,
   },
   {
     name: 'Select Opened Top',

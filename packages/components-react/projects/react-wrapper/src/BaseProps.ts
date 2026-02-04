@@ -1,7 +1,7 @@
 import type { DOMAttributes, HTMLAttributes } from 'react';
 
 // handpicked props that all wrapper components have in common
-export type BaseProps = Omit<DOMAttributes<{}>, 'onChange' | 'onInput'> &
+export type BaseProps = Omit<DOMAttributes<{}>, 'onChange' | 'onInput' | 'onToggle'> &
   Pick<
     HTMLAttributes<{}>,
     // React-specific Attributes

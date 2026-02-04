@@ -248,6 +248,47 @@ export const routes: RouteType[] = [
     component: fromExamples.InputDateExampleForm,
   },
   {
+    path: '/input-month-example',
+    name: 'Input Month Example',
+    component: fromExamples.InputMonthExample,
+  },
+  {
+    path: '/input-month-example-controlled',
+    name: 'Input Month Example Controlled',
+    component: fromExamples.InputMonthExampleControlled,
+  },
+  {
+    path: '/input-month-example-controlled-model',
+    name: 'Input Month Example Controlled Model',
+    component: fromExamples.InputMonthExampleControlledModel,
+  },
+  {
+    path: '/input-month-example-form',
+    name: 'Input Month Example Form',
+    component: fromExamples.InputMonthExampleForm,
+  },
+
+  {
+    path: '/input-week-example',
+    name: 'Input Week Example',
+    component: fromExamples.InputWeekExample,
+  },
+  {
+    path: '/input-week-example-controlled',
+    name: 'Input Week Example Controlled',
+    component: fromExamples.InputWeekExampleControlled,
+  },
+  {
+    path: '/input-week-example-controlled-model',
+    name: 'Input Week Example Controlled Model',
+    component: fromExamples.InputWeekExampleControlledModel,
+  },
+  {
+    path: '/input-week-example-form',
+    name: 'Input Week Example Form',
+    component: fromExamples.InputWeekExampleForm,
+  },
+  {
     path: '/input-time-example',
     name: 'Input Time Example',
     component: fromExamples.InputTimeExample,
@@ -428,6 +469,16 @@ export const routes: RouteType[] = [
     component: fromExamples.MultiSelectExampleForm,
   },
   {
+    path: '/multi-select-example-async-filter',
+    name: 'Multi Select Example Async',
+    component: fromExamples.MultiSelectExampleAsyncFilter,
+  },
+  {
+    path: '/multi-select-example-selected-slot',
+    name: 'Multi Select Example Selected Slot',
+    component: fromExamples.MultiSelectExampleSelectedSlot,
+  },
+  {
     path: '/pin-code-example',
     name: 'Pin Code Example',
     component: fromExamples.PinCodeExample,
@@ -521,6 +572,16 @@ export const routes: RouteType[] = [
     path: '/select-example-form',
     name: 'Select Example Form',
     component: fromExamples.SelectExampleForm,
+  },
+  {
+    path: '/select-example-async-filter',
+    name: 'Select Example Async',
+    component: fromExamples.SelectExampleAsyncFilter,
+  },
+  {
+    path: '/select-example-selected-slot',
+    name: 'Select Example Selected Slot',
+    component: fromExamples.SelectExampleSelectedSlot,
   },
   {
     path: '/stepper-horizontal-example',

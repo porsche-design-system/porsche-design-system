@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type JSX, useRef } from 'react';
+import { afterEach, beforeEach, describe, expect, it, test, vi } from 'vitest';
 import * as hooks from '../../../src/hooks';
 import { PButton } from '../../../src/public-api';
 import { getMergedClassName, skipPorscheDesignSystemCDNRequestsDuringTests } from '../../../src/utils';
@@ -60,10 +61,14 @@ const Sample = ({ isRefCallback }: Props): JSX.Element => {
   );
 };
 
+afterEach(() => {
+  cleanup();
+});
+
 describe('syncRefs()', () => {
   beforeEach(() => {
     // mocked usePrefix so we don't have to use PorscheDesignSystemProvider
-    jest.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
+    vi.spyOn(hooks, 'usePrefix').mockImplementation((tagName) => tagName);
   });
 
   it('should sync refs if ref is set directly', async () => {

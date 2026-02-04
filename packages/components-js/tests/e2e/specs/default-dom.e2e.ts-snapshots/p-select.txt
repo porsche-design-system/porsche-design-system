@@ -1,5 +1,4 @@
 <div class="root">
-  <label class="label" id="label" for="button"> </label>
   <button
     type="button"
     role="combobox"
@@ -22,6 +21,7 @@
     aria-hidden="true"
   >
     <div class="options" role="listbox" aria-label="">
+      <slot name="options-status"> </slot>
       <slot> </slot>
     </div>
   </div>

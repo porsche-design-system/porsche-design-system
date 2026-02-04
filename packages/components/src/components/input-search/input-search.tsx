@@ -39,6 +39,8 @@ const propTypes: PropTypes<typeof InputSearch> = {
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
+  maxLength: AllowedTypes.number,
+  minLength: AllowedTypes.number,
   form: AllowedTypes.string,
   autoComplete: AllowedTypes.string,
   state: AllowedTypes.oneOf<InputSearchState>(FORM_STATES),
@@ -53,6 +55,7 @@ const propTypes: PropTypes<typeof InputSearch> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. icon)."}
@@ -98,11 +101,17 @@ export class InputSearch {
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
+  /** A non-negative integer specifying the maximum number of characters the user can enter into the input. */
+  @Prop() public maxLength?: number;
+
+  /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
+  @Prop() public minLength?: number;
+
   /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
@@ -166,6 +175,7 @@ export class InputSearch {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -182,7 +192,13 @@ export class InputSearch {
   }
 
   public componentDidRender(): void {
-    this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+    if (!this.disabled && !this.readOnly) {
+      this.internals?.setValidity(
+        this.inputElement.validity,
+        this.inputElement.validationMessage || ' ',
+        this.inputElement
+      );
+    }
   }
 
   public render(): JSX.Element {
@@ -219,6 +235,8 @@ export class InputSearch {
         type="search"
         required={this.required}
         placeholder={this.placeholder}
+        maxLength={this.maxLength}
+        minLength={this.minLength}
         value={this.value}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}

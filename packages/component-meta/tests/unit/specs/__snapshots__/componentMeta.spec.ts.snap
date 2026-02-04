@@ -690,6 +690,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-button-group": {
+    "deprecationMessage": "since v3.32.0, will be removed with next major release. Use simple styles instead.",
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -698,6 +699,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isDeprecated": true,
     "isInternal": false,
     "isThemeable": false,
     "propsMeta": {
@@ -1755,9 +1757,21 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-carousel-pe": {
+        "defaultValue": "",
+        "description": "Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-ps\`. When used then the prop \`width\` has no effect anymore.",
+      },
       "--p-carousel-prev-next-filter": {
         "defaultValue": "none",
         "description": "CSS Filter applied to the navigation (prev/next buttons)",
+      },
+      "--p-carousel-ps": {
+        "defaultValue": "",
+        "description": "Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-pe\`. When used then the prop \`width\` has no effect anymore.",
+      },
+      "--p-carousel-px": {
+        "defaultValue": "",
+        "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop \`width\` has no effect anymore.",
       },
       "--p-hyphens": {
         "defaultValue": "auto",
@@ -1946,6 +1960,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "basic",
           "extended",
+          "wide",
+          "full",
         ],
         "defaultValue": "basic",
         "description": "Defines the outer spacings between the carousel and the left and right screen sides.",
@@ -2032,6 +2048,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Marks the checkbox as disabled.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -2120,6 +2139,9 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -2892,12 +2914,14 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "ad",
           "ae",
+          "al",
           "am",
           "ar",
           "at",
           "au",
           "az",
           "ba",
+          "bd",
           "be",
           "bg",
           "bh",
@@ -2982,6 +3006,7 @@ exports[`should match snapshot 1`] = `
           "pt",
           "py",
           "qa",
+          "re",
           "ro",
           "rs",
           "ru",
@@ -4523,6 +4548,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4640,6 +4668,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4715,6 +4746,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -4850,6 +4884,207 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-month": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputMonthBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputMonthChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputMonthInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format(e.g., max='2024-12').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputMonthState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default month value for the input, in YYYY-MM format (e.g., value='2025-07').",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -4931,6 +5166,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5054,6 +5292,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5129,6 +5370,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5252,6 +5496,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5334,6 +5581,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5371,11 +5621,23 @@ exports[`should match snapshot 1`] = `
         "isExperimental": true,
         "type": "boolean",
       },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
+        "type": "number",
+      },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
         "description": "Dynamic feedback text for validation or status.",
         "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
+        "type": "number",
       },
       "name": {
         "allowedValues": "string",
@@ -5444,6 +5706,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -5520,6 +5785,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5649,6 +5917,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5727,6 +5998,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -5850,6 +6124,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -5925,6 +6202,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -6042,6 +6322,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -6117,6 +6400,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -6245,6 +6531,207 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-week": {
+    "cssVariablesMeta": {
+      "--p-hyphens": {
+        "defaultValue": "auto",
+        "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
+      },
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the number input has lost focus.",
+        "type": "InputWeekBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the number input loses focus after its value was changed.",
+        "type": "InputWeekChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputWeekInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.",
+        "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the input.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "max": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
+      "min": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the input field, used when submitting the form data.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the input component.",
+        "type": "InputWeekState",
+      },
+      "step": {
+        "allowedValues": "number",
+        "defaultValue": 1,
+        "description": "Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 month.",
+        "type": "number",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Controls the visual appearance of the component.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The default week value for the input, in YYYY-Www format (e.g., value='2025-W27')",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -8275,6 +8762,11 @@ exports[`should match snapshot 1`] = `
         "type": "MultiSelectChangeEventDetail",
         "typeDetail": "{ name: string; value: string[] }",
       },
+      "toggle": {
+        "description": "Emitted when the dropdown is toggled.",
+        "type": "MultiSelectToggleEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
       "update": {
         "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
         "isDeprecated": true,
@@ -8314,6 +8806,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the multi-select",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "dropdownDirection": {
@@ -8408,11 +8903,23 @@ exports[`should match snapshot 1`] = `
       "description": {
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "filter": {
+        "description": "Optional slot for providing a custom \`p-input-search\` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior.",
+      },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "options-status": {
+        "description": "When implementing a custom filter with the \`filter\` slot, use this slot for loading, error and no results status.",
+      },
+      "selected": {
+        "description": "Use this slot to provide custom markup for the selected options display in the button area.",
       },
     },
     "styling": "jss",
@@ -8689,6 +9196,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the Pin Code. No events will be triggered while disabled state is active.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -8798,6 +9308,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -9022,6 +9535,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the radio group unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -9115,6 +9631,9 @@ exports[`should match snapshot 1`] = `
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
@@ -9133,9 +9652,9 @@ exports[`should match snapshot 1`] = `
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
-    "hasSlot": false,
+    "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
@@ -9171,6 +9690,14 @@ exports[`should match snapshot 1`] = `
     "requiredParent": [
       "p-radio-group",
     ],
+    "slotsMeta": {
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+    },
     "styling": "jss",
   },
   "p-scroller": {
@@ -9314,13 +9841,13 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
     "hasSlot": true,
-    "hostAttributes": {
-      "role": "group",
-    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
     "propsMeta": {
       "backgroundColor": {
         "allowedValues": [
@@ -9373,6 +9900,12 @@ exports[`should match snapshot 1`] = `
         "description": "A boolean value that, if present, renders the segmented-control as a compact version.",
         "type": "boolean",
       },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Supplementary text providing more context or explanation for the segmented-control.",
+        "type": "string",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -9391,6 +9924,25 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Controls the visibility of the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Text content for a user-facing label.",
+        "type": "string",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "Dynamic feedback text for validation or status.",
+        "type": "string",
+      },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -9399,6 +9951,22 @@ exports[`should match snapshot 1`] = `
           "reflect": true,
         },
         "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that specifies a selection must be made from the group before the form can be submitted.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "Indicates the validation or overall status of the component.",
+        "type": "SegmentedControlState",
       },
       "theme": {
         "allowedValues": [
@@ -9427,6 +9995,18 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the \`p-segmented-control-item\` tags.",
       },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
     },
     "styling": "jss",
   },
@@ -9446,6 +10026,7 @@ exports[`should match snapshot 1`] = `
     "internalProps": {
       "compact": null,
       "selected": null,
+      "state": null,
       "theme": "light",
     },
     "isChunked": false,
@@ -9821,6 +10402,11 @@ exports[`should match snapshot 1`] = `
         "type": "SelectChangeEventDetail",
         "typeDetail": "{ name: string; value: string }",
       },
+      "toggle": {
+        "description": "Emitted when the dropdown is toggled.",
+        "type": "SelectToggleEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
       "update": {
         "description": "@deprecated since v3.30.0, will be removed with next major release, use \`change\` event instead. Emitted when the selection is changed.",
         "isDeprecated": true,
@@ -9877,7 +10463,7 @@ exports[`should match snapshot 1`] = `
       "filter": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Shows an input in the dropdown allowing options to be filtered.",
+        "description": "Shows an input in the dropdown allowing options to be filtered. Will be ignored if the \`filter\` slot is used.",
         "type": "boolean",
       },
       "form": {
@@ -9961,11 +10547,23 @@ exports[`should match snapshot 1`] = `
       "description": {
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "filter": {
+        "description": "Optional slot for providing a custom \`p-input-search\` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior.",
+      },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
+      },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "options-status": {
+        "description": "When implementing a custom filter with the \`filter\` slot, use this slot for loading, error and no results status.",
+      },
+      "selected": {
+        "description": "Use this slot to provide custom markup for the selected option display in the button area.",
       },
     },
     "styling": "jss",
@@ -11460,6 +12058,12 @@ exports[`should match snapshot 1`] = `
         "description": "Background color variations",
         "type": "TagDismissibleColor",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the tag dismissible as a compact version.",
+        "type": "boolean",
+      },
       "label": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -11866,6 +12470,26 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
       },
+      "--p-textarea-field-sizing": {
+        "defaultValue": "unset",
+        "description": "Controls CSS \`field-sizing\` for textarea.",
+      },
+      "--p-textarea-max-height": {
+        "defaultValue": "unset",
+        "description": "Maximum height of the textarea.",
+      },
+      "--p-textarea-max-width": {
+        "defaultValue": "unset",
+        "description": "Maximum width of the textarea.",
+      },
+      "--p-textarea-min-height": {
+        "defaultValue": "unset",
+        "description": "Minimum height of the textarea.",
+      },
+      "--p-textarea-min-width": {
+        "defaultValue": "52px",
+        "description": "Minimum width of the textarea.",
+      },
     },
     "eventsMeta": {
       "blur": {
@@ -11904,6 +12528,12 @@ exports[`should match snapshot 1`] = `
         "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, renders the textarea as a compact version.",
+        "type": "boolean",
+      },
       "counter": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -11920,6 +12550,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
@@ -12006,7 +12639,7 @@ exports[`should match snapshot 1`] = `
       "rows": {
         "allowedValues": "number",
         "defaultValue": 7,
-        "description": "The number of rows of the textarea.",
+        "description": "The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.",
         "type": "number",
       },
       "spellCheck": {
@@ -12061,6 +12694,9 @@ exports[`should match snapshot 1`] = `
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label-after": {
+        "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or \`p-popover\`).",
       },
       "message": {
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",

@@ -23,16 +23,20 @@ export const metadata = {
 
 #### External **ARIA** provided by the `aria` property:
 
-| ARIA         | Usage                                                       |
-| ------------ | ----------------------------------------------------------- |
-| `aria-label` | Defines a string value that labels the control item itself. |
+| ARIA                  | Usage                                                       |
+| --------------------- | ----------------------------------------------------------- |
+| `aria-label="STRING"` | Defines a string value that labels the control item itself. |
 
 #### Internal **ARIA** that is managed by the component:
 
-| ARIA                     | Usage                                       |
-| ------------------------ | ------------------------------------------- |
-| `role="group"`           | Identifies a set of user interface objects. |
-| `aria-pressed="BOOLEAN"` | Provides the current state of the control.  |
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `role="group"`                  | Identifies a set of user interface objects.                                                           |
+| `aria-pressed="BOOLEAN"`        | Provides the current state of the control.                                                            |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-required="true"`          | Indicates if the element is required.                                                                 |
 
 ## Development considerations
 
@@ -46,6 +50,12 @@ If a more detailed label is needed for each **control item**, use the `aria` pro
 
 If an **icon only** is used, it is mandatory to also provide an accessible name (aria-label) through the `aria` property
 of the control item.
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
 
 ## Tests
 

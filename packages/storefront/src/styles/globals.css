@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@porsche-design-system/components-react/tailwindcss';
+@source "../../../../node_modules/@porsche-design-system/shared/examples/*.tsx";
 
 @theme {
   --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);

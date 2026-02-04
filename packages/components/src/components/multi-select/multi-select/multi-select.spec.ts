@@ -32,7 +32,7 @@ describe('connectedCallback', () => {
 describe('componentWillLoad', () => {
   it('should call setSelectedOptions() and setFormValue() with correct parameters', () => {
     const component = initComponent();
-    const setSelectedOptionsSpy = vi.spyOn(multiSelectUtils, 'setSelectedOptions');
+    const setSelectedOptionsSpy = vi.spyOn(multiSelectUtils, 'selectOptionsByValue');
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     const value = 'a';
     component.name = 'some-name';
@@ -41,7 +41,7 @@ describe('componentWillLoad', () => {
     formData.append(component.name, value);
 
     component.componentWillLoad();
-    expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], component.value);
+    expect(setSelectedOptionsSpy).toHaveBeenCalledWith(component.host, [], component.value);
     expect(setFormValueSpy).toHaveBeenCalledWith(formData);
   });
 });
@@ -55,21 +55,8 @@ describe('componentDidLoad', () => {
       .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
       .mockReturnValueOnce(slot);
     component.componentDidLoad();
-    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
     expect(slotSpy).toHaveBeenCalledTimes(1);
-  });
-  it('should set inputSearchInputElement and set ariaControlsElements on it', () => {
-    const component = initComponent();
-    const slot = document.createElement('slot');
-    vi.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValueOnce(slot);
-    const listbox = document.createElement('div');
-    component['listboxElement'] = listbox;
-    component.componentDidLoad();
-
-    expect(component['inputSearchInputElement']).toBe(
-      component['inputSearchElement'].shadowRoot.querySelector('input')
-    );
-    expect(component['inputSearchInputElement'].ariaControlsElements).toEqual([listbox]);
   });
 });
 

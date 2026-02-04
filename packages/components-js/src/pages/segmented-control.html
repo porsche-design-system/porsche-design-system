@@ -407,3 +407,165 @@
     </p-segmented-control>
   </div>
 </div>
+
+<div class="playground light" title="should render with error state and error message">
+  <p-segmented-control value="s" class="a11ytree-snapshot-test" state="error" message="Some error message">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with success state and success message">
+  <p-segmented-control value="s" class="a11ytree-snapshot-test" state="success" message="Some success message">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with error state and slotted error message">
+  <p-segmented-control value="s" state="error">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+    <span slot="message">
+      Slotted error message. And some slotted and deeply nested
+      <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+    </span>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with success state and slotted success message">
+  <p-segmented-control value="s" state="success">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+    <span slot="message">
+      Slotted success message. And some slotted and deeply nested
+      <b>bold</b>, <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+    </span>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with label">
+  <p-segmented-control value="s" label="Some label">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with label and description">
+  <p-segmented-control value="s" label="Some label" description="Some description">
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render without label and without description">
+  <p-segmented-control
+    value="s"
+    class="a11ytree-snapshot-test"
+    hide-label="true"
+    label="Some label"
+    description="Some description"
+  >
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with responsive label and description">
+  <p-segmented-control
+    value="s"
+    hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    label="Some label"
+    description="Some description"
+  >
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with required state">
+  <p-segmented-control
+    value="s"
+    label="Some label"
+    description="Some description"
+    required="true"
+    class="a11ytree-snapshot-test"
+  >
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with slotted label and description in required state">
+  <p-segmented-control value="s" required="true">
+    <span slot="label">Some label</span>
+    <span slot="description">Some description</span>
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with slotted label and description in disabled state">
+  <p-segmented-control value="s" disabled="true">
+    <span slot="label">Some label</span>
+    <span slot="description">Some description</span>
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with label and label-after slot">
+  <p-segmented-control value="s" label="Label">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with multiline label and label-after slot">
+  <p-segmented-control
+    value="s"
+    label="Some label dolor sit amet, consetetur lorem ipsum"
+    style="display: block; width: 15rem"
+  >
+    <p-popover slot="label-after">Some Popover content</p-popover>
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>
+
+<div class="playground light" title="should render with label and label-after slot in disabled state">
+  <p-segmented-control value="s" label="Label" disabled="true">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+    <p-segmented-control-item value="s">S</p-segmented-control-item>
+    <p-segmented-control-item value="m">M</p-segmented-control-item>
+    <p-segmented-control-item value="l">L</p-segmented-control-item>
+    <p-segmented-control-item value="xl" disabled="true">XL</p-segmented-control-item>
+  </p-segmented-control>
+</div>

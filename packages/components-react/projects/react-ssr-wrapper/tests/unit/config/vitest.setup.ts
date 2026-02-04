@@ -1,5 +1,4 @@
-import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { beforeAll, vi } from 'vitest';
 
 beforeAll(() => {
   // Mock for the Element Internals API

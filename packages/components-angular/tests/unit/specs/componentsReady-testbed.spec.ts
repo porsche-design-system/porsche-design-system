@@ -4,6 +4,7 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { componentsReady } from '@porsche-design-system/components-angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
+import { afterEach, beforeAll, beforeEach, expect, it } from 'vitest';
 
 if (!HTMLElement.prototype.attachInternals) {
   Object.defineProperty(HTMLElement.prototype, 'attachInternals', {
@@ -43,12 +44,16 @@ beforeAll(() => {
   (window as any).PDS_SKIP_FETCH = true;
 });
 
-beforeEach(waitForAsync(() => {
-  return TestBed.configureTestingModule({
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
     imports: [CommonModule],
     declarations: [EmptyComponent, SampleComponent],
   }).compileComponents();
-}));
+});
+
+afterEach(() => {
+  TestBed.resetTestingModule();
+});
 
 it('should return 0 when nothing is rendered', async () => {
   TestBed.createComponent(EmptyComponent);

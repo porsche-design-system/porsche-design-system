@@ -1,0 +1,19 @@
+<div class="root">
+  <div class="label-wrapper">
+    <label class="label" id="label" for="input-week"> Some label</label>
+  </div>
+  <div class="wrapper">
+    <slot name="start"> </slot>
+    <input
+      aria-describedby="description message"
+      id="input-week"
+      name="value"
+      type="week"
+      step="1"
+    />
+    <p-button-pure class="button hydrated"> Open date picker</p-button-pure>
+    <slot name="end"> </slot>
+  </div>
+  <span id="message" class="message" role="alert"> </span>
+  <span id="loading" class="loading" role="status"> </span>
+</div>

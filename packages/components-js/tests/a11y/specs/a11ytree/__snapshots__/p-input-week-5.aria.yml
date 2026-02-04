@@ -1,0 +1,6 @@
+- text: Readonly Some description
+- textbox "Readonly": /\d+-W26/
+- button "Open date picker" [disabled]
+- status
+- alert
+- status

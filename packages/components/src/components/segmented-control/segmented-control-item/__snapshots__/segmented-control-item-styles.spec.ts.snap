@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false, compact: false and theme: dark 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -57,7 +57,7 @@ span {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -114,7 +114,7 @@ span {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true, compact: false and theme: dark 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -175,7 +175,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -236,7 +236,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, hasSlottedContent: true, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true, compact: true and theme: dark 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -298,55 +298,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
-":host {
-  display: block;
-  outline: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  position: relative;
-  display: block;
-  height: 100%;
-  width: 100%;
-  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
-  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
-  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
-  margin: 0;
-  border: 2px solid #010205;
-  border-radius: 4px;
-  background: transparent;
-  color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-span {
-  display: block;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: normal;
-  hyphens: var(--p-hyphens, auto);
-  color: #6B6D70;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: error, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -398,7 +350,107 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
+":host {
+  display: block;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
+  margin: 0;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  background: transparent;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: var(--p-hyphens, auto);
+  color: #6B6D70;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
+":host {
+  display: block;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
+  margin: 0;
+  border: 2px solid #010205;
+  border-radius: 4px;
+  background: transparent;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: var(--p-hyphens, auto);
+  color: #6B6D70;
+}
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true, compact: true and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -451,7 +503,59 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: success, hasSlottedContent: true, compact: false and theme: light 1`] = `
+":host {
+  display: block;
+  outline: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  min-height: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  min-width: calc(max(calc(6px + 2.125ex), var(--p-internal-segmented-control-scaling, 1) * (calc(6px + 2.125ex) + 10px)) + (max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 2px) * 2);
+  padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
+  margin: 0;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  background: transparent;
+  color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+span {
+  display: block;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: normal;
+  hyphens: var(--p-hyphens, auto);
+  color: #6B6D70;
+}
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -499,7 +603,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -551,7 +655,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -599,7 +703,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -651,7 +755,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;
@@ -699,7 +803,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
 ":host {
   display: block;
   outline: 0 !important;

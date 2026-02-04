@@ -15,11 +15,15 @@ import {
   getOptionsJssStyle,
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
+  getSelectedSlotJssStyle,
 } from '../../../styles/select';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
@@ -54,6 +58,7 @@ export const getComponentCss = (
           [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar, theme),
@@ -61,6 +66,8 @@ export const getComponentCss = (
         '& span': getButtonLabelJssStyle,
       },
       '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
+      'slot[name="selected"]': getSelectedSlotJssStyle,
     },
     root: {
       display: 'grid',

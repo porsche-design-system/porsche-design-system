@@ -3,7 +3,13 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
 import { selectStoryOptgroups, selectStorySlottedImages } from '@/app/components/select/select.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { selectExampleForm, selectExampleDynamic, selectExampleRequired } from '@porsche-design-system/shared/examples';
+import {
+  selectExampleForm,
+  selectExampleDynamic,
+  selectExampleRequired,
+  selectExampleAsyncFilter,
+  selectExampleSelectedSlot,
+} from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { Notification } from '@/components/common/Notification';
 
@@ -15,7 +21,15 @@ export const metadata = {
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
 <TableOfContents
-  headings={['Form', 'Basic example without preselection', 'Slotted images', 'Set Value', 'With optgroups']}
+  headings={[
+    'Form',
+    'Basic example without preselection',
+    'Slotted images',
+    'Set Value',
+    'With optgroups',
+    'Custom asynchronous filtering',
+    'Custom option rendering',
+  ]}
 />
 
 ## Form
@@ -40,7 +54,7 @@ smaller forms or simple submissions.
 
 For more details on form integration, refer to the `Form` section in the
 [developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
-example in our [examples repository](https://github.com/porsche-design-system/examples/tree/main/frameworks).
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
 
 <ComponentExample codeSample={selectExampleForm} />
 
@@ -76,3 +90,28 @@ option value.
 ## With optgroups
 
 <ComponentStory story={selectStoryOptgroups} />
+
+---
+
+## Custom asynchronous filtering
+
+The `p-select` component automatically filters options based on user input. However, if you have a large dataset or need
+custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter` slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+<ComponentExample codeSample={selectExampleAsyncFilter} />
+
+## Custom option rendering
+
+By default, `p-select-option` only allows `#text` and `img` nodes. To customize option rendering further, implement a
+custom selection renderer using the `selected` slot. This allows you to render different content in the selected area
+versus the dropdown options, enabling more complex option layouts.
+
+When using the `filter` option, the default behavior filters against all `textContent` within the options. For more
+granular control over filtering, implement custom filtering logic as shown in the
+[previous example](/components/select/examples#custom-asynchronous-filtering).
+
+<ComponentExample codeSample={selectExampleSelectedSlot} />

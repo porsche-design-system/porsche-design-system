@@ -26,13 +26,13 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call updateOptions(), updateSelectOptions() and setFormValue() with correct parameters', () => {
+  it('should call updateOptions(), selectOptionByValue() and setFormValue() with correct parameters', () => {
     const component = initComponent();
-    const updateSelectOptionsSpy = vi.spyOn(selectUtils, 'updateSelectOptions');
+    const updateSelectOptionsSpy = vi.spyOn(selectUtils, 'selectOptionByValue');
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
 
     component.componentWillLoad();
-    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component['selectOptions'], component['value']);
+    expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component.host, component['selectOptions'], component['value']);
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -48,7 +48,7 @@ describe('componentDidLoad', () => {
       .mockReturnValueOnce(slot);
 
     component.componentDidLoad();
-    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot:not([name])');
     expect(slotSpy).toHaveBeenCalledTimes(1);
   });
 });

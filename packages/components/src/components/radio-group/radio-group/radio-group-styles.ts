@@ -9,18 +9,17 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getHiddenTextJssStyle,
-  getThemedColors,
   hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalRadioGroupOptionScaling } from '../radio-group-option/radio-group-option-styles';
@@ -30,7 +29,7 @@ export const cssVarInternalRadioGroupScaling = '--p-internal-radio-group-scaling
 const groupRadioGroupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
   column: {
     flexFlow: 'column nowrap',
-    alignItems: 'stretch',
+    alignItems: 'start',
   },
   row: {
     flexFlow: 'row wrap',
@@ -57,17 +56,6 @@ export const getComponentCss = (
 ): string => {
   const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
 
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
-  const { formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
-
-  const hoverStyles = {
-    borderColor: formStateHoverColor || primaryColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      borderColor: formStateHoverColorDark || primaryColorDark,
-    }),
-  };
   const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
   const columnGap = `max(${spacingStaticSmall}, ${scalingVar} * ${spacingStaticMedium})`;
   const rowGap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
@@ -81,6 +69,7 @@ export const getComponentCss = (
         }),
         [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
@@ -109,22 +98,9 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled,
-      hideLabel,
-      theme,
-      !disabled && {
-        ...hoverMediaQuery({
-          '&:hover~.wrapper': hoverStyles,
-        }),
-        cursor: 'inherit', // the label is not clickable
-      },
-      {
-        '&:is(legend)': {
-          marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-        },
-      }
-    ),
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+      cursor: 'inherit',
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
     // .loading

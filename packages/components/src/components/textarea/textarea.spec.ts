@@ -122,7 +122,7 @@ describe('componentDidRender', () => {
     expect(setValiditySpy).toHaveBeenCalledTimes(1);
     expect(setValiditySpy).toHaveBeenCalledWith(
       component['textAreaElement'].validity,
-      component['textAreaElement'].validationMessage,
+      component['textAreaElement'].validationMessage || ' ',
       component['textAreaElement']
     );
   });

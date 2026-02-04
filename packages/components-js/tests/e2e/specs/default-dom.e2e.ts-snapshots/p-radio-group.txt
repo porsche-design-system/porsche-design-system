@@ -1,5 +1,9 @@
-<fieldset class="root" role="radiogroup" aria-describedby="description message">
-  <legend class="label" id="label"></legend>
+<fieldset
+  class="root"
+  role="radiogroup"
+  aria-describedby="description message"
+  aria-labelledby="label"
+>
   <div class="wrapper">
     <slot> </slot>
   </div>

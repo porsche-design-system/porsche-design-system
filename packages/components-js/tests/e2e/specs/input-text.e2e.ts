@@ -3,10 +3,12 @@ import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
   clickElementPosition,
+  getConsoleErrorsAmount,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
+  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -414,6 +416,36 @@ test.describe('form', () => {
       await waitForStencilLifecycle(page);
       expect((await getEventSummary(form, 'submit')).counter).toBe(0);
     });
+  });
+
+  test('should not set validity when disabled and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initInputText(page, {
+      isWithinForm: true,
+      props: {
+        name: 'some-name',
+        required: true,
+        disabled: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
+  });
+
+  test('should not set validity when readonly and throw no errors', async ({ page }) => {
+    initConsoleObserver(page);
+    await initInputText(page, {
+      isWithinForm: true,
+      props: {
+        name: 'some-name',
+        required: true,
+        readOnly: true,
+      },
+    });
+
+    await waitForStencilLifecycle(page);
+    expect(getConsoleErrorsAmount()).toBe(0);
   });
 });
 

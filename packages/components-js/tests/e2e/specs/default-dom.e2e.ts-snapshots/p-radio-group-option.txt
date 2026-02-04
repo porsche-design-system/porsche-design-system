@@ -1,5 +1,4 @@
 <div class="root">
-  <label class="label" id="label" for="radio-group-option"> Some label</label>
   <div class="wrapper">
     <input
       id="radio-group-option"
@@ -7,6 +6,9 @@
       aria-describedby="message"
       tabindex="0"
     />
+  </div>
+  <div class="label-wrapper">
+    <label class="label" id="label" for="radio-group-option"> Some label</label>
   </div>
   <span id="loading" class="loading" role="status"> </span>
 </div>

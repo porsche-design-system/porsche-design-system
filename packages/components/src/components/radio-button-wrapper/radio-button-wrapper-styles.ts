@@ -117,6 +117,7 @@ export const getComponentCss = (
       {
         gridArea: '1/2',
       },
+      null,
       {
         paddingTop: '2px', // compensate vertical alignment
         paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input

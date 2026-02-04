@@ -5,7 +5,6 @@ import {
   Event,
   type EventEmitter,
   forceUpdate,
-  Host,
   h,
   type JSX,
   Listen,
@@ -16,14 +15,18 @@ import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from
 import {
   AllowedTypes,
   attachComponentCss,
+  FORM_STATES,
   hasPropValueChanged,
   observeChildren,
   THEMES,
-  throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
+import { Label } from '../../common/label/label';
+import { descriptionId, labelId } from '../../common/label/label-utils';
+import { StateMessage } from '../../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
@@ -33,6 +36,7 @@ import {
   type SegmentedControlBackgroundColor,
   type SegmentedControlChangeEventDetail,
   type SegmentedControlColumns,
+  type SegmentedControlState,
   type SegmentedControlUpdateEventDetail,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
@@ -42,17 +46,27 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
     undefined,
     ...SEGMENTED_CONTROL_BACKGROUND_COLORS,
   ]),
+  label: AllowedTypes.string,
+  description: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
   form: AllowedTypes.string,
   compact: AllowedTypes.boolean,
+  required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
+  state: AllowedTypes.oneOf<SegmentedControlState>(FORM_STATES),
+  message: AllowedTypes.string,
+  hideLabel: AllowedTypes.breakpoint('boolean'),
 };
 
 /**
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
+ * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  *
  * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
  */
@@ -72,6 +86,12 @@ export class SegmentedControl {
   /** Adapts the segmented-control color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Text content for a user-facing label. */
+  @Prop() public label?: string = '';
+
+  /** Supplementary text providing more context or explanation for the segmented-control. */
+  @Prop() public description?: string = '';
+
   /** Sets the initial value of the segmented-control. */
   @Prop({ mutable: true }) public value?: string | number;
 
@@ -80,6 +100,18 @@ export class SegmentedControl {
 
   /** A boolean value that, if present, renders the segmented-control as a compact version. */
   @Prop() public compact?: boolean = false;
+
+  /** Indicates the validation or overall status of the component. */
+  @Prop() public state?: SegmentedControlState = 'none';
+
+  /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
+  @Prop() public required?: boolean = false;
+
+  /** Dynamic feedback text for validation or status. */
+  @Prop() public message?: string = '';
+
+  /** Controls the visibility of the label. */
+  @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
@@ -130,12 +162,9 @@ export class SegmentedControl {
   }
 
   public connectedCallback(): void {
-    throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
-
     // child property changes to label or icon are detected via prop watchers within child
     // here we take care of dom changes like adding/removing a child or changing its content
     observeChildren(this.host, () => {
-      throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
       forceUpdate(this.host);
     });
   }
@@ -162,6 +191,7 @@ export class SegmentedControl {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    // Called when a parent fieldset is disabled or enabled
     this.disabled = disabled;
   }
 
@@ -175,13 +205,47 @@ export class SegmentedControl {
 
     const { minWidth, maxWidth } = getItemWidths(this.host, this.compact);
 
-    attachComponentCss(this.host, getComponentCss, minWidth, maxWidth, this.columns, this.compact);
-    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.compact, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      minWidth,
+      maxWidth,
+      this.columns,
+      this.disabled,
+      this.hideLabel,
+      this.state,
+      this.theme
+    );
+    syncSegmentedControlItemsProps(
+      this.host,
+      this.value,
+      this.disabled,
+      this.state,
+      this.message,
+      this.compact,
+      this.theme
+    );
 
     return (
-      <Host role="group" inert={this.disabled}>
+      <fieldset
+        inert={this.disabled}
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-labelledby={labelId}
+        aria-describedby={descriptionId}
+        class="root"
+      >
+        <Label
+          host={this.host}
+          tag="div"
+          label={this.label}
+          description={this.description}
+          isRequired={this.required}
+          isDisabled={this.disabled}
+        />
         <slot />
-      </Host>
+        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+      </fieldset>
     );
   }
 
