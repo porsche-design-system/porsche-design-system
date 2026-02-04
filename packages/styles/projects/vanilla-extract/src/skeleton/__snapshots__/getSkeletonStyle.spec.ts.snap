@@ -3,7 +3,7 @@
 exports[`getSkeletonStyle() > should return correct css for opts: animationName 1`] = `
 {
   "animation": "animationName .6s cubic-bezier(.25,.1,.25,1) infinite",
-  "background": "hsl(240, 7.7%, 97.5%) linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%",
+  "background": "light-dark(hsl(240, 7.7%, 97.5%),hsl(240, 2%, 10%)) linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 25%, transparent 50%) 0 0 / 200% 100%",
   "borderRadius": "4px",
   "display": "block",
 }
@@ -12,7 +12,7 @@ exports[`getSkeletonStyle() > should return correct css for opts: animationName 
 exports[`getSkeletonStyle() > should return correct css for opts: animationName 2`] = `
 {
   "animation": "animationName .6s cubic-bezier(.25,.1,.25,1) infinite",
-  "background": "hsl(240, 2%, 10%) linear-gradient(to right, transparent 0%, #1a1b1e 25%, transparent 50%) 0 0 / 200% 100%",
+  "background": "light-dark(hsl(240, 7.7%, 97.5%),hsl(240, 2%, 10%)) linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 25%, transparent 50%) 0 0 / 200% 100%",
   "borderRadius": "4px",
   "display": "block",
 }

@@ -1,32 +1,23 @@
 import styled from '@emotion/styled';
-import {
-  getSkeletonStyle,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
-} from '@porsche-design-system/emotion';
-import { useTheme } from '../../hooks/useTheme.ts';
+import { getSkeletonStyle, proseTextSmStyle, spacingFluidSm, spacingStaticMd } from '@porsche-design-system/emotion';
 
 const EmotionSkeletonWrapper = styled.div(({ theme }) => ({
   display: 'grid',
-  gap: spacingFluidSmall,
-  padding: spacingStaticMedium,
-  ...textSmallStyle,
+  gap: spacingFluidSm,
+  padding: spacingStaticMd,
+  ...proseTextSmStyle,
   color: theme.primary,
 }));
 
-const EmotionSkeletonItem = styled.span<{ $themeMode: 'light' | 'dark' }>(({ $themeMode }) => ({
-  padding: spacingFluidSmall,
-  ...getSkeletonStyle({ theme: $themeMode }),
-}));
+const EmotionSkeletonItem = styled.span({
+  padding: spacingFluidSm,
+  ...getSkeletonStyle(),
+});
 
 export const EmotionSkeleton = () => {
-  const { theme } = useTheme();
-  const resolvedTheme =
-    theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
   return (
     <EmotionSkeletonWrapper>
-      <EmotionSkeletonItem $themeMode={resolvedTheme}>Skeleton</EmotionSkeletonItem>
+      <EmotionSkeletonItem>Skeleton</EmotionSkeletonItem>
     </EmotionSkeletonWrapper>
   );
 };

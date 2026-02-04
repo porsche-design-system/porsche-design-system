@@ -1,17 +1,17 @@
 import {
-  vanillaExtractSpacingFluidLarge,
-  vanillaExtractSpacingFluidMedium,
-  vanillaExtractSpacingFluidSmall,
-  vanillaExtractSpacingFluidXLarge,
-  vanillaExtractSpacingFluidXSmall,
-  vanillaExtractSpacingFluidXXLarge,
+  vanillaExtractSpacingFluid2Xl,
+  vanillaExtractSpacingFluidLg,
+  vanillaExtractSpacingFluidMd,
+  vanillaExtractSpacingFluidSm,
+  vanillaExtractSpacingFluidXl,
+  vanillaExtractSpacingFluidXs,
   vanillaExtractSpacingRow,
-  vanillaExtractSpacingStaticLarge,
-  vanillaExtractSpacingStaticMedium,
-  vanillaExtractSpacingStaticSmall,
-  vanillaExtractSpacingStaticXLarge,
-  vanillaExtractSpacingStaticXSmall,
-  vanillaExtractSpacingStaticXXLarge,
+  vanillaExtractSpacingStatic2Xl,
+  vanillaExtractSpacingStaticLg,
+  vanillaExtractSpacingStaticMd,
+  vanillaExtractSpacingStaticSm,
+  vanillaExtractSpacingStaticXl,
+  vanillaExtractSpacingStaticXs,
   vanillaExtractSpacingWrapper,
 } from './spacing.css';
 
@@ -19,51 +19,51 @@ export const VanillaExtractSpacing = () => {
   return (
     <div className={vanillaExtractSpacingWrapper}>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingFluidXSmall} />
+        <div className={vanillaExtractSpacingFluidXs} />
         Fluid xs
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingFluidSmall} />
+        <div className={vanillaExtractSpacingFluidSm} />
         Fluid sm
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingFluidMedium} />
+        <div className={vanillaExtractSpacingFluidMd} />
         Fluid md
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingFluidLarge} />
+        <div className={vanillaExtractSpacingFluidLg} />
         Fluid lg
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingFluidXLarge} />
+        <div className={vanillaExtractSpacingFluidXl} />
         Fluid xl
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingFluidXXLarge} />
+        <div className={vanillaExtractSpacingFluid2Xl} />
         Fluid 2xl
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingStaticXSmall} />
+        <div className={vanillaExtractSpacingStaticXs} />
         Static xs
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingStaticSmall} />
+        <div className={vanillaExtractSpacingStaticSm} />
         Static sm
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingStaticMedium} />
+        <div className={vanillaExtractSpacingStaticMd} />
         Static md
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingStaticLarge} />
+        <div className={vanillaExtractSpacingStaticLg} />
         Static lg
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingStaticXLarge} />
+        <div className={vanillaExtractSpacingStaticXl} />
         Static xl
       </div>
       <div className={vanillaExtractSpacingRow}>
-        <div className={vanillaExtractSpacingStaticXXLarge} />
+        <div className={vanillaExtractSpacingStatic2Xl} />
         Static 2xl
       </div>
     </div>

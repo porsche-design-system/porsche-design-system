@@ -1,7 +1,6 @@
 import { dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   dismissButtonJssStyle,
   getFocusBaseStyles,
   hostHiddenStyles,
@@ -37,7 +36,6 @@ export const getComponentCss = (
         display: 'block',
         ...addImportantToEachRule({
           height: 'inherit',
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

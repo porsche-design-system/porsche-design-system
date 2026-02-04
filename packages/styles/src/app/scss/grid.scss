@@ -3,7 +3,7 @@
 .scss-grid-template {
   @include pds-grid;
   @include pds-text-small;
-  color: var(--scss-color-primary);
+  color: $color-primary;
   text-align: center;
 }
 

@@ -59,11 +59,6 @@ export const routes: ExtendedRoute[] = [
     ],
   },
   {
-    name: 'Theme Injection',
-    path: 'theme-injection',
-    component: fromPages.ThemeInjectionComponent,
-  },
-  {
     name: 'Optional Properties',
     path: 'optional-properties',
     component: fromPages.OptionalPropertiesComponent,
@@ -653,7 +648,7 @@ export const routes: ExtendedRoute[] = [
     name: 'Toast Example',
     path: 'toast-example',
     component: fromExamples.ToastExampleComponent,
-  }
+  },
 ];
 
 @NgModule({

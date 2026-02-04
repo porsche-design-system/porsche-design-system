@@ -1,38 +1,38 @@
+import { shadowLg } from '@porsche-design-system/emotion';
 import {
-  borderRadiusLarge,
-  dropShadowHighStyle,
-  dropShadowLowStyle,
-  dropShadowMediumStyle,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  proseTextSmStyle,
+  radiusLg,
+  shadowMd,
+  shadowSm,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingStaticMd,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
 export const vanillaExtractShadowWrapper = style({
   display: 'grid',
-  gap: spacingFluidMedium,
-  padding: spacingStaticMedium,
-  ...textSmallStyle,
+  gap: spacingFluidMd,
+  padding: spacingStaticMd,
+  ...proseTextSmStyle,
   color: vars.primary,
 });
 
-export const vanillaExtractShadowLow = style({
-  ...dropShadowLowStyle,
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+export const vanillaExtractShadowSmall = style({
+  boxShadow: shadowSm,
+  borderRadius: radiusLg,
+  padding: spacingFluidSm,
 });
 
 export const vanillaExtractShadowMedium = style({
-  ...dropShadowMediumStyle,
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+  boxShadow: shadowMd,
+  borderRadius: radiusLg,
+  padding: spacingFluidSm,
 });
 
-export const vanillaExtractShadowHigh = style({
-  ...dropShadowHighStyle,
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidSmall,
+export const vanillaExtractShadowLarge = style({
+  boxShadow: shadowLg,
+  borderRadius: radiusLg,
+  padding: spacingFluidSm,
 });

@@ -8,7 +8,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getTransition,
   hostHiddenStyles,
@@ -59,7 +58,6 @@ export const getComponentCss = (
         },
         hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

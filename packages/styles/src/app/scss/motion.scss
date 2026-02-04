@@ -1,15 +1,15 @@
 @use '@porsche-design-system/scss' as pds;
 
 .scss-motion {
+  @include pds.pds-text-small;
   display: grid;
   gap: pds.$spacing-fluid-md;
   padding: pds.$spacing-static-md;
-  @include pds.pds-text-small;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
 
   &__item {
     border-radius: pds.$radius-lg;
-    background: var(--scss-color-surface);
+    background: pds.$color-surface;
     padding: pds.$pds-spacing-fluid-small;
     transition-property: transform;
     will-change: transform;

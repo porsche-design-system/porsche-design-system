@@ -1,7 +1,6 @@
 import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getDisabledBaseStyles,
   getHiddenTextJssStyle,
@@ -57,7 +56,6 @@ export const getComponentCss = (
         display: 'block',
         [`${cssVarInternalTextareaScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),

@@ -1,42 +1,24 @@
 import {
   getSkeletonStyle,
+  proseTextSmStyle,
   skeletonKeyframes,
-  spacingFluidSmall,
-  spacingStaticMedium,
-  textSmallStyle,
+  spacingFluidSm,
+  spacingStaticMd,
 } from '@porsche-design-system/vanilla-extract';
-import { globalStyle, keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 import { vars } from './theme.css.ts';
 
 const skeletonAnimation = keyframes(skeletonKeyframes);
 
 export const vanillaExtractSkeletonWrapper = style({
   display: 'grid',
-  gap: spacingFluidSmall,
-  padding: spacingStaticMedium,
-  ...textSmallStyle,
+  gap: spacingFluidSm,
+  padding: spacingStaticMd,
+  ...proseTextSmStyle,
   color: vars.primary,
 });
 
-export const vanillaExtractSkeletonItem = styleVariants({
-  light: {
-    padding: spacingFluidSmall,
-    ...getSkeletonStyle(skeletonAnimation, { theme: 'light' }),
-  },
-  dark: {
-    padding: spacingFluidSmall,
-    ...getSkeletonStyle(skeletonAnimation, { theme: 'dark' }),
-  },
-  auto: {
-    padding: spacingFluidSmall,
-    ...getSkeletonStyle(skeletonAnimation, { theme: 'light' }),
-  },
-});
-
-globalStyle(`.${vanillaExtractSkeletonItem.auto}`, {
-  '@media': {
-    '(prefers-color-scheme: dark)': {
-      ...getSkeletonStyle(skeletonAnimation, { theme: 'dark' }),
-    },
-  },
+export const vanillaExtractSkeletonItem = style({
+  padding: spacingFluidSm,
+  ...getSkeletonStyle(skeletonAnimation),
 });

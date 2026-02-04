@@ -1,7 +1,6 @@
 import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getTransition,
@@ -85,7 +84,6 @@ export const getComponentCss = (
         verticalAlign: 'top', // TODO: should we set this CSS style at all?
         whiteSpace: 'nowrap', // TODO: should either be exposed by a controlled CSS variable or a component prop or whitelist as supported custom styles
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

@@ -11,7 +11,6 @@ import {
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   cssVariableTransitionDuration,
   getTransition,
   hostHiddenStyles,
@@ -74,7 +73,6 @@ export const getComponentCss = (isOpen: boolean): string => {
           [getMediaQueryMin('xxl')]: {
             insetInline: gridExtendedOffsetXXL,
           },
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

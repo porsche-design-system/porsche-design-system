@@ -4,14 +4,12 @@ import { EventsComponent } from './events.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
-import { ThemeInjectionComponent } from './theme-injection.component';
 import { UtilitiesComponent } from './utilities.component';
 
 export const pages = [
   CoreInitializerPrefixedComponent,
   EventsComponent,
   OptionalPropertiesComponent,
-  ThemeInjectionComponent,
   UtilitiesComponent,
   ...tabsBarNavigationComponents,
   ...tabsBarNavigationBugComponents,
@@ -20,7 +18,6 @@ export const pages = [
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
 export * from './optional-properties.component';
-export * from './theme-injection.component';
 export * from './utilities.component';
 export * from './tabs-bar-navigation';
 export * from './tabs-bar-navigation-bug';

@@ -1,11 +1,5 @@
 import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
+import { addImportantToEachRule, colors, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
@@ -25,7 +19,6 @@ export const getComponentCss = (compact: boolean, layout: TableLayout): string =
           [cssVariableTableHoverColor]: frostedColor,
           [cssVariableTableBorderColor]: contrastLowColor,
           ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...textSmallStyle,
           color: primaryColor,

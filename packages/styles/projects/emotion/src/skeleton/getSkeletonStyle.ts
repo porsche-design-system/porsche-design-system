@@ -1,23 +1,21 @@
-import { borderRadiusSmall } from '../border';
-import { type Theme, themeLightBackgroundSurface, themeDarkBackgroundSurface } from '../theme';
-import { motionDurationLong, motionEasingBase } from '../motion';
+import { radiusSm } from '../border';
+import { colorSurface } from '../color';
+import { durationLg, easeInOut } from '../motion';
 
-type Options = {
-  theme?: Exclude<Theme, 'auto'>;
-};
-
-export const getSkeletonStyle = (opts?: Options) => {
-  const { theme = 'light' } = opts || {};
-
-  const isThemeDark = theme === 'dark';
-  const backgroundColor = isThemeDark ? themeDarkBackgroundSurface : themeLightBackgroundSurface;
-  const highlightColor = isThemeDark ? '#1a1b1e' : '#f7f7f7';
+/**
+ * Applies skeleton loading styles with a background animation.
+ * Uses the CSS `light-dark()` color function for automatic theme adaptation.
+ */
+export const getSkeletonStyle = () => {
+  const highlightColorLight = '#f7f7f7';
+  const highlightColorDark = '#1a1b1e';
+  const highlightColor = `light-dark(${highlightColorLight}, ${highlightColorDark})`;
 
   return {
     display: 'block',
-    background: `${backgroundColor} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
-    borderRadius: borderRadiusSmall,
-    animation: `skeletonAnimation ${motionDurationLong} ${motionEasingBase} infinite`,
+    background: `${colorSurface} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
+    borderRadius: radiusSm,
+    animation: `skeletonAnimation ${durationLg} ${easeInOut} infinite`,
     '@keyframes skeletonAnimation': {
       from: { backgroundPositionX: '100%' },
       to: { backgroundPositionX: '-100%' },

@@ -1,4 +1,5 @@
 import { getFontLinks } from '@porsche-design-system/components-react/partials';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
@@ -7,6 +8,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 export default defineConfig({
   plugins: [
     react(),
+    tailwindcss(),
     createHtmlPlugin({
       inject: {
         data: {

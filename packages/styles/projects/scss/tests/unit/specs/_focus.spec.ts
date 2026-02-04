@@ -4,12 +4,12 @@ import * as sass from 'sass';
 import { describe, expect, it } from 'vitest';
 
 const borderVariables = fs.readFileSync(path.resolve('dist/_border.scss'), 'utf8');
-const themeVariables = fs.readFileSync(path.resolve('dist/_theme.scss'), 'utf8');
+const themeVariables = fs.readFileSync(path.resolve('dist/_color.scss'), 'utf8');
 const focusMixin = fs
   .readFileSync(path.resolve('src/_focus.scss'), 'utf8')
   .replace(/@use\s+'[^']+';?\n?/g, '')
   .replace(/border\./g, '')
-  .replace(/theme\./g, '')
+  .replace(/color\./g, '')
   .replace(/map\./g, 'map-');
 
 describe('pds-focus()', () => {

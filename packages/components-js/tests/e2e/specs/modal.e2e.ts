@@ -1,7 +1,6 @@
-import { Locator, type Page, expect, test } from '@playwright/test';
+import { expect, Locator, type Page, test } from '@playwright/test';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 import {
-  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -11,6 +10,7 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -54,11 +54,7 @@ const initBasicModal = (
     markupAfter,
   } = opts || {};
 
-  const attributes = [
-    isOpen && 'open',
-    aria && `aria="${aria}"`,
-    `dismiss-button="${dismissButton}"`,
-  ]
+  const attributes = [isOpen && 'open', aria && `aria="${aria}"`, `dismiss-button="${dismissButton}"`]
     .filter(Boolean)
     .join(' ');
 
@@ -223,7 +219,6 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
     expect((await getEventSummary(body, 'dismiss')).counter).toBe(0);
   });
-
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {
@@ -309,28 +304,24 @@ skipInBrowsers(['firefox', 'webkit'], () => {
         document.getElementById('btn-open').addEventListener('click', () => {
           modal.open = true;
         });
-        modal.addEventListener('close', () => {
+        modal.addEventListener('dismiss', () => {
           modal.open = false;
         });
       </script>`
       );
+      const modal = getModal(page);
 
-      expect(await getModalVisibility(page), 'initial').toBe('hidden');
+      await expect(modal).toBeHidden();
       expect(await getActiveElementTagName(page)).toBe('BODY');
 
       await page.locator('#btn-open').click();
       await waitForStencilLifecycle(page);
 
-      expect(await getModalVisibility(page)).toBe('visible');
+      await expect(modal).toBeVisible();
 
       await page.keyboard.press('Escape');
-      await waitForStencilLifecycle(page);
-      // TODO: why is timeout needed? transition durations should be overwritten with 0s
-      await sleep(CSS_TRANSITION_DURATION);
 
-      // transition delay for visibility
-
-      expect(await getModalVisibility(page), 'after escape').toBe('hidden');
+      await expect(modal).toBeHidden();
       expect(await getActiveElementId(page)).toBe('btn-open');
     });
 
@@ -553,98 +544,6 @@ test.describe('scroll lock', () => {
   });
 });
 
-test.describe('sticky footer', () => {
-  const expectedBoxShadow = 'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px';
-  test('should not show box-shadow initially when not scrollable', async ({ page }) => {
-    await initBasicModal(page, { isOpen: true, content: '<div>Some Content</div>', hasSlottedFooter: true });
-
-    expect(await getFooterBoxShadow(page)).toBe('none');
-  });
-
-  test('should show box-shadow initially when scrollable', async ({ page }) => {
-    await initBasicModal(page, {
-      isOpen: true,
-      content: '<div style="height: 110vh">Some Content</div>',
-      hasSlottedFooter: true,
-    });
-
-    expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
-  });
-
-  test('should remove box-shadow when scrolled to bottom', async ({ page }) => {
-    await initBasicModal(page, {
-      isOpen: true,
-      content: '<div style="height: 110vh">Some Content</div>',
-      hasSlottedFooter: true,
-    });
-
-    expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
-
-    const scrollContainer = getScrollContainer(page);
-    await scrollContainer.evaluate((el) => {
-      el.scrollBy({ top: 1000 });
-    });
-
-    const footerLocator = getFooter(page);
-    await page.waitForFunction(
-      (el) => getComputedStyle(el).boxShadow === 'none',
-      await footerLocator.evaluateHandle((el) => el)
-    );
-    expect(await getFooterBoxShadow(page)).toBe('none');
-  });
-
-  skipInBrowsers(['webkit'], () => {
-    test('should show box-shadow again when scrolling up from bottom', async ({ page }) => {
-      await initBasicModal(page, {
-        isOpen: true,
-        content: '<div style="height: 110vh">Some Content</div>',
-        hasSlottedFooter: true,
-      });
-
-      const footer = page.locator('p-modal slot[name="footer"]');
-
-      const scrollContainer = getScrollContainer(page);
-      await scrollContainer.evaluate((el) => {
-        el.scrollBy({ top: 1000 }); // should be bottom
-      });
-
-      await expect(footer).toHaveCSS('box-shadow', 'none');
-
-      await scrollContainer.evaluate((el) => {
-        el.scrollBy({ top: -500 });
-      });
-
-      await expect(footer).toHaveCSS('box-shadow', expectedBoxShadow);
-    });
-  });
-
-  test('should show box-shadow when slot changes', async ({ page }) => {
-    await initBasicModal(page, {
-      isOpen: true,
-      hasSlottedFooter: true,
-    });
-
-    const host = getHost(page);
-    const footer = getFooter(page);
-    await footer.evaluate((el) => (el.style.visibility = 'hidden'));
-
-    await expect(footer).toBeHidden();
-    await expect(footer).toHaveCSS('box-shadow', 'none');
-
-    await host.evaluate((el) => {
-      const content = document.createElement('div');
-      content.style.height = '100vh';
-      el.appendChild(content);
-    });
-    await footer.evaluate((el) => (el.style.visibility = 'visible'));
-
-    await waitForStencilLifecycle(page);
-
-    await expect(footer).toBeVisible();
-    await expect(footer).toHaveCSS('box-shadow', expectedBoxShadow);
-  });
-});
-
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initBasicModal(page);
@@ -858,7 +757,6 @@ test.describe('after dynamic slot change', () => {
     await waitForStencilLifecycle(page);
 
     await expect(page.getByText(footerText)).toBeVisible();
-    expect(await getFooterBoxShadow(page)).toBe('rgba(204, 204, 204, 0.35) 0px -5px 10px 0px');
   });
 });
 

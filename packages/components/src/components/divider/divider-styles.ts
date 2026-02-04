@@ -1,4 +1,4 @@
-import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colors, hostHiddenStyles } from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { DividerColor, DividerDirection } from './divider-utils';
@@ -17,7 +17,6 @@ export const getComponentCss = (color: DividerColor, orientation: BreakpointCust
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

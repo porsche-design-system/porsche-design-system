@@ -1,7 +1,8 @@
+export * from './blur';
 export * from './border';
+export * from './color';
 export * from './focus';
 export * from './font';
-export * from './frostedGlass';
 export * from './gradient';
 export * from './grid';
 export * from './mediaQuery';
@@ -9,5 +10,4 @@ export * from './motion';
 export * from './shadow';
 export * from './skeleton';
 export * from './spacing';
-export * from './theme';
 export * from './typography';

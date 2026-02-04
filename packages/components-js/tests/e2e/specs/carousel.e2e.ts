@@ -3,7 +3,6 @@ import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
-import { waitFor } from '@testing-library/dom';
 import {
   addEventListener,
   getActiveElementId,
@@ -20,7 +19,6 @@ import {
   setProperty,
   skipInBrowsers,
   waitForComponentsReady,
-  waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -34,6 +32,8 @@ type InitOptions = {
   focusOnCenterSlide?: boolean;
   skipLinkTarget?: string;
   dir?: 'ltr' | 'rtl';
+  trimSpace?: boolean;
+  pagination?: boolean;
 };
 
 const initCarousel = (page: Page, opts?: InitOptions) => {
@@ -47,6 +47,8 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     focusOnCenterSlide = false,
     skipLinkTarget,
     dir = 'ltr',
+    trimSpace = true,
+    pagination = true,
   } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
@@ -61,11 +63,13 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const attrs = [
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
-    rewind ? '' : 'rewind="false"',
+    rewind ? 'rewind="true"' : '',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
     focusOnCenterSlide ? `focus-on-center-slide="${focusOnCenterSlide}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
     dir ? `dir="${dir}"` : '',
+    trimSpace ? `trim-space="true"` : '',
+    pagination ? `pagination="${pagination}"` : '',
   ].join(' ');
 
   const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>

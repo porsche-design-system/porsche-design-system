@@ -11,7 +11,6 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -63,7 +62,6 @@ export const getComponentCss = (
         display: 'block',
         position: 'relative', // needed for ::slotted(a) to overlay correctly
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

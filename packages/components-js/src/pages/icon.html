@@ -11,11 +11,11 @@
   }
 </style>
 
-<div class="playground light" title="should render with default properties">
+<div class="playground" title="should render with default properties">
   <p-icon></p-icon>
 </div>
 
-<div class="playground light" title="should render in different sizes and be in sync with text sizes">
+<div class="playground" title="should render in different sizes and be in sync with text sizes">
   <div style="display: flex">
     <p-icon size="xx-small"></p-icon>
     <p-text size="xx-small">XX Small</p-text>
@@ -43,7 +43,7 @@
   <p-icon size="inherit" style="width: 60px; height: 60px"></p-icon>
 </div>
 
-<div class="playground light" title="should render with different colors">
+<div class="playground" title="should render with different colors">
   <p-icon color="primary"></p-icon>
   <p-icon color="contrast-low"></p-icon>
   <p-icon color="contrast-medium"></p-icon>
@@ -55,7 +55,7 @@
   <p-icon color="inherit" style="color: deeppink"></p-icon>
 </div>
 
-<div class="playground light" title="should render with custom icon">
+<div class="playground" title="should render with custom icon">
   <p-icon
     source="http://localhost:3002/icon-custom-kaixin.svg"
     aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"
@@ -63,7 +63,7 @@
   ></p-icon>
 </div>
 
-<div class="playground light overview" title="should render all available icons and apply coloring programmatically">
+<div class="playground overview" title="should render all available icons and apply coloring programmatically">
   <script>
     const markup = ICON_NAMES.map(
       (name) => `<span><p-icon name="${name}" size="inherit" color="inherit" aria="{ 'aria-label': '${name}' }"></p-icon></span>`

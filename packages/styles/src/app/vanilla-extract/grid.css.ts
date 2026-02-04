@@ -1,5 +1,4 @@
 import {
-  borderRadiusLarge,
   gridBasicColumnEnd,
   gridBasicColumnStart,
   gridBasicSpanOneHalf,
@@ -16,16 +15,17 @@ import {
   gridStyle,
   gridWideColumnEnd,
   gridWideColumnStart,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  textSmallStyle,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidMd,
+  spacingFluidSm,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 import { vars } from './theme.css';
 
 export const vanillaExtractGridWrapper = style([
   gridStyle,
-  textSmallStyle,
+  proseTextSmStyle,
   {
     color: vars.primary,
     textAlign: 'center',
@@ -35,7 +35,7 @@ export const vanillaExtractGridWrapper = style([
 export const vanillaExtractSubgrid = style({
   display: 'grid',
   gridTemplateColumns: 'subgrid',
-  rowGap: spacingFluidMedium,
+  rowGap: spacingFluidMd,
 });
 export const vanillaExtractSubgridExtended = style([
   vanillaExtractSubgrid,
@@ -50,8 +50,8 @@ export const vanillaExtractSubgridNarrow = style([
   { gridColumn: `${gridNarrowColumnStart} / ${gridNarrowColumnEnd}` },
 ]);
 
-export const vanillaExtractPaddingSmall = style({ padding: spacingFluidSmall });
-export const vanillaExtractBorderRadiusLargeStyle = style({ borderRadius: borderRadiusLarge });
+export const vanillaExtractPaddingSmall = style({ padding: spacingFluidSm });
+export const vanillaExtractRadiusLgStyle = style({ borderRadius: radiusLg });
 
 // Main columns
 export const vanillaExtractFull = style({
@@ -77,7 +77,7 @@ export const vanillaExtractNarrow = style({
 
 // Extended subgrid
 export const vanillaExtractExtendedHalfStart = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridExtendedColumnStart} / ${gridExtendedSpanOneHalf}`,
@@ -85,7 +85,7 @@ export const vanillaExtractExtendedHalfStart = style([
   },
 ]);
 export const vanillaExtractExtendedHalfEnd = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridExtendedSpanOneHalf} / ${gridExtendedColumnEnd}`,
@@ -95,7 +95,7 @@ export const vanillaExtractExtendedHalfEnd = style([
 
 // Basic subgrid
 export const vanillaExtractBasicHalfStart = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanOneHalf}`,
@@ -103,7 +103,7 @@ export const vanillaExtractBasicHalfStart = style([
   },
 ]);
 export const vanillaExtractBasicHalfEnd = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicSpanOneHalf} / ${gridBasicColumnEnd}`,
@@ -111,7 +111,7 @@ export const vanillaExtractBasicHalfEnd = style([
   },
 ]);
 export const vanillaExtractBasicThirdStart = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanOneThird}`,
@@ -119,7 +119,7 @@ export const vanillaExtractBasicThirdStart = style([
   },
 ]);
 export const vanillaExtractBasicThirdFollow = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicSpanOneThird}`,
@@ -127,7 +127,7 @@ export const vanillaExtractBasicThirdFollow = style([
   },
 ]);
 export const vanillaExtractBasicThirdEnd = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicSpanOneThird} / ${gridBasicColumnEnd}`,
@@ -135,7 +135,7 @@ export const vanillaExtractBasicThirdEnd = style([
   },
 ]);
 export const vanillaExtractBasicTwoThirdsStart = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanTwoThirds}`,
@@ -143,7 +143,7 @@ export const vanillaExtractBasicTwoThirdsStart = style([
   },
 ]);
 export const vanillaExtractBasicTwoThirdsEnd = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridBasicSpanTwoThirds} / ${gridBasicColumnEnd}`,
@@ -153,7 +153,7 @@ export const vanillaExtractBasicTwoThirdsEnd = style([
 
 // Narrow subgrid
 export const vanillaExtractNarrowHalfStart = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridNarrowColumnStart} / ${gridNarrowSpanOneHalf}`,
@@ -161,7 +161,7 @@ export const vanillaExtractNarrowHalfStart = style([
   },
 ]);
 export const vanillaExtractNarrowHalfEnd = style([
-  vanillaExtractBorderRadiusLargeStyle,
+  vanillaExtractRadiusLgStyle,
   vanillaExtractPaddingSmall,
   {
     gridColumn: `${gridNarrowSpanOneHalf} / ${gridNarrowColumnEnd}`,

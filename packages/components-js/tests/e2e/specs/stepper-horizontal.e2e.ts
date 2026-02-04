@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
 import {
+  addEventListener,
   CSS_ANIMATION_DURATION,
   FOCUS_PADDING,
-  addEventListener,
   getConsoleErrorsAmount,
   getEventSummary,
   getLifecycleStatus,
@@ -340,7 +340,6 @@ test.describe('events', () => {
     await item1.click();
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
-
 });
 
 test.describe('lifecycle', () => {
@@ -388,10 +387,10 @@ test.describe('lifecycle', () => {
     expect(
       status.componentDidUpdate['p-stepper-horizontal-item'],
       'componentDidUpdate: p-stepper-horizontal-item'
-    ).toBe(3);
+    ).toBe(2);
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 });

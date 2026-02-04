@@ -1,11 +1,8 @@
 import {
-  borderRadiusLarge,
-  gradientToBottomStyle,
-  gradientToLeftStyle,
-  gradientToRightStyle,
-  gradientToTopStyle,
-  spacingFluidMedium,
-  textSmallStyle,
+  gradientStopsFadeDark,
+  proseTextSmStyle,
+  radiusLg,
+  spacingFluidMd,
 } from '@porsche-design-system/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 
@@ -13,39 +10,39 @@ export const vanillaExtractGradientWrapper = style({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
-  gap: spacingFluidMedium,
-  padding: spacingFluidMedium,
+  gap: spacingFluidMd,
+  padding: spacingFluidMd,
   background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
 });
 
 export const vanillaExtractGradientItemTop = style({
-  ...gradientToTopStyle,
-  ...textSmallStyle,
+  backgroundImage: `linear-gradient(to top, ${gradientStopsFadeDark})`,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
 });
 
 export const vanillaExtractGradientItemBottom = style({
-  ...gradientToBottomStyle,
-  ...textSmallStyle,
+  backgroundImage: `linear-gradient(to bottom, ${gradientStopsFadeDark})`,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
 });
 
 export const vanillaExtractGradientItemLeft = style({
-  ...gradientToLeftStyle,
-  ...textSmallStyle,
+  backgroundImage: `linear-gradient(to left, ${gradientStopsFadeDark})`,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
 });
 
 export const vanillaExtractGradientItemRight = style({
-  ...gradientToRightStyle,
-  ...textSmallStyle,
+  backgroundImage: `linear-gradient(to right, ${gradientStopsFadeDark})`,
+  ...proseTextSmStyle,
   color: 'white',
-  borderRadius: borderRadiusLarge,
-  padding: spacingFluidMedium,
+  borderRadius: radiusLg,
+  padding: spacingFluidMd,
 });

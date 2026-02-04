@@ -32,7 +32,7 @@ $pds-focus-border-radius-map: (
     }
   }
   &:focus {
-    outline: border.$pds-border-width-base solid color.$color-focus;
+    outline: border.$pds-border-width-base solid color.$color-focus-light;
     @if map.has-key($pds-focus-offset-map, $offset) {
       outline-offset: map.get($pds-focus-offset-map, $offset);
     } @else {

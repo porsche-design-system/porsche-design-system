@@ -1,11 +1,12 @@
 @use '@porsche-design-system/scss' as pds;
 
 .scss-spacing {
+  @include pds.prose-text-sm;
   display: grid;
   gap: pds.$spacing-fluid-md;
-  @include pds.prose-text-sm;
-  color: var(--scss-color-primary);
+  color: pds.$color-primary;
   padding: pds.$spacing-static-md;
+
   &__item {
     display: flex;
     align-items: center;
@@ -27,7 +28,7 @@
     &--static-xl { width: pds.$spacing-static-xl; height: pds.$spacing-static-xl; }
     &--static-2xl { width: pds.$spacing-static-2xl; height: pds.$spacing-static-2xl; }
 
-    &--bg-info { background-color: var(--scss-color-info); }
-    &--bg-error { background-color: var(--scss-color-error); }
+    &--bg-info { background-color: pds.$color-info; }
+    &--bg-error { background-color: pds.$color-error; }
   }
 }

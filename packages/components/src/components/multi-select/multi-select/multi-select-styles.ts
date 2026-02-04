@@ -1,7 +1,6 @@
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -49,7 +48,6 @@ export const getComponentCss = (
           [`${cssVarInternalMultiSelectScaling}`]: isCompact ? 0.64285714 : 1,
           [`${cssVarInternalMultiSelectOptionScaling}`]: isCompact ? 0.64285714 : 1,
           [`${cssVarInternalOptgroupScaling}`]: isCompact ? 0.64285714 : 1,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...(isDisabled && getDisabledBaseStyles()),
         }),

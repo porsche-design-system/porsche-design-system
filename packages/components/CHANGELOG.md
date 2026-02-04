@@ -80,6 +80,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `@mixin prose-text-sm()`, `@mixin prose-text-xs()` `@mixin prose-text-2xs()`, `$font-porsche-next`,
     `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
     `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
+- Emotion, Vanilla-Extract:
+  - Breakpoint: `breakpointXs`, `breakpointSm`, `breakpointMd`, `breakpointLg`, `breakpointXl` and `breakpoint2xl`
+  - Blur: `blurFrosted`
+  - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
+    `radiusFull`
+  - Color: `colorCanvas`, `colorCanvasLight`, `colorCanvasDark`, `colorSurface`, `colorSurfaceLight`,
+    `colorSurfaceDark`, `colorFrosted`, `colorFrostedLight`, `colorFrostedDark`, `colorFrostedSoft`,
+    `colorFrostedSoftLight`, `colorFrostedSoftDark`, `colorBackdrop`, `colorBackdropLight`, `colorBackdropDark`,
+    `colorPrimary`, `colorPrimaryLight`, `colorPrimaryDark`, `colorContrastHigher`, `colorContrastHigherLight`,
+    `colorContrastHigherDark`, `colorContrastHigh`, `colorContrastHighLight`, `colorContrastHighDark`,
+    `colorContrastMedium`, `colorContrastMediumLight`, `colorContrastMediumDark`, `colorContrastLow`,
+    `colorContrastLowLight`, `colorContrastLowDark`, `colorContrastLower`, `colorContrastLowerLight`,
+    `colorContrastLowerDark`, `colorInfo`, `colorInfoLight`, `colorInfoDark`, `colorInfoMedium`, `colorInfoMediumLight`,
+    `colorInfoMediumDark`, `colorInfoLow`, `colorInfoLowLight`, `colorInfoLowDark`, `colorInfoFrosted`,
+    `colorInfoFrostedLight`, `colorInfoFrostedDark`, `colorInfoFrostedSoft`, `colorInfoFrostedSoftLight`,
+    `colorInfoFrostedSoftDark`, `colorSuccess`, `colorSuccessLight`, `colorSuccessDark`, `colorSuccessMedium`,
+    `colorSuccessMediumLight`, `colorSuccessMediumDark`, `colorSuccessLow`, `colorSuccessLowLight`,
+    `colorSuccessLowDark`, `colorSuccessFrosted`, `colorSuccessFrostedLight`, `colorSuccessFrostedDark`,
+    `colorSuccessFrostedSoft`, `colorSuccessFrostedSoftLight`, `colorSuccessFrostedSoftDark`, `colorWarning`,
+    `colorWarningLight`, `colorWarningDark`, `colorWarningMedium`, `colorWarningMediumLight`, `colorWarningMediumDark`,
+    `colorWarningLow`, `colorWarningLowLight`, `colorWarningLowDark`, `colorWarningFrosted`, `colorWarningFrostedLight`,
+    `colorWarningFrostedDark`, `colorWarningFrostedSoft`, `colorWarningFrostedSoftLight`, `colorWarningFrostedSoftDark`,
+    `colorError`, `colorErrorLight`, `colorErrorDark`, `colorErrorMedium`, `colorErrorMediumLight`,
+    `colorErrorMediumDark`, `colorErrorLow`, `colorErrorLowLight`, `colorErrorLowDark`, `colorErrorFrosted`,
+    `colorErrorFrostedLight`, `colorErrorFrostedDark`, `colorErrorFrostedSoft`, `colorErrorFrostedSoftLight`,
+    `colorErrorFrostedSoftDark`, `colorFocus`, `colorFocusLight` and `colorFocusDark`
+  - Focus: `getFocusVisibleStyle()`
+  - Gradient: `gradientStopsFadeDark`,
+  - Media Query: `xs`, `sm`, `md`, `lg`, `xl` and `2xl` as breakpoint values for `mediaQueryMin()`, `mediaQueryMax()`
+    and `mediaQueryMinMax()`
+  - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
+  - Shadow: `shadowSm`, `shadowMd` and `shadowLg`
+  - Spacing: `spacingFluidXs`, `spacingFluidSm`, `spacingFluidMd`, `spacingFluidLg`, `spacingFluidXl`,
+    `spacingFluid2xl`, `spacingStaticXs`, `spacingStaticSm`, `spacingStaticMd`, `spacingStaticLg`, `spacingStaticXl` and
+    `spacingStatic2xl`
+  - Typography: `proseDisplayLg()`, `proseDisplayMd()`, `proseDisplaySm()`, `proseHeading2Xl()`, `proseHeadingXl()`,
+    `proseHeadingLg()`, `proseHeadingMd()`, `proseHeadingSm()`, `proseTextXl()`, `proseTextLg()`, `proseTextMd()`,
+    `proseTextSm()`, `proseTextXs()`, `proseText2Xs()`, `fontPorscheNext`, `leadingNormal`, `typescale2Xs`,
+    `typescaleXs`, `typescaleSm`, `typescaleMd`, `typescaleLg`, `typescaleXl`, `typescale2xl`, `fontWeightNormal` and
+    `fontWeightSemibold`
 
 ### Changed
 
@@ -112,6 +152,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed
 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
+
+```
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
+```
+
+- Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
+- Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
+  `light-dark()` CSS color function)
+
+```
+const skeletonAnimation = keyframes(skeletonKeyframes);
+- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
++ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
+```
 
 ## [4.0.0-alpha.0] - 2025-12-12
 

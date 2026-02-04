@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getSkeletonStyle() > should return correct css for opts: { theme: 'dark' } 1`] = `
+exports[`getSkeletonStyle() > should return correct css 1`] = `
 {
   "@keyframes skeletonAnimation": {
     "from": {
@@ -11,24 +11,7 @@ exports[`getSkeletonStyle() > should return correct css for opts: { theme: 'dark
     },
   },
   "animation": "skeletonAnimation .6s cubic-bezier(.25,.1,.25,1) infinite",
-  "background": "hsl(240, 2%, 10%) linear-gradient(to right, transparent 0%, #1a1b1e 25%, transparent 50%) 0 0 / 200% 100%",
-  "borderRadius": "4px",
-  "display": "block",
-}
-`;
-
-exports[`getSkeletonStyle() > should return correct css for opts: { theme: 'light' } 1`] = `
-{
-  "@keyframes skeletonAnimation": {
-    "from": {
-      "backgroundPositionX": "100%",
-    },
-    "to": {
-      "backgroundPositionX": "-100%",
-    },
-  },
-  "animation": "skeletonAnimation .6s cubic-bezier(.25,.1,.25,1) infinite",
-  "background": "hsl(240, 7.7%, 97.5%) linear-gradient(to right, transparent 0%, #f7f7f7 25%, transparent 50%) 0 0 / 200% 100%",
+  "background": "light-dark(hsl(240, 7.7%, 97.5%),hsl(240, 2%, 10%)) linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 25%, transparent 50%) 0 0 / 200% 100%",
   "borderRadius": "4px",
   "display": "block",
 }

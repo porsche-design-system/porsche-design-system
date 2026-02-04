@@ -1,4 +1,3 @@
-import { cssVariableDefinitionDark, cssVariableDefinitionLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
   breakpoint2Xl,
@@ -7,6 +6,72 @@ import {
   breakpointSm,
   breakpointXl,
   breakpointXs,
+  colorBackdrop,
+  colorBackdropLight,
+  colorCanvas,
+  colorCanvasLight,
+  colorContrastHigh,
+  colorContrastHigher,
+  colorContrastHigherLight,
+  colorContrastHighLight,
+  colorContrastLow,
+  colorContrastLower,
+  colorContrastLowerLight,
+  colorContrastLowLight,
+  colorContrastMedium,
+  colorContrastMediumLight,
+  colorDisabled,
+  colorDisabledLight,
+  colorError,
+  colorErrorFrosted,
+  colorErrorFrostedLight,
+  colorErrorFrostedSoft,
+  colorErrorFrostedSoftLight,
+  colorErrorLight,
+  colorErrorLow,
+  colorErrorLowLight,
+  colorErrorMedium,
+  colorErrorMediumLight,
+  colorFocus,
+  colorFocusLight,
+  colorFrosted,
+  colorFrostedLight,
+  colorFrostedSoft,
+  colorFrostedSoftLight,
+  colorInfo,
+  colorInfoFrosted,
+  colorInfoFrostedLight,
+  colorInfoFrostedSoft,
+  colorInfoFrostedSoftLight,
+  colorInfoLight,
+  colorInfoLow,
+  colorInfoLowLight,
+  colorInfoMedium,
+  colorInfoMediumLight,
+  colorPrimary,
+  colorPrimaryLight,
+  colorSuccess,
+  colorSuccessFrosted,
+  colorSuccessFrostedLight,
+  colorSuccessFrostedSoft,
+  colorSuccessFrostedSoftLight,
+  colorSuccessLight,
+  colorSuccessLow,
+  colorSuccessLowLight,
+  colorSuccessMedium,
+  colorSuccessMediumLight,
+  colorSurface,
+  colorSurfaceLight,
+  colorWarning,
+  colorWarningFrosted,
+  colorWarningFrostedLight,
+  colorWarningFrostedSoftDark,
+  colorWarningFrostedSoftLight,
+  colorWarningLight,
+  colorWarningLow,
+  colorWarningLowLight,
+  colorWarningMedium,
+  colorWarningMediumLight,
   durationLg,
   durationMd,
   durationSm,
@@ -54,21 +119,52 @@ import {
 } from '@porsche-design-system/tokens';
 
 export const getTailwindcssTheme = () => {
-  return `@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
+  return `@theme {
   /* Reset */
-  --color-*: initial;
-  --text-*: initial;
   --breakpoint-*: initial;
+  --color-*: initial;
   --radius-*: initial;
   --shadow-*: initial;
+  --text-*: initial;
 
   /* Color */
   --color-black: #000;
   --color-white: #fff;
 
-  ${cssVariableDefinitionLight}
+  --color-focus: ${colorFocus};
+  --color-disabled: ${colorDisabled};
+  --color-canvas: ${colorCanvas};
+  --color-surface: ${colorSurface};
+  --color-frosted: ${colorFrosted};
+  --color-frosted-soft: ${colorFrostedSoft};
+  --color-backdrop: ${colorBackdrop};
+  --color-contrast-lower: ${colorContrastLower};
+  --color-contrast-low: ${colorContrastLow};
+  --color-contrast-medium: ${colorContrastMedium};
+  --color-contrast-high: ${colorContrastHigh};
+  --color-contrast-higher: ${colorContrastHigher};
+  --color-primary: ${colorPrimary};
+  --color-success: ${colorSuccess};
+  --color-success-low: ${colorSuccessLow};
+  --color-success-medium: ${colorSuccessMedium};
+  --color-success-frosted: ${colorSuccessFrosted};
+  --color-success-frosted-soft: ${colorSuccessFrostedSoft};
+  --color-warning: ${colorWarning};
+  --color-warning-low: ${colorWarningLow};
+  --color-warning-medium: ${colorWarningMedium};
+  --color-warning-frosted: ${colorWarningFrosted};
+  --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+  --color-error: ${colorError};
+  --color-error-low: ${colorErrorLow};
+  --color-error-medium: ${colorErrorMedium};
+  --color-error-frosted: ${colorErrorFrosted};
+  --color-error-frosted-soft: ${colorErrorFrostedSoft};
+  --color-info: ${colorInfo};
+  --color-info-low: ${colorInfoLow};
+  --color-info-medium: ${colorInfoMedium};
+  --color-info-frosted: ${colorInfoFrosted};
+  --color-info-frosted-soft: ${colorInfoFrostedSoft};
+  --color-skeleton: light-dark(#f7f7f7,#1a1b1e);
 
   /* Typography */
   --font-porsche-next: ${fontPorscheNext};
@@ -179,17 +275,57 @@ export const getTailwindcssTheme = () => {
 }
 
 @layer theme {
+  /* deprecated, use .scheme-light instead */
   .light {
-    ${cssVariableDefinitionLight}
+    color-scheme: light;
   }
 
+  /* deprecated, use .scheme-dark instead */
   .dark {
-    ${cssVariableDefinitionDark}
+    color-scheme: dark;
   }
 
+  /* deprecated, use .scheme-light-dark instead */
   .auto {
-    @media (prefers-color-scheme: dark) {
-      ${cssVariableDefinitionDark}
+    color-scheme: light dark;
+  }
+
+  @supports not (color: light-dark(white, black)) {
+    :root {
+      --color-focus: ${colorFocusLight};
+      --color-disabled: ${colorDisabledLight};
+      --color-canvas: ${colorCanvasLight};
+      --color-surface: ${colorSurfaceLight};
+      --color-frosted: ${colorFrostedLight};
+      --color-frosted-soft: ${colorFrostedSoftLight};
+      --color-backdrop: ${colorBackdropLight};
+      --color-contrast-lower: ${colorContrastLowerLight};
+      --color-contrast-low: ${colorContrastLowLight};
+      --color-contrast-medium: ${colorContrastMediumLight};
+      --color-contrast-high: ${colorContrastHighLight};
+      --color-contrast-higher: ${colorContrastHigherLight};
+      --color-primary: ${colorPrimaryLight};
+      --color-success: ${colorSuccessLight};
+      --color-success-low: ${colorSuccessLowLight};
+      --color-success-medium: ${colorSuccessMediumLight};
+      --color-success-frosted: ${colorSuccessFrostedLight};
+      --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
+      --color-warning: ${colorWarningLight};
+      --color-warning-low: ${colorWarningLowLight};
+      --color-warning-medium: ${colorWarningMediumLight};
+      --color-warning-frosted: ${colorWarningFrostedLight};
+      --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
+      --color-error: ${colorErrorLight};
+      --color-error-low: ${colorErrorLowLight};
+      --color-error-medium: ${colorErrorMediumLight};
+      --color-error-frosted: ${colorErrorFrostedLight};
+      --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
+      --color-info: ${colorInfoLight};
+      --color-info-low: ${colorInfoLowLight};
+      --color-info-medium: ${colorInfoMediumLight};
+      --color-info-frosted: ${colorInfoFrostedLight};
+      --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
+      --color-skeleton: #f7f7f7;
     }
   }
 }

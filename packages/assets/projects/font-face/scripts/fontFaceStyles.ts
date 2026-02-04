@@ -1,6 +1,6 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { getMinifiedCss } from '@porsche-design-system/shared';
-import { fontWeightBold, fontWeightRegular, fontWeightSemiBold } from '@porsche-design-system/tokens';
+import { fontWeightBold, fontWeightNormal, fontWeightSemibold } from '@porsche-design-system/tokens';
 import { camelCase } from 'change-case';
 import type { Styles } from 'jss';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
@@ -21,8 +21,8 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
 // - U+1EA0-1EF1 (part of U+1E00-1EFF "Latin Extended Additional")
 
 const fontWeight = {
-  regular: fontWeightRegular,
-  semiBold: fontWeightSemiBold,
+  regular: fontWeightNormal,
+  semiBold: fontWeightSemibold,
   bold: fontWeightBold,
 };
 

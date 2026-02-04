@@ -10,33 +10,6 @@
     lodash "^4.17.21"
     typical "^7.1.1"
 
-"@achrinza/event-pubsub@5.0.11":
-  version "5.0.11"
-  resolved "https://registry.yarnpkg.com/@achrinza/event-pubsub/-/event-pubsub-5.0.11.tgz#8aadeb5b4d8d8b7ac7631269793bdb12fc38f78d"
-  integrity sha512-H/bswjSh/wMIgtizHIdeQQuquzBsia0uqf0IaadMKhS7jv5wX0iMqkVbYDZhUhbjJqXnfX4jjzgclt24aizdHA==
-  dependencies:
-    "@achrinza/strong-type" "0.1.14"
-
-"@achrinza/node-ipc@^10.1.11":
-  version "10.1.11"
-  resolved "https://registry.yarnpkg.com/@achrinza/node-ipc/-/node-ipc-10.1.11.tgz#22263c89aa7a5f3ae42d072b0b1e28b6e5e84800"
-  integrity sha512-3z2yix2G8KP8gW6dWgRPj61Mu2nleqbWqTuS5vluZiXe2VDFkimqaeb4fnuS6JV2nhJz4gX+PR5PQjRKsuXm8w==
-  dependencies:
-    "@achrinza/event-pubsub" "5.0.11"
-    "@achrinza/strong-type" "1.1.20"
-    "@node-ipc/js-queue" "2.0.3"
-    js-message "1.0.7"
-
-"@achrinza/strong-type@0.1.14":
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/@achrinza/strong-type/-/strong-type-0.1.14.tgz#8d72de8ff2849143093d1acaafdd377299818683"
-  integrity sha512-Se5kMdqRxrjBfpUnVS819OUqW6XUj2ryOHNkZizQ44FGQMfr5X+RXyi4Y8DZn5+lsx2sdnIylpmK6N7TGMpDrw==
-
-"@achrinza/strong-type@1.1.20":
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/@achrinza/strong-type/-/strong-type-1.1.20.tgz#8dc16812aec359e85403209537fa141347ff9fdb"
-  integrity sha512-7+A0aC1C6tt1j69phZocl13RZ4vzz6W6jFhSUty9KNgKyoUH48oeZlSQdj2VONlT+sbdkfO7VJJbWiKBqNwebA==
-
 "@adobe/css-tools@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.0.tgz#728c484f4e10df03d5a3acd0d8adcbbebff8ad63"
@@ -5585,13 +5558,6 @@
   integrity sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==
   dependencies:
     eslint-scope "5.1.1"
-
-"@node-ipc/js-queue@2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@node-ipc/js-queue/-/js-queue-2.0.3.tgz#ac7fe33d766fa53e233ef8fedaf3443a01c5a4cd"
-  integrity sha512-fL1wpr8hhD5gT2dA1qifeVaoDFlQR5es8tFuKqjHX+kdOtdNHnxkVZbtIrR2rxnMFvehkjaZRNV2H/gPXlb0hw==
-  dependencies:
-    easy-stack "1.0.1"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -11911,11 +11877,6 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
-easy-stack@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/easy-stack/-/easy-stack-1.0.1.tgz#8afe4264626988cabb11f3c704ccd0c835411066"
-  integrity sha512-wK2sCs4feiiJeFXn3zvY0p41mdU5VUgbgs1rNsc/y5ngFUijdWd+iIN8eoyuZHKB8xN6BL4PdWmzqFmxNg6V2w==
-
 editorconfig@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-1.0.4.tgz#040c9a8e9a6c5288388b87c2db07028aa89f53a3"
@@ -15895,11 +15856,6 @@ js-cookie@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"
   integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
-
-js-message@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/js-message/-/js-message-1.0.7.tgz#fbddd053c7a47021871bb8b2c95397cc17c20e47"
-  integrity sha512-efJLHhLjIyKRewNS9EGZ4UpI8NguuL6fKkhRxVuMmrGV2xN/0APGdQYwLFky5w9naebSZ0OwAGp0G6/2Cg90rA==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
