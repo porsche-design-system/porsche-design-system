@@ -1,19 +1,19 @@
-import { getComponentCss } from './button-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './button-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['arrow-right', '', 'primary', false, false, false, false, 'light'],
-    ['arrow-right', '', 'primary', false, false, false, false, 'dark'],
-    ['arrow-right', '', 'secondary', false, false, false, false, 'light'],
-    ['arrow-right', '', 'secondary', false, false, false, false, 'dark'],
-    ['arrow-right', '', 'tertiary', false, false, false, false, 'light'],
-    ['arrow-right', '', 'tertiary', false, false, false, false, 'dark'],
-    ['arrow-right', '', 'ghost', false, false, false, false, 'light'],
-    ['arrow-right', '', 'ghost', false, false, false, false, 'dark'],
-    ['arrow-right', '', 'primary', false, true, false, false, 'light'],
-    ['arrow-right', '', 'primary', false, false, false, false, 'light'],
-    ['arrow-right', '', 'primary', false, false, true, false, 'light'],
+    ['arrow-right', '', 'primary', false, false, false, false],
+    ['arrow-right', '', 'primary', false, false, false, false],
+    ['arrow-right', '', 'secondary', false, false, false, false],
+    ['arrow-right', '', 'secondary', false, false, false, false],
+    ['arrow-right', '', 'primary', false, false, false, false],
+    ['arrow-right', '', 'primary', false, false, false, false],
+    ['arrow-right', '', 'secondary', false, false, false, false],
+    ['arrow-right', '', 'secondary', false, false, false, false],
+    ['arrow-right', '', 'primary', false, true, false, false],
+    ['arrow-right', '', 'primary', false, false, false, false],
+    ['arrow-right', '', 'primary', false, false, true, false],
     [
       'arrow-right',
       '',
@@ -22,11 +22,10 @@ describe('getComponentCss()', () => {
       true,
       false,
       false,
-      'dark',
     ],
-    ['none', '', 'primary', false, true, true, false, 'light'],
-    ['arrow-right', '', 'primary', false, false, false, true, 'light'],
-    ['arrow-right', '', 'ghost', false, false, false, true, 'dark'],
+    ['none', '', 'primary', false, true, true, false],
+    ['arrow-right', '', 'primary', false, false, false, true],
+    ['arrow-right', '', 'secondary', false, false, false, true],
   ])(
     'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, disabled: %s, loading: %s and theme: %s',
     (...args) => {

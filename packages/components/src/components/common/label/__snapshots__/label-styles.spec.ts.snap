@@ -1,14 +1,14 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: auto, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -25,7 +25,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -94,27 +94,18 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
     white-space: normal;
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  .label {
-    color: #FBFCFF;
-  }
-  .label+.label {
-    color: #AFB0B3;
-  }
-}
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: dark, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: { position: 'absolute' }, additionalDefaultJssStyle: { padding: +0 } and additionalIsShownJssStyle: %o 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: auto;
   height: auto;
@@ -131,22 +122,54 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: { position: 'absolute' }, additionalDefaultJssStyle: { padding: +0 } and additionalIsShownJssStyle: %o 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
+}
+.required {
+  user-select: none;
+}"
+`;
+
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
+".label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  justify-self: flex-start;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -163,54 +186,22 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: light, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
-}
-.required {
-  user-select: none;
-}"
-`;
-
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
-".label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -227,54 +218,22 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
-}
-.required {
-  user-select: none;
-}"
-`;
-
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
-".label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -291,22 +250,55 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: dark, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 2`] = `
+".label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  justify-self: flex-start;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
+}
+.required {
+  user-select: none;
+}"
+`;
+
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -323,21 +315,23 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: light, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -354,6 +348,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;

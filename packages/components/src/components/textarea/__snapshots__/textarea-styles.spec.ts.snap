@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,46 +12,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #88898C;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #FBFCFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #FBFCFF;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #7E7F82;
-  border-color: #7E7F82;
-  -webkit-text-fill-color: #7E7F82;
-}
-textarea[readonly] {
-  border-color: #404044;
-  background: #404044;
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #FBFCFF;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -68,8 +53,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #FBFCFF;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -86,7 +71,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -97,7 +82,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -170,10 +155,10 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: %s 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -182,46 +167,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -238,8 +208,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -256,7 +226,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -267,7 +237,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -340,10 +310,10 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -352,46 +322,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-error-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #CC1922;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #951219;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-error);
   }
 }
 
@@ -408,8 +363,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -426,7 +381,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -437,8 +392,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -446,10 +401,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -458,46 +413,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-error-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #CC1922;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #951219;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-error);
   }
 }
 
@@ -514,8 +454,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -532,7 +472,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -543,8 +483,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -552,10 +492,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -564,46 +504,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1))) calc(calc(6px + 2.125ex) + max(2px, calc(6px * var(--p-internal-textarea-scaling, 1))) * 2 - 4px);
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px) calc(calc(6px + 2.125ex) + calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px));
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -622,10 +547,11 @@ textarea[readonly] {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #6B6D70;
+  color: var(--p-color-contrast-medium);
   grid-area: 1/1;
   place-self: flex-end;
-  padding: max(2px, calc(6px * var(--p-internal-textarea-scaling, 1))) max(12px, calc((16px + 2px) * var(--p-internal-textarea-scaling, 1)));
+  margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  margin-bottom: calc(11.2px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px);
 }
 .sr-only {
   position: absolute;
@@ -643,8 +569,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -661,7 +587,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -672,7 +598,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -680,10 +606,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -692,46 +618,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5))) calc(calc(6px + 2.125ex) + max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) * 2 - 4px);
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px) calc(calc(6px + 2.125ex) + calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px));
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -750,10 +661,11 @@ textarea[readonly] {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #6B6D70;
+  color: var(--p-color-contrast-medium);
   grid-area: 1/1;
   place-self: flex-end;
-  padding: max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) max(12px, calc((16px + 2px) * var(--p-internal-textarea-scaling, 0.5)));
+  margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  margin-bottom: calc(11.2px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px);
 }
 .sr-only {
   position: absolute;
@@ -771,8 +683,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -789,7 +701,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -800,7 +712,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -808,10 +720,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -820,46 +732,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-success-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #0E4809;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-success);
   }
 }
 
@@ -876,8 +773,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -894,7 +791,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -905,8 +802,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -914,10 +811,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -926,46 +823,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-success-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5))) calc(calc(6px + 2.125ex) + max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) * 2 - 4px);
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px) calc(calc(6px + 2.125ex) + calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px));
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #0E4809;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-success);
   }
 }
 
@@ -984,10 +866,11 @@ textarea[readonly] {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #6B6D70;
+  color: var(--p-color-contrast-medium);
   grid-area: 1/1;
   place-self: flex-end;
-  padding: max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) max(12px, calc((16px + 2px) * var(--p-internal-textarea-scaling, 0.5)));
+  margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  margin-bottom: calc(11.2px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px);
 }
 .sr-only {
   position: absolute;
@@ -1005,8 +888,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1023,7 +906,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1034,8 +917,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1043,10 +926,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1055,46 +938,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-error-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #CC1922;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #951219;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-error);
   }
 }
 
@@ -1111,8 +979,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1129,7 +997,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1140,8 +1008,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1149,10 +1017,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1161,46 +1029,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-error-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #CC1922;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #951219;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-error);
   }
 }
 
@@ -1217,8 +1070,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1235,7 +1088,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1246,8 +1099,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1255,10 +1108,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1267,46 +1120,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1))) calc(calc(6px + 2.125ex) + max(2px, calc(6px * var(--p-internal-textarea-scaling, 1))) * 2 - 4px);
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px) calc(calc(6px + 2.125ex) + calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px));
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -1325,10 +1163,11 @@ textarea[readonly] {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #6B6D70;
+  color: var(--p-color-contrast-medium);
   grid-area: 1/1;
   place-self: flex-end;
-  padding: max(2px, calc(6px * var(--p-internal-textarea-scaling, 1))) max(12px, calc((16px + 2px) * var(--p-internal-textarea-scaling, 1)));
+  margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  margin-bottom: calc(11.2px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px);
 }
 .sr-only {
   position: absolute;
@@ -1346,8 +1185,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1364,7 +1203,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1375,7 +1214,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1383,10 +1222,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1395,46 +1234,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5))) calc(calc(6px + 2.125ex) + max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) * 2 - 4px);
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px) calc(calc(6px + 2.125ex) + calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px));
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -1453,10 +1277,11 @@ textarea[readonly] {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #6B6D70;
+  color: var(--p-color-contrast-medium);
   grid-area: 1/1;
   place-self: flex-end;
-  padding: max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) max(12px, calc((16px + 2px) * var(--p-internal-textarea-scaling, 0.5)));
+  margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  margin-bottom: calc(11.2px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px);
 }
 .sr-only {
   position: absolute;
@@ -1474,8 +1299,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1492,7 +1317,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1503,7 +1328,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1511,10 +1336,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
@@ -1523,46 +1348,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-success-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #0E4809;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-success);
   }
 }
 
@@ -1579,8 +1389,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1597,7 +1407,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1608,8 +1418,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1617,10 +1427,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1629,46 +1439,31 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-success-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: text;
 }
 textarea:focus {
-  border-color: #010205;
-}
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
+  border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #0E4809;
+  textarea:hover, label:hover~textarea {
+    border-color: var(--p-color-success);
   }
 }
 
@@ -1685,8 +1480,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1703,7 +1498,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1714,8 +1509,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-success);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1723,10 +1518,10 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 0.64285714;
 }
 :host([hidden]) {
   display: none !important;
@@ -1735,49 +1530,29 @@ exports[`getComponentCss() > should return correct css for isDisabled: false, is
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-contrast-lower);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  background: var(--p-color-frosted);
+  color: var(--p-color-contrast-medium);
   box-sizing: border-box;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 0.5))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 0.5))) calc(calc(6px + 2.125ex) + max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) * 2 - 4px);
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px) calc(calc(6px + 2.125ex) + calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px));
+  cursor: text;
+  border-color: transparent;
 }
 textarea:focus {
-  border-color: #010205;
+  border-color: var(--p-color-primary);
 }
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
-}
-@media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #010205;
-  }
-}
-
 .root {
   display: grid;
   gap: 4px;
@@ -1793,10 +1568,11 @@ textarea[readonly] {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #535457;
+  color: var(--p-color-contrast-medium);
   grid-area: 1/1;
   place-self: flex-end;
-  padding: max(2px, calc(6px * var(--p-internal-textarea-scaling, 0.5))) max(12px, calc((16px + 2px) * var(--p-internal-textarea-scaling, 0.5)));
+  margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  margin-bottom: calc(11.2px * (var(--p-internal-textarea-scaling) - 0.64285714) + 4px);
 }
 .sr-only {
   position: absolute;
@@ -1814,8 +1590,8 @@ textarea[readonly] {
   hyphens: var(--p-hyphens, auto);
   cursor: pointer;
   justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: static;
   width: auto;
   height: auto;
@@ -1832,7 +1608,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1843,7 +1619,7 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;
@@ -1851,10 +1627,11 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
+  --p-internal-textarea-scaling: 1;
+  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1863,49 +1640,28 @@ exports[`getComponentCss() > should return correct css for isDisabled: true, isR
   visibility: hidden;
 }
 textarea {
+  all: unset;
+  grid-area: 1/1;
+  display: block;
   resize: vertical;
   field-sizing: var(--p-textarea-field-sizing, unset);
-  min-width: var(--p-textarea-min-width, calc(1rem + 16px*2 + 2px*2));
+  min-width: var(--p-textarea-min-width, 2ch);
   max-width: var(--p-textarea-max-width, unset);
-  min-height: var(--p-textarea-min-height, unset);
+  min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  background: var(--p-color-error-frosted-soft);
+  color: var(--p-color-primary);
   box-sizing: border-box;
-  border: 2px solid #CC1922;
-  border-radius: 4px;
-  background: transparent;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  padding: max(2px, calc(12px * var(--p-internal-textarea-scaling, 1))) max(2px, calc(16px * var(--p-internal-textarea-scaling, 1)));
+  padding: calc(28px * (var(--p-internal-textarea-scaling) - 0.64285714) + 5px) calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
+  cursor: not-allowed;
 }
 textarea:focus {
-  border-color: #010205;
+  border-color: var(--p-color-error);
 }
-textarea:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-textarea[readonly] {
-  border-color: #D8D8DB;
-  background: #D8D8DB;
-}
-@media(hover:hover) {
-  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
-    border-color: #951219;
-  }
-}
-
 .root {
   display: grid;
   gap: 4px;
@@ -1918,9 +1674,10 @@ textarea[readonly] {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   cursor: not-allowed;
+  pointer-events: none;
   justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   position: absolute;
   width: 1px;
   height: 1px;
@@ -1937,6 +1694,7 @@ textarea[readonly] {
   cursor: unset;
   margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
 }
 .required {
   user-select: none;
@@ -1947,8 +1705,8 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: var(--p-color-error);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .message:empty {
   opacity: 0;

@@ -3,13 +3,13 @@ import { getComponentCss } from './drilldown-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [true, true, true, 'light'],
-    [true, true, false, 'light'],
-    [true, false, true, 'light'],
-    [true, false, false, 'light'],
-    [true, true, true, 'dark'],
-    [true, true, true, 'auto'],
-    [false, true, true, 'light'],
+    [true, true, true],
+    [true, true, false],
+    [true, false, true],
+    [true, false, false],
+    [true, true, true],
+    [true, true, true],
+    [false, true, true],
   ])(
     'should return correct css for isOpen: %s, isPrimary: %s, isSecondaryScrollerVisible: %s and theme: %s',
     (...args) => {
