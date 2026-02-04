@@ -1,7 +1,22 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story, SlotStories } from '@/models/story';
 import type { ElementConfig } from '@/utils/generator/generator';
+
+export const selectSlotStories: SlotStories<'p-select'> = {
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
+};
 
 export const selectStory: Story<'p-select'> = {
   state: {
@@ -11,11 +26,12 @@ export const selectStory: Story<'p-select'> = {
       description: 'Some description',
     },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-select',
       properties,
       children: [
+        ...(slots?.['label-after']?.generator() ?? []),
         { tag: 'p-select-option', properties: { value: 'a' }, children: ['Option A'] },
         { tag: 'p-select-option', properties: { value: 'b' }, children: ['Option B'] },
         { tag: 'p-select-option', properties: { value: 'c' }, children: ['Option C'] },

@@ -1,6 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
-import { checkboxStory } from '@/app/components/checkbox/checkbox.stories';
+import { checkboxStory, checkboxSlotStories } from '@/app/components/checkbox/checkbox.stories';
 import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
@@ -18,4 +18,4 @@ A `label` is a caption which informs the user what information a particular form
 component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
 whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
 
-<Configurator tagName="p-checkbox" story={checkboxStory} />
+<Configurator tagName="p-checkbox" story={checkboxStory} slotStories={checkboxSlotStories} />

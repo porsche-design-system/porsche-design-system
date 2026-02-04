@@ -1,15 +1,31 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story, SlotStories } from '@/models/story';
+
+export const textareaSlotStories: SlotStories<'p-textarea'> = {
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
+};
 
 export const textareaStory: Story<'p-textarea'> = {
   state: {
     properties: { name: 'some-name', label: 'Some label' },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-textarea',
       properties,
+      children: [...(slots?.['label-after']?.generator() ?? [])],
     },
   ],
 };
