@@ -32,22 +32,20 @@ export const ThemeSelect = ({
 
   return (
     <PSelect name={name} value={value} onChange={onThemeChange} hideLabel={hideLabel} {...rest}>
-      <span slot="label" className="inline-flex gap-static-xs">
-        {label}
-        <PPopover slot="label-after">
-          All color tokens use the{' '}
-          <PLinkPure
-            icon="none"
-            underline={true}
-            href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark"
-            target="_blank"
-          >
-            light-dark()
-          </PLinkPure>{' '}
-          CSS function. Set the theme via the CSS <code>color-scheme</code> property: <code>light</code> for light mode,{' '}
-          <code>dark</code> for dark mode, or <code>light dark</code> to follow the user's system preference.
-        </PPopover>
-      </span>
+      <span slot="label">{label}</span>
+      <PPopover slot="label-after" className="ms-static-xs">
+        All color tokens use the{' '}
+        <PLinkPure
+          icon="none"
+          underline={true}
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark"
+          target="_blank"
+        >
+          light-dark()
+        </PLinkPure>{' '}
+        CSS function. Set the theme via the CSS <code>color-scheme</code> property: <code>light</code> for light mode,{' '}
+        <code>dark</code> for dark mode, or <code>light dark</code> to follow the user's system preference.
+      </PPopover>
       {Object.entries(themeMap).map(([theme, name]) => (
         <PSelectOption key={theme} value={theme}>
           {name}
