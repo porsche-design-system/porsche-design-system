@@ -106,7 +106,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `colorErrorFrostedSoftDark`, `colorFocus`, `colorFocusLight` and `colorFocusDark`
   - Focus: `getFocusVisibleStyle()`
   - Gradient: `gradientStopsFadeDark`,
-  - Skeleton: `auto` as value for theme in `getSkeletonStyle()`
   - Media Query: `xs`, `sm`, `md`, `lg`, `xl` and `2xl` as breakpoint values for `mediaQueryMin()`, `mediaQueryMax()`
     and `mediaQueryMinMax()`
   - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
@@ -151,6 +150,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed
 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
+
+```
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
+```
+
+- Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
+- Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
+  `light-dark()` CSS color function)
+
+```
+const skeletonAnimation = keyframes(skeletonKeyframes);
+- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
++ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
+```
 
 ## [4.0.0-alpha.0] - 2025-12-12
 

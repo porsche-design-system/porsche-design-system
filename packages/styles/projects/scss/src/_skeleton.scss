@@ -2,37 +2,13 @@
 @use 'color';
 @use 'motion';
 
-@mixin skeleton($theme: 'light') {
-  @if ($theme == 'dark') {
-    background: color.$color-surface-dark
-      linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%)
-      0
-      0 /
-      200%
-      100%;
-  } @else if ($theme == 'auto') {
-    background: color.$color-surface-light
-      linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%)
-      0
-      0 /
-      200%
-      100%;
-    @media (prefers-color-scheme: dark) {
-      background: color.$color-surface-dark
-      linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%)
-      0
-      0 /
-      200%
-      100%;
-    }
-  } @else {
-  background: color.$color-surface-light
-  linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%)
+@mixin skeleton() {
+  background: color.$color-surface
+  linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 20%, transparent 50%)
   0
   0 /
       200%
   100%;
-}
 
   display: block;
   border-radius: border.$radius-sm;
@@ -47,9 +23,4 @@
       background-position-x: -100%;
     }
   }
-}
-
-/* alias (deprecated) */
-@mixin pds-skeleton($theme: 'light') {
-  @include skeleton($theme);
 }
