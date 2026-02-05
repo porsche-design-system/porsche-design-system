@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -102,7 +102,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -204,7 +204,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -305,7 +305,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -406,7 +406,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: %s 3`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 3`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -507,7 +507,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -609,7 +609,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -711,7 +711,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -813,7 +813,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -915,7 +915,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -1016,7 +1016,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and readOnly: false 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -1117,7 +1117,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and readOnly: true 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -1214,7 +1214,7 @@ input {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and readOnly: true 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -1311,7 +1311,7 @@ input {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -1476,7 +1476,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -1638,7 +1638,7 @@ input {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false and readOnly: false 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;

@@ -1,93 +1,91 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: false 1`] = `
-":host {
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
+exports[`getComponentCss() > should return correct css for isDisabled: false 1`] = `
+":host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 28px;
-  --p-internal-multi-select-option-padding-left: 28px;
+  --p-internal-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
+  --p-internal-multi-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
 }
 [role="group"] {
   display: flex;
   flex-direction: column;
-  gap: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
 }
 [role="presentation"] {
-  padding: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px) max(4px, var(--p-internal-optgroup-scaling, 1) * 12px);
+  padding-block: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
+  padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
   font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: false 2`] = `
-":host {
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
+exports[`getComponentCss() > should return correct css for isDisabled: false 2`] = `
+":host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 28px;
-  --p-internal-multi-select-option-padding-left: 28px;
+  --p-internal-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
+  --p-internal-multi-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
 }
 [role="group"] {
   display: flex;
   flex-direction: column;
-  gap: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
 }
 [role="presentation"] {
-  padding: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px) max(4px, var(--p-internal-optgroup-scaling, 1) * 12px);
+  padding-block: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
+  padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
   font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
+  color: var(--p-color-primary);
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true 1`] = `
 ":host {
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 28px;
-  --p-internal-multi-select-option-padding-left: 28px;
+  --p-internal-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
+  --p-internal-multi-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
 }
 [role="group"] {
   display: flex;
   flex-direction: column;
-  gap: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
 }
 [role="presentation"] {
-  padding: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px) max(4px, var(--p-internal-optgroup-scaling, 1) * 12px);
+  padding-block: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
+  padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
   font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #949598;
+  color: var(--p-color-primary);
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: true 2`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true 2`] = `
 ":host {
-  color-scheme: light dark !important;
+  opacity: 0.4 !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 28px;
-  --p-internal-multi-select-option-padding-left: 28px;
+  --p-internal-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
+  --p-internal-multi-select-option-padding-left: calc(44.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 12px);
 }
 [role="group"] {
   display: flex;
   flex-direction: column;
-  gap: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px);
+  gap: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
 }
 [role="presentation"] {
-  padding: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px) max(4px, var(--p-internal-optgroup-scaling, 1) * 12px);
+  padding-block: calc(11.2px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 4px);
+  padding-inline: calc(16.8px * (var(--p-internal-optgroup-scaling) - 0.64285714) + 6px);
   font: normal normal 600 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #7E7F82;
+  color: var(--p-color-primary);
 }"
 `;

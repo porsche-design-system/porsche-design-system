@@ -20,7 +20,7 @@ describe('getComponentCss()', () => {
     [false, true, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', false, 'column'],
     [true, false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', false, 'column'],
   ])(
-    'should return correct css for disabled: %s, loading: %s, hideLabel: %o, state: %s, compact: %o, direction: %o, theme: %s',
+    'should return correct css for disabled: %s, loading: %s, hideLabel: %o, state: %s, compact: %o and direction: %o',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }
