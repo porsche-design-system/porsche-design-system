@@ -86,8 +86,8 @@ export const getComponentCss = (name: IconName, source: string, color: IconColor
         font: `${isSizeInherit ? sizeMap.small : sizeMap[size]} ${fontFamily}`,
         color: colorMap[color],
         ...addImportantToEachRule({
-          WebkitMask: `url(${buildIconUrl(source || name)}) center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `url(${buildIconUrl(source || name)}) center/contain no-repeat`,
+          WebkitMask: `url("${buildIconUrl(source || name)}") center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `url("${buildIconUrl(source || name)}") center/contain no-repeat`,
           aspectRatio: '1/1',
           background: 'currentcolor', // necessary for proper color inheritance
           ...(isFlippableIcon(name, source) && {
