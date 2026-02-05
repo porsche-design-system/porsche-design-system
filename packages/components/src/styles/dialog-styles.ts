@@ -7,10 +7,17 @@ import {
   spacingStaticMedium,
 } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { colors, cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
-import { legacyRadiusLarge, radius3Xl, radiusXl } from './css-variables';
-
-const { backdropColor, primaryColor, canvasColor, surfaceColor, frostedColor } = colors;
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from './';
+import {
+  colorBackdrop,
+  colorCanvas,
+  colorFrosted,
+  colorPrimary,
+  colorSurface,
+  legacyRadiusLarge,
+  radius3Xl,
+  radiusXl,
+} from './css-variables';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -23,7 +30,7 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
     '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
     '--pds-internal-grid-width-min': 'auto',
     '--pds-internal-grid-width-max': 'none',
-    [cssVarBackgroundColor]: background === 'surface' ? surfaceColor : canvasColor,
+    [cssVarBackgroundColor]: background === 'surface' ? colorSurface : colorCanvas,
   };
 };
 
@@ -70,7 +77,7 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          background: backdropColor,
+          background: colorBackdrop,
           ...(isBackdropBlur && frostedGlassStyle),
         }
       : {
@@ -135,7 +142,7 @@ export const dialogGridJssStyle = (): JssStyle => {
 
 export const getDialogColorJssStyle = (): JssStyle => {
   return {
-    color: primaryColor, // enables color inheritance for slots
+    color: colorPrimary, // enables color inheritance for slots
     background: `var(${cssVarBackgroundColor})`,
   };
 };
@@ -233,7 +240,7 @@ export const getSlotFooterJssStyle = (): JssStyle => {
       zIndex: -1,
       position: 'absolute',
       inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
-      background: frostedColor,
+      background: colorFrosted,
       borderRadius: radius3Xl,
       ...frostedGlassStyle,
     },

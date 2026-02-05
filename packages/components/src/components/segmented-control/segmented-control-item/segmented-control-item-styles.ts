@@ -7,7 +7,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
@@ -15,7 +14,13 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { legacyRadiusSmall, radiusLg, radiusXl } from '../../../styles/css-variables';
+import {
+  colorContrastMedium,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusLg,
+  radiusXl,
+} from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
@@ -31,8 +36,6 @@ export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
 export const ICON_SIZE = '1.5rem';
 export const ICON_MARGIN = '.25rem';
-
-const { primaryColor, contrastMediumColor } = colors;
 
 export const getScalableItemStyles = (
   hasIconAndSlottedContent: boolean,
@@ -90,7 +93,7 @@ export const getComponentCss = (
         border: `${borderWidthThin} solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
-        color: primaryColor,
+        color: colorPrimary,
         ...textSmallStyle,
         ...(isDisabled
           ? {
@@ -113,7 +116,7 @@ export const getComponentCss = (
         display: 'block',
         ...textXSmallStyle,
         overflowWrap: 'normal',
-        color: contrastMediumColor,
+        color: colorContrastMedium,
       },
     },
     ...(hasIcon && {

@@ -72,18 +72,6 @@ describe('componentDidLoad', () => {
   });
 });
 
-describe('render', () => {
-  it('should call syncItemsProps() with correct parameters', () => {
-    const spy = vi.spyOn(stepperHorizontalUtils, 'syncStepperHorizontalItemsProps');
-    const component = new StepperHorizontal();
-    component.host = document.createElement('p-stepper-horizontal');
-    component.host.attachShadow({ mode: 'open' });
-
-    component.render();
-    expect(spy).toHaveBeenCalledWith(component.host, component.theme);
-  });
-});
-
 describe('componentDidUpdate', () => {
   it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
     const spy = vi.spyOn(stepperHorizontalUtils, 'throwIfMultipleCurrentStates');

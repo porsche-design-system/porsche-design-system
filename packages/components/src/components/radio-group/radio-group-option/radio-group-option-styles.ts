@@ -7,7 +7,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
@@ -15,7 +14,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { radiusFull } from '../../../styles/css-variables';
+import { colorPrimary, radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -29,8 +28,6 @@ import type { RadioGroupState } from '../radio-group/radio-group-utils';
 export const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-option-scaling';
 
 const checkedIcon = getInlineSVGBackgroundImage(`<circle cx="12" cy="12" r="6"/>`);
-
-const { primaryColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -89,7 +86,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         '&:checked::before': {
           WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${checkedIcon} center/contain no-repeat`,
-          backgroundColor: primaryColor,
+          backgroundColor: colorPrimary,
         },
         '&::after': {
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.

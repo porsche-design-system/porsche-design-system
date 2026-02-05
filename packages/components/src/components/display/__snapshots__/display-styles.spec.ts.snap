@@ -1,9 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "inherit", align: center, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "inherit", align: center, color: primary and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12,10 +11,10 @@ exports[`getComponentCss() > should return correct css for size: "inherit", alig
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
   text-align: center;
   letter-spacing: normal;
   list-style-type: none;
@@ -24,10 +23,9 @@ exports[`getComponentCss() > should return correct css for size: "inherit", alig
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: center, color: primary, ellipsis: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: center, color: primary and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -36,10 +34,10 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   text-align: center;
   letter-spacing: normal;
   list-style-type: none;
@@ -48,10 +46,9 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -60,10 +57,33 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
+  color: var(--p-color-primary);
+  text-align: end;
+  letter-spacing: normal;
+  list-style-type: none;
+  white-space: inherit;
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: var(--p-color-primary);
   text-align: end;
   letter-spacing: normal;
   list-style-type: none;
@@ -75,10 +95,9 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: left, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -87,58 +106,10 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  text-align: left;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: "large", align: right, color: primary, ellipsis: false and theme: light 1`] = `
-":host {
+  all: unset;
   display: block;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
-  text-align: right;
-  letter-spacing: normal;
-  list-style-type: none;
-  white-space: inherit;
-  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 1`] = `
-":host {
-  display: block;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: unset !important;
-}
-.root {
-  margin: 0;
-  padding: 0;
-  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
   text-align: start;
   letter-spacing: normal;
   list-style-type: none;
@@ -147,10 +118,9 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -159,10 +129,10 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
   text-align: start;
   letter-spacing: normal;
   list-style-type: none;
@@ -171,10 +141,9 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 3`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -183,10 +152,33 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
+  text-align: start;
+  letter-spacing: normal;
+  list-style-type: none;
+  white-space: inherit;
+  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: var(--p-color-primary);
   text-align: start;
   letter-spacing: normal;
   list-style-type: none;
@@ -198,10 +190,9 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary, ellipsis: true and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: true 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -210,10 +201,10 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
   text-align: start;
   letter-spacing: normal;
   list-style-type: none;
@@ -225,10 +216,9 @@ exports[`getComponentCss() > should return correct css for size: "large", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", align: end, color: inherit, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", align: end, color: inherit and ellipsis: true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -237,8 +227,8 @@ exports[`getComponentCss() > should return correct css for size: "medium", align
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: currentColor;
   text-align: end;
@@ -252,10 +242,9 @@ exports[`getComponentCss() > should return correct css for size: "medium", align
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", align: start, color: inherit, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", align: start, color: inherit and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -264,8 +253,8 @@ exports[`getComponentCss() > should return correct css for size: "medium", align
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: currentColor;
   text-align: start;
@@ -276,10 +265,9 @@ exports[`getComponentCss() > should return correct css for size: "medium", align
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: end, color: inherit, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", align: end, color: inherit and ellipsis: true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -288,8 +276,8 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: currentColor;
   text-align: end;
@@ -303,10 +291,9 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: inherit, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", align: inherit, color: primary and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -315,10 +302,10 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--p-color-primary);
   text-align: inherit;
   letter-spacing: normal;
   list-style-type: none;
@@ -327,10 +314,9 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: start, color: inherit, ellipsis: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", align: start, color: inherit and ellipsis: false 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -339,8 +325,8 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: currentColor;
   text-align: start;
@@ -351,10 +337,9 @@ exports[`getComponentCss() > should return correct css for size: "small", align:
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"large","s":"medium","m":"inherit","l":"large","xl":"medium"}, align: center, color: primary, ellipsis: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"large","s":"medium","m":"inherit","l":"large","xl":"medium"}, align: center, color: primary and ellipsis: true 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -363,10 +348,10 @@ exports[`getComponentCss() > should return correct css for size: {"base":"medium
   all: unset !important;
 }
 .root {
-  margin: 0;
-  padding: 0;
+  all: unset;
+  display: block;
   font: normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   text-align: center;
   letter-spacing: normal;
   list-style-type: none;

@@ -1,7 +1,5 @@
 import type { JssStyle } from 'jss';
-import { colors } from '../colors';
-
-const { canvasColor } = colors;
+import { colorCanvas } from '../css-variables';
 
 export const getFilterJssStyle = (scalingVarName: string): JssStyle => {
   const padding = `calc(11.2px * (var(${scalingVarName}) - 0.64285714) + 4px)`;
@@ -13,7 +11,7 @@ export const getFilterJssStyle = (scalingVarName: string): JssStyle => {
     top,
     padding,
     margin,
-    background: canvasColor,
+    background: colorCanvas,
     zIndex: 1,
   };
 };

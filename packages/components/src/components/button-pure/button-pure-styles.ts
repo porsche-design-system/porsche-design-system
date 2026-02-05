@@ -1,5 +1,5 @@
 import { fontLineHeight } from '@porsche-design-system/emotion';
-import { colors } from '../../styles';
+import { colorContrastLow } from '../../styles/css-variables';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
@@ -41,7 +41,7 @@ export const getComponentCss = (
       {
         root: {
           ...(isDisabled && {
-            color: colors.contrastLowColor,
+            color: colorContrastLow,
           }),
           ...(isDisabledOrLoading && {
             cursor: 'not-allowed',

@@ -241,7 +241,7 @@ describe('onChange', () => {
 
     component['onChange'](event);
     expect(setFormValueSpy).toHaveBeenCalledWith(value);
-    expect(mockEmit).toHaveBeenCalledWith({ name, value, checked });
+    expect(mockEmit).toHaveBeenCalledWith(event);
   });
 
   it('should reset form value if checkbox is not checked', () => {
@@ -263,6 +263,6 @@ describe('onChange', () => {
 
     component['onChange'](event);
     expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
-    expect(mockEmit).toHaveBeenCalledWith({ name, value, checked });
+    expect(mockEmit).toHaveBeenCalledWith(event);
   });
 });

@@ -7,21 +7,25 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { colors } from '../../styles';
-import { legacyRadiusMedium, radiusXl } from '../../styles/css-variables';
+import {
+  colorErrorFrosted,
+  colorInfoFrosted,
+  colorSuccessFrosted,
+  colorWarningFrosted,
+  legacyRadiusMedium,
+  radiusXl,
+} from '../../styles/css-variables';
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
 
-const { infoFrostedColor, successFrostedColor, errorFrostedColor, warningFrostedColor } = colors;
-
 const getBackgroundColor = (state: InlineNotificationState): string => {
   const colorMap: Record<InlineNotificationState, string> = {
-    info: infoFrostedColor,
-    warning: warningFrostedColor,
-    success: successFrostedColor,
-    error: errorFrostedColor,
+    info: colorInfoFrosted,
+    warning: colorWarningFrosted,
+    success: colorSuccessFrosted,
+    error: colorErrorFrosted,
   };
   return colorMap[state];
 };

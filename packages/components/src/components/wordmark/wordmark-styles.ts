@@ -1,9 +1,8 @@
 import type { Styles } from 'jss';
-import { addImportantToEachRule, colors, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
+import { colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
-
-const { primaryColor } = colors;
 
 export const getComponentCss = (size: WordmarkSize): string => {
   const sizingStyles: Styles = {
@@ -47,7 +46,7 @@ export const getComponentCss = (size: WordmarkSize): string => {
       },
       svg: {
         ...sizingStyles,
-        fill: primaryColor,
+        fill: colorPrimary,
       },
     },
   });

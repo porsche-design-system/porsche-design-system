@@ -64,7 +64,7 @@ export const getComponentCss = (
       ...getFunctionalComponentLabelAfterStyles(isDisabled, getDisabledBaseStyles()),
       ...(isLoading && {
         '::slotted(*:not([slot]))': {
-          getDisabledBaseStyles,
+          ...addImportantToEachRule(getDisabledBaseStyles()),
         },
       }),
       ...preventFoucOfNestedElementsStyles,

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -199,7 +199,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -399,7 +399,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -599,7 +599,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -799,7 +799,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -991,7 +991,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1182,7 +1182,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1373,7 +1373,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: true 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1564,7 +1564,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1756,7 +1756,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1948,7 +1948,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2139,7 +2139,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2331,7 +2331,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2531,7 +2531,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2730,7 +2730,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2929,7 +2929,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 3`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3128,7 +3128,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3328,7 +3328,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3527,7 +3527,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3727,7 +3727,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3927,7 +3927,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4119,7 +4119,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4310,7 +4310,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4502,7 +4502,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: true 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4694,7 +4694,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4886,7 +4886,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;

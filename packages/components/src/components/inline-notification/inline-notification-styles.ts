@@ -1,11 +1,11 @@
 import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { colorPrimary } from '../../styles/css-variables';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getCss, HEADING_TAGS } from '../../utils';
 import {
@@ -17,11 +17,9 @@ import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
 
-const { primaryColor } = colors;
-
 const getTextJssStyle = {
   margin: 0,
-  color: primaryColor,
+  color: colorPrimary,
 };
 
 const getHeadingJssStyle = {

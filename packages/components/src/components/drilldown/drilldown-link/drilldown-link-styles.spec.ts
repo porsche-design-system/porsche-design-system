@@ -3,14 +3,14 @@ import { getComponentCss } from './drilldown-link-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [true, true, 'light'],
-    [true, false, 'light'],
-    [false, false, 'light'],
-    [false, true, 'light'],
-    [true, true, 'dark'],
-    [true, true, 'auto'],
-    [false, true, 'dark'],
-    [false, true, 'auto'],
+    [true, true],
+    [true, false],
+    [false, false],
+    [false, true],
+    [true, true],
+    [true, true],
+    [false, true],
+    [false, true],
   ])('should return correct css for hasSlottedAnchor: %s, isActive: %s and theme: %s', (...args) => {
     // validateCssAndMatchSnapshot(getComponentCss(...args));
     expect(getComponentCss(...args)).toMatchSnapshot();

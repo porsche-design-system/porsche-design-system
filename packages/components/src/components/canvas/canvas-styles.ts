@@ -10,13 +10,20 @@ import {
 import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
-  colors,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radius3Xl, radiusSm } from '../../styles/css-variables';
+import {
+  colorCanvas,
+  colorContrastLower,
+  colorPrimary,
+  colorSurface,
+  legacyRadiusSmall,
+  radius3Xl,
+  radiusSm,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { CanvasBackground } from './canvas-utils';
 
@@ -31,8 +38,6 @@ const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
 
 // public css classes
 const cssClassGrid = '-p-canvas-grid';
-
-const { canvasColor, surfaceColor, contrastLowerColor, primaryColor } = colors;
 
 // default values for public css variables
 const minWidth = '320px';
@@ -54,8 +59,8 @@ export const getComponentCss = (
   background: CanvasBackground
 ): string => {
   const isBackgroundSurface = background === 'surface';
-  const primaryBackgroundColor = isBackgroundSurface ? surfaceColor : canvasColor;
-  const secondaryBackgroundColor = isBackgroundSurface ? canvasColor : surfaceColor;
+  const primaryBackgroundColor = isBackgroundSurface ? colorSurface : colorCanvas;
+  const secondaryBackgroundColor = isBackgroundSurface ? colorCanvas : colorSurface;
 
   return getCss({
     '@global': {
@@ -112,7 +117,7 @@ export const getComponentCss = (
         all: 'unset',
         padding: spacingStaticXs, // preserve enough spacing for focus state
         font: textXSmallStyle.font,
-        color: primaryColor,
+        color: colorPrimary,
         textOverflow: 'ellipsis',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -313,7 +318,7 @@ export const getComponentCss = (
       '&--end': {
         gridArea: 'sidebar-end',
         justifySelf: 'flex-start',
-        borderInlineStart: `1px solid ${contrastLowerColor}`,
+        borderInlineStart: `1px solid ${colorContrastLower}`,
         background: primaryBackgroundColor,
         width: sidebarEndWidthMobile,
         [mediaQueryMinM]: {

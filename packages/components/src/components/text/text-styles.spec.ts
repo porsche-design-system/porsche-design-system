@@ -1,21 +1,20 @@
-import { getComponentCss } from './text-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './text-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', 'regular', 'start', 'primary', false, 'light'],
-    ['small', 'regular', 'left', 'primary', false, 'light'],
-    ['small', 'regular', 'right', 'primary', false, 'light'],
-    ['small', 'regular', 'inherit', 'primary', false, 'light'],
-    ['large', 'semi-bold', 'start', 'notification-info', true, 'light'],
-    ['medium', 'bold', 'end', 'contrast-high', true, 'dark'],
+    ['small', 'regular', 'start', 'primary', false],
+    ['small', 'regular', 'start', 'primary', false],
+    ['small', 'regular', 'end', 'primary', false],
+    ['small', 'regular', 'inherit', 'primary', false],
+    ['large', 'semi-bold', 'start', 'info', true],
+    ['medium', 'bold', 'end', 'contrast-high', true],
     [
       { base: 'small', xs: 'large', s: 'medium', m: 'inherit', l: 'x-small', xl: 'x-large' },
       'bold',
       'center',
-      'notification-error',
+      'error',
       true,
-      'dark',
     ],
   ])(
     'should return correct css for size: %j, weight: %s, align: %s, color: %s, ellipsis: %o and theme: %s',

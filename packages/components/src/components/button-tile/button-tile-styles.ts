@@ -8,13 +8,12 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusLarge, radius4Xl } from '../../styles/css-variables';
+import { colorCanvas, colorPrimary, legacyRadiusLarge, radius4Xl } from '../../styles/css-variables';
 import { getFontSizeText } from '../../styles/font-size-text-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -32,8 +31,6 @@ import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-
-const { canvasColor, primaryColor } = colors;
 
 export const getComponentCss = (
   isDisabledOrLoading: boolean,
@@ -97,7 +94,7 @@ export const getComponentCss = (
         zIndex: 3,
         maxWidth: '34.375rem',
         ...textMediumStyle,
-        color: primaryColor,
+        color: colorPrimary,
         hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (sizeValue: TileSize) => ({
@@ -129,14 +126,14 @@ export const getComponentCss = (
           ...(isTopAligned
             ? {
                 gridArea: '1/1/3/-1',
-                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${canvasColor} h s l / `),
+                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${colorCanvas} h s l / `),
                 marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderStartStartRadius: 'inherit',
                 borderStartEndRadius: 'inherit',
               }
             : {
                 gridArea: '4/1/6/-1',
-                background: gradientToTopStyle.background.replaceAll('0,0%,0%,', `from ${canvasColor} h s l / `),
+                background: gradientToTopStyle.background.replaceAll('0,0%,0%,', `from ${colorCanvas} h s l / `),
                 marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderEndStartRadius: 'inherit',
                 borderEndEndRadius: 'inherit',
