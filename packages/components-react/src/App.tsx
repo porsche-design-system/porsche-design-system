@@ -24,14 +24,14 @@ export const App = (): JSX.Element => {
               <option key={i} disabled={route.isDisabled} value={route.path} children={route.name} />
             ))}
           </select>
+
+          <select name="theme" value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
+            {themes.map((item) => (
+              <option key={item} value={item} children={item} />
+            ))}
+          </select>
         </>
       )}
-
-      <select name="theme" value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
-        {themes.map((item) => (
-          <option key={item} value={item} children={item} />
-        ))}
-      </select>
 
       <div id="app" className={theme}>
         <Routes>
