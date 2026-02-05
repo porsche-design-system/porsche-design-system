@@ -1,7 +1,6 @@
 // This file shall only contain imports that will be forced to be bundle into main chunk of components bundle
 
 export * from './alpha-disabled';
-export * from './colors';
 export * from './common-styles';
 export * from './global';
 export * from './host/host-hidden-styles';
