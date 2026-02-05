@@ -434,7 +434,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -538,7 +538,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -1078,7 +1078,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -1187,7 +1187,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -1701,7 +1701,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -1802,7 +1802,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -2343,7 +2343,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
@@ -2453,7 +2453,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);

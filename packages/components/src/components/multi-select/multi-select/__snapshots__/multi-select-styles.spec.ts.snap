@@ -231,7 +231,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -631,7 +631,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -1597,7 +1597,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -2172,7 +2172,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -3559,7 +3559,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -3759,7 +3759,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -4343,7 +4343,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -4535,7 +4535,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;

@@ -22,7 +22,7 @@ span {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   color: var(--p-color-primary);
-  background: var(--p-color-error-frosted);
+  background: var(--p-color-frosted);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 ::slotted(a), ::slotted(button) {

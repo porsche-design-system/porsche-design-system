@@ -9,7 +9,7 @@ exports[`getComponentCss() > should return correct css for state: error, hasActi
   padding: 16px !important;
   -webkit-backdrop-filter: blur(32px) !important;
   backdrop-filter: blur(32px) !important;
-  background: var(--p-color-error-frosted) !important;
+  background: var(--p-color-frosted) !important;
   border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
