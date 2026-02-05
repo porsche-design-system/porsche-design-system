@@ -1,5 +1,5 @@
 export { default as EventsPage } from './EventsPage.vue';
-export { default as OverviewPage } from './OverviewPage.vue';
+export { default as OverviewComponentsPage } from './OverviewComponentsPage.vue';
 export { default as SheetBasicPage } from './SheetBasicPage.vue';
 export { default as SheetPrefixedPage } from './SheetPrefixedPage.vue';
 export { default as BannerBasicPage } from './BannerBasicPage.vue';
