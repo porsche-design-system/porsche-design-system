@@ -1,10 +1,11 @@
-import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
+import { spacingStaticXs, proseTextSmStyle } from '@porsche-design-system/emotion';
 import type { JssStyle, Styles } from 'jss';
 import { getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { colorContrastHigh, colorPrimary } from '../../../styles/css-variables';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
+import { typescaleXs } from '@porsche-design-system/tokens';
 
 export const getFunctionalComponentLabelAfterStyles = (
   isDisabledOrLoading: boolean,
@@ -38,7 +39,7 @@ export const getFunctionalComponentLabelStyles = (
       ...additionalLabelWrapperJssStyle,
     },
     label: {
-      ...textSmallStyle,
+      ...proseTextSmStyle,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
@@ -52,12 +53,12 @@ export const getFunctionalComponentLabelStyles = (
       // styling for the description
       '&:is(span)': {
         cursor: 'unset',
-        fontSize: fontSizeTextXSmall,
+        fontSize: typescaleXs,
         color: colorContrastHigh,
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXSmall}` })
+          getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXs}` })
         ),
-        marginTop: `-${spacingStaticXSmall}`,
+        marginTop: `-${spacingStaticXs}`,
       },
       ...additionalDefaultJssStyle,
     },
