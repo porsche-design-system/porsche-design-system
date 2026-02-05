@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 1`] = `
 ":host {
   display: block;
 }
@@ -104,7 +104,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: error 2`] = `
 ":host {
   display: block;
 }
@@ -208,7 +208,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 1`] = `
 ":host {
   display: block;
 }
@@ -312,7 +312,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: none 2`] = `
 ":host {
   display: block;
 }
@@ -416,7 +416,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 1`] = `
 ":host {
   display: block;
 }
@@ -520,7 +520,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: false, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: false and state: success 2`] = `
 ":host {
   display: block;
 }
@@ -624,7 +624,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 1`] = `
 ":host {
   display: block;
 }
@@ -733,7 +733,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
 ":host {
   display: block;
 }
@@ -842,7 +842,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
 ":host {
   display: block;
 }
@@ -951,7 +951,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
 ":host {
   display: block;
 }
@@ -1060,7 +1060,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
 ":host {
   display: block;
 }
@@ -1169,7 +1169,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: false, loading: true, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
 ":host {
   display: block;
 }
@@ -1278,7 +1278,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: error, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -1379,7 +1379,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -1480,7 +1480,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -1581,7 +1581,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -1682,7 +1682,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -1783,7 +1783,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: false, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -1884,117 +1884,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: error, theme: dark 1`] = `
-":host {
-  display: block;
-  opacity: 0.4 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-input {
-  all: unset;
-  display: grid;
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
-  box-sizing: border-box;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-error-frosted-soft);
-  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-error-low);
-  border-radius: var(--p-radius-full);
-  pointer-events: none;
-}
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-input::before {
-  content: "";
-  grid-area: 1/1;
-}
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
-}
-input::after {
-  content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
-  grid-area: 1/1;
-}
-.root {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  row-gap: 4px;
-}
-.wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  align-self: flex-start;
-  min-height: calc(6px + 2.125ex);
-  cursor: not-allowed;
-}
-.spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: not-allowed;
-  pointer-events: none;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
-  grid-area: 1/2;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: var(--p-color-contrast-high);
-}
-.required {
-  user-select: none;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: error, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -2104,7 +1994,117 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: none, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
+":host {
+  display: block;
+  opacity: 0.4 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  display: grid;
+  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
+  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  box-sizing: border-box;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  background: var(--p-color-error-frosted-soft);
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border: 1px solid var(--p-color-error-low);
+  border-radius: var(--p-radius-full);
+  pointer-events: none;
+}
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+input::before {
+  content: "";
+  grid-area: 1/1;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
+input::after {
+  content: "";
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
+  grid-area: 1/1;
+}
+.root {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  row-gap: 4px;
+}
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: calc(6px + 2.125ex);
+  cursor: not-allowed;
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
+  height: calc(var(--p-internal-radio-group-option-scaling) * 1.75rem);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: not-allowed;
+  pointer-events: none;
+  justify-self: flex-start;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
+  grid-area: 1/2;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: var(--p-color-contrast-high);
+}
+.required {
+  user-select: none;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -2214,7 +2214,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: none, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -2324,7 +2324,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: success, theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -2434,7 +2434,7 @@ input::after {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for disabled: true, loading: true, state: success, theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
