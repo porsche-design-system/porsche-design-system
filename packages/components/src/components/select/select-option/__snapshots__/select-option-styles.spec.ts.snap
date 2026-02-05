@@ -1,8 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false 1`] = `
 ":host {
-  opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
@@ -52,7 +51,7 @@ exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true 1`] = `
 ":host {
   opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;

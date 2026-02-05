@@ -127,7 +127,7 @@ describe('syncSegmentedControlItemsProps()', () => {
   const message = 'Some message';
   const compact = true;
 
-  it('should set selected and theme property on every item', () => {
+  it('should set selected property on every item', () => {
     child1.value = 'a';
     child2.value = 'b';
 

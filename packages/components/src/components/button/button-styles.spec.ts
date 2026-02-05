@@ -27,7 +27,7 @@ describe('getComponentCss()', () => {
     ['arrow-right', '', 'primary', false, false, false, true],
     ['arrow-right', '', 'secondary', false, false, false, true],
   ])(
-    'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, disabled: %s, loading: %s and theme: %s',
+    'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, disabled: %s and loading: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

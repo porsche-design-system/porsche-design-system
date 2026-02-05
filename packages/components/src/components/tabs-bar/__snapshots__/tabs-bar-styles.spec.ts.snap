@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "medium", weight: regular and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium" and weight: regular 1`] = `
 ":host {
   display: block;
   position: relative !important;
@@ -89,7 +89,7 @@ exports[`getComponentCss() > should return correct css for size: "medium", weigh
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", weight: regular and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium" and weight: regular 2`] = `
 ":host {
   display: block;
   position: relative !important;
@@ -178,7 +178,7 @@ exports[`getComponentCss() > should return correct css for size: "medium", weigh
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", weight: regular and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small" and weight: regular 1`] = `
 ":host {
   display: block;
   position: relative !important;
@@ -267,7 +267,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", weight: regular and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small" and weight: regular 2`] = `
 ":host {
   display: block;
   position: relative !important;
@@ -356,7 +356,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", weight: semi-bold and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small" and weight: semi-bold 1`] = `
 ":host {
   display: block;
   position: relative !important;
@@ -445,7 +445,7 @@ exports[`getComponentCss() > should return correct css for size: "small", weight
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, weight: regular and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} and weight: regular 1`] = `
 ":host {
   display: block;
   position: relative !important;

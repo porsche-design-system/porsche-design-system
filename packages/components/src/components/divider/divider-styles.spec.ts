@@ -19,7 +19,7 @@ describe('getComponentCss()', () => {
       'contrast-low',
       { base: 'horizontal', xs: 'vertical', s: 'horizontal', m: 'vertical', l: 'horizontal', xl: 'vertical' },
     ],
-  ])('should return correct css for color: %s, orientation: %j and theme %s', (...args) => {
+  ])('should return correct css for color: %s and orientation: %j', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

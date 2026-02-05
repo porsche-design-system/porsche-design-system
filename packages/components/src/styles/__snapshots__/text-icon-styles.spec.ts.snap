@@ -12,26 +12,6 @@ exports[`getThemedTextColor() > should return correct css for theme: contrast-me
 
 exports[`getThemedTextColor() > should return correct css for theme: contrast-medium and textColor: %s 2`] = `"var(--p-color-contrast-medium)"`;
 
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: contrast-high 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: contrast-low 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: contrast-medium 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: default 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: inherit 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: notification-error 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: notification-success 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: dark and textColor: notification-warning 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: default and textColor: %s 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: default and textColor: %s 2`] = `undefined`;
-
 exports[`getThemedTextColor() > should return correct css for theme: error and textColor: %s 1`] = `"var(--p-color-error)"`;
 
 exports[`getThemedTextColor() > should return correct css for theme: error and textColor: %s 2`] = `"var(--p-color-error)"`;
@@ -40,34 +20,6 @@ exports[`getThemedTextColor() > should return correct css for theme: inherit and
 
 exports[`getThemedTextColor() > should return correct css for theme: inherit and textColor: %s 2`] = `"currentColor"`;
 
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: contrast-high 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: contrast-low 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: contrast-medium 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: default 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: inherit 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: notification-error 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: notification-success 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: light and textColor: notification-warning 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: notification-error and textColor: %s 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: notification-error and textColor: %s 2`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: notification-success and textColor: %s 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: notification-success and textColor: %s 2`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: notification-warning and textColor: %s 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: notification-warning and textColor: %s 2`] = `undefined`;
-
 exports[`getThemedTextColor() > should return correct css for theme: primary and textColor: %s 1`] = `"var(--p-color-primary)"`;
 
 exports[`getThemedTextColor() > should return correct css for theme: primary and textColor: %s 2`] = `"var(--p-color-primary)"`;
@@ -75,22 +27,6 @@ exports[`getThemedTextColor() > should return correct css for theme: primary and
 exports[`getThemedTextColor() > should return correct css for theme: success and textColor: %s 1`] = `"var(--p-color-success)"`;
 
 exports[`getThemedTextColor() > should return correct css for theme: success and textColor: %s 2`] = `"var(--p-color-success)"`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: contrast-high 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: contrast-low 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: contrast-medium 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: default 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: inherit 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: notification-error 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: notification-success 1`] = `undefined`;
-
-exports[`getThemedTextColor() > should return correct css for theme: undefined and textColor: notification-warning 1`] = `undefined`;
 
 exports[`getThemedTextColor() > should return correct css for theme: warning and textColor: %s 1`] = `"var(--p-color-warning)"`;
 

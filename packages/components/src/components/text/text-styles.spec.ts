@@ -16,10 +16,7 @@ describe('getComponentCss()', () => {
       'error',
       true,
     ],
-  ])(
-    'should return correct css for size: %j, weight: %s, align: %s, color: %s, ellipsis: %o and theme: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
-    }
-  );
+  ])('should return correct css for size: %j, weight: %s, align: %s, color: %s and ellipsis: %o', (...args) => {
+    validateCssAndMatchSnapshot(getComponentCss(...args));
+  });
 });

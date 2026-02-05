@@ -1,5 +1,4 @@
 import { vi } from 'vitest';
-import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { SegmentedControl } from './segmented-control';
 import * as segmentedControlUtils from './segmented-control-utils';

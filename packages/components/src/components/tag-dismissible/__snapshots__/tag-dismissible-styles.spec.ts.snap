@@ -1,11 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: false, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasLabel: false and compact: false 1`] = `
 ":host {
+  --p-internal-tag-dismissible-scaling: 1;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14,43 +13,36 @@ exports[`getComponentCss() > should return correct css for color: background-bas
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   align-items: center;
-  gap: max(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.75 * 16px), 2px);
-  padding: calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.8125 * 16px - 4px/2) max(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.8125 * 16px - 1px), 4px);
-  margin: 0;
-  border-radius: 4px;
-  border: 0;
+  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 6px) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   cursor: pointer;
-  background: #0E0E12;
-  color: #FBFCFF;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
 }
 
 .icon {
-  padding: 4px;
-  margin-inline-end: -2px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-radius: 4px;
+  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
   position: absolute;
@@ -64,12 +56,11 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: false, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLabel: false and compact: true 1`] = `
 ":host {
+  --p-internal-tag-dismissible-scaling: 0.64285714;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -78,43 +69,36 @@ exports[`getComponentCss() > should return correct css for color: background-bas
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   align-items: center;
-  gap: max(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.75 * 16px), 2px);
-  padding: calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.8125 * 16px - 4px/2) max(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.8125 * 16px - 1px), 4px);
-  margin: 0;
-  border-radius: 4px;
-  border: 0;
+  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 6px) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   cursor: pointer;
-  background: #FFF;
-  color: #010205;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
 }
 
 .icon {
-  padding: 4px;
-  margin-inline-end: -2px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-radius: 4px;
+  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
   position: absolute;
@@ -128,12 +112,11 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 1`] = `
 ":host {
+  --p-internal-tag-dismissible-scaling: 1;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -142,49 +125,42 @@ exports[`getComponentCss() > should return correct css for color: background-bas
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   align-items: center;
-  gap: max(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.75 * 16px), 2px);
-  padding: calc(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.8125 * 16px - 4px/2) - 6px) max(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.8125 * 16px - 1px), 4px);
-  margin: 0;
-  border-radius: 4px;
-  border: 0;
+  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   cursor: pointer;
-  background: #0E0E12;
-  color: #FBFCFF;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
 }
 
 .label {
   display: block;
   margin-bottom: -4px;
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
-  padding: 4px;
-  margin-inline-end: -2px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-radius: 4px;
+  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
   position: absolute;
@@ -198,12 +174,11 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: background-base, hasLabel: true, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 2`] = `
 ":host {
+  --p-internal-tag-dismissible-scaling: 1;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -212,49 +187,42 @@ exports[`getComponentCss() > should return correct css for color: background-bas
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   align-items: center;
-  gap: max(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.75 * 16px), 2px);
-  padding: calc(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.8125 * 16px - 4px/2) - 6px) max(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.8125 * 16px - 1px), 4px);
-  margin: 0;
-  border-radius: 4px;
-  border: 0;
+  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   cursor: pointer;
-  background: #FFF;
-  color: #010205;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
 }
 
 .label {
   display: block;
   margin-bottom: -4px;
-  color: #535457;
+  color: var(--p-color-contrast-high);
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
-  padding: 4px;
-  margin-inline-end: -2px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-radius: 4px;
+  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
   position: absolute;
@@ -268,12 +236,11 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: background-surface, hasLabel: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 1`] = `
 ":host {
+  --p-internal-tag-dismissible-scaling: 0.64285714;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -282,49 +249,42 @@ exports[`getComponentCss() > should return correct css for color: background-sur
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   align-items: center;
-  gap: max(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.75 * 16px), 2px);
-  padding: calc(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.8125 * 16px - 4px/2) - 6px) max(calc(var(--p-internal-tag-dismissible-scaling, 1) * 0.8125 * 16px - 1px), 4px);
-  margin: 0;
-  border-radius: 4px;
-  border: 0;
+  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   cursor: pointer;
-  background: #EEEFF2;
-  color: #010205;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
 }
 
 .label {
   display: block;
   margin-bottom: -4px;
-  color: #535457;
+  color: var(--p-color-contrast-high);
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
-  padding: 4px;
-  margin-inline-end: -2px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-radius: 4px;
+  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
   position: absolute;
@@ -338,12 +298,11 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: background-surface, hasLabel: true, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 2`] = `
 ":host {
+  --p-internal-tag-dismissible-scaling: 0.64285714;
   display: inline-block;
   vertical-align: top;
-  outline: 0 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -352,49 +311,42 @@ exports[`getComponentCss() > should return correct css for color: background-sur
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   align-items: center;
-  gap: max(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.75 * 16px), 2px);
-  padding: calc(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.8125 * 16px - 4px/2) - 6px) max(calc(var(--p-internal-tag-dismissible-scaling, calc(4 / 13)) * 0.8125 * 16px - 1px), 4px);
-  margin: 0;
-  border-radius: 4px;
-  border: 0;
+  gap: calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)) calc(22.4px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714) + 4px);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   cursor: pointer;
-  background: #212225;
-  color: #FBFCFF;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
   text-align: start;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 @media(hover:hover) {
   button:hover > .icon {
-    background-color: rgba(148, 149, 152, .18);
+    background-color: var(--p-color-frosted);
   }
 }
 
 .label {
   display: block;
   margin-bottom: -4px;
-  color: #AFB0B3;
+  color: var(--p-color-contrast-high);
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
 }
 .icon {
-  padding: 4px;
-  margin-inline-end: -2px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-radius: 4px;
+  padding: calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--p-internal-tag-dismissible-scaling) - 0.64285714)));
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
 }
 .sr-only {
   position: absolute;

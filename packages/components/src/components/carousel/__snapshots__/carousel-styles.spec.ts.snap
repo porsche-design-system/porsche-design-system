@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, theme: true, hasNavigation: start and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: start 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -179,7 +179,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -350,7 +350,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: true, hasNavigation: center and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -553,7 +553,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -671,7 +671,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -798,7 +798,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1037,7 +1037,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1157,7 +1157,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1285,7 +1285,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: false, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: true, hasNavigation: center and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: false, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1460,7 +1460,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1597,7 +1597,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1803,7 +1803,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2012,7 +2012,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: false, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: false and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2193,7 +2193,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: true, hasNavigation: auto and alignControls: %s 1`] = `
+exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;

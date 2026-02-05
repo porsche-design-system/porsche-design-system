@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for type: alphabetically and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for type: alphabetically 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -30,7 +30,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for type: alphabetically and theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for type: alphabetically 2`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -60,7 +60,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for type: numbered and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for type: numbered 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -90,7 +90,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for type: numbered and theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for type: numbered 2`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -120,7 +120,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for type: unordered and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for type: unordered 1`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;
@@ -147,7 +147,7 @@ ol,ul {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for type: unordered and theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for type: unordered 2`] = `
 ":host {
   display: block;
   counter-reset: p-text-list-counter !important;

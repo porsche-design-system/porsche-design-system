@@ -8,7 +8,7 @@ describe('getFunctionalComponentNoResultsOptionStyles()', () => {
     ['select-option', `var(--p-internal-select-scaling, 1)`],
     ['multi-select-option', `var(--p-internal-multi-select-scaling, 1)`],
     ['multi-select-option', `var(--p-internal-multi-select-scaling, 1)`],
-  ])('should return correct css for componentName: %s, cssVarScaling: %s and theme: %s', (...args) => {
+  ])('should return correct css for componentName: %s and cssVarScaling: %s', (...args) => {
     validateCssAndMatchSnapshot(getCss(getFunctionalComponentNoResultsOptionStyles(...args)));
   });
 });

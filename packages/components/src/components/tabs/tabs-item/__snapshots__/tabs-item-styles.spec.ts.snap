@@ -1,21 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for theme: dark 1`] = `
-":host {
-  display: block;
-  color: var(--p-color-primary) !important;
-  border-radius: 2px !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:host(:focus-visible) {
-  outline: 2px solid var(--p-color-focus) !important;
-  outline-offset: 2px !important;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for theme: light 1`] = `
+exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: block;
   color: var(--p-color-primary) !important;
