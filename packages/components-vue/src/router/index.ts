@@ -56,6 +56,16 @@ export const routes: RouteType[] = [
     component: fromPages.BannerPrefixedPage,
   },
   {
+    path: '/canvas-basic',
+    name: 'CanvasBasic',
+    component: fromPages.CanvasBasicPage,
+  },
+  {
+    path: '/canvas-prefixed',
+    name: 'CanvasPrefixed',
+    component: fromPages.CanvasPrefixedPage,
+  },
+  {
     path: '/button-example-form',
     name: 'Button Example Form',
     component: fromExamples.ButtonExampleForm,
@@ -635,7 +645,7 @@ export const routes: RouteType[] = [
     path: '/toast-example',
     name: 'Toast Example',
     component: fromExamples.ToastExample,
-  }
+  },
 ];
 
 const router = createRouter({

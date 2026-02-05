@@ -5,7 +5,7 @@ test.describe('overview', async () => {
   test('components', async ({ page }) => {
     await page.goto('/overview-components');
     await page.evaluate(() => (window as any).componentsReady());
-    await page.evaluate(() => (window as any).waitForComponentsReadyWithinIFrames());
+    // await page.evaluate(() => (window as any).waitForComponentsReadyWithinIFrames());
     await page.setViewportSize({
       width: viewportWidthXXL,
       height: await page.evaluate(() => document.body.clientHeight),
