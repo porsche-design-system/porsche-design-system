@@ -518,7 +518,7 @@ export namespace Components {
          */
         "align"?: DisplayAlign;
         /**
-          * Basic text color variations depending on theme property.
+          * Basic text color variations.
          */
         "color"?: DisplayColor;
         /**
@@ -536,7 +536,7 @@ export namespace Components {
     }
     interface PDivider {
         /**
-          * Defines color depending on theme.
+          * Defines color.
          */
         "color"?: DividerColor;
         /**
@@ -696,7 +696,7 @@ export namespace Components {
          */
         "align"?: HeadingAlign;
         /**
-          * Basic text color variations depending on theme property.
+          * Basic text color variations.
          */
         "color"?: HeadingColor;
         /**
@@ -718,7 +718,7 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
-          * Basic color variations depending on theme property.
+          * Basic color variations.
          */
         "color"?: IconColor;
         /**
@@ -1850,7 +1850,7 @@ export namespace Components {
         "size"?: ModelSignatureSize;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PMultiSelect {
         /**
@@ -1948,7 +1948,7 @@ export namespace Components {
         "totalItemsCount": number;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PPinCode {
         /**
@@ -2113,7 +2113,7 @@ export namespace Components {
         "scrollbar"?: boolean;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PSegmentedControl {
         /**
@@ -2192,7 +2192,7 @@ export namespace Components {
         "value": string | number;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PSelect {
         /**
@@ -2462,7 +2462,7 @@ export namespace Components {
          */
         "align"?: TextAlign;
         /**
-          * Basic text color variations depending on theme property.
+          * Basic text color variations.
          */
         "color"?: TextColor;
         /**
@@ -3271,7 +3271,7 @@ declare global {
         "toggle": MultiSelectToggleEventDetail;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface HTMLPMultiSelectElement extends Components.PMultiSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPMultiSelectElementEventMap>(type: K, listener: (this: HTMLPMultiSelectElement, ev: PMultiSelectCustomEvent<HTMLPMultiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3324,7 +3324,7 @@ declare global {
         "change": PinCodeChangeEventDetail;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface HTMLPPinCodeElement extends Components.PPinCode, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPinCodeElementEventMap>(type: K, listener: (this: HTMLPPinCodeElement, ev: PPinCodeCustomEvent<HTMLPPinCodeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3381,7 +3381,7 @@ declare global {
         "change": SegmentedControlChangeEventDetail;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSegmentedControlElementEventMap>(type: K, listener: (this: HTMLPSegmentedControlElement, ev: PSegmentedControlCustomEvent<HTMLPSegmentedControlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3409,7 +3409,7 @@ declare global {
         "toggle": SelectToggleEventDetail;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface HTMLPSelectElement extends Components.PSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSelectElementEventMap>(type: K, listener: (this: HTMLPSelectElement, ev: PSelectCustomEvent<HTMLPSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4173,7 +4173,7 @@ declare namespace LocalJSX {
          */
         "align"?: DisplayAlign;
         /**
-          * Basic text color variations depending on theme property.
+          * Basic text color variations.
          */
         "color"?: DisplayColor;
         /**
@@ -4191,7 +4191,7 @@ declare namespace LocalJSX {
     }
     interface PDivider {
         /**
-          * Defines color depending on theme.
+          * Defines color.
          */
         "color"?: DividerColor;
         /**
@@ -4371,7 +4371,7 @@ declare namespace LocalJSX {
          */
         "align"?: HeadingAlign;
         /**
-          * Basic text color variations depending on theme property.
+          * Basic text color variations.
          */
         "color"?: HeadingColor;
         /**
@@ -4393,7 +4393,7 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
-          * Basic color variations depending on theme property.
+          * Basic color variations.
          */
         "color"?: IconColor;
         /**
@@ -5681,7 +5681,7 @@ declare namespace LocalJSX {
         "size"?: ModelSignatureSize;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PMultiSelect {
         /**
@@ -5795,7 +5795,7 @@ declare namespace LocalJSX {
         "totalItemsCount"?: number;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PPinCode {
         /**
@@ -5976,7 +5976,7 @@ declare namespace LocalJSX {
         "scrollbar"?: boolean;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PSegmentedControl {
         /**
@@ -6063,7 +6063,7 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     /**
-     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
      */
     interface PSelect {
         /**
@@ -6377,7 +6377,7 @@ declare namespace LocalJSX {
          */
         "align"?: TextAlign;
         /**
-          * Basic text color variations depending on theme property.
+          * Basic text color variations.
          */
         "color"?: TextColor;
         /**
@@ -6689,7 +6689,7 @@ declare module "@stencil/core" {
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
             /**
-             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
              */
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
@@ -6699,7 +6699,7 @@ declare module "@stencil/core" {
              */
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
             /**
-             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
              */
             "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
@@ -6707,12 +6707,12 @@ declare module "@stencil/core" {
             "p-radio-group-option": LocalJSX.PRadioGroupOption & JSXBase.HTMLAttributes<HTMLPRadioGroupOptionElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             /**
-             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
              */
             "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
             "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
             /**
-             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
              */
             "p-select": LocalJSX.PSelect & JSXBase.HTMLAttributes<HTMLPSelectElement>;
             "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
