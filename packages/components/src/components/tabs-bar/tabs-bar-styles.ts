@@ -10,7 +10,6 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colors,
   cssVariableAnimationDuration,
   cssVariableTransitionDuration,
   getFocusBaseStyles,
@@ -19,7 +18,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
@@ -31,13 +30,11 @@ const targetSelectors = ['a', 'button'];
 const transformSelector = (selector: string): string =>
   targetSelectors.map((tag) => selector.replace(/\[role]/g, tag)).join();
 
-const { primaryColor, frostedColor } = colors;
-
 const barJssStyle: JssStyle = {
   position: 'absolute',
   height: '2px',
   left: 0,
-  background: primaryColor,
+  background: colorPrimary,
 };
 
 export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weight: TabsBarWeight): string => {
@@ -65,7 +62,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weigh
           whiteSpace: 'nowrap',
           boxSizing: 'border-box',
           textAlign: 'start',
-          color: primaryColor,
+          color: colorPrimary,
           cursor: 'pointer',
           borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
           zIndex: 0, // needed for ::before pseudo-element to be visible
@@ -83,7 +80,7 @@ export const getComponentCss = (size: BreakpointCustomizable<TabsBarSize>, weigh
         ...hoverMediaQuery({
           [transformSelector('::slotted([role]:hover)::before')]: {
             ...frostedGlassStyle,
-            background: frostedColor,
+            background: colorFrosted,
           },
         }),
         // basic invisible bar, that will be delayed via transition: visibility

@@ -11,7 +11,6 @@ import {
 import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
-  colors,
   cssVariableTransitionDuration,
   getAnimation,
   getTransition,
@@ -19,6 +18,7 @@ import {
   motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { colorBackdrop, colorCanvas, colorPrimary, colorSurface } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 
 // public css variables
@@ -43,8 +43,6 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
-const { primaryColor, canvasColor, surfaceColor, backdropColor } = colors;
-
 export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondaryScrollerVisible: boolean): string => {
   return getCss({
     '@global': {
@@ -62,10 +60,10 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVarColorPrimary]: primaryColor,
-          [cssVarColorBackgroundBase]: canvasColor,
-          [cssVarColorBackgroundSurface]: surfaceColor,
-          [cssVarColorBackgroundShading]: backdropColor,
+          [cssVarColorPrimary]: colorPrimary,
+          [cssVarColorBackgroundBase]: colorCanvas,
+          [cssVarColorBackgroundSurface]: colorSurface,
+          [cssVarColorBackgroundShading]: colorBackdrop,
           // [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           [cssVarColorBackgroundScroller]: 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...hostHiddenStyles,

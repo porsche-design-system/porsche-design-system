@@ -7,7 +7,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -16,15 +15,21 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { radiusFull } from '../../styles/css-variables';
+import {
+  colorContrastLow,
+  colorFrostedSoft,
+  colorPrimary,
+  colorSuccess,
+  colorSuccessFrostedSoft,
+  colorSuccessLow,
+  radiusFull,
+} from '../../styles/css-variables';
 import type { AlignLabel, BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
-const { primaryColor, contrastLowColor, successColor, frostedSoftColor, successFrostedSoftColor, successLowColor } =
-  colors;
 const getColors = (
   checked: boolean,
   loading: boolean
@@ -36,11 +41,11 @@ const getColors = (
   textColor: string;
 } => {
   return {
-    buttonBorderColor: checked ? successLowColor : contrastLowColor,
-    buttonBorderColorHover: checked ? successColor : primaryColor,
-    buttonBackgroundColor: checked ? successFrostedSoftColor : frostedSoftColor,
-    toggleBackgroundColor: loading ? 'transparent' : checked ? successColor : primaryColor,
-    textColor: primaryColor,
+    buttonBorderColor: checked ? colorSuccessLow : colorContrastLow,
+    buttonBorderColorHover: checked ? colorSuccess : colorPrimary,
+    buttonBackgroundColor: checked ? colorSuccessFrostedSoft : colorFrostedSoft,
+    toggleBackgroundColor: loading ? 'transparent' : checked ? colorSuccess : colorPrimary,
+    textColor: colorPrimary,
   };
 };
 

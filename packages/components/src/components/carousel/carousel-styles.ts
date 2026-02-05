@@ -18,14 +18,19 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusLarge, radius4Xl, radiusFull } from '../../styles/css-variables';
+import {
+  colorContrastMedium,
+  colorPrimary,
+  legacyRadiusLarge,
+  radius4Xl,
+  radiusFull,
+} from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
@@ -90,8 +95,6 @@ const backfaceVisibilityJssStyle: JssStyle = {
   WebkitBackfaceVisibility: 'hidden',
 };
 
-const { primaryColor, contrastMediumColor } = colors;
-
 const gradientMask = `linear-gradient(90deg,transparent 20%,#000 var(${cssVariableGradientColorWidth},33%) calc(100% - var(${cssVariableGradientColorWidth},33%)),transparent 80%)`;
 
 // CSS Variable defined in fontHyphenationStyle
@@ -151,7 +154,7 @@ export const getComponentCss = (
         ...((hasHeading || hasDescription) && {
           [`${selectorHeading},${selectorDescription}`]: {
             gridColumn: '1/-1',
-            color: primaryColor,
+            color: colorPrimary,
             ...(isHeaderAlignCenter && {
               textAlign: 'center', // relevant in case heading or description becomes multiline
               justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
@@ -304,7 +307,7 @@ export const getComponentCss = (
           position: 'relative',
         },
         borderRadius: radiusFull,
-        background: contrastMediumColor,
+        background: colorContrastMedium,
         ...(isInfinitePagination
           ? {
               width: '0px',
@@ -344,7 +347,7 @@ export const getComponentCss = (
         },
       }),
       [bulletActiveClass]: {
-        background: primaryColor,
+        background: colorPrimary,
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {

@@ -1,28 +1,26 @@
 import type { DisplayColor } from '../components/display/display-utils';
 import type { HeadingColor } from '../components/heading/heading-utils';
 import type { TypographyTextColor } from '../types';
-import { colors } from './colors';
-
-const {
-  primaryColor,
-  contrastLowColor,
-  contrastMediumColor,
-  contrastHighColor,
-  successColor,
-  warningColor,
-  errorColor,
-  infoColor,
-} = colors;
+import {
+  colorContrastHigh,
+  colorContrastLow,
+  colorContrastMedium,
+  colorError,
+  colorInfo,
+  colorPrimary,
+  colorSuccess,
+  colorWarning,
+} from './css-variables';
 
 const colorMap: Record<TypographyTextColor | HeadingColor | DisplayColor, string> = {
-  primary: primaryColor,
-  'contrast-high': contrastHighColor,
-  'contrast-medium': contrastMediumColor,
-  'contrast-low': contrastLowColor,
-  success: successColor,
-  warning: warningColor,
-  error: errorColor,
-  info: infoColor,
+  primary: colorPrimary,
+  'contrast-high': colorContrastHigh,
+  'contrast-medium': colorContrastMedium,
+  'contrast-low': colorContrastLow,
+  success: colorSuccess,
+  warning: colorWarning,
+  error: colorError,
+  info: colorInfo,
   inherit: 'currentColor',
 };
 
