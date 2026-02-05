@@ -6,9 +6,7 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { colors } from './';
-
-const { contrastMediumColor } = colors;
+import { colorContrastMedium } from './css-variables';
 
 export const formElementLayeredGap = '9px'; // to have same distance vertically and horizontally for e.g. button/icon within form element
 // TODO: basic button/icon padding can already be set within style function instead of on component style level
@@ -33,6 +31,6 @@ export const getUnitCounterJssStyle = (): JssStyle => {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     font: textSmallStyle.font,
-    color: contrastMediumColor,
+    color: colorContrastMedium,
   };
 };

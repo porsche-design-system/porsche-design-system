@@ -1,13 +1,10 @@
 import { borderWidthThin, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
-import { colors } from '../colors';
 import { getFocusBaseStyles, getTransition } from '../common-styles';
-import { legacyRadiusSmall, radiusLg, radiusXl } from '../css-variables';
+import { colorPrimary, legacyRadiusSmall, radiusLg, radiusXl } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
-
-const { primaryColor } = colors;
 
 export const getButtonJssStyle = (
   componentName: 'select' | 'multi-select',
@@ -41,7 +38,7 @@ export const getButtonJssStyle = (
     borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
     background: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
     font: textSmallStyle.font,
-    color: `var(${cssVarTextColor}, ${primaryColor})`,
+    color: `var(${cssVarTextColor}, ${colorPrimary})`,
     cursor: isDisabled ? 'not-allowed' : 'pointer',
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     ...(!isDisabled && {

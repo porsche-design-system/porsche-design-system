@@ -1,5 +1,15 @@
 import type { FormState } from '../utils/form/form-state';
-import { colors } from './colors';
+import {
+  colorContrastLower,
+  colorError,
+  colorErrorFrostedSoft,
+  colorErrorLow,
+  colorFrostedSoft,
+  colorPrimary,
+  colorSuccess,
+  colorSuccessFrostedSoft,
+  colorSuccessLow,
+} from './css-variables';
 
 type ThemedFormStateColors = {
   formStateBackgroundColor: string;
@@ -8,39 +18,27 @@ type ThemedFormStateColors = {
   formStateColor: string | undefined;
 };
 
-const {
-  successColor,
-  errorColor,
-  primaryColor,
-  successLowColor,
-  errorLowColor,
-  contrastLowerColor,
-  successFrostedSoftColor,
-  errorFrostedSoftColor,
-  frostedSoftColor,
-} = colors;
-
 const colorBackgroundMap: Record<FormState, string> = {
-  success: successFrostedSoftColor,
-  error: errorFrostedSoftColor,
-  none: frostedSoftColor,
+  success: colorSuccessFrostedSoft,
+  error: colorErrorFrostedSoft,
+  none: colorFrostedSoft,
 };
 
 const colorBorderMap: Record<FormState, string> = {
-  success: successLowColor,
-  error: errorLowColor,
-  none: contrastLowerColor,
+  success: colorSuccessLow,
+  error: colorErrorLow,
+  none: colorContrastLower,
 };
 
 const colorBorderHoverMap: Record<FormState, string> = {
-  success: successColor,
-  error: errorColor,
-  none: primaryColor,
+  success: colorSuccess,
+  error: colorError,
+  none: colorPrimary,
 };
 
 const colorMap: Record<FormState, string> = {
-  success: successColor,
-  error: errorColor,
+  success: colorSuccess,
+  error: colorError,
   none: undefined,
 };
 

@@ -1,14 +1,19 @@
-import { addImportantToEachRule, colors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  colorContrastHigh,
+  colorContrastLow,
+  colorContrastLower,
+  colorContrastMedium,
+} from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { DividerColor, DividerDirection } from './divider-utils';
 
-const { contrastLowerColor, contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
 const colorMap: Record<DividerColor, string> = {
-  'contrast-lower': contrastLowerColor,
-  'contrast-low': contrastLowColor,
-  'contrast-medium': contrastMediumColor,
-  'contrast-high': contrastHighColor,
+  'contrast-lower': colorContrastLower,
+  'contrast-low': colorContrastLow,
+  'contrast-medium': colorContrastMedium,
+  'contrast-high': colorContrastHigh,
 };
 
 export const getComponentCss = (color: DividerColor, orientation: BreakpointCustomizable<DividerDirection>): string => {

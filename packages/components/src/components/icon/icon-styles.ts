@@ -8,31 +8,30 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
 } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import {
+  colorContrastHigh,
+  colorContrastLow,
+  colorContrastMedium,
+  colorError,
+  colorInfo,
+  colorPrimary,
+  colorSuccess,
+  colorWarning,
+} from '../../styles/css-variables';
 import type { IconName, TextSize } from '../../types';
 import { getCss } from '../../utils';
 import { buildIconUrl, type IconColor } from './icon-utils';
 
-const {
-  primaryColor,
-  contrastLowColor,
-  contrastMediumColor,
-  contrastHighColor,
-  successColor,
-  errorColor,
-  warningColor,
-  infoColor,
-} = colors;
-
 const colorMap: Record<IconColor, string> = {
-  primary: primaryColor,
-  'contrast-high': contrastHighColor,
-  'contrast-medium': contrastMediumColor,
-  'contrast-low': contrastLowColor,
-  success: successColor,
-  warning: warningColor,
-  error: errorColor,
-  info: infoColor,
+  primary: colorPrimary,
+  'contrast-high': colorContrastHigh,
+  'contrast-medium': colorContrastMedium,
+  'contrast-low': colorContrastLow,
+  success: colorSuccess,
+  warning: colorWarning,
+  error: colorError,
+  info: colorInfo,
   inherit: 'inherit',
 };
 

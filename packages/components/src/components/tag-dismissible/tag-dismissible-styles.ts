@@ -1,7 +1,6 @@
 import { fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -9,10 +8,16 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from '../../styles/css-variables';
+import {
+  colorContrastHigh,
+  colorFrosted,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+  radiusXl,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
-
-const { primaryColor, frostedColor, contrastHighColor } = colors;
 
 export const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
 
@@ -50,13 +55,13 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         cursor: 'pointer',
-        background: frostedColor,
-        color: primaryColor,
+        background: colorFrosted,
+        color: colorPrimary,
         textAlign: 'start',
         ...textSmallStyle,
         ...hoverMediaQuery({
           '&:hover > .icon': {
-            backgroundColor: frostedColor,
+            backgroundColor: colorFrosted,
           },
         }),
         '&:focus-visible': getFocusBaseStyles(),
@@ -66,7 +71,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
       label: {
         display: 'block',
         marginBottom: '-4px',
-        color: contrastHighColor,
+        color: colorContrastHigh,
         fontSize: fontSizeTextXSmall,
       },
     }),

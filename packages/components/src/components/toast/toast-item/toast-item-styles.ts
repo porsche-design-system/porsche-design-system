@@ -1,10 +1,6 @@
 import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/emotion';
-import {
-  addImportantToEachRule,
-  colors,
-  dismissButtonJssStyle,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
+import { addImportantToEachRule, dismissButtonJssStyle, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { colorPrimary } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   getNotificationContentJssStyle,
@@ -12,8 +8,6 @@ import {
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
 import type { ToastState } from '../toast/toast-utils';
-
-const { primaryColor } = colors;
 
 export const getComponentCss = (state: ToastState): string => {
   return getCss({
@@ -42,7 +36,7 @@ export const getComponentCss = (state: ToastState): string => {
       p: {
         ...textSmallStyle,
         margin: 0,
-        color: primaryColor,
+        color: colorPrimary,
         ...getNotificationContentJssStyle(),
       },
     },

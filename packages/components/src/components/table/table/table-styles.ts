@@ -1,5 +1,6 @@
 import { spacingFluidMedium, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colors, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { colorContrastLow, colorFrosted, colorPrimary } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
@@ -8,20 +9,18 @@ export const cssVariableTableHoverColor = '--_b';
 export const cssVariableTableBorderColor = '--_c';
 export const cssVariableTableBorderWidth = '--_d';
 
-const { primaryColor, frostedColor, contrastLowColor } = colors;
-
 export const getComponentCss = (compact: boolean, layout: TableLayout): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVariableTableHoverColor]: frostedColor,
-          [cssVariableTableBorderColor]: contrastLowColor,
+          [cssVariableTableHoverColor]: colorFrosted,
+          [cssVariableTableBorderColor]: colorContrastLow,
           ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
           ...hostHiddenStyles,
           ...textSmallStyle,
-          color: primaryColor,
+          color: colorPrimary,
           textAlign: 'start',
         }),
       },
