@@ -17,11 +17,11 @@ const breakpointLegacy = {
 } as const;
 
 export const breakpoint: { [key in Breakpoint]: number } = {
+  ...breakpointLegacy,
   xs: breakpointXs,
   sm: breakpointSm,
   md: breakpointMd,
   lg: breakpointLg,
   xl: breakpointXl,
   '2xl': breakpoint2Xl,
-  ...breakpointLegacy,
 };
