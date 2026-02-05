@@ -12,9 +12,9 @@ export const metadata = {
 The Porsche Design System provides JS Functions for the media queries and JS Variables for breakpoints to be used in
 Emotion.
 
-- min-width: `getMediaQueryMin('xs'|'sm'|'md'|'lg'|'xl'|'2xl')`
-- max-width: `getMediaQueryMax('xs'|'sm'|'md'|'lg'|'xl'|'2xl')`
-- min-width and max-width: `getMediaQueryMinMax('xs'|'sm'|'md'|'lg'|'xl'|'2xl', 'xs'|'sm'|'md'|'lg'|'xl'|'2xl')`.
+- min-width: `getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- max-width: `getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- min-width and max-width: `getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`.
 
 ```js
 // Usage example:
@@ -27,12 +27,13 @@ const MediaQueryMin = styled.p({
 
 All breakpoints are also available as JS Variables:
 
-- xs: `breakpointXs`
-- sm: `breakpointSm`
-- md: `breakpointMd`
-- lg: `breakpointLg`
-- xl: `breakpointXl`
-- 2xl: `breakpoint2XL`
+- Base: `breakpointBase`
+- xs: `breakpointXS`
+- s: `breakpointS`
+- m: `breakpointM`
+- l: `breakpointL`
+- xl: `breakpointXL`
+- xxl: `breakpointXXL`
 
 Styles import:
 `import { getMediaQueryMin, breakpointXs, … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`

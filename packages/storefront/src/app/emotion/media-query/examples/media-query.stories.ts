@@ -13,21 +13,21 @@ export const mediaQueryEmotionStory: Story<'div'> = {
         {
           tag: 'p',
           properties: {
-            className: `xs:after:content-['[getMediaQueryMin("xs")]'] sm:after:content-['[getMediaQueryMin("sm")]'] md:after:content-['[getMediaQueryMin("md")]'] lg:after:content-['[getMediaQueryMin("lg")]'] xl:after:content-['[getMediaQueryMin("xl")]'] 2xl:after:content-['[getMediaQueryMin("2xl")]']`,
+            className: `xs:after:content-['[getMediaQueryMin("xs")]'] sm:after:content-['[getMediaQueryMin("s")]'] md:after:content-['[getMediaQueryMin("m")]'] lg:after:content-['[getMediaQueryMin("l")]'] xl:after:content-['[getMediaQueryMin("xl")]'] 2xl:after:content-['[getMediaQueryMin("xxl")]']`,
           },
           children: ['Media Query Min: '],
         },
         {
           tag: 'p',
           properties: {
-            className: `max-xs:after:content-['[getMediaQueryMax("xs")]'] max-sm:after:content-['[getMediaQueryMax("sm")]'] max-md:after:content-['[getMediaQueryMax("md")]'] max-lg:after:content-['[getMediaQueryMax("lg")]'] max-xl:after:content-['[getMediaQueryMax("xl")]'] max–2xl:after:content-['[getMediaQueryMax("2xl")]']`,
+            className: `max-xs:after:content-['[getMediaQueryMax("xs")]'] max-sm:after:content-['[getMediaQueryMax("s")]'] max-md:after:content-['[getMediaQueryMax("m")]'] max-lg:after:content-['[getMediaQueryMax("l")]'] max-xl:after:content-['[getMediaQueryMax("xl")]'] max–2xl:after:content-['[getMediaQueryMax("xxl")]']`,
           },
           children: ['Media Query Max: '],
         },
         {
           tag: 'p',
           properties: {
-            className: `xs:max-sm:after:content-['[getMediaQueryMinMax("xs","sm")]'] sm:max-md:after:content-['[getMediaQueryMinMax("sm","md")]'] md:max-lg:after:content-['[getMediaQueryMinMax("md","lg")]'] lg:max-xl:after:content-['[getMediaQueryMinMax("lg","xl")]'] xl:max-2xl:after:content-['[getMediaQueryMinMax("xl","2xl")]']`,
+            className: `xs:max-sm:after:content-['[getMediaQueryMinMax("xs","s")]'] sm:max-md:after:content-['[getMediaQueryMinMax("s","m")]'] md:max-lg:after:content-['[getMediaQueryMinMax("m","l")]'] lg:max-xl:after:content-['[getMediaQueryMinMax("l","xl")]'] xl:max-2xl:after:content-['[getMediaQueryMinMax("xl","xxl")]']`,
           },
           children: ['Media Query Min Max: '],
         },
