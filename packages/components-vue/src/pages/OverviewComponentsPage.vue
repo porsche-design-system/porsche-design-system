@@ -67,59 +67,59 @@ import {
 <template>
   <div class="root">
     <div>
-      <div class="playground light" title="should render default heading">
+      <div class="playground" title="should render default heading">
         <PHeading>Some Heading</PHeading>
       </div>
 
-      <div class="playground light" title="should render default display">
+      <div class="playground" title="should render default display">
         <PDisplay>Some Display</PDisplay>
       </div>
 
-      <div class="playground light" title="should render default sheet">
+      <div class="playground" title="should render default sheet">
         <iframe src="/sheet-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
       </div>
 
-      <div class="playground light" title="should render default modal">
+      <div class="playground" title="should render default modal">
         <iframe src="/modal-basic?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
       </div>
 
-      <div class="playground light" title="should render default flyout">
+      <div class="playground" title="should render default flyout">
         <iframe src="/flyout-basic?iframe=true" loading="eager" title="fix-linter-2a"></iframe>
       </div>
 
-      <div class="playground light" title="should render default banner">
+      <div class="playground" title="should render default banner">
         <iframe src="/banner-basic?iframe=true" loading="eager" title="fix-linter-3a"></iframe>
       </div>
 
-      <div class="playground light" title="should render default toast">
+      <div class="playground" title="should render default toast">
         <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-4a"></iframe>
       </div>
 
-      <div class="playground light" title="should render default drilldown">
+      <div class="playground" title="should render default drilldown">
         <iframe src="/drilldown-basic?iframe=true" loading="eager" title="fix-linter-5a"></iframe>
       </div>
 
-      <div class="playground light" title="should render default inline-notification">
+      <div class="playground" title="should render default inline-notification">
         <PInlineNotification :description="'Some description'" :heading="'Some heading'" />
       </div>
 
-      <div class="playground light" title="should render default popover">
+      <div class="playground" title="should render default popover">
         <PPopover :direction="'right'">Some popover content</PPopover>
       </div>
 
-      <div class="playground light" title="should render default divider">
+      <div class="playground" title="should render default divider">
         <PDivider />
       </div>
 
-      <div class="playground light" title="should render default button">
+      <div class="playground" title="should render default button">
         <PButton>Some label</PButton>
       </div>
 
-      <div class="playground light" title="should render default button-pure">
+      <div class="playground" title="should render default button-pure">
         <PButtonPure>Some label</PButtonPure>
       </div>
 
-      <div class="playground light" title="should render default radio-group">
+      <div class="playground" title="should render default radio-group">
         <PRadioGroup :name="'some-name'" :label="'Some label'" value="a">
           <PRadioGroupOption label="Some label A" :value="'a'"></PRadioGroupOption>
           <PRadioGroupOption label="Some label B" :value="'b'"></PRadioGroupOption>
@@ -127,7 +127,7 @@ import {
         </PRadioGroup>
       </div>
 
-      <div class="playground light" title="should render default select">
+      <div class="playground" title="should render default select">
         <PSelect :label="'Some label'" :name="'options'">
           <PSelectOption value="a">Option A</PSelectOption>
           <PSelectOption value="b">Option B</PSelectOption>
@@ -135,7 +135,7 @@ import {
         </PSelect>
       </div>
 
-      <div class="playground light" title="should render default multi-select">
+      <div class="playground" title="should render default multi-select">
         <PMultiSelect :label="'Some label'" :name="'options'">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
@@ -143,57 +143,57 @@ import {
         </PMultiSelect>
       </div>
 
-      <div class="playground light" title="should render default fieldset">
+      <div class="playground" title="should render default fieldset">
         <PFieldset :label="'Some label'"></PFieldset>
       </div>
 
-      <div class="playground light" title="should render default text">
+      <div class="playground" title="should render default text">
         <PText>The quick brown fox jumps over the lazy dog</PText>
       </div>
 
-      <div class="playground light" title="should render default text-list">
+      <div class="playground" title="should render default text-list">
         <PTextList>
           <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
         </PTextList>
       </div>
 
-      <div class="playground light" title="should render default icon">
+      <div class="playground" title="should render default icon">
         <PIcon>Some Icon</PIcon>
       </div>
 
-      <div class="playground light" title="should render default flag">
+      <div class="playground" title="should render default flag">
         <PFlag>Some Icon</PFlag>
       </div>
 
-      <div class="playground light" title="should render default link">
+      <div class="playground" title="should render default link">
         <PLink :href="'https://porsche.com'">Some label</PLink>
       </div>
 
-      <div class="playground light" title="should render default link-pure">
+      <div class="playground" title="should render default link-pure">
         <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
       </div>
 
-      <div class="playground light" title="should render default wordmark">
+      <div class="playground" title="should render default wordmark">
         <PWordmark />
       </div>
 
-      <div class="playground light" title="should render default crest">
+      <div class="playground" title="should render default crest">
         <PCrest />
       </div>
 
-      <div class="playground light" title="should render default model-signature">
+      <div class="playground" title="should render default model-signature">
         <PModelSignature />
       </div>
 
-      <div class="playground light" title="should render default pagination">
+      <div class="playground" title="should render default pagination">
         <PPagination :activePage="1" :itemsPerPage="25" :totalItemsCount="500" />
       </div>
 
-      <div class="playground light" title="should render default pin-code">
+      <div class="playground" title="should render default pin-code">
         <PPinCode :label="'Some label'" />
       </div>
 
-      <div class="playground light" title="should render default table">
+      <div class="playground" title="should render default table">
         <PTable>
           <PTableHead>
             <PTableHeadRow>
@@ -210,7 +210,7 @@ import {
         </PTable>
       </div>
 
-      <div class="playground light" title="should render default tabs">
+      <div class="playground" title="should render default tabs">
         <PTabs :activeTabIndex="0">
           <PTabsItem :label="'Tab1'">Content 1</PTabsItem>
           <PTabsItem :label="'Tab2'">Content 2</PTabsItem>
@@ -218,7 +218,7 @@ import {
         </PTabs>
       </div>
 
-      <div class="playground light" title="should render default tabs-bar">
+      <div class="playground" title="should render default tabs-bar">
         <PTabsBar :activeTabIndex="0">
           <button>Tab1</button>
           <button>Tab2</button>
@@ -226,26 +226,26 @@ import {
         </PTabsBar>
       </div>
 
-      <div class="playground light" title="should render default accordion">
+      <div class="playground" title="should render default accordion">
         <PAccordion :heading="'Some accordion heading'">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
         </PAccordion>
       </div>
 
-      <div class="playground light" title="should render default spinner">
+      <div class="playground" title="should render default spinner">
         <PSpinner />
       </div>
 
-      <div class="playground light" title="should render default tag">
+      <div class="playground" title="should render default tag">
         <PTag>Some Tag</PTag>
       </div>
 
-      <div class="playground light" title="should render default tag-dismissible">
+      <div class="playground" title="should render default tag-dismissible">
         <PTagDismissible>Some Tag</PTagDismissible>
       </div>
 
-      <div class="playground light" title="should render default segmented-control">
+      <div class="playground" title="should render default segmented-control">
         <PSegmentedControl :value="'s'">
           <PSegmentedControlItem :value="'s'">S</PSegmentedControlItem>
           <PSegmentedControlItem :value="'m'">M</PSegmentedControlItem>
@@ -254,7 +254,7 @@ import {
         </PSegmentedControl>
       </div>
 
-      <div class="playground light" title="should render default scroller">
+      <div class="playground" title="should render default scroller">
         <PScroller>
           <button>Default</button>
           <button>Default</button>
@@ -273,7 +273,7 @@ import {
         </PScroller>
       </div>
 
-      <div class="playground light" title="should render default carousel">
+      <div class="playground" title="should render default carousel">
         <PCarousel :heading="'Heading'">
           <div>Slide 1</div>
           <div>Slide 2</div>
@@ -281,7 +281,7 @@ import {
         </PCarousel>
       </div>
 
-      <div class="playground light" title="should render default stepper-horizontal">
+      <div class="playground" title="should render default stepper-horizontal">
         <PStepperHorizontal>
           <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
           <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
@@ -295,7 +295,7 @@ import {
         </PStepperHorizontal>
       </div>
 
-      <div class="playground light" title="should render default link-tile">
+      <div class="playground" title="should render default link-tile">
         <PLinkTile :description="'Default'" :href="'#'" :label="'Some Label'">
           <img
             alt="Beach"
@@ -306,7 +306,7 @@ import {
         </PLinkTile>
       </div>
 
-      <div class="playground light" title="should render default button-tile">
+      <div class="playground" title="should render default button-tile">
         <PButtonTile :description="'Default'" :label="'Some Label'">
           <img
             alt="Beach"
@@ -317,17 +317,17 @@ import {
         </PButtonTile>
       </div>
 
-      <div class="playground light" title="should render default link-tile-product">
+      <div class="playground" title="should render default link-tile-product">
         <PLinkTileProduct :heading="'Some product'" :href="'https://porsche.com'" :price="'1.911,00 €'">
           <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
         </PLinkTileProduct>
       </div>
 
-      <div class="playground light" title="should render default switch">
+      <div class="playground" title="should render default switch">
         <PSwitch>Some label</PSwitch>
       </div>
 
-      <div class="playground light" title="should render default input-text">
+      <div class="playground" title="should render default input-text">
         <PInputText
           name="some-name"
           label="Label with placeholder"
@@ -337,39 +337,39 @@ import {
         ></PInputText>
       </div>
 
-      <div class="playground light" title="should render default input-date">
+      <div class="playground" title="should render default input-date">
         <PInputDate name="some-name" label="Label"></PInputDate>
       </div>
 
-      <div class="playground light" title="should render default input-email">
+      <div class="playground" title="should render default input-email">
         <PInputEmail name="some-name" label="Label"></PInputEmail>
       </div>
 
-      <div class="playground light" title="should render default input-number">
+      <div class="playground" title="should render default input-number">
         <PInputNumber name="some-name" label="Label" value="1234" :controls="true"></PInputNumber>
       </div>
 
-      <div class="playground light" title="should render default input-password">
+      <div class="playground" title="should render default input-password">
         <PInputPassword name="some-name" label="Label" value="some password" :toggle="true"></PInputPassword>
       </div>
 
-      <div class="playground light" title="should render default input-search">
+      <div class="playground" title="should render default input-search">
         <PInputSearch name="some-name" label="Label" value="Some value" :clear="true" :indicator="true"></PInputSearch>
       </div>
 
-      <div class="playground light" title="should render default input-tel">
+      <div class="playground" title="should render default input-tel">
         <PInputTel name="some-name" label="Label"></PInputTel>
       </div>
 
-      <div class="playground light" title="should render default input-text">
+      <div class="playground" title="should render default input-text">
         <PInputText name="some-name" label="Label" value="some-value" :counter="true" :max-length="20"></PInputText>
       </div>
 
-      <div class="playground light" title="should render default input-time">
+      <div class="playground" title="should render default input-time">
         <PInputTime name="some-name" label="Label"></PInputTime>
       </div>
 
-      <div class="playground light" title="should render default input-url">
+      <div class="playground" title="should render default input-url">
         <PInputUrl
           name="some-name"
           label="Label"
@@ -379,66 +379,66 @@ import {
         ></PInputUrl>
       </div>
 
-      <div class="playground light" title="should render default textarea">
+      <div class="playground" title="should render default textarea">
         <PTextarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></PTextarea>
       </div>
     </div>
 
     <PorscheDesignSystemProvider prefix="my-prefix">
       <div>
-        <div class="playground light" title="should render default heading with custom prefix">
+        <div class="playground" title="should render default heading with custom prefix">
           <PHeading>Some Heading</PHeading>
         </div>
 
-        <div class="playground light" title="should render default display with custom prefix">
+        <div class="playground" title="should render default display with custom prefix">
           <PDisplay>Some Display</PDisplay>
         </div>
 
-        <div class="playground light" title="should render default sheet with custom prefix">
+        <div class="playground" title="should render default sheet with custom prefix">
           <iframe src="/sheet-prefixed?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
         </div>
 
-        <div class="playground light" title="should render default modal with custom prefix">
+        <div class="playground" title="should render default modal with custom prefix">
           <iframe src="/modal-prefixed?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
         </div>
 
-        <div class="playground light" title="should render default flyout with custom prefix">
+        <div class="playground" title="should render default flyout with custom prefix">
           <iframe src="/flyout-prefixed?iframe=true" loading="eager" title="fix-linter-2b"></iframe>
         </div>
 
-        <div class="playground light" title="should render default banner with custom prefix">
+        <div class="playground" title="should render default banner with custom prefix">
           <iframe src="/banner-prefixed?iframe=true" loading="eager" title="fix-linter-3b"></iframe>
         </div>
 
-        <div class="playground light" title="should render default toast with custom prefix">
+        <div class="playground" title="should render default toast with custom prefix">
           <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-4b"></iframe>
         </div>
 
-        <div class="playground light" title="should render default drilldown with custom prefix">
+        <div class="playground" title="should render default drilldown with custom prefix">
           <iframe src="/drilldown-prefixed?iframe=true" loading="eager" title="fix-linter-5b"></iframe>
         </div>
 
-        <div class="playground light" title="should render default inline-notification with custom prefix">
+        <div class="playground" title="should render default inline-notification with custom prefix">
           <PInlineNotification :description="'Some description'" :heading="'Some heading'" />
         </div>
 
-        <div class="playground light" title="should render default popover with custom prefix">
+        <div class="playground" title="should render default popover with custom prefix">
           <PPopover :direction="'right'">Some popover content</PPopover>
         </div>
 
-        <div class="playground light" title="should render default divider with custom prefix">
+        <div class="playground" title="should render default divider with custom prefix">
           <PDivider />
         </div>
 
-        <div class="playground light" title="should render default button with custom prefix">
+        <div class="playground" title="should render default button with custom prefix">
           <PButton>Some label</PButton>
         </div>
 
-        <div class="playground light" title="should render default button-pure with custom prefix">
+        <div class="playground" title="should render default button-pure with custom prefix">
           <PButtonPure>Some label</PButtonPure>
         </div>
 
-        <div class="playground light" title="should render default radio-group with custom prefix">
+        <div class="playground" title="should render default radio-group with custom prefix">
           <PRadioGroup :name="'some-name'" :label="'Some label'" value="a">
             <PRadioGroupOption label="Some label A" :value="'a'"></PRadioGroupOption>
             <PRadioGroupOption label="Some label B" :value="'b'"></PRadioGroupOption>
@@ -446,7 +446,7 @@ import {
           </PRadioGroup>
         </div>
 
-        <div class="playground light" title="should render default select with custom prefix">
+        <div class="playground" title="should render default select with custom prefix">
           <PSelect :label="'Some label'" :name="'options'">
             <PSelectOption value="a">Option A</PSelectOption>
             <PSelectOption value="b">Option B</PSelectOption>
@@ -454,7 +454,7 @@ import {
           </PSelect>
         </div>
 
-        <div class="playground light" title="should render default multi-select with custom prefix">
+        <div class="playground" title="should render default multi-select with custom prefix">
           <PMultiSelect :label="'Some label'" :name="'options'">
             <PMultiSelectOption value="a">Option A</PMultiSelectOption>
             <PMultiSelectOption value="b">Option B</PMultiSelectOption>
@@ -462,57 +462,57 @@ import {
           </PMultiSelect>
         </div>
 
-        <div class="playground light" title="should render default fieldset with custom prefix">
+        <div class="playground" title="should render default fieldset with custom prefix">
           <PFieldset :label="'Some label'"></PFieldset>
         </div>
 
-        <div class="playground light" title="should render default text with custom prefix">
+        <div class="playground" title="should render default text with custom prefix">
           <PText>The quick brown fox jumps over the lazy dog</PText>
         </div>
 
-        <div class="playground light" title="should render default text-list with custom prefix">
+        <div class="playground" title="should render default text-list with custom prefix">
           <PTextList>
             <PTextListItem>The quick brown fox jumps over the lazy dog</PTextListItem>
           </PTextList>
         </div>
 
-        <div class="playground light" title="should render default icon with custom prefix">
+        <div class="playground" title="should render default icon with custom prefix">
           <PIcon />
         </div>
 
-        <div class="playground light" title="should render default flag with custom prefix">
+        <div class="playground" title="should render default flag with custom prefix">
           <PFlag />
         </div>
 
-        <div class="playground light" title="should render default link with custom prefix">
+        <div class="playground" title="should render default link with custom prefix">
           <PLink :href="'https://porsche.com'">Some label</PLink>
         </div>
 
-        <div class="playground light" title="should render default link-pure with custom prefix">
+        <div class="playground" title="should render default link-pure with custom prefix">
           <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
         </div>
 
-        <div class="playground light" title="should render default wordmark with custom prefix">
+        <div class="playground" title="should render default wordmark with custom prefix">
           <PWordmark />
         </div>
 
-        <div class="playground light" title="should render default crest with custom prefix">
+        <div class="playground" title="should render default crest with custom prefix">
           <PCrest />
         </div>
 
-        <div class="playground light" title="should render default model-signature with custom prefix">
+        <div class="playground" title="should render default model-signature with custom prefix">
           <PModelSignature />
         </div>
 
-        <div class="playground light" title="should render default pagination with custom prefix">
+        <div class="playground" title="should render default pagination with custom prefix">
           <PPagination :activePage="1" :itemsPerPage="25" :totalItemsCount="500" />
         </div>
 
-        <div class="playground light" title="should render default pin-code with custom prefix">
+        <div class="playground" title="should render default pin-code with custom prefix">
           <PPinCode :label="'Some label'" />
         </div>
 
-        <div class="playground light" title="should render default table with custom prefix">
+        <div class="playground" title="should render default table with custom prefix">
           <PTable>
             <PTableHead>
               <PTableHeadRow>
@@ -529,7 +529,7 @@ import {
           </PTable>
         </div>
 
-        <div class="playground light" title="should render default tabs with custom prefix">
+        <div class="playground" title="should render default tabs with custom prefix">
           <PTabs>
             <PTabsItem :label="'Tab1'">Content 1</PTabsItem>
             <PTabsItem :label="'Tab2'">Content 2</PTabsItem>
@@ -537,7 +537,7 @@ import {
           </PTabs>
         </div>
 
-        <div class="playground light" title="should render default tabs-bar with custom prefix">
+        <div class="playground" title="should render default tabs-bar with custom prefix">
           <PTabsBar :activeTabIndex="0">
             <button>Tab1</button>
             <button>Tab2</button>
@@ -545,26 +545,26 @@ import {
           </PTabsBar>
         </div>
 
-        <div class="playground light" title="should render default accordion with custom prefix">
+        <div class="playground" title="should render default accordion with custom prefix">
           <PAccordion :heading="'Some accordion heading'">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
             dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
           </PAccordion>
         </div>
 
-        <div class="playground light" title="should render default spinner with custom prefix">
+        <div class="playground" title="should render default spinner with custom prefix">
           <PSpinner />
         </div>
 
-        <div class="playground light" title="should render default tag with custom prefix">
+        <div class="playground" title="should render default tag with custom prefix">
           <PTag>Some Tag</PTag>
         </div>
 
-        <div class="playground light" title="should render default tag-dismissible with custom prefix">
+        <div class="playground" title="should render default tag-dismissible with custom prefix">
           <PTagDismissible>Some Tag</PTagDismissible>
         </div>
 
-        <div class="playground light" title="should render default segmented-control with custom prefix">
+        <div class="playground" title="should render default segmented-control with custom prefix">
           <PSegmentedControl :value="'s'">
             <PSegmentedControlItem :value="'s'">S</PSegmentedControlItem>
             <PSegmentedControlItem :value="'m'">M</PSegmentedControlItem>
@@ -573,7 +573,7 @@ import {
           </PSegmentedControl>
         </div>
 
-        <div class="playground light" title="should render default scroller with custom prefix">
+        <div class="playground" title="should render default scroller with custom prefix">
           <PScroller>
             <button>Default</button>
             <button>Default</button>
@@ -592,7 +592,7 @@ import {
           </PScroller>
         </div>
 
-        <div class="playground light" title="should render default carousel with custom prefix">
+        <div class="playground" title="should render default carousel with custom prefix">
           <PCarousel :heading="'Heading'">
             <div>Slide 1</div>
             <div>Slide 2</div>
@@ -600,7 +600,7 @@ import {
           </PCarousel>
         </div>
 
-        <div class="playground light" title="should render default stepper-horizontal with custom prefix">
+        <div class="playground" title="should render default stepper-horizontal with custom prefix">
           <PStepperHorizontal>
             <PStepperHorizontalItem :state="'current'">Step 1</PStepperHorizontalItem>
             <PStepperHorizontalItem>Step 2</PStepperHorizontalItem>
@@ -614,7 +614,7 @@ import {
           </PStepperHorizontal>
         </div>
 
-        <div class="playground light" title="should render default link-tile with custom prefix">
+        <div class="playground" title="should render default link-tile with custom prefix">
           <PLinkTile :description="'Default'" :href="'#'" :label="'Some Label'">
             <img
               alt="Beach"
@@ -625,7 +625,7 @@ import {
           </PLinkTile>
         </div>
 
-        <div class="playground light" title="should render default button-tile with custom prefix">
+        <div class="playground" title="should render default button-tile with custom prefix">
           <PButtonTile :description="'Default'" :label="'Some Label'">
             <img
               alt="Beach"
@@ -636,17 +636,17 @@ import {
           </PButtonTile>
         </div>
 
-        <div class="playground light" title="should render default link-tile-product with custom prefix">
+        <div class="playground" title="should render default link-tile-product with custom prefix">
           <PLinkTileProduct :heading="'Some product'" :href="'https://porsche.com'" :price="'1.911,00 €'">
             <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
           </PLinkTileProduct>
         </div>
 
-        <div class="playground light" title="should render default switch with custom prefix">
+        <div class="playground" title="should render default switch with custom prefix">
           <PSwitch>Some label</PSwitch>
         </div>
 
-        <div class="playground light" title="should render default input-text with custom prefix">
+        <div class="playground" title="should render default input-text with custom prefix">
           <PInputText
             name="some-name"
             label="Label with placeholder"
@@ -656,23 +656,23 @@ import {
           ></PInputText>
         </div>
 
-        <div class="playground light" title="should render default input-date with custom prefix">
+        <div class="playground" title="should render default input-date with custom prefix">
           <PInputDate name="some-name" label="Label"></PInputDate>
         </div>
 
-        <div class="playground light" title="should render default input-email with custom prefix">
+        <div class="playground" title="should render default input-email with custom prefix">
           <PInputEmail name="some-name" label="Label"></PInputEmail>
         </div>
 
-        <div class="playground light" title="should render default input-number with custom prefix">
+        <div class="playground" title="should render default input-number with custom prefix">
           <PInputNumber name="some-name" label="Label" value="1234" :controls="true"></PInputNumber>
         </div>
 
-        <div class="playground light" title="should render default input-password with custom prefix">
+        <div class="playground" title="should render default input-password with custom prefix">
           <PInputPassword name="some-name" label="Label" value="some password" :toggle="true"></PInputPassword>
         </div>
 
-        <div class="playground light" title="should render default input-search with custom prefix">
+        <div class="playground" title="should render default input-search with custom prefix">
           <PInputSearch
             name="some-name"
             label="Label"
@@ -682,19 +682,19 @@ import {
           ></PInputSearch>
         </div>
 
-        <div class="playground light" title="should render default input-tel with custom prefix">
+        <div class="playground" title="should render default input-tel with custom prefix">
           <PInputTel name="some-name" label="Label"></PInputTel>
         </div>
 
-        <div class="playground light" title="should render default input-text with custom prefix">
+        <div class="playground" title="should render default input-text with custom prefix">
           <PInputText name="some-name" label="Label" value="some-value" :counter="true" :max-length="20"></PInputText>
         </div>
 
-        <div class="playground light" title="should render default input-time with custom prefix">
+        <div class="playground" title="should render default input-time with custom prefix">
           <PInputTime name="some-name" label="Label"></PInputTime>
         </div>
 
-        <div class="playground light" title="should render default input-url with custom prefix">
+        <div class="playground" title="should render default input-url with custom prefix">
           <PInputUrl
             name="some-name"
             label="Label"
@@ -704,7 +704,7 @@ import {
           ></PInputUrl>
         </div>
 
-        <div class="playground light" title="should render default textarea with custom prefix">
+        <div class="playground" title="should render default textarea with custom prefix">
           <PTextarea name="some-name" label="Label with placeholder" placeholder="Some placeholder"></PTextarea>
         </div>
       </div>

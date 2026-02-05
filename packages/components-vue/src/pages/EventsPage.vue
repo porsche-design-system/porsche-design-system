@@ -243,17 +243,17 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
 </script>
 
 <template>
-  <div class="playground light">
+  <div class="playground">
     <PAccordion :heading="'Some heading'" @update="onAccordionUpdate" />
     <p>{{ accordionUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" @update="onPaginationUpdate" />
     <p>{{ paginationUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTabsBar :activeTabIndex="0" @update="onTabsBarUpdate">
       <button>Tab 1</button>
       <button>Tab 2</button>
@@ -262,7 +262,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ tabsBarUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTabs :activeTabIndex="0" @update="onTabsUpdate">
       <PTabsItem :label="'Tab 1'">Content 1</PTabsItem>
       <PTabsItem :label="'Tab 2'">Content 2</PTabsItem>
@@ -271,24 +271,24 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ tabsUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PSwitch @update="onSwitchUpdate">Switch</PSwitch>
     <p>{{ switchUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PBanner :open="isBannerOpen" @dismiss="onBannerDismiss" heading="Banner"></PBanner>
     <p>{{ bannerDismissEventCounter }}</p>
     <button @click="isBannerOpen = true">Open Banner</button>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PModal :open="isModalOpen" @dismiss="onModalDismiss">Modal</PModal>
     <p>{{ modalDismissEventCounter }}</p>
     <button @click="isModalOpen = true">Open Modal</button>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTable @update="onTableUpdate">
       <PTableHead>
         <PTableHeadRow>
@@ -299,7 +299,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ tableUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PCarousel @update="onCarouselUpdate" :pagination="true" :trimSpace="true" :rewind="true">
       <div>Slide 1</div>
       <div>Slide 2</div>
@@ -308,7 +308,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ carouselUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputDate
       v-model="inputDateValue"
       @input="onInputDateInput"
@@ -322,7 +322,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputDateChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputMonth
       v-model="inputMonthValue"
       @input="onInputMonthInput"
@@ -336,7 +336,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputMonthChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputWeek
       v-model="inputWeekValue"
       @input="onInputWeekInput"
@@ -350,7 +350,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputWeekChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputEmail
       v-model="inputEmailValue"
       @input="onInputEmailInput"
@@ -364,7 +364,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputEmailChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputNumber
       v-model="inputNumberValue"
       @input="onInputNumberInput"
@@ -379,7 +379,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputNumberChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputPassword
       v-model="inputPasswordValue"
       @input="onInputPasswordInput"
@@ -394,7 +394,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputPasswordChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputSearch
       v-model="inputSearchValue"
       @input="onInputSearchInput"
@@ -409,7 +409,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputSearchChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputTel
       v-model="inputTelValue"
       @input="onInputTelInput"
@@ -423,7 +423,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputTelChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputText
       v-model="inputTextValue"
       @input="onInputTextInput"
@@ -438,7 +438,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputTextChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputTime
       v-model="inputTimeValue"
       @input="onInputTimeInput"
@@ -452,7 +452,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputTimeChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputUrl
       v-model="inputUrlValue"
       @input="onInputUrlInput"
@@ -467,7 +467,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputUrlChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTextarea
       v-model="textareaValue"
       @input="onTextareaInput"
