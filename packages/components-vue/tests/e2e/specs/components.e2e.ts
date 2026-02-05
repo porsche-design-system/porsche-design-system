@@ -5,7 +5,7 @@ const console = require('console');
 
 test('overview should work without errors', async ({ page }) => {
   initConsoleObserver(page);
-  await goto(page, 'overview');
+  await goto(page, 'overview-components');
 
   expect(getConsoleErrorsAmount()).toBe(0);
 
@@ -14,7 +14,7 @@ test('overview should work without errors', async ({ page }) => {
 });
 
 test('should stringify object props correctly', async ({ page }) => {
-  await goto(page, 'overview');
+  await goto(page, 'overview-components');
 
   const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
 
@@ -27,7 +27,7 @@ test.fixme('should initialize component deterministically', async ({ page }) => 
   await goto(page, 'core-initializer');
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const [component1, component2] = await page.locator('p-text-field-wrapper').all();
+  const [component1, component2] = await page.locator('p-input-text').all();
 
   const component1HTML = await getOuterHTML(component1);
   const component2HTML = await getOuterHTML(component2);
