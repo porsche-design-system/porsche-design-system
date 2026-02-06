@@ -3,7 +3,6 @@ import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { useTheme } from '../contexts/ThemeContext.tsx';
 
 ModuleRegistry.registerModules([AllEnterpriseModule]);
 
@@ -117,8 +116,6 @@ const defaultColDef = {
 };
 
 export const AGGridExamplePage = (): JSX.Element => {
-  const { theme } = useTheme();
-
   return (
     <div style={{ height: '80vh' }}>
       <AgGridReact
