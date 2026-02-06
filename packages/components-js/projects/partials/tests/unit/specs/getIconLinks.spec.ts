@@ -1,8 +1,8 @@
 import { ICON_NAMES, type IconName } from '@porsche-design-system/icons';
 import { kebabCase } from 'change-case';
 import { renderToString } from 'react-dom/server';
-import { vi } from 'vitest';
 import { getIconLinks } from '../../../src';
+import { vi, describe, it, expect } from 'vitest';
 
 const hash = '[a-z0-9]{7}';
 const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system\\/icons';
