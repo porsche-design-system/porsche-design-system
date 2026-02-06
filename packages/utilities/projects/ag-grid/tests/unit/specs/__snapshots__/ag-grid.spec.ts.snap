@@ -13,7 +13,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-border-color: var(--ag-inherited-border-color, light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450)));
 	--ag-border-radius: var(--ag-inherited-border-radius, 4px);
 	--ag-border-width: var(--ag-inherited-border-width, 1px);
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, light);
+	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, inherit);
 	--ag-button-active-background-color: var(--ag-inherited-button-active-background-color, var(--ag-button-hover-background-color));
 	--ag-button-active-border: var(--ag-inherited-button-active-border, solid var(--ag-border-width) var(--ag-accent-color));
 	--ag-button-active-text-color: var(--ag-inherited-button-active-text-color, var(--ag-button-hover-text-color));
@@ -273,7 +273,6 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-wrapper-border: var(--ag-inherited-wrapper-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 6px);
 :where([data-ag-theme-mode="light"]) & {
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, light);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
 }
 :where([data-ag-theme-mode="dark"]) & {
@@ -281,7 +280,6 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, dark);
 	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
 	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
@@ -299,7 +297,6 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, dark);
 	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
 	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
@@ -585,7 +582,6 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-wrapper-border: var(--ag-wrapper-border);
 	--ag-inherited-wrapper-border-radius: var(--ag-wrapper-border-radius);
 :where([data-ag-theme-mode="light"]) & {
-	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
 }
 :where([data-ag-theme-mode="dark"]) & {
@@ -593,7 +589,6 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
-	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
 	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
@@ -611,7 +606,6 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
-	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
 	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
@@ -744,7 +738,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "borderColor": "light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450))",
     "borderRadius": "4px",
     "borderWidth": 1,
-    "browserColorScheme": "light",
+    "browserColorScheme": "inherit",
     "buttonActiveBackgroundColor": {
       "ref": "buttonHoverBackgroundColor",
     },
@@ -1347,7 +1341,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderJoinPillColor": "#7a3a37",
     "advancedFilterBuilderOptionPillColor": "#5a3168",
     "advancedFilterBuilderValuePillColor": "#374c86",
-    "browserColorScheme": "dark",
     "cardShadow": "0 1px 4px 1px #000A",
     "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
     "cellBatchEditTextColor": "#f3d0b3",
@@ -1385,7 +1378,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderJoinPillColor": "#7a3a37",
     "advancedFilterBuilderOptionPillColor": "#5a3168",
     "advancedFilterBuilderValuePillColor": "#374c86",
-    "browserColorScheme": "dark",
     "cardShadow": "0 1px 4px 1px #000A",
     "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
     "cellBatchEditTextColor": "#f3d0b3",
@@ -1419,7 +1411,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
   },
   "light": {
-    "browserColorScheme": "light",
     "chromeBackgroundColor": {
       "mix": 0.02,
       "onto": "backgroundColor",
