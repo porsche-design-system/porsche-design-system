@@ -1,26 +1,16 @@
 import { type Theme, themeQuartz } from 'ag-grid-community';
 import { checkboxStyle, inputStyles, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import {
-  colorCanvasDark,
-  colorCanvasLight,
-  colorContrastLowDark,
-  colorContrastLowerDark,
-  colorContrastLowerLight,
-  colorContrastLowLight,
-  colorErrorLowDark,
-  colorErrorLowLight,
-  colorFocusDark,
-  colorFocusLight,
-  colorFrostedDark,
-  colorFrostedLight,
-  colorInfoDark,
-  colorInfoLight,
-  colorInfoLowDark,
-  colorInfoLowLight,
-  colorPrimaryDark,
-  colorPrimaryLight,
-  colorSurfaceDark,
-  colorSurfaceLight,
+  colorCanvas,
+  colorContrastLow,
+  colorContrastLower,
+  colorErrorLow,
+  colorFocus,
+  colorFrosted,
+  colorInfo,
+  colorInfoLow,
+  colorPrimary,
+  colorSurface,
   fontPorscheNext,
   fontWeightSemibold,
   radiusMd,
@@ -28,13 +18,12 @@ import {
   typescaleSm,
   typescaleXs,
 } from '../styles';
-import { pdsThemeModeDark } from '../types/theme-mode';
 
 /**
  * Porsche Design System theme for AG Grid v35
  *
  * This theme extends the Quartz theme with Porsche Design System styling.
- * It supports both light and dark modes via the data-ag-theme-mode attribute.
+ * It supports both light and dark modes via CSS `color-scheme`.
  *
  * Features:
  * - Custom Porsche Design System colors
@@ -53,10 +42,17 @@ import { pdsThemeModeDark } from '../types/theme-mode';
  * };
  * ```
  *
- * For dark mode, set the data-ag-theme-mode attribute on a parent element:
+ * For dark mode, set `color-scheme` on a parent element:
  * ```html
- * <body data-ag-theme-mode="dark">
+ * <body style="color-scheme: dark;">
  *   <!-- Grid will render in dark mode -->
+ * </body>
+ * ```
+ *
+ * For light dark mode, set `color-scheme` on a parent element:
+ * ```html
+ * <body style="color-scheme: light dark;">
+ *   <!-- Grid will render in light or dark mode depending on OS settings -->
  * </body>
  * ```
  */
@@ -89,45 +85,21 @@ export const pdsTheme: Theme = themeQuartz
     inputFocusShadow: 'none',
 
     // Color scheme
-    browserColorScheme: 'light',
-    accentColor: colorInfoLight,
-    backgroundColor: colorCanvasLight,
-    foregroundColor: colorPrimaryLight,
-    borderColor: colorContrastLowLight,
-    invalidColor: colorErrorLowLight,
+    accentColor: colorInfo,
+    backgroundColor: colorCanvas,
+    foregroundColor: colorPrimary,
+    borderColor: colorContrastLow,
+    invalidColor: colorErrorLow,
 
     // Grid colors
-    headerBackgroundColor: colorContrastLowerLight,
-    selectedRowBackgroundColor: colorInfoLowLight,
-    oddRowBackgroundColor: colorSurfaceLight,
-    modalOverlayBackgroundColor: colorFrostedLight,
-    rowHoverColor: colorFrostedLight,
-    columnHoverColor: colorFrostedLight,
-    rangeSelectionBorderColor: colorFocusLight,
+    headerBackgroundColor: colorContrastLower,
+    selectedRowBackgroundColor: colorInfoLow,
+    oddRowBackgroundColor: colorSurface,
+    modalOverlayBackgroundColor: colorFrosted,
+    rowHoverColor: colorFrosted,
+    columnHoverColor: colorFrosted,
+    rangeSelectionBorderColor: colorFocus,
   })
-  // Dark mode parameters
-  .withParams(
-    {
-      browserColorScheme: 'dark',
-
-      // Color scheme
-      accentColor: colorInfoDark,
-      backgroundColor: colorCanvasDark,
-      foregroundColor: colorPrimaryDark,
-      borderColor: colorContrastLowDark,
-      invalidColor: colorErrorLowDark,
-
-      // Grid colors
-      headerBackgroundColor: colorContrastLowerDark,
-      selectedRowBackgroundColor: colorInfoLowDark,
-      oddRowBackgroundColor: colorSurfaceDark,
-      modalOverlayBackgroundColor: colorFrostedDark,
-      rowHoverColor: colorFrostedDark,
-      columnHoverColor: colorFrostedDark,
-      rangeSelectionBorderColor: colorFocusDark,
-    },
-    pdsThemeModeDark
-  )
   // Apply custom parts
   .withPart(pdsSvgIcons)
   .withPart(toggleButtonStyle)

@@ -1,29 +1,21 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
   borderWidthThin,
-  colorContrastLowerDark,
-  colorContrastLowerLight,
-  colorDisabledDark,
-  colorDisabledLight,
-  colorFrostedSoftDark,
-  colorFrostedSoftLight,
-  colorPrimaryDark,
-  colorPrimaryLight,
-  colorSuccessDark,
-  colorSuccessFrostedSoftDark,
-  colorSuccessFrostedSoftLight,
-  colorSuccessLight,
-  colorSuccessLowDark,
-  colorSuccessLowLight,
+  colorContrastLower,
+  colorDisabled,
+  colorFrostedSoft,
+  colorPrimary,
+  colorSuccess,
+  colorSuccessFrostedSoft,
+  colorSuccessLow,
   spacingStaticXs,
 } from '../styles';
-import { pdsThemeModeDark } from '../types/theme-mode';
 
 /**
  * Toggle button styles for AG Grid following v35 standards
  *
  * Provides custom styling for toggle buttons with Porsche Design System colors.
- * Supports both light and dark theme modes via data-ag-theme-mode attribute.
+ * Supports both light and dark theme via CSS `color-scheme`.
  *
  * Color behavior:
  * - OFF state: Inner circle uses colorPrimary (Light/Dark)
@@ -34,37 +26,19 @@ export const toggleButtonStyle: Part = createPart({
   feature: 'toggleButtonStyle',
   params: {
     // On state (when toggle is checked)
-    toggleButtonOnBackgroundColor: colorSuccessFrostedSoftLight,
-    toggleButtonOnBorderColor: colorSuccessLowLight,
-    toggleButtonOnHoverBackgroundColor: colorSuccessFrostedSoftLight,
-    toggleButtonOnHoverBorderColor: colorSuccessLight,
+    toggleButtonOnBackgroundColor: colorSuccessFrostedSoft,
+    toggleButtonOnBorderColor: colorSuccessLow,
+    toggleButtonOnHoverBackgroundColor: colorSuccessFrostedSoft,
+    toggleButtonOnHoverBorderColor: colorSuccess,
 
     // Off state (when toggle is unchecked)
-    toggleButtonOffBackgroundColor: colorFrostedSoftLight,
-    toggleButtonOffBorderColor: colorContrastLowerLight,
-    toggleButtonOffHoverBorderColor: colorPrimaryLight,
-    toggleButtonSwitchBackgroundColor: colorPrimaryLight, // Inner circle color when OFF
+    toggleButtonOffBackgroundColor: colorFrostedSoft,
+    toggleButtonOffBorderColor: colorContrastLower,
+    toggleButtonOffHoverBorderColor: colorPrimary,
+    toggleButtonSwitchBackgroundColor: colorPrimary, // Inner circle color when OFF
 
     // Disabled state
-    toggleButtonDisabledColor: colorDisabledLight,
-  },
-  modeParams: {
-    [pdsThemeModeDark]: {
-      // On state (when toggle is checked)
-      toggleButtonOnBackgroundColor: colorSuccessFrostedSoftDark,
-      toggleButtonOnBorderColor: colorSuccessLowDark,
-      toggleButtonOnHoverBackgroundColor: colorSuccessFrostedSoftDark,
-      toggleButtonOnHoverBorderColor: colorSuccessDark,
-
-      // Off state (when toggle is unchecked)
-      toggleButtonOffBackgroundColor: colorFrostedSoftDark,
-      toggleButtonOffBorderColor: colorContrastLowerDark,
-      toggleButtonOffHoverBorderColor: colorPrimaryDark,
-      toggleButtonSwitchBackgroundColor: colorPrimaryDark, // Inner circle color when OFF
-
-      // Disabled state
-      toggleButtonDisabledColor: colorDisabledDark,
-    },
+    toggleButtonDisabledColor: colorDisabled,
   },
   css: `
     .ag-toggle-button-input-wrapper {
@@ -85,15 +59,8 @@ export const toggleButtonStyle: Part = createPart({
             border-color: var(--ag-toggle-button-on-border-color);
 
             &::before {
-                background-color: ${colorSuccessLight};
+                background-color: ${colorSuccess};
                 left: calc(100% - var(--ag-toggle-button-height) + 6px) !important;
-            }
-        }
-
-        /* Dark mode ON state - inner circle becomes dark success color */
-        [data-ag-theme-mode="dark"] &.ag-checked {
-            &::before {
-                background-color: ${colorSuccessDark};
             }
         }
 

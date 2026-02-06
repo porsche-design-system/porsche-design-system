@@ -1,25 +1,19 @@
 import { createPart, type Part } from 'ag-grid-community';
 import {
   borderWidthThin,
-  colorCanvasDark,
-  colorCanvasLight,
-  colorContrastLowerDark,
-  colorContrastLowerLight,
-  colorDisabledDark,
-  colorDisabledLight,
-  colorErrorLowDark,
-  colorErrorLowLight,
-  colorPrimaryDark,
-  colorPrimaryLight,
+  colorCanvas,
+  colorContrastLower,
+  colorDisabled,
+  colorErrorLow,
+  colorPrimary,
   radiusXl,
 } from '../styles';
-import { pdsThemeModeDark } from '../types/theme-mode';
 
 /**
  * Input field styles for AG Grid following v35 standards
  *
  * Provides custom styling for input elements with Porsche Design System colors.
- * Supports both light and dark theme modes via data-ag-theme-mode attribute.
+ * Supports both light and dark theme via CSS `color-scheme`.
  *
  * Includes styling for:
  * - Normal state
@@ -31,33 +25,17 @@ export const inputStyles: Part = createPart({
   feature: 'inputStyles',
   params: {
     // Normal state
-    inputBorder: `solid ${borderWidthThin} ${colorContrastLowerLight}`,
-    inputDisabledBackgroundColor: colorCanvasLight,
+    inputBorder: `solid ${borderWidthThin} ${colorContrastLower}`,
+    inputDisabledBackgroundColor: colorCanvas,
 
     // Focus state
-    inputFocusBorder: `solid ${borderWidthThin} ${colorPrimaryLight}`,
+    inputFocusBorder: `solid ${borderWidthThin} ${colorPrimary}`,
 
     // Invalid state
-    inputInvalidBorder: `solid ${borderWidthThin} ${colorErrorLowLight}`,
+    inputInvalidBorder: `solid ${borderWidthThin} ${colorErrorLow}`,
 
     // Disabled state
-    inputDisabledBorder: `solid ${borderWidthThin} ${colorDisabledLight}`,
-  },
-  modeParams: {
-    [pdsThemeModeDark]: {
-      // Normal state
-      inputBorder: `solid ${borderWidthThin} ${colorContrastLowerDark}`,
-      inputDisabledBackgroundColor: colorCanvasDark,
-
-      // Focus state
-      inputFocusBorder: `solid ${borderWidthThin} ${colorPrimaryDark}`,
-
-      // Invalid state
-      inputInvalidBorder: `solid ${borderWidthThin} ${colorErrorLowDark}`,
-
-      // Disabled state
-      inputDisabledBorder: `solid ${borderWidthThin} ${colorDisabledDark}`,
-    },
+    inputDisabledBorder: `solid ${borderWidthThin} ${colorDisabled}`,
   },
   css: `
     /* Custom border radius for input fields */
