@@ -1,14 +1,13 @@
 import { borderWidthThin, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusLg, radiusXl } from '../../styles/css-variables';
+import { colorPrimary, legacyRadiusSmall, radiusLg, radiusXl } from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
@@ -19,8 +18,6 @@ import { getFunctionalComponentStateMessageStyles } from '../common/state-messag
 import type { PinCodeLength } from './pin-code-utils';
 
 export const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
-
-const { primaryColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -67,7 +64,7 @@ export const getComponentCss = (
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
-        color: primaryColor,
+        color: colorPrimary,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         textOverflow: 'ellipsis',
         cursor: isDisabled ? 'not-allowed' : 'text',

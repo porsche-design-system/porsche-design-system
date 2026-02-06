@@ -2,14 +2,20 @@ import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } 
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { legacyRadiusSmall, radiusLg, radiusXl } from '../../../styles/css-variables';
+import {
+  colorContrastMedium,
+  colorFrosted,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusLg,
+  radiusXl,
+} from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
@@ -27,8 +33,6 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
 export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
-
-const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
 export const getFunctionalComponentInputBaseStyles = (
   isDisabled: boolean,
@@ -85,13 +89,13 @@ export const getFunctionalComponentInputBaseStyles = (
       border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
       borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
       background: formStateBackgroundColor,
-      color: primaryColor,
+      color: colorPrimary,
       cursor: isDisabled ? 'not-allowed' : 'text',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
       ...(readOnly && {
         borderColor: 'transparent',
-        background: frostedColor,
-        color: contrastMediumColor,
+        background: colorFrosted,
+        color: colorContrastMedium,
       }),
       '&:focus-within': {
         borderColor: formStateBorderHoverColor,

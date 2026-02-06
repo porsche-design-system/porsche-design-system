@@ -1,12 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
@@ -18,39 +18,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -59,7 +50,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -69,15 +60,11 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 @media(hover:hover) {
   button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -85,15 +72,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -107,13 +94,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":true,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":true} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 0.64285714;
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
@@ -125,39 +112,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -166,7 +144,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -176,15 +154,11 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 @media(hover:hover) {
   button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -192,15 +166,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -214,13 +188,14 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: inline-flex;
+  opacity: 0.4 !important;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
@@ -232,39 +207,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #949598;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -273,7 +239,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
-  color: #949598;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -283,21 +249,21 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .toggle {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #949598;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -311,13 +277,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
 }
@@ -328,39 +294,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -369,7 +326,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -379,15 +336,11 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 @media(hover:hover) {
   button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -395,15 +348,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -417,13 +370,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
 }
@@ -434,39 +387,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #949598;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -475,7 +419,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
-  color: #949598;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -485,25 +429,25 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .toggle {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: transparent;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: transparent;
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2);
+  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -517,13 +461,14 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false,"theme":"dark"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: flex;
+  opacity: 0.4 !important;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
 }
@@ -534,39 +479,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #7E7F82;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -575,7 +511,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
-  color: #7E7F82;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -585,25 +521,25 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .toggle {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: transparent;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: transparent;
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2);
+  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -617,13 +553,14 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 2`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: flex;
+  opacity: 0.4 !important;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
 }
@@ -634,39 +571,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #949598;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -675,7 +603,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
-  color: #949598;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -685,25 +613,25 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .toggle {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: transparent;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: transparent;
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .spinner {
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2);
+  width: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
 }
 .loading {
   position: absolute;
@@ -717,13 +645,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: space-between !important;
   width: 100% !important;
 }
@@ -734,39 +662,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #197E10;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: #197E10;
+  border: 1px solid var(--p-color-success-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-success-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -775,7 +694,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -785,15 +704,11 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 @media(hover:hover) {
   button:hover {
-    border-color: #0E4809;
-    background-color: #0E4809;
-  }
-  button:hover .toggle {
-    background-color: #FFF;
+    border-color: var(--p-color-success);
   }
 }
 
@@ -801,15 +716,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #FFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(calc(100% + 2px), 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-success);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * 3rem) - 1px * 2 - 100% - calc(var(--p-internal-switch-scaling) * .1875rem)), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(calc(100% + 2px) * -1), 0, 0);
+  transform: translate3d(calc(calc(calc(var(--p-internal-switch-scaling) * 3rem) - 1px * 2 - 100% - calc(var(--p-internal-switch-scaling) * .1875rem)) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -823,13 +738,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
@@ -841,39 +756,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"left",
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -882,114 +788,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
-  order: -1;
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
-}
-@media(hover:hover) {
-  button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
-  }
-}
-
-.toggle {
-  display: flex;
-  place-items: center;
-  place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
-}
-.toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
-":host {
-  display: inline-flex;
-  outline: 0 !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
-  justify-content: flex-start !important;
-  width: auto !important;
-  vertical-align: top !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-button::before {
-  content: "";
-  position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-}
-label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  min-width: 0;
-  min-height: 0;
-  cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
   order: 0;
   position: static;
   width: auto;
@@ -999,15 +798,11 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 @media(hover:hover) {
   button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -1015,15 +810,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -1037,13 +832,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
@@ -1055,39 +850,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"start"
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1096,7 +882,101 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
+  order: 0;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: var(--p-color-primary);
+  }
+}
+
+.toggle {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
+}
+.toggle:dir(rtl) {
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
+":host {
+  --p-internal-switch-scaling: 1;
+  display: inline-flex;
+  outline: 0 !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  vertical-align: top !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
+}
+label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  min-width: 0;
+  min-height: 0;
+  cursor: pointer;
+  color: var(--p-color-primary);
   order: -1;
   position: absolute;
   width: 1px;
@@ -1109,11 +989,7 @@ label {
 }
 @media(hover:hover) {
   button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -1121,15 +997,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -1143,13 +1019,13 @@ label {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"compact":false,"theme":"light"} 1`] = `
+exports[`getComponentCss() > should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
+  --p-internal-switch-scaling: 1;
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
-  color-scheme: light dark !important;
+  gap: calc(11.2px * (var(--p-internal-switch-scaling) - 0.64285714) + 4px) !important;
   justify-content: flex-start !important;
   width: auto !important;
   vertical-align: top !important;
@@ -1161,39 +1037,30 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":{"base"
   visibility: hidden;
 }
 button {
+  all: unset;
   position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
-  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
+  box-sizing: border-box;
+  width: calc(var(--p-internal-switch-scaling) * 3rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  box-sizing: content-box;
-  border: 2px solid #6B6D70;
-  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
-  background-color: transparent;
+  border: 1px solid var(--p-color-contrast-low);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  margin: 0;
-  padding: 0;
-  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
-  -webkit-appearance: none;
-  appearance: none;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 button:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 button::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-switch-scaling) * 1.75rem)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1202,7 +1069,7 @@ label {
   min-width: 0;
   min-height: 0;
   cursor: pointer;
-  color: #010205;
+  color: var(--p-color-primary);
   order: -1;
   position: absolute;
   width: 1px;
@@ -1228,7 +1095,7 @@ label {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
   }
 }
 
@@ -1266,7 +1133,7 @@ label {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
   }
 }
 
@@ -1304,17 +1171,13 @@ label {
     overflow: visible;
     clip: auto;
     white-space: normal;
-    padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+    padding-top: max(0px, calc((calc(var(--p-internal-switch-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
   }
 }
 
 @media(hover:hover) {
   button:hover {
-    border-color: #010205;
-    background-color: transparent;
-  }
-  button:hover .toggle {
-    background-color: #010205;
+    border-color: var(--p-color-primary);
   }
 }
 
@@ -1322,15 +1185,15 @@ label {
   display: flex;
   place-items: center;
   place-content: center;
-  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
-  border-radius: 50%;
-  background-color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(2px, 0, 0);
+  width: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  height: calc(var(--p-internal-switch-scaling) * 1.25rem);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-primary);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  transform: translate3d(calc(var(--p-internal-switch-scaling) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(calc(2px * -1), 0, 0);
+  transform: translate3d(calc(calc(var(--p-internal-switch-scaling) * .1875rem) * -1), 0, 0);
 }
 .loading {
   position: absolute;

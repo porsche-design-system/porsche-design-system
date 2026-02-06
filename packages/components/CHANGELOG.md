@@ -81,7 +81,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
     `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
 - Emotion, Vanilla-Extract:
-  - Breakpoint: `breakpointXs`, `breakpointSm`, `breakpointMd`, `breakpointLg`, `breakpointXl` and `breakpoint2xl`
   - Blur: `blurFrosted`
   - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
     `radiusFull`
@@ -108,8 +107,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `colorErrorFrostedSoftDark`, `colorFocus`, `colorFocusLight` and `colorFocusDark`
   - Focus: `getFocusVisibleStyle()`
   - Gradient: `gradientStopsFadeDark`,
-  - Media Query: `xs`, `sm`, `md`, `lg`, `xl` and `2xl` as breakpoint values for `mediaQueryMin()`, `mediaQueryMax()`
-    and `mediaQueryMinMax()`
   - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
   - Shadow: `shadowSm`, `shadowMd` and `shadowLg`
   - Spacing: `spacingFluidXs`, `spacingFluidSm`, `spacingFluidMd`, `spacingFluidLg`, `spacingFluidXl`,
@@ -155,7 +152,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
 
-```
+```diff
 - @include pds-skeleton('light'|'dark');
 + @include skeleton();
 ```
@@ -163,7 +160,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
   color function)
 
-```
+```diff
 - getSkeletonStyle({ theme: 'light|dark' })
 + getSkeletonStyle()
 ```
@@ -171,7 +168,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
   `light-dark()` CSS color function)
 
-```
+```diff
 const skeletonAnimation = keyframes(skeletonKeyframes);
 - const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
 + const Skeleton = style(getSkeletonStyle(skeletonAnimation));

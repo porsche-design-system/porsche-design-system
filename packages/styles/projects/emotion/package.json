@@ -15,6 +15,9 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0"
+  },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "react-jss": "^10.10.0"

@@ -17,7 +17,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const multiSelect = document.querySelector('p-multi-select');
-  multiSelect.addEventListener('update', () => {
+  multiSelect.addEventListener('change', () => {
     debugEl.querySelector('span').innerHTML = '1';
   });
 

@@ -834,10 +834,6 @@ const generatedRoutes = {
 export const sitemap = {
   home: { path: '/', name: 'Home' },
   ...generatedRoutes,
-  themeInjection: {
-    path: '/theme-injection',
-    name: 'Theme Injection',
-  },
   modalPage: {
     path: '/modal-standalone',
     name: 'Modal Page',

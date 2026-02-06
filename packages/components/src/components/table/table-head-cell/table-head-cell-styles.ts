@@ -1,7 +1,6 @@
 import { frostedGlassStyle, spacingFluidSmall, spacingStaticXSmall } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -9,13 +8,11 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { legacyRadiusSmall, radiusSm } from '../../../styles/css-variables';
+import { colorFrosted, legacyRadiusSmall, radiusSm } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
-
-const { frostedColor } = colors;
 
 const buttonBeforeOffsetVertical = '-2px';
 const buttonBeforeOffsetHorizontal = '-4px';
@@ -76,7 +73,7 @@ export const getComponentCss = (
                 },
                 '&:hover::before': {
                   ...frostedGlassStyle,
-                  backgroundColor: frostedColor,
+                  backgroundColor: colorFrosted,
                 },
               }),
               '&:focus-visible::before': getFocusBaseStyles(),

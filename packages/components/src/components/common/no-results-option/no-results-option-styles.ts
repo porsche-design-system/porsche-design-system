@@ -1,8 +1,7 @@
 import type { Styles } from 'jss';
-import { colors, getHiddenTextJssStyle } from '../../../styles';
+import { getHiddenTextJssStyle } from '../../../styles';
+import { colorContrastMedium } from '../../../styles/css-variables';
 import { getOptionJssStyle } from '../../../styles/select';
-
-const { contrastMediumColor } = colors;
 
 export const getFunctionalComponentNoResultsOptionStyles = (
   componentName: 'select-option' | 'multi-select-option',
@@ -14,7 +13,7 @@ export const getFunctionalComponentNoResultsOptionStyles = (
       '&[role=option]': {
         cursor: 'not-allowed',
       },
-      color: contrastMediumColor,
+      color: colorContrastMedium,
     },
     'sr-only': getHiddenTextJssStyle(),
   };

@@ -1,7 +1,6 @@
 import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -9,7 +8,14 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusLg, radiusXl } from '../../styles/css-variables';
+import {
+  colorContrastMedium,
+  colorFrosted,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusLg,
+  radiusXl,
+} from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
@@ -18,8 +24,6 @@ import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
-
-const { primaryColor, contrastMediumColor, frostedColor } = colors;
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
 
@@ -74,7 +78,7 @@ export const getComponentCss = (
         border: `${borderWidthThin} solid ${formStateBorderColor}`,
         borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
         background: formStateBackgroundColor,
-        color: primaryColor,
+        color: colorPrimary,
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
         boxSizing: 'border-box',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
@@ -88,8 +92,8 @@ export const getComponentCss = (
         cursor: isDisabled ? 'not-allowed' : 'text',
         ...(isReadonly && {
           borderColor: 'transparent',
-          background: frostedColor,
-          color: contrastMediumColor,
+          background: colorFrosted,
+          color: colorContrastMedium,
         }),
         ...(!isDisabled &&
           !isReadonly &&

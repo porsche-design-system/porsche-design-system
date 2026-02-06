@@ -1,12 +1,11 @@
 import { headingMediumStyle, headingSmallStyle, spacingStaticMedium } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colors, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
+import { colorPrimary } from '../../styles/css-variables';
 import { getCss, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { FieldsetLabelSize } from './fieldset-utils';
-
-const { primaryColor } = colors;
 
 export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, hasLabel: boolean): string => {
   return getCss({
@@ -26,7 +25,7 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, 
         legend: {
           all: 'unset',
           marginBottom: spacingStaticMedium,
-          color: primaryColor,
+          color: colorPrimary,
           ...(labelSize === 'small' ? headingSmallStyle : headingMediumStyle),
         },
       }),

@@ -3,7 +3,6 @@ import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens'
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colors,
   getDisabledBaseStyles,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -12,7 +11,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { legacyRadiusSmall, radiusFull } from '../../../styles/css-variables';
+import { colorCanvas, colorFrosted, colorPrimary, legacyRadiusSmall, radiusFull } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
@@ -28,8 +27,6 @@ const svgNumber = [
   '<path d="m10.47 11.94c-.65-.33-1.13-.92-1.13-2.01 0-1.53.85-2.47 2.66-2.47s2.66.94 2.66 2.47c0 1.08-.47 1.68-1.15 2.01.92.35 1.34 1.07 1.34 2.11 0 1.73-.99 2.49-2.86 2.49s-2.86-.76-2.86-2.49c0-1.04.41-1.76 1.33-2.11zm1.53 3.78c1.27 0 1.85-.51 1.85-1.69 0-1.1-.58-1.61-1.85-1.61s-1.85.52-1.85 1.61c0 1.18.58 1.69 1.85 1.69zm1.65-5.76c0-1.1-.56-1.56-1.65-1.56s-1.65.47-1.65 1.56c0 1 .46 1.6 1.65 1.6s1.65-.6 1.65-1.6z"/>',
   '<path d="m9.16 10.33c0-2.03 1.02-2.86 2.83-2.86s2.82.81 2.82 2.85c0 1.11-.3 1.82-.81 2.64l-2.18 3.44h-1.1l2.18-3.37c-.31.14-.65.2-1.01.2-1.82 0-2.74-.99-2.74-2.9zm4.65 0c0-1.23-.47-1.92-1.81-1.92s-1.81.69-1.81 1.92c0 1.37.49 2.05 1.81 2.05s1.81-.68 1.81-2.05z"/>',
 ];
-
-const { primaryColor, canvasColor, frostedColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -59,7 +56,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         display: 'grid',
         gridTemplateColumns: 'auto minmax(0,1fr)',
         gap: spacingStaticXs,
-        color: primaryColor,
+        color: colorPrimary,
         paddingInline: `${spacingStaticSm} 12px`,
         paddingBlock: '6px',
         width: 'max-content',
@@ -69,14 +66,14 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
         ...(isStateCurrent && {
           ...frostedGlassStyle,
-          background: frostedColor,
+          background: colorFrosted,
         }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
               ...frostedGlassStyle,
-              background: frostedColor,
+              background: colorFrosted,
             },
           })),
         '&:focus-visible': getFocusBaseStyles(),
@@ -89,7 +86,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
       height: fontLineHeight,
       ...(isStateCurrentOrUndefined && {
         display: 'grid',
-        backgroundImage: `radial-gradient(circle, ${primaryColor} 60%, transparent 62%)`,
+        backgroundImage: `radial-gradient(circle, ${colorPrimary} 60%, transparent 62%)`,
         '&::before': {
           content: '""',
           ...Array.from(new Array(9)).reduce(
@@ -98,7 +95,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
               [`:host(:nth-of-type(${i + 1})) &`]: {
                 WebkitMask: `${getInlineSVGBackgroundImage(svgNumber[i])} center/contain no-repeat`, // necessary for Sogou browser support :-)
                 mask: `${getInlineSVGBackgroundImage(svgNumber[i])} center/contain no-repeat`,
-                backgroundColor: canvasColor,
+                backgroundColor: colorCanvas,
               },
             }),
             {} as JssStyle

@@ -16,7 +16,7 @@ const propTypes: PropTypes<typeof Divider> = {
 export class Divider {
   @Element() public host!: HTMLElement;
 
-  /** Defines color depending on theme. */
+  /** Defines color. */
   @Prop() public color?: DividerColor = 'contrast-lower';
 
   /** Defines direction. */

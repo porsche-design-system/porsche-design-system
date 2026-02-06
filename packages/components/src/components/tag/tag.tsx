@@ -57,7 +57,7 @@ export class Tag {
         {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
-            name={this.icon}
+            {...(this.icon !== 'none' && { name: this.icon })}
             source={this.iconSource}
             color="inherit"
             size="x-small"
