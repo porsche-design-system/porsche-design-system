@@ -3,7 +3,7 @@ import { viewportWidthXXL } from '@porsche-design-system/shared/testing';
 
 test.describe('overview', async () => {
   test('components', async ({ page }) => {
-    await page.goto('/overview');
+    await page.goto('/overview-components');
     await page.setViewportSize({
       width: viewportWidthXXL,
       height: await page.evaluate(() => document.body.clientHeight),

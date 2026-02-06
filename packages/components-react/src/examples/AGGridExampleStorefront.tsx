@@ -58,7 +58,7 @@ export const AGGridExampleStorefrontPage = (): JSX.Element => {
   };
 
   return (
-    <div data-ag-theme-mode={theme === 'scheme-light' ? null : 'dark'} style={{ height: '100vh' }}>
+    <div style={{ height: '100vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}

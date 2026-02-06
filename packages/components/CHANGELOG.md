@@ -26,8 +26,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 - `Angular`: Bumped peer dependency to support Angular new major version 21
   ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
-- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
-  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+- `AG Grid`:
+  - Bumped peer dependency to support AG Grid new major version 35
+    ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+  - Refreshed visuals to reflect new color tokens
 - `Tailwind CSS`:
   - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
     `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
