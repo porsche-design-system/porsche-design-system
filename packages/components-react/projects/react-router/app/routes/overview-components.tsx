@@ -264,13 +264,13 @@ const OverviewComponentsPage = (): JSX.Element => {
 
         <div className="playground" title="should render default link-tile">
           <PLinkTile description="Some description" href="#" label="Some label">
-            <img src="http://localhost:3002/lights.jpg" alt="Some alt text" />
+            <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width={1366} height={2048} />
           </PLinkTile>
         </div>
 
         <div className="playground" title="should render default button-tile">
           <PButtonTile description="Some description" label="Some label">
-            <img src="http://localhost:3002/lights.jpg" alt="Some alt text" />
+            <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width={1366} height={2048} />
           </PButtonTile>
         </div>
 
