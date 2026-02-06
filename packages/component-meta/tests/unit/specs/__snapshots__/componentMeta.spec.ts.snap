@@ -1990,7 +1990,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "DisplayColor",
       },
       "ellipsis": {
@@ -2052,7 +2052,7 @@ exports[`should match snapshot 1`] = `
           "contrast-high",
         ],
         "defaultValue": "contrast-lower",
-        "description": "Defines color depending on theme.",
+        "description": "Defines color.",
         "type": "DividerColor",
       },
       "direction": {
@@ -2680,7 +2680,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "HeadingColor",
       },
       "ellipsis": {
@@ -2758,7 +2758,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic color variations depending on theme property.",
+        "description": "Basic color variations.",
         "type": "IconColor",
       },
       "name": {
@@ -6868,7 +6868,7 @@ exports[`should match snapshot 1`] = `
   "p-multi-select": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -7191,7 +7191,7 @@ exports[`should match snapshot 1`] = `
   "p-pin-code": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -7684,7 +7684,7 @@ exports[`should match snapshot 1`] = `
   "p-segmented-control": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -8219,7 +8219,7 @@ exports[`should match snapshot 1`] = `
   "p-select": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -9554,7 +9554,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "TextColor",
       },
       "ellipsis": {
