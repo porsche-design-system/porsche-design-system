@@ -1,9 +1,10 @@
-import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import type { MetaFunction } from '@remix-run/node';
 import { LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLocation, useNavigate } from '@remix-run/react';
 import { type JSX, useState } from 'react';
 import { HeadPartials } from '~/head-partials.server';
 import { routes } from '~/routes';
+import '@porsche-design-system/components-react/index.css';
 
 export const meta: MetaFunction = () => [
   { charset: 'utf-8' },
@@ -16,8 +17,8 @@ export const meta: MetaFunction = () => [
 
 export default function App(): JSX.Element {
   const navigate = useNavigate();
-  const [theme, setTheme] = useState<Theme>('light');
-  const themes: Theme[] = ['light', 'dark', 'auto'];
+  const [theme, setTheme] = useState('light');
+  const themes = ['light', 'dark', 'auto'];
 
   return (
     <html lang="en">
@@ -25,7 +26,7 @@ export default function App(): JSX.Element {
         <Meta />
         {HeadPartials && <HeadPartials />}
       </head>
-      <body>
+      <body style={{ colorScheme: theme === 'auto' ? 'light dark' : theme }}>
         <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)} style={{ width: '200px' }}>
           <option disabled value="">
             Select a page
@@ -35,13 +36,13 @@ export default function App(): JSX.Element {
           ))}
         </select>
 
-        <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
+        <select value={theme} onChange={(e) => setTheme(e.target.value)}>
           {themes.map((item) => (
             <option key={item} value={item} children={item} />
           ))}
         </select>
 
-        <PorscheDesignSystemProvider theme={theme}>
+        <PorscheDesignSystemProvider>
           <div id="app">
             <Outlet />
           </div>
