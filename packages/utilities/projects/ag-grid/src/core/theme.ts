@@ -85,6 +85,9 @@ export const pdsTheme: Theme = themeQuartz
     inputFocusShadow: 'none',
 
     // Color scheme
+    browserColorScheme: 'inherit',
+
+    // Core Colors
     accentColor: colorInfo,
     backgroundColor: colorCanvas,
     foregroundColor: colorPrimary,

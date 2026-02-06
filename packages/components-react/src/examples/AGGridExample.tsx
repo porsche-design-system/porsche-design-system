@@ -120,7 +120,7 @@ export const AGGridExamplePage = (): JSX.Element => {
   const { theme } = useTheme();
 
   return (
-    <div data-ag-theme-mode={theme === 'scheme-light' ? null : 'dark'} style={{ height: '80vh' }}>
+    <div style={{ height: '80vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}

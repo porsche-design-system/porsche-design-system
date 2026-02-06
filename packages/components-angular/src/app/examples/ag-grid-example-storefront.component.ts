@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -9,8 +10,7 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
-import { THEME_TOKEN } from "../app.component";
-import { PorscheDesignSystemModule } from "@porsche-design-system/components-angular";
+import { THEME_TOKEN } from '../app.component';
 
 ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
@@ -21,7 +21,7 @@ type ColumnDefs = DataAdvanced & {
 @Component({
   selector: 'porsche-design-system-app',
   template: `
-    <div [attr.data-ag-theme-mode]="(theme$ | async) === 'scheme-light' ? null : 'dark'">
+    <div>
       <ag-grid-angular
         style="width: 100%; height: 100vh;"
         [rowData]="rowData"
