@@ -10,7 +10,6 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
-import { THEME_TOKEN } from '../app.component';
 
 ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
@@ -37,7 +36,6 @@ type ColumnDefs = DataAdvanced & {
   imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
 })
 export class AgGridExampleStorefrontComponent {
-  protected readonly theme$ = inject(THEME_TOKEN);
   protected readonly agGridTheme = pdsTheme;
 
   rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));

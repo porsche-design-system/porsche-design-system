@@ -11,7 +11,6 @@ import {
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
-import { THEME_TOKEN } from '../app.component';
 
 ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
@@ -59,7 +58,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
   selector: 'app-company-button-renderer',
   standalone: true,
   template: `
-    <span class="cell-centered'" [ngClass]="(theme$ | async) ?? undefined">
+    <span class="cell-centered'">
       <p-link-pure
         [underline]="true"
         target="_blank"
@@ -86,7 +85,6 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
   public data!: any;
-  protected readonly theme$ = inject(THEME_TOKEN);
 
   agInit(params: ICellRendererParams): void {
     this.data = params.data;
@@ -119,7 +117,6 @@ class ButtonRenderer implements ICellRendererAngularComp {
   imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
 })
 export class AgGridExampleComponent {
-  protected readonly theme$ = inject(THEME_TOKEN);
   protected readonly agGridTheme = pdsTheme;
 
   rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
