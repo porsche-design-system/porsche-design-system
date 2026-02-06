@@ -5,6 +5,7 @@ export * from './focus';
 export * from './font';
 export * from './gradient';
 export * from './grid';
+export * from './mediaQuery';
 export * from './motion';
 export * from './shadow';
 export * from './skeleton';
