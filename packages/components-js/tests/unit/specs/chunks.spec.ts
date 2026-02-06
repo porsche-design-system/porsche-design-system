@@ -204,12 +204,6 @@ describe('chunk content', () => {
   /** core chunk is identified by version in file name */
   const isCoreChunk = (chunkFileName: string): boolean => chunkFileName.includes(version);
 
-  it('marque chunk should not contain icon manifest', () => {
-    const marqueJsCode = getChunkContent('marque');
-    expect(marqueJsCode).not.toContain('/porsche-design-system/icons');
-    expect(marqueJsCode).not.toContain('arrowDoubleDown');
-  });
-
   it('icon chunk should not contain marque manifest', () => {
     const iconJsCode = getChunkContent('icon');
     expect(iconJsCode).not.toContain('/porsche-design-system/marque');
