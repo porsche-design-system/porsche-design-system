@@ -1,0 +1,231 @@
+# content-wrapper
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Content Wrapper: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Content Wrapper component',
+};
+
+# Content Wrapper (Component: p-content-wrapper)
+
+## Accessibility support
+
+This component does not include any special accessibility features.
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Content Wrapper - Porsche Design System',
+  description: 'Detailed API reference for the Content Wrapper component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Content Wrapper (Component: p-content-wrapper)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: contentWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-content-wrapper>
+  <div class="example-content">
+    Some content
+  </div>
+</p-content-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PContentWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PContentWrapper>
+        <div className="example-content">
+          Some content
+        </div>
+      </PContentWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-content-wrapper>
+        <div class="example-content">
+          Some content
+        </div>
+      </p-content-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PContentWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PContentWrapper>
+    <div class="example-content">
+      Some content
+    </div>
+  </PContentWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Content Wrapper - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Content Wrapper component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Content Wrapper (Component: p-content-wrapper)
+
+The `p-content-wrapper` defines the outer spacings between the content area and the left and right screen sides, as well
+as centering its content and setting a max-width.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. In general, please use native{' '}
+  <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more
+  standardized layout technique. Additionally, we provide a{' '}
+  <a href="styles/grid/">
+    <b>Porsche Grid</b>
+  </a>{' '}
+  utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital
+  touch-points.
+</Notification>
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  The component can only be used with the full viewport width. The alignment of its content can be controlled by the{' '}
+  <code>width</code> prop, which is in sync with the{' '}
+  <b>
+    <a href="styles/grid/">Porsche Grid</a>
+  </b>
+  .<br />
+  <br />
+  Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Content Wrapper - Porsche Design System',
+  description:
+    'Learn how to properly use the Content Wrapper component with best practices and guidelines for effective design and user experience.',
+};
+
+# Content Wrapper (Component: p-content-wrapper)
+
+<!-- Table of Contents -->
+
+**The Content Wrapper enables you to …**
+
+- … define outer spacings between content area and left/right screen side.
+- … center the content area within the screen.
+- … set a maximum width for the content area.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. In general, please use native{' '}
+  <a href="https://css-tricks.com/snippets/css/complete-guide-grid">CSS Grid</a> instead for better performance and more
+  standardized layout technique. Additionally, we provide a{' '}
+  <a href="styles/grid/">
+    <b>Porsche Grid</b>
+  </a>{' '}
+  utility instead based on CSS Grid covering the specific layout needs for a harmonic appearance across all digital
+  touch-points.
+</Notification>
+
+## Types
+
+Depending on your layout requirements you can choose between the following options for the content area, whereas each of
+them can be applied module-based to give you a maximum of flexibility for your page layouts:
+
+### Basic
+
+Depending on the screen width the "Basic" variant **includes a margin of 7% or 10% between content area and the left and
+right screen sides** (100% = full screen width):
+
+| **Viewport**               | **Margin** |
+| -------------------------- | ---------- |
+| **XS-L (320-1759 px)**     | 7%         |
+| **XL (1760 px or larger)** | 10%        |
+
+### Extended (default)
+
+The "Extended" content area includes no defined margin on the left and right of the content and has a maximum width of
+1920 px. Thus, in viewport sizes from 1920 px onwards there is a growing white space outside the left and right edge of
+the content area.
+
+### Fluid
+
+This is the variant of your choice when you want your content to span to the full screen width, containing no margin or
+visual gap between content area and screen edges.
+
+### Layout combination of content width variants
+
+![Content Wrapper with Fluid safe zone](assets/content-wrapper-width-variants.png)
+
+## Layout approach or: How to combine Content Wrapper with Grid, Flex or …
+
+**The Content Wrapper can house both the Grid and Flex or any custom content.** The principle of how to apply the
+Content Wrapper component is quite simple – just think "from big to small" when defining the module layouts:
+
+1. First of all, you define the **Content Wrapper** type for your layout part based on the content width variants
+   described above.
+2. **The content area of each layout part** can then itself be designed by using Grid and/or Flex or any custom way of
+   content layouting, depending on the individual requirements of the module.
+
+## Related components
+
+- [Grid](/components/grid)
+- [Flex](/components/flex)
+
+
+---
+

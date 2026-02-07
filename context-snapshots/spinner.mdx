@@ -1,0 +1,299 @@
+# spinner
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Spinner: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Spinner component',
+};
+
+# Spinner (Component: p-spinner)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                               |
+| ------------ | --------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the live region. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA           | Usage                          |
+| -------------- | ------------------------------ |
+| `role="alert"` | Provided message is announced. |
+
+## Development considerations
+
+### Announcing loading messages
+
+To provide feedback to screen reader users, it's mandatory to announce the loading state of the spinner. This can be
+achieved by the following:
+
+- Pre-rendering of the the component in the DOM.
+- Providing a meaningful loading state message through the `aria` property, e.g.
+  `aria="{ 'aria-label': 'Start/End loading content'}"`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Spinner - Porsche Design System',
+  description: 'Detailed API reference for the Spinner component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Spinner (Component: p-spinner)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: spinnerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-spinner aria="{'aria-label': 'Loading page content'}"></p-spinner>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PSpinner } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSpinner aria={{'aria-label': 'Loading page content'}}></PSpinner>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-spinner [aria]="{'aria-label': 'Loading page content'}"></p-spinner>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PSpinner } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSpinner :aria="{'aria-label': 'Loading page content'}"></PSpinner>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Spinner - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Spinner component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Spinner (Component: p-spinner)
+
+There are unavoidable moments when the user has to wait for more than 1 second (for example due to technical processing
+of information or requests). These moments should be bridged with a good user feedback in order to not leave the user
+uncertain about what's currently happening - also to avoid a high bounce rate and to obtain a positive impression of
+your website or application.
+
+For ongoing operations between 2-10 seconds, where the loading progress cannot be determined, use a **Spinner** (looped
+indicator) to inform the user about an ongoing operation. Use it either stand-alone (for example as page loader) or
+within components, such as in Buttons to indicate progress after clicking "save".
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: spinnerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-spinner aria="{'aria-label': 'Loading page content'}"></p-spinner>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PSpinner } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSpinner aria={{'aria-label': 'Loading page content'}}></PSpinner>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-spinner [aria]="{'aria-label': 'Loading page content'}"></p-spinner>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PSpinner } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSpinner :aria="{'aria-label': 'Loading page content'}"></PSpinner>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Spinner - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Spinner component.',
+};
+
+# Spinner (Component: p-spinner)
+
+<!-- Table of Contents -->
+
+## Size
+
+There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
+the size can be set to `inherit` to specify the text size from outside.
+
+<!-- Component Story example (code examples shown above) -->
+
+### Responsive
+
+The `size` property can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Technical notes
+
+For automated visual regression tests the spinner animation can be disabled by setting a global css variable:
+
+```
+:root {
+  --p-animation-duration: 0s !important;
+}
+```
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Spinner - Porsche Design System',
+  description: 'Learn how to properly use the Spinner component with best practices and guidelines for effective design and user experience.'
+}
+
+# Spinner (Component: p-spinner)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use when the user has to wait for more than 1 second.
+- Use either stand-alone or within components (e.g. in Buttons to indicate progress after clicking "save“).
+- Use vertically and horizontally centered within the referring area.
+- Use a blocking layer for the whole screen when the user is not supposed to start another activity.
+- Include simple text to explain why the user is waiting.
+- Disable the component while the spinner is visible if it is triggered by an interaction.
+
+### Don't:
+
+- Don't use too many Spinners at the same time within a page or application.
+- Don't use Spinners for delays of more than 10 seconds without providing a progress bar showing the estimated waiting
+time.
+- Don't use threatening text such as "Don't click again" to prevent the user from clicking twice.
+
+
+---
+

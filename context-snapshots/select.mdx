@@ -1,0 +1,425 @@
+# select
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Select: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Select component',
+};
+
+# Select (Component: p-select)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+#### Combobox
+
+| Key / state                     | Function                                                                                                                                 |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `Down Arrow` `Up Arrow` `Space` | - Opens the listbox if it's not already displayed without moving focus or changing selection.<br /> - DOM focus remains on the combobox. |
+| `Space`                         | Closes the listbox if it's dispalyed.                                                                                                    |
+
+#### Listbox
+
+| Key / state             | Function                                        |
+| ----------------------- | ----------------------------------------------- |
+| `Down Arrow` `Up Arrow` | Moves visual focus to the next/previous option. |
+| `Home` `End`            | Moves visual focus to the first/last option.    |
+| `ESC`                   | Closes listbox                                  |
+| `Enter`, `Space`        | Selects an option                               |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                        |
+| ------------------------------- | -------------------------------------------------------------------------------------------- |
+| `aria-labelledby="IDREF"`       | References the accessible name of the combobox.                                              |
+| `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
+| `aria-label="STRING"`           | References the accessible name of the listbox.                                               |
+| `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
+| `aria-expanded="BOOLEAN"`       | Indicates that the listbox element is displayed/hidden.                                      |
+| `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
+| `aria-haspopup="listbox"`       | Indicates that the combobox will open a listbox.                                             |
+| `aria-required="true"`          | Indicates if the element is required.                                                        |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support                                                                                                                |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Keyboard                        | ✅                                                                                                                     |
+| Screen reader (VoiceOver, NVDA) | ✅ (Note: Though Safari supports `ariaActiveDescendantElement` the active `option` doesn't get announced in VoiceOver) |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Select - Porsche Design System',
+  description:
+    'Detailed API reference for the Select component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Select (Component: p-select)
+
+<!-- Table of Contents -->
+
+## Select
+
+<!-- Component API documentation -->
+
+## Select Option
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: selectStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-select name="options" label="Some Label" description="Some description">
+  <p-select-option value="a">
+    Option A
+  </p-select-option>
+  <p-select-option value="b">
+    Option B
+  </p-select-option>
+  <p-select-option value="c">
+    Option C
+  </p-select-option>
+  <p-select-option value="d">
+    Option D
+  </p-select-option>
+  <p-select-option value="e">
+    Option E
+  </p-select-option>
+  <p-select-option value="f">
+    Option F
+  </p-select-option>
+</p-select>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PSelect, PSelectOption } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSelect name="options" label="Some Label" description="Some description">
+        <PSelectOption value="a">
+          Option A
+        </PSelectOption>
+        <PSelectOption value="b">
+          Option B
+        </PSelectOption>
+        <PSelectOption value="c">
+          Option C
+        </PSelectOption>
+        <PSelectOption value="d">
+          Option D
+        </PSelectOption>
+        <PSelectOption value="e">
+          Option E
+        </PSelectOption>
+        <PSelectOption value="f">
+          Option F
+        </PSelectOption>
+      </PSelect>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-select name="options" label="Some Label" description="Some description">
+        <p-select-option value="a">
+          Option A
+        </p-select-option>
+        <p-select-option value="b">
+          Option B
+        </p-select-option>
+        <p-select-option value="c">
+          Option C
+        </p-select-option>
+        <p-select-option value="d">
+          Option D
+        </p-select-option>
+        <p-select-option value="e">
+          Option E
+        </p-select-option>
+        <p-select-option value="f">
+          Option F
+        </p-select-option>
+      </p-select>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSelect name="options" label="Some Label" description="Some description">
+    <PSelectOption value="a">
+      Option A
+    </PSelectOption>
+    <PSelectOption value="b">
+      Option B
+    </PSelectOption>
+    <PSelectOption value="c">
+      Option C
+    </PSelectOption>
+    <PSelectOption value="d">
+      Option D
+    </PSelectOption>
+    <PSelectOption value="e">
+      Option E
+    </PSelectOption>
+    <PSelectOption value="f">
+      Option F
+    </PSelectOption>
+  </PSelect>
+</template>
+```
+
+
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Select - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Select component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Select (Component: p-select)
+
+The `p-select` component is a versatile custom form element that enables the selection of a single option.
+
+Many of the properties closely resemble those found in the [select-wrapper](/components/select-wrapper/examples/) and
+other form components (e.g. `label`, `description`, `state`, `message`, `hideLabel`, `disabled`, `required` &
+`dropdownDirection`).
+
+Options are slotted using the `p-select-option` component. Each option needs to have an assigned value, which can be
+passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved using
+the value property on the `p-select` component ([More Info](/components/select/examples/#set-value)). Options don't have
+a selected attribute or property. If an option should be visible but not selectable, it can be disabled by using the
+`disabled` attribute. If the selection isn't required or should be clearable again, you can use an empty
+`p-select-option` as default selection ([More Info](/components/select/examples/#empty)).
+
+**Hint:** The `p-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to
+render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
+container.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+import {
+  selectExampleForm,
+  selectExampleDynamic,
+  selectExampleRequired,
+  selectExampleAsyncFilter,
+  selectExampleSelectedSlot,
+} from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Select - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Select component.',
+};
+
+# Select (Component: p-select)
+
+<!-- Table of Contents -->
+
+## Form
+
+The `p-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similar to a native `<select>`, automatically managing its own
+state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  <code>p-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
+  <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
+</Notification>
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+<!-- Component Example (interactive demo) -->
+
+## Basic example without preselection
+
+To ensure the user makes a conscious choice, use the initial value `undefined` of the `value` property. If you want to
+give the user the choice to deselect the current option, you can provide an option without a value
+`<p-select-option></p-select-option>`. If you don't want the user to be able to deselect the current option, but still
+want to show a placeholder text you can set the option `disabled` like this
+`<p-select-option disabled>Please choose an option</p-select-option>`.
+
+<!-- Component Example (interactive demo) -->
+
+## Slotted images
+
+In order to show an icon for each option, you can optionally slot an `img` tag within the `p-select-option`. Be aware
+that the `p-select-option` can only contain a `#text` and an `img` node.
+
+<!-- Component Story example (code examples shown above) -->
+
+---
+
+## Set Value
+
+The `p-select` component behaves like regular form elements. It updates its value automatically based on user choices,
+but can also be changed manually by using the value property. This property takes a string that represent the selected
+option value.
+
+<!-- Component Example (interactive demo) -->
+
+---
+
+## With optgroups
+
+<!-- Component Story example (code examples shown above) -->
+
+---
+
+## Custom asynchronous filtering
+
+The `p-select` component automatically filters options based on user input. However, if you have a large dataset or need
+custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter` slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+<!-- Component Example (interactive demo) -->
+
+## Custom option rendering
+
+By default, `p-select-option` only allows `#text` and `img` nodes. To customize option rendering further, implement a
+custom selection renderer using the `selected` slot. This allows you to render different content in the selected area
+versus the dropdown options, enabling more complex option layouts.
+
+When using the `filter` option, the default behavior filters against all `textContent` within the options. For more
+granular control over filtering, implement custom filtering logic as shown in the
+[previous example](/components/select/examples#custom-asynchronous-filtering).
+
+<!-- Component Example (interactive demo) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Select - Porsche Design System',
+  description: 'Learn how to properly use the Select component with best practices and guidelines for effective design and user experience.'
+}
+
+# Select (Component: p-select)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Keep the label visible for better accessibility whenever possible.
+- Provide a descriptive label text for screen readers when using the component without a label.
+- Use to trigger an action based on the selected option choose and search one option from a list of items to navigate
+the user to a new position and recommend a default option for most users.
+- Use without label only if the context clearly describes what the component is to be used for and no further
+explanation is required.
+- Provide a description text displayed openly and directly outside the form field when helpful for the user to get
+further information on the input.
+- Use the custom filter for a large number of select options (e.g. country/state select).
+- Use without preselection (mandatory field) if you don't know or need to make sure the user makes a conscious choice.
+- Use preselection (mandatory field) if you have a reason to believe one of the options is most likely or you know the
+default or current option.
+- Use preselection (optional field) to make it possible to go back to an empty default.
+- Use common sort order for menu items (frequency of use, alpha or numeric).
+
+### Don't:
+
+- Don't use select boxes for data that is highly familiar such as the day month or year.
+- Don't set the default to 'please select' if there's an empty field.
+- Don't use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
+maximum of 7 elements in the field of view without having to scroll.
+
+---
+

@@ -1,0 +1,367 @@
+# flyout
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Flyout: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Flyout component',
+};
+
+# Flyout (Component: p-flyout)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+The `Flyout` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
+behavior. As a result, accessibility features may vary across different browsers.
+
+### Keyboard
+
+| Key / state                | Function                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
+| `ESC`                      | Closes the dialog.                                                                                               |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                  |
+| ------------ | ------------------------------------------------------ |
+| `aria-label` | Defines a string value that labels the dialog element. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                  | Usage                                                                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"` | Defines the accessible name if no `aria` property is provided, uses the contents of the header slot and falls back to a fixed name. |
+
+## Development considerations
+
+To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
+property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Flyout - Porsche Design System',
+  description: 'Detailed API reference for the Flyout component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Flyout (Component: p-flyout)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: flyoutStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Flyout
+</p-button>
+
+<p-flyout aria="{'aria-label': 'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <p-text>
+    Some Content
+  </p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">
+      Proceed
+    </p-button>
+    <p-button type="button" variant="secondary">
+      Cancel
+    </p-button>
+  </p-button-group>
+  <p-text slot="sub-footer">
+    Some additional Sub-Footer
+  </p-text>
+</p-flyout>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pFlyout = document.querySelector("p-flyout");
+  pButton.addEventListener('click', () => (pFlyout.open = true));
+  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Flyout
+      </PButton>
+
+      <PFlyout open={open} aria={{'aria-label': 'Some Heading'}} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <PText>
+          Some Content
+        </PText>
+        <PButtonGroup slot="footer">
+          <PButton type="button">
+            Proceed
+          </PButton>
+          <PButton type="button" variant="secondary">
+            Cancel
+          </PButton>
+        </PButtonGroup>
+        <PText slot="sub-footer">
+          Some additional Sub-Footer
+        </PText>
+      </PFlyout>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button type="button" [aria]="{'aria-haspopup': 'dialog'}" (click)="onClick()">
+        Open Flyout
+      </p-button>
+
+      <p-flyout [open]="open" [aria]="{'aria-label': 'Some Heading'}" (dismiss)="onDismiss()">
+        <p-heading slot="header" size="large" tag="h2">
+          Some Heading
+        </p-heading>
+        <p-text>
+          Some Content
+        </p-text>
+        <p-button-group slot="footer">
+          <p-button type="button">
+            Proceed
+          </p-button>
+          <p-button type="button" variant="secondary">
+            Cancel
+          </p-button>
+        </p-button-group>
+        <p-text slot="sub-footer">
+          Some additional Sub-Footer
+        </p-text>
+      </p-flyout>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+    Open Flyout
+  </PButton>
+
+  <PFlyout :open="open" :aria="{'aria-label': 'Some Heading'}" @dismiss="onDismiss">
+    <PHeading slot="header" size="large" tag="h2">
+      Some Heading
+    </PHeading>
+    <PText>
+      Some Content
+    </PText>
+    <PButtonGroup slot="footer">
+      <PButton type="button">
+        Proceed
+      </PButton>
+      <PButton type="button" variant="secondary">
+        Cancel
+      </PButton>
+    </PButtonGroup>
+    <PText slot="sub-footer">
+      Some additional Sub-Footer
+    </PText>
+  </PFlyout>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Flyout - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Flyout component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Flyout (Component: p-flyout)
+
+The `p-flyout` is a overlay from the left or right side of the screen. It is commonly used as a temporary workspace that
+allows users to complete tasks without navigating to a new page or as a mobile navigation.
+
+It is a controlled component. This grants flexible control over the flyout's behavior especially whether it should stay
+open after user interaction like submission of a form.
+
+<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
+  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br />
+  This doesn't work completely reliable under iOS but is the most stable solution.<br />
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><Link href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</Link></b>
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+import { flyoutExampleForm } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Flyout - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Flyout component.',
+};
+
+# Flyout (Component: p-flyout)
+
+<!-- Table of Contents -->
+
+## Sticky content with Custom CSS Property (Experimental)
+
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+<!-- Component Example (interactive demo) -->
+
+## Custom Styling
+
+The Flyout exposes read-only CSS Variables (prefixed with `--ref-`). Additionally, some predefined CSS variables can be
+overwritten. This can be useful for positioning a media element to the edge of the Flyout, or for fully controlling the
+Flyout's width.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Flyout - Porsche Design System',
+  description: 'Learn how to properly use the Flyout component with best practices and guidelines for effective design and user experience.'
+}
+
+# Flyout (Component: p-flyout)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use a Flyout as a temporary workspace that allows users to complete tasks without navigating to a new page.
+- Use a Flyout for mobile navigation.
+- Adjust Flyout size and alignment with the grid.
+- Use the sticky header for a descriptive heading & optional sub-heading.
+- Use the sticky footer for a call to action.
+- Use the sub-footer slot for additional or less important information such as legals or faqs.
+- Follow button order and positioning guidelines.
+- Use feedback banner for any feedback related to the request.
+
+### Don't:
+
+- Don't use to many actions in the sticky footer or header.
+- Don't put important information in the sub-footer slot.
+- Don't use fullscreen Flyout's on desktop.
+- Don't launch a Flyout within a Flyout.
+
+---
+

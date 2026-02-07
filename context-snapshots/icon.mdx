@@ -1,0 +1,336 @@
+# icon
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Icon: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Icon component',
+};
+
+# Icon (Component: p-icon)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                                         |
+| ------------ | ----------------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
+
+## Development considerations
+
+### Hiding an icon from assistive technologies
+
+Sometimes icons are used purely for **decorative purposes** and do not convey any additional information. In these
+cases, it is important to **hide** the icon from assistive technologies. This can be achieved by setting the
+`aria-hidden` attribute directly on the `Icon` component.
+
+```html
+<p-icon aria-hidden="true" name="phone" /><p-text>+49 123 456 7890</p-text>
+```
+
+## Tests
+
+### Automated
+
+| Technology                                                         | Support                                                                                                             |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) (WCAG 2.2 AA, Best-Practice) | ✅                                                                                                                  |
+| High-Contrast Mode (light/dark)                                    | 🟠(partially supported: Depending on the selected theme, there may be problems reproducing the complementary color) |
+| Text-Zoom (200%)                                                   | ✅                                                                                                                  |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Icon - Porsche Design System',
+  description: 'Detailed API reference for the Icon component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Icon (Component: p-icon)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: iconStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-icon></p-icon>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PIcon } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PIcon></PIcon>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PIcon } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PIcon></PIcon>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Icon - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Icon component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Icon (Component: p-icon)
+
+Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components
+of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized. The Porsche
+Design System is using an **SVG icon system (integrated by `<img/>`)** to visually present an icon object. Each icon is
+hosted on the Porsche Design System CDN to be served and cached as fast as possible.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: iconStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-icon></p-icon>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PIcon } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PIcon></PIcon>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-icon></p-icon>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PIcon } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PIcon></PIcon>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Icon - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Icon component.',
+};
+
+# Icon (Component: p-icon)
+
+<!-- Table of Contents -->
+
+## Name
+
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons
+([Porsche Icons](https://icons.porsche.com)). To reference an icon just use the `name` property with a predefined icon
+id.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Custom icon
+
+The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which
+doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be
+sure that the custom icon serves the specific needs like size and viewbox which are described in the
+[usage documentation](/components/icon/usage/).
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## guideline/page.mdx
+
+
+export const metadata = {
+  title: 'Icon - Porsche Design System',
+  description:
+    'Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products.',
+};
+
+# Icon (Component: p-icon)
+
+We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com) for an
+appropriate icon you are looking for. If there is no match, we encourage you to build, test and use the icons you need.
+To help you meet the quality standards of Porsche, you will find the guidelines below.
+
+Do you have an icon that is mandatory for several teams and purposes? We are happy to include it in the Porsche Design
+System. Feel free to get in touch with us on our
+[Porsche Design System Slack](https://porschedev.slack.com/archives/CT7AVHTTQ)
+
+<!-- Table of Contents -->
+
+## Metaphor and Appearance
+
+- Check the Porsche environment for similar or close icons to adapt (Web, App, In Car, Print)
+- Stick to the basic geometric shapes.
+- Use easy and commonly known metaphors.
+- Keep the details and complexity to a minimum.
+- Make sure corresponding icons have the same position e.g. the "add" and "remove" icon.
+- Check your design about other icons from the Porsche Design System.
+
+## Quality assurance
+
+- Build your icons based on the default grid (48x48px) Default Porsche icons are based on 2px lines.
+- Fill areas smaller than 4px.
+- Snap pixels to the grid to ensure a sharp visual appearance (prevents blurred lines because of anti-aliasing on
+  low-resolution displays).
+- Try to balance the width and height of the icon a uniform appearance in icon groups.
+- Respect the safe area around the icon (approximately 4px, which can vary depending on the ratio of the icon).
+- Design with only one color.
+
+## SVG Export
+
+- Transform vector forms in a full, coherent vector shape. (convert strokes to shapes and merge objects).
+- Delete everything that is not necessary (layers, strokes, variants, etc.).
+- Export your icon as an svg.
+- Name svg according to the icons (e.g. "delete.svg" or "edit.svg").
+- Name social icons "logo-companyname.svg".
+- Run an svg optimizer to gain pure semantic code.
+
+---
+
+### Read more on
+
+[Nielsen Norman Group](https://nngroup.com/articles/icon-testing)
+
+[UsabilityHub](https://usabilityhub.com/examples/easiest-icon-to-understand)
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Icon - Porsche Design System',
+  description: 'Learn how to properly use the Icon component with best practices and guidelines for effective design and user experience.'
+}
+
+# Icon (Component: p-icon)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use the available icons from [Porsche Icons](https://icons.porsche.com).
+- Use icons as an additional element for faster recognition.
+
+### Don't:
+
+- Don't use icons without label.
+
+
+---
+

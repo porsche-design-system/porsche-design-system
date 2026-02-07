@@ -1,0 +1,180 @@
+# marque
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Marque: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Marque component',
+};
+
+# Marque (Component: p-marque)
+
+## Accessibility support
+
+No documentation as the component is deprecated.
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Marque - Porsche Design System',
+  description: 'Detailed API reference for the Marque component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Marque (Component: p-marque)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: marqueStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-marque></p-marque>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PMarque } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PMarque></PMarque>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-marque></p-marque>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PMarque } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PMarque></PMarque>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Marque - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Marque component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Marque (Component: p-marque)
+
+The `p-marque` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
+and represents the quality of the product.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release.
+  Please use <Link href="/components/wordmark/">p-wordmark</Link> instead.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## usage/page.mdx
+
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Marque - Porsche Design System',
+  description:
+    'Learn how to properly use the Marque component with best practices and guidelines for effective design and user experience.',
+};
+
+# Marque (Component: p-marque)
+
+<!-- Table of Contents -->
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use{' '}
+  <Link href="/components/wordmark/">p-wordmark</Link> instead.
+</Notification>
+
+## Sizes
+
+Slight adjustments ensure that the Porsche marque is optimally perceived as equally as possible in the various image
+sizes.
+
+| Size       | Usage                                     |
+| ---------- | ----------------------------------------- |
+| **Small**  | Viewports with 1299 px width or lower     |
+| **Medium** | Viewports with 1300 pixel width or larger |
+
+---
+
+## Content
+
+The two elements that make up the overall logo for the Porsche marque are the **word "Porsche" (logotype)** and the
+**Porsche Crest** as an image-based logo. The three-dimensional colored Porsche marque is used as a fixed unit, always
+including crest and logotype, across all media, and **may not be changed**.
+
+---
+
+## Usage
+
+- Within static digital applications, the Porsche Marque is **always used without shadow**. For moving images a separate
+  Crest with shadow is available.
+- The Porsche Marque may **only be used on a white background**.
+
+---
+
+## Do's & Don'ts
+
+- The marque **may not be altered** in relation to its two elements or their size. The marque may never be used without
+  the Porsche lettering, as the sender identification cannot be guaranteed.
+- The Porsche marque **may not be used against coloured or busy backgrounds** (e.g. shading). As the Porsche crest has a
+  high level of graphical complexity, excessive visual turmoil may be created.
+
+![Example for Porsche marque](assets/porsche-marque-donts-01.png)
+
+
+---
+

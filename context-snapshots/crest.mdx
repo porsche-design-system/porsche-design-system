@@ -1,0 +1,261 @@
+# crest
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Crest: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Crest component',
+};
+
+# Crest (Component: p-crest)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+This component does not include any special accessibility features.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Crest - Porsche Design System',
+  description: 'Detailed API reference for the Crest component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Crest (Component: p-crest)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: crestStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-crest></p-crest>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PCrest } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PCrest></PCrest>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-crest></p-crest>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PCrest } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PCrest></PCrest>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Crest - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Crest component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Crest (Component: p-crest)
+
+The `p-crest` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
+and represents the quality of the product.
+
+<Notification heading="Usage hint" heading-tag="h2" state="error">
+  This component shall only be used on viewports below 480px (breakpoint "S"). Otherwise, <Link href="/components/wordmark/">p-wordmark</Link> has to be used.
+</Notification>
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-crest`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: crestStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-crest></p-crest>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PCrest } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PCrest></PCrest>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-crest></p-crest>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PCrest } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PCrest></PCrest>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Crest - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Crest component.',
+};
+
+# Crest (Component: p-crest)
+
+<!-- Table of Contents -->
+
+## Link
+
+The Porsche Crest will be rendered as `<a>`-tag as soon as an `href` is provided.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of the Porsche Crest. Therefore, a custom padding
+can be set on the host element.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Crest - Porsche Design System',
+  description:
+    'Learn how to properly use the Crest component with best practices and guidelines for effective design and user experience.',
+};
+
+# Crest (Component: p-crest)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use the [Wordmark](/components/wordmark/) as the main brand identifier.
+- Use the crest only as an additional small brand identifier (e.g., within contact cards).
+- Switch from the wordmark to the crest on small viewports below 480px (automatically implemented in global navigation
+  and footer).
+
+### Don't:
+
+- Use the crest as the primary brand identifier by default.
+
+---
+
+## Related Components
+
+- [Wordmark](/components/wordmark/)
+
+
+---
+

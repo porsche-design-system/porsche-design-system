@@ -1,0 +1,377 @@
+# segmented-control
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Segmented Control: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Segmented Control component',
+};
+
+# Segmented Control (Component: p-segmented-control)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Space`, `Enter`   | Activates the control.                                   |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA                  | Usage                                                       |
+| --------------------- | ----------------------------------------------------------- |
+| `aria-label="STRING"` | Defines a string value that labels the control item itself. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `role="group"`                  | Identifies a set of user interface objects.                                                           |
+| `aria-pressed="BOOLEAN"`        | Provides the current state of the control.                                                            |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-required="true"`          | Indicates if the element is required.                                                                 |
+
+## Development considerations
+
+### Labelling
+
+It's recommended to provide a descriptive label to the wrapper component using `aria-label` to provide more context for
+assistive technologies, e.g.: `<p-segmented-control aria-label="Choose a t-shirt size">`.
+
+If a more detailed label is needed for each **control item**, use the `aria` property on the control item itself, e.g.:
+`<p-segmented-control-item value="xs" aria="{ 'aria-label': 'Size x-small'}">XS</p-segmented-control-item>`.
+
+If an **icon only** is used, it is mandatory to also provide an accessible name (aria-label) through the `aria` property
+of the control item.
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Segmented Control - Porsche Design System',
+  description:
+    'Detailed API reference for the Segmented Control component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Segmented Control (Component: p-segmented-control)
+
+<!-- Table of Contents -->
+
+## Segmented Control
+
+<!-- Component API documentation -->
+
+## Segmented Control Item
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: segmentedControlStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-segmented-control label="Some Label" description="Some description">
+  <p-segmented-control-item value="1">
+    Option 1
+  </p-segmented-control-item>
+  <p-segmented-control-item value="2">
+    Option 2
+  </p-segmented-control-item>
+  <p-segmented-control-item value="3">
+    Option 3
+  </p-segmented-control-item>
+  <p-segmented-control-item value="4">
+    Option 4
+  </p-segmented-control-item>
+  <p-segmented-control-item value="5">
+    Option 5
+  </p-segmented-control-item>
+</p-segmented-control>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSegmentedControl label="Some Label" description="Some description">
+        <PSegmentedControlItem value="1">
+          Option 1
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="2">
+          Option 2
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="3">
+          Option 3
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="4">
+          Option 4
+        </PSegmentedControlItem>
+        <PSegmentedControlItem value="5">
+          Option 5
+        </PSegmentedControlItem>
+      </PSegmentedControl>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-segmented-control label="Some Label" description="Some description">
+        <p-segmented-control-item value="1">
+          Option 1
+        </p-segmented-control-item>
+        <p-segmented-control-item value="2">
+          Option 2
+        </p-segmented-control-item>
+        <p-segmented-control-item value="3">
+          Option 3
+        </p-segmented-control-item>
+        <p-segmented-control-item value="4">
+          Option 4
+        </p-segmented-control-item>
+        <p-segmented-control-item value="5">
+          Option 5
+        </p-segmented-control-item>
+      </p-segmented-control>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PSegmentedControl, PSegmentedControlItem } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSegmentedControl label="Some Label" description="Some description">
+    <PSegmentedControlItem value="1">
+      Option 1
+    </PSegmentedControlItem>
+    <PSegmentedControlItem value="2">
+      Option 2
+    </PSegmentedControlItem>
+    <PSegmentedControlItem value="3">
+      Option 3
+    </PSegmentedControlItem>
+    <PSegmentedControlItem value="4">
+      Option 4
+    </PSegmentedControlItem>
+    <PSegmentedControlItem value="5">
+      Option 5
+    </PSegmentedControlItem>
+  </PSegmentedControl>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Segmented Control - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Segmented Control component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Segmented Control (Component: p-segmented-control)
+
+The `p-segmented-control` component is similar to the native `select` element while showing all available options right
+away.
+
+It even behaves like a `select` where it can be controlled by setting the current value. However, it is not required and
+you could purely rely on the change event.
+
+Visually the `p-segmented-control` displays all options in equal size based on its largest option.
+
+Each option needs to be rendered by using a `p-segmented-control-item` child component where the `value` property is
+**mandatory** in order to emit a useful change event.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+import { segmentedControlExampleForm } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Segmented Control - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Segmented Control component.',
+};
+
+# Segmented Control (Component: p-segmented-control)
+
+<!-- Table of Contents -->
+
+## Form
+
+The `p-segmented-control` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on
+your needs.
+
+In the **controlled** approach, the `p-segmented-control` state is externally managed using the `value` property and
+`change` event to keep it in sync with your application logic. This approach is ideal for complex forms or when using a
+form library. Note that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the `p-segmented-control` automatically managing its own state and including its value
+in form submissions through the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals)
+API. This is convenient for smaller forms or simple submissions.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  The <code>p-segmented-control</code> lacks access to native <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
+</Notification>
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+<!-- Component Example (interactive demo) -->
+
+## With Labels
+
+Additional meta information can be displayed by setting a `label` on each child.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Slots
+
+Sometimes it's useful to render custom markup for `label`, `description` or `message`. Therefore, named slots can be
+used. Make sure **not** to define the corresponding property on the host element when a named slot is used (because a
+property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+In addition to the named slots `label`, `description` and `message`, there is also a `label-after` slot available. This
+slot must be used to render content after the label which is not directly part of it (e.g. an external link or a
+`popover` component).
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  If the <code>p-segmented-control</code> is in <code>disabled/loading</code> state
+  <strong>and</strong> <code>label</code> or <code>label-after</code> slots are used with focusable UI elements (e.g.
+  <code>a</code> or <code>p-popover</code>), the keyboard focus handling has to be managed manually to prevent focusing
+  disabled elements (e.g. add <code>tabindex="-1"</code> on those UI elements).
+</Notification>
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Segmented Control - Porsche Design System',
+  description:
+    'Learn how to properly use the Segmented Control component with best practices and guidelines for effective design and user experience.',
+};
+
+# Segmented Control (Component: p-segmented-control)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to present a set of selectable options at once.
+- Use for selection from 2-5 short and consistent options.
+- Use them over other selection controls to reduce cognitive load.
+- Pair the option with an icon to improve visual recognition use.
+- Use icons only when the context meaning is really clear.
+- Use preselection when the result is visible by default.
+- Use with no selection when a selection by the user is necessary to show the result.
+- Use it with a short indication for the unit (such as km, €, %, or $) when possible.
+- Use for horizontal and/or vertical display of options.
+
+### Don't:
+
+- Don't use it to filter or navigate content (use [Tabs](/components/tabs/) instead).
+- Don't use it for more than 5 options (use the [Select](/components/select-wrapper/) component).
+- Don't use it with mixed values (use [Radio Button](/components/radio-button-wrapper/) or
+  [Select](/components/select-wrapper/) instead).
+- Don't exceed maximum width so the values turn multiline.
+
+---
+
+## Related components
+
+- [Select](/components/select-wrapper/)
+- [Radio Button](/components/radio-button-wrapper/)
+- [Tabs](/components/tabs/)
+
+
+---
+

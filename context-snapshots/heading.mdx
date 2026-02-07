@@ -1,0 +1,220 @@
+# heading
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Heading: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Heading component',
+};
+
+# Heading (Component: p-heading)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+This component does not include any special accessibility features.
+
+## Development considerations
+
+### Heading hierarchy
+
+While using the `Heading` component, take care of the correct heading hierarchy which can be adjusted through the `tag`
+property. Keep in mind that the visual appearance must not always be identical with the semantic hierarchy.
+
+#### Best practices
+
+- Use one unique `h1` per page that describes what that page is about.
+- Use headings to describe the content below. Do not use an HTML heading just to make the text appear bigger or stand
+  out.
+- Use heading levels like the index of a book: hierarchical.
+- Do not choose a heading by its size, but by its level in the context of the content.
+- Heading hierarch should not increase by more than one level at a time.
+- Do not skip a heading level from the top down.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description: 'Detailed API reference for the Heading component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Heading (Component: p-heading)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: headingStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-heading>
+  The quick brown fox jumps over the lazy dog
+</p-heading>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PHeading } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PHeading>
+        The quick brown fox jumps over the lazy dog
+      </PHeading>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-heading>
+        The quick brown fox jumps over the lazy dog
+      </p-heading>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PHeading } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PHeading>
+    The quick brown fox jumps over the lazy dog
+  </PHeading>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Heading component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Heading (Component: p-heading)
+
+`p-heading` is used to highlight and specify heading styling and hierarchy in documents.
+
+<Notification heading="Recommendation" heading-tag="h2" state="success">
+  Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
+  the "@porsche-design-system/components-\{js|angular|react|vue}/styles" sub-package for best performance since way
+  less DOM nodes are required to render. Further information can be found <Link href="/styles/typography/">here</Link>.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Heading component.',
+};
+
+# Heading (Component: p-heading)
+
+<!-- Table of Contents -->
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Color
+
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description: 'Learn how to properly use the Heading component with best practices and guidelines for effective design and user experience.'
+}
+
+# Heading (Component: p-heading)
+
+<!-- Table of Contents -->
+
+## Usage
+
+p-heading is used to highlight and specify heading styling and hierarchy
+
+### Do:
+- Use p-heading styles to clearly mark section titles and subsections.
+- Align headings with the grid to maintain visual rhythm.
+- Use heading-xx-large for primary sections; scale down for subsections.
+- Pair each heading with a text style one or two steps smaller (e.g. heading-large with text-medium).
+
+### Don't:
+- Don’t use p-heading styles for hero or marketing intros—use p-display instead.
+- Don’t mix heading sizes inconsistently within the same view.
+- Don’t center-align headings in content-heavy layouts unless intended for a special moment.
+
+
+---
+

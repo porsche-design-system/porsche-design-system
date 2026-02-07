@@ -1,0 +1,198 @@
+# tag-dismissible
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Tag Dismissible: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tag Dismissible component',
+};
+
+# Tag Dismissible (Component: p-tag-dismissible)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Removes the element.                                     |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                       |
+| ------------ | ----------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the interactive element. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                 | Usage                                                   |
+| -------------------- | ------------------------------------------------------- |
+| `aria-hidden="true"` | The "close" icon is hidden from assistive technologies. |
+
+## Development considerations
+
+### Focus handling
+
+Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or next `p-tag-dismissible` or to
+another focusable element. This prevents losing the focus order.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Tag Dismissible - Porsche Design System',
+  description: 'Detailed API reference for the Tag Dismissible component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Tag Dismissible (Component: p-tag-dismissible)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: tagDismissibleStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-tag-dismissible>
+  Some label
+</p-tag-dismissible>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTagDismissible } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTagDismissible>
+        Some label
+      </PTagDismissible>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-tag-dismissible>
+        Some label
+      </p-tag-dismissible>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTagDismissible } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTagDismissible>
+    Some label
+  </PTagDismissible>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Tag Dismissible - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Tag Dismissible component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Tag Dismissible (Component: p-tag-dismissible)
+
+`p-tag-dismissible` is used in contexts where the user can actively remove a tag. It is often seen in filtering.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Tag Dismissible - Porsche Design System',
+  description: 'Learn how to properly use the Tag Dismissible component with best practices and guidelines for effective design and user experience.'
+}
+
+# Tag Dismissible (Component: p-tag-dismissible)
+
+<!-- Table of Contents -->
+
+## Usage
+
+Allows users to quickly refine the result of data they want to be presented on the page.
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to show that a certain filter is active.
+- Use this component with a label if additional information is needed (e.g. category an attribute/filter refers to).
+
+### Don't:
+
+- Don't use it for other interactions than dismissing a selection.
+- Don't have long content that causes multiline.
+
+
+---
+

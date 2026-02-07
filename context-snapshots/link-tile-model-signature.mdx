@@ -1,0 +1,403 @@
+# link-tile-model-signature
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Link Tile Model Signature: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Link Tile Model Signature component',
+};
+
+# Link Tile Model Signature (Component: p-link-tile-model-signature)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                      |
+
+### ARIA enhancements
+
+Refers to slotted [Link](/components/link/accessibility/) component.
+
+## Development considerations
+
+### Readable text
+
+In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though the
+component provides a **scalable background gradient** to reduce the risk of low contrasts between foreground text and
+background image, there still can occur issues with color contrast ratios, especially if different aspect ratios for
+multiple viewport sizes are used. So, always **check readability** and play around with the size and weight properties
+to achieve the best results.
+
+### Video background
+
+In case a video background is used, the component checks whether **reduced motion** is enabled in the operating system
+settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
+the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
+general might increase the page load time. The video content should support the CTA instead of distracting from it. To
+support screen reader users, it's recommended to define an alternative video description
+`<video aria-label="Some video description"" />`.
+
+### Heading hierarchy
+
+To provide more contextual HTML semantics you can use the `headingTag` property to change the heading parent from
+default `h2` to e.g. `h3`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Link Tile Model Signature - Porsche Design System',
+  description: 'Detailed API reference for the Link Tile Model Signature component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Link Tile Model Signature (Component: p-link-tile-model-signature)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: linkTileModelSignatureStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-link-tile-model-signature heading="Some heading">
+  <p-tag slot="header" color="background-frosted" compact="true">
+    Some tag
+  </p-tag>
+  <img src="assets/lights.jpg" alt="Some image description" />
+  <p-link slot="primary" href="https://porsche.com/#primary">
+    Primary label
+  </p-link>
+  <p-link slot="secondary" href="https://porsche.com/#secondary">
+    Secondary label
+  </p-link>
+</p-link-tile-model-signature>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PLink, PLinkTileModelSignature, PTag } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PLinkTileModelSignature heading="Some heading">
+        <PTag slot="header" color="background-frosted" compact={true}>
+          Some tag
+        </PTag>
+        <img src="assets/lights.jpg" alt="Some image description" />
+        <PLink slot="primary" href="https://porsche.com/#primary">
+          Primary label
+        </PLink>
+        <PLink slot="secondary" href="https://porsche.com/#secondary">
+          Secondary label
+        </PLink>
+      </PLinkTileModelSignature>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-link-tile-model-signature heading="Some heading">
+        <p-tag slot="header" color="background-frosted" [compact]="true">
+          Some tag
+        </p-tag>
+        <img src="assets/lights.jpg" alt="Some image description" />
+        <p-link slot="primary" href="https://porsche.com/#primary">
+          Primary label
+        </p-link>
+        <p-link slot="secondary" href="https://porsche.com/#secondary">
+          Secondary label
+        </p-link>
+      </p-link-tile-model-signature>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PLink, PLinkTileModelSignature, PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PLinkTileModelSignature heading="Some heading">
+    <PTag slot="header" color="background-frosted" :compact="true">
+      Some tag
+    </PTag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+    <PLink slot="primary" href="https://porsche.com/#primary">
+      Primary label
+    </PLink>
+    <PLink slot="secondary" href="https://porsche.com/#secondary">
+      Secondary label
+    </PLink>
+  </PLinkTileModelSignature>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Link Tile Model Signature - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Link Tile Model Signature component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Link Tile Model Signature (Component: p-link-tile-model-signature)
+
+The `p-link-tile-model-signature` is a navigational component that displays a provided image to tease content and
+provides two `p-link's` to navigate to further information within one container. In addition to the `p-link-tile` it
+shows one of the model signatures at the top.
+
+**Note:** The component does not take care of processing and aligning the image.
+
+An `<img/>`, `<picture/>` or `<video/>` tag has to be provided as default slot.
+
+It is required to have two `p-link` components as named slots, `slot="primary"` and `slot="secondary"`.
+The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
+to.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: linkTileModelSignatureStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-link-tile-model-signature heading="Some heading">
+  <p-tag slot="header" color="background-frosted" compact="true">
+    Some tag
+  </p-tag>
+  <img src="assets/lights.jpg" alt="Some image description" />
+  <p-link slot="primary" href="https://porsche.com/#primary">
+    Primary label
+  </p-link>
+  <p-link slot="secondary" href="https://porsche.com/#secondary">
+    Secondary label
+  </p-link>
+</p-link-tile-model-signature>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PLink, PLinkTileModelSignature, PTag } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PLinkTileModelSignature heading="Some heading">
+        <PTag slot="header" color="background-frosted" compact={true}>
+          Some tag
+        </PTag>
+        <img src="assets/lights.jpg" alt="Some image description" />
+        <PLink slot="primary" href="https://porsche.com/#primary">
+          Primary label
+        </PLink>
+        <PLink slot="secondary" href="https://porsche.com/#secondary">
+          Secondary label
+        </PLink>
+      </PLinkTileModelSignature>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-link-tile-model-signature heading="Some heading">
+        <p-tag slot="header" color="background-frosted" [compact]="true">
+          Some tag
+        </p-tag>
+        <img src="assets/lights.jpg" alt="Some image description" />
+        <p-link slot="primary" href="https://porsche.com/#primary">
+          Primary label
+        </p-link>
+        <p-link slot="secondary" href="https://porsche.com/#secondary">
+          Secondary label
+        </p-link>
+      </p-link-tile-model-signature>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PLink, PLinkTileModelSignature, PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PLinkTileModelSignature heading="Some heading">
+    <PTag slot="header" color="background-frosted" :compact="true">
+      Some tag
+    </PTag>
+    <img src="assets/lights.jpg" alt="Some image description" />
+    <PLink slot="primary" href="https://porsche.com/#primary">
+      Primary label
+    </PLink>
+    <PLink slot="secondary" href="https://porsche.com/#secondary">
+      Secondary label
+    </PLink>
+  </PLinkTileModelSignature>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Link Tile Model Signature - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Link Tile Model Signature component.',
+};
+
+# Link Tile Model Signature (Component: p-link-tile-model-signature)
+
+<!-- Table of Contents -->
+
+## UI behaviour
+
+The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
+first row in example).
+
+Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
+CSS Grid context (see second row in example).
+
+<!-- Component Story example (code examples shown above) -->
+
+## Framework Routing
+
+While the `p-link-tile-model-signature` supports slotted `a` links within its required `p-link` children, clicking
+anything besides the two `p-link` elements needs to be handled manually.
+
+<!-- Component Story example (code examples shown above) -->
+
+The easiest way to achieve this is to add a `click` event listener on the component itself, call
+`event.preventDefault()` once the event handler is invoked and read the `href` value from the target.
+
+```ts
+const linkEl = document.querySelector('p-link-tile-model-signature');
+linkEl.addEventListener('click', (event) => {
+  event.preventDefault();
+  const { href } = event.composedPath()[0];
+  history.pushState({}, '', href); // or whatever your routing library provides as a hook or service
+});
+```
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Link Tile Model Signature - Porsche Design System',
+  description: 'Learn how to properly use the Link Tile Model Signature component with best practices and guidelines for effective design and user experience.'
+}
+
+# Link Tile Model Signature (Component: p-link-tile-model-signature)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use this component when displaying the vehicle series.
+- Select the desired aspect ratio, please check with other use cases to create an aligned appearance among all products.
+- Within a group of Link Tiles keep a consistent logic for each primary and secondary button target.
+
+### Don't:
+
+- Don't use this component to present other content than the vehicle types.
+- Don't manipulate the background images, the component takes care of the contrast.
+- Don't use this component to display vehicle derivates such as GTS, Turbo S, ...
+- Don't vary the description of the vehicle series, stay consistent with the general description.
+- Don't position/select the background in a way that the dedicated model can’t be recognized.
+
+
+---
+

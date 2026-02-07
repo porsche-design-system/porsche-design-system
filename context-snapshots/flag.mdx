@@ -1,0 +1,184 @@
+# flag
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Flag: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Flag component',
+};
+
+# Flag (Component: p-flag)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                                         |
+| ------------ | ----------------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
+
+## Tests
+
+### Automated
+
+| Technology                                                         | Support |
+| ------------------------------------------------------------------ | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)                                    | ✅      |
+| Text-Zoom (200%)                                                   | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description:
+    'Detailed API reference for the Flag component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Flag (Component: p-flag)
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: flagStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-flag aria="{'aria-label': 'Flag of Germany'}"></p-flag>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PFlag } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PFlag aria={{'aria-label': 'Flag of Germany'}}></PFlag>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-flag [aria]="{'aria-label': 'Flag of Germany'}"></p-flag>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PFlag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PFlag :aria="{'aria-label': 'Flag of Germany'}"></PFlag>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Flag component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Flag (Component: p-flag)
+
+Alongside icons, colors and typography, are flags a fundamental part of the Porsche design language. As universally
+understood symbols, they enable rapid visual communication and a seamless user experience.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description:
+    'Learn how to properly use the Flag component with best practices and guidelines for effective design and user experience.',
+};
+
+# Flag (Component: p-flag)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following guidelines provide instructions for designers and developers on the appropriate use of the `flag`
+component for effective communication and user experience.
+
+### Do:
+
+- **Use the `flag` component for country identification.** The primary purpose is to represent a nation, such as
+  specifying a user's country of origin, shipping location, or detailing product availability.
+
+- **Pair the flag with a label for clarity.** While flags are great for quick visual recognition, they can be ambiguous.
+  Always accompany a flag with a country name or an appropriate label to avoid confusion.
+
+- **Use the two-letter ISO 3166-1 alpha-2 code.** This standard ensures consistency, reduces errors, and makes it easier
+  to integrate with other systems and APIs.
+
+### Don't:
+
+- **Don't use flags to represent a language.** Many languages are spoken in multiple countries (e.g., Spanish). A flag
+  represents a nation, not a language. Use language codes or names instead.
+
+- **Don't use flags to represent an emotion or concept.** Flags are powerful symbols of national identity. Using them as
+  generic icons can dilute their meaning and cause user confusion.
+
+- **Don't rely solely on the flag icon.** Always provide an aria-label for accessibility. Screen readers cannot
+  interpret flags, and without a descriptive label, you create an inaccessible user experience.
+
+
+---
+

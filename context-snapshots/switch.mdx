@@ -1,0 +1,233 @@
+# switch
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Switch: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Switch component',
+};
+
+# Switch (Component: p-switch)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the completed and current step-item.                                  |
+| `disabled`         | Step-item still focusable.                                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                     | Usage                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `role="switch"`          | Indicates the element as switch element.                                                  |
+| `aria-checked="BOOLEAN"` | Indicates the status of the switch element.                                               |
+| `role="status"`          | When `loading` prop is set, the component announces the loading state (start and finish). |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Switch - Porsche Design System',
+  description: 'Detailed API reference for the Switch component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Switch (Component: p-switch)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: switchStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-switch>
+  Some label
+</p-switch>
+<script>
+  const pSwitch = document.querySelector("p-switch");
+  pSwitch.addEventListener('update', (e) => e.target.checked = e.detail.checked);
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PSwitch, type SwitchUpdateEventDetail } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [checked, setChecked] = useState(false);
+
+  const onUpdate = (e: CustomEvent<SwitchUpdateEventDetail>) => {
+    setChecked(e.detail.checked);
+  }
+
+  return (
+    <>
+      <PSwitch checked={checked} onUpdate={onUpdate}>
+        Some label
+      </PSwitch>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule, type SwitchUpdateEventDetail } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-switch [checked]="checked" (update)="onUpdate($event)">
+        Some label
+      </p-switch>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  checked = false;
+
+  onUpdate(e: CustomEvent<SwitchUpdateEventDetail>) {
+    this.checked = e.detail.checked;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PSwitch, type SwitchUpdateEventDetail } from '@porsche-design-system/components-vue';
+
+  const checked = ref(false);
+
+  const onUpdate = (e: CustomEvent<SwitchUpdateEventDetail>) => {
+    checked.value = e.checked;
+  }
+</script>
+
+<template>
+  <PSwitch :checked="checked" @update="onUpdate">
+    Some label
+  </PSwitch>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Switch - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Switch component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Switch (Component: p-switch)
+
+The `p-switch` component is a control that is used to quickly switch between two possible states. A switch is only used
+for these binary actions that occur immediately after the user “flips the switch”. Commonly it is used for “on/off”
+state.
+
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
+
+The `p-switch` component can be used with a visible or hidden label, but it's recommended to keep the label visible for
+better accessibility whenever possible. A `label` is a caption which informs the user which action is followed by
+interaction. When used with hidden label, it's best practice to provide a descriptive label text for screen readers.
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-switch`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Switch - Porsche Design System',
+  description:
+    'Learn how to properly use the Switch component with best practices and guidelines for effective design and user experience.',
+};
+
+# Switch (Component: p-switch)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use if an instant response of applied settings is required without explicit action.
+- Use to enable or disable a mode, feature, or function.
+- Use when the user is toggling independent features or behaviors.
+- Use the label to describe the affected property.
+- Use the right-aligned version for lists (Especially for handling on mobile devices).
+- Use the stretched version for lists on mobile or smaller containers.
+
+### Don't:
+
+- Don't use it if a setting requires a button press before it can take effect (use a
+  [Checkbox](/components/checkbox-wrapper) instead).
+- Don't use anything longer than two words in the label whenever possible.
+- Don't use the switch for multiple-choice questions.
+- Don't use slide Switch when an intermediate state is required (Use [Checkbox](/components/checkbox-wrapper) instead).
+- Don't use the label to describe the state of the component.
+
+---
+
+## Related Components
+
+- [Checkbox](/components/checkbox-wrapper/)
+- [Button](/components/button/)
+
+
+---
+

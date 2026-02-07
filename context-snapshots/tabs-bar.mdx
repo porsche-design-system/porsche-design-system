@@ -1,0 +1,372 @@
+# tabs-bar
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Tabs Bar: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tabs Bar component',
+};
+
+# Tabs Bar (Component: p-tabs-bar)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+#### Tabs Bar as a tabbed interface
+
+| Key / state                 | Function                                                                                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | - Moves focus to the active tab.<br/> - When the tab list contains the focus, moves focus to the next element in the tab sequence, which is the `tabpanel` element. |
+| `Right Arrow`, `Left Arrow` | - Moves focus to the next tab.<br/> - Activates the newly focused tab.<br/> - If focus is on the last tab, moves focus to the first tab.                            |
+| `Home`, `End`               | - Moves focus to the first/last tab and activates it.                                                                                                               |
+
+#### Tabs Bar as link list
+
+| Key / state        | Function                                             |
+| ------------------ | ---------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                  |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                      | Usage                                                                                   |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `role="tablist"`          | Indicates that the element serves as a container for a set of tabs.                     |
+| `role="tab"`              | Indicates the button serves as a tab control.                                           |
+| `aria-selected="BOOLEAN"` | Indicates the tab is selected/deselected and its associated tabpanel is visible/hidden. |
+
+## Development considerations
+
+### ARIA enhancements if used as a tabbed interface
+
+The `p-tabs-bar` component is detached from the content (`tabpanel`) which belongs to the active tab. To be truly
+accessible you need to provide additional ARIA attributes, because every tab (`button`) needs an `aria-controls`
+attribute which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"`
+and the attribute `aria-labelledby` which points to the unique `id` of the corresponding tab (`button`).
+
+You must also take care of the **focus handling** of the `tabpanel`. Therefor the active tab panel must have an
+`tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided focus
+style like this:
+
+```html
+<p-tabs-bar active-tab-index="0">
+  <button type="button" id="tab-item-0" aria-controls="tab-panel-0">Tab One</button>
+  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab Two</button>
+  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Three</button>
+</p-tabs-bar>
+<div id="tab-panel-0" role="tabpanel" tabindex="0" aria-labelledby="tab-item-0">
+  <p-text>Your content of Tab 1</p-text>
+</div>
+<div id="tab-panel-1" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-1">
+  <p-text>Your content of Tab 2</p-text>
+</div>
+<div id="tab-panel-2" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-2">
+  <p-text>Your content of Tab 3</p-text>
+</div>
+```
+
+```scss
+p-tabs-bar ~ [tabindex='0'][role='tabpanel'] {
+  @include pds-focus;
+}
+```
+
+### ARIA enhancements if used as a link list
+
+#### Route based navigation
+
+If the `p-tabs-bar` is used as a link list, the semantic of that UI component changes completely - from a **tabbed
+interface** where content changes happen **on-site** to a normal **list of links** where content changes are
+**route-based**. Therefor additional ARIA attributes **must not** be provided for tab identification! The `p-tabs-bar`
+component manages this also internally.
+
+To enhance accessibility even further, an `aria-current="page"` attribute should be provided to the active link.
+
+```html
+<p-tabs-bar>
+  <a href="https://porsche.com" target="_blank" aria-current="page">Tab One</a>
+  <a href="https://porsche.com" target="_blank">Tab Two</a>
+  <a href="https://porsche.com" target="_blank">Tab Three</a>
+</p-tabs-bar>
+```
+
+#### In-page jump navigation
+
+If the `p-tabs-bar` is used as an in-page jump navigation, you should follow the same rules as for the route-based
+variant except that `aria-current="page"` should not be used.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Tabs Bar - Porsche Design System',
+  description: 'Detailed API reference for the Tabs Bar component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Tabs Bar (Component: p-tabs-bar)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: tabsBarStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-tabs-bar>
+  <button type="button">
+    Tab One
+  </button>
+  <button type="button">
+    Tab Two
+  </button>
+  <button type="button">
+    Tab Three
+  </button>
+</p-tabs-bar>
+<script>
+  const pTabsBar = document.querySelector("p-tabs-bar");
+  pTabsBar.addEventListener('update', (e) => e.target.activeTabIndex = e.detail.activeTabIndex);
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
+    setActiveTabIndex(e.detail.activeTabIndex);
+  }
+
+  return (
+    <>
+      <PTabsBar activeTabIndex={activeTabIndex} onUpdate={onUpdate}>
+        <button type="button">
+          Tab One
+        </button>
+        <button type="button">
+          Tab Two
+        </button>
+        <button type="button">
+          Tab Three
+        </button>
+      </PTabsBar>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-tabs-bar [activeTabIndex]="activeTabIndex" (update)="onUpdate($event)">
+        <button type="button">
+          Tab One
+        </button>
+        <button type="button">
+          Tab Two
+        </button>
+        <button type="button">
+          Tab Three
+        </button>
+      </p-tabs-bar>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  activeTabIndex = 0;
+
+  onUpdate(e: CustomEvent<TabsBarUpdateEventDetail>) {
+    this.activeTabIndex = e.detail.activeTabIndex;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-vue';
+
+  const activeTabIndex = ref(0);
+
+  const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
+    activeTabIndex.value = e.activeTabIndex;
+  }
+</script>
+
+<template>
+  <PTabsBar :activeTabIndex="activeTabIndex" @update="onUpdate">
+    <button type="button">
+      Tab One
+    </button>
+    <button type="button">
+      Tab Two
+    </button>
+    <button type="button">
+      Tab Three
+    </button>
+  </PTabsBar>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Tabs Bar - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Tabs Bar component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Tabs Bar (Component: p-tabs-bar)
+
+The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router
+to ensure your **window location** updates on tab click, use it for **hash routing** and displaying content accordingly
+to the hash, as **skip navigation** to move on a longer page or to **change the state** of another element and therefore
+change the appearance of your content .
+
+The component does not handle the display of your content. If you use the component you have to manually care for the
+content to be rendered beneath. To help with this task the component triggers an event called `update` with the index of
+the active tab.
+
+If you intend to only change content on tab-click without location changes and you are fine that the content needs to be
+pre-rendered then we prepared a component which also handles the correct display of content according to the active tab.
+Have a look at the [Tabs](/components/tabs/) component.
+
+It is a controlled component. This means it does not contain any internal state, and you are in full control over its
+behavior.
+
+<Notification heading="Important note" heading-tag="h2" state="warning">
+  For documentation purpose we use <code>&lt;button&gt;</code> tags in the examples below to make them clickable without changing the route.
+  For route changes it is mandatory to use <code>&lt;a&gt;</code> tags with <code>href</code> in your application. And be aware of that it's not allowed to mix and match <code>&lt;button&gt;</code> with <code>&lt;a&gt;</code> tags as direct children in the component!
+</Notification>
+
+Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to
+change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the
+`<p-tabs-bar>` component and it will handle all styling behaviors.
+
+In order to get notified when the active tabs change, you need to register an event listener for the `update` event
+which is emitted by `p-tabs-bar`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Tabs Bar - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Tabs Bar component.',
+};
+
+# Tabs Bar (Component: p-tabs-bar)
+
+<!-- Table of Contents -->
+
+## Links
+
+<!-- Component Story example (code examples shown above) -->
+
+## Gradient color
+
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Tabs Bar - Porsche Design System',
+  description:
+    'Learn how to properly use the Tabs Bar component with best practices and guidelines for effective design and user experience.',
+};
+
+# Tabs Bar (Component: p-tabs-bar)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use as an anchor navigation to jump to a section on a longer page.
+- Use it to switch between different stages of content.
+- Use it to show different types of a element.
+
+### Don't:
+
+- Don't place more than six tabs within a group.
+- Don't use more than two words for a tab label whenever possible.
+- Don't use it for primary navigation.
+
+---
+
+## Related Component
+
+- [Tabs](/components/tabs/)
+- [Pagination](/components/pagination/)
+
+
+---
+

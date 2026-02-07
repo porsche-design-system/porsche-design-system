@@ -1,0 +1,283 @@
+# radio-button-wrapper
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Radio Button Wrapper: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Radio Button Wrapper component',
+};
+
+# Radio Button Wrapper (Component: p-radio-button-wrapper)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state                 | Function                                                            |
+| --------------------------- | ------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`          | Moves focus to the next (or previous) focusable element.            |
+| `Arrow left`, `Arrow right` | Activates and moves focus to the next/prev radio button in a group. |
+| `Space`                     | Activates radio button (if none in a group is checked).             |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | Defines the accessible name and status messages.                                                      |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Radio Button Wrapper - Porsche Design System',
+  description: 'Detailed API reference for the Radio Button Wrapper component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Radio Button Wrapper (Component: p-radio-button-wrapper)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: radioButtonWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-radio-button-wrapper label="Some label">
+  <input type="radio" name="some-name" />
+</p-radio-button-wrapper>
+
+<p-radio-button-wrapper label="Some label" class="mt-fluid-sm">
+  <input type="radio" name="some-name" />
+</p-radio-button-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PRadioButtonWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PRadioButtonWrapper label="Some label">
+        <input type="radio" name="some-name" />
+      </PRadioButtonWrapper>
+
+      <PRadioButtonWrapper label="Some label" className="mt-fluid-sm">
+        <input type="radio" name="some-name" />
+      </PRadioButtonWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-radio-button-wrapper label="Some label">
+        <input type="radio" name="some-name" />
+      </p-radio-button-wrapper>
+
+      <p-radio-button-wrapper label="Some label" class="mt-fluid-sm">
+        <input type="radio" name="some-name" />
+      </p-radio-button-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PRadioButtonWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PRadioButtonWrapper label="Some label">
+    <input type="radio" name="some-name" />
+  </PRadioButtonWrapper>
+
+  <PRadioButtonWrapper label="Some label" class="mt-fluid-sm">
+    <input type="radio" name="some-name" />
+  </PRadioButtonWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Radio Button Wrapper - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Radio Button Wrapper component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Radio Button Wrapper (Component: p-radio-button-wrapper)
+
+The `p-radio-button-wrapper` component is a styling wrapper for the native HTML input type `radio` form element. The
+singular property of a Radio Button makes it distinct from a checkbox, which allows more than one (or no) item to be
+selected and for the unselected state to be restored.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use
+  <a href="components/radio-group/">p-radio-group</a> instead.
+</Notification>
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-radio-button-wrapper` component can be used with or without a label but it's recommended to keep the label visible
+for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
+text for screen readers.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Radio Button Wrapper - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Radio Button Wrapper component.',
+};
+
+# Radio Button Wrapper (Component: p-radio-button-wrapper)
+
+<!-- Table of Contents -->
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot
+can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used
+(because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Loading
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  The <code>loading</code> prop is experimental and might be removed in a future release.
+</Notification>
+
+The `loading` property can be used to indicate that the current state change requires loading. It should be applied
+exclusively to the radio button that is clicked and should remain visible until the checked state of that radio button
+has changed. Keep in mind that the loading state will only appear when the radio button is **not checked**.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Radio Button Wrapper - Porsche Design System',
+  description:
+    'Learn how to properly use the Radio Button Wrapper component with best practices and guidelines for effective design and user experience.',
+};
+
+# Radio Button Wrapper (Component: p-radio-button-wrapper)
+
+<!-- Table of Contents -->
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use
+  <a href="components/radio-group/">p-radio-group</a> instead.
+</Notification>
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
+  Use
+- [Checkbox](/components/checkbox) instead if there is only one option.
+- Use when the user should see all available options.
+- Consider using the [Segmented Control](/components/segmented-control) for 5 options or fewer.
+- Keep the label text short and descriptive (one or two words).
+- Select one option by default in a group of radio buttons, except for cases where a pre-selection can lead to wrong
+  assumptions.
+- Align radio buttons with more than 2 items vertically left-aligned.
+
+### Don't:
+
+- Don't use a radio Button for a large number of items (≥ 7), use the [Select](/components/select) or
+  [Segmented Control](/components/segmented-control) component instead.
+
+---
+
+## Related Components
+
+- [Checkbox](/components/checkbox)
+- [Segmented Control](/components/segmented-control)
+- [Select](/components/select)
+
+
+---
+

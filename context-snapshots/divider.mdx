@@ -1,0 +1,175 @@
+# divider
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Divider: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Divider component',
+};
+
+# Divider (Component: p-divider)
+
+## Accessibility support
+
+This component does not include any special accessibility features.
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Divider - Porsche Design System',
+  description: 'Detailed API reference for the Divider component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Divider (Component: p-divider)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: dividerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-divider></p-divider>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PDivider } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PDivider></PDivider>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-divider></p-divider>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PDivider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PDivider></PDivider>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Divider - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Divider component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Divider (Component: p-divider)
+
+The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line. The component is self-closing.
+Slotted content between the component tags won't be displayed.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Divider - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Divider component.',
+};
+
+# Divider (Component: p-divider)
+
+<!-- Table of Contents -->
+
+## Vertical
+
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
+height on the component itself.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Responsive
+
+You can change the divider's direction by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Divider - Porsche Design System',
+  description: 'Learn how to properly use the Divider component with best practices and guidelines for effective design and user experience.'
+}
+
+# Divider (Component: p-divider)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to create a visual separation between related sections of content.
+- Use to separate content into clear groups.
+- Use when other options for structuring content are not sufficient.
+
+### Don't:
+
+- Don't use dividers to structure content, rather work with more space for clustering
+- Don't use it for decorative purposes unless it's necessary.
+- Avoid full-bleed dividers to separate page sections.
+
+---
+

@@ -1,0 +1,335 @@
+# textarea-wrapper
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Textarea Wrapper: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Textarea Wrapper component',
+};
+
+# Textarea Wrapper (Component: p-textarea-wrapper)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | Defines the accessible name combined with the description and status message.                         |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+### Slotted contents
+
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give
+assistive technology users the corresponding information:
+
+1. Add a unique IDREF to the `slot="label"` element
+2. Add a unique IDREF to the `slot="message"` element (if set)
+3. Add corresponding `aria-labelledby="some-label-id"` to the input element which points to the `label` ID
+4. Add corresponding `aria-describedby="some-description-id some-message-id"` to the input element which points to both,
+   the `description` ID (if set) and the `message` ID when the (error/success) message appears
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Textarea Wrapper - Porsche Design System',
+  description: 'Detailed API reference for the Textarea Wrapper component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Textarea Wrapper (Component: p-textarea-wrapper)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: textareaWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-textarea-wrapper label="Some label">
+  <textarea name="some-name"></textarea>
+</p-textarea-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTextareaWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTextareaWrapper label="Some label">
+        <textarea name="some-name"></textarea>
+      </PTextareaWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-textarea-wrapper label="Some label">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTextareaWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTextareaWrapper label="Some label">
+    <textarea name="some-name"></textarea>
+  </PTextareaWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Textarea Wrapper - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Textarea Wrapper component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Textarea Wrapper (Component: p-textarea-wrapper)
+
+The `p-textarea-wrapper` component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a
+Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as
+a phone number or name. In this case, you should use the Text Field component.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use{' '}
+  <a href="components/textarea/">p-textarea</a> instead.
+</Notification>
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-textarea-wrapper` component can be used with or without a label, but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text
+for screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: textareaWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-textarea-wrapper label="Some label">
+  <textarea name="some-name"></textarea>
+</p-textarea-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTextareaWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTextareaWrapper label="Some label">
+        <textarea name="some-name"></textarea>
+      </PTextareaWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-textarea-wrapper label="Some label">
+        <textarea name="some-name"></textarea>
+      </p-textarea-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTextareaWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTextareaWrapper label="Some label">
+    <textarea name="some-name"></textarea>
+  </PTextareaWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Textarea Wrapper - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Textarea Wrapper component.',
+};
+
+# Textarea Wrapper (Component: p-textarea-wrapper)
+
+<!-- Table of Contents -->
+
+## Counter
+
+If the `maxlength` attribute is present on the `textarea` element, a counter will be displayed in the corner. To hide it
+you can set `showCounter` to `false`.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot
+can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used
+(because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Textarea Wrapper - Porsche Design System',
+  description:
+    'Learn how to properly use the Textarea Wrapper component with best practices and guidelines for effective design and user experience.',
+};
+
+# Textarea Wrapper (Component: p-textarea-wrapper)
+
+<!-- Table of Contents -->
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use{' '}
+  <a href="components/textarea/">p-textarea</a> instead.
+</Notification>
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use in forms when users need to enter and edit an amount of text that’s longer than a single line.
+- Use the default Textarea type that includes a label as it's the most common and user-friendly way.
+- Keep the label text short and descriptive (one or two words).
+- Place validation text right below the Textarea box.
+- Respect the min-height.
+- Mark required fields with a red asterisk to improve the usability of forms.
+- Use the Pure variant (without label) only if the context clearly describes the purpose.
+
+### Don't:
+
+- Don't use when text entry is expected to be short. Use an input instead to avoid confusing users.
+- Don't overwhelm users with too many Textareas on a single page. Stick to no more than two Textareas.
+
+
+---
+

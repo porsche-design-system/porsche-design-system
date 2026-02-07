@@ -1,0 +1,464 @@
+# text-field-wrapper
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Text Field Wrapper: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Text Field Wrapper component',
+};
+
+# Text Field Wrapper (Component: p-text-field-wrapper)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | Defines the accessible name combined with the description and status message.                         |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
+| `aria-pressed="BOOLEAN"`        | If the type `password` is set, the state of the visibility toggle button is set.                      |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+### Slotted contents
+
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give
+assistive technology users the corresponding information:
+
+1. Add a unique IDREF to the `slot="label"` element
+2. Add a unique IDREF to the `slot="message"` element (if set)
+3. Add corresponding `aria-labelledby="some-label-id"` to the input element which points to the `label` ID
+4. Add corresponding `aria-describedby="some-description-id some-message-id"` to the input element which points to both,
+   the `description` ID (if set) and the `message` ID when the (error/success) message appears
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Text Field Wrapper - Porsche Design System',
+  description: 'Detailed API reference for the Text Field Wrapper component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Text Field Wrapper (Component: p-text-field-wrapper)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: textFieldWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-text-field-wrapper label="Some label">
+  <input type="text" name="some-name" />
+</p-text-field-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTextFieldWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTextFieldWrapper label="Some label">
+        <input type="text" name="some-name" />
+      </PTextFieldWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name" />
+      </p-text-field-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTextFieldWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTextFieldWrapper label="Some label">
+    <input type="text" name="some-name" />
+  </PTextFieldWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Text Field Wrapper - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Text Field Wrapper component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Text Field Wrapper (Component: p-text-field-wrapper)
+
+The `p-text-field-wrapper` component is a styling wrapper for the native HTML input types and is essential for mostly
+any form.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use one of the specific input
+  components instead:
+  <ul>
+    <li>
+      <a href="components/input-date/">p-input-date</a>
+    </li>
+    <li>
+      <a href="components/input-email/">p-input-email</a>
+    </li>
+    <li>
+      <a href="components/input-number/">p-input-number</a>
+    </li>
+    <li>
+      <a href="components/input-password/">p-input-password</a>
+    </li>
+    <li>
+      <a href="components/input-search/">p-input-search</a>
+    </li>
+    <li>
+      <a href="components/input-tel/">p-input-tel</a>
+    </li>
+    <li>
+      <a href="components/input-text/">p-input-text</a>
+    </li>
+    <li>
+      <a href="components/input-time/">p-input-time</a>
+    </li>
+    <li>
+      <a href="components/input-url/">p-input-url</a>
+    </li>
+  </ul>
+</Notification>
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-text-field-wrapper` component can be used with or without a label, but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
+text for screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  This component has limited support for dynamic property changes due to the way it is implemented. <br />
+  <br />
+  If you need to use a specific property dynamically, please open a <a href="help/feature-request/">feature request</a>.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: textFieldWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-text-field-wrapper label="Some label">
+  <input type="text" name="some-name" />
+</p-text-field-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTextFieldWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTextFieldWrapper label="Some label">
+        <input type="text" name="some-name" />
+      </PTextFieldWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name" />
+      </p-text-field-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTextFieldWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTextFieldWrapper label="Some label">
+    <input type="text" name="some-name" />
+  </PTextFieldWrapper>
+</template>
+```
+
+
+import { textFieldWrapperExampleSearch } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Text Field Wrapper - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Text Field Wrapper component.',
+};
+
+# Text Field Wrapper (Component: p-text-field-wrapper)
+
+<!-- Table of Contents -->
+
+## Counter
+
+If the `maxlength` attribute is present on the `input` element, a counter will be displayed in the corner. To hide it
+you can set `showCounter` to `false`.
+
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
+  The <code>showCharacterCount</code> property has been deprecated and will be removed with the next major release.
+  <br />
+  Please use the <code>showCounter</code> property instead.
+</Notification>
+
+<!-- Component Story example (code examples shown above) -->
+
+## type="number"
+
+Inputs with `type="number"` can display a unit (e.g. €, EUR, km/h, etc.) with a **maximum** of five characters. A
+description of the used unit should be provided to ensure accessibility.
+
+<!-- Component Story example (code examples shown above) -->
+
+## type="password"
+
+Inputs with `type="password"` receive a toggle button to display the input's value in clear text.
+
+<!-- Component Story example (code examples shown above) -->
+
+## type="password" without password toggle button
+
+If you want to remove the password toggle button, you can pass `showPasswordToggle="false"`.
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  The <code>showPasswordToggle</code> prop is experimental and might be removed in a future release.
+</Notification>
+
+<!-- Component Story example (code examples shown above) -->
+
+## type="search"
+
+Inputs with `type="search"` receive a decorative search icon when used outside a form. Only if used inside a form, a
+submit button becomes visible which can be hidden using `submitButton="false"`. If the input contains a value, a clear
+button shows up.
+
+<!-- Component Story example (code examples shown above) -->
+
+## type="search" with locate action
+
+Inputs with `type="search"` that also have the `actionIcon="locate"` property always show an action button, no matter if
+used within or outside a form.
+
+<!-- Component Story example (code examples shown above) -->
+
+## type="search" with locate action and loading
+
+On top of `actionIcon="locate"` it is possible to put the component into a loading state via `actionLoading="true"`.
+
+<!-- Component Story example (code examples shown above) -->
+
+### Demo implementation
+
+<!-- Component Example (interactive demo) -->
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Text Field Wrapper - Porsche Design System',
+  description:
+    'Learn how to properly use the Text Field Wrapper component with best practices and guidelines for effective design and user experience.',
+};
+
+# Text Field Wrapper (Component: p-text-field-wrapper)
+
+<!-- Table of Contents -->
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use one of the specific input
+  components instead:
+  <ul>
+    <li>
+      <a href="components/input-date/">p-input-date</a>
+    </li>
+    <li>
+      <a href="components/input-email/">p-input-email</a>
+    </li>
+    <li>
+      <a href="components/input-number/">p-input-number</a>
+    </li>
+    <li>
+      <a href="components/input-password/">p-input-password</a>
+    </li>
+    <li>
+      <a href="components/input-search/">p-input-search</a>
+    </li>
+    <li>
+      <a href="components/input-tel/">p-input-tel</a>
+    </li>
+    <li>
+      <a href="components/input-text/">p-input-text</a>
+    </li>
+    <li>
+      <a href="components/input-time/">p-input-time</a>
+    </li>
+    <li>
+      <a href="components/input-url/">p-input-url</a>
+    </li>
+  </ul>
+</Notification>
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use when a text input of the user is required or optional.
+- Use it for forms to help users enter text.
+- Use for various input types (number, email, phone number, URL, date, time, month & week).
+- Use for password input.
+- Use for search input.
+- Use without a label only when the context is clear.
+- Use for validation and error of input.
+- Use asterisk for required fields.
+
+### Don't:
+
+- Don't use labels with more than two words whenever possible (keep it short and descriptive).
+- Don't use it if users need to enter longer text (therefore use the [Textarea](/components/textarea-wrapper)
+  component).
+- Don't use instructional or description text for the label.
+
+---
+
+## Related Components
+
+- [Textarea](/components/textarea-wrapper)
+- [Input Password](/components/input-password)
+
+
+---
+

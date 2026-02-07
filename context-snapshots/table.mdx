@@ -1,0 +1,742 @@
+# table
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Table: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Table component',
+};
+
+# Table (Component: p-table)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                           |
+| ------------------ | -------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) sort button. |
+| `Enter`, `Space`   | Changes sorting direction.                         |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                                             | Usage                                                |
+| ------------------------------------------------ | ---------------------------------------------------- |
+| `aria-label="STRING"`, `aria-labelledby="IDREF"` | Captions are provided by aria labels.                |
+| `aria-sort="VALUE"`                              | Provides the sorting direction of the column header. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support                                                                                                                                                                                                                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Keyboard                        | ✅                                                                                                                                                                                                                                                                             |
+| Screen reader (VoiceOver, NVDA) | 🟠 (Partially supported, [Safari issues 1](https://adrianroselli.com/2022/07/its-mid-2022-and-browsers-mostly-safari-still-break-accessibility-via-display-properties.html), [Safari issues 2](https://adrianroselli.com/2018/02/tables-css-display-properties-and-aria.html)) |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Table - Porsche Design System',
+  description:
+    'Detailed API reference for the Table component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Table (Component: p-table)
+
+<!-- Table of Contents -->
+
+## Table
+
+<!-- Component API documentation -->
+
+## Table Head
+
+<!-- Component API documentation -->
+
+## Table Head Row
+
+<!-- Component API documentation -->
+
+## Table Head Cell
+
+<!-- Component API documentation -->
+
+## Table Body
+
+<!-- Component API documentation -->
+
+## Table Row
+
+<!-- Component API documentation -->
+
+## Table Cell
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: tableStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-table caption="Some caption">
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell>
+        Model
+      </p-table-head-cell>
+      <p-table-head-cell>
+        Date
+      </p-table-head-cell>
+      <p-table-head-cell>
+        Purchase Intention
+      </p-table-head-cell>
+      <p-table-head-cell>
+        Status
+      </p-table-head-cell>
+      <p-table-head-cell>
+        Lead ID
+      </p-table-head-cell>
+    </p-table-head-row>
+  </p-table-head>
+  <p-table-body>
+    <p-table-row>
+      <p-table-cell>
+        718 Cayman
+      </p-table-cell>
+      <p-table-cell>
+        23.06.2021
+      </p-table-cell>
+      <p-table-cell>
+        New Car
+      </p-table-cell>
+      <p-table-cell>
+        Won
+      </p-table-cell>
+      <p-table-cell>
+        0000824402
+      </p-table-cell>
+    </p-table-row>
+    <p-table-row>
+      <p-table-cell>
+        Panamera 4S
+      </p-table-cell>
+      <p-table-cell>
+        19.06.2021
+      </p-table-cell>
+      <p-table-cell>
+        New Car
+      </p-table-cell>
+      <p-table-cell>
+        Lost
+      </p-table-cell>
+      <p-table-cell>
+        0000824409
+      </p-table-cell>
+    </p-table-row>
+    <p-table-row>
+      <p-table-cell>
+        911 Carrera S
+      </p-table-cell>
+      <p-table-cell>
+        19.05.2021
+      </p-table-cell>
+      <p-table-cell>
+        Used Car
+      </p-table-cell>
+      <p-table-cell>
+        Won
+      </p-table-cell>
+      <p-table-cell>
+        0000824408
+      </p-table-cell>
+    </p-table-row>
+    <p-table-row>
+      <p-table-cell>
+        Macan Turbo
+      </p-table-cell>
+      <p-table-cell>
+        10.05.2021
+      </p-table-cell>
+      <p-table-cell>
+        Used Car
+      </p-table-cell>
+      <p-table-cell>
+        Lost
+      </p-table-cell>
+      <p-table-cell>
+        0000824407
+      </p-table-cell>
+    </p-table-row>
+    <p-table-row>
+      <p-table-cell>
+        Taycan
+      </p-table-cell>
+      <p-table-cell>
+        03.05.2021
+      </p-table-cell>
+      <p-table-cell>
+        New Car
+      </p-table-cell>
+      <p-table-cell>
+        Won
+      </p-table-cell>
+      <p-table-cell>
+        0000824406
+      </p-table-cell>
+    </p-table-row>
+  </p-table-body>
+</p-table>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTable caption="Some caption">
+        <PTableHead>
+          <PTableHeadRow>
+            <PTableHeadCell>
+              Model
+            </PTableHeadCell>
+            <PTableHeadCell>
+              Date
+            </PTableHeadCell>
+            <PTableHeadCell>
+              Purchase Intention
+            </PTableHeadCell>
+            <PTableHeadCell>
+              Status
+            </PTableHeadCell>
+            <PTableHeadCell>
+              Lead ID
+            </PTableHeadCell>
+          </PTableHeadRow>
+        </PTableHead>
+        <PTableBody>
+          <PTableRow>
+            <PTableCell>
+              718 Cayman
+            </PTableCell>
+            <PTableCell>
+              23.06.2021
+            </PTableCell>
+            <PTableCell>
+              New Car
+            </PTableCell>
+            <PTableCell>
+              Won
+            </PTableCell>
+            <PTableCell>
+              0000824402
+            </PTableCell>
+          </PTableRow>
+          <PTableRow>
+            <PTableCell>
+              Panamera 4S
+            </PTableCell>
+            <PTableCell>
+              19.06.2021
+            </PTableCell>
+            <PTableCell>
+              New Car
+            </PTableCell>
+            <PTableCell>
+              Lost
+            </PTableCell>
+            <PTableCell>
+              0000824409
+            </PTableCell>
+          </PTableRow>
+          <PTableRow>
+            <PTableCell>
+              911 Carrera S
+            </PTableCell>
+            <PTableCell>
+              19.05.2021
+            </PTableCell>
+            <PTableCell>
+              Used Car
+            </PTableCell>
+            <PTableCell>
+              Won
+            </PTableCell>
+            <PTableCell>
+              0000824408
+            </PTableCell>
+          </PTableRow>
+          <PTableRow>
+            <PTableCell>
+              Macan Turbo
+            </PTableCell>
+            <PTableCell>
+              10.05.2021
+            </PTableCell>
+            <PTableCell>
+              Used Car
+            </PTableCell>
+            <PTableCell>
+              Lost
+            </PTableCell>
+            <PTableCell>
+              0000824407
+            </PTableCell>
+          </PTableRow>
+          <PTableRow>
+            <PTableCell>
+              Taycan
+            </PTableCell>
+            <PTableCell>
+              03.05.2021
+            </PTableCell>
+            <PTableCell>
+              New Car
+            </PTableCell>
+            <PTableCell>
+              Won
+            </PTableCell>
+            <PTableCell>
+              0000824406
+            </PTableCell>
+          </PTableRow>
+        </PTableBody>
+      </PTable>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-table caption="Some caption">
+        <p-table-head>
+          <p-table-head-row>
+            <p-table-head-cell>
+              Model
+            </p-table-head-cell>
+            <p-table-head-cell>
+              Date
+            </p-table-head-cell>
+            <p-table-head-cell>
+              Purchase Intention
+            </p-table-head-cell>
+            <p-table-head-cell>
+              Status
+            </p-table-head-cell>
+            <p-table-head-cell>
+              Lead ID
+            </p-table-head-cell>
+          </p-table-head-row>
+        </p-table-head>
+        <p-table-body>
+          <p-table-row>
+            <p-table-cell>
+              718 Cayman
+            </p-table-cell>
+            <p-table-cell>
+              23.06.2021
+            </p-table-cell>
+            <p-table-cell>
+              New Car
+            </p-table-cell>
+            <p-table-cell>
+              Won
+            </p-table-cell>
+            <p-table-cell>
+              0000824402
+            </p-table-cell>
+          </p-table-row>
+          <p-table-row>
+            <p-table-cell>
+              Panamera 4S
+            </p-table-cell>
+            <p-table-cell>
+              19.06.2021
+            </p-table-cell>
+            <p-table-cell>
+              New Car
+            </p-table-cell>
+            <p-table-cell>
+              Lost
+            </p-table-cell>
+            <p-table-cell>
+              0000824409
+            </p-table-cell>
+          </p-table-row>
+          <p-table-row>
+            <p-table-cell>
+              911 Carrera S
+            </p-table-cell>
+            <p-table-cell>
+              19.05.2021
+            </p-table-cell>
+            <p-table-cell>
+              Used Car
+            </p-table-cell>
+            <p-table-cell>
+              Won
+            </p-table-cell>
+            <p-table-cell>
+              0000824408
+            </p-table-cell>
+          </p-table-row>
+          <p-table-row>
+            <p-table-cell>
+              Macan Turbo
+            </p-table-cell>
+            <p-table-cell>
+              10.05.2021
+            </p-table-cell>
+            <p-table-cell>
+              Used Car
+            </p-table-cell>
+            <p-table-cell>
+              Lost
+            </p-table-cell>
+            <p-table-cell>
+              0000824407
+            </p-table-cell>
+          </p-table-row>
+          <p-table-row>
+            <p-table-cell>
+              Taycan
+            </p-table-cell>
+            <p-table-cell>
+              03.05.2021
+            </p-table-cell>
+            <p-table-cell>
+              New Car
+            </p-table-cell>
+            <p-table-cell>
+              Won
+            </p-table-cell>
+            <p-table-cell>
+              0000824406
+            </p-table-cell>
+          </p-table-row>
+        </p-table-body>
+      </p-table>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTable, PTableBody, PTableCell, PTableHead, PTableHeadCell, PTableHeadRow, PTableRow } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTable caption="Some caption">
+    <PTableHead>
+      <PTableHeadRow>
+        <PTableHeadCell>
+          Model
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Date
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Purchase Intention
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Status
+        </PTableHeadCell>
+        <PTableHeadCell>
+          Lead ID
+        </PTableHeadCell>
+      </PTableHeadRow>
+    </PTableHead>
+    <PTableBody>
+      <PTableRow>
+        <PTableCell>
+          718 Cayman
+        </PTableCell>
+        <PTableCell>
+          23.06.2021
+        </PTableCell>
+        <PTableCell>
+          New Car
+        </PTableCell>
+        <PTableCell>
+          Won
+        </PTableCell>
+        <PTableCell>
+          0000824402
+        </PTableCell>
+      </PTableRow>
+      <PTableRow>
+        <PTableCell>
+          Panamera 4S
+        </PTableCell>
+        <PTableCell>
+          19.06.2021
+        </PTableCell>
+        <PTableCell>
+          New Car
+        </PTableCell>
+        <PTableCell>
+          Lost
+        </PTableCell>
+        <PTableCell>
+          0000824409
+        </PTableCell>
+      </PTableRow>
+      <PTableRow>
+        <PTableCell>
+          911 Carrera S
+        </PTableCell>
+        <PTableCell>
+          19.05.2021
+        </PTableCell>
+        <PTableCell>
+          Used Car
+        </PTableCell>
+        <PTableCell>
+          Won
+        </PTableCell>
+        <PTableCell>
+          0000824408
+        </PTableCell>
+      </PTableRow>
+      <PTableRow>
+        <PTableCell>
+          Macan Turbo
+        </PTableCell>
+        <PTableCell>
+          10.05.2021
+        </PTableCell>
+        <PTableCell>
+          Used Car
+        </PTableCell>
+        <PTableCell>
+          Lost
+        </PTableCell>
+        <PTableCell>
+          0000824407
+        </PTableCell>
+      </PTableRow>
+      <PTableRow>
+        <PTableCell>
+          Taycan
+        </PTableCell>
+        <PTableCell>
+          03.05.2021
+        </PTableCell>
+        <PTableCell>
+          New Car
+        </PTableCell>
+        <PTableCell>
+          Won
+        </PTableCell>
+        <PTableCell>
+          0000824406
+        </PTableCell>
+      </PTableRow>
+    </PTableBody>
+  </PTable>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Table - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Table component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Table (Component: p-table)
+
+The `p-table` component displays tabular data and offers column-wise sorting options.
+It combines a consistent appearance together with great accessibility while not having restrictions regarding its
+content. Therefore, it can be used for plain text but also rich content like images, form elements and buttons.
+
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+import { tableExampleAdvanced, tableExampleSorting } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Table - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Table component.',
+};
+
+# Table (Component: p-table)
+
+<!-- Table of Contents -->
+
+## Caption
+
+A caption that describes the content of the table can be set in two ways. It's mandatory to define a descriptive caption
+to fulfill accessibility criteria.
+
+### Via property
+
+Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.
+
+<!-- Component Story example (code examples shown above) -->
+
+### Via slot
+
+When using the `caption` slot its content will be rendered while offering full control of appearance.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Layout: fixed
+
+By setting `layout` to `fixed` you can get full control over every column width that are otherwise controlled by their
+content. An identical `width`, `min-width` and/or `max-width` depending on what you want to achieve, has to be specified
+on **every** `p-table-head-cell` and `p-table-cell` within the **same column**.
+
+While it is possible to use relative `width` units likes `50%` or `50vw`, these may lead to unexpected results when the
+table is scrollable especially on smaller screens or when combined with absolute (e.g. `50px`) or default auto values
+(based on content).
+
+If there is more content than available space, it will be overflowing, which you need to take care of, e.g. by using
+`<p-text ellipsis>Some content</p-text>`.
+
+<Notification heading="Note" heading-tag="h3" state="warning">
+  Since truncated content cannot be fully read, it is important to provide an alternative like a <code>title</code>{' '}
+  attribute or custom tooltip.
+</Notification>
+
+<!-- Component Story example (code examples shown above) -->
+
+## Column Headers
+
+The `p-table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
+
+### Sorting
+
+In order to have a sortable table column you need to provide the `sort` property. It has the following structure:
+
+```ts
+type TableHeadCellSort = {
+  id: string; // identifier for the column to be sorted by
+  active: boolean;
+  direction: 'asc' | 'desc';
+};
+```
+
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
+to.
+
+<Notification heading="Deprecation hint" heading-tag="h4" state="warning">
+  The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.
+  <br />
+  Please use the <code>update</code> event instead.
+</Notification>
+
+<!-- Component Example (interactive demo) -->
+
+### Hide Label
+
+Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This
+can be achieved by setting the `hide-label` property.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Advanced Table
+
+The appearance of a table's contents can be customized as illustrated in the following example.
+
+<!-- Component Example (interactive demo) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Table - Porsche Design System',
+    description: 'Learn how to properly use the Table component with best practices and guidelines for effective design and user experience.'
+}
+
+# Table (Component: p-table)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to display and compare structured data in rows and columns.
+- Use as a tool to query consume and navigate to specific data.
+- Use if there are at least two or more columns of data parameters.
+- Ensure that the column headers are relevant to the data it represents and are succinct.
+- Include rich content in the cell data to support the specific requirements of the application use cases.
+- Enable sorting of columns in ascending or descending order with an arrow icon to indicate the order direction.
+- Ensure that the table is responsive and stretches to the full available width.
+- Include a table caption describing the contents of the table for accessibility
+- Use the built-in scroller for horizontal scrolling on mobile viewports.
+
+### Don't:
+
+- Don't use for non-structured data or data that can be presented in a simpler format.
+- Don't overuse or clutter cell data with unnecessary content.
+- Don't neglect to include a table caption for accessibility purposes.
+
+
+---
+

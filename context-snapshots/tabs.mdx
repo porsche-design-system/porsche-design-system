@@ -1,0 +1,310 @@
+# tabs
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Tabs: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tabs component',
+};
+
+# Tabs (Component: p-tabs)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state                 | Function                                                                                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | - Moves focus to the active tab.<br/> - When the tab list contains the focus, moves focus to the next element in the tab sequence, which is the `tabpanel` element. |
+| `Right Arrow`, `Left Arrow` | - Moves focus to the next tab.<br/> - Activates the newly focused tab.<br/> - If focus is on the last tab, moves focus to the first tab.                            |
+| `Home`, `End`               | - Moves focus to the first/last tab and activates it.                                                                                                               |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                      | Usage                                                                                   |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `role="tablist"`          | Indicates that the element serves as a container for a set of tabs.                     |
+| `role="tab"`              | Indicates the button serves as a tab control.                                           |
+| `role="tabpanel"`         | Indicates the `tabs-item` serves as a container for tabpanel content.                   |
+| `aria-label="STRING"`     | Adds accessible name to the `tabs-item`.                                                |
+| `aria-selected="BOOLEAN"` | Indicates the tab is selected/deselected and its associated tabpanel is visible/hidden. |
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+
+| ARIA            | Support |
+| --------------- | ------- |
+| `aria-controls` | 🚫      |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Tabs - Porsche Design System',
+  description:
+    'Detailed API reference for the Tabs component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Tabs (Component: p-tabs)
+
+<!-- Table of Contents -->
+
+## Tabs
+
+<!-- Component API documentation -->
+
+## Tabs Item
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: tabsStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-tabs>
+  <p-tabs-item label="Tab One">
+    <p-text>
+      Tab Content One
+    </p-text>
+  </p-tabs-item>
+  <p-tabs-item label="Tab Two">
+    <p-text>
+      Tab Content Two
+    </p-text>
+  </p-tabs-item>
+  <p-tabs-item label="Tab Three">
+    <p-text>
+      Tab Content Three
+    </p-text>
+  </p-tabs-item>
+</p-tabs>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PTabs, PTabsItem, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PTabs>
+        <PTabsItem label="Tab One">
+          <PText>
+            Tab Content One
+          </PText>
+        </PTabsItem>
+        <PTabsItem label="Tab Two">
+          <PText>
+            Tab Content Two
+          </PText>
+        </PTabsItem>
+        <PTabsItem label="Tab Three">
+          <PText>
+            Tab Content Three
+          </PText>
+        </PTabsItem>
+      </PTabs>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-tabs>
+        <p-tabs-item label="Tab One">
+          <p-text>
+            Tab Content One
+          </p-text>
+        </p-tabs-item>
+        <p-tabs-item label="Tab Two">
+          <p-text>
+            Tab Content Two
+          </p-text>
+        </p-tabs-item>
+        <p-tabs-item label="Tab Three">
+          <p-text>
+            Tab Content Three
+          </p-text>
+        </p-tabs-item>
+      </p-tabs>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PTabs, PTabsItem, PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PTabs>
+    <PTabsItem label="Tab One">
+      <PText>
+        Tab Content One
+      </PText>
+    </PTabsItem>
+    <PTabsItem label="Tab Two">
+      <PText>
+        Tab Content Two
+      </PText>
+    </PTabsItem>
+    <PTabsItem label="Tab Three">
+      <PText>
+        Tab Content Three
+      </PText>
+    </PTabsItem>
+  </PTabs>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Tabs - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Tabs component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Tabs (Component: p-tabs)
+
+The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow
+navigation between groups of content that are related and at the same level of hierarchy. The component handles the
+display of content according to the active tab and all accessibility attributes on your tab and tab content.
+
+This variant does not support `a` tags and should not be used for navigation. If you need to update your window location
+have a look at [Tabs Bar](/components/tabs-bar/) component.
+
+Basic implementation shows a tab list with buttons to switch between the content. For every `p-tabs-item` inside of the
+`p-tabs` component, a tab will be created. The assigned `label` property defines also the name of the button.
+
+Every `p-tabs-item` holds a `slot` to display content which can be individually assigned.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Tabs - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Tabs component.',
+};
+
+# Tabs (Component: p-tabs)
+
+<!-- Table of Contents -->
+
+## Gradient color
+
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Active Tab
+
+You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`. Make sure to
+update the `activeTabIndex` when adding or removing elements.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Tabs - Porsche Design System',
+  description:
+    'Learn how to properly use the Tabs component with best practices and guidelines for effective design and user experience.',
+};
+
+# Tabs (Component: p-tabs)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use when there is a large amount of content that can be separated.
+- Use to make the content accessible without reloading the page or compromising on space.
+
+### Don't:
+
+- Don't place more than six tabs within a group.
+- Don't use more than two words for a tab label whenever possible.
+- Don't use it for primary navigation.
+
+---
+
+## Related Component
+
+- [Tabs Bar](/components/tabs-bar/)
+
+
+---
+

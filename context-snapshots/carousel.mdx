@@ -1,0 +1,340 @@
+# carousel
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Carousel: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Carousel component',
+};
+
+# Carousel (Component: p-carousel)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                                                                                                              |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | - Moves focus to the next (or previous) focusable element. <br/>- Supports cycling through all items. <br/>- Activates "Skip" link (if set through `skipLinkTarget`). |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                            |
+| ------------ | ------------------------------------------------ |
+| `aria-label` | Defines a string value that labels the carousel. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                              | Usage                                                            |
+| --------------------------------- | ---------------------------------------------------------------- |
+| `aria-label="STRING"`             | Defines a string value that labels prev/next and carousel items. |
+| `role="region"`                   | Defines the carousel as a semantic region.                       |
+| `role="group"`                    | Defines the carousel item as a semantic group.                   |
+| `aria-labelledby="IDREF"`         | References the accessible name.                                  |
+| `aria-roledescription="carousel"` | Specifies the role as "carousel".                                |
+| `aria-roledescription="slide"`    | Specifies the role of the carousel item as "slide".              |
+| `aria-live="polite"`              | Announces current active slide item.                             |
+
+## Development considerations
+
+### Skip Carousel Entries
+
+Through the `skipLinkTarget` property, a skip link for keyboard users can be provided to give the possibility to skip
+over all carousel entries. The skip link is only visible when it receives focus from the keyboard.
+
+- Use the `skipLinkTarget` property if you have >5 carousel items
+- The target of the skip link should point to the next heading or element right after the carousel
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Carousel - Porsche Design System',
+  description: 'Detailed API reference for the Carousel component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Carousel (Component: p-carousel)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: carouselStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-carousel heading="Some heading">
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 1
+  </div>
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 2
+  </div>
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 3
+  </div>
+  <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+    Slide 4
+  </div>
+</p-carousel>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PCarousel } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PCarousel heading="Some heading">
+        <div className="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 1
+        </div>
+        <div className="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 2
+        </div>
+        <div className="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 3
+        </div>
+        <div className="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 4
+        </div>
+      </PCarousel>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-carousel heading="Some heading">
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 1
+        </div>
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 2
+        </div>
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 3
+        </div>
+        <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+          Slide 4
+        </div>
+      </p-carousel>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PCarousel } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PCarousel heading="Some heading">
+    <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+      Slide 1
+    </div>
+    <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+      Slide 2
+    </div>
+    <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+      Slide 3
+    </div>
+    <div class="grid place-content-center h-[150px] bg-surface prose-text-sm">
+      Slide 4
+    </div>
+  </PCarousel>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Carousel - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Carousel component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Carousel (Component: p-carousel)
+
+The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better
+overview than just showing them in a grid or as a list. The reason for this is, that only a certain amount of slides is
+visible at the same time.
+
+Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.
+The amount of slides visible can be specified on a per-breakpoint basis.
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  When using the <code>width</code> prop to align with the <b><Link href="/styles/grid/">Porsche Grid</Link></b>, the component must span the full viewport width.
+
+  When using the <code>--p-carousel-px</code> CSS variable, the component can be placed within any container, allowing you to customize the horizontal padding that reveals parts of the next/previous slide.
+
+  When using the <code>--p-carousel-ps</code> and <code>--p-carousel-pe</code> CSS variables, the component can be placed within any container, allowing you to customize the horizontal padding asymmetric that reveals parts of the next/previous slide.
+</Notification>
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  This component has limited support for dynamic property changes due to the way it is implemented. <br />
+  If you need to use a specific property dynamically, please open a <Link href="/help/feature-request/">feature request</Link>.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+import {
+  carouselExampleDynamicSlides,
+  carouselExampleFocusOnCenterSlide,
+  carouselExampleJumpToSlide,
+} from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Carousel - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Carousel component.',
+};
+
+# Carousel (Component: p-carousel)
+
+<!-- Table of Contents -->
+
+## Slides with flexible widths
+
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
+</Notification>
+
+<!-- Component Story example (code examples shown above) -->
+
+## Jump to slide (activeSlideIndex)
+
+To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+
+<!-- Component Example (interactive demo) -->
+
+## Add/remove slides
+
+Slides can be added and removed dynamically.
+
+<!-- Component Example (interactive demo) -->
+
+## Centered Slide and Gradient Customization
+
+The carousel centers the active slide and loops through slides individually rather than by page when multiple slides are
+visible. You can control its behavior with the `focusOnCenterSlide` prop to keep the active slide centered, and the
+`trimSpace` prop to manage spacing around the carousel. The `gradientColor` prop allows you to customize the background
+gradient, while the `--p-gradient-color-width` CSS variable gives you precise control over the gradient’s width,
+ensuring a consistent and visually polished design.
+
+<!-- Component Example (interactive demo) -->
+
+## Internationalization (i18n)
+
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property. It has
+the following defaults:
+
+```ts
+type CarouselInternationalization = {
+  prev: 'Previous slide'; // aria-label of prev button
+  next: 'Next slide'; // aria-label of next button
+  first: 'Go to first slide'; // aria-label of next button when on last slide
+  last: 'Go to last slide'; // aria-label of prev button when on first slide
+  slideLabel: '%s of %s'; // aria-label of each slide as "1 of 6"
+  slide: 'slide'; // aria-roledescription of each slide
+};
+```
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Carousel - Porsche Design System',
+  description: 'Learn how to properly use the Carousel component with best practices and guidelines for effective design and user experience.'
+}
+
+# Carousel (Component: p-carousel)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to showcase a group of related featured content in a row, such as images or cards.
+- Use when you have five or fewer items of the same style to display.
+- Use when there is insufficient content space to display all items without overlapping or cluttering.
+- Keep the number of slides within the carousel to a minimum, preferably five or fewer.
+- Use specify the number of slides visible at the same time, either static or for each breakpoint individually.
+
+### Don't:
+
+- Don't vary the size of the items in its height.
+- Don't maintain the same layout or at least the same content structure with every item.
+
+---
+

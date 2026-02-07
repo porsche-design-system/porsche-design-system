@@ -1,0 +1,622 @@
+# scroller
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Scroller: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Scroller component',
+};
+
+# Scroller (Component: p-scroller)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state                 | Function                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`          | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Arrow left`, `Arrow right` | Scrolls the container.                                                          |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA           | Usage                                               |
+| -------------- | --------------------------------------------------- |
+| `role="VALUE"` | Defines the semantic role of the container element. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description: 'Detailed API reference for the Scroller component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Scroller (Component: p-scroller)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: scrollerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-scroller class="max-w-[600px] whitespace-nowrap">
+  <p-tag class="me-static-md" color="primary">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-info-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-warning-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="primary">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-info-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-warning-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="primary">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag color="notification-info-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+</p-scroller>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PScroller, PTag } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PScroller className="max-w-[600px] whitespace-nowrap">
+        <PTag className="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+      </PScroller>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-scroller class="max-w-[600px] whitespace-nowrap">
+        <p-tag class="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+      </p-scroller>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PScroller, PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PScroller class="max-w-[600px] whitespace-nowrap">
+    <PTag class="me-static-md" color="primary">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-info-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-warning-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="primary">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-info-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-warning-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="primary">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag color="notification-info-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+  </PScroller>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Scroller component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Scroller (Component: p-scroller)
+
+The `p-scroller` component forces its child nodes to be rendered horizontally next to each other. In case not enough
+viewport space is given a clickable scroll indicator is shown and the elements become scrollable.
+
+As soon as the slotted element(s) exceed the viewport / their respective container, scroll indicators are shown.
+
+If the `p-scroller` component is accessed by keyboard navigation and is focused, scrolling via `arrow right` and
+`arrow left` is possible. If `p-scroller` contains focusable element(s) these can be also accessed by keyboard
+navigation.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: scrollerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-scroller class="max-w-[600px] whitespace-nowrap">
+  <p-tag class="me-static-md" color="primary">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-info-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-warning-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="primary">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-info-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="notification-warning-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag class="me-static-md" color="primary">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+  <p-tag color="notification-info-soft">
+    <button type="button">
+      Some tag content
+    </button>
+  </p-tag>
+</p-scroller>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PScroller, PTag } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PScroller className="max-w-[600px] whitespace-nowrap">
+        <PTag className="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag className="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+        <PTag color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </PTag>
+      </PScroller>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-scroller class="max-w-[600px] whitespace-nowrap">
+        <p-tag class="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="notification-warning-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag class="me-static-md" color="primary">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+        <p-tag color="notification-info-soft">
+          <button type="button">
+            Some tag content
+          </button>
+        </p-tag>
+      </p-scroller>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PScroller, PTag } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PScroller class="max-w-[600px] whitespace-nowrap">
+    <PTag class="me-static-md" color="primary">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-info-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-warning-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="primary">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-info-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="notification-warning-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag class="me-static-md" color="primary">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+    <PTag color="notification-info-soft">
+      <button type="button">
+        Some tag content
+      </button>
+    </PTag>
+  </PScroller>
+</template>
+```
+
+
+import { scrollerExample } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Scroller component.',
+};
+
+# Scroller (Component: p-scroller)
+
+<!-- Table of Contents -->
+
+## Height
+
+The height of `p-scroller` depends on its content height.
+
+Keep in mind that the content passed to the `p-scroller` should be within the size definition of the design system and
+thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
+
+The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
+consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Scroll to position
+
+The `p-scroller` component provides the `scrollToPosition` property. It accepts
+`{ scrollPosition: number, isSmooth?: boolean }`.
+
+If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
+
+<!-- Component Example (interactive demo) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description:
+    'Learn how to properly use the Scroller component with best practices and guidelines for effective design and user experience.',
+};
+
+# Scroller (Component: p-scroller)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use when an item or a group of items do not fit into the viewport width and horizontal scrolling is needed.
+- Use with elements of the same type appearance and function all horizontally aligned.
+- Use the Surface variant if the component is used on the surface background.
+- Use it with one or more focusable elements.
+- Use in components such as Tabs, Table, and Stepper.
+
+### Don't:
+
+- Don't place important actions or information for customer flow within the scroller.
+- Don't use text that should not have line breaks in the scroller.
+- Don't assume that elements within a scroller are affected by breakpoints and viewport size as they are not.
+
+---
+
+## Related Components
+
+- [Tabs](/components/tabs/)
+- [Table](/components/table/)
+- [Stepper](/components/stepper-horizontal/)
+
+
+---
+

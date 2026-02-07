@@ -1,0 +1,259 @@
+# fieldset
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Fieldset: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Fieldset component',
+};
+
+# Fieldset (Component: p-fieldset)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### ARIA enhancements
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA                | Usage                                               |
+| ------------------- | --------------------------------------------------- |
+| `role="radiogroup"` | Changes the default role of `group` to `radiogroup` |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                       | Usage                                                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------ |
+| `role="alert"`             | When content is populated or changed in `state="error"`, the component announces it immediately. |
+| `aria-required="true"`     | Indicates if all children of the fieldset group are required.                                    |
+| `aria-invalid="true"`      | If `error` state is set.                                                                         |
+| `aria-describedby="IDREF"` | References the accessible description when `state` message is provided.                          |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description: 'Detailed API reference for the Fieldset component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Fieldset (Component: p-fieldset)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: fieldsetStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-fieldset label="Some legend label">
+  <p-text-field-wrapper label="Some label">
+    <input type="text" name="some-name" />
+  </p-text-field-wrapper>
+</p-fieldset>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PFieldset, PTextFieldWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PFieldset label="Some legend label">
+        <PTextFieldWrapper label="Some label">
+          <input type="text" name="some-name" />
+        </PTextFieldWrapper>
+      </PFieldset>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-fieldset label="Some legend label">
+        <p-text-field-wrapper label="Some label">
+          <input type="text" name="some-name" />
+        </p-text-field-wrapper>
+      </p-fieldset>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PFieldset, PTextFieldWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PFieldset label="Some legend label">
+    <PTextFieldWrapper label="Some label">
+      <input type="text" name="some-name" />
+    </PTextFieldWrapper>
+  </PFieldset>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Fieldset component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Fieldset (Component: p-fieldset)
+
+The `p-fieldset` is a grouping component for wrapping contextual associated form elements. Its visible part is an HTML
+_legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some usage
+examples on our [form patterns section](/patterns/forms/resources/).
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Fieldset component.',
+};
+
+# Fieldset (Component: p-fieldset)
+
+<!-- Table of Contents -->
+
+## Slotted label
+
+<!-- Component Story example (code examples shown above) -->
+
+## Slotted message
+
+<!-- Component Story example (code examples shown above) -->
+
+## Required
+
+If the `p-fieldset` is set to `required="true"`, only the label of the `p-fieldset` gets an asterisk. It is removed from
+all wrapped child components, as long as they are Porsche Design System form elements.
+
+The `required="true"` prop should only be used if **all** children elements are required. If those children elements are
+a group of radio buttons, it's mandatory to add `aria="{ 'role': 'radiogroup' }"` prop to `p-fieldset` as well. There is
+**no need** to set `required="true"` on the individual radio buttons, as the **fieldset already indicates** that a
+selection of the radio button group is required.
+
+For all other cases, you should set `required="true"` on the individual form elements, such as input fields or
+checkboxes.
+
+### Required fieldset with radio buttons
+
+<!-- Component Story example (code examples shown above) -->
+
+### Required fieldset with input fields
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description:
+    'Learn how to properly use the Fieldset component with best practices and guidelines for effective design and user experience.',
+};
+
+# Fieldset (Component: p-fieldset)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to group related fields together to make them more organized and easier to understand for users.
+- Use descriptive and clear labels for the field sets to help users quickly understand what information is being
+  requested.
+- Use for grouping several form controls as well as labels within a form.
+- Use it for grouping several checkboxes.
+- Use it for creating a date picker.
+- Use consistent formatting and styling for field sets to maintain visual consistency and improve the overall user
+  experience.
+- Use field sets to control the visibility of groups of fields that are not always necessary, such as advanced options
+  or additional information.
+- Test your field sets with users to ensure they are effective in improving the usability of your forms or page layouts.
+
+### Don't:
+
+- Don't use too many field sets on a single form or page layout.
+- Don't use to hide important information or fields that users need to complete a form.
+- Don't rely solely on field sets to improve the usability of your forms or page layouts.
+
+---
+
+## Behavior
+
+### Sections including form elements
+
+[Form pattern guideline](/patterns/forms).
+
+
+---
+

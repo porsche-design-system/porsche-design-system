@@ -1,0 +1,511 @@
+# select-wrapper
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Select Wrapper: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Select Wrapper component',
+};
+
+# Select Wrapper (Component: p-select-wrapper)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+#### Combobox
+
+| Key / state                     | Function                                                                                                                                 |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `Down Arrow` `Up Arrow` `Space` | - Opens the listbox if it's not already displayed without moving focus or changing selection.<br /> - DOM focus remains on the combobox. |
+| `Space`                         | Closes the listbox if it's dispalyed.                                                                                                    |
+
+#### Listbox
+
+| Key / state             | Function                                        |
+| ----------------------- | ----------------------------------------------- |
+| `Down Arrow` `Up Arrow` | Moves visual focus to the next/previous option. |
+| `Home` `End`            | Moves visual focus to the first/last option.    |
+| `ESC`                   | Closes listbox                                  |
+| `Enter`, `Space`        | Selects an option                               |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                        |
+| ------------------------------- | -------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | Adds the accessible name to the combobox.                                                    |
+| `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
+| `aria-label="STRING"`           | References the accessible name of the listbox.                                               |
+| `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
+| `aria-expanded="BOOLEAN"`       | Indicates that the listbox element is displayed/hidden.                                      |
+| `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
+| `aria-activedescendant="IDREF"` | Identifies the highlighted option of the listbox.                                            |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
+| `aria-autocomplete="list"`      | Indicates that user input effects results of listbox (in filter mode).                       |
+| `aria-haspopup="listbox"`       | Indicates that the combobox will open a listbox.                                             |
+| `aria-required="true"`          | Indicates if the element is required.                                                        |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Select Wrapper - Porsche Design System',
+  description: 'Detailed API reference for the Select Wrapper component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Select Wrapper (Component: p-select-wrapper)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: selectWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-select-wrapper label="Some label">
+  <select name="some-name">
+    <option value="a">
+      Option A
+    </option>
+    <option value="b">
+      Option B
+    </option>
+    <option value="c">
+      Option C
+    </option>
+    <option value="d">
+      Option D
+    </option>
+    <option value="e">
+      Option E
+    </option>
+    <option value="f">
+      Option F
+    </option>
+  </select>
+</p-select-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PSelectWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSelectWrapper label="Some label">
+        <select name="some-name">
+          <option value="a">
+            Option A
+          </option>
+          <option value="b">
+            Option B
+          </option>
+          <option value="c">
+            Option C
+          </option>
+          <option value="d">
+            Option D
+          </option>
+          <option value="e">
+            Option E
+          </option>
+          <option value="f">
+            Option F
+          </option>
+        </select>
+      </PSelectWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">
+            Option A
+          </option>
+          <option value="b">
+            Option B
+          </option>
+          <option value="c">
+            Option C
+          </option>
+          <option value="d">
+            Option D
+          </option>
+          <option value="e">
+            Option E
+          </option>
+          <option value="f">
+            Option F
+          </option>
+        </select>
+      </p-select-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PSelectWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSelectWrapper label="Some label">
+    <select name="some-name">
+      <option value="a">
+        Option A
+      </option>
+      <option value="b">
+        Option B
+      </option>
+      <option value="c">
+        Option C
+      </option>
+      <option value="d">
+        Option D
+      </option>
+      <option value="e">
+        Option E
+      </option>
+      <option value="f">
+        Option F
+      </option>
+    </select>
+  </PSelectWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Select Wrapper - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Select Wrapper component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Select Wrapper (Component: p-select-wrapper)
+
+The `p-select-wrapper` component is a styling wrapper for the native HTML `<select>` form element. To improve
+accessibility on devices with touch support, it defaults to the native user interface behaviour.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use{' '}
+  <a href="components/select/">p-select</a> instead.
+</Notification>
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-select-wrapper` component can be used with or without a label but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
+text for screen readers.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: selectWrapperStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-select-wrapper label="Some label">
+  <select name="some-name">
+    <option value="a">
+      Option A
+    </option>
+    <option value="b">
+      Option B
+    </option>
+    <option value="c">
+      Option C
+    </option>
+    <option value="d">
+      Option D
+    </option>
+    <option value="e">
+      Option E
+    </option>
+    <option value="f">
+      Option F
+    </option>
+  </select>
+</p-select-wrapper>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PSelectWrapper } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PSelectWrapper label="Some label">
+        <select name="some-name">
+          <option value="a">
+            Option A
+          </option>
+          <option value="b">
+            Option B
+          </option>
+          <option value="c">
+            Option C
+          </option>
+          <option value="d">
+            Option D
+          </option>
+          <option value="e">
+            Option E
+          </option>
+          <option value="f">
+            Option F
+          </option>
+        </select>
+      </PSelectWrapper>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-select-wrapper label="Some label">
+        <select name="some-name">
+          <option value="a">
+            Option A
+          </option>
+          <option value="b">
+            Option B
+          </option>
+          <option value="c">
+            Option C
+          </option>
+          <option value="d">
+            Option D
+          </option>
+          <option value="e">
+            Option E
+          </option>
+          <option value="f">
+            Option F
+          </option>
+        </select>
+      </p-select-wrapper>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PSelectWrapper } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PSelectWrapper label="Some label">
+    <select name="some-name">
+      <option value="a">
+        Option A
+      </option>
+      <option value="b">
+        Option B
+      </option>
+      <option value="c">
+        Option C
+      </option>
+      <option value="d">
+        Option D
+      </option>
+      <option value="e">
+        Option E
+      </option>
+      <option value="f">
+        Option F
+      </option>
+    </select>
+  </PSelectWrapper>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Select Wrapper - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Select Wrapper component.',
+};
+
+# Select Wrapper (Component: p-select-wrapper)
+
+<!-- Table of Contents -->
+
+## Basic example without preselection
+
+To ensure the user makes a conscious choice, use `<option></option>` as placeholder. If the select is required, use
+`<option hidden></option>` to enforce a selection.
+
+<!-- Component Story example (code examples shown above) -->
+
+## With filter
+
+This option enhances the native select filter by providing an additional search field where the user can type their own
+search string. The filter reduces the amount of option items by searching for the typed characters starting with the
+first character of the options text.
+
+<!-- Component Story example (code examples shown above) -->
+
+## With optgroups
+
+<!-- Component Story example (code examples shown above) -->
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore, a named slot
+can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used
+(because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Select Wrapper - Porsche Design System',
+  description:
+    'Learn how to properly use the Select Wrapper component with best practices and guidelines for effective design and user experience.',
+};
+
+# Select Wrapper (Component: p-select-wrapper)
+
+<!-- Table of Contents -->
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use{' '}
+  <a href="components/select/">p-select</a> instead.
+</Notification>
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Keep the label visible for better accessibility whenever possible.
+- Provide a descriptive label text for screen readers when using the component without a label.
+- Use to trigger an action based on the selected option choose and search one option from a list of items to navigate
+  the user to a new position and recommend a default option for most users.
+- Use without label only if the context clearly describes what the component is to be used for and no further
+  explanation is required.
+- Provide a description text displayed openly and directly outside the form field when helpful for the user to get
+  further information on the input.
+- Use the custom filter for a large number of select options (e.g. country/state select).
+- Use without preselection (mandatory field) if you don't know or need to make sure the user makes a conscious choice.
+- Use preselection (mandatory field) if you have a reason to believe one of the options is most likely or you know the
+  default or current option.
+- Use preselection (optional field) to make it possible to go back to an empty default.
+- Use common sort order for menu items (frequency of use, alpha or numeric).
+
+### Don't:
+
+- Don't use select boxes for data that is highly familiar such as the day month or year.
+- Don't set the default to 'please select' if there's an empty field.
+- Don't use very long select boxes that require scrolling but if unavoidable make sure that when open there is only a
+  maximum of 7 elements in the field of view without having to scroll.
+
+
+---
+

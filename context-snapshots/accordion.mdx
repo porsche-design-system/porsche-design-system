@@ -1,0 +1,266 @@
+# accordion
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Accordion: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Accordion component',
+};
+
+# Accordion (Component: p-accordion)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                          |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element.                          |
+| `Enter/Space`      | When focus is on the accordion header, the associated panel expands or collapses. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                      | Usage                                                        |
+| ------------------------- | ------------------------------------------------------------ |
+| `aria-expanded="BOOLEAN"` | Exposes expanded or collapsed state.                         |
+| `aria-controls="IDREF"`   | Exposes relationship of header and associated panel.         |
+| `role="region"`           | Creates a landmark region that contains the accordion panel. |
+| `aria-labelledby="IDREF"` | Defines the accessible name.                                 |
+
+## Development considerations
+
+### Focus handling
+
+The `heading-tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is
+no `heading-tag` property provided, it defaults to `h2`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Accordion - Porsche Design System',
+  description: 'Detailed API reference for the Accordion component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Accordion (Component: p-accordion)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: accordionStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-accordion heading="Some Heading">
+  <p-text>
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  </p-text>
+</p-accordion>
+<script>
+  const pAccordion = document.querySelector("p-accordion");
+  pAccordion.addEventListener('update', (e) => e.target.open = e.detail.open);
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PAccordion, PText, type AccordionUpdateEventDetail } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+    setOpen(e.detail.open);
+  }
+
+  return (
+    <>
+      <PAccordion open={open} heading="Some Heading" onUpdate={onUpdate}>
+        <PText>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </PText>
+      </PAccordion>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule, type AccordionUpdateEventDetail } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-accordion [open]="open" heading="Some Heading" (update)="onUpdate($event)">
+        <p-text>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </p-text>
+      </p-accordion>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  open = false;
+
+  onUpdate(e: CustomEvent<AccordionUpdateEventDetail>) {
+    this.open = e.detail.open;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PAccordion, PText, type AccordionUpdateEventDetail } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
+    open.value = e.open;
+  }
+</script>
+
+<template>
+  <PAccordion :open="open" heading="Some Heading" @update="onUpdate">
+    <PText>
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    </PText>
+  </PAccordion>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Accordion - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Accordion component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Accordion (Component: p-accordion)
+
+The `p-accordion` is a component that reveals or hides associated sections of content.
+Accordions are flexible in the context and can include other components of the Porsche Design System.
+
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Accordion - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Accordion component.',
+};
+
+# Accordion (Component: p-accordion)
+
+<!-- Table of Contents -->
+
+## Sticky headline
+
+The headline can be made sticky by adding the property `sticky` to the `p-accordion` tag. The position `top` value can
+be overwritten by using the CSS Custom Property `--p-accordion-position-sticky-top`.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area to fulfill accessibility guidelines. Therefore, a
+custom padding can be set on the slotted heading element.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Accordion - Porsche Design System',
+  description: 'Learn how to properly use the Accordion component with best practices and guidelines for effective design and user experience.'
+}
+
+# Accordion (Component: p-accordion)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use accordions to organize and display large amounts of content in a structured and efficient way.
+- Group related content together within each accordion panel.
+- Use clear and concise headings for each accordion panel to help users quickly understand what content is included.
+- Make sure that each accordion panel is easily identifiable and distinguishable from the others.
+
+### Don't:
+
+- Don't use accordions for content that is essential or required for users to see. Users may not realize that they need
+to expand the accordion panel to see the content, resulting in a poor user experience.
+- Don't overuse accordions on a single page, as this can make the page feel cluttered and difficult to navigate.
+- Don't use ambiguous or confusing labels for the accordion headings, as this can make it difficult for users to
+understand what content is included in each panel.
+- Don't overload the accordion panels with too much content, as this can make the component feel overwhelming and
+difficult to use.
+- Don't add a divider on top of the first item.
+
+---
+

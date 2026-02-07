@@ -1,0 +1,544 @@
+# multi-select
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Multi Select: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Multi Select component',
+};
+
+# Multi Select (Component: p-multi-select)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+#### Combobox
+
+| Key / state                     | Function                                                                                                                                  |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `Down Arrow` `Up Arrow` `Space` | - Opens the listbox if it is not already displayed without moving focus or changing selection.<br /> - DOM focus remains on the combobox. |
+
+#### Listbox
+
+| Key / state             | Function                                        |
+| ----------------------- | ----------------------------------------------- |
+| `Down Arrow` `Up Arrow` | Moves visual focus to the next/previous option. |
+| `Home` `End`            | Moves visual focus to the first/last option.    |
+| `ESC`                   | Closes listbox                                  |
+| `Enter`                 | Selects an option                               |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                        |
+| ------------------------------- | -------------------------------------------------------------------------------------------- |
+| `aria-labelledby="IDREF"`       | References the accessible name of the combobox.                                              |
+| `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
+| `aria-label="STRING"`           | References the accessible name of the listbox.                                               |
+| `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
+| `aria-expanded="BOOLEAN"`       | Indicates that the listbox element is displayed/hidden.                                      |
+| `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
+| `aria-multiselectable="true"`   | Indicates that more than one item from the current selectable descendants can be selected.   |
+| `aria-autocomplete="list"`      | Indicates that user input effects results of listbox.                                        |
+| `aria-haspopup="listbox"`       | Indicates that the combobox will open a listbox.                                             |
+| `aria-required="true"`          | Indicates if the element is required.                                                        |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support                                                                                                                |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Keyboard                        | ✅                                                                                                                     |
+| Screen reader (VoiceOver, NVDA) | ✅ (Note: Though Safari supports `ariaActiveDescendantElement` the active `option` doesn't get announced in VoiceOver) |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Multi Select - Porsche Design System',
+  description:
+    'Detailed API reference for the Multi Select component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Multi Select (Component: p-multi-select)
+
+<!-- Table of Contents -->
+
+## Multi Select
+
+<!-- Component API documentation -->
+
+## Multi Select Option
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: multiSelectStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-multi-select name="name" label="Some Label" description="Some description">
+  <p-multi-select-option value="a">
+    Option A
+  </p-multi-select-option>
+  <p-multi-select-option value="b">
+    Option B
+  </p-multi-select-option>
+  <p-multi-select-option value="c">
+    Option C
+  </p-multi-select-option>
+  <p-multi-select-option value="d">
+    Option D
+  </p-multi-select-option>
+  <p-multi-select-option value="e">
+    Option E
+  </p-multi-select-option>
+  <p-multi-select-option value="f">
+    Option F
+  </p-multi-select-option>
+</p-multi-select>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PMultiSelect name="name" label="Some Label" description="Some description">
+        <PMultiSelectOption value="a">
+          Option A
+        </PMultiSelectOption>
+        <PMultiSelectOption value="b">
+          Option B
+        </PMultiSelectOption>
+        <PMultiSelectOption value="c">
+          Option C
+        </PMultiSelectOption>
+        <PMultiSelectOption value="d">
+          Option D
+        </PMultiSelectOption>
+        <PMultiSelectOption value="e">
+          Option E
+        </PMultiSelectOption>
+        <PMultiSelectOption value="f">
+          Option F
+        </PMultiSelectOption>
+      </PMultiSelect>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-multi-select name="name" label="Some Label" description="Some description">
+        <p-multi-select-option value="a">
+          Option A
+        </p-multi-select-option>
+        <p-multi-select-option value="b">
+          Option B
+        </p-multi-select-option>
+        <p-multi-select-option value="c">
+          Option C
+        </p-multi-select-option>
+        <p-multi-select-option value="d">
+          Option D
+        </p-multi-select-option>
+        <p-multi-select-option value="e">
+          Option E
+        </p-multi-select-option>
+        <p-multi-select-option value="f">
+          Option F
+        </p-multi-select-option>
+      </p-multi-select>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PMultiSelect name="name" label="Some Label" description="Some description">
+    <PMultiSelectOption value="a">
+      Option A
+    </PMultiSelectOption>
+    <PMultiSelectOption value="b">
+      Option B
+    </PMultiSelectOption>
+    <PMultiSelectOption value="c">
+      Option C
+    </PMultiSelectOption>
+    <PMultiSelectOption value="d">
+      Option D
+    </PMultiSelectOption>
+    <PMultiSelectOption value="e">
+      Option E
+    </PMultiSelectOption>
+    <PMultiSelectOption value="f">
+      Option F
+    </PMultiSelectOption>
+  </PMultiSelect>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Multi Select - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Multi Select component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Multi Select (Component: p-multi-select)
+
+The `p-multi-select` component is a versatile custom form element that facilitates the selection of multiple options.
+
+Many of the properties closely resemble those found in the [select-wrapper](/components/select-wrapper/examples/) and
+other form components (e.g. `label`, `description`, `state`, `message`, `hideLabel`, `disabled`, `required` &
+`dropdownDirection`). The `p-multi-select` offers a search field by default. When the user types in a search string, the
+options are reduced by matching the options text.
+
+Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
+be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved
+using the value property on the `p-multi-select` component ([More Info](/components/multi-select/examples/#set-value)).
+Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be
+disabled by using the `disabled` attribute.
+
+**Hint:** The `p-multi-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
+to render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
+container.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: multiSelectStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-multi-select name="name" label="Some Label" description="Some description">
+  <p-multi-select-option value="a">
+    Option A
+  </p-multi-select-option>
+  <p-multi-select-option value="b">
+    Option B
+  </p-multi-select-option>
+  <p-multi-select-option value="c">
+    Option C
+  </p-multi-select-option>
+  <p-multi-select-option value="d">
+    Option D
+  </p-multi-select-option>
+  <p-multi-select-option value="e">
+    Option E
+  </p-multi-select-option>
+  <p-multi-select-option value="f">
+    Option F
+  </p-multi-select-option>
+</p-multi-select>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PMultiSelect name="name" label="Some Label" description="Some description">
+        <PMultiSelectOption value="a">
+          Option A
+        </PMultiSelectOption>
+        <PMultiSelectOption value="b">
+          Option B
+        </PMultiSelectOption>
+        <PMultiSelectOption value="c">
+          Option C
+        </PMultiSelectOption>
+        <PMultiSelectOption value="d">
+          Option D
+        </PMultiSelectOption>
+        <PMultiSelectOption value="e">
+          Option E
+        </PMultiSelectOption>
+        <PMultiSelectOption value="f">
+          Option F
+        </PMultiSelectOption>
+      </PMultiSelect>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-multi-select name="name" label="Some Label" description="Some description">
+        <p-multi-select-option value="a">
+          Option A
+        </p-multi-select-option>
+        <p-multi-select-option value="b">
+          Option B
+        </p-multi-select-option>
+        <p-multi-select-option value="c">
+          Option C
+        </p-multi-select-option>
+        <p-multi-select-option value="d">
+          Option D
+        </p-multi-select-option>
+        <p-multi-select-option value="e">
+          Option E
+        </p-multi-select-option>
+        <p-multi-select-option value="f">
+          Option F
+        </p-multi-select-option>
+      </p-multi-select>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PMultiSelect name="name" label="Some Label" description="Some description">
+    <PMultiSelectOption value="a">
+      Option A
+    </PMultiSelectOption>
+    <PMultiSelectOption value="b">
+      Option B
+    </PMultiSelectOption>
+    <PMultiSelectOption value="c">
+      Option C
+    </PMultiSelectOption>
+    <PMultiSelectOption value="d">
+      Option D
+    </PMultiSelectOption>
+    <PMultiSelectOption value="e">
+      Option E
+    </PMultiSelectOption>
+    <PMultiSelectOption value="f">
+      Option F
+    </PMultiSelectOption>
+  </PMultiSelect>
+</template>
+```
+
+
+import {
+  multiSelectExampleForm,
+  multiSelectExampleDynamic,
+  multiSelectExampleAsyncFilter,
+  multiSelectExampleSelectedSlot,
+} from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Multi Select - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Multi Select component.',
+};
+
+# Multi Select (Component: p-multi-select)
+
+<!-- Table of Contents -->
+
+## Form
+
+The `p-multi-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the select behaves similar to a native `<select multiple>`, automatically managing its
+own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  <code>p-multi-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
+  <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
+  validation behavior and error display will need to be implemented separately if required.
+</Notification>
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+<!-- Component Example (interactive demo) -->
+
+## Set Value
+
+The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
+choices, but can also be changed manually by using the value property. This property takes an array of strings that
+represent the selected option values.
+
+<!-- Component Example (interactive demo) -->
+
+## With optgroups
+
+<!-- Component Story example (code examples shown above) -->
+
+## Custom asynchronous filtering
+
+The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
+or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
+slot.
+
+To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
+option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
+as these are not provided automatically when using the controlled filtering approach.
+
+<!-- Component Example (interactive demo) -->
+
+## Custom option rendering
+
+By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
+selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
+the dropdown options, enabling more complex option layouts.
+
+The default filter behavior filters against all `textContent` within the options. For more granular control over
+filtering, implement custom filtering logic as shown in the
+[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
+
+<!-- Component Example (interactive demo) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Multi Select - Porsche Design System',
+  description: 'Learn how to properly use the Multi Select component with best practices and guidelines for effective design and user experience.'
+}
+
+# Multi Select (Component: p-multi-select)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to search and select one or more options from a list.
+- Use to trigger an action based on a selected option or options.
+- Use with label for better accessibility whenever possible.
+- Use descriptive label text for screen readers when label hidden.
+- Use without label only if the context clearly describes what the component is to be used for and no further
+explanation is required.
+- Use description text to provide further information that is helpful for the user.
+- Use without a preselection (mandatory field) by default when no other data is available.
+- Use without a preselection (optional field) to make it possible to go back to an empty default.
+- Use with a preselection (mandatory field) if you know a specific selection is desired by the user or a previous step
+requires a selection or in case of a predictive journey.
+- Use as a mandatory field when a selection of one or more options is necessary to proceed.
+- Use 'dropdown direction' to adjust the flyout's direction to improve the experience.
+- Use 'validation states' error or success to give feedback on the selection.
+- Use common sort order for menu items (frequency of use, alpha or numeric).
+
+### Don't:
+
+- Don't use very long option texts.
+- Don’t use it for less than 6 options (otherwise use Checkboxes).
+- Don’t exceed maximum width so the option labels turn multiline.
+- Don't use the same option value twice.
+- Don't use the same option text twice.
+
+
+---
+

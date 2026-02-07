@@ -1,0 +1,365 @@
+# banner
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Banner: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Banner component',
+};
+
+# Banner (Component: p-banner)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                       |
+| ------------------ | ---------------------------------------------- |
+| `ESC`              | Closes the Banner.                             |
+| `Tab`, `Shift-Tab` | Moves focus to the next focusable element.     |
+| `focus`            | Moves focus automatically to the close button. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                       | Usage                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `role="status"`            | When content is populated or changed in `state="info"`, the component announces it unobtrusively.        |
+| `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces it immediately. |
+| `aria-labelledby="IDREF"`  | References the accessible name.                                                                          |
+| `aria-describedby="IDREF"` | References the accessible description.                                                                   |
+| `aria-hidden="true"`       | State `icon` is hidden from the screen reader.                                                           |
+| `aria-controls="IDREF"`    | Exposes relationship of close button.                                                                    |
+
+## Development considerations
+
+### Focus handling
+
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the `Banner` with `ESC`
+or `Enter` key: The trigger element (e.g. a button) which has opened the `Banner` must receive focus state again after
+the `Banner` is closed. This is important to keep focus order consistent.
+
+### ARIA live announcements
+
+The `Banner` component uses `role="status"` and `role="alert"` to announce **content changes** for assistive
+technologies, but only if the component is **pre-rendered** and the content is added dynamically.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Banner - Porsche Design System',
+  description: 'Detailed API reference for the Banner component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Banner (Component: p-banner)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: bannerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button">
+  Open Banner
+</p-button>
+
+<p-banner heading="Some Heading" heading-tag="h3" description="Some Description"></p-banner>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pBanner = document.querySelector("p-banner");
+  pButton.addEventListener('click', () => (pBanner.open = true));
+  pBanner.addEventListener('dismiss', () => (pBanner.open = false));
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PBanner, PButton } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" onClick={onClick}>
+        Open Banner
+      </PButton>
+
+      <PBanner open={open} heading="Some Heading" headingTag="h3" description="Some Description" onDismiss={onDismiss}></PBanner>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button type="button" (click)="onClick()">
+        Open Banner
+      </p-button>
+
+      <p-banner [open]="open" heading="Some Heading" headingTag="h3" description="Some Description" (dismiss)="onDismiss()"></p-banner>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PBanner, PButton } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" @click="onClick">
+    Open Banner
+  </PButton>
+
+  <PBanner :open="open" heading="Some Heading" headingTag="h3" description="Some Description" @dismiss="onDismiss"></PBanner>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Banner - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Banner component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Banner (Component: p-banner)
+
+The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey
+informational and/or critical notification like some site related topics.
+
+Review the [notification decision tree](/patterns/notifications/decision-tree) to determine which notification component
+is best for a particular scenario.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: bannerStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button">
+  Open Banner
+</p-button>
+
+<p-banner heading="Some Heading" heading-tag="h3" description="Some Description"></p-banner>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pBanner = document.querySelector("p-banner");
+  pButton.addEventListener('click', () => (pBanner.open = true));
+  pBanner.addEventListener('dismiss', () => (pBanner.open = false));
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PBanner, PButton } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" onClick={onClick}>
+        Open Banner
+      </PButton>
+
+      <PBanner open={open} heading="Some Heading" headingTag="h3" description="Some Description" onDismiss={onDismiss}></PBanner>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button type="button" (click)="onClick()">
+        Open Banner
+      </p-button>
+
+      <p-banner [open]="open" heading="Some Heading" headingTag="h3" description="Some Description" (dismiss)="onDismiss()"></p-banner>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PBanner, PButton } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" @click="onClick">
+    Open Banner
+  </PButton>
+
+  <PBanner :open="open" heading="Some Heading" headingTag="h3" description="Some Description" @dismiss="onDismiss"></PBanner>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Banner - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Banner component.'
+}
+
+# Banner (Component: p-banner)
+
+<!-- Table of Contents -->
+
+## Customization
+
+Rich content for `heading` and `description` can be provided via named slots.
+Additionally, some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+<!-- Component Story example (code examples shown above) -->
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Banner - Porsche Design System',
+  description: 'Learn how to properly use the Banner component with best practices and guidelines for effective design and user experience.'
+}
+
+# Banner (Component: p-banner)
+
+<!-- Table of Contents -->
+
+For more information about the Usage of the `p-banner` checkout the [Notification](/patterns/notifications/introduction) page.
+
+---
+

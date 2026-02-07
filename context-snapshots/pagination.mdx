@@ -1,0 +1,190 @@
+# pagination
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Pagination: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Pagination component',
+};
+
+# Pagination (Component: p-pagination)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the item.                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA           | Usage                                  |
+| -------------- | -------------------------------------- |
+| `aria-current` | Exposes the current state of the item. |
+
+#### External **ARIA** provided by the `intl` property:
+
+| ARIA         | Usage                                                                       |
+| ------------ | --------------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the navigation and interactive elements. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Pagination - Porsche Design System',
+  description: 'Detailed API reference for the Pagination component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Pagination (Component: p-pagination)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: paginationStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PPagination } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PPagination totalItemsCount={500} itemsPerPage={25} activePage={1}></PPagination>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-pagination [totalItemsCount]="500" [itemsPerPage]="25" [activePage]="1"></p-pagination>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PPagination } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1"></PPagination>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Pagination - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Pagination component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Pagination (Component: p-pagination)
+
+To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7`
+(desktop/tablet) or `5` (mobile). The components handles responsive viewport sizing by default.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Pagination - Porsche Design System',
+  description: 'Learn how to properly use the Pagination component with best practices and guidelines for effective design and user experience.'
+}
+
+# Pagination (Component: p-pagination)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use when splitting large content into multiple pages.
+- Use to provide information on the number of pages available.
+- Use to show the current page position.
+- Use pagination to allow the user to navigate between the pages.
+- Display an ellipsis ("...") for a range of pages if there are at least 6 or 8 pages.
+- Place the pagination centered beneath the related content.
+
+### Don't:
+
+- Don't use unnecessarily for small amounts of content.
+- Don't use without providing information on the total number of pages available.
+- Don't use without showing the current page position.
+- Don't use without the option for the user to navigate between pages.
+- Don't place the pagination in an unrelated or confusing position.
+
+
+---
+

@@ -1,0 +1,285 @@
+# button-pure
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Button Pure: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button Pure component',
+};
+
+# Button Pure (Component: p-button-pure)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the button.                                    |
+| `disabled`         | Button still focusable.                                  |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA               | Usage                                                                                                                                         |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`       | Defines a string value that labels the interactive element.                                                                                   |
+| `aria-description` | Defines a string value that adds a more detailed description of the interactive element.                                                      |
+| `aria-expanded`    | Exposes a visual state (e.g. expanded/collapsed) of another element.                                                                          |
+| `aria-pressed`     | Exposes the `pressed` state of a toggle button.                                                                                               |
+| `aria-haspopup`    | Defines that the button opens a popup (e.g. `dialog`). It can be used in combination with `aria-expanded` to indicate the state of the popup. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                   | Usage                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| `aria-disabled="true"` | When `disabled` prop is set, this ARIA attribute is set on the button element.            |
+| `role="status"`        | When `loading` prop is set, the component announces the loading state (start and finish). |
+| `aria-hidden="true"`   | When the `icon` prop is set, the icon is hidden from the screen reader.                   |
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+
+| ARIA                    | Support |
+| ----------------------- | ------- |
+| `aria-labelledby`       | 🚫      |
+| `aria-describedby`      | 🚫      |
+| `aria-owns`             | 🚫      |
+| `aria-controls`         | 🚫      |
+| `aria-activedescendant` | 🚫      |
+
+## Development considerations
+
+### Labelling
+
+If the text of a button does not clearly indicate what the button's behavior is, add a brief, descriptive label using
+the `aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like
+"Add," "Detail," or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an
+alternative text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product
+XYZ."
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Button Pure - Porsche Design System',
+  description: 'Detailed API reference for the Button Pure component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Button Pure (Component: p-button-pure)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: buttonPureStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button-pure>
+  Some label
+</p-button-pure>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PButtonPure } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PButtonPure>
+        Some label
+      </PButtonPure>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button-pure>
+        Some label
+      </p-button-pure>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PButtonPure } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PButtonPure>
+    Some label
+  </PButtonPure>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Button Pure - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Button Pure component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Button Pure (Component: p-button-pure)
+
+The `p-button-pure` component is essential to perform events for **interactions**. A Button can be used with or without
+a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When used
+without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
+
+Whenever you want to provide navigational elements, stick to the [Link](/components/link/) or
+[Link Pure](/components/link-pure/) component instead.
+
+Similarly to the `p-button`, the `p-button-pure` can be used as a submit button within a form for which a `name` and
+`value` prop can be passed. See the [Button Form Example](/components/button/examples/#form) for more information.
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-button-pure`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+import { buttonPureExampleForm, buttonPureExampleFormAttribute } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Button Pure - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Button Pure component.',
+};
+
+# Button Pure (Component: p-button-pure)
+
+<!-- Table of Contents -->
+
+## Button Pure with custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of a button to fulfill accessibility guidelines.
+Therefore, a custom padding can be set on the host element.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Form
+
+When used as a submit button, the `name` and `value` props are submitted as a pair as part of the form data.
+
+<!-- Component Example (interactive demo) -->
+
+## Form Attribute
+
+When a button is used as a submit or reset button outside a form, the `form` attribute can be utilized to explicitly
+associate the button with a specific form element.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  When using the <code>p-button-pure</code> component as a <strong>submit</strong> or <strong>reset</strong> button
+  outside a form, it relies on the{' '}
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has
+  limited browser support.
+  <br />
+  <br /> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+  to be passed as an argument to the <code>requestSubmit()</code> function (
+  <a href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</a>).
+  <br />
+  <br />
+  Additionally, custom components using ElementInternals may include all values of elements with the same name attribute
+  in form data, rather than only the value of the triggering element, deviating from native form behavior.
+</Notification>
+
+<!-- Component Example (interactive demo) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Button Pure - Porsche Design System',
+  description: 'Learn how to properly use the Button Pure component with best practices and guidelines for effective design and user experience.'
+}
+
+# Button Pure (Component: p-button-pure)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use Button Pure as a more subtle call to action or to execute an action.
+- Choose the appropriate variant for your use case, such as Icon and Text or Text only.
+- Use Icon left as the default state and stretch only on small viewports or areas.
+- Keep the label short and include active verbs to indicate the action.
+- Stack Button Pure groups left-aligned to guarantee scannability and legibility.
+
+### Don't:
+
+- Don't use Button Pure as the primary or only call to action.
+- Don't use long labels that do not give a clear indication of the action.
+- Don't use buttons to link/navigate to other pages. Use regular [Link](/components/link/) instead.
+
+---
+

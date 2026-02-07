@@ -1,0 +1,151 @@
+# inline-notification
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Inline Notification: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Inline Notification component',
+};
+
+# Inline Notification (Component: p-inline-notification)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                   |
+| ------------------ | ------------------------------------------ |
+| `Tab`, `Shift-Tab` | Moves focus to the next focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                       | Usage                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `role="status"`            | When content is populated or changed in `state="info"`, the component announces it unobtrusively.        |
+| `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces it immediately. |
+| `aria-labelledby="IDREF"`  | References the accessible name.                                                                          |
+| `aria-describedby="IDREF"` | References the accessible description.                                                                   |
+| `aria-hidden="true"`       | State `icon` is hidden from the screen reader.                                                           |
+| `aria-controls="IDREF"`    | Exposes relationship of close button.                                                                    |
+
+## Development considerations
+
+### ARIA live announcements
+
+The `Inline Notification` component uses `role="status"` and `role="alert"` to announce **content changes** for
+assistive technologies, but only if the component is **pre-rendered** and the content is added dynamically.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Inline Notification - Porsche Design System',
+  description: 'Detailed API reference for the Inline Notification component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Inline Notification (Component: p-inline-notification)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+
+export const metadata = {
+  title: 'Inline Notification - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Inline Notification component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Inline Notification (Component: p-inline-notification)
+
+The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after
+performing a task) or to convey informational and/or critical notification like some site related topics.
+
+Review the [notification decision tree](/patterns/notifications/decision-tree/) to determine which notification component
+is best for a particular scenario.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+import {
+  inlineNotificationExampleActionButton,
+  inlineNotificationExampleEvents
+} from "@porsche-design-system/shared/examples";
+
+export const metadata = {
+  title: 'Inline Notification - Porsche Design System',
+  description: "Discover detailed examples and insights of the Inline Notification component."
+}
+
+# Inline Notification (Component: p-inline-notification)
+
+<!-- Table of Contents -->
+
+## Event Handling
+
+The custom event that is emitted on close button click is called `dismiss`.
+It can be used to remove the component.
+
+<!-- Component Example (interactive demo) -->
+
+### Action Button
+
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.
+The custom event that is emitted on action button click is called `action`.
+
+<!-- Component Example (interactive demo) -->
+
+
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Inline Notification - Porsche Design System',
+  description: 'Learn how to properly use the Inline Notification component with best practices and guidelines for effective design and user experience.'
+}
+
+# Inline Notification (Component: p-inline-notification)
+
+<!-- Table of Contents -->
+
+
+---
+

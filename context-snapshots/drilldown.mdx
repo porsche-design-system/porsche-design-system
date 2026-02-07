@@ -1,0 +1,693 @@
+# drilldown
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Drilldown: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Drilldown component',
+};
+
+# Drilldown (Component: p-drilldown)
+
+## Accessibility support
+
+The `Drilldown` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
+behavior. As a result, accessibility features may vary across different browsers.
+
+### Keyboard
+
+| Key / state                | Function                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
+| `ESC`                      | Closes the dialog.                                                                                               |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                  |
+| ------------ | ------------------------------------------------------ |
+| `aria-label` | Defines a string value that labels the dialog element. |
+
+## Development considerations
+
+To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
+property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Drilldown - Porsche Design System',
+  description:
+    'Detailed API reference for the Drilldown component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Drilldown (Component: p-drilldown)
+
+<!-- Table of Contents -->
+
+## Drilldown
+
+<!-- Component API documentation -->
+
+## Drilldown Item
+
+<!-- Component API documentation -->
+
+## Drilldown Link
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: drilldownStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<nav aria-label="Main">
+  <p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+    Open Drilldown
+  </p-button>
+  <p-drilldown>
+    <p-drilldown-item identifier="id-1" label="Some Label (1)">
+      <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
+        <p-drilldown-link href="#">
+          Some anchor (1-1)
+        </p-drilldown-link>
+        <p-drilldown-link>
+          <a href="#">
+            Some anchor (1-1)
+          </a>
+        </p-drilldown-link>
+      </p-drilldown-item>
+      <p-drilldown-item identifier="id-1-2" label="Some Label (1-2)">
+        <p-drilldown-link href="#">
+          Some anchor (1-2)
+        </p-drilldown-link>
+        <p-drilldown-link href="#">
+          Some anchor (1-2)
+        </p-drilldown-link>
+        <p-drilldown-link href="#">
+          Some anchor (1-2)
+        </p-drilldown-link>
+        <p-drilldown-item identifier="id-1-2-1" label="Some Label (1-2-1)">
+          <p-drilldown-link href="#">
+            Some anchor (1-2-1)
+          </p-drilldown-link>
+          <p-drilldown-link href="#">
+            Some anchor (1-2-1)
+          </p-drilldown-link>
+        </p-drilldown-item>
+        <p-drilldown-link href="#">
+          Some anchor (1-2)
+        </p-drilldown-link>
+      </p-drilldown-item>
+      <p-drilldown-link href="#">
+        Some anchor (1-1)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (1-1)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (1-1)
+      </p-drilldown-link>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-2" label="Some Label (2)">
+      <p-drilldown-link href="#">
+        Some anchor (2)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (2)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (2)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (2)
+      </p-drilldown-link>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-3" label="Some Label (3)">
+      <p-drilldown-link href="#">
+        Some anchor (3)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (3)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (3)
+      </p-drilldown-link>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-4" label="Some Label (4)">
+      <p-drilldown-link href="#">
+        Some anchor (4)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (4)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (4)
+      </p-drilldown-link>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-5" label="Some Label (5)">
+      <p-drilldown-link href="#">
+        Some anchor (5)
+      </p-drilldown-link>
+      <p-drilldown-link href="#">
+        Some anchor (5)
+      </p-drilldown-link>
+    </p-drilldown-item>
+  </p-drilldown>
+</nav>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pDrilldown = document.querySelector("p-drilldown");
+  pButton.addEventListener('click', () => (pDrilldown.open = true));
+  pDrilldown.addEventListener('update', (e) => e.target.activeIdentifier = e.detail.activeIdentifier);
+  pDrilldown.addEventListener('dismiss', () => (pDrilldown.open = false));
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PDrilldown, PDrilldownItem, PDrilldownLink, type DrilldownUpdateEventDetail } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [activeIdentifier, setActiveIdentifier] = useState(undefined);
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onUpdate = (e: CustomEvent<DrilldownUpdateEventDetail>) => {
+    setActiveIdentifier(e.detail.activeIdentifier);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <nav aria-label="Main">
+        <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+          Open Drilldown
+        </PButton>
+        <PDrilldown open={open} activeIdentifier={activeIdentifier} onUpdate={onUpdate} onDismiss={onDismiss}>
+          <PDrilldownItem identifier="id-1" label="Some Label (1)">
+            <PDrilldownItem identifier="id-1-1" label="Some Label (1-1)">
+              <PDrilldownLink href="#">
+                Some anchor (1-1)
+              </PDrilldownLink>
+              <PDrilldownLink>
+                <a href="#">
+                  Some anchor (1-1)
+                </a>
+              </PDrilldownLink>
+            </PDrilldownItem>
+            <PDrilldownItem identifier="id-1-2" label="Some Label (1-2)">
+              <PDrilldownLink href="#">
+                Some anchor (1-2)
+              </PDrilldownLink>
+              <PDrilldownLink href="#">
+                Some anchor (1-2)
+              </PDrilldownLink>
+              <PDrilldownLink href="#">
+                Some anchor (1-2)
+              </PDrilldownLink>
+              <PDrilldownItem identifier="id-1-2-1" label="Some Label (1-2-1)">
+                <PDrilldownLink href="#">
+                  Some anchor (1-2-1)
+                </PDrilldownLink>
+                <PDrilldownLink href="#">
+                  Some anchor (1-2-1)
+                </PDrilldownLink>
+              </PDrilldownItem>
+              <PDrilldownLink href="#">
+                Some anchor (1-2)
+              </PDrilldownLink>
+            </PDrilldownItem>
+            <PDrilldownLink href="#">
+              Some anchor (1-1)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (1-1)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (1-1)
+            </PDrilldownLink>
+          </PDrilldownItem>
+          <PDrilldownItem identifier="id-2" label="Some Label (2)">
+            <PDrilldownLink href="#">
+              Some anchor (2)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (2)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (2)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (2)
+            </PDrilldownLink>
+          </PDrilldownItem>
+          <PDrilldownItem identifier="id-3" label="Some Label (3)">
+            <PDrilldownLink href="#">
+              Some anchor (3)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (3)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (3)
+            </PDrilldownLink>
+          </PDrilldownItem>
+          <PDrilldownItem identifier="id-4" label="Some Label (4)">
+            <PDrilldownLink href="#">
+              Some anchor (4)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (4)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (4)
+            </PDrilldownLink>
+          </PDrilldownItem>
+          <PDrilldownItem identifier="id-5" label="Some Label (5)">
+            <PDrilldownLink href="#">
+              Some anchor (5)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (5)
+            </PDrilldownLink>
+          </PDrilldownItem>
+        </PDrilldown>
+      </nav>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule, type DrilldownUpdateEventDetail } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <nav aria-label="Main">
+        <p-button type="button" [aria]="{'aria-haspopup': 'dialog'}" (click)="onClick()">
+          Open Drilldown
+        </p-button>
+        <p-drilldown [open]="open" [activeIdentifier]="activeIdentifier" (update)="onUpdate($event)" (dismiss)="onDismiss()">
+          <p-drilldown-item identifier="id-1" label="Some Label (1)">
+            <p-drilldown-item identifier="id-1-1" label="Some Label (1-1)">
+              <p-drilldown-link href="#">
+                Some anchor (1-1)
+              </p-drilldown-link>
+              <p-drilldown-link>
+                <a href="#">
+                  Some anchor (1-1)
+                </a>
+              </p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-1-2" label="Some Label (1-2)">
+              <p-drilldown-link href="#">
+                Some anchor (1-2)
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor (1-2)
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor (1-2)
+              </p-drilldown-link>
+              <p-drilldown-item identifier="id-1-2-1" label="Some Label (1-2-1)">
+                <p-drilldown-link href="#">
+                  Some anchor (1-2-1)
+                </p-drilldown-link>
+                <p-drilldown-link href="#">
+                  Some anchor (1-2-1)
+                </p-drilldown-link>
+              </p-drilldown-item>
+              <p-drilldown-link href="#">
+                Some anchor (1-2)
+              </p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-link href="#">
+              Some anchor (1-1)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (1-1)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (1-1)
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-2" label="Some Label (2)">
+            <p-drilldown-link href="#">
+              Some anchor (2)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (2)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (2)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (2)
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-3" label="Some Label (3)">
+            <p-drilldown-link href="#">
+              Some anchor (3)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (3)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (3)
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-4" label="Some Label (4)">
+            <p-drilldown-link href="#">
+              Some anchor (4)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (4)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (4)
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-5" label="Some Label (5)">
+            <p-drilldown-link href="#">
+              Some anchor (5)
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor (5)
+            </p-drilldown-link>
+          </p-drilldown-item>
+        </p-drilldown>
+      </nav>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  activeIdentifier = undefined;
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onUpdate(e: CustomEvent<DrilldownUpdateEventDetail>) {
+    this.activeIdentifier = e.detail.activeIdentifier;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PButton, PDrilldown, PDrilldownItem, PDrilldownLink, type DrilldownUpdateEventDetail } from '@porsche-design-system/components-vue';
+
+  const activeIdentifier = ref(undefined);
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onUpdate = (e: CustomEvent<DrilldownUpdateEventDetail>) => {
+    activeIdentifier.value = e.activeIdentifier;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <nav aria-label="Main">
+    <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+      Open Drilldown
+    </PButton>
+    <PDrilldown :open="open" :activeIdentifier="activeIdentifier" @update="onUpdate" @dismiss="onDismiss">
+      <PDrilldownItem identifier="id-1" label="Some Label (1)">
+        <PDrilldownItem identifier="id-1-1" label="Some Label (1-1)">
+          <PDrilldownLink href="#">
+            Some anchor (1-1)
+          </PDrilldownLink>
+          <PDrilldownLink>
+            <a href="#">
+              Some anchor (1-1)
+            </a>
+          </PDrilldownLink>
+        </PDrilldownItem>
+        <PDrilldownItem identifier="id-1-2" label="Some Label (1-2)">
+          <PDrilldownLink href="#">
+            Some anchor (1-2)
+          </PDrilldownLink>
+          <PDrilldownLink href="#">
+            Some anchor (1-2)
+          </PDrilldownLink>
+          <PDrilldownLink href="#">
+            Some anchor (1-2)
+          </PDrilldownLink>
+          <PDrilldownItem identifier="id-1-2-1" label="Some Label (1-2-1)">
+            <PDrilldownLink href="#">
+              Some anchor (1-2-1)
+            </PDrilldownLink>
+            <PDrilldownLink href="#">
+              Some anchor (1-2-1)
+            </PDrilldownLink>
+          </PDrilldownItem>
+          <PDrilldownLink href="#">
+            Some anchor (1-2)
+          </PDrilldownLink>
+        </PDrilldownItem>
+        <PDrilldownLink href="#">
+          Some anchor (1-1)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (1-1)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (1-1)
+        </PDrilldownLink>
+      </PDrilldownItem>
+      <PDrilldownItem identifier="id-2" label="Some Label (2)">
+        <PDrilldownLink href="#">
+          Some anchor (2)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (2)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (2)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (2)
+        </PDrilldownLink>
+      </PDrilldownItem>
+      <PDrilldownItem identifier="id-3" label="Some Label (3)">
+        <PDrilldownLink href="#">
+          Some anchor (3)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (3)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (3)
+        </PDrilldownLink>
+      </PDrilldownItem>
+      <PDrilldownItem identifier="id-4" label="Some Label (4)">
+        <PDrilldownLink href="#">
+          Some anchor (4)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (4)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (4)
+        </PDrilldownLink>
+      </PDrilldownItem>
+      <PDrilldownItem identifier="id-5" label="Some Label (5)">
+        <PDrilldownLink href="#">
+          Some anchor (5)
+        </PDrilldownLink>
+        <PDrilldownLink href="#">
+          Some anchor (5)
+        </PDrilldownLink>
+      </PDrilldownItem>
+    </PDrilldown>
+  </nav>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Drilldown - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Drilldown component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Drilldown (Component: p-drilldown)
+
+<Notification heading="Experimental Component" heading-tag="h2" state="warning">
+  The <code>p-drilldown</code> component is experimental and might be changed or removed in a future release.
+</Notification>
+
+The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays
+the page content from the start side of the screen. It is a controlled component that gives you flexible control over
+its behavior.
+
+The basic concept of the component is to have a button that opens the `p-drilldown` with an infinite multilevel
+structure. The levels are generated out of `p-drilldown-item` which generates a list of cascade buttons to navigate to a
+deeper level, back buttons and a header section on mobile view. These items can be filled with e.g. `p-drilldown-link`,
+another `p-drilldown-item` or any HTML element.
+
+The visibility of `p-drilldown` can be controlled by its `open` property.
+
+It's **obligatory** that each `p-drilldown-item` has a unique `identifier` and `label` defined.
+
+Since it's a controlled component it's necessary to register an event listener for the `dismiss` and `update` event in
+order to get notified when `p-drilldown` needs to be closed or navigated to another hierarchy level.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+## Browser Support
+
+<BrowserSupport
+support={{
+  chrome: "120",
+  edge: "120",
+  safari: "17.4",
+  firefox: "129",
+  chromeForAndroid: "120",
+  safariForiOS: "17.4"
+}} />
+
+
+
+---
+
+## examples/page.mdx
+
+
+
+export const metadata = {
+  title: 'Drilldown - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Drilldown component.'
+}
+
+# Drilldown (Component: p-drilldown)
+
+<!-- Table of Contents -->
+
+## Example with custom content
+
+To give more flexibility, it's possible to use custom slots `slot="button"` (renders a custom cascade button) and/or
+`slot="header"` (renders a custom header on mobile view). It's even possible to customize the layout structure for each
+layer individually with CSS variables (`--p-drilldown-grid-template`, `--p-drilldown-gap`).
+
+It's possible to adjust the layout behaviour for each layer (`p-drilldown-item`) individually by a CSS Custom Property
+(aka CSS Variable):
+
+```scss
+--p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
+--p-drilldown-gap: 8px / 16px;
+```
+
+<!-- Component Story example (code examples shown above) -->
+
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Drilldown - Porsche Design System',
+  description:
+    'Learn how to properly use the Drilldown component with best practices and guidelines for effective design and user experience.',
+};
+
+# Drilldown (Component: p-drilldown)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use Drilldown for multilevel purposes.
+- Use Drilldown for multilevel on desktop & mobile.
+- Use a button-pure with a burger icon as the main trigger for the Drilldown component.
+- Use additional interaction items to trigger component.
+- Use a multilevel hierarchy that matches the two-layer capability of the component.
+- Use the first layer for multilevel targets or categories for link lists.
+- Use the second layer only if necessary.
+- Use section headings on the second layer for a group of links.
+- Use link-tile on the second layer for important links.
+
+### Don't:
+
+- Don't put too much additional information into the component.
+- Don't use other interaction components than mentioned.
+- Don't manipulate the heading in the second layer.
+- Don't implement external links without indicators.
+
+---
+
+## Related components
+
+- [Flyout](/components/flyout)
+
+
+---
+

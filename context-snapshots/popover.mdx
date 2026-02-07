@@ -1,0 +1,323 @@
+# popover
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Popover: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Popover component',
+};
+
+# Popover (Component: p-popover)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | - Opens/closes the popover.                              |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                       |
+| ------------ | ----------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the interactive element. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                      | Usage                                                   |
+| ------------------------- | ------------------------------------------------------- |
+| `aria-expanded="BOOLEAN"` | Indicates that the popover element is displayed/hidden. |
+
+## Limitations
+
+### Custom slotted button
+
+The `p-popover` component does not support the `aria-expanded` attribute when used with a custom slotted button. This is
+due to the fact that the component does not expose its `open` state to the public, which is necessary for managing the
+relationship between the button and the internal state of the popover.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Popover - Porsche Design System',
+  description: 'Detailed API reference for the Popover component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Popover (Component: p-popover)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: popoverStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-popover>
+  Some additional content.
+</p-popover>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PPopover } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PPopover>
+        Some additional content.
+      </PPopover>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-popover>
+        Some additional content.
+      </p-popover>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PPopover } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PPopover>
+    Some additional content.
+  </PPopover>
+</template>
+```
+
+
+import { PPopover } from '@porsche-design-system/components-react/ssr';
+
+export const metadata = {
+  title: 'Popover - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Popover component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Popover (Component: p-popover)
+
+The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
+
+<PPopover description="Hello World"></PPopover>-button.
+
+Only one Popover can be opened at the time, by clicking another Popover the opened Popover will be closed.
+
+You can use the `description` or the slot of the Popover to provide content which will be displayed in the open Popover.
+
+**Hint:** The `p-popover` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and
+gets rendered on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: popoverSlottedButtonStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-popover>
+  <p-button-pure hide-label="true" icon="car" slot="button">
+    More information
+  </p-button-pure>
+  Some additional content.
+</p-popover>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PButtonPure, PPopover } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PPopover>
+        <PButtonPure hideLabel={true} icon="car" slot="button">
+          More information
+        </PButtonPure>
+        Some additional content.
+      </PPopover>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-popover>
+        <p-button-pure [hideLabel]="true" icon="car" slot="button">
+          More information
+        </p-button-pure>
+        Some additional content.
+      </p-popover>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PButtonPure, PPopover } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PPopover>
+    <PButtonPure :hideLabel="true" icon="car" slot="button">
+      More information
+    </PButtonPure>
+    Some additional content.
+  </PPopover>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Popover - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Popover component.',
+};
+
+# Popover (Component: p-popover)
+
+<!-- Table of Contents -->
+
+## Slotted button
+
+The `p-popover` component can also be used with a **slotted button** via the `button` slot, allowing you to provide a
+custom button element.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Popover - Porsche Design System',
+  description:
+    'Learn how to properly use the Popover component with best practices and guidelines for effective design and user experience.',
+};
+
+# Popover (Component: p-popover)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to display additional information that is not necessary for task completion or to give further explanation about
+  workflow for better understandability.
+- Position popovers in a way that they do not block related content.
+- Choose a preferred direction in which the popover should open or it will be opened in the direction with the most
+  available space automatically.
+- Use it consistently throughout your site.
+
+### Don't:
+
+- Don't use for content that can be displayed directly.
+
+---
+
+## References
+
+Nielsen Norman Group [Tooltip Guidelines](https://nngroup.com/articles/tooltip-guidelines)
+
+
+---
+

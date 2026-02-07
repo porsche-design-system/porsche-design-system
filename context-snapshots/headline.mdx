@@ -1,0 +1,240 @@
+# headline
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Headline: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Headline component',
+};
+
+# Headline (Component: p-headline)
+
+## Accessibility support
+
+No documentation as the component is deprecated.
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Headline - Porsche Design System',
+  description: 'Detailed API reference for the Headline component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Headline (Component: p-headline)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: headlineStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-headline>
+  The quick brown fox jumps over the lazy dog
+</p-headline>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PHeadline } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PHeadline>
+        The quick brown fox jumps over the lazy dog
+      </PHeadline>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-headline>
+        The quick brown fox jumps over the lazy dog
+      </p-headline>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PHeadline } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PHeadline>
+    The quick brown fox jumps over the lazy dog
+  </PHeadline>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Headline - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Headline component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Headline (Component: p-headline)
+
+`p-headline` is used to highlight and specify heading styling and hierarchy in documents.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release.
+  Please use <Link href="/components/heading/">p-heading</Link> instead.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: headlineStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-headline>
+  The quick brown fox jumps over the lazy dog
+</p-headline>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PHeadline } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PHeadline>
+        The quick brown fox jumps over the lazy dog
+      </PHeadline>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-headline>
+        The quick brown fox jumps over the lazy dog
+      </p-headline>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PHeadline } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PHeadline>
+    The quick brown fox jumps over the lazy dog
+  </PHeadline>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Headline - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Headline component.',
+};
+
+# Headline (Component: p-headline)
+
+<!-- Table of Contents -->
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Color
+
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Headline - Porsche Design System',
+  description: 'Learn how to properly use the Headline component with best practices and guidelines for effective design and user experience.'
+}
+
+# Headline (Component: p-headline)
+
+<!-- Table of Contents -->
+
+
+---
+

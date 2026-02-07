@@ -1,0 +1,275 @@
+# text
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Text: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Text component',
+};
+
+# Text (Component: p-text)
+
+## Accessibility support
+
+This component does not include any special accessibility features.
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Text - Porsche Design System',
+  description: 'Detailed API reference for the Text component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Text (Component: p-text)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: textStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-text>
+  The quick brown fox jumps over the lazy dog
+</p-text>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PText>
+        The quick brown fox jumps over the lazy dog
+      </PText>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-text>
+        The quick brown fox jumps over the lazy dog
+      </p-text>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PText>
+    The quick brown fox jumps over the lazy dog
+  </PText>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Text - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Text component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Text (Component: p-text)
+
+`p-text` is used to specify paragraph styling in documents.
+
+<Notification heading="Recommendation" heading-tag="h2" state="success">
+  Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
+  the "@porsche-design-system/components-\{js|angular|react|vue}/styles" sub-package for best performance since way
+  less DOM nodes are required to render. Further information can be found <Link href="/styles/typography/">here</Link>.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: textStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-text>
+  The quick brown fox jumps over the lazy dog
+</p-text>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PText>
+        The quick brown fox jumps over the lazy dog
+      </PText>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-text>
+        The quick brown fox jumps over the lazy dog
+      </p-text>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PText } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PText>
+    The quick brown fox jumps over the lazy dog
+  </PText>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Text - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Text component.',
+};
+
+# Text (Component: p-text)
+
+<!-- Table of Contents -->
+
+## Size
+
+There are predefined fluid text sizes for the text component which should cover most use cases. If a specific text size
+is needed, the size can be set to `inherit` to specify the text size from outside.
+
+<!-- Component Story example (code examples shown above) -->
+
+### Responsive
+
+<!-- Component Story example (code examples shown above) -->
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Hyphens
+
+By default, the `p-text` component has hyphens set to `auto`, but this can be overridden using the `--p-hyphens` CSS
+variable. When inserting manual hyphens, you can choose to use soft hyphens. For example, `extra&shy;ordinarily`, as
+shown in the second example.
+
+However, please note that hyphenation behavior can vary depending on the browser and the language of the text. In some
+cases, it may be necessary to set the appropriate lang attribute on your HTML element to ensure that hyphenation works
+correctly for the desired language.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Text - Porsche Design System',
+  description: 'Learn how to properly use the Text component with best practices and guidelines for effective design and user experience.'
+}
+
+# Text (Component: p-text)
+
+<!-- Table of Contents -->
+
+## Usage
+
+p-text is used to specify paragraph styling
+
+### Do:
+
+- Use p-text for all running body copy, descriptions, and supporting text.
+- Default to text-small for standard paragraphs; scale up for intros or short content blocks.
+- Use text-xx-small for legal disclaimers or metadata.
+- Maintain spacing and alignment using the fluid grid and responsive typography.
+- Always use the predefined text styles to ensure readability and scalability.
+
+### Don't:
+
+- Don’t use p-text styles for section titles or visual emphasis—use p-heading or p-display.
+- Don’t apply unapproved font sizes, weights, or custom spacing.
+
+---
+

@@ -1,0 +1,408 @@
+# stepper-horizontal
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Stepper Horizontal: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Stepper Horizontal component',
+};
+
+# Stepper Horizontal (Component: p-stepper-horizontal)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the completed and current step-item.                                  |
+| `disabled`         | Step-item still focusable.                                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA              | Usage                                         |
+| ----------------- | --------------------------------------------- |
+| `role="list"`     | Indicates the stepper as list element.        |
+| `role="listitem"` | Indicates the step-item as list-item element. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Stepper Horizontal - Porsche Design System',
+  description:
+    'Detailed API reference for the Stepper Horizontal component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Stepper Horizontal (Component: p-stepper-horizontal)
+
+<!-- Table of Contents -->
+
+## Stepper Horizontal
+
+<!-- Component API documentation -->
+
+## Stepper Horizontal Item
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: stepperHorizontalStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-stepper-horizontal>
+  <p-stepper-horizontal-item state="complete">
+    Step 1
+  </p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="warning">
+    Step 2
+  </p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">
+    Step 3
+  </p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>
+    Step 4
+  </p-stepper-horizontal-item>
+</p-stepper-horizontal>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PStepperHorizontal>
+        <PStepperHorizontalItem state="complete">
+          Step 1
+        </PStepperHorizontalItem>
+        <PStepperHorizontalItem state="warning">
+          Step 2
+        </PStepperHorizontalItem>
+        <PStepperHorizontalItem state="current">
+          Step 3
+        </PStepperHorizontalItem>
+        <PStepperHorizontalItem>
+          Step 4
+        </PStepperHorizontalItem>
+      </PStepperHorizontal>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-stepper-horizontal>
+        <p-stepper-horizontal-item state="complete">
+          Step 1
+        </p-stepper-horizontal-item>
+        <p-stepper-horizontal-item state="warning">
+          Step 2
+        </p-stepper-horizontal-item>
+        <p-stepper-horizontal-item state="current">
+          Step 3
+        </p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>
+          Step 4
+        </p-stepper-horizontal-item>
+      </p-stepper-horizontal>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PStepperHorizontal>
+    <PStepperHorizontalItem state="complete">
+      Step 1
+    </PStepperHorizontalItem>
+    <PStepperHorizontalItem state="warning">
+      Step 2
+    </PStepperHorizontalItem>
+    <PStepperHorizontalItem state="current">
+      Step 3
+    </PStepperHorizontalItem>
+    <PStepperHorizontalItem>
+      Step 4
+    </PStepperHorizontalItem>
+  </PStepperHorizontal>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Stepper Horizontal - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Stepper Horizontal component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Stepper Horizontal (Component: p-stepper-horizontal)
+
+The `p-stepper-horizontal` component displays progress through a sequence of logical and numbered steps.
+It is ideal when the contents of one step depends on an earlier step.
+Avoid using long step names.
+
+The component does not handle the display of your content. When using the component you have to manually take care of
+the content to be rendered beneath. To help with this task, if a step is clicked, the component triggers an event called
+`change` with the index of the clicked step.
+
+**Note**: Maximum of 9 steps are supported.
+
+It is a controlled component. This means it does not contain any internal state and you got full control over its
+behavior.
+
+Use `p-stepper-horizontal-item`s inside the `p-stepper-horizontal` component. Each item will be rendered as a step. You
+have to manually manage the state of the items by setting the `state` property.
+
+The `state` property can be set to `complete` when a step is complete, `warning` when a user has to revisit the step,
+`current` for the step that is in progress and `undefined`.
+
+If the `state` property is `undefined` the step renders as stateless and disabled.
+This can be used to prevent the user from navigating to a step which is not yet reachable. This is to be used for future
+steps which cannot yet be processed at the time.
+
+By clicking on a previous step, the `p-stepper-horizontal` emits the `update` event, which contains the index of the
+clicked step.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: stepperHorizontalStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-stepper-horizontal>
+  <p-stepper-horizontal-item state="complete">
+    Step 1
+  </p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="warning">
+    Step 2
+  </p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">
+    Step 3
+  </p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>
+    Step 4
+  </p-stepper-horizontal-item>
+</p-stepper-horizontal>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PStepperHorizontal>
+        <PStepperHorizontalItem state="complete">
+          Step 1
+        </PStepperHorizontalItem>
+        <PStepperHorizontalItem state="warning">
+          Step 2
+        </PStepperHorizontalItem>
+        <PStepperHorizontalItem state="current">
+          Step 3
+        </PStepperHorizontalItem>
+        <PStepperHorizontalItem>
+          Step 4
+        </PStepperHorizontalItem>
+      </PStepperHorizontal>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-stepper-horizontal>
+        <p-stepper-horizontal-item state="complete">
+          Step 1
+        </p-stepper-horizontal-item>
+        <p-stepper-horizontal-item state="warning">
+          Step 2
+        </p-stepper-horizontal-item>
+        <p-stepper-horizontal-item state="current">
+          Step 3
+        </p-stepper-horizontal-item>
+        <p-stepper-horizontal-item>
+          Step 4
+        </p-stepper-horizontal-item>
+      </p-stepper-horizontal>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PStepperHorizontal, PStepperHorizontalItem } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PStepperHorizontal>
+    <PStepperHorizontalItem state="complete">
+      Step 1
+    </PStepperHorizontalItem>
+    <PStepperHorizontalItem state="warning">
+      Step 2
+    </PStepperHorizontalItem>
+    <PStepperHorizontalItem state="current">
+      Step 3
+    </PStepperHorizontalItem>
+    <PStepperHorizontalItem>
+      Step 4
+    </PStepperHorizontalItem>
+  </PStepperHorizontal>
+</template>
+```
+
+
+import {stepperHorizontalExample} from "@porsche-design-system/shared/examples";
+
+export const metadata = {
+  title: 'Stepper Horizontal - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Stepper Horizontal component.'
+}
+
+# Stepper Horizontal (Component: p-stepper-horizontal)
+
+<!-- Table of Contents -->
+
+## Framework Implementation
+
+Below you can find an interactive example of an outlined registration process.
+
+<!-- Component Example (interactive demo) -->
+
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Stepper Horizontal - Porsche Design System',
+  description: 'Learn how to properly use the Stepper Horizontal component with best practices and guidelines for effective design and user experience.'
+}
+
+# Stepper Horizontal (Component: p-stepper-horizontal)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use to display progress through a sequence of logical and numbered steps.
+- Use when the content of one step depends on an earlier step.
+- Use short and descriptive labels for each step.
+- Make completed steps clickable so that the user can jump back to previous steps.
+- Be aware that the component does not handle the display of your content and you will need to manually take care of the
+content to be rendered beneath.
+- Consider how you can simplify the component and use between 3-5 steps for the best user experience.
+
+### Don't:
+
+- Don't use long step names as it can make the component difficult to use.
+- Don't use more than 9 steps (component has a maximum of 9)
+- Don't forget that if a set of steps can not fit on the screen the stepper becomes horizontally scrollable and
+navigable with arrows.
+
+---
+

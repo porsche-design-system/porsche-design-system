@@ -1,0 +1,282 @@
+# input-email
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Input Email: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Email component',
+};
+
+# Input Email (Component: p-input-email)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-describedby="STRING"`     | Defines the accessible description combined with the status message.                                  |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+
+| ARIA               | Support |
+| ------------------ | ------- |
+| `aria-labelledby`  | 🚫      |
+| `aria-describedby` | 🚫      |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Input Email - Porsche Design System',
+  description: 'Detailed API reference for the Input Email component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Input Email (Component: p-input-email)
+
+<!-- Component API documentation -->
+
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: inputEmailStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-input-email label="Some label" name="some-name" indicator="true"></p-input-email>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PInputEmail } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PInputEmail label="Some label" name="some-name" indicator={true}></PInputEmail>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-input-email label="Some label" name="some-name" [indicator]="true"></p-input-email>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PInputEmail } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PInputEmail label="Some label" name="some-name" :indicator="true"></PInputEmail>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Input Email - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Email component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Email (Component: p-input-email)
+
+The `p-input-email` component provides a user-friendly, accessible interface for entering valid email addresses. It
+leverages native HTML5 email validation and ensures appropriate keyboard behavior on mobile devices. It includes `start`
+and `end` slots to flexibly incorporate icons, buttons, or other elements within the input field.
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-input-email` component can be used with or without a label, but it's recommended to keep the label visible for better
+accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text for
+screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
+  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
+  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
+  keystroke, use `onInput` instead.
+</FrameworkNotification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+import { inputEmailExampleForm } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Input Email - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Email component.',
+};
+
+# Input Email (Component: p-input-email)
+
+<!-- Table of Contents -->
+
+## Form
+
+The `p-input-email` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
+needs.
+
+In the **controlled** approach, the input state is externally managed using the `value` property and `input` event to
+keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
+that the component will still always update its internal value automatically when interacted with.
+
+In the **uncontrolled** approach, the input behaves similar to a native `<input type="email" />`, automatically managing
+its own state and including its value in form submissions through the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
+smaller forms or simple submissions.
+
+For more details on form integration, refer to the `Form` section in the
+[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
+example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+
+<!-- Component Example (interactive demo) -->
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
+example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
+to avoid being mistaken for a button.
+
+If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
+`--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Input Email - Porsche Design System',
+  description:
+    'Learn how to properly use the Input Email component with best practices and guidelines for effective design and user experience.',
+};
+
+# Input Email (Component: p-input-email)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+`p-input-email` is specifically designed for collecting email addresses. It leverages built-in browser validation to
+ensure that input follows the correct email format. This makes it a better choice than a generic text input when email
+validation, proper keyboard behavior on mobile, and accessibility are important. For further guidance, see the
+[MDN documentation on email inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/email#using_email_inputs).
+
+### Do:
+
+- Use when requesting an email address from the user.
+- Use without a label only when the context is clear.
+- Use for validation and error of input.
+- Use asterisk for required fields.
+
+### Don't:
+
+- Don't use labels with more than two words whenever possible (keep it short and descriptive).
+- Don't use an instructional or description text for the label.
+
+---
+
+## Related Components
+
+- [Text Field Wrapper](/components/text-field-wrapper)
+
+
+---
+

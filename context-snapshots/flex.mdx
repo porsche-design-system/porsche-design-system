@@ -1,0 +1,176 @@
+# flex
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Flex: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Flex component',
+};
+
+# Flex (Component: p-flex)
+
+## Accessibility support
+
+No documentation as the component is deprecated.
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Flex - Porsche Design System',
+  description: 'Detailed API reference for the Flex component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Flex (Component: p-flex)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: flexStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-flex>
+  <p-flex-item class="bg-sky-100 p-fluid-sm prose-text-sm text-center text-primary-light">
+    1
+  </p-flex-item>
+  <p-flex-item class="bg-sky-200 p-fluid-sm prose-text-sm text-center text-primary-light">
+    2
+  </p-flex-item>
+  <p-flex-item class="bg-sky-300 p-fluid-sm prose-text-sm text-center text-primary-light">
+    3
+  </p-flex-item>
+</p-flex>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PFlex, PFlexItem } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PFlex>
+        <PFlexItem className="bg-sky-100 p-fluid-sm prose-text-sm text-center text-primary-light">
+          1
+        </PFlexItem>
+        <PFlexItem className="bg-sky-200 p-fluid-sm prose-text-sm text-center text-primary-light">
+          2
+        </PFlexItem>
+        <PFlexItem className="bg-sky-300 p-fluid-sm prose-text-sm text-center text-primary-light">
+          3
+        </PFlexItem>
+      </PFlex>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-flex>
+        <p-flex-item class="bg-sky-100 p-fluid-sm prose-text-sm text-center text-primary-light">
+          1
+        </p-flex-item>
+        <p-flex-item class="bg-sky-200 p-fluid-sm prose-text-sm text-center text-primary-light">
+          2
+        </p-flex-item>
+        <p-flex-item class="bg-sky-300 p-fluid-sm prose-text-sm text-center text-primary-light">
+          3
+        </p-flex-item>
+      </p-flex>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PFlex, PFlexItem } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PFlex>
+    <PFlexItem class="bg-sky-100 p-fluid-sm prose-text-sm text-center text-primary-light">
+      1
+    </PFlexItem>
+    <PFlexItem class="bg-sky-200 p-fluid-sm prose-text-sm text-center text-primary-light">
+      2
+    </PFlexItem>
+    <PFlexItem class="bg-sky-300 p-fluid-sm prose-text-sm text-center text-primary-light">
+      3
+    </PFlexItem>
+  </PFlex>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Flex - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Flex component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Flex (Component: p-flex)
+
+The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by
+the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or
+components.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release.
+  In general, please use native <Link href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</Link> instead for better performance and more standardized layout technique.
+</Notification>
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Flex - Porsche Design System',
+  description: 'Learn how to properly use the Flex component with best practices and guidelines for effective design and user experience.'
+}
+
+# Flex (Component: p-flex)
+
+<!-- Table of Contents -->
+
+
+---
+

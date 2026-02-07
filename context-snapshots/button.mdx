@@ -1,0 +1,287 @@
+# button
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Button: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button component',
+};
+
+# Button (Component: p-button)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the button.                                    |
+| `disabled`         | Button still focusable.                                  |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA               | Usage                                                                                                                                         |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`       | Defines a string value that labels the interactive element.                                                                                   |
+| `aria-description` | Defines a string value that adds a more detailed description of the interactive element.                                                      |
+| `aria-expanded`    | Exposes a visual state (e.g. expanded/collapsed) of another element.                                                                          |
+| `aria-pressed`     | Exposes the `pressed` state of a toggle button.                                                                                               |
+| `aria-haspopup`    | Defines that the button opens a popup (e.g. `dialog`). It can be used in combination with `aria-expanded` to indicate the state of the popup. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                   | Usage                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| `aria-disabled="true"` | When `disabled` prop is set, this ARIA attribute is set on the button element.            |
+| `role="status"`        | When `loading` prop is set, the component announces the loading state (start and finish). |
+| `aria-hidden="true"`   | When the `icon` prop is set, the icon is hidden from the screen reader.                   |
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+
+| ARIA                    | Support |
+| ----------------------- | ------- |
+| `aria-labelledby`       | 🚫      |
+| `aria-describedby`      | 🚫      |
+| `aria-owns`             | 🚫      |
+| `aria-controls`         | 🚫      |
+| `aria-activedescendant` | 🚫      |
+
+## Development considerations
+
+### Labelling
+
+If the text of a button does not clearly indicate what the button's behavior is, add a brief, descriptive label using
+the `aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like
+"Add", "Detail" or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an
+alternative text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product
+XYZ."
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Button - Porsche Design System',
+  description: 'Detailed API reference for the Button component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Button (Component: p-button)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: buttonStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button>
+  Some label
+</p-button>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PButton } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PButton>
+        Some label
+      </PButton>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button>
+        Some label
+      </p-button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PButton } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PButton>
+    Some label
+  </PButton>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Button - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Button component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Button (Component: p-button)
+
+The `p-button` component is essential for performing form or **interaction** events. For an optimal user guidance and
+dedicated pursuit of business or sales goals, different types of Buttons (**Primary** and **Secondary**) are available
+for usage. A Button can be used with or without a label but it's recommended to keep the **label visible** for better
+**usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a
+descriptive label text for screen readers. Whenever you want to provide navigational elements, stick to the
+[Link](/components/link/) component instead.
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-button`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+import { buttonExampleForm, buttonExampleFormAttribute } from '@porsche-design-system/shared/examples';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Button - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Button component.',
+};
+
+# Button (Component: p-button)
+
+## Form
+
+When used as a submit button, the `name` and `value` props are submitted as a pair as part of the form data.
+
+<!-- Component Example (interactive demo) -->
+
+## Form Attribute
+
+When a button is used as a submit or reset button outside a form, the `form` attribute can be utilized to explicitly
+associate the button with a specific form element.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  When using the <code>p-button</code> component as a <strong>submit</strong> or <strong>reset</strong> button outside a
+  form, it relies on the{' '}
+  <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</Link> API, which has
+  limited browser support.
+  <br />
+  <br /> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+  to be passed as an argument to the <code>requestSubmit()</code> function (
+  <Link href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</Link>).
+  <br />
+  <br />
+  Additionally, custom components using ElementInternals may include all values of elements with the same name attribute
+  in form data, rather than only the value of the triggering element, deviating from native form behavior.
+</Notification>
+
+<!-- Component Example (interactive demo) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Button - Porsche Design System',
+  description:
+    'Learn how to properly use the Button component with best practices and guidelines for effective design and user experience.',
+};
+
+# Button (Component: p-button)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use buttons for actions that have clear consequences, such as submitting a form or initiating a purchase.
+- Use buttons to indicate the next step in a process, such as "Continue" or "Next".
+- Use buttons with clear and concise labels that accurately describe the action they perform.
+- Use the primary button for the most important or desired action, and use the secondary button for less important or
+  secondary actions.
+- Use icons in buttons to enhance their meaning, but ensure the icon is relevant and easily recognizable.
+- Use disabled buttons to indicate actions that are currently unavailable or incomplete, and provide context for why the
+  button is disabled.
+
+### Don't:
+
+- Don't use buttons for non-actionable elements, such as decorative graphics or text.
+- Don't use ambiguous or unclear labels for buttons, as it can lead to confusion for users.
+- Don't use too many buttons on a page or in a single section, as it can overwhelm users and reduce usability.
+- Don't use primary and secondary buttons interchangeably, as it can confuse users and reduce the clarity of your
+  interface.
+- Don't use disabled buttons without providing context for why the button is disabled. This can lead to confusion and
+  frustration for users.
+
+---
+
+## Related components
+
+- [Button Group](/components/button-group/)
+- [Links](/components/link/)
+
+
+---
+

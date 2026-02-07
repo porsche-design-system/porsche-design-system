@@ -1,0 +1,361 @@
+# link-pure
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Link Pure: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Link Pure component',
+};
+
+# Link Pure (Component: p-link-pure)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                      |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA               | Usage                                                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------- |
+| `aria-label`       | Defines a string value that labels the interactive element.                              |
+| `aria-description` | Defines a string value that adds a more detailed description of the interactive element. |
+| `aria-current`     | Exposes the current state of the link.                                                   |
+| `aria-haspopup`    | Defines that the link opens a popup (e.g. `dialog`).                                     |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                 | Usage                                                                   |
+| -------------------- | ----------------------------------------------------------------------- |
+| `aria-hidden="true"` | When the `icon` prop is set, the icon is hidden from the screen reader. |
+
+## Development considerations
+
+### Labelling
+
+If the text of a link does not clearly indicate what the link's target is, add a brief, descriptive label using the
+`aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like "Detail"
+or "Click" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text
+that offers more detailed information, such as "Details of product XYZ."
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Link Pure - Porsche Design System',
+  description: 'Detailed API reference for the Link Pure component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Link Pure (Component: p-link-pure)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: linkPureStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-link-pure href="https://porsche.com">
+  Some label
+</p-link-pure>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PLinkPure } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PLinkPure href="https://porsche.com">
+        Some label
+      </PLinkPure>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-link-pure href="https://porsche.com">
+        Some label
+      </p-link-pure>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PLinkPure } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PLinkPure href="https://porsche.com">
+    Some label
+  </PLinkPure>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Link Pure - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Link Pure component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Link Pure (Component: p-link-pure)
+
+The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or
+without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When
+used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
+
+In case you want the user to execute an action, you should select the [Button](/components/button/) or
+[Button Pure](/components/button-pure/) component instead.
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-link-pure`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: linkPureStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-link-pure href="https://porsche.com">
+  Some label
+</p-link-pure>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PLinkPure } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PLinkPure href="https://porsche.com">
+        Some label
+      </PLinkPure>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-link-pure href="https://porsche.com">
+        Some label
+      </p-link-pure>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PLinkPure } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PLinkPure href="https://porsche.com">
+    Some label
+  </PLinkPure>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Link Pure - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Link Pure component.',
+};
+
+# Link Pure (Component: p-link-pure)
+
+<!-- Table of Contents -->
+
+## Link with specific icon
+
+If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
+icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
+link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Framework routing (anchor nesting)
+
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element**
+(recommended) of the component.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Examples how to use with Framework specific router and "active state" support
+
+### Angular
+
+```html
+<p-link-pure [active]="rla.isActive">
+  <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive"></a>
+</p-link-pure>
+```
+
+### React
+
+```typescript
+<PLinkPure active={isActive}>
+  <Link to="/path/to/heaven">Some label</Link>
+</PLinkPure>
+```
+
+### VueJs
+
+```typescript
+<router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
+  <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
+</router-link>
+```
+
+## Link Pure with custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
+Therefore a custom padding can be set on the host element.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Link Pure - Porsche Design System',
+  description:
+    'Learn how to properly use the Link Pure component with best practices and guidelines for effective design and user experience.',
+};
+
+# Link Pure (Component: p-link-pure)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use a Link Pure as a more subtle call to action compared to the normal Link.
+- Use a [Button Pure](/components/button-pure/) instead of a Link Pure if you want to change a state (e.g. send form)
+- Use a Link Pure to navigate the user to another page.
+- Use the Icon and Text variant of Link Pure whenever possible as icons should preferably always be paired with text for
+  better comprehensibility and accessibility.
+- Use the Text only variant when the use of icons causes interference (e.g. in-text placement, no matching icon, complex
+  lists or tables, alignment to elements, navigation).
+- Use the Text only variant with an underline to ensure intuit "clickability”.
+- Use the Icon only variant only when it's enough to indicate an action with an icon only and the user is fully aware of
+  the function due to an expressive and internationally comprehensible icon.
+- Use the stretch variant only on small viewports or areas (e.g. mobile views or sidebars).
+- Use the default arrow-right-icon in most cases but replace it with another symbol if it is more appropriate.
+- Use short and descriptive text labels within a link.
+
+### Don't:
+
+- Don't use Link Pure as the main call to action if you need to draw more attention to the link.
+- Don't use Link Pure on images unless it is necessary e.g. when using it as an additional link on image sliders or
+  teaser images that are clickable themselves.
+- Don't group more than two Links Pure in a row to ensure scannability and legibility.
+
+---
+
+## Related components
+
+- [Button Pure](/components/button-pure/)
+
+
+---
+

@@ -1,0 +1,552 @@
+# modal
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Modal: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Modal component',
+};
+
+# Modal (Component: p-modal)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+The `Modal` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
+behavior. As a result, accessibility features may vary across different browsers.
+
+### Keyboard
+
+| Key / state                | Function                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
+| `ESC`                      | Closes the dialog.                                                                                               |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                                   |
+| ------------ | ----------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the dialog element.                  |
+| `role`       | Defines the semantic of the dialog element (`dialog` or `alertdialog`). |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                  | Usage                                                                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"` | Defines the accessible name if no `aria` property is provided, uses the contents of the header slot and falls back to a fixed name. |
+
+## Development considerations
+
+To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
+property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Modal - Porsche Design System',
+  description: 'Detailed API reference for the Modal component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Modal (Component: p-modal)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: modalStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Modal
+</p-button>
+
+<p-modal aria="{'aria-label': 'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <p-text>
+    Some Content
+  </p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">
+      Proceed
+    </p-button>
+    <p-button type="button" variant="secondary">
+      Cancel
+    </p-button>
+  </p-button-group>
+</p-modal>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pModal = document.querySelector("p-modal");
+  pButton.addEventListener('click', () => (pModal.open = true));
+  pModal.addEventListener('dismiss', () => (pModal.open = false));
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PButtonGroup, PHeading, PModal, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Modal
+      </PButton>
+
+      <PModal open={open} aria={{'aria-label': 'Some Heading'}} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <PText>
+          Some Content
+        </PText>
+        <PButtonGroup slot="footer">
+          <PButton type="button">
+            Proceed
+          </PButton>
+          <PButton type="button" variant="secondary">
+            Cancel
+          </PButton>
+        </PButtonGroup>
+      </PModal>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button type="button" [aria]="{'aria-haspopup': 'dialog'}" (click)="onClick()">
+        Open Modal
+      </p-button>
+
+      <p-modal [open]="open" [aria]="{'aria-label': 'Some Heading'}" (dismiss)="onDismiss()">
+        <p-heading slot="header" size="large" tag="h2">
+          Some Heading
+        </p-heading>
+        <p-text>
+          Some Content
+        </p-text>
+        <p-button-group slot="footer">
+          <p-button type="button">
+            Proceed
+          </p-button>
+          <p-button type="button" variant="secondary">
+            Cancel
+          </p-button>
+        </p-button-group>
+      </p-modal>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PButton, PButtonGroup, PHeading, PModal, PText } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+    Open Modal
+  </PButton>
+
+  <PModal :open="open" :aria="{'aria-label': 'Some Heading'}" @dismiss="onDismiss">
+    <PHeading slot="header" size="large" tag="h2">
+      Some Heading
+    </PHeading>
+    <PText>
+      Some Content
+    </PText>
+    <PButtonGroup slot="footer">
+      <PButton type="button">
+        Proceed
+      </PButton>
+      <PButton type="button" variant="secondary">
+        Cancel
+      </PButton>
+    </PButtonGroup>
+  </PModal>
+</template>
+```
+
+
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Modal - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Modal component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Modal (Component: p-modal)
+
+The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
+page are blocked. It is only used as highly disruptive modal notification to present important information until
+dismissed. Or as overlay to confirm critical user actions, such as confirming an irreversible choice. It should be used
+thoughtfully and sparingly.
+
+It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay
+open after user interaction like submission of a form.
+
+<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
+  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br />
+  This doesn't work completely reliable under iOS but is the most stable solution.<br />
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><Link href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</Link></b>
+</Notification>
+
+Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus
+handling including a **focus trap**. In addition, it's rendered on the `#top-layer` which ensures the element to be on
+top of the page independent of where `p-modal` is placed in the DOM hierarchy (`z-index` is not relevant anymore and
+won't have any effect).
+
+The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible. In
+order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
+
+The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the
+**[Porsche Grid](/styles/grid/)**.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: modalStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Modal
+</p-button>
+
+<p-modal aria="{'aria-label': 'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <p-text>
+    Some Content
+  </p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">
+      Proceed
+    </p-button>
+    <p-button type="button" variant="secondary">
+      Cancel
+    </p-button>
+  </p-button-group>
+</p-modal>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pModal = document.querySelector("p-modal");
+  pButton.addEventListener('click', () => (pModal.open = true));
+  pModal.addEventListener('dismiss', () => (pModal.open = false));
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { useState } from 'react';
+import { PButton, PButtonGroup, PHeading, PModal, PText } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  const [open, setOpen] = useState(false);
+
+  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }
+
+  return (
+    <>
+      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Modal
+      </PButton>
+
+      <PModal open={open} aria={{'aria-label': 'Some Heading'}} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <PText>
+          Some Content
+        </PText>
+        <PButtonGroup slot="footer">
+          <PButton type="button">
+            Proceed
+          </PButton>
+          <PButton type="button" variant="secondary">
+            Cancel
+          </PButton>
+        </PButtonGroup>
+      </PModal>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-button type="button" [aria]="{'aria-haspopup': 'dialog'}" (click)="onClick()">
+        Open Modal
+      </p-button>
+
+      <p-modal [open]="open" [aria]="{'aria-label': 'Some Heading'}" (dismiss)="onDismiss()">
+        <p-heading slot="header" size="large" tag="h2">
+          Some Heading
+        </p-heading>
+        <p-text>
+          Some Content
+        </p-text>
+        <p-button-group slot="footer">
+          <p-button type="button">
+            Proceed
+          </p-button>
+          <p-button type="button" variant="secondary">
+            Cancel
+          </p-button>
+        </p-button-group>
+      </p-modal>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PButton, PButtonGroup, PHeading, PModal, PText } from '@porsche-design-system/components-vue';
+
+  const open = ref(false);
+
+  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }
+</script>
+
+<template>
+  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+    Open Modal
+  </PButton>
+
+  <PModal :open="open" :aria="{'aria-label': 'Some Heading'}" @dismiss="onDismiss">
+    <PHeading slot="header" size="large" tag="h2">
+      Some Heading
+    </PHeading>
+    <PText>
+      Some Content
+    </PText>
+    <PButtonGroup slot="footer">
+      <PButton type="button">
+        Proceed
+      </PButton>
+      <PButton type="button" variant="secondary">
+        Cancel
+      </PButton>
+    </PButtonGroup>
+  </PModal>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Modal - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Modal component.',
+};
+
+# Modal (Component: p-modal)
+
+<!-- Table of Contents -->
+
+## Scrollable modal with sticky footer
+
+If the modal's content does not fit into the current boundaries the content becomes scrollable and the footer area
+sticky.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Modal as alert dialog
+
+The `p-modal` component can be used as an alert dialog. This is a modal dialog that interrupts the user's workflow to
+draw attention to an important message and requires a response.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Custom styling
+
+The modal component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables). This might be
+useful for e.g. a "Cookie Consent Dialog" to reserve certain space when used with `backdrop: 'shading'` to always have
+the Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) visible in the background of the page.
+Since the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will
+act like a safe zone.
+
+In addition, it's possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by
+adding the <code v-text="stretchClassName"></code> CSS class.
+
+```scss
+// the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined
+--p-modal-width: clamp(276px, 45.25vw + 131px, 1000px);
+--p-modal-spacing-top: 200px;
+--p-modal-spacing-bottom: 50px;
+```
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Modal - Porsche Design System',
+  description: 'Learn how to properly use the Modal component with best practices and guidelines for effective design and user experience.'
+}
+
+# Modal (Component: p-modal)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use Modals to display additional information or required steps without losing context.
+- Use Modals for confirmation before performing lengthy or dangerous actions.
+- Use default Modal for simple content.
+- Use full-width content and background overlay animation to draw user attention.
+- Provide multiple ways to dismiss the Modal but require an intentional choice.
+- Use scrolling only when necessary and try to keep content in a single view.
+- Adjust Modal size and alignment with the grid.
+- Use up to three actions in the action bar at the bottom of the Modal.
+- Follow button order and positioning guidelines.
+- Use feedback banner for any feedback related to the request.
+
+### Don't:
+
+- Don't use fullscreen Modals on desktop.
+- Don't use the Modal with more than three buttons.
+- Don't launch a Modal within a Modal.
+
+
+---
+

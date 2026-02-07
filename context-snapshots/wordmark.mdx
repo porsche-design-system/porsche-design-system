@@ -1,0 +1,275 @@
+# wordmark
+
+## accessibility/page.mdx
+
+
+export const metadata = {
+  title: 'Wordmark: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Wordmark component',
+};
+
+# Wordmark (Component: p-wordmark)
+
+<!-- Table of Contents -->
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | If `href` prop is set, focus moves to the next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                                             |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA            | Usage                                                       |
+| --------------- | ----------------------------------------------------------- |
+| `aria-label`    | Defines a string value that labels the interactive element. |
+| `aria-current`  | Exposes the current state of the link.                      |
+| `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`).      |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
+
+
+---
+
+## api/page.mdx
+
+
+export const metadata = {
+  title: 'Wordmark - Porsche Design System',
+  description: 'Detailed API reference for the Wordmark component, including properties, slots, events, and customizable CSS properties.'
+}
+
+# Wordmark (Component: p-wordmark)
+
+<!-- Component API documentation -->
+
+---
+
+## configurator/page.mdx
+
+
+**Code Example: wordmarkStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-wordmark></p-wordmark>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PWordmark } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PWordmark></PWordmark>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-wordmark></p-wordmark>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PWordmark } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PWordmark></PWordmark>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Wordmark - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Wordmark component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Wordmark (Component: p-wordmark)
+
+The `p-wordmark` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
+and represents the quality of the product.
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-wordmark`.
+
+<!-- Interactive Configurator component (code examples shown above) -->
+
+
+---
+
+## examples/page.mdx
+
+
+**Code Example: wordmarkStory**
+
+Vanilla JS:
+```html
+<!doctype html>
+<html lang="en" class="light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-wordmark></p-wordmark>
+<script>
+
+</script>
+</body>
+</html>
+```
+
+React:
+```jsx
+import React from 'react';
+import { PWordmark } from '@porsche-design-system/components-react';
+
+export const Example = () => {
+  return (
+    <>
+      <PWordmark></PWordmark>
+    </>
+  )
+}
+```
+
+Angular:
+```typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-wordmark></p-wordmark>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
+```
+
+Vue:
+```vue
+<script setup lang="ts">
+  import { PWordmark } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PWordmark></PWordmark>
+</template>
+```
+
+
+
+export const metadata = {
+  title: 'Wordmark - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Wordmark component.',
+};
+
+# Wordmark (Component: p-wordmark)
+
+<!-- Table of Contents -->
+
+## Size
+
+By default, the sizing is fluid, which can be changed to `inherit` a specified value.
+
+<!-- Component Story example (code examples shown above) -->
+
+## Custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of the `p-wordmark`. Therefore a custom padding can
+be set on the host element.
+
+<!-- Component Story example (code examples shown above) -->
+
+
+---
+
+## usage/page.mdx
+
+
+export const metadata = {
+  title: 'Wordmark - Porsche Design System',
+  description: 'Learn how to properly use the Wordmark component with best practices and guidelines for effective design and user experience.'
+}
+
+# Wordmark (Component: p-wordmark)
+
+<!-- Table of Contents -->
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do
+
+- Use the `p-wordmark` as the main brand identifier.
+- Use the `p-wordmark` only in dedicated situations, like global navigation.
+- Position the `p-wordmark` centered whenever possible.
+- Use the `p-crest` only as an additional small brand identifier (e.g., within contact cards).
+- Switch from the `p-wordmark` to the `p-crest` on small viewports below 480px (automatically implemented in global
+navigation and footer).
+
+### Don't
+
+- Use the `p-crest` as the primary brand identifier by default.
+- Display the `p-wordmark` too often (usually once is enough).
+
+
+---
+
