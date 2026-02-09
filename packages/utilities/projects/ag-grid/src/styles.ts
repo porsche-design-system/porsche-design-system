@@ -9,7 +9,6 @@ export const radiusXl = "12px";
 export const colorCanvas = "light-dark(#fff,hsl(225, 66.7%, 1.2%))";
 export const colorContrastLower = "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))";
 export const colorContrastLow = "light-dark(hsla(240, 5.3%, 14.9%, 0.500),hsla(240, 12.5%, 96.9%, 0.450))";
-export const colorDisabled = "light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302))";
 export const colorErrorLow = "light-dark(hsla(357, 78%, 41%, 0.180),hsla(0, 96.9%, 62%, 0.180))";
 export const colorFocus = "light-dark(#1A44EA,#1A44EA)";
 export const colorFrosted = "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))";

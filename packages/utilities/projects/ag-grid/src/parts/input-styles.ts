@@ -1,13 +1,5 @@
 import { createPart, type Part } from 'ag-grid-community';
-import {
-  borderWidthThin,
-  colorCanvas,
-  colorContrastLower,
-  colorDisabled,
-  colorErrorLow,
-  colorPrimary,
-  radiusXl,
-} from '../styles';
+import { borderWidthThin, colorCanvas, colorContrastLower, colorErrorLow, colorPrimary, radiusXl } from '../styles';
 
 /**
  * Input field styles for AG Grid following v35 standards
@@ -35,7 +27,7 @@ export const inputStyles: Part = createPart({
     inputInvalidBorder: `solid ${borderWidthThin} ${colorErrorLow}`,
 
     // Disabled state
-    inputDisabledBorder: `solid ${borderWidthThin} ${colorDisabled}`,
+    inputDisabledBorder: `solid ${borderWidthThin} light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))`,
   },
   css: `
     /* Custom border radius for input fields */
