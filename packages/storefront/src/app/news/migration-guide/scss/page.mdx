@@ -14,17 +14,18 @@ export const metadata = {
 
 ## 👹Breaking Changes
 
-- Changed import path for SCSS styles.
+- Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds` to easily identify pds styles. The
+  new SCSS styles don't include a prefix like `$pds-`.
 
 ```diff
 - @use '@porsche-design-system/components-{js\|angular\|react\|vue}/styles' as *;
 + @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
 ```
 
-- Removed `getHoverStyle`/`pds-hover` since it did not work reliable
+- Removed `pds-hover` since it did not work reliable.
 
 - Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
-  `light-dark()` CSS color function)
+  `light-dark()` CSS color function).
 
 ```diff
 - @include pds-skeleton('light'|'dark');
@@ -55,10 +56,10 @@ details.
 + border-radius: $radius-sm;
 - border-radius: $pds-border-radius-large;
 + border-radius: $radius-lg;
-- border-radius: $pds-border-width-base;
-+ border-radius: 2px;
-- border-radius: $pds-border-width-thin;
-+ border-radius: 1px;
+- border-width: $pds-border-width-base;
++ border-width: 2px;
+- border-width: $pds-border-width-thin;
++ border-width: 1px;
 ```
 
 ### Color
