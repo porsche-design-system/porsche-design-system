@@ -115,6 +115,16 @@ export const sitemap: Routes = {
             path: '/news/migration-guide/porsche-design-system',
             type: 'TAB',
           },
+          'scss': {
+            name: 'SCSS',
+            path: '/news/migration-guide/scss',
+            type: 'TAB',
+          },
+          'emotion': {
+            name: 'Emotion',
+            path: '/news/migration-guide/emotion',
+            type: 'TAB',
+          },
         },
       },
       changelog: {

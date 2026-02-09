@@ -1,0 +1,309 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Migration Guide: SCSS - Porsche Design System',
+  description: 'Learn how to migrate the SCSS styles from Porsche Design System v3 to v4.',
+};
+
+# Migration Guide
+
+<TableOfContents headings={[]} />
+
+## SCSS
+
+## 👹Breaking Changes
+
+- Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds` to easily identify pds styles. The
+  new SCSS styles don't include a prefix like `$pds-`.
+
+```diff
+- @use '@porsche-design-system/components-{js\|angular\|react\|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
+```
+
+- Removed `pds-hover` since it did not work reliable.
+
+- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
+  `light-dark()` CSS color function).
+
+```diff
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
+```
+
+## Upcoming Changes
+
+All following old styles are still available but marked as deprecated and will be removed with the next major release.
+Please switch to the new styles as soon as possible.
+
+### Blur
+
+```diff
+- @include pds-frosted-glass();
++ backdrop-filter: $blur-frosted;
+```
+
+### Border
+
+Renamed `border-radius` variables and added new ones. See [SCSS Border Examples](/scss/border/examples) for more
+details.
+
+```diff
+- border-radius: $pds-border-radius-medium;
++ border-radius: $radius-md;
+- border-radius: $pds-border-radius-small;
++ border-radius: $radius-sm;
+- border-radius: $pds-border-radius-large;
++ border-radius: $radius-lg;
+- border-width: $pds-border-width-base;
++ border-width: 2px;
+- border-width: $pds-border-width-thin;
++ border-width: 1px;
+```
+
+### Color
+
+Renamed `color` variables and introduced new ones. See [SCSS Color Examples](/scss/color/examples) for more details. All
+colors now also available as `light-dark` variant when used without `-light|-dark` suffix.
+
+```diff
+- $pds-theme-light-primary;
++ $color-primary-light;
+- $pds-theme-light-background-base;
++ $color-canvas-light;
+- $pds-theme-light-background-surface;
++ $color-surface-light;
+- $pds-theme-light-background-shading;
++ $color-backdrop-light;
+- $pds-theme-light-background-frosted;
++ $color-frosted-light;
+- $pds-theme-light-contrast-low;
++ $color-contrast-low;
+- $pds-theme-light-contrast-medium;
++ $color-contrast-medium;
+- $pds-theme-light-contrast-high;
++ $color-contrast-high;
+- $pds-theme-light-notification-success;
++ $color-success-light;
+- $pds-theme-light-notification-success-soft;
++ $color-success-frosted-light;
+- $pds-theme-light-notification-warning;
++ $color-warning-light;
+- $pds-theme-light-notification-warning-soft;
++ $color-warning-frosted-light;
+- $pds-theme-light-notification-error;
++ $color-error-light;
+- $pds-theme-light-notification-error-soft;
++ $color-error-frosted-light;
+- $pds-theme-light-notification-info;
++ $color-info-light;
+- $pds-theme-light-notification-info-soft;
++ $color-info-frosted-light;
+- $pds-theme-light-state-hover;
+// Not renamed yet, will be removed in next major release
+- $pds-theme-light-state-active;
+// Not renamed yet, will be removed in next major release
+- $pds-theme-light-state-focus;
++ $color-focus-light;
+- $pds-theme-light-state-disabled;
++ $color-disabled-light;
+```
+
+```diff
+- $pds-theme-dark-primary;
++ $color-primary-dark;
+- $pds-theme-dark-background-base;
++ $color-canvas-dark;
+- $pds-theme-dark-background-surface;
++ $color-surface-dark;
+- $pds-theme-dark-background-shading;
++ $color-backdrop-dark;
+- $pds-theme-dark-background-frosted;
++ $color-frosted-dark;
+- $pds-theme-dark-contrast-low;
++ $color-contrast-low;
+- $pds-theme-dark-contrast-medium;
++ $color-contrast-medium;
+- $pds-theme-dark-contrast-high;
++ $color-contrast-high;
+- $pds-theme-dark-notification-success;
++ $color-success-dark;
+- $pds-theme-dark-notification-success-soft;
++ $color-success-frosted-dark;
+- $pds-theme-dark-notification-warning;
++ $color-warning-dark;
+- $pds-theme-dark-notification-warning-soft;
++ $color-warning-frosted-dark;
+- $pds-theme-dark-notification-error;
++ $color-error-dark;
+- $pds-theme-dark-notification-error-soft;
++ $color-error-frosted-dark;
+- $pds-theme-dark-notification-info;
++ $color-info-dark;
+- $pds-theme-dark-notification-info-soft;
++ $color-info-frosted-dark;
+- $pds-theme-dark-state-hover;
+// Not renamed yet, will be removed in next major release
+- $pds-theme-dark-state-active;
+// Not renamed yet, will be removed in next major release
+- $pds-theme-dark-state-focus;
++ $color-focus-dark;
+- $pds-theme-dark-state-disabled;
++ $color-disabled-dark;
+```
+
+### Focus
+
+Added new focus mixin. See [SCSS Focus Examples](/scss/focus/examples) for more details.
+
+```diff
+- @include pds-focus();
++ @include focus-visible();
+```
+
+### Gradient
+
+Added new gradient stops variable. See [SCSS Gradient Examples](/scss/gradient/examples) for more details.
+
+```diff
+- @include pds-gradient-to-bottom();
++ background: linear-gradient(to bottom, $gradient-stops-fade-dark);
+- @include pds-gradient-to-left();
++ background: linear-gradient(to left, $gradient-stops-fade-dark);
+- @include pds-gradient-to-right();
++ background: linear-gradient(to right, $gradient-stops-fade-dark);
+- @include pds-gradient-to-top();
++ background: linear-gradient(to top, $gradient-stops-fade-dark);
+```
+
+### Media Query
+
+Added new breakpoints values and media query mixins. See [SCSS Media Query Examples](/scss/media-query/examples) for
+more details.
+
+```diff
+- $pds-breakpoint-base
++ 0
+- $pds-breakpoint-xs
++ $breakpoint-xs
+- $pds-breakpoint-s
++ $breakpoint-sm
+- $pds-breakpoint-m
++ $breakpoint-md
+- $pds-breakpoint-l
++ $breakpoint-lg
+- $pds-breakpoint-xl
++ $breakpoint-xl
+- $pds-breakpoint-xxl
++ $breakpoint-2xl
+```
+
+```diff
+- @include pds-media-query-min('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl') { ... };
++ @include media-query-min('xs'|'sm'|'md'|'lg'|'xl'|'2xl') { ... };
+- @include pds-media-query-max('xs'|'s'|'m'|'l'|'xl'|'xxl') { ... };
++ @include media-query-max('xs'|'sm'|'md'|'lg'|'xl'|'2xl') { ... };
+- @include pds-media-query-min-max('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl') { ... };
++ @include media-query-min-max('xs'|'sm'|'md'|'lg'|'xl'|'2xl', 'xs'|'sm'|'md'|'lg'|'xl'|'2xl') { ... };
+```
+
+### Motion
+
+Added new motion variables. See [SCSS Motion Examples](/scss/motion/examples) for more details.
+
+```diff
+- transition-duration: $pds-motion-duration-short;
++ transition-duration: $duration-sm;
+- transition-duration: $pds-motion-duration-moderate;
++ transition-duration: $duration-md;
+- transition-duration: $pds-motion-duration-long;
++ transition-duration: $duration-lg;
+- transition-duration: $pds-motion-duration-very-long;
++ transition-duration: $duration-xl;
+- transition-timing-function: $pds-motion-easing-base;
++ transition-timing-function: $ease-in-out;
+- transition-timing-function: $pds-motion-easing-in;
++ transition-timing-function: $ease-in;
+- transition-timing-function: $pds-motion-easing-out;
++ transition-timing-function: $ease-out;
+```
+
+### Shadow
+
+Added new shadow variables. See [SCSS Shadow Examples](/scss/shadow/examples) for more details.
+
+```diff
+- @include pds-drop-shadow-high();
++ box-shadow: $shadow-lg;
+- @include pds-drop-shadow-medium();
++ box-shadow: $shadow-md;
+- @include pds-drop-shadow-low();
++ box-shadow: $shadow-sm;
+```
+
+### Spacing
+
+Added new spacing variables. See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
+
+```diff
+- $pds-spacing-fluid-x-small;
++ $spacing-fluid-xs;
+- $pds-spacing-fluid-small;
++ $spacing-fluid-sm;
+- $pds-spacing-fluid-medium;
++ $spacing-fluid-md;
+- $pds-spacing-fluid-large;
++ $spacing-fluid-lg;
+- $pds-spacing-fluid-x-large;
++ $spacing-fluid-xl;
+- $pds-spacing-fluid-xx-large;
++ $spacing-fluid-2xl;
+- $pds-spacing-static-x-small;
++ $spacing-static-xs;
+- $pds-spacing-static-small;
++ $spacing-static-sm;
+- $pds-spacing-static-medium;
++ $spacing-static-md;
+- $pds-spacing-static-large;
++ $spacing-static-lg;
+- $pds-spacing-static-x-large;
++ $spacing-static-xl;
+- $pds-spacing-static-xx-large;
++ $spacing-static-2xl;
+```
+
+### Typography
+
+Added new typography mixins. See [SCSS Typography Examples](/scss/typography/examples) for more details.
+
+```diff
+- @include pds-display-large;
++ @include prose-display-lg;
+- @include pds-display-medium;
++ @include prose-display-md;
+- @include pds-display-small;
++ @include prose-display-sm;
+- @include pds-heading-xx-large;
++ @include prose-heading-2xl;
+- @include pds-heading-x-large;
++ @include prose-heading-xl;
+- @include pds-heading-large;
++ @include prose-heading-lg;
+- @include pds-heading-medium;
++ @include prose-heading-md;
+- @include pds-heading-small;
++ @include prose-heading-sm;
+- @include pds-text-x-large;
++ @include prose-text-xl;
+- @include pds-text-large;
++ @include prose-text-lg;
+- @include pds-text-medium;
++ @include prose-text-md;
+- @include pds-text-small;
++ @include prose-text-sm;
+- @include pds-text-x-small;
++ @include prose-text-xs;
+- @include pds-text-xx-small;
++ @include prose-text-2xs;
+```

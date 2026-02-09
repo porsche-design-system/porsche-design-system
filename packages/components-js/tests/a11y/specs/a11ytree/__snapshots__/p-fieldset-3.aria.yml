@@ -1,8 +1,9 @@
 - group "Some label":
-  - radio "Some label"
-  - status
-  - status
-  - radio "Some label"
-  - status
-  - status
+  - radiogroup "Some Label":
+    - radio "Some Label"
+    - status
+    - radio "Some Label"
+    - status
+    - status
+    - status
   - status: Some success message
