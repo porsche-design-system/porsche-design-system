@@ -27,7 +27,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -252,7 +252,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -475,7 +475,7 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -581,7 +581,7 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -689,7 +689,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -721,7 +721,7 @@ textarea:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
   grid-area: 1/1;
   place-self: flex-end;
   margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
@@ -818,7 +818,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -850,7 +850,7 @@ textarea:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
   grid-area: 1/1;
   place-self: flex-end;
   margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
@@ -945,9 +945,9 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1051,9 +1051,9 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1085,7 +1085,7 @@ textarea:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
   grid-area: 1/1;
   place-self: flex-end;
   margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
@@ -1181,7 +1181,7 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -1286,7 +1286,7 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -1393,7 +1393,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1425,7 +1425,7 @@ textarea:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
   grid-area: 1/1;
   place-self: flex-end;
   margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
@@ -1521,7 +1521,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1553,7 +1553,7 @@ textarea:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
   grid-area: 1/1;
   place-self: flex-end;
   margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
@@ -1647,9 +1647,9 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1752,9 +1752,9 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1886,7 +1886,7 @@ textarea:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
   grid-area: 1/1;
   place-self: flex-end;
   margin-inline-end: calc(22.4px * (var(--p-internal-textarea-scaling) - 0.64285714) + 8px);
@@ -1983,7 +1983,7 @@ textarea {
   max-width: var(--p-textarea-max-width, unset);
   min-height: var(--p-textarea-min-height, calc(var(--p-internal-textarea-scaling) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);

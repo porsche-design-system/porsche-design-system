@@ -125,8 +125,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -288,8 +288,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -455,8 +455,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -623,8 +623,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -800,8 +800,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -972,8 +972,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -1144,8 +1144,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));

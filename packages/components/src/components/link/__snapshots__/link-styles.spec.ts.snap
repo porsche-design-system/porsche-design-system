@@ -493,7 +493,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -517,7 +517,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 "
@@ -563,7 +563,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -587,7 +587,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 "
