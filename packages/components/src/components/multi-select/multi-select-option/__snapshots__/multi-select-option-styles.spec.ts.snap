@@ -5,14 +5,14 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -46,14 +46,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -62,7 +62,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }"
 `;
@@ -72,14 +72,14 @@ exports[`getComponentCss() > should return correct css for isDisabled: false and
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -113,14 +113,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -128,11 +128,11 @@ slot {
   grid-area: 1/1;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
+  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }"
 `;
@@ -143,14 +143,14 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
   opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -184,14 +184,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
 }
@@ -201,7 +201,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }"
 `;
@@ -212,14 +212,14 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
   opacity: 0.4 !important;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -253,14 +253,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
   pointer-events: none;
 }
@@ -269,11 +269,11 @@ slot {
   grid-area: 1/1;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
+  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }"
 `;
