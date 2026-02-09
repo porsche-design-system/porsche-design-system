@@ -20,6 +20,10 @@ export const VanillaExtractColor = () => {
         <span>Frosted Soft</span>
       </div>
       <div className={colorSwatches}>
+        <div className={colorSwatchesItem.frostedStrong} />
+        <span>Frosted Strong</span>
+      </div>
+      <div className={colorSwatches}>
         <div className={colorSwatchesItem.backdrop} />
         <span>Backdrop</span>
       </div>
