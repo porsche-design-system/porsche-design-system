@@ -9,6 +9,7 @@ import {
 } from '../../styles';
 import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
@@ -20,7 +21,6 @@ import {
 } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -60,8 +60,8 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
-        '&:checked': getCheckboxCheckedBaseStyles(isLoading),
-        '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading),
+        '&:checked': getCheckboxCheckedBaseStyles(isLoading, state),
+        '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading, state),
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
           hoverMediaQuery({

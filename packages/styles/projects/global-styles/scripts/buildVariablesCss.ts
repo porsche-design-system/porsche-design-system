@@ -39,6 +39,8 @@ import {
   colorFrostedLight,
   colorFrostedSoft,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongLight,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedLight,
@@ -127,6 +129,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-color-surface: ${colorSurface};
   --p-color-frosted: ${colorFrosted};
   --p-color-frosted-soft: ${colorFrostedSoft};
+  --p-color-frosted-strong: ${colorFrostedStrong};
   --p-color-backdrop: ${colorBackdrop};
   --p-color-contrast-lower: ${colorContrastLower};
   --p-color-contrast-low: ${colorContrastLow};
@@ -226,6 +229,7 @@ export const buildVariablesCss = async (): Promise<void> => {
     --color-surface: ${colorSurfaceLight};
     --color-frosted: ${colorFrostedLight};
     --color-frosted-soft: ${colorFrostedSoftLight};
+    --color-frosted-strong: ${colorFrostedStrongLight};
     --color-backdrop: ${colorBackdropLight};
     --color-contrast-lower: ${colorContrastLowerLight};
     --color-contrast-low: ${colorContrastLowLight};
