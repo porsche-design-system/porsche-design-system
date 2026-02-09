@@ -4,6 +4,9 @@ applyTo: "**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx,md}"
 
 # Porsche Design System (PDS) – Accessibility Instructions
 
+> **Note**: See also [`AGENTS.md`](../../AGENTS.md) at the repository root for general project guidance.
+> Package-specific AGENTS.md files contain additional accessibility context.
+
 These instructions apply to **all frontend code** generated for this repository (Stencil components, wrappers, storefront, docs examples).
 
 ## Non‑negotiable requirements (WCAG 2.2 AA)

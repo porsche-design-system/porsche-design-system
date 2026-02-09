@@ -4,6 +4,9 @@ applyTo: "packages/storefront/**"
 
 # Storefront Package Instructions
 
+> **Note**: See also [`packages/storefront/AGENTS.md`](../../packages/storefront/AGENTS.md) for comprehensive storefront development guidance.
+> The AGENTS.md file is the canonical source for AI assistants.
+
 This package contains the **Next.js / React documentation site**. The storefront must demonstrate best-practice accessible usage of Porsche Design System components and comply with **WCAG 2.2 AA**.
 
 ## Primary reference inside this repo

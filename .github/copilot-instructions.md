@@ -1,5 +1,8 @@
 # Porsche Design System - General Copilot Instructions
 
+> **Note**: The canonical source for AI assistant instructions is [`AGENTS.md`](../AGENTS.md) at the repository root.
+> This file is maintained for GitHub Copilot compatibility. Both files should be kept in sync.
+
 ## Overview
 
 The Porsche Design System (PDS) is a **monorepo** providing design tokens, web components, and framework wrappers for building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
