@@ -37,18 +37,8 @@ export const colorEmotionStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-success-medium' },
-          children: ['color: colorSuccessMedium | colorSuccessMediumLight | colorSuccessMediumDark;'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-warning' },
           children: ['color: colorWarning | colorWarningLight | colorWarningDark;'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-warning-medium' },
-          children: ['color: colorWarningMedium | colorWarningMediumLight | colorWarningMediumDark;'],
         },
         {
           tag: 'li',
@@ -57,18 +47,8 @@ export const colorEmotionStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-error-medium' },
-          children: ['color: colorErrorMedium | colorErrorMediumLight | colorErrorMediumDark;'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-info' },
           children: ['color: colorInfo | colorInfoLight | colorInfoDark;'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-info-medium' },
-          children: ['color: colorInfoMedium | colorInfoMediumLight | colorInfoMediumDark;'],
         },
       ],
     },
@@ -133,6 +113,19 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
             'backgroundColor: colorFrostedSoft | colorFrostedSoftLight | colorFrostedSoftDark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'backgroundColor: colorFrostedStrong | colorFrostedStrongLight | colorFrostedStrongDark;',
           ],
         },
         {
