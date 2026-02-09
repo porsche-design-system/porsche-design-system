@@ -3,19 +3,7 @@
 @use 'motion';
 
 @mixin skeleton() {
-  background: color.$color-surface
-  linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 20%, transparent 50%)
-  0
-  0 /
-      200%
-  100%;
-
-  display: block;
-  border-radius: border.$radius-sm;
-
-  animation: skeletonAnimation motion.$duration-lg motion.$ease-in-out infinite;
-
-  @keyframes skeletonAnimation {
+  @keyframes skeleton {
     from {
       background-position-x: 100%;
     }
@@ -23,4 +11,9 @@
       background-position-x: -100%;
     }
   }
+
+  display: block;
+  border-radius: border.$radius-sm;
+  background: transparent linear-gradient(to right, color.$color-frosted 0%, color.$color-frosted-strong 50%, color.$color-frosted 100%) 0 0 / 200% 100%;
+  animation: skeleton motion.$duration-xl motion.$ease-in-out infinite;
 }

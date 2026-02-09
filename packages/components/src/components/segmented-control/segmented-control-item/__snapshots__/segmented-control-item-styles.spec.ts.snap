@@ -20,7 +20,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -69,7 +69,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -118,7 +118,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -171,7 +171,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -224,7 +224,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1));
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -322,7 +322,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -362,7 +362,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -406,7 +406,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) max(2px, 8px * var(--p-internal-segmented-control-scaling, 1));
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -451,7 +451,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -496,7 +496,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -537,7 +537,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -581,7 +581,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -621,7 +621,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -666,7 +666,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -707,7 +707,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;

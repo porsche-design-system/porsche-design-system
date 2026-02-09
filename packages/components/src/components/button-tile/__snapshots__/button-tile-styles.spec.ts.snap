@@ -4,6 +4,7 @@ exports[`getComponentCss() > should return correct css for isDisabledOrLoading: 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -119,6 +120,7 @@ exports[`getComponentCss() > should return correct css for isDisabledOrLoading: 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -225,6 +227,7 @@ exports[`getComponentCss() > should return correct css for isDisabledOrLoading: 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -331,6 +334,7 @@ exports[`getComponentCss() > should return correct css for isDisabledOrLoading: 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -566,6 +570,7 @@ exports[`getComponentCss() > should return correct css for isDisabledOrLoading: 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -681,6 +686,7 @@ exports[`getComponentCss() > should return correct css for isDisabledOrLoading: 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {

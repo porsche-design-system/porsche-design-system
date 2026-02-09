@@ -60,8 +60,6 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - name: 'Shared Styles Unit'
-        run: yarn test:unit:styles:shared-styles
       - name: 'Global Styles Unit'
         run: yarn test:unit:styles:global-styles
       - name: 'Tailwind CSS Unit'

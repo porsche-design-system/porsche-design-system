@@ -1,1 +1,1 @@
-export const colorWarningFrostedSoft = 'var(--p-color-warning-soft)' as const;
+export const colorWarningFrostedSoft = 'var(--p-color-warning-frosted-soft)' as const;

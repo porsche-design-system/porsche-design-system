@@ -4,6 +4,7 @@ exports[`getComponentCss() > should return correct css for aspectRatio: "1/1", s
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -118,6 +119,7 @@ exports[`getComponentCss() > should return correct css for aspectRatio: "3/4", s
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -232,6 +234,7 @@ exports[`getComponentCss() > should return correct css for aspectRatio: "4/3", s
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -346,6 +349,7 @@ exports[`getComponentCss() > should return correct css for aspectRatio: "9/16", 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -451,6 +455,7 @@ exports[`getComponentCss() > should return correct css for aspectRatio: "16/9", 
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -556,6 +561,7 @@ exports[`getComponentCss() > should return correct css for aspectRatio: {"base":
 ":host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {

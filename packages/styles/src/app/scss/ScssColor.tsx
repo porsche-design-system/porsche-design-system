@@ -18,6 +18,10 @@ export const ScssColor = () => {
         <span>Frosted Soft</span>
       </div>
       <div className="scss-color__swatches">
+        <div className="scss-bg-frosted-strong scss-color__swatches-item"></div>
+        <span>Frosted Strong</span>
+      </div>
+      <div className="scss-color__swatches">
         <div className="scss-bg-backdrop scss-color__swatches-item"></div>
         <span>Backdrop</span>
       </div>

@@ -6,7 +6,6 @@ import {
   colorContrastLow,
   colorContrastLower,
   colorContrastMedium,
-  colorDisabled,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedSoft,
@@ -15,6 +14,7 @@ import {
   colorFocus,
   colorFrosted,
   colorFrostedSoft,
+  colorFrostedStrong,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedSoft,
@@ -37,11 +37,11 @@ import { createTheme } from '@vanilla-extract/css';
 
 export const [vanillaExtractTheme, vars] = createTheme({
   focus: colorFocus,
-  disabled: colorDisabled,
   canvas: colorCanvas,
   surface: colorSurface,
   frosted: colorFrosted,
   frostedSoft: colorFrostedSoft,
+  frostedStrong: colorFrostedStrong,
   backdrop: colorBackdrop,
   contrastLower: colorContrastLower,
   contrastLow: colorContrastLow,

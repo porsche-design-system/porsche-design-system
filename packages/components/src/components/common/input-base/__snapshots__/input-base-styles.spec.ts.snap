@@ -36,7 +36,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -153,7 +153,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -272,7 +272,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -388,7 +388,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -504,7 +504,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -618,9 +618,9 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -735,9 +735,9 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -853,7 +853,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -969,7 +969,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
@@ -1087,7 +1087,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1202,7 +1202,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1316,7 +1316,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-frosted);
   color: var(--p-color-contrast-medium);
@@ -1427,7 +1427,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-success-low);
+  border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
   background: var(--p-color-frosted);
   color: var(--p-color-contrast-medium);
@@ -1540,7 +1540,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1777,7 +1777,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2008,7 +2008,7 @@ input {
   height: calc(var(--p-internal-input-base-scaling) * 3.5rem);
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
-  border: 1px solid var(--p-color-error-low);
+  border: 1px solid var(--p-color-error);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
