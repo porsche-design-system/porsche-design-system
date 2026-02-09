@@ -26,8 +26,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 - `Angular`: Bumped peer dependency to support Angular new major version 21
   ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
-- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
-  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+- `AG Grid`:
+  - Bumped peer dependency to support AG Grid new major version 35
+    ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+  - Refreshed visuals to reflect new color tokens
 - `Tailwind CSS`:
   - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
     `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
@@ -79,7 +81,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
     `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
 - Emotion, Vanilla-Extract:
-  - Breakpoint: `breakpointXs`, `breakpointSm`, `breakpointMd`, `breakpointLg`, `breakpointXl` and `breakpoint2xl`
   - Blur: `blurFrosted`
   - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
     `radiusFull`
@@ -106,9 +107,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `colorErrorFrostedSoftDark`, `colorFocus`, `colorFocusLight` and `colorFocusDark`
   - Focus: `getFocusVisibleStyle()`
   - Gradient: `gradientStopsFadeDark`,
-  - Skeleton: `auto` as value for theme in `getSkeletonStyle()`
-  - Media Query: `xs`, `sm`, `md`, `lg`, `xl` and `2xl` as breakpoint values for `mediaQueryMin()`, `mediaQueryMax()`
-    and `mediaQueryMinMax()`
   - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
   - Shadow: `shadowSm`, `shadowMd` and `shadowLg`
   - Spacing: `spacingFluidXs`, `spacingFluidSm`, `spacingFluidMd`, `spacingFluidLg`, `spacingFluidXl`,
@@ -151,6 +149,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed
 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
+
+```diff
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
+```
+
+- Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```diff
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
+- Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
+  `light-dark()` CSS color function)
+
+```diff
+const skeletonAnimation = keyframes(skeletonKeyframes);
+- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
++ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
+```
 
 ## [4.0.0-alpha.0] - 2025-12-12
 

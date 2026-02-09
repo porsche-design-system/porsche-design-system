@@ -1,5 +1,6 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
-import { addImportantToEachRule, colors, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
+import { colorContrastHigh, colorContrastLow, colorContrastMedium, colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import {
   getSvgUrl,
@@ -12,13 +13,11 @@ const cssVariableWidth = '--p-model-signature-width';
 const cssVariableHeight = '--p-model-signature-height';
 const cssVariableColor = '--p-model-signature-color';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
-
 const colorMap: Record<ModelSignatureColor, string> = {
-  primary: primaryColor,
-  'contrast-low': contrastLowColor,
-  'contrast-medium': contrastMediumColor,
-  'contrast-high': contrastHighColor,
+  primary: colorPrimary,
+  'contrast-low': colorContrastLow,
+  'contrast-medium': colorContrastMedium,
+  'contrast-high': colorContrastHigh,
   inherit: 'inherit',
 };
 

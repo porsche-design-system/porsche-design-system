@@ -1,13 +1,4 @@
-import * as stencilCore from '@stencil/core';
-import { vi } from 'vitest';
-import type { Theme } from '../../../types';
-import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
-import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
-import {
-  getIndexOfStepWithStateCurrent,
-  syncStepperHorizontalItemsProps,
-  throwIfMultipleCurrentStates,
-} from './stepper-horizontal-utils';
+import { getIndexOfStepWithStateCurrent, throwIfMultipleCurrentStates } from './stepper-horizontal-utils';
 
 describe('getIndexOfStepWithStateCurrent()', () => {
   it('should return correct index', () => {
@@ -47,38 +38,5 @@ describe('throwIfMultipleCurrentStates()', () => {
     stepperHorizontal.appendChild(item2);
 
     expect(() => throwIfMultipleCurrentStates(stepperHorizontal, [item1, item2])).not.toThrow();
-  });
-});
-
-describe('syncStepperHorizontalItemsProps()', () => {
-  const host = document.createElement('p-stepper-horizontal');
-  const child1: HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps = document.createElement(
-    'div'
-  ) as any;
-  const child2: HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps = document.createElement(
-    'div'
-  ) as any;
-  host.append(child1, child2);
-
-  const theme: Theme = 'light';
-
-  it('should set selected, backgroundColor and theme property on every item', () => {
-    expect(child1.theme).toBeUndefined();
-    expect(child2.theme).toBeUndefined();
-
-    syncStepperHorizontalItemsProps(host, theme);
-
-    expect(child1.theme).toBe(theme);
-    expect(child2.theme).toBe(theme);
-  });
-
-  it('should call forceUpdate() on every item', () => {
-    const spy = vi.spyOn(stencilCore, 'forceUpdate');
-
-    syncStepperHorizontalItemsProps(host, theme);
-
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
-    expect(spy.mock.calls[1][0]).toEqual(child2);
   });
 });

@@ -55,11 +55,17 @@
   <p-icon color="inherit" style="color: deeppink"></p-icon>
 </div>
 
-<div class="playground" title="should render with custom icon">
+<div class="playground" title="should render with custom icon (URL)">
   <p-icon
     source="http://localhost:3002/icon-custom-kaixin.svg"
     aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"
     class="a11ytree-snapshot-test"
+  ></p-icon>
+</div>
+
+<div class="playground" title="should render with custom icon (data URI)">
+  <p-icon
+    source="data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><circle cx=%2750%27 cy=%2750%27 r=%2740%27 fill=%27black%27/></svg>"
   ></p-icon>
 </div>
 

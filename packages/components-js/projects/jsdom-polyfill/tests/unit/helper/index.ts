@@ -41,30 +41,20 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <span slot="description">Some banner description.</span>
   </p-banner>`,
   'p-button': '<p-button>Some label</p-button>',
-  'p-button-group': '<p-button-group></p-button-group>',
   'p-button-pure': '<p-button-pure>Some label</p-button-pure>',
   'p-button-tile': `<p-button-tile label="Some label" description="Some description" aspectRatio="4:3">
     <img src="">
    </p-button-tile>`,
-  'p-carousel': `<p-carousel heading="Some heading">
+  'p-carousel': `<p-carousel rewind="true" heading="Some heading">
     <div>1</div>
     <div>2</div>
     <div>3</div>
   </p-carousel>`,
   'p-checkbox': `<p-checkbox label="Some label"></p-checkbox>`,
-  'p-checkbox-wrapper': `<p-checkbox-wrapper label="Some label">
-    <input type="checkbox" />
-</p-checkbox-wrapper>`,
-  'p-content-wrapper': '<p-content-wrapper></p-content-wrapper>',
   'p-crest': '<p-crest></p-crest>',
   'p-display': '<p-display>Some text</p-display>',
   'p-divider': '<p-divider></p-divider>',
   'p-fieldset': '<p-fieldset></p-fieldset>',
-  'p-fieldset-wrapper': '<p-fieldset-wrapper></p-fieldset-wrapper>',
-  'p-flex': `<p-flex>
-    <p-flex-item></p-flex-item>
-    <p-flex-item></p-flex-item>
-  </p-flex>`,
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
@@ -79,12 +69,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   //     <p-drilldown-link href="#some-anchor-3">Some anchor</p-drilldown-link>
   //   </p-drilldown-item>
   // </p-drilldown>`,
-  'p-grid': `<p-grid>
-    <p-grid-item size="6"></p-grid-item>
-    <p-grid-item size="6"></p-grid-item>
-  </p-grid>`,
   'p-heading': '<p-heading>Some text</p-heading>',
-  'p-headline': '<p-headline>Some text</p-headline>',
   'p-icon': '<p-icon></p-icon>',
   'p-flag': '<p-flag></p-flag>',
   'p-inline-notification': `<p-inline-notification heading="Some banner title" action-label="Retry">
@@ -103,15 +88,9 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-input-search': `<p-input-search name="some-name" label="Some label"></p-input-search>`,
   'p-link': `<p-link href="#">Some label</p-link>`,
   'p-link-pure': `<p-link-pure href="#">Some label</p-link-pure>`,
-  'p-link-social': `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`,
   'p-link-tile': `<p-link-tile href="#" label="Some label" description="Some description" aspectRatio="4:3">
     <img src="">
   </p-link-tile>`,
-  'p-link-tile-model-signature': `<p-link-tile-model-signature heading="Some label" description="Some description" aspectRatio="4:3">
-    <img src="">
-    <p-link slot="primary" href="#">Some link</p-link>
-    <p-link slot="secondary" href="#">Some link</p-link>
-  </p-link-tile-model-signature>`,
   'p-link-tile-product': `<p-link-tile-product
           heading="Some product"
           price="Some price"
@@ -119,7 +98,6 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
         >
     <img src="" />
   </p-link-tile-product>`,
-  'p-marque': '<p-marque></p-marque>',
   'p-modal': `<p-modal open="true"><h2 slot="header">Some Heading</h2></p-modal>`,
   'p-model-signature': '<p-model-signature></p-model-signature>',
   'p-multi-select': `<p-multi-select name="name">
@@ -130,9 +108,6 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-pagination': `<p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>`,
   'p-pin-code': `<p-pin-code label="Some label"></p-pin-code>`,
   'p-popover': '<p-popover>Some Popover Content</p-popover>',
-  'p-radio-button-wrapper': `<p-radio-button-wrapper label="Some label">
-  <input type="radio" />
-</p-radio-button-wrapper>`,
   'p-scroller': `<p-scroller>
     <button>Some Button</button>
     <button>Some Button</button>
@@ -151,13 +126,6 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-select>`,
-  'p-select-wrapper': `<p-select-wrapper label="Some label" >
-    <select >
-      <option value="a">Option A</option>
-      <option value="b">Option B</option>
-      <option value="c">Option C</option>
-    </select>
-  </p-select-wrapper>`,
   'p-spinner': '<p-spinner></p-spinner>',
   'p-stepper-horizontal': `<p-stepper-horizontal>
     <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
@@ -192,16 +160,10 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-tag': '<p-tag>Some label</p-tag>',
   'p-tag-dismissible': '<p-tag-dismissible>Some label</p-tag-dismissible>',
   'p-text': '<p-text>Some text</p-text>',
-  'p-text-field-wrapper': `<p-text-field-wrapper label="Some label">
-    <input type="text" />
-  </p-text-field-wrapper>`,
   'p-text-list': `<p-text-list>
     <p-text-list-item>Some text</p-text-list-item>
   </p-text-list>`,
   'p-textarea': `<p-textarea name="some-name" label="Some label"></p-textarea>`,
-  'p-textarea-wrapper': `<p-textarea-wrapper label="Some label">
-    <textarea />
-  </p-textarea-wrapper>`,
   'p-toast': '<p-toast></p-toast>',
   'p-wordmark': '<p-wordmark></p-wordmark>',
 };

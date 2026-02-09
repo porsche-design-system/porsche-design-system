@@ -1,13 +1,3 @@
-export { fontPorscheNext } from './fontPorscheNext';
-export { legacyRadiusLarge } from './legacy-radius-large';
-export { legacyRadiusMedium } from './legacy-radius-medium';
-export { legacyRadiusSmall } from './legacy-radius-small';
-export { radius2Xl } from './radius-2xl';
-export { radius3Xl } from './radius-3xl';
-export { radius4Xl } from './radius-4xl';
-export { radiusFull } from './radius-full';
-export { radiusLg } from './radius-lg';
-export { radiusMd } from './radius-md';
-export { radiusSm } from './radius-sm';
-export { radiusXl } from './radius-xl';
-export { radiusXs } from './radius-xs';
+export * from './border';
+export * from './color';
+export * from './font';

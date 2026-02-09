@@ -20,4 +20,4 @@ exports[`getBreakpointCustomizableStructure() > should return formatted string f
 
 exports[`getShapeStructure() > should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: oneOf }"`;
 
-exports[`printErrorMessage() > should call consoleError() util with correct parameter 1`] = `"Invalid property 'href' with value 'a' supplied to p-link, expected one of: string"`;
+exports[`printErrorMessage() > should call consoleError() util with correct parameter 1`] = `"Invalid property 'href' with value 'a' supplied to p-link, expected one of: string."`;

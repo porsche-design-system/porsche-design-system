@@ -3,15 +3,15 @@
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: table-row;
-  border-bottom: var(--p-internal-table-border-width,1px) solid var(--p-internal-table-border-color) !important;
-  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  border-bottom: var(--_d,1px) solid var(--_c) !important;
+  transition: background var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 @media(hover:hover) {
   :host(:hover) {
-    background: var(--p-internal-table-hover-color) !important;
+    background: var(--_b) !important;
   }
 }
 "

@@ -11,6 +11,9 @@ exports[`getComponentCss() > should return correct css 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot {
+  display: inline;
+}
 ::slotted(*) {
   --p-internal-text-list-unordered-grid-column: .625rem !important;
   --p-internal-text-list-unordered-pseudo-content: "–" !important;

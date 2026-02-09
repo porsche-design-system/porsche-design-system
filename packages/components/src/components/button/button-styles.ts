@@ -1,13 +1,12 @@
 import { fontLineHeight } from '@porsche-design-system/emotion';
-import { colors, getTransition } from '../../styles';
+import { getTransition } from '../../styles';
+import { colorContrastLow, colorFrostedSoft } from '../../styles/css-variables';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName } from '../../types';
 import { getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
-
-const { frostedSoftColor, contrastLowColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -40,9 +39,9 @@ export const getComponentCss = (
         root: {
           ...(disabledOrLoading && {
             cursor: 'not-allowed',
-            backgroundColor: frostedSoftColor,
-            borderColor: frostedSoftColor,
-            color: contrastLowColor,
+            backgroundColor: colorFrostedSoft,
+            borderColor: colorFrostedSoft,
+            color: colorContrastLow,
           }),
         },
         ...(isLoading && {

@@ -1,12 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, disabled: false, loading: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, disabled: true and loading: false 1`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14,311 +13,51 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
+@media(min-width:480px) {
 }
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover {
-    background-color: hsl(240 4% 70%/35%);
-    border-color: hsl(240 4% 70%/35%);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+
+@media(min-width:760px) {
+  :host {
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
   }
 }
-"
-`;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, disabled: false, loading: false and theme: false 2`] = `
-":host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+@media(min-width:1000px) {
 }
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 3% 26%/35%);
-  color: #FBFCFF;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover {
-    background-color: hsl(240 3% 41%/35%);
-    border-color: hsl(240 3% 41%/35%);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+
+@media(min-width:1300px) {
+  :host {
+    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
   }
 }
-"
-`;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: ghost, hideLabel: false, disabled: false, loading: false and theme: true 1`] = `
-":host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+@media(min-width:1760px) {
 }
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
+
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 3% 26%/35%);
-  color: #FBFCFF;
-  --p-internal-scaling-factor: calc(4 / 13);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
-}
-.root:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(hover:hover) {
-  .root:hover {
-    background-color: hsl(240 3% 41%/35%);
-    border-color: hsl(240 3% 41%/35%);
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, disabled: true, loading: false and theme: false 1`] = `
-":host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #7E7F82;
-  color: #AFB0B3;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px );
-  gap: 0;
+  background-color: var(--p-color-frosted-soft);
+  color: var(--p-color-contrast-low);
   cursor: not-allowed;
-  border-color: #7E7F82;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px);
+  gap: 0;
+  border-color: var(--p-color-frosted-soft);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -330,13 +69,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -350,8 +89,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(min-width:480px) {
   .root {
-    padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-    gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+    padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+    gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
   }
   .label {
     position: static;
@@ -364,13 +103,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     white-space: normal;
   }
   .icon {
-    margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
+    margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
   }
 }
 
 @media(min-width:760px) {
   .root {
-    padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px );
+    padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px);
     gap: 0;
   }
   .label {
@@ -390,8 +129,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1000px) {
   .root {
-    padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-    gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+    padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+    gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
   }
   .label {
     position: static;
@@ -404,13 +143,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     white-space: normal;
   }
   .icon {
-    margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
+    margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
   }
 }
 
 @media(min-width:1300px) {
   .root {
-    padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px );
+    padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px);
     gap: 0;
   }
   .label {
@@ -430,8 +169,8 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 
 @media(min-width:1760px) {
   .root {
-    padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-    gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+    padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+    gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
   }
   .label {
     position: static;
@@ -444,19 +183,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     white-space: normal;
   }
   .icon {
-    margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
+    margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: false 1`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -465,39 +203,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #010205;
-  color: #FBFCFF;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -509,14 +236,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  filter: invert(1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -530,20 +256,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: #535457;
-    border-color: #535457;
+    background-color: var(--p-color-contrast-high);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: false 2`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: false 2`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -552,39 +276,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #FBFCFF;
-  color: #010205;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -596,14 +309,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  filter: invert(1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -617,20 +329,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: #AFB0B3;
-    border-color: #AFB0B3;
+    background-color: var(--p-color-contrast-high);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: false 3`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: false 3`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -639,39 +349,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #010205;
-  color: #FBFCFF;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -683,14 +382,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  filter: invert(1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -704,20 +402,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: #535457;
-    border-color: #535457;
+    background-color: var(--p-color-contrast-high);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: false and theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: false 4`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -726,39 +422,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #010205;
-  color: #FBFCFF;
-  --p-internal-scaling-factor: calc(4 / 13);
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -770,14 +455,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  filter: invert(1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -791,20 +475,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: #535457;
-    border-color: #535457;
+    background-color: var(--p-color-contrast-high);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false, loading: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: false 5`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -813,40 +495,175 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #535457;
-  color: #535457;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
+}
+.root:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: false 6`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+  --p-internal-button-scaling: 0.64285714;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: min-content;
+  box-sizing: border-box;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  border-radius: inherit;
+  transform: translate3d(0,0,0);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
+}
+.root:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: false and loading: true 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: min-content;
+  box-sizing: border-box;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  border-radius: inherit;
+  transform: translate3d(0,0,0);
+  background-color: var(--p-color-frosted-soft);
+  color: var(--p-color-contrast-low);
   cursor: not-allowed;
-  border-color: #535457;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
+  border-color: var(--p-color-frosted-soft);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -858,15 +675,14 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 0;
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  filter: invert(1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 0;
 }
 .spinner {
@@ -877,7 +693,6 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: invert(1);
 }
 .loading {
   position: absolute;
@@ -891,13 +706,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: true, loading: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, disabled: true and loading: false 1`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -906,40 +720,29 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #949598;
-  color: #535457;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-frosted-soft);
+  color: var(--p-color-contrast-low);
   cursor: not-allowed;
-  border-color: #949598;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
+  border-color: var(--p-color-frosted-soft);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -951,13 +754,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -971,13 +774,12 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, loading: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false and loading: false 1`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -986,39 +788,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: transparent;
-  color: #010205;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-frosted);
+  color: var(--p-color-primary);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -1030,13 +821,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -1050,22 +841,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: rgba(148, 149, 152, .18);
-    border-color: #6B6D70;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-soft);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false, loading: false and theme: false 2`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false and loading: false 2`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1074,39 +861,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: transparent;
-  color: #FBFCFF;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-frosted);
+  color: var(--p-color-primary);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -1118,13 +894,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -1138,22 +914,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: rgba(148, 149, 152, .18);
-    border-color: #88898C;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-soft);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, loading: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false and loading: false 3`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1162,39 +934,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: transparent;
-  color: #010205;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-frosted);
+  color: var(--p-color-primary);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -1206,13 +967,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -1226,22 +987,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: rgba(148, 149, 152, .18);
-    border-color: #6B6D70;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-soft);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: tertiary, hideLabel: false, disabled: false, loading: false and theme: false 2`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false and loading: false 4`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1250,39 +1007,28 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: transparent;
-  color: #FBFCFF;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-frosted);
+  color: var(--p-color-primary);
   cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -1294,13 +1040,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .loading {
   position: absolute;
@@ -1314,22 +1060,18 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: rgba(148, 149, 152, .18);
-    border-color: #88898C;
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
+    background-color: var(--p-color-frosted-soft);
   }
 }
 "
 `;
 
-exports[`getComponentCss() > should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, disabled: true, loading: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, disabled: false and loading: false 5`] = `
 ":host {
   display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
+  vertical-align: top;
+  --p-internal-button-scaling: 0.64285714;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1338,40 +1080,102 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   visibility: hidden;
 }
 .root {
+  all: unset;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-width: min-content;
   box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
-  border: 2px solid #010205;
-  border-radius: 4px;
+  border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: #535457;
-  color: #535457;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
+  background-color: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
+}
+.root:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: calc(-1 * (11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px));
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: var(--p-color-frosted-soft);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, disabled: true and loading: true 1`] = `
+":host {
+  display: inline-block;
+  vertical-align: top;
+  --p-internal-button-scaling: 1;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: min-content;
+  box-sizing: border-box;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  border-radius: inherit;
+  transform: translate3d(0,0,0);
+  background-color: var(--p-color-frosted-soft);
+  color: var(--p-color-contrast-low);
   cursor: not-allowed;
-  border-color: #535457;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.root:focus {
-  outline: 0;
+  transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  padding: calc(28px * (var(--p-internal-button-scaling) - 0.64285714) + 6px) calc(33.6px * (var(--p-internal-button-scaling) - 0.64285714) + 16px);
+  gap: calc(11.2px * (var(--p-internal-button-scaling) - 0.64285714) + 4px);
+  border-color: var(--p-color-frosted-soft);
 }
 .root:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .label {
@@ -1383,7 +1187,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   overflow: visible;
   clip: auto;
   white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 0;
 }
 .spinner {
@@ -1394,10 +1198,9 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: invert(1);
 }
 .icon {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   opacity: 0;
 }
 .loading {

@@ -5,7 +5,6 @@ import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  colors,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -14,7 +13,17 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl } from './css-variables';
+import {
+  colorCanvas,
+  colorContrastHigh,
+  colorFrosted,
+  colorFrostedSoft,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+  radiusXl,
+} from './css-variables';
 
 type Colors = {
   textColor: string;
@@ -22,21 +31,19 @@ type Colors = {
   backgroundColorHover: string;
 };
 
-const { primaryColor, canvasColor, contrastHighColor, frostedColor, frostedSoftColor } = colors;
-
 const getVariantColors = (variant: LinkButtonVariant): Colors => {
   const colors: {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: canvasColor,
-      backgroundColor: primaryColor,
-      backgroundColorHover: contrastHighColor,
+      textColor: colorCanvas,
+      backgroundColor: colorPrimary,
+      backgroundColorHover: colorContrastHigh,
     },
     secondary: {
-      textColor: primaryColor,
-      backgroundColor: frostedColor,
-      backgroundColorHover: frostedSoftColor,
+      textColor: colorPrimary,
+      backgroundColor: colorFrosted,
+      backgroundColorHover: colorFrostedSoft,
     },
   };
 

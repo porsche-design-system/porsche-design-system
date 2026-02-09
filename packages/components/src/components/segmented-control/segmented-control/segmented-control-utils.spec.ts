@@ -1,6 +1,5 @@
 import * as stencilCore from '@stencil/core';
 import { vi } from 'vitest';
-import type { Theme } from '../../../types';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 import { getItemWidths, syncSegmentedControlItemsProps, tempDiv, tempIcon, tempLabel } from './segmented-control-utils';
@@ -127,31 +126,26 @@ describe('syncSegmentedControlItemsProps()', () => {
   const state = 'none';
   const message = 'Some message';
   const compact = true;
-  const theme: Theme = 'light';
 
-  it('should set selected and theme property on every item', () => {
+  it('should set selected property on every item', () => {
     child1.value = 'a';
     child2.value = 'b';
 
     expect(child1.selected).toBeUndefined();
-    expect(child1.theme).toBeUndefined();
     expect(child1.state).toBeUndefined();
     expect(child1.message).toBeUndefined();
 
     expect(child2.selected).toBeUndefined();
-    expect(child2.theme).toBeUndefined();
     expect(child2.state).toBeUndefined();
     expect(child2.message).toBeUndefined();
 
-    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact);
 
     expect(child1.selected).toBe(true);
-    expect(child1.theme).toBe(theme);
     expect(child1.state).toBe('none');
     expect(child1.message).toBe('Some message');
 
     expect(child2.selected).toBe(false);
-    expect(child2.theme).toBe(theme);
     expect(child2.state).toBe('none');
     expect(child2.message).toBe('Some message');
   });
@@ -159,7 +153,7 @@ describe('syncSegmentedControlItemsProps()', () => {
   it('should call forceUpdate() on every item', () => {
     const spy = vi.spyOn(stencilCore, 'forceUpdate');
 
-    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, state, message, compact);
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work

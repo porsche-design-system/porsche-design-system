@@ -12,7 +12,7 @@ import type * as fromMotionType from '@porsche-design-system/emotion/dist/esm/mo
 import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import { alphaDisabled } from './alpha-disabled';
-import { colors } from './colors';
+import { colorFocus } from './css-variables';
 import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
@@ -89,11 +89,9 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
   );
 };
 
-const { focusColor } = colors;
-
 export const getFocusBaseStyles = () => {
   return {
-    outline: `${borderWidthBase} solid ${focusColor}`,
+    outline: `${borderWidthBase} solid ${colorFocus}`,
     outlineOffset: '2px',
     ...forcedColorsMediaQuery({
       outlineColor: 'Highlight',

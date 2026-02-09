@@ -5,7 +5,7 @@ import {
   spacingFluidSm,
   spacingStaticMd,
 } from '@porsche-design-system/vanilla-extract';
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 import { vars } from './theme.css.ts';
 
 const skeletonAnimation = keyframes(skeletonKeyframes);
@@ -18,17 +18,7 @@ export const vanillaExtractSkeletonWrapper = style({
   color: vars.primary,
 });
 
-export const vanillaExtractSkeletonItem = styleVariants({
-  light: {
-    padding: spacingFluidSm,
-    ...getSkeletonStyle(skeletonAnimation, { theme: 'light' }),
-  },
-  dark: {
-    padding: spacingFluidSm,
-    ...getSkeletonStyle(skeletonAnimation, { theme: 'dark' }),
-  },
-  auto: {
-    padding: spacingFluidSm,
-    ...getSkeletonStyle(skeletonAnimation, { theme: 'auto' }),
-  },
+export const vanillaExtractSkeletonItem = style({
+  padding: spacingFluidSm,
+  ...getSkeletonStyle(skeletonAnimation),
 });

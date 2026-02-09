@@ -28,9 +28,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
             )
           ) || [];
 
-        if (prop === 'theme') {
-          expect(type).toBe('Theme');
-        } else if (
+        if (
           type === 'string' ||
           type === 'string[]' ||
           type === 'boolean' ||

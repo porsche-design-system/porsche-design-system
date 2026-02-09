@@ -59,7 +59,7 @@ export const getComponentCss = (
         [`${cssVarInternalRadioGroupOptionScaling}`]: isCompact ? 0.64285714 : 1,
       },
       '::slotted(*)': {
-        ...(isLoading && getDisabledBaseStyles()),
+        ...(isLoading && addImportantToEachRule(getDisabledBaseStyles())),
       },
       ...preventFoucOfNestedElementsStyles,
     },

@@ -30,21 +30,21 @@ export const VanillaExtractMediaQueryMin = style({
         },
       },
     },
-    [getMediaQueryMin('sm')]: {
+    [getMediaQueryMin('s')]: {
       selectors: {
         '&::after': {
           content: '" sm"',
         },
       },
     },
-    [getMediaQueryMin('md')]: {
+    [getMediaQueryMin('m')]: {
       selectors: {
         '&::after': {
           content: '" md"',
         },
       },
     },
-    [getMediaQueryMin('lg')]: {
+    [getMediaQueryMin('l')]: {
       selectors: {
         '&::after': {
           content: '" lg"',
@@ -58,7 +58,7 @@ export const VanillaExtractMediaQueryMin = style({
         },
       },
     },
-    [getMediaQueryMin('2xl')]: {
+    [getMediaQueryMin('xxl')]: {
       selectors: {
         '&::after': {
           content: '" 2xl"',
@@ -71,7 +71,7 @@ export const VanillaExtractMediaQueryMin = style({
 export const VanillaExtractMediaQueryMax = style({
   ...getTypographyStyle,
   '@media': {
-    [getMediaQueryMax('2xl')]: {
+    [getMediaQueryMax('xxl')]: {
       selectors: {
         '&::after': {
           content: '" 2xl"',
@@ -85,21 +85,21 @@ export const VanillaExtractMediaQueryMax = style({
         },
       },
     },
-    [getMediaQueryMax('lg')]: {
+    [getMediaQueryMax('l')]: {
       selectors: {
         '&::after': {
           content: '" lg"',
         },
       },
     },
-    [getMediaQueryMax('md')]: {
+    [getMediaQueryMax('m')]: {
       selectors: {
         '&::after': {
           content: '" md"',
         },
       },
     },
-    [getMediaQueryMax('sm')]: {
+    [getMediaQueryMax('s')]: {
       selectors: {
         '&::after': {
           content: '" sm"',
@@ -119,35 +119,35 @@ export const VanillaExtractMediaQueryMax = style({
 export const VanillaExtractMediaQueryMinMax = style({
   ...getTypographyStyle,
   '@media': {
-    [getMediaQueryMinMax('xs', 'sm')]: {
+    [getMediaQueryMinMax('xs', 's')]: {
       selectors: {
         '&::after': {
           content: '" xs - sm"',
         },
       },
     },
-    [getMediaQueryMinMax('sm', 'md')]: {
+    [getMediaQueryMinMax('s', 'm')]: {
       selectors: {
         '&::after': {
           content: '" sm - md"',
         },
       },
     },
-    [getMediaQueryMinMax('md', 'lg')]: {
+    [getMediaQueryMinMax('m', 'l')]: {
       selectors: {
         '&::after': {
           content: '" md - lg"',
         },
       },
     },
-    [getMediaQueryMinMax('lg', 'xl')]: {
+    [getMediaQueryMinMax('l', 'xl')]: {
       selectors: {
         '&::after': {
           content: '" lg - xl"',
         },
       },
     },
-    [getMediaQueryMinMax('xl', '2xl')]: {
+    [getMediaQueryMinMax('xl', 'xxl')]: {
       selectors: {
         '&::after': {
           content: '" xl - 2xl"',

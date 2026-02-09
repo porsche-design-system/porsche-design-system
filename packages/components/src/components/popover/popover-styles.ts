@@ -11,7 +11,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colors,
   cssVariableAnimationDuration,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
@@ -21,7 +20,15 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusFull, radiusLg } from '../../styles/css-variables';
+import {
+  colorCanvas,
+  colorFrosted,
+  colorFrostedSoft,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusFull,
+  radiusLg,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
@@ -31,8 +38,6 @@ import { POPOVER_SAFE_ZONE } from './popover-utils';
  */
 
 export const getComponentCss = (): string => {
-  const { frostedSoftColor, frostedColor, canvasColor, primaryColor } = colors;
-
   const shadowColor = 'rgba(0,0,0,0.3)';
 
   return getCss({
@@ -69,12 +74,12 @@ export const getComponentCss = (): string => {
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: radiusFull,
         cursor: 'pointer',
-        backgroundColor: frostedColor,
+        backgroundColor: colorFrosted,
         transition: getTransition('background-color'),
         ...frostedGlassStyle,
         ...hoverMediaQuery({
           '&:hover': {
-            backgroundColor: frostedSoftColor,
+            backgroundColor: colorFrostedSoft,
           },
         }),
         '&:focus-visible': getFocusBaseStyles(),
@@ -100,7 +105,7 @@ export const getComponentCss = (): string => {
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      background: canvasColor,
+      background: colorCanvas,
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
       }),
@@ -113,8 +118,8 @@ export const getComponentCss = (): string => {
       pointerEvents: 'auto',
       borderRadius: `var(${legacyRadiusSmall}, ${radiusLg})`,
       ...textSmallStyle,
-      background: canvasColor,
-      color: primaryColor,
+      background: colorCanvas,
+      color: colorPrimary,
       ...forcedColorsMediaQuery({
         outline: '2px solid CanvasText',
         outlineOffset: '-2px',
