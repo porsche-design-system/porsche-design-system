@@ -29,10 +29,6 @@ export const routes: Route[] = [
     path: '/modal-standalone',
   },
   {
-    name: 'ModalBasic',
-    path: '/modal-basic',
-  },
-  {
     name: 'BannerBasic',
     path: '/banner-basic',
   },
