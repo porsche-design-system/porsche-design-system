@@ -16,8 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
-  custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in
+  positioning a custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 - `Canvas`: prop `background` to set the background color to `canvas | surface`
 - `Carousel`:
   - `width` prop now supports `wide` and `full` values
@@ -35,7 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tailwind CSS`:
   - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
     `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
-    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
+    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`, `--color-frosted-strong`
 - `SCSS`:
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
   - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
@@ -121,6 +121,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `fontWeightSemibold`
 
 ### Changed
+
+- `Link Tile`, `Button Tile`: uses `color-scheme: dark` by default
 
 - `Tailwind CSS`:
   - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
@@ -437,11 +439,13 @@ and migration steps.
 - `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
   New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
   ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
-- `Angular`: Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
 - `Carousel`:
-  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
-  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+  - `width` prop now supports `wide` and `full` values
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 
 ## [3.32.0-rc.1] - 2026-01-12
 
