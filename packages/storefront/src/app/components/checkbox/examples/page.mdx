@@ -76,6 +76,7 @@ component).
 The `p-checkbox` component also supports a custom wrapped `label` by just wrapping the component within a `label` tag.
 This approach can be used if the `label` must be placed individually. The contents of the wrapping `label` must only
 contain raw text elements. If using this approach, the **styling and click functionality of the `label` must be
-controlled by the integrating team**.
+controlled by the integrating team**. To prevent the `p-checkbox` from receiving focus when the wrapping label is
+clicked, call `event.preventDefault()` in the label’s click handler.
 
 <ComponentStory story={checkboxStoryWrappedLabel} />
