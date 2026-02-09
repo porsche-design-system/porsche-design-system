@@ -45,7 +45,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -145,7 +145,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -340,7 +340,7 @@ input::-webkit-search-cancel-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -584,7 +584,7 @@ img {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -743,7 +743,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -762,7 +762,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -829,7 +829,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -848,7 +848,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -915,7 +915,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -934,7 +934,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -1001,7 +1001,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -1020,7 +1020,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -1087,7 +1087,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -1106,7 +1106,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -1173,7 +1173,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -1192,7 +1192,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -1258,7 +1258,7 @@ input {
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1820,7 +1820,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1860,7 +1860,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -1973,7 +1973,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2013,7 +2013,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -2599,7 +2599,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2639,7 +2639,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -2752,7 +2752,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2792,7 +2792,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -3173,7 +3173,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -3213,7 +3213,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -3326,7 +3326,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -3366,7 +3366,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -4050,7 +4050,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -4090,7 +4090,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -4349,7 +4349,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -4435,6 +4435,7 @@ exports[`should render dsr component for PButtonTile 1`] = `
       :host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -4590,7 +4591,7 @@ p {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -4627,7 +4628,7 @@ p {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -5010,7 +5011,7 @@ h2 {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5050,7 +5051,7 @@ h2 {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -5305,7 +5306,7 @@ svg {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5345,7 +5346,7 @@ svg {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -5611,7 +5612,7 @@ input {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
@@ -6037,8 +6038,8 @@ exports[`should render dsr component for PDrilldown 1`] = `
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -6179,7 +6180,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -6286,7 +6287,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -6326,7 +6327,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -6430,7 +6431,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -6470,7 +6471,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -6722,7 +6723,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -6893,7 +6894,7 @@ img {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -7282,7 +7283,7 @@ dialog::backdrop {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7322,7 +7323,7 @@ dialog::backdrop {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -7662,7 +7663,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7702,7 +7703,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -7825,7 +7826,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7989,7 +7990,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8153,7 +8154,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8321,7 +8322,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8482,7 +8483,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8645,7 +8646,7 @@ input::-webkit-search-cancel-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8805,7 +8806,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8965,7 +8966,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9128,7 +9129,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9292,7 +9293,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9456,7 +9457,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9746,7 +9747,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -9826,6 +9827,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
       :host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -9998,7 +10000,7 @@ p {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -10017,7 +10019,7 @@ p {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -10248,7 +10250,7 @@ slot[name="header"] {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -10494,7 +10496,7 @@ dialog::backdrop {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -10534,7 +10536,7 @@ dialog::backdrop {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -10703,7 +10705,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -10803,7 +10805,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -10998,7 +11000,7 @@ input::-webkit-search-cancel-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -11242,7 +11244,7 @@ img {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -11406,7 +11408,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -11425,7 +11427,7 @@ slot {
   margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-checkbox-background-color,var(--p-color-frosted-soft));
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
@@ -11767,7 +11769,7 @@ input {
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12264,7 +12266,6 @@ input::before {
 input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
@@ -12531,7 +12532,7 @@ exports[`should render dsr component for PScroller 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12571,7 +12572,7 @@ exports[`should render dsr component for PScroller 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -12684,7 +12685,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12724,7 +12725,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -13010,7 +13011,7 @@ exports[`should render dsr component for PSelect 1`] = `
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -13116,7 +13117,7 @@ exports[`should render dsr component for PSelect 1`] = `
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -13326,7 +13327,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -13518,7 +13519,7 @@ dialog::backdrop {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -13558,7 +13559,7 @@ dialog::backdrop {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -13927,7 +13928,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -13967,7 +13968,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -14080,7 +14081,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -14120,7 +14121,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -14651,7 +14652,7 @@ exports[`should render dsr component for PTable 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -14691,7 +14692,7 @@ exports[`should render dsr component for PTable 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -14804,7 +14805,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -14844,7 +14845,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15383,7 +15384,7 @@ exports[`should render dsr component for PTabs 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15423,7 +15424,7 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15536,7 +15537,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15576,7 +15577,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15937,7 +15938,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15977,7 +15978,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -16090,7 +16091,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -16130,7 +16131,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -16272,7 +16273,7 @@ span {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   color: var(--p-color-primary);
-  background: var(--p-color-frosted);
+  background: var(--p-color-frosted-strong);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 ::slotted(a), ::slotted(button) {
@@ -16593,7 +16594,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
