@@ -13,7 +13,7 @@ describe('getComponentCss()', () => {
     ['success', 'medium', false],
     ['error', 'medium', false],
     ['error', 'medium', false],
-  ])('should return correct css for state: %s, labelSize: %s, hasLabel: %s and theme: %s', (...args) => {
+  ])('should return correct css for state: %s, labelSize: %s and hasLabel: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

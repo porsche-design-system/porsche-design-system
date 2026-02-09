@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -205,7 +205,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -237,7 +237,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -411,7 +411,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -617,7 +617,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -649,7 +649,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -823,7 +823,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1020,7 +1020,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1216,7 +1216,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1412,7 +1412,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: true 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1608,7 +1608,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1640,7 +1640,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -1805,7 +1805,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2002,7 +2002,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2198,7 +2198,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2230,7 +2230,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success-low));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -2395,7 +2395,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2601,7 +2601,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2806,7 +2806,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3011,7 +3011,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 3`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3216,7 +3216,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3422,7 +3422,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3627,7 +3627,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3659,7 +3659,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -3833,7 +3833,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3865,7 +3865,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -4039,7 +4039,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4236,7 +4236,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4432,7 +4432,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4464,7 +4464,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -4629,7 +4629,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: true 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4661,7 +4661,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-success-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -4826,7 +4826,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -5023,7 +5023,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;

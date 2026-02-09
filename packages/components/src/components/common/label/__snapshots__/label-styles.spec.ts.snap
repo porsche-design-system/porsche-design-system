@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -97,7 +97,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: { position: 'absolute' }, additionalDefaultJssStyle: { padding: +0 } and additionalIsShownJssStyle: %o 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -129,7 +129,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: { position: 'absolute' }, additionalDefaultJssStyle: { padding: +0 } and additionalIsShownJssStyle: %o 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -161,7 +161,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -193,7 +193,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -225,7 +225,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -257,7 +257,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: false, hideLabel: true, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -289,7 +289,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: f
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -322,7 +322,7 @@ exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: t
 }"
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, theme: undefined, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: %o 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabledOrLoading: true, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
 ".label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;

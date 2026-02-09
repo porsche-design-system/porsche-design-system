@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: false, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -102,7 +102,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: error, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -204,7 +204,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: false, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: false, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -305,7 +305,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -406,7 +406,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 2`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 2`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -507,7 +507,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: false, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: false, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -541,7 +541,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -609,7 +609,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -643,7 +643,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -711,7 +711,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: false, compact: false, readOnly: { padding: +0 }, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: false, compact: false, readOnly: { padding: +0 } and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -814,7 +814,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -916,7 +916,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: false, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: false, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -1017,7 +1017,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -1118,7 +1118,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: false, compact: true, readOnly: { padding: +0 }, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: false, compact: true, readOnly: { padding: +0 } and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;
@@ -1216,7 +1216,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: true, compact: true, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, button: true, compact: true, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -1313,7 +1313,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -1478,7 +1478,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 0.64285714;
@@ -1640,7 +1640,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, button: false, compact: false, readOnly: %o, theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, button: false, compact: false, readOnly: %o and additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   --p-internal-input-base-scaling: 1;

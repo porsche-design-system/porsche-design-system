@@ -6,20 +6,18 @@ import {
 
 describe('getNotificationRootJssStyles()', () => {
   it.each<Parameters<typeof getNotificationRootJssStyle>>([
-    ['info', false, false, 'light'],
-    ['info', true, false, 'light'],
-    ['info', true, true, 'light'],
-    ['info', false, true, 'light'],
-    ['neutral', false, false, 'light'],
-    ['success', false, false, 'light'],
-    ['error', false, false, 'light'],
-    ['warning', false, false, 'light'],
-    ['info', false, false, 'dark'],
-    ['neutral', false, false, 'dark'],
-    ['success', false, false, 'dark'],
-    ['error', false, false, 'dark'],
-    ['warning', false, false, 'dark'],
-  ])('should return correct JssStyle for state: %s and theme: %s', (...args) => {
+    ['info', false, false],
+    ['info', true, false],
+    ['info', true, true],
+    ['info', false, true],
+    ['success', false, false],
+    ['error', false, false],
+    ['warning', false, false],
+    ['info', false, false],
+    ['success', false, false],
+    ['error', false, false],
+    ['warning', false, false],
+  ])('should return correct JssStyle for state: %s', (...args) => {
     expect(getNotificationRootJssStyle(...args)).toMatchSnapshot();
   });
 });

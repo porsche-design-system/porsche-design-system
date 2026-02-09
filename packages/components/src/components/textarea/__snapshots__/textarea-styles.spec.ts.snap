@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -155,7 +155,7 @@ textarea:focus {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false, resize: vertical, theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: true, counter: false and resize: vertical 2`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -310,7 +310,7 @@ textarea:focus {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: false, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
@@ -401,7 +401,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, compact: true, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -492,7 +492,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: false, counter: true and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
@@ -606,7 +606,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, compact: true, counter: true and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -720,7 +720,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: false, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
@@ -743,7 +743,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -811,7 +811,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, compact: true, counter: true and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -834,7 +834,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -926,7 +926,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
@@ -1017,7 +1017,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, compact: true, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -1108,7 +1108,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: false, counter: true and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
@@ -1222,7 +1222,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, compact: true, counter: true and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -1336,7 +1336,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: false, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;
@@ -1359,7 +1359,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1427,7 +1427,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, compact: true, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -1450,7 +1450,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1518,7 +1518,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, compact: true, counter: true and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 0.64285714;
@@ -1627,7 +1627,7 @@ textarea:focus {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false, resize: vertical, theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, compact: false, counter: false and resize: vertical 1`] = `
 ":host {
   display: block;
   --p-internal-textarea-scaling: 1;

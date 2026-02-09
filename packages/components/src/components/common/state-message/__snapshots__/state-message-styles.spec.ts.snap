@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: error and state: %s 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -16,7 +16,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: error and state: %s 2`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 2`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -32,7 +32,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: none and state: %s 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -47,7 +47,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: none and state: %s 2`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 2`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -62,7 +62,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: success and state: %s 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 1`] = `
 ".message {
   display: flex;
   gap: 4px;
@@ -78,7 +78,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 }"
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for theme: success and state: %s 2`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 2`] = `
 ".message {
   display: flex;
   gap: 4px;

@@ -25,7 +25,7 @@ describe('getComponentCss()', () => {
     [true, 'surface', 'blur', false, false, true, true],
     [true, 'surface', 'blur', false, false, false, true],
   ])(
-    'should return correct css for open: %s, backdrop: %s, fullscreen: %o, dismissButton: %s, hasHeader: %s, hasFooter: %s and theme: %s',
+    'should return correct css for open: %s, backdrop: %s, fullscreen: %o, dismissButton: %s, hasHeader: %s and hasFooter: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

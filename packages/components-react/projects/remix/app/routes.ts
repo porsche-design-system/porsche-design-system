@@ -9,8 +9,8 @@ export const routes: Route[] = [
     path: '/',
   },
   {
-    name: 'Overview',
-    path: '/overview',
+    name: 'Overview Components',
+    path: '/overview-components',
   },
   {
     name: 'AccordionLayoutShift',
@@ -39,6 +39,14 @@ export const routes: Route[] = [
   {
     name: 'BannerPrefixed',
     path: '/banner-prefixed',
+  },
+  {
+    name: 'CanvasBasic',
+    path: '/canvas-basic',
+  },
+  {
+    name: 'CanvasPrefixed',
+    path: '/canvas-prefixed',
   },
   {
     name: 'FlyoutBasic',

@@ -1052,20 +1052,14 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "grid/gridWideOffsetS.cjs",
     "grid/gridWideOffsetXXL.cjs",
     "mediaQuery/breakpoint.cjs",
-    "mediaQuery/breakpoint2Xl.cjs",
-    "mediaQuery/breakpointLg.cjs",
-    "mediaQuery/breakpointMd.cjs",
+    "mediaQuery/breakpointBase.cjs",
+    "mediaQuery/breakpointL.cjs",
+    "mediaQuery/breakpointM.cjs",
+    "mediaQuery/breakpointS.cjs",
     "mediaQuery/breakpointShared.cjs",
-    "mediaQuery/breakpointSm.cjs",
-    "mediaQuery/breakpointXl.cjs",
-    "mediaQuery/breakpointXs.cjs",
-    "mediaQuery/deprecated/breakpointBase.cjs",
-    "mediaQuery/deprecated/breakpointL.cjs",
-    "mediaQuery/deprecated/breakpointM.cjs",
-    "mediaQuery/deprecated/breakpointS.cjs",
-    "mediaQuery/deprecated/breakpointXL.cjs",
-    "mediaQuery/deprecated/breakpointXS.cjs",
-    "mediaQuery/deprecated/breakpointXXL.cjs",
+    "mediaQuery/breakpointXL.cjs",
+    "mediaQuery/breakpointXS.cjs",
+    "mediaQuery/breakpointXXL.cjs",
     "mediaQuery/getMediaQueryMax.cjs",
     "mediaQuery/getMediaQueryMin.cjs",
     "mediaQuery/getMediaQueryMinMax.cjs",
@@ -1147,38 +1141,32 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "typography/proseTextXsStyle.cjs",
   ],
   "mediaQuery/breakpoint.cjs": [
-    "mediaQuery/breakpoint2Xl.cjs",
-    "mediaQuery/breakpointLg.cjs",
-    "mediaQuery/breakpointMd.cjs",
-    "mediaQuery/breakpointSm.cjs",
-    "mediaQuery/breakpointXl.cjs",
-    "mediaQuery/breakpointXs.cjs",
-    "mediaQuery/deprecated/breakpointBase.cjs",
+    "mediaQuery/breakpointBase.cjs",
+    "mediaQuery/breakpointL.cjs",
+    "mediaQuery/breakpointM.cjs",
+    "mediaQuery/breakpointS.cjs",
+    "mediaQuery/breakpointXL.cjs",
+    "mediaQuery/breakpointXS.cjs",
+    "mediaQuery/breakpointXXL.cjs",
   ],
-  "mediaQuery/breakpoint2Xl.cjs": [],
-  "mediaQuery/breakpointLg.cjs": [],
-  "mediaQuery/breakpointMd.cjs": [],
-  "mediaQuery/breakpointShared.cjs": [],
-  "mediaQuery/breakpointSm.cjs": [],
-  "mediaQuery/breakpointXl.cjs": [],
-  "mediaQuery/breakpointXs.cjs": [],
-  "mediaQuery/deprecated/breakpointBase.cjs": [],
-  "mediaQuery/deprecated/breakpointL.cjs": [
+  "mediaQuery/breakpointBase.cjs": [],
+  "mediaQuery/breakpointL.cjs": [
     "tokens/dist/esm/breakpoint/breakpointLg.cjs",
   ],
-  "mediaQuery/deprecated/breakpointM.cjs": [
+  "mediaQuery/breakpointM.cjs": [
     "tokens/dist/esm/breakpoint/breakpointMd.cjs",
   ],
-  "mediaQuery/deprecated/breakpointS.cjs": [
+  "mediaQuery/breakpointS.cjs": [
     "tokens/dist/esm/breakpoint/breakpointSm.cjs",
   ],
-  "mediaQuery/deprecated/breakpointXL.cjs": [
+  "mediaQuery/breakpointShared.cjs": [],
+  "mediaQuery/breakpointXL.cjs": [
     "tokens/dist/esm/breakpoint/breakpointXl.cjs",
   ],
-  "mediaQuery/deprecated/breakpointXS.cjs": [
+  "mediaQuery/breakpointXS.cjs": [
     "tokens/dist/esm/breakpoint/breakpointXs.cjs",
   ],
-  "mediaQuery/deprecated/breakpointXXL.cjs": [
+  "mediaQuery/breakpointXXL.cjs": [
     "tokens/dist/esm/breakpoint/breakpoint2Xl.cjs",
   ],
   "mediaQuery/getMediaQueryMax.cjs": [
@@ -2949,20 +2937,14 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "grid/gridWideOffsetS.mjs",
     "grid/gridWideOffsetXXL.mjs",
     "mediaQuery/breakpoint.mjs",
-    "mediaQuery/breakpoint2Xl.mjs",
-    "mediaQuery/breakpointLg.mjs",
-    "mediaQuery/breakpointMd.mjs",
+    "mediaQuery/breakpointBase.mjs",
+    "mediaQuery/breakpointL.mjs",
+    "mediaQuery/breakpointM.mjs",
+    "mediaQuery/breakpointS.mjs",
     "mediaQuery/breakpointShared.mjs",
-    "mediaQuery/breakpointSm.mjs",
-    "mediaQuery/breakpointXl.mjs",
-    "mediaQuery/breakpointXs.mjs",
-    "mediaQuery/deprecated/breakpointBase.mjs",
-    "mediaQuery/deprecated/breakpointL.mjs",
-    "mediaQuery/deprecated/breakpointM.mjs",
-    "mediaQuery/deprecated/breakpointS.mjs",
-    "mediaQuery/deprecated/breakpointXL.mjs",
-    "mediaQuery/deprecated/breakpointXS.mjs",
-    "mediaQuery/deprecated/breakpointXXL.mjs",
+    "mediaQuery/breakpointXL.mjs",
+    "mediaQuery/breakpointXS.mjs",
+    "mediaQuery/breakpointXXL.mjs",
     "mediaQuery/getMediaQueryMax.mjs",
     "mediaQuery/getMediaQueryMin.mjs",
     "mediaQuery/getMediaQueryMinMax.mjs",
@@ -3044,38 +3026,32 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "typography/proseTextXsStyle.mjs",
   ],
   "mediaQuery/breakpoint.mjs": [
-    "mediaQuery/breakpoint2Xl.mjs",
-    "mediaQuery/breakpointLg.mjs",
-    "mediaQuery/breakpointMd.mjs",
-    "mediaQuery/breakpointSm.mjs",
-    "mediaQuery/breakpointXl.mjs",
-    "mediaQuery/breakpointXs.mjs",
-    "mediaQuery/deprecated/breakpointBase.mjs",
+    "mediaQuery/breakpointBase.mjs",
+    "mediaQuery/breakpointL.mjs",
+    "mediaQuery/breakpointM.mjs",
+    "mediaQuery/breakpointS.mjs",
+    "mediaQuery/breakpointXL.mjs",
+    "mediaQuery/breakpointXS.mjs",
+    "mediaQuery/breakpointXXL.mjs",
   ],
-  "mediaQuery/breakpoint2Xl.mjs": [],
-  "mediaQuery/breakpointLg.mjs": [],
-  "mediaQuery/breakpointMd.mjs": [],
-  "mediaQuery/breakpointShared.mjs": [],
-  "mediaQuery/breakpointSm.mjs": [],
-  "mediaQuery/breakpointXl.mjs": [],
-  "mediaQuery/breakpointXs.mjs": [],
-  "mediaQuery/deprecated/breakpointBase.mjs": [],
-  "mediaQuery/deprecated/breakpointL.mjs": [
+  "mediaQuery/breakpointBase.mjs": [],
+  "mediaQuery/breakpointL.mjs": [
     "tokens/dist/esm/breakpoint/breakpointLg.mjs",
   ],
-  "mediaQuery/deprecated/breakpointM.mjs": [
+  "mediaQuery/breakpointM.mjs": [
     "tokens/dist/esm/breakpoint/breakpointMd.mjs",
   ],
-  "mediaQuery/deprecated/breakpointS.mjs": [
+  "mediaQuery/breakpointS.mjs": [
     "tokens/dist/esm/breakpoint/breakpointSm.mjs",
   ],
-  "mediaQuery/deprecated/breakpointXL.mjs": [
+  "mediaQuery/breakpointShared.mjs": [],
+  "mediaQuery/breakpointXL.mjs": [
     "tokens/dist/esm/breakpoint/breakpointXl.mjs",
   ],
-  "mediaQuery/deprecated/breakpointXS.mjs": [
+  "mediaQuery/breakpointXS.mjs": [
     "tokens/dist/esm/breakpoint/breakpointXs.mjs",
   ],
-  "mediaQuery/deprecated/breakpointXXL.mjs": [
+  "mediaQuery/breakpointXXL.mjs": [
     "tokens/dist/esm/breakpoint/breakpoint2Xl.mjs",
   ],
   "mediaQuery/getMediaQueryMax.mjs": [

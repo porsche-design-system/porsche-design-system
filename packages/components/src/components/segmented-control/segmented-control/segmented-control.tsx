@@ -58,7 +58,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-segmented-control',

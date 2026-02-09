@@ -44,7 +44,7 @@ export class Text {
   /** Text alignment of the component. */
   @Prop() public align?: TextAlign = 'start';
 
-  /** Basic text color variations depending on theme property. */
+  /** Basic text color variations. */
   @Prop() public color?: TextColor = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */

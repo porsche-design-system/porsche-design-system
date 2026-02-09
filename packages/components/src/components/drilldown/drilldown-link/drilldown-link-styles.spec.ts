@@ -11,7 +11,7 @@ describe('getComponentCss()', () => {
     [true, true],
     [false, true],
     [false, true],
-  ])('should return correct css for hasSlottedAnchor: %s, isActive: %s and theme: %s', (...args) => {
+  ])('should return correct css for hasSlottedAnchor: %s and isActive: %s', (...args) => {
     // validateCssAndMatchSnapshot(getComponentCss(...args));
     expect(getComponentCss(...args)).toMatchSnapshot();
   });

@@ -128,6 +128,8 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         ? [
             'banner-basic',
             'banner-prefixed',
+            'canvas-basic',
+            'canvas-prefixed',
             'sheet-basic',
             'sheet-prefixed',
             'flyout-basic',
@@ -136,7 +138,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
             'drilldown-prefixed',
             'modal-basic',
             'modal-prefixed',
-            'overview',
+            'overview-components',
             'toast-basic',
             'toast-prefixed',
           ].includes(component)

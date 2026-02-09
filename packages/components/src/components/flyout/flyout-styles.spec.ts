@@ -32,7 +32,7 @@ describe('getComponentCss()', () => {
     [true, 'surface', 'blur', 'end', false, false, false, 'fixed'],
     [true, 'surface', 'blur', 'end', false, true, false, 'fixed'],
   ])(
-    'should return correct css for isOpen: %s, backdrop: %s, position: %s, hasHeader: %s, hasFooter: %s, hasSubFooter: %s, footerBehavior: %s, theme: %s',
+    'should return correct css for isOpen: %s, backdrop: %s, position: %s, hasHeader: %s, hasFooter: %s, hasSubFooter: %s and footerBehavior: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

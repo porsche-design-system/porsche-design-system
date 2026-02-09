@@ -1,25 +1,21 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for compact: false, layout: auto and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false and layout: auto 1`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #FBFCFF !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #404044 !important;
-  --p-internal-table-head-cell-icon-filter: invert(100%) !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -32,26 +28,22 @@ exports[`getComponentCss() > should return correct css for compact: false, layou
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: false, layout: auto and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false and layout: auto 2`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #010205 !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #D8D8DB !important;
-  --p-internal-table-head-cell-icon-filter: none !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -64,26 +56,22 @@ exports[`getComponentCss() > should return correct css for compact: false, layou
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: false, layout: fixed and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false and layout: fixed 1`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #FBFCFF !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #404044 !important;
-  --p-internal-table-head-cell-icon-filter: invert(100%) !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -97,26 +85,22 @@ exports[`getComponentCss() > should return correct css for compact: false, layou
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: false, layout: fixed and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: false and layout: fixed 2`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #010205 !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #D8D8DB !important;
-  --p-internal-table-head-cell-icon-filter: none !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -130,27 +114,23 @@ exports[`getComponentCss() > should return correct css for compact: false, layou
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: true, layout: auto and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true and layout: auto 1`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
+  --_a: 8px !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #FBFCFF !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-padding: 8px !important;
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #404044 !important;
-  --p-internal-table-head-cell-icon-filter: invert(100%) !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -163,27 +143,23 @@ exports[`getComponentCss() > should return correct css for compact: true, layout
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: true, layout: auto and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true and layout: auto 2`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
+  --_a: 8px !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #010205 !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-padding: 8px !important;
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #D8D8DB !important;
-  --p-internal-table-head-cell-icon-filter: none !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -196,27 +172,23 @@ exports[`getComponentCss() > should return correct css for compact: true, layout
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: true, layout: fixed and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true and layout: fixed 1`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
+  --_a: 8px !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #FBFCFF !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-padding: 8px !important;
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #404044 !important;
-  --p-internal-table-head-cell-icon-filter: invert(100%) !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
@@ -230,27 +202,23 @@ exports[`getComponentCss() > should return correct css for compact: true, layout
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for compact: true, layout: fixed and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for compact: true and layout: fixed 2`] = `
 ":host {
   display: block;
+  --_b: var(--p-color-frosted) !important;
+  --_c: var(--p-color-contrast-low) !important;
+  --_a: 8px !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   overflow-wrap: break-word !important;
   hyphens: var(--p-hyphens, auto) !important;
-  color: #010205 !important;
+  color: var(--p-color-primary) !important;
   text-align: start !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted(*) {
-  --p-internal-table-padding: 8px !important;
-  --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
-  --p-internal-table-border-color: #D8D8DB !important;
-  --p-internal-table-head-cell-icon-filter: none !important;
 }
 .caption {
   margin-bottom: clamp(16px, 1.25vw + 12px, 36px);

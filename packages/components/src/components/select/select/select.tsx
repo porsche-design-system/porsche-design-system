@@ -83,7 +83,7 @@ const propTypes: PropTypes<typeof Select> = {
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-select',

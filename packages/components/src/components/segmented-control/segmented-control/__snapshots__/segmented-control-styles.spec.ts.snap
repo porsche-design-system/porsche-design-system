@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for minWidth: 36, maxWidth: 230, columns: 10, disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: error and theme 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 36, maxWidth: 230, columns: 10, disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false } and state: error 1`] = `
 ":host([hidden]) {
   display: none !important;
 }
@@ -130,7 +130,7 @@ slot:not([name]) {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, disabled: true, hideLabel: false, state: success and theme 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, disabled: true, hideLabel: false and state: success 1`] = `
 ":host {
   opacity: 0.4 !important;
 }
@@ -217,7 +217,7 @@ slot:not([name]) {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: auto, disabled: false, hideLabel: false, state: none and theme 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: auto, disabled: false, hideLabel: false and state: none 1`] = `
 ":host([hidden]) {
   display: none !important;
 }
@@ -281,7 +281,7 @@ slot:not([name]) {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 80, columns: 1, disabled: false, hideLabel: true, state: none and theme 1`] = `
+exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 80, columns: 1, disabled: false, hideLabel: true and state: none 1`] = `
 ":host([hidden]) {
   display: none !important;
 }

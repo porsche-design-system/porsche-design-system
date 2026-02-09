@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -109,7 +109,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -218,7 +218,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true, hasFooter: false and theme: false 2`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true and hasFooter: false 2`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -327,7 +327,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: false, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: false, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -436,7 +436,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: true, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: true, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -545,7 +545,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: true, hasHeader: true, hasFooter: false and theme: false 2`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: true, hasHeader: true and hasFooter: false 2`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -654,7 +654,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -748,7 +748,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: true, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: true and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -861,7 +861,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: false, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: false and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -951,7 +951,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: false, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1045,7 +1045,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: true, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: true and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1158,7 +1158,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: false, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1251,7 +1251,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1359,7 +1359,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: false, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: false and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1448,7 +1448,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: false, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1541,7 +1541,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1649,7 +1649,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasHeader: true, hasFooter: false and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1812,7 +1812,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false, hasFooter: false and theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1920,7 +1920,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false, hasFooter: true and theme: true 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2032,7 +2032,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: true, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: true and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2144,7 +2144,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: true, hasFooter: true and theme: false 1`] = `
+exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: true, hasHeader: true and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: clamp(16px, 1.25vw + 12px, 36px) !important;

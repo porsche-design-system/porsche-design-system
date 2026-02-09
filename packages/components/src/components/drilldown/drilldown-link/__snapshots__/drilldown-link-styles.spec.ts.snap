@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: false and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: false 1`] = `
 ":host {
   display: grid;
 }
@@ -34,7 +34,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 1`] = `
 ":host {
   display: grid;
 }
@@ -68,7 +68,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 2`] = `
 ":host {
   display: grid;
 }
@@ -102,7 +102,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false, isActive: true and theme: %s 3`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 3`] = `
 ":host {
   display: grid;
 }
@@ -136,7 +136,7 @@ a:focus-visible {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: false and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: false 1`] = `
 ":host {
   display: grid;
 }
@@ -170,7 +170,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: %s 1`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 1`] = `
 ":host {
   display: grid;
 }
@@ -204,7 +204,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: %s 2`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 2`] = `
 ":host {
   display: grid;
 }
@@ -238,7 +238,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
 "
 `;
 
-exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true, isActive: true and theme: %s 3`] = `
+exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 3`] = `
 ":host {
   display: grid;
 }

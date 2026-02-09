@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -49,7 +49,7 @@ span {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false and compact: false 2`] = `
 ":host {
   display: block;
 }
@@ -98,7 +98,7 @@ span {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true, compact: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -151,7 +151,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true and compact: false 2`] = `
 ":host {
   display: block;
 }
@@ -204,7 +204,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true, compact: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true and compact: true 1`] = `
 ":host {
   display: block;
 }
@@ -258,7 +258,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: error, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: error, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -302,7 +302,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: false and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -342,7 +342,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -386,7 +386,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true, compact: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: true 1`] = `
 ":host {
   display: block;
 }
@@ -431,7 +431,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: success, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: success, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -451,7 +451,7 @@ button {
   padding: max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) calc(max(2px, 8px * var(--p-internal-segmented-control-scaling, 1)) + 4px);
   border: 1px solid var(--p-color-success);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -475,7 +475,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: false and compact: false 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -516,7 +516,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -561,7 +561,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: false and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -601,7 +601,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
 }
@@ -645,7 +645,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: false, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: false and compact: false 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;
@@ -686,7 +686,7 @@ span {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true, compact: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
 ":host {
   display: block;
   opacity: 0.4 !important;

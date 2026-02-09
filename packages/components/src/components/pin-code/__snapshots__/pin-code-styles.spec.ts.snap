@@ -22,7 +22,7 @@ input {
   box-sizing: border-box;
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-success-frosted-soft);
+  background: var(--p-color-success-soft);
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);

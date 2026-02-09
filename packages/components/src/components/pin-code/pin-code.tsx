@@ -53,7 +53,7 @@ const propTypes: PropTypes<typeof PinCode> = {
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  *
- * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-pin-code',

@@ -12,11 +12,11 @@ exports[`getAriaStructure() > should return formatted string for array with mult
 
 exports[`getAriaStructure() > should return formatted string for array with single aria attributes 1`] = `"{ 'aria-label'?: 'value' }"`;
 
-exports[`getBreakpointCustomizableStructure() > should return formatted string for array type 1`] = `"('a' | 'b')[], { base: ('a' | 'b')[], s?: ('a' | 'b')[], m?: ('a' | 'b')[], l?: ('a' | 'b')[], xxl?: ('a' | 'b')[], xs?: ('a' | 'b')[], sm?: ('a' | 'b')[], md?: ('a' | 'b')[], lg?: ('a' | 'b')[], xl?: ('a' | 'b')[], 2xl?: ('a' | 'b')[] }"`;
+exports[`getBreakpointCustomizableStructure() > should return formatted string for array type 1`] = `"('a' | 'b')[], { base: ('a' | 'b')[], xs?: ('a' | 'b')[], s?: ('a' | 'b')[], m?: ('a' | 'b')[], l?: ('a' | 'b')[], xl?: ('a' | 'b')[], xxl?: ('a' | 'b')[] }"`;
 
-exports[`getBreakpointCustomizableStructure() > should return formatted string for boolean type 1`] = `"boolean, { base: boolean, s?: boolean, m?: boolean, l?: boolean, xxl?: boolean, xs?: boolean, sm?: boolean, md?: boolean, lg?: boolean, xl?: boolean, 2xl?: boolean }"`;
+exports[`getBreakpointCustomizableStructure() > should return formatted string for boolean type 1`] = `"boolean, { base: boolean, xs?: boolean, s?: boolean, m?: boolean, l?: boolean, xl?: boolean, xxl?: boolean }"`;
 
-exports[`getBreakpointCustomizableStructure() > should return formatted string for number type 1`] = `"number, { base: number, s?: number, m?: number, l?: number, xxl?: number, xs?: number, sm?: number, md?: number, lg?: number, xl?: number, 2xl?: number }"`;
+exports[`getBreakpointCustomizableStructure() > should return formatted string for number type 1`] = `"number, { base: number, xs?: number, s?: number, m?: number, l?: number, xl?: number, xxl?: number }"`;
 
 exports[`getShapeStructure() > should return formatted string for object 1`] = `"{ id: string, active: boolean, index: number, direction: oneOf }"`;
 

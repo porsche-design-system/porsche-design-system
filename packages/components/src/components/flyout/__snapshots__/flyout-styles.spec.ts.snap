@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -118,7 +118,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -255,7 +255,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -377,7 +377,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -489,7 +489,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -607,7 +607,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -744,7 +744,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -856,7 +856,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -967,7 +967,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 2`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1078,7 +1078,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1195,7 +1195,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1325,7 +1325,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1461,7 +1461,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1607,7 +1607,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1718,7 +1718,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 2`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1829,137 +1829,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true, footerBehavior: false, theme: sticky 1`] = `
-":host {
-  display: contents;
-  --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
-  --ref-p-flyout-pb: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  --ref-p-flyout-px: clamp(32px, 2.75vw + 23px, 76px) !important;
-  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
-  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  --pds-internal-grid-width-min: auto !important;
-  --pds-internal-grid-width-max: none !important;
-  --_a: var(--p-color-canvas) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-slot {
-  display: block;
-}
-slot:first-of-type {
-  grid-row-start: 1;
-}
-slot:not([name]) {
-  grid-column: 2/3;
-  z-index: 0;
-}
-slot[name=footer] {
-  grid-column: 1/-1;
-  z-index: 2;
-  position: sticky;
-  bottom: -.1px;
-  margin-block: calc(-1 * calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
-  padding: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) clamp(32px, 2.75vw + 23px, 76px);
-  background: linear-gradient(0deg,var(--_a) 0%,var(--_a) 20%,transparent 80%);
-}
-slot[name=footer][data-stuck]::after {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  inset: calc(calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) - calc(calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2)) calc(clamp(32px, 2.75vw + 23px, 76px) - calc(calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2));
-  background: var(--p-color-frosted);
-  border-radius: var(--p-radius-3xl);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-}
-dialog {
-  position: fixed;
-  inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
-  max-width: 100dvw;
-  max-height: 100dvh;
-  overflow: hidden;
-  display: block;
-  outline: 0;
-  z-index: 9999999;
-  visibility: inherit;
-  pointer-events: auto;
-  background: var(--p-color-backdrop);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
-}
-dialog::backdrop {
-  display: none;
-}
-@supports (transition-behavior: allow-discrete) {
-  dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), overlay var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1) allow-discrete;
-  }
-}
-
-.scroller {
-  position: absolute;
-  isolation: isolate;
-  display: grid;
-  inset-block: 0;
-  inset-inline-start: 0;
-  overflow: hidden auto;
-  overscroll-behavior-y: none;
-  background: rgba(255,255,255,.01);
-  opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
-}
-.scroller:focus-visible {
-  outline: none;
-}
-.flyout {
-  position: relative;
-  display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
-  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  padding-top: clamp(16px, 1.25vw + 12px, 36px);
-  padding-bottom: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  align-content: flex-start;
-  color: var(--p-color-primary);
-  background: var(--_a);
-  width: var(--p-flyout-width,auto);
-  min-width: 320px;
-  max-width: 100vw;
-  border-start-end-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-  border-end-end-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-}
-.dismiss {
-  grid-area: 1/3;
-  z-index: 5;
-  position: sticky;
-  top: clamp(8px, 0.5vw + 6px, 16px);
-  margin-top: calc(-1 * clamp(16px, 1.25vw + 12px, 36px) + clamp(8px, 0.5vw + 6px, 16px));
-  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  place-self: flex-start flex-end;
-}
-.dismiss::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: calc(-1 * clamp(8px, 0.5vw + 6px, 16px)) calc(-1 * clamp(8px, 0.5vw + 6px, 16px)) -50px -50px;
-  pointer-events: none;
-  z-index: -1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true, footerBehavior: false, theme: sticky 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2089,7 +1959,137 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true, footerBehavior: true, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: false 2`] = `
+":host {
+  display: contents;
+  --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
+  --ref-p-flyout-pb: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --ref-p-flyout-px: clamp(32px, 2.75vw + 23px, 76px) !important;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  --_a: var(--p-color-canvas) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=footer] {
+  grid-column: 1/-1;
+  z-index: 2;
+  position: sticky;
+  bottom: -.1px;
+  margin-block: calc(-1 * calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
+  padding: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) clamp(32px, 2.75vw + 23px, 76px);
+  background: linear-gradient(0deg,var(--_a) 0%,var(--_a) 20%,transparent 80%);
+}
+slot[name=footer][data-stuck]::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: calc(calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) - calc(calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2)) calc(clamp(32px, 2.75vw + 23px, 76px) - calc(calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2));
+  background: var(--p-color-frosted);
+  border-radius: var(--p-radius-3xl);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: var(--p-color-backdrop);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), overlay var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-start: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  position: relative;
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  padding-top: clamp(16px, 1.25vw + 12px, 36px);
+  padding-bottom: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  align-content: flex-start;
+  color: var(--p-color-primary);
+  background: var(--_a);
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: 100vw;
+  border-start-end-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-end-end-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+}
+.dismiss {
+  grid-area: 1/3;
+  z-index: 5;
+  position: sticky;
+  top: clamp(8px, 0.5vw + 6px, 16px);
+  margin-top: calc(-1 * clamp(16px, 1.25vw + 12px, 36px) + clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  place-self: flex-start flex-end;
+}
+.dismiss::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: calc(-1 * clamp(8px, 0.5vw + 6px, 16px)) calc(-1 * clamp(8px, 0.5vw + 6px, 16px)) -50px -50px;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  background: radial-gradient(circle at top right, hsla(from var(--_a) h s l / 0.35) 0%, transparent 70%);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2225,7 +2225,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2334,7 +2334,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: true, footerBehavior: false, theme: sticky 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2462,7 +2462,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: false, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2574,7 +2574,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false, footerBehavior: true, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2692,7 +2692,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true, footerBehavior: false, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2823,7 +2823,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true, footerBehavior: true, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2960,7 +2960,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false, footerBehavior: false, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -3082,7 +3082,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false, footerBehavior: true, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -3210,7 +3210,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true, footerBehavior: false, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -3351,7 +3351,7 @@ dialog::backdrop {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true, footerBehavior: true, theme: fixed 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: true 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: clamp(16px, 1.25vw + 12px, 36px) !important;
