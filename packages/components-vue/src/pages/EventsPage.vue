@@ -5,15 +5,12 @@ import type {
   InputDateBlurEventDetail,
   InputDateChangeEventDetail,
   InputDateInputEventDetail,
-  InputMonthInputEventDetail,
-  InputMonthBlurEventDetail,
-  InputMonthChangeEventDetail,
-  InputWeekInputEventDetail,
-  InputWeekBlurEventDetail,
-  InputWeekChangeEventDetail,
   InputEmailBlurEventDetail,
   InputEmailChangeEventDetail,
   InputEmailInputEventDetail,
+  InputMonthBlurEventDetail,
+  InputMonthChangeEventDetail,
+  InputMonthInputEventDetail,
   InputNumberBlurEventDetail,
   InputNumberChangeEventDetail,
   InputNumberInputEventDetail,
@@ -35,6 +32,9 @@ import type {
   InputUrlBlurEventDetail,
   InputUrlChangeEventDetail,
   InputUrlInputEventDetail,
+  InputWeekBlurEventDetail,
+  InputWeekChangeEventDetail,
+  InputWeekInputEventDetail,
   PaginationUpdateEventDetail,
   SwitchUpdateEventDetail,
   TableUpdateEventDetail,
@@ -50,6 +50,7 @@ import {
   PCarousel,
   PInputDate,
   PInputEmail,
+  PInputMonth,
   PInputNumber,
   PInputPassword,
   PInputSearch,
@@ -57,7 +58,6 @@ import {
   PInputText,
   PInputTime,
   PInputUrl,
-  PInputMonth,
   PInputWeek,
   PModal,
   PPagination,
@@ -90,17 +90,17 @@ const inputDateValue = ref('');
 const inputDateBlurCounter = ref(0);
 const inputDateChangeCounter = ref(0);
 
-  const inputMonthValue = ref('');
-  const inputMonthBlurCounter = ref(0);
-  const inputMonthChangeCounter = ref(0);
+const inputMonthValue = ref('');
+const inputMonthBlurCounter = ref(0);
+const inputMonthChangeCounter = ref(0);
 
-  const inputWeekValue = ref('');
-  const inputWeekBlurCounter = ref(0);
-  const inputWeekChangeCounter = ref(0);
+const inputWeekValue = ref('');
+const inputWeekBlurCounter = ref(0);
+const inputWeekChangeCounter = ref(0);
 
-  const inputEmailValue = ref('');
-  const inputEmailBlurCounter = ref(0);
-  const inputEmailChangeCounter = ref(0);
+const inputEmailValue = ref('');
+const inputEmailBlurCounter = ref(0);
+const inputEmailChangeCounter = ref(0);
 
 const inputNumberValue = ref('');
 const inputNumberBlurCounter = ref(0);
@@ -163,26 +163,26 @@ const onInputDateInput = (e: InputDateInputEventDetail) => {
 const onInputDateBlur = (_: InputDateBlurEventDetail) => inputDateBlurCounter.value++;
 const onInputDateChange = (_: InputDateChangeEventDetail) => inputDateChangeCounter.value++;
 
-  // PInputMonth
-  const onInputMonthInput = (e: InputMonthInputEventDetail) => {
-    inputMonthValue.value = (e.target as HTMLInputElement).value;
-  };
-  const onInputMonthBlur = (_: InputMonthBlurEventDetail) => inputMonthBlurCounter.value++;
-  const onInputMonthChange = (_: InputMonthChangeEventDetail) => inputMonthChangeCounter.value++;
+// PInputMonth
+const onInputMonthInput = (e: InputMonthInputEventDetail) => {
+  inputMonthValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputMonthBlur = (_: InputMonthBlurEventDetail) => inputMonthBlurCounter.value++;
+const onInputMonthChange = (_: InputMonthChangeEventDetail) => inputMonthChangeCounter.value++;
 
-  // PInputWeek
-  const onInputWeekInput = (e: InputWeekInputEventDetail) => {
-    inputWeekValue.value = (e.target as HTMLInputElement).value;
-  };
-  const onInputWeekBlur = (_: InputWeekBlurEventDetail) => inputWeekBlurCounter.value++;
-  const onInputWeekChange = (_: InputWeekChangeEventDetail) => inputWeekChangeCounter.value++;
+// PInputWeek
+const onInputWeekInput = (e: InputWeekInputEventDetail) => {
+  inputWeekValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputWeekBlur = (_: InputWeekBlurEventDetail) => inputWeekBlurCounter.value++;
+const onInputWeekChange = (_: InputWeekChangeEventDetail) => inputWeekChangeCounter.value++;
 
-  // PInputEmail
-  const onInputEmailInput = (e: InputEmailInputEventDetail) => {
-    inputEmailValue.value = (e.target as HTMLInputElement).value;
-  };
-  const onInputEmailBlur = (_: InputEmailBlurEventDetail) => inputEmailBlurCounter.value++;
-  const onInputEmailChange = (_: InputEmailChangeEventDetail) => inputEmailChangeCounter.value++;
+// PInputEmail
+const onInputEmailInput = (e: InputEmailInputEventDetail) => {
+  inputEmailValue.value = (e.target as HTMLInputElement).value;
+};
+const onInputEmailBlur = (_: InputEmailBlurEventDetail) => inputEmailBlurCounter.value++;
+const onInputEmailChange = (_: InputEmailChangeEventDetail) => inputEmailChangeCounter.value++;
 
 // PInputNumber
 const onInputNumberInput = (e: InputNumberInputEventDetail) => {
@@ -243,17 +243,17 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
 </script>
 
 <template>
-  <div class="playground light">
+  <div class="playground">
     <PAccordion :heading="'Some heading'" @update="onAccordionUpdate" />
     <p>{{ accordionUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" @update="onPaginationUpdate" />
     <p>{{ paginationUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTabsBar :activeTabIndex="0" @update="onTabsBarUpdate">
       <button>Tab 1</button>
       <button>Tab 2</button>
@@ -262,7 +262,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ tabsBarUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTabs :activeTabIndex="0" @update="onTabsUpdate">
       <PTabsItem :label="'Tab 1'">Content 1</PTabsItem>
       <PTabsItem :label="'Tab 2'">Content 2</PTabsItem>
@@ -271,29 +271,24 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ tabsUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
-    <PInputText name="some-name" type="search" :value="textFieldSearchValue" @input="onTextFieldSearchChange" />
-    <p>Value: {{ textFieldSearchValue }}</p>
-  </div>
-
-  <div class="playground light">
+  <div class="playground">
     <PSwitch @update="onSwitchUpdate">Switch</PSwitch>
     <p>{{ switchUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PBanner :open="isBannerOpen" @dismiss="onBannerDismiss" heading="Banner"></PBanner>
     <p>{{ bannerDismissEventCounter }}</p>
     <button @click="isBannerOpen = true">Open Banner</button>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PModal :open="isModalOpen" @dismiss="onModalDismiss">Modal</PModal>
     <p>{{ modalDismissEventCounter }}</p>
     <button @click="isModalOpen = true">Open Modal</button>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTable @update="onTableUpdate">
       <PTableHead>
         <PTableHeadRow>
@@ -304,8 +299,8 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ tableUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
-    <PCarousel @update="onCarouselUpdate">
+  <div class="playground">
+    <PCarousel @update="onCarouselUpdate" :pagination="true" :trimSpace="true" :rewind="true">
       <div>Slide 1</div>
       <div>Slide 2</div>
       <div>Slide 3</div>
@@ -313,7 +308,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>{{ carouselUpdateEventCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputDate
       v-model="inputDateValue"
       @input="onInputDateInput"
@@ -327,7 +322,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputDateChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputMonth
       v-model="inputMonthValue"
       @input="onInputMonthInput"
@@ -341,7 +336,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputMonthChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputWeek
       v-model="inputWeekValue"
       @input="onInputWeekInput"
@@ -355,7 +350,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputWeekChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputEmail
       v-model="inputEmailValue"
       @input="onInputEmailInput"
@@ -369,7 +364,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputEmailChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputNumber
       v-model="inputNumberValue"
       @input="onInputNumberInput"
@@ -384,7 +379,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputNumberChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputPassword
       v-model="inputPasswordValue"
       @input="onInputPasswordInput"
@@ -399,7 +394,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputPasswordChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputSearch
       v-model="inputSearchValue"
       @input="onInputSearchInput"
@@ -414,7 +409,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputSearchChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputTel
       v-model="inputTelValue"
       @input="onInputTelInput"
@@ -428,7 +423,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputTelChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputText
       v-model="inputTextValue"
       @input="onInputTextInput"
@@ -443,7 +438,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputTextChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputTime
       v-model="inputTimeValue"
       @input="onInputTimeInput"
@@ -457,7 +452,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputTimeChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PInputUrl
       v-model="inputUrlValue"
       @input="onInputUrlInput"
@@ -472,7 +467,7 @@ const onTextareaChange = (_: TextareaChangeEventDetail) => textareaChangeCounter
     <p>Change: {{ inputUrlChangeCounter }}</p>
   </div>
 
-  <div class="playground light">
+  <div class="playground">
     <PTextarea
       v-model="textareaValue"
       @input="onTextareaInput"

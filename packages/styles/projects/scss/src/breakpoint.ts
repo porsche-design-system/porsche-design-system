@@ -9,12 +9,19 @@ import {
 
 export const getBreakpointScss = () => {
   return `
-    $pds-breakpoint-base: 0;
-    $pds-breakpoint-xs: ${breakpointXs};
-    $pds-breakpoint-s: ${breakpointSm};
-    $pds-breakpoint-m: ${breakpointMd};
-    $pds-breakpoint-l: ${breakpointLg};
-    $pds-breakpoint-xl: ${breakpointXl};
-    $pds-breakpoint-xxl: ${breakpoint2Xl};
+    $breakpoint-xs: ${breakpointXs};
+    $breakpoint-sm: ${breakpointSm};
+    $breakpoint-md: ${breakpointMd};
+    $breakpoint-lg: ${breakpointLg};
+    $breakpoint-xl: ${breakpointXl};
+    $breakpoint-2xl: ${breakpoint2Xl};
+
+    $pds-breakpoint-base: 0; /* alias (deprecated) */
+    $pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */
+    $pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */
+    $pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */
+    $pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */
+    $pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */
+    $pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */
 `;
 };

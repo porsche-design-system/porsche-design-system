@@ -1,0 +1,153 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-color {
+  @include pds.prose-text-sm;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: pds.$spacing-fluid-md;
+  padding: pds.$spacing-fluid-md;
+  color: pds.$color-primary;
+
+  &__swatches {
+    display: flex;
+    align-items: center;
+    gap: pds.$spacing-static-sm;
+
+    &-item {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: pds.$radius-md;
+      border: 1px solid pds.$color-contrast-low;
+    }
+  }
+}
+
+.scss-bg-canvas {
+  background-color: pds.$color-canvas;
+}
+
+.scss-bg-surface {
+  background-color: pds.$color-surface;
+}
+
+.scss-bg-frosted {
+  background-color: pds.$color-frosted;
+}
+
+.scss-bg-frosted-soft {
+  background-color: pds.$color-frosted-soft;
+}
+
+.scss-bg-backdrop {
+  background-color: pds.$color-backdrop;
+}
+
+.scss-bg-primary {
+  background-color: pds.$color-primary;
+}
+
+.scss-bg-contrast-higher {
+  background-color: pds.$color-contrast-higher;
+}
+
+.scss-bg-contrast-high {
+  background-color: pds.$color-contrast-high;
+}
+
+.scss-bg-contrast-medium {
+  background-color: pds.$color-contrast-medium;
+}
+
+.scss-bg-contrast-low {
+  background-color: pds.$color-contrast-low;
+}
+
+.scss-bg-contrast-lower {
+  background-color: pds.$color-contrast-lower;
+}
+
+.scss-bg-info {
+  background-color: pds.$color-info;
+}
+
+.scss-bg-info-medium {
+  background-color: pds.$color-info-medium;
+}
+
+.scss-bg-info-low {
+  background-color: pds.$color-info-low;
+}
+
+.scss-bg-info-frosted {
+  background-color: pds.$color-info-frosted;
+}
+
+.scss-bg-info-frosted-soft {
+  background-color: pds.$color-info-frosted-soft;
+}
+
+.scss-bg-success {
+  background-color: pds.$color-success;
+}
+
+.scss-bg-success-medium {
+  background-color: pds.$color-success-medium;
+}
+
+.scss-bg-success-low {
+  background-color: pds.$color-success-low;
+}
+
+.scss-bg-success-frosted {
+  background-color: pds.$color-success-frosted;
+}
+
+.scss-bg-success-frosted-soft {
+  background-color: pds.$color-success-frosted-soft;
+}
+
+.scss-bg-warning {
+  background-color: pds.$color-warning;
+}
+
+.scss-bg-warning-medium {
+  background-color: pds.$color-warning-medium;
+}
+
+.scss-bg-warning-low {
+  background-color: pds.$color-warning-low;
+}
+
+.scss-bg-warning-frosted {
+  background-color: pds.$color-warning-frosted;
+}
+
+.scss-bg-warning-frosted-soft {
+  background-color: pds.$color-warning-frosted-soft;
+}
+
+.scss-bg-error {
+  background-color: pds.$color-error;
+}
+
+.scss-bg-error-medium {
+  background-color: pds.$color-error-medium;
+}
+
+.scss-bg-error-low {
+  background-color: pds.$color-error-low;
+}
+
+.scss-bg-error-frosted {
+  background-color: pds.$color-error-frosted;
+}
+
+.scss-bg-error-frosted-soft {
+  background-color: pds.$color-error-frosted-soft;
+}
+
+.scss-bg-focus {
+  background-color: pds.$color-focus;
+}

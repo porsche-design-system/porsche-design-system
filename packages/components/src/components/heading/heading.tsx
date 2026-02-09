@@ -39,7 +39,7 @@ export class Heading {
   /** Text alignment of the component. */
   @Prop() public align?: HeadingAlign = 'start';
 
-  /** Basic text color variations depending on theme property. */
+  /** Basic text color variations. */
   @Prop() public color?: HeadingColor = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */

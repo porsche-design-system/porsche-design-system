@@ -69,6 +69,18 @@
   .change-gradient-color-width {
     --p-gradient-color-width: 50%;
   }
+
+  .change-px {
+    --p-carousel-px: 100px;
+  }
+
+  .change-ps {
+    --p-carousel-ps: 20px;
+  }
+
+  .change-pe {
+    --p-carousel-pe: 80px;
+  }
 </style>
 
 <div class="visualize-grid">
@@ -92,7 +104,7 @@
   <span></span>
 </div>
 
-<div class="playground light" title="should render carousel">
+<div class="playground" title="should render carousel">
   <p-carousel pagination="true">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -100,7 +112,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with heading">
+<div class="playground" title="should render carousel with heading">
   <p-carousel pagination="true" heading="Heading">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -108,7 +120,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with heading xx-large">
+<div class="playground" title="should render carousel with heading xx-large">
   <p-carousel pagination="true" heading="Heading" heading-size="xx-large">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -116,7 +128,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with description">
+<div class="playground" title="should render carousel with description">
   <p-carousel pagination="true" heading="Heading" description="Description" class="a11ytree-snapshot-test">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -124,7 +136,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slotted heading">
+<div class="playground" title="should render carousel with slotted heading">
   <p-carousel pagination="true">
     <h2 slot="heading">Slotted heading</h2>
     <div>Slide 1</div>
@@ -133,7 +145,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slotted heading xx-large">
+<div class="playground" title="should render carousel with slotted heading xx-large">
   <p-carousel pagination="true" heading-size="xx-large">
     <h2 slot="heading">Slotted heading</h2>
     <div>Slide 1</div>
@@ -143,7 +155,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with slotted heading and slotted description with slotted and deeply nested anchor"
 >
   <p-carousel pagination="true">
@@ -160,7 +172,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slotted controls">
+<div class="playground" title="should render carousel with slotted controls">
   <p-carousel pagination="true">
     <p-tabs-bar slot="controls" active-tab-index="0">
       <button type="button">Tab One</button>
@@ -173,7 +185,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with heading and slotted controls">
+<div class="playground" title="should render carousel with heading and slotted controls">
   <p-carousel pagination="true" heading="Heading">
     <p-tabs-bar slot="controls" active-tab-index="0">
       <button type="button">Tab One</button>
@@ -187,7 +199,7 @@
 </div>
 
 <div
-  class="playground light a11ytree-snapshot-test"
+  class="playground a11ytree-snapshot-test"
   title="should render carousel with heading, description and slotted controls"
 >
   <p-carousel pagination="true" heading="Heading" description="Description">
@@ -202,7 +214,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with align-header=center, heading and description">
+<div class="playground" title="should render carousel with align-header=center, heading and description">
   <p-carousel
     pagination="true"
     heading="Heading (align-header=center)"
@@ -216,7 +228,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with align-header=center, slotted heading and slotted description"
 >
   <p-carousel pagination="true" align-header="center">
@@ -229,7 +241,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with align-header=center, heading, description and slotted controls"
 >
   <p-carousel
@@ -249,7 +261,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with multiline heading">
+<div class="playground" title="should render carousel with multiline heading">
   <p-carousel
     pagination="true"
     heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
@@ -260,7 +272,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with multiline heading and multiline description">
+<div class="playground" title="should render carousel with multiline heading and multiline description">
   <p-carousel
     pagination="true"
     heading="Multiline heading could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct."
@@ -273,7 +285,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with multiline heading, multiline description and multiline header"
 >
   <p-carousel
@@ -292,7 +304,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with multiline slotted heading and multiline slotted description"
 >
   <p-carousel pagination="true">
@@ -310,7 +322,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with align-header=center and multiline heading">
+<div class="playground" title="should render carousel with align-header=center and multiline heading">
   <p-carousel
     pagination="true"
     align-header="center"
@@ -323,7 +335,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with align-header=center, multiline heading and multiline description"
 >
   <p-carousel
@@ -339,7 +351,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with align-header=center, multiline heading, multiline description and multiline header"
 >
   <p-carousel
@@ -359,7 +371,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with align-header=center, multiline slotted heading and multiline slotted description"
 >
   <p-carousel pagination="true" align-header="center">
@@ -377,7 +389,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with width=extended, heading and description">
+<div class="playground" title="should render carousel with width=extended, heading and description">
   <p-carousel pagination="true" heading="Heading (width=extended)" description="Description (width=extended)" width="extended">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -386,7 +398,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with width=extended, heading, description and slotted controls"
 >
   <p-carousel pagination="true" heading="Heading (width=extended)" description="Description (width=extended)" width="extended">
@@ -405,7 +417,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with width=extended, slotted heading and slotted description"
 >
   <p-carousel pagination="true" width="extended">
@@ -418,7 +430,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with width=extended, multiline heading and multiline description"
 >
   <p-carousel pagination="true"
@@ -433,7 +445,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with width=extended, align-header=center multiline heading and multiline description"
 >
   <p-carousel pagination="true"
@@ -449,7 +461,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel without prev/next buttons and pagination when slidesPerPage=2 and only 2 slides"
 >
   <p-carousel pagination="true" heading="Slides per page: 2" slides-per-page="2">
@@ -458,7 +470,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slidesPerPage=2">
+<div class="playground" title="should render carousel with slidesPerPage=2">
   <p-carousel pagination="true" heading="Slides per page: 2" slides-per-page="2">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -469,7 +481,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slidesPerPage=3">
+<div class="playground" title="should render carousel with slidesPerPage=3">
   <p-carousel pagination="true" heading="Slides per page: 3" slides-per-page="3">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -480,7 +492,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slidesPerPage=4">
+<div class="playground" title="should render carousel with slidesPerPage=4">
   <p-carousel pagination="true" heading="Slides per page: 4" slides-per-page="4">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -491,7 +503,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slidesPerPage=5">
+<div class="playground" title="should render carousel with slidesPerPage=5">
   <p-carousel pagination="true" heading="Slides per page: 5" slides-per-page="5">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -502,7 +514,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with responsive slidesPerPage">
+<div class="playground" title="should render carousel with responsive slidesPerPage">
   <p-carousel
     pagination="true"
     heading="Responsive slides per page: {base: 1, s: auto, m: 4, l: auto, xl: 6}"
@@ -517,7 +529,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with slidesPerPage=auto">
+<div class="playground" title="should render carousel with slidesPerPage=auto">
   <p-carousel pagination="true" heading="slidesPerPage=auto" slides-per-page="auto">
     <div style="width: 10vw">Slide 1 10vw</div>
     <div style="width: 200px">Slide 2 200px</div>
@@ -528,7 +540,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with pagination=false">
+<div class="playground" title="should render carousel with pagination=false">
   <p-carousel pagination="false" heading="pagination=false">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -536,7 +548,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with responsive pagination">
+<div class="playground" title="should render carousel with responsive pagination">
   <p-carousel pagination="{base: true, m: false}" heading="pagination={base: true, m: false}">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -544,7 +556,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with rewind=false">
+<div class="playground" title="should render carousel with rewind=false">
   <p-carousel pagination="true" heading="rewind=false" rewind="false">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -552,7 +564,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with custom background-color (also above 2560px)">
+<div class="playground" title="should render carousel with custom background-color (also above 2560px)">
   <p-carousel pagination="true" heading="Heading" style="background: deeppink">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -560,7 +572,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with infinite pagination with active slide at the start">
+<div class="playground" title="should render carousel with infinite pagination with active slide at the start">
   <p-carousel pagination="true" heading="Infinite pagination start">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -571,7 +583,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with infinite pagination with active slide in the middle">
+<div class="playground" title="should render carousel with infinite pagination with active slide in the middle">
   <p-carousel pagination="true" heading="Infinite pagination middle" active-slide-index="4">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -583,7 +595,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with infinite pagination with active slide at the end">
+<div class="playground" title="should render carousel with infinite pagination with active slide at the end">
   <p-carousel pagination="true" heading="Infinite pagination end" active-slide-index="5">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -594,7 +606,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with center slide focused">
+<div class="playground" title="should render carousel with center slide focused">
   <p-carousel
     id="focus-on-center-slide"
     pagination="true"
@@ -612,7 +624,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel without trimmed space">
+<div class="playground" title="should render carousel without trimmed space">
   <p-carousel pagination="true" heading="Without trim space" focus-on-center-slide="true" trim-space="false" slides-per-page="3">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -623,7 +635,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with gradient background">
+<div class="playground" title="should render carousel with gradient background">
   <p-carousel pagination="true" heading="Background gradient" gradient="true" slides-per-page="3" active-slide-index="2">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -634,7 +646,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with gradient background with custom width">
+<div class="playground" title="should render carousel with gradient background with custom width">
   <p-carousel
     pagination="true"
     heading="Background gradient with custom width"
@@ -652,7 +664,7 @@
   </p-carousel>
 </div>
 
-<div class="playground light" title="should render carousel with custom border-radius">
+<div class="playground" title="should render carousel with custom border-radius">
   <p-carousel pagination="true" heading="Slides with custom border radius" class="change-border-radius">
     <div>Slide 1</div>
     <div>Slide 2</div>
@@ -661,7 +673,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel without prev/next buttons / pagination and left aligned heading, description and slotted controls when slidesPerPage=3 but only 2 slides are rendered"
 >
   <p-carousel pagination="true" heading="Less slides then slides per page" description="Some description" slides-per-page="3">
@@ -676,7 +688,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel without prev/next buttons / pagination and centered heading, description and slotted controls when slidesPerPage=3 and only 2 slides are rendered"
 >
   <p-carousel
@@ -697,7 +709,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel without prev/next buttons / pagination and left aligned slotted heading, description and controls when slidesPerPage=3 but only 2 slides are rendered"
 >
   <p-carousel pagination="true" slides-per-page="3">
@@ -714,7 +726,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel without prev/next buttons / pagination and centered slotted heading, description and controls when slidesPerPage=3 and only 2 slides are rendered"
 >
   <p-carousel pagination="true" slides-per-page="3" align-header="center">
@@ -731,7 +743,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with align-header=center, heading, description and slotted controls align-controls=start"
 >
   <p-carousel
@@ -753,7 +765,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render carousel with heading, description and slotted controls align-controls=center"
 >
   <p-carousel pagination="true" heading="Heading" description="Description" align-controls="center">
@@ -762,6 +774,38 @@
       <button type="button">Tab Two</button>
       <button type="button">Tab Three</button>
     </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground" title="should render carousel with width=wide, heading and description">
+  <p-carousel heading="Heading (width=wide)" description="Description (width=wide)" width="wide">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground" title="should render carousel with width=full, heading and description">
+  <p-carousel heading="Heading (width=full)" description="Description (width=full)" width="full">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground" title="should render carousel with CSS variable --p-carousel-px">
+  <p-carousel class="change-px" heading="Heading (--p-carousel-px)" description="Description (--p-carousel-px)">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div class="playground" title="should render carousel with CSS variable --p-carousel-ps and --p-carousel-pe">
+  <p-carousel class="change-ps change-pe" heading="Heading (--p-carousel-ps/e)" description="Description (--p-carousel-ps/e)">
     <div>Slide 1</div>
     <div>Slide 2</div>
     <div>Slide 3</div>

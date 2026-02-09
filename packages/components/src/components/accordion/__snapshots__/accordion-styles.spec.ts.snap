@@ -1,10 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: false and sticky: false 1`] = `
 ":host {
   display: block;
-  border-bottom: 1px solid #D8D8DB !important;
-  color-scheme: light dark !important;
+  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -16,19 +15,16 @@ exports[`getComponentCss() > should return correct css for size: "medium", compa
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -38,32 +34,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 6px;
   bottom: 6px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -73,23 +62,21 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -109,11 +96,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: false, open: true and sticky: false 1`] = `
 ":host {
   display: block;
-  border-bottom: 1px solid #D8D8DB !important;
-  color-scheme: light dark !important;
+  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -125,19 +111,16 @@ exports[`getComponentCss() > should return correct css for size: "medium", compa
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -147,32 +130,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 6px;
   bottom: 6px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -182,28 +158,26 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 1fr;
   visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   padding-bottom: 24px;
 }
 .collapsible div {
   overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
+  animation: keyframes-overflow var(--p-transition-duration,.25s);
   padding: 4px;
   margin: -4px;
   transform: translate3d(0,0,0);
@@ -219,11 +193,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -235,19 +208,16 @@ exports[`getComponentCss() > should return correct css for size: "medium", compa
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #FBFCFF;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -257,32 +227,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 2px;
   bottom: 2px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -292,23 +255,21 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -328,11 +289,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: dark and sticky: true 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: false 2`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -344,19 +304,16 @@ exports[`getComponentCss() > should return correct css for size: "medium", compa
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #FBFCFF;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -366,32 +323,121 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 2px;
   bottom: 2px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
+  }
+}
+
+.heading {
+  margin: 0;
+}
+.icon-container {
+  height: calc(6px + 2.125ex);
+  width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  transform: rotate3d(0,0,1,90deg);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+}
+.collapsible {
+  color: var(--p-color-primary);
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
+}
+.collapsible div {
+  overflow: hidden;
+  animation: none;
+  padding: 4px;
+  margin: -4px;
+  transform: translate3d(0,0,0);
+  z-index: 1;
+}
+@keyframes keyframes-overflow {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: true 1`] = `
+":host {
+  display: block;
+  transform: translate3d(0,0,0) !important;
+}
+:host(:only-of-type) {
+  border-bottom: 0 !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+  cursor: pointer;
+  z-index: 0;
+  color: var(--p-color-primary);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  font-weight: 600;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  padding: 4px 0;
+}
+button::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
+  top: 2px;
+  bottom: 2px;
+}
+button:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+@media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  }
+  button:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -400,30 +446,28 @@ button:focus-visible::before {
   position: sticky;
   top: var(--p-accordion-position-sticky-top, 0);
   z-index: 1;
-  background-color: #0E0E12;
+  background: var(--p-color-canvas);
 }
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   display: grid;
   position: relative;
   z-index: 0;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -443,11 +487,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false and sticky: true 2`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -459,19 +502,16 @@ exports[`getComponentCss() > should return correct css for size: "medium", compa
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -481,141 +521,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 2px;
   bottom: 2px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
-.heading {
-  margin: 0;
-}
-.icon-container {
-  height: calc(6px + 2.125ex);
-  width: calc(6px + 2.125ex);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
-  transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.collapsible {
-  color: #010205;
-  display: grid;
-  grid-template-rows: 0fr;
-  visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
-}
-.collapsible div {
-  overflow: hidden;
-  animation: none;
-  padding: 4px;
-  margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
-}
-@keyframes keyframes-overflow {
-  from {
-    overflow: hidden;
-  }
-  to {
-    overflow: hidden;
-  }
-}"
-`;
-
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: false, theme: light and sticky: true 1`] = `
-":host {
-  display: block;
-  transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
-}
-:host(:only-of-type) {
-  border-bottom: 0 !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-button {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
-  gap: 24px;
-  background: transparent;
-  cursor: pointer;
-  text-align: start;
-  color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  font-weight: 600;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  padding: 4px 0;
-}
-button::before {
-  content: "";
-  position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
-  top: 2px;
-  bottom: 2px;
-}
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
-button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
-}
-@media(hover:hover) {
-  button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -624,30 +548,28 @@ button:focus-visible::before {
   position: sticky;
   top: var(--p-accordion-position-sticky-top, 0);
   z-index: 1;
-  background-color: #FFF;
+  background: var(--p-color-canvas);
 }
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   position: relative;
   z-index: 0;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -667,11 +589,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "medium", compact: true, open: true and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -683,19 +604,16 @@ exports[`getComponentCss() > should return correct css for size: "medium", compa
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -705,32 +623,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 2px;
   bottom: 2px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -740,28 +651,26 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 1fr;
   visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   padding-bottom: 8px;
 }
 .collapsible div {
   overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
+  animation: keyframes-overflow var(--p-transition-duration,.25s);
   padding: 4px;
   margin: -4px;
   transform: translate3d(0,0,0);
@@ -777,11 +686,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: false and sticky: false 1`] = `
 ":host {
   display: block;
-  border-bottom: 1px solid #D8D8DB !important;
-  color-scheme: light dark !important;
+  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -793,19 +701,16 @@ exports[`getComponentCss() > should return correct css for size: "small", compac
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -815,32 +720,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 6px;
   bottom: 6px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -850,23 +748,21 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -886,11 +782,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true and sticky: false 1`] = `
 ":host {
   display: block;
-  border-bottom: 1px solid #404044 !important;
-  color-scheme: light dark !important;
+  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -902,19 +797,16 @@ exports[`getComponentCss() > should return correct css for size: "small", compac
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #FBFCFF;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -924,32 +816,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 6px;
   bottom: 6px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -959,28 +844,26 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 1fr;
   visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   padding-bottom: 24px;
 }
 .collapsible div {
   overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
+  animation: keyframes-overflow var(--p-transition-duration,.25s);
   padding: 4px;
   margin: -4px;
   transform: translate3d(0,0,0);
@@ -996,11 +879,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: false, open: true and sticky: false 2`] = `
 ":host {
   display: block;
-  border-bottom: 1px solid #D8D8DB !important;
-  color-scheme: light dark !important;
+  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -1012,19 +894,16 @@ exports[`getComponentCss() > should return correct css for size: "small", compac
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1034,32 +913,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 6px;
   bottom: 6px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -1069,28 +941,26 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 1fr;
   visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   padding-bottom: 24px;
 }
 .collapsible div {
   overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
+  animation: keyframes-overflow var(--p-transition-duration,.25s);
   padding: 4px;
   margin: -4px;
   transform: translate3d(0,0,0);
@@ -1106,11 +976,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: false, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: false and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -1122,19 +991,16 @@ exports[`getComponentCss() > should return correct css for size: "small", compac
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1144,32 +1010,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 2px;
   bottom: 2px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -1179,23 +1038,21 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0,0,1,90deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 0fr;
   visibility: hidden;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), visibility 0s linear var(--p-transition-duration, .25s);
 }
 .collapsible div {
   overflow: hidden;
@@ -1215,11 +1072,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: true, theme: light and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: "small", compact: true, open: true and sticky: false 1`] = `
 ":host {
   display: block;
   transform: translate3d(0,0,0) !important;
-  color-scheme: light dark !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -1231,19 +1087,16 @@ exports[`getComponentCss() > should return correct css for size: "small", compac
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #010205;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1253,32 +1106,25 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 2px;
   bottom: 2px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -1288,28 +1134,26 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #010205;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 1fr;
   visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   padding-bottom: 8px;
 }
 .collapsible div {
   overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
+  animation: keyframes-overflow var(--p-transition-duration,.25s);
   padding: 4px;
   margin: -4px;
   transform: translate3d(0,0,0);
@@ -1325,11 +1169,10 @@ button:focus-visible::before {
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true, theme: dark and sticky: false 1`] = `
+exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"}, compact: false, open: true and sticky: false 1`] = `
 ":host {
   display: block;
-  border-bottom: 1px solid #404044 !important;
-  color-scheme: light dark !important;
+  border-bottom: 1px solid var(--p-color-contrast-lower) !important;
 }
 :host(:only-of-type) {
   border-bottom: 0 !important;
@@ -1341,19 +1184,16 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
   visibility: hidden;
 }
 button {
+  all: unset;
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  text-decoration: none;
-  border: 0;
-  margin: 0;
   gap: 24px;
-  background: transparent;
   cursor: pointer;
-  text-align: start;
-  color: #FBFCFF;
+  z-index: 0;
+  color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
@@ -1363,25 +1203,16 @@ button {
 }
 button::before {
   content: "";
+  z-index: -1;
   position: absolute;
-  border-radius: 4px;
-  left: -4px;
-  right: -4px;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  inset-inline: -4px;
   top: 6px;
   bottom: 6px;
 }
-button::-moz-focus-inner {
-  border: 0;
-}
-button:focus {
-  outline: 0;
-}
-button:focus-visible {
-  outline: 0;
-}
 button:focus-visible::before {
-  outline: 2px solid #1A44EA;
-  outline-offset: -2px;
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 @media(min-width:480px) {
   button {
@@ -1420,10 +1251,12 @@ button:focus-visible::before {
 
 @media(hover:hover) {
   button::before {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   button:hover::before {
-    background: rgba(148, 149, 152, .18);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: var(--p-color-frosted-soft);
   }
 }
 
@@ -1433,28 +1266,26 @@ button:focus-visible::before {
 .icon-container {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
+  font: inherit 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font-size: .75rem;
   transform: rotate3d(0);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: transform var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .collapsible {
-  color: #FBFCFF;
+  color: var(--p-color-primary);
   display: grid;
   grid-template-rows: 1fr;
   visibility: inherit;
-  transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: grid-template-rows var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   padding-bottom: 24px;
 }
 .collapsible div {
   overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
+  animation: keyframes-overflow var(--p-transition-duration,.25s);
   padding: 4px;
   margin: -4px;
   transform: translate3d(0,0,0);

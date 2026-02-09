@@ -1,6 +1,13 @@
 @use 'border';
-@use 'theme';
+@use 'color';
 @use 'sass:map';
+
+@mixin focus-visible($offset: 2px) {
+  &:focus-visible {
+    outline: 2px solid color.$color-focus-light;
+    outline-offset: $offset;
+  }
+}
 
 $pds-focus-offset-map: (
   'small': 2px,
@@ -8,10 +15,11 @@ $pds-focus-offset-map: (
 );
 
 $pds-focus-border-radius-map: (
-  'small': border.$pds-border-radius-small,
-  'medium': border.$pds-border-radius-medium,
+  'small': border.$radius-sm,
+  'medium': border.$radius-md,
 );
 
+/* alias (deprecated) */
 @mixin pds-focus($offset: 'small', $border-radius: 'small') {
   // it can easily be overwritten on purpose (when placed here) and visually reflected
   @if map.has-key($pds-focus-border-radius-map, $border-radius) {
@@ -24,7 +32,7 @@ $pds-focus-border-radius-map: (
     }
   }
   &:focus {
-    outline: border.$pds-border-width-base solid theme.$pds-theme-light-state-focus;
+    outline: border.$pds-border-width-base solid color.$color-focus-light;
     @if map.has-key($pds-focus-offset-map, $offset) {
       outline-offset: map.get($pds-focus-offset-map, $offset);
     } @else {

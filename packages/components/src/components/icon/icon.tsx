@@ -40,7 +40,7 @@ export class Icon {
   /** Specifies a whole icon path which can be used for custom icons. */
   @Prop() public source?: string;
 
-  /** Basic color variations depending on theme property. */
+  /** Basic color variations. */
   @Prop() public color?: IconColor = 'primary';
 
   /** The size of the icon. */

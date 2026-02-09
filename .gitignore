@@ -75,6 +75,7 @@ packages/components/src/assets/tailwind.css
 # Components JS
 packages/components-js/public/assets/imask.min.js
 packages/components-js/public/assets/styles.css
+packages/components-js/public/assets/index.css
 packages/components-js/public/assets/table-data*
 packages/components-js/public/index.js
 packages/components-js/projects/components-wrapper/environment.js
@@ -88,6 +89,8 @@ packages/components-react/projects/react-ssr-wrapper/src/utils.ts
 
 packages/components-react/projects/remix/app/routes/banner-basic.tsx
 packages/components-react/projects/remix/app/routes/banner-prefixed.tsx
+packages/components-react/projects/remix/app/routes/canvas-basic.tsx
+packages/components-react/projects/remix/app/routes/canvas-prefixed.tsx
 packages/components-react/projects/remix/app/routes/sheet-basic.tsx
 packages/components-react/projects/remix/app/routes/sheet-prefixed.tsx
 packages/components-react/projects/remix/app/routes/flyout-basic.tsx
@@ -96,7 +99,7 @@ packages/components-react/projects/remix/app/routes/drilldown-basic.tsx
 packages/components-react/projects/remix/app/routes/drilldown-prefixed.tsx
 packages/components-react/projects/remix/app/routes/modal-basic.tsx
 packages/components-react/projects/remix/app/routes/modal-prefixed.tsx
-packages/components-react/projects/remix/app/routes/overview.tsx
+packages/components-react/projects/remix/app/routes/overview-components.tsx
 packages/components-react/projects/remix/app/routes/toast-basic.tsx
 packages/components-react/projects/remix/app/routes/toast-prefixed.tsx
 packages/components-react/projects/remix/styles/getSharedStyles.tsx

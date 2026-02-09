@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -10,7 +9,9 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 
     <form (submit)="onSubmit($event)">
       <p-select name="options" label="Some Label" [required]="isRequired">
-        <p-select-option *ngIf="hasDeselection"></p-select-option>
+        @if (hasDeselection) {
+          <p-select-option></p-select-option>
+        }
         <p-select-option value="1">Option 1</p-select-option>
         <p-select-option value="2">Option 2</p-select-option>
         <p-select-option value="3">Option 3</p-select-option>
@@ -19,10 +20,10 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleRequiredComponent {
   isRequired: boolean = true;

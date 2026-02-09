@@ -30,7 +30,7 @@ const packageJsonExports = {
     default: './tokens/cjs/index.cjs',
   },
   './scss': {
-    sass: './styles/_index.scss',
+    sass: './scss/_index.scss',
   },
   './emotion': {
     types: './emotion/esm/index.d.ts',
@@ -110,7 +110,7 @@ describe('package.json files', () => {
         expect(pkgJson.exports).toEqual({
           '.': {
             default: './fesm2022/porsche-design-system-components-angular.mjs',
-            types: './index.d.ts',
+            types: './types/porsche-design-system-components-angular.d.ts',
           },
           './package.json': {
             default: './package.json',

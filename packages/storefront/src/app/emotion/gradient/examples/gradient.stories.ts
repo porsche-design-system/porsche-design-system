@@ -7,7 +7,7 @@ export const gradientEmotionStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid gap-fluid-md prose-text-sm text-center text-primary-dark',
+        className: 'grid gap-fluid-md prose-text-sm text-center text-white',
       },
       children: [
         {
@@ -15,28 +15,28 @@ export const gradientEmotionStory: Story<'div'> = {
           properties: {
             className: 'bg-fade-to-t rounded-lg p-fluid-md',
           },
-          children: ['...gradientToTopStyle'],
+          children: ['background: `linear-gradient(to top, ${gradientStopsFadeDark});`'],
         },
         {
           tag: 'div',
           properties: {
             className: 'bg-fade-to-r rounded-lg p-fluid-md',
           },
-          children: ['...gradientToRightStyle'],
+          children: ['background: `linear-gradient(to right, ${gradientStopsFadeDark});`'],
         },
         {
           tag: 'div',
           properties: {
             className: 'bg-fade-to-b rounded-lg p-fluid-md',
           },
-          children: ['...gradientToBottomStyle'],
+          children: ['background: `linear-gradient(to bottom, ${gradientStopsFadeDark});`'],
         },
         {
           tag: 'div',
           properties: {
             className: 'bg-fade-to-l rounded-lg p-fluid-md',
           },
-          children: ['...gradientToLeftStyle'],
+          children: ['background: `linear-gradient(to left, ${gradientStopsFadeDark});`'],
         },
       ],
     },

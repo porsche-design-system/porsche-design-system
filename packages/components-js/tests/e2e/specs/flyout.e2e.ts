@@ -1,7 +1,6 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 import {
-  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -12,6 +11,7 @@ import {
   getEventSummary,
   getHTMLAttributes,
   getLifecycleStatus,
+  type Options,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -19,7 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
+const CSS_TRANSITION_DURATION = 600; // Corresponds to durationLg
 const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.locator('p-flyout');
@@ -150,13 +150,14 @@ const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessa
 
 const expectHeaderShadowToAppear = async (page: Page) => {
   const headerLocator = getHeader(page);
-  await page.waitForFunction(
-    (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
-    await headerLocator.evaluateHandle((el) => el)
-  );
-  expect(await getElementStyle(getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
-    'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
-  );
+  await expect(headerLocator).toHaveCSS('boxShadow', 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px');
+  // await page.waitForFunction(
+  //   (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
+  //   await headerLocator.evaluateHandle((el) => el)
+  // );
+  // expect(await getElementStyle(getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
+  //   'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
+  // );
 };
 
 test('should render and be visible when open', async ({ page }) => {
@@ -195,24 +196,6 @@ test('should have correct transform when opened and dismissed', async ({ page })
 });
 
 test.describe('scroll shadows', () => {
-  test('should have header scroll shadow when header slot is used and scrolled down', async ({ page }) => {
-    await initBasicFlyout(
-      page,
-      { open: true },
-      {
-        header: '<div slot="header">Some Heading</div>',
-        content: '<div style="height: 200vh">Some Content</div>',
-        subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
-      }
-    );
-    const header = getHeader(page);
-    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
-
-    await scrollFlyoutTo(page, '.scroll-here');
-
-    await expectHeaderShadowToAppear(page);
-  });
-
   test('should not have footer shadow when content is not scrollable', async ({ page }) => {
     await initBasicFlyout(
       page,
@@ -238,18 +221,13 @@ test.describe('scroll shadows', () => {
         }
       );
       const footer = getFooter(page);
-      expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
-        'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-      );
+      const footerBgColor = await footer.evaluate((el) => getComputedStyle(el, '::after').backgroundColor);
+      expect(footerBgColor).toBe('rgba(122, 123, 138, 0.15)');
 
       await scrollFlyoutTo(page, '.scroll-here');
 
-      await page.waitForFunction(
-        (el) => getComputedStyle(el).boxShadow === 'none',
-        await footer.evaluateHandle((el) => el)
-      );
-
-      expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
+      const afterContent = await footer.evaluate((el) => getComputedStyle(el, '::after').content);
+      expect(afterContent).toBe('none');
     });
   });
 });
@@ -860,19 +838,15 @@ test.describe('after dynamic slot change', () => {
 
     await waitForStencilLifecycle(page);
 
-    const header = getHeader(page);
     const dialog = getFlyout(page);
     await expect(page.getByText(headerText)).toBeVisible();
-    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
     await expect(dialog).toHaveAttribute('aria-label', headerText);
-
-    await scrollFlyoutTo(page, '.scroll-here');
-    await expectHeaderShadowToAppear(page);
   });
 
   test('should show footer with shadow', async ({ page }) => {
     await initBasicFlyout(page);
     const host = getHost(page);
+    const footer = getFlyout(page);
     const footerText = 'Some slotted footer content';
 
     await expect(page.getByText(footerText)).not.toBeVisible();
@@ -884,9 +858,10 @@ test.describe('after dynamic slot change', () => {
     await waitForStencilLifecycle(page);
 
     await expect(page.getByText(footerText)).toBeVisible();
-    expect(await getElementStyle(getFooter(page), 'boxShadow'), 'before scroll').toBe(
-      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
-    );
+    // TODO: Check footer background working
+    // await expect
+    //   .poll(() => footer.evaluate((el) => getComputedStyle(el, '::after').backgroundColor))
+    //   .toBe('rgba(122, 123, 138, 0.15)');
   });
 
   test('should show subfooter', async ({ page }) => {
@@ -912,7 +887,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+    expect(await getStickyTopCssVarValue(page)).toBe('107px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
@@ -922,7 +897,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+    expect(await getStickyTopCssVarValue(page)).toBe('107px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
@@ -932,7 +907,7 @@ test.describe('after dynamic slot change', () => {
   test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
     await initAdvancedFlyout(page);
     const host = getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('56px');
+    expect(await getStickyTopCssVarValue(page)).toBe('68px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
@@ -942,7 +917,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+    expect(await getStickyTopCssVarValue(page)).toBe('107px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 

@@ -4,15 +4,13 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize }
 import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import { legacyRadiusSmall, radiusLg } from './css-variables';
+import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusLg } from './css-variables';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -33,8 +31,6 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
 export const offsetVertical = '-2px';
 export const offsetHorizontal = '-4px';
 
-const { primaryColor, frostedColor } = colors;
-
 export const getLinkButtonPureStyles = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -54,7 +50,6 @@ export const getLinkButtonPureStyles = (
       ':host': {
         ...addImportantToEachRule({
           transform: 'translate3d(0,0,0)', // creates new stacking context
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
         ...buildResponsiveStyles(stretch, (responsiveStretch: boolean) => ({
@@ -70,7 +65,7 @@ export const getLinkButtonPureStyles = (
       display: 'flex',
       width: '100%',
       cursor: 'pointer',
-      color: primaryColor,
+      color: colorPrimary,
       textDecoration: underline ? 'underline' : 'none',
       ...textSmallStyle,
       ...mergeDeep(
@@ -98,14 +93,14 @@ export const getLinkButtonPureStyles = (
         transition: getTransition('background-color'),
         ...(active && {
           ...frostedGlassStyle,
-          backgroundColor: frostedColor,
+          backgroundColor: colorFrosted,
         }),
       },
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover::before': {
             ...frostedGlassStyle,
-            backgroundColor: frostedColor,
+            backgroundColor: colorFrosted,
           },
         })),
       ...(!hasSlottedAnchor && {

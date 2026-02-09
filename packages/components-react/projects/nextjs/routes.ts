@@ -556,9 +556,13 @@ const generatedRoutes = {
     "path": "/multi-select-opened-with-optgroups-disabled",
     "name": "MultiSelectOpenedWithOptgroupsDisabled"
   },
-  "overview": {
-    "path": "/overview",
-    "name": "Overview"
+  "overviewComponents": {
+    "path": "/overview-components",
+    "name": "OverviewComponents"
+  },
+  "overviewForms": {
+    "path": "/overview-forms",
+    "name": "OverviewForms"
   },
   "pagination": {
     "path": "/pagination",
@@ -830,10 +834,6 @@ const generatedRoutes = {
 export const sitemap = {
   home: { path: '/', name: 'Home' },
   ...generatedRoutes,
-  themeInjection: {
-    path: '/theme-injection',
-    name: 'Theme Injection',
-  },
   modalPage: {
     path: '/modal-standalone',
     name: 'Modal Page',

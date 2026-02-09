@@ -1,0 +1,27 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-shadow {
+  @include pds.prose-text-sm;
+  display: grid;
+  gap: pds.$spacing-fluid-md;
+  color: pds.$color-primary;
+  padding: pds.$spacing-static-md;
+
+  &--sm {
+    box-shadow: pds.$shadow-sm;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-sm;
+  }
+
+  &--md {
+    box-shadow: pds.$shadow-md;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-sm;
+  }
+
+  &--lg {
+    box-shadow: pds.$shadow-lg;
+    border-radius: pds.$radius-lg;
+    padding: pds.$spacing-fluid-sm;
+  }
+}

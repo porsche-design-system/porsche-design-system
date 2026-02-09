@@ -11,15 +11,14 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
+  getDisabledBaseStyles,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles, getDisabledBaseStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -37,14 +36,11 @@ const disabledCursorStyle: JssStyle = {
 const hiddenStyle: JssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean): string => {
-  const { primaryColor, frostedColor } = colors;
-
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -117,20 +113,20 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         ...textSmallStyle,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
-        color: primaryColor,
+        color: colorPrimary,
         borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
             ...frostedGlassStyle,
-            background: frostedColor,
+            background: colorFrosted,
           },
         }),
         '&[aria-current]': {
           ...disabledCursorStyle,
-          color: primaryColor,
-          border: `${borderWidthBase} solid ${primaryColor}`,
+          color: colorPrimary,
+          border: `${borderWidthBase} solid ${colorPrimary}`,
         },
         '&[aria-disabled]': {
           ...getDisabledBaseStyles(),

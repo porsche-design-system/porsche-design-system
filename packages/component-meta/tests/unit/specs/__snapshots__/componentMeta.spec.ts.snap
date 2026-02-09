@@ -1065,7 +1065,6 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button",
-      "p-button-pure",
     ],
     "propsMeta": {
       "align": {
@@ -1488,6 +1487,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-canvas": {
+    "cssVariablesMeta": {
+      "--p-canvas-sidebar-end-width": {
+        "defaultValue": "320px",
+        "description": "Width of the sidebar end.",
+      },
+      "--p-canvas-sidebar-start-width": {
+        "defaultValue": "320px",
+        "description": "Width of the sidebar start.",
+      },
+    },
     "eventsMeta": {
       "sidebarEndDismiss": {
         "description": "Emitted when the sidebar end requests to be dismissed.",
@@ -1513,9 +1522,17 @@ exports[`should match snapshot 1`] = `
       "p-button",
       "p-crest",
       "p-wordmark",
-      "p-flyout",
     ],
     "propsMeta": {
+      "background": {
+        "allowedValues": [
+          "canvas",
+          "surface",
+        ],
+        "defaultValue": "canvas",
+        "description": "Defines the background color of the main section and auto adjust it for the sidebar",
+        "type": "CanvasBackground",
+      },
       "sidebarEndOpen": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -1571,6 +1588,18 @@ exports[`should match snapshot 1`] = `
       },
     ],
     "cssVariablesMeta": {
+      "--p-carousel-pe": {
+        "defaultValue": "",
+        "description": "Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-ps\`. When used then the prop \`width\` has no effect anymore.",
+      },
+      "--p-carousel-ps": {
+        "defaultValue": "",
+        "description": "Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with \`--p-carousel-px\` or \`--p-carousel-pe\`. When used then the prop \`width\` has no effect anymore.",
+      },
+      "--p-carousel-px": {
+        "defaultValue": "",
+        "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop \`width\` has no effect anymore.",
+      },
       "--p-hyphens": {
         "defaultValue": "auto",
         "description": "Sets the CSS \`hyphens\` property for text elements, controlling whether words can break and hyphenate automatically.",
@@ -1725,6 +1754,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "basic",
           "extended",
+          "wide",
+          "full",
         ],
         "defaultValue": "basic",
         "description": "Defines the outer spacings between the carousel and the left and right screen sides.",
@@ -1959,7 +1990,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "DisplayColor",
       },
       "ellipsis": {
@@ -2021,7 +2052,7 @@ exports[`should match snapshot 1`] = `
           "contrast-high",
         ],
         "defaultValue": "contrast-lower",
-        "description": "Defines color depending on theme.",
+        "description": "Defines color.",
         "type": "DividerColor",
       },
       "direction": {
@@ -2649,7 +2680,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "HeadingColor",
       },
       "ellipsis": {
@@ -2727,7 +2758,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic color variations depending on theme property.",
+        "description": "Basic color variations.",
         "type": "IconColor",
       },
       "name": {
@@ -6371,7 +6402,6 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-link",
-      "p-link-pure",
     ],
     "propsMeta": {
       "align": {
@@ -6838,7 +6868,7 @@ exports[`should match snapshot 1`] = `
   "p-multi-select": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -7161,7 +7191,7 @@ exports[`should match snapshot 1`] = `
   "p-pin-code": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -7543,9 +7573,9 @@ exports[`should match snapshot 1`] = `
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
-    "hasSlot": false,
+    "hasSlot": true,
     "isChunked": false,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "nestedComponents": [
       "p-spinner",
@@ -7580,6 +7610,17 @@ exports[`should match snapshot 1`] = `
     "requiredParent": [
       "p-radio-group",
     ],
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-scroller": {
@@ -7643,7 +7684,7 @@ exports[`should match snapshot 1`] = `
   "p-segmented-control": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -8178,7 +8219,7 @@ exports[`should match snapshot 1`] = `
   "p-select": {
     "controlledMeta": [
       {
-        "event": "update",
+        "event": "change",
         "isInternallyMutated": true,
         "props": [
           "value",
@@ -9513,7 +9554,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "primary",
-        "description": "Basic text color variations depending on theme property.",
+        "description": "Basic text color variations.",
         "type": "TextColor",
       },
       "ellipsis": {

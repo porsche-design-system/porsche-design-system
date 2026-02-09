@@ -1,6 +1,6 @@
-import type { BKey } from './mediaQueryShared';
-import type { Breakpoint } from './breakpointShared';
 import { breakpoint } from './breakpoint';
+import type { Breakpoint } from './breakpointShared';
+import type { BKey } from './mediaQueryShared';
 
 export function getMediaQueryMax(max: BKey<'xs'>): '@media(max-width:479px)';
 export function getMediaQueryMax(max: BKey<'s'>): '@media(max-width:759px)';

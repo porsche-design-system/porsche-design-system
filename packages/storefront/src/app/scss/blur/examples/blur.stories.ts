@@ -7,7 +7,7 @@ export const blurScssStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid prose-text-sm text-primary-dark',
+        className: 'grid prose-text-sm text-white',
       },
       children: [
         {
@@ -32,7 +32,9 @@ export const blurScssStory: Story<'div'> = {
             className:
               'backdrop-blur-frosted bg-frosted col-1 row-1 rounded-lg m-fluid-lg p-fluid-sm grid place-items-center',
           },
-          children: ['@include pds-frosted-glass;'],
+          children: [
+            'backdrop-filter: $blur-frosted; background-color: $color-frosted | $color-frosted-light | $color-frosted-dark;',
+          ],
         },
       ],
     },

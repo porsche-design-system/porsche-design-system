@@ -72,6 +72,14 @@ jobs:
         run: yarn test:unit:styles:emotion
       - name: 'Vanilla Extract Unit'
         run: yarn test:unit:styles:vanilla-extract
+      - name: 'VRT'
+        run: yarn test:vrt:styles
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-styles-vrt-chrome
+          path: ./packages/styles/tests/vrt/results
   components-unit:
     name: 'Components Unit'
     runs-on: ubuntu-latest

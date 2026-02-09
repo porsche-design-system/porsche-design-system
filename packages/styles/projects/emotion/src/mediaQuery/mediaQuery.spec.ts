@@ -1,8 +1,9 @@
-import type { Breakpoint } from './breakpointShared';
-import { getMediaQueryMin } from './getMediaQueryMin';
-import { getMediaQueryMax } from './getMediaQueryMax';
-import { getMediaQueryMinMax } from './getMediaQueryMinMax';
+import { describe, expect, it } from 'vitest';
 import * as fromMediaQuery from './';
+import type { Breakpoint } from './breakpointShared';
+import { getMediaQueryMax } from './getMediaQueryMax';
+import { getMediaQueryMin } from './getMediaQueryMin';
+import { getMediaQueryMinMax } from './getMediaQueryMinMax';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromMediaQuery).length).toBe(12);

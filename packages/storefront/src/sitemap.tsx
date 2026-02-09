@@ -392,50 +392,6 @@ export const sitemap: Routes = {
       },
     },
   },
-  'global-styles': {
-    name: 'Global Styles',
-    path: '/global-styles',
-    type: 'CATEGORY',
-    subPaths: {
-      introduction: {
-        name: 'Introduction',
-        path: '/global-styles/introduction',
-        type: 'PAGE',
-      },
-      color: {
-        name: 'Color',
-        path: '/global-styles/color',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/global-styles/color/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/global-styles/color/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/global-styles/color/api',
-            type: 'TAB',
-          },
-        },
-      },
-      'font-face': {
-        name: 'Font Face',
-        path: '/global-styles/font-face',
-        type: 'PAGE',
-      },
-      normalize: {
-        name: 'Normalize',
-        path: '/global-styles/normalize',
-        type: 'PAGE',
-      },
-    },
-  },
   components: {
     name: 'Components',
     path: '/components',
@@ -449,59 +405,46 @@ export const sitemap: Routes = {
       ...getComponents(),
     }, // Assuming this is dynamically fetched or implemented elsewhere.
   },
-  tokens: {
-    name: 'Tokens',
-    path: '/tokens',
+  styles: {
+    name: 'Styles',
+    path: '/styles',
     type: 'CATEGORY',
     subPaths: {
       introduction: {
         name: 'Introduction',
-        path: '/tokens/introduction',
-        type: 'PAGE',
-      },
-      blur: {
-        name: 'Blur',
-        path: '/tokens/blur',
-        type: 'PAGE',
-      },
-      border: {
-        name: 'Border',
-        path: '/tokens/border',
-        type: 'PAGE',
-      },
-      breakpoint: {
-        name: 'Breakpoint',
-        path: '/tokens/breakpoint',
+        path: '/styles/introduction',
         type: 'PAGE',
       },
       color: {
         name: 'Color',
-        path: '/tokens/color',
+        path: '/styles/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/styles/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/styles/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/styles/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'font-face': {
+        name: 'Font Face',
+        path: '/styles/font-face',
         type: 'PAGE',
       },
-      font: {
-        name: 'Font',
-        path: '/tokens/font',
-        type: 'PAGE',
-      },
-      gradient: {
-        name: 'Gradient',
-        path: '/tokens/gradient',
-        type: 'PAGE',
-      },
-      motion: {
-        name: 'Motion',
-        path: '/tokens/motion',
-        type: 'PAGE',
-      },
-      shadow: {
-        name: 'Shadow',
-        path: '/tokens/shadow',
-        type: 'PAGE',
-      },
-      spacing: {
-        name: 'Spacing',
-        path: '/tokens/spacing',
+      normalize: {
+        name: 'Normalize',
+        path: '/styles/normalize',
         type: 'PAGE',
       },
     },
@@ -616,14 +559,59 @@ export const sitemap: Routes = {
       },
     },
   },
-  'ag-grid': {
-    name: 'AG Grid',
-    path: '/ag-grid',
+  tokens: {
+    name: 'Tokens',
+    path: '/tokens',
     type: 'CATEGORY',
     subPaths: {
-      theme: {
-        name: 'Theme',
-        path: '/ag-grid/theme',
+      introduction: {
+        name: 'Introduction',
+        path: '/tokens/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/tokens/blur',
+        type: 'PAGE',
+      },
+      border: {
+        name: 'Border',
+        path: '/tokens/border',
+        type: 'PAGE',
+      },
+      breakpoint: {
+        name: 'Breakpoint',
+        path: '/tokens/breakpoint',
+        type: 'PAGE',
+      },
+      color: {
+        name: 'Color',
+        path: '/tokens/color',
+        type: 'PAGE',
+      },
+      font: {
+        name: 'Font',
+        path: '/tokens/font',
+        type: 'PAGE',
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/tokens/gradient',
+        type: 'PAGE',
+      },
+      motion: {
+        name: 'Motion',
+        path: '/tokens/motion',
+        type: 'PAGE',
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/tokens/shadow',
+        type: 'PAGE',
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/tokens/spacing',
         type: 'PAGE',
       },
     },
@@ -700,6 +688,23 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwindcss/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/tailwindcss/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwindcss/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwindcss/focus/usage',
             type: 'TAB',
           },
         },
@@ -1707,6 +1712,18 @@ export const sitemap: Routes = {
             type: 'TAB',
           },
         },
+      },
+    },
+  },
+  'ag-grid': {
+    name: 'AG Grid',
+    path: '/ag-grid',
+    type: 'CATEGORY',
+    subPaths: {
+      theme: {
+        name: 'Theme',
+        path: '/ag-grid/theme',
+        type: 'PAGE',
       },
     },
   },

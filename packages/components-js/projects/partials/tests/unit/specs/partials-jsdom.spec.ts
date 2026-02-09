@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  */
 
-import { vi } from 'vitest';
+import { vi, it, expect } from 'vitest';
 import * as fromPartials from '../../../src';
 import * as shared from '../../../src/shared';
 

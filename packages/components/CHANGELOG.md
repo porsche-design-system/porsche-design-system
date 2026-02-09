@@ -18,10 +18,114 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
   to generate accessible code that follows WCAG 2.2 AA standards. ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
+- `Canvas`: prop `background` to set the background color to `canvas | surface`
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-ps`, `--p-carousel-pe` CSS custom property introduced to control the logical inline start/end padding
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `AG Grid`:
+  - Bumped peer dependency to support AG Grid new major version 35
+    ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+  - Refreshed visuals to reflect new color tokens
+- `Tailwind CSS`:
+  - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
+    `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
+    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
+- `SCSS`:
+  - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
+  - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
+    `$breakpoint-2xl`
+  - Blur: `$blur-frosted`
+  - Border: `$radius-xs`, `$radius-sm`, `$radius-md`, `$radius-lg`, `$radius-xl`, `$radius-2xl`, `$radius-3xl`,
+    `$radius-4xl` and `$radius-full`
+  - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
+    `$color-canvas-dark`, `$color-surface`, `$color-surface-light`, `$color-surface-dark`, `$color-frosted`,
+    `$color-frosted-light`, `$color-frosted-dark`, `$color-frosted-soft`, `$color-frosted-soft-light`,
+    `$color-frosted-soft-dark`, `$color-backdrop`, `$color-backdrop-light`, `$color-backdrop-dark`,
+    `$color-contrast-lower`, `$color-contrast-lower-light`, `$color-contrast-lower-dark`, `$color-contrast-low`,
+    `$color-contrast-low-light`, `$color-contrast-low-dark`, `$color-contrast-medium`, `$color-contrast-medium-light`,
+    `$color-contrast-medium-dark`, `$color-contrast-high`, `$color-contrast-high-light`, `$color-contrast-high-dark`,
+    `$color-contrast-higher`, `$color-contrast-higher-light`, `$color-contrast-higher-dark`, `$color-primary`,
+    `$color-primary-light`, `$color-primary-dark`, `$color-success`, `$color-success-light`, `$color-success-dark`,
+    `$color-success-low`, `$color-success-low-light`, `$color-success-low-dark`, `$color-success-medium`,
+    `$color-success-medium-light`, `$color-success-medium-dark`, `$color-success-frosted`,
+    `$color-success-frosted-light`, `$color-success-frosted-dark`, `$color-success-frosted-soft`,
+    `$color-success-frosted-soft-light`, `$color-success-frosted-soft-dark`, `$color-warning`, `$color-warning-light`,
+    `$color-warning-dark`, `$color-warning-low`, `$color-warning-low-light`, `$color-warning-low-dark`,
+    `$color-warning-medium`, `$color-warning-medium-light`, `$color-warning-medium-dark`, `$color-warning-frosted`,
+    `$color-warning-frosted-light`, `$color-warning-frosted-dark`, `$color-warning-frosted-soft`,
+    `$color-warning-frosted-soft-light`, `$color-warning-frosted-soft-dark`, `$color-error`, `$color-error-light`,
+    `$color-error-dark`, `$color-error-low`, `$color-error-low-light`, `$color-error-low-dark`, `$color-error-medium`,
+    `$color-error-medium-light`, `$color-error-medium-dark`, `$color-error-frosted`, `$color-error-frosted-light`,
+    `$color-error-frosted-dark`, `$color-error-frosted-soft`, `$color-error-frosted-soft-light`,
+    `$color-error-frosted-soft-dark`, `$color-info`, `$color-info-light`, `$color-info-dark`, `$color-info-low`,
+    `$color-info-low-light`, `$color-info-low-dark`, `$color-info-medium`, `$color-info-medium-light`,
+    `$color-info-medium-dark`, `$color-info-frosted`, `$color-info-frosted-light`, `$color-info-frosted-dark`,
+    `$color-info-frosted-soft`, `$color-info-frosted-soft-light` and `$color-info-frosted-soft-dark`
+  - Focus: `@mixin focus-visible()`
+  - Gradient: `$gradient-stops-fade-dark`
+  - Skeleton: `@mixin skeleton()`
+  - Media Query: `@mixin media-query-min()`, `@mixin media-query-max()` and `@mixin media-query-min-max()`
+  - Motion: `$duration-sm`, `$duration-md`, `$duration-lg`, `$duration-xl`, `$ease-in-out`, `$ease-in` and `$ease-out`
+  - Shadow: `$shadow-sm`, `$shadow-md` and `$shadow-lg`
+  - Spacing: `$spacing-fluid-xs`, `$spacing-fluid-sm`, `$spacing-fluid-md`, `$spacing-fluid-lg`, `$spacing-fluid-xl`,
+    `$spacing-fluid-2xl`, `$spacing-static-xs`, `$spacing-static-sm`, `$spacing-static-md`, `$spacing-static-lg`,
+    `$spacing-static-xl` and `$spacing-static-2xl`
+  - Typography: `@mixin prose-display-lg()`, `@mixin prose-display-md()`, `@mixin prose-display-sm()`,
+    `@mixin prose-heading-2xl()`, `@mixin prose-heading-xl()`, `@mixin prose-heading-lg()`, `@mixin prose-heading-md()`,
+    `@mixin prose-heading-sm()`, `@mixin prose-text-xl()`, `@mixin prose-text-lg()`, `@mixin prose-text-md()`,
+    `@mixin prose-text-sm()`, `@mixin prose-text-xs()` `@mixin prose-text-2xs()`, `$font-porsche-next`,
+    `$leading-normal`, `$typescale-2xs`, `$typescale-xs`, `$typescale-sm`, `$typescale-md`, `$typescale-lg`,
+    `$typescale-xl`, `$typescale-2xl`, `$font-weight-normal`, `$font-weight-semibold` and `$font-weight-bold`
+- Emotion, Vanilla-Extract:
+  - Blur: `blurFrosted`
+  - Border: `radiusXs`, `radiusSm`, `radiusMd`, `radiusLg`, `radiusXl`, `radius2xl`, `radius3xl`, `radius4xl` and
+    `radiusFull`
+  - Color: `colorCanvas`, `colorCanvasLight`, `colorCanvasDark`, `colorSurface`, `colorSurfaceLight`,
+    `colorSurfaceDark`, `colorFrosted`, `colorFrostedLight`, `colorFrostedDark`, `colorFrostedSoft`,
+    `colorFrostedSoftLight`, `colorFrostedSoftDark`, `colorBackdrop`, `colorBackdropLight`, `colorBackdropDark`,
+    `colorPrimary`, `colorPrimaryLight`, `colorPrimaryDark`, `colorContrastHigher`, `colorContrastHigherLight`,
+    `colorContrastHigherDark`, `colorContrastHigh`, `colorContrastHighLight`, `colorContrastHighDark`,
+    `colorContrastMedium`, `colorContrastMediumLight`, `colorContrastMediumDark`, `colorContrastLow`,
+    `colorContrastLowLight`, `colorContrastLowDark`, `colorContrastLower`, `colorContrastLowerLight`,
+    `colorContrastLowerDark`, `colorInfo`, `colorInfoLight`, `colorInfoDark`, `colorInfoMedium`, `colorInfoMediumLight`,
+    `colorInfoMediumDark`, `colorInfoLow`, `colorInfoLowLight`, `colorInfoLowDark`, `colorInfoFrosted`,
+    `colorInfoFrostedLight`, `colorInfoFrostedDark`, `colorInfoFrostedSoft`, `colorInfoFrostedSoftLight`,
+    `colorInfoFrostedSoftDark`, `colorSuccess`, `colorSuccessLight`, `colorSuccessDark`, `colorSuccessMedium`,
+    `colorSuccessMediumLight`, `colorSuccessMediumDark`, `colorSuccessLow`, `colorSuccessLowLight`,
+    `colorSuccessLowDark`, `colorSuccessFrosted`, `colorSuccessFrostedLight`, `colorSuccessFrostedDark`,
+    `colorSuccessFrostedSoft`, `colorSuccessFrostedSoftLight`, `colorSuccessFrostedSoftDark`, `colorWarning`,
+    `colorWarningLight`, `colorWarningDark`, `colorWarningMedium`, `colorWarningMediumLight`, `colorWarningMediumDark`,
+    `colorWarningLow`, `colorWarningLowLight`, `colorWarningLowDark`, `colorWarningFrosted`, `colorWarningFrostedLight`,
+    `colorWarningFrostedDark`, `colorWarningFrostedSoft`, `colorWarningFrostedSoftLight`, `colorWarningFrostedSoftDark`,
+    `colorError`, `colorErrorLight`, `colorErrorDark`, `colorErrorMedium`, `colorErrorMediumLight`,
+    `colorErrorMediumDark`, `colorErrorLow`, `colorErrorLowLight`, `colorErrorLowDark`, `colorErrorFrosted`,
+    `colorErrorFrostedLight`, `colorErrorFrostedDark`, `colorErrorFrostedSoft`, `colorErrorFrostedSoftLight`,
+    `colorErrorFrostedSoftDark`, `colorFocus`, `colorFocusLight` and `colorFocusDark`
+  - Focus: `getFocusVisibleStyle()`
+  - Gradient: `gradientStopsFadeDark`,
+  - Motion: `durationSm`, `durationMd`, `durationLg`, `durationXl`, `easeInOut`, `easeIn` and `easeOut`
+  - Shadow: `shadowSm`, `shadowMd` and `shadowLg`
+  - Spacing: `spacingFluidXs`, `spacingFluidSm`, `spacingFluidMd`, `spacingFluidLg`, `spacingFluidXl`,
+    `spacingFluid2xl`, `spacingStaticXs`, `spacingStaticSm`, `spacingStaticMd`, `spacingStaticLg`, `spacingStaticXl` and
+    `spacingStatic2xl`
+  - Typography: `proseDisplayLg()`, `proseDisplayMd()`, `proseDisplaySm()`, `proseHeading2Xl()`, `proseHeadingXl()`,
+    `proseHeadingLg()`, `proseHeadingMd()`, `proseHeadingSm()`, `proseTextXl()`, `proseTextLg()`, `proseTextMd()`,
+    `proseTextSm()`, `proseTextXs()`, `proseText2Xs()`, `fontPorscheNext`, `leadingNormal`, `typescale2Xs`,
+    `typescaleXs`, `typescaleSm`, `typescaleMd`, `typescaleLg`, `typescaleXl`, `typescale2xl`, `fontWeightNormal` and
+    `fontWeightSemibold`
 
 ### Changed
 
-Import paths for `styles` package:
+- `Tailwind CSS`:
+  - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
+- `Canvas`: visual appearance on mobile view
+- `Styles`: Import paths for npm package:
 
 ```diff
 - import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
@@ -36,6 +140,40 @@ Import paths for `styles` package:
 ```diff
 - @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
 + @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+```
+
+### Fixed
+
+- `Vanilla Extract`: grid style media query not working
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
+
+### Removed
+
+- Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
+
+```diff
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
+```
+
+- Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function)
+
+```diff
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
+- Vanilla Extract: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with
+  `light-dark()` CSS color function)
+
+```diff
+const skeletonAnimation = keyframes(skeletonKeyframes);
+- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
++ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
 ```
 
 ## [4.0.0-alpha.0] - 2025-12-12
@@ -139,6 +277,10 @@ and migration steps.
 - Tailwind CSS:
   - Reset all default Tailwind color tokens
   - Remove -light and -dark color tokens, instead control theming via `.light`, `.dark` or `.auto` CSS class only
+
+- Styles (SCSS, Emotion, Vanilla-Extract)
+  - heading styles use a regular instead of semi-bold font-weight
+  - border-radius large was changed from `12px` to `8px`, since more radius styles are now available
 
 ### Removed
 
@@ -286,6 +428,18 @@ and migration steps.
 - `Multi Select`, `Pin Code`, `Radio Group`, `Textarea`: disabled prop is not mutable
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
+
+## [3.32.0-rc.1] - 2026-01-12
+
+### Added
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 35
+  ([#4143](https://github.com/porsche-design-system/porsche-design-system/issues/4143))
+
+### Fixed
+
+- `Radio Group Option`: missing `delegatesFocus`
+  ([#4135](https://github.com/porsche-design-system/porsche-design-system/pull/4135))
 
 ## [3.32.0-rc.0] - 2025-12-16
 

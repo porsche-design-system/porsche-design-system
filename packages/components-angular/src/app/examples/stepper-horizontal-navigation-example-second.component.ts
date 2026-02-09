@@ -13,11 +13,13 @@ const secondSteps: LabelState[] = [
   selector: 'page-stepper-horizontal-navigation-example-second',
   template: `
     <p-stepper-horizontal size="small">
-      <p-stepper-horizontal-item *ngFor="let step of steps" [state]="getState(step)">{{
-        step.label
-      }}</p-stepper-horizontal-item>
+      @for (step of steps; track step) {
+        <p-stepper-horizontal-item [state]="getState(step)">{{
+          step.label
+        }}</p-stepper-horizontal-item>
+      }
     </p-stepper-horizontal>
-  `,
+    `,
   standalone: true,
   imports: [PorscheDesignSystemModule],
 })

@@ -11,7 +11,7 @@ export const skeletonEmotionStory: Story<'div'> = {
         {
           tag: 'span',
           properties: { className: 'skeleton p-fluid-sm' },
-          children: ["getSkeletonStyle({ theme: 'light|dark' })"],
+          children: ['getSkeletonStyle()'],
         },
         {
           tag: 'span',

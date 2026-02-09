@@ -1,4 +1,18 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  fontWeightBold,
+  leadingNormal,
+  typescale2Xs,
+  typescaleXs,
+  typescaleSm,
+  typescaleMd,
+  typescaleLg,
+  typescaleXl,
+  typescale2Xl,
+} from '@porsche-design-system/components-react/vanilla-extract';
 
 export const metadata = {
   title: 'Vanilla Extract: Typography - Porsche Design System',
@@ -7,35 +21,52 @@ export const metadata = {
 
 # Typography
 
-<TableOfContents headings={['Classes', 'Variables']} />
+<TableOfContents headings={['JS', 'JS Variables']} />
 
 ## JS
 
 ### Display
 
-| JS                   | Description                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------- |
-| `displayLargeStyle`  | Applies the **large** variant of extra-large typography primarily to `<h1>` tags.  |
-| `displayMediumStyle` | Applies the **medium** variant of extra-large typography primarily to `<h1>` tags. |
-| `displaySmallStyle`  | Applies the **small** variant of extra-large typography primarily to `<h1>` tags.  |
+| JS                    | Description                                                                        |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| `proseDisplayLgStyle` | Applies the **large** variant of extra-large typography primarily to `<h1>` tags.  |
+| `proseDisplayMdStyle` | Applies the **medium** variant of extra-large typography primarily to `<h1>` tags. |
+| `proseDisplaySmStyle` | Applies the **small** variant of extra-large typography primarily to `<h1>` tags.  |
 
 ### Heading
 
-| JS                    | Description                                                                                                           |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `headingXXLargeStyle` | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| `headingXLargeStyle`  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| `headingLargeStyle`   | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| `headingMediumStyle`  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
-| `headingSmallStyle`   | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
+| JS                     | Description                                                                                                           |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `proseHeading2XlStyle` | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeadingXlStyle`  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
+| `proseHeadingLgStyle`  | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
+| `proseHeadingMdStyle`  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
+| `proseHeadingSmStyle`  | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
 
 ### Text
 
-| JS                 | Description                                                                                               |
-| ------------------ | --------------------------------------------------------------------------------------------------------- |
-| `textXLargeStyle`  | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
-| `textLargeStyle`   | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
-| `textMediumStyle`  | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.   |
-| `textSmallStyle`   | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
-| `textXSmallStyle`  | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
-| `textXXSmallStyle` | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| JS                  | Description                                                                                               |
+| ------------------- | --------------------------------------------------------------------------------------------------------- |
+| `proseTextXlStyle`  | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
+| `proseTextLgStyle`  | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
+| `proseTextMdStyle`  | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.   |
+| `proseTextSmStyle`  | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
+| `proseTextXsStyle`  | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
+| `proseText2XsStyle` | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+
+## JS Variables
+
+| JS                   | Description                                                                               | Value                |
+| -------------------- | ----------------------------------------------------------------------------------------- | -------------------- |
+| `fontPorscheNext`    | Holds the **Porsche Next** font family along with fallback fonts.                         | {fontPorscheNext}    |
+| `fontWeightNormal`   | Holds the **regular** font weight optimized for the Porsche Next typeface.                | {fontWeightNormal}   |
+| `fontWeightSemibold` | Holds the **semi-bold** font weight optimized for the Porsche Next typeface.              | {fontWeightSemibold} |
+| `fontWeightBold`     | Holds the **bold** font weight optimized for the Porsche Next typeface.                   | {fontWeightBold}     |
+| `leadingNormal`      | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. | {leadingNormal}      |
+| `typescale2Xs`       | Holds the **2x-small** font size and line height optimized for the Porsche Next typeface. | {typescale2Xs}       |
+| `typescaleXs`        | Holds the **x-small** font size and line height optimized for the Porsche Next typeface.  | {typescaleXs}        |
+| `typescaleSm`        | Holds the **small** font size and line height optimized for the Porsche Next typeface.    | {typescaleSm}        |
+| `typescaleMd`        | Holds the **medium** font size and line height optimized for the Porsche Next typeface.   | {typescaleMd}        |
+| `typescaleLg`        | Holds the **large** font size and line height optimized for the Porsche Next typeface.    | {typescaleLg}        |
+| `typescaleXl`        | Holds the **x-large** font size and line height optimized for the Porsche Next typeface.  | {typescaleXl}        |
+| `typescale2Xl`       | Holds the **2x-large** font size and line height optimized for the Porsche Next typeface. | {typescale2Xl}       |

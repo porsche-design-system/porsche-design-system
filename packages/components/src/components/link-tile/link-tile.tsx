@@ -103,6 +103,8 @@ export class LinkTile implements ITileProps {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    // TODO: BreakpointCustomizable breaks stencils boolean conversion from string to boolean
+    const parsedCompact = this.compact === 'true' ? true : this.compact === 'false' ? false : this.compact;
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -110,7 +112,7 @@ export class LinkTile implements ITileProps {
       this.size,
       this.weight,
       this.align,
-      this.compact,
+      parsedCompact,
       this.gradient,
       this.hasFooterSlot
     );
@@ -159,7 +161,7 @@ export class LinkTile implements ITileProps {
         <div class="footer">
           <p>{this.description}</p>
           <slot name="footer" onSlotchange={this.updateSlotObserver} />
-          {typeof this.compact === 'boolean' ? (this.compact ? linkCompact : link) : [linkCompact, link]}
+          {typeof parsedCompact === 'boolean' ? (parsedCompact ? linkCompact : link) : [linkCompact, link]}
         </div>
       </div>
     );

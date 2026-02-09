@@ -15,7 +15,7 @@ export const skeletonVanillaExtractStory: Story<'div'> = {
             { tag: 'p', children: ['const skeletonAnimation = keyframes(skeletonKeyframes);'] },
             {
               tag: 'p',
-              children: ["const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));"],
+              children: ['const Skeleton = style(getSkeletonStyle(skeletonAnimation));'],
             },
           ],
         },

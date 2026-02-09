@@ -37,7 +37,7 @@ export const linkTileStory: Story<'p-link-tile'> = {
       label: 'Some label',
       description: 'Some Description',
       gradient: true,
-      className: 'dark',
+      style: { colorScheme: 'dark' },
     },
     slots: {
       header: linkTileSlotStory.header.basic,
@@ -59,7 +59,12 @@ export const linkTileStory: Story<'p-link-tile'> = {
 
 export const linkTileStoryVideo: Story<'p-link-tile'> = {
   state: {
-    properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+    properties: {
+      href: 'https://porsche.com',
+      label: 'Some label',
+      description: 'Some Description',
+      style: { colorScheme: 'dark' },
+    },
   },
   generator: ({ properties } = {}) => [
     {
@@ -93,12 +98,12 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
       tag: 'div',
       properties: {
         className: 'grid grid-cols-2 gap-static-md',
+        style: { colorScheme: 'dark' },
       },
       children: [
         {
           tag: 'p-link-tile',
           properties: {
-            className: 'dark',
             aspectRatio: '4/3',
             href: '#',
             label: 'Some Label',
@@ -163,7 +168,7 @@ export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
       href: 'https://porsche.com',
       label: 'Some label',
       description: 'Some Description',
-      className: 'dark',
+      style: { colorScheme: 'dark' },
     },
   },
   generator: ({ properties } = {}) => [
@@ -188,7 +193,7 @@ export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
         },
         {
           tag: 'p-link-tile',
-          properties: { ...properties, compact: true, className: 'dark' },
+          properties: { ...properties, compact: true },
           children: [
             {
               tag: 'p-tag',

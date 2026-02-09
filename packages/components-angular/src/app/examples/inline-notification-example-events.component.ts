@@ -13,7 +13,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         (dismiss)="onDismiss()"
       ></p-inline-notification>
     }
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule],

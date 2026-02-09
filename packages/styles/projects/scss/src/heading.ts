@@ -1,34 +1,51 @@
 import {
-  fontFamilyPorscheNext,
-  fontLineHeightNormal,
-  fontSize2Xl,
-  fontSizeLg,
-  fontSizeMd,
-  fontSizeSm,
-  fontSizeXl,
+  fontPorscheNext,
   fontWeightNormal,
+  leadingNormal,
+  typescale2Xl,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
 } from '@porsche-design-system/tokens';
 
 export const getHeadingScss = () => {
   return `
-    @mixin pds-heading-large {
-      font: normal normal ${fontWeightNormal} ${fontSizeLg} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+    @mixin prose-heading-2xl {
+      font: normal normal ${fontWeightNormal} ${typescale2Xl} / ${leadingNormal} ${fontPorscheNext};
+    }
+    @mixin prose-heading-xl {
+      font: normal normal ${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext};
+    }
+    @mixin prose-heading-lg {
+      font: normal normal ${fontWeightNormal} ${typescaleLg} / ${leadingNormal} ${fontPorscheNext};
+    }
+    @mixin prose-heading-md {
+      font: normal normal ${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext};
+    }
+    @mixin prose-heading-sm {
+      font: normal normal ${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext};
     }
 
-    @mixin pds-heading-medium {
-      font: normal normal ${fontWeightNormal} ${fontSizeMd} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
-    }
-
-    @mixin pds-heading-small {
-      font: normal normal ${fontWeightNormal} ${fontSizeSm} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
-    }
-
-    @mixin pds-heading-x-large {
-      font: normal normal ${fontWeightNormal} ${fontSizeXl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
-    }
-
+    /* alias (deprecated) */
     @mixin pds-heading-xx-large {
-      font: normal normal ${fontWeightNormal} ${fontSize2Xl} / ${fontLineHeightNormal} ${fontFamilyPorscheNext};
+      @include prose-heading-2xl();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-x-large {
+      @include prose-heading-xl();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-large {
+      @include prose-heading-lg();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-medium {
+      @include prose-heading-md();
+    }
+    /* alias (deprecated) */
+    @mixin pds-heading-small {
+      @include prose-heading-sm();
     }
 `;
 };

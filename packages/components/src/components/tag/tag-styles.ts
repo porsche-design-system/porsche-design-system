@@ -1,59 +1,57 @@
 import { frostedGlassStyle, spacingStaticXSmall, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
   getFocusBaseStyles,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusFull } from '../../styles/css-variables';
+import {
+  colorCanvas,
+  colorContrastHigh,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
+  colorFrosted,
+  colorFrostedSoft,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
+  colorPrimary,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
+  legacyRadiusSmall,
+  radiusFull,
+} from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { TagVariant } from './tag-utils';
 
-const {
-  canvasColor,
-  frostedColor,
-  frostedSoftColor,
-  primaryColor,
-  infoFrostedColor,
-  contrastHighColor,
-  infoFrostedSoftColor,
-  successFrostedColor,
-  successFrostedSoftColor,
-  errorFrostedColor,
-  errorFrostedSoftColor,
-  warningFrostedColor,
-  warningFrostedSoftColor,
-} = colors;
-
 const colorTextMap: Record<TagVariant, string> = {
-  primary: canvasColor,
-  secondary: primaryColor,
-  info: primaryColor,
-  success: primaryColor,
-  warning: primaryColor,
-  error: primaryColor,
+  primary: colorCanvas,
+  secondary: colorPrimary,
+  info: colorPrimary,
+  success: colorPrimary,
+  warning: colorPrimary,
+  error: colorPrimary,
 };
 
 const colorBackgroundMap: Record<TagVariant, string> = {
-  primary: primaryColor,
-  secondary: frostedColor,
-  info: infoFrostedColor,
-  success: successFrostedColor,
-  warning: warningFrostedColor,
-  error: errorFrostedColor,
+  primary: colorPrimary,
+  secondary: colorFrosted,
+  info: colorInfoFrosted,
+  success: colorSuccessFrosted,
+  warning: colorWarningFrosted,
+  error: colorErrorFrosted,
 };
 
 const colorBackgroundHoverMap: Record<TagVariant, string> = {
-  primary: contrastHighColor,
-  secondary: frostedSoftColor,
-  info: infoFrostedSoftColor,
-  success: successFrostedSoftColor,
-  warning: warningFrostedSoftColor,
-  error: errorFrostedSoftColor,
+  primary: colorContrastHigh,
+  secondary: colorFrostedSoft,
+  info: colorInfoFrostedSoft,
+  success: colorSuccessFrostedSoft,
+  warning: colorWarningFrostedSoft,
+  error: colorErrorFrostedSoft,
 };
 
 export const getColors = (
@@ -85,7 +83,6 @@ export const getComponentCss = (
         verticalAlign: 'top', // TODO: should we set this CSS style at all?
         whiteSpace: 'nowrap', // TODO: should either be exposed by a controlled CSS variable or a component prop or whitelist as supported custom styles
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

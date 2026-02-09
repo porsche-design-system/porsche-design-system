@@ -1,5 +1,6 @@
 import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { colorPrimary } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
@@ -12,8 +13,6 @@ export const cssVariableOrderedGridColumn = '--p-internal-text-list-ordered-grid
 export const cssVariableOrderedPseudoSuffix = '--p-internal-text-list-ordered-pseudo-suffix';
 const counter = 'p-text-list-counter';
 
-const { primaryColor } = colors;
-
 export const getComponentCss = (type: TextListType): string => {
   const isOrderedList = isListTypeOrdered(type);
 
@@ -23,7 +22,6 @@ export const getComponentCss = (type: TextListType): string => {
         display: 'block',
         ...addImportantToEachRule({
           counterReset: counter,
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -32,7 +30,7 @@ export const getComponentCss = (type: TextListType): string => {
         margin: 0,
         padding: `var(${cssVariablePaddingTop},0) 0 var(${cssVariablePaddingBottom},0) 0`,
         listStyleType: 'none',
-        color: primaryColor,
+        color: colorPrimary,
       },
       // css selector for text-list-item
       '::slotted(*)': addImportantToEachRule({

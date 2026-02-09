@@ -8,6 +8,7 @@ export { breakpoints } from './breakpointShared';
 export { breakpointXL } from './breakpointXL';
 export { breakpointXS } from './breakpointXS';
 export { breakpointXXL } from './breakpointXXL';
+
 export { getMediaQueryMax } from './getMediaQueryMax';
 export { getMediaQueryMin } from './getMediaQueryMin';
 export { getMediaQueryMinMax } from './getMediaQueryMinMax';

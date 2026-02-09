@@ -1,28 +1,19 @@
 @use 'border';
-@use 'theme';
+@use 'color';
 @use 'motion';
 
-@mixin pds-skeleton($theme: 'light') {
-  @if ($theme == 'dark') {
-    background: theme.$pds-theme-dark-background-surface
-      linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%)
-      0
-      0 /
+@mixin skeleton() {
+  background: color.$color-surface
+  linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 20%, transparent 50%)
+  0
+  0 /
       200%
-      100%;
-  } @else {
-    background: theme.$pds-theme-light-background-surface
-      linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%)
-      0
-      0 /
-      200%
-      100%;
-  }
+  100%;
 
   display: block;
-  border-radius: border.$pds-border-radius-small;
+  border-radius: border.$radius-sm;
 
-  animation: skeletonAnimation motion.$pds-motion-duration-long motion.$pds-motion-easing-base infinite;
+  animation: skeletonAnimation motion.$duration-lg motion.$ease-in-out infinite;
 
   @keyframes skeletonAnimation {
     from {

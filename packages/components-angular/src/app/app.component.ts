@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { routes } from './app-routing.module';
 
-export type Theme = 'light' | 'dark' | 'auto';
+export type Theme = 'scheme-light' | 'scheme-dark' | 'scheme-light-dark';
 export const THEME_TOKEN = new InjectionToken<BehaviorSubject<Theme>>('pdsTheme');
 
 @Pipe({ name: 'safe' })
@@ -18,30 +18,33 @@ export class SafePipe implements PipeTransform {
 @Component({
   selector: 'app-root',
   template: `
-    <ng-container *ngIf="!isWithinIFrame">
+    @if (!isWithinIFrame) {
       <select name="route" [ngModel]="router.url.slice(1).split('/')[0]" (change)="changeRoute($event.target.value)">
         <option value="" disabled>Select a page</option>
-        <option *ngFor="let route of routes" [value]="route.path" [disabled]="route.isDisabled">
-          {{ route.name }}
-        </option>
+        @for (route of routes; track route) {
+          <option [value]="route.path" [disabled]="route.isDisabled">
+            {{ route.name }}
+          </option>
+        }
       </select>
-
       <select name="theme" [ngModel]="theme$ | async" (ngModelChange)="theme$.next($event)">
-        <option *ngFor="let item of themes" [value]="item">{{ item }}</option>
+        @for (item of themes; track item) {
+          <option [value]="item">{{ item }}</option>
+        }
       </select>
-    </ng-container>
+    }
 
-    <div id="app">
+    <div id="app" [class]="theme$.value">
       <router-outlet />
     </div>
-  `,
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export class AppComponent {
   public router = inject(Router);
   public routes = routes.filter((route) => !!route.name);
-  public themes: Theme[] = ['light', 'dark', 'auto'];
+  public themes: Theme[] = ['scheme-light', 'scheme-dark', 'scheme-light-dark'];
   public theme$ = inject(THEME_TOKEN); // equivalent to @Inject(THEME_TOKEN) in constructor
 
   isWithinIFrame: boolean = window.location !== window.parent.location;

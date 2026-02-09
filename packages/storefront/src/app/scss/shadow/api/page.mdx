@@ -1,3 +1,4 @@
+import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
@@ -9,10 +10,10 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-## SCSS Mixins
+## SCSS Variables
 
-| SCSS Mixin                        | Description                        |
-| --------------------------------- | ---------------------------------- |
-| `@mixin pds-drop-shadow-high()`   | Applies a **high** `box-shadow`.   |
-| `@mixin pds-drop-shadow-medium()` | Applies a **medium** `box-shadow`. |
-| `@mixin pds-drop-shadow-low()`    | Applies a **low** `box-shadow`.    |
+| SCSS Variable | Description                  | Value      |
+| ------------- | ---------------------------- | ---------- |
+| `$shadow-lg`  | Holds a **large** `shadow`.  | {shadowSm} |
+| `$shadow-md`  | Holds a **medium** `shadow`. | {shadowMd} |
+| `$shadow-sm`  | Holds a **small** `shadow`.  | {shadowLg} |

@@ -3,7 +3,7 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { getFocusStyle, getHoverStyle, getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../../src';
+import { getFocusStyle, getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../../src';
 
 const jss = create({
   plugins: [
@@ -24,12 +24,6 @@ export const getCss = (jssStyles: Styles): string =>
 export const jssGetFocusStyleTestCss = getCss({
   test: {
     ...getFocusStyle(),
-  },
-});
-
-export const jssGetHoverStyleTestCss = getCss({
-  test: {
-    ...getHoverStyle(),
   },
 });
 

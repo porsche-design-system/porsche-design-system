@@ -1,10 +1,7 @@
 import { fontLineHeight, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import { colors } from '../colors';
 import { getTransition } from '../common-styles';
-import { legacyRadiusSmall, radiusSm } from '../css-variables';
-
-const { primaryColor, frostedSoftColor, contrastHighColor } = colors;
+import { colorContrastHigh, colorFrostedSoft, colorPrimary, legacyRadiusSmall, radiusSm } from '../css-variables';
 
 export const getOptionJssStyle = (
   componentName: 'select-option' | 'multi-select-option',
@@ -21,7 +18,7 @@ export const getOptionJssStyle = (
     paddingInline,
     minHeight: fontLineHeight, // preserves height for empty option
     ...textSmallStyle,
-    color: contrastHighColor,
+    color: colorContrastHigh,
     cursor: 'pointer',
     textAlign: 'start',
     wordBreak: 'break-word',
@@ -29,10 +26,10 @@ export const getOptionJssStyle = (
     borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: frostedSoftColor,
+      background: colorFrostedSoft,
     },
     '&--highlighted, &--selected': {
-      color: primaryColor,
+      color: colorPrimary,
     },
     '&--disabled': {
       cursor: 'not-allowed',

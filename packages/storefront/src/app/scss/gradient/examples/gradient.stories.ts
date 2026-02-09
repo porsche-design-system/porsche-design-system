@@ -7,7 +7,7 @@ export const gradientScssStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid gap-fluid-md prose-text-sm text-center text-primary-dark',
+        className: 'grid gap-fluid-md prose-text-sm text-center text-white',
       },
       children: [
         {
@@ -15,28 +15,28 @@ export const gradientScssStory: Story<'div'> = {
           properties: {
             className: 'bg-fade-to-t rounded-lg p-fluid-md',
           },
-          children: ['@include pds-gradient-to-top;'],
+          children: ['background: linear-gradient(to top, $gradient-stops-fade-dark);'],
         },
         {
           tag: 'div',
           properties: {
             className: 'bg-fade-to-r rounded-lg p-fluid-md',
           },
-          children: ['@include pds-gradient-to-right;'],
+          children: ['background: linear-gradient(to right, $gradient-stops-fade-dark);'],
         },
         {
           tag: 'div',
           properties: {
             className: 'bg-fade-to-b rounded-lg p-fluid-md',
           },
-          children: ['@include pds-gradient-to-bottom;'],
+          children: ['background: linear-gradient(to bottom, $gradient-stops-fade-dark);'],
         },
         {
           tag: 'div',
           properties: {
             className: 'bg-fade-to-l rounded-lg p-fluid-md',
           },
-          children: ['@include pds-gradient-to-left;'],
+          children: ['background: linear-gradient(to left, $gradient-stops-fade-dark);'],
         },
       ],
     },

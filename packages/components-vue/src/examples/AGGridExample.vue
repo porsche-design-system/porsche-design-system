@@ -9,7 +9,7 @@ import { type Theme, themeInjectionKey } from '../main';
 
 ModuleRegistry.registerModules([AllEnterpriseModule]);
 
-const theme = inject<Theme>(themeInjectionKey, 'light');
+const theme = inject<Theme>(themeInjectionKey, 'scheme-light');
 
 const ImageUrlRendererer = {
   template: `
@@ -117,7 +117,6 @@ const defaultColDef = {
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
     style="height: 80vh"
-    :data-ag-theme-mode="theme === 'light' ? null : 'dark'"
     :pagination="true"
     :sideBar="true"
     :enableRangeSelection="true"

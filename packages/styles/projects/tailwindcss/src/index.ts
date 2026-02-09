@@ -1,43 +1,99 @@
-import { cssVariableDefinitionDark, cssVariableDefinitionLight } from '@porsche-design-system/shared-styles';
 import {
   blurFrosted,
-  borderRadius2Xl,
-  borderRadius3Xl,
-  borderRadius4Xl,
-  borderRadiusFull,
-  borderRadiusLg,
-  borderRadiusMd,
-  borderRadiusSm,
-  borderRadiusXl,
-  borderRadiusXs,
-  borderWidthRegular,
-  borderWidthThin,
   breakpoint2Xl,
   breakpointLg,
   breakpointMd,
   breakpointSm,
   breakpointXl,
   breakpointXs,
-  fontFamilyPorscheNext,
-  fontLineHeightNormal,
-  fontSize2Xl,
-  fontSize2Xs,
-  fontSizeLg,
-  fontSizeMd,
-  fontSizeSm,
-  fontSizeXl,
-  fontSizeXs,
+  colorBackdrop,
+  colorBackdropLight,
+  colorCanvas,
+  colorCanvasLight,
+  colorContrastHigh,
+  colorContrastHigher,
+  colorContrastHigherLight,
+  colorContrastHighLight,
+  colorContrastLow,
+  colorContrastLower,
+  colorContrastLowerLight,
+  colorContrastLowLight,
+  colorContrastMedium,
+  colorContrastMediumLight,
+  colorDisabled,
+  colorDisabledLight,
+  colorError,
+  colorErrorFrosted,
+  colorErrorFrostedLight,
+  colorErrorFrostedSoft,
+  colorErrorFrostedSoftLight,
+  colorErrorLight,
+  colorErrorLow,
+  colorErrorLowLight,
+  colorErrorMedium,
+  colorErrorMediumLight,
+  colorFocus,
+  colorFocusLight,
+  colorFrosted,
+  colorFrostedLight,
+  colorFrostedSoft,
+  colorFrostedSoftLight,
+  colorInfo,
+  colorInfoFrosted,
+  colorInfoFrostedLight,
+  colorInfoFrostedSoft,
+  colorInfoFrostedSoftLight,
+  colorInfoLight,
+  colorInfoLow,
+  colorInfoLowLight,
+  colorInfoMedium,
+  colorInfoMediumLight,
+  colorPrimary,
+  colorPrimaryLight,
+  colorSuccess,
+  colorSuccessFrosted,
+  colorSuccessFrostedLight,
+  colorSuccessFrostedSoft,
+  colorSuccessFrostedSoftLight,
+  colorSuccessLight,
+  colorSuccessLow,
+  colorSuccessLowLight,
+  colorSuccessMedium,
+  colorSuccessMediumLight,
+  colorSurface,
+  colorSurfaceLight,
+  colorWarning,
+  colorWarningFrosted,
+  colorWarningFrostedLight,
+  colorWarningFrostedSoftDark,
+  colorWarningFrostedSoftLight,
+  colorWarningLight,
+  colorWarningLow,
+  colorWarningLowLight,
+  colorWarningMedium,
+  colorWarningMediumLight,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+  fontPorscheNext,
   fontWeightBold,
   fontWeightNormal,
-  fontWeightSemiBold,
-  gradientFadeDark,
-  motionDurationLong,
-  motionDurationModerate,
-  motionDurationShort,
-  motionDurationVeryLong,
-  motionEaseIn,
-  motionEaseInOut,
-  motionEaseOut,
+  fontWeightSemibold,
+  gradientStopsFadeDark,
+  leadingNormal,
+  radius2Xl,
+  radius3Xl,
+  radius4Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXl,
+  radiusXs,
   shadowLg,
   shadowMd,
   shadowSm,
@@ -53,47 +109,89 @@ import {
   spacingStaticSm,
   spacingStaticXl,
   spacingStaticXs,
+  typescale2Xl,
+  typescale2Xs,
+  typescaleLg,
+  typescaleMd,
+  typescaleSm,
+  typescaleXl,
+  typescaleXs,
 } from '@porsche-design-system/tokens';
 
 export const getTailwindcssTheme = () => {
-  return `@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
+  return `@theme {
   /* Reset */
+  --breakpoint-*: initial;
   --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --text-*: initial;
 
   /* Color */
   --color-black: #000;
   --color-white: #fff;
 
-  ${cssVariableDefinitionLight}
+  --color-focus: ${colorFocus};
+  --color-disabled: ${colorDisabled};
+  --color-canvas: ${colorCanvas};
+  --color-surface: ${colorSurface};
+  --color-frosted: ${colorFrosted};
+  --color-frosted-soft: ${colorFrostedSoft};
+  --color-backdrop: ${colorBackdrop};
+  --color-contrast-lower: ${colorContrastLower};
+  --color-contrast-low: ${colorContrastLow};
+  --color-contrast-medium: ${colorContrastMedium};
+  --color-contrast-high: ${colorContrastHigh};
+  --color-contrast-higher: ${colorContrastHigher};
+  --color-primary: ${colorPrimary};
+  --color-success: ${colorSuccess};
+  --color-success-low: ${colorSuccessLow};
+  --color-success-medium: ${colorSuccessMedium};
+  --color-success-frosted: ${colorSuccessFrosted};
+  --color-success-frosted-soft: ${colorSuccessFrostedSoft};
+  --color-warning: ${colorWarning};
+  --color-warning-low: ${colorWarningLow};
+  --color-warning-medium: ${colorWarningMedium};
+  --color-warning-frosted: ${colorWarningFrosted};
+  --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
+  --color-error: ${colorError};
+  --color-error-low: ${colorErrorLow};
+  --color-error-medium: ${colorErrorMedium};
+  --color-error-frosted: ${colorErrorFrosted};
+  --color-error-frosted-soft: ${colorErrorFrostedSoft};
+  --color-info: ${colorInfo};
+  --color-info-low: ${colorInfoLow};
+  --color-info-medium: ${colorInfoMedium};
+  --color-info-frosted: ${colorInfoFrosted};
+  --color-info-frosted-soft: ${colorInfoFrostedSoft};
+  --color-skeleton: light-dark(#f7f7f7,#1a1b1e);
 
   /* Typography */
-  --font-porsche-next: ${fontFamilyPorscheNext};
+  --font-porsche-next: ${fontPorscheNext};
   --font-sans: var(--font-porsche-next);
 
   --font-weight-normal: ${fontWeightNormal};
-  --font-weight-semibold: ${fontWeightSemiBold};
+  --font-weight-semibold: ${fontWeightSemibold};
   --font-weight-bold: ${fontWeightBold};
 
-  --leading-normal: ${fontLineHeightNormal};
+  --leading-normal: ${leadingNormal};
 
-  --text-2xs: ${fontSize2Xs};
-  --text-2xs--line-height: ${fontLineHeightNormal};
-  --text-xs: ${fontSizeXs};
-  --text-xs--line-height: ${fontLineHeightNormal};
-  --text-base: ${fontSizeSm};
-  --text-base--line-height: ${fontLineHeightNormal};
-  --text-sm: ${fontSizeSm};
-  --text-sm--line-height: ${fontLineHeightNormal};
-  --text-md: ${fontSizeMd};
-  --text-md--line-height: ${fontLineHeightNormal};
-  --text-lg: ${fontSizeLg};
-  --text-lg--line-height: ${fontLineHeightNormal};
-  --text-xl: ${fontSizeXl};
-  --text-xl--line-height: ${fontLineHeightNormal};
-  --text-2xl: ${fontSize2Xl};
-  --text-2xl--line-height: ${fontLineHeightNormal};
+  --text-2xs: ${typescale2Xs};
+  --text-2xs--line-height: ${leadingNormal};
+  --text-xs: ${typescaleXs};
+  --text-xs--line-height: ${leadingNormal};
+  --text-base: ${typescaleSm};
+  --text-base--line-height: ${leadingNormal};
+  --text-sm: ${typescaleSm};
+  --text-sm--line-height: ${leadingNormal};
+  --text-md: ${typescaleMd};
+  --text-md--line-height: ${leadingNormal};
+  --text-lg: ${typescaleLg};
+  --text-lg--line-height: ${leadingNormal};
+  --text-xl: ${typescaleXl};
+  --text-xl--line-height: ${leadingNormal};
+  --text-2xl: ${typescale2Xl};
+  --text-2xl--line-height: ${leadingNormal};
 
   /* Breakpoint */
   --breakpoint-xs: ${breakpointXs}px;
@@ -104,8 +202,6 @@ export const getTailwindcssTheme = () => {
   --breakpoint-2xl: ${breakpoint2Xl}px;
 
   /* Spacing */
-  --spacing: .25rem;
-
   --spacing-fluid-xs: ${spacingFluidXs};
   --spacing-fluid-sm: ${spacingFluidSm};
   --spacing-fluid-md: ${spacingFluidMd};
@@ -121,42 +217,49 @@ export const getTailwindcssTheme = () => {
   --spacing-static-2xl: ${spacingStatic2Xl};
 
   /* Border */
-  --radius-xs: ${borderRadiusXs};
-  --radius-sm: ${borderRadiusSm};
-  --radius-md: ${borderRadiusMd};
-  --radius-lg: ${borderRadiusLg};
-  --radius-xl: ${borderRadiusXl};
-  --radius-2xl: ${borderRadius2Xl};
-  --radius-3xl: ${borderRadius3Xl};
-  --radius-4xl: ${borderRadius4Xl};
-  --radius-full: ${borderRadiusFull};
+  --radius-xs: ${radiusXs};
+  --radius-sm: ${radiusSm};
+  --radius-md: ${radiusMd};
+  --radius-lg: ${radiusLg};
+  --radius-xl: ${radiusXl};
+  --radius-2xl: ${radius2Xl};
+  --radius-3xl: ${radius3Xl};
+  --radius-4xl: ${radius4Xl};
+  --radius-full: ${radiusFull};
 
-  --default-border-width: ${borderWidthThin};
-  --border-width-regular: ${borderWidthRegular};
-  --border-width-thin: ${borderWidthThin};
+  --default-border-width: 1px;
+  --border-width-regular: 2px; /* alias (deprecated) */
+  --border-width-thin: 1px; /* alias (deprecated) */
 
   /* Blur */
   --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
 
   /* Shadow */
-  --shadow-low: ${shadowSm};
-  --shadow-medium: ${shadowMd};
-  --shadow-high: ${shadowLg};
+  --shadow-sm: ${shadowSm};
+  --shadow-low: var(--shadow-sm); /* alias (deprecated) */
+  --shadow-md: ${shadowMd};
+  --shadow-medium: var(--shadow-md); /* alias (deprecated) */
+  --shadow-lg: ${shadowLg};
+  --shadow-high: var(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
-  --default-outline-width: ${borderWidthRegular};
+  --default-outline-width: 2px;
 
   /* Motion */
-  --default-transition-timing-function: ${motionEaseInOut};
-  --ease-in-out: ${motionEaseInOut};
-  --ease-in: ${motionEaseIn};
-  --ease-out: ${motionEaseOut};
+  --default-transition-timing-function: ${easeInOut};
+  --ease-in-out: ${easeInOut};
+  --ease-in: ${easeIn};
+  --ease-out: ${easeOut};
 
-  --default-transition-duration: ${motionDurationShort};
-  --transition-duration-short: ${motionDurationShort};
-  --transition-duration-moderate: ${motionDurationModerate};
-  --transition-duration-long: ${motionDurationLong};
-  --transition-duration-very-long: ${motionDurationVeryLong};
+  --default-transition-duration: ${durationSm};
+  --transition-duration-sm: ${durationSm};
+  --transition-duration-short: var(--transition-duration-sm); /* alias (deprecated) */
+  --transition-duration-md: ${durationMd};
+  --transition-duration-moderate: var(--transition-duration-md); /* alias (deprecated) */
+  --transition-duration-lg: ${durationLg};
+  --transition-duration-long: var(--transition-duration-lg); /* alias (deprecated) */
+  --transition-duration-xl: ${durationXl};
+  --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
   --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
@@ -172,36 +275,76 @@ export const getTailwindcssTheme = () => {
 }
 
 @layer theme {
+  /* deprecated, use .scheme-light instead */
   .light {
-    ${cssVariableDefinitionLight}
+    color-scheme: light;
   }
 
+  /* deprecated, use .scheme-dark instead */
   .dark {
-    ${cssVariableDefinitionDark}
+    color-scheme: dark;
   }
 
+  /* deprecated, use .scheme-light-dark instead */
   .auto {
-    @media (prefers-color-scheme: dark) {
-      ${cssVariableDefinitionDark}
+    color-scheme: light dark;
+  }
+
+  @supports not (color: light-dark(white, black)) {
+    :root {
+      --color-focus: ${colorFocusLight};
+      --color-disabled: ${colorDisabledLight};
+      --color-canvas: ${colorCanvasLight};
+      --color-surface: ${colorSurfaceLight};
+      --color-frosted: ${colorFrostedLight};
+      --color-frosted-soft: ${colorFrostedSoftLight};
+      --color-backdrop: ${colorBackdropLight};
+      --color-contrast-lower: ${colorContrastLowerLight};
+      --color-contrast-low: ${colorContrastLowLight};
+      --color-contrast-medium: ${colorContrastMediumLight};
+      --color-contrast-high: ${colorContrastHighLight};
+      --color-contrast-higher: ${colorContrastHigherLight};
+      --color-primary: ${colorPrimaryLight};
+      --color-success: ${colorSuccessLight};
+      --color-success-low: ${colorSuccessLowLight};
+      --color-success-medium: ${colorSuccessMediumLight};
+      --color-success-frosted: ${colorSuccessFrostedLight};
+      --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
+      --color-warning: ${colorWarningLight};
+      --color-warning-low: ${colorWarningLowLight};
+      --color-warning-medium: ${colorWarningMediumLight};
+      --color-warning-frosted: ${colorWarningFrostedLight};
+      --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
+      --color-error: ${colorErrorLight};
+      --color-error-low: ${colorErrorLowLight};
+      --color-error-medium: ${colorErrorMediumLight};
+      --color-error-frosted: ${colorErrorFrostedLight};
+      --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
+      --color-info: ${colorInfoLight};
+      --color-info-low: ${colorInfoLowLight};
+      --color-info-medium: ${colorInfoMediumLight};
+      --color-info-frosted: ${colorInfoFrostedLight};
+      --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
+      --color-skeleton: #f7f7f7;
     }
   }
 }
 
 /* Gradient */
 @utility bg-fade-to-t {
-  @apply bg-linear-[to_top,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_top,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-r {
-  @apply bg-linear-[to_right,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_right,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-b {
-  @apply bg-linear-[to_bottom,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_bottom,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 @utility bg-fade-to-l {
-  @apply bg-linear-[to_left,${gradientFadeDark.replaceAll(' ', '_')}];
+  @apply bg-linear-[to_left,${gradientStopsFadeDark.replaceAll(' ', '_')}];
 }
 
 /* Grid */

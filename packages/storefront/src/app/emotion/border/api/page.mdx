@@ -1,13 +1,14 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import {
-  borderRadiusLarge,
-  borderWidthBase,
-  borderRadiusSmall,
-  borderRadiusMedium,
-  borderWidthThin,
-  borderWidth,
-  border,
-  borderRadius,
+  radius3Xl,
+  radius4Xl,
+  radiusXl,
+  radius2Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXs,
 } from '@porsche-design-system/components-react/emotion';
 
 export const metadata = {
@@ -21,20 +22,14 @@ export const metadata = {
 
 ## JS
 
-### Radius
-
-| JS                   | Description                                  | Value                          |
-| -------------------- | -------------------------------------------- | ------------------------------ |
-| `border`             | Object containting all border styles.        | {JSON.stringify(border)}       |
-| `borderRadius`       | Object containting all border radius styles. | {JSON.stringify(borderRadius)} |
-| `borderRadiusLarge`  | Holds a **small** `border-radius`.           | {borderRadiusSmall}            |
-| `borderRadiusMedium` | Holds a **medium** `border-radius`.          | {borderRadiusMedium}           |
-| `borderRadiusSmall`  | Holds a **large** `border-radius`.           | {borderRadiusLarge}            |
-
-### Width
-
-| JS                | Description                                 | Value                         |
-| ----------------- | ------------------------------------------- | ----------------------------- |
-| `borderWidth`     | Object containting all border width styles. | {JSON.stringify(borderWidth)} |
-| `borderWidthBase` | Holds a **thin** `border-width`.            | {borderWidthThin}             |
-| `borderWidthThin` | Holds a **regular** `border-width`.         | {borderWidthBase}             |
+| JS           | Description                                | Value        |
+| ------------ | ------------------------------------------ | ------------ |
+| `radiusXs`   | Holds a **x-small** `border-radius`.       | {radiusXs}   |
+| `radiusSm`   | Holds a **small** `border-radius`.         | {radiusSm}   |
+| `radiusMd`   | Holds a **medium** `border-radius`.        | {radiusMd}   |
+| `radiusLg`   | Holds a **large** `border-radius`.         | {radiusLg}   |
+| `radiusXl`   | Holds a **x-large** `border-radius`.       | {radiusXl}   |
+| `radius2Xl`  | Holds a **2x-large** `border-radius`.      | {radius2Xl}  |
+| `radius3Xl`  | Holds a **3x-large** `border-radius`.      | {radius3Xl}  |
+| `radius4Xl`  | Holds a **4x-large** `border-radius`.      | {radius4Xl}  |
+| `radiusFull` | Holds a **fully** rounded `border-radius`. | {radiusFull} |

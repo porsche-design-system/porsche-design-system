@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule, TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
 
@@ -21,28 +20,28 @@ import { PorscheDesignSystemModule, TabsBarUpdateEventDetail } from '@porsche-de
   ],
   template: `
     <p-tabs-bar [activeTabIndex]="tabIndex" (update)="onUpdate($event)">
-      <ng-container *ngFor="let tabPanel of tabPanels; let i = index">
+      @for (tabPanel of tabPanels; track tabPanel; let i = $index) {
         <button type="button" [attr.id]="'tab-item-' + i" [attr.aria-controls]="'tab-panel-' + i">
           Tab {{ tabPanel }}
         </button>
-      </ng-container>
+      }
     </p-tabs-bar>
 
-    <ng-container *ngFor="let content of tabPanels; let i = index">
+    @for (content of tabPanels; track content; let i = $index) {
       <div
         [attr.id]="'tab-panel-' + i"
         [hidden]="tabIndex !== i"
         [tabindex]="tabIndex === i ? 0 : -1"
         role="tabpanel"
         [attr.aria-labelledby]="'tab-item-' + i"
-      >
+        >
         <p-text>Your content of Tab {{ i + 1 }}</p-text>
       </div>
-    </ng-container>
-  `,
+    }
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule],
 })
 export class TabsBarExampleAccessibilityComponent {
   tabIndex: number = 0;

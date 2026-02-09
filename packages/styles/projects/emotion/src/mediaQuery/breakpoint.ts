@@ -1,10 +1,10 @@
-import type { Breakpoint } from './breakpointShared';
 import { breakpointBase } from './breakpointBase';
-import { breakpointXS } from './breakpointXS';
-import { breakpointS } from './breakpointS';
-import { breakpointM } from './breakpointM';
 import { breakpointL } from './breakpointL';
+import { breakpointM } from './breakpointM';
+import { breakpointS } from './breakpointS';
+import type { Breakpoint } from './breakpointShared';
 import { breakpointXL } from './breakpointXL';
+import { breakpointXS } from './breakpointXS';
 import { breakpointXXL } from './breakpointXXL';
 
 export const breakpoint: { [key in Breakpoint]: number } = {

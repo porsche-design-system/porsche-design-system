@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isOpen: false, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, isPrimary: true and isSecondaryScrollerVisible: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -19,12 +19,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 }
   :host {
     display: block;
-    --_p-a: #010205 !important;
-    --_p-b: #FFF !important;
-    --_p-c: #EEEFF2 !important;
-    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
     --_p-f: rgba(255,255,255,.01) !important;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -43,7 +42,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     z-index: 999999999;
     outline: 0;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, 0.4s), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete, background var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+    transition: visibility 0s linear var(--p-transition-duration, .4s), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete, background var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), backdrop-filter var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), -webkit-backdrop-filter var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1);
   }
   dialog::backdrop {
     display: none;
@@ -60,7 +59,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
     }
 }
 
@@ -79,7 +78,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     display: grid;
     opacity: 0;
     transform: translate3d(-100%,0,0);
-    transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+    transition: opacity var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1), transform var(--p-transition-duration, .25s) cubic-bezier(.4,0,.5,1);
   }
   .drawer:dir(rtl) {
     transform: translate3d(100%,0,0);
@@ -126,7 +125,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -148,7 +149,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       background: var(--_p-b);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;
@@ -172,7 +172,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false and isSecondaryScrollerVisible: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -191,12 +191,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: #010205 !important;
-    --_p-b: #FFF !important;
-    --_p-c: #EEEFF2 !important;
-    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
     --_p-f: rgba(255,255,255,.01) !important;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -218,7 +217,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   dialog::backdrop {
     display: none;
@@ -248,7 +247,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -289,7 +288,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -325,7 +326,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;
@@ -340,7 +340,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false and isSecondaryScrollerVisible: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -359,12 +359,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: #010205 !important;
-    --_p-b: #FFF !important;
-    --_p-c: #EEEFF2 !important;
-    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
     --_p-f: rgba(255,255,255,.01) !important;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -386,7 +385,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   dialog::backdrop {
     display: none;
@@ -412,7 +411,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -456,7 +455,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -478,7 +479,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       background: var(--_p-b);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;
@@ -493,7 +493,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: false 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -512,12 +512,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: #010205 !important;
-    --_p-b: #FFF !important;
-    --_p-c: #EEEFF2 !important;
-    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
     --_p-f: rgba(255,255,255,.01) !important;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -539,7 +538,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   dialog::backdrop {
     display: none;
@@ -556,7 +555,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
     }
 }
 
@@ -573,7 +572,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-mobile var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
     }
 }
 
@@ -583,7 +582,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -624,7 +623,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -660,7 +661,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;
@@ -675,7 +675,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: auto 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 1`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -694,12 +694,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: #010205 !important;
-    --_p-b: #FFF !important;
-    --_p-c: #EEEFF2 !important;
-    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
     --_p-f: rgba(255,255,255,.01) !important;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -721,7 +720,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   dialog::backdrop {
     display: none;
@@ -738,7 +737,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
     }
 }
 
@@ -751,23 +750,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :host {
-      --_p-a: #FBFCFF !important;
-      --_p-b: #0E0E12 !important;
-      --_p-c: #212225 !important;
-      --_p-d: rgba(38, 38, 41, 0.67) !important;
-      --_p-f: rgba(0,0,0,.01) !important;
-    }
-}
-
   .drawer {
     position: absolute;
     inset: 0;
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -811,7 +800,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -833,7 +824,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       background: var(--_p-b);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;
@@ -857,7 +847,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 2`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -876,12 +866,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: #FBFCFF !important;
-    --_p-b: #0E0E12 !important;
-    --_p-c: #212225 !important;
-    --_p-d: rgba(38, 38, 41, 0.67) !important;
-    --_p-f: rgba(0,0,0,.01) !important;
-    color-scheme: light dark !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
+    --_p-f: rgba(255,255,255,.01) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -903,7 +892,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   dialog::backdrop {
     display: none;
@@ -920,7 +909,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
     }
 }
 
@@ -939,7 +928,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -983,7 +972,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -1005,7 +996,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       background: var(--_p-b);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;
@@ -1029,7 +1019,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 3`] = `
 "@keyframes slide-up-mobile {
   from {
     transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
@@ -1048,12 +1038,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
 }
   :host {
     display: block;
-    --_p-a: #010205 !important;
-    --_p-b: #FFF !important;
-    --_p-c: #EEEFF2 !important;
-    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-a: var(--p-color-primary) !important;
+    --_p-b: var(--p-color-canvas) !important;
+    --_p-c: var(--p-color-surface) !important;
+    --_p-d: var(--p-color-backdrop) !important;
     --_p-f: rgba(255,255,255,.01) !important;
-    color-scheme: light dark !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1075,7 +1064,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
     background: var(--_p-d);
-    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+    transition: background var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1), -webkit-backdrop-filter var(--p-transition-duration, .6s) cubic-bezier(0,0,.2,1);
   }
   dialog::backdrop {
     display: none;
@@ -1092,7 +1081,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, .4s) cubic-bezier(.25,.1,.25,1);
     }
 }
 
@@ -1111,7 +1100,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+    transition: opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -1155,7 +1144,9 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       display: none;
     }
     .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
+      --p-color-primary: hsl(240, 12.5%, 96.9%);
+      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
       inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
@@ -1177,7 +1168,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       background: var(--_p-b);
     }
     .dismiss-mobile {
-      --p-internal-button-scaling: 0;
       width: fit-content;
       height: fit-content;
       place-self: start end;

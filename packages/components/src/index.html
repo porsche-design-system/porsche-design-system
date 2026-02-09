@@ -429,6 +429,9 @@
             Some label
           </button>
         </p-tag>
+        <p-tag icon-source="http://localhost:3002/icon-custom-kaixin.svg">
+          Some label
+        </p-tag>
       </div>
       <div data-card="tag-dismissible">
         <p-tag-dismissible>Some label</p-tag-dismissible>
@@ -1006,6 +1009,7 @@
         <p-icon name="car" size="xx-small" color="error"></p-icon>
         <p-icon name="car" size="xx-small" color="info"></p-icon>
         <p-icon name="car" size="xx-small" color="inherit" class="text-[deeppink]"></p-icon>
+        <p-icon size="large" source="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='black'/></svg>"></p-icon>
       </div>
       <div data-card="checkbox">
         <p-checkbox class="self-start" label="Some label" name="some-name"></p-checkbox>
@@ -1305,10 +1309,10 @@
     <p-heading slot="sidebar-end-header" tag="h2" size="medium">Settings</p-heading>
 
     <form slot="sidebar-end" class="grid gap-fluid-sm" onreset="updateRoute({theme: 'auto', dir: 'ltr', zoom: '100%', compact: 'false', animation: 'animated', legacy: 'modern', background: 'gradient', accent: '#3400f0'})">
-      <p-select name="theme" value="auto" label="Theme" onchange="updateRoute({theme: this.value})">
-        <p-select-option value="light">Light</p-select-option>
-        <p-select-option value="dark">Dark</p-select-option>
-        <p-select-option value="auto">Auto</p-select-option>
+      <p-select name="theme" value="scheme-light-dark" label="Theme" onchange="updateRoute({theme: this.value})">
+        <p-select-option value="scheme-light">Light</p-select-option>
+        <p-select-option value="scheme-dark">Dark</p-select-option>
+        <p-select-option value="scheme-light-dark">Light Dark</p-select-option>
       </p-select>
       <p-select name="dir" value="ltr" label="Direction" onchange="updateRoute({dir: this.value})">
         <p-select-option value="ltr">LTR (left-to-right)</p-select-option>
@@ -1425,7 +1429,7 @@
       //   })
       // );
 
-      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'auto';
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'scheme-light-dark';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
       const getZoom = () => new URL(document.location).searchParams.get('zoom') || '100%';
       const getCompact = () => new URL(document.location).searchParams.get('compact') || 'false';
@@ -1472,7 +1476,7 @@
         const components = getComponents();
 
         // Theme
-        document.documentElement.classList.remove('light', 'dark', 'auto');
+        document.documentElement.classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
         document.documentElement.classList.add(theme);
         // Direction
         document.documentElement.setAttribute('dir', dir);

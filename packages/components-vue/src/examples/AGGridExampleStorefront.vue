@@ -8,7 +8,7 @@ import { type Theme, themeInjectionKey } from '../main';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
-const theme = inject<Theme>(themeInjectionKey, 'light');
+const theme = inject<Theme>(themeInjectionKey, 'scheme-light');
 
 const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
@@ -64,7 +64,6 @@ const defaultColDef = {
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
     style="height: 100vh"
-    :data-ag-theme-mode="theme === 'light' ? null : 'dark'"
     :pagination="true"
   >
   </ag-grid-vue>

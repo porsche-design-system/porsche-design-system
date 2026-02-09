@@ -1,5 +1,6 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
-import { addImportantToEachRule, colorSchemeStyles, colors, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { colorContrastHigh, colorContrastLow, colorContrastMedium, colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import {
   getSvgUrl,
@@ -12,13 +13,11 @@ const cssVariableWidth = '--p-model-signature-width';
 const cssVariableHeight = '--p-model-signature-height';
 const cssVariableColor = '--p-model-signature-color';
 
-const { primaryColor, contrastLowColor, contrastMediumColor, contrastHighColor } = colors;
-
 const colorMap: Record<ModelSignatureColor, string> = {
-  primary: primaryColor,
-  'contrast-low': contrastLowColor,
-  'contrast-medium': contrastMediumColor,
-  'contrast-high': contrastHighColor,
+  primary: colorPrimary,
+  'contrast-low': colorContrastLow,
+  'contrast-medium': colorContrastMedium,
+  'contrast-high': colorContrastHigh,
   inherit: 'inherit',
 };
 
@@ -46,7 +45,6 @@ export const getComponentCss = (
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
           background: 'currentcolor', // necessary for proper color inheritance
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

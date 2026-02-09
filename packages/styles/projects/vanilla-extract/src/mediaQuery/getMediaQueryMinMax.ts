@@ -20,7 +20,7 @@ export function getMediaQueryMinMax(min: BKey<'s'>, max: BKey<'xxl'>): '(min-wid
 export function getMediaQueryMinMax(min: BKey<'m'>, max: BKey<'l'>): '(min-width:1000px) and (max-width:1299px)';
 export function getMediaQueryMinMax(min: BKey<'m'>, max: BKey<'xl'>): '(min-width:1000px) and (max-width:1759px)';
 export function getMediaQueryMinMax(min: BKey<'m'>, max: BKey<'xxl'>): '(min-width:1000px) and (max-width:1919px)';
-export function getMediaQueryMinMax(min: BKey<'l'>, max: BKey<'xl'>): '@media(min-width:1300px) and (max-width:1759px)';
+export function getMediaQueryMinMax(min: BKey<'l'>, max: BKey<'xl'>): '(min-width:1300px) and (max-width:1759px)';
 export function getMediaQueryMinMax(min: BKey<'l'>, max: BKey<'xxl'>): '(min-width:1300px) and (max-width:1919px)';
 export function getMediaQueryMinMax(min: BKey<'xl'>, max: BKey<'xxl'>): '(min-width:1760px) and (max-width:1919px)';
 export function getMediaQueryMinMax(min: Exclude<Breakpoint, 'xxl'>, max: Exclude<Breakpoint, 'base'>): string {

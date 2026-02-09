@@ -1,19 +1,15 @@
 import type { ExtendedRoute } from '../app-routing.module';
 import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.component';
 import { EventsComponent } from './events.component';
-import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
-import { ThemeInjectionComponent } from './theme-injection.component';
 import { UtilitiesComponent } from './utilities.component';
 
 export const pages = [
   CoreInitializerPrefixedComponent,
   EventsComponent,
-  FormWrapperBindingComponent,
   OptionalPropertiesComponent,
-  ThemeInjectionComponent,
   UtilitiesComponent,
   ...tabsBarNavigationComponents,
   ...tabsBarNavigationBugComponents,
@@ -21,16 +17,13 @@ export const pages = [
 
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
-export * from './form-wrapper-binding.component';
 export * from './optional-properties.component';
-export * from './theme-injection.component';
 export * from './utilities.component';
 export * from './tabs-bar-navigation';
 export * from './tabs-bar-navigation-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
-export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
@@ -170,7 +163,8 @@ import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './gen
 import { MultiSelectOpenedWithMultipleSelectedOptionsComponent } from './generated/multi-select-opened-with-multiple-selected-options.component';
 import { MultiSelectOpenedWithOptgroupsComponent } from './generated/multi-select-opened-with-optgroups.component';
 import { MultiSelectOpenedWithOptgroupsDisabledComponent } from './generated/multi-select-opened-with-optgroups-disabled.component';
-import { OverviewComponent } from './generated/overview.component';
+import { OverviewComponentsComponent } from './generated/overview-components.component';
+import { OverviewFormsComponent } from './generated/overview-forms.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -378,7 +372,8 @@ export const generatedPages = [
   MultiSelectOpenedWithMultipleSelectedOptionsComponent,
   MultiSelectOpenedWithOptgroupsComponent,
   MultiSelectOpenedWithOptgroupsDisabledComponent,
-  OverviewComponent,
+  OverviewComponentsComponent,
+  OverviewFormsComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
@@ -1137,6 +1132,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: 'multi-select-opened-with-optgroups-disabled',
     component: MultiSelectOpenedWithOptgroupsDisabledComponent,
+  },
+  {
+    name: 'Overview Components',
+    path: 'overview-components',
+    component: OverviewComponentsComponent,
+  },
+  {
+    name: 'Overview Forms',
+    path: 'overview-forms',
+    component: OverviewFormsComponent,
   },
   {
     name: 'Pagination',

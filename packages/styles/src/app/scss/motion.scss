@@ -1,0 +1,59 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-motion {
+  @include pds.pds-text-small;
+  display: grid;
+  gap: pds.$spacing-fluid-md;
+  padding: pds.$spacing-static-md;
+  color: pds.$color-primary;
+
+  &__item {
+    border-radius: pds.$radius-lg;
+    background: pds.$color-surface;
+    padding: pds.$pds-spacing-fluid-small;
+    transition-property: transform;
+    will-change: transform;
+  }
+
+  &__sm {
+    transition-duration: pds.$duration-sm;
+    transition-timing-function: pds.$ease-in-out;
+    &:hover { transform: scale(1.2); }
+  }
+
+  &__md {
+    transition-duration: pds.$duration-md;
+    transition-timing-function: pds.$ease-in-out;
+    &:hover { transform: scale(1.2); }
+  }
+
+  &__lg {
+    transition-duration: pds.$duration-lg;
+    transition-timing-function: pds.$ease-in-out;
+    &:hover { transform: scale(1.2); }
+  }
+
+  &__xl {
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-in-out;
+    &:hover { transform: scale(1.2); }
+  }
+
+  &__ease-in-out {
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-in-out;
+    &:hover { transform: scale(1.2); }
+  }
+
+  &__ease-in {
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-in;
+    &:hover { transform: scale(1.2); }
+  }
+
+  &__ease-out {
+    transition-duration: pds.$duration-xl;
+    transition-timing-function: pds.$ease-out;
+    &:hover { transform: scale(1.2); }
+  }
+}

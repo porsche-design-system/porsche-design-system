@@ -10,13 +10,12 @@ it('should call isParentOfKind() with correct parameters', () => {
   isParentFieldsetRequired(child);
 
   expect(spy).toHaveBeenCalledWith(child, 'p-fieldset');
-  expect(spy).toHaveBeenCalledWith(child, 'p-fieldset-wrapper');
-  expect(spy).toHaveBeenCalledTimes(2);
+  expect(spy).toHaveBeenCalledTimes(1);
 });
 
 it('should call isRequired() with correct parameters', () => {
   const spy = vi.spyOn(isRequiredUtils, 'isRequired');
-  const parent = document.createElement('p-fieldset-wrapper');
+  const parent = document.createElement('p-fieldset');
   const child = document.createElement('div');
   parent.appendChild(child);
 

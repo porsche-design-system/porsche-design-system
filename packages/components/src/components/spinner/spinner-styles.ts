@@ -2,12 +2,11 @@ import { motionDurationVeryLong } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
   cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   hostHiddenStyles,
 } from '../../styles';
+import { colorContrastLower, colorPrimary } from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { SpinnerSize } from './spinner-utils';
@@ -22,8 +21,6 @@ const sizeMap: Record<SpinnerSize, Pick<JssStyle, 'height' | 'width'>> = {
   large: { height: sizeLarge, width: sizeLarge },
   inherit: { height: 'inherit', width: 'inherit' },
 };
-
-const { primaryColor, contrastLowerColor } = colors;
 
 export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): string => {
   const strokeDasharray = '57'; // C = 2πR
@@ -59,7 +56,6 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
         display: 'inline-flex',
         ...addImportantToEachRule({
           verticalAlign: 'top',
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -70,11 +66,11 @@ export const getComponentCss = (size: BreakpointCustomizable<SpinnerSize>): stri
       },
       circle: {
         '&:first-child': {
-          stroke: contrastLowerColor,
+          stroke: colorContrastLower,
         },
         '&:last-child': {
           animation: `$dash ${animationDuration} steps(50) infinite`,
-          stroke: primaryColor,
+          stroke: colorPrimary,
           strokeDasharray:
             ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
               ? strokeDasharray

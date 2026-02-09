@@ -1,29 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "inherit" and theme dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #88898C;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #FBFCFF;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "inherit" 1`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -45,6 +23,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: inherit;
@@ -63,30 +62,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "inherit" and theme light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #6B6D70;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #010205;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "inherit" 2`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -108,6 +85,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: inherit;
@@ -126,30 +124,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large" and theme dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #88898C;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #FBFCFF;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "large" 1`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -171,6 +147,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 104px;
@@ -189,30 +186,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "large" and theme light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #6B6D70;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #010205;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "large" 2`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -234,6 +209,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 104px;
@@ -252,30 +248,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium" and theme dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #88898C;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #FBFCFF;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "medium" 1`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -297,6 +271,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 72px;
@@ -315,30 +310,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "medium" and theme light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #6B6D70;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #010205;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "medium" 2`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -360,6 +333,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 72px;
@@ -378,30 +372,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small" and theme dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #88898C;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #FBFCFF;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -423,6 +395,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 48px;
@@ -441,30 +434,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: "small" and theme light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #6B6D70;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #010205;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: "small" 2`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -486,6 +457,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 48px;
@@ -504,30 +496,8 @@ circle:last-child {
   }"
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} and theme dark 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #88898C;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #FBFCFF;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} 1`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -549,6 +519,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 72px;
@@ -602,30 +593,8 @@ circle:last-child {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} and theme light 1`] = `
-":host {
-  display: inline-flex;
-  vertical-align: top !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-svg {
-  display: block;
-  fill: none;
-  animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
-}
-circle:first-child {
-  stroke: #6B6D70;
-}
-circle:last-child {
-  animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
-  stroke: #010205;
-  stroke-dasharray: 57;
-  stroke-linecap: round;
-}
-@keyframes rotate {
+exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"small","s":"medium","m":"small","l":"medium","xl":"small"} 2`] = `
+"@keyframes rotate {
   0% {
     transform: rotateZ(0deg);
   }
@@ -647,6 +616,27 @@ circle:last-child {
     transform: rotateZ(360deg);
   }
 }
+  :host {
+    display: inline-flex;
+    vertical-align: top !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  svg {
+    display: block;
+    fill: none;
+    animation: rotate var(--p-animation-duration, 1.2s) steps(50) infinite;
+  }
+  circle:first-child {
+    stroke: var(--p-color-contrast-lower);
+  }
+  circle:last-child {
+    animation: dash var(--p-animation-duration, 1.2s) steps(50) infinite;
+    stroke: var(--p-color-primary);
+    stroke-dasharray: 57;
+    stroke-linecap: round;
+  }
   .root {
     display: block;
     height: 72px;

@@ -11,8 +11,6 @@ import {
 } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
   cssVariableTransitionDuration,
   getFocusBaseStyles,
   getTransition,
@@ -20,15 +18,20 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusSmall, radiusSm } from '../../styles/css-variables';
+import {
+  colorCanvas,
+  colorContrastLower,
+  colorFrostedSoft,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusSm,
+} from '../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import type { AccordionSize } from './accordion-utils';
 
 const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
 const positionStickyTopFallback = '0';
-
-const { contrastLowerColor, primaryColor, frostedSoftColor, canvasColor } = colors;
 
 // CSS Variable defined in fontHyphenationStyle
 /**
@@ -48,10 +51,9 @@ export const getComponentCss = (
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
             : {
-                borderBottom: `1px solid ${contrastLowerColor}`,
+                borderBottom: `1px solid ${colorContrastLower}`,
               }),
           '&(:only-of-type)': { borderBottom: 0 },
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -66,7 +68,7 @@ export const getComponentCss = (
         gap: '24px',
         cursor: 'pointer',
         zIndex: 0,
-        color: primaryColor,
+        color: colorPrimary,
         ...textSmallStyle,
         fontWeight: fontWeightSemiBold,
         ...buildResponsiveStyles(size, (s: AccordionSize) => ({
@@ -99,7 +101,7 @@ export const getComponentCss = (
             },
             '&:hover::before': {
               ...frostedGlassStyle,
-              background: frostedSoftColor,
+              background: colorFrostedSoft,
             },
           })
         ),
@@ -112,7 +114,7 @@ export const getComponentCss = (
         position: 'sticky',
         top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
         zIndex: 1, // to be on top of the collapsible
-        background: canvasColor,
+        background: colorCanvas,
       }),
     },
     'icon-container': {
@@ -128,7 +130,7 @@ export const getComponentCss = (
       transition: getTransition('transform'),
     },
     collapsible: {
-      color: primaryColor, // enables color inheritance for slotted content
+      color: colorPrimary, // enables color inheritance for slotted content
       display: 'grid',
       ...(sticky && {
         position: 'relative',

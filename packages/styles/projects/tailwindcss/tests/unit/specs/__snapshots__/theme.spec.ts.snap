@@ -1,50 +1,124 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should match compiled tailwindcss theme 1`] = `
-"@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
+"@theme {
   /* Reset */
+  --breakpoint-*: initial;
   --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --text-*: initial;
 
   /* Color */
   --color-black: #000;
   --color-white: #fff;
 
-  --color-focus: #1a44ea;
-  --color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
-  --color-canvas: #fff;
-  --color-surface: hsl(0, 0%, 97.6%);
-  --color-frosted: hsla(240, 13%, 9%, 0.08);
-  --color-frosted-soft: hsla(230, 2.9%, 60%, 0.06);
-  --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
-  --color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
-  --color-contrast-low: hsla(240, 14.3%, 15.1%, 0.5);
-  --color-contrast-medium: hsla(240, 13.4%, 11%, 0.6);
-  --color-contrast-high: hsla(240, 14.3%, 11%, 0.7);
-  --color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.8);
-  --color-primary: #000;
-  --color-success: hsl(127, 29.1%, 37.1%);
-  --color-success-low: hsla(125, 59.8%, 63.9%, 0.9);
-  --color-success-medium: hsla(126, 39.3%, 54.1%, 0.92);
-  --color-success-frosted: hsla(125, 60%, 83.3%, 0.54);
-  --color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.42);
-  --color-warning: hsl(44, 80.5%, 30.2%);
-  --color-warning-low: hsla(47, 90%, 47.1%, 0.9);
-  --color-warning-medium: hsla(46, 90.3%, 40.4%, 0.92);
-  --color-warning-frosted: hsla(47, 83%, 70%, 0.54);
-  --color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.42);
-  --color-error: hsl(357, 51.8%, 33.3%);
-  --color-error-low: hsla(357, 74.4%, 54.1%, 0.9);
-  --color-error-medium: hsla(357, 61.9%, 46.3%, 0.92);
-  --color-error-frosted: hsla(357, 80%, 74.5%, 0.54);
-  --color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.42);
-  --color-info: hsl(212, 87.3%, 31%);
-  --color-info-low: hsla(212, 100%, 47.6%, 0.9);
-  --color-info-medium: hsla(212, 100%, 41.2%, 0.92);
-  --color-info-frosted: hsla(212, 93.2%, 71.2%, 0.54);
-  --color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.42);
-  --color-skeleton: #f7f7f7;
+  --color-focus: light-dark(#1a44ea, #1a44ea);
+  --color-disabled: light-dark(
+    hsla(233, 6.6%, 23.9%, 0.412),
+    hsla(240, 1.5%, 61.8%, 0.302)
+  );
+  --color-canvas: light-dark(#fff, hsl(225, 66.7%, 1.2%));
+  --color-surface: light-dark(hsl(240, 7.7%, 97.5%), hsl(240, 2%, 10%));
+  --color-frosted: light-dark(
+    hsla(236, 6.4%, 51%, 0.148),
+    hsla(240, 2.2%, 44.1%, 0.228)
+  );
+  --color-frosted-soft: light-dark(
+    hsla(234, 9.8%, 60%, 0.06),
+    hsla(240, 3.7%, 26.5%, 0.154)
+  );
+  --color-backdrop: light-dark(
+    hsla(240, 5.3%, 14.9%, 0.5),
+    hsla(240, 5.3%, 14.9%, 0.5)
+  );
+  --color-contrast-lower: light-dark(
+    hsla(234, 6%, 32.9%, 0.324),
+    hsla(240, 1.5%, 61.8%, 0.302)
+  );
+  --color-contrast-low: light-dark(
+    hsla(240, 5.3%, 14.9%, 0.5),
+    hsla(240, 12.5%, 96.9%, 0.45)
+  );
+  --color-contrast-medium: light-dark(
+    hsla(240, 6.1%, 7%, 0.6),
+    hsla(240, 12.5%, 96.9%, 0.56)
+  );
+  --color-contrast-high: light-dark(
+    hsla(240, 7.1%, 11%, 0.7),
+    hsla(240, 12.5%, 96.9%, 0.67)
+  );
+  --color-contrast-higher: light-dark(
+    hsla(240, 8.7%, 9%, 0.8),
+    hsla(240, 12.5%, 96.9%, 0.78)
+  );
+  --color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(240, 12.5%, 96.9%));
+  --color-success: light-dark(hsl(115, 77.5%, 27.8%), hsl(157, 84.9%, 41.6%));
+  --color-success-low: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.18),
+    hsla(157, 84.9%, 41.6%, 0.18)
+  );
+  --color-success-medium: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.6),
+    hsla(157, 84.9%, 41.6%, 0.6)
+  );
+  --color-success-frosted: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.18),
+    hsla(157, 84.9%, 41.6%, 0.18)
+  );
+  --color-success-frosted-soft: light-dark(
+    hsla(115, 77.5%, 27.8%, 0.1),
+    hsla(157, 84.9%, 41.6%, 0.1)
+  );
+  --color-warning: light-dark(hsl(28, 97.7%, 34.1%), hsl(28, 90.2%, 56.1%));
+  --color-warning-low: light-dark(
+    hsla(28, 97.7%, 34.1%, 0.18),
+    hsla(28, 90.2%, 56.1%, 0.18)
+  );
+  --color-warning-medium: light-dark(
+    hsla(28, 97.7%, 34.1%, 0.6),
+    hsla(28, 90.2%, 56.1%, 0.6)
+  );
+  --color-warning-frosted: light-dark(
+    hsla(28, 97.7%, 34.1%, 0.18),
+    hsla(28, 90.2%, 56.1%, 0.18)
+  );
+  --color-warning-frosted-soft: hsla(28, 90.2%, 56.1%, 0.1);
+  --color-error: light-dark(hsl(357, 78%, 41%), hsl(0, 96.9%, 62%));
+  --color-error-low: light-dark(
+    hsla(357, 78%, 41%, 0.18),
+    hsla(0, 96.9%, 62%, 0.18)
+  );
+  --color-error-medium: light-dark(
+    hsla(357, 78%, 41%, 0.6),
+    hsla(0, 96.9%, 62%, 0.6)
+  );
+  --color-error-frosted: light-dark(
+    hsla(357, 78%, 41%, 0.18),
+    hsla(0, 96.9%, 62%, 0.18)
+  );
+  --color-error-frosted-soft: light-dark(
+    hsla(357, 78%, 41%, 0.1),
+    hsla(0, 96.9%, 62%, 0.1)
+  );
+  --color-info: light-dark(hsl(228, 83.2%, 51%), hsl(210, 100%, 54.5%));
+  --color-info-low: light-dark(
+    hsla(228, 83.2%, 51%, 0.18),
+    hsla(210, 100%, 54.5%, 0.18)
+  );
+  --color-info-medium: light-dark(
+    hsla(228, 83.2%, 51%, 0.6),
+    hsla(210, 100%, 54.5%, 0.6)
+  );
+  --color-info-frosted: light-dark(
+    hsla(228, 83.2%, 51%, 0.18),
+    hsla(210, 100%, 54.5%, 0.18)
+  );
+  --color-info-frosted-soft: light-dark(
+    hsla(228, 83.2%, 51%, 0.1),
+    hsla(210, 100%, 54.5%, 0.1)
+  );
+  --color-skeleton: light-dark(#f7f7f7, #1a1b1e);
 
   /* Typography */
   --font-porsche-next:
@@ -83,8 +157,6 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --breakpoint-2xl: 1920px;
 
   /* Spacing */
-  --spacing: 0.25rem;
-
   --spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
   --spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
   --spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
@@ -100,21 +172,30 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --spacing-static-2xl: 80px;
 
   /* Border */
+  --radius-xs: 2px;
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-4xl: 32px;
+  --radius-full: calc(infinity * 1px);
 
   --default-border-width: 1px;
-  --border-width-regular: 2px;
-  --border-width-thin: 1px;
+  --border-width-regular: 2px; /* alias (deprecated) */
+  --border-width-thin: 1px; /* alias (deprecated) */
 
   /* Blur */
   --blur-frosted: 32px;
 
   /* Shadow */
-  --shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16);
-  --shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16);
-  --shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  --shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --shadow-low: var(--shadow-sm); /* alias (deprecated) */
+  --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  --shadow-medium: var(--shadow-md); /* alias (deprecated) */
+  --shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  --shadow-high: var(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
   --default-outline-width: 2px;
@@ -126,10 +207,22 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
 
   --default-transition-duration: 0.25s;
-  --transition-duration-short: 0.25s;
-  --transition-duration-moderate: 0.4s;
-  --transition-duration-long: 0.6s;
-  --transition-duration-very-long: 1.2s;
+  --transition-duration-sm: 0.25s;
+  --transition-duration-short: var(
+    --transition-duration-sm
+  ); /* alias (deprecated) */
+  --transition-duration-md: 0.4s;
+  --transition-duration-moderate: var(
+    --transition-duration-md
+  ); /* alias (deprecated) */
+  --transition-duration-lg: 0.6s;
+  --transition-duration-long: var(
+    --transition-duration-lg
+  ); /* alias (deprecated) */
+  --transition-duration-xl: 1.2s;
+  --transition-duration-very-long: var(
+    --transition-duration-xl
+  ); /* alias (deprecated) */
 
   /* Animation */
   --animate-skeleton: skeleton var(--transition-duration-long)
@@ -146,116 +239,57 @@ exports[`should match compiled tailwindcss theme 1`] = `
 }
 
 @layer theme {
+  /* deprecated, use .scheme-light instead */
   .light {
-    --color-focus: #1a44ea;
-    --color-disabled: hsla(234, 8.2%, 23.9%, 0.412);
-    --color-canvas: #fff;
-    --color-surface: hsl(0, 0%, 97.6%);
-    --color-frosted: hsla(240, 13%, 9%, 0.08);
-    --color-frosted-soft: hsla(230, 2.9%, 60%, 0.06);
-    --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
-    --color-contrast-lower: hsla(240, 5.3%, 33.1%, 0.324);
-    --color-contrast-low: hsla(240, 14.3%, 15.1%, 0.5);
-    --color-contrast-medium: hsla(240, 13.4%, 11%, 0.6);
-    --color-contrast-high: hsla(240, 14.3%, 11%, 0.7);
-    --color-contrast-higher: hsla(240, 14.9%, 9.2%, 0.8);
-    --color-primary: #000;
-    --color-success: hsl(127, 29.1%, 37.1%);
-    --color-success-low: hsla(125, 59.8%, 63.9%, 0.9);
-    --color-success-medium: hsla(126, 39.3%, 54.1%, 0.92);
-    --color-success-frosted: hsla(125, 60%, 83.3%, 0.54);
-    --color-success-frosted-soft: hsla(124, 58.5%, 89.6%, 0.42);
-    --color-warning: hsl(44, 80.5%, 30.2%);
-    --color-warning-low: hsla(47, 90%, 47.1%, 0.9);
-    --color-warning-medium: hsla(46, 90.3%, 40.4%, 0.92);
-    --color-warning-frosted: hsla(47, 83%, 70%, 0.54);
-    --color-warning-frosted-soft: hsla(47, 84.3%, 77.5%, 0.42);
-    --color-error: hsl(357, 51.8%, 33.3%);
-    --color-error-low: hsla(357, 74.4%, 54.1%, 0.9);
-    --color-error-medium: hsla(357, 61.9%, 46.3%, 0.92);
-    --color-error-frosted: hsla(357, 80%, 74.5%, 0.54);
-    --color-error-frosted-soft: hsla(357, 83.3%, 81.2%, 0.42);
-    --color-info: hsl(212, 87.3%, 31%);
-    --color-info-low: hsla(212, 100%, 47.6%, 0.9);
-    --color-info-medium: hsla(212, 100%, 41.2%, 0.92);
-    --color-info-frosted: hsla(212, 93.2%, 71.2%, 0.54);
-    --color-info-frosted-soft: hsla(212, 96.2%, 79.2%, 0.42);
-    --color-skeleton: #f7f7f7;
+    color-scheme: light;
   }
 
+  /* deprecated, use .scheme-dark instead */
   .dark {
-    --color-focus: #1a44ea;
-    --color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
-    --color-canvas: hsl(240, 2.7%, 7.3%);
-    --color-surface: hsl(240, 2%, 10%);
-    --color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
-    --color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
-    --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
-    --color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
-    --color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
-    --color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
-    --color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
-    --color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
-    --color-primary: hsl(240, 12.5%, 96.9%);
-    --color-success: hsl(125, 37.4%, 64.9%);
-    --color-success-low: hsla(125, 81.1%, 29%, 0.9);
-    --color-success-medium: hsla(125, 48.4%, 41.8%, 0.92);
-    --color-success-frosted: hsla(125, 87.5%, 18.8%, 0.54);
-    --color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.42);
-    --color-warning: hsl(44, 50.5%, 64.3%);
-    --color-warning-low: hsla(41, 68.8%, 39%, 0.9);
-    --color-warning-medium: hsla(42, 50.2%, 48%, 0.92);
-    --color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.54);
-    --color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.42);
-    --color-error: hsl(358, 37.1%, 61.4%);
-    --color-error-low: hsla(357, 76.8%, 27.1%, 0.9);
-    --color-error-medium: hsla(357, 48%, 39.2%, 0.92);
-    --color-error-frosted: hsla(356, 64%, 19.6%, 0.54);
-    --color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.42);
-    --color-info: hsl(211, 49.5%, 62%);
-    --color-info-low: hsla(212, 97.4%, 30%, 0.9);
-    --color-info-medium: hsla(212, 63%, 41.4%, 0.92);
-    --color-info-frosted: hsla(212, 98.1%, 21.2%, 0.54);
-    --color-info-frosted-soft: hsla(211, 100%, 18%, 0.42);
-    --color-skeleton: #1a1b1e;
+    color-scheme: dark;
   }
 
+  /* deprecated, use .scheme-light-dark instead */
   .auto {
-    @media (prefers-color-scheme: dark) {
+    color-scheme: light dark;
+  }
+
+  @supports not (color: light-dark(white, black)) {
+    :root {
       --color-focus: #1a44ea;
-      --color-disabled: hsla(240, 1.5%, 61.8%, 0.302);
-      --color-canvas: hsl(240, 2.7%, 7.3%);
-      --color-surface: hsl(240, 2%, 10%);
-      --color-frosted: hsla(240, 2.8%, 51.2%, 0.148);
-      --color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
-      --color-backdrop: hsla(240, 14.9%, 9.2%, 0.8);
-      --color-contrast-lower: hsla(240, 1.5%, 61.8%, 0.302);
-      --color-contrast-low: hsla(240, 12.5%, 96.9%, 0.45);
-      --color-contrast-medium: hsla(240, 12.5%, 96.9%, 0.56);
-      --color-contrast-high: hsla(240, 12.5%, 96.9%, 0.67);
-      --color-contrast-higher: hsla(240, 12.5%, 96.9%, 0.78);
-      --color-primary: hsl(240, 12.5%, 96.9%);
-      --color-success: hsl(125, 37.4%, 64.9%);
-      --color-success-low: hsla(125, 81.1%, 29%, 0.9);
-      --color-success-medium: hsla(125, 48.4%, 41.8%, 0.92);
-      --color-success-frosted: hsla(125, 87.5%, 18.8%, 0.54);
-      --color-success-frosted-soft: hsla(125, 92.4%, 15.5%, 0.42);
-      --color-warning: hsl(44, 50.5%, 64.3%);
-      --color-warning-low: hsla(41, 68.8%, 39%, 0.9);
-      --color-warning-medium: hsla(42, 50.2%, 48%, 0.92);
-      --color-warning-frosted: hsla(41, 72.7%, 25.9%, 0.54);
-      --color-warning-frosted-soft: hsla(41, 76.1%, 21.4%, 0.42);
-      --color-error: hsl(358, 37.1%, 61.4%);
-      --color-error-low: hsla(357, 76.8%, 27.1%, 0.9);
-      --color-error-medium: hsla(357, 48%, 39.2%, 0.92);
-      --color-error-frosted: hsla(356, 64%, 19.6%, 0.54);
-      --color-error-frosted-soft: hsla(355, 58.6%, 17.1%, 0.42);
-      --color-info: hsl(211, 49.5%, 62%);
-      --color-info-low: hsla(212, 97.4%, 30%, 0.9);
-      --color-info-medium: hsla(212, 63%, 41.4%, 0.92);
-      --color-info-frosted: hsla(212, 98.1%, 21.2%, 0.54);
-      --color-info-frosted-soft: hsla(211, 100%, 18%, 0.42);
-      --color-skeleton: #1a1b1e;
+      --color-disabled: hsla(233, 6.6%, 23.9%, 0.412);
+      --color-canvas: #fff;
+      --color-surface: hsl(240, 7.7%, 97.5%);
+      --color-frosted: hsla(236, 6.4%, 51%, 0.148);
+      --color-frosted-soft: hsla(234, 9.8%, 60%, 0.06);
+      --color-backdrop: hsla(240, 5.3%, 14.9%, 0.5);
+      --color-contrast-lower: hsla(234, 6%, 32.9%, 0.324);
+      --color-contrast-low: hsla(240, 5.3%, 14.9%, 0.5);
+      --color-contrast-medium: hsla(240, 6.1%, 7%, 0.6);
+      --color-contrast-high: hsla(240, 7.1%, 11%, 0.7);
+      --color-contrast-higher: hsla(240, 8.7%, 9%, 0.8);
+      --color-primary: hsl(225, 66.7%, 1.2%);
+      --color-success: hsl(115, 77.5%, 27.8%);
+      --color-success-low: hsla(115, 77.5%, 27.8%, 0.18);
+      --color-success-medium: hsla(115, 77.5%, 27.8%, 0.6);
+      --color-success-frosted: hsla(115, 77.5%, 27.8%, 0.18);
+      --color-success-frosted-soft: hsla(115, 77.5%, 27.8%, 0.1);
+      --color-warning: hsl(28, 97.7%, 34.1%);
+      --color-warning-low: hsla(28, 97.7%, 34.1%, 0.18);
+      --color-warning-medium: hsla(28, 97.7%, 34.1%, 0.6);
+      --color-warning-frosted: hsla(28, 97.7%, 34.1%, 0.18);
+      --color-warning-frosted-soft: hsla(28, 97.7%, 34.1%, 0.1);
+      --color-error: hsl(357, 78%, 41%);
+      --color-error-low: hsla(357, 78%, 41%, 0.18);
+      --color-error-medium: hsla(357, 78%, 41%, 0.6);
+      --color-error-frosted: hsla(357, 78%, 41%, 0.18);
+      --color-error-frosted-soft: hsla(357, 78%, 41%, 0.1);
+      --color-info: hsl(228, 83.2%, 51%);
+      --color-info-low: hsla(228, 83.2%, 51%, 0.18);
+      --color-info-medium: hsla(228, 83.2%, 51%, 0.6);
+      --color-info-frosted: hsla(228, 83.2%, 51%, 0.18);
+      --color-info-frosted-soft: hsla(228, 83.2%, 51%, 0.1);
+      --color-skeleton: #f7f7f7;
     }
   }
 }

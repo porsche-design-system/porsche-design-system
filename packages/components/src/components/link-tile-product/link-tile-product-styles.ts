@@ -11,8 +11,6 @@ import {
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
-  colors,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
@@ -20,7 +18,15 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { legacyRadiusLarge, radius2Xl, radius4Xl } from '../../styles/css-variables';
+import {
+  colorContrastHigh,
+  colorContrastMedium,
+  colorPrimary,
+  colorSurface,
+  legacyRadiusLarge,
+  radius2Xl,
+  radius4Xl,
+} from '../../styles/css-variables';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
@@ -48,8 +54,6 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
 
-const { primaryColor, contrastHighColor, contrastMediumColor, surfaceColor } = colors;
-
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
@@ -63,7 +67,6 @@ export const getComponentCss = (
         display: 'block',
         position: 'relative', // needed for ::slotted(a) to overlay correctly
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -97,7 +100,7 @@ export const getComponentCss = (
       }),
       ...(hasPriceOriginal && {
         s: {
-          color: contrastMediumColor,
+          color: colorContrastMedium,
         },
       }),
     },
@@ -109,8 +112,8 @@ export const getComponentCss = (
       boxSizing: 'border-box',
       borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
       padding: spacingFluidSmall,
-      color: primaryColor,
-      backgroundColor: surfaceColor,
+      color: colorPrimary,
+      backgroundColor: colorSurface,
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
         aspectRatio: ratio,
       })),
@@ -174,7 +177,7 @@ export const getComponentCss = (
         margin: 0, // ua-style reset
         ...textXXSmallStyle,
         ...getMultilineEllipsis(2),
-        color: contrastHighColor,
+        color: colorContrastHigh,
       },
     }),
     ...(hasPriceOriginal && {

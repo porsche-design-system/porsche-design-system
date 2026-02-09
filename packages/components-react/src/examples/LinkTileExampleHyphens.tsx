@@ -23,7 +23,7 @@ export const LinkTileExampleHyphensPage = (): JSX.Element => {
         description="An extra&shy;ordinarily Porsche"
         compact={true}
         size="inherit"
-        style={{ maxWidth: '400px', fontSize: '45px', hyphens }}
+        style={{ colorScheme: 'dark', maxWidth: '400px', fontSize: '45px', hyphens }}
       >
         <img src="http://localhost:3002/lights.jpg" alt="Some image description" />
       </PLinkTile>

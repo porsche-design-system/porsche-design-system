@@ -12,45 +12,48 @@ export const borderRadiusScssStory: Story<'div'> = {
       children: [
         {
           tag: 'div',
-          properties: { className: 'rounded-sm border p-fluid-sm' },
-          children: ['border-radius: $pds-border-radius-small'],
+          properties: { className: 'rounded-xs border p-fluid-md' },
+          children: ['border-radius: $radius-xs;'],
         },
         {
           tag: 'div',
-          properties: { className: 'rounded-md border p-fluid-sm' },
-          children: ['border-radius: $pds-border-radius-medium'],
+          properties: { className: 'rounded-sm border p-fluid-md' },
+          children: ['border-radius: $radius-sm;'],
         },
         {
           tag: 'div',
-          properties: { className: 'rounded-lg border p-fluid-sm' },
-          children: ['border-radius: $pds-border-radius-large'],
-        },
-      ],
-    },
-  ],
-};
-
-export const borderWidthScssStory: Story<'div'> = {
-  generator: () => [
-    {
-      tag: 'div',
-      properties: {
-        className: 'grid gap-fluid-md prose-text-sm',
-      },
-      children: [
-        {
-          tag: 'div',
-          properties: {
-            className: 'border-thin p-fluid-sm',
-          },
-          children: ['border-width: $pds-border-width-thin'],
+          properties: { className: 'rounded-md border p-fluid-md' },
+          children: ['border-radius: $radius-md;'],
         },
         {
           tag: 'div',
-          properties: {
-            className: 'border-regular p-fluid-sm',
-          },
-          children: ['border-width: $pds-border-width-regular'],
+          properties: { className: 'rounded-lg border p-fluid-md' },
+          children: ['border-radius: $radius-lg;'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'rounded-xl border p-fluid-md' },
+          children: ['border-radius: $radius-xl;'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'rounded-2xl border p-fluid-md' },
+          children: ['border-radius: $radius-2xl;'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'rounded-3xl border p-fluid-md' },
+          children: ['border-radius: $radius-3xl;'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'rounded-4xl border p-fluid-md' },
+          children: ['border-radius: $radius-4xl;'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'rounded-full border p-fluid-md' },
+          children: ['border-radius: $radius-full;'],
         },
       ],
     },

@@ -12,7 +12,7 @@ import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { useState } from 'react';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { frameworkNameMap } from '@/models/framework';
-import type { StorefrontTheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/theme';
 import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { getReactCode } from '@/utils/generator/generateReactMarkup';
 import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
@@ -20,14 +20,14 @@ import { getVueCode } from '@/utils/generator/generateVueMarkup';
 
 export const OpenBugTemplateInStackBlitz = () => {
   const [selectedFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
-  const [selectedTheme, setSelectedTheme] = useState<StorefrontTheme>('light');
+  const [selectedTheme, setSelectedTheme] = useState<StorefrontColorScheme>('scheme-light');
 
   const onFrameworkChange = (e: CustomEvent<SegmentedControlChangeEventDetail>) => {
     setSelectedFramework(e.detail.value as Framework);
   };
 
   const onUpdateTheme = (e: CustomEvent<SelectChangeEventDetail>) => {
-    setSelectedTheme(e.detail.value as StorefrontTheme);
+    setSelectedTheme(e.detail.value as StorefrontColorScheme);
   };
 
   const onOpenInStackblitz = () => {

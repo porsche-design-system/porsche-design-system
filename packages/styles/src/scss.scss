@@ -1,5 +1,12 @@
-@use '@porsche-design-system/scss' as *;
-
-.scss-prose-heading-lg {
-  @include pds-heading-large;
-}
+@use 'app/scss/blur';
+@use 'app/scss/border';
+@use 'app/scss/color';
+@use 'app/scss/focus-visible';
+@use 'app/scss/gradient';
+@use 'app/scss/grid';
+@use 'app/scss/media-query';
+@use 'app/scss/motion';
+@use 'app/scss/shadow';
+@use 'app/scss/skeleton';
+@use 'app/scss/spacing';
+@use 'app/scss/typography';
