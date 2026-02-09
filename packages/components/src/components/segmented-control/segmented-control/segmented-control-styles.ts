@@ -36,9 +36,7 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       ...getFunctionalComponentLabelAfterStyles(disabled, getDisabledBaseStyles()),
       ...(disabled && {
-        '::slotted(*:not([slot]))': {
-          getDisabledBaseStyles,
-        },
+        '::slotted(*:not([slot]))': addImportantToEachRule(getDisabledBaseStyles()),
       }),
       'slot:not([name])': {
         display: 'grid',
