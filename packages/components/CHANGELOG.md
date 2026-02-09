@@ -428,6 +428,21 @@ and migration steps.
   ([#4118](https://github.com/porsche-design-system/porsche-design-system/pull/4118))
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 
+## [3.32.0] - 2026-02-04
+
+## [3.32.0-rc.2] - 2026-02-03
+
+### Added
+
+- `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
+  New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
+  ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
+- `Angular`: Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Carousel`:
+  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+    ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+
 ## [3.32.0-rc.1] - 2026-01-12
 
 ### Added

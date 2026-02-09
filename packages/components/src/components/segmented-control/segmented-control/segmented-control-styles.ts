@@ -32,6 +32,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
       ...getFunctionalComponentLabelAfterStyles(disabled, getDisabledBaseStyles()),
       ...(disabled && {

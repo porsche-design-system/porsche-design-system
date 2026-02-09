@@ -95,7 +95,7 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
     : '';
 
   const attrs = [
-    !useSlottedLabel && `label="${label}"`,
+    !useSlottedLabel && label && `label="${label}"`,
     `state="${state}"`,
     `value="${value}"`,
     `name="${name}"`,

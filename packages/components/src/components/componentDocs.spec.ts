@@ -51,6 +51,9 @@ describe.each<TagName>(
         namedSlotsUnique.push('label');
         namedSlotsUnique.push('label-after');
       }
+      if (sourceFileContent.includes('<Label')) {
+        namedSlotsUnique.push('label-after');
+      }
       if (/<(Label|LegacyLabel)[\s\S]+?description/.test(sourceFileContent)) {
         namedSlotsUnique.push('description');
       }

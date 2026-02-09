@@ -101,7 +101,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label', id: 'some-label-id' },
+          properties: { slot: 'label' },
           children: [
             'Some label with a ',
             {
@@ -127,7 +127,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'description', id: 'some-description-id' },
+          properties: { slot: 'description' },
           children: [
             'Some description with a ',
             {
@@ -140,7 +140,7 @@ export const inputPasswordStorySlots: Story<'p-input-password'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'message', id: 'some-message-id' },
+          properties: { slot: 'message' },
           children: [
             'Some error message with a ',
             {
