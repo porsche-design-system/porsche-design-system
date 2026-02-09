@@ -832,13 +832,12 @@ test.describe('Wrapped custom label', () => {
     });
     const label = getOuterLabel(page);
     const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
 
     await label.click();
 
-    expect(await isInputChecked()).toBe(true);
+    await expect(input).toBeChecked();
   });
 
   test('should not toggle disabled checkbox when outer label is clicked', async ({ page }) => {
@@ -850,13 +849,12 @@ test.describe('Wrapped custom label', () => {
     });
     const label = getOuterLabel(page);
     const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
 
     await label.click();
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
   });
 
   test('should not toggle checkbox when outer label has link and is clicked', async ({ page }) => {
@@ -867,13 +865,12 @@ test.describe('Wrapped custom label', () => {
     });
     const labelChild = getOuterLabelChild(page);
     const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
 
     await labelChild.click();
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
   });
 
   test('should not toggle checkbox when outer label has button and is clicked', async ({ page }) => {
@@ -884,12 +881,11 @@ test.describe('Wrapped custom label', () => {
     });
     const labelChild = getOuterLabelChild(page);
     const input = getInput(page);
-    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
 
     await labelChild.click();
 
-    expect(await isInputChecked()).toBe(false);
+    await expect(input).not.toBeChecked();
   });
 });
