@@ -13,7 +13,6 @@ exports[`skeleton() > should return correct css 1`] = `
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* TBD: $color-skeleton: #f7f7f7; */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -33,6 +32,7 @@ exports[`skeleton() > should return correct css 1`] = `
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
+/* (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
@@ -52,20 +52,19 @@ exports[`skeleton() > should return correct css 1`] = `
 /* alias (deprecated) */
 /* alias (deprecated) */
 /* alias (deprecated) */
-/* alias (deprecated) */
-/* alias (deprecated) */
-div {
-  background: light-dark(hsl(240, 7.7%, 97.5%), hsl(240, 2%, 10%)) linear-gradient(to right, transparent 0%, light-dark(#f7f7f7, #1a1b1e) 20%, transparent 50%) 0 0/200% 100%;
-  display: block;
-  border-radius: 4px;
-  animation: skeletonAnimation 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-}
-@keyframes skeletonAnimation {
+/* (deprecated) */
+@keyframes skeleton {
   from {
     background-position-x: 100%;
   }
   to {
     background-position-x: -100%;
   }
+}
+div {
+  display: block;
+  border-radius: 4px;
+  background: transparent linear-gradient(to right, light-dark(hsla(240, 5%, 70%, 0.148), hsla(240, 2%, 43%, 0.228)) 0%, light-dark(hsla(236, 6.5%, 42%, 0.236), hsla(240, 1.5%, 61.8%, 0.302)) 50%, light-dark(hsla(240, 5%, 70%, 0.148), hsla(240, 2%, 43%, 0.228)) 100%) 0 0/200% 100%;
+  animation: skeleton 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }"
 `;
