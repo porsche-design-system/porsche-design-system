@@ -1024,7 +1024,7 @@
         <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" state="error" message="Some message."></p-checkbox>
         <p-checkbox class="self-start" label="Some label" name="some-name" disabled="true"></p-checkbox>
         <p-checkbox class="self-start" label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
-        <label>Some wrapped label<p-checkbox class="self-start" name="some-name"></p-checkbox></label>
+        <label onclick="event.preventDefault();">Some wrapped label<p-checkbox class="self-start" name="some-name"></p-checkbox></label>
       </div>
       <div data-card="fieldset">
         <p-fieldset class="w-full" label="Some legend label">
