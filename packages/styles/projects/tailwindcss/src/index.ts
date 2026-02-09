@@ -20,8 +20,6 @@ import {
   colorContrastLowLight,
   colorContrastMedium,
   colorContrastMediumLight,
-  colorDisabled,
-  colorDisabledLight,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedLight,
@@ -134,7 +132,6 @@ export const getTailwindcssTheme = () => {
   --color-white: #fff;
 
   --color-focus: ${colorFocus};
-  --color-disabled: ${colorDisabled};
   --color-canvas: ${colorCanvas};
   --color-surface: ${colorSurface};
   --color-frosted: ${colorFrosted};
@@ -295,7 +292,6 @@ export const getTailwindcssTheme = () => {
   @supports not (color: light-dark(white, black)) {
     :root {
       --color-focus: ${colorFocusLight};
-      --color-disabled: ${colorDisabledLight};
       --color-canvas: ${colorCanvasLight};
       --color-surface: ${colorSurfaceLight};
       --color-frosted: ${colorFrostedLight};

@@ -46,18 +46,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
     `$color-canvas-dark`, `$color-surface`, `$color-surface-light`, `$color-surface-dark`, `$color-frosted`,
     `$color-frosted-light`, `$color-frosted-dark`, `$color-frosted-soft`, `$color-frosted-soft-light`,
-    `$color-frosted-soft-dark`, `$color-backdrop`, `$color-backdrop-light`, `$color-backdrop-dark`,
-    `$color-contrast-lower`, `$color-contrast-lower-light`, `$color-contrast-lower-dark`, `$color-contrast-low`,
-    `$color-contrast-low-light`, `$color-contrast-low-dark`, `$color-contrast-medium`, `$color-contrast-medium-light`,
-    `$color-contrast-medium-dark`, `$color-contrast-high`, `$color-contrast-high-light`, `$color-contrast-high-dark`,
-    `$color-contrast-higher`, `$color-contrast-higher-light`, `$color-contrast-higher-dark`, `$color-primary`,
-    `$color-primary-light`, `$color-primary-dark`, `$color-success`, `$color-success-light`, `$color-success-dark`,
-    `$color-success-low`, `$color-success-low-light`, `$color-success-low-dark`, `$color-success-medium`,
-    `$color-success-medium-light`, `$color-success-medium-dark`, `$color-success-frosted`,
-    `$color-success-frosted-light`, `$color-success-frosted-dark`, `$color-success-frosted-soft`,
-    `$color-success-frosted-soft-light`, `$color-success-frosted-soft-dark`, `$color-warning`, `$color-warning-light`,
-    `$color-warning-dark`, `$color-warning-low`, `$color-warning-low-light`, `$color-warning-low-dark`,
-    `$color-warning-medium`, `$color-warning-medium-light`, `$color-warning-medium-dark`, `$color-warning-frosted`,
+    `$color-frosted-soft-dark`, `$color-frosted-strong`, `$color-frosted-strong-light`, `$color-frosted-strong-dark`,
+    `$color-backdrop`, `$color-backdrop-light`, `$color-backdrop-dark`, `$color-contrast-lower`,
+    `$color-contrast-lower-light`, `$color-contrast-lower-dark`, `$color-contrast-low`, `$color-contrast-low-light`,
+    `$color-contrast-low-dark`, `$color-contrast-medium`, `$color-contrast-medium-light`, `$color-contrast-medium-dark`,
+    `$color-contrast-high`, `$color-contrast-high-light`, `$color-contrast-high-dark`, `$color-contrast-higher`,
+    `$color-contrast-higher-light`, `$color-contrast-higher-dark`, `$color-primary`, `$color-primary-light`,
+    `$color-primary-dark`, `$color-success`, `$color-success-light`, `$color-success-dark`, `$color-success-low`,
+    `$color-success-low-light`, `$color-success-low-dark`, `$color-success-medium`, `$color-success-medium-light`,
+    `$color-success-medium-dark`, `$color-success-frosted`, `$color-success-frosted-light`,
+    `$color-success-frosted-dark`, `$color-success-frosted-soft`, `$color-success-frosted-soft-light`,
+    `$color-success-frosted-soft-dark`, `$color-warning`, `$color-warning-light`, `$color-warning-dark`,
+    `$color-warning-low`, `$color-warning-low-light`, `$color-warning-low-dark`, `$color-warning-medium`,
+    `$color-warning-medium-light`, `$color-warning-medium-dark`, `$color-warning-frosted`,
     `$color-warning-frosted-light`, `$color-warning-frosted-dark`, `$color-warning-frosted-soft`,
     `$color-warning-frosted-soft-light`, `$color-warning-frosted-soft-dark`, `$color-error`, `$color-error-light`,
     `$color-error-dark`, `$color-error-low`, `$color-error-low-light`, `$color-error-low-dark`, `$color-error-medium`,
@@ -153,6 +154,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed
 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- Tailwind CSS: `--color-disabled`
 
 - SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
 
