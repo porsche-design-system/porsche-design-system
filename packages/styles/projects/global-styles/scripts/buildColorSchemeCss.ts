@@ -70,28 +70,24 @@ import {
 import * as prettier from 'prettier';
 
 export const buildColorSchemeCss = async (): Promise<void> => {
-  const styles = `.scheme-light {
-    color-scheme: light;
-  }
-
-  .scheme-only-light {
-    color-scheme: only light;
-  }
-
+  const styles = `
   .scheme-normal {
     color-scheme: normal;
   }
-
-  .scheme-light-dark {
+  .scheme-dark {
     color-scheme: dark;
   }
-
+  .scheme-light {
+    color-scheme: light;
+  }
+  .scheme-light-dark {
+    color-scheme: light dark;
+  }
   .scheme-only-dark {
     color-scheme: only dark;
   }
-
-  .scheme-light-dark {
-    color-scheme: light dark;
+  .scheme-only-light {
+    color-scheme: only light;
   }
 
   @supports not (color: light-dark(white, black)) {

@@ -1,3 +1,3 @@
 import { colorFocus as _colorFocus } from '@porsche-design-system/tokens';
 
-export const colorFocus = _colorFocus;
+export const colorFocus = `var(--_color-focus, ${_colorFocus})`;
