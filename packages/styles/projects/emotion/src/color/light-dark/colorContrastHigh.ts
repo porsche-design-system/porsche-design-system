@@ -1,3 +1,3 @@
 import { colorContrastHigh as _colorContrastHigh } from '@porsche-design-system/tokens';
 
-export const colorContrastHigh = _colorContrastHigh;
+export const colorContrastHigh = `var(--_color-contrast-high, ${_colorContrastHigh})`;

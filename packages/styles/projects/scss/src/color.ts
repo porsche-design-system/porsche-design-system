@@ -137,28 +137,23 @@ export const getColorScss = () => {
     $color-info-frosted-soft: var(--_color-info-frosted-soft, ${colorInfoFrostedSoft});
 
     @mixin color-scheme() {
-      .scheme-light {
-        color-scheme: light;
-      }
-
-      .scheme-only-light {
-        color-scheme: only light;
-      }
-
       .scheme-normal {
         color-scheme: normal;
       }
-
-      .scheme-light-dark {
+      .scheme-dark {
         color-scheme: dark;
       }
-
+      .scheme-light {
+        color-scheme: light;
+      }
+      .scheme-light-dark {
+        color-scheme: light dark;
+      }
       .scheme-only-dark {
         color-scheme: only dark;
       }
-
-      .scheme-light-dark {
-        color-scheme: light dark;
+      .scheme-only-light {
+        color-scheme: only light;
       }
 
       @supports not (color: light-dark(white, black)) {

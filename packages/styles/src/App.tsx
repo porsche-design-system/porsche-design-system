@@ -1,4 +1,5 @@
-import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import { ThemeProvider as EmotionThemeProvider, Global } from '@emotion/react';
+import { colorSchemeStyles } from '@porsche-design-system/emotion';
 import { Outlet } from 'react-router';
 import { emotionTheme } from './app/emotion/emotionTheme.ts';
 import { vanillaExtractTheme } from './app/vanilla-extract/theme.css';
@@ -12,6 +13,7 @@ export function App() {
 
   return (
     <EmotionThemeProvider theme={emotionTheme}>
+      <Global styles={colorSchemeStyles} />
       <header className="flex gap-fluid-sm p-static-md">
         <RouteSelect />
         <ThemeSelect value={theme} onChange={(e) => setTheme(e.target.value as LightDarkTheme)} />
