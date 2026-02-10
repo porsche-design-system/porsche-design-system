@@ -216,46 +216,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-duration-md: ${durationMd};
   --p-duration-lg: ${durationLg};
   --p-duration-xl: ${durationXl};
-}
-
-@supports not (color: light-dark(white, black)) {
-  :root {
-    --color-focus: ${colorFocusLight};
-    --color-canvas: ${colorCanvasLight};
-    --color-surface: ${colorSurfaceLight};
-    --color-frosted: ${colorFrostedLight};
-    --color-frosted-soft: ${colorFrostedSoftLight};
-    --color-frosted-strong: ${colorFrostedStrongLight};
-    --color-backdrop: ${colorBackdropLight};
-    --color-contrast-lower: ${colorContrastLowerLight};
-    --color-contrast-low: ${colorContrastLowLight};
-    --color-contrast-medium: ${colorContrastMediumLight};
-    --color-contrast-high: ${colorContrastHighLight};
-    --color-contrast-higher: ${colorContrastHigherLight};
-    --color-primary: ${colorPrimaryLight};
-    --color-success: ${colorSuccessLight};
-    --color-success-low: ${colorSuccessLowLight};
-    --color-success-medium: ${colorSuccessMediumLight};
-    --color-success-frosted: ${colorSuccessFrostedLight};
-    --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
-    --color-warning: ${colorWarningLight};
-    --color-warning-low: ${colorWarningLowLight};
-    --color-warning-medium: ${colorWarningMediumLight};
-    --color-warning-frosted: ${colorWarningFrostedLight};
-    --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
-    --color-error: ${colorErrorLight};
-    --color-error-low: ${colorErrorLowLight};
-    --color-error-medium: ${colorErrorMediumLight};
-    --color-error-frosted: ${colorErrorFrostedLight};
-    --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
-    --color-info: ${colorInfoLight};
-    --color-info-low: ${colorInfoLowLight};
-    --color-info-medium: ${colorInfoMediumLight};
-    --color-info-frosted: ${colorInfoFrostedLight};
-    --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
-  }
-}
-`;
+}`;
 
   const targetPath = './dist';
   const targetFile = 'variables.css';
