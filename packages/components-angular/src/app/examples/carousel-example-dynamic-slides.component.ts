@@ -24,7 +24,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       justify-content: center;
       background: #00b0f4;
       height: 150px;
-      color: $pds-theme-light-primary;
+      color: $color-primary;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
