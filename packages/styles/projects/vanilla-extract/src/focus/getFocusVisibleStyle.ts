@@ -1,4 +1,4 @@
-import { colorFocusLight } from '../color';
+import { colorFocus } from '../color';
 
 export type Options = {
   offset?: string;
@@ -9,7 +9,7 @@ export const getFocusVisibleStyle = (opts?: Options) => {
   return {
     selectors: {
       '&:focus-visible': {
-        outline: `2px solid ${colorFocusLight}`,
+        outline: `2px solid ${colorFocus}`,
         outlineOffset: offset,
       },
     },

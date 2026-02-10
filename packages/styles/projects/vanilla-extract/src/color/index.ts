@@ -1,5 +1,4 @@
-export * from './dark';
+export { colorSchemeStyles } from './color-scheme';
 export * from './deprecated';
-export * from './light';
 export * from './light-dark';
 export type { Theme } from './types';

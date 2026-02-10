@@ -139,31 +139,47 @@ const darkColorVariables = {
   '--_color-info-frosted-soft': colorInfoFrostedSoftDark,
 };
 
-export const colorSchemeStyles = {
-  '.scheme-normal': {
-    colorScheme: 'normal',
+export const colorSchemeStyles = [
+  {
+    selector: '.scheme-normal',
+    rule: { colorScheme: 'normal' },
   },
-  '.scheme-dark': {
-    colorScheme: 'dark',
+  {
+    selector: '.scheme-dark',
+    rule: { colorScheme: 'dark' },
   },
-  '.scheme-light': {
-    colorScheme: 'light',
+  {
+    selector: '.scheme-light',
+    rule: { colorScheme: 'light' },
   },
-  '.scheme-light-dark': {
-    colorScheme: 'light dark',
+  {
+    selector: '.scheme-light-dark',
+    rule: { colorScheme: 'light dark' },
   },
-  '.scheme-only-dark': {
-    colorScheme: 'only dark',
+  {
+    selector: '.scheme-only-dark',
+    rule: { colorScheme: 'only dark' },
   },
-  '.scheme-only-light': {
-    colorScheme: 'only light',
+  {
+    selector: '.scheme-only-light',
+    rule: { colorScheme: 'only light' },
   },
-
-  '@supports not (color: light-dark(white, black))': {
-    ':root, .scheme-light, .scheme-only-light, .scheme-normal, .scheme-light-dark': lightColorVariables,
-    '.scheme-dark, .scheme-only-dark': darkColorVariables,
-    '@media (prefers-color-scheme: dark)': {
-      '.scheme-light-dark': darkColorVariables,
+  {
+    selector: ':root, .scheme-light, .scheme-only-light, .scheme-normal, .scheme-light-dark',
+    rule: { '@supports': { 'not (color: light-dark(white, black))': lightColorVariables } },
+  },
+  {
+    selector: '.scheme-dark, .scheme-only-dark',
+    rule: { '@supports': { 'not (color: light-dark(white, black))': darkColorVariables } },
+  },
+  {
+    selector: '.scheme-light-dark',
+    rule: {
+      '@supports': {
+        'not (color: light-dark(white, black))': {
+          '@media': { '(prefers-color-scheme: dark)': darkColorVariables },
+        },
+      },
     },
   },
-};
+];
