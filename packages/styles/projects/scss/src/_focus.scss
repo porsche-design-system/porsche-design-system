@@ -4,7 +4,7 @@
 
 @mixin focus-visible($offset: 2px) {
   &:focus-visible {
-    outline: 2px solid color.$color-focus-light;
+    outline: 2px solid color.$color-focus;
     outline-offset: $offset;
   }
 }
@@ -32,7 +32,7 @@ $pds-focus-border-radius-map: (
     }
   }
   &:focus {
-    outline: border.$pds-border-width-base solid color.$color-focus-light;
+    outline: border.$pds-border-width-base solid color.$color-focus;
     @if map.has-key($pds-focus-offset-map, $offset) {
       outline-offset: map.get($pds-focus-offset-map, $offset);
     } @else {

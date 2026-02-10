@@ -54,7 +54,7 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
       const [, charset, weight] =
         /porscheNext(Latin|Greek|Cyril|Arabic|Pashto|Urdu|Thai)(Regular|SemiBold|Bold)/.exec(name) || [];
       return {
-        fontFamily: 'Porsche Next',
+        fontFamily: '"Porsche Next"',
         fontStyle: 'normal',
         fontWeight: fontWeight[camelCase(weight) as keyof typeof fontWeight],
         src: `url('${cdnUrlMap[cdn]}/${resource}') format('woff2')`,
