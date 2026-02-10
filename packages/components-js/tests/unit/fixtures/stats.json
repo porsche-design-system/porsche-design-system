@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 79201,
-    "gzipSize": 25376
+    "size": 79279,
+    "gzipSize": 25387
   },
   {
     "chunkShortName": "modal",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 46919,
-    "gzipSize": 16786
+    "size": 47120,
+    "gzipSize": 16817
   },
   {
     "chunkShortName": "optgroup",
@@ -221,8 +221,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 45606,
-    "gzipSize": 16355
+    "size": 45807,
+    "gzipSize": 16387
   },
   {
     "chunkShortName": "sheet",
