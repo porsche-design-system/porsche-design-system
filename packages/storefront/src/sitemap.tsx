@@ -1789,6 +1789,11 @@ export const sitemap: Routes = {
           },
         },
       },
+      theme: {
+        name: "Theme",
+        path: "/must-know/theme",
+        type: "PAGE",
+      },
       performance: {
         name: 'Performance',
         path: '/must-know/performance',
