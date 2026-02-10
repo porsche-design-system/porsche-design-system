@@ -35,7 +35,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -87,7 +87,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);

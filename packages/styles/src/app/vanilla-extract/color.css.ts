@@ -31,6 +31,7 @@ export const colorSwatchesItem = styleVariants({
   surface: [swatchBase, { backgroundColor: vars.surface }],
   frosted: [swatchBase, { backgroundColor: vars.frosted }],
   frostedSoft: [swatchBase, { backgroundColor: vars.frostedSoft }],
+  frostedStrong: [swatchBase, { backgroundColor: vars.frostedStrong }],
   backdrop: [swatchBase, { backgroundColor: vars.backdrop }],
   primary: [swatchBase, { backgroundColor: vars.primary }],
   contrastHigher: [swatchBase, { backgroundColor: vars.contrastHigher }],

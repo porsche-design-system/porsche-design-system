@@ -47,17 +47,17 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
 	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
 	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
-	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
-	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
+	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302)));
+	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302)));
 	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
-	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
-	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
+	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
 	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
 	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
-	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
 	--ag-color-picker-color-border-radius: var(--ag-inherited-color-picker-color-border-radius, 4px);
 	--ag-color-picker-thumb-border-width: var(--ag-inherited-color-picker-thumb-border-width, 3px);
@@ -71,7 +71,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
 	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
 	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
-	--ag-column-hover-color: var(--ag-inherited-column-hover-color, light-dark(hsla(236, 6.4%, 51%, 0.148),hsla(240, 2.2%, 44.1%, 0.228)));
+	--ag-column-hover-color: var(--ag-inherited-column-hover-color, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228)));
 	--ag-column-select-indent-size: var(--ag-inherited-column-select-indent-size, var(--ag-icon-size));
 	--ag-data-background-color: var(--ag-inherited-data-background-color, var(--ag-background-color));
 	--ag-data-font-size: var(--ag-inherited-data-font-size, var(--ag-font-size));
@@ -97,7 +97,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-font-family: var(--ag-inherited-font-family, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
 	--ag-font-size: var(--ag-inherited-font-size, 1rem);
 	--ag-footer-row-border: var(--ag-inherited-footer-row-border, var(--ag-row-border));
-	--ag-foreground-color: var(--ag-inherited-foreground-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-foreground-color: var(--ag-inherited-foreground-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-full-row-edit-invalid-background-color: var(--ag-inherited-full-row-edit-invalid-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 25%));
 	--ag-header-background-color: var(--ag-inherited-header-background-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
 	--ag-header-cell-background-transition-duration: var(--ag-inherited-header-cell-background-transition-duration, 0.2s);
@@ -130,10 +130,10 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-input-border: var(--ag-inherited-input-border, solid 1px light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
 	--ag-input-border-radius: var(--ag-inherited-input-border-radius, var(--ag-border-radius));
 	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, light-dark(#fff,hsl(225, 66.7%, 1.2%)));
-	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, solid 1px light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302)));
+	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, solid 1px light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302)));
 	--ag-input-disabled-text-color: var(--ag-inherited-input-disabled-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
 	--ag-input-focus-background-color: var(--ag-inherited-input-focus-background-color, var(--ag-input-background-color));
-	--ag-input-focus-border: var(--ag-inherited-input-focus-border, solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-input-focus-border: var(--ag-inherited-input-focus-border, solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-input-focus-shadow: var(--ag-inherited-input-focus-shadow, none);
 	--ag-input-focus-text-color: var(--ag-inherited-input-focus-text-color, var(--ag-input-text-color));
 	--ag-input-height: var(--ag-inherited-input-height, calc(max( var(--ag-icon-size) ,  var(--ag-font-size) )  +   var(--ag-spacing)   *  2));
@@ -151,8 +151,8 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-menu-separator-color: var(--ag-inherited-menu-separator-color, var(--ag-border-color));
 	--ag-menu-shadow: var(--ag-inherited-menu-shadow, var(--ag-popup-shadow));
 	--ag-menu-text-color: var(--ag-inherited-menu-text-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 95%));
-	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, light-dark(hsla(236, 6.4%, 51%, 0.148),hsla(240, 2.2%, 44.1%, 0.228)));
-	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, light-dark(hsl(240, 7.7%, 97.5%),hsl(240, 2%, 10%)));
+	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228)));
+	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, light-dark(hsl(240, 10%, 95%),hsl(240, 2%, 10%)));
 	--ag-pagination-panel-height: var(--ag-inherited-pagination-panel-height, calc(max( var(--ag-row-height) , 22px)));
 	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
 	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
@@ -191,7 +191,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-row-drag-indicator-width: var(--ag-inherited-row-drag-indicator-width, 2px);
 	--ag-row-group-indent-size: var(--ag-inherited-row-group-indent-size, calc( var(--ag-cell-widget-spacing)   +   var(--ag-icon-size) ));
 	--ag-row-height: var(--ag-inherited-row-height, calc(var(--ag-font-size) + var(--ag-spacing) * 4));
-	--ag-row-hover-color: var(--ag-inherited-row-hover-color, light-dark(hsla(236, 6.4%, 51%, 0.148),hsla(240, 2.2%, 44.1%, 0.228)));
+	--ag-row-hover-color: var(--ag-inherited-row-hover-color, light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228)));
 	--ag-row-loading-skeleton-effect-color: var(--ag-inherited-row-loading-skeleton-effect-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 15%));
 	--ag-row-numbers-selected-color: var(--ag-inherited-row-numbers-selected-color, color-mix(in srgb, transparent, var(--ag-accent-color) 50%));
 	--ag-row-vertical-padding-scale: var(--ag-inherited-row-vertical-padding-scale, 1);
@@ -244,16 +244,16 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-tab-text-color: var(--ag-inherited-tab-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 70%));
 	--ag-tab-top-padding: var(--ag-inherited-tab-top-padding, var(--ag-spacing));
 	--ag-text-color: var(--ag-inherited-text-color, var(--ag-foreground-color));
-	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302)));
+	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302)));
 	--ag-toggle-button-height: var(--ag-inherited-toggle-button-height, 28px);
 	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154)));
 	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302)));
-	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100)));
 	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.180)));
 	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100)));
 	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%)));
-	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%)));
+	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%)));
 	--ag-toggle-button-switch-inset: var(--ag-inherited-toggle-button-switch-inset, 3px);
 	--ag-toggle-button-width: var(--ag-inherited-toggle-button-width, 48px);
 	--ag-tool-panel-separator-border: var(--ag-inherited-tool-panel-separator-border, solid var(--ag-border-width) var(--ag-border-color));
@@ -817,21 +817,21 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "checkboxCheckedBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
     "checkboxCheckedBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
     "checkboxCheckedHoverBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
-    "checkboxCheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
-    "checkboxCheckedShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "checkboxCheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+    "checkboxCheckedShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "checkboxCheckedShapeImage": {
       "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
     },
-    "checkboxDisabledColor": "light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302))",
+    "checkboxDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
     "checkboxIndeterminateBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
-    "checkboxIndeterminateBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
-    "checkboxIndeterminateShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "checkboxIndeterminateBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
+    "checkboxIndeterminateShapeColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "checkboxIndeterminateShapeImage": {
       "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
     },
     "checkboxUncheckedBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
     "checkboxUncheckedBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
-    "checkboxUncheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "checkboxUncheckedHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "chromeBackgroundColor": {
       "mix": 0.02,
       "onto": "backgroundColor",
@@ -867,7 +867,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "columnDropCellTextColor": {
       "ref": "textColor",
     },
-    "columnHoverColor": "light-dark(hsla(236, 6.4%, 51%, 0.148),hsla(240, 2.2%, 44.1%, 0.228))",
+    "columnHoverColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
     "columnSelectIndentSize": {
       "ref": "iconSize",
     },
@@ -945,7 +945,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "footerRowBorder": {
       "ref": "rowBorder",
     },
-    "foregroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "foregroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "fullRowEditInvalidBackgroundColor": {
       "mix": 0.25,
       "onto": "backgroundColor",
@@ -1008,7 +1008,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "borderRadius",
     },
     "inputDisabledBackgroundColor": "light-dark(#fff,hsl(225, 66.7%, 1.2%))",
-    "inputDisabledBorder": "solid 1px light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302))",
+    "inputDisabledBorder": "solid 1px light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
     "inputDisabledTextColor": {
       "mix": 0.5,
       "ref": "textColor",
@@ -1016,7 +1016,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "inputFocusBackgroundColor": {
       "ref": "inputBackgroundColor",
     },
-    "inputFocusBorder": "solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "inputFocusBorder": "solid 1px light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "inputFocusShadow": "none",
     "inputFocusTextColor": {
       "ref": "inputTextColor",
@@ -1070,8 +1070,8 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "onto": "backgroundColor",
       "ref": "foregroundColor",
     },
-    "modalOverlayBackgroundColor": "light-dark(hsla(236, 6.4%, 51%, 0.148),hsla(240, 2.2%, 44.1%, 0.228))",
-    "oddRowBackgroundColor": "light-dark(hsl(240, 7.7%, 97.5%),hsl(240, 2%, 10%))",
+    "modalOverlayBackgroundColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
+    "oddRowBackgroundColor": "light-dark(hsl(240, 10%, 95%),hsl(240, 2%, 10%))",
     "paginationPanelHeight": {
       "calc": "max(rowHeight, 22px)",
       "ref": "rowHeight",
@@ -1161,7 +1161,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "calc": "cellWidgetSpacing + iconSize",
     },
     "rowHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 4)",
-    "rowHoverColor": "light-dark(hsla(236, 6.4%, 51%, 0.148),hsla(240, 2.2%, 44.1%, 0.228))",
+    "rowHoverColor": "light-dark(hsla(240, 5%, 70%, 0.148),hsla(240, 2%, 43%, 0.228))",
     "rowLoadingSkeletonEffectColor": {
       "mix": 0.15,
       "ref": "foregroundColor",
@@ -1283,16 +1283,16 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "textColor": {
       "ref": "foregroundColor",
     },
-    "toggleButtonDisabledColor": "light-dark(hsla(233, 6.6%, 23.9%, 0.412),hsla(240, 1.5%, 61.8%, 0.302))",
+    "toggleButtonDisabledColor": "light-dark(hsla(233,6.6%,23.9%,0.412),hsla(240,1.5%,61.8%,0.302))",
     "toggleButtonHeight": 28,
     "toggleButtonOffBackgroundColor": "light-dark(hsla(234, 9.8%, 60%, 0.060),hsla(240, 3.7%, 26.5%, 0.154))",
     "toggleButtonOffBorderColor": "light-dark(hsla(234, 6%, 32.9%, 0.324),hsla(240, 1.5%, 61.8%, 0.302))",
-    "toggleButtonOffHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "toggleButtonOffHoverBorderColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "toggleButtonOnBackgroundColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))",
     "toggleButtonOnBorderColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.180),hsla(157, 84.9%, 41.6%, 0.180))",
     "toggleButtonOnHoverBackgroundColor": "light-dark(hsla(115, 77.5%, 27.8%, 0.100),hsla(157, 84.9%, 41.6%, 0.100))",
     "toggleButtonOnHoverBorderColor": "light-dark(hsl(115, 77.5%, 27.8%),hsl(157, 84.9%, 41.6%))",
-    "toggleButtonSwitchBackgroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(240, 12.5%, 96.9%))",
+    "toggleButtonSwitchBackgroundColor": "light-dark(hsl(225, 66.7%, 1.2%),hsl(225, 100%, 99%))",
     "toggleButtonSwitchInset": 3,
     "toggleButtonWidth": 48,
     "toolPanelSeparatorBorder": true,

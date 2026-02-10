@@ -674,7 +674,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   border: 1px solid var(--p-color-success-low);
   border-radius: var(--p-radius-full);
-  background: var(--p-color-success-soft);
+  background: var(--p-color-success-frosted-soft);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }

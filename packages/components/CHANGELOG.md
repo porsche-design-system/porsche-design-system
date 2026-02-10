@@ -16,8 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in positioning a
-  custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
+- `Checkbox` (🧪Experimental): Supports now being wrapped inside a native `label` element to provide more flexibility in
+  positioning a custom label ([#4124](https://github.com/porsche-design-system/porsche-design-system/pull/4124))
 - `Canvas`: prop `background` to set the background color to `canvas | surface`
 - `Carousel`:
   - `width` prop now supports `wide` and `full` values
@@ -35,7 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tailwind CSS`:
   - `--transition-duration-sm`, `--transition-duration-md`, `--transition-duration-lg`, `--transition-duration-xl`,
     `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--radius-xs`, `--radius-xl`, `--radius-2xl`, `--radius-3xl`,
-    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`
+    `--radius-4xl`, `--radius-full`, `--border-width-1`, `--border-width-2`, `--color-frosted-strong`
 - `SCSS`:
   - Common hint: Previous variables are still available as alias and mapped to the new ones for backward compatibility.
   - Breakpoint: `$breakpoint-xs`, `$breakpoint-sm`, `$breakpoint-md`, `$breakpoint-lg`, `$breakpoint-xl` and
@@ -46,18 +46,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Color: `$color-focus`, `$color-focus-light`, `$color-focus-dark`, `$color-canvas`, `$color-canvas-light`,
     `$color-canvas-dark`, `$color-surface`, `$color-surface-light`, `$color-surface-dark`, `$color-frosted`,
     `$color-frosted-light`, `$color-frosted-dark`, `$color-frosted-soft`, `$color-frosted-soft-light`,
-    `$color-frosted-soft-dark`, `$color-backdrop`, `$color-backdrop-light`, `$color-backdrop-dark`,
-    `$color-contrast-lower`, `$color-contrast-lower-light`, `$color-contrast-lower-dark`, `$color-contrast-low`,
-    `$color-contrast-low-light`, `$color-contrast-low-dark`, `$color-contrast-medium`, `$color-contrast-medium-light`,
-    `$color-contrast-medium-dark`, `$color-contrast-high`, `$color-contrast-high-light`, `$color-contrast-high-dark`,
-    `$color-contrast-higher`, `$color-contrast-higher-light`, `$color-contrast-higher-dark`, `$color-primary`,
-    `$color-primary-light`, `$color-primary-dark`, `$color-success`, `$color-success-light`, `$color-success-dark`,
-    `$color-success-low`, `$color-success-low-light`, `$color-success-low-dark`, `$color-success-medium`,
-    `$color-success-medium-light`, `$color-success-medium-dark`, `$color-success-frosted`,
-    `$color-success-frosted-light`, `$color-success-frosted-dark`, `$color-success-frosted-soft`,
-    `$color-success-frosted-soft-light`, `$color-success-frosted-soft-dark`, `$color-warning`, `$color-warning-light`,
-    `$color-warning-dark`, `$color-warning-low`, `$color-warning-low-light`, `$color-warning-low-dark`,
-    `$color-warning-medium`, `$color-warning-medium-light`, `$color-warning-medium-dark`, `$color-warning-frosted`,
+    `$color-frosted-soft-dark`, `$color-frosted-strong`, `$color-frosted-strong-light`, `$color-frosted-strong-dark`,
+    `$color-backdrop`, `$color-backdrop-light`, `$color-backdrop-dark`, `$color-contrast-lower`,
+    `$color-contrast-lower-light`, `$color-contrast-lower-dark`, `$color-contrast-low`, `$color-contrast-low-light`,
+    `$color-contrast-low-dark`, `$color-contrast-medium`, `$color-contrast-medium-light`, `$color-contrast-medium-dark`,
+    `$color-contrast-high`, `$color-contrast-high-light`, `$color-contrast-high-dark`, `$color-contrast-higher`,
+    `$color-contrast-higher-light`, `$color-contrast-higher-dark`, `$color-primary`, `$color-primary-light`,
+    `$color-primary-dark`, `$color-success`, `$color-success-light`, `$color-success-dark`, `$color-success-low`,
+    `$color-success-low-light`, `$color-success-low-dark`, `$color-success-medium`, `$color-success-medium-light`,
+    `$color-success-medium-dark`, `$color-success-frosted`, `$color-success-frosted-light`,
+    `$color-success-frosted-dark`, `$color-success-frosted-soft`, `$color-success-frosted-soft-light`,
+    `$color-success-frosted-soft-dark`, `$color-warning`, `$color-warning-light`, `$color-warning-dark`,
+    `$color-warning-low`, `$color-warning-low-light`, `$color-warning-low-dark`, `$color-warning-medium`,
+    `$color-warning-medium-light`, `$color-warning-medium-dark`, `$color-warning-frosted`,
     `$color-warning-frosted-light`, `$color-warning-frosted-dark`, `$color-warning-frosted-soft`,
     `$color-warning-frosted-soft-light`, `$color-warning-frosted-soft-dark`, `$color-error`, `$color-error-light`,
     `$color-error-dark`, `$color-error-low`, `$color-error-low-light`, `$color-error-low-dark`, `$color-error-medium`,
@@ -88,8 +89,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     `radiusFull`
   - Color: `colorCanvas`, `colorCanvasLight`, `colorCanvasDark`, `colorSurface`, `colorSurfaceLight`,
     `colorSurfaceDark`, `colorFrosted`, `colorFrostedLight`, `colorFrostedDark`, `colorFrostedSoft`,
-    `colorFrostedSoftLight`, `colorFrostedSoftDark`, `colorBackdrop`, `colorBackdropLight`, `colorBackdropDark`,
-    `colorPrimary`, `colorPrimaryLight`, `colorPrimaryDark`, `colorContrastHigher`, `colorContrastHigherLight`,
+    `colorFrostedSoftLight`, `colorFrostedSoftDark`, `colorFrostedStrong`, `colorFrostedStrongLight`,
+    `colorFrostedStrongDark`, `colorBackdrop`, `colorBackdropLight`, `colorBackdropDark`, `colorPrimary`,
+    `colorPrimaryLight`, `colorPrimaryDark`, `colorContrastHigher`, `colorContrastHigherLight`,
     `colorContrastHigherDark`, `colorContrastHigh`, `colorContrastHighLight`, `colorContrastHighDark`,
     `colorContrastMedium`, `colorContrastMediumLight`, `colorContrastMediumDark`, `colorContrastLow`,
     `colorContrastLowLight`, `colorContrastLowDark`, `colorContrastLower`, `colorContrastLowerLight`,
@@ -122,6 +124,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Link Tile`, `Button Tile`: uses `color-scheme: dark` by default
+
 - `Tailwind CSS`:
   - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
 - `Canvas`: visual appearance on mobile view
@@ -151,6 +155,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Removed
 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
+
+- Tailwind CSS: `--color-disabled`
 
 - SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
 
@@ -437,11 +443,13 @@ and migration steps.
 - `Checkbox`, `Input-*`, `Multi-Select`, `Pin Code`, `Radio Button Group`, `Segmented-Control`, `Select`, `Textarea`:
   New slot `label-after` to add custom content (e.g. `Popover`) after the `label` element
   ([#4181](https://github.com/porsche-design-system/porsche-design-system/pull/4181))
-- `Angular`: Bumped peer dependency to support Angular new major version 21 ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
+- `Angular`: Bumped peer dependency to support Angular new major version 21
+  ([#4178](https://github.com/porsche-design-system/porsche-design-system/pull/4178))
 - `Carousel`:
-  - `width` prop now supports `wide` and `full` values ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
-  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no effect anymore)
+  - `width` prop now supports `wide` and `full` values
     ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
+  - `--p-carousel-px` CSS custom property introduced to control horizontal padding (when used, the `width` prop has no
+    effect anymore) ([#4180](https://github.com/porsche-design-system/porsche-design-system/pull/4180))
 
 ## [3.32.0-rc.1] - 2026-01-12
 

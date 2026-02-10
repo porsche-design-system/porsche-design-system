@@ -6,7 +6,6 @@ import {
   colorContrastLow,
   colorContrastLower,
   colorContrastMedium,
-  colorDisabled,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedSoft,
@@ -15,6 +14,7 @@ import {
   colorFocus,
   colorFrosted,
   colorFrostedSoft,
+  colorFrostedStrong,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedSoft,
@@ -44,11 +44,11 @@ declare module '@emotion/react' {
 
 export const emotionTheme = {
   focus: colorFocus,
-  disabled: colorDisabled,
   canvas: colorCanvas,
   surface: colorSurface,
   frosted: colorFrosted,
   frostedSoft: colorFrostedSoft,
+  frostedStrong: colorFrostedStrong,
   backdrop: colorBackdrop,
   contrastLower: colorContrastLower,
   contrastLow: colorContrastLow,
