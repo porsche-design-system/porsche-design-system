@@ -5,9 +5,12 @@ import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
 import { legacyRadiusSmall, radiusLg, radiusMd } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
+import {
+  cssVarCheckboxBackgroundColor,
+  cssVarCheckboxBorderColor,
+  cssVarInternalCheckboxScaling,
+} from './checkbox-css-vars';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
-
-export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
 export const getCheckboxBaseStyles = (
   isDisabled: boolean,
@@ -32,9 +35,9 @@ export const getCheckboxBaseStyles = (
     marginBlock: checkboxMarginBlock,
     boxSizing: 'border-box',
     font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-    background: formStateBackgroundColor,
+    background: `var(${cssVarCheckboxBackgroundColor},${formStateBackgroundColor})`,
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-    border: `${checkboxBorderWidth} solid ${formStateBorderColor}`,
+    border: `${checkboxBorderWidth} solid var(${cssVarCheckboxBorderColor},${formStateBorderColor})`,
     ...(disabledOrLoading &&
       forcedColorsMediaQuery({
         borderColor: 'GrayText',

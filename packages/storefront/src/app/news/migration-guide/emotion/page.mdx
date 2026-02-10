@@ -1,0 +1,283 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Migration Guide: Emotion - Porsche Design System',
+  description: 'Learn how to migrate the Emotion styles from Porsche Design System v3 to v4.',
+};
+
+# Migration Guide
+
+<TableOfContents headings={['Emotion', '👹Breaking Changes', 'Upcoming Changes']} />
+
+## Emotion
+
+The Emotion styles were previously referred to as `JS` styles (`/styles`), but are now officially called Emotion styles.
+They may work with both Styled Components and Emotion, but only Emotion is officially supported going forward.
+
+These styles are built on top of the design tokens from the [Tokens](/tokens/introduction) package. If you use a
+different styling solution, you can consume the tokens directly.
+
+## 👹Breaking Changes
+
+- Changed import path for Emotion styles.
+
+```diff
+- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
++ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+```
+
+- Removed `getHoverStyle` since it did not work reliable.
+
+- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
+  color function).
+
+```diff
+- getSkeletonStyle({ theme: 'light|dark' })
++ getSkeletonStyle()
+```
+
+## Upcoming Changes
+
+All following old styles are still available but marked as deprecated and will be removed with the next major release.
+Please switch to the new styles as soon as possible.
+
+### Blur
+
+```diff
+- ...frostedGlassStyle,
++ backdropFilter: blurFrosted,
+```
+
+### Border
+
+Renamed `border-radius` variables and added new ones. See [Emotion Border Examples](/emotion/border/examples) for more
+details.
+
+```diff
+- borderRadius: borderRadiusMedium,
++ borderRadius: radiusMd,
+- borderRadius: borderRadiusSmall,
++ borderRadius: radiusSm,
+- borderRadius: borderRadiusLarge,
++ borderRadius: radiusLg,
+- borderWidth: borderWidthBase,
++ borderWidth: 2px,
+- borderWidth: borderWidthThin,
++ borderWidth: 1px;
+```
+
+### Color
+
+Renamed `color` variables and introduced new ones. See [Emotion Color Examples](/emotion/color/examples) for more
+details. All colors now also available as `light-dark` variant when used without `Light|Dark` suffix.
+
+```diff
+- themeLightPrimary
++ colorPrimaryLight
+- themeLightBackgroundBase
++ colorCanvasLight
+- themeLightBackgroundSurface
++ colorSurfaceLight
+- themeLightBackgroundShading
++ colorBackdropLight
+- themeLightBackgroundFrosted
++ colorFrostedLight
+- themeLightContrastLow
++ colorContrastLowLight
+- themeLightContrastMedium
++ colorContrastMediumLight
+- themeLightContrastHigh
++ colorContrastHighLight
+- themeLightNotificationSuccess
++ colorSuccessLight
+- themeLightNotificationSuccessSoft
++ colorSuccessFrostedLight
+- themeLightNotificationWarning
++ colorWarningLight
+- themeLightNotificationWarningSoft
++ colorWarningFrostedLight
+- themeLightNotificationError
++ colorErrorLight
+- themeLightNotificationErrorSoft
++ colorErrorFrostedLight
+- themeLightNotificationInfo
++ colorInfoLight
+- themeLightNotificationInfoSoft
++ colorInfoFrostedLight
+- themeLightStateHover
+// Not renamed yet, will be removed in next major release
+- themeLightStateActive
+// Not renamed yet, will be removed in next major release
+- themeLightStateFocus
++ colorFocusLight
+- themeLightStateDisabled
++ colorDisabledLight
+```
+
+```diff
+- themeDarkPrimary
++ colorPrimaryDark
+- themeDarkBackgroundBase
++ colorCanvasDark
+- themeDarkBackgroundSurface
++ colorSurfaceDark
+- themeDarkBackgroundShading
++ colorBackdropDark
+- themeDarkBackgroundFrosted
++ colorFrostedDark
+- themeDarkContrastLow
++ colorContrastLowDark
+- themeDarkContrastMedium
++ colorContrastMediumDark
+- themeDarkContrastHigh
++ colorContrastHighDark
+- themeDarkNotificationSuccess
++ colorSuccessDark
+- themeDarkNotificationSuccessSoft
++ colorSuccessFrostedDark
+- themeDarkNotificationWarning
++ colorWarningDark
+- themeDarkNotificationWarningSoft
++ colorWarningFrostedDark
+- themeDarkNotificationError
++ colorErrorDark
+- themeDarkNotificationErrorSoft
++ colorErrorFrostedDark
+- themeDarkNotificationInfo
++ colorInfoDark
+- themeDarkNotificationInfoSoft
++ colorInfoFrostedDark
+- themeDarkStateHover
+// Not renamed yet, will be removed in next major release
+- themeDarkStateActive
+// Not renamed yet, will be removed in next major release
+- themeDarkStateFocus
++ colorFocusDark
+- themeDarkStateDisabled
++ colorDisabledDark
+```
+
+### Focus
+
+Added new focus style function. See [Emotion Focus Examples](/emotion/focus/examples) for more details.
+
+```diff
+- ...getFocusStyle(),
++ ...getFocusVisibleStyle(),
+```
+
+### Gradient
+
+Added new gradient stops variable. See [Emotion Gradient Examples](/emotion/gradient/examples) for more details.
+
+```diff
+- ...gradientToBottomStyle,
++ background: `linear-gradient(to bottom, ${gradientStopsFadeDark});`
+- ...gradientToLeftStyle,
++ background: `linear-gradient(to left, ${gradientStopsFadeDark});`
+- ...gradientToRightStyle,
++ background: `linear-gradient(to right, ${gradientStopsFadeDark});`
+- ...gradientToTopStyle,
++ background: `linear-gradient(to top, ${gradientStopsFadeDark});`
+```
+
+### Motion
+
+Added new motion variables. See [Emotion Motion Examples](/emotion/motion/examples) for more details.
+
+```diff
+- transitionDuration: motionDurationShort,
++ transitionDuration: durationSm,
+- transitionDuration: motionDurationModerate,
++ transitionDuration: durationMd,
+- transitionDuration: motionDurationLong,
++ transitionDuration: durationLg,
+- transitionDuration: motionDurationVeryLong,
++ transitionDuration: durationXl,
+- transitionTimingFunction: motionEasingBase,
++ transitionTimingFunction: easeInOut,
+- transitionTimingFunction: motionEasingIn,
++ transitionTimingFunction: easeIn,
+- transitionTimingFunction: motionEasingOut,
++ transitionTimingFunction: easeOut,
+```
+
+### Shadow
+
+Added new shadow variables. See [Emotion Shadow Examples](/emotion/shadow/examples) for more details.
+
+```diff
+- ...dropShadowHighStyle,
++ boxShadow: shadowLg,
+- ...dropShadowMediumStyle,
++ boxShadow: shadowMd,
+- ...dropShadowLowStyle,
++ boxShadow: shadowSm,
+```
+
+### Spacing
+
+Added new spacing variables. See [Emotion Spacing Examples](/emotion/spacing/examples) for more details.
+
+```diff
+- spacingFluidXSmall
++ spacingFluidXs
+- spacingFluidSmall
++ spacingFluidSm
+- spacingFluidMedium
++ spacingFluidMd
+- spacingFluidLarge
++ spacingFluidLg
+- spacingFluidXLarge
++ spacingFluidXl
+- spacingFluidXXLarge
++ spacingFluid2Xl
+- spacingStaticXSmall
++ spacingStaticXs
+- spacingStaticSmall
++ spacingStaticSm
+- spacingStaticMedium
++ spacingStaticMd
+- spacingStaticLarge
++ spacingStaticLg
+- spacingStaticXLarge
++ spacingStaticXl
+- spacingStaticXXLarge
++ spacingStatic2Xl
+```
+
+### Typography
+
+Added new typography style objects. See [Emotion Typography Examples](/emotion/typography/examples) for more details.
+
+```diff
+- ...displayLargeStyle,
++ ...proseDisplayLgStyle,
+- ...displayMediumStyle,
++ ...proseDisplayMdStyle,
+- ...displaySmallStyle,
++ ...proseDisplaySmStyle,
+- ...headingXXLargeStyle,
++ ...proseHeading2XlStyle,
+- ...headingXLargeStyle,
++ ...proseHeadingXlStyle,
+- ...headingLargeStyle,
++ ...proseHeadingLgStyle,
+- ...headingMediumStyle,
++ ...proseHeadingMdStyle,
+- ...headingSmallStyle,
++ ...proseHeadingSmStyle,
+- ...textXLargeStyle,
++ ...proseTextXlStyle,
+- ...textLargeStyle,
++ ...proseTextLgStyle,
+- ...textMediumStyle,
++ ...proseTextMdStyle,
+- ...textSmallStyle,
++ ...proseTextSmStyle,
+- ...textXSmallStyle,
++ ...proseTextXsStyle,
+- ...textXXSmallStyle,
++ ...proseText2XsStyle,
+```

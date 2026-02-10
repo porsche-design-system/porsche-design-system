@@ -49,6 +49,7 @@ export const getComponentCss = (
       ':host': {
         display: 'flex',
         alignItems: 'stretch',
+        colorScheme: 'dark', // dark is used in 99% of the cases (it can still be overridden by the user via `color-scheme`)
         // Safari workaround to scale the tile properly
         '@supports (-webkit-hyphens: auto)': {
           alignItems: 'baseline',

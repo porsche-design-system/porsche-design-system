@@ -2,7 +2,10 @@ import { spacingStaticXSmall } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { SegmentedControlColumns, SegmentedControlState } from './segmented-control-utils';
 
@@ -24,7 +27,12 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(disabled),
       ...preventFoucOfNestedElementsStyles,
+      ...getFunctionalComponentLabelAfterStyles(disabled, getDisabledBaseStyles()),
+      ...(disabled && {
+        '::slotted(*:not([slot]))': addImportantToEachRule(getDisabledBaseStyles()),
+      }),
       'slot:not([name])': {
         display: 'grid',
         gridAutoRows: '1fr', // for equal height
@@ -44,10 +52,7 @@ export const getComponentCss = (
     },
     // .label / .required
     ...getFunctionalComponentLabelStyles(disabled, hideLabel, {
-      cursor: 'inherit',
-      '&:is(legend)': {
-        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-      },
+      ...(disabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),

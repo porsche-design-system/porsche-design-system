@@ -1,6 +1,6 @@
 import { radiusSm } from '../border';
-import { colorSurface } from '../color';
-import { durationLg, easeInOut } from '../motion';
+import { colorFrosted, colorFrostedStrong } from '../color';
+import { durationXl, easeInOut } from '../motion';
 
 /**
  * Keyframes for the skeleton loading animation.
@@ -19,14 +19,10 @@ export const skeletonKeyframes = {
  * This should be the return value of the `keyframes` function.
  */
 export const getSkeletonStyle = (animationName: string) => {
-  const highlightColorLight = '#f7f7f7';
-  const highlightColorDark = '#1a1b1e';
-  const highlightColor = `light-dark(${highlightColorLight}, ${highlightColorDark})`;
-
   return {
     display: 'block',
-    background: `${colorSurface} linear-gradient(to right, transparent 0%, ${highlightColor} 25%, transparent 50%) 0 0 / 200% 100%`,
     borderRadius: radiusSm,
-    animation: `${animationName} ${durationLg} ${easeInOut} infinite`,
+    background: `transparent linear-gradient(to right, ${colorFrosted} 0%, ${colorFrostedStrong} 50%, ${colorFrosted} 100%) 0 0 / 200% 100%`,
+    animation: `${animationName} ${durationXl} ${easeInOut} infinite`,
   } as const;
 };

@@ -37,18 +37,8 @@ export const colorScssStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-success-medium' },
-          children: ['color: $color-success-medium | $color-success-medium-light | $color-success-medium-dark;'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-warning' },
           children: ['color: $color-warning | $color-warning-light | $color-warning-dark;'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-warning-medium' },
-          children: ['color: $color-warning-medium | $color-warning-medium-light | $color-warning-medium-dark;'],
         },
         {
           tag: 'li',
@@ -57,18 +47,8 @@ export const colorScssStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-error-medium' },
-          children: ['color: $color-error-medium | $color-error-medium-light | $color-error-medium-dark;'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-info' },
           children: ['color: $color-info | $color-info-light | $color-info-dark;'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-info-medium' },
-          children: ['color: $color-info-medium | $color-info-medium-light | $color-info-medium-dark;'],
         },
       ],
     },
@@ -133,6 +113,19 @@ export const colorScssStoryBackgroundColor: Story<'div'> = {
               properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
             'background-color: $color-frosted-soft | $color-frosted-soft-light | $color-frosted-soft-dark;',
+          ],
+        },
+        {
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low' },
+            },
+            'background-color: $color-frosted-strong | $color-frosted-strong-light | $color-frosted-strong-dark;',
           ],
         },
         {

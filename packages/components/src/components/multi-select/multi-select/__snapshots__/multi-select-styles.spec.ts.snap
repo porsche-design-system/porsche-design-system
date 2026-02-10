@@ -18,6 +18,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -32,7 +36,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -132,7 +136,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -156,14 +160,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -173,14 +171,31 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -217,6 +232,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -229,9 +248,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -331,7 +350,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -355,14 +374,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -372,14 +385,31 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -417,6 +447,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -429,7 +463,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-error-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -531,7 +565,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -555,14 +589,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -572,14 +599,31 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -617,6 +661,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -629,9 +677,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -731,7 +779,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -755,14 +803,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -772,14 +813,31 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -818,6 +876,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -830,7 +893,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-error-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -922,7 +985,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -946,15 +1009,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -964,14 +1020,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -1010,6 +1084,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1024,7 +1103,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -1114,7 +1193,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -1138,15 +1217,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -1156,14 +1228,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -1201,6 +1291,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1215,7 +1310,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -1305,7 +1400,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -1329,15 +1424,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -1347,14 +1435,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -1392,6 +1498,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1406,7 +1517,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -1496,7 +1607,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -1520,15 +1631,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -1538,14 +1642,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -1583,6 +1705,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1595,9 +1722,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -1687,7 +1814,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -1711,15 +1838,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -1729,14 +1849,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -1775,6 +1913,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1787,7 +1930,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-error-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1879,7 +2022,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -1903,15 +2046,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1921,14 +2056,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -1967,6 +2120,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -1981,7 +2139,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -2071,7 +2229,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -2095,15 +2253,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -2113,14 +2263,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -2158,6 +2326,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2170,9 +2343,9 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
-    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success-low));
+    border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -2262,7 +2435,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -2286,15 +2459,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -2304,14 +2469,32 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -2349,6 +2532,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2463,7 +2650,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -2487,14 +2674,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -2504,14 +2685,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -2549,6 +2747,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2563,7 +2765,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -2663,7 +2865,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -2687,14 +2889,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -2704,14 +2900,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -2748,6 +2961,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2762,7 +2979,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -2862,7 +3079,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -2886,14 +3103,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -2903,14 +3114,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -2947,6 +3175,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -2961,7 +3193,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -3061,7 +3293,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -3085,14 +3317,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -3102,14 +3328,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -3145,6 +3388,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -3260,7 +3507,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -3284,14 +3531,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -3301,14 +3541,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -3346,6 +3603,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3360,7 +3621,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -3460,7 +3721,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -3484,14 +3745,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -3501,14 +3755,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -3545,6 +3816,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3559,7 +3834,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -3659,7 +3934,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -3683,14 +3958,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -3700,14 +3968,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -3745,6 +4030,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -3759,7 +4048,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -3859,7 +4148,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -3883,14 +4172,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -3900,14 +4182,31 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -3946,6 +4245,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4050,7 +4354,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -4074,15 +4378,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -4092,14 +4389,32 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -4138,6 +4453,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4152,7 +4472,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -4242,7 +4562,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -4266,15 +4586,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -4284,14 +4597,32 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -4329,6 +4660,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4343,7 +4679,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -4433,7 +4769,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -4457,15 +4793,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -4475,14 +4804,32 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -4521,6 +4868,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4535,7 +4887,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-    background: var(--p-multi-select-background-color, var(--p-color-success-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -4625,7 +4977,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -4649,15 +5001,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -4667,14 +5012,32 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -4712,6 +5075,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   }
   :host([hidden]) {
     display: none !important;
+  }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -4817,7 +5185,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -4841,15 +5209,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -4859,14 +5219,32 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -4905,6 +5283,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+    pointer-events: none;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -4919,7 +5302,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: not-allowed;
@@ -5009,7 +5392,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -5033,15 +5416,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: not-allowed;
-    pointer-events: none;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -5051,14 +5426,32 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    margin-top: -4px;
   }
   .required {
     user-select: none;

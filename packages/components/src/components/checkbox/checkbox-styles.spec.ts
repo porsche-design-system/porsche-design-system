@@ -32,7 +32,7 @@ describe('getComponentCss()', () => {
     [true, 'error', true, false, false],
     [true, 'error', false, false, false],
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, false, false],
-  ])('should return correct css for hideLabel: %o, state: %s, isDisabled: %s and isLoading: %s', (...args) => {
+  ])('should return correct css for hideLabel: %o, state: %s, isDisabled: %s, isLoading: %s and compact %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

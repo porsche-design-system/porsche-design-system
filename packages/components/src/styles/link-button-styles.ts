@@ -17,7 +17,7 @@ import {
   colorCanvas,
   colorContrastHigh,
   colorFrosted,
-  colorFrostedSoft,
+  colorFrostedStrong,
   colorPrimary,
   legacyRadiusSmall,
   radiusFull,
@@ -42,8 +42,8 @@ const getVariantColors = (variant: LinkButtonVariant): Colors => {
     },
     secondary: {
       textColor: colorPrimary,
-      backgroundColor: colorFrosted,
-      backgroundColorHover: colorFrostedSoft,
+      backgroundColor: colorFrostedStrong,
+      backgroundColorHover: colorFrosted,
     },
   };
 

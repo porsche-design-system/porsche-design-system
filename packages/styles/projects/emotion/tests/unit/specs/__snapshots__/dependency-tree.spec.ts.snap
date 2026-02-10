@@ -80,9 +80,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/dark/colorContrastMediumDark.cjs": [
     "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.cjs",
   ],
-  "color/dark/colorDisabledDark.cjs": [
-    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.cjs",
-  ],
   "color/dark/colorErrorDark.cjs": [
     "tokens/dist/esm/color/dark/semantic/colorErrorDark.cjs",
   ],
@@ -106,6 +103,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "color/dark/colorFrostedSoftDark.cjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.cjs",
+  ],
+  "color/dark/colorFrostedStrongDark.cjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.cjs",
   ],
   "color/dark/colorInfoDark.cjs": [
     "tokens/dist/esm/color/dark/semantic/colorInfoDark.cjs",
@@ -235,9 +235,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/deprecated/themeDarkStateActive.cjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedDark.cjs",
   ],
-  "color/deprecated/themeDarkStateDisabled.cjs": [
-    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.cjs",
-  ],
+  "color/deprecated/themeDarkStateDisabled.cjs": [],
   "color/deprecated/themeDarkStateFocus.cjs": [
     "tokens/dist/esm/color/dark/a11y/colorFocusDark.cjs",
   ],
@@ -317,9 +315,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/deprecated/themeLightStateActive.cjs": [
     "tokens/dist/esm/color/light/background/colorFrostedLight.cjs",
   ],
-  "color/deprecated/themeLightStateDisabled.cjs": [
-    "tokens/dist/esm/color/light/a11y/colorDisabledLight.cjs",
-  ],
+  "color/deprecated/themeLightStateDisabled.cjs": [],
   "color/deprecated/themeLightStateFocus.cjs": [
     "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs",
   ],
@@ -347,9 +343,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/light-dark/colorContrastMedium.cjs": [
     "tokens/dist/esm/color/light-dark/foreground/colorContrastMedium.cjs",
   ],
-  "color/light-dark/colorDisabled.cjs": [
-    "tokens/dist/esm/color/light-dark/a11y/colorDisabled.cjs",
-  ],
   "color/light-dark/colorError.cjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorError.cjs",
   ],
@@ -373,6 +366,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "color/light-dark/colorFrostedSoft.cjs": [
     "tokens/dist/esm/color/light-dark/background/colorFrostedSoft.cjs",
+  ],
+  "color/light-dark/colorFrostedStrong.cjs": [
+    "tokens/dist/esm/color/light-dark/background/colorFrostedStrong.cjs",
   ],
   "color/light-dark/colorInfo.cjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorInfo.cjs",
@@ -446,9 +442,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/light/colorContrastMediumLight.cjs": [
     "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.cjs",
   ],
-  "color/light/colorDisabledLight.cjs": [
-    "tokens/dist/esm/color/light/a11y/colorDisabledLight.cjs",
-  ],
   "color/light/colorErrorFrostedLight.cjs": [
     "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.cjs",
   ],
@@ -472,6 +465,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "color/light/colorFrostedSoftLight.cjs": [
     "tokens/dist/esm/color/light/background/colorFrostedSoftLight.cjs",
+  ],
+  "color/light/colorFrostedStrongLight.cjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.cjs",
   ],
   "color/light/colorInfoFrostedLight.cjs": [
     "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.cjs",
@@ -830,7 +826,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/dark/colorContrastLowDark.cjs",
     "color/dark/colorContrastLowerDark.cjs",
     "color/dark/colorContrastMediumDark.cjs",
-    "color/dark/colorDisabledDark.cjs",
     "color/dark/colorErrorDark.cjs",
     "color/dark/colorErrorFrostedDark.cjs",
     "color/dark/colorErrorFrostedSoftDark.cjs",
@@ -839,6 +834,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/dark/colorFocusDark.cjs",
     "color/dark/colorFrostedDark.cjs",
     "color/dark/colorFrostedSoftDark.cjs",
+    "color/dark/colorFrostedStrongDark.cjs",
     "color/dark/colorInfoDark.cjs",
     "color/dark/colorInfoFrostedDark.cjs",
     "color/dark/colorInfoFrostedSoftDark.cjs",
@@ -906,7 +902,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/light-dark/colorContrastLow.cjs",
     "color/light-dark/colorContrastLower.cjs",
     "color/light-dark/colorContrastMedium.cjs",
-    "color/light-dark/colorDisabled.cjs",
     "color/light-dark/colorError.cjs",
     "color/light-dark/colorErrorFrosted.cjs",
     "color/light-dark/colorErrorFrostedSoft.cjs",
@@ -915,6 +910,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/light-dark/colorFocus.cjs",
     "color/light-dark/colorFrosted.cjs",
     "color/light-dark/colorFrostedSoft.cjs",
+    "color/light-dark/colorFrostedStrong.cjs",
     "color/light-dark/colorInfo.cjs",
     "color/light-dark/colorInfoFrosted.cjs",
     "color/light-dark/colorInfoFrostedSoft.cjs",
@@ -939,7 +935,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/light/colorContrastLowLight.cjs",
     "color/light/colorContrastLowerLight.cjs",
     "color/light/colorContrastMediumLight.cjs",
-    "color/light/colorDisabledLight.cjs",
     "color/light/colorErrorFrostedLight.cjs",
     "color/light/colorErrorFrostedSoftLight.cjs",
     "color/light/colorErrorLight.cjs",
@@ -948,6 +943,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/light/colorFocusLight.cjs",
     "color/light/colorFrostedLight.cjs",
     "color/light/colorFrostedSoftLight.cjs",
+    "color/light/colorFrostedStrongLight.cjs",
     "color/light/colorInfoFrostedLight.cjs",
     "color/light/colorInfoFrostedSoftLight.cjs",
     "color/light/colorInfoLight.cjs",
@@ -1240,8 +1236,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   ],
   "skeleton/getSkeletonStyle.cjs": [
     "border/radiusSm.cjs",
-    "color/light-dark/colorSurface.cjs",
-    "motion/durationLg.cjs",
+    "color/light-dark/colorFrosted.cjs",
+    "color/light-dark/colorFrostedStrong.cjs",
+    "motion/durationXl.cjs",
     "motion/easeInOut.cjs",
   ],
   "spacing/deprecated/spacing.cjs": [
@@ -1352,9 +1349,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/breakpoint/breakpointSm.cjs": [],
   "tokens/dist/esm/breakpoint/breakpointXl.cjs": [],
   "tokens/dist/esm/breakpoint/breakpointXs.cjs": [],
-  "tokens/dist/esm/color/dark/a11y/colorDisabledDark.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
   "tokens/dist/esm/color/dark/a11y/colorFocusDark.cjs": [],
   "tokens/dist/esm/color/dark/background/colorBackdropDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
@@ -1366,6 +1360,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/dark/background/colorSurfaceDark.cjs": [
@@ -1449,10 +1446,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/color/dark/semantic/colorWarningMediumDark.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
-  "tokens/dist/esm/color/light-dark/a11y/colorDisabled.cjs": [
-    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.cjs",
-    "tokens/dist/esm/color/light/a11y/colorDisabledLight.cjs",
-  ],
   "tokens/dist/esm/color/light-dark/a11y/colorFocus.cjs": [
     "tokens/dist/esm/color/dark/a11y/colorFocusDark.cjs",
     "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs",
@@ -1472,6 +1465,10 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "tokens/dist/esm/color/light-dark/background/colorFrostedSoft.cjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.cjs",
     "tokens/dist/esm/color/light/background/colorFrostedSoftLight.cjs",
+  ],
+  "tokens/dist/esm/color/light-dark/background/colorFrostedStrong.cjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.cjs",
+    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.cjs",
   ],
   "tokens/dist/esm/color/light-dark/background/colorSurface.cjs": [
     "tokens/dist/esm/color/dark/background/colorSurfaceDark.cjs",
@@ -1581,9 +1578,6 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/dark/semantic/colorWarningMediumDark.cjs",
     "tokens/dist/esm/color/light/semantic/colorWarningMediumLight.cjs",
   ],
-  "tokens/dist/esm/color/light/a11y/colorDisabledLight.cjs": [
-    "tokens/dist/esm/color/palette.cjs",
-  ],
   "tokens/dist/esm/color/light/a11y/colorFocusLight.cjs": [],
   "tokens/dist/esm/color/light/background/colorBackdropLight.cjs": [
     "tokens/dist/esm/color/palette.cjs",
@@ -1593,6 +1587,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/light/background/colorFrostedSoftLight.cjs": [
+    "tokens/dist/esm/color/palette.cjs",
+  ],
+  "tokens/dist/esm/color/light/background/colorFrostedStrongLight.cjs": [
     "tokens/dist/esm/color/palette.cjs",
   ],
   "tokens/dist/esm/color/light/background/colorSurfaceLight.cjs": [
@@ -1965,9 +1962,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/dark/colorContrastMediumDark.mjs": [
     "tokens/dist/esm/color/dark/foreground/colorContrastMediumDark.mjs",
   ],
-  "color/dark/colorDisabledDark.mjs": [
-    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.mjs",
-  ],
   "color/dark/colorErrorDark.mjs": [
     "tokens/dist/esm/color/dark/semantic/colorErrorDark.mjs",
   ],
@@ -1991,6 +1985,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "color/dark/colorFrostedSoftDark.mjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.mjs",
+  ],
+  "color/dark/colorFrostedStrongDark.mjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.mjs",
   ],
   "color/dark/colorInfoDark.mjs": [
     "tokens/dist/esm/color/dark/semantic/colorInfoDark.mjs",
@@ -2120,9 +2117,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/deprecated/themeDarkStateActive.mjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedDark.mjs",
   ],
-  "color/deprecated/themeDarkStateDisabled.mjs": [
-    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.mjs",
-  ],
+  "color/deprecated/themeDarkStateDisabled.mjs": [],
   "color/deprecated/themeDarkStateFocus.mjs": [
     "tokens/dist/esm/color/dark/a11y/colorFocusDark.mjs",
   ],
@@ -2202,9 +2197,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/deprecated/themeLightStateActive.mjs": [
     "tokens/dist/esm/color/light/background/colorFrostedLight.mjs",
   ],
-  "color/deprecated/themeLightStateDisabled.mjs": [
-    "tokens/dist/esm/color/light/a11y/colorDisabledLight.mjs",
-  ],
+  "color/deprecated/themeLightStateDisabled.mjs": [],
   "color/deprecated/themeLightStateFocus.mjs": [
     "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs",
   ],
@@ -2232,9 +2225,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/light-dark/colorContrastMedium.mjs": [
     "tokens/dist/esm/color/light-dark/foreground/colorContrastMedium.mjs",
   ],
-  "color/light-dark/colorDisabled.mjs": [
-    "tokens/dist/esm/color/light-dark/a11y/colorDisabled.mjs",
-  ],
   "color/light-dark/colorError.mjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorError.mjs",
   ],
@@ -2258,6 +2248,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "color/light-dark/colorFrostedSoft.mjs": [
     "tokens/dist/esm/color/light-dark/background/colorFrostedSoft.mjs",
+  ],
+  "color/light-dark/colorFrostedStrong.mjs": [
+    "tokens/dist/esm/color/light-dark/background/colorFrostedStrong.mjs",
   ],
   "color/light-dark/colorInfo.mjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorInfo.mjs",
@@ -2331,9 +2324,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/light/colorContrastMediumLight.mjs": [
     "tokens/dist/esm/color/light/foreground/colorContrastMediumLight.mjs",
   ],
-  "color/light/colorDisabledLight.mjs": [
-    "tokens/dist/esm/color/light/a11y/colorDisabledLight.mjs",
-  ],
   "color/light/colorErrorFrostedLight.mjs": [
     "tokens/dist/esm/color/light/semantic/colorErrorFrostedLight.mjs",
   ],
@@ -2357,6 +2347,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "color/light/colorFrostedSoftLight.mjs": [
     "tokens/dist/esm/color/light/background/colorFrostedSoftLight.mjs",
+  ],
+  "color/light/colorFrostedStrongLight.mjs": [
+    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.mjs",
   ],
   "color/light/colorInfoFrostedLight.mjs": [
     "tokens/dist/esm/color/light/semantic/colorInfoFrostedLight.mjs",
@@ -2715,7 +2708,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/dark/colorContrastLowDark.mjs",
     "color/dark/colorContrastLowerDark.mjs",
     "color/dark/colorContrastMediumDark.mjs",
-    "color/dark/colorDisabledDark.mjs",
     "color/dark/colorErrorDark.mjs",
     "color/dark/colorErrorFrostedDark.mjs",
     "color/dark/colorErrorFrostedSoftDark.mjs",
@@ -2724,6 +2716,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/dark/colorFocusDark.mjs",
     "color/dark/colorFrostedDark.mjs",
     "color/dark/colorFrostedSoftDark.mjs",
+    "color/dark/colorFrostedStrongDark.mjs",
     "color/dark/colorInfoDark.mjs",
     "color/dark/colorInfoFrostedDark.mjs",
     "color/dark/colorInfoFrostedSoftDark.mjs",
@@ -2791,7 +2784,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/light-dark/colorContrastLow.mjs",
     "color/light-dark/colorContrastLower.mjs",
     "color/light-dark/colorContrastMedium.mjs",
-    "color/light-dark/colorDisabled.mjs",
     "color/light-dark/colorError.mjs",
     "color/light-dark/colorErrorFrosted.mjs",
     "color/light-dark/colorErrorFrostedSoft.mjs",
@@ -2800,6 +2792,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/light-dark/colorFocus.mjs",
     "color/light-dark/colorFrosted.mjs",
     "color/light-dark/colorFrostedSoft.mjs",
+    "color/light-dark/colorFrostedStrong.mjs",
     "color/light-dark/colorInfo.mjs",
     "color/light-dark/colorInfoFrosted.mjs",
     "color/light-dark/colorInfoFrostedSoft.mjs",
@@ -2824,7 +2817,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/light/colorContrastLowLight.mjs",
     "color/light/colorContrastLowerLight.mjs",
     "color/light/colorContrastMediumLight.mjs",
-    "color/light/colorDisabledLight.mjs",
     "color/light/colorErrorFrostedLight.mjs",
     "color/light/colorErrorFrostedSoftLight.mjs",
     "color/light/colorErrorLight.mjs",
@@ -2833,6 +2825,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/light/colorFocusLight.mjs",
     "color/light/colorFrostedLight.mjs",
     "color/light/colorFrostedSoftLight.mjs",
+    "color/light/colorFrostedStrongLight.mjs",
     "color/light/colorInfoFrostedLight.mjs",
     "color/light/colorInfoFrostedSoftLight.mjs",
     "color/light/colorInfoLight.mjs",
@@ -3125,8 +3118,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
   ],
   "skeleton/getSkeletonStyle.mjs": [
     "border/radiusSm.mjs",
-    "color/light-dark/colorSurface.mjs",
-    "motion/durationLg.mjs",
+    "color/light-dark/colorFrosted.mjs",
+    "color/light-dark/colorFrostedStrong.mjs",
+    "motion/durationXl.mjs",
     "motion/easeInOut.mjs",
   ],
   "spacing/deprecated/spacing.mjs": [
@@ -3237,9 +3231,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/breakpoint/breakpointSm.mjs": [],
   "tokens/dist/esm/breakpoint/breakpointXl.mjs": [],
   "tokens/dist/esm/breakpoint/breakpointXs.mjs": [],
-  "tokens/dist/esm/color/dark/a11y/colorDisabledDark.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
   "tokens/dist/esm/color/dark/a11y/colorFocusDark.mjs": [],
   "tokens/dist/esm/color/dark/background/colorBackdropDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
@@ -3251,6 +3242,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/dark/background/colorSurfaceDark.mjs": [
@@ -3334,10 +3328,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/color/dark/semantic/colorWarningMediumDark.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
-  "tokens/dist/esm/color/light-dark/a11y/colorDisabled.mjs": [
-    "tokens/dist/esm/color/dark/a11y/colorDisabledDark.mjs",
-    "tokens/dist/esm/color/light/a11y/colorDisabledLight.mjs",
-  ],
   "tokens/dist/esm/color/light-dark/a11y/colorFocus.mjs": [
     "tokens/dist/esm/color/dark/a11y/colorFocusDark.mjs",
     "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs",
@@ -3357,6 +3347,10 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "tokens/dist/esm/color/light-dark/background/colorFrostedSoft.mjs": [
     "tokens/dist/esm/color/dark/background/colorFrostedSoftDark.mjs",
     "tokens/dist/esm/color/light/background/colorFrostedSoftLight.mjs",
+  ],
+  "tokens/dist/esm/color/light-dark/background/colorFrostedStrong.mjs": [
+    "tokens/dist/esm/color/dark/background/colorFrostedStrongDark.mjs",
+    "tokens/dist/esm/color/light/background/colorFrostedStrongLight.mjs",
   ],
   "tokens/dist/esm/color/light-dark/background/colorSurface.mjs": [
     "tokens/dist/esm/color/dark/background/colorSurfaceDark.mjs",
@@ -3466,9 +3460,6 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/dark/semantic/colorWarningMediumDark.mjs",
     "tokens/dist/esm/color/light/semantic/colorWarningMediumLight.mjs",
   ],
-  "tokens/dist/esm/color/light/a11y/colorDisabledLight.mjs": [
-    "tokens/dist/esm/color/palette.mjs",
-  ],
   "tokens/dist/esm/color/light/a11y/colorFocusLight.mjs": [],
   "tokens/dist/esm/color/light/background/colorBackdropLight.mjs": [
     "tokens/dist/esm/color/palette.mjs",
@@ -3478,6 +3469,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/light/background/colorFrostedSoftLight.mjs": [
+    "tokens/dist/esm/color/palette.mjs",
+  ],
+  "tokens/dist/esm/color/light/background/colorFrostedStrongLight.mjs": [
     "tokens/dist/esm/color/palette.mjs",
   ],
   "tokens/dist/esm/color/light/background/colorSurfaceLight.mjs": [

@@ -1,7 +1,8 @@
 import { fontLineHeight } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from '../../../styles';
-import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
+import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
+import { cssVarInternalCheckboxScaling } from '../../../styles/checkbox/checkbox-css-vars';
 import { getOptionJssStyle } from '../../../styles/select';
 import { getCss, mergeDeep } from '../../../utils';
 
@@ -36,7 +37,7 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
     option: getOptionJssStyle('multi-select-option', cssVarInternalMultiSelectOptionScaling),
     checkbox: mergeDeep(
       getCheckboxBaseStyles(isDisabled, false, true, 'none'),
-      selected ? getCheckboxCheckedBaseStyles(false) : {}
+      selected ? getCheckboxCheckedBaseStyles(false, 'none') : {}
     ),
   });
 };

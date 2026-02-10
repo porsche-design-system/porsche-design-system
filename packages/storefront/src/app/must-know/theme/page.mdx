@@ -1,0 +1,87 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Theme - Porsche Design System',
+  description: 'Learn how to use the theming of the Porsche Design System.',
+};
+
+# Theme
+
+<TableOfContents headings={['How it works', 'Switching themes']} />
+
+The Porsche Design System is built with theming in mind, using the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) color function. The
+mandatory [global styles](/styles/introduction) define CSS variables that are used across all components, enabling
+seamless theme switching.
+
+## How it works
+
+The system relies on two key CSS features:
+
+**CSS Variables**: Global styles define color variables using `light-dark()`, for example:
+
+```css
+:root {
+  --p-color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(240, 12.5%, 96.9%));
+}
+```
+
+**Color Scheme**: The `color-scheme` CSS property controls which value `light-dark()` uses:
+
+- `color-scheme: light` → uses the first value (Light theme)
+- `color-scheme: dark` → uses the second value (Dark theme)
+- `color-scheme: light dark` → respects the user's operating system preference (Auto theme)
+
+Components automatically adapt to the current theme without any additional configuration, as they reference the CSS
+variables which respond to the `color-scheme` setting.
+
+## Defining themes
+
+To define which theme your application should use, set the `color-scheme` property on the `:root` selector in your
+global CSS:
+
+```css
+/* Defines the theme for all components */
+:root {
+  color-scheme: light;
+}
+```
+
+You can also scope the theme to specific sections of your application by applying `color-scheme` to a container element:
+
+```html
+<!-- Defines the theme for all components nested within -->
+<html style="color-scheme: dark">
+  <body>
+    <!-- All components inside will use the dark theme -->
+    <div style="color-scheme: light">
+      <!-- All components inside will use the light theme -->
+    </div>
+  </body>
+</html>
+```
+
+In order to implement a theme switch, simply set a class which defines the corresponding `color-scheme` (Tailwind
+provides these classes out of the box):
+
+```css
+.scheme-light {
+  color-scheme: light;
+}
+
+.scheme-dark {
+  color-scheme: dark;
+}
+
+.scheme-light-dark {
+  color-scheme: light dark;
+}
+```
+
+This approach provides native browser support for theming and respects user preferences when using
+`color-scheme: light dark`.
+
+## Fallbacks
+
+The `light-dark()` function is [supported in all modern browsers](https://caniuse.com/wf-color-scheme), but if you need
+to support older browsers, TODO:

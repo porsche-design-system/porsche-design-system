@@ -20,8 +20,6 @@ import {
   colorContrastMedium,
   colorContrastMediumDark,
   colorContrastMediumLight,
-  colorDisabledDark,
-  colorDisabledLight,
   colorError,
   colorErrorDark,
   colorErrorFrosted,
@@ -46,6 +44,9 @@ import {
   colorFrostedSoft,
   colorFrostedSoftDark,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongDark,
+  colorFrostedStrongLight,
   colorInfo,
   colorInfoDark,
   colorInfoFrosted,
@@ -116,6 +117,9 @@ export const getColorScss = () => {
     $color-frosted-soft: ${colorFrostedSoft};
     $color-frosted-soft-light: ${colorFrostedSoftLight};
     $color-frosted-soft-dark: ${colorFrostedSoftDark};
+    $color-frosted-strong: ${colorFrostedStrong};
+    $color-frosted-strong-light: ${colorFrostedStrongLight};
+    $color-frosted-strong-dark: ${colorFrostedStrongDark};
     $color-backdrop: ${colorBackdrop};
     $color-backdrop-light: ${colorBackdropLight};
     $color-backdrop-dark: ${colorBackdropDark};
@@ -198,8 +202,6 @@ export const getColorScss = () => {
     $color-info-frosted-soft-light: ${colorInfoFrostedSoftLight};
     $color-info-frosted-soft-dark: ${colorInfoFrostedSoftDark};
 
-    /* TBD: $color-skeleton: #f7f7f7; */
-
     $pds-theme-light-primary: ${colorPrimaryLight}; /* alias (deprecated) */
     $pds-theme-light-background-base: ${colorCanvasLight}; /* alias (deprecated) */
     $pds-theme-light-background-surface: ${colorSurfaceLight}; /* alias (deprecated) */
@@ -219,7 +221,7 @@ export const getColorScss = () => {
     $pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148); /* alias (deprecated) */
     $pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148); /* alias (deprecated) */
     $pds-theme-light-state-focus: #1a44ea; /* alias (deprecated) */
-    $pds-theme-light-state-disabled: ${colorDisabledLight}; /* alias (deprecated) */
+    $pds-theme-light-state-disabled: hsla(233,6.6%,23.9%,0.412); /* (deprecated) */
     $pds-theme-dark-primary: ${colorPrimaryDark}; /* alias (deprecated) */
     $pds-theme-dark-background-base: ${colorCanvasDark}; /* alias (deprecated) */
     $pds-theme-dark-background-surface: ${colorSurfaceDark}; /* alias (deprecated) */
@@ -239,6 +241,6 @@ export const getColorScss = () => {
     $pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228); /* alias (deprecated) */
     $pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228); /* alias (deprecated) */
     $pds-theme-dark-state-focus: #1a44ea; /* alias (deprecated) */
-    $pds-theme-dark-state-disabled: ${colorDisabledDark}; /* alias (deprecated) */
+    $pds-theme-dark-state-disabled: hsla(240,1.5%,61.8%,0.302); /* (deprecated) */
 `;
 };

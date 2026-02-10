@@ -8,6 +8,8 @@ import {
   colorFrostedDark,
   colorFrostedSoftLight,
   colorFrostedSoftDark,
+  colorFrostedStrongLight,
+  colorFrostedStrongDark,
   colorBackdropLight,
   colorBackdropDark,
   colorPrimaryLight,
@@ -79,13 +81,14 @@ export const metadata = {
 
 ### Background
 
-| Color                                                                                   | Tailwind CSS variable  | Tailwind CSS class | Description                                                                                                               | Value (light)           | Value (dark)           |
-| --------------------------------------------------------------------------------------- | ---------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ---------------------- |
-| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>       | `--color-canvas`       | `.bg-canvas`       | Applies the **canvas** color, typically used for surfaces.                                                                | {colorCanvasLight}      | {colorCanvasDark}      |
-| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>      | `--color-surface`      | `.bg-surface`      | Applies the **surface** color, typically used for surfaces.                                                               | {colorSurfaceLight}     | {colorSurfaceDark}     |
-| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `--color-frosted`      | `.bg-frosted`      | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | {colorFrostedLight}     | {colorFrostedDark}     |
-| <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-frosted-soft` | `.bg-frosted-soft` | Applies the **frosted** color, typically used as a background `:hover`.                                                   | {colorFrostedSoftLight} | {colorFrostedSoftDark} |
-| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>     | `--color-backdrop`     | `.bg-backdrop`     | Applies the **backdrop** color, typically used for backdrops.                                                             | {colorBackdropLight}    | {colorBackdropDark}    |
+| Color                                                                                     | Tailwind CSS variable    | Tailwind CSS class   | Description                                                                                                               | Value (light)             | Value (dark)             |
+| ----------------------------------------------------------------------------------------- | ------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------ |
+| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-canvas`         | `.bg-canvas`         | Applies the **canvas** color, typically used for surfaces.                                                                | {colorCanvasLight}        | {colorCanvasDark}        |
+| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>        | `--color-surface`        | `.bg-surface`        | Applies the **surface** color, typically used for surfaces.                                                               | {colorSurfaceLight}       | {colorSurfaceDark}       |
+| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | `--color-frosted`        | `.bg-frosted`        | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | {colorFrostedLight}       | {colorFrostedDark}       |
+| <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-frosted-soft`   | `.bg-frosted-soft`   | Applies the **frosted** color, typically used as a background `:hover`.                                                   | {colorFrostedSoftLight}   | {colorFrostedSoftDark}   |
+| <div className="bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-frosted-strong` | `.bg-frosted-strong` | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | {colorFrostedStrongLight} | {colorFrostedStrongDark} |
+| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>       | `--color-backdrop`       | `.bg-backdrop`       | Applies the **backdrop** color, typically used for backdrops.                                                             | {colorBackdropLight}      | {colorBackdropDark}      |
 
 ### Foreground
 

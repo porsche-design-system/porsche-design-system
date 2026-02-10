@@ -14,7 +14,7 @@ import {
   colorErrorFrosted,
   colorErrorFrostedSoft,
   colorFrosted,
-  colorFrostedSoft,
+  colorFrostedStrong,
   colorInfoFrosted,
   colorInfoFrostedSoft,
   colorPrimary,
@@ -39,7 +39,7 @@ const colorTextMap: Record<TagVariant, string> = {
 
 const colorBackgroundMap: Record<TagVariant, string> = {
   primary: colorPrimary,
-  secondary: colorFrosted,
+  secondary: colorFrostedStrong,
   info: colorInfoFrosted,
   success: colorSuccessFrosted,
   warning: colorWarningFrosted,
@@ -48,7 +48,7 @@ const colorBackgroundMap: Record<TagVariant, string> = {
 
 const colorBackgroundHoverMap: Record<TagVariant, string> = {
   primary: colorContrastHigh,
-  secondary: colorFrostedSoft,
+  secondary: colorFrosted,
   info: colorInfoFrostedSoft,
   success: colorSuccessFrostedSoft,
   warning: colorWarningFrostedSoft,

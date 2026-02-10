@@ -30,7 +30,6 @@ const ButtonRenderer = {
       <span class="cell-centered">
       <PLinkPure
         :underline="true"
-        :theme="theme"
         target="_blank"
         :href="'https://www.porsche.com/germany/models/' + data.model.toLowerCase()"
       >

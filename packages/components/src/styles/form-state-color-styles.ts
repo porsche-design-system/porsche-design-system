@@ -3,12 +3,10 @@ import {
   colorContrastLower,
   colorError,
   colorErrorFrostedSoft,
-  colorErrorLow,
-  colorFrostedSoft,
+  colorFrosted,
   colorPrimary,
   colorSuccess,
   colorSuccessFrostedSoft,
-  colorSuccessLow,
 } from './css-variables';
 
 type ThemedFormStateColors = {
@@ -21,12 +19,12 @@ type ThemedFormStateColors = {
 const colorBackgroundMap: Record<FormState, string> = {
   success: colorSuccessFrostedSoft,
   error: colorErrorFrostedSoft,
-  none: colorFrostedSoft,
+  none: colorFrosted,
 };
 
 const colorBorderMap: Record<FormState, string> = {
-  success: colorSuccessLow,
-  error: colorErrorLow,
+  success: colorSuccess,
+  error: colorError,
   none: colorContrastLower,
 };
 

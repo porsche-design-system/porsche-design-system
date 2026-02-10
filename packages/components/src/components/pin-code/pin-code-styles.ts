@@ -12,7 +12,10 @@ import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { PinCodeLength } from './pin-code-utils';
@@ -50,6 +53,7 @@ export const getComponentCss = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -67,25 +71,23 @@ export const getComponentCss = (
         color: colorPrimary,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         textOverflow: 'ellipsis',
-        cursor: isDisabled ? 'not-allowed' : 'text',
+        cursor: isDisabled || isLoading ? 'not-allowed' : 'text',
         textAlign: 'center',
-        ...(isLoading && {
-          opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
-          cursor: 'not-allowed',
-        }),
+        ...(isLoading && getDisabledBaseStyles()),
         '&:focus-visible': {
           borderColor: formStateBorderHoverColor,
         },
         ...(!isLoading &&
           !isDisabled &&
           hoverMediaQuery({
-            '&:hover,label:hover~&': {
+            '&:hover': {
               borderColor: formStateBorderHoverColor,
             },
           })),
       },
     },
     root: {
+      all: 'unset',
       display: 'grid',
       gap: spacingStaticXSmall,
     },

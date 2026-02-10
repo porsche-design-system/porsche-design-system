@@ -19,7 +19,10 @@ import {
 import type { BreakpointCustomizable } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
@@ -52,6 +55,7 @@ export const getComponentCss = (
           ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, isCompact, cssVarInternalMultiSelectScaling),

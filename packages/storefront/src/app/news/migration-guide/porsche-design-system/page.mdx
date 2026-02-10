@@ -34,7 +34,7 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
   - Redesigned footer of dialog elements
   - All headings use regular as font-weight
 - Design Tokens are exposed as CSS variables (currently colors only).
-  - [Colors](/global-styles/color/examples/)
+  - [Colors](/styles/color/examples/)
 - Theming now works by adding a `light`, `dark` or `auto` CSS class to any HTML element
   - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
   - [Angular](/developing/angular/advanced/#global-theme)
@@ -64,7 +64,7 @@ Nevertheless, there are a few breaking changes and some more deprecations which 
 ```
 
 - Instead, a mandatory CSS global style, including CSS color variables, font-face definitions and normalize styles needs
-  to be imported into your main css file. See [Global Styles](/global-styles/introduction/) for more information.
+  to be imported into your main css file. See [Styles](/styles/introduction/) for more information.
 
 ```diff
 /* src/style.css */
@@ -239,63 +239,6 @@ export class AppModule {}
 ```
 
 ## 👹Breaking Changes
-
-### Styles Package
-
-- Removed `getHoverStyle`/`pds-hover` since it did not work reliable
-
-#### Emotion, Styled Components
-
-- Changed import path for styles. These styles will likely work with both Styled Components and Emotion but are only
-  officially supported with Emotion going forward.
-
-```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
-```
-
-- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
-  color function)
-
-```diff
-- getSkeletonStyle({ theme: 'light|dark' })
-+ getSkeletonStyle()
-```
-
-#### Vanilla Extract
-
-- Changed import path for Vanilla Extract styles.
-
-```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
-```
-
-- Removed `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
-  color function)
-
-```diff
-const skeletonAnimation = keyframes(skeletonKeyframes);
-- const Skeleton = style(getSkeletonStyle(skeletonAnimation, { theme: 'light|dark' }));
-+ const Skeleton = style(getSkeletonStyle(skeletonAnimation));
-```
-
-#### SCSS
-
-- Changed import path for SCSS styles.
-
-```diff
-- @use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;
-+ @use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
-```
-
-- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
-  `light-dark()` CSS color function)
-
-```
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
-```
 
 ### Common
 

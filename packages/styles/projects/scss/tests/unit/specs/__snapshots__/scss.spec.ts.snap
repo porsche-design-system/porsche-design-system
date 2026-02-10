@@ -55,21 +55,27 @@ $color-focus-dark: #1a44ea;
 $color-canvas: light-dark(#fff, hsl(225, 66.7%, 1.2%));
 $color-canvas-light: #fff;
 $color-canvas-dark: hsl(225, 66.7%, 1.2%);
-$color-surface: light-dark(hsl(240, 7.7%, 97.5%), hsl(240, 2%, 10%));
-$color-surface-light: hsl(240, 7.7%, 97.5%);
+$color-surface: light-dark(hsl(240, 10%, 95%), hsl(240, 2%, 10%));
+$color-surface-light: hsl(240, 10%, 95%);
 $color-surface-dark: hsl(240, 2%, 10%);
 $color-frosted: light-dark(
-  hsla(236, 6.4%, 51%, 0.148),
-  hsla(240, 2.2%, 44.1%, 0.228)
+  hsla(240, 5%, 70%, 0.148),
+  hsla(240, 2%, 43%, 0.228)
 );
-$color-frosted-light: hsla(236, 6.4%, 51%, 0.148);
-$color-frosted-dark: hsla(240, 2.2%, 44.1%, 0.228);
+$color-frosted-light: hsla(240, 5%, 70%, 0.148);
+$color-frosted-dark: hsla(240, 2%, 43%, 0.228);
 $color-frosted-soft: light-dark(
   hsla(234, 9.8%, 60%, 0.06),
   hsla(240, 3.7%, 26.5%, 0.154)
 );
 $color-frosted-soft-light: hsla(234, 9.8%, 60%, 0.06);
 $color-frosted-soft-dark: hsla(240, 3.7%, 26.5%, 0.154);
+$color-frosted-strong: light-dark(
+  hsla(236, 6.5%, 42%, 0.236),
+  hsla(240, 1.5%, 61.8%, 0.302)
+);
+$color-frosted-strong-light: hsla(236, 6.5%, 42%, 0.236);
+$color-frosted-strong-dark: hsla(240, 1.5%, 61.8%, 0.302);
 $color-backdrop: light-dark(
   hsla(240, 5.3%, 14.9%, 0.5),
   hsla(240, 5.3%, 14.9%, 0.5)
@@ -106,9 +112,9 @@ $color-contrast-higher: light-dark(
 );
 $color-contrast-higher-light: hsla(240, 8.7%, 9%, 0.8);
 $color-contrast-higher-dark: hsla(240, 12.5%, 96.9%, 0.78);
-$color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(240, 12.5%, 96.9%));
+$color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(225, 100%, 99%));
 $color-primary-light: hsl(225, 66.7%, 1.2%);
-$color-primary-dark: hsl(240, 12.5%, 96.9%);
+$color-primary-dark: hsl(225, 100%, 99%);
 $color-success: light-dark(hsl(115, 77.5%, 27.8%), hsl(157, 84.9%, 41.6%));
 $color-success-light: hsl(115, 77.5%, 27.8%);
 $color-success-dark: hsl(157, 84.9%, 41.6%);
@@ -126,10 +132,10 @@ $color-success-medium-light: hsla(115, 77.5%, 27.8%, 0.6);
 $color-success-medium-dark: hsla(157, 84.9%, 41.6%, 0.6);
 $color-success-frosted: light-dark(
   hsla(115, 77.5%, 27.8%, 0.18),
-  hsla(157, 84.9%, 41.6%, 0.18)
+  hsla(157, 84.9%, 41.6%, 0.26)
 );
 $color-success-frosted-light: hsla(115, 77.5%, 27.8%, 0.18);
-$color-success-frosted-dark: hsla(157, 84.9%, 41.6%, 0.18);
+$color-success-frosted-dark: hsla(157, 84.9%, 41.6%, 0.26);
 $color-success-frosted-soft: light-dark(
   hsla(115, 77.5%, 27.8%, 0.1),
   hsla(157, 84.9%, 41.6%, 0.1)
@@ -153,10 +159,10 @@ $color-warning-medium-light: hsla(28, 97.7%, 34.1%, 0.6);
 $color-warning-medium-dark: hsla(28, 90.2%, 56.1%, 0.6);
 $color-warning-frosted: light-dark(
   hsla(28, 97.7%, 34.1%, 0.18),
-  hsla(28, 90.2%, 56.1%, 0.18)
+  hsla(28, 90.2%, 56.1%, 0.26)
 );
 $color-warning-frosted-light: hsla(28, 97.7%, 34.1%, 0.18);
-$color-warning-frosted-dark: hsla(28, 90.2%, 56.1%, 0.18);
+$color-warning-frosted-dark: hsla(28, 90.2%, 56.1%, 0.26);
 $color-warning-frosted-soft: light-dark(
   hsla(28, 97.7%, 34.1%, 0.1),
   hsla(28, 90.2%, 56.1%, 0.1)
@@ -180,10 +186,10 @@ $color-error-medium-light: hsla(357, 78%, 41%, 0.6);
 $color-error-medium-dark: hsla(0, 96.9%, 62%, 0.6);
 $color-error-frosted: light-dark(
   hsla(357, 78%, 41%, 0.18),
-  hsla(0, 96.9%, 62%, 0.18)
+  hsla(0, 96.9%, 62%, 0.26)
 );
 $color-error-frosted-light: hsla(357, 78%, 41%, 0.18);
-$color-error-frosted-dark: hsla(0, 96.9%, 62%, 0.18);
+$color-error-frosted-dark: hsla(0, 96.9%, 62%, 0.26);
 $color-error-frosted-soft: light-dark(
   hsla(357, 78%, 41%, 0.1),
   hsla(0, 96.9%, 62%, 0.1)
@@ -207,10 +213,10 @@ $color-info-medium-light: hsla(228, 83.2%, 51%, 0.6);
 $color-info-medium-dark: hsla(210, 100%, 54.5%, 0.6);
 $color-info-frosted: light-dark(
   hsla(228, 83.2%, 51%, 0.18),
-  hsla(210, 100%, 54.5%, 0.18)
+  hsla(210, 100%, 54.5%, 0.26)
 );
 $color-info-frosted-light: hsla(228, 83.2%, 51%, 0.18);
-$color-info-frosted-dark: hsla(210, 100%, 54.5%, 0.18);
+$color-info-frosted-dark: hsla(210, 100%, 54.5%, 0.26);
 $color-info-frosted-soft: light-dark(
   hsla(228, 83.2%, 51%, 0.1),
   hsla(210, 100%, 54.5%, 0.1)
@@ -218,14 +224,12 @@ $color-info-frosted-soft: light-dark(
 $color-info-frosted-soft-light: hsla(228, 83.2%, 51%, 0.1);
 $color-info-frosted-soft-dark: hsla(210, 100%, 54.5%, 0.1);
 
-/* TBD: $color-skeleton: #f7f7f7; */
-
 $pds-theme-light-primary: hsl(225, 66.7%, 1.2%); /* alias (deprecated) */
 $pds-theme-light-background-base: #fff; /* alias (deprecated) */
 $pds-theme-light-background-surface: hsl(
   240,
-  7.7%,
-  97.5%
+  10%,
+  95%
 ); /* alias (deprecated) */
 $pds-theme-light-background-shading: hsla(
   240,
@@ -234,9 +238,9 @@ $pds-theme-light-background-shading: hsla(
   0.5
 ); /* alias (deprecated) */
 $pds-theme-light-background-frosted: hsla(
-  236,
-  6.4%,
-  51%,
+  240,
+  5%,
+  70%,
   0.148
 ); /* alias (deprecated) */
 $pds-theme-light-contrast-low: hsla(
@@ -319,8 +323,8 @@ $pds-theme-light-state-disabled: hsla(
   6.6%,
   23.9%,
   0.412
-); /* alias (deprecated) */
-$pds-theme-dark-primary: hsl(240, 12.5%, 96.9%); /* alias (deprecated) */
+); /* (deprecated) */
+$pds-theme-dark-primary: hsl(225, 100%, 99%); /* alias (deprecated) */
 $pds-theme-dark-background-base: hsl(225, 66.7%, 1.2%); /* alias (deprecated) */
 $pds-theme-dark-background-surface: hsl(240, 2%, 10%); /* alias (deprecated) */
 $pds-theme-dark-background-shading: hsla(
@@ -331,8 +335,8 @@ $pds-theme-dark-background-shading: hsla(
 ); /* alias (deprecated) */
 $pds-theme-dark-background-frosted: hsla(
   240,
-  2.2%,
-  44.1%,
+  2%,
+  43%,
   0.228
 ); /* alias (deprecated) */
 $pds-theme-dark-contrast-low: hsla(
@@ -362,7 +366,7 @@ $pds-theme-dark-notification-success-soft: hsla(
   157,
   84.9%,
   41.6%,
-  0.18
+  0.26
 ); /* alias (deprecated) */
 $pds-theme-dark-notification-warning: hsl(
   28,
@@ -373,14 +377,14 @@ $pds-theme-dark-notification-warning-soft: hsla(
   28,
   90.2%,
   56.1%,
-  0.18
+  0.26
 ); /* alias (deprecated) */
 $pds-theme-dark-notification-error: hsl(0, 96.9%, 62%); /* alias (deprecated) */
 $pds-theme-dark-notification-error-soft: hsla(
   0,
   96.9%,
   62%,
-  0.18
+  0.26
 ); /* alias (deprecated) */
 $pds-theme-dark-notification-info: hsl(
   210,
@@ -391,7 +395,7 @@ $pds-theme-dark-notification-info-soft: hsla(
   210,
   100%,
   54.5%,
-  0.18
+  0.26
 ); /* alias (deprecated) */
 $pds-theme-dark-state-hover: hsla(
   240,
@@ -411,7 +415,7 @@ $pds-theme-dark-state-disabled: hsla(
   1.5%,
   61.8%,
   0.302
-); /* alias (deprecated) */
+); /* (deprecated) */
 "
 `;
 

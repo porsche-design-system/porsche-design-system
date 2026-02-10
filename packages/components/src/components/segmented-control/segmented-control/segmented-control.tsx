@@ -33,6 +33,8 @@ import {
   type SegmentedControlState,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
+import { descriptionId, labelId } from '../../common/label/label-utils';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
   label: AllowedTypes.string,
@@ -51,6 +53,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
@@ -186,10 +189,16 @@ export class SegmentedControl {
     syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.state, this.message, this.compact);
 
     return (
-      <fieldset aria-invalid={this.state === 'error' ? 'true' : null} class="root">
+      <fieldset
+        class="root"
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-labelledby={labelId}
+        aria-describedby={descriptionId}
+      >
         <Label
           host={this.host}
-          tag="legend"
+          tag="div"
           label={this.label}
           description={this.description}
           isRequired={this.required}

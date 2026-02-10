@@ -1,1 +1,1 @@
-export const colorErrorFrosted = 'var(--p-color-frosted)' as const;
+export const colorErrorFrosted = 'var(--p-color-error-frosted)' as const;

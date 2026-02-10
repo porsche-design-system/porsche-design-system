@@ -235,6 +235,7 @@ export type EventConfig = {
    * Can be used to negate the value which will be applied. E.g. (e) => (e.target.liked = !e.detail.liked)
    */
   negateValue?: boolean;
+  preventDefault?: boolean;
 };
 
 export type PropTypeMapping = {
@@ -424,8 +425,9 @@ export const createElement = (
 
   const eventEntries = Object.entries(events);
 
-  const handleEvent = ({ prop, eventValueKey, negateValue, value }: EventConfig) => {
+  const handleEvent = ({ prop, eventValueKey, negateValue, value, preventDefault }: EventConfig) => {
     return (event: any) => {
+      preventDefault && event?.preventDefault?.();
       const eventValue = eventValueKey ? event.detail[eventValueKey] : value;
       const newValue = negateValue ? !eventValue : eventValue;
       updateState((prev) => ({
