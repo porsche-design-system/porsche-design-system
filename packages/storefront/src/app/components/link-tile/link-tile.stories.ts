@@ -37,7 +37,6 @@ export const linkTileStory: Story<'p-link-tile'> = {
       label: 'Some label',
       description: 'Some Description',
       gradient: true,
-      style: { colorScheme: 'dark' },
     },
     slots: {
       header: linkTileSlotStory.header.basic,
@@ -63,7 +62,6 @@ export const linkTileStoryVideo: Story<'p-link-tile'> = {
       href: 'https://porsche.com',
       label: 'Some label',
       description: 'Some Description',
-      style: { colorScheme: 'dark' },
     },
   },
   generator: ({ properties } = {}) => [
@@ -98,7 +96,6 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
       tag: 'div',
       properties: {
         className: 'grid grid-cols-2 gap-static-md',
-        style: { colorScheme: 'dark' },
       },
       children: [
         {
@@ -168,7 +165,6 @@ export const linkTileStoryFooterSlot: Story<'p-link-tile'> = {
       href: 'https://porsche.com',
       label: 'Some label',
       description: 'Some Description',
-      style: { colorScheme: 'dark' },
     },
   },
   generator: ({ properties } = {}) => [
