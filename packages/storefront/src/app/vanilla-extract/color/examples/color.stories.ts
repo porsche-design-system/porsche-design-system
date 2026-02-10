@@ -13,42 +13,42 @@ export const colorVanillaExtractStoryTextColor: Story<'div'> = {
         {
           tag: 'li',
           properties: { className: 'text-primary' },
-          children: ['color: colorPrimary | colorPrimaryLight | colorPrimaryDark;'],
+          children: ['color: colorPrimary'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-higher' },
-          children: ['color: colorContrastHigher | colorContrastHigherLight | colorContrastHigherDark;'],
+          children: ['color: colorContrastHigher'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-high' },
-          children: ['color: colorContrastHigh | colorContrastHighLight | colorContrastHighDark;'],
+          children: ['color: colorContrastHigh'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-medium' },
-          children: ['color: colorContrastMedium | colorContrastMediumLight | colorContrastMediumDark;'],
+          children: ['color: colorContrastMedium'],
         },
         {
           tag: 'li',
           properties: { className: 'text-success' },
-          children: ['color: colorSuccess | colorSuccessLight | colorSuccessDark;'],
+          children: ['color: colorSuccess'],
         },
         {
           tag: 'li',
           properties: { className: 'text-warning' },
-          children: ['color: colorWarning | colorWarningLight | colorWarningDark;'],
+          children: ['color: colorWarning'],
         },
         {
           tag: 'li',
           properties: { className: 'text-error' },
-          children: ['color: colorError | colorErrorLight | colorErrorDark;'],
+          children: ['color: colorError'],
         },
         {
           tag: 'li',
           properties: { className: 'text-info' },
-          children: ['color: colorInfo | colorInfoLight | colorInfoDark;'],
+          children: ['color: colorInfo'],
         },
       ],
     },
@@ -73,7 +73,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-canvas w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorCanvas | colorCanvasLight | colorCanvasDark;',
+            'background-color: colorCanvas',
           ],
         },
         {
@@ -86,7 +86,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-surface w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorSurface | colorSurfaceLight | colorSurfaceDark;',
+            'background-color: colorSurface',
           ],
         },
         {
@@ -99,7 +99,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorFrosted | colorFrostedLight | colorFrostedDark;',
+            'background-color: colorFrosted',
           ],
         },
         {
@@ -112,7 +112,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorFrostedSoft | colorFrostedSoftLight | colorFrostedSoftDark;',
+            'background-color: colorFrostedSoft',
           ],
         },
         {
@@ -125,7 +125,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorFrostedStrong | colorFrostedStrongLight | colorFrostedStrongDark;',
+            'background-color: colorFrostedStrong',
           ],
         },
         {
@@ -138,7 +138,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-backdrop w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorBackdrop | colorBackdropLight | colorBackdropDark;',
+            'background-color: colorBackdrop',
           ],
         },
         {
@@ -151,7 +151,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-success-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorSuccessFrosted | colorSuccessFrostedLight | colorSuccessFrostedDark;',
+            'background-color: colorSuccessFrosted',
           ],
         },
         {
@@ -164,7 +164,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorSuccessFrostedSoft | colorSuccessFrostedSoftLight | colorSuccessFrostedSoftDark;',
+            'background-color: colorSuccessFrostedSoft',
           ],
         },
         {
@@ -177,7 +177,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorWarningFrosted | colorWarningFrostedLight | colorWarningFrostedDark;',
+            'background-color: colorWarningFrosted',
           ],
         },
         {
@@ -190,7 +190,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorWarningFrostedSoft | colorWarningFrostedSoftLight | colorWarningFrostedSoftDark;',
+            'background-color: colorWarningFrostedSoft',
           ],
         },
         {
@@ -203,7 +203,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-error-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorErrorFrosted | colorErrorFrostedLight | colorErrorFrostedDark;',
+            'background-color: colorErrorFrosted',
           ],
         },
         {
@@ -216,7 +216,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorErrorFrostedSoft | colorErrorFrostedSoftLight | colorErrorFrostedSoftDark;',
+            'background-color: colorErrorFrostedSoft',
           ],
         },
         {
@@ -229,7 +229,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-info-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorInfoFrosted | colorInfoFrostedLight | colorInfoFrostedDark;',
+            'background-color: colorInfoFrosted',
           ],
         },
         {
@@ -242,7 +242,7 @@ export const colorVanillaExtractStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'background-color: colorInfoFrostedSoft | colorInfoFrostedSoftLight | colorInfoFrostedSoftDark;',
+            'background-color: colorInfoFrostedSoft',
           ],
         },
       ],
@@ -268,7 +268,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-primary w-10 h-10 rounded-md border' },
             },
-            'border-color: colorPrimary | colorPrimaryLight | colorPrimaryDark;',
+            'border-color: colorPrimary',
           ],
         },
         {
@@ -281,7 +281,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-higher w-10 h-10 rounded-md border' },
             },
-            'border-color: colorContrastHigher | colorContrastHigherLight | colorContrastHigherDark;',
+            'border-color: colorContrastHigher',
           ],
         },
         {
@@ -294,7 +294,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-high w-10 h-10 rounded-md border' },
             },
-            'border-color: colorContrastHigh | colorContrastHighLight | colorContrastHighDark;',
+            'border-color: colorContrastHigh',
           ],
         },
         {
@@ -307,7 +307,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-medium w-10 h-10 rounded-md border' },
             },
-            'border-color: colorContrastMedium | colorContrastMediumLight | colorContrastMediumDark;',
+            'border-color: colorContrastMedium',
           ],
         },
         {
@@ -320,7 +320,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-low w-10 h-10 rounded-md border' },
             },
-            'border-color: colorContrastLow | colorContrastLowLight | colorContrastLowDark;',
+            'border-color: colorContrastLow',
           ],
         },
         {
@@ -333,7 +333,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-lower w-10 h-10 rounded-md border' },
             },
-            'border-color: colorContrastLower | colorContrastLowerLight | colorContrastLowerDark;',
+            'border-color: colorContrastLower',
           ],
         },
         {
@@ -346,7 +346,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-info-medium w-10 h-10 rounded-md border' },
             },
-            'border-color: colorInfoMedium | colorInfoMediumLight | colorInfoMediumDark;',
+            'border-color: colorInfoMedium',
           ],
         },
         {
@@ -359,7 +359,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-info-low w-10 h-10 rounded-md border' },
             },
-            'border-color: colorInfoLow | colorInfoLowLight | colorInfoLowDark;',
+            'border-color: colorInfoLow',
           ],
         },
         {
@@ -372,7 +372,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-success-medium w-10 h-10 rounded-md border' },
             },
-            'border-color: colorSuccessMedium | colorSuccessMediumLight | colorSuccessMediumDark;',
+            'border-color: colorSuccessMedium',
           ],
         },
         {
@@ -385,7 +385,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-success-low w-10 h-10 rounded-md border' },
             },
-            'border-color: colorSuccessLow | colorSuccessLowLight | colorSuccessLowDark;',
+            'border-color: colorSuccessLow',
           ],
         },
         {
@@ -398,7 +398,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-warning-medium w-10 h-10 rounded-md border' },
             },
-            'border-color: colorWarningMedium | colorWarningMediumLight | colorWarningMediumDark;',
+            'border-color: colorWarningMedium',
           ],
         },
         {
@@ -411,7 +411,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-warning-low w-10 h-10 rounded-md border' },
             },
-            'border-color: colorWarningLow | colorWarningLowLight | colorWarningLowDark;',
+            'border-color: colorWarningLow',
           ],
         },
         {
@@ -424,7 +424,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-error-medium w-10 h-10 rounded-md border' },
             },
-            'border-color: colorErrorMedium | colorErrorMediumLight | colorErrorMediumDark;',
+            'border-color: colorErrorMedium',
           ],
         },
         {
@@ -437,7 +437,7 @@ export const colorVanillaExtractStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-error-low w-10 h-10 rounded-md border' },
             },
-            'border-color: colorErrorLow | colorErrorLowLight | colorErrorLowDark;',
+            'border-color: colorErrorLow',
           ],
         },
       ],

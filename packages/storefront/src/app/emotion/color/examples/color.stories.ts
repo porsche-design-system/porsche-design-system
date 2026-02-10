@@ -13,42 +13,42 @@ export const colorEmotionStoryTextColor: Story<'div'> = {
         {
           tag: 'li',
           properties: { className: 'text-primary' },
-          children: ['color: colorPrimary | colorPrimaryLight | colorPrimaryDark;'],
+          children: ['color: colorPrimary'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-higher' },
-          children: ['color: colorContrastHigher | colorContrastHigherLight | colorContrastHigherDark;'],
+          children: ['color: colorContrastHigher'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-high' },
-          children: ['color: colorContrastHigh | colorContrastHighLight | colorContrastHighDark;'],
+          children: ['color: colorContrastHigh'],
         },
         {
           tag: 'li',
           properties: { className: 'text-contrast-medium' },
-          children: ['color: colorContrastMedium | colorContrastMediumLight | colorContrastMediumDark;'],
+          children: ['color: colorContrastMedium'],
         },
         {
           tag: 'li',
           properties: { className: 'text-success' },
-          children: ['color: colorSuccess | colorSuccessLight | colorSuccessDark;'],
+          children: ['color: colorSuccess'],
         },
         {
           tag: 'li',
           properties: { className: 'text-warning' },
-          children: ['color: colorWarning | colorWarningLight | colorWarningDark;'],
+          children: ['color: colorWarning'],
         },
         {
           tag: 'li',
           properties: { className: 'text-error' },
-          children: ['color: colorError | colorErrorLight | colorErrorDark;'],
+          children: ['color: colorError'],
         },
         {
           tag: 'li',
           properties: { className: 'text-info' },
-          children: ['color: colorInfo | colorInfoLight | colorInfoDark;'],
+          children: ['color: colorInfo'],
         },
       ],
     },
@@ -73,7 +73,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-canvas w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorCanvas | colorCanvasLight | colorCanvasDark;',
+            'backgroundColor: colorCanvas',
           ],
         },
         {
@@ -86,7 +86,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-surface w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorSurface | colorSurfaceLight | colorSurfaceDark;',
+            'backgroundColor: colorSurface',
           ],
         },
         {
@@ -99,7 +99,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorFrosted | colorFrostedLight | colorFrostedDark;',
+            'backgroundColor: colorFrosted',
           ],
         },
         {
@@ -112,7 +112,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorFrostedSoft | colorFrostedSoftLight | colorFrostedSoftDark;',
+            'backgroundColor: colorFrostedSoft',
           ],
         },
         {
@@ -125,7 +125,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorFrostedStrong | colorFrostedStrongLight | colorFrostedStrongDark;',
+            'backgroundColor: colorFrostedStrong',
           ],
         },
         {
@@ -138,7 +138,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-backdrop w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorBackdrop | colorBackdropLight | colorBackdropDark;',
+            'backgroundColor: colorBackdrop',
           ],
         },
         {
@@ -151,7 +151,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-success-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorSuccessFrosted | colorSuccessFrostedLight | colorSuccessFrostedDark;',
+            'backgroundColor: colorSuccessFrosted',
           ],
         },
         {
@@ -164,7 +164,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorSuccessFrostedSoft | colorSuccessFrostedSoftLight | colorSuccessFrostedSoftDark;',
+            'backgroundColor: colorSuccessFrostedSoft',
           ],
         },
         {
@@ -177,7 +177,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorWarningFrosted | colorWarningFrostedLight | colorWarningFrostedDark;',
+            'backgroundColor: colorWarningFrosted',
           ],
         },
         {
@@ -190,7 +190,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorWarningFrostedSoft | colorWarningFrostedSoftLight | colorWarningFrostedSoftDark;',
+            'backgroundColor: colorWarningFrostedSoft',
           ],
         },
         {
@@ -203,7 +203,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-error-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorErrorFrosted | colorErrorFrostedLight | colorErrorFrostedDark;',
+            'backgroundColor: colorErrorFrosted',
           ],
         },
         {
@@ -216,7 +216,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorErrorFrostedSoft | colorErrorFrostedSoftLight | colorErrorFrostedSoftDark;',
+            'backgroundColor: colorErrorFrostedSoft',
           ],
         },
         {
@@ -229,7 +229,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-info-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorInfoFrosted | colorInfoFrostedLight | colorInfoFrostedDark;',
+            'backgroundColor: colorInfoFrosted',
           ],
         },
         {
@@ -242,7 +242,7 @@ export const colorEmotionStoryBackgroundColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            'backgroundColor: colorInfoFrostedSoft | colorInfoFrostedSoftLight | colorInfoFrostedSoftDark;',
+            'backgroundColor: colorInfoFrostedSoft',
           ],
         },
       ],
@@ -268,7 +268,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-primary w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorPrimary | colorPrimaryLight | colorPrimaryDark;',
+            'borderColor: colorPrimary',
           ],
         },
         {
@@ -281,7 +281,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-higher w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorContrastHigher | colorContrastHigherLight | colorContrastHigherDark;',
+            'borderColor: colorContrastHigher',
           ],
         },
         {
@@ -294,7 +294,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-high w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorContrastHigh | colorContrastHighLight | colorContrastHighDark;',
+            'borderColor: colorContrastHigh',
           ],
         },
         {
@@ -307,7 +307,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-medium w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorContrastMedium | colorContrastMediumLight | colorContrastMediumDark;',
+            'borderColor: colorContrastMedium',
           ],
         },
         {
@@ -320,7 +320,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-low w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorContrastLow | colorContrastLowLight | colorContrastLowDark;',
+            'borderColor: colorContrastLow',
           ],
         },
         {
@@ -333,7 +333,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-contrast-lower w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorContrastLower | colorContrastLowerLight | colorContrastLowerDark;',
+            'borderColor: colorContrastLower',
           ],
         },
         {
@@ -346,7 +346,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-info-medium w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorInfoMedium | colorInfoMediumLight | colorInfoMediumDark;',
+            'borderColor: colorInfoMedium',
           ],
         },
         {
@@ -359,7 +359,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-info-low w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorInfoLow | colorInfoLowLight | colorInfoLowDark;',
+            'borderColor: colorInfoLow',
           ],
         },
         {
@@ -372,7 +372,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-success-medium w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorSuccessMedium | colorSuccessMediumLight | colorSuccessMediumDark;',
+            'borderColor: colorSuccessMedium',
           ],
         },
         {
@@ -385,7 +385,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-success-low w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorSuccessLow | colorSuccessLowLight | colorSuccessLowDark;',
+            'borderColor: colorSuccessLow',
           ],
         },
         {
@@ -398,7 +398,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-warning-medium w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorWarningMedium | colorWarningMediumLight | colorWarningMediumDark;',
+            'borderColor: colorWarningMedium',
           ],
         },
         {
@@ -411,7 +411,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-warning-low w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorWarningLow | colorWarningLowLight | colorWarningLowDark;',
+            'borderColor: colorWarningLow',
           ],
         },
         {
@@ -424,7 +424,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-error-medium w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorErrorMedium | colorErrorMediumLight | colorErrorMediumDark;',
+            'borderColor: colorErrorMedium',
           ],
         },
         {
@@ -437,7 +437,7 @@ export const colorEmotionStoryBorderColor: Story<'div'> = {
               tag: 'div',
               properties: { className: 'border-error-low w-10 h-10 rounded-md border' },
             },
-            'borderColor: colorErrorLow | colorErrorLowLight | colorErrorLowDark;',
+            'borderColor: colorErrorLow',
           ],
         },
       ],
