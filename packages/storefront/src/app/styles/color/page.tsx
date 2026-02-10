@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function Page() {
-  redirect('/global-styles/introduction');
+  redirect('/styles/color/examples');
 }
