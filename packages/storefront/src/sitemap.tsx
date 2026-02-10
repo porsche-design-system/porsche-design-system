@@ -125,6 +125,11 @@ export const sitemap: Routes = {
             path: '/news/migration-guide/emotion',
             type: 'TAB',
           },
+          'vanilla-extract': {
+            name: 'Vanilla Extract',
+            path: '/news/migration-guide/vanilla-extract',
+            type: 'TAB',
+          },
         },
       },
       changelog: {
