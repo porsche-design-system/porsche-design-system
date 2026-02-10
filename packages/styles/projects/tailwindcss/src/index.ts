@@ -20,8 +20,6 @@ import {
   colorContrastLowLight,
   colorContrastMedium,
   colorContrastMediumLight,
-  colorDisabled,
-  colorDisabledLight,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedLight,
@@ -38,6 +36,8 @@ import {
   colorFrostedLight,
   colorFrostedSoft,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongLight,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedLight,
@@ -132,11 +132,11 @@ export const getTailwindcssTheme = () => {
   --color-white: #fff;
 
   --color-focus: ${colorFocus};
-  --color-disabled: ${colorDisabled};
   --color-canvas: ${colorCanvas};
   --color-surface: ${colorSurface};
   --color-frosted: ${colorFrosted};
   --color-frosted-soft: ${colorFrostedSoft};
+  --color-frosted-strong: ${colorFrostedStrong};
   --color-backdrop: ${colorBackdrop};
   --color-contrast-lower: ${colorContrastLower};
   --color-contrast-low: ${colorContrastLow};
@@ -164,7 +164,6 @@ export const getTailwindcssTheme = () => {
   --color-info-medium: ${colorInfoMedium};
   --color-info-frosted: ${colorInfoFrosted};
   --color-info-frosted-soft: ${colorInfoFrostedSoft};
-  --color-skeleton: light-dark(#f7f7f7,#1a1b1e);
 
   /* Typography */
   --font-porsche-next: ${fontPorscheNext};
@@ -262,7 +261,7 @@ export const getTailwindcssTheme = () => {
   --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
+  --animate-skeleton: skeleton var(--transition-duration-xl) var(--ease-in-out) infinite;
 
   @keyframes skeleton {
     from {
@@ -293,11 +292,11 @@ export const getTailwindcssTheme = () => {
   @supports not (color: light-dark(white, black)) {
     :root {
       --color-focus: ${colorFocusLight};
-      --color-disabled: ${colorDisabledLight};
       --color-canvas: ${colorCanvasLight};
       --color-surface: ${colorSurfaceLight};
       --color-frosted: ${colorFrostedLight};
       --color-frosted-soft: ${colorFrostedSoftLight};
+      --color-frosted-strong: ${colorFrostedStrongLight};
       --color-backdrop: ${colorBackdropLight};
       --color-contrast-lower: ${colorContrastLowerLight};
       --color-contrast-low: ${colorContrastLowLight};
@@ -325,7 +324,6 @@ export const getTailwindcssTheme = () => {
       --color-info-medium: ${colorInfoMediumLight};
       --color-info-frosted: ${colorInfoFrostedLight};
       --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
-      --color-skeleton: #f7f7f7;
     }
   }
 }
@@ -445,9 +443,7 @@ export const getTailwindcssTheme = () => {
 
 /* Skeleton */
 @utility skeleton {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
+  @apply animate-skeleton block rounded-sm bg-transparent bg-[linear-gradient(to_right,var(--color-frosted)_0%,var(--color-frosted-strong)_50%,var(--color-frosted)_100%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
 /* Typography: Text */

@@ -10,7 +10,7 @@ import {
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId, labelId } from '../common/label/label-utils';
-import { LoadingMessage } from '../common/loading-message/loading-message';
+import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './pin-code-styles';
 import {
@@ -28,6 +28,7 @@ import {
   type PinCodeType,
   removeWhiteSpaces,
 } from './pin-code-utils';
+import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -48,6 +49,7 @@ const propTypes: PropTypes<typeof PinCode> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  *
@@ -191,7 +193,13 @@ export class PinCode {
     const currentInputId = 'current-input';
 
     return (
-      <div class="root">
+      <fieldset
+        class="root"
+        disabled={this.disabled}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error')}
+        aria-describedby={this.loading ? loadingId : `${descriptionId} ${messageId}`}
+        aria-labelledby={labelId}
+      >
         <Label
           host={this.host}
           label={this.label}
@@ -228,7 +236,7 @@ export class PinCode {
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
-      </div>
+      </fieldset>
     );
   }
 

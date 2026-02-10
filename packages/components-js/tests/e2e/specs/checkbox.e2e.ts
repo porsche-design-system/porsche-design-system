@@ -21,9 +21,12 @@ const getHost = (page: Page) => page.locator('p-checkbox');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInput = (page: Page) => page.locator('p-checkbox input[type="checkbox"]');
 const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
+const getInputWrapper = (page: Page) => page.locator('p-checkbox .input-wrapper');
 const getLabel = (page: Page) => page.locator('p-checkbox label');
 const getMessage = (page: Page) => page.locator('p-checkbox .message');
 const getForm = (page: Page) => page.locator('form');
+const getOuterLabel = (page: Page) => page.locator('label');
+const getOuterLabelChild = (page: Page) => page.locator('label > :first-child');
 
 const setChecked = async (locator: Locator, value: boolean) => {
   await setProperty(locator, 'checked', value);
@@ -51,7 +54,7 @@ type InitOptions = {
   name?: string;
   form?: string;
   value?: string;
-  label?: string;
+  label?: string | boolean;
   checked?: boolean;
   required?: boolean;
   indeterminate?: boolean;
@@ -92,7 +95,7 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
     : '';
 
   const attrs = [
-    !useSlottedLabel && `label="${label}"`,
+    !useSlottedLabel && label && `label="${label}"`,
     `state="${state}"`,
     `value="${value}"`,
     `name="${name}"`,
@@ -315,7 +318,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     await initCheckbox(page);
     const host = getHost(page);
     const input = getInput(page);
-    const wrapper = getWrapper(page);
+    const wrapper = getInputWrapper(page);
 
     await expect(wrapper).toHaveCSS('cursor', 'pointer');
     await expect(input).toHaveCSS('pointer-events', 'auto');

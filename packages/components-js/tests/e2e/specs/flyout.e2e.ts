@@ -221,13 +221,12 @@ test.describe('scroll shadows', () => {
         }
       );
       const footer = getFooter(page);
-      const footerBgColor = await footer.evaluate((el) => getComputedStyle(el, '::after').backgroundColor);
-      expect(footerBgColor).toBe('rgba(122, 123, 138, 0.15)');
+
+      await expect(footer).toHaveAttribute('data-stuck');
 
       await scrollFlyoutTo(page, '.scroll-here');
 
-      const afterContent = await footer.evaluate((el) => getComputedStyle(el, '::after').content);
-      expect(afterContent).toBe('none');
+      await expect(footer).not.toHaveAttribute('data-stuck');
     });
   });
 });
@@ -882,46 +881,47 @@ test.describe('after dynamic slot change', () => {
   test('should update css sticky top custom property correctly if no header exists initially', async ({ page }) => {
     await initBasicFlyout(page);
     const host = getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '0px');
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('107px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '0px');
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('107px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
-    expect(await getStickyTopCssVarValue(page)).toBe('167px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '167px');
   });
 
   test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
     await initAdvancedFlyout(page);
     const host = getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('68px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '68px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '0px');
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('107px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
-    expect(await getStickyTopCssVarValue(page)).toBe('167px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '167px');
   });
 });
 

@@ -19,7 +19,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .no-results--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .no-results--highlighted, .no-results--selected {
   color: var(--p-color-primary);
@@ -64,7 +64,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .no-results--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .no-results--highlighted, .no-results--selected {
   color: var(--p-color-primary);
@@ -109,7 +109,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .no-results--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .no-results--highlighted, .no-results--selected {
   color: var(--p-color-primary);
@@ -154,7 +154,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .no-results--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .no-results--highlighted, .no-results--selected {
   color: var(--p-color-primary);

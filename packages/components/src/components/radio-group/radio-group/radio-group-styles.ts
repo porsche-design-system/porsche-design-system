@@ -11,7 +11,10 @@ import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalRadioGroupOptionScaling } from '../radio-group-option/radio-group-option-styles';
@@ -58,9 +61,12 @@ export const getComponentCss = (
         [`${cssVarInternalRadioGroupScaling}`]: isCompact ? 0.64285714 : 1,
         [`${cssVarInternalRadioGroupOptionScaling}`]: isCompact ? 0.64285714 : 1,
       },
-      '::slotted(*)': {
-        ...(isLoading && addImportantToEachRule(getDisabledBaseStyles())),
-      },
+      ...getFunctionalComponentLabelAfterStyles(isDisabled, getDisabledBaseStyles()),
+      ...(isLoading && {
+        '::slotted(*:not([slot]))': {
+          ...addImportantToEachRule(getDisabledBaseStyles()),
+        },
+      }),
       ...preventFoucOfNestedElementsStyles,
     },
     root: {
@@ -90,10 +96,7 @@ export const getComponentCss = (
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, {
-      cursor: 'inherit',
-      '&:is(legend)': {
-        marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
-      },
+      ...(isDisabled ? getDisabledBaseStyles() : { cursor: 'inherit' }), // the label is not clickable
     }),
     // .message
     ...getFunctionalComponentStateMessageStyles(state),

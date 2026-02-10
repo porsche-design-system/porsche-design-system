@@ -18,6 +18,10 @@ export const TailwindcssColor = () => {
         <span>Frosted Soft</span>
       </div>
       <div className="flex items-center gap-static-sm">
+        <div className="bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low"></div>
+        <span>Frosted Strong</span>
+      </div>
+      <div className="flex items-center gap-static-sm">
         <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>
         <span>Backdrop</span>
       </div>

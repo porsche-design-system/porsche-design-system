@@ -55,7 +55,9 @@ export const getItemWidths = (host: HTMLElement, compact: boolean): { minWidth: 
   );
 
   const widths = Array.from(host.children)
-    .filter((el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description')
+    .filter(
+      (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'message' && el.slot !== 'description'
+    )
     .map((item: HTMLElement & SegmentedControlItem) => {
       tempDiv.innerHTML = item.innerHTML;
       tempDiv.style.minWidth = dimension;
@@ -88,7 +90,7 @@ export const syncSegmentedControlItemsProps = (
   compact: boolean
 ): void => {
   for (const item of Array.from(host.children).filter(
-    (el) => el.slot !== 'label' && el.slot !== 'message' && el.slot !== 'description'
+    (el) => el.slot !== 'label' && el.slot !== 'label-after' && el.slot !== 'message' && el.slot !== 'description'
   )) {
     (item as Item).selected = (item as Item).value === value;
     (item as Item).state = state;

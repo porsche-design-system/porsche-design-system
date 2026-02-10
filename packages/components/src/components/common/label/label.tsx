@@ -41,18 +41,21 @@ export const Label: FunctionalComponent<LabelProps> = ({
   return (
     <Fragment>
       {hasLabel(host, label) && (
-        <TagType
-          class="label"
-          id={labelId}
-          aria-disabled={isLoading || isDisabled ? 'true' : null}
-          htmlFor={htmlFor}
-          onClick={handleClick}
-        >
-          <Fragment>
-            {label || <slot name="label" />}
-            {isRequired && !isParentFieldsetRequired(host) && <Required />}
-          </Fragment>
-        </TagType>
+        <div class="label-wrapper">
+          <TagType
+            class="label"
+            id={labelId}
+            aria-disabled={isLoading || isDisabled ? 'true' : null}
+            htmlFor={htmlFor}
+            onClick={handleClick}
+          >
+            <Fragment>
+              {label || <slot name="label" />}
+              {isRequired && !isParentFieldsetRequired(host) && <Required />}
+            </Fragment>
+          </TagType>
+          <slot name="label-after" />
+        </div>
       )}
       {hasDescription(host, description) && (
         <span class="label" id={descriptionId} aria-disabled={isLoading || isDisabled ? 'true' : null}>

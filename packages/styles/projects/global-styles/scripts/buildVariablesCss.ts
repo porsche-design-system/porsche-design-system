@@ -21,8 +21,6 @@ import {
   colorContrastLowLight,
   colorContrastMedium,
   colorContrastMediumLight,
-  colorDisabled,
-  colorDisabledLight,
   colorError,
   colorErrorFrosted,
   colorErrorFrostedLight,
@@ -39,6 +37,8 @@ import {
   colorFrostedLight,
   colorFrostedSoft,
   colorFrostedSoftLight,
+  colorFrostedStrong,
+  colorFrostedStrongLight,
   colorInfo,
   colorInfoFrosted,
   colorInfoFrostedLight,
@@ -122,11 +122,11 @@ import * as prettier from 'prettier';
 export const buildVariablesCss = async (): Promise<void> => {
   const styles = `:root {
   --p-color-focus: ${colorFocus};
-  --p-color-disabled: ${colorDisabled};
   --p-color-canvas: ${colorCanvas};
   --p-color-surface: ${colorSurface};
   --p-color-frosted: ${colorFrosted};
   --p-color-frosted-soft: ${colorFrostedSoft};
+  --p-color-frosted-strong: ${colorFrostedStrong};
   --p-color-backdrop: ${colorBackdrop};
   --p-color-contrast-lower: ${colorContrastLower};
   --p-color-contrast-low: ${colorContrastLow};
@@ -221,11 +221,11 @@ export const buildVariablesCss = async (): Promise<void> => {
 @supports not (color: light-dark(white, black)) {
   :root {
     --color-focus: ${colorFocusLight};
-    --color-disabled: ${colorDisabledLight};
     --color-canvas: ${colorCanvasLight};
     --color-surface: ${colorSurfaceLight};
     --color-frosted: ${colorFrostedLight};
     --color-frosted-soft: ${colorFrostedSoftLight};
+    --color-frosted-strong: ${colorFrostedStrongLight};
     --color-backdrop: ${colorBackdropLight};
     --color-contrast-lower: ${colorContrastLowerLight};
     --color-contrast-low: ${colorContrastLowLight};
@@ -253,7 +253,6 @@ export const buildVariablesCss = async (): Promise<void> => {
     --color-info-medium: ${colorInfoMediumLight};
     --color-info-frosted: ${colorInfoFrostedLight};
     --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
-    --color-skeleton: #f7f7f7;
   }
 }
 `;

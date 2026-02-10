@@ -18,7 +18,10 @@ import { colorPrimary, radiusFull } from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
-import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../../common/loading-message/loading-message-styles';
 import type { RadioGroupState } from '../radio-group/radio-group-utils';
 
@@ -48,9 +51,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         display: 'block',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          ...(disabled && getDisabledBaseStyles()),
+          ...(disabledOrLoading && getDisabledBaseStyles()),
         }),
       },
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
@@ -70,7 +74,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
           hoverMediaQuery({
-            '&:hover,label:hover~.wrapper>&': {
+            '&:hover': {
               borderColor: formStateBorderHoverColor,
             },
           })),
@@ -82,7 +86,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         '&:checked::before': {
           WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${checkedIcon} center/contain no-repeat`,
-          backgroundColor: colorPrimary,
+          backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,
         },
         '&::after': {
           // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
@@ -118,17 +122,10 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
-      disabled || loading,
-      false,
-      {
-        gridArea: '1/2',
-      },
-      {
-        paddingTop: labelPaddingTop,
-        paddingInlineStart: labelPaddingInlineStart,
-      }
-    ),
+    ...getFunctionalComponentLabelStyles(disabled || loading, false, null, {
+      paddingTop: labelPaddingTop,
+      paddingInlineStart: labelPaddingInlineStart,
+    }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

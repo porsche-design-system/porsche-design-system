@@ -38,6 +38,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   </PPopover>
                 </div>
                 <PSwitch
+                  hideLabel={true}
                   className="flex-1"
                   checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   alignLabel="start"
@@ -47,7 +48,9 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                     onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
                   }
                   disabled={slotName === 'default'}
-                />
+                >
+                  {`Toggle slot: ${slotName}`}
+                </PSwitch>
               </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect

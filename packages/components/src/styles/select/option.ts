@@ -1,7 +1,7 @@
 import { fontLineHeight, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import { getTransition } from '../common-styles';
-import { colorContrastHigh, colorFrostedSoft, colorPrimary, legacyRadiusSmall, radiusSm } from '../css-variables';
+import { colorContrastHigh, colorFrosted, colorPrimary, legacyRadiusSmall, radiusSm } from '../css-variables';
 
 export const getOptionJssStyle = (
   componentName: 'select-option' | 'multi-select-option',
@@ -26,7 +26,7 @@ export const getOptionJssStyle = (
     borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: colorFrostedSoft,
+      background: colorFrosted,
     },
     '&--highlighted, &--selected': {
       color: colorPrimary,

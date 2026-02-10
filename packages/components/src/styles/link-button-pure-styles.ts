@@ -10,7 +10,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
-import { colorFrosted, colorPrimary, legacyRadiusSmall, radiusLg } from './css-variables';
+import { colorFrosted, colorFrostedStrong, colorPrimary, legacyRadiusSmall, radiusLg } from './css-variables';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -100,7 +100,7 @@ export const getLinkButtonPureStyles = (
         hoverMediaQuery({
           '&:hover::before': {
             ...frostedGlassStyle,
-            backgroundColor: colorFrosted,
+            backgroundColor: colorFrostedStrong,
           },
         })),
       ...(!hasSlottedAnchor && {

@@ -27,6 +27,10 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -41,7 +45,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -141,7 +145,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -165,14 +169,8 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -182,14 +180,31 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -294,6 +309,10 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -321,7 +340,7 @@ input::-webkit-search-cancel-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -329,14 +348,7 @@ input::-webkit-search-cancel-button {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -346,14 +358,31 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -385,7 +414,7 @@ input::-webkit-search-cancel-button {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -394,13 +423,20 @@ input::-webkit-search-cancel-button {
             <div
               class="root"
             >
-              <label
-                class="label"
-                for="input-search"
-                id="label"
+              <div
+                class="label-wrapper"
               >
-                Filter options
-              </label>
+                <label
+                  class="label"
+                  for="input-search"
+                  id="label"
+                >
+                  Filter options
+                </label>
+                <slot
+                  name="label-after"
+                />
+              </div>
               <div
                 class="wrapper"
               >
@@ -548,7 +584,7 @@ img {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -680,14 +716,14 @@ img {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -707,7 +743,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -721,14 +757,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -737,7 +773,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
       </style>
@@ -766,14 +802,14 @@ slot {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -793,7 +829,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -807,14 +843,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -823,7 +859,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
       </style>
@@ -852,14 +888,14 @@ slot {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -879,7 +915,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -893,14 +929,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -909,7 +945,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
       </style>
@@ -938,14 +974,14 @@ slot {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -965,7 +1001,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -979,14 +1015,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -995,7 +1031,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
       </style>
@@ -1024,14 +1060,14 @@ slot {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -1051,7 +1087,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -1065,14 +1101,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -1081,7 +1117,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
       </style>
@@ -1110,14 +1146,14 @@ slot {
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -1137,7 +1173,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -1151,14 +1187,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -1167,7 +1203,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
       </style>
@@ -1204,6 +1240,10 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1218,7 +1258,7 @@ input {
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1230,12 +1270,13 @@ input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:hover, label:hover~input {
+  input:hover {
     border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
   gap: 4px;
 }
@@ -1246,14 +1287,8 @@ input:focus-visible {
   justify-self: flex-start;
   gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -1263,14 +1298,31 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1298,7 +1350,9 @@ input:focus-visible {
   white-space: nowrap;
 }
     </style>
-    <div
+    <fieldset
+      aria-describedby="description message"
+      aria-labelledby="label"
       class="root"
     >
       <div
@@ -1352,7 +1406,7 @@ input:focus-visible {
         id="loading"
         role="status"
       />
-    </div>
+    </fieldset>
   </template>
 </p-pin-code>
 `;
@@ -1369,6 +1423,10 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
       :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1383,14 +1441,8 @@ slot:not([name]) {
   display: grid;
   gap: 4px;
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: inherit;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -1400,17 +1452,31 @@ slot:not([name]) {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: inherit;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
-}
-.label:is(legend) {
-  margin-bottom: 4px;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -1429,6 +1495,8 @@ slot:not([name]) {
 }
     </style>
     <fieldset
+      aria-describedby="description"
+      aria-labelledby="label"
       class="root"
     >
       <slot />
@@ -1752,7 +1820,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1792,7 +1860,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -1905,7 +1973,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -1945,7 +2013,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -2531,7 +2599,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2571,7 +2639,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -2684,7 +2752,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -2724,7 +2792,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -3105,7 +3173,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -3145,7 +3213,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -3258,7 +3326,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -3298,7 +3366,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -3982,7 +4050,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -4022,7 +4090,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -4281,7 +4349,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -4367,6 +4435,7 @@ exports[`should render dsr component for PButtonTile 1`] = `
       :host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -4522,7 +4591,7 @@ p {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -4559,7 +4628,7 @@ p {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -4942,7 +5011,7 @@ h2 {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -4982,7 +5051,7 @@ h2 {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -5237,7 +5306,7 @@ svg {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -5277,7 +5346,7 @@ svg {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -5523,10 +5592,14 @@ exports[`should render dsr component for PCheckbox 1`] = `
     <style>
       :host {
   display: block;
-  --p-internal-checkbox-scaling: 1;
+  --__p-checkbox-scaling: 1;
 }
 :host([hidden]) {
   display: none !important;
+}
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -5534,14 +5607,14 @@ exports[`should render dsr component for PCheckbox 1`] = `
 input {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
 }
 input::before {
@@ -5550,7 +5623,7 @@ input::before {
 }
 input::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
 input:focus-visible {
@@ -5565,35 +5638,33 @@ input:indeterminate::before {
 input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  background-color: var(--p-color-primary);
+  background-color: var(--p-checkbox-icon-color, var(--p-color-primary));
 }
 @media(hover:hover) {
-  input:hover, label:hover~.wrapper&gt;input {
-    border-color: var(--p-color-primary);
+  input:hover {
+    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
   }
 }
 
 .root {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
 }
 .wrapper {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+.input-wrapper {
+  position: relative;
   align-items: center;
+  display: grid;
   align-self: flex-start;
   min-height: calc(6px + 2.125ex);
   cursor: pointer;
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -5602,18 +5673,34 @@ input:checked::before {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
-  padding-inline-start: calc(11.2px * (var(--p-internal-checkbox-scaling) - 0.64285714) + 4px);
-  grid-area: 1/2;
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-inline-start: calc(11.2px * (var(--__p-checkbox-scaling) - 0.64285714) + 4px);
+}
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -5625,7 +5712,6 @@ input:checked::before {
   overflow-wrap: break-word;
   hyphens: var(--p-hyphens, auto);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), opacity var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  grid-column: 1/-1;
 }
 .message:empty {
   opacity: 0;
@@ -5648,13 +5734,17 @@ input:checked::before {
       <div
         class="wrapper"
       >
-        <input
-          aria-describedby="description message"
-          id="x"
-          name=""
-          type="checkbox"
-          value="on"
-        />
+        <div
+          class="input-wrapper"
+        >
+          <input
+            aria-describedby="description message"
+            id="x"
+            name=""
+            type="checkbox"
+            value="on"
+          />
+        </div>
       </div>
       <span
         class="message"
@@ -5948,8 +6038,8 @@ exports[`should render dsr component for PDrilldown 1`] = `
       display: none;
     }
     .dismiss-desktop {
-      --p-color-primary: hsl(240, 12.5%, 96.9%);
-      --p-color-frosted: hsla(240, 2.2%, 44.1%, 0.228);
+      --p-color-primary: hsl(225, 100%, 99%);
+      --p-color-frosted: hsla(240, 2%, 43%, 0.228);
       --p-color-frosted-soft: hsla(240, 3.7%, 26.5%, 0.154);
       position: absolute;
       inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
@@ -6090,7 +6180,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -6197,7 +6287,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -6237,7 +6327,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -6341,7 +6431,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -6381,7 +6471,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -6633,7 +6723,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -6804,7 +6894,7 @@ img {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -7193,7 +7283,7 @@ dialog::backdrop {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7233,7 +7323,7 @@ dialog::backdrop {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -7573,7 +7663,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7613,7 +7703,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -7705,6 +7795,10 @@ exports[`should render dsr component for PInputDate 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -7732,7 +7826,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7740,14 +7834,8 @@ input::-webkit-calendar-picker-indicator {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -7757,14 +7845,31 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -7796,7 +7901,7 @@ input::-webkit-calendar-picker-indicator {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -7857,6 +7962,10 @@ exports[`should render dsr component for PInputEmail 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -7881,7 +7990,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -7889,14 +7998,8 @@ input {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -7906,14 +8009,31 @@ input {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -7941,7 +8061,7 @@ input {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8002,6 +8122,10 @@ exports[`should render dsr component for PInputMonth 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8030,7 +8154,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8038,14 +8162,8 @@ input::-webkit-calendar-picker-indicator {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8055,14 +8173,31 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8094,7 +8229,7 @@ input::-webkit-calendar-picker-indicator {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8155,6 +8290,10 @@ exports[`should render dsr component for PInputNumber 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8183,7 +8322,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8191,14 +8330,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8208,14 +8341,31 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8243,7 +8393,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8305,6 +8455,10 @@ exports[`should render dsr component for PInputPassword 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8329,7 +8483,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8337,14 +8491,8 @@ input {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8354,14 +8502,31 @@ input {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8389,7 +8554,7 @@ input {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8450,6 +8615,10 @@ exports[`should render dsr component for PInputSearch 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8477,7 +8646,7 @@ input::-webkit-search-cancel-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8485,14 +8654,8 @@ input::-webkit-search-cancel-button {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8502,14 +8665,31 @@ input::-webkit-search-cancel-button {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8537,7 +8717,7 @@ input::-webkit-search-cancel-button {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8598,6 +8778,10 @@ exports[`should render dsr component for PInputTel 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8622,7 +8806,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8630,14 +8814,8 @@ input {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8647,14 +8825,31 @@ input {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8682,7 +8877,7 @@ input {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8743,6 +8938,10 @@ exports[`should render dsr component for PInputText 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8767,7 +8966,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8775,14 +8974,8 @@ input {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8792,14 +8985,31 @@ input {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8827,7 +9037,7 @@ input {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -8888,6 +9098,10 @@ exports[`should render dsr component for PInputTime 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8915,7 +9129,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -8923,14 +9137,8 @@ input::-webkit-calendar-picker-indicator {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -8940,14 +9148,31 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -8979,7 +9204,7 @@ input::-webkit-calendar-picker-indicator {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -9040,6 +9265,10 @@ exports[`should render dsr component for PInputUrl 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -9064,7 +9293,7 @@ input {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9072,14 +9301,8 @@ input {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -9089,14 +9312,31 @@ input {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -9124,7 +9364,7 @@ input {
   white-space: nowrap;
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -9185,6 +9425,10 @@ exports[`should render dsr component for PInputWeek 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -9213,7 +9457,7 @@ input::-webkit-calendar-picker-indicator {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9221,14 +9465,8 @@ input::-webkit-calendar-picker-indicator {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -9238,14 +9476,31 @@ input::-webkit-calendar-picker-indicator {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -9277,7 +9532,7 @@ input::-webkit-calendar-picker-indicator {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -9492,7 +9747,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -9572,6 +9827,7 @@ exports[`should render dsr component for PLinkTile 1`] = `
       :host {
   display: flex;
   align-items: stretch;
+  color-scheme: dark;
   hyphens: auto;
 }
 :host([hidden]) {
@@ -9744,7 +10000,7 @@ p {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -9763,7 +10019,7 @@ p {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -9994,7 +10250,7 @@ slot[name="header"] {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -10240,7 +10496,7 @@ dialog::backdrop {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -10280,7 +10536,7 @@ dialog::backdrop {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -10431,6 +10687,10 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -10445,7 +10705,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     padding-inline: calc(22.4px * (var(--p-internal-multi-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-multi-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-multi-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -10545,7 +10805,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -10569,14 +10829,8 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -10586,14 +10840,31 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -10698,6 +10969,10 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -10725,7 +11000,7 @@ input::-webkit-search-cancel-button {
   padding-inline: calc(22.4px * (var(--p-internal-input-base-scaling) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -10733,14 +11008,7 @@ input::-webkit-search-cancel-button {
 .wrapper:focus-within {
   border-color: var(--p-color-primary);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -10750,14 +11018,31 @@ input::-webkit-search-cancel-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -10789,7 +11074,7 @@ input::-webkit-search-cancel-button {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), label:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
   }
 }
@@ -10798,13 +11083,20 @@ input::-webkit-search-cancel-button {
             <div
               class="root"
             >
-              <label
-                class="label"
-                for="input-search"
-                id="label"
+              <div
+                class="label-wrapper"
               >
-                Filter options
-              </label>
+                <label
+                  class="label"
+                  for="input-search"
+                  id="label"
+                >
+                  Filter options
+                </label>
+                <slot
+                  name="label-after"
+                />
+              </div>
               <div
                 class="wrapper"
               >
@@ -10952,7 +11244,7 @@ img {
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -11089,14 +11381,14 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
   display: block;
   scroll-margin-block-start: calc(max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) + 36px) !important;
   scroll-margin-block-end: max(2px, var(--p-internal-multi-select-option-scaling, 1) * 6px) !important;
-  --p-internal-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
+  --__p-checkbox-scaling: var(--p-internal-multi-select-option-scaling) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot {
   display: block;
-  padding-top: max(0px, calc((calc(var(--p-internal-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
+  padding-top: max(0px, calc((calc(var(--__p-checkbox-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
 }
 .option {
   display: flex;
@@ -11116,7 +11408,7 @@ slot {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -11130,14 +11422,14 @@ slot {
 .checkbox {
   all: unset;
   display: grid;
-  width: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  height: calc(var(--p-internal-checkbox-scaling) * 1.75rem);
-  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  width: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  height: calc(var(--__p-checkbox-scaling) * 1.75rem);
+  margin-block: max(0px, calc((calc(6px + 2.125ex) - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  background: var(--p-color-frosted-soft);
+  background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
-  border: 1px solid var(--p-color-contrast-lower);
+  border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
 }
 .checkbox::before {
@@ -11146,7 +11438,7 @@ slot {
 }
 .checkbox::after {
   content: "";
-  margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-checkbox-scaling) * 1.75rem)) / 2));
+  margin: calc(-1px - max(0px, calc(24px - calc(var(--__p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
     </style>
@@ -11459,6 +11751,10 @@ exports[`should render dsr component for PPinCode 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -11473,7 +11769,7 @@ input {
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: var(--p-color-primary);
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -11485,12 +11781,13 @@ input:focus-visible {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  input:hover, label:hover~input {
+  input:hover {
     border-color: var(--p-color-primary);
   }
 }
 
 .root {
+  all: unset;
   display: grid;
   gap: 4px;
 }
@@ -11501,14 +11798,8 @@ input:focus-visible {
   justify-self: flex-start;
   gap: calc(11.2px * (var(--p-internal-pin-code-scaling) - 0.64285714) + 4px);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -11518,14 +11809,31 @@ input:focus-visible {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -11553,7 +11861,9 @@ input:focus-visible {
   white-space: nowrap;
 }
     </style>
-    <div
+    <fieldset
+      aria-describedby="description message"
+      aria-labelledby="label"
       class="root"
     >
       <div
@@ -11603,7 +11913,7 @@ input:focus-visible {
         id="loading"
         role="status"
       />
-    </div>
+    </fieldset>
   </template>
   Some child
 </p-pin-code>
@@ -11789,6 +12099,10 @@ exports[`should render dsr component for PRadioGroup 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -11806,14 +12120,8 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   column-gap: calc(22.4px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 8px);
   row-gap: calc(11.2px * (var(--p-internal-radio-group-scaling) - 0.64285714) + 4px);
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: inherit;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -11823,17 +12131,31 @@ exports[`should render dsr component for PRadioGroup 1`] = `
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: inherit;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
-}
-.label:is(legend) {
-  margin-bottom: 4px;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -11873,6 +12195,7 @@ exports[`should render dsr component for PRadioGroup 1`] = `
     </style>
     <fieldset
       aria-describedby="description message"
+      aria-labelledby="label"
       class="root"
       role="radiogroup"
     >
@@ -11913,6 +12236,10 @@ exports[`should render dsr component for PRadioGroupOption 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -11939,7 +12266,6 @@ input::before {
 input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input::after {
   content: "";
@@ -11962,14 +12288,8 @@ input::after {
   min-height: calc(6px + 2.125ex);
   cursor: pointer;
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -11980,16 +12300,32 @@ input::after {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--p-internal-radio-group-option-scaling) * 1.75rem) - calc(6px + 2.125ex)) / 2));
   padding-inline-start: calc(11.2px * (var(--p-internal-radio-group-option-scaling) - 0.64285714) + 4px);
-  grid-area: 1/2;
+}
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
 }
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -12196,7 +12532,7 @@ exports[`should render dsr component for PScroller 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12236,7 +12572,7 @@ exports[`should render dsr component for PScroller 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -12349,7 +12685,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -12389,7 +12725,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -12479,6 +12815,10 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
       :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -12493,14 +12833,8 @@ slot:not([name]) {
   display: grid;
   gap: 4px;
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: inherit;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -12510,17 +12844,31 @@ slot:not([name]) {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: inherit;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
-}
-.label:is(legend) {
-  margin-bottom: 4px;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;
@@ -12539,6 +12887,8 @@ slot:not([name]) {
 }
     </style>
     <fieldset
+      aria-describedby="description"
+      aria-labelledby="label"
       class="root"
     >
       <slot />
@@ -12643,6 +12993,10 @@ exports[`should render dsr component for PSelect 1`] = `
   :host([hidden]) {
     display: none !important;
   }
+  slot[name="label-after"] {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -12657,7 +13011,7 @@ exports[`should render dsr component for PSelect 1`] = `
     padding-inline: calc(22.4px * (var(--p-internal-select-scaling) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
     border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-    background: var(--p-select-background-color, var(--p-color-frosted-soft));
+    background: var(--p-select-background-color, var(--p-color-frosted));
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     color: var(--p-select-text-color, var(--p-color-primary));
     cursor: pointer;
@@ -12763,7 +13117,7 @@ exports[`should render dsr component for PSelect 1`] = `
     transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   }
   .no-results--highlighted {
-    background: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted);
   }
   .no-results--highlighted, .no-results--selected {
     color: var(--p-color-primary);
@@ -12787,14 +13141,8 @@ exports[`should render dsr component for PSelect 1`] = `
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .label {
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: var(--p-hyphens, auto);
-    cursor: pointer;
-    justify-self: flex-start;
-    color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  .label-wrapper {
+    min-width: fit-content;
     position: static;
     width: auto;
     height: auto;
@@ -12804,14 +13152,31 @@ exports[`should render dsr component for PSelect 1`] = `
     clip: auto;
     white-space: normal;
   }
+  .label {
+    font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: var(--p-hyphens, auto);
+    cursor: pointer;
+    color: var(--p-color-primary);
+    transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+    display: inline;
+  }
   .label:empty {
     display: none;
   }
-  .label+.label {
+  .label:is(span) {
     cursor: unset;
-    margin-top: -4px;
     font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
     color: var(--p-color-contrast-high);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    margin-top: -4px;
   }
   .required {
     user-select: none;
@@ -12962,7 +13327,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 .option--highlighted {
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
 }
 .option--highlighted, .option--selected {
   color: var(--p-color-primary);
@@ -13154,7 +13519,7 @@ dialog::backdrop {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -13194,7 +13559,7 @@ dialog::backdrop {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -13563,7 +13928,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -13603,7 +13968,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -13716,7 +14081,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -13756,7 +14121,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -14287,7 +14652,7 @@ exports[`should render dsr component for PTable 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -14327,7 +14692,7 @@ exports[`should render dsr component for PTable 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -14440,7 +14805,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -14480,7 +14845,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15019,7 +15384,7 @@ exports[`should render dsr component for PTabs 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15059,7 +15424,7 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15172,7 +15537,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15212,7 +15577,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15573,7 +15938,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15613,7 +15978,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15726,7 +16091,7 @@ img {
   hyphens: var(--p-hyphens, auto);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted);
+  background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -15766,7 +16131,7 @@ img {
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted-soft);
+    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15908,7 +16273,7 @@ span {
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
   color: var(--p-color-primary);
-  background: var(--p-color-frosted);
+  background: var(--p-color-frosted-strong);
   transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), backdrop-filter var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
 ::slotted(a), ::slotted(button) {
@@ -16210,6 +16575,10 @@ exports[`should render dsr component for PTextarea 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+slot[name="label-after"] {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -16225,7 +16594,7 @@ textarea {
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
-  background: var(--p-color-frosted-soft);
+  background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
@@ -16237,7 +16606,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, label:hover~textarea {
+  textarea:hover, .label-wrapper:hover~textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -16249,14 +16618,8 @@ textarea:focus {
 .wrapper {
   display: grid;
 }
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: var(--p-hyphens, auto);
-  cursor: pointer;
-  justify-self: flex-start;
-  color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+.label-wrapper {
+  min-width: fit-content;
   position: static;
   width: auto;
   height: auto;
@@ -16266,14 +16629,31 @@ textarea:focus {
   clip: auto;
   white-space: normal;
 }
+.label {
+  font: normal normal 400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: var(--p-hyphens, auto);
+  cursor: pointer;
+  color: var(--p-color-primary);
+  transition: color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
+  display: inline;
+}
 .label:empty {
   display: none;
 }
-.label+.label {
+.label:is(span) {
   cursor: unset;
-  margin-top: -4px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   color: var(--p-color-contrast-high);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  margin-top: -4px;
 }
 .required {
   user-select: none;

@@ -206,7 +206,7 @@ test.describe('form', () => {
     await initPinCode(page, {
       options: {
         isWithinForm: true,
-        markupBefore: `<fieldset disabled>`,
+        markupBefore: `<fieldset id="fieldset" disabled>`,
         markupAfter: `</fieldset>`,
       },
     });
@@ -215,7 +215,8 @@ test.describe('form', () => {
     const input2 = getInput(page, 2);
     const input3 = getInput(page, 3);
     const input4 = getInput(page, 4);
-    const fieldset = getFieldset(page);
+    const fieldset = page.locator('#fieldset');
+
     await expect(fieldset).toHaveJSProperty('disabled', true);
     await expect(host).toHaveJSProperty('disabled', true);
     await expect(input1).toHaveJSProperty('disabled', true);

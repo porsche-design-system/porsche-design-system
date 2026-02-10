@@ -24,22 +24,20 @@ export const DirectionSelect = ({
 }: DirectionSelectProps) => {
   return (
     <PSelect name="direction" value={value} hideLabel={hideLabel} compact={true} onChange={onDirectionChange}>
-      <span slot="label" className="inline-flex gap-static-xs">
-        {label}
-        <PPopover onClick={(e) => e.preventDefault()}>
-          The <code>dir</code> global attribute in HTML changes the direction of text and other content within an
-          element. It's most often used on the{' '}
-          <code>
-            {'<'}html{'>'}
-          </code>{' '}
-          tag to set the entire page's direction, which is crucial for supporting languages that are written from{' '}
-          <b>right to left</b> (RTL), such as Arabic and Hebrew. For example, using{' '}
-          <code>
-            {'<'}html dir="rtl"{'>'}
-          </code>{' '}
-          makes the entire page display from right to left, adjusting the layout and text flow accordingly.
-        </PPopover>
-      </span>
+      <span slot="label">{label}</span>
+      <PPopover slot="label-after" className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+        The <code>dir</code> global attribute in HTML changes the direction of text and other content within an element.
+        It's most often used on the{' '}
+        <code>
+          {'<'}html{'>'}
+        </code>{' '}
+        tag to set the entire page's direction, which is crucial for supporting languages that are written from{' '}
+        <b>right to left</b> (RTL), such as Arabic and Hebrew. For example, using{' '}
+        <code>
+          {'<'}html dir="rtl"{'>'}
+        </code>{' '}
+        makes the entire page display from right to left, adjusting the layout and text flow accordingly.
+      </PPopover>
       <PSelectOption value="ltr">LTR (left-to-right)</PSelectOption>
       <PSelectOption value="rtl">RTL (right-to-left)</PSelectOption>
     </PSelect>

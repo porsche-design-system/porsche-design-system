@@ -7,20 +7,30 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
+import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { cssVarCheckboxBorderColor, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-css-vars';
 import { getCheckboxIndeterminateBaseStyles } from '../../styles/checkbox/checkbox-indeterminate-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss, isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import {
+  getFunctionalComponentLabelAfterStyles,
+  getFunctionalComponentLabelStyles,
+} from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+// CSS Variables defined in checkbox-css-vars.ts
+/**
+ * @css-variable {"name": "--p-checkbox-border-color", "description": "🧪Experimental: Border colors of Checkbox. Should be used to override the default border color in different states (e.g., hover, focus, error), e.g. when the Checkbox is wrapped inside a custom label."}
+ * @css-variable {"name": "--p-checkbox-background-color", "description": "🧪Experimental: Background color of Checkbox."}
+ * @css-variable {"name": "--p-checkbox-icon-color", "description": "🧪Experimental: Checkmark icon color of Checkbox."}
  */
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -46,29 +56,34 @@ export const getComponentCss = (
         }),
         [`${cssVarInternalCheckboxScaling}`]: isCompact ? 0.64285714 : 1,
       },
+      ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
-        '&:checked': getCheckboxCheckedBaseStyles(isLoading),
-        '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading),
+        '&:checked': getCheckboxCheckedBaseStyles(isLoading, state),
+        '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading, state),
         '&:focus-visible': getFocusBaseStyles(),
         ...(!disabledOrLoading &&
           hoverMediaQuery({
-            '&:hover,label:hover~.wrapper>&': {
-              borderColor: formStateBorderHoverColor,
+            '&:hover': {
+              borderColor: `var(${cssVarCheckboxBorderColor}, ${formStateBorderHoverColor})`,
             },
           })),
       },
     },
     root: {
       display: 'grid',
-      gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
     },
     wrapper: {
       position: 'relative',
-      display: 'flex',
+      display: 'grid',
+      gridTemplateColumns: 'auto minmax(0, 1fr)',
+    },
+    'input-wrapper': {
+      position: 'relative',
       alignItems: 'center',
+      display: 'grid',
       alignSelf: 'flex-start',
       minHeight: fontLineHeight, // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
@@ -89,17 +104,16 @@ export const getComponentCss = (
       isDisabled || isLoading,
       hideLabel,
       {
-        gridArea: '1/2',
+        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       },
+      null,
       {
         paddingTop: labelPaddingTop,
         paddingInlineStart: labelPaddingInlineStart,
       }
     ),
     // .message
-    ...getFunctionalComponentStateMessageStyles(state, {
-      gridColumn: '1/-1',
-    }),
+    ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });

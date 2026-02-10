@@ -31,7 +31,6 @@
       "packages/styles/projects/emotion",
       "packages/styles/projects/vanilla-extract",
       "packages/styles/projects/global-styles",
-      "packages/styles/projects/shared-styles",
       "packages/utilities/projects/ag-grid",
       "packages/storefront/projects/stackblitz",
       "packages/shared/dist"

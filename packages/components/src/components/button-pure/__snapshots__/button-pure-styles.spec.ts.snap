@@ -77,7 +77,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -160,7 +160,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -243,7 +243,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -554,7 +554,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -639,7 +639,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -724,7 +724,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -807,7 +807,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -890,7 +890,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -1048,7 +1048,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -1263,7 +1263,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -1393,7 +1393,7 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -1458,7 +1458,7 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "
@@ -1553,7 +1553,7 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
   .root:hover::before {
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-frosted-strong);
   }
 }
 "

@@ -16,6 +16,7 @@ import {
   attachComponentCss,
   FORM_STATES,
   getPrefixedTagNames,
+  hasLabel,
   hasPropValueChanged,
   isDisabledOrLoading,
   validateProps,
@@ -43,8 +44,9 @@ const propTypes: PropTypes<typeof Checkbox> = {
   compact: AllowedTypes.boolean,
 };
 /**
- * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  */
 @Component({
   tag: 'p-checkbox',
@@ -109,6 +111,7 @@ export class Checkbox {
   private initialLoading: boolean = false;
   private defaultChecked: boolean;
   private checkboxInputElement: HTMLInputElement;
+  private externalLabel: HTMLLabelElement | null = null;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -137,6 +140,7 @@ export class Checkbox {
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
+    this.externalLabel = this.host.closest('label');
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -185,6 +189,17 @@ export class Checkbox {
         this.checkboxInputElement
       );
     }
+
+    // Handle cross-root ARIA labeling when the component is wrapped in a <label> element.
+    // We use the Accessibility Object Model (AOM) ariaLabelledByElements property to establish
+    // the relationship across the shadow DOM boundary, as IDREF-based aria-labelledby doesn't work cross-root.
+    if (this.externalLabel && !hasLabel(this.host, this.label)) {
+      if ('ariaLabelledByElements' in this.checkboxInputElement) {
+        this.checkboxInputElement.ariaLabelledByElements = [this.externalLabel];
+      } else {
+        (this.checkboxInputElement as HTMLInputElement).ariaLabel = this.externalLabel.textContent || '';
+      }
+    }
   }
 
   public render(): JSX.Element {
@@ -205,32 +220,34 @@ export class Checkbox {
     const id = 'x';
     return (
       <div class="root">
-        <Label
-          host={this.host}
-          htmlFor={id}
-          label={this.label}
-          isLoading={this.loading}
-          isDisabled={this.disabled}
-          isRequired={this.required}
-        />
         <div class="wrapper">
-          <input
-            type="checkbox"
-            id={id}
-            aria-describedby={`${descriptionId} ${messageId}`}
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            aria-disabled={this.loading || this.disabled ? 'true' : null}
-            checked={this.checked}
-            form={this.form}
-            value={this.value}
-            name={this.name}
-            onChange={this.onChange}
-            onBlur={this.onBlur}
-            required={this.required}
-            disabled={this.disabled}
-            ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
+          <div class="input-wrapper">
+            <input
+              type="checkbox"
+              id={id}
+              aria-describedby={`${descriptionId} ${messageId}`}
+              aria-invalid={this.state === 'error' ? 'true' : null}
+              aria-disabled={this.loading || this.disabled ? 'true' : null}
+              checked={this.checked}
+              form={this.form}
+              value={this.value}
+              name={this.name}
+              onChange={this.onChange}
+              onBlur={this.onBlur}
+              required={this.required}
+              disabled={this.disabled}
+              ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
+            />
+            {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
+          </div>
+          <Label
+            host={this.host}
+            htmlFor={id}
+            label={this.label}
+            isLoading={this.loading}
+            isDisabled={this.disabled}
+            isRequired={this.required}
           />
-          {this.loading && <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />}
         </div>
         <StateMessage state={this.state} message={this.message} host={this.host} />
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
