@@ -48,6 +48,13 @@ p {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
 .icon {
   margin-top: 2px;
 }
@@ -107,6 +114,13 @@ p {
   }
   p {
     margin-left: -8px;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 
@@ -172,6 +186,13 @@ p {
   }
 }
 
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
 .icon {
   margin-top: 2px;
 }
@@ -231,6 +252,13 @@ p {
   }
   p {
     margin-left: -8px;
+  }
+}
+
+@media (forced-colors: active) {
+  :host {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
   }
 }
 

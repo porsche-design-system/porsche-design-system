@@ -992,6 +992,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  input {
+    opacity: 1;
+    color: GrayText;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1116,6 +1123,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1190,7 +1204,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 2 1`] = `
@@ -1232,6 +1252,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1306,7 +1333,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 3 1`] = `
@@ -1348,6 +1381,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1422,7 +1462,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 4 1`] = `
@@ -1464,6 +1510,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1538,7 +1591,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 1`] = `
@@ -1580,6 +1639,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1654,7 +1720,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 2`] = `
@@ -1696,6 +1768,13 @@ input {
 input:focus-visible {
   border-color: var(--p-color-primary);
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   all: unset;
   display: grid;
@@ -1770,7 +1849,13 @@ input:focus-visible {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and length: 6 1`] = `

@@ -36,6 +36,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -45,6 +46,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-error);
@@ -154,6 +161,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -163,6 +171,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-error);
@@ -272,6 +286,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -281,6 +296,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-primary);
@@ -390,6 +411,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -399,6 +421,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-primary);
@@ -508,6 +536,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -517,6 +546,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-success);
@@ -626,6 +661,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -635,6 +671,12 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-color-success);
@@ -747,6 +789,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -756,6 +799,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -830,7 +886,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: error 2`] = `
@@ -872,6 +934,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -881,6 +944,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -955,7 +1031,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 1`] = `
@@ -997,6 +1079,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -1006,6 +1089,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1080,7 +1176,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: none 2`] = `
@@ -1122,6 +1224,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -1131,6 +1234,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1205,7 +1321,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 1`] = `
@@ -1247,6 +1369,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -1256,6 +1379,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1330,7 +1466,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true and state: success 2`] = `
@@ -1372,6 +1514,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -1381,6 +1524,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1455,7 +1611,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 1`] = `
@@ -1497,6 +1659,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -1506,6 +1669,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1571,7 +1747,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: error 2`] = `
@@ -1613,6 +1795,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -1622,6 +1805,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1687,7 +1883,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 1`] = `
@@ -1729,6 +1931,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -1738,6 +1941,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1803,7 +2019,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: none 2`] = `
@@ -1845,6 +2067,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -1854,6 +2077,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1919,7 +2155,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 1`] = `
@@ -1961,6 +2203,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -1970,6 +2213,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2035,7 +2291,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false and state: success 2`] = `
@@ -2077,6 +2339,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -2086,6 +2349,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2151,7 +2427,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 1`] = `
@@ -2193,6 +2475,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -2202,6 +2485,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2276,7 +2572,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: error 2`] = `
@@ -2318,6 +2620,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-error);
@@ -2327,6 +2630,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2401,7 +2717,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 1`] = `
@@ -2443,6 +2765,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -2452,6 +2775,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2526,7 +2862,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: none 2`] = `
@@ -2568,6 +2910,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-primary);
@@ -2577,6 +2920,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2651,7 +3007,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 1`] = `
@@ -2693,6 +3055,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -2702,6 +3065,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2776,7 +3152,13 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true and state: success 2`] = `
@@ -2818,6 +3200,7 @@ input::before {
   grid-area: 1/1;
 }
 input:checked::before {
+  forced-color-adjust: none;
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-success);
@@ -2827,6 +3210,19 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--p-internal-radio-group-option-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+  input {
+    border-color: GrayText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2901,5 +3297,11 @@ input::after {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;

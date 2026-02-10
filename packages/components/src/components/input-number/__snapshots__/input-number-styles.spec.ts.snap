@@ -47,7 +47,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -117,6 +117,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -172,7 +179,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -242,6 +249,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -297,7 +311,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -362,6 +376,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -417,7 +438,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -482,6 +503,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -537,7 +565,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -602,6 +630,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -657,7 +692,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -723,6 +758,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-success);
@@ -778,7 +820,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -844,6 +886,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-success);
@@ -899,7 +948,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -964,6 +1013,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -1019,7 +1075,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .label-wrapper {
@@ -1088,6 +1144,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-error);
@@ -1143,7 +1206,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -1207,6 +1270,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -1262,7 +1332,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -1326,6 +1396,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
 @media(hover:hover) {
   .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
     border-color: var(--p-color-primary);
@@ -1382,7 +1459,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border-color: transparent;
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -1450,7 +1527,14 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
-}"
+}
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true, readOnly: true and controls: true 2`] = `
@@ -1501,7 +1585,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
   border-color: transparent;
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
 }
 .label-wrapper {
@@ -1569,7 +1653,14 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
-}"
+}
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false and controls: false 1`] = `
@@ -1619,7 +1710,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: text;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .spinner {
@@ -1808,6 +1899,13 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
 "
 `;
 
@@ -1842,6 +1940,13 @@ input {
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   display: none;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -1860,7 +1965,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
 }
 .label-wrapper {
@@ -2045,6 +2150,20 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     margin-top: -4px;
   }
 }
+
+@media (forced-colors: active) {
+  .wrapper {
+    border-color: GrayText !important;
+  }
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    border-color: GrayText;
+  }
+  .label {
+    color: GrayText;
+  }
+}
 "
 `;
 
@@ -2079,6 +2198,13 @@ input {
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   display: none;
 }
+@media (forced-colors: active) {
+  :host {
+    opacity: 1 !important;
+    color: GrayText !important;
+  }
+}
+
 .root {
   display: grid;
   gap: 4px;
@@ -2097,7 +2223,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1), border-color var(--p-transition-duration, .25s) cubic-bezier(.25,.1,.25,1);
 }
-.wrapper:focus-within {
+.wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
 }
 .spinner {
@@ -2167,5 +2293,19 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}"
+}
+@media (forced-colors: active) {
+  .wrapper {
+    border-color: GrayText !important;
+  }
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    border-color: GrayText;
+  }
+  .label {
+    color: GrayText;
+  }
+}
+"
 `;

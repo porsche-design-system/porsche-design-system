@@ -45,6 +45,15 @@ exports[`getComponentCss() > should return correct css for size: "medium" and we
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -86,7 +95,13 @@ exports[`getComponentCss() > should return correct css for size: "medium" and we
   to {
     visibility: hidden;
   }
-}"
+}
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for size: "medium" and weight: regular 2`] = `
@@ -134,6 +149,15 @@ exports[`getComponentCss() > should return correct css for size: "medium" and we
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -175,7 +199,13 @@ exports[`getComponentCss() > should return correct css for size: "medium" and we
   to {
     visibility: hidden;
   }
-}"
+}
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for size: "small" and weight: regular 1`] = `
@@ -223,6 +253,15 @@ exports[`getComponentCss() > should return correct css for size: "small" and wei
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -264,7 +303,13 @@ exports[`getComponentCss() > should return correct css for size: "small" and wei
   to {
     visibility: hidden;
   }
-}"
+}
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for size: "small" and weight: regular 2`] = `
@@ -312,6 +357,15 @@ exports[`getComponentCss() > should return correct css for size: "small" and wei
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -353,7 +407,13 @@ exports[`getComponentCss() > should return correct css for size: "small" and wei
   to {
     visibility: hidden;
   }
-}"
+}
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for size: "small" and weight: semi-bold 1`] = `
@@ -401,6 +461,15 @@ exports[`getComponentCss() > should return correct css for size: "small" and wei
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -442,7 +511,13 @@ exports[`getComponentCss() > should return correct css for size: "small" and wei
   to {
     visibility: hidden;
   }
-}"
+}
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} and weight: regular 1`] = `
@@ -490,6 +565,15 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
 }
+@media (forced-colors: active) {
+  ::slotted(:is(a,button):focus-visible) {
+    outline-color: Highlight !important;
+  }
+  ::slotted(a[aria-selected="true"])::after, ::slotted(a[aria-current="true"])::after,::slotted(button[aria-selected="true"])::after, ::slotted(button[aria-current="true"])::after {
+    background: ActiveBorder !important;
+  }
+}
+
 @media(hover:hover) {
   ::slotted(a)::before, ::slotted(button)::before {
     content: "" !important;
@@ -559,6 +643,12 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
 @media(min-width:1760px) {
     .scroller {
       font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+    }
+}
+
+@media (forced-colors: active) {
+    .bar {
+      background: ActiveBorder;
     }
 }
 "

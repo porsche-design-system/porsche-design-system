@@ -94,6 +94,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -217,7 +223,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success and compact: false 1`] = `
@@ -314,6 +331,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -438,7 +461,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
@@ -535,6 +569,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-error));
@@ -658,7 +698,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
@@ -755,6 +806,12 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -878,7 +935,18 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
@@ -973,6 +1041,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1092,7 +1167,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
@@ -1187,6 +1276,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1305,7 +1401,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 2`] = `
@@ -1400,6 +1510,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1518,7 +1635,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: true 1`] = `
@@ -1613,6 +1744,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1731,7 +1869,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
@@ -1826,6 +1978,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -1945,7 +2104,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
@@ -2040,6 +2213,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -2158,7 +2338,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
@@ -2253,6 +2447,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -2370,7 +2571,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success and compact: false 1`] = `
@@ -2465,6 +2680,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -2583,7 +2805,21 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error and compact: false 1`] = `
@@ -2680,6 +2916,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-error));
@@ -2804,7 +3046,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
@@ -2901,6 +3154,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3024,7 +3283,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 2`] = `
@@ -3121,6 +3391,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3244,7 +3520,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 3`] = `
@@ -3341,6 +3628,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3464,7 +3757,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
@@ -3561,6 +3865,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-error));
@@ -3684,7 +3994,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none and compact: false 1`] = `
@@ -3781,6 +4102,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-primary));
@@ -3903,7 +4230,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
@@ -4000,6 +4338,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -4123,7 +4467,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 2`] = `
@@ -4220,6 +4575,12 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    button:focus-visible {
+      outline-color: Highlight;
+    }
+}
+
 @media(hover:hover) {
     button:hover, label:hover~button {
       border-color: var(--p-select-border-color, var(--p-color-success));
@@ -4343,7 +4704,18 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
@@ -4438,6 +4810,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -4557,7 +4936,21 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
@@ -4652,6 +5045,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -4770,7 +5170,21 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
@@ -4865,6 +5279,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -4984,7 +5405,21 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: true 1`] = `
@@ -5079,6 +5514,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -5198,7 +5640,21 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
@@ -5293,6 +5749,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -5411,7 +5874,21 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
@@ -5506,6 +5983,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
+@media (forced-colors: active) {
+    :host {
+      opacity: 1;
+      color: GrayText;
+    }
+}
+
   .root {
     display: grid;
     gap: 4px;
@@ -5623,5 +6107,19 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media (forced-colors: active) {
+    .no-results--disabled {
+      color: GrayText;
+    }
+    .no-results--highlighted {
+      forced-color-adjust: none;
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+    .label {
+      color: GrayText;
+    }
+}
+"
 `;

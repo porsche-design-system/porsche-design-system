@@ -32,6 +32,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover > .icon {
     background-color: var(--p-color-frosted);
@@ -88,6 +98,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover > .icon {
     background-color: var(--p-color-frosted);
@@ -144,6 +164,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover > .icon {
     background-color: var(--p-color-frosted);
@@ -206,6 +236,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover > .icon {
     background-color: var(--p-color-frosted);
@@ -268,6 +308,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover > .icon {
     background-color: var(--p-color-frosted);
@@ -330,6 +380,16 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media(hover:hover) {
   button:hover > .icon {
     background-color: var(--p-color-frosted);
