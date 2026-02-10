@@ -1,5 +1,10 @@
 import { spacingStaticXSmall } from '@porsche-design-system/emotion';
-import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  getDisabledBaseStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import {
