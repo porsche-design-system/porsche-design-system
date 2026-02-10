@@ -1,3 +1,4 @@
+@use '@porsche-design-system/scss' as pds;
 @use 'app/scss/blur';
 @use 'app/scss/border';
 @use 'app/scss/color';
@@ -10,3 +11,22 @@
 @use 'app/scss/skeleton';
 @use 'app/scss/spacing';
 @use 'app/scss/typography';
+
+:root,
+.scheme-light {
+  @include pds.color-scheme-polyfill(light);
+  color-scheme: light;
+  content: 'scss'; /* only needed for test setup to identify class */
+}
+
+.scheme-dark {
+  @include pds.color-scheme-polyfill(dark);
+  color-scheme: dark;
+  content: 'scss'; /* only needed for test setup to identify class */
+}
+
+.scheme-light-dark {
+  @include pds.color-scheme-polyfill(light dark);
+  color-scheme: light dark;
+  content: 'scss'; /* only needed for test setup to identify class */
+}
