@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- Storefront: documentation for integrating Porsche Design System with AI coding assistants like GitHub Copilot and Cursor
+  to generate accessible code that follows WCAG 2.2 AA standards. ([#4147](https://github.com/porsche-design-system/porsche-design-system/pull/4147))
 - `Canvas`: prop `background` to set the background color to `canvas | surface`
 - `Carousel`:
   - `width` prop now supports `wide` and `full` values
