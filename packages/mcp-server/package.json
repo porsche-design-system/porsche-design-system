@@ -1,0 +1,29 @@
+{
+  "name": "@porsche-design-system/mcp-server",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "bin": {
+    "pds-mcp-server": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "prepare-context": "tsx scripts/prepare-context/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "tsx": "^4.20.6",
+    "tsup": "^8.5.0",
+    "typescript": "~5.9.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
