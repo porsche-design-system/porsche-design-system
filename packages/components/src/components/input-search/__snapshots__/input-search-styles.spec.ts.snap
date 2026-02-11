@@ -2150,12 +2150,11 @@ input::-webkit-search-cancel-button {
 
 @media (forced-colors: active) {
   .wrapper {
-    border-color: GrayText !important;
+    border-color: GrayText;
   }
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
-    border-color: GrayText;
   }
   .label {
     color: GrayText;
@@ -2292,12 +2291,11 @@ input::-webkit-search-cancel-button {
 }
 @media (forced-colors: active) {
   .wrapper {
-    border-color: GrayText !important;
+    border-color: GrayText;
   }
   .wrapper:not(:has(input:disabled)):focus-within {
     outline: 2px solid Highlight;
     outline-offset: 2px;
-    border-color: GrayText;
   }
   .label {
     color: GrayText;
