@@ -8,51 +8,54 @@ export const metadata = {
 
 # Migration Guide
 
-<TableOfContents headings={['SCSS', '👹Breaking Changes', 'Upcoming Changes']} />
+<TableOfContents headings={['⭐ Introducing Color Scheme', '👹 Breaking Changes', '🤡 Deprecations']} />
 
-## SCSS
+## ⭐ Introducing Color Scheme
 
-## 👹Breaking Changes
+The new color system leverages the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function to
+deliver native, preference-based theming. By adopting this browser-native engine, we have eliminated the need for
+proprietary switching logic, resulting in a more performant and standardized architecture.
 
-- Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds` to easily identify pds styles. The
-  new SCSS styles don't include a prefix like `$pds-`.
+> **⚠️ Deprecation Notice:** Legacy SCSS color variables are officially deprecated and scheduled for removal in the next
+> major release. We recommend migrating to the new functional tokens immediately to ensure your components remain
+> future-proof.
 
-```diff
-- @use '@porsche-design-system/components-{js\|angular\|react\|vue}/styles' as *;
-+ @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
-```
+### Core Implementation
 
-- Removed `pds-hover` since it did not work reliable.
+All colors and styles are now driven by the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
+broad compatibility, we provide the `@mixin color-scheme()`, which generates utility classes and includes a polyfill for
+browsers that do not yet support `light-dark()` (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
-- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
-  `light-dark()` CSS color function).
+#### Utility Classes
 
-```diff
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
-```
+Apply these classes to the document or any container to control the theme context:
 
-## Introducing Color Scheme
+- `.scheme-light` — Forces light mode.
+- `.scheme-dark` — Forces dark mode.
+- `.scheme-light-dark` — Dynamically follows system/OS settings.
 
-The new color system leverages the standard CSS `light-dark()` function to deliver automatic, preference-based theming.
-This modernized approach simplifies development by removing the need for manual theme switching logic
+### Usage
 
-- All new colors and styles are now controlled by CSS `color-scheme` and CSS
-  [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Therefore,
-  we provide the `@mixin color-scheme()` which includes utility classes and a polyfill for browsers not supporting the
-  CSS `light-dark()`.
+#### 1. Global Setup
 
-- The `@mixin color-scheme()` provides the following utility classes to control the theme of your application:
-  - `.scheme-light` — light mode (first value)
-  - `.scheme-dark` — dark mode (second value)
-  - `.scheme-light-dark` — auto dark mode (respects OS preference)
+Include the mixin once in your global stylesheet to initialize the theme utilities.
 
 ```scss
 // global styles
-@use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
+@use '@porsche-design-system/components-js/scss' as pds;
 
-@include pds.color-scheme(); // Include once in your global styles
+@include pds.color-scheme();
+
+html, body {…}
 ```
+
+#### 2. Component Implementation
+
+Utilize the new tokens within your styles. These variables automatically resolve to the correct value based on the
+active theme.
 
 ```scss
 // custom component styles
@@ -65,6 +68,10 @@ This modernized approach simplifies development by removing the need for manual 
 }
 ```
 
+#### 3. Application
+
+The defined theme context will cascade to all child elements.
+
 ```html
 <!-- Defined theme will be applied to all child elements -->
 <html class="scheme-dark">
@@ -76,12 +83,26 @@ This modernized approach simplifies development by removing the need for manual 
 </html>
 ```
 
-## Upcoming Changes
+## 👹 Breaking Changes
 
-All following old styles are still available but marked as deprecated and will be removed with the next major release.
-Please switch to the new styles as soon as possible.
+- Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds` to easily identify pds styles. The
+  new SCSS styles don't include a prefix like `$pds-`.
+
+```diff
+- @use '@porsche-design-system/components-{js\|angular\|react\|vue}/styles' as *;
++ @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
+```
+
+- Removed `@mixin pds-hover()` since it did not work reliable.
+
+## 🤡 Deprecations
+
+Please transition to the new styles as soon as possible. All legacy styles are currently deprecated and are scheduled
+for removal in the next major release.
 
 ### Blur
+
+See [SCSS Blur Examples](/scss/blur/examples) for more details.
 
 ```diff
 - @include pds-frosted-glass();
@@ -90,8 +111,7 @@ Please switch to the new styles as soon as possible.
 
 ### Border
 
-Renamed `border-radius` variables and added new ones. See [SCSS Border Examples](/scss/border/examples) for more
-details.
+See [SCSS Border Examples](/scss/border/examples) for more details.
 
 ```diff
 - border-radius: $pds-border-radius-medium;
@@ -108,10 +128,10 @@ details.
 
 ### Color
 
-Renamed `color` variables and introduced new ones. See [SCSS Color Examples](/scss/color/examples) for more details. All
-new colors use the CSS
-[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Learn more
-about the theming in the [Theme Guide](/must-know/theme).
+New color definitions now leverage the native CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You
+can explore implementation samples in the [SCSS Color Examples](/scss/color/examples) or dive deeper into our system
+architecture in the [Theme Guide](/must-know/theme).
 
 ```diff
 - $pds-theme-light-primary;
@@ -173,12 +193,12 @@ about the theming in the [Theme Guide](/must-know/theme).
 + $color-focus;
 - $pds-theme-light-state-disabled;
 - $pds-theme-dark-state-disabled;
-+ $color-disabled;
++ $color-contrast-lower;
 ```
 
 ### Focus
 
-Added new focus mixin. See [SCSS Focus Examples](/scss/focus/examples) for more details.
+See [SCSS Focus Examples](/scss/focus/examples) for more details.
 
 ```diff
 - @include pds-focus();
@@ -187,7 +207,7 @@ Added new focus mixin. See [SCSS Focus Examples](/scss/focus/examples) for more 
 
 ### Gradient
 
-Added new gradient stops variable. See [SCSS Gradient Examples](/scss/gradient/examples) for more details.
+See [SCSS Gradient Examples](/scss/gradient/examples) for more details.
 
 ```diff
 - @include pds-gradient-to-bottom();
@@ -202,8 +222,7 @@ Added new gradient stops variable. See [SCSS Gradient Examples](/scss/gradient/e
 
 ### Media Query
 
-Added new breakpoints values and media query mixins. See [SCSS Media Query Examples](/scss/media-query/examples) for
-more details.
+See [SCSS Media Query Examples](/scss/media-query/examples) for more details.
 
 ```diff
 - $pds-breakpoint-base
@@ -233,7 +252,7 @@ more details.
 
 ### Motion
 
-Added new motion variables. See [SCSS Motion Examples](/scss/motion/examples) for more details.
+See [SCSS Motion Examples](/scss/motion/examples) for more details.
 
 ```diff
 - transition-duration: $pds-motion-duration-short;
@@ -254,7 +273,7 @@ Added new motion variables. See [SCSS Motion Examples](/scss/motion/examples) fo
 
 ### Shadow
 
-Added new shadow variables. See [SCSS Shadow Examples](/scss/shadow/examples) for more details.
+See [SCSS Shadow Examples](/scss/shadow/examples) for more details.
 
 ```diff
 - @include pds-drop-shadow-high();
@@ -267,7 +286,7 @@ Added new shadow variables. See [SCSS Shadow Examples](/scss/shadow/examples) fo
 
 ### Spacing
 
-Added new spacing variables. See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
+See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
 
 ```diff
 - $pds-spacing-fluid-x-small;
@@ -298,7 +317,7 @@ Added new spacing variables. See [SCSS Spacing Examples](/scss/spacing/examples)
 
 ### Typography
 
-Added new typography mixins. See [SCSS Typography Examples](/scss/typography/examples) for more details.
+See [SCSS Typography Examples](/scss/typography/examples) for more details.
 
 ```diff
 - @include pds-display-large;
@@ -329,4 +348,13 @@ Added new typography mixins. See [SCSS Typography Examples](/scss/typography/exa
 + @include prose-text-xs;
 - @include pds-text-xx-small;
 + @include prose-text-2xs;
+```
+
+### Skeleton
+
+See [SCSS Skeleton Examples](/scss/skeleton/examples) for more details.
+
+```diff
+- @include pds-skeleton('light' | 'dark' | 'auto');
++ @include skeleton();
 ```

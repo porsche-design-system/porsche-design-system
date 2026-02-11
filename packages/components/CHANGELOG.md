@@ -128,13 +128,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Tailwind CSS: `--color-disabled`
 
-- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
-
-```diff
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
-```
-
 - Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
   color function)
 

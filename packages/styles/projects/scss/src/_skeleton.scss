@@ -17,3 +17,15 @@
   background: transparent linear-gradient(to right, color.$color-frosted 0%, color.$color-frosted-strong 50%, color.$color-frosted 100%) 0 0 / 200% 100%;
   animation: skeleton motion.$duration-xl motion.$ease-in-out infinite;
 }
+
+
+@mixin pds-skeleton($theme: 'light') {
+  @include skeleton();
+  @if ($theme == 'dark') {
+    color-scheme: dark;
+  } @else if ($theme == 'auto') {
+    color-scheme: light dark;
+  } @else {
+    color-scheme: light;
+  }
+}
