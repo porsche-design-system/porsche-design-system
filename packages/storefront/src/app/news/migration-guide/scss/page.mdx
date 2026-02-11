@@ -32,6 +32,50 @@ export const metadata = {
 + @include skeleton();
 ```
 
+## Introducing Color Scheme
+
+The new color system leverages the standard CSS `light-dark()` function to deliver automatic, preference-based theming.
+This modernized approach simplifies development by removing the need for manual theme switching logic
+
+- All new colors and styles are now controlled by CSS `color-scheme` and CSS
+  [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Therefore,
+  we provide the `@mixin color-scheme()` which includes utility classes and a polyfill for browsers not supporting the
+  CSS `light-dark()`.
+
+- The `@mixin color-scheme()` provides the following utility classes to control the theme of your application:
+  - `.scheme-light` — light mode (first value)
+  - `.scheme-dark` — dark mode (second value)
+  - `.scheme-light-dark` — auto dark mode (respects OS preference)
+
+```scss
+// global styles
+@use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
+
+@include pds.color-scheme(); // Include once in your global styles
+```
+
+```scss
+// custom component styles
+@use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
+
+.my-component {
+  // Use light-dark() color variables
+  background-color: pds.$color-frosted;
+  color: pds.$color-primary;
+}
+```
+
+```html
+<!-- Defined theme will be applied to all child elements -->
+<html class="scheme-dark">
+  <head></head>
+  <body>
+    <!-- Will be rendered in dark mode -->
+    <div class="my-component"></div>
+  </body>
+</html>
+```
+
 ## Upcoming Changes
 
 All following old styles are still available but marked as deprecated and will be removed with the next major release.
@@ -65,92 +109,71 @@ details.
 ### Color
 
 Renamed `color` variables and introduced new ones. See [SCSS Color Examples](/scss/color/examples) for more details. All
-colors now also available as `light-dark` variant when used without `-light|-dark` suffix.
+new colors use the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Learn more
+about the theming in the [Theme Guide](/must-know/theme).
 
 ```diff
 - $pds-theme-light-primary;
-+ $color-primary-light;
-- $pds-theme-light-background-base;
-+ $color-canvas-light;
-- $pds-theme-light-background-surface;
-+ $color-surface-light;
-- $pds-theme-light-background-shading;
-+ $color-backdrop-light;
-- $pds-theme-light-background-frosted;
-+ $color-frosted-light;
-- $pds-theme-light-contrast-low;
-+ $color-contrast-low;
-- $pds-theme-light-contrast-medium;
-+ $color-contrast-medium;
-- $pds-theme-light-contrast-high;
-+ $color-contrast-high;
-- $pds-theme-light-notification-success;
-+ $color-success-light;
-- $pds-theme-light-notification-success-soft;
-+ $color-success-frosted-light;
-- $pds-theme-light-notification-warning;
-+ $color-warning-light;
-- $pds-theme-light-notification-warning-soft;
-+ $color-warning-frosted-light;
-- $pds-theme-light-notification-error;
-+ $color-error-light;
-- $pds-theme-light-notification-error-soft;
-+ $color-error-frosted-light;
-- $pds-theme-light-notification-info;
-+ $color-info-light;
-- $pds-theme-light-notification-info-soft;
-+ $color-info-frosted-light;
-- $pds-theme-light-state-hover;
-// Not renamed yet, will be removed in next major release
-- $pds-theme-light-state-active;
-// Not renamed yet, will be removed in next major release
-- $pds-theme-light-state-focus;
-+ $color-focus-light;
-- $pds-theme-light-state-disabled;
-+ $color-disabled-light;
-```
-
-```diff
 - $pds-theme-dark-primary;
-+ $color-primary-dark;
++ $color-primary;
+- $pds-theme-light-background-base;
 - $pds-theme-dark-background-base;
-+ $color-canvas-dark;
++ $color-canvas;
+- $pds-theme-light-background-surface;
 - $pds-theme-dark-background-surface;
-+ $color-surface-dark;
++ $color-surface;
+- $pds-theme-light-background-shading;
 - $pds-theme-dark-background-shading;
-+ $color-backdrop-dark;
++ $color-backdrop;
+- $pds-theme-light-background-frosted;
 - $pds-theme-dark-background-frosted;
-+ $color-frosted-dark;
++ $color-frosted;
+- $pds-theme-light-contrast-low;
 - $pds-theme-dark-contrast-low;
 + $color-contrast-low;
+- $pds-theme-light-contrast-medium;
 - $pds-theme-dark-contrast-medium;
 + $color-contrast-medium;
+- $pds-theme-light-contrast-high;
 - $pds-theme-dark-contrast-high;
 + $color-contrast-high;
+- $pds-theme-light-notification-success;
 - $pds-theme-dark-notification-success;
-+ $color-success-dark;
++ $color-success;
+- $pds-theme-light-notification-success-soft;
 - $pds-theme-dark-notification-success-soft;
-+ $color-success-frosted-dark;
++ $color-success-frosted;
+- $pds-theme-light-notification-warning;
 - $pds-theme-dark-notification-warning;
-+ $color-warning-dark;
++ $color-warning;
+- $pds-theme-light-notification-warning-soft;
 - $pds-theme-dark-notification-warning-soft;
-+ $color-warning-frosted-dark;
++ $color-warning-frosted;
+- $pds-theme-light-notification-error;
 - $pds-theme-dark-notification-error;
-+ $color-error-dark;
++ $color-error;
+- $pds-theme-light-notification-error-soft;
 - $pds-theme-dark-notification-error-soft;
-+ $color-error-frosted-dark;
++ $color-error-frosted;
+- $pds-theme-light-notification-info;
 - $pds-theme-dark-notification-info;
-+ $color-info-dark;
++ $color-info;
+- $pds-theme-light-notification-info-soft;
 - $pds-theme-dark-notification-info-soft;
-+ $color-info-frosted-dark;
++ $color-info-frosted;
+- $pds-theme-light-state-hover;
 - $pds-theme-dark-state-hover;
 // Not renamed yet, will be removed in next major release
+- $pds-theme-light-state-active;
 - $pds-theme-dark-state-active;
 // Not renamed yet, will be removed in next major release
+- $pds-theme-light-state-focus;
 - $pds-theme-dark-state-focus;
-+ $color-focus-dark;
++ $color-focus;
+- $pds-theme-light-state-disabled;
 - $pds-theme-dark-state-disabled;
-+ $color-disabled-dark;
++ $color-disabled;
 ```
 
 ### Focus

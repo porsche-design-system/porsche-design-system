@@ -70,92 +70,71 @@ details.
 ### Color
 
 Renamed `color` variables and introduced new ones. See [Emotion Color Examples](/emotion/color/examples) for more
-details. All colors now also available as `light-dark` variant when used without `Light|Dark` suffix.
+details. All new colors use the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Learn more
+about the theming in the [Theme Guide](/must-know/theme).
 
 ```diff
 - themeLightPrimary
-+ colorPrimaryLight
-- themeLightBackgroundBase
-+ colorCanvasLight
-- themeLightBackgroundSurface
-+ colorSurfaceLight
-- themeLightBackgroundShading
-+ colorBackdropLight
-- themeLightBackgroundFrosted
-+ colorFrostedLight
-- themeLightContrastLow
-+ colorContrastLowLight
-- themeLightContrastMedium
-+ colorContrastMediumLight
-- themeLightContrastHigh
-+ colorContrastHighLight
-- themeLightNotificationSuccess
-+ colorSuccessLight
-- themeLightNotificationSuccessSoft
-+ colorSuccessFrostedLight
-- themeLightNotificationWarning
-+ colorWarningLight
-- themeLightNotificationWarningSoft
-+ colorWarningFrostedLight
-- themeLightNotificationError
-+ colorErrorLight
-- themeLightNotificationErrorSoft
-+ colorErrorFrostedLight
-- themeLightNotificationInfo
-+ colorInfoLight
-- themeLightNotificationInfoSoft
-+ colorInfoFrostedLight
-- themeLightStateHover
-// Not renamed yet, will be removed in next major release
-- themeLightStateActive
-// Not renamed yet, will be removed in next major release
-- themeLightStateFocus
-+ colorFocusLight
-- themeLightStateDisabled
-+ colorDisabledLight
-```
-
-```diff
 - themeDarkPrimary
-+ colorPrimaryDark
++ colorPrimary
+- themeLightBackgroundBase
 - themeDarkBackgroundBase
-+ colorCanvasDark
++ colorCanvas
+- themeLightBackgroundSurface
 - themeDarkBackgroundSurface
-+ colorSurfaceDark
++ colorSurface
+- themeLightBackgroundShading
 - themeDarkBackgroundShading
-+ colorBackdropDark
++ colorBackdrop
+- themeLightBackgroundFrosted
 - themeDarkBackgroundFrosted
-+ colorFrostedDark
++ colorFrosted
+- themeLightContrastLow
 - themeDarkContrastLow
-+ colorContrastLowDark
++ colorContrastLow
+- themeLightContrastMedium
 - themeDarkContrastMedium
-+ colorContrastMediumDark
++ colorContrastMedium
+- themeLightContrastHigh
 - themeDarkContrastHigh
-+ colorContrastHighDark
++ colorContrastHigh
+- themeLightNotificationSuccess
 - themeDarkNotificationSuccess
-+ colorSuccessDark
++ colorSuccess
+- themeLightNotificationSuccessSoft
 - themeDarkNotificationSuccessSoft
-+ colorSuccessFrostedDark
++ colorSuccessFrosted
+- themeLightNotificationWarning
 - themeDarkNotificationWarning
-+ colorWarningDark
++ colorWarning
+- themeLightNotificationWarningSoft
 - themeDarkNotificationWarningSoft
-+ colorWarningFrostedDark
++ colorWarningFrosted
+- themeLightNotificationError
 - themeDarkNotificationError
-+ colorErrorDark
++ colorError
+- themeLightNotificationErrorSoft
 - themeDarkNotificationErrorSoft
-+ colorErrorFrostedDark
++ colorErrorFrosted
+- themeLightNotificationInfo
 - themeDarkNotificationInfo
-+ colorInfoDark
++ colorInfo
+- themeLightNotificationInfoSoft
 - themeDarkNotificationInfoSoft
-+ colorInfoFrostedDark
++ colorInfoFrosted
+- themeLightStateHover
 - themeDarkStateHover
 // Not renamed yet, will be removed in next major release
+- themeLightStateActive
 - themeDarkStateActive
 // Not renamed yet, will be removed in next major release
+- themeLightStateFocus
 - themeDarkStateFocus
-+ colorFocusDark
++ colorFocus
+- themeLightStateDisabled
 - themeDarkStateDisabled
-+ colorDisabledDark
++ colorDisabled
 ```
 
 ### Focus
