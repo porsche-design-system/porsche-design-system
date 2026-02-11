@@ -9,31 +9,36 @@ export const metadata = {
 
 <TableOfContents headings={['How it works', 'Defining themes', 'Fallbacks']} />
 
-The Porsche Design System is built with theming in mind, using the CSS
-[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) color function. The
-mandatory [global styles](/styles/introduction) define CSS variables that are used across all components, enabling
-seamless theme switching.
+The Porsche Design System is built for theming. It defines color tokens with CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark), controlled
+by [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme). The CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function is
+supported in all modern browsers. For older browsers, we ship a polyfill so the same color tokens still resolve
+correctly. See browser support: https://caniuse.com/wf-light-dark
+
+The mandatory [Global Styles](/styles/introduction) provide the shared CSS variables consumed by all components.
 
 ## How it works
 
 The system relies on two key CSS features:
 
-**CSS Variables**: Global styles define color variables using `light-dark()`, for example:
+**CSS Variables**: [Global Styles](/styles/introduction) define color variables using `light-dark()`, for example:
 
 ```css
 :root {
-  --p-color-primary: light-dark(hsl(225, 66.7%, 1.2%), hsl(240, 12.5%, 96.9%));
+  --p-color-primary: light-dark(white, black);
 }
 ```
 
-**Color Scheme**: The `color-scheme` CSS property controls which value `light-dark()` uses:
+**Color Scheme**: The `color-scheme` CSS property determines which value `light-dark()` uses. We provide CSS classes
+with a polyfill defined in [Global Styles](/styles/introduction):
 
-- `color-scheme: light` → uses the first value (Light theme)
-- `color-scheme: dark` → uses the second value (Dark theme)
-- `color-scheme: light dark` → respects the user's operating system preference (Auto theme)
+- `.scheme-light` — light mode (first value)
+- `.scheme-dark` — dark mode (second value)
+- `.scheme-light-dark` — auto dark mode (respects OS preference)
 
-Components automatically adapt to the current theme without any additional configuration, as they reference the CSS
-variables which respond to the `color-scheme` setting.
+Components automatically adapt to the current theme by referencing CSS variables that respond to the `color-scheme`
+setting.
 
 ## Defining themes
 
@@ -80,8 +85,3 @@ provides these classes out of the box):
 
 This approach provides native browser support for theming and respects user preferences when using
 `color-scheme: light dark`.
-
-## Fallbacks
-
-The `light-dark()` function is [supported in all modern browsers](https://caniuse.com/wf-color-scheme), but if you need
-to support older browsers, TODO:
