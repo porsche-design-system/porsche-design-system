@@ -22,10 +22,30 @@ export const metadata = {
 + @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
 ```
 
-- All new colors and styles are now controlled by CSS `color-scheme` using the CSS
-  [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function.
-  Therefore we provide the `@mixin color-scheme()` which includes utility classes including a polyfill for browsers not
-  supporting the CSS `light-dark()`.
+- Removed `pds-hover` since it did not work reliable.
+
+- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
+  `light-dark()` CSS color function).
+
+```diff
+- @include pds-skeleton('light'|'dark');
++ @include skeleton();
+```
+
+## Introducing Color Scheme
+
+The new color system leverages the standard CSS `light-dark()` function to deliver automatic, preference-based theming.
+This modernized approach simplifies development by removing the need for manual theme switching logic
+
+- All new colors and styles are now controlled by CSS `color-scheme` and CSS
+  [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Therefore,
+  we provide the `@mixin color-scheme()` which includes utility classes and a polyfill for browsers not supporting the
+  CSS `light-dark()`.
+
+- The `@mixin color-scheme()` provides the following utility classes to control the theme of your application:
+  - `.scheme-light` — light mode (first value)
+  - `.scheme-dark` — dark mode (second value)
+  - `.scheme-light-dark` — auto dark mode (respects OS preference)
 
 ```scss
 // global styles
@@ -39,19 +59,14 @@ export const metadata = {
 @use '@porsche-design-system/components-{js\|angular\|react\|vue}/scss' as pds;
 
 .my-component {
+  // Use light-dark() color variables
   background-color: pds.$color-frosted;
   color: pds.$color-primary;
 }
 ```
 
-The `@mixin color-scheme()` provides the following utility classes to control the theme of your application:
-
-- `.scheme-light` — light mode (first value)
-- `.scheme-dark` — dark mode (second value)
-- `.scheme-light-dark` — auto dark mode (respects OS preference)
-
 ```html
-<!-- Defined theme will be applied to all child elements and is also inherited through Shadow DOM -->
+<!-- Defined theme will be applied to all child elements -->
 <html class="scheme-dark">
   <head></head>
   <body>
@@ -59,16 +74,6 @@ The `@mixin color-scheme()` provides the following utility classes to control th
     <div class="my-component"></div>
   </body>
 </html>
-```
-
-- Removed `pds-hover` since it did not work reliable.
-
-- Removed `@mixin pds-skeleton('light'|'dark')` and introduced `@include skeleton()` (New skeleton style works with
-  `light-dark()` CSS color function).
-
-```diff
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
 ```
 
 ## Upcoming Changes
