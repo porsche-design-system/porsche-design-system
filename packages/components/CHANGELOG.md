@@ -94,10 +94,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- Remove theme prop since it's handled by CSS variables which can be controlled by `.scheme-light`, `.scheme-dark` or
+  `.scheme-light-dark` CSS class, e.g. `<p-button>Some label</p-button>` inside `<div class="scheme-dark">…</div>` will
+  render the dark theme.
 - `Link Tile`, `Button Tile`: uses `color-scheme: dark` by default
-
 - `Tailwind CSS`:
   - Reset `--text-*`, `--breakpoint-*`, `--radius-*` and `--shadow-*`
+  - Rename theme CSS classes `.light` to `.scheme-light`, `.dark` to `.scheme-dark` and `.auto` to `.scheme-light-dark`
 - `Canvas`: visual appearance on mobile view
 - `Styles`: Import paths for npm package:
 
@@ -127,13 +130,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Styles (SCSS, Emotion, Vanilla-Extract): `getHoverStyle`/`pds-hover`
 
 - Tailwind CSS: `--color-disabled`
-
-- SCSS: `@mixin pds-skeleton()` (New skeleton style works with `light-dark()` CSS color function)
-
-```diff
-- @include pds-skeleton('light'|'dark');
-+ @include skeleton();
-```
 
 - Emotion: `opts` parameter in `getSkeletonStyle()` including `theme` (New skeleton style works with `light-dark()` CSS
   color function)

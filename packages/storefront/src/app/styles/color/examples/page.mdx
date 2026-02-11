@@ -16,7 +16,7 @@ export const metadata = {
 <TableOfContents headings={['Text Color', 'Background Color', 'Border Color']} />
 
 The Porsche Design System uses **CSS variables** to define colors. These variables are required as global styles because
-all components depend on them.
+all components depend on them. Additionally, a `color-scheme` / `light-dark()` polyfill is included.
 
 They are included in the main CSS file:
 
@@ -24,15 +24,16 @@ They are included in the main CSS file:
 @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
 ```
 
-Alternatively, you can import only the color variables:
+Alternatively, you can import only the color variables and polyfill:
 
 ```css
 @import '@porsche-design-system/components-{js|angular|react|vue}/variables.css';
+@import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
 ```
 
 By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
-settings, add the `.light`, `.dark` or `.auto` CSS class to the `<html>` element or any HTML element. This applies the
-selected theme to all child elements.
+settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS class to the `<html>` element or any HTML
+element. This applies the selected theme to all child elements.
 
 ## Text Color
 

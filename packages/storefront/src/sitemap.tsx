@@ -115,12 +115,17 @@ export const sitemap: Routes = {
             path: '/news/migration-guide/porsche-design-system',
             type: 'TAB',
           },
-          'scss': {
+          tailwindcss: {
+            name: 'Tailwind CSS',
+            path: '/news/migration-guide/tailwindcss',
+            type: 'TAB',
+          },
+          scss: {
             name: 'SCSS',
             path: '/news/migration-guide/scss',
             type: 'TAB',
           },
-          'emotion': {
+          emotion: {
             name: 'Emotion',
             path: '/news/migration-guide/emotion',
             type: 'TAB',
@@ -1790,9 +1795,9 @@ export const sitemap: Routes = {
         },
       },
       theme: {
-        name: "Theme",
-        path: "/must-know/theme",
-        type: "PAGE",
+        name: 'Theme',
+        path: '/must-know/theme',
+        type: 'PAGE',
       },
       performance: {
         name: 'Performance',
