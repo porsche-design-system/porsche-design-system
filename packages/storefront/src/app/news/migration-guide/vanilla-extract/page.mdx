@@ -8,14 +8,86 @@ export const metadata = {
 
 # Migration Guide
 
-<TableOfContents headings={['Vanilla Extract', '👹Breaking Changes', 'Upcoming Changes']} />
+<TableOfContents headings={['⭐ Introducing Color Scheme', '👹Breaking Changes', '🤡 Deprecations']} />
 
-## Vanilla Extract
+## ⭐ Introducing Color Scheme
 
-These styles are built on top of the design tokens from the [Tokens](/tokens/introduction) package. If you use a
-different styling solution, you can consume the tokens directly.
+The new color system leverages the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function to
+deliver native, preference-based theming. By adopting this browser-native engine, we have eliminated the need for
+proprietary switching logic, resulting in a more performant and standardized architecture.
 
-## 👹Breaking Changes
+> **⚠️ Deprecation Notice:** Legacy Vanilla Extract color variables are officially deprecated and scheduled for removal
+> in the next major release. We recommend migrating to the new functional tokens immediately to ensure your components
+> remain future-proof.
+
+### Core Implementation
+
+All colors and styles are now driven by the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
+broad compatibility, we provide the global `colorSchemeStyles`, which generates utility classes and includes a polyfill
+for browsers that do not yet support `light-dark()` (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+
+#### Utility Classes
+
+Apply these classes to the document or any container to control the theme context:
+
+- `.scheme-light` — Forces light mode.
+- `.scheme-dark` — Forces dark mode.
+- `.scheme-light-dark` — Dynamically follows system/OS settings.
+
+### Usage
+
+#### 1. Global Setup
+
+Include the global styles once in your `app.css.ts` to initialize the theme utilities.
+
+```diff
+// app.css.ts
+
++ import { colorSchemeStyles } from '@porsche-design-system/components-react/vanilla-extract';
++ import { type GlobalStyleRule, globalStyle } from '@vanilla-extract/css';
+
++ for (const { selector, rule } of colorSchemeStyles) {
++   globalStyle(selector, rule as GlobalStyleRule);
++ }
+```
+
+#### 2. Component Implementation
+
+Utilize the new tokens within your styles. These variables automatically resolve to the correct value based on the
+active theme.
+
+```tsx
+import { colorFrosted, colorPrimary } from '@porsche-design-system/components-react/vanilla-extract';
+import { style } from '@vanilla-extract/css';
+
+export const myComponent = style({
+  backgroundColor: colorFrosted,
+  color: colorPrimary,
+});
+```
+
+#### 3. Application
+
+The defined theme context will cascade to all child elements.
+
+```tsx
+import { myComponent } from './myComponent.css';
+
+<!-- Defined theme will be applied to all child elements -->
+export const App = () => {
+  return (
+    <div className="scheme-dark">
+      <div className={myComponent}></div>
+    </div>
+  );
+};
+
+```
+
+## 👹 Breaking Changes
 
 - Changed import path for Vanilla Extract styles.
 
@@ -35,12 +107,14 @@ const skeletonAnimation = keyframes(skeletonKeyframes);
 + const Skeleton = style(getSkeletonStyle(skeletonAnimation));
 ```
 
-## Upcoming Changes
+## 🤡 Deprecations
 
-All following old styles are still available but marked as deprecated and will be removed with the next major release.
-Please switch to the new styles as soon as possible.
+Please transition to the new styles as soon as possible. All legacy styles are currently deprecated and are scheduled
+for removal in the next major release.
 
 ### Blur
+
+See [Emotion Blur Examples](/vanilla-extract/blur/examples) for more details.
 
 ```diff
 - ...frostedGlassStyle,
@@ -49,8 +123,7 @@ Please switch to the new styles as soon as possible.
 
 ### Border
 
-Renamed `border-radius` variables and added new ones. See
-[Vanilla Extract Border Examples](/vanilla-extract/border/examples) for more details.
+See [Vanilla Extract Border Examples](/vanilla-extract/border/examples) for more details.
 
 ```diff
 - borderRadius: borderRadiusMedium,
@@ -67,10 +140,10 @@ Renamed `border-radius` variables and added new ones. See
 
 ### Color
 
-Renamed `color` variables and introduced new ones. See [Vanilla Extract Color Examples](/vanilla-extract/color/examples)
-for more details. All new colors use the CSS
-[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). Learn more
-about the theming in the [Theme Guide](/must-know/theme).
+New color definitions now leverage the native CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You
+can explore implementation samples in the [Vanilla Extract Color Examples](/vanilla-extract/color/examples) or dive
+deeper into our system architecture in the [Theme Guide](/must-know/theme).
 
 ```diff
 - themeLightPrimary
@@ -132,12 +205,12 @@ about the theming in the [Theme Guide](/must-know/theme).
 + colorFocus
 - themeLightStateDisabled
 - themeDarkStateDisabled
-+ colorDisabled
++ colorContrastLower
 ```
 
 ### Focus
 
-Added new focus style function. See [Vanilla Extract Focus Examples](/vanilla-extract/focus/examples) for more details.
+See [Vanilla Extract Focus Examples](/vanilla-extract/focus/examples) for more details.
 
 ```diff
 - ...getFocusStyle(),
@@ -146,8 +219,7 @@ Added new focus style function. See [Vanilla Extract Focus Examples](/vanilla-ex
 
 ### Gradient
 
-Added new gradient stops variable. See [Vanilla Extract Gradient Examples](/vanilla-extract/gradient/examples) for more
-details.
+See [Vanilla Extract Gradient Examples](/vanilla-extract/gradient/examples) for more details.
 
 ```diff
 - ...gradientToBottomStyle,
@@ -162,7 +234,7 @@ details.
 
 ### Motion
 
-Added new motion variables. See [Vanilla Extract Motion Examples](/vanilla-extract/motion/examples) for more details.
+See [Vanilla Extract Motion Examples](/vanilla-extract/motion/examples) for more details.
 
 ```diff
 - transitionDuration: motionDurationShort,
@@ -183,7 +255,7 @@ Added new motion variables. See [Vanilla Extract Motion Examples](/vanilla-extra
 
 ### Shadow
 
-Added new shadow variables. See [Vanilla Extract Shadow Examples](/vanilla-extract/shadow/examples) for more details.
+See [Vanilla Extract Shadow Examples](/vanilla-extract/shadow/examples) for more details.
 
 ```diff
 - ...dropShadowHighStyle,
@@ -196,7 +268,7 @@ Added new shadow variables. See [Vanilla Extract Shadow Examples](/vanilla-extra
 
 ### Spacing
 
-Added new spacing variables. See [Vanilla Extract Spacing Examples](/vanilla-extract/spacing/examples) for more details.
+See [Vanilla Extract Spacing Examples](/vanilla-extract/spacing/examples) for more details.
 
 ```diff
 - spacingFluidXSmall
@@ -227,8 +299,7 @@ Added new spacing variables. See [Vanilla Extract Spacing Examples](/vanilla-ext
 
 ### Typography
 
-Added new typography style objects. See [Vanilla Extract Typography Examples](/vanilla-extract/typography/examples) for
-more details.
+See [Vanilla Extract Typography Examples](/vanilla-extract/typography/examples) for more details.
 
 ```diff
 - ...displayLargeStyle,
