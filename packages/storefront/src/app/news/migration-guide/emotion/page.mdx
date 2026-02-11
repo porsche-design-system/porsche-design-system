@@ -8,7 +8,7 @@ export const metadata = {
 
 # Migration Guide
 
-<TableOfContents headings={['⭐ Introducing Color Scheme', '👹Breaking Changes', '🤡 Deprecations']} />
+<TableOfContents headings={['⭐ Introducing Color Scheme', '👹 Breaking Changes', '🤡 Deprecations']} />
 
 The library previously known as `JS` styles (`/styles`) has been officially rebranded as Emotion styles. While these
 styles may still function with Styled Components or other CSS-in-JS solutions, Emotion is the only officially supported
@@ -56,7 +56,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 import { App } from './App.tsx';
-+ import { colorSchemeStyles } from '@porsche-design-system/emotion';
++ import { colorSchemeStyles } from '@porsche-design-system/components-react/emotion';
 + import { Global } from '@emotion/react';
 
 createRoot(document.getElementById('root')!).render(

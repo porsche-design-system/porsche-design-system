@@ -18,10 +18,10 @@ standardized architecture that responds instantly to user preferences.
 
 ### The Foundation: `color-scheme`
 
-All system colors are driven by the CSS
-[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
-broad compatibility, our mandatory [Global Styles](/styles/introduction) include utility classes that act as a polyfill
-for browsers lacking native `light-dark()` support (see
+All system colors are controlled via the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property and are
+included in our mandatory [Global Styles](/styles/introduction). These styles also provide utility classes for selecting
+the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()` (see
 [browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
 Apply these classes to the `html` element or any container to define the theme context:
