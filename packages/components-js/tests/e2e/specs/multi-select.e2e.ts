@@ -2207,8 +2207,8 @@ test.describe('optgroups', () => {
     expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      expect(await getProperty<boolean>(child, 'disabled')).toBeTruthy();
-      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabled')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
 
     await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).disabled = false));
@@ -2279,8 +2279,8 @@ test.describe('optgroups', () => {
     expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      expect(await getProperty<boolean>(child, 'disabled')).toBeTruthy();
-      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabled')).toBeTruthy();
+      await expect.poll(async () => await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
   });
 
