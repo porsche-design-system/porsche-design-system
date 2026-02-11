@@ -9,79 +9,59 @@ export const metadata = {
 
 <TableOfContents headings={['How it works', 'Defining themes']} />
 
-The Porsche Design System is built for theming. It defines color tokens with CSS
-[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark), controlled
-by [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme). The CSS
-[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function is
-supported in all modern browsers. For older browsers, we ship a polyfill so the same color tokens still resolve
-correctly. See browser support: https://caniuse.com/wf-light-dark
-
-The mandatory [Global Styles](/styles/introduction) provide the shared CSS variables consumed by all components.
-
 ## How it works
 
-The system relies on two key CSS features:
+The new color system leverages the native CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. By
+adopting this browser-native engine, we have eliminated proprietary switching logic in favor of a performant,
+standardized architecture that responds instantly to user preferences.
 
-**CSS Variables**: [Global Styles](/styles/introduction) define color variables using `light-dark()`, for example:
+### The Foundation: `color-scheme`
 
-```css
-:root {
-  --p-color-primary: light-dark(white, black);
-}
-```
+All system colors are controlled via the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property and are
+included in our mandatory [Global Styles](/styles/introduction). These styles also provide utility classes for selecting
+the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()` (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
-**Color Scheme**: The `color-scheme` CSS property determines which value `light-dark()` uses. We provide CSS classes
-with a polyfill defined in [Global Styles](/styles/introduction):
+Apply these classes to the `html` element or any container to define the theme context:
 
-- `.scheme-light` — light mode (first value)
-- `.scheme-dark` — dark mode (second value)
-- `.scheme-light-dark` — auto dark mode (respects OS preference)
+- `.scheme-light` — Forces the **Light** theme.
+- `.scheme-dark` — Forces the **Dark** theme.
+- `.scheme-light-dark` — Automatically toggles based on **System/OS settings**.
 
-Components automatically adapt to the current theme by referencing CSS variables that respond to the `color-scheme`
-setting.
+## Scoping Themes
 
-## Defining themes
+Theme context is hierarchical. You can nest these utility classes to create "islands" of different themes within your
+application. This is particularly useful for dark-themed footers or light-themed modals on dark pages.
 
-To define which theme your application should use, set the `color-scheme` property on the `:root` selector in your
-global CSS:
-
-```css
-/* Defines the theme for all components */
-:root {
-  color-scheme: light;
-}
-```
-
-You can also scope the theme to specific sections of your application by applying `color-scheme` to a container element:
-
-```html
-<!-- Defines the theme for all components nested within -->
-<html style="color-scheme: dark">
+```js
+<html class="scheme-light-dark">
   <body>
-    <!-- All components inside will use the dark theme -->
-    <div style="color-scheme: light">
-      <!-- All components inside will use the light theme -->
+    <p-button>I follow the OS theme</p-button>
+
+    <div class="scheme-dark">
+      <p-heading>Dark Section</p-heading>
+      <p-button>I am always Dark</p-button>
     </div>
   </body>
 </html>
 ```
 
-In order to implement a theme switch, simply set a class which defines the corresponding `color-scheme` (Tailwind
-provides these classes out of the box):
+### Ecosystem Integration
 
-```css
-.scheme-light {
-  color-scheme: light;
-}
+The `color-scheme` utility classes do more than just update PDS components—they act as a global "source of truth" for
+your entire styling stack. When you apply a `.scheme-*` class, it automatically synchronizes the theme across all our
+supported styling tools:
 
-.scheme-dark {
-  color-scheme: dark;
-}
+- **[Tailwind CSS](/tailwindcss/introduction/)**: Custom PDS color utilities (e.g., `text-primary`) automatically
+  resolve to the correct light or dark values.
+- **[SCSS](/scss/introduction/)**: The PDS mixins and variables hook into the theme context, ensuring your custom
+  stylesheets remain brand-compliant.
+- **[Emotion](/emotion/introduction/)**: Design tokens consumed via Emotion are reactive to the `color-scheme` defined
+  on the parent container.
+- **[Vanilla Extract](/vanilla-extract/introduction/)**: Design tokens consumed via Vanilla Extract are reactive to the
+  `color-scheme` defined on the parent container.
 
-.scheme-light-dark {
-  color-scheme: light dark;
-}
-```
-
-This approach provides native browser support for theming and respects user preferences when using
-`color-scheme: light dark`.
+**Key Takeaway:** By using these utility classes, you ensure that your custom UI and PDS components always share the
+same color palette and contrast ratios, regardless of the styling technology used.

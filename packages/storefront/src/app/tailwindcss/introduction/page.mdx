@@ -7,7 +7,7 @@ export const metadata = {
 
 # Introduction
 
-<TableOfContents headings={['Styles', 'Setup', 'Theme']} />
+<TableOfContents headings={['Styles', 'Setup', 'Color Scheme']} />
 
 ## Styles
 
@@ -52,26 +52,39 @@ the standard Tailwind import:
 @import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';
 ```
 
-## Theme
+## Color Scheme
 
-### Configure a Theme switch
+The color system leverages the CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function to
+deliver native, preference-based theming. By adopting this browser-native engine, we have eliminated the need for
+proprietary switching logic, resulting in a more performant and standardized architecture.
 
-By default, the color tokens use the **light** theme. To enable the **dark** or **auto** (automatic dark mode based on
-system settings) theme, you need to add the corresponding class `.dark` or `.auto` to the `<html>` element. This change
-will apply the selected theme to all child elements. To implement a three-way theme toggle (`light`, `dark`, `auto`),
-dynamically update the `<html>` element’s class using JavaScript:
+### Core Implementation
 
-```javascript
-document.documentElement.classList.remove('light', 'dark', 'auto');
-document.documentElement.classList.add(theme); // theme is the selected theme here ('light', 'dark' or 'auto')
+All colors and styles are driven by the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property. To ensure
+broad compatibility, we extended the existing Tailwind CSS `.scheme-*` utility classes with a polyfill for browsers that
+do not yet support `light-dark()` (see [browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+
+#### Utility Classes
+
+Apply these classes to the document or any container to control the theme context:
+
+- `.scheme-light` — Forces light mode.
+- `.scheme-dark` — Forces dark mode.
+- `.scheme-light-dark` — Dynamically follows system/OS settings.
+
+### Usage
+
+The defined theme context will cascade to all child elements.
+
+```html
+<!-- Defined theme will be applied to all child elements -->
+<html class="scheme-dark">
+  <head></head>
+  <body>
+    <!-- Will be rendered in dark mode -->
+    <div class="bg-frosted text-primary"></div>
+  </body>
+</html>
 ```
-
-### Using the Tailwind Theme
-
-To apply a fixed color, you can use any color token with a `-light` or `-dark` suffix.
-
-**Examples:**
-
-- `.bg-surface` — Automatically adapts to the closest `.light`, `.dark`, or `.auto` class on a parent HTML element.
-- `.bg-surface-light` — Forces the **light** theme color.
-- `.bg-surface-dark` — Forces the **dark** theme color.

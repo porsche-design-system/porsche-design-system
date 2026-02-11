@@ -11,26 +11,17 @@ export const metadata = {
 
 ## Global Theme
 
-The Porsche Design System global theme uses CSS variables defined in the main CSS file
-`@porsche-design-system/components-react`.
+All system colors are controlled via the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property and are
+included in our mandatory [Global Styles](/styles/introduction). These styles also provide utility classes for selecting
+the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()` (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
 
-To switch themes, simply apply one of the theme classes `light`, `dark`, or `auto` to any HTML element. All child
-elements will automatically inherit the selected theme:
+By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
+settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS class to the `<html>` element or any HTML
+element. This applies the selected theme to all child elements.
 
-```html
-<html className="dark">
-  <body>
-    <!-- All components inside will use the dark theme -->
-    <div className="light">
-      <!-- All components inside will use the light theme -->
-    </div>
-  </body>
-</html>
-```
-
-- `.light` — Light theme
-- `.dark` — Dark theme
-- `.auto` — Automatically follows the user’s system preference
+Learn more in the [Theme](/must-know/theme) section.
 
 ## Prefixing
 
