@@ -104,12 +104,11 @@ export const getFunctionalComponentInputBaseStyles = (
         ...forcedColorsMediaQuery({
           outline: '2px solid Highlight',
           outlineOffset: '2px',
-          ...(isDisabled && { borderColor: 'GrayText' }),
         }),
       },
       ...(isDisabled &&
         forcedColorsMediaQuery({
-          borderColor: 'GrayText !important',
+          borderColor: 'GrayText',
         })),
       ...(!isDisabled &&
         !readOnly &&

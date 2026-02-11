@@ -236,6 +236,7 @@ export class InputPassword {
         end={
           this.toggle && (
             <PrefixedTagNames.pButtonPure
+              tabIndex={this.disabled ? -1 : null}
               hideLabel={true}
               class="button"
               type="button"

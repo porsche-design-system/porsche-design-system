@@ -219,6 +219,7 @@ export class InputDate {
         {...(hasShowPickerSupport() && {
           end: (
             <PrefixedTagNames.pButtonPure
+              tabIndex={this.disabled ? -1 : null}
               hideLabel={true}
               class="button"
               type="button"
