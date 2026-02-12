@@ -56,7 +56,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "prepare-release": "tsx scripts/prepare-release.ts",
-    "prepare-context": "tsx scripts/prepare-context.ts",
+    "prepare-context": "tsx packages/mcp-server/scripts/prepare-context/index.ts",
     "build:mcp-server": "yarn --cwd ./packages/mcp-server build",
     "start:mcp-server": "yarn --cwd ./packages/mcp-server start",
     "dev:mcp-server": "yarn --cwd ./packages/mcp-server dev",
