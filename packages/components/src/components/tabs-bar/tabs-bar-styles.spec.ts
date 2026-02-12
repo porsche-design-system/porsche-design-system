@@ -3,13 +3,13 @@ import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', 'regular', 'light'],
-    ['small', 'regular', 'dark'],
-    ['medium', 'regular', 'light'],
-    ['medium', 'regular', 'dark'],
-    ['small', 'semi-bold', 'light'],
-    [{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }, 'regular', 'light'],
-  ])('should return correct css for size: %j, weight: %s and theme: %s', (...args) => {
+    ['small', 'regular',],
+    ['small', 'regular'],
+    ['medium', 'regular',],
+    ['medium', 'regular'],
+    ['small', 'semi-bold',],
+    [{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }, 'regular'],
+  ])('should return correct css for size: %j and weight: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PTextarea, PText, type TextareaInputEventDetail } from '@porsche-design-system/components-vue';
+import { PText, PTextarea, type TextareaInputEventDetail } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
 const value = ref<string>('');

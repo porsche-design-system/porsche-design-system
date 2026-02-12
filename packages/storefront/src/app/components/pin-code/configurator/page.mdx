@@ -1,6 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
-import { pinCodeStory } from '@/app/components/pin-code/pin-code.stories';
+import { pinCodeStory, pinCodeSlotStories } from '@/app/components/pin-code/pin-code.stories';
 import { Notification } from '@/components/common/Notification';
 import Link from 'next/link';
 
@@ -28,4 +28,4 @@ A `label` is a caption which informs the user what information a particular form
 component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
 whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
 
-<Configurator tagName="p-pin-code" story={pinCodeStory} />
+<Configurator tagName="p-pin-code" story={pinCodeStory} slotStories={pinCodeSlotStories} />

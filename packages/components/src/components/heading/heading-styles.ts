@@ -1,16 +1,18 @@
-import type { BreakpointCustomizable, HeadingSize, Theme } from '../../types';
-import type { HeadingAlign, HeadingColor } from './heading-utils';
-import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {
   fontSizeHeadingLarge,
   fontSizeHeadingMedium,
   fontSizeHeadingSmall,
   fontSizeHeadingXLarge,
   fontSizeHeadingXXLarge,
+  fontWeightRegular,
+  fontWeightSemiBold,
   headingXXLargeStyle,
-} from '@porsche-design-system/styles';
-import { getTypographySlottedJssStyle, getTypographyRootJssStyle } from '../../styles/typography-styles';
+} from '@porsche-design-system/emotion';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
+import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
+import type { BreakpointCustomizable, HeadingSize } from '../../types';
+import { buildResponsiveStyles, getCss, HEADING_TAGS } from '../../utils';
+import type { HeadingAlign, HeadingColor } from './heading-utils';
 
 export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {
   small: fontSizeHeadingSmall,
@@ -24,15 +26,13 @@ export const getComponentCss = (
   size: BreakpointCustomizable<HeadingSize>,
   align: HeadingAlign,
   color: HeadingColor,
-  ellipsis: boolean,
-  theme: Theme
+  ellipsis: boolean
 ): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
@@ -42,11 +42,11 @@ export const getComponentCss = (
       headingXXLargeStyle,
       buildResponsiveStyles(size, (sizeValue: HeadingSize) => ({
         fontSize: sizeValue === 'inherit' ? sizeValue : sizeMap[sizeValue],
+        fontWeight: sizeValue === 'small' ? fontWeightSemiBold : fontWeightRegular,
       })),
       align,
       color,
-      ellipsis,
-      theme
+      ellipsis
     ),
   });
 };

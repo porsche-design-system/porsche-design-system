@@ -1,7 +1,22 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { Story, SlotStories } from '@/models/story';
 import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+
+export const radioGroupSlotStories: SlotStories<'p-radio-group'> = {
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
+};
 
 const radioGroupOptions: ElementConfig<HTMLTagOrComponent>[] = [
   { tag: 'p-radio-group-option', properties: { value: 'a', label: 'Option A' } },
@@ -20,11 +35,14 @@ export const radioGroupStory: Story<'p-radio-group'> = {
       description: 'Some description',
     },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-radio-group',
       properties,
-      children: radioGroupOptions,
+      children: [
+        ...(slots?.['label-after']?.generator() ?? []),
+        ...radioGroupOptions,
+      ],
     },
   ],
 };

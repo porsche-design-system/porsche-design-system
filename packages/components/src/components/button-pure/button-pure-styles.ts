@@ -1,6 +1,7 @@
-import { fontLineHeight } from '@porsche-design-system/styles';
+import { fontLineHeight } from '@porsche-design-system/emotion';
+import { colorContrastLow } from '../../styles/css-variables';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
-import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../../types';
+import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
@@ -12,14 +13,14 @@ export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
   active: boolean,
+  isDisabled: boolean,
   isLoading: boolean,
   isDisabledOrLoading: boolean,
   stretch: BreakpointCustomizable<boolean>,
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
-  underline: boolean,
-  theme: Theme
+  underline: boolean
 ): string => {
   const hasIcon = hasVisibleIcon(icon, iconSource);
 
@@ -35,17 +36,16 @@ export const getComponentCss = (
         hideLabel,
         alignLabel,
         underline,
-        false,
-        theme
+        false
       ),
       {
         root: {
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          background: 'transparent',
-          textAlign: 'start',
-          border: 0,
-          cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
+          ...(isDisabled && {
+            color: colorContrastLow,
+          }),
+          ...(isDisabledOrLoading && {
+            cursor: 'not-allowed',
+          }),
         },
         ...(!hasIcon &&
           isLoading && {

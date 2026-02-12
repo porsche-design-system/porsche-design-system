@@ -1,3 +1,3 @@
-export { shadowHigh } from './shadowHigh';
-export { shadowLow } from './shadowLow';
-export { shadowMedium } from './shadowMedium';
+export { shadowLg } from './shadowLg';
+export { shadowMd } from './shadowMd';
+export { shadowSm } from './shadowSm';

@@ -73,6 +73,18 @@ export const inputMonthSlotStories: SlotStories<'p-input-month'> = {
       ],
     },
   },
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
 };
 
 export const inputMonthStory: Story<'p-input-month'> = {
@@ -83,7 +95,11 @@ export const inputMonthStory: Story<'p-input-month'> = {
     {
       tag: 'p-input-month',
       properties,
-      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
+      children: [
+        ...(slots?.start?.generator() ?? []),
+        ...(slots?.end?.generator() ?? []),
+        ...(slots?.['label-after']?.generator() ?? []),
+      ],
     },
   ],
 };
@@ -99,7 +115,24 @@ export const inputMonthStorySlots: Story<'p-input-month'> = {
           properties: { slot: 'label', id: 'some-label-id' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
+            ' and a "label-after" slot.',
+          ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: [
+            'Some Popover content with a ',
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -108,7 +141,11 @@ export const inputMonthStorySlots: Story<'p-input-month'> = {
           properties: { slot: 'description', id: 'some-description-id' },
           children: [
             'Some description with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -131,7 +168,11 @@ export const inputMonthStorySlots: Story<'p-input-month'> = {
           properties: { slot: 'message', id: 'some-message-id' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },

@@ -43,18 +43,15 @@ test('should have no errors if disconnected before fully loaded', async ({ page 
 });
 
 test.describe('events', () => {
-  test('should emit both pageChange and update event', async ({ page }) => {
+  test('should emit update event', async ({ page }) => {
     await initPagination(page);
     const host = getHost(page);
 
-    await addEventListener(host, 'pageChange');
     await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'pageChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
     const [, secondPageItem] = await getPaginationItems(page);
     await secondPageItem.click();
-    expect((await getEventSummary(host, 'pageChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
   });
 });

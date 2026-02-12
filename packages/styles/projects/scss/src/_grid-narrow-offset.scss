@@ -1,0 +1,17 @@
+$pds-grid-narrow-offset-base: max(22px, 10.625vw - 12px);
+$pds-grid-narrow-offset-s: calc(
+  calc(5vw - 16px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) *
+    4
+);
+$pds-grid-narrow-offset-xxl: calc(
+  max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
+    (
+      clamp(16px, 1.25vw + 12px, 36px) +
+        calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
+    ) *
+    4
+);

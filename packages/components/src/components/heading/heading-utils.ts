@@ -1,17 +1,9 @@
-import { hasSpecificDirectChildTag, HEADING_TAGS } from '../../utils';
-import type {
-  BreakpointCustomizable,
-  TypographyAlign,
-  HeadingSize,
-  HeadingTag,
-  TypographyAlignDeprecated,
-} from '../../types';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag, TypographyAlign } from '../../types';
+import { HEADING_TAGS, hasSpecificDirectChildTag } from '../../utils';
 
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
 export type HeadingColor = (typeof HEADING_COLORS)[number];
 
-/** @deprecated */
-export type HeadingAlignDeprecated = TypographyAlignDeprecated;
 export type HeadingAlign = TypographyAlign;
 
 const headingSizeToTagMap: Record<HeadingSize, string> = {

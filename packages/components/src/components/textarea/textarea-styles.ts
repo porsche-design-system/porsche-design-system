@@ -1,25 +1,24 @@
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import type { Styles } from 'jss';
+import { borderWidthThin, fontLineHeight, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
+  getDisabledBaseStyles,
   getHiddenTextJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  colorContrastMedium,
+  colorFrosted,
+  colorPrimary,
+  legacyRadiusSmall,
+  radiusLg,
+  radiusXl,
+} from '../../styles/css-variables';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styles/form-styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
+import { getUnitCounterJssStyle } from '../../styles/form-styles';
+import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import {
@@ -30,8 +29,8 @@ import { getFunctionalComponentStateMessageStyles } from '../common/state-messag
 import type { TextareaResize } from './textarea-utils';
 
 export const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
-export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
 
+// CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
@@ -40,122 +39,74 @@ export const getScalingVar = (compact: boolean) => `var(${cssVarInternalTextarea
  * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"unset"}
  * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"unset"}
  */
+
 export const getComponentCss = (
   isDisabled: boolean,
   isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  compact: boolean,
-  counter: boolean,
-  resize: TextareaResize,
-  theme: Theme
+  isCompact: boolean,
+  hasCounter: boolean,
+  resize: TextareaResize
 ): string => {
-  const scalingVar = getScalingVar(compact);
+  const textareaMinHeight = `calc(var(${cssVarInternalTextareaScaling}) * 3.5rem)`;
+  const textareaPaddingBlock = `calc(28px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 5px)`;
+  const textareaPaddingInline = `calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 8px)`;
+  const textareaPaddingBottom = `calc(${fontLineHeight} + calc(22.4px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px))`;
+  const counterMarginBottom = `calc(11.2px * (var(${cssVarInternalTextareaScaling}) - 0.64285714) + 4px)`;
 
-  const minPadding = '2px';
-  const minCounterPadding = '12px';
+  const { formStateBorderColor, formStateBackgroundColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
-  const basePaddingInline = `max(${minPadding}, calc(${formElementPaddingHorizontal} * ${scalingVar}))`;
-  const basePaddingBlock = `max(${minPadding}, calc(12px * ${scalingVar}))`;
-
-  const counterPaddingInline = `max(${minCounterPadding}, calc((${formElementPaddingHorizontal} + ${borderWidthBase}) * ${scalingVar}))`;
-  const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
-
-  const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
-
-  // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-  const minWidth = `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`;
-
-  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastLowColor: contrastLowColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    disabledColor: disabledColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
+        [`${cssVarInternalTextareaScaling}`]: isCompact ? 0.64285714 : 1,
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
+          ...(isDisabled && getDisabledBaseStyles()),
         }),
       },
       ...getFunctionalComponentLabelAfterStyles(isDisabled),
       ...preventFoucOfNestedElementsStyles,
       textarea: {
+        all: 'unset',
+        gridArea: '1/1',
+        display: 'block',
         resize,
         fieldSizing: 'var(--p-textarea-field-sizing, unset)',
-        minWidth: `var(--p-textarea-min-width, ${minWidth})`,
+        minWidth: `var(--p-textarea-min-width, 2ch)`, // to show at least 2 characters in very narrow containers
         maxWidth: 'var(--p-textarea-max-width, unset)',
-        minHeight: 'var(--p-textarea-min-height, unset)',
+        minHeight: `var(--p-textarea-min-height, ${textareaMinHeight})`,
         maxHeight: 'var(--p-textarea-max-height, unset)',
-        display: 'block',
-        width: '100%',
-        height: 'auto',
-        margin: 0,
-        outline: 0,
-        WebkitAppearance: 'none', // iOS safari
-        appearance: 'none',
+        border: `${borderWidthThin} solid ${formStateBorderColor}`,
+        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
+        background: formStateBackgroundColor,
+        color: colorPrimary,
+        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
         boxSizing: 'border-box',
-        border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
-        borderRadius: borderRadiusSmall,
-        background: 'transparent',
-        textIndent: 0,
-        color: primaryColor,
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: formStateColorDark || contrastMediumColorDark,
-          color: primaryColorDark,
-        }),
-        gridArea: '1/1',
-        font: textSmallStyle.font, // to override line-height
-        padding: counter
-          ? `${basePaddingBlock} ${basePaddingInline} ${paddingBottom}`
-          : `${basePaddingBlock} ${basePaddingInline}`,
-        // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
+        font: textSmallStyle.font,
+        padding: hasCounter
+          ? `${textareaPaddingBlock} ${textareaPaddingInline} ${textareaPaddingBottom}`
+          : `${textareaPaddingBlock} ${textareaPaddingInline}`,
         '&:focus': {
-          borderColor: primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: primaryColorDark,
-          }),
+          borderColor: formStateBorderHoverColor,
         },
-        '&:disabled': {
-          cursor: 'not-allowed',
-          color: disabledColor,
-          borderColor: disabledColor,
-          WebkitTextFillColor: disabledColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: disabledColorDark,
-            borderColor: disabledColorDark,
-            WebkitTextFillColor: disabledColorDark,
-          }),
-        },
-        '&[readonly]': {
-          borderColor: contrastLowColor,
-          background: contrastLowColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: contrastLowColorDark,
-            background: contrastLowColorDark,
-          }),
-        },
+        cursor: isDisabled ? 'not-allowed' : 'text',
+        ...(isReadonly && {
+          borderColor: 'transparent',
+          background: colorFrosted,
+          color: colorContrastMedium,
+        }),
+        ...(!isDisabled &&
+          !isReadonly &&
+          hoverMediaQuery({
+            '&:hover,.label-wrapper:hover~&': {
+              borderColor: formStateBorderHoverColor,
+            },
+          })),
       },
-      ...(hoverMediaQuery({
-        // with the media query the selector has higher priority and overrides disabled styles
-        'textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
-          {
-            borderColor: formStateHoverColor || primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: formStateHoverColorDark || primaryColorDark,
-            }),
-          },
-      }) as Styles),
     },
     root: {
       display: 'grid',
@@ -164,19 +115,19 @@ export const getComponentCss = (
     wrapper: {
       display: 'grid',
     },
-    ...(counter && {
+    ...(hasCounter && {
       counter: {
-        ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
+        ...getUnitCounterJssStyle(),
         gridArea: '1/1',
         placeSelf: 'flex-end',
-        padding: `${counterPaddingBlock} ${counterPaddingInline}`,
+        marginInlineEnd: textareaPaddingInline,
+        marginBottom: counterMarginBottom,
       },
-      // TODO: maybe we should extract it as functional component too
       'sr-only': getHiddenTextJssStyle(),
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel),
     // .message
-    ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...getFunctionalComponentStateMessageStyles(state),
   });
 };

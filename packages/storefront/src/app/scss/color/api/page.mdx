@@ -1,0 +1,100 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  colorCanvas,
+  colorSurface,
+  colorFrosted,
+  colorFrostedSoft,
+  colorFrostedStrong,
+  colorBackdrop,
+  colorPrimary,
+  colorContrastHigher,
+  colorContrastHigh,
+  colorContrastMedium,
+  colorContrastLow,
+  colorContrastLower,
+  colorInfo,
+  colorInfoMedium,
+  colorInfoLow,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
+  colorSuccess,
+  colorSuccessMedium,
+  colorSuccessLow,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
+  colorWarning,
+  colorWarningMedium,
+  colorWarningLow,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
+  colorError,
+  colorErrorMedium,
+  colorErrorLow,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
+  colorFocus,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'SCSS: Color - Porsche Design System',
+  description: 'Detailed API reference for the Color style.',
+};
+
+# Color
+
+<TableOfContents headings={[]} />
+
+## SCSS Variables
+
+### Background
+
+| Color                                                                                     | SCSS Variable           | Description                                                                                                                                                                                        | Value                |
+| ----------------------------------------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-canvas`         | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **canvas** color, typically used for surfaces.                                  | {colorCanvas}        |
+| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>        | `$color-surface`        | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **surface** color, typically used for surfaces.                                 | {colorSurface}       |
+| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | `$color-frosted`        | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with `blur()`. | {colorFrosted}       |
+| <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | `$color-frosted-soft`   | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-soft** color, typically used as a background `:hover`.                | {colorFrostedSoft}   |
+| <div className="bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-frosted-strong` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with `blur()`. | {colorFrostedStrong} |
+| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>       | `$color-backdrop`       | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **backdrop** color, typically used for backdrops.                               | {colorBackdrop}      |
+
+### Foreground
+
+| Color                                                                                      | SCSS Variable            | Description                                                                                                                                                                         | Value                 |
+| ------------------------------------------------------------------------------------------ | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-primary`         | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **primary** color, typically used for text.                      | {colorPrimary}        |
+| <div className="bg-contrast-higher w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-contrast-higher` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-higher** color, typically used for text.              | {colorContrastHigher} |
+| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `$color-contrast-high`   | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-high** color, typically used for text.                | {colorContrastHigh}   |
+| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-contrast-medium` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-medium** color, typically used for text.              | {colorContrastMedium} |
+| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `$color-contrast-low`    | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-low** color, intended only for decorative elements.   | {colorContrastLow}    |
+| <div className="bg-contrast-lower w-10 h-10 rounded-md border border-contrast-low"></div>  | `$color-contrast-lower`  | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-lower** color, intended only for decorative elements. | {colorContrastLower}  |
+
+### Semantic
+
+| Color                                                                                           | SCSS Variable                 | Description                                                                                                                                                                                               | Value                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>                 | `$color-info`                 | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info** color, typically used for text.                                               | {colorInfo}               |
+| <div className="bg-info-medium w-10 h-10 rounded-md border border-contrast-low"></div>          | `$color-info-medium`          | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-medium** color, typically used for text or border.                              | {colorInfoMedium}         |
+| <div className="bg-info-low w-10 h-10 rounded-md border border-contrast-low"></div>             | `$color-info-low`             | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-low** color, typically used for text or border.                                 | {colorInfoLow}            |
+| <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-info-frosted`         | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted** color, typically used as background with `.backdrop-blur-frosted`.    | {colorInfoFrosted}        |
+| <div className="bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>    | `$color-info-frosted-soft`    | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted-soft** color, typically used as background `:hover`.                    | {colorInfoFrostedSoft}    |
+| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>              | `$color-success`              | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success** color, typically used for text.                                            | {colorSuccess}            |
+| <div className="bg-success-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | `$color-success-medium`       | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-medium** color, typically used for text or border.                           | {colorSuccessMedium}      |
+| <div className="bg-success-low w-10 h-10 rounded-md border border-contrast-low"></div>          | `$color-success-low`          | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-low** color, typically used for text or border.                              | {colorSuccessLow}         |
+| <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `$color-success-frosted`      | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted** color, typically used as background with `.backdrop-blur-frosted`. | {colorSuccessFrosted}     |
+| <div className="bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-success-frosted-soft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted-soft** color, typically used as background `:hover`.                 | {colorSuccessFrostedSoft} |
+| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>              | `$color-warning`              | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning** color, typically used for text.                                            | {colorWarning}            |
+| <div className="bg-warning-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | `$color-warning-medium`       | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-medium** color, typically used for text or border.                           | {colorWarningMedium}      |
+| <div className="bg-warning-low w-10 h-10 rounded-md border border-contrast-low"></div>          | `$color-warning-low`          | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-low** color, typically used for text or border.                              | {colorWarningLow}         |
+| <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `$color-warning-frosted`      | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted** color, typically used as background with `.backdrop-blur-frosted`. | {colorWarningFrosted}     |
+| <div className="bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-warning-frosted-soft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted-soft** color, typically used as background `:hover`.                 | {colorWarningFrostedSoft} |
+| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>                | `$color-error`                | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error** color, typically used for text.                                              | {colorError}              |
+| <div className="bg-error-medium w-10 h-10 rounded-md border border-contrast-low"></div>         | `$color-error-medium`         | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-medium** color, typically used for text or border.                             | {colorErrorMedium}        |
+| <div className="bg-error-low w-10 h-10 rounded-md border border-contrast-low"></div>            | `$color-error-low`            | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-low** color, typically used for text or border.                                | {colorErrorLow}           |
+| <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | `$color-error-frosted`        | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted** color, typically used as background with `.backdrop-blur-frosted`.   | {colorErrorFrosted}       |
+| <div className="bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | `$color-error-frosted-soft`   | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted-soft** color, typically used as background `:hover`.                   | {colorErrorFrostedSoft}   |
+
+### A11y
+
+| Color                                                                            | SCSS Variable  | Description                                                                                                                                                                                    | Value        |
+| -------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div> | `$color-focus` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **focus** color, typically used as the outline for `:focus-visible` states. | {colorFocus} |

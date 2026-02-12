@@ -1,4 +1,4 @@
-import { type Page, test, expect } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { goto } from '../helpers';
 
 const getModal = (page: Page) => page.locator('p-modal');
@@ -20,17 +20,17 @@ test('should keep same scroll position when modal is opened and closed with rout
   expect(await getScrollPosition(page)).toBe(0);
 
   await getLinkToModal(page).scrollIntoViewIfNeeded();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 
   await getLinkToModal(page).click();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 
   await page.waitForLoadState();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 
   await getDismissButton(page).click();
   await expect(getModal(page)).toBeHidden();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 });
 
 test('should keep same scroll position when modal is opened and closed', async ({ page }) => {
@@ -38,15 +38,15 @@ test('should keep same scroll position when modal is opened and closed', async (
   expect(await getScrollPosition(page)).toBe(0);
 
   await getOpenModalBtn(page).scrollIntoViewIfNeeded();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 
   await getOpenModalBtn(page).click();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 
   await page.waitForLoadState();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 
   await getDismissButton(page).click();
   await expect(getModal(page)).toBeHidden();
-  expect(await getScrollPosition(page)).toBe(532);
+  expect(await getScrollPosition(page)).toBe(512);
 });

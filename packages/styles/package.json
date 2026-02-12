@@ -9,22 +9,48 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "yarn clean:build && yarn build:tailwindcss && yarn build:app",
+    "build": "yarn clean:build && yarn build:global-styles && yarn build:tailwindcss && yarn build:scss && yarn build:emotion && yarn build:vanilla-extract && yarn build:app",
+    "build-app": "tsc -b && vite build",
+    "build-prod": "yarn clean:build && yarn build-prod:global-styles && yarn build:tailwindcss && yarn build:scss && yarn build:emotion && yarn build:vanilla-extract && yarn build:app",
     "build:app": "vite build",
+    "build:global-styles": "yarn --cwd projects/global-styles build",
     "build:tailwindcss": "yarn --cwd projects/tailwindcss build",
-    "test:unit": "yarn test:unit:tailwindcss",
+    "build:scss": "yarn --cwd projects/scss build",
+    "build:emotion": "yarn --cwd projects/emotion build",
+    "build:vanilla-extract": "yarn --cwd projects/vanilla-extract build",
+    "build-prod:global-styles": "yarn --cwd projects/global-styles build-prod",
+    "test": "yarn test:unit && yarn test:vrt",
+    "test:unit": "yarn test:unit:global-styles && yarn test:unit:tailwindcss && yarn test:unit:scss && yarn test:unit:emotion && yarn test:unit:vanilla-extract",
+    "test:unit:global-styles": "yarn --cwd projects/global-styles test:unit",
     "test:unit:tailwindcss": "yarn --cwd projects/tailwindcss test:unit",
-    "clean:build": "yarn clean:build:app && yarn clean:build:tailwindcss",
+    "test:unit:scss": "yarn --cwd projects/scss test:unit",
+    "test:unit:emotion": "yarn --cwd projects/emotion test:unit",
+    "test:unit:vanilla-extract": "yarn --cwd projects/vanilla-extract test:unit",
+    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "clean:build": "yarn clean:build:app && yarn clean:build:global-styles && yarn clean:build:tailwindcss && yarn clean:build:scss && yarn clean:build:emotion && yarn clean:build:vanilla-extract",
     "clean:build:app": "rm -rf ./dist",
-    "clean:build:tailwindcss": "yarn --cwd projects/tailwindcss clean:build"
+    "clean:build:global-styles": "yarn --cwd projects/global-styles clean:build",
+    "clean:build:tailwindcss": "yarn --cwd projects/tailwindcss clean:build",
+    "clean:build:scss": "yarn --cwd projects/scss clean:build",
+    "clean:build:emotion": "yarn --cwd projects/emotion clean:build",
+    "clean:build:vanilla-extract": "yarn --cwd projects/vanilla-extract clean:build"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@playwright/test": "*",
     "typescript": "*",
+    "tailwindcss": "*",
     "@tailwindcss/vite": "*",
-    "vite": "*"
+    "vite": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router": "*",
+    "sass": "*",
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/vite-plugin": "*",
+    "@emotion/styled": "*"
   },
   "volta": {
     "extends": "../../package.json"

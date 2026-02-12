@@ -1,171 +1,144 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "horizontal" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "horizontal" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #AFB0B3;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-high);
   height: 1px;
   width: 100%;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "horizontal" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "horizontal" 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #535457;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-high);
   height: 1px;
   width: 100%;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "vertical" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #AFB0B3;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-high);
   height: 100%;
   width: 1px;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-high, orientation: "vertical" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #535457;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-high);
   height: 100%;
   width: 1px;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "horizontal" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #404044;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-low);
   height: 1px;
   width: 100%;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "horizontal" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #D8D8DB;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-low);
   height: 1px;
   width: 100%;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "vertical" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #404044;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-low);
   height: 100%;
   width: 1px;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: "vertical" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #D8D8DB;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-low);
   height: 100%;
   width: 1px;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-low, orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #D8D8DB;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-low);
   height: 1px;
   width: 100%;
 }
@@ -206,77 +179,65 @@ hr {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "horizontal" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #88898C;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-medium);
   height: 1px;
   width: 100%;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "horizontal" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #6B6D70;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-medium);
   height: 1px;
   width: 100%;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "vertical" and theme dark 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #88898C;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-medium);
   height: 100%;
   width: 1px;
 }"
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-medium, orientation: "vertical" and theme light 1`] = `
+exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 2`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 hr {
-  margin: 0;
-  padding: 0;
-  border: none;
-  text-align: start;
-  background: #6B6D70;
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-medium);
   height: 100%;
   width: 1px;
 }"

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useNavigate } from '@remix-run/react';
-import { PButton, PButtonGroup, PModal, PText } from '@porsche-design-system/components-react/ssr';
+import {PButton, PHeading, PModal, PText} from '@porsche-design-system/components-react/ssr';
 
 export default function ModalStandaloneOpen(): JSX.Element {
   const navigate = useNavigate();
@@ -10,14 +10,15 @@ export default function ModalStandaloneOpen(): JSX.Element {
 
   return (
     <>
-      <PModal heading="Some Heading" open={true} onDismiss={onDismiss}>
+      <PModal open={true} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
         <PText>Some Content</PText>
-        <PButtonGroup className="footer">
-          <PButton>Save</PButton>
-          <PButton type="button" variant="secondary" icon="close" onClick={onDismiss}>
-            Close
-          </PButton>
-        </PButtonGroup>
+        <PButton slot="footer">Save</PButton>
+        <PButton slot="footer" type="button" variant="secondary" icon="close" onClick={onDismiss}>
+          Close
+        </PButton>
       </PModal>
     </>
   );

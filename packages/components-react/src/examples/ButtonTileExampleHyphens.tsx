@@ -1,17 +1,17 @@
-import { PButtonTile, PSelect, PSelectOption, SelectUpdateEventDetail } from '@porsche-design-system/components-react';
+import { PButtonTile, PSelect, PSelectOption, SelectChangeEventDetail } from '@porsche-design-system/components-react';
 import { Property } from 'csstype';
 import { useState } from 'react';
 
 export const ButtonTileExampleHyphensPage = (): JSX.Element => {
   const [hyphens, setHyphens] = useState<Property.Hyphens>('auto');
 
-  const onUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+  const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
     setHyphens(e.detail.value as Property.Hyphens);
   };
 
   return (
     <>
-      <PSelect label="Select hyphens" name="hyphens" value={hyphens} onUpdate={onUpdate}>
+      <PSelect label="Select hyphens" name="hyphens" value={hyphens} onChange={onChange}>
         <PSelectOption value="auto">style="hyphens: auto;"</PSelectOption>
         <PSelectOption value="manual">style="hyphens: manual;"</PSelectOption>
         <PSelectOption value="none">style="hyphens: none;"</PSelectOption>
@@ -22,7 +22,7 @@ export const ButtonTileExampleHyphensPage = (): JSX.Element => {
         description="An extra&shy;ordinarily Porsche"
         compact={true}
         size="inherit"
-        style={{ maxWidth: '400px', fontSize: '45px', hyphens }}
+        style={{ colorScheme: 'dark', maxWidth: '400px', fontSize: '45px', hyphens }}
       >
         <img src="http://localhost:3002/lights.jpg" alt="Some image description" />
       </PButtonTile>

@@ -22,7 +22,7 @@ it('should have working events', async () => {
   await componentsReady();
 
   const el = document.querySelector('p-segmented-control');
-  el.addEventListener('update', (e: CustomEvent) => {
+  el.addEventListener('change', (e: CustomEvent) => {
     debugEl.querySelector('span').innerHTML = e.detail.value;
     debugEl.querySelector('span:last-child').innerHTML = '1';
   });

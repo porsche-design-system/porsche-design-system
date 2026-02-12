@@ -1,0 +1,72 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  fontWeightBold,
+  leadingNormal,
+  typescale2Xs,
+  typescaleXs,
+  typescaleSm,
+  typescaleMd,
+  typescaleLg,
+  typescaleXl,
+  typescale2Xl,
+} from '@porsche-design-system/tokens';
+
+export const metadata = {
+  title: 'SCSS: Typography - Porsche Design System',
+  description: 'Detailed API reference for the typography style.',
+};
+
+# Typography
+
+<TableOfContents headings={['SCSS Mixins', 'SCSS Variables']} />
+
+## SCSS Mixins
+
+### Display
+
+| SCSS Mixin                | Description                                                                        |
+| ------------------------- | ---------------------------------------------------------------------------------- |
+| `@mixin prose-display-lg` | Applies the **large** variant of extra-large typography primarily to `<h1>` tags.  |
+| `@mixin prose-display-md` | Applies the **medium** variant of extra-large typography primarily to `<h1>` tags. |
+| `@mixin prose-display-sm` | Applies the **small** variant of extra-large typography primarily to `<h1>` tags.  |
+
+### Heading
+
+| SCSS Mixin                 | Description                                                                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `@mixin prose-heading-2xl` | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `@mixin prose-heading-xl`  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
+| `@mixin prose-heading-lg`  | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
+| `@mixin prose-heading-md`  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
+| `@mixin prose-heading-sm`  | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
+
+### Text
+
+| SCSS Mixin              | Description                                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------------------------------- |
+| `@mixin prose-text-xl`  | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
+| `@mixin prose-text-lg`  | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
+| `@mixin prose-text-md`  | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.   |
+| `@mixin prose-text-sm`  | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
+| `@mixin prose-text-xs`  | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
+| `@mixin prose-text-2xs` | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+
+## SCSS Variables
+
+| SCSS Variable           | Description                                                                               | Value                |
+| ----------------------- | ----------------------------------------------------------------------------------------- | -------------------- |
+| `$font-porsche-next`    | Holds the **Porsche Next** font family along with fallback fonts.                         | {fontPorscheNext}    |
+| `$font-weight-normal`   | Holds the **regular** font weight optimized for the Porsche Next typeface.                | {fontWeightNormal}   |
+| `$font-weight-semibold` | Holds the **semi-bold** font weight optimized for the Porsche Next typeface.              | {fontWeightSemibold} |
+| `$font-weight-bold`     | Holds the **bold** font weight optimized for the Porsche Next typeface.                   | {fontWeightBold}     |
+| `$leading-normal`       | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. | {leadingNormal}      |
+| `$typescale-2xs`        | Holds the **2x-small** font size and line height optimized for the Porsche Next typeface. | {typescale2Xs}       |
+| `$typescale-xs`         | Holds the **x-small** font size and line height optimized for the Porsche Next typeface.  | {typescaleXs}        |
+| `$typescale-sm`         | Holds the **small** font size and line height optimized for the Porsche Next typeface.    | {typescaleSm}        |
+| `$typescale-md`         | Holds the **medium** font size and line height optimized for the Porsche Next typeface.   | {typescaleMd}        |
+| `$typescale-lg`         | Holds the **large** font size and line height optimized for the Porsche Next typeface.    | {typescaleLg}        |
+| `$typescale-xl`         | Holds the **x-large** font size and line height optimized for the Porsche Next typeface.  | {typescaleXl}        |
+| `$typescale-2xl`        | Holds the **2x-large** font size and line height optimized for the Porsche Next typeface. | {typescale2Xl}       |

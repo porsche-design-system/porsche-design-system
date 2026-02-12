@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,7 +7,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   implicitSubmit,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -39,7 +38,6 @@ const propTypes: PropTypes<typeof InputTel> = {
   indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -113,9 +111,6 @@ export class InputTel {
 
   /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
-
-  /** Controls the visual appearance of the component. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation. */
   @Prop() public pattern?: string;
@@ -197,8 +192,7 @@ export class InputTel {
       this.hideLabel,
       this.state,
       this.compact,
-      this.readOnly,
-      this.theme
+      this.readOnly
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -227,12 +221,11 @@ export class InputTel {
         disabled={this.disabled}
         state={this.state}
         message={this.message}
-        theme={this.theme}
         loading={this.loading}
         pattern={this.pattern}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="phone" color="state-disabled" theme={this.theme} />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="phone" color="contrast-low" />,
         })}
       />
     );

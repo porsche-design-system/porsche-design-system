@@ -4,14 +4,13 @@ exports[`getComponentCss() > should return correct css for size: inherit 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
@@ -24,14 +23,13 @@ exports[`getComponentCss() > should return correct css for size: large 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
@@ -45,14 +43,13 @@ exports[`getComponentCss() > should return correct css for size: medium 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
@@ -66,14 +63,13 @@ exports[`getComponentCss() > should return correct css for size: small 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
@@ -87,14 +83,13 @@ exports[`getComponentCss() > should return correct css for size: x-large 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
@@ -108,14 +103,13 @@ exports[`getComponentCss() > should return correct css for size: x-small 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;
@@ -129,14 +123,13 @@ exports[`getComponentCss() > should return correct css for size: xx-small 1`] = 
 ":host {
   display: inline-block;
   vertical-align: top;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 img {
+  all: unset;
   display: block;
-  margin: 0;
   padding: 1px;
   box-sizing: border-box;
   pointer-events: none;

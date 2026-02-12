@@ -73,6 +73,18 @@ export const inputWeekSlotStories: SlotStories<'p-input-week'> = {
       ],
     },
   },
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
 };
 
 export const inputWeekStory: Story<'p-input-week'> = {
@@ -83,7 +95,11 @@ export const inputWeekStory: Story<'p-input-week'> = {
     {
       tag: 'p-input-week',
       properties,
-      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
+      children: [
+        ...(slots?.start?.generator() ?? []),
+        ...(slots?.end?.generator() ?? []),
+        ...(slots?.['label-after']?.generator() ?? []),
+      ],
     },
   ],
 };
@@ -99,7 +115,24 @@ export const inputWeekStorySlots: Story<'p-input-week'> = {
           properties: { slot: 'label', id: 'some-label-id' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
+            ' and a "label-after" slot.',
+          ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: [
+            'Some Popover content with a ',
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -108,7 +141,11 @@ export const inputWeekStorySlots: Story<'p-input-week'> = {
           properties: { slot: 'description', id: 'some-description-id' },
           children: [
             'Some description with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -131,7 +168,11 @@ export const inputWeekStorySlots: Story<'p-input-week'> = {
           properties: { slot: 'message', id: 'some-message-id' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },

@@ -3,7 +3,6 @@
 exports[`getComponentCss() > should return correct css for size: "medium" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -22,7 +21,6 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
 exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -41,7 +39,6 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
 ":host {
   display: block;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;

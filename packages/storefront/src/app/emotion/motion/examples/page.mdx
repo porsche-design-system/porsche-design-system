@@ -1,0 +1,25 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { motionEmotionStoryDuration, motionEmotionStoryEase } from '@/app/emotion/motion/examples/motion.stories';
+
+export const metadata = {
+  title: 'Emotion: Motion - Porsche Design System',
+  description: 'Learn about the Emotion motion styles of our design language and how to use them.',
+};
+
+# Motion
+
+<TableOfContents headings={['Duration', 'Ease']} />
+
+The Porsche Design System provides multiple JS variables for motion styles to be used in Emotion.
+
+Styles import:
+`import { durationSm, easeInOut, … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+
+## Duration
+
+<ComponentStory story={motionEmotionStoryDuration} showCodeBlock={false} />
+
+## Ease
+
+<ComponentStory story={motionEmotionStoryEase} showCodeBlock={false} />

@@ -1,22 +1,5 @@
-/**
- * Universal pagination model generation algorithm
- *
- * The idea behind this module is to move the logic of creating pagination out of the component
- * and place it in a separate module.
- *
- * Adapted from ultimate-pagination
- * https://github.com/ultimate-pagination/ultimate-pagination
- */
+export type PaginationUpdateEventDetail = { page: number; previousPage: number };
 
-/** @deprecated */
-export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
-/** @deprecated */
-export type PaginationMaxNumberOfPageLinks = (typeof PAGINATION_NUMBER_OF_PAGE_LINKS)[number];
-/** @deprecated */
-export type PaginationUpdateEvent = { page: number; previousPage: number };
-export type PaginationUpdateEventDetail = PaginationUpdateEvent;
-
-// TODO: first and last wording similar to carousel?
 export type PaginationInternationalization = Partial<Record<'root' | 'prev' | 'next' | 'page', string>> | string; // string to support attribute, gets removed via InputParser
 
 export type PaginationOptions = {
@@ -79,8 +62,9 @@ const createPageFunctionFactory = ({ activePage }: PaginationOptions): ((pageNum
   });
 };
 
-export const createRange = (start: number, end: number): number[] =>
-  Array.from(new Array(end - start + 1), (_, i) => i + start);
+export const createRange = (start: number, end: number): number[] => {
+  return Array.from(new Array(end - start + 1), (_, i) => i + start);
+};
 
 export const createPaginationItems = (options: PaginationOptions): PaginationItem[] => {
   const { pageTotal, activePage, showLastPage } = options;

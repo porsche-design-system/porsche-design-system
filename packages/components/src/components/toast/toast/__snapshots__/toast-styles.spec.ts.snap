@@ -2,12 +2,10 @@
 
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
+  --_p-a: var(--p-toast-position-bottom, 56px) !important;
   position: fixed !important;
-  inset-inline: max(22px, 10.625vw - 12px) !important;
-  --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
-  bottom: var(--p-internal-toast-position-bottom) !important;
+  inset: auto max(22px, 10.625vw - 12px) var(--_p-a) !important;
   z-index: 999999 !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -18,7 +16,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
 @keyframes in {
   from {
     opacity: 0;
-    transform: translate3d(0,calc(var(--p-internal-toast-position-bottom) + 100%),0);
+    transform: translate3d(0,calc(var(--_p-a) + 100%),0);
   }
   to {
     opacity: 1;
@@ -32,23 +30,22 @@ exports[`getComponentCss() > should return correct css 1`] = `
   }
   to {
     opacity: 0;
-    transform: translate3d(0,calc(var(--p-internal-toast-position-bottom) + 100%),0);
+    transform: translate3d(0,calc(var(--_p-a) + 100%),0);
   }
 }
 @media(min-width:760px) {
     :host {
-      inset-inline: 64px auto !important;
+      --_p-a: var(--p-toast-position-bottom, 64px) !important;
+      inset: auto auto var(--_p-a) 64px !important;
       max-width: min(42rem, calc(100vw - 64px * 2)) !important;
-      --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 64px) !important;
-      bottom: var(--p-internal-toast-position-bottom) !important;
     }
 }
 
   .hydrated {
-    animation: 0.4s in cubic-bezier(0,0,0.2,1) forwards;
+    animation: .4s in cubic-bezier(0,0,.2,1) forwards;
   }
   .close {
-    animation: 0.4s out cubic-bezier(0.4,0,0.5,1) forwards !important;
+    animation: .4s out cubic-bezier(.4,0,.5,1) forwards !important;
   }"
 `;
 

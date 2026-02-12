@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/styles';
+import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/emotion';
 import { create, type JssStyle, type Styles } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';

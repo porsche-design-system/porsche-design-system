@@ -6,7 +6,7 @@
     PHeading,
     PText,
   } from '@porsche-design-system/components-vue';
-  import { breakpointS } from '@porsche-design-system/components-vue/styles';
+  import { breakpointS } from '@porsche-design-system/components-vue/emotion';
   import { ref } from 'vue';
 
   // initially, sidebar should be closed on mobile and opened on desktop
@@ -38,7 +38,7 @@
     <PButton
       slot="header-end"
       icon="configurate"
-      variant="ghost"
+      variant="secondary"
       :compact="true"
       :hideLabel="true"
       @click="onSidebarEndOpen"

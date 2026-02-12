@@ -1,23 +1,13 @@
 import { getAttribute, setAttribute } from '../../utils';
-import type { ScrollerDirection, ScrollerGradientColor, ScrollerGradientColorScheme } from '../scroller/scroller-utils';
+import type { ScrollerDirection } from '../scroller/scroller-utils';
 
 export const TABS_BAR_SIZES = ['small', 'medium'] as const;
 export type TabsBarSize = (typeof TABS_BAR_SIZES)[number];
 
-/** @deprecated */
-export const TABS_BAR_WEIGHTS_DEPRECATED = ['semibold'] as const;
-/** @deprecated */
-export type TabsBarWeightDeprecated = (typeof TABS_BAR_WEIGHTS_DEPRECATED)[number];
-export const TABS_BAR_WEIGHTS = ['regular', 'semi-bold', ...TABS_BAR_WEIGHTS_DEPRECATED] as const;
+export const TABS_BAR_WEIGHTS = ['regular', 'semi-bold'] as const;
 export type TabsBarWeight = (typeof TABS_BAR_WEIGHTS)[number];
 
-/** @deprecated */
-export type TabsBarUpdateEvent = { activeTabIndex: number };
-export type TabsBarUpdateEventDetail = TabsBarUpdateEvent;
-
-/** @deprecated */
-export type TabsBarGradientColorScheme = ScrollerGradientColorScheme;
-export type TabsBarGradientColor = ScrollerGradientColor;
+export type TabsBarUpdateEventDetail = { activeTabIndex: number };
 
 export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number): number => {
   const maxIndex = tabElementsCount - 1; // can be -1 without children

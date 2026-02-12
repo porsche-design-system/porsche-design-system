@@ -1,0 +1,212 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should contain correct values for theme 1`] = `
+{
+  "dark": {
+    "background": {
+      "base": "hsl(225, 66.7%, 1.2%)",
+      "frosted": "hsla(240, 2%, 43%, 0.228)",
+      "shading": "hsla(240, 5.3%, 14.9%, 0.500)",
+      "surface": "hsl(240, 2%, 10%)",
+    },
+    "contrast": {
+      "high": "hsla(240, 12.5%, 96.9%, 0.670)",
+      "low": "hsla(240, 12.5%, 96.9%, 0.450)",
+      "medium": "hsla(240, 12.5%, 96.9%, 0.560)",
+    },
+    "notification": {
+      "error": "hsl(0, 96.9%, 62%)",
+      "errorSoft": "hsla(0, 96.9%, 62%, 0.260)",
+      "info": "hsl(210, 100%, 54.5%)",
+      "infoSoft": "hsla(210, 100%, 54.5%, 0.260)",
+      "success": "hsl(157, 84.9%, 41.6%)",
+      "successSoft": "hsla(157, 84.9%, 41.6%, 0.260)",
+      "warning": "hsl(28, 90.2%, 56.1%)",
+      "warningSoft": "hsla(28, 90.2%, 56.1%, 0.260)",
+    },
+    "primary": "hsl(225, 100%, 99%)",
+    "state": {
+      "active": "hsla(240, 2%, 43%, 0.228)",
+      "disabled": "hsla(240,1.5%,61.8%,0.302)",
+      "focus": "#1A44EA",
+      "hover": "hsla(240, 2%, 43%, 0.228)",
+    },
+  },
+  "light": {
+    "background": {
+      "base": "#fff",
+      "frosted": "hsla(240, 5%, 70%, 0.148)",
+      "shading": "hsla(240, 5.3%, 14.9%, 0.500)",
+      "surface": "hsl(240, 10%, 95%)",
+    },
+    "contrast": {
+      "high": "hsla(240, 7.1%, 11%, 0.700)",
+      "low": "hsla(240, 5.3%, 14.9%, 0.500)",
+      "medium": "hsla(240, 6.1%, 7%, 0.600)",
+    },
+    "notification": {
+      "error": "hsl(357, 78%, 41%)",
+      "errorSoft": "hsla(357, 78%, 41%, 0.180)",
+      "info": "hsl(228, 83.2%, 51%)",
+      "infoSoft": "hsla(228, 83.2%, 51%, 0.180)",
+      "success": "hsl(115, 77.5%, 27.8%)",
+      "successSoft": "hsla(115, 77.5%, 27.8%, 0.180)",
+      "warning": "hsl(28, 97.7%, 34.1%)",
+      "warningSoft": "hsla(28, 97.7%, 34.1%, 0.180)",
+    },
+    "primary": "hsl(225, 66.7%, 1.2%)",
+    "state": {
+      "active": "hsla(240, 5%, 70%, 0.148)",
+      "disabled": "hsla(233,6.6%,23.9%,0.412)",
+      "focus": "#1A44EA",
+      "hover": "hsla(240, 5%, 70%, 0.148)",
+    },
+  },
+}
+`;
+
+exports[`should contain correct values for themeDark 1`] = `
+{
+  "background": {
+    "base": "hsl(225, 66.7%, 1.2%)",
+    "frosted": "hsla(240, 2%, 43%, 0.228)",
+    "shading": "hsla(240, 5.3%, 14.9%, 0.500)",
+    "surface": "hsl(240, 2%, 10%)",
+  },
+  "contrast": {
+    "high": "hsla(240, 12.5%, 96.9%, 0.670)",
+    "low": "hsla(240, 12.5%, 96.9%, 0.450)",
+    "medium": "hsla(240, 12.5%, 96.9%, 0.560)",
+  },
+  "notification": {
+    "error": "hsl(0, 96.9%, 62%)",
+    "errorSoft": "hsla(0, 96.9%, 62%, 0.260)",
+    "info": "hsl(210, 100%, 54.5%)",
+    "infoSoft": "hsla(210, 100%, 54.5%, 0.260)",
+    "success": "hsl(157, 84.9%, 41.6%)",
+    "successSoft": "hsla(157, 84.9%, 41.6%, 0.260)",
+    "warning": "hsl(28, 90.2%, 56.1%)",
+    "warningSoft": "hsla(28, 90.2%, 56.1%, 0.260)",
+  },
+  "primary": "hsl(225, 100%, 99%)",
+  "state": {
+    "active": "hsla(240, 2%, 43%, 0.228)",
+    "disabled": "hsla(240,1.5%,61.8%,0.302)",
+    "focus": "#1A44EA",
+    "hover": "hsla(240, 2%, 43%, 0.228)",
+  },
+}
+`;
+
+exports[`should contain correct values for themeDarkBackgroundBase 1`] = `"hsl(225, 66.7%, 1.2%)"`;
+
+exports[`should contain correct values for themeDarkBackgroundFrosted 1`] = `"hsla(240, 2%, 43%, 0.228)"`;
+
+exports[`should contain correct values for themeDarkBackgroundShading 1`] = `"hsla(240, 5.3%, 14.9%, 0.500)"`;
+
+exports[`should contain correct values for themeDarkBackgroundSurface 1`] = `"hsl(240, 2%, 10%)"`;
+
+exports[`should contain correct values for themeDarkContrastHigh 1`] = `"hsla(240, 12.5%, 96.9%, 0.670)"`;
+
+exports[`should contain correct values for themeDarkContrastLow 1`] = `"hsla(240, 12.5%, 96.9%, 0.450)"`;
+
+exports[`should contain correct values for themeDarkContrastMedium 1`] = `"hsla(240, 12.5%, 96.9%, 0.560)"`;
+
+exports[`should contain correct values for themeDarkNotificationError 1`] = `"hsl(0, 96.9%, 62%)"`;
+
+exports[`should contain correct values for themeDarkNotificationErrorSoft 1`] = `"hsla(0, 96.9%, 62%, 0.260)"`;
+
+exports[`should contain correct values for themeDarkNotificationInfo 1`] = `"hsl(210, 100%, 54.5%)"`;
+
+exports[`should contain correct values for themeDarkNotificationInfoSoft 1`] = `"hsla(210, 100%, 54.5%, 0.260)"`;
+
+exports[`should contain correct values for themeDarkNotificationSuccess 1`] = `"hsl(157, 84.9%, 41.6%)"`;
+
+exports[`should contain correct values for themeDarkNotificationSuccessSoft 1`] = `"hsla(157, 84.9%, 41.6%, 0.260)"`;
+
+exports[`should contain correct values for themeDarkNotificationWarning 1`] = `"hsl(28, 90.2%, 56.1%)"`;
+
+exports[`should contain correct values for themeDarkNotificationWarningSoft 1`] = `"hsla(28, 90.2%, 56.1%, 0.260)"`;
+
+exports[`should contain correct values for themeDarkPrimary 1`] = `"hsl(225, 100%, 99%)"`;
+
+exports[`should contain correct values for themeDarkStateActive 1`] = `"hsla(240, 2%, 43%, 0.228)"`;
+
+exports[`should contain correct values for themeDarkStateDisabled 1`] = `"hsla(240,1.5%,61.8%,0.302)"`;
+
+exports[`should contain correct values for themeDarkStateFocus 1`] = `"#1A44EA"`;
+
+exports[`should contain correct values for themeDarkStateHover 1`] = `"hsla(240, 2%, 43%, 0.228)"`;
+
+exports[`should contain correct values for themeLight 1`] = `
+{
+  "background": {
+    "base": "#fff",
+    "frosted": "hsla(240, 5%, 70%, 0.148)",
+    "shading": "hsla(240, 5.3%, 14.9%, 0.500)",
+    "surface": "hsl(240, 10%, 95%)",
+  },
+  "contrast": {
+    "high": "hsla(240, 7.1%, 11%, 0.700)",
+    "low": "hsla(240, 5.3%, 14.9%, 0.500)",
+    "medium": "hsla(240, 6.1%, 7%, 0.600)",
+  },
+  "notification": {
+    "error": "hsl(357, 78%, 41%)",
+    "errorSoft": "hsla(357, 78%, 41%, 0.180)",
+    "info": "hsl(228, 83.2%, 51%)",
+    "infoSoft": "hsla(228, 83.2%, 51%, 0.180)",
+    "success": "hsl(115, 77.5%, 27.8%)",
+    "successSoft": "hsla(115, 77.5%, 27.8%, 0.180)",
+    "warning": "hsl(28, 97.7%, 34.1%)",
+    "warningSoft": "hsla(28, 97.7%, 34.1%, 0.180)",
+  },
+  "primary": "hsl(225, 66.7%, 1.2%)",
+  "state": {
+    "active": "hsla(240, 5%, 70%, 0.148)",
+    "disabled": "hsla(233,6.6%,23.9%,0.412)",
+    "focus": "#1A44EA",
+    "hover": "hsla(240, 5%, 70%, 0.148)",
+  },
+}
+`;
+
+exports[`should contain correct values for themeLightBackgroundBase 1`] = `"#fff"`;
+
+exports[`should contain correct values for themeLightBackgroundFrosted 1`] = `"hsla(240, 5%, 70%, 0.148)"`;
+
+exports[`should contain correct values for themeLightBackgroundShading 1`] = `"hsla(240, 5.3%, 14.9%, 0.500)"`;
+
+exports[`should contain correct values for themeLightBackgroundSurface 1`] = `"hsl(240, 10%, 95%)"`;
+
+exports[`should contain correct values for themeLightContrastHigh 1`] = `"hsla(240, 7.1%, 11%, 0.700)"`;
+
+exports[`should contain correct values for themeLightContrastLow 1`] = `"hsla(240, 5.3%, 14.9%, 0.500)"`;
+
+exports[`should contain correct values for themeLightContrastMedium 1`] = `"hsla(240, 6.1%, 7%, 0.600)"`;
+
+exports[`should contain correct values for themeLightNotificationError 1`] = `"hsl(357, 78%, 41%)"`;
+
+exports[`should contain correct values for themeLightNotificationErrorSoft 1`] = `"hsla(357, 78%, 41%, 0.180)"`;
+
+exports[`should contain correct values for themeLightNotificationInfo 1`] = `"hsl(228, 83.2%, 51%)"`;
+
+exports[`should contain correct values for themeLightNotificationInfoSoft 1`] = `"hsla(228, 83.2%, 51%, 0.180)"`;
+
+exports[`should contain correct values for themeLightNotificationSuccess 1`] = `"hsl(115, 77.5%, 27.8%)"`;
+
+exports[`should contain correct values for themeLightNotificationSuccessSoft 1`] = `"hsla(115, 77.5%, 27.8%, 0.180)"`;
+
+exports[`should contain correct values for themeLightNotificationWarning 1`] = `"hsl(28, 97.7%, 34.1%)"`;
+
+exports[`should contain correct values for themeLightNotificationWarningSoft 1`] = `"hsla(28, 97.7%, 34.1%, 0.180)"`;
+
+exports[`should contain correct values for themeLightPrimary 1`] = `"hsl(225, 66.7%, 1.2%)"`;
+
+exports[`should contain correct values for themeLightStateActive 1`] = `"hsla(240, 5%, 70%, 0.148)"`;
+
+exports[`should contain correct values for themeLightStateDisabled 1`] = `"hsla(233,6.6%,23.9%,0.412)"`;
+
+exports[`should contain correct values for themeLightStateFocus 1`] = `"#1A44EA"`;
+
+exports[`should contain correct values for themeLightStateHover 1`] = `"hsla(240, 5%, 70%, 0.148)"`;

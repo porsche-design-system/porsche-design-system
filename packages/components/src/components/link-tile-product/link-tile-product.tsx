@@ -1,9 +1,8 @@
-import { Component, Element, Event, type EventEmitter, Fragment, type JSX, Prop, h } from '@stencil/core';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { Component, Element, Event, type EventEmitter, Fragment, h, type JSX, Prop } from '@stencil/core';
+import { getSlottedPictureImageStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
@@ -13,12 +12,12 @@ import {
 } from '../../utils';
 import { getComponentCss } from './link-tile-product-styles';
 import {
+  anchorSlot,
+  headerSlot,
   type LinkTileProductAspectRatio,
   type LinkTileProductLikeEventDetail,
   type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
-  anchorSlot,
-  headerSlot,
 } from './link-tile-product-utils';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
@@ -32,7 +31,6 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   aspectRatio: AllowedTypes.breakpoint<LinkTileProductAspectRatio>(TILE_PRODUCT_ASPECT_RATIOS),
   target: AllowedTypes.string,
   rel: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -73,16 +71,13 @@ export class LinkTileProduct {
   @Prop() public href?: string;
 
   /** Aspect ratio of the link-tile-product. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3:4';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3/4';
 
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTileProductTarget = '_self';
 
   /** Specifies the relationship of the target object to the link object. */
   @Prop() public rel?: string;
-
-  /** Adapts the link-tile-product color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the like button is clicked. */
   @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEventDetail>;
@@ -108,8 +103,7 @@ export class LinkTileProduct {
       !this.href,
       !!this.priceOriginal,
       !!this.description,
-      this.aspectRatio,
-      this.theme
+      this.aspectRatio
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -141,7 +135,6 @@ export class LinkTileProduct {
               icon={this.liked ? 'heart-filled' : 'heart'}
               hideLabel={true}
               onClick={this.onLikeClick}
-              theme={this.theme}
             >
               {this.liked ? 'Remove from wishlist' : 'Add to wishlist'}
             </PrefixedTagNames.pButtonPure>

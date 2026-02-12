@@ -1,4 +1,4 @@
-import React from 'react';
+import type { FC } from 'react';
 import type { FrameworkMarkup } from './framework';
 
-export type CodeSample = { component: React.FC; frameworkMarkup: FrameworkMarkup };
+export type CodeSample = { component: FC; frameworkMarkup: FrameworkMarkup };

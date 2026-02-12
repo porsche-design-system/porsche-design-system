@@ -1,11 +1,11 @@
 'use client';
 
-import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type PropsWithChildren } from 'react';
 import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import { frameworkNameMap } from '@/models/framework';
 
 type CodeBlockProps = {
   frameworkMarkup: FrameworkMarkup & { next?: string };
@@ -54,7 +54,11 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}
         useInlineStyles={false}
-        codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1' }}
+        codeTagProps={{
+          tabIndex: 0,
+          className:
+            'max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1',
+        }}
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>

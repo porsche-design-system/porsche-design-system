@@ -1,4 +1,4 @@
-import { type Breakpoint, breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoint } from '@porsche-design-system/emotion';
 import type { Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import {
@@ -11,21 +11,10 @@ import {
 export const CAROUSEL_WIDTHS = ['basic', 'extended', 'wide', 'full'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
-export const CAROUSEL_TYPE = ['loop', 'slide'] as const;
-export type CarouselType = (typeof CAROUSEL_TYPE)[number];
-
 export const CAROUSEL_SLIDES_PER_PAGE = ['auto', ...Array.from(new Array(10), (_, i) => i + 1)];
 export type CarouselSlidesPerPage = (typeof CAROUSEL_SLIDES_PER_PAGE)[number];
 
-export const CAROUSEL_GRADIENT_COLORS = ['background-base', 'background-surface', 'none'] as const;
-export type CarouselGradientColor = (typeof CAROUSEL_GRADIENT_COLORS)[number];
-
-// 'left' is deprecated and will be mapped to 'start'
-/** @deprecated */
-export const CAROUSEL_ALIGN_HEADERS_DEPRECATED = ['left'] as const;
-/** @deprecated */
-export type CarouselAlignHeaderDeprecated = (typeof CAROUSEL_ALIGN_HEADERS_DEPRECATED)[number];
-export const CAROUSEL_ALIGN_HEADERS = ['start', 'center', ...CAROUSEL_ALIGN_HEADERS_DEPRECATED] as const;
+export const CAROUSEL_ALIGN_HEADERS = ['start', 'center'] as const;
 export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
 export type CarouselHeadingSize = Extract<HeadingSize, 'x-large' | 'xx-large'>;
@@ -46,9 +35,7 @@ export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
 
-/** @deprecated */
-export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };
-export type CarouselUpdateEventDetail = CarouselUpdateEvent;
+export type CarouselUpdateEventDetail = { activeIndex: number; previousIndex: number };
 
 export type SplideBreakpoints = Options['breakpoints'];
 

@@ -1,17 +1,13 @@
-import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
-import type { JssStyle } from 'jss';
+import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   dismissButtonJssStyle,
-  getThemedColors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import { colorPrimary } from '../../styles/css-variables';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
-import type { Theme } from '../../types';
-import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
+import { getCss, HEADING_TAGS } from '../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
@@ -20,47 +16,40 @@ import {
 import type { InlineNotificationState } from './inline-notification-utils';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
-const getTextJssStyle = (theme: Theme): JssStyle => ({
-  margin: 0,
-  color: getThemedColors(theme).primaryColor,
-  ...prefersColorSchemeDarkMediaQuery(theme, {
-    color: getThemedColors('dark').primaryColor,
-  }),
-});
 
-const getHeadingJssStyle = (theme: Theme): JssStyle => ({
+const getTextJssStyle = {
+  margin: 0,
+  color: colorPrimary,
+};
+
+const getHeadingJssStyle = {
   ...headingSmallStyle,
-  ...getTextJssStyle(theme),
-});
+  ...getTextJssStyle,
+};
 
 // CSS Variable defined in fontHyphenationStyle
 /**
  * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-export const getComponentCss = (
-  state: InlineNotificationState,
-  hasAction: boolean,
-  hasClose: boolean,
-  theme: Theme
-): string => {
+
+export const getComponentCss = (state: InlineNotificationState, hasAction: boolean, hasClose: boolean): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          ...getNotificationRootJssStyle(state, hasAction, hasClose, theme),
-          ...colorSchemeStyles,
+          ...getNotificationRootJssStyle(state, hasAction, hasClose),
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
-      'slot[name="heading"]': getHeadingJssStyle(theme),
+      'slot[name="heading"]': getHeadingJssStyle,
     },
-    heading: getHeadingJssStyle(theme),
+    heading: getHeadingJssStyle,
     description: {
       ...textSmallStyle,
-      ...getTextJssStyle(theme),
+      ...getTextJssStyle,
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
@@ -72,12 +61,6 @@ export const getComponentCss = (
         },
       },
     }),
-    close: {
-      ...dismissButtonJssStyle,
-      mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        mixBlendMode: 'plus-lighter',
-      }),
-    },
+    close: dismissButtonJssStyle,
   });
 };

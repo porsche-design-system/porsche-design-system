@@ -1,0 +1,51 @@
+{
+  "name": "@porsche-design-system/global-styles",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "style": "./dist/index.css",
+  "exports": {
+    ".": {
+      "style": "./dist/index.css"
+    },
+    "./*": "./dist/*"
+  },
+  "sideEffects": false,
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:variables && yarn build:color-scheme && yarn build:normalize && yarn build:font-face && yarn build:index && yarn build:legacy-radius",
+    "build-prod": "yarn clean:build && yarn build:variables && yarn build:color-scheme && yarn build:normalize && yarn build-prod:font-face && yarn build:index && yarn build:legacy-radius",
+    "build:variables": "tsx scripts/buildVariablesCss.ts",
+    "build:color-scheme": "tsx scripts/buildColorSchemeCss.ts",
+    "build:normalize": "tsx scripts/buildNormalizeCss.ts",
+    "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
+    "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
+    "build:index": "yarn build:index:default && yarn build:index:cdn",
+    "build:index:default": "cat dist/normalize.css dist/variables.css dist/color-scheme.css dist/font-face.css > dist/index.css",
+    "build:index:cdn": "mkdir -p dist/cn && cat dist/normalize.css dist/variables.css dist/color-scheme.css dist/cn/font-face.css > dist/cn/index.css",
+    "build:legacy-radius": "cp ./src/legacy-radius.css ./dist/legacy-radius.css",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0",
+    "@porsche-design-system/font-face": "0.0.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "vitest": "*",
+    "tsx": "*",
+    "typescript": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

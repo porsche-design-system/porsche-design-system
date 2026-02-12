@@ -1,0 +1,670 @@
+<style>
+  #app,
+  :host {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  p-link-tile,
+  p-button-tile,
+  p-link-tile-product,
+  my-prefix-p-link-tile,
+  my-prefix-p-button-tile,
+  my-prefix-p-link-tile-product {
+    max-width: 400px;
+  }
+
+  .playground > iframe {
+    height: 20rem;
+    width: 100%;
+    margin-inline-start: 0;
+  }
+</style>
+
+<div>
+  <div class="playground" title="should render default display">
+    <p-display>The quick brown fox jumps over the lazy dog</p-display>
+  </div>
+
+  <div class="playground" title="should render default heading">
+    <p-heading>The quick brown fox jumps over the lazy dog</p-heading>
+  </div>
+
+  <div class="playground" title="should render default text">
+    <p-text>The quick brown fox jumps over the lazy dog</p-text>
+  </div>
+
+  <div class="playground" title="should render default text-list">
+    <p-text-list>
+      <p-text-list-item>The quick brown fox jumps over the lazy dog</p-text-list-item>
+    </p-text-list>
+  </div>
+
+  <div class="playground" title="should render default icon">
+    <p-icon></p-icon>
+  </div>
+
+  <div class="playground" title="should render default flag">
+    <p-flag></p-flag>
+  </div>
+
+  <div class="playground" title="should render default canvas">
+    <iframe src="/canvas-basic?iframe=true" loading="eager" title="fix-linter-0a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default sheet">
+    <iframe src="/sheet-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default modal">
+    <iframe src="/modal-basic?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
+  </div>
+
+  <div class="playground" title="should render default flyout">
+    <iframe src="/flyout-basic?iframe=true" loading="eager" title="fix-linter-2a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default banner">
+    <iframe src="/banner-basic?iframe=true" loading="eager" title="fix-linter-3a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default toast">
+    <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-4a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default drilldown">
+    <iframe src="/drilldown-basic?iframe=true" loading="eager" title="fix-linter-5a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default inline-notification">
+    <p-inline-notification description="Some description" heading="Some heading"></p-inline-notification>
+  </div>
+
+  <div class="playground" title="should render default popover">
+    <p-popover direction="right">Some popover content</p-popover>
+  </div>
+
+  <div class="playground" title="should render default divider">
+    <p-divider></p-divider>
+  </div>
+
+  <div class="playground" title="should render default button">
+    <p-button>Some label</p-button>
+  </div>
+
+  <div class="playground" title="should render default button-pure">
+    <p-button-pure>Some label</p-button-pure>
+  </div>
+
+  <div class="playground" title="should render default radio-group">
+    <p-radio-group label="Some label" name="some-name" value="a">
+      <p-radio-group-option label="Some label A" value="a"></p-radio-group-option>
+      <p-radio-group-option label="Some label B" value="b"></p-radio-group-option>
+      <p-radio-group-option label="Some label C" value="c"></p-radio-group-option>
+    </p-radio-group>
+  </div>
+
+  <div class="playground" title="should render default select">
+    <p-select label="Some label" name="options">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+    </p-select>
+  </div>
+
+  <div class="playground" title="should render default multi-select">
+    <p-multi-select label="Some label" name="options">
+      <p-multi-select-option value="a">Option A</p-multi-select-option>
+      <p-multi-select-option value="b">Option B</p-multi-select-option>
+      <p-multi-select-option value="c">Option C</p-multi-select-option>
+    </p-multi-select>
+  </div>
+
+  <div class="playground" title="should render default fieldset">
+    <p-fieldset label="Some label"></p-fieldset>
+  </div>
+
+  <div class="playground" title="should render default link">
+    <p-link href="https://porsche.com">Some label</p-link>
+  </div>
+
+  <div class="playground" title="should render default link-pure">
+    <p-link-pure href="https://porsche.com">Some label</p-link-pure>
+  </div>
+
+  <div class="playground" title="should render default wordmark">
+    <p-wordmark></p-wordmark>
+  </div>
+
+  <div class="playground" title="should render default crest">
+    <p-crest></p-crest>
+  </div>
+
+  <div class="playground" title="should render default model-signature">
+    <p-model-signature></p-model-signature>
+  </div>
+
+  <div class="playground" title="should render default pagination">
+    <p-pagination active-page="1" items-per-page="25" total-items-count="500"></p-pagination>
+  </div>
+
+  <div class="playground" title="should render default pin-code">
+    <p-pin-code label="Some label"></p-pin-code>
+  </div>
+
+  <div class="playground" title="should render default table">
+    <p-table>
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell>Column 1</p-table-head-cell>
+          <p-table-head-cell>Column 2</p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+      <p-table-body>
+        <p-table-row>
+          <p-table-cell>Cell 1</p-table-cell>
+          <p-table-cell>Cell 2</p-table-cell>
+        </p-table-row>
+      </p-table-body>
+    </p-table>
+  </div>
+
+  <div class="playground" title="should render default tabs">
+    <p-tabs active-tab-index="0">
+      <p-tabs-item label="Tab1">Content 1</p-tabs-item>
+      <p-tabs-item label="Tab2">Content 2</p-tabs-item>
+      <p-tabs-item label="Tab3">Content 3</p-tabs-item>
+    </p-tabs>
+  </div>
+
+  <div class="playground" title="should render default tabs-bar">
+    <p-tabs-bar active-tab-index="0">
+      <button>Tab1</button>
+      <button>Tab2</button>
+      <button>Tab3</button>
+    </p-tabs-bar>
+  </div>
+
+  <div class="playground" title="should render default accordion">
+    <p-accordion heading="Some accordion heading">
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    </p-accordion>
+  </div>
+
+  <div class="playground" title="should render default spinner">
+    <p-spinner></p-spinner>
+  </div>
+
+  <div class="playground" title="should render default tag">
+    <p-tag>Some Tag</p-tag>
+  </div>
+
+  <div class="playground" title="should render default tag-dismissible">
+    <p-tag-dismissible>Some Tag</p-tag-dismissible>
+  </div>
+
+  <div class="playground" title="should render default segmented-control">
+    <p-segmented-control value="s">
+      <p-segmented-control-item value="s">S</p-segmented-control-item>
+      <p-segmented-control-item value="m">M</p-segmented-control-item>
+      <p-segmented-control-item value="l">L</p-segmented-control-item>
+      <p-segmented-control-item value="xl">XL</p-segmented-control-item>
+    </p-segmented-control>
+  </div>
+
+  <div class="playground" title="should render default scroller">
+    <p-scroller>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+    </p-scroller>
+  </div>
+
+  <div class="playground" title="should render default carousel">
+    <p-carousel heading="Heading">
+      <div>Slide 1</div>
+      <div>Slide 2</div>
+      <div>Slide 3</div>
+    </p-carousel>
+  </div>
+
+  <div class="playground" title="should render default stepper-horizontal">
+    <p-stepper-horizontal>
+      <p-stepper-horizontal-item state="current">Step 1</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 2</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 3</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 4</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 5</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 6</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 7</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 8</p-stepper-horizontal-item>
+      <p-stepper-horizontal-item>Step 9</p-stepper-horizontal-item>
+    </p-stepper-horizontal>
+  </div>
+
+  <div class="playground" title="should render default link-tile">
+    <p-link-tile description="Some description" href="#" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
+    </p-link-tile>
+  </div>
+
+  <div class="playground" title="should render default button-tile">
+    <p-button-tile description="Some description" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
+    </p-button-tile>
+  </div>
+
+  <div class="playground" title="should render default link-tile-product">
+    <p-link-tile-product heading="Some product" href="https://porsche.com" price="1.911,00 €">
+      <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
+    </p-link-tile-product>
+  </div>
+
+  <div class="playground" title="should render default switch">
+    <p-switch>Some label</p-switch>
+  </div>
+
+  <div class="playground" title="should render default input-date">
+    <p-input-date name="some-name" label="Some label"></p-input-date>
+  </div>
+
+  <div class="playground" title="should render default input-email">
+    <p-input-email name="some-name" label="Some label" indicator="true"></p-input-email>
+  </div>
+
+  <div class="playground" title="should render default input-month">
+    <p-input-month name="some-name" label="Some label"></p-input-month>
+  </div>
+
+  <div class="playground" title="should render default input-number">
+    <p-input-number name="some-name" label="Some label" value="1234" controls="true"></p-input-number>
+  </div>
+
+  <div class="playground" title="should render default input-password">
+    <p-input-password name="some-name" label="Some label" value="some password" toggle="true"></p-input-password>
+  </div>
+
+  <div class="playground" title="should render default input-search">
+    <p-input-search name="some-name" label="Some label" value="Some value" clear="true" indicator="true"></p-input-search>
+  </div>
+
+  <div class="playground" title="should render default input-tel">
+    <p-input-tel name="some-name" label="Some label" indicator="true"></p-input-tel>
+  </div>
+
+  <div class="playground" title="should render default input-text">
+    <p-input-text name="some-name" label="Some label" value="some-value" counter="true" max-length="20"></p-input-text>
+  </div>
+
+  <div class="playground" title="should render default input-time">
+    <p-input-time name="some-name" label="Some label"></p-input-time>
+  </div>
+
+  <div class="playground" title="should render default input-url">
+    <p-input-url
+      name="some-name"
+      label="Some label"
+      value="https://designsystem.porsche.com/"
+      indicator="true"
+      max-length="20"
+    ></p-input-url>
+  </div>
+
+  <div class="playground" title="should render default input-week">
+    <p-input-week name="some-name" label="Some label"></p-input-week>
+  </div>
+
+  <div class="playground" title="should render default textarea">
+    <p-textarea name="some-name" label="Some label"></p-textarea>
+  </div>
+
+  <div class="playground" title="should render default checkbox">
+    <p-checkbox label="Some label"></p-checkbox>
+  </div>
+</div>
+
+<div data-prefix="my-prefix">
+  <div class="playground" title="should render default display with custom prefix">
+    <my-prefix-p-display>The quick brown fox jumps over the lazy dog</my-prefix-p-display>
+  </div>
+
+  <div class="playground" title="should render default heading with custom prefix">
+    <my-prefix-p-heading>The quick brown fox jumps over the lazy dog</my-prefix-p-heading>
+  </div>
+
+  <div class="playground" title="should render default text with custom prefix">
+    <my-prefix-p-text>The quick brown fox jumps over the lazy dog</my-prefix-p-text>
+  </div>
+
+  <div class="playground" title="should render default text-list with custom prefix">
+    <my-prefix-p-text-list>
+      <my-prefix-p-text-list-item>The quick brown fox jumps over the lazy dog</my-prefix-p-text-list-item>
+    </my-prefix-p-text-list>
+  </div>
+
+  <div class="playground" title="should render default icon with custom prefix">
+    <my-prefix-p-icon></my-prefix-p-icon>
+  </div>
+
+  <div class="playground" title="should render default flag with custom prefix">
+    <my-prefix-p-flag></my-prefix-p-flag>
+  </div>
+
+  <div class="playground" title="should render default canvas with custom prefix">
+    <iframe src="/canvas-prefixed?iframe=true" loading="eager" title="fix-linter-0a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default sheet with custom prefix">
+    <iframe src="/sheet-prefixed?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+  </div>
+
+  <div class="playground" title="should render default modal with custom prefix">
+    <iframe src="/modal-prefixed?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
+  </div>
+
+  <div class="playground" title="should render default flyout with custom prefix">
+    <iframe src="/flyout-prefixed?iframe=true" loading="eager" title="fix-linter-2b"></iframe>
+  </div>
+
+  <div class="playground" title="should render default banner with custom prefix">
+    <iframe src="/banner-prefixed?iframe=true" loading="eager" title="fix-linter-3b"></iframe>
+  </div>
+
+  <div class="playground" title="should render default toast with custom prefix">
+    <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-4b"></iframe>
+  </div>
+
+  <div class="playground" title="should render default drilldown with custom prefix">
+    <iframe src="/drilldown-prefixed?iframe=true" loading="eager" title="fix-linter-5b"></iframe>
+  </div>
+
+  <div class="playground" title="should render default inline-notification with custom prefix">
+    <my-prefix-p-inline-notification
+      description="Some description"
+      heading="Some heading"
+    ></my-prefix-p-inline-notification>
+  </div>
+
+  <div class="playground" title="should render default popover with custom prefix">
+    <my-prefix-p-popover direction="right">Some popover content</my-prefix-p-popover>
+  </div>
+
+  <div class="playground" title="should render default divider with custom prefix">
+    <my-prefix-p-divider></my-prefix-p-divider>
+  </div>
+
+  <div class="playground" title="should render default button with custom prefix">
+    <my-prefix-p-button>Some label</my-prefix-p-button>
+  </div>
+
+  <div class="playground" title="should render default button-pure with custom prefix">
+    <my-prefix-p-button-pure>Some label</my-prefix-p-button-pure>
+  </div>
+
+  <div class="playground" title="should render default radio-group with custom prefix">
+    <my-prefix-p-radio-group label="Some label" name="some-name" value="a">
+      <my-prefix-p-radio-group-option label="Some label A" value="a"></my-prefix-p-radio-group-option>
+      <my-prefix-p-radio-group-option label="Some label B" value="b"></my-prefix-p-radio-group-option>
+      <my-prefix-p-radio-group-option label="Some label C" value="c"></my-prefix-p-radio-group-option>
+    </my-prefix-p-radio-group>
+  </div>
+
+  <div class="playground" title="should render default select with custom prefix">
+    <my-prefix-p-select label="Some label" name="options">
+      <my-prefix-p-select-option value="a">Option A</my-prefix-p-select-option>
+      <my-prefix-p-select-option value="b">Option B</my-prefix-p-select-option>
+      <my-prefix-p-select-option value="c">Option C</my-prefix-p-select-option>
+    </my-prefix-p-select>
+  </div>
+
+  <div class="playground" title="should render default multi-select with custom prefix">
+    <my-prefix-p-multi-select label="Some label" name="options">
+      <my-prefix-p-multi-select-option value="a">Option A</my-prefix-p-multi-select-option>
+      <my-prefix-p-multi-select-option value="b">Option B</my-prefix-p-multi-select-option>
+      <my-prefix-p-multi-select-option value="c">Option C</my-prefix-p-multi-select-option>
+    </my-prefix-p-multi-select>
+  </div>
+
+  <div class="playground" title="should render default fieldset with custom prefix">
+    <my-prefix-p-fieldset label="Some label"></my-prefix-p-fieldset>
+  </div>
+
+  <div class="playground" title="should render default link with custom prefix">
+    <my-prefix-p-link href="https://porsche.com">Some label</my-prefix-p-link>
+  </div>
+
+  <div class="playground" title="should render default link-pure with custom prefix">
+    <my-prefix-p-link-pure href="https://porsche.com">Some label</my-prefix-p-link-pure>
+  </div>
+
+  <div class="playground" title="should render default wordmark with custom prefix">
+    <my-prefix-p-wordmark></my-prefix-p-wordmark>
+  </div>
+
+  <div class="playground" title="should render default crest with custom prefix">
+    <my-prefix-p-crest></my-prefix-p-crest>
+  </div>
+
+  <div class="playground" title="should render default model-signature with custom prefix">
+    <my-prefix-p-model-signature></my-prefix-p-model-signature>
+  </div>
+
+  <div class="playground" title="should render default pagination with custom prefix">
+    <my-prefix-p-pagination active-page="1" items-per-page="25" total-items-count="500"></my-prefix-p-pagination>
+  </div>
+
+  <div class="playground" title="should render default pin-code with custom prefix">
+    <my-prefix-p-pin-code label="Some label"></my-prefix-p-pin-code>
+  </div>
+
+  <div class="playground" title="should render default table with custom prefix">
+    <my-prefix-p-table>
+      <my-prefix-p-table-head>
+        <my-prefix-p-table-head-row>
+          <my-prefix-p-table-head-cell>Column 1</my-prefix-p-table-head-cell>
+          <my-prefix-p-table-head-cell>Column 2</my-prefix-p-table-head-cell>
+        </my-prefix-p-table-head-row>
+      </my-prefix-p-table-head>
+      <my-prefix-p-table-body>
+        <my-prefix-p-table-row>
+          <my-prefix-p-table-cell>Cell 1</my-prefix-p-table-cell>
+          <my-prefix-p-table-cell>Cell 2</my-prefix-p-table-cell>
+        </my-prefix-p-table-row>
+      </my-prefix-p-table-body>
+    </my-prefix-p-table>
+  </div>
+
+  <div class="playground" title="should render default tabs with custom prefix">
+    <my-prefix-p-tabs>
+      <my-prefix-p-tabs-item label="Tab1">Content 1</my-prefix-p-tabs-item>
+      <my-prefix-p-tabs-item label="Tab2">Content 2</my-prefix-p-tabs-item>
+      <my-prefix-p-tabs-item label="Tab3">Content 3</my-prefix-p-tabs-item>
+    </my-prefix-p-tabs>
+  </div>
+
+  <div class="playground" title="should render default tabs-bar with custom prefix">
+    <my-prefix-p-tabs-bar active-tab-index="0">
+      <button>Tab1</button>
+      <button>Tab2</button>
+      <button>Tab3</button>
+    </my-prefix-p-tabs-bar>
+  </div>
+
+  <div class="playground" title="should render default accordion with custom prefix">
+    <my-prefix-p-accordion heading="Some accordion heading">
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    </my-prefix-p-accordion>
+  </div>
+
+  <div class="playground" title="should render default spinner with custom prefix">
+    <my-prefix-p-spinner></my-prefix-p-spinner>
+  </div>
+
+  <div class="playground" title="should render default tag with custom prefix">
+    <my-prefix-p-tag>Some Tag</my-prefix-p-tag>
+  </div>
+
+  <div class="playground" title="should render default tag-dismissible with custom prefix">
+    <my-prefix-p-tag-dismissible>Some Tag</my-prefix-p-tag-dismissible>
+  </div>
+
+  <div class="playground" title="should render default segmented-control with custom prefix">
+    <my-prefix-p-segmented-control value="s">
+      <my-prefix-p-segmented-control-item value="s">S</my-prefix-p-segmented-control-item>
+      <my-prefix-p-segmented-control-item value="m">M</my-prefix-p-segmented-control-item>
+      <my-prefix-p-segmented-control-item value="l">L</my-prefix-p-segmented-control-item>
+      <my-prefix-p-segmented-control-item value="xl">XL</my-prefix-p-segmented-control-item>
+    </my-prefix-p-segmented-control>
+  </div>
+
+  <div class="playground" title="should render default scroller with custom prefix">
+    <my-prefix-p-scroller>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+      <button>Default</button>
+    </my-prefix-p-scroller>
+  </div>
+
+  <div class="playground" title="should render default carousel with custom prefix">
+    <my-prefix-p-carousel heading="Heading">
+      <div>Slide 1</div>
+      <div>Slide 2</div>
+      <div>Slide 3</div>
+    </my-prefix-p-carousel>
+  </div>
+
+  <div class="playground" title="should render default stepper-horizontal with custom prefix">
+    <my-prefix-p-stepper-horizontal>
+      <my-prefix-p-stepper-horizontal-item state="current">Step 1</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 2</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 3</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 4</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 5</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 6</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 7</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 8</my-prefix-p-stepper-horizontal-item>
+      <my-prefix-p-stepper-horizontal-item>Step 9</my-prefix-p-stepper-horizontal-item>
+    </my-prefix-p-stepper-horizontal>
+  </div>
+
+  <div class="playground" title="should render default link-tile with custom prefix">
+    <my-prefix-p-link-tile description="Some description" href="#" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
+    </my-prefix-p-link-tile>
+  </div>
+
+  <div class="playground" title="should render default button-tile with custom prefix">
+    <my-prefix-p-button-tile description="Some description" label="Some label">
+      <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048" />
+    </my-prefix-p-button-tile>
+  </div>
+
+  <div class="playground" title="should render default link-tile-product with custom prefix">
+    <my-prefix-p-link-tile-product heading="Some product" href="https://porsche.com" price="1.911,00 €">
+      <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
+    </my-prefix-p-link-tile-product>
+  </div>
+
+  <div class="playground" title="should render default switch with custom prefix">
+    <my-prefix-p-switch>Some label</my-prefix-p-switch>
+  </div>
+
+  <div class="playground" title="should render default input-date with custom prefix">
+    <my-prefix-p-input-date name="some-name" label="Some label"></my-prefix-p-input-date>
+  </div>
+
+  <div class="playground" title="should render default input-email with custom prefix">
+    <my-prefix-p-input-email name="some-name" label="Some label" indicator="true"></my-prefix-p-input-email>
+  </div>
+
+  <div class="playground" title="should render default input-month with custom prefix">
+    <my-prefix-p-input-month name="some-name" label="Some label"></my-prefix-p-input-month>
+  </div>
+
+  <div class="playground" title="should render default input-number with custom prefix">
+    <my-prefix-p-input-number name="some-name" label="Some label" value="1234" controls="true"></my-prefix-p-input-number>
+  </div>
+
+  <div class="playground" title="should render default input-password with custom prefix">
+    <my-prefix-p-input-password
+      name="some-name"
+      label="Some label"
+      value="some password"
+      toggle="true"
+    ></my-prefix-p-input-password>
+  </div>
+
+  <div class="playground" title="should render default input-search with custom prefix">
+    <my-prefix-p-input-search
+      name="some-name"
+      label="Some label"
+      value="Some value"
+      clear="true"
+      indicator="true"
+    ></my-prefix-p-input-search>
+  </div>
+
+  <div class="playground" title="should render default input-tel with custom prefix">
+    <my-prefix-p-input-tel name="some-name" label="Some label" indicator="true"></my-prefix-p-input-tel>
+  </div>
+
+  <div class="playground" title="should render default input-text with custom prefix">
+    <my-prefix-p-input-text
+      name="some-name"
+      label="Some label"
+      value="some-value"
+      counter="true"
+      max-length="20"
+    ></my-prefix-p-input-text>
+  </div>
+
+  <div class="playground" title="should render default input-time with custom prefix">
+    <my-prefix-p-input-time name="some-name" label="Some label"></my-prefix-p-input-time>
+  </div>
+
+  <div class="playground" title="should render default input-url with custom prefix">
+    <my-prefix-p-input-url
+      name="some-name"
+      label="Some label"
+      value="https://designsystem.porsche.com/"
+      indicator="true"
+      max-length="20"
+    ></my-prefix-p-input-url>
+  </div>
+
+  <div class="playground" title="should render default input-week with custom prefix">
+    <my-prefix-p-input-week name="some-name" label="Some label"></my-prefix-p-input-week>
+  </div>
+
+  <div class="playground" title="should render default textarea with custom prefix">
+    <my-prefix-p-textarea name="some-name" label="Some label"></my-prefix-p-textarea>
+  </div>
+
+  <div class="playground" title="should render default checkbox with custom prefix">
+    <my-prefix-p-checkbox label="Some label"></my-prefix-p-checkbox>
+  </div>
+</div>

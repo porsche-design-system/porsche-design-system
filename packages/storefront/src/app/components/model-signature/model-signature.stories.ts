@@ -1,9 +1,9 @@
 'use client';
 
-import type { Story } from '@/models/story';
-import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 import type { CSSProperties } from 'react';
+import type { Story } from '@/models/story';
+import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 export const modelSignatureStory: Story<'p-model-signature'> = {
   generator: ({ properties } = {}) => [
@@ -192,7 +192,8 @@ export const modelSignatureStoryCustomStyling: Story<'p-model-signature'> = {
     {
       tag: 'p-model-signature',
       properties: {
-        className: '[--p-model-signature-color:deeppink] block',
+        color: 'inherit',
+        className: 'text-info',
       },
     },
     {

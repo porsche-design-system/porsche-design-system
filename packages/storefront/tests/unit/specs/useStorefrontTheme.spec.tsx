@@ -1,8 +1,8 @@
-import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 
 vi.stubGlobal('localStorage', {
   getItem: vi.fn(),
@@ -23,14 +23,14 @@ const TestComponent = () => {
   return (
     <>
       <div data-testid="theme">{storefrontTheme}</div>
-      <button type="button" onClick={() => setStorefrontTheme('light')}>
+      <button type="button" onClick={() => setStorefrontTheme('scheme-light')}>
         Set Light
       </button>
-      <button type="button" onClick={() => setStorefrontTheme('dark')}>
+      <button type="button" onClick={() => setStorefrontTheme('scheme-dark')}>
         Set Dark
       </button>
-      <button type="button" onClick={() => setStorefrontTheme('auto')}>
-        Set Auto
+      <button type="button" onClick={() => setStorefrontTheme('scheme-light-dark')}>
+        Set Light Dark
       </button>
     </>
   );
@@ -51,11 +51,11 @@ describe('StorefrontThemeProvider', () => {
       </StorefrontThemeProvider>
     );
 
-    expect(screen.getByTestId('theme')).toHaveTextContent('auto');
+    expect(screen.getByTestId('theme')).toHaveTextContent('scheme-light-dark');
   });
 
   it('should initialize from localStorage if available', () => {
-    (localStorage.getItem as any).mockReturnValue('dark');
+    (localStorage.getItem as any).mockReturnValue('scheme-dark');
 
     render(
       <StorefrontThemeProvider>
@@ -63,7 +63,7 @@ describe('StorefrontThemeProvider', () => {
       </StorefrontThemeProvider>
     );
 
-    expect(screen.getByTestId('theme')).toHaveTextContent('dark');
+    expect(screen.getByTestId('theme')).toHaveTextContent('scheme-dark');
   });
 
   it('should update theme, call localStorage.setItem, and update body class', async () => {
@@ -75,13 +75,13 @@ describe('StorefrontThemeProvider', () => {
 
     screen.getByText('Set Dark').click();
 
-    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontTheme', 'dark');
+    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontTheme', 'scheme-dark');
 
     await waitFor(() => {
-      expect(screen.getByTestId('theme')).toHaveTextContent('dark');
-      expect(document.documentElement.classList.contains('dark')).toBe(true);
-      expect(document.documentElement.classList.contains('light')).toBe(false);
-      expect(document.documentElement.classList.contains('auto')).toBe(false);
+      expect(screen.getByTestId('theme')).toHaveTextContent('scheme-dark');
+      expect(document.documentElement.classList.contains('scheme-dark')).toBe(true);
+      expect(document.documentElement.classList.contains('scheme-light')).toBe(false);
+      expect(document.documentElement.classList.contains('scheme-light-dark')).toBe(false);
     });
   });
 
@@ -94,24 +94,24 @@ describe('StorefrontThemeProvider', () => {
 
     screen.getByText('Set Light').click();
 
-    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontTheme', 'light');
+    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontTheme', 'scheme-light');
 
     await waitFor(() => {
-      expect(screen.getByTestId('theme')).toHaveTextContent('light');
-      expect(document.documentElement.classList.contains('dark')).toBe(false);
-      expect(document.documentElement.classList.contains('light')).toBe(true);
-      expect(document.documentElement.classList.contains('auto')).toBe(false);
+      expect(screen.getByTestId('theme')).toHaveTextContent('scheme-light');
+      expect(document.documentElement.classList.contains('scheme-dark')).toBe(false);
+      expect(document.documentElement.classList.contains('scheme-light')).toBe(true);
+      expect(document.documentElement.classList.contains('scheme-light-dark')).toBe(false);
     });
 
-    screen.getByText('Set Auto').click();
+    screen.getByText('Set Light Dark').click();
 
-    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontTheme', 'auto');
+    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontTheme', 'scheme-light-dark');
 
     await waitFor(() => {
-      expect(screen.getByTestId('theme')).toHaveTextContent('auto');
-      expect(document.documentElement.classList.contains('dark')).toBe(false);
-      expect(document.documentElement.classList.contains('light')).toBe(false);
-      expect(document.documentElement.classList.contains('auto')).toBe(true);
+      expect(screen.getByTestId('theme')).toHaveTextContent('scheme-light-dark');
+      expect(document.documentElement.classList.contains('scheme-dark')).toBe(false);
+      expect(document.documentElement.classList.contains('scheme-light')).toBe(false);
+      expect(document.documentElement.classList.contains('scheme-light-dark')).toBe(true);
     });
   });
 });

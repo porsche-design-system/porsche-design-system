@@ -5,10 +5,9 @@ import {
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticMedium,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/emotion';
 import {
   addImportantToEachRule,
-  colorSchemeStyles,
   getAnimation,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
@@ -43,7 +42,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ':host': {
         display: 'contents',
         ...addImportantToEachRule({
-          ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },

@@ -3,33 +3,30 @@
 exports[`getComponentCss() > should return correct css for open: false 1`] = `
 ":host {
   display: block;
+  all: unset !important;
   position: fixed !important;
   margin: 0 !important;
   padding: 0 !important;
-  inset: auto !important;
+  inset: auto max(22px, 10.625vw - 12px) var(--p-banner-position-bottom,56px) !important;
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
-  bottom: var(--p-banner-position-bottom,56px) !important;
-  left: max(22px, 10.625vw - 12px) !important;
-  right: max(22px, 10.625vw - 12px) !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16) !important;
-  border-radius: 4px !important;
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
   transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
-  color-scheme: light dark !important;
 }
 :host::backdrop {
   display: none !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
+  transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -39,24 +36,20 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 }
 @media(min-width:760px) {
   :host {
-    top: var(--p-banner-position-top,56px) !important;
-    bottom: auto !important;
-    left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    inset: var(--p-banner-position-top,56px) calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) auto !important;
     transform: translate3d(0,calc(-100% - var(--p-banner-position-top,56px)),0) !important;
   }
 }
 
 @media(min-width:1920px) {
   :host {
-    left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 
 @supports (transition-behavior: allow-discrete) {
   :host(.hydrated), :host(.ssr) {
-    transition: visibility 0s linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete !important;
+    transition: visibility 0s linear var(--p-transition-duration, .6s), transform var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), opacity var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1), overlay var(--p-transition-duration, .4s) cubic-bezier(.4,0,.5,1) allow-discrete !important;
   }
 }
 "
@@ -65,28 +58,25 @@ exports[`getComponentCss() > should return correct css for open: false 1`] = `
 exports[`getComponentCss() > should return correct css for open: true 1`] = `
 ":host {
   display: block;
+  all: unset !important;
   position: fixed !important;
   margin: 0 !important;
   padding: 0 !important;
-  inset: auto !important;
+  inset: auto max(22px, 10.625vw - 12px) var(--p-banner-position-bottom,56px) !important;
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
-  bottom: var(--p-banner-position-bottom,56px) !important;
-  left: max(22px, 10.625vw - 12px) !important;
-  right: max(22px, 10.625vw - 12px) !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
-  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16) !important;
-  border-radius: 4px !important;
+  box-shadow: 0px 8px 40px rgba(0,0,0,.16) !important;
+  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl)) !important;
   opacity: 1 !important;
   visibility: inherit !important;
   pointer-events: inherit !important;
   transform: translate3d(0,0,0) !important;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1) !important;
-  color-scheme: light dark !important;
+  transition: transform var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1), opacity var(--p-transition-duration, .4s) cubic-bezier(0,0,.2,1) !important;
 }
 :host::backdrop {
   display: none !important;
@@ -99,17 +89,13 @@ exports[`getComponentCss() > should return correct css for open: true 1`] = `
 }
 @media(min-width:760px) {
   :host {
-    top: var(--p-banner-position-top,56px) !important;
-    bottom: auto !important;
-    left: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    right: calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    inset: var(--p-banner-position-top,56px) calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) auto !important;
   }
 }
 
 @media(min-width:1920px) {
   :host {
-    left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-    right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+    inset-inline: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
 "

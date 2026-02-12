@@ -1,0 +1,19 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { shadowEmotionStory } from '@/app/emotion/shadow/examples/shadow.stories';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Emotion: Shadow - Porsche Design System',
+  description: 'Learn about the Emotion styles of our design language and how to use them.',
+};
+
+# Shadow
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides multiple JS Variables for shadow styles to be used in Emotion.
+
+Styles import:
+`import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';`
+
+<ComponentStory story={shadowEmotionStory} backgroundColor={'surface'} showCodeBlock={false} />

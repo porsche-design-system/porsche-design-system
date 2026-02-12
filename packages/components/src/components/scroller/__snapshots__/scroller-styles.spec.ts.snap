@@ -1,10 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center and hasScrollbar: false 1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -36,22 +35,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -94,7 +86,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -110,11 +103,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: dark 2`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center and hasScrollbar: false 2`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -146,22 +138,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -204,7 +189,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -220,11 +206,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center and hasScrollbar: false 3`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -256,22 +241,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -314,8 +292,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -331,11 +309,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center, hasScrollbar: false and theme: light 2`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: center and hasScrollbar: false 4`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -367,22 +344,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -425,8 +395,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -442,11 +412,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top, hasScrollbar: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: false, scrollIndicatorPosition: top and hasScrollbar: true 1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -473,22 +442,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -531,8 +493,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -548,11 +510,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: dark 1`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: false, isPrevHidden: true, scrollIndicatorPosition: undefined and hasScrollbar: true 1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -579,22 +540,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -637,7 +591,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -653,11 +608,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: false, 
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: true, isPrevHidden: false, scrollIndicatorPosition: undefined and hasScrollbar: true 1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -684,22 +638,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -742,8 +689,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -759,11 +706,10 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined, hasScrollbar: true and theme: light 1`] = `
+exports[`getComponentCss() > should return correct css for isNextHidden: true, isPrevHidden: true, scrollIndicatorPosition: undefined and hasScrollbar: true 1`] = `
 ":host {
   display: block;
   height: inherit !important;
-  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -789,22 +735,15 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
-  border-radius: 4px;
-}
-.scroll-wrapper::-moz-focus-inner {
-  border: 0;
-}
-.scroll-wrapper:focus {
-  outline: 0;
+  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
 }
 .scroll-wrapper:focus-visible {
-  outline: 2px solid #1A44EA;
+  outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
 .trigger {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto;
   width: 1px;
   visibility: hidden;
 }
@@ -847,8 +786,8 @@ exports[`getComponentCss() > should return correct css for isNextHidden: true, i
   margin-right: 8px;
 }
 .action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --p-internal-button-scaling: 0.5;
+  box-shadow: 0px 3px 8px rgba(0,0,0,.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);

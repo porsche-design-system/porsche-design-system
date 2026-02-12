@@ -1,19 +1,17 @@
-import { type JSX, Component, Prop, h, Element } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { type SpinnerSize, type SpinnerAriaAttribute, SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES } from './spinner-utils';
+import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   validateProps,
-  THEMES,
 } from '../../utils';
 import { getComponentCss } from './spinner-styles';
+import { SPINNER_ARIA_ATTRIBUTES, SPINNER_SIZES, type SpinnerAriaAttribute, type SpinnerSize } from './spinner-utils';
 
 const propTypes: PropTypes<typeof Spinner> = {
   size: AllowedTypes.breakpoint<SpinnerSize>(SPINNER_SIZES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<SpinnerAriaAttribute>(SPINNER_ARIA_ATTRIBUTES),
 };
 
@@ -27,9 +25,6 @@ export class Spinner {
   /** Size of the spinner. */
   @Prop() public size?: BreakpointCustomizable<SpinnerSize> = 'small';
 
-  /** Adapts the spinner color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttribute>;
 
@@ -39,7 +34,7 @@ export class Spinner {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size);
 
     return (
       <span class="root" role="alert" aria-live="assertive" {...parseAndGetAriaAttributes(this.aria)}>

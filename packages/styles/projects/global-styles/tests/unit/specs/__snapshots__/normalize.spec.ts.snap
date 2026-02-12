@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match compiled normalize css 1`] = `
+"html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
+  line-height: calc(6px + 2.125ex);
+  letter-spacing: normal;
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+}
+"
+`;

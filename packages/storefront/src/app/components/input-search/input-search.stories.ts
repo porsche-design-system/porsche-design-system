@@ -73,6 +73,18 @@ export const inputSearchSlotStories: SlotStories<'p-input-search'> = {
       ],
     },
   },
+  'label-after': {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: ['Some Popover Content.'],
+        },
+      ],
+    },
+  },
 };
 
 export const inputSearchStory: Story<'p-input-search'> = {
@@ -83,7 +95,11 @@ export const inputSearchStory: Story<'p-input-search'> = {
     {
       tag: 'p-input-search',
       properties,
-      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
+      children: [
+        ...(slots?.start?.generator() ?? []),
+        ...(slots?.end?.generator() ?? []),
+        ...(slots?.['label-after']?.generator() ?? []),
+      ],
     },
   ],
 };
@@ -99,7 +115,24 @@ export const inputSearchStorySlots: Story<'p-input-search'> = {
           properties: { slot: 'label' },
           children: [
             'Some label with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
+            ' and a "label-after" slot.',
+          ],
+        },
+        {
+          tag: 'p-popover',
+          properties: { slot: 'label-after', className: 'ms-static-xs' },
+          children: [
+            'Some Popover content with a ',
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -108,7 +141,11 @@ export const inputSearchStorySlots: Story<'p-input-search'> = {
           properties: { slot: 'description' },
           children: [
             'Some description with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },
@@ -131,7 +168,11 @@ export const inputSearchStorySlots: Story<'p-input-search'> = {
           properties: { slot: 'message' },
           children: [
             'Some error message with a ',
-            { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
+            {
+              tag: 'a',
+              properties: { href: 'https://designsystem.porsche.com', className: 'underline' },
+              children: ['link'],
+            },
             '.',
           ],
         },

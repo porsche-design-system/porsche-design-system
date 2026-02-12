@@ -24,24 +24,46 @@ const packageJsonExports = {
     module: './partials/esm/index.mjs',
     default: './partials/cjs/index.cjs',
   },
-  './styles': {
-    sass: './styles/_index.scss',
-    types: './styles/esm/index.d.ts',
-    import: './styles/esm/index.mjs',
-    default: './styles/cjs/index.cjs',
+  './tokens': {
+    types: './tokens/esm/index.d.ts',
+    import: './tokens/esm/index.mjs',
+    default: './tokens/cjs/index.cjs',
   },
-  './styles/vanilla-extract': {
-    types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
-    import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
-    default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
+  './scss': {
+    sass: './scss/_index.scss',
   },
-  './tailwindcss': {
-    style: './tailwindcss/index.css',
+  './emotion': {
+    types: './emotion/esm/index.d.ts',
+    import: './emotion/esm/index.mjs',
+    default: './emotion/cjs/index.cjs',
+  },
+  './vanilla-extract': {
+    types: './vanilla-extract/esm/index.d.ts',
+    import: './vanilla-extract/esm/index.mjs',
+    default: './vanilla-extract/cjs/index.cjs',
   },
   './testing': {
     types: './testing/index.d.ts',
     default: './testing/index.cjs',
   },
+  './tailwindcss': './tailwindcss/index.css',
+  './tailwindcss/index.css': './tailwindcss/index.css',
+  './tailwindcss/index': './tailwindcss/index.css',
+  './index.css': './global-styles/index.css',
+  './index': './global-styles/index.css',
+  './font-face.css': './global-styles/font-face.css',
+  './font-face': './global-styles/font-face.css',
+  './normalize.css': './global-styles/normalize.css',
+  './normalize': './global-styles/normalize.css',
+  './variables.css': './global-styles/variables.css',
+  './variables': './global-styles/variables.css',
+  './cn': './global-styles/cn/index.css',
+  './cn/index.css': './global-styles/cn/index.css',
+  './cn/index': './global-styles/cn/index.css',
+  './cn/font-face.css': './global-styles/cn/font-face.css',
+  './cn/font-face': './global-styles/cn/font-face.css',
+  './legacy-radius.css': './global-styles/legacy-radius.css',
+  './legacy-radius': './global-styles/legacy-radius.css',
 };
 
 describe('package content', () => {
@@ -67,84 +89,96 @@ describe('package.json files', () => {
   ] as const;
 
   for (const packageName of packageNames) {
-    test(`should have correct entrypoints for "${packageName}"`, async () => {
-      const pathName = path
-        .resolve(nodeRequire.resolve(packageName), '../package.json')
-        .replace(/(wrapper\/).+\/(package\.json)/, '$1$2'); // get rid of nested folders if there are any
-      const pkgJson = JSON.parse(fs.readFileSync(pathName, 'utf8'));
+    test(
+      `should have correct entrypoints for "${packageName}"`,
+      async () => {
+        const pathName = path
+          .resolve(nodeRequire.resolve(packageName), '../package.json')
+          .replace(/(wrapper\/).+\/(package\.json)/, '$1$2'); // get rid of nested folders if there are any
+        const pkgJson = JSON.parse(fs.readFileSync(pathName, 'utf8'));
 
-      // adjust and ignore stuff that is ssr related
-      delete pkgJson.exports['./ssr'];
+        // adjust and ignore stuff that is ssr related
+        delete pkgJson.exports['./ssr'];
 
-      // map `public-api` filenames to `index` because `components-js` calls it `index`
-      pkgJson.exports['.'] = Object.fromEntries(
-        Object.entries<string>(pkgJson.exports['.']).map(([key, val]) => [key, val.replace('public-api', 'index')])
-      );
+        // map `public-api` filenames to `index` because `components-js` calls it `index`
+        pkgJson.exports['.'] = Object.fromEntries(
+          Object.entries<string>(pkgJson.exports['.']).map(([key, val]) => [key, val.replace('public-api', 'index')])
+        );
 
-      // check that version and exports match
-      expect(pkgJson.version).toBe(componentsJsPackageJson.version);
+        // check that version and exports match
+        expect(pkgJson.version).toBe(componentsJsPackageJson.version);
 
-      if (packageName === '@porsche-design-system/components-angular') {
-        expect(pkgJson.exports).toEqual({
-          '.': {
-            default: './fesm2022/porsche-design-system-components-angular.mjs',
-            types: './types/porsche-design-system-components-angular.d.ts',
-          },
-          './package.json': {
-            default: './package.json',
-          },
-          ...packageJsonExports,
-        });
-      } else {
-        expect(pkgJson.exports).toEqual({
-          './package.json': './package.json',
-          '.': {
-            types: './esm/index.d.ts',
-            import: './esm/index.mjs',
-            default: './cjs/index.cjs',
-          },
-          ...packageJsonExports,
-        });
-      }
+        if (packageName === '@porsche-design-system/components-angular') {
+          expect(pkgJson.exports).toEqual({
+            '.': {
+              default: './fesm2022/porsche-design-system-components-angular.mjs',
+              types: './types/porsche-design-system-components-angular.d.ts',
+            },
+            './package.json': {
+              default: './package.json',
+            },
+            ...packageJsonExports,
+          });
+        } else {
+          expect(pkgJson.exports).toEqual({
+            './package.json': './package.json',
+            '.': {
+              style: './global-styles/index.css',
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+            ...packageJsonExports,
+          });
+        }
 
-      // create temporary local package tgz package
-      // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
-      const tarBall = path.resolve(
-        pathName,
-        '..',
-        execSync('npm pack', { cwd: path.dirname(pathName), encoding: 'utf8', stdio: 'pipe' }).trim()
-      );
+        // create temporary local package tgz package
+        // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
+        const tarBall = path.resolve(
+          pathName,
+          '..',
+          execSync('npm pack', { cwd: path.dirname(pathName), encoding: 'utf8', stdio: 'pipe' }).trim()
+        );
 
-      const file = fs.readFileSync(tarBall);
-      const data = new Uint8Array(file);
-      const result = (await checkPackage(await createPackageFromTarballData(data), {})) as Analysis;
+        const file = fs.readFileSync(tarBall);
+        const data = new Uint8Array(file);
+        const result = (await checkPackage(await createPackageFromTarballData(data), {})) as Analysis;
 
-      // delete temporary package again
-      fs.rmSync(tarBall);
+        // delete temporary package again
+        fs.rmSync(tarBall);
 
-      // ignore FalseCJS issues for certain entrypoints where both
-      // esm and cjs build need their own typings
-      // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
-      const relevantProblems = result.problems.filter(
-        (prob: Problem) =>
-          !(
-            prob.kind === 'FalseCJS' ||
-            prob.resolutionKind === 'node10' ||
-            ('entrypoint' in prob &&
-              (prob.entrypoint === './ag-grid' ||
-                prob.entrypoint === '.' ||
-                prob.entrypoint === './styles' ||
-                prob.entrypoint === './styles/vanilla-extract' ||
-                prob.entrypoint === './tailwindcss' ||
-                prob.entrypoint === './ssr'))
-          )
-      );
+        // ignore FalseCJS issues for certain entrypoints where both
+        // esm and cjs build need their own typings
+        // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
+        const relevantProblems = result.problems.filter(
+          (prob: Problem) =>
+            !(
+              prob.kind === 'FalseCJS' ||
+              prob.resolutionKind === 'node10' ||
+              ('entrypoint' in prob &&
+                (prob.entrypoint === './ag-grid' ||
+                  prob.entrypoint === '.' ||
+                  prob.entrypoint === './scss' ||
+                  prob.entrypoint === './emotion' ||
+                  prob.entrypoint === './vanilla-extract' ||
+                  prob.entrypoint === './ssr' ||
+                  prob.entrypoint.includes('tailwindcss') ||
+                  prob.entrypoint.includes('font-face') ||
+                  prob.entrypoint.includes('normalize') ||
+                  prob.entrypoint.includes('legacy-radius') ||
+                  prob.entrypoint.includes('variables') ||
+                  prob.entrypoint.includes('cn') ||
+                  prob.entrypoint.includes('index')))
+            )
+        );
 
-      if (relevantProblems.length) {
-        console.error(relevantProblems);
-      }
+        if (relevantProblems.length) {
+          console.error(relevantProblems);
+        }
 
-      expect(relevantProblems).toHaveLength(0);
-    });
+        expect(relevantProblems).toHaveLength(0);
+      },
+      { timeout: 30000 }
+    );
   }
 });

@@ -1,7 +1,7 @@
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
-import type { StorefrontTheme } from '@/models/theme';
+import type { StorefrontColorScheme } from '@/models/theme';
 import type {
   ElementConfig,
   EventConfig,
@@ -11,9 +11,9 @@ import type {
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
-  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontTheme } = {
+  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontColorScheme } = {
     isFullConfig: false,
-    theme: 'light',
+    theme: 'scheme-light',
   }
 ) => {
   const metaTags = isFullConfig

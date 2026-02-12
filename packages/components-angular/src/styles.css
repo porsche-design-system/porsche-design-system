@@ -1,6 +1,6 @@
 @layer theme, base, components, utilities;
-
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+@import "@porsche-design-system/components-angular/index.css";
 @import "@porsche-design-system/components-angular/tailwindcss";
 @import "@porsche-design-system/shared/css/styles.css";

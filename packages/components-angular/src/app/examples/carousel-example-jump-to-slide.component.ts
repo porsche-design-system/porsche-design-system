@@ -21,7 +21,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
     }
     `,
   styles: `
-    @use '@porsche-design-system/components-angular/styles' as *;
+    @use '@porsche-design-system/components-angular/scss' as *;
 
     p-carousel div {
       display: flex;
@@ -29,7 +29,7 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
       justify-content: center;
       background: #00b0f4;
       height: 150px;
-      color: $pds-theme-light-primary;
+      color: $color-primary;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

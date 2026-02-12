@@ -1,14 +1,14 @@
 'use client';
 
-import { SearchInput } from '@/components/search/SearchInput';
-import { SearchResults } from '@/components/search/SearchResults';
-import { algoliaClient } from '@/lib/algolia/client';
-import { getBasePath } from '@/utils/getBasePath';
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
 import type React from 'react';
 import { useEffect, useRef } from 'react';
 import { InstantSearch } from 'react-instantsearch';
+import { SearchInput } from '@/components/search/SearchInput';
+import { SearchResults } from '@/components/search/SearchResults';
+import { algoliaClient } from '@/lib/algolia/client';
+import { getBasePath } from '@/utils/getBasePath';
 
 export type AlgoliaRecord = {
   objectID: string;
@@ -31,6 +31,29 @@ type SearchProps = {
   onDismissSearch: () => void;
 };
 
+const searchClient = {
+  ...algoliaClient,
+  search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
+    if (requests.every(({ params }) => !params.query)) {
+      return Promise.resolve({
+        results: requests.map(() => ({
+          hits: [],
+          nbHits: 0,
+          nbPages: 0,
+          page: 0,
+          processingTimeMS: 0,
+          hitsPerPage: 0,
+          exhaustiveNbHits: false,
+          query: '',
+          params: '',
+        })),
+      });
+    }
+
+    return algoliaClient.search(requests);
+  },
+};
+
 export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -41,29 +64,6 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
       });
     }
   }, [isSearchOpen]);
-
-  const searchClient = {
-    ...algoliaClient,
-    search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
-      if (requests.every(({ params }) => !params.query)) {
-        return Promise.resolve({
-          results: requests.map(() => ({
-            hits: [],
-            nbHits: 0,
-            nbPages: 0,
-            page: 0,
-            processingTimeMS: 0,
-            hitsPerPage: 0,
-            exhaustiveNbHits: false,
-            query: '',
-            params: '',
-          })),
-        });
-      }
-
-      return algoliaClient.search(requests);
-    },
-  };
 
   const getAlgoliaIndexName = () => {
     const path = getBasePath();

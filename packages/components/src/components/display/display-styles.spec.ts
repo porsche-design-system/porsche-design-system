@@ -1,30 +1,24 @@
-import { getComponentCss } from './display-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './display-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['large', 'start', 'primary', false, 'light'],
-    ['large', 'start', 'primary', false, 'light'],
-    ['large', 'left', 'primary', false, 'light'],
-    ['large', 'right', 'primary', false, 'light'],
-    ['large', 'end', 'primary', true, 'dark'],
-    ['large', 'center', 'primary', false, 'dark'],
-    ['large', 'start', 'primary', true, 'light'],
-    ['large', 'start', 'primary', true, 'light'],
-    ['medium', 'end', 'inherit', true, 'dark'],
-    ['medium', 'start', 'inherit', false, 'light'],
-    ['small', 'end', 'inherit', true, 'dark'],
-    ['small', 'start', 'inherit', false, 'light'],
-    ['small', 'inherit', 'primary', false, 'light'],
-    ['inherit', 'center', 'primary', false, 'light'],
-    [
-      { base: 'medium', xs: 'large', s: 'medium', m: 'inherit', l: 'large', xl: 'medium' },
-      'center',
-      'primary',
-      true,
-      'dark',
-    ],
-  ])('should return correct css for size: %j, align: %s, color: %s, ellipsis: %o and theme: %s', (...args) => {
+    ['large', 'start', 'primary', false],
+    ['large', 'start', 'primary', false],
+    ['large', 'start', 'primary', false],
+    ['large', 'end', 'primary', false],
+    ['large', 'end', 'primary', true],
+    ['large', 'center', 'primary', false],
+    ['large', 'start', 'primary', true],
+    ['large', 'start', 'primary', true],
+    ['medium', 'end', 'inherit', true],
+    ['medium', 'start', 'inherit', false],
+    ['small', 'end', 'inherit', true],
+    ['small', 'start', 'inherit', false],
+    ['small', 'inherit', 'primary', false],
+    ['inherit', 'center', 'primary', false],
+    [{ base: 'medium', xs: 'large', s: 'medium', m: 'inherit', l: 'large', xl: 'medium' }, 'center', 'primary', true],
+  ])('should return correct css for size: %j, align: %s, color: %s and ellipsis: %o', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

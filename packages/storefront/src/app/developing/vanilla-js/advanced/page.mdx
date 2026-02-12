@@ -1,13 +1,27 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Vanilla JS: Advanced - Porsche Design System',
-  description: 'Explore advanced Porsche Design System techniques in Vanilla JS.'
-}
+  description: 'Explore advanced Porsche Design System techniques in Vanilla JS.',
+};
 
 # Vanilla Js
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Global Theme', 'Prefixing']} />
+
+## Global Theme
+
+All system colors are controlled via the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property and are
+included in our mandatory [Global Styles](/styles/introduction). These styles also provide utility classes for selecting
+the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()` (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+
+By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
+settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS class to the `<html>` element or any HTML
+element. This applies the selected theme to all child elements.
+
+Learn more in the [Theme](/must-know/theme) section.
 
 ## Prefixing
 

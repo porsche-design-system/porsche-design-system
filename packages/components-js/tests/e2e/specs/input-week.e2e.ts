@@ -470,7 +470,7 @@ test.describe('focus state', () => {
 
     await addEventListener(inputWeek, 'focus');
     expect((await getEventSummary(inputWeek, 'focus')).counter).toBe(0);
-    await expect(inputWeekWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(inputWeekWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await host.focus();
     await waitForStencilLifecycle(page);
@@ -551,7 +551,6 @@ test.describe('Event', () => {
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-week when label is hovered', async ({ page }) => {
@@ -561,13 +560,14 @@ test.describe('hover state', () => {
     const inputWeek = getInputWeek(page);
     const inputWeekWrapper = getInputWeekWrapper(page);
 
-    await expect(inputWeekWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputWeekWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
+
     await inputWeek.hover();
 
     await expect(inputWeekWrapper).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    await expect(inputWeekWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputWeekWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await label.hover();
     await expect(inputWeekWrapper).toHaveCSS('border-color', hoverBorderColor);

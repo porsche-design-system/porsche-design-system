@@ -4,14 +4,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start-app": "react-scripts start",
-    "build": "yarn build:utilities && yarn build:ag-grid",
-    "build:utilities": "yarn --cwd ./projects/utilities build",
+    "build": "yarn build:ag-grid",
     "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
-    "build-app": "react-scripts build",
     "test": "yarn test:unit",
-    "test:unit": "yarn test:unit:utilities && yarn test:unit:ag-grid",
-    "test:unit:utilities": "yarn --cwd ./projects/utilities test",
+    "test:unit": "yarn test:unit:ag-grid",
     "test:unit:ag-grid": "yarn --cwd ./projects/ag-grid test",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
   },

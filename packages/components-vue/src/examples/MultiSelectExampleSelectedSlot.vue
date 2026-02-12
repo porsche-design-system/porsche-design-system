@@ -16,7 +16,7 @@
           <p class="prose-text-2xs m-0">{{ option.description }}</p>
         </div>
         <div class="self-center flex gap-fluid-sm">
-          <PTag v-for="tag in option.tags" :key="tag" color="notification-info-soft" :compact="true">
+          <PTag v-for="tag in option.tags" :key="tag" variant="info" :compact="true">
             {{ tag }}
           </PTag>
         </div>

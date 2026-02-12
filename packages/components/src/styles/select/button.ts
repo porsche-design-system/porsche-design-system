@@ -1,78 +1,53 @@
-import { borderRadiusSmall, borderWidthBase, fontLineHeight, textSmallStyle } from '@porsche-design-system/styles';
+import { borderWidthThin, textSmallStyle } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
-import type { Theme } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getThemedColors } from '../colors';
-import { getFocusJssStyle, getTransition } from '../common-styles';
+import { getFocusBaseStyles, getTransition } from '../common-styles';
+import { colorPrimary, legacyRadiusSmall, radiusLg, radiusXl } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
-import { formElementPaddingHorizontal, formElementPaddingVertical } from '../form-styles';
-import { hoverMediaQuery } from '../hover-media-query';
-import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
+import { hoverMediaQuery } from '../media-query/hover-media-query';
 
 export const getButtonJssStyle = (
   componentName: 'select' | 'multi-select',
   isOpen: boolean,
   isDisabled: boolean,
   state: FormState,
-  cssVarScaling: string,
-  theme: Theme
+  isCompact: boolean,
+  cssVarScalingName: string
 ): JssStyle => {
   const cssVarBackgroundColor = `--p-${componentName}-background-color`;
   const cssVarTextColor = `--p-${componentName}-text-color`;
   const cssVarBorderColor = `--p-${componentName}-border-color`;
 
-  const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
+  const { formStateBorderColor, formStateBorderHoverColor, formStateBackgroundColor } = getThemedFormStateColors(state);
+
+  const borderWidth = borderWidthThin;
+  const height = `calc(var(${cssVarScalingName}) * 3.5rem)`;
+  const paddingInline = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 8px)`;
+  const gap = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
 
   return {
     all: 'unset',
     display: 'flex',
     alignItems: 'center',
-    gap: `max(4px, ${cssVarScaling} * 12px)`,
-    padding: `max(2px, ${cssVarScaling} * ${formElementPaddingVertical}) max(4px, ${cssVarScaling} * ${formElementPaddingHorizontal})`,
+    gap,
+    height,
+    boxSizing: 'border-box',
     minWidth: 0,
-    height: `max(${fontLineHeight}, ${cssVarScaling} * (${fontLineHeight} + 10px))`,
-    boxSizing: 'content-box', // ensures height calculation is based on content, not including padding
+    paddingInline,
+    border: `${borderWidth} solid var(${cssVarBorderColor}, ${isOpen ? formStateBorderHoverColor : formStateBorderColor})`,
+    borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
+    background: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
     font: textSmallStyle.font,
-    cursor: 'pointer',
+    color: `var(${cssVarTextColor}, ${colorPrimary})`,
+    cursor: isDisabled ? 'not-allowed' : 'pointer',
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
-    color: `var(${cssVarTextColor}, ${primaryColor})`,
-    backgroundColor: `var(${cssVarBackgroundColor}, transparent)`,
-    border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrastMediumColor})`,
-    borderRadius: borderRadiusSmall,
-    ...(isDisabled && {
-      cursor: 'not-allowed',
-      color: disabledColor,
-      borderColor: disabledColor,
-    }),
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: `var(${cssVarTextColor}, ${primaryColorDark})`,
-      backgroundColor: `var(${cssVarBackgroundColor}, transparent)`,
-      border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark})`,
-      ...(isDisabled && {
-        color: disabledColorDark,
-        borderColor: disabledColorDark,
-      }),
-    }),
     ...(!isDisabled && {
       ...hoverMediaQuery({
         '&:hover,label:hover~&': {
-          borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateHoverColor || primaryColor})`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark})`,
-          }),
+          borderColor: `var(${cssVarBorderColor}, ${formStateBorderHoverColor})`,
         },
       }),
-      ...getFocusJssStyle(theme),
+      '&:focus-visible': getFocusBaseStyles(),
     }),
   };
 };

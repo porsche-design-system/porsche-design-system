@@ -1,4 +1,4 @@
-<fieldset aria-labelledby="label" aria-describedby="description" class="root">
+<fieldset class="root" aria-labelledby="label" aria-describedby="description">
   <slot> </slot>
   <span id="message" class="message" role="alert"> </span>
 </fieldset>

@@ -1,4 +1,4 @@
-import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/styles';
+import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/emotion';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import {

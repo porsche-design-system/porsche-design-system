@@ -312,69 +312,6 @@ test.describe('blur event', () => {
   });
 });
 
-test.describe('events', () => {
-  test('should trigger event on item click which is not selected', async ({ page }) => {
-    await initSegmentedControl(page, { amount: 2 });
-    const host = getHost(page);
-    const [button1, button2] = await getAllItemButtons(page);
-
-    await addEventListener(host, 'segmentedControlChange');
-
-    // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElement(host);
-
-    await button2.click();
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
-
-    await button1.click();
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(2);
-  });
-
-  test('should not trigger event if item is disabled', async ({ page }) => {
-    await initSegmentedControl(page, { amount: 2 });
-    const host = getHost(page);
-    const secondItemHost = getSecondItemHost(page);
-    const [, button2] = await getAllItemButtons(page);
-
-    await addEventListener(host, 'segmentedControlChange');
-
-    await setProperty(secondItemHost, 'disabled', true);
-    await waitForStencilLifecycle(page);
-
-    await button2.click({ force: true });
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
-  });
-
-  test('should not trigger event if item is selected', async ({ page }) => {
-    await initSegmentedControl(page, { props: { value: 1 } });
-    const host = getHost(page);
-    const firstItemHost = getFirstItemHost(page);
-    const button = getFirstItemButton(page);
-
-    await addEventListener(host, 'segmentedControlChange');
-
-    expect(await getProperty<boolean>(firstItemHost, 'selected')).toBe(true);
-
-    await button.click();
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
-  });
-
-  test('should emit both segmentedControlChange and update event', async ({ page }) => {
-    await initSegmentedControl(page);
-    const host = getHost(page);
-
-    await addEventListener(host, 'segmentedControlChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const firstItemHost = getFirstItemHost(page);
-    await firstItemHost.click();
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
-  });
-});
-
 test.describe('keyboard', () => {
   skipInBrowsers(['firefox', 'webkit']);
   test('should focus items when keyboard "tab" is pressed', async ({ page }) => {
@@ -423,7 +360,7 @@ test.describe('lifecycle', () => {
     await initSegmentedControl(page);
     const host = getHost(page);
 
-    await setProperty(host, 'backgroundColor', 'background-surface');
+    await setProperty(host, 'compact', true);
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
@@ -573,7 +510,7 @@ test.describe('form', () => {
     await initSegmentedControl(page, { amount: 2, props: { disabled: true } });
     const host = getHost(page);
     const [button1, button2] = await getAllItemButtons(page);
-    await addEventListener(host, 'segmentedControlChange');
+    await addEventListener(host, 'change');
     await expect(host).toHaveJSProperty('disabled', true);
 
     await setProperty(host, 'disabled', false);
@@ -581,9 +518,9 @@ test.describe('form', () => {
 
     await expect(host).toHaveJSProperty('disabled', false);
     await button1.click();
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
 
     await button2.click();
-    expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(2);
+    expect((await getEventSummary(host, 'change')).counter).toBe(2);
   });
 });

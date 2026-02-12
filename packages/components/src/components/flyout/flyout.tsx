@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import { BACKDROPS } from '../../styles/dialog-styles';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,10 +14,8 @@ import {
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
-  THEMES,
   unobserveChildren,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 import { observeStickyArea } from '../../utils/dialog/observer';
@@ -25,27 +23,26 @@ import { getComponentCss } from './flyout-styles';
 import {
   addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
+  FLYOUT_BACKGROUNDS,
   FLYOUT_FOOTER_BEHAVIOR,
   FLYOUT_POSITIONS,
   type FlyoutAriaAttribute,
   type FlyoutBackdrop,
+  type FlyoutBackground,
   type FlyoutFooterBehavior,
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
   type FlyoutPosition,
-  type FlyoutPositionDeprecated,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
 
-type PositionDeprecationMapType = Record<FlyoutPositionDeprecated, Exclude<FlyoutPosition, FlyoutPositionDeprecated>>;
-
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
+  background: AllowedTypes.oneOf<FlyoutBackground>(FLYOUT_BACKGROUNDS),
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
   disableBackdropClick: AllowedTypes.boolean,
   backdrop: AllowedTypes.oneOf<FlyoutBackdrop>(BACKDROPS),
   footerBehavior: AllowedTypes.oneOf<FlyoutFooterBehavior>(FLYOUT_FOOTER_BEHAVIOR),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
 
@@ -73,14 +70,14 @@ export class Flyout {
   /** If true, the flyout will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
 
+  /** Defines the background color */
+  @Prop() public background?: FlyoutBackground = 'canvas';
+
   /** Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content). */
   @Prop() public backdrop?: FlyoutBackdrop = 'blur';
 
   /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
   @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
-
-  /** Adapts the flyout color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
@@ -145,16 +142,6 @@ export class Flyout {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const positionDeprecationMap: PositionDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Flyout, FlyoutPositionDeprecated, FlyoutPosition>(
-      this,
-      'position',
-      positionDeprecationMap
-    );
-
     this.hasHeader = hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
@@ -163,16 +150,13 @@ export class Flyout {
       this.host,
       getComponentCss,
       this.open,
+      this.background,
       this.backdrop,
-      (positionDeprecationMap[this.position as keyof PositionDeprecationMapType] || this.position) as Exclude<
-        FlyoutPosition,
-        FlyoutPositionDeprecated
-      >,
+      this.position,
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
-      this.footerBehavior,
-      this.theme
+      this.footerBehavior
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -194,12 +178,12 @@ export class Flyout {
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">
             <PrefixedTagNames.pButton
-              variant="ghost"
               class="dismiss"
+              variant="secondary"
+              compact={true}
               type="button"
               hideLabel={true}
               icon="close"
-              theme={this.theme}
               onClick={this.dismissDialog}
             >
               Dismiss flyout

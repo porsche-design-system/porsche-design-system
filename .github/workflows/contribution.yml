@@ -29,6 +29,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
       - test
+      - build
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
       linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
@@ -36,13 +37,14 @@ jobs:
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
   release:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/v4'
     name: 'Release'
     uses: ./.github/workflows/release.yml
     with:
       image: mcr.microsoft.com/playwright:v1.56.0-jammy
     needs:
       - deploy
+      - build
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}

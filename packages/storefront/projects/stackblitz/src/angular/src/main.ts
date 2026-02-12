@@ -5,5 +5,5 @@ import { ExampleComponent } from './app/app.component';
 import 'zone.js';
 
 bootstrapApplication(ExampleComponent, {
-  providers: [importProvidersFrom(PorscheDesignSystemModule.load({ theme: 'auto' }))],
+  providers: [importProvidersFrom(PorscheDesignSystemModule.load({ prefix: '', cdn: 'auto' }))],
 }).catch((err) => console.error(err));

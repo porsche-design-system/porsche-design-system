@@ -1,21 +1,16 @@
-import { forceUpdate } from '@stencil/core';
-import type { Class, Theme } from '../../../types';
+import type { Class } from '../../../types';
 import { consoleError, getTagNameWithoutPrefix, isElementOfKind } from '../../../utils';
-import type { DrilldownItemInternalHTMLProps } from '../drilldown-item/drilldown-item-utils';
 
 export const DRILLDOWN_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type DrilldownAriaAttribute = (typeof DRILLDOWN_ARIA_ATTRIBUTES)[number];
 
 export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 
-export type DrilldownUpdate = {
+export type DrilldownUpdateEventDetail = {
   activeIdentifier: string | undefined;
 };
-/** @deprecated */
-export type DrilldownUpdateEvent = DrilldownUpdate;
-export type DrilldownUpdateEventDetail = DrilldownUpdateEvent; // to have consistent event types
 
-export type Item = HTMLPDrilldownItemElement & DrilldownItemInternalHTMLProps;
+export type Item = HTMLPDrilldownItemElement;
 
 /**
  * Recursively updates the state of a drilldown item's parent elements by traversing up the DOM tree.
@@ -53,20 +48,6 @@ export const internalDrilldown = {
 export const updateDrilldownItemState = (activeItem: HTMLPDrilldownItemElement, value: boolean): void => {
   activeItem.secondary = value;
   internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement as HTMLPDrilldownItemElement, 'primary', value);
-};
-
-/**
- * Synchronizes the provided theme to all items in the given array by updating each item's theme property.
- * Ensures that updates are reflected by forcing a component update.
- *
- * @param {Theme} theme - The theme to apply to all items.
- * @param {Item[]} items - The array of items whose theme will be updated.
- */
-export const syncThemeToItems = (theme: Theme, items: Item[]) => {
-  for (const item of items) {
-    item.theme = theme;
-    forceUpdate(item);
-  }
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(

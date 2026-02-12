@@ -59,7 +59,7 @@ exports[`generateVueMarkup() > should generate correct Vue markup for flyout 1`]
     open.value = false;
   }",
   "imports": "  import { ref } from 'vue';
-  import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';",
+  import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';",
   "markup": "  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
     Open Flyout
   </PButton>
@@ -75,14 +75,14 @@ exports[`generateVueMarkup() > should generate correct Vue markup for flyout 1`]
     <PText>
       Some Content End
     </PText>
-    <PButtonGroup slot="footer">
+    <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
       <PButton type="button">
         Proceed
       </PButton>
       <PButton type="button" variant="secondary">
         Cancel
       </PButton>
-    </PButtonGroup>
+    </div>
     <PText slot="sub-footer">
       Some additional Sub-Footer
     </PText>

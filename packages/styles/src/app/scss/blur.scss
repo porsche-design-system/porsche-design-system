@@ -1,0 +1,30 @@
+@use '@porsche-design-system/scss' as pds;
+
+.scss-blur {
+  @include pds.prose-text-sm;
+  display: grid;
+
+  &__image {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  &__backdrop-blur-frosted {
+    backdrop-filter: pds.$blur-frosted;
+    background: pds.$color-frosted;
+    border-radius: pds.$radius-lg;
+    margin: pds.$spacing-fluid-lg;
+    padding: pds.$spacing-fluid-sm;
+    display: grid;
+    grid-row: 1;
+    grid-column: 1;
+    place-items: center;
+  }
+
+  &__text {
+    color: white;
+  }
+}

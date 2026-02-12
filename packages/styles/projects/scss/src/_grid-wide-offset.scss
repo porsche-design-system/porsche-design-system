@@ -1,0 +1,3 @@
+$pds-grid-wide-offset-base: max(22px, 10.625vw - 12px);
+$pds-grid-wide-offset-s: calc(5vw - 16px);
+$pds-grid-wide-offset-xxl: calc(max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px));

@@ -78,25 +78,6 @@ test.describe('tabs', () => {
   });
 });
 
-test.describe('text-field-wrapper type="search"', () => {
-  test('should have working clear functionality', async ({ page }) => {
-    await goto(page, 'events');
-
-    const input = page.locator('p-text-field-wrapper > input[type=search]');
-    const inputValue = page.locator('p-text-field-wrapper + p');
-
-    await input.focus();
-    await page.keyboard.type('hello');
-    expect(await getCounterValue(inputValue)).toBe('Value: hello');
-
-    await page.keyboard.press('Backspace');
-    expect(await getCounterValue(inputValue)).toBe('Value: hell');
-
-    await page.keyboard.press('Escape');
-    expect(await getCounterValue(inputValue)).toBe('Value: ');
-  });
-});
-
 test.describe('switch', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');

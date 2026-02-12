@@ -14,10 +14,6 @@ const getComponents = (): Routes => {
   // TODO: Maybe we could automatically generate this depending what routes/folders exist?
   const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
     'p-canvas',
-    'p-content-wrapper',
-    'p-flex',
-    'p-grid',
-    'p-marque',
     'p-pagination',
     'p-flag',
     'p-switch',
@@ -119,9 +115,24 @@ export const sitemap: Routes = {
             path: '/news/migration-guide/porsche-design-system',
             type: 'TAB',
           },
-          utilities: {
-            name: 'Utilities',
-            path: '/news/migration-guide/utilities',
+          tailwindcss: {
+            name: 'Tailwind CSS',
+            path: '/news/migration-guide/tailwindcss',
+            type: 'TAB',
+          },
+          scss: {
+            name: 'SCSS',
+            path: '/news/migration-guide/scss',
+            type: 'TAB',
+          },
+          emotion: {
+            name: 'Emotion',
+            path: '/news/migration-guide/emotion',
+            type: 'TAB',
+          },
+          'vanilla-extract': {
+            name: 'Vanilla Extract',
+            path: '/news/migration-guide/vanilla-extract',
             type: 'TAB',
           },
         },
@@ -244,6 +255,11 @@ export const sitemap: Routes = {
             path: '/developing/next-js/testing',
             type: 'TAB',
           },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/next-js/advanced',
+            type: 'TAB',
+          },
           faq: {
             name: 'FAQ',
             path: '/developing/next-js/faq',
@@ -306,6 +322,11 @@ export const sitemap: Routes = {
           form: {
             name: 'Form',
             path: '/developing/react-router/form',
+            type: 'TAB',
+          },
+          advanced: {
+            name: 'Advanced',
+            path: '/developing/react-router/advanced',
             type: 'TAB',
           },
           faq: {
@@ -414,69 +435,36 @@ export const sitemap: Routes = {
         path: '/styles/introduction',
         type: 'PAGE',
       },
-      border: {
-        name: 'Border',
-        path: '/styles/border',
+      color: {
+        name: 'Color',
+        path: '/styles/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/styles/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/styles/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/styles/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'font-face': {
+        name: 'Font Face',
+        path: '/styles/font-face',
         type: 'PAGE',
       },
-      'drop-shadow': {
-        name: 'Drop Shadow',
-        path: '/styles/drop-shadow',
-        type: 'PAGE',
-      },
-      focus: {
-        name: 'Focus',
-        path: '/styles/focus',
-        type: 'PAGE',
-      },
-      'frosted-glass': {
-        name: 'Frosted Glass',
-        path: '/styles/frosted-glass',
-        type: 'PAGE',
-      },
-      gradient: {
-        name: 'Gradient',
-        path: '/styles/gradient',
-        type: 'PAGE',
-      },
-      grid: {
-        name: 'Grid',
-        path: '/styles/grid',
-        type: 'PAGE',
-      },
-      hover: {
-        name: 'Hover',
-        path: '/styles/hover',
-        type: 'PAGE',
-      },
-      'media-query': {
-        name: 'Media Query',
-        path: '/styles/media-query',
-        type: 'PAGE',
-      },
-      motion: {
-        name: 'Motion',
-        path: '/styles/motion',
-        type: 'PAGE',
-      },
-      skeleton: {
-        name: 'Skeleton',
-        path: '/styles/skeleton',
-        type: 'PAGE',
-      },
-      spacing: {
-        name: 'Spacing',
-        path: '/styles/spacing',
-        type: 'PAGE',
-      },
-      theme: {
-        name: 'Theme',
-        path: '/styles/theme',
-        type: 'PAGE',
-      },
-      typography: {
-        name: 'Typography',
-        path: '/styles/typography',
+      normalize: {
+        name: 'Normalize',
+        path: '/styles/normalize',
         type: 'PAGE',
       },
     },
@@ -491,34 +479,9 @@ export const sitemap: Routes = {
         path: '/partials/introduction',
         type: 'PAGE',
       },
-      'browser-support-fallback-script': {
-        name: 'Browser Support Fallback Script',
-        path: '/partials/browser-support-fallback-script',
-        type: 'PAGE',
-      },
       'component-chunk-links': {
         name: 'Component Chunk Links',
         path: '/partials/component-chunk-links',
-        type: 'PAGE',
-      },
-      'cookies-fallback-script': {
-        name: 'Cookies Fallback Script',
-        path: '/partials/cookies-fallback-script',
-        type: 'PAGE',
-      },
-      'dsr-ponyfill': {
-        name: 'DSR Ponyfill',
-        path: '/partials/dsr-ponyfill',
-        type: 'PAGE',
-      },
-      'font-face-styles': {
-        name: 'Font Face Styles',
-        path: '/partials/font-face-styles',
-        type: 'PAGE',
-      },
-      'font-face-stylesheet': {
-        name: 'Font Face Stylesheet',
-        path: '/partials/font-face-stylesheet',
         type: 'PAGE',
       },
       'font-links': {
@@ -529,11 +492,6 @@ export const sitemap: Routes = {
       'icon-links': {
         name: 'Icon Links',
         path: '/partials/icon-links',
-        type: 'PAGE',
-      },
-      'initial-styles': {
-        name: 'Initial Styles',
-        path: '/partials/initial-styles',
         type: 'PAGE',
       },
       'loader-script': {
@@ -621,14 +579,59 @@ export const sitemap: Routes = {
       },
     },
   },
-  'ag-grid': {
-    name: 'AG Grid',
-    path: '/ag-grid',
+  tokens: {
+    name: 'Tokens',
+    path: '/tokens',
     type: 'CATEGORY',
     subPaths: {
-      theme: {
-        name: 'Theme',
-        path: '/ag-grid/theme',
+      introduction: {
+        name: 'Introduction',
+        path: '/tokens/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/tokens/blur',
+        type: 'PAGE',
+      },
+      border: {
+        name: 'Border',
+        path: '/tokens/border',
+        type: 'PAGE',
+      },
+      breakpoint: {
+        name: 'Breakpoint',
+        path: '/tokens/breakpoint',
+        type: 'PAGE',
+      },
+      color: {
+        name: 'Color',
+        path: '/tokens/color',
+        type: 'PAGE',
+      },
+      font: {
+        name: 'Font',
+        path: '/tokens/font',
+        type: 'PAGE',
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/tokens/gradient',
+        type: 'PAGE',
+      },
+      motion: {
+        name: 'Motion',
+        path: '/tokens/motion',
+        type: 'PAGE',
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/tokens/shadow',
+        type: 'PAGE',
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/tokens/spacing',
         type: 'PAGE',
       },
     },
@@ -705,6 +708,23 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwindcss/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/tailwindcss/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwindcss/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwindcss/focus/usage',
             type: 'TAB',
           },
         },
@@ -887,6 +907,846 @@ export const sitemap: Routes = {
       },
     },
   },
+  scss: {
+    name: 'SCSS',
+    path: '/scss',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/scss/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/scss/blur',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/blur/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/blur/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/blur/api',
+            type: 'TAB',
+          },
+        },
+      },
+      border: {
+        name: 'Border',
+        path: '/scss/border',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/border/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/border/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/border/api',
+            type: 'TAB',
+          },
+        },
+      },
+      color: {
+        name: 'Color',
+        path: '/scss/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/scss/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/focus/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/focus/api',
+            type: 'TAB',
+          },
+        },
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/scss/gradient',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/gradient/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/gradient/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/gradient/api',
+            type: 'TAB',
+          },
+        },
+      },
+      grid: {
+        name: 'Grid',
+        path: '/scss/grid',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/grid/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/grid/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/grid/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'media-query': {
+        name: 'Media Query',
+        path: '/scss/media-query',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/media-query/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/media-query/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/media-query/api',
+            type: 'TAB',
+          },
+        },
+      },
+      motion: {
+        name: 'Motion',
+        path: '/scss/motion',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/motion/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/motion/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/motion/api',
+            type: 'TAB',
+          },
+        },
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/scss/shadow',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/shadow/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/shadow/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/shadow/api',
+            type: 'TAB',
+          },
+        },
+      },
+      skeleton: {
+        name: 'Skeleton',
+        path: '/scss/skeleton',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/skeleton/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/skeleton/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/skeleton/api',
+            type: 'TAB',
+          },
+        },
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/scss/spacing',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/spacing/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/spacing/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/spacing/api',
+            type: 'TAB',
+          },
+        },
+      },
+      typography: {
+        name: 'Typography',
+        path: '/scss/typography',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/scss/typography/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/scss/typography/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/scss/typography/api',
+            type: 'TAB',
+          },
+        },
+      },
+    },
+  },
+  emotion: {
+    name: 'Emotion',
+    path: '/emotion',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/emotion/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/emotion/blur',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/blur/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/blur/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/blur/api',
+            type: 'TAB',
+          },
+        },
+      },
+      border: {
+        name: 'Border',
+        path: '/emotion/border',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/border/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/border/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/border/api',
+            type: 'TAB',
+          },
+        },
+      },
+      color: {
+        name: 'Color',
+        path: '/emotion/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/emotion/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/focus/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/focus/api',
+            type: 'TAB',
+          },
+        },
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/emotion/gradient',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/gradient/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/gradient/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/gradient/api',
+            type: 'TAB',
+          },
+        },
+      },
+      grid: {
+        name: 'Grid',
+        path: '/emotion/grid',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/grid/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/grid/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/grid/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'media-query': {
+        name: 'Media Query',
+        path: '/emotion/media-query',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/media-query/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/media-query/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/media-query/api',
+            type: 'TAB',
+          },
+        },
+      },
+      motion: {
+        name: 'Motion',
+        path: '/emotion/motion',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/motion/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/motion/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/motion/api',
+            type: 'TAB',
+          },
+        },
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/emotion/shadow',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/shadow/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/shadow/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/shadow/api',
+            type: 'TAB',
+          },
+        },
+      },
+      skeleton: {
+        name: 'Skeleton',
+        path: '/emotion/skeleton',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/skeleton/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/skeleton/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/skeleton/api',
+            type: 'TAB',
+          },
+        },
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/emotion/spacing',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/spacing/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/spacing/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/spacing/api',
+            type: 'TAB',
+          },
+        },
+      },
+      typography: {
+        name: 'Typography',
+        path: '/emotion/typography',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/emotion/typography/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/emotion/typography/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/emotion/typography/api',
+            type: 'TAB',
+          },
+        },
+      },
+    },
+  },
+  'vanilla-extract': {
+    name: 'Vanilla Extract',
+    path: '/vanilla-extract',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/vanilla-extract/introduction',
+        type: 'PAGE',
+      },
+      blur: {
+        name: 'Blur',
+        path: '/vanilla-extract/blur',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/blur/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/blur/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/blur/api',
+            type: 'TAB',
+          },
+        },
+      },
+      border: {
+        name: 'Border',
+        path: '/vanilla-extract/border',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/border/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/border/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/border/api',
+            type: 'TAB',
+          },
+        },
+      },
+      color: {
+        name: 'Color',
+        path: '/vanilla-extract/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/color/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/vanilla-extract/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/focus/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/focus/api',
+            type: 'TAB',
+          },
+        },
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/vanilla-extract/gradient',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/gradient/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/gradient/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/gradient/api',
+            type: 'TAB',
+          },
+        },
+      },
+      grid: {
+        name: 'Grid',
+        path: '/vanilla-extract/grid',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/grid/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/grid/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/grid/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'media-query': {
+        name: 'Media Query',
+        path: '/vanilla-extract/media-query',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/media-query/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/media-query/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/media-query/api',
+            type: 'TAB',
+          },
+        },
+      },
+      motion: {
+        name: 'Motion',
+        path: '/vanilla-extract/motion',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/motion/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/motion/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/motion/api',
+            type: 'TAB',
+          },
+        },
+      },
+      shadow: {
+        name: 'Shadow',
+        path: '/vanilla-extract/shadow',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/shadow/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/shadow/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/shadow/api',
+            type: 'TAB',
+          },
+        },
+      },
+      skeleton: {
+        name: 'Skeleton',
+        path: '/vanilla-extract/skeleton',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/skeleton/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/skeleton/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/skeleton/api',
+            type: 'TAB',
+          },
+        },
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/vanilla-extract/spacing',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/spacing/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/spacing/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/spacing/api',
+            type: 'TAB',
+          },
+        },
+      },
+      typography: {
+        name: 'Typography',
+        path: '/vanilla-extract/typography',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/vanilla-extract/typography/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/vanilla-extract/typography/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/vanilla-extract/typography/api',
+            type: 'TAB',
+          },
+        },
+      },
+    },
+  },
+  'ag-grid': {
+    name: 'AG Grid',
+    path: '/ag-grid',
+    type: 'CATEGORY',
+    subPaths: {
+      theme: {
+        name: 'Theme',
+        path: '/ag-grid/theme',
+        type: 'PAGE',
+      },
+    },
+  },
   'must-know': {
     name: 'Must Know',
     path: '/must-know',
@@ -933,6 +1793,11 @@ export const sitemap: Routes = {
             type: 'PAGE',
           },
         },
+      },
+      theme: {
+        name: 'Theme',
+        path: '/must-know/theme',
+        type: 'PAGE',
       },
       performance: {
         name: 'Performance',

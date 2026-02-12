@@ -1,0 +1,18 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { blurVanillaExtractStory } from '@/app/vanilla-extract/blur/examples/blur.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Blur - Porsche Design System',
+  description: 'Learn about the Vanilla Extract styles of our design language and how to use them.',
+};
+
+# Blur
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides a JS Variable for blur style to be used with Vanilla Extract.
+
+Styles import: `import { blurFrosted } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';`
+
+<ComponentStory story={blurVanillaExtractStory} showCodeBlock={false} />

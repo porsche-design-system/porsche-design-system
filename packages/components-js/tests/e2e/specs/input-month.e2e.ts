@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
+import { colorContrastLowerLight } from '@porsche-design-system/tokens';
 import {
   addEventListener,
   getConsoleErrorsAmount,
@@ -470,7 +471,7 @@ test.describe('focus state', () => {
 
     await addEventListener(inputMonth, 'focus');
     expect((await getEventSummary(inputMonth, 'focus')).counter).toBe(0);
-    await expect(inputMonthWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(inputMonthWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await host.focus();
     await waitForStencilLifecycle(page);
@@ -551,7 +552,6 @@ test.describe('Event', () => {
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-month when label is hovered', async ({ page }) => {
@@ -561,13 +561,13 @@ test.describe('hover state', () => {
     const inputMonth = getInputMonth(page);
     const inputMonthWrapper = getInputMonthWrapper(page);
 
-    await expect(inputMonthWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputMonthWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
     await inputMonth.hover();
 
     await expect(inputMonthWrapper).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    await expect(inputMonthWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputMonthWrapper).toHaveCSS('border-color', /rgba\(79, 80, 89, 0\.32[45]\)/);
 
     await label.hover();
     await expect(inputMonthWrapper).toHaveCSS('border-color', hoverBorderColor);

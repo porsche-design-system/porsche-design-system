@@ -167,7 +167,7 @@ export const doNothing = (): void => {
 We experience that by using only `brand` in react, other objects and functions are in the final bundle.
 
 ```tsx
-import { themeLight } from '@porsche-design-system/components-js/styles';
+import { themeLight } from '@porsche-design-system/components-js/emotion';
 
 export const App = (): JSX.Element => {
   const { brand } = themeLight;

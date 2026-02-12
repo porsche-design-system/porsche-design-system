@@ -1,4 +1,72 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import {
+  colorCanvasLight,
+  colorCanvasDark,
+  colorSurfaceLight,
+  colorSurfaceDark,
+  colorFrostedLight,
+  colorFrostedDark,
+  colorFrostedSoftLight,
+  colorFrostedSoftDark,
+  colorFrostedStrongLight,
+  colorFrostedStrongDark,
+  colorBackdropLight,
+  colorBackdropDark,
+  colorPrimaryLight,
+  colorPrimaryDark,
+  colorContrastHigherLight,
+  colorContrastHigherDark,
+  colorContrastHighLight,
+  colorContrastHighDark,
+  colorContrastMediumLight,
+  colorContrastMediumDark,
+  colorContrastLowLight,
+  colorContrastLowDark,
+  colorContrastLowerLight,
+  colorContrastLowerDark,
+  colorInfoLight,
+  colorInfoMediumLight,
+  colorInfoLowLight,
+  colorInfoFrostedLight,
+  colorInfoFrostedSoftLight,
+  colorInfoDark,
+  colorInfoMediumDark,
+  colorInfoLowDark,
+  colorInfoFrostedDark,
+  colorInfoFrostedSoftDark,
+  colorSuccessLight,
+  colorSuccessMediumLight,
+  colorSuccessLowLight,
+  colorSuccessFrostedLight,
+  colorSuccessFrostedSoftLight,
+  colorSuccessDark,
+  colorSuccessMediumDark,
+  colorSuccessLowDark,
+  colorSuccessFrostedDark,
+  colorSuccessFrostedSoftDark,
+  colorWarningLight,
+  colorWarningMediumLight,
+  colorWarningLowLight,
+  colorWarningFrostedLight,
+  colorWarningFrostedSoftLight,
+  colorWarningDark,
+  colorWarningMediumDark,
+  colorWarningLowDark,
+  colorWarningFrostedDark,
+  colorWarningFrostedSoftDark,
+  colorErrorLight,
+  colorErrorMediumLight,
+  colorErrorLowLight,
+  colorErrorFrostedLight,
+  colorErrorFrostedSoftLight,
+  colorErrorDark,
+  colorErrorMediumDark,
+  colorErrorLowDark,
+  colorErrorFrostedDark,
+  colorErrorFrostedSoftDark,
+  colorFocusLight,
+  colorFocusDark,
+} from '@porsche-design-system/tokens';
 
 export const metadata = {
   title: 'Tailwind CSS: Color - Porsche Design System',
@@ -11,25 +79,55 @@ export const metadata = {
 
 ## Variables
 
-| Color                                                                                      | Tailwind CSS variable                     | Tailwind CSS class      | Description                                                                                                      |
-| ------------------------------------------------------------------------------------------ | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-primary (-light\|-dark)`         | `.text-primary`         | Applies the **primary** color, typically used for text.                                                          |
-| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>          | `--color-canvas (-light\|-dark)`          | `.bg-canvas`            | Applies the **canvas** color, typically used for surfaces.<br/> (formerly `--color-base`)                        |
-| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-surface (-light\|-dark)`         | `.bg-surface`           | Applies the **surface** color, typically used for surfaces.                                                      |
-| <div className="bg-shading w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-shading (-light\|-dark)`         | `.bg-shading`           | Applies the **shading** color, typically used for backdrops.                                                     |
-| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-frosted (-light\|-dark)`         | `.bg-frosted`           | Applies the **frosted** color, typically used as a background in combination with a blur effect.                 |
-| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-contrast-low (-light\|-dark)`    | `.border-contrast-low`  | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant. |
-| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-contrast-medium (-light\|-dark)` | `.text-contrast-medium` | Applies the **contrast-medium** color, typically used for text.                                                  |
-| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-contrast-high (-light\|-dark)`   | `.text-contrast-high`   | Applies the **contrast-high** color, typically used for text.                                                    |
-| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-success (-light\|-dark)`         | `.text-success`         | Applies the **success** color, typically used for text.                                                          |
-| <div className="bg-success-soft w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-success-soft (-light\|-dark)`    | `.bg-success-soft`      | Applies the **success-soft** color, typically used as background.                                                |
-| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-warning (-light\|-dark)`         | `.text-warning`         | Applies the **warning** color, typically used for text.                                                          |
-| <div className="bg-warning-soft w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-warning-soft (-light\|-dark)`    | `.bg-warning-soft`      | Applies the **warning-soft** color, typically used as background.                                                |
-| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>           | `--color-error (-light\|-dark)`           | `.text-error`           | Applies the **error** color, typically used for text.                                                            |
-| <div className="bg-error-soft w-10 h-10 rounded-md border border-contrast-low"></div>      | `--color-error-soft (-light\|-dark)`      | `.bg-error-soft`        | Applies the **error-soft** color, typically used as background.                                                  |
-| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>            | `--color-info (-light\|-dark)`            | `.text-info`            | Applies the **info** color, typically used for text.                                                             |
-| <div className="bg-info-soft w-10 h-10 rounded-md border border-contrast-low"></div>       | `--color-info-soft (-light\|-dark)`       | `.bg-info-soft`         | Applies the **info-soft** color, typically used as background.                                                   |
-| <div className="bg-hover w-10 h-10 rounded-md border border-contrast-low"></div>           | `--color-hover (-light\|-dark)`           | `.text-hover`           | Applies the **hover** color.                                                                                     |
-| <div className="bg-active w-10 h-10 rounded-md border border-contrast-low"></div>          | `--color-active (-light\|-dark)`          | `.text-active`          | Applies the **active** color.                                                                                    |
-| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div>           | `--color-focus (-light\|-dark)`           | `.outline-focus`        | Applies the **focus** color, typically used as the outline for `:focus-visible` states.                          |
-| <div className="bg-disabled w-10 h-10 rounded-md border border-contrast-low"></div>        | `--color-disabled (-light\|-dark)`        | `.text-disabled`        | Applies the **disabled** color.                                                                                  |
+### Background
+
+| Color                                                                                     | Tailwind CSS variable    | Tailwind CSS class   | Description                                                                                                               | Value (light)             | Value (dark)             |
+| ----------------------------------------------------------------------------------------- | ------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------ |
+| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-canvas`         | `.bg-canvas`         | Applies the **canvas** color, typically used for surfaces.                                                                | {colorCanvasLight}        | {colorCanvasDark}        |
+| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>        | `--color-surface`        | `.bg-surface`        | Applies the **surface** color, typically used for surfaces.                                                               | {colorSurfaceLight}       | {colorSurfaceDark}       |
+| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | `--color-frosted`        | `.bg-frosted`        | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | {colorFrostedLight}       | {colorFrostedDark}       |
+| <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-frosted-soft`   | `.bg-frosted-soft`   | Applies the **frosted** color, typically used as a background `:hover`.                                                   | {colorFrostedSoftLight}   | {colorFrostedSoftDark}   |
+| <div className="bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-frosted-strong` | `.bg-frosted-strong` | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | {colorFrostedStrongLight} | {colorFrostedStrongDark} |
+| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>       | `--color-backdrop`       | `.bg-backdrop`       | Applies the **backdrop** color, typically used for backdrops.                                                             | {colorBackdropLight}      | {colorBackdropDark}      |
+
+### Foreground
+
+| Color                                                                                      | Tailwind CSS variable     | Tailwind CSS class       | Description                                                                                                        | Value (light)              | Value (dark)              |
+| ------------------------------------------------------------------------------------------ | ------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------ | -------------------------- | ------------------------- |
+| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-primary`         | `.text-primary`          | Applies the **primary** color, typically used for text.                                                            | {colorPrimaryLight}        | {colorPrimaryDark}        |
+| <div className="bg-contrast-higher w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-contrast-higher` | `.text-contrast-higher`  | Applies the **contrast-higher** color, typically used for text.                                                    | {colorContrastHigherLight} | {colorContrastHigherDark} |
+| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-contrast-high`   | `.text-contrast-high`    | Applies the **contrast-high** color, typically used for text.                                                      | {colorContrastHighLight}   | {colorContrastHighDark}   |
+| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-contrast-medium` | `.text-contrast-medium`  | Applies the **contrast-medium** color, typically used for text.                                                    | {colorContrastMediumLight} | {colorContrastMediumDark} |
+| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-contrast-low`    | `.border-contrast-low`   | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | {colorContrastLowLight}    | {colorContrastLowDark}    |
+| <div className="bg-contrast-lower w-10 h-10 rounded-md border border-contrast-low"></div>  | `--color-contrast-lower`  | `.border-contrast-lower` | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | {colorContrastLowerLight}  | {colorContrastLowerDark}  |
+
+### Semantic
+
+| Color                                                                                           | Tailwind CSS variable          | Tailwind CSS class                | Description                                                                                                                     | Value (light)                  | Value (dark)                  |
+| ----------------------------------------------------------------------------------------------- | ------------------------------ | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------- |
+| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>                 | `--color-info`                 | `.text-info`                      | Applies the **info** color, typically used for text.                                                                            | {colorInfoLight}               | {colorInfoDark}               |
+| <div className="bg-info-medium w-10 h-10 rounded-md border border-contrast-low"></div>          | `--color-info-medium`          | `.text-info` `.border-info`       | Applies the **info** color, typically used for text or border.                                                                  | {colorInfoMediumLight}         | {colorInfoMediumDark}         |
+| <div className="bg-info-low w-10 h-10 rounded-md border border-contrast-low"></div>             | `--color-info-low`             | `.text-info` `.border-info`       | Applies the **info** color, typically used for text or border.                                                                  | {colorInfoLowLight}            | {colorInfoLowDark}            |
+| <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-info-frosted`         | `.bg-info-frosted`                | Applies the **info-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.    | {colorInfoFrostedLight}        | {colorInfoFrostedDark}        |
+| <div className="bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>    | `--color-info-frosted-soft`    | `.bg-info-frosted-soft`           | Applies the **info-frosted-soft** color, typically used as background `:hover`.                                                 | {colorInfoFrostedSoftLight}    | {colorInfoFrostedSoftDark}    |
+| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>              | `--color-success`              | `.text-success`                   | Applies the **success** color, typically used for text.                                                                         | {colorSuccessLight}            | {colorSuccessDark}            |
+| <div className="bg-success-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | `--color-success-medium`       | `.text-success` `.border-success` | Applies the **success** color, typically used for text or border.                                                               | {colorSuccessMediumLight}      | {colorSuccessMediumDark}      |
+| <div className="bg-success-low w-10 h-10 rounded-md border border-contrast-low"></div>          | `--color-success-low`          | `.text-success` `.border-success` | Applies the **success** color, typically used for text or border.                                                               | {colorSuccessLowLight}         | {colorSuccessLowDark}         |
+| <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `--color-success-frosted`      | `.bg-success-frosted`             | Applies the **success-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | {colorSuccessFrostedLight}     | {colorSuccessFrostedDark}     |
+| <div className="bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-success-frosted-soft` | `.bg-success-frosted-soft`        | Applies the **success-frosted-soft** color, typically used as background `:hover`.                                              | {colorSuccessFrostedSoftLight} | {colorSuccessFrostedSoftDark} |
+| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>              | `--color-warning`              | `.text-warning`                   | Applies the **warning** color, typically used for text.                                                                         | {colorWarningLight}            | {colorWarningDark}            |
+| <div className="bg-warning-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | `--color-warning-medium`       | `.text-warning` `.border-warning` | Applies the **warning** color, typically used for text or border.                                                               | {colorWarningMediumLight}      | {colorWarningMediumDark}      |
+| <div className="bg-warning-low w-10 h-10 rounded-md border border-contrast-low"></div>          | `--color-warning-low`          | `.text-warning` `.border-warning` | Applies the **warning** color, typically used for text or border.                                                               | {colorWarningLowLight}         | {colorWarningLowDark}         |
+| <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | `--color-warning-frosted`      | `.bg-warning-frosted`             | Applies the **warning-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | {colorWarningFrostedLight}     | {colorWarningFrostedDark}     |
+| <div className="bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-warning-frosted-soft` | `.bg-warning-frosted-soft`        | Applies the **warning-frosted-soft** color, typically used as background `:hover`.                                              | {colorWarningFrostedSoftLight} | {colorWarningFrostedSoftDark} |
+| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>                | `--color-error`                | `.text-error`                     | Applies the **error** color, typically used for text.                                                                           | {colorErrorLight}              | {colorErrorDark}              |
+| <div className="bg-error-medium w-10 h-10 rounded-md border border-contrast-low"></div>         | `--color-error-medium`         | `.text-error` `.border-error`     | Applies the **error** color, typically used for text or border.                                                                 | {colorErrorMediumLight}        | {colorErrorMediumDark}        |
+| <div className="bg-error-low w-10 h-10 rounded-md border border-contrast-low"></div>            | `--color-error-low`            | `.text-error` `.border-error`     | Applies the **error** color, typically used for text or border.                                                                 | {colorErrorLowLight}           | {colorErrorLowDark}           |
+| <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | `--color-error-frosted`        | `.bg-error-frosted`               | Applies the **error-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.   | {colorErrorFrostedLight}       | {colorErrorFrostedDark}       |
+| <div className="bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | `--color-error-frosted-soft`   | `.bg-error-frosted-soft`          | Applies the **error-frosted-soft** color, typically used as background `:hover`.                                                | {colorErrorFrostedSoftLight}   | {colorErrorFrostedSoftDark}   |
+
+### A11y
+
+| Color                                                                            | Tailwind CSS variable | Tailwind CSS class | Description                                                                             | Value (light)     | Value (dark)     |
+| -------------------------------------------------------------------------------- | --------------------- | ------------------ | --------------------------------------------------------------------------------------- | ----------------- | ---------------- |
+| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div> | `--color-focus`       | `.outline-focus`   | Applies the **focus** color, typically used as the outline for `:focus-visible` states. | {colorFocusLight} | {colorFocusDark} |

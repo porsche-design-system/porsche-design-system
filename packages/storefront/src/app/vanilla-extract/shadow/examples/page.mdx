@@ -1,0 +1,19 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { shadowVanillaExtractStory } from '@/app/vanilla-extract/shadow/examples/shadow.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Shadow - Porsche Design System',
+  description: 'Learn about the Vanilla Extract styles of our design language and how to use them.',
+};
+
+# Shadow
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System provides multiple JS Variables for shadow styles to be used in Vanilla Extract.
+
+Styles import:
+`import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';`
+
+<ComponentStory story={shadowVanillaExtractStory} backgroundColor={'surface'} showCodeBlock={false} />

@@ -1,41 +1,41 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getTypographyRootJssStyle() > should return correct css for baseTextStyle: { font: 'some font styles' }, responsiveStyle: { fontSize: 'some breakpoint customizable font styles' }, align: left, color: primary, ellipsis: false and theme: light 1`] = `
+exports[`getTypographyRootJssStyle() > should return correct css for baseTextStyle: { font: 'some font styles' }, responsiveStyle: { fontSize: 'some breakpoint customizable font styles' }, align: start, color: primary and ellipsis: false 1`] = `
 {
-  "color": "#010205",
+  "all": "unset",
+  "color": "var(--p-color-primary)",
+  "display": "block",
   "font": "some font styles",
   "fontSize": "some breakpoint customizable font styles",
   "letterSpacing": "normal",
   "listStyleType": "none",
-  "margin": 0,
-  "padding": 0,
-  "textAlign": "left",
+  "textAlign": "start",
   "whiteSpace": "inherit",
 }
 `;
 
-exports[`getTypographyRootJssStyle() > should return correct css for baseTextStyle: {}, responsiveStyle: {}, align: center, color: contrast-high, ellipsis: false and theme: dark 1`] = `
+exports[`getTypographyRootJssStyle() > should return correct css for baseTextStyle: {}, responsiveStyle: {}, align: center, color: contrast-high and ellipsis: false 1`] = `
 {
-  "color": "#AFB0B3",
+  "all": "unset",
+  "color": "var(--p-color-contrast-high)",
+  "display": "block",
   "letterSpacing": "normal",
   "listStyleType": "none",
-  "margin": 0,
-  "padding": 0,
   "textAlign": "center",
   "whiteSpace": "inherit",
 }
 `;
 
-exports[`getTypographyRootJssStyle() > should return correct css for baseTextStyle: {}, responsiveStyle: {}, align: right, color: contrast-high, ellipsis: true and theme: light 1`] = `
+exports[`getTypographyRootJssStyle() > should return correct css for baseTextStyle: {}, responsiveStyle: {}, align: end, color: contrast-high and ellipsis: true 1`] = `
 {
-  "color": "#535457",
+  "all": "unset",
+  "color": "var(--p-color-contrast-high)",
+  "display": "block",
   "letterSpacing": "normal",
   "listStyleType": "none",
-  "margin": 0,
   "maxWidth": "100%",
   "overflow": "hidden",
-  "padding": 0,
-  "textAlign": "right",
+  "textAlign": "end",
   "textOverflow": "ellipsis",
   "whiteSpace": "nowrap",
 }

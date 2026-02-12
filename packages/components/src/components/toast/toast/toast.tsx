@@ -1,12 +1,7 @@
+import { Component, Element, Host, h, type JSX, Method } from '@stencil/core';
+import { attachComponentCss, getPrefixedTagNames } from '../../../utils';
 import { type ToastMessage, toastManager } from './toast-manager';
-import { Component, Element, h, Host, type JSX, Method, Prop } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
-
-const propTypes: PropTypes<typeof Toast> = {
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
-};
 
 @Component({
   tag: 'p-toast',
@@ -14,9 +9,6 @@ const propTypes: PropTypes<typeof Toast> = {
 })
 export class Toast {
   @Element() public host!: HTMLElement;
-
-  /** Adapts the toast color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
 
   private toastItemElement: HTMLPToastItemElement;
 
@@ -36,16 +28,11 @@ export class Toast {
     });
   }
 
-  public componentShouldUpdate(_: unknown, __: unknown, propName: keyof InstanceType<typeof Toast>): boolean {
-    return propName !== 'theme';
-  }
-
   public disconnectedCallback(): void {
     toastManager.unregister();
   }
 
   public render(): JSX.Element {
-    validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss);
 
     this.toastItemElement?.classList.remove(toastCloseClassName);
@@ -56,11 +43,7 @@ export class Toast {
     return (
       <Host role="status">
         {toast && (
-          <PrefixedTagNames.pToastItem
-            {...toast}
-            theme={this.theme}
-            ref={(el: HTMLPToastItemElement) => (this.toastItemElement = el)}
-          />
+          <PrefixedTagNames.pToastItem {...toast} ref={(el: HTMLPToastItemElement) => (this.toastItemElement = el)} />
         )}
       </Host>
     );

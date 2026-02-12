@@ -13,7 +13,7 @@
 </style>
 
 <!-- skip this axe-core test because it is just needed for vrt -->
-<div class="playground light skip-axe-core-test" title="should render without label and without description">
+<div class="playground skip-axe-core-test" title="should render without label and without description">
   <p-multi-select name="options">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -21,7 +21,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with label">
+<div class="playground" title="should render with label">
   <p-multi-select name="options" label="Some Label">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -29,7 +29,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with label and description">
+<div class="playground" title="should render with label and description">
   <p-multi-select name="options" label="Some Label" description="Some description">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -37,7 +37,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with responsive label and description">
+<div class="playground" title="should render with responsive label and description">
   <p-multi-select
     name="options"
     label="Hide label responsive"
@@ -50,7 +50,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render in disabled state">
+<div class="playground" title="should render in disabled state">
   <p-multi-select name="options" label="Some Label disabled" disabled="true">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -58,7 +58,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render in required state">
+<div class="playground" title="should render in required state">
   <p-multi-select name="options" label="Some label required" required="true" class="a11ytree-snapshot-test">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -75,7 +75,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with error state and error message">
+<div class="playground" title="should render with error state and error message">
   <p-multi-select
     name="options"
     label="Error state"
@@ -89,7 +89,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with error state and no error message">
+<div class="playground" title="should render with error state and no error message">
   <p-multi-select name="options" label="Error state (no message)" state="error">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -97,7 +97,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with success state and success message">
+<div class="playground" title="should render with success state and success message">
   <p-multi-select
     name="options"
     label="Success state"
@@ -111,7 +111,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with success state and no success message">
+<div class="playground" title="should render with success state and no success message">
   <p-multi-select name="options" label="Success state (no message)" state="success">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -119,7 +119,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render with default state and no message">
+<div class="playground" title="should render with default state and no message">
   <p-multi-select
     name="options"
     label="Default state, no message should be visible"
@@ -132,7 +132,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render label, description and message by slotted content with error state">
+<div class="playground" title="should render label, description and message by slotted content with error state">
   <p-multi-select name="options" state="error" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
@@ -159,7 +159,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render label, description and message by slotted content with success state"
 >
   <p-multi-select name="options" state="success" class="a11ytree-snapshot-test">
@@ -188,7 +188,7 @@
 </div>
 
 <div
-  class="playground light"
+  class="playground"
   title="should render with multiline label, description and message and cut off too long option text"
 >
   <p-multi-select
@@ -206,7 +206,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render unopened with selection">
+<div class="playground" title="should render unopened with selection">
   <p-multi-select name="options" label="Selection" class="selected focus">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
@@ -214,7 +214,7 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render opened with direction bottom">
+<div class="playground" title="should render opened with direction bottom">
   <iframe
     src="/multi-select-opened-bottom?iframe=true"
     loading="eager"
@@ -222,7 +222,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with direction up">
+<div class="playground" title="should render opened with direction up">
   <iframe
     src="/multi-select-opened-top?iframe=true"
     loading="eager"
@@ -231,7 +231,7 @@
 </div>
 
 <div
-  class="playground light a11ytree-snapshot-test"
+  class="playground a11ytree-snapshot-test"
   title="should render opened and with disabled, highlighted and selected"
 >
   <iframe
@@ -241,7 +241,7 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened and with optgroups">
+<div class="playground a11ytree-snapshot-test" title="should render opened and with optgroups">
   <iframe
     src="/multi-select-opened-with-optgroups?iframe=true"
     loading="eager"
@@ -249,7 +249,7 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened and with optgroup in disabled state">
+<div class="playground a11ytree-snapshot-test" title="should render opened and with optgroup in disabled state">
   <iframe
     src="/multi-select-opened-with-optgroups-disabled?iframe=true"
     loading="eager"
@@ -257,7 +257,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with options within and outside optgroup">
+<div class="playground" title="should render opened and with options within and outside optgroup">
   <iframe
     src="/multi-select-opened-with-and-without-optgroups?iframe=true"
     loading="eager"
@@ -265,7 +265,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with multiple selected options and highlighted">
+<div class="playground" title="should render opened and with multiple selected options and highlighted">
   <iframe
     src="/multi-select-opened-with-multiple-selected-options?iframe=true"
     loading="eager"
@@ -273,7 +273,7 @@
   ></iframe>
 </div>
 
-<div class="playground light a11ytree-snapshot-test" title="should render opened with filter input and no results">
+<div class="playground a11ytree-snapshot-test" title="should render opened with filter input and no results">
   <iframe
     src="/multi-select-opened-filter-no-results?iframe=true"
     loading="eager"
@@ -281,7 +281,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with filter input and no results in compact mode">
+<div class="playground" title="should render opened with filter input and no results in compact mode">
   <iframe
     src="/multi-select-opened-filter-no-results-compact?iframe=true"
     loading="eager"
@@ -289,7 +289,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+<div class="playground" title="should render with ellipsis and min-width in a smaller container">
   <div style="width: 0">
     <p-multi-select name="options" label="Some Label" class="selected">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
@@ -299,31 +299,11 @@
   </div>
 </div>
 
-<div class="playground light" title="should render in compact mode">
+<div class="playground" title="should render in compact mode">
   <iframe src="/multi-select-compact?iframe=true" loading="eager" title="should show select compact"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0">
-  <iframe src="/multi-select-scaling-0?iframe=true" loading="eager" title="should show select scaling 0"></iframe>
-</div>
-
-<div class="playground light auto-layout-block" title="should render with scaling 0.5">
-  <iframe src="/multi-select-scaling-0-5?iframe=true" loading="eager" title="should show select scaling 0.5"></iframe>
-</div>
-
-<div class="playground light auto-layout-block" title="should render with scaling 0.8">
-  <iframe src="/multi-select-scaling-0-8?iframe=true" loading="eager" title="should show select scaling 0.8"></iframe>
-</div>
-
-<div class="playground light auto-layout-block" title="should render with scaling 1">
-  <iframe src="/multi-select-scaling-1?iframe=true" loading="eager" title="should show select scaling 1"></iframe>
-</div>
-
-<div class="playground light auto-layout-block" title="should render with scaling 2">
-  <iframe src="/multi-select-scaling-2?iframe=true" loading="eager" title="should show select scaling 2"></iframe>
-</div>
-
-<div class="playground light" title="should render opened on #top-layer within scroll container">
+<div class="playground" title="should render opened on #top-layer within scroll container">
   <iframe
     src="/multi-select-opened-scroll-context?iframe=true"
     loading="eager"
@@ -331,7 +311,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with max-height option list">
+<div class="playground" title="should render opened with max-height option list">
   <iframe
     class="max-height"
     src="/multi-select-opened-max-height?iframe=true"
@@ -340,7 +320,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with min-height option list">
+<div class="playground" title="should render opened with min-height option list">
   <iframe
     class="min-height"
     src="/multi-select-opened-min-height?iframe=true"
@@ -349,8 +329,26 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with selected slot">
+<div class="playground" title="should render opened with selected slot">
   <iframe src="/multi-select-opened-selected-slot?iframe=true" loading="eager" title="should render opened with selected slot"></iframe>
+</div>
+
+<div class="playground" title="should render with label and label-after slot">
+  <p-multi-select name="some-name" label="Label">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+  </p-multi-select>
+</div>
+
+<div class="playground" title="should render with multiline label and label-after slot">
+  <p-multi-select name="some-name" label="Some label dolor sit amet, consetetur" style="width: 15rem">
+    <p-popover slot="label-after">Some Popover content</p-popover>
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+  </p-multi-select>
 </div>
 
 <script>

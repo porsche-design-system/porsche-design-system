@@ -21,8 +21,10 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
   loading: AllowedTypes.boolean,
 };
 
+// Though "description" and "message" slots are technically available (provided by the "label" component),
+// they are not documented here to avoid confusion since they are not intended for use within radio group options.
 /**
- * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)." }
  */
 @Component({
@@ -64,12 +66,12 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, name, state } = this.host;
+    const { selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;
     const isLoading = isOptionLoading || this.host.loadingParent;
 
-    attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state, theme);
+    attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state);
 
     const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -99,7 +101,7 @@ export class RadioGroupOption {
             />
             {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
             {isOptionLoading && !this.host.loadingParent && (
-              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={theme} aria-hidden="true" />
+              <PrefixedTagNames.pSpinner class="spinner" size="inherit" aria-hidden="true" />
             )}
           </div>
           <Label

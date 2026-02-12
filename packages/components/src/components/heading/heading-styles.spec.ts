@@ -1,25 +1,18 @@
-import { getComponentCss } from './heading-styles';
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { getComponentCss } from './heading-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['xx-large', 'start', 'primary', false, 'light'],
-    ['x-large', 'start', 'primary', false, 'light'],
-    ['x-large', 'left', 'primary', false, 'light'],
-    ['x-large', 'right', 'primary', false, 'light'],
-    ['large', 'center', 'inherit', true, 'dark'],
-    ['medium', 'center', 'inherit', true, 'dark'],
-    ['small', 'center', 'inherit', true, 'dark'],
-    ['small', 'inherit', 'inherit', true, 'dark'],
-    ['inherit', 'center', 'inherit', true, 'dark'],
-    [
-      { base: 'small', xs: 'medium', s: 'large', m: 'x-large', l: 'xx-large', xl: 'large' },
-      'end',
-      'inherit',
-      false,
-      'dark',
-    ],
-  ])('should return correct css for size: %j, align: %s, color: %s, ellipsis: %s and theme: %s', (...args) => {
+    ['xx-large', 'start', 'primary', false],
+    ['x-large', 'start', 'primary', false],
+    ['x-large', 'end', 'primary', false],
+    ['large', 'center', 'inherit', true],
+    ['medium', 'center', 'inherit', true],
+    ['small', 'center', 'inherit', true],
+    ['small', 'inherit', 'inherit', true],
+    ['inherit', 'center', 'inherit', true],
+    [{ base: 'small', xs: 'medium', s: 'large', m: 'x-large', l: 'xx-large', xl: 'large' }, 'end', 'inherit', false],
+  ])('should return correct css for size: %j, align: %s, color: %s and ellipsis: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

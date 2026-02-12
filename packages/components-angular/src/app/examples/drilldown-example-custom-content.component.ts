@@ -5,7 +5,7 @@ import { type DrilldownUpdateEventDetail, PorscheDesignSystemModule } from '@por
   selector: 'page-drilldown-example-custom-content',
   styles: [
     `
-      @use '@porsche-design-system/components-angular/styles' as *;
+      @use '@porsche-design-system/components-angular/scss' as *;
 
       p-drilldown {
         --p-drilldown-grid-template: repeat(5, auto) minmax(0, 1fr) / auto

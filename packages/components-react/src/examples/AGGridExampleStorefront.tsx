@@ -1,9 +1,7 @@
-import { PorscheDesignSystemContext } from '@porsche-design-system/components-react';
 import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AllCommunityModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { useContext } from 'react';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -12,7 +10,6 @@ type ColumnDefs = DataAdvanced & {
 };
 
 export const AGGridExampleStorefrontPage = (): JSX.Element => {
-  const { theme } = useContext(PorscheDesignSystemContext);
   const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
   const columnDefs: ColDef<ColumnDefs>[] = [
@@ -59,7 +56,7 @@ export const AGGridExampleStorefrontPage = (): JSX.Element => {
   };
 
   return (
-    <div data-ag-theme-mode={theme === 'light' ? null : 'dark'} style={{ height: '100vh' }}>
+    <div style={{ height: '100vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}

@@ -1,29 +1,17 @@
-import type { Theme } from '../../../types';
+import { addImportantToEachRule, getFocusBaseStyles, hostHiddenStyles } from '../../../styles';
+import { colorPrimary } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
-import {
-  addImportantToEachRule,
-  getFocusJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../../styles';
 
-export const getComponentCss = (theme: Theme): string => {
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
-
+export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          color: primaryColor, // enables color inheritance for e.g. slotted anchor
+          color: colorPrimary, // enables color inheritance for e.g. slotted anchor
           borderRadius: '2px',
           ...hostHiddenStyles,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
-          ...getFocusJssStyle(theme, { slotted: true }),
+          '&(:focus-visible)': getFocusBaseStyles(),
         }),
       },
     },

@@ -1,28 +1,16 @@
-import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
-import {
-  type HeadingAlign,
-  type HeadingAlignDeprecated,
-  type HeadingColor,
-  getHeadingTagType,
-  HEADING_COLORS,
-} from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
-  hasPropValueChanged,
   HEADING_SIZES,
   HEADING_TAGS,
-  THEMES,
+  hasPropValueChanged,
   TYPOGRAPHY_ALIGNS,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './heading-styles';
-import { getSlottedAnchorStyles } from '../../styles';
-
-type AlignDeprecationMapType = Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>>;
+import { getHeadingTagType, HEADING_COLORS, type HeadingAlign, type HeadingColor } from './heading-utils';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
@@ -30,7 +18,6 @@ const propTypes: PropTypes<typeof Heading> = {
   align: AllowedTypes.oneOf<HeadingAlign>(TYPOGRAPHY_ALIGNS),
   color: AllowedTypes.oneOf<HeadingColor>(HEADING_COLORS),
   ellipsis: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -52,18 +39,11 @@ export class Heading {
   /** Text alignment of the component. */
   @Prop() public align?: HeadingAlign = 'start';
 
-  /** Basic text color variations depending on theme property. */
+  /** Basic text color variations. */
   @Prop() public color?: HeadingColor = 'primary';
 
   /** Adds an ellipsis to a single line of text if it overflows. */
   @Prop() public ellipsis?: boolean = false;
-
-  /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
-  @Prop() public theme?: Theme = 'light';
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -71,29 +51,7 @@ export class Heading {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-
-    const alignDeprecationMap: AlignDeprecationMapType = {
-      left: 'start',
-      right: 'end',
-    };
-    warnIfDeprecatedPropValueIsUsed<typeof Heading, HeadingAlignDeprecated, HeadingAlign>(
-      this,
-      'align',
-      alignDeprecationMap
-    );
-
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.size,
-      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
-        HeadingAlign,
-        HeadingAlignDeprecated
-      >,
-      this.color,
-      this.ellipsis,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.size, this.align, this.color, this.ellipsis);
 
     const TagType = getHeadingTagType(this.host, this.size, this.tag);
 

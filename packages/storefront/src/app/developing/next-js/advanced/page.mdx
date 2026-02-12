@@ -1,0 +1,65 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Next.js: Advanced - Porsche Design System',
+  description: 'Explore advanced Porsche Design System techniques in Next.js.',
+};
+
+# Next.js
+
+<TableOfContents headings={['Global Theme', 'Prefixing']} />
+
+## Global Theme
+
+All system colors are controlled via the CSS
+[`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) property and are
+included in our mandatory [Global Styles](/styles/introduction). These styles also provide utility classes for selecting
+the active theme and a polyfill to ensure compatibility with browsers that do not yet support `light-dark()` (see
+[browser support](https://caniuse.com/mdn-css_types_color_light-dark)).
+
+By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
+settings, add the `.scheme-light`, `.scheme-dark` or `.scheme-light-dark` CSS class to the `<html>` element or any HTML
+element. This applies the selected theme to all child elements.
+
+Learn more in the [Theme](/must-know/theme) section.
+
+## Prefixing
+
+In case of a micro-service architecture, multiple instances and versions of the Porsche Design System can be combined in
+a final application. This could cause conflicts due to the way how custom webcomponents are registered in the browser.
+During the bootstrap phase of the Porsche Design System, custom elements are defined. If a second application wants to
+register Porsche Design System again it will cause issues especially when different versions are used.
+
+A way of preventing those conflicts is by using a unique custom prefix for the components. Simply pass your desired
+prefix to the `prefix` property of `PorscheDesignSystemProvider`.
+
+```tsx
+// app/layout.tsx
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <head></head>
+      <body>
+        <PorscheDesignSystemProvider prefix="sample-prefix">{children}</PorscheDesignSystemProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+In the following example the `PHeading` component will render as `<sample-prefix-p-heading>`.
+
+```tsx
+// app/page.tsx
+import { PHeading } from '@porsche-design-system/components-react/ssr';
+
+export default function Home() {
+  return <PHeading>Some heading</PHeading>;
+}
+```

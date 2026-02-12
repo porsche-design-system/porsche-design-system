@@ -1,10 +1,13 @@
 /* Auto Generated File */
-import { PModal } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 
 const ModalBasicPage = (): JSX.Element => {
   return (
     <>
-      <PModal heading="Heading" open={true}>Some Content</PModal>
+      <PModal open={true}>
+        <PHeading slot="header" size="large" tag="h2">Some Heading</PHeading>
+        Some Content
+      </PModal>
     </>
   );
 };

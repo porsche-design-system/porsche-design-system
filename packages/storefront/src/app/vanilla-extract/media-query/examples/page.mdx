@@ -1,0 +1,43 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { mediaQueryVanillaExtractStory } from '@/app/vanilla-extract/media-query/examples/media-query.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+
+export const metadata = {
+  title: 'Vanilla Extract: Media Query - Porsche Design System',
+  description: 'Learn about the Vanilla Extract styles of our design language and how to use them.',
+};
+
+# Media Query
+
+The Porsche Design System provides JS Functions for the media queries and JS Variables for breakpoints to be used in
+Vanilla Extract.
+
+- min-width: `getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- max-width: `getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')`
+- min-width and max-width: `getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`.
+
+```js
+// Usage example:
+const MediaQueryMin = style({
+  '@media': {
+    [getMediaQueryMin('xs')]: {
+      // styles for min-width: xs
+    },
+  },
+});
+```
+
+All breakpoints are also available as JS Variables:
+
+- Base: `breakpointBase`
+- xs: `breakpointXS`
+- s: `breakpointS`
+- m: `breakpointM`
+- l: `breakpointL`
+- xl: `breakpointXL`
+- xxl: `breakpointXXL`
+
+Styles import:
+`import { getMediaQueryMin, breakpointXS, … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';`
+
+<ComponentStory story={mediaQueryVanillaExtractStory} showCodeBlock={false} />

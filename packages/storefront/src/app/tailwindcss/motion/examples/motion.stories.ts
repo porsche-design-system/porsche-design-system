@@ -13,32 +13,30 @@ export const motionStoryDuration: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'duration-short transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-sm transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['.duration-short'],
+          children: ['.duration-sm'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'duration-moderate transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-md transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['.duration-moderate'],
+          children: ['.duration-md'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'duration-long transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-lg transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['.duration-long'],
+          children: ['.duration-lg'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'duration-very-long transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
+            className: 'duration-xl transition-transform transform hover:scale-120 rounded-lg bg-surface p-fluid-sm',
           },
-          children: ['.duration-very-long'],
+          children: ['.duration-xl'],
         },
       ],
     },

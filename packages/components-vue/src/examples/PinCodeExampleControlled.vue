@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type PinCodeUpdateEventDetail, PPinCode, PText } from '@porsche-design-system/components-vue';
+import { type PinCodeChangeEventDetail, PPinCode, PText } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const value = ref('');
 const isComplete = ref(false);
 
-const onUpdate = (e: PinCodeUpdateEventDetail): void => {
+const onUpdate = (e: PinCodeChangeEventDetail): void => {
   value.value = e.value;
   isComplete.value = e.isComplete;
 };

@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { PTag } from '@porsche-design-system/components-react/ssr';
 import { Notification } from '@/components/common/Notification';
+import { localPorscheDesignSystemMajorVersion } from '@/utils/porscheDesignSystemVersion';
 
 export const metadata = {
   title: 'Astro: Getting started - Porsche Design System',
@@ -18,13 +19,13 @@ based on the following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">astro@5</PTag>
+  <PTag compact={true} variant="info">astro@5</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">vue@3</PTag>
+  <PTag compact={true} variant="info">vue@3</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  <PTag compact={true} variant="info">tailwindcss@4</PTag>
   {/* prettier-ignore */}
-  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-js@3</PTag>
+  <PTag compact={true} variant="info">@porsche-design-system/components-js@{localPorscheDesignSystemMajorVersion}</PTag>
 </div>
 
 ```bash
@@ -76,7 +77,52 @@ Integrate the Porsche Design System Loader into the `<body>` section of your HTM
 </html>
 ```
 
-### Step 3 (recommended)
+### Step 3
+
+Create a `global.css` file and add the Porsche Design System stylesheet to it. This single import already includes all
+required and recommended styles, such as:
+
+- CSS color variables (including color scheme utilities)
+- Font-face definitions
+- Normalize styles
+
+If your website will be used primarily in China, use the `/cn` import. See
+[China CDN](/must-know/performance/cdn/#china-cdn) for more details.
+
+See [Styles](/styles/introduction/) for more details about global styles. See [Theme](/must-know/theme/) to learn about
+theming.
+
+```diff
+/* src/styles/global.css */
++ @import '@porsche-design-system/components-js';
+```
+
+Import the CSS file in your project.
+
+```diff
+// src/pages/index.astro
+
+---
++ import '../styles/global.css';
+---
+```
+
+To prevent Flash of Unstyled Content (FOUC), hide elements until they are either registered
+([`:defined`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:defined)) or fully rendered by
+Stencil ([`.hydrated`](https://stenciljs.com/docs/config#hydratedflag)). If you encounter any problems with the
+`:defined` pseudo-class, consider applying the style only to the relevant tags (`:is(p-button...)`). See
+[Initialization](/must-know/initialization/vanilla-js/#preparation) for more details.
+
+```diff
+/* src/styles/global.css */
+@import '@porsche-design-system/components-js';
+
++ :not(:defined) {
++   visibility: hidden;
++ }
+```
+
+### Step 4 (recommended)
 
 To boost your web application's performance and minimize issues like FOUC (Flash of Unstyled Content) and FOUT (Flash of
 Unstyled Text), you can integrate [Partials](/partials/introduction) from the Porsche Design System into the `<head>`
@@ -86,7 +132,7 @@ section of your HTML.
 // src/layouts/Layout.astro
 
 ---
-+ import { getComponentChunkLinks, getFontFaceStyles, getFontLinks, getIconLinks, getInitialStyles, getLoaderScript, getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
++ import { getComponentChunkLinks, getFontLinks, getIconLinks, getLoaderScript, getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
 ---
 <!doctype html>
   <html lang="en">
@@ -96,10 +142,6 @@ section of your HTML.
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
-    <!-- injects stylesheet which defines visibility of pre-hydrated PDS components -->
-+   <Fragment set:html={getInitialStyles()} />
-    <!-- injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) -->
-+   <Fragment set:html={getFontFaceStyles()} />
     <!-- preloads Porsche Next font (=> minimize FOUT) -->
 +   <Fragment set:html={getFontLinks()} />
     <!-- preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) -->
@@ -116,7 +158,7 @@ section of your HTML.
 </html>
 ```
 
-### Step 4 (recommended)
+### Step 5 (recommended)
 
 Setting up [Tailwind CSS](https://tailwindcss.com) with the Porsche Design System
 [Tailwind CSS Theme](/tailwindcss/introduction) allows you to use a utility-first CSS framework that guarantees
@@ -156,26 +198,17 @@ export default defineConfig({
 });
 ```
 
-Create `global.css` file, import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
 ```diff
-/* src/styles/global.css */
+/* src/style.css */
+@import '@porsche-design-system/components-js';
 
 + @import 'tailwindcss';
 + @import '@porsche-design-system/components-js/tailwindcss';
 ```
 
-Start using Tailwind CSS in your project.
-
-```diff
-// src/pages/index.astro
-
----
-+ import '../styles/global.css';
----
-```
-
-### Step 5
+### Step 6
 
 Add a Porsche Design System component (e.g. `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
 `npm run dev` and verify that the component and styles display correctly.
